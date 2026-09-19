@@ -59,14 +59,23 @@ def detect_signals(text: str, taxonomy: dict[str, Any]) -> list[str]:
     return signals
 
 
-def classify(text: str, config: Config) -> tuple[str, int]:
-    """Return (lane_id, hit_count) for the best matching lane."""
+def lane_hits(text: str, lane: dict[str, Any]) -> int:
+    """Count how many of a lane's keywords appear in the text."""
     lowered = text.lower()
+    return sum(1 for keyword in lane["keywords"] if keyword in lowered)
+
+
+def classify(text: str, config: Config) -> tuple[str, int]:
+    """Return (lane_id, hit_count) for the best matching lane.
+
+    A text that matches no keyword at all still returns a lane, so callers that
+    need topical evidence have to look at the hit count -- `select` does.
+    """
     best_lane = "foundation"
     best_score = -1.0
     best_hits = 0
     for lane in config.lanes:
-        hits = sum(1 for keyword in lane["keywords"] if keyword in lowered)
+        hits = lane_hits(text, lane)
         score = hits * float(lane.get("weight", 1.0))
         if score > best_score:
             best_lane, best_score, best_hits = lane["id"], score, hits
@@ -132,7 +141,11 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
     enriched: list[Item] = []
     for item in items:
         blob = f"{item.title}. {item.summary}"
-        lane, hits = classify(blob, config)
+        if item.lane_locked:
+            # Keep the curated lane, but score it on its own keywords.
+            lane, hits = item.lane, lane_hits(blob, config.lane(item.lane))
+        else:
+            lane, hits = classify(blob, config)
         item.lane = lane
         item.lane_hits = hits
         item.signals = detect_signals(blob, config.taxonomy)
@@ -168,10 +181,18 @@ def deduplicate(items: Iterable[Item]) -> list[Item]:
 
 
 def select(items: list[Item], limit: int = 8, per_lane: int = 2, min_score: float = 0.9) -> list[Item]:
-    """Pick the daily shortlist, capping each lane so one topic cannot dominate."""
+    """Pick the daily shortlist, capping each lane so one topic cannot dominate.
+
+    An item needs at least one lane keyword to qualify. Evidence and recency alone
+    can clear `min_score`, and without this gate an off-topic hit from the broad
+    arXiv queries would be published under whichever lane the classifier fell back
+    to -- labelled as if it belonged there.
+    """
     picked: list[Item] = []
     lane_counts: dict[str, int] = {}
     for item in items:
+        if item.lane_hits < 1 and not item.lane_locked:
+            continue
         if item.score < min_score:
             continue
         if lane_counts.get(item.lane, 0) >= per_lane:

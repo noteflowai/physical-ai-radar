@@ -199,6 +199,9 @@ def baseline_items(config: Config) -> list[Item]:
                 published=str(raw.get("date", "")),
                 summary=raw.get("why", {}).get("en", ""),
                 lane=raw.get("lane", "foundation"),
+                # A curated lane is an editorial decision; the classifier must not
+                # overrule it, and several entries carry no lane keyword at all.
+                lane_locked="lane" in raw,
                 numbers=list(raw.get("numbers", [])),
             )
         )
