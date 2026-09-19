@@ -24,6 +24,11 @@ Rules:
 - `radar/latest.json` carries a `fetch` block (items, sources attempted / answered,
   per-source counts, names of sources that did not answer) so partial degradation is
   visible without reading the workflow log;
+- every run also records that day's unanswered sources in `radar/history.json`, and
+  `python3 -m pairadar.health` turns the last fourteen days into a verdict: a source
+  that missed three or more days is reported as struggling. The daily run prints the
+  verdict and stays green; `--fail-on-struggling` exits 1 for automation that should
+  only act when there is something to act on;
 - adding a source requires a weight and an evidence tag in `data/sources.json`.
 
 ## 2. Classification
