@@ -24,7 +24,7 @@ from .config import (
     Item,
     dump_json,
 )
-from .distill import one_liner
+from .distill import one_liner, url_key
 
 EVIDENCE_LABEL = {"O": "`[O]`", "R": "`[R]`", "M": "`[M]`"}
 LANG_SWITCH = {
@@ -39,11 +39,21 @@ DAILY_SWITCH = {
 }
 
 
-def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str, str]]) -> str:
+def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str, str]],
+              notes: dict[str, Any] | None = None) -> tuple[str, bool]:
+    """Return the "why it matters" line and whether it was drafted rather than authored.
+
+    Order: a human-curated line wins, then a drafted note for this exact item, then
+    the per-lane template. A drafted line is always reported as drafted so the caller
+    can label it -- docs/METHODOLOGY.md section 5 requires that.
+    """
     curated_why = curated.get(item.id, {})
     if curated_why.get(lang):
-        return curated_why[lang]
-    return config.glossary["why_templates"].get(item.lane, {}).get(lang, "")
+        return curated_why[lang], False
+    drafted = ((notes or {}).get("notes", {}).get(url_key(item.url), {}) or {}).get(lang, "")
+    if drafted:
+        return drafted, True
+    return config.glossary["why_templates"].get(item.lane, {}).get(lang, ""), False
 
 
 def item_block(
@@ -52,6 +62,7 @@ def item_block(
     lang: str,
     curated: dict[str, dict[str, str]],
     index: int,
+    ctx_notes: dict[str, Any] | None = None,
 ) -> list[str]:
     ui = config.ui(lang)
     lines = [
@@ -66,9 +77,10 @@ def item_block(
     if item.signals:
         tags = [ui["signals"].get(signal, signal) for signal in item.signals]
         lines.append("- " + " / ".join(tags))
-    why = _why_text(item, config, lang, curated)
+    why, drafted = _why_text(item, config, lang, curated, ctx_notes)
     if why:
-        lines.append(f"- **{ui['why']}**: {why}")
+        label = f" `{ui['llm_draft']}`" if drafted else ""
+        lines.append(f"- **{ui['why']}**{label}: {why}")
     excerpt = one_liner(item.summary)
     if excerpt and item.source_id != "baseline":
         lines.append("")
@@ -102,13 +114,13 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     ]
     if ctx["picked"]:
         for position, item in enumerate(ctx["picked"], start=1):
-            lines.extend(item_block(item, config, lang, ctx["curated"], position))
+            lines.extend(item_block(item, config, lang, ctx["curated"], position, ctx.get("notes")))
     else:
         lines.extend([ui["no_items"], ""])
 
     lines.extend([f"## {ui['baseline']}", ""])
     for position, item in enumerate(ctx["baseline"], start=1):
-        lines.extend(item_block(item, config, lang, ctx["curated"], position))
+        lines.extend(item_block(item, config, lang, ctx["curated"], position, ctx.get("notes")))
 
     lines.extend(
         [
@@ -140,6 +152,7 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
             "",
             "---",
             "",
+            _draft_notice(config, lang, ctx),
             f"*{ui['disclaimer']}*",
             "",
             f"[{ui['methodology']}](../../docs/METHODOLOGY.md) · [{ui['history']}](../INDEX.md)",
@@ -147,6 +160,15 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines)
+
+
+def _draft_notice(config: Config, lang: str, ctx: dict[str, Any]) -> str:
+    """Name the drafter when any line on the page was drafted, otherwise say nothing."""
+    notes = ctx.get("notes") or {}
+    if not notes.get("notes"):
+        return ""
+    author = notes.get("author", {})
+    return f"*{config.ui(lang)['llm_notice'].format(agent=author.get('agent', '?'), model=author.get('model', '?'))}*\n"
 
 
 def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
@@ -160,14 +182,15 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     ]
     highlights = (ctx["picked"] or ctx["baseline"])[:5]
     for item in highlights:
-        why = _why_text(item, config, lang, ctx["curated"])
+        why, drafted = _why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
         numbers = f" ｜ {' · '.join(f'`{n}`' for n in item.numbers[:2])}" if item.numbers else ""
         lines.append(
             f"- {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} **[{item.title}]({item.url})** — "
             f"{config.lane_name(item.lane, lang)}{numbers}"
         )
         if why:
-            lines.append(f"  - {why}")
+            label = f"`{ui['llm_draft']}` " if drafted else ""
+            lines.append(f"  - {label}{why}")
     lines.extend(
         [
             "",

@@ -16,6 +16,7 @@ from .config import (
     dump_json,
     load_config,
     load_json,
+    load_notes,
     now_iso,
 )
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
@@ -113,6 +114,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "live_count": len(live),
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
+        "notes": load_notes(day),
     }
 
 

@@ -55,6 +55,22 @@ Both must pass. `--no-readme` keeps the committed READMEs untouched while you te
   `docs/METHODOLOGY.md`.
 - Prefer deterministic behaviour: same input, same output, same order.
 
+## Reviewing a drafted-notes pull request
+
+`notes/<date>` branches carry one file: `data/notes/<date>.json`, per-item analysis
+drafted by an agent on a maintainer's machine. The script already checked the schema,
+that all three languages are present per item, and that nothing else changed. What a
+reviewer has to judge is the content:
+
+- does each line say what decision changes, rather than restate the title?
+- is every number in it actually in the source, and is a self-reported result worded as
+  self-reported?
+- is each language written as a practitioner in that language would phrase it, not as a
+  translation of the English?
+
+Reject or rewrite freely — a human-curated line in `data/baseline.json` always outranks
+a draft, and deleting the file simply restores the per-lane templates.
+
 ## Workflows and the self-hosted runner
 
 This repository is public and one lane runs on a self-hosted machine. **Only
