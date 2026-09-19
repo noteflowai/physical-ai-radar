@@ -89,9 +89,18 @@ This is the part most repositories get wrong, so it is explicit here:
    signal badges and the "why it matters" line come from `data/glossary.json`
    (`ui`, `why_templates`) and from hand-written trilingual fields in
    `data/baseline.json`.
-4. **No machine translation is invoked anywhere in the pipeline.** If a future version
-   adds LLM-assisted rewriting, it must be opt-in, logged per item, and labelled in the
-   output.
+4. **No machine translation is invoked anywhere in the pipeline.** Titles, numbers and
+   evidence tags are never produced or altered by a model.
+5. **Drafted analysis is opt-in, per item, and labelled.** The "why it matters" line may
+   come from a draft in `data/notes/<date>.json` instead of the per-lane template. Such a
+   file is written outside the pipeline by `scripts/draft_daily_notes.sh`, which runs on a
+   maintainer's machine on a schedule, never in CI, and opens a pull request for review —
+   nothing reaches a reader without a human merge. Precedence is fixed: a human-curated
+   line beats a draft, a draft beats the template. Every drafted line carries a visible
+   label next to its heading, the page names the agent and model that drafted it, and each
+   language is drafted separately rather than translated. A missing language falls back to
+   the template, and a malformed or foreign notes file is ignored with a log line: notes
+   can never break a run or silently replace authored text.
 
 ## 6. Charts
 
@@ -120,6 +129,8 @@ long label degrades visibly instead of painting over the data.
   window; older entries keep their counts and drop their URL list, so the log does not grow
   without bound. `radar/latest.json` is the machine-readable snapshot for downstream
   consumers.
+- `data/notes/<date>.json` is an optional input. Without it the render is unchanged, so
+  a reproduction from repository data alone stays deterministic.
 - Item ids are content-derived (`arxiv:<id>`, `<feed>:<sha1(link)[:12]>`) and therefore stable
   across processes and days.
 - The daily workflow commits only when the working tree actually changed.
