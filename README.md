@@ -78,12 +78,17 @@ GitHub Actions (cron 01:30 UTC / 09:30 CST / 10:30 JST)
 git clone https://github.com/noteflowai/physical-ai-radar.git
 cd physical-ai-radar
 
-python3 -m pairadar --offline          # 不联网，仅用仓库内策展基线
-python3 -m pairadar                    # 联网抓取当日新内容
-python3 -m unittest discover -s tests  # 测试
+python3 -m pairadar --offline --out /tmp/radar   # 不联网，产物写到别处，不改动仓库
+python3 -m pairadar --offline                   # 不联网，直接改写仓库内的日报与 README
+python3 -m pairadar                             # 联网抓取当日新内容
+python3 -m unittest discover -s tests           # 测试
 ```
 
 无需 pip install，无需虚拟环境，Python 3.10+ 即可。
+
+不带 `--out` 的运行会**就地改写**三份 README 的雷达区块、`radar/` 与 `assets/`
+（这正是每日任务要做的事）；想先看看产出，用 `--out` 写到别处。
+两种方式都会从仓库读取运行日志，所以"七天内不重复"仍然生效。
 
 ## 目录结构
 
