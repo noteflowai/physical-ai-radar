@@ -91,6 +91,9 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "count": len(picked),
         "lanes": len({item.lane for item in picked}),
         "urls": [url_key(item.url) for item in picked],
+        # Kept for every run, not pruned with the URLs: pairadar.health reads a
+        # longer window to spot a source that has quietly stopped answering.
+        "failed": sorted(report.failed),
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 

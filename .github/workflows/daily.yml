@@ -57,6 +57,9 @@ jobs:
           if fetch.get("failed"):
               print("- **no answer from:** " + ", ".join(fetch["failed"]))
           PY
+          # Repeated failures across days, from the run log. Never fatal: losing one
+          # source must not turn the build red, so this only reports.
+          python -m pairadar.health | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
 
       - name: Commit when something changed
         run: |

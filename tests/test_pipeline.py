@@ -16,7 +16,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import charts, cli  # noqa: E402
+from pairadar import charts, cli, health  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config  # noqa: E402
 from pairadar.distill import (  # noqa: E402
     classify,
@@ -434,6 +434,58 @@ class OutputRootTest(unittest.TestCase):
                 (out/"radar"/"history.json").read_text(encoding="utf-8"))["runs"]}
         self.assertTrue(repository_dates <= stored, "previous runs disappeared from the log")
         self.assertIn("2026-02-04", {entry["date"] for entry in ctx["history"]})
+
+
+class SourceHealthTest(unittest.TestCase):
+    """A source that quietly stops answering must become visible."""
+
+    # deepmind fails on four of the last five days; nvidia-blog once; the August
+    # entry is outside the window; the last two entries are malformed on purpose.
+    RUNS = [
+        {"date": "2026-09-19", "count": 8, "failed": ["deepmind"]},
+        {"date": "2026-09-18", "count": 8, "failed": ["deepmind", "nvidia-blog"]},
+        {"date": "2026-09-17", "count": 7, "failed": ["deepmind"]},
+        {"date": "2026-09-16", "count": 8, "failed": []},
+        {"date": "2026-09-15", "count": 8, "failed": ["deepmind"]},
+        {"date": "2026-08-01", "count": 8, "failed": ["aws-physical-ai"]},
+        {"date": "2026-09-30", "count": 8, "failed": ["huggingface-blog"]},
+        {"count": 8, "failed": ["broken"]},
+    ]
+    TODAY = date(2026, 9, 19)
+
+    def test_failures_are_counted_inside_the_window_only(self) -> None:
+        counts = health.failures_by_source(self.RUNS, self.TODAY)
+        self.assertEqual(counts, {"deepmind": 4, "nvidia-blog": 1})
+
+    def test_struggling_applies_the_threshold_and_ranks_worst_first(self) -> None:
+        self.assertEqual(health.struggling(self.RUNS, self.TODAY), [("deepmind", 4)])
+        self.assertEqual(health.struggling(self.RUNS, self.TODAY, threshold=1),
+                         [("deepmind", 4), ("nvidia-blog", 1)])
+        self.assertEqual(health.struggling(self.RUNS, self.TODAY, threshold=5), [])
+
+    def test_only_runs_that_recorded_health_are_counted(self) -> None:
+        # Entries written before health was recorded must not read as healthy days.
+        self.assertEqual(health.days_observed(self.RUNS, self.TODAY), 5)
+        self.assertEqual(health.days_observed([{"date": "2026-09-19", "count": 8}], self.TODAY), 0)
+
+    def test_cli_exits_non_zero_only_when_asked_and_only_when_struggling(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary)/"history.json"
+            path.write_text(json.dumps({"runs": self.RUNS}), encoding="utf-8")
+            common = ["--history", str(path), "--date", "2026-09-19"]
+            self.assertEqual(health.main(common), 0, "the daily run must stay green")
+            self.assertEqual(health.main([*common, "--fail-on-struggling"]), 1)
+            self.assertEqual(health.main([*common, "--fail-on-struggling", "--threshold", "9"]), 0)
+
+    def test_a_run_records_which_sources_did_not_answer(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            out = Path(temporary)
+            cli.run(offline=True, day="2026-03-05", out=out)
+            runs = json.loads((out/"radar"/"history.json").read_text(encoding="utf-8"))["runs"]
+        # The log is date-sorted, so look the run up rather than taking the last entry.
+        entry = next(run for run in runs if run["date"] == "2026-03-05")
+        self.assertIn("failed", entry, "health has to be recorded to be readable later")
+        self.assertEqual(entry["failed"], [], "an offline run attempts no source")
 
 
 class RenderTest(unittest.TestCase):
