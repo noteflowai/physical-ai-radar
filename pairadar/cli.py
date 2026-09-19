@@ -118,7 +118,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
 
     charts.write_all(
         ASSETS_DIR,
-        [(config.lane_name(lane_id, "en"), count) for lane_id, count in ctx["lane_rows"]],
+        [(config.chart_label(lane_id), count) for lane_id, count in ctx["lane_rows"]],
         ctx["cadence"],
         ctx["mix"],
         ctx["generated"],

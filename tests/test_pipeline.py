@@ -438,6 +438,27 @@ class ChartsTest(unittest.TestCase):
         self.assertIn("<svg", charts.cadence_bars("Empty", []))
         self.assertIn("<svg", charts.evidence_strip("Empty", {}))
 
+    def test_lane_chart_labels_fit_the_gutter(self) -> None:
+        # The full lane names are 43-53 characters; drawn at 12px from x=20 they
+        # ran over the bars, which start at x=250.
+        config = load_config()
+        for lane in config.lanes:
+            label = config.chart_label(lane["id"])
+            self.assertLessEqual(charts.text_width(label), 220, f"{lane['id']}: {label}")
+            self.assertNotIn("…", label, "a declared chart label should not need trimming")
+
+    def test_over_long_labels_are_trimmed_not_overlapped(self) -> None:
+        long_label = "Edge & real-time (on-device inference / control rate)"
+        svg = charts.horizontal_bars("T", [(long_label, 3)])
+        self.assertNotIn(long_label, svg)
+        drawn = svg.split('font-size="12"')[1].split(">")[1].split("<")[0]
+        self.assertTrue(drawn.endswith("…"), drawn)
+        # The SVG carries escaped text; measure what the reader actually sees.
+        self.assertLessEqual(charts.text_width(drawn.replace("&amp;", "&")), 220, drawn)
+
+    def test_fit_keeps_short_labels_untouched(self) -> None:
+        self.assertEqual(charts.fit("Data engine", 220), "Data engine")
+
     def test_labels_are_escaped(self) -> None:
         svg = charts.horizontal_bars("T", [("A & B <x>", 1)])
         self.assertIn("A &amp; B &lt;x&gt;", svg)

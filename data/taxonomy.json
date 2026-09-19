@@ -10,6 +10,7 @@
         "en": "Foundation models (VLA / WAM)",
         "ja": "基盤モデル（VLA / WAM）"
       },
+      "chart_label": "Foundation models",
       "keywords": [
         "vision-language-action", "vision language action", "vla", "world action model", "wam",
         "robot foundation model", "generalist policy", "flow matching", "action chunk",
@@ -24,6 +25,7 @@
         "en": "Data engine (collection / curation / scaling)",
         "ja": "データエンジン（収集 / 精査 / スケーリング）"
       },
+      "chart_label": "Data engine",
       "keywords": [
         "egocentric", "human video", "teleoperation", "demonstration", "data scaling",
         "scaling law", "data curation", "dataset", "cross-embodiment", "open x-embodiment",
@@ -38,6 +40,7 @@
         "en": "Training & self-improvement (RL / post-training)",
         "ja": "学習と自己改善（RL / 事後学習）"
       },
+      "chart_label": "Training & self-improvement",
       "keywords": [
         "reinforcement learning", "post-training", "post training", "grpo", "ppo",
         "advantage", "self-improving", "self improvement", "fine-tuning", "fine tuning",
@@ -52,6 +55,7 @@
         "en": "Simulation & evaluation (sim2real / closed-loop)",
         "ja": "シミュレーションと評価（sim2real / 閉ループ）"
       },
+      "chart_label": "Simulation & evaluation",
       "keywords": [
         "simulation", "simulator", "sim-to-real", "sim2real", "real-to-sim", "real2sim",
         "benchmark", "evaluation", "closed-loop", "closed loop", "isaac lab", "mujoco",
@@ -66,6 +70,7 @@
         "en": "Edge & real-time (on-device inference / control rate)",
         "ja": "エッジとリアルタイム（オンデバイス推論 / 制御周期）"
       },
+      "chart_label": "Edge & real-time",
       "keywords": [
         "on-device", "onboard", "edge deployment", "jetson", "thor", "orin", "latency",
         "real-time", "quantization", "quantized", "inference speed", "control frequency",
@@ -80,6 +85,7 @@
         "en": "Safety, authority & compliance",
         "ja": "安全・権限・コンプライアンス"
       },
+      "chart_label": "Safety & compliance",
       "keywords": [
         "safety", "safe reinforcement", "control barrier function", "cbf", "runtime monitor",
         "safety filter", "fallback", "certification", "iso 10218", "iso 25785", "machinery regulation",
@@ -94,6 +100,7 @@
         "en": "Systems & orchestration (long-horizon / multi-policy)",
         "ja": "システムとオーケストレーション（長期タスク / 複数方策）"
       },
+      "chart_label": "Systems & orchestration",
       "keywords": [
         "long-horizon", "long horizon", "orchestration", "orchestrator", "hierarchical",
         "task and motion planning", "tamp", "memory", "agentic", "skill library",
@@ -108,6 +115,7 @@
         "en": "Embodiment & supply chain (hardware / cost)",
         "ja": "ハードウェアとサプライチェーン（機体 / コスト）"
       },
+      "chart_label": "Embodiment & supply chain",
       "keywords": [
         "humanoid", "actuator", "dexterous hand", "tactile", "gripper", "bill of materials",
         "bom", "supply chain", "production line", "mass production", "battery", "torque",
