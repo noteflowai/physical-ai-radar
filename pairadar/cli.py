@@ -10,6 +10,7 @@ from typing import Any
 from . import charts
 from .config import (
     ASSETS_DIR,
+    README_FILES,
     ROOT,
     Config,
     dump_json,
@@ -24,14 +25,15 @@ from .render import inject_readme, update_index, write_daily, write_latest
 HISTORY_PATH = ROOT / "radar" / "history.json"
 
 
-def load_history() -> list[dict[str, Any]]:
-    if HISTORY_PATH.exists():
-        payload = load_json(HISTORY_PATH)
+def load_history(path: Path = HISTORY_PATH) -> list[dict[str, Any]]:
+    if path.exists():
+        payload = load_json(path)
         return list(payload.get("runs", []))
     return []
 
 
-def save_history(runs: list[dict[str, Any]], keep_urls_days: int = 7) -> None:
+def save_history(runs: list[dict[str, Any]], keep_urls_days: int = 7,
+                 path: Path = HISTORY_PATH) -> None:
     """Persist the run log, keeping published URLs only while they still matter."""
     ordered = sorted(runs, key=lambda entry: entry["date"])[-400:]
     if ordered:
@@ -39,7 +41,7 @@ def save_history(runs: list[dict[str, Any]], keep_urls_days: int = 7) -> None:
         for entry in ordered:
             if (newest - date.fromisoformat(entry["date"])).days > keep_urls_days:
                 entry.pop("urls", None)
-    dump_json(HISTORY_PATH, {"runs": ordered})
+    dump_json(path, {"runs": ordered})
 
 
 def recent_urls(runs: list[dict[str, Any]], reference: date, days: int) -> set[str]:
@@ -111,25 +113,37 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     }
 
 
-def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True) -> dict[str, Any]:
+def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True,
+        out: Path | None = None) -> dict[str, Any]:
+    """Generate one day of radar.
+
+    `out` redirects every generated file under another directory, so a reader can
+    inspect real output without rewriting their checkout. The run log is still read
+    from the repository, so the repeat window keeps working, and written to `out`.
+    """
+    root = Path(out) if out else ROOT
     config = load_config()
     day = day or datetime.now(timezone.utc).date().isoformat()
     ctx = build_context(config, offline=offline, limit=limit, day=day)
 
     charts.write_all(
-        ASSETS_DIR,
+        root/"assets" if root != ROOT else ASSETS_DIR,
         [(config.chart_label(lane_id), count) for lane_id, count in ctx["lane_rows"]],
         ctx["cadence"],
         ctx["mix"],
         ctx["generated"],
     )
-    written: list[Path] = write_daily(config, ctx)
+    written: list[Path] = write_daily(config, ctx, root)
     if write_readme:
         for lang in ("zh", "en", "ja"):
-            written.append(inject_readme(config, lang, ctx))
-    written.append(write_latest(ctx))
-    written.append(update_index(config, ctx, ctx["history"]))
-    save_history(ctx["history"], keep_urls_days=ctx["repeat_days"])
+            if (root/README_FILES[lang]).exists():
+                written.append(inject_readme(config, lang, ctx, root))
+            else:
+                print(f"[radar] no {README_FILES[lang]} under {root}: skipping injection")
+    written.append(write_latest(ctx, root))
+    written.append(update_index(config, ctx, ctx["history"], root))
+    save_history(ctx["history"], keep_urls_days=ctx["repeat_days"],
+                 path=root/"radar"/"history.json")
 
     print(
         f"[radar] {day}: {len(ctx['picked'])} picked from {ctx['live_count']} live items, "
@@ -154,8 +168,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=8, help="max items on the daily shortlist")
     parser.add_argument("--date", dest="day", default=None, help="override the run date (YYYY-MM-DD)")
     parser.add_argument("--no-readme", action="store_true", help="do not touch the README files")
+    parser.add_argument("--out", type=Path, default=None,
+                        help="write everything under this directory instead of the repository")
     args = parser.parse_args(argv)
-    ctx = run(offline=args.offline, limit=args.limit, day=args.day, write_readme=not args.no_readme)
+    ctx = run(offline=args.offline, limit=args.limit, day=args.day,
+              write_readme=not args.no_readme, out=args.out)
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")
         return 2

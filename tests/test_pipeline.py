@@ -1,6 +1,7 @@
 """Tests for the Physical AI Radar pipeline (standard library unittest only)."""
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import subprocess
@@ -284,9 +285,8 @@ class RepeatMemoryTest(unittest.TestCase):
                 {"date": "2026-09-01", "count": 3, "urls": ["https://example.org/ancient"]},
                 {"date": "2026-09-18", "count": 4, "urls": ["https://example.org/yesterday"]},
             ]
-            with patch.object(cli, "HISTORY_PATH", path):
-                save_history(runs, keep_urls_days=7)
-                stored = {entry["date"]: entry for entry in json.loads(path.read_text())["runs"]}
+            save_history(runs, keep_urls_days=7, path=path)
+            stored = {entry["date"]: entry for entry in json.loads(path.read_text())["runs"]}
         self.assertNotIn("urls", stored["2026-09-01"], "old URLs should not grow the log forever")
         self.assertEqual(stored["2026-09-18"]["urls"], ["https://example.org/yesterday"])
         self.assertEqual(stored["2026-09-01"]["count"], 3, "counts must survive pruning")
@@ -372,8 +372,10 @@ class FetchReliabilityTest(unittest.TestCase):
 
     def test_published_payload_carries_fetch_health(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
-            with patch.object(render, "ROOT", Path(temporary)):
-                path = render.write_latest({
+            # Pass the root in; patching the module attribute no longer reaches a
+            # default argument, and this test used to write into the repository.
+            path = render.write_latest(
+                {
                     "date": "2026-09-19",
                     "generated": "2026-09-19 01:30 UTC",
                     "window": "w",
@@ -382,10 +384,56 @@ class FetchReliabilityTest(unittest.TestCase):
                     "mix": {"O": 0, "R": 1, "M": 0},
                     "baseline_all": [],
                     "fetch": FetchReport(items=[make_item()], attempted=["arxiv"]).to_dict(),
-                })
+                },
+                root=Path(temporary),
+            )
             payload = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(payload["fetch"]["answered"], 1)
         self.assertEqual(payload["fetch"]["per_source"], {"arxiv": 1})
+
+
+class OutputRootTest(unittest.TestCase):
+    """`--out` must let a reader see real output without rewriting their clone."""
+
+    WATCHED = ("README.md", "README.en.md", "README.ja.md", "radar/latest.json",
+               "radar/history.json", "radar/INDEX.md", "assets/lane-distribution.svg")
+
+    def digests(self) -> dict[str, str]:
+        return {
+            name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+            for name in self.WATCHED if (ROOT/name).exists()
+        }
+
+    def test_out_redirects_every_generated_file_and_leaves_the_checkout_alone(self) -> None:
+        before = self.digests()
+        with tempfile.TemporaryDirectory() as temporary:
+            out = Path(temporary)/"preview"
+            cli.run(offline=True, day="2026-02-03", out=out)
+            produced = {path.relative_to(out).as_posix() for path in out.rglob("*") if path.is_file()}
+        self.assertEqual(self.digests(), before, "a --out run must not touch the repository")
+        for expected in (
+            "radar/daily/2026-02-03.zh.md",
+            "radar/daily/2026-02-03.en.md",
+            "radar/daily/2026-02-03.ja.md",
+            "radar/latest.json",
+            "radar/history.json",
+            "radar/INDEX.md",
+            "assets/lane-distribution.svg",
+            "assets/cadence.svg",
+            "assets/evidence-mix.svg",
+        ):
+            self.assertIn(expected, produced)
+
+    def test_out_still_reads_the_repository_run_log(self) -> None:
+        # The repeat window only works if previous days are still visible.
+        repository_dates = {entry["date"] for entry in cli.load_history()}
+        with tempfile.TemporaryDirectory() as temporary:
+            out = Path(temporary)
+            ctx = cli.run(offline=True, day="2026-02-04", out=out)
+            stored = {entry["date"] for entry in json.loads(
+                (out/"radar"/"history.json").read_text(encoding="utf-8"))["runs"]}
+        self.assertTrue(repository_dates <= stored, "previous runs disappeared from the log")
+        self.assertIn("2026-02-04", {entry["date"] for entry in ctx["history"]})
 
 
 class RenderTest(unittest.TestCase):

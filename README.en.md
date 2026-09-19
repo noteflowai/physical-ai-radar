@@ -78,12 +78,18 @@ The run is scheduled after the arXiv daily announcement so the first thing you r
 git clone https://github.com/noteflowai/physical-ai-radar.git
 cd physical-ai-radar
 
-python3 -m pairadar --offline          # no network, curated baseline only
-python3 -m pairadar                    # fetch today's live items
-python3 -m unittest discover -s tests  # tests
+python3 -m pairadar --offline --out /tmp/radar   # no network, writes elsewhere, repo untouched
+python3 -m pairadar --offline                   # no network, rewrites the pages and READMEs in place
+python3 -m pairadar                             # fetch today's live items
+python3 -m unittest discover -s tests           # tests
 ```
 
 No pip install, no virtualenv. Python 3.10+ is enough.
+
+Without `--out` a run **rewrites in place**: the radar block in all three READMEs,
+`radar/` and `assets/` — which is what the daily job is for. Use `--out` to look
+first. Either way the run log is read from the repository, so the seven-day
+no-repeat window still applies.
 
 ## Layout
 

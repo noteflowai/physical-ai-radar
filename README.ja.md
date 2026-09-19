@@ -78,12 +78,18 @@ GitHub Actions（cron 01:30 UTC / 09:30 CST / 10:30 JST）
 git clone https://github.com/noteflowai/physical-ai-radar.git
 cd physical-ai-radar
 
-python3 -m pairadar --offline          # ネットワークなし、キュレーション基準のみ
-python3 -m pairadar                    # 当日の新規項目を取得
-python3 -m unittest discover -s tests  # テスト
+python3 -m pairadar --offline --out /tmp/radar   # 通信なし・別の場所へ出力し、リポジトリは変更しない
+python3 -m pairadar --offline                   # 通信なし・日報と README をその場で書き換える
+python3 -m pairadar                             # 当日の新規項目を取得
+python3 -m unittest discover -s tests           # テスト
 ```
 
 pip install も仮想環境も不要。Python 3.10 以上で動きます。
+
+`--out` を付けない実行は、三つの README のレーダー区画・`radar/`・`assets/` を
+**その場で書き換えます**（日次ジョブの動作そのものです）。まず内容を確認したい
+場合は `--out` を使ってください。どちらの場合も実行ログはリポジトリから読むため、
+七日以内の重複除外はそのまま機能します。
 
 ## ディレクトリ構成
 

@@ -105,6 +105,11 @@ long label degrades visibly instead of painting over the data.
 
 - Python 3.10+, standard library only.
 - `python3 -m pairadar --offline` reproduces a full render from repository data alone.
+  It writes in place -- the radar block in all three READMEs, `radar/` and `assets/` --
+  because that is what the daily job does.
+- `python3 -m pairadar --offline --out DIR` writes the same output under `DIR` instead,
+  leaving the checkout untouched, for readers who want to inspect before committing to a
+  rewrite. The run log is still read from the repository so the repeat window applies.
 - `python3 -m pairadar --date 2026-09-19` pins the run date.
 - `radar/history.json` keeps the cadence series plus the URLs published inside the repeat
   window; older entries keep their counts and drop their URL list, so the log does not grow

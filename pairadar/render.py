@@ -182,8 +182,8 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def inject_readme(config: Config, lang: str, ctx: dict[str, Any]) -> Path:
-    path = ROOT / README_FILES[lang]
+def inject_readme(config: Config, lang: str, ctx: dict[str, Any], root: Path = ROOT) -> Path:
+    path = root / README_FILES[lang]
     text = path.read_text(encoding="utf-8")
     block = readme_block(config, lang, ctx)
     if MARKER_START not in text or MARKER_END not in text:
@@ -194,18 +194,21 @@ def inject_readme(config: Config, lang: str, ctx: dict[str, Any]) -> Path:
     return path
 
 
-def write_daily(config: Config, ctx: dict[str, Any]) -> list[Path]:
+def write_daily(config: Config, ctx: dict[str, Any], root: Path = ROOT) -> list[Path]:
     written: list[Path] = []
-    DAILY_DIR.mkdir(parents=True, exist_ok=True)
+    daily_dir = root/"radar"/"daily" if root != ROOT else DAILY_DIR
+    daily_dir.mkdir(parents=True, exist_ok=True)
     for lang in LANGS:
-        path = DAILY_DIR / f"{ctx['date']}.{lang}.md"
+        path = daily_dir / f"{ctx['date']}.{lang}.md"
         path.write_text(render_daily(config, lang, ctx), encoding="utf-8")
         written.append(path)
     return written
 
 
-def update_index(config: Config, ctx: dict[str, Any], history: list[dict[str, Any]]) -> Path:
-    path = ROOT / "radar" / "INDEX.md"
+def update_index(config: Config, ctx: dict[str, Any], history: list[dict[str, Any]],
+                 root: Path = ROOT) -> Path:
+    path = root / "radar" / "INDEX.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
     lines = [
         "# Archive · 历史归档 · アーカイブ",
         "",
@@ -223,8 +226,8 @@ def update_index(config: Config, ctx: dict[str, Any], history: list[dict[str, An
     return path
 
 
-def write_latest(ctx: dict[str, Any]) -> Path:
-    path = ROOT / "radar" / "latest.json"
+def write_latest(ctx: dict[str, Any], root: Path = ROOT) -> Path:
+    path = root / "radar" / "latest.json"
     dump_json(
         path,
         {
