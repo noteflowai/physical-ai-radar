@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-19",
+  "generated": "2026-09-19 18:30 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-4.6",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "http://arxiv.org/abs/2609.20776v1": {
+      "zh": "如果自适应分块能替代固定动作步长，VLA 部署时调 chunk size 的工程量会大幅缩减——但作者仅报了闭环真机结果，泛化到异构本体尚未验证。",
+      "en": "Adaptive action chunking could eliminate the per-task horizon tuning that slows VLA deployment, though the reported real-robot gains are on a single embodiment and await cross-platform confirmation.",
+      "ja": "固定ステップ長のチューニングを省けるなら VLA の展開コストは下がるが、著者が示した閉ループ実機結果は単一機体に限られ、異機体への汎化は未検証である。"
+    },
+    "http://arxiv.org/abs/2609.19104v1": {
+      "zh": "反复执行同一工站任务时缓存推理中间结果可削减端侧延迟——预印本报告了真机闭环验证，值得关注该方法在任务切换频率提高后是否仍有效。",
+      "en": "Caching inference state across repetitive factory tasks is a practical path to lower on-device latency; the preprint includes real-robot validation, but the gains may narrow as task switching becomes more frequent.",
+      "ja": "工場の反復タスクで推論状態をキャッシュし端末遅延を削る手法で、実機閉ループ検証が報告されている。タスク切替頻度が上がった場合の効果持続性が次の検証点になる。"
+    },
+    "http://arxiv.org/abs/2609.18732v1": {
+      "zh": "50 Hz 感知运动策略让人形在杂乱环境中通过率从约 48% 提到约 70%（作者自报），说明场景对齐的运动学习正在缩小仿真与实机的步态差距。",
+      "en": "A 50 Hz perception-locomotion policy reportedly lifts humanoid traversal rates from roughly 48% to 70% in clutter, suggesting scene-aligned motion learning is closing the sim-to-real locomotion gap — though no real-robot numbers are given.",
+      "ja": "50 Hz の知覚移動ポリシーで雑多環境の通過率が約 48% から約 70% に改善したと報告されており、シーン整合型の運動学習が sim-to-real の歩行差を縮めつつあることを示唆する。"
+    },
+    "http://arxiv.org/abs/2609.20791v1": {
+      "zh": "用大模型蒸馏出阶段切换判断，可以让长程编排器不再依赖手写的子任务终止条件——预印本包含真机验证，编排层自动化又近了一步。",
+      "en": "Distilling stage-transition logic from a foundation model removes hand-coded subtask termination from the orchestration layer; the preprint validates on real hardware, moving long-horizon pipelines closer to learned scheduling.",
+      "ja": "基盤モデルからステージ遷移判断を蒸留することでサブタスク終了条件の手書きが不要になり、実機検証も報告されている。長期タスク編成の自動化が一歩進む。"
+    },
+    "http://arxiv.org/abs/2609.20761v1": {
+      "zh": "将触觉融入世界动作模型并实现 11.9 ms 推理，意味着接触密集任务也可能跑进实时控制回路——预印本含真机闭环数据，但任务种类仍有限。",
+      "en": "Fusing tactile input into a world action model at 11.9 ms inference makes real-time closed-loop control feasible for contact-rich tasks, though the preprint covers a limited task set on a single platform.",
+      "ja": "触覚を世界行動モデルに統合し推論 11.9 ms を達成したことで、接触の多いタスクでもリアルタイム閉ループ制御が現実味を帯びる。ただしタスク範囲は限定的と報告されている。"
+    },
+    "https://spectrum.ieee.org/tactile-data-robots": {
+      "zh": "二手报道称触觉数据集正从百小时级跨向万小时级，若属实，触觉感知的数据瓶颈可能比预期更早松动——但具体采集方法和质量标准仍需查证一手来源。",
+      "en": "Secondary reporting suggests tactile datasets are scaling from hundreds to tens of thousands of hours; if accurate, the data bottleneck for dexterous manipulation may ease sooner than expected, but primary sources should be checked for collection methodology.",
+      "ja": "二次報道によれば触覚データセットが百時間規模から数万時間規模へ拡大中とされ、事実なら巧緻操作のデータ不足は予想より早く緩和しうるが、収集手法の一次情報確認が必要である。"
+    },
+    "http://arxiv.org/abs/2609.18623v1": {
+      "zh": "641M 参数的驾驶 VLA 在闭环基准上报告了 7–10% 的改善幅度，表明轻量级循环记忆架构正在缩小小模型与大模型的评测差距——但这是仿真闭环，不是公路里程。",
+      "en": "A 641M-parameter driving VLA reports 7–10% closed-loop benchmark gains via recurrent action memory, narrowing the gap with larger models — but these are simulated metrics, not on-road miles.",
+      "ja": "641M パラメータの運転 VLA が循環行動メモリにより閉ループベンチマークで 7〜10% 改善と報告しており、小規模モデルと大規模モデルの差が縮まりつつある。ただしシミュレーション指標であり実走行ではない。"
+    },
+    "http://arxiv.org/abs/2609.19666v1": {
+      "zh": "对高自由度灵巧手做 VLA 后训练并开放权重，意味着其他团队可以直接在此基础上微调而非从头收集灵巧操作数据——预印本含真机结果但未报量化指标。",
+      "en": "Post-training a VLA for high-DoF dexterous hands with open weights lets other teams fine-tune instead of collecting manipulation data from scratch — the preprint shows real-robot results but reports no quantitative metrics.",
+      "ja": "高自由度ハンド向け VLA 事後学習の重み公開により、巧緻操作データをゼロから集めずに微調整が可能になる。実機結果はあるが定量指標は未報告である。"
+    }
+  }
+}
