@@ -17,6 +17,25 @@ ACCENT_3 = "#eb003b"
 FONT = "ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
 
 
+# Rough advance width of the 12px UI sans stack, in pixels per character. Without a
+# font library this is an estimate, deliberately on the generous side so a label that
+# reports as fitting really does.
+CHAR_PX = 6.8
+
+
+def text_width(text: str, font_size: int = 12) -> float:
+    """Estimated rendered width, used to keep labels out of the plot area."""
+    return len(text) * CHAR_PX * font_size / 12
+
+
+def fit(text: str, budget: float, font_size: int = 12) -> str:
+    """Trim a label to a pixel budget, marking the cut."""
+    if text_width(text, font_size) <= budget:
+        return text
+    keep = max(1, int(budget / (CHAR_PX * font_size / 12)) - 1)
+    return text[:keep].rstrip() + "…"
+
+
 def _escape(text: str) -> str:
     return (
         text.replace("&", "&amp;")
@@ -48,7 +67,10 @@ def horizontal_bars(
     label_width: int = 250,
 ) -> str:
     """Horizontal bar chart, one row per label, values annotated at the bar end."""
-    rows = [(label, max(0, int(value))) for label, value in rows]
+    # Labels are drawn from x=20 and the bars start at label_width, so anything
+    # wider than the gutter would be painted over the bars.
+    gutter = label_width - 30
+    rows = [(fit(label, gutter), max(0, int(value))) for label, value in rows]
     row_height = 26
     top = 68
     height = top + row_height * max(1, len(rows)) + 24

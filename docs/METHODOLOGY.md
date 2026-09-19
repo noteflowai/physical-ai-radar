@@ -95,6 +95,12 @@ daily cadence and evidence mix. No plotting dependency, no binary diffs, readabl
 pull request. Labels are English because rendering CJK glyphs identically in CI would
 require bundling a font.
 
+Each lane declares a short `chart_label` in `data/taxonomy.json`. The full lane names run
+43–53 characters and, drawn at 12px from `x=20`, overran the bars that start at `x=250`.
+Without a font library the renderer estimates advance width at a deliberately generous
+6.8px per character and trims anything still over budget with an ellipsis, so a future
+long label degrades visibly instead of painting over the data.
+
 ## 7. Reproducibility
 
 - Python 3.10+, standard library only.

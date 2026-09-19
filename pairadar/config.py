@@ -63,6 +63,11 @@ class Config:
     def lane_name(self, lane_id: str, lang: str) -> str:
         return self.lane(lane_id)["name"][lang]
 
+    def chart_label(self, lane_id: str) -> str:
+        """Short English label for plotting; full names overrun the chart gutter."""
+        lane = self.lane(lane_id)
+        return lane.get("chart_label") or lane["name"]["en"]
+
     def ui(self, lang: str) -> dict[str, Any]:
         return self.glossary["ui"][lang]
 
