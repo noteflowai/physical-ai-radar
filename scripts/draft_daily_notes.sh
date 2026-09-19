@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 # Draft the day's per-item analysis with kiro-cli, on this machine, on a schedule.
 #
-# Outbound only: nothing on GitHub can trigger this. The machine pulls main, asks a
-# narrow agent to draft notes for today's published picks, verifies the result with
-# the deterministic pipeline, and opens a pull request. It never pushes to main, and
-# it never edits anything outside data/notes/.
+# Outbound only: nothing on GitHub can trigger this. The machine pulls the published
+# branch, asks a narrow agent to draft notes for that day's picks, verifies the result
+# with the deterministic pipeline, and opens a pull request. It never pushes to main,
+# and it never edits anything outside data/notes/.
 #
 #   scripts/draft_daily_notes.sh [--date YYYY-MM-DD] [--dry-run]
+#
+# Timing constraint: the notes are drafted for the current UTC date, whose radar is
+# published at 01:30 UTC. Schedule this after that, not near it. At 02:30 Asia/Singapore
+# (18:30 UTC) the day's radar is already seventeen hours old, which is the intent.
 #
 # Requirements: kiro-cli on PATH and authenticated (KIRO_API_KEY or a stored login),
 # gh authenticated for the pull request. Exit codes: 0 nothing to do or PR opened,
 # 1 something failed loudly.
 set -euo pipefail
 
-# A dedicated clone by default: this script resets to origin/main, which must never
-# happen inside somebody's working checkout.
+# A dedicated clone by default: this script resets hard, which must never happen
+# inside somebody's working checkout.
 REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
 BRANCH_BASE="${RADAR_BRANCH:-main}"
@@ -40,6 +44,27 @@ DAY="${DAY:-$(date -u +%F)}"
 NOTES="data/notes/${DAY}.json"
 log() { printf '[notes %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
 
+PREVIEW=""
+LOGFILE=""
+cleanup() {
+  [ -n "$PREVIEW" ] && rm -rf "$PREVIEW"
+  [ -n "$LOGFILE" ] && rm -f "$LOGFILE"
+  return 0
+}
+trap cleanup EXIT
+
+# -z survives paths with spaces and rename entries; awk on porcelain does not.
+changed_paths() {
+  git status --porcelain=v1 -z --untracked-files=all |
+    tr '\0' '\n' | sed -e 's/^...//' -e '/^$/d' | sort | tr '\n' ' ' | sed 's/ *$//'
+}
+# Detection covers the whole tree, so recovery has to as well: a stray untracked file
+# left behind would otherwise become tomorrow's blocker.
+restore_tree() {
+  git checkout -- . 2>/dev/null || true
+  git clean -qfdx
+}
+
 command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
 
 # cron does not inherit an interactive shell's environment. Keep the key in a file
@@ -53,14 +78,19 @@ if [ -z "${KIRO_API_KEY:-}" ] && ! kiro-cli whoami >/dev/null 2>&1; then
   exit 1
 fi
 
-# Work from published main, never from a dirty tree.
-git diff --quiet && git diff --cached --quiet || { log "working tree is dirty; refusing to run"; exit 1; }
+# Start from a known state. Refusing on a dirty tree would let one interrupted run
+# silently stop every following night, and in a dedicated clone leftovers carry no
+# information worth keeping.
+if [ -n "$(changed_paths)" ]; then
+  log "clearing leftovers from an interrupted run"
+fi
 git fetch --quiet origin
 git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
 git reset --hard --quiet "origin/${BRANCH_BASE}"
+git clean -qfdx
 
 if [ -f "$NOTES" ]; then
-  log "$NOTES already exists; nothing to draft"
+  log "$NOTES already exists on ${BRANCH_BASE}; nothing to draft"
   exit 0
 fi
 if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
@@ -76,27 +106,29 @@ case "$AGENTS" in
   *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
 esac
 
+LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
 log "drafting notes for ${DAY}"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
 kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
   --trust-tools=read,grep,glob,write \
   "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly." \
-  2>&1 | tee "/tmp/radar-notes-${DAY}.log" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
+  2>&1 | tee "$LOGFILE" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
 
-CHANGED=$(git status --porcelain --untracked-files=all | awk '{print $2}' | tr '\n' ' ' | sed 's/ *$//')
+CHANGED="$(changed_paths)"
 if [ -z "$CHANGED" ]; then
   log "the agent wrote nothing; stopping without a pull request"
   exit 0
 fi
 if [ "$CHANGED" != "$NOTES" ]; then
   log "unexpected files touched: ${CHANGED}; reverting"
-  git checkout -- . && git clean -fd data/notes
+  restore_tree
   exit 1
 fi
 
 # The deterministic half: the schema, the render and the full suite must all accept it.
 python3 -m unittest discover -s tests
-python3 -m pairadar --offline --out "/tmp/radar-notes-preview-${DAY}" --date "$DAY" >/dev/null
+PREVIEW="$(mktemp -d "/tmp/radar-notes-preview-${DAY}-XXXXXX")"
+python3 -m pairadar --offline --out "$PREVIEW" --date "$DAY" >/dev/null
 python3 - "$DAY" "$NOTES" <<'PY'
 import json, sys
 day, path = sys.argv[1], sys.argv[2]
@@ -117,13 +149,13 @@ PY
 if python3 -c "import json,sys; picks=json.load(open('radar/latest.json'))['picked']; sys.exit(0 if picks and any(p.get('summary') for p in picks) else 1)"; then
   log "re-rendering ${DAY} from the published snapshot"
   python3 -m pairadar --rerender --date "$DAY"
-  RENDERED=$(git status --porcelain --untracked-files=all | awk '{print $2}' | tr '\n' ' ' | sed 's/ *$//')
-  EXPECTED="${NOTES} README.en.md README.ja.md README.md radar/daily/${DAY}.en.md radar/daily/${DAY}.ja.md radar/daily/${DAY}.zh.md"
-  SORTED=$(printf '%s\n' $RENDERED | sort | tr '\n' ' ' | sed 's/ *$//')
-  EXPECTED_SORTED=$(printf '%s\n' $EXPECTED | sort | tr '\n' ' ' | sed 's/ *$//')
-  if [ "$SORTED" != "$EXPECTED_SORTED" ]; then
-    log "re-render touched unexpected files: ${SORTED}; reverting"
-    git checkout -- . && git clean -fd data/notes
+  RENDERED="$(changed_paths)"
+  EXPECTED="$(printf '%s\n' "$NOTES" README.en.md README.ja.md README.md \
+    "radar/daily/${DAY}.en.md" "radar/daily/${DAY}.ja.md" "radar/daily/${DAY}.zh.md" |
+    sort | tr '\n' ' ' | sed 's/ *$//')"
+  if [ "$RENDERED" != "$EXPECTED" ]; then
+    log "re-render touched unexpected files: ${RENDERED}; reverting"
+    restore_tree
     exit 1
   fi
   python3 -m unittest discover -s tests
@@ -136,20 +168,25 @@ if [ "$DRY_RUN" = "1" ]; then
   exit 0
 fi
 
+# -B and --force-with-lease so a second attempt on the same day updates its branch
+# instead of dying on an existing one.
 BRANCH="notes/${DAY}"
-git checkout -q -b "$BRANCH"
+git checkout -q -B "$BRANCH"
 git add -A
 git commit -q -m "notes: drafted per-item analysis for ${DAY}
 
 Drafted on the Tokyo workstation by ${AGENT} via kiro-cli, validated against the
 schema and the full test suite. Every line is labelled as a draft in the rendered
 pages; titles and numbers are untouched. Review before merging."
-git push -q -u origin "$BRANCH"
+git push -q -u --force-with-lease origin "$BRANCH"
+if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
+  log "updated the open pull request for ${BRANCH}"
+  exit 0
+fi
 gh pr create --base main --head "$BRANCH" \
   --title "notes: drafted per-item analysis for ${DAY}" \
   --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
     "Per-item analysis drafted for ${DAY} by \`${AGENT}\` on the Tokyo workstation, outside GitHub Actions." \
-    "$(sed -e 's/\x1b\[[0-9;]*m//g' "/tmp/radar-notes-${DAY}.log" | tail -25)" \
+    "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
     "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, validated the schema and all three languages per item, and ran the full test suite. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
 log "pull request opened for ${DAY}"
-rm -rf "/tmp/radar-notes-preview-${DAY}"
