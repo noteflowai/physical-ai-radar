@@ -55,6 +55,15 @@ Both must pass. `--no-readme` keeps the committed READMEs untouched while you te
   `docs/METHODOLOGY.md`.
 - Prefer deterministic behaviour: same input, same output, same order.
 
+## Workflows and the self-hosted runner
+
+This repository is public and one lane runs on a self-hosted machine. **Only
+`workflow_dispatch` and `schedule` may reach it** — a `pull_request` trigger on that
+runner would execute a contributor's branch on someone's computer.
+`tests/test_workflows.py` enforces this, and
+[docs/self-hosted-runner.md](docs/self-hosted-runner.md) explains the rest of the
+posture, including why the curator agent is given no shell.
+
 ## Reporting a mistake
 
 Open an issue with the source link, what the radar said and what the source actually says.
