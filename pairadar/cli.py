@@ -10,9 +10,11 @@ from typing import Any
 from . import charts
 from .config import (
     ASSETS_DIR,
+    LANGS,
     README_FILES,
     ROOT,
     Config,
+    Item,
     dump_json,
     load_config,
     load_json,
@@ -118,6 +120,56 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     }
 
 
+def rerender(day: str | None = None, out: Path | None = None, write_readme: bool = True,
+             source: Path | None = None) -> dict[str, Any]:
+    """Re-render a published day from its snapshot, with no network and no new picks.
+
+    A day's pages are written once, at publish time. Anything that arrives afterwards
+    -- drafted notes, a template fix -- only reaches readers when that day is rendered
+    again, and re-running the pipeline would select a different set of items. This
+    rebuilds the day from `radar/latest.json` instead, so the published evidence is
+    what gets rendered.
+    """
+    source = Path(source) if source else ROOT
+    root = Path(out) if out else source
+    config = load_config()
+    snapshot = load_json(source/"radar"/"latest.json")
+    day = day or snapshot["date"]
+    if snapshot["date"] != day:
+        raise SystemExit(f"radar/latest.json holds {snapshot['date']}, not {day}; "
+                         "only the most recent published day can be re-rendered")
+    picked = [Item.from_dict(entry) for entry in snapshot["picked"]]
+    if picked and not any(item.summary for item in picked):
+        print("[rerender] this snapshot predates stored excerpts: source quotes will be missing")
+    baseline_all = enrich(baseline_items(config), config, datetime.fromisoformat(day).date())
+    history = load_history(source/"radar"/"history.json")
+    ctx = {
+        "date": day,
+        "generated": snapshot["generated"],
+        "window": snapshot["window"],
+        "picked": picked,
+        "baseline": rotate_baseline(baseline_all, day),
+        "baseline_all": baseline_all,
+        "curated": {f"baseline:{raw['id']}": raw.get("why", {})
+                    for raw in config.baseline.get("items", [])},
+        "lane_rows": [(lane["id"], snapshot["lane_counts"].get(lane["id"], 0)) for lane in config.lanes],
+        "mix": snapshot["evidence_mix"],
+        "cadence": [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])],
+        "history": history,
+        "fetch": snapshot.get("fetch", {}),
+        "notes": load_notes(day),
+    }
+    written = write_daily(config, ctx, root)
+    if write_readme:
+        for lang in LANGS:
+            if (root/README_FILES[lang]).exists():
+                written.append(inject_readme(config, lang, ctx, root))
+    drafted = len((ctx["notes"] or {}).get("notes", {}))
+    print(f"[rerender] {day}: {len(picked)} published picks, {drafted} drafted notes, "
+          f"{len(written)} files written")
+    return ctx
+
+
 def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True,
         out: Path | None = None) -> dict[str, Any]:
     """Generate one day of radar.
@@ -173,9 +225,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=8, help="max items on the daily shortlist")
     parser.add_argument("--date", dest="day", default=None, help="override the run date (YYYY-MM-DD)")
     parser.add_argument("--no-readme", action="store_true", help="do not touch the README files")
+    parser.add_argument("--rerender", action="store_true",
+                        help="re-render the published day from radar/latest.json, without fetching")
     parser.add_argument("--out", type=Path, default=None,
                         help="write everything under this directory instead of the repository")
     args = parser.parse_args(argv)
+    if args.rerender:
+        rerender(day=args.day, out=args.out, write_readme=not args.no_readme)
+        return 0
     ctx = run(offline=args.offline, limit=args.limit, day=args.day,
               write_readme=not args.no_readme, out=args.out)
     if degraded(ctx["fetch"], args.offline):

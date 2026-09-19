@@ -129,6 +129,12 @@ long label degrades visibly instead of painting over the data.
   window; older entries keep their counts and drop their URL list, so the log does not grow
   without bound. `radar/latest.json` is the machine-readable snapshot for downstream
   consumers.
+- `python3 -m pairadar --rerender` rebuilds the most recent published day from
+  `radar/latest.json` -- same picks, same counts, no network. A day is rendered once at
+  publish time, so this is how anything that arrives later (drafted notes, a template
+  fix) reaches that day's pages without re-running selection against a moved pool. The
+  snapshot therefore stores the source excerpt each page quotes; `--rerender` reads the
+  snapshot and never rewrites it.
 - `data/notes/<date>.json` is an optional input. Without it the render is unchanged, so
   a reproduction from repository data alone stays deterministic.
 - Item ids are content-derived (`arxiv:<id>`, `<feed>:<sha1(link)[:12]>`) and therefore stable
