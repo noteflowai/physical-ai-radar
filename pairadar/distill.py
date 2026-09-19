@@ -163,34 +163,53 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
     return enriched
 
 
+def url_key(url: str) -> str:
+    """Normalise a link so the same article compares equal across runs and feeds."""
+    return url.split("?")[0].rstrip("/").lower()
+
+
 def deduplicate(items: Iterable[Item]) -> list[Item]:
     """Drop repeated URLs and near-identical titles, keeping the highest scored."""
     seen_urls: set[str] = set()
     seen_titles: set[str] = set()
     unique: list[Item] = []
     for item in items:
-        url_key = item.url.split("?")[0].rstrip("/").lower()
+        key = url_key(item.url)
         title_key = re.sub(r"[^a-z0-9]+", "", item.title.lower())[:80]
-        if url_key in seen_urls or (title_key and title_key in seen_titles):
+        if key in seen_urls or (title_key and title_key in seen_titles):
             continue
-        seen_urls.add(url_key)
+        seen_urls.add(key)
         if title_key:
             seen_titles.add(title_key)
         unique.append(item)
     return unique
 
 
-def select(items: list[Item], limit: int = 8, per_lane: int = 2, min_score: float = 0.9) -> list[Item]:
+def select(
+    items: list[Item],
+    limit: int = 8,
+    per_lane: int = 2,
+    min_score: float = 0.9,
+    seen: Iterable[str] = (),
+) -> list[Item]:
     """Pick the daily shortlist, capping each lane so one topic cannot dominate.
 
     An item needs at least one lane keyword to qualify. Evidence and recency alone
     can clear `min_score`, and without this gate an off-topic hit from the broad
     arXiv queries would be published under whichever lane the classifier fell back
     to -- labelled as if it belonged there.
+
+    `seen` holds normalised URLs already published on earlier days. The arXiv
+    window looks back three days and feeds keep entries for thirty, so without it
+    a strong item reappears on consecutive days and a daily radar stops showing
+    what changed.
     """
+    published = {url_key(url) for url in seen}
     picked: list[Item] = []
     lane_counts: dict[str, int] = {}
     for item in items:
+        if url_key(item.url) in published:
+            continue
         if item.lane_hits < 1 and not item.lane_locked:
             continue
         if item.score < min_score:

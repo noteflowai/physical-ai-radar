@@ -10,7 +10,9 @@
       "advertisement",
       "paid content",
       "webinar registration"
-    ]
+    ],
+    "repeat_days": 7,
+    "repeat_note": "an item already shown within this many days is not picked again"
   },
   "arxiv": {
     "enabled": true,

@@ -2,18 +2,23 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import sys
+import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import charts  # noqa: E402
+from pairadar import charts, cli  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config  # noqa: E402
 from pairadar.distill import (  # noqa: E402
     classify,
+    url_key,
     deduplicate,
     detect_signals,
     enrich,
@@ -25,7 +30,8 @@ from pairadar.distill import (  # noqa: E402
     recency_bonus,
     select,
 )
-from pairadar.fetch import baseline_items, clean_text, parse_date  # noqa: E402
+from pairadar.cli import recent_urls, save_history  # noqa: E402
+from pairadar.fetch import baseline_items, clean_text, link_digest, parse_date  # noqa: E402
 from pairadar.render import render_daily  # noqa: E402
 
 
@@ -205,6 +211,23 @@ class FetchHelpersTest(unittest.TestCase):
     def test_clean_text_strips_markup(self) -> None:
         self.assertEqual(clean_text("<p>Hello &amp;  world</p>"), "Hello & world")
 
+    def test_link_digest_is_stable_across_processes(self) -> None:
+        # str.hash is randomised per process, so a hash()-derived id changed on
+        # every run and no item could be recognised across days.
+        link = "https://example.org/a-post"
+        expected = link_digest(link)
+        script = (
+            "import sys; sys.path.insert(0, %r);"
+            "from pairadar.fetch import link_digest;"
+            "print(link_digest(%r))" % (str(ROOT), link)
+        )
+        for seed in ("0", "1", "12345"):
+            environment = {**os.environ, "PYTHONHASHSEED": seed}
+            result = subprocess.run([sys.executable, "-c", script], check=True,
+                                    capture_output=True, text=True, env=environment)
+            self.assertEqual(result.stdout.strip(), expected, f"unstable under seed {seed}")
+        self.assertEqual(len(expected), 12)
+
     def test_parse_date_formats(self) -> None:
         self.assertEqual(parse_date("2026-09-19T04:00:00Z"), "2026-09-19")
         self.assertEqual(parse_date("Fri, 19 Sep 2026 04:00:00 +0000"), "2026-09-19")
@@ -214,6 +237,50 @@ class FetchHelpersTest(unittest.TestCase):
         items = baseline_items(load_config())
         self.assertGreaterEqual(len(items), 20)
         self.assertTrue(any(item.numbers for item in items))
+
+
+class RepeatMemoryTest(unittest.TestCase):
+    """An item published yesterday must not headline again today."""
+
+    def setUp(self) -> None:
+        self.config = load_config()
+
+    def test_seen_urls_are_skipped_while_new_ones_survive(self) -> None:
+        today = date(2026, 9, 19)
+        old = make_item(id="old", url="https://example.org/paper-a")
+        fresh = make_item(id="fresh", url="https://example.org/paper-b")
+        ranked = enrich([old, fresh], self.config, today)
+        self.assertEqual({item.id for item in select(ranked, per_lane=4)}, {"old", "fresh"})
+        remaining = select(ranked, per_lane=4, seen=["https://example.org/paper-a?utm=x"])
+        self.assertEqual({item.id for item in remaining}, {"fresh"})
+
+    def test_recent_urls_respects_the_window(self) -> None:
+        runs = [
+            {"date": "2026-09-18", "urls": ["https://example.org/yesterday"]},
+            {"date": "2026-09-01", "urls": ["https://example.org/ancient"]},
+            {"date": "2026-09-30", "urls": ["https://example.org/future"]},
+            {"date": "broken"},
+        ]
+        urls = recent_urls(runs, date(2026, 9, 19), 7)
+        self.assertEqual(urls, {"https://example.org/yesterday"})
+
+    def test_saved_history_keeps_urls_only_inside_the_window(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary)/"history.json"
+            runs = [
+                {"date": "2026-09-01", "count": 3, "urls": ["https://example.org/ancient"]},
+                {"date": "2026-09-18", "count": 4, "urls": ["https://example.org/yesterday"]},
+            ]
+            with patch.object(cli, "HISTORY_PATH", path):
+                save_history(runs, keep_urls_days=7)
+                stored = {entry["date"]: entry for entry in json.loads(path.read_text())["runs"]}
+        self.assertNotIn("urls", stored["2026-09-01"], "old URLs should not grow the log forever")
+        self.assertEqual(stored["2026-09-18"]["urls"], ["https://example.org/yesterday"])
+        self.assertEqual(stored["2026-09-01"]["count"], 3, "counts must survive pruning")
+
+    def test_url_key_normalises_tracking_and_slashes(self) -> None:
+        self.assertEqual(url_key("https://Example.org/Post/?utm_source=x"),
+                         url_key("https://Example.org/Post"))
 
 
 class RenderTest(unittest.TestCase):
