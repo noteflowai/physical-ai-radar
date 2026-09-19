@@ -20,7 +20,7 @@ How this differs from a paper list or a news aggregator:
 <!-- RADAR:START -->
 ### Today's radar · 2026-09-19
 
-`Generated: 2026-09-19 08:09 UTC` ｜ `Window: 2026-09-16 → 2026-09-19 (UTC)`
+`Generated: 2026-09-19 08:12 UTC` ｜ `Window: 2026-09-16 → 2026-09-19 (UTC)`
 
 - `[R]` **[GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies](http://arxiv.org/abs/2609.20776v1)** — Foundation models (VLA / WAM)
   - Changes at the foundation-model layer reset the starting point for every downstream task: how much of your own data you need, and whether it transfers across embodiments.

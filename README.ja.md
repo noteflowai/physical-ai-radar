@@ -20,7 +20,7 @@
 <!-- RADAR:START -->
 ### 本日のレーダー · 2026-09-19
 
-`生成時刻: 2026-09-19 08:09 UTC` ｜ `対象期間: 2026-09-16 → 2026-09-19 (UTC)`
+`生成時刻: 2026-09-19 08:12 UTC` ｜ `対象期間: 2026-09-16 → 2026-09-19 (UTC)`
 
 - `[R]` **[GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies](http://arxiv.org/abs/2609.20776v1)** — 基盤モデル（VLA / WAM）
   - 基盤モデル層の変化は下流タスクの出発点を変える：自社データの必要量と、機体間で転移できるかを左右する。

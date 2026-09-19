@@ -20,7 +20,7 @@
 <!-- RADAR:START -->
 ### 今日雷达 · 2026-09-19
 
-`生成时间: 2026-09-19 08:09 UTC` ｜ `统计窗口: 2026-09-16 → 2026-09-19 (UTC)`
+`生成时间: 2026-09-19 08:12 UTC` ｜ `统计窗口: 2026-09-16 → 2026-09-19 (UTC)`
 
 - `[R]` **[GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies](http://arxiv.org/abs/2609.20776v1)** — 基座模型（VLA / WAM）
   - 基座模型层的变化会直接决定下游所有任务的起点：它影响你需要多少自有数据、能不能跨本体迁移。
