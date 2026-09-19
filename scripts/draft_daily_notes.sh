@@ -17,6 +17,7 @@ set -euo pipefail
 # happen inside somebody's working checkout.
 REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
+BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-analyst}"
 EFFORT="${RADAR_EFFORT:-medium}"
 DAY=""
@@ -55,8 +56,8 @@ fi
 # Work from published main, never from a dirty tree.
 git diff --quiet && git diff --cached --quiet || { log "working tree is dirty; refusing to run"; exit 1; }
 git fetch --quiet origin
-git checkout --quiet main
-git reset --hard --quiet origin/main
+git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
+git reset --hard --quiet "origin/${BRANCH_BASE}"
 
 if [ -f "$NOTES" ]; then
   log "$NOTES already exists; nothing to draft"
@@ -67,6 +68,11 @@ if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
   exit 0
 fi
 
+kiro-cli agent list 2>/dev/null | grep -q "$AGENT" || {
+  log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"
+  exit 1
+}
+
 log "drafting notes for ${DAY}"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
 kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
@@ -74,7 +80,7 @@ kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
   "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly." \
   2>&1 | tee "/tmp/radar-notes-${DAY}.log" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
 
-CHANGED=$(git status --porcelain | awk '{print $2}' | tr '\n' ' ' | sed 's/ *$//')
+CHANGED=$(git status --porcelain --untracked-files=all | awk '{print $2}' | tr '\n' ' ' | sed 's/ *$//')
 if [ -z "$CHANGED" ]; then
   log "the agent wrote nothing; stopping without a pull request"
   exit 0
