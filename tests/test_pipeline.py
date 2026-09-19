@@ -559,6 +559,75 @@ class DraftedNotesTest(unittest.TestCase):
             self.assertEqual(load_notes("2026-09-22", directory), {}, "a missing day is not an error")
 
 
+class RerenderTest(unittest.TestCase):
+    """A published day must be re-renderable from its own snapshot."""
+
+    def setUp(self) -> None:
+        self.config = load_config()
+        self.item = make_item(id="arxiv:1", url="https://example.org/paper",
+                              title="A closed-loop VLA result", source_id="arxiv",
+                              summary="We report 87.5% success at 23 Hz on real hardware. A second sentence.")
+        enrich([self.item], self.config, date(2026, 9, 19))
+
+    def test_a_round_tripped_item_renders_identically(self) -> None:
+        # The property that makes re-rendering safe: the snapshot keeps everything the
+        # page shows, the source excerpt included.
+        rebuilt = Item.from_dict(self.item.to_dict())
+        for field in ("id", "title", "url", "publisher", "evidence", "published", "lane",
+                      "numbers", "signals", "summary"):
+            self.assertEqual(getattr(rebuilt, field), getattr(self.item, field), field)
+
+    def write_snapshot(self, root: Path, notes: dict | None = None) -> None:
+        (root/"radar").mkdir(parents=True, exist_ok=True)
+        (root/"radar"/"latest.json").write_text(json.dumps({
+            "date": "2026-09-19", "generated": "2026-09-19 01:30 UTC",
+            "window": "2026-09-16 → 2026-09-19 (UTC)",
+            "picked": [self.item.to_dict()],
+            "lane_counts": {lane["id"]: 0 for lane in self.config.lanes},
+            "evidence_mix": {"O": 0, "R": 1, "M": 0}, "baseline_count": 29,
+        }, ensure_ascii=False), encoding="utf-8")
+        (root/"radar"/"history.json").write_text(
+            json.dumps({"runs": [{"date": "2026-09-19", "count": 1, "lanes": 1}]}), encoding="utf-8")
+
+    def test_rerender_rebuilds_the_day_without_fetching(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.write_snapshot(root)
+            with patch.object(cli, "fetch_all", side_effect=AssertionError("must not fetch")):
+                ctx = cli.rerender(source=root)
+            pages = {lang: (root/"radar"/"daily"/f"2026-09-19.{lang}.md").read_text(encoding="utf-8")
+                     for lang in LANGS}
+        self.assertEqual([item.id for item in ctx["picked"]], ["arxiv:1"])
+        for lang, page in pages.items():
+            self.assertIn("A closed-loop VLA result", page)
+            self.assertIn("87.5% success at 23 Hz", page, f"{lang}: the source excerpt must survive")
+
+    def test_rerender_picks_up_drafted_notes(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.write_snapshot(root)
+            notes_dir = root/"notes"
+            notes_dir.mkdir()
+            (notes_dir/"2026-09-19.json").write_text(json.dumps({
+                "schema": "pairadar-notes-1", "date": "2026-09-19",
+                "author": {"agent": "radar-analyst", "model": "test-model"},
+                "notes": {url_key(self.item.url): {"zh": "草稿中文", "en": "Draft EN", "ja": "下書き"}},
+            }, ensure_ascii=False), encoding="utf-8")
+            with patch.object(cli, "load_notes", lambda day: load_notes(day, notes_dir)):
+                cli.rerender(source=root)
+            page = (root/"radar"/"daily"/"2026-09-19.zh.md").read_text(encoding="utf-8")
+        self.assertIn("草稿中文", page)
+        self.assertIn(f"`{self.config.ui('zh')['llm_draft']}`", page)
+        self.assertIn("radar-analyst", page)
+
+    def test_rerender_refuses_a_day_the_snapshot_does_not_hold(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.write_snapshot(root)
+            with self.assertRaises(SystemExit):
+                cli.rerender(day="2026-09-18", source=root)
+
+
 class RenderTest(unittest.TestCase):
     def setUp(self) -> None:
         self.config = load_config()

@@ -110,6 +110,27 @@ for key, note in document["notes"].items():
 print(f"validated {len(document['notes'])} notes for {day}")
 PY
 
+# The day's pages were rendered before these notes existed. Rebuild them from the
+# published snapshot -- no fetch, same picks -- so the pull request carries the reader
+# facing result. Skipped when the snapshot predates stored excerpts, because the
+# rebuilt pages would silently lose their source quotes.
+if python3 -c "import json,sys; picks=json.load(open('radar/latest.json'))['picked']; sys.exit(0 if picks and any(p.get('summary') for p in picks) else 1)"; then
+  log "re-rendering ${DAY} from the published snapshot"
+  python3 -m pairadar --rerender --date "$DAY"
+  RENDERED=$(git status --porcelain --untracked-files=all | awk '{print $2}' | tr '\n' ' ' | sed 's/ *$//')
+  EXPECTED="${NOTES} README.en.md README.ja.md README.md radar/daily/${DAY}.en.md radar/daily/${DAY}.ja.md radar/daily/${DAY}.zh.md"
+  SORTED=$(printf '%s\n' $RENDERED | sort | tr '\n' ' ' | sed 's/ *$//')
+  EXPECTED_SORTED=$(printf '%s\n' $EXPECTED | sort | tr '\n' ' ' | sed 's/ *$//')
+  if [ "$SORTED" != "$EXPECTED_SORTED" ]; then
+    log "re-render touched unexpected files: ${SORTED}; reverting"
+    git checkout -- . && git clean -fd data/notes
+    exit 1
+  fi
+  python3 -m unittest discover -s tests
+else
+  log "snapshot has no stored excerpts; leaving the published pages untouched"
+fi
+
 if [ "$DRY_RUN" = "1" ]; then
   log "dry run: keeping $NOTES in the working tree, no branch, no pull request"
   exit 0
@@ -117,7 +138,7 @@ fi
 
 BRANCH="notes/${DAY}"
 git checkout -q -b "$BRANCH"
-git add "$NOTES"
+git add -A
 git commit -q -m "notes: drafted per-item analysis for ${DAY}
 
 Drafted on the Tokyo workstation by ${AGENT} via kiro-cli, validated against the

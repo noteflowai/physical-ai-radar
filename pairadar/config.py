@@ -138,7 +138,24 @@ class Item:
             "score": round(self.score, 3),
             "numbers": self.numbers,
             "signals": self.signals,
+            # The rendered page quotes an excerpt of this, so a snapshot without it
+            # cannot reproduce the page it describes.
+            "summary": self.summary,
         }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "Item":
+        """Rebuild an item from a published snapshot, for re-rendering without a fetch."""
+        return cls(
+            id=payload["id"], title=payload["title"], url=payload["url"],
+            publisher=payload.get("publisher", ""), source_id=payload.get("source_id", ""),
+            evidence=payload.get("evidence", "M"), published=payload.get("published", ""),
+            summary=payload.get("summary", ""), lane=payload.get("lane", "foundation"),
+            lane_locked=True,  # the lane was decided when the snapshot was published
+            score=float(payload.get("score", 0.0)),
+            numbers=list(payload.get("numbers", [])),
+            signals=list(payload.get("signals", [])),
+        )
 
 
 def today_utc() -> date:
