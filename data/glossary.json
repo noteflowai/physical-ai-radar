@@ -30,7 +30,9 @@
         "open_release": "有开放代码或权重",
         "latency": "含延迟或控制频率",
         "numbers": "含量化指标"
-      }
+      },
+      "llm_draft": "AI 起草",
+      "llm_notice": "本页逐条分析由 {agent} 起草（{model}），经人工合并；标题与数字未经改写。"
     },
     "en": {
       "title": "Physical AI Radar",
@@ -61,7 +63,9 @@
         "open_release": "open code or weights",
         "latency": "latency or control-rate numbers",
         "numbers": "quantitative results"
-      }
+      },
+      "llm_draft": "AI draft",
+      "llm_notice": "Per-item analysis on this page was drafted by {agent} ({model}) and merged by a human; titles and numbers are untouched."
     },
     "ja": {
       "title": "Physical AI フロンティア・レーダー",
@@ -92,7 +96,9 @@
         "open_release": "コードまたは重み公開",
         "latency": "遅延・制御周期の数値あり",
         "numbers": "定量結果あり"
-      }
+      },
+      "llm_draft": "AI 下書き",
+      "llm_notice": "本ページの項目別分析は {agent}（{model}）が下書きし、人間が確認して取り込んだものです。タイトルと数値は改変していません。"
     }
   },
   "why_templates": {

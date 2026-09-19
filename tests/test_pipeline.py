@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from pairadar import charts, cli, health  # noqa: E402
-from pairadar.config import LANGS, Config, Item, load_config  # noqa: E402
+from pairadar.config import LANGS, Config, Item, load_config, load_notes  # noqa: E402
 from pairadar.distill import (  # noqa: E402
     classify,
     url_key,
@@ -46,7 +46,7 @@ from pairadar.fetch import (  # noqa: E402
     parse_date,
 )
 from pairadar import render  # noqa: E402
-from pairadar.render import render_daily  # noqa: E402
+from pairadar.render import readme_block, render_daily  # noqa: E402
 
 
 def make_item(**kwargs) -> Item:
@@ -486,6 +486,77 @@ class SourceHealthTest(unittest.TestCase):
         entry = next(run for run in runs if run["date"] == "2026-03-05")
         self.assertIn("failed", entry, "health has to be recorded to be readable later")
         self.assertEqual(entry["failed"], [], "an offline run attempts no source")
+
+
+class DraftedNotesTest(unittest.TestCase):
+    """Drafted analysis is optional, ranked below human curation, and always labelled."""
+
+    def setUp(self) -> None:
+        self.config = load_config()
+        self.item = make_item(id="live", url="https://example.org/paper", source_id="arxiv")
+        enrich([self.item], self.config, date(2026, 9, 19))
+        self.notes = {
+            "schema": "pairadar-notes-1",
+            "date": "2026-09-19",
+            "author": {"kind": "llm-draft", "agent": "radar-analyst", "model": "test-model"},
+            "notes": {url_key(self.item.url): {"zh": "中文草稿", "en": "English draft", "ja": "日本語の下書き"}},
+        }
+
+    def context(self, notes=None, curated=None):
+        return {
+            "date": "2026-09-19", "generated": "g", "window": "w",
+            "picked": [self.item], "baseline": [], "baseline_all": [],
+            "curated": curated or {},
+            "lane_rows": lane_distribution([self.item], self.config),
+            "mix": evidence_mix([self.item]), "cadence": [("2026-09-19", 1)],
+            "notes": notes or {},
+        }
+
+    def test_drafted_note_is_used_and_labelled(self) -> None:
+        for lang, expected in (("zh", "中文草稿"), ("en", "English draft"), ("ja", "日本語の下書き")):
+            page = render_daily(self.config, lang, self.context(self.notes))
+            label = self.config.ui(lang)["llm_draft"]
+            self.assertIn(expected, page)
+            self.assertIn(f"`{label}`", page, f"{lang}: drafted line must be labelled")
+
+    def test_without_notes_nothing_is_labelled(self) -> None:
+        page = render_daily(self.config, "zh", self.context())
+        self.assertNotIn(self.config.ui("zh")["llm_draft"], page)
+        self.assertNotIn("radar-analyst", page)
+
+    def test_human_curation_outranks_a_draft(self) -> None:
+        curated = {"live": {"zh": "人工撰写", "en": "Human written", "ja": "人間が執筆"}}
+        page = render_daily(self.config, "zh", self.context(self.notes, curated))
+        self.assertIn("人工撰写", page)
+        self.assertNotIn("中文草稿", page)
+        self.assertNotIn(f"`{self.config.ui('zh')['llm_draft']}`", page)
+
+    def test_a_missing_language_falls_back_to_the_template(self) -> None:
+        partial = {**self.notes, "notes": {url_key(self.item.url): {"en": "English only"}}}
+        page = render_daily(self.config, "zh", self.context(partial))
+        self.assertIn(self.config.glossary["why_templates"][self.item.lane]["zh"], page)
+        self.assertNotIn(f"`{self.config.ui('zh')['llm_draft']}`", page)
+
+    def test_the_page_names_who_drafted_it(self) -> None:
+        page = render_daily(self.config, "en", self.context(self.notes))
+        self.assertIn("radar-analyst", page)
+        self.assertIn("test-model", page)
+
+    def test_the_readme_block_labels_drafts_too(self) -> None:
+        block = readme_block(self.config, "zh", self.context(self.notes))
+        self.assertIn("中文草稿", block)
+        self.assertIn(self.config.ui("zh")["llm_draft"], block)
+
+    def test_a_malformed_or_foreign_notes_file_is_ignored(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            (directory/"2026-09-19.json").write_text("{ not json", encoding="utf-8")
+            self.assertEqual(load_notes("2026-09-19", directory), {})
+            (directory/"2026-09-20.json").write_text(json.dumps({"schema": "other", "notes": {}}), encoding="utf-8")
+            self.assertEqual(load_notes("2026-09-20", directory), {})
+            (directory/"2026-09-21.json").write_text(json.dumps({"schema": "pairadar-notes-1"}), encoding="utf-8")
+            self.assertEqual(load_notes("2026-09-21", directory), {}, "notes must be a mapping")
+            self.assertEqual(load_notes("2026-09-22", directory), {}, "a missing day is not an error")
 
 
 class RenderTest(unittest.TestCase):

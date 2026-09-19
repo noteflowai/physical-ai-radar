@@ -72,6 +72,31 @@ class Config:
         return self.glossary["ui"][lang]
 
 
+NOTES_DIR = DATA_DIR / "notes"
+NOTES_SCHEMA = "pairadar-notes-1"
+
+
+def load_notes(day: str, directory: Path = NOTES_DIR) -> dict[str, Any]:
+    """Load one day of drafted per-item analysis, or nothing.
+
+    The file is optional and authored outside the deterministic pipeline (see
+    docs/METHODOLOGY.md section 5), so a missing or malformed file must never stop
+    a run -- the radar falls back to its per-lane templates.
+    """
+    path = directory / f"{day}.json"
+    if not path.exists():
+        return {}
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"[notes] ignoring {path}: {exc}")
+        return {}
+    if document.get("schema") != NOTES_SCHEMA or not isinstance(document.get("notes"), dict):
+        print(f"[notes] ignoring {path}: not a {NOTES_SCHEMA} document")
+        return {}
+    return document
+
+
 def load_config() -> Config:
     return Config(
         sources=load_json(DATA_DIR / "sources.json"),
