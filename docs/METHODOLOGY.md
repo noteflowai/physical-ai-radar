@@ -7,7 +7,7 @@ changes, this file changes in the same pull request.
 
 | Kind | Endpoint | Evidence tag | Why it is trusted at this level |
 | --- | --- | --- | --- |
-| arXiv API | `export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
+| arXiv API | `https://export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
 | Official vendor blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face | `O` | first-party statements about their own products |
 | Trade press | IEEE Spectrum Robotics | `M` | professional reporting, still secondary |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
@@ -16,7 +16,14 @@ Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
-- a failing source is skipped with a log line and never fails the run;
+- every request is timeout-bounded and retried once before the source is given up on;
+- arXiv calls are spaced about three seconds apart, as its API guidance asks;
+- a failing source is skipped with a log line and never fails the run — but if **no**
+  source answers, the run exits non-zero and nothing is committed, because a radar
+  rebuilt from the curated baseline alone must not look like a quiet news day;
+- `radar/latest.json` carries a `fetch` block (items, sources attempted / answered,
+  per-source counts, names of sources that did not answer) so partial degradation is
+  visible without reading the workflow log;
 - adding a source requires a weight and an evidence tag in `data/sources.json`.
 
 ## 2. Classification
@@ -25,6 +32,10 @@ Rules:
 An item is matched case-insensitively against `title + summary`; the lane with the
 highest `hits × lane_weight` wins. Ties resolve to the first lane in file order, which
 makes classification deterministic.
+
+A curated entry in `data/baseline.json` that declares a `lane` keeps it: the lane is an
+editorial decision, and the classifier is not allowed to overrule it. Such an entry is
+scored on its own lane's keywords rather than the best-matching lane's.
 
 Signals are orthogonal flags: `closed_loop`, `real_robot`, `open_release`, `latency`,
 `numbers`. They are shown as badges and feed the score.
@@ -41,7 +52,16 @@ score = min(lane_hits, 6) × 0.35 × lane_weight
 ```
 
 Selection then applies `min_score = 0.9`, a per-lane cap of 2 and a global limit of 8,
-so a single hot topic cannot take over the page. Every term is visible and tunable; no
+so a single hot topic cannot take over the page. Two further gates apply:
+
+- **at least one lane keyword.** Evidence and same-day recency alone clear `min_score`, so
+  without this an off-topic hit from the broad arXiv queries would be published under the
+  fallback lane, labelled as if it belonged there. Curated entries are exempt, since a
+  person chose their lane.
+- **not published in the last `filters.repeat_days` days** (default 7). Each run records the
+  normalised URLs it published in `radar/history.json`; the arXiv window looks back three
+  days and feeds keep entries for thirty, so without this a strong item would headline
+  again the next day. Matching is on URL, not id, so it survives a feed reassigning ids. Every term is visible and tunable; no
 learned model sits in this path. This is a bias-by-design choice: the radar prefers
 items with real-robot or closed-loop evidence over pure benchmark deltas.
 
@@ -80,8 +100,12 @@ require bundling a font.
 - Python 3.10+, standard library only.
 - `python3 -m pairadar --offline` reproduces a full render from repository data alone.
 - `python3 -m pairadar --date 2026-09-19` pins the run date.
-- `radar/history.json` keeps the cadence series; `radar/latest.json` is the machine-readable
-  snapshot for downstream consumers.
+- `radar/history.json` keeps the cadence series plus the URLs published inside the repeat
+  window; older entries keep their counts and drop their URL list, so the log does not grow
+  without bound. `radar/latest.json` is the machine-readable snapshot for downstream
+  consumers.
+- Item ids are content-derived (`arxiv:<id>`, `<feed>:<sha1(link)[:12]>`) and therefore stable
+  across processes and days.
 - The daily workflow commits only when the working tree actually changed.
 
 ## 8. Known limits

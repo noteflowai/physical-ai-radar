@@ -71,8 +71,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     lookback = int(config.sources.get("arxiv", {}).get("lookback_days", 3))
     repeat_days = int(config.sources.get("filters", {}).get("repeat_days", 7))
     history = [entry for entry in load_history() if entry["date"] != day]
-    live = fetch_all(config, offline=offline)
-    live = deduplicate(enrich(prefilter(live, config, reference), config, reference))
+    report = fetch_all(config, offline=offline)
+    live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days))
 
     baseline_all = enrich(baseline_items(config), config, reference)
@@ -107,6 +107,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "history": history,
         "live_count": len(live),
         "repeat_days": repeat_days,
+        "fetch": report.to_dict(),
     }
 
 
@@ -137,6 +138,16 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     return ctx
 
 
+def degraded(fetch: dict[str, Any], offline: bool) -> bool:
+    """True when a network round was attempted and no source answered.
+
+    Without this a total outage still writes a complete-looking radar from the
+    curated baseline, commits it and reports success -- indistinguishable from a
+    day with no news.
+    """
+    return not offline and bool(fetch.get("attempted")) and not fetch.get("answered")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Generate the Physical AI Radar daily update.")
     parser.add_argument("--offline", action="store_true", help="skip all network sources")
@@ -144,7 +155,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--date", dest="day", default=None, help="override the run date (YYYY-MM-DD)")
     parser.add_argument("--no-readme", action="store_true", help="do not touch the README files")
     args = parser.parse_args(argv)
-    run(offline=args.offline, limit=args.limit, day=args.day, write_readme=not args.no_readme)
+    ctx = run(offline=args.offline, limit=args.limit, day=args.day, write_readme=not args.no_readme)
+    if degraded(ctx["fetch"], args.offline):
+        print("[radar] every source failed: refusing to publish this as a quiet day")
+        return 2
     return 0
 
 
