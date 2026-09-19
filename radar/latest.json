@@ -1,0 +1,176 @@
+{
+  "date": "2026-09-19",
+  "generated": "2026-09-19 08:09 UTC",
+  "window": "2026-09-16 → 2026-09-19 (UTC)",
+  "picked": [
+    {
+      "id": "arxiv:2609.20776v1",
+      "title": "GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies",
+      "url": "http://arxiv.org/abs/2609.20776v1",
+      "publisher": "arXiv 2609.20776v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-17",
+      "lane": "foundation",
+      "score": 3.85,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ]
+    },
+    {
+      "id": "arxiv:2609.19104v1",
+      "title": "rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference",
+      "url": "http://arxiv.org/abs/2609.19104v1",
+      "publisher": "arXiv 2609.19104v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-16",
+      "lane": "edge",
+      "score": 3.56,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ]
+    },
+    {
+      "id": "arxiv:2609.18732v1",
+      "title": "PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments",
+      "url": "http://arxiv.org/abs/2609.18732v1",
+      "publisher": "arXiv 2609.18732v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-16",
+      "lane": "edge",
+      "score": 3.46,
+      "numbers": [
+        "50 Hz",
+        "48.1%",
+        "68.9%",
+        "70.3%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ]
+    },
+    {
+      "id": "arxiv:2609.20791v1",
+      "title": "StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation",
+      "url": "http://arxiv.org/abs/2609.20791v1",
+      "publisher": "arXiv 2609.20791v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-17",
+      "lane": "systems",
+      "score": 3.35,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ]
+    },
+    {
+      "id": "arxiv:2609.20761v1",
+      "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
+      "url": "http://arxiv.org/abs/2609.20761v1",
+      "publisher": "arXiv 2609.20761v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-17",
+      "lane": "foundation",
+      "score": 3.3,
+      "numbers": [
+        "11.9 ms"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ]
+    },
+    {
+      "id": "ieee-spectrum-robotics:3959108517",
+      "title": "Robots Are Learning to Feel",
+      "url": "https://spectrum.ieee.org/tactile-data-robots",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-09-10",
+      "lane": "data",
+      "score": 3.238,
+      "numbers": [
+        "100 hours",
+        "12 tasks",
+        "3,000 hours",
+        "30,000 hours"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ]
+    },
+    {
+      "id": "arxiv:2609.18623v1",
+      "title": "FIVE-VLA: Fast and EffectIVE Autonomous Driving with Recurrent Action Memory",
+      "url": "http://arxiv.org/abs/2609.18623v1",
+      "publisher": "arXiv 2609.18623v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-16",
+      "lane": "simeval",
+      "score": 3.205,
+      "numbers": [
+        "641M parameters",
+        "10%",
+        "10.2%",
+        "7.7%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ]
+    },
+    {
+      "id": "arxiv:2609.19666v1",
+      "title": "Towards High-DoF Dexterous Manipulation through VLA Post-Training",
+      "url": "http://arxiv.org/abs/2609.19666v1",
+      "publisher": "arXiv 2609.19666v1",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-17",
+      "lane": "training",
+      "score": 2.9,
+      "numbers": [],
+      "signals": [
+        "real_robot",
+        "open_release"
+      ]
+    }
+  ],
+  "lane_counts": {
+    "foundation": 8,
+    "data": 6,
+    "training": 3,
+    "simeval": 5,
+    "edge": 7,
+    "safety": 5,
+    "systems": 2,
+    "hardware": 1
+  },
+  "evidence_mix": {
+    "O": 14,
+    "R": 20,
+    "M": 3
+  },
+  "baseline_count": 29
+}

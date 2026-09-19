@@ -1,0 +1,251 @@
+"""Tests for the Physical AI Radar pipeline (standard library unittest only)."""
+from __future__ import annotations
+
+import json
+import sys
+import unittest
+from datetime import date
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+from pairadar import charts  # noqa: E402
+from pairadar.config import LANGS, Config, Item, load_config  # noqa: E402
+from pairadar.distill import (  # noqa: E402
+    classify,
+    deduplicate,
+    detect_signals,
+    enrich,
+    evidence_mix,
+    extract_numbers,
+    lane_distribution,
+    one_liner,
+    prefilter,
+    recency_bonus,
+    select,
+)
+from pairadar.fetch import baseline_items, clean_text, parse_date  # noqa: E402
+from pairadar.render import render_daily  # noqa: E402
+
+
+def make_item(**kwargs) -> Item:
+    defaults = dict(
+        id="t1",
+        title="A VLA policy with closed-loop success on a real robot",
+        url="https://example.org/a",
+        publisher="Example",
+        source_id="arxiv",
+        evidence="R",
+        published=date.today().isoformat(),
+        summary="We report 87.5% success rate at 23 Hz on real robot hardware.",
+    )
+    defaults.update(kwargs)
+    return Item(**defaults)
+
+
+class DataFilesTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.config = load_config()
+
+    def test_config_loads(self) -> None:
+        self.assertIsInstance(self.config, Config)
+        self.assertGreaterEqual(len(self.config.lanes), 6)
+
+    def test_every_lane_has_three_languages(self) -> None:
+        for lane in self.config.lanes:
+            for lang in LANGS:
+                self.assertTrue(lane["name"].get(lang), f"{lane['id']} missing {lang}")
+                self.assertTrue(
+                    self.config.glossary["why_templates"][lane["id"]].get(lang),
+                    f"why_template {lane['id']} missing {lang}",
+                )
+
+    def test_ui_strings_cover_all_languages(self) -> None:
+        keys = set(self.config.ui("en"))
+        for lang in LANGS:
+            self.assertEqual(set(self.config.ui(lang)), keys, f"UI key drift in {lang}")
+
+    def test_baseline_entries_are_well_formed(self) -> None:
+        lane_ids = {lane["id"] for lane in self.config.lanes}
+        seen: set[str] = set()
+        for raw in self.config.baseline["items"]:
+            self.assertNotIn(raw["id"], seen, "duplicate baseline id")
+            seen.add(raw["id"])
+            self.assertIn(raw["lane"], lane_ids)
+            self.assertIn(raw["evidence"], {"O", "R", "M"})
+            self.assertTrue(raw["url"].startswith("http"))
+            for lang in LANGS:
+                self.assertTrue(raw["why"].get(lang), f"{raw['id']} missing why.{lang}")
+
+    def test_sources_declare_weight_and_evidence(self) -> None:
+        for feed in self.config.sources["feeds"]:
+            self.assertIn(feed["evidence"], {"O", "R", "M"})
+            self.assertGreater(float(feed["weight"]), 0)
+
+
+class DistillTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.config = load_config()
+
+    def test_extract_numbers(self) -> None:
+        text = "We reach 89.7% MSE reduction, 197 ms per chunk, 23 Hz, 3B parameters, 44,000 hours."
+        found = extract_numbers(text, limit=6)
+        self.assertIn("89.7%", found)
+        self.assertTrue(any("ms" in value for value in found))
+        self.assertTrue(any("Hz" in value for value in found))
+
+    def test_classification_routes_to_expected_lane(self) -> None:
+        lane, hits = classify("on-device inference latency on Jetson Thor at 23 Hz", self.config)
+        self.assertEqual(lane, "edge")
+        self.assertGreater(hits, 0)
+        lane, _ = classify("control barrier function safety filter with runtime monitor", self.config)
+        self.assertEqual(lane, "safety")
+        lane, _ = classify("egocentric human video data scaling for pretraining", self.config)
+        self.assertEqual(lane, "data")
+
+    def test_signals_detected(self) -> None:
+        signals = detect_signals(
+            "Closed-loop success rate on a real robot, code open-source on github.com, 40 ms latency",
+            self.config.taxonomy,
+        )
+        for expected in ("closed_loop", "real_robot", "open_release", "latency"):
+            self.assertIn(expected, signals)
+
+    def test_recency_bonus_monotonic(self) -> None:
+        today = date(2026, 9, 19)
+        self.assertGreater(recency_bonus("2026-09-19", today), recency_bonus("2026-09-18", today))
+        self.assertGreater(recency_bonus("2026-09-18", today), recency_bonus("2026-09-10", today))
+        self.assertEqual(recency_bonus("2026-01-01", today), 0.0)
+
+    def test_enrich_sorts_by_score_desc(self) -> None:
+        strong = make_item(id="s", evidence="O", source_id="aws-physical-ai")
+        weak = make_item(
+            id="w",
+            evidence="M",
+            title="A blog post about robots",
+            summary="No numbers here.",
+            published="2026-01-01",
+        )
+        ranked = enrich([weak, strong], self.config, date(2026, 9, 19))
+        self.assertEqual(ranked[0].id, "s")
+        self.assertGreater(ranked[0].score, ranked[1].score)
+
+    def test_deduplicate_by_url_and_title(self) -> None:
+        a = make_item(id="a", url="https://example.org/x?utm=1")
+        b = make_item(id="b", url="https://example.org/x/")
+        self.assertEqual(len(deduplicate([a, b])), 1)
+
+    def test_select_respects_per_lane_cap(self) -> None:
+        items = enrich([make_item(id=f"i{n}", url=f"https://example.org/{n}") for n in range(6)], self.config, date.today())
+        picked = select(items, limit=10, per_lane=2, min_score=0.0)
+        self.assertLessEqual(len(picked), 2)
+
+    def test_one_liner_truncates(self) -> None:
+        long_text = "First sentence. " + ("padding words " * 60)
+        self.assertLessEqual(len(one_liner(long_text)), 241)
+
+    def test_prefilter_drops_sponsored_and_stale(self) -> None:
+        today = date(2026, 9, 19)
+        sponsored = make_item(id="ad", summary="This article is brought to you by SomeVendor.")
+        stale = make_item(id="old", published="2026-01-01")
+        fresh = make_item(id="fresh", published="2026-09-18")
+        kept = {item.id for item in prefilter([sponsored, stale, fresh], self.config, today)}
+        self.assertEqual(kept, {"fresh"})
+
+    def test_lane_distribution_and_mix(self) -> None:
+        items = enrich(baseline_items(self.config), self.config, date.today())
+        rows = dict(lane_distribution(items, self.config))
+        self.assertEqual(sum(rows.values()), len(items))
+        mix = evidence_mix(items)
+        self.assertEqual(sum(mix.values()), len(items))
+
+
+class FetchHelpersTest(unittest.TestCase):
+    def test_clean_text_strips_markup(self) -> None:
+        self.assertEqual(clean_text("<p>Hello &amp;  world</p>"), "Hello & world")
+
+    def test_parse_date_formats(self) -> None:
+        self.assertEqual(parse_date("2026-09-19T04:00:00Z"), "2026-09-19")
+        self.assertEqual(parse_date("Fri, 19 Sep 2026 04:00:00 +0000"), "2026-09-19")
+        self.assertEqual(parse_date("2026-09-19"), "2026-09-19")
+
+    def test_baseline_items_carry_numbers(self) -> None:
+        items = baseline_items(load_config())
+        self.assertGreaterEqual(len(items), 20)
+        self.assertTrue(any(item.numbers for item in items))
+
+
+class RenderTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.config = load_config()
+        items = enrich(baseline_items(self.config), self.config, date(2026, 9, 19))
+        self.ctx = {
+            "date": "2026-09-19",
+            "generated": "2026-09-19 01:30 UTC",
+            "window": "2026-09-16 → 2026-09-19 (UTC)",
+            "picked": items[:3],
+            "baseline": items[:4],
+            "baseline_all": items,
+            "curated": {
+                f"baseline:{raw['id']}": raw["why"] for raw in self.config.baseline["items"]
+            },
+            "lane_rows": lane_distribution(items, self.config),
+            "mix": evidence_mix(items),
+            "cadence": [("2026-09-18", 4), ("2026-09-19", 6)],
+        }
+
+    def test_daily_page_renders_in_three_languages(self) -> None:
+        for lang in LANGS:
+            page = render_daily(self.config, lang, self.ctx)
+            self.assertIn(self.config.ui(lang)["title"], page)
+            self.assertIn("assets/lane-distribution.svg", page)
+            self.assertIn("http", page)
+            self.assertGreater(len(page), 1200)
+
+    def test_evidence_tags_present(self) -> None:
+        page = render_daily(self.config, "zh", self.ctx)
+        self.assertTrue(any(tag in page for tag in ("`[O]`", "`[R]`", "`[M]`")))
+
+
+class ChartsTest(unittest.TestCase):
+    def test_svg_outputs_are_valid_xml(self) -> None:
+        import xml.etree.ElementTree as ET
+
+        svgs = [
+            charts.horizontal_bars("Lane distribution", [("Edge & real-time", 3), ("Data", 5)]),
+            charts.cadence_bars("Cadence", [("2026-09-18", 3), ("2026-09-19", 7)]),
+            charts.evidence_strip("Evidence mix", {"O": 4, "R": 9, "M": 2}),
+        ]
+        for svg in svgs:
+            root = ET.fromstring(svg)
+            self.assertTrue(root.tag.endswith("svg"))
+
+    def test_charts_handle_empty_input(self) -> None:
+        self.assertIn("<svg", charts.horizontal_bars("Empty", []))
+        self.assertIn("<svg", charts.cadence_bars("Empty", []))
+        self.assertIn("<svg", charts.evidence_strip("Empty", {}))
+
+    def test_labels_are_escaped(self) -> None:
+        svg = charts.horizontal_bars("T", [("A & B <x>", 1)])
+        self.assertIn("A &amp; B &lt;x&gt;", svg)
+
+
+class OutputArtefactsTest(unittest.TestCase):
+    def test_latest_json_is_valid_when_present(self) -> None:
+        path = ROOT / "radar" / "latest.json"
+        if not path.exists():
+            self.skipTest("latest.json not generated yet")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for key in ("date", "generated", "picked", "lane_counts", "evidence_mix"):
+            self.assertIn(key, payload)
+
+    def test_readmes_contain_markers(self) -> None:
+        for name in ("README.md", "README.en.md", "README.ja.md"):
+            text = (ROOT / name).read_text(encoding="utf-8")
+            self.assertIn("<!-- RADAR:START -->", text)
+            self.assertIn("<!-- RADAR:END -->", text)
+
+
+if __name__ == "__main__":
+    unittest.main()

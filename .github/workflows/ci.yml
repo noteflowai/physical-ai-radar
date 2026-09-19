@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "pairadar/**"
+      - "data/**"
+      - "tests/**"
+      - ".github/workflows/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Offline render smoke test
+        run: |
+          python -m pairadar --offline --no-readme --date 2026-01-01
+          test -s radar/daily/2026-01-01.zh.md
+          test -s radar/daily/2026-01-01.en.md
+          test -s radar/daily/2026-01-01.ja.md
+          python - <<'PY'
+          from pathlib import Path
+          for lang, needle in (("zh", "前沿雷达"), ("en", "Physical AI Radar"), ("ja", "レーダー")):
+              text = Path(f"radar/daily/2026-01-01.{lang}.md").read_text(encoding="utf-8")
+              assert needle in text, f"{lang} page missing localized heading"
+              assert "http" in text, f"{lang} page missing source links"
+          print("offline render ok")
+          PY
+
+      - name: Validate JSON data files
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          for path in sorted(pathlib.Path("data").glob("*.json")):
+              json.loads(path.read_text(encoding="utf-8"))
+              print("ok", path)
+          PY

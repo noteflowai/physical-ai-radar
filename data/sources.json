@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "note": "evidence: O = first-party official, R = research paper/preprint, M = media/secondary. weight biases ranking.",
+  "filters": {
+    "max_age_days": 30,
+    "exclude_phrases": [
+      "brought to you by",
+      "sponsored by",
+      "this post is sponsored",
+      "advertisement",
+      "paid content",
+      "webinar registration"
+    ]
+  },
+  "arxiv": {
+    "enabled": true,
+    "evidence": "R",
+    "weight": 1.0,
+    "max_results": 120,
+    "lookback_days": 3,
+    "queries": [
+      "cat:cs.RO AND (abs:\"vision-language-action\" OR abs:\"world model\" OR abs:\"foundation model\")",
+      "cat:cs.RO AND (abs:\"sim-to-real\" OR abs:\"real-to-sim\" OR abs:\"policy evaluation\")",
+      "cat:cs.RO AND (abs:\"on-device\" OR abs:\"latency\" OR abs:\"real-time control\")",
+      "cat:cs.RO AND (abs:\"safety filter\" OR abs:\"control barrier\" OR abs:\"runtime monitor\")",
+      "cat:cs.RO AND (abs:\"egocentric\" OR abs:\"human video\" OR abs:\"data scaling\")",
+      "cat:cs.RO AND (abs:\"long-horizon\" OR abs:\"orchestration\" OR abs:\"reinforcement learning\")"
+    ]
+  },
+  "feeds": [
+    {
+      "id": "aws-physical-ai",
+      "url": "https://aws.amazon.com/blogs/physical-ai/feed/",
+      "evidence": "O",
+      "weight": 1.25,
+      "publisher": "AWS Physical AI Blog"
+    },
+    {
+      "id": "nvidia-developer-robotics",
+      "url": "https://developer.nvidia.com/blog/category/robotics/feed/",
+      "evidence": "O",
+      "weight": 1.2,
+      "publisher": "NVIDIA Technical Blog (Robotics)"
+    },
+    {
+      "id": "nvidia-blog",
+      "url": "https://blogs.nvidia.com/feed/",
+      "evidence": "O",
+      "weight": 1.05,
+      "publisher": "NVIDIA Blog"
+    },
+    {
+      "id": "deepmind",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "evidence": "O",
+      "weight": 1.2,
+      "publisher": "Google DeepMind"
+    },
+    {
+      "id": "huggingface-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "Hugging Face Blog"
+    },
+    {
+      "id": "ieee-spectrum-robotics",
+      "url": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
+      "evidence": "M",
+      "weight": 0.9,
+      "publisher": "IEEE Spectrum Robotics"
+    }
+  ],
+  "standards_watch": [
+    {
+      "id": "iso-25785-1",
+      "title": "ISO 25785-1 — Safety requirements for dynamically stable industrial mobile robots",
+      "url": "https://www.iso.org/standard/91469.html",
+      "status_note": "Under development; committee-stage as of 2026-09."
+    },
+    {
+      "id": "eu-machinery-regulation",
+      "title": "Regulation (EU) 2023/1230 (Machinery Regulation)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng",
+      "status_note": "Fully applicable 2027-01-20."
+    },
+    {
+      "id": "eu-ai-act-timeline",
+      "title": "EU AI Act official timeline (Council of the EU)",
+      "url": "https://www.consilium.europa.eu/en/policies/artificial-intelligence-act/timeline-artificial-intelligence/",
+      "status_note": "High-risk deadlines 2027-12-02 / 2028-08-02 per Digital Omnibus."
+    }
+  ]
+}

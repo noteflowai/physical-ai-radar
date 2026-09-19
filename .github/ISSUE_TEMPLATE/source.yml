@@ -1,0 +1,39 @@
+name: Propose a source
+description: Suggest a machine-readable source for the radar to track.
+title: "source: "
+labels: ["source"]
+body:
+  - type: input
+    id: endpoint
+    attributes:
+      label: Machine-readable endpoint
+      description: Atom, RSS or documented API. HTML pages are not accepted.
+      placeholder: https://example.org/feed.xml
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence tag
+      options:
+        - "O — first-party official"
+        - "R — paper / preprint"
+        - "M — media / secondary"
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why this source adds signal
+      description: Which lane does it serve, and what would it have surfaced in the last month?
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Access terms
+      options:
+        - label: The endpoint is public and permits automated access.
+          required: true
+        - label: No paywall bypass or article-body scraping is involved.
+          required: true

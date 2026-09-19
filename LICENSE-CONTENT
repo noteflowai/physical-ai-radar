@@ -1,0 +1,17 @@
+# Content license
+
+The curated text in `data/baseline.json`, the generated pages under `radar/`, the charts in
+`assets/` and the documentation in `docs/` are licensed under
+**Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+- Licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+- Attribution: "Physical AI Radar — https://github.com/noteflowai/physical-ai-radar"
+
+Third-party material keeps its own rights:
+
+- paper titles, abstract excerpts and links belong to their authors and publishers;
+- vendor and press quotations belong to the respective organisations;
+- this repository claims no ownership of the linked sources and redistributes only short
+  excerpts with attribution for the purpose of indexing and commentary.
+
+Code is licensed separately under the MIT license — see `LICENSE`.

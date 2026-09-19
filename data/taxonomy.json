@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "note": "Lane keywords are matched case-insensitively against title + summary. Weights bias the ranking.",
+  "lanes": [
+    {
+      "id": "foundation",
+      "weight": 1.0,
+      "name": {
+        "zh": "基座模型（VLA / WAM）",
+        "en": "Foundation models (VLA / WAM)",
+        "ja": "基盤モデル（VLA / WAM）"
+      },
+      "keywords": [
+        "vision-language-action", "vision language action", "vla", "world action model", "wam",
+        "robot foundation model", "generalist policy", "flow matching", "action chunk",
+        "action expert", "pi0", "\u03c00", "gr00t", "gemini robotics", "cosmos", "diffusion policy"
+      ]
+    },
+    {
+      "id": "data",
+      "weight": 1.05,
+      "name": {
+        "zh": "数据引擎（采集 / 清洗 / scaling）",
+        "en": "Data engine (collection / curation / scaling)",
+        "ja": "データエンジン（収集 / 精査 / スケーリング）"
+      },
+      "keywords": [
+        "egocentric", "human video", "teleoperation", "demonstration", "data scaling",
+        "scaling law", "data curation", "dataset", "cross-embodiment", "open x-embodiment",
+        "lerobot", "droid", "data collection", "retargeting", "data quality"
+      ]
+    },
+    {
+      "id": "training",
+      "weight": 1.0,
+      "name": {
+        "zh": "训练与自我改进（RL / 后训练）",
+        "en": "Training & self-improvement (RL / post-training)",
+        "ja": "学習と自己改善（RL / 事後学習）"
+      },
+      "keywords": [
+        "reinforcement learning", "post-training", "post training", "grpo", "ppo",
+        "advantage", "self-improving", "self improvement", "fine-tuning", "fine tuning",
+        "distillation", "curriculum", "fleet learning", "residual rl", "human correction"
+      ]
+    },
+    {
+      "id": "simeval",
+      "weight": 1.1,
+      "name": {
+        "zh": "仿真与评测（sim2real / 闭环）",
+        "en": "Simulation & evaluation (sim2real / closed-loop)",
+        "ja": "シミュレーションと評価（sim2real / 閉ループ）"
+      },
+      "keywords": [
+        "simulation", "simulator", "sim-to-real", "sim2real", "real-to-sim", "real2sim",
+        "benchmark", "evaluation", "closed-loop", "closed loop", "isaac lab", "mujoco",
+        "newton", "genie sim", "world model evaluation", "policy evaluation", "libero", "robocasa"
+      ]
+    },
+    {
+      "id": "edge",
+      "weight": 1.15,
+      "name": {
+        "zh": "边缘与实时性（端侧推理 / 控制频率）",
+        "en": "Edge & real-time (on-device inference / control rate)",
+        "ja": "エッジとリアルタイム（オンデバイス推論 / 制御周期）"
+      },
+      "keywords": [
+        "on-device", "onboard", "edge deployment", "jetson", "thor", "orin", "latency",
+        "real-time", "quantization", "quantized", "inference speed", "control frequency",
+        "asynchronous inference", "test-time compute", "test time training", "kv cache", "throughput"
+      ]
+    },
+    {
+      "id": "safety",
+      "weight": 1.1,
+      "name": {
+        "zh": "安全、权限与合规",
+        "en": "Safety, authority & compliance",
+        "ja": "安全・権限・コンプライアンス"
+      },
+      "keywords": [
+        "safety", "safe reinforcement", "control barrier function", "cbf", "runtime monitor",
+        "safety filter", "fallback", "certification", "iso 10218", "iso 25785", "machinery regulation",
+        "ai act", "standard", "compliance", "risk assessment", "fail-safe", "assurance"
+      ]
+    },
+    {
+      "id": "systems",
+      "weight": 1.0,
+      "name": {
+        "zh": "系统与编排（长程 / 多策略）",
+        "en": "Systems & orchestration (long-horizon / multi-policy)",
+        "ja": "システムとオーケストレーション（長期タスク / 複数方策）"
+      },
+      "keywords": [
+        "long-horizon", "long horizon", "orchestration", "orchestrator", "hierarchical",
+        "task and motion planning", "tamp", "memory", "agentic", "skill library",
+        "multi-robot", "fleet", "planner", "subtask"
+      ]
+    },
+    {
+      "id": "hardware",
+      "weight": 0.95,
+      "name": {
+        "zh": "本体与供应链（硬件 / 成本）",
+        "en": "Embodiment & supply chain (hardware / cost)",
+        "ja": "ハードウェアとサプライチェーン（機体 / コスト）"
+      },
+      "keywords": [
+        "humanoid", "actuator", "dexterous hand", "tactile", "gripper", "bill of materials",
+        "bom", "supply chain", "production line", "mass production", "battery", "torque",
+        "harmonic", "encoder", "sensor suite"
+      ]
+    }
+  ],
+  "signals": [
+    { "id": "numbers", "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:%|percent|Hz|ms|fps|GB|TB|B params|billion|hours)\\b" },
+    { "id": "closed_loop", "keywords": ["closed-loop", "closed loop", "success rate", "task success"] },
+    { "id": "real_robot", "keywords": ["real robot", "real-world", "physical robot", "hardware experiments", "deployed"] },
+    { "id": "open_release", "keywords": ["open-source", "open source", "we release", "open weights", "checkpoint", "github.com", "huggingface"] },
+    { "id": "latency", "keywords": ["latency", "ms", "hz", "real-time", "throughput"] }
+  ]
+}

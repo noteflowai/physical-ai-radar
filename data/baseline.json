@@ -1,0 +1,442 @@
+{
+  "version": "1.0",
+  "curated_at": "2026-09-19",
+  "note": "Hand-curated landmark items. Every entry carries an evidence tag and a source URL. Claims from papers and vendors are reported as such, not endorsed.",
+  "items": [
+    {
+      "id": "pi0-hyperpod",
+      "lane": "training",
+      "evidence": "O",
+      "date": "2026-09-10",
+      "title": "Fine-tuning \u03c00 for robotic manipulation on Amazon SageMaker HyperPod EKS",
+      "publisher": "AWS Physical AI Blog",
+      "url": "https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/",
+      "numbers": ["MSE -89.7% (DROID)", "MSE -88.9% (LIBERO)", "8xH100, 20k steps, 6h15m", "50-step chunk <200 ms at 1 ODE step", "checkpoint ~45 GB"],
+      "why": {
+        "zh": "同一工作早期报 96% 改善，只因评测集与训练集重叠；修正切分后是 89%。这是 2026 年最值得引用的评测纪律案例。",
+        "en": "An earlier version of the same work reported ~96% because eval episodes overlapped training; enforcing the split moved it to ~89%. The best evaluation-discipline case of 2026.",
+        "ja": "同じ作業の初期版は評価と学習のエピソードが重複し約96%と報告。分割を厳格化して約89%になった。2026年で最も引用価値のある評価規律の事例。"
+      }
+    },
+    {
+      "id": "telexistence-dreamzero",
+      "lane": "simeval",
+      "evidence": "O",
+      "date": "2026-09-09",
+      "title": "Bringing a frontier world model to the convenience store: Telexistence's DreamZero experiment on AWS",
+      "publisher": "AWS Physical AI Blog",
+      "url": "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/",
+      "numbers": ["14B world action model", "best closed-loop 45%", "real-data-trained run 0% in sim", "MSE -55.6% from 1k to 2k steps", "~583 ms/step on 8xB200", "curation flagged 39.3% vs human 49.7%"],
+      "why": {
+        "zh": "把\"前沿模型是否适合我的机器人\"变成可测数字，并诚实记录了真机数据迁到仿真时的 0%——域差诊断本身就是交付物。",
+        "en": "Turns 'is a frontier model right for my robot' into measured numbers, and honestly records the 0% when real data was evaluated in sim - the domain-gap diagnosis is itself the deliverable.",
+        "ja": "「最前線のモデルが自社ロボットに適するか」を測定可能な数値に変え、実データを模擬環境で評価した際の0%も正直に記録。ドメイン差の診断自体が成果物。"
+      }
+    },
+    {
+      "id": "cosmos3-edge",
+      "lane": "edge",
+      "evidence": "O",
+      "date": "2026-08",
+      "title": "Post-train NVIDIA Cosmos 3 Edge for on-device robot control",
+      "publisher": "NVIDIA Technical Blog",
+      "url": "https://developer.nvidia.com/blog/post-train-nvidia-cosmos-3-edge-for-on-device-robot-control/",
+      "numbers": ["4B omni-model", "2B Nemotron reasoner", "runs on Jetson Thor", "receding-horizon control loop"],
+      "why": {
+        "zh": "世界模型进端侧的第一条可复现路径：post-train 到 Thor 上服务、再闭环评测，代码与 checkpoint 都公开。",
+        "en": "The first reproducible path for a world model on-device: post-train, serve on Thor, then evaluate closed-loop, with code and checkpoint released.",
+        "ja": "世界モデルをオンデバイスで動かす最初の再現可能な道筋：事後学習してThorで提供し、閉ループで評価。コードと重みも公開。"
+      }
+    },
+    {
+      "id": "cosmos3",
+      "lane": "foundation",
+      "evidence": "O",
+      "date": "2026-08",
+      "title": "NVIDIA Cosmos 3: physical reasoning, world generation and action generation in one open model",
+      "publisher": "NVIDIA Technical Blog",
+      "url": "https://developer.nvidia.com/blog/develop-physical-ai-reasoning-world-and-action-models-with-nvidia-cosmos-3/",
+      "numbers": ["single open model", "Nano / Super / Edge variants"],
+      "why": {
+        "zh": "把物理推理、世界生成、动作生成合进一个开放模型，意味着\"想象\"和\"动作\"不再是两个栈。",
+        "en": "Merging physical reasoning, world generation and action generation into one open model means 'imagining' and 'acting' stop being two stacks.",
+        "ja": "物理推論・世界生成・行動生成を単一のオープンモデルに統合し、「想像」と「行動」が別スタックでなくなる。"
+      }
+    },
+    {
+      "id": "gemini-robotics-2",
+      "lane": "foundation",
+      "evidence": "O",
+      "date": "2026",
+      "title": "Gemini Robotics 2 brings whole body intelligence to robots",
+      "publisher": "Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "numbers": ["full humanoid control, feet to fingertips", "bi-arm robots"],
+      "why": {
+        "zh": "全身控制进入通用 VLA 的能力清单，意味着上肢操作与下肢平衡不再被两套系统割裂。",
+        "en": "Whole-body control enters the generalist VLA feature list, so upper-body manipulation and lower-body balance stop living in two separate systems.",
+        "ja": "全身制御が汎用VLAの機能に入り、上半身の操作と下半身のバランスが別系統でなくなる。"
+      }
+    },
+    {
+      "id": "gr00t-n17",
+      "lane": "foundation",
+      "evidence": "O",
+      "date": "2026",
+      "title": "GR00T N1.7: open reasoning VLA model for humanoid robots",
+      "publisher": "NVIDIA / Hugging Face",
+      "url": "https://huggingface.co/blog/nvidia/gr00t-n1-7",
+      "numbers": ["3B parameters", "open weights"],
+      "why": {
+        "zh": "3B 级开放 reasoning VLA 让自建团队有了可微调、可部署的起点，而不必自研基座。",
+        "en": "A 3B open reasoning VLA gives in-house teams a fine-tunable, deployable starting point instead of building a foundation model.",
+        "ja": "3B級のオープンな推論VLAにより、社内チームは基盤モデルを自作せずに微調整・配備を始められる。"
+      }
+    },
+    {
+      "id": "newton-physics",
+      "lane": "simeval",
+      "evidence": "O",
+      "date": "2026",
+      "title": "Newton: open-source GPU physics engine for robotics (NVIDIA, Google DeepMind, Disney Research)",
+      "publisher": "NVIDIA Developer",
+      "url": "https://developer.nvidia.com/blog/announcing-newton-an-open-source-physics-engine-for-robotics-simulation",
+      "numbers": ["built on Warp + OpenUSD", "MuJoCo Warp up to 152x (locomotion) / 313x (manipulation) vs MJX on RTX 4090"],
+      "why": {
+        "zh": "仿真底座换代且可微，配合 Isaac Lab 的多后端切换，训练与评测可以复用同一套 actuator 配置。",
+        "en": "A differentiable new simulation base plus Isaac Lab's multi-backend switching lets training and evaluation reuse one actuator configuration.",
+        "ja": "微分可能な新しいシミュレーション基盤とIsaac Labのバックエンド切替により、学習と評価で同じアクチュエータ設定を再利用できる。"
+      }
+    },
+    {
+      "id": "isaac-lab-arena",
+      "lane": "simeval",
+      "evidence": "O",
+      "date": "2026",
+      "title": "Isaac Lab-Arena: reusable APIs to author, scale and analyse robot policy evaluations",
+      "publisher": "NVIDIA",
+      "url": "https://isaac-sim.github.io/IsaacLab-Arena/main/index.html",
+      "numbers": ["policy evaluation at scale", "solver-agnostic"],
+      "why": {
+        "zh": "评测从一次性脚本变成可复用流水线，是把\"能演示\"推进到\"能回归\"的关键工程件。",
+        "en": "Evaluation moves from one-off scripts to a reusable pipeline - the engineering piece that turns 'can demo' into 'can regress'.",
+        "ja": "評価が単発スクリプトから再利用可能なパイプラインへ。「デモできる」を「回帰テストできる」に進める要の部品。"
+      }
+    },
+    {
+      "id": "roboworld-eval",
+      "lane": "simeval",
+      "evidence": "R",
+      "date": "2026",
+      "title": "RoboWorld: fast and reliable neural simulators for generalist robot policy evaluation",
+      "publisher": "arXiv 2607.01060",
+      "url": "https://arxiv.org/abs/2607.01060v1",
+      "numbers": ["closed-loop rollouts in a video world model", "VLM judge", "rankings strongly correlated with real-world eval"],
+      "why": {
+        "zh": "如果世界模型里的排名能对齐真机排名，评测预算就从人力工时转向 GPU 小时——但真机抽检仍不可取消。",
+        "en": "If rankings inside a world model align with real-robot rankings, the evaluation budget shifts from human hours to GPU hours - real-robot spot checks still cannot be dropped.",
+        "ja": "世界モデル内の順位が実機の順位と一致すれば、評価予算は人手からGPU時間へ移る。ただし実機の抜き取り検査は省けない。"
+      }
+    },
+    {
+      "id": "pistar06-recap",
+      "lane": "training",
+      "evidence": "R",
+      "date": "2026",
+      "title": "\u03c0*0.6 / Recap: a VLA that learns from experience via advantage-conditioned policies",
+      "publisher": "arXiv 2511.14759",
+      "url": "https://arxiv.org/html/2511.14759",
+      "numbers": ["RL from autonomous rollouts + human corrections", "value function fine-tuned on online data"],
+      "why": {
+        "zh": "\"部署即训练\"的方法学基础：要用它，运维必须先把干预记录和成功判定变成一等数据。",
+        "en": "The methodological basis for 'deployment is training': to use it, operations must first make intervention logs and success judgements first-class data.",
+        "ja": "「配備＝学習」の方法論的基盤。利用するには、介入ログと成功判定を一級のデータにする運用が前提。"
+      }
+    },
+    {
+      "id": "z1-grpo",
+      "lane": "training",
+      "evidence": "R",
+      "date": "2026",
+      "title": "Z-1: efficient RL post-training for flow-based VLA models",
+      "publisher": "arXiv 2606.31846",
+      "url": "https://arxiv.org/abs/2606.31846",
+      "numbers": ["80.6% average success on 24 RoboCasa tasks", "+13.2 points over SFT init", "public demos only"],
+      "why": {
+        "zh": "在不增加私有演示数据的前提下，系统性 GRPO 后训练就能拿到两位数增益，改变了\"只能靠加数据\"的默认认知。",
+        "en": "Systematic GRPO post-training delivers double-digit gains without extra private demonstrations, breaking the default belief that only more data helps.",
+        "ja": "私有デモを増やさずに体系的なGRPO事後学習で二桁の改善。「データを足すしかない」という前提を崩す。"
+      }
+    },
+    {
+      "id": "fleet-rl-lwd",
+      "lane": "training",
+      "evidence": "R",
+      "date": "2026",
+      "title": "Fleet-scale reinforcement learning for generalist robot policies",
+      "publisher": "arXiv 2605.00416",
+      "url": "https://arxiv.org/abs/2605.00416",
+      "numbers": ["deploy -> shared experience -> improve -> redeploy loop", "autonomous rollouts + human interventions across a fleet"],
+      "why": {
+        "zh": "机队规模第一次被当作训练资产而不是运维负担，这会改变车队遥测的设计目标。",
+        "en": "Fleet scale is treated as a training asset rather than an operations burden, which changes what fleet telemetry is designed for.",
+        "ja": "機群規模が運用負担ではなく学習資産として扱われ、フリート・テレメトリの設計目標が変わる。"
+      }
+    },
+    {
+      "id": "egocentric-outperforms",
+      "lane": "data",
+      "evidence": "R",
+      "date": "2026",
+      "title": "Egocentric human video can outperform real-robot data for embodied pretraining",
+      "publisher": "arXiv 2606.20521",
+      "url": "https://arxiv.org/abs/2606.20521v1",
+      "numbers": ["-24% validation loss at equal data", "+52.5% in-distribution success", "+90% out-of-distribution success"],
+      "why": {
+        "zh": "没有机队的团队也能建立数据优势；有机队但没有清洗与判定管道的团队，数据只是存储成本。",
+        "en": "Teams without a fleet can still build a data advantage; teams with a fleet but no curation and judging pipeline hold data that is only a storage cost.",
+        "ja": "機群を持たないチームでもデータ優位を築ける。機群があっても精査と判定の仕組みがなければ、データは保管コストにすぎない。"
+      }
+    },
+    {
+      "id": "humanego",
+      "lane": "data",
+      "evidence": "R",
+      "date": "2026",
+      "title": "HumanEgo: zero-shot robot learning from minutes of human egocentric video",
+      "publisher": "arXiv 2605.24934",
+      "url": "https://arxiv.org/html/2605.24934v1",
+      "numbers": ["30 min/task -> 92.5% average success on 4 real tasks", "15 min -> 75%", "+41% over matched-time teleoperation"],
+      "why": {
+        "zh": "把\"单位新任务的数据成本\"压到分钟级，这是判断数据策略是否落后的最直接基准。",
+        "en": "It pushes the cost per new task down to minutes of data - the most direct yardstick for whether your data strategy is behind.",
+        "ja": "新規タスクあたりのデータコストを分単位まで下げる。データ戦略の遅れを測る最も直接的な基準。"
+      }
+    },
+    {
+      "id": "egoscale",
+      "lane": "data",
+      "evidence": "R",
+      "date": "2026",
+      "title": "EgoScale: scaling dexterous manipulation with diverse egocentric human data",
+      "publisher": "arXiv 2602.16710",
+      "url": "https://arxiv.org/html/2602.16710v1",
+      "numbers": ["44k hours of egocentric video", "+54% average success vs no-pretraining on a 22-DoF hand", "transfers to lower-DoF hands"],
+      "why": {
+        "zh": "大规模人类动作被证明是可复用、跨本体的 motor prior，灵巧手不必从零学起。",
+        "en": "Large-scale human motion is shown to be a reusable, embodiment-agnostic motor prior, so dexterous hands do not start from zero.",
+        "ja": "大規模な人間の動作が再利用可能で機体非依存のモータープライアであると示され、巧緻ハンドはゼロから学ばなくてよい。"
+      }
+    },
+    {
+      "id": "dyna2-scaling",
+      "lane": "data",
+      "evidence": "M",
+      "date": "2026-08-10",
+      "title": "Dyna Robotics announces DYNA-2 world action model trained on 1M+ hours of human data (vendor claim)",
+      "publisher": "PR Newswire",
+      "url": "https://finance.yahoo.com/technology/ai/articles/c-o-r-r-e-193100021.html",
+      "numbers": ["1M+ hours (~170 years of waking experience)", "claimed first human-to-robot scaling law", "claimed 20% -> 80-90% on high-precision manufacturing from pretraining scale alone"],
+      "why": {
+        "zh": "厂商自报，但方向与学术侧一致：如果人类数据的 scaling law 成立，数据护城河会从机队规模转向采集与清洗管道。",
+        "en": "Vendor-reported, yet directionally consistent with academic results: if a human-data scaling law holds, the data moat shifts from fleet size to collection and curation pipelines.",
+        "ja": "ベンダー自己報告だが学術側と方向性は一致。人間データのスケーリング則が成立すれば、データの堀は機群規模から収集・精査の仕組みへ移る。"
+      }
+    },
+    {
+      "id": "robottt",
+      "lane": "edge",
+      "evidence": "R",
+      "date": "2026-07-16",
+      "title": "RoboTTT: context scaling for robot policies via test-time training",
+      "publisher": "arXiv 2607.15275 (NVIDIA)",
+      "url": "https://arxiv.org/pdf/2607.15275",
+      "numbers": ["8K timestep visuomotor context", "3 orders of magnitude beyond prior policies", "no inference-latency growth"],
+      "why": {
+        "zh": "长上下文进入策略而不加延迟，意味着\"一次演示即学会\"和在线改进可以放在同一次推理里。",
+        "en": "Long context enters the policy without added latency, so one-shot in-context imitation and on-the-fly improvement can live in the same inference pass.",
+        "ja": "遅延を増やさず長い文脈を方策に導入。ワンショット模倣と実行中の改善を同一の推論で扱える。"
+      }
+    },
+    {
+      "id": "rd-vla",
+      "lane": "edge",
+      "evidence": "R",
+      "date": "2026",
+      "title": "RD-VLA: implicit test-time compute scaling via latent iterative reasoning",
+      "publisher": "arXiv 2602.07845",
+      "url": "https://arxiv.org/html/2602.07845v1",
+      "numbers": ["constant memory regardless of reasoning depth", "up to 80x inference speedup vs token-based reasoning VLAs"],
+      "why": {
+        "zh": "机器人可以\"想久一点\"而不付 token 延迟代价，这是把推理时计算搬进控制回路的关键。",
+        "en": "Robots can 'think longer' without paying token latency - the key to moving test-time compute inside the control loop.",
+        "ja": "トークン遅延を払わずに「長く考える」ことが可能になり、推論時計算を制御ループへ持ち込む鍵となる。"
+      }
+    },
+    {
+      "id": "jetson-thor",
+      "lane": "edge",
+      "evidence": "O",
+      "date": "2026",
+      "title": "NVIDIA Jetson Thor: up to 2070 FP4 TFLOPS and 128 GB at 40-130 W",
+      "publisher": "NVIDIA",
+      "url": "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/",
+      "numbers": ["7.5x AI compute vs Orin", "3.5x energy efficiency vs AGX Orin", "Jetson T2000: 400 FP4 TFLOPS / 16 GB"],
+      "why": {
+        "zh": "端侧算力代际跳变给了世界模型和推理时计算空间，但实时预算依然要逐项实测。",
+        "en": "A generational jump in on-device compute creates room for world models and test-time compute, yet the real-time budget still has to be measured item by item.",
+        "ja": "オンデバイス計算の世代交代が世界モデルと推論時計算の余地を生むが、実時間予算は個別に実測が必要。"
+      }
+    },
+    {
+      "id": "jetson-pi-async",
+      "lane": "edge",
+      "evidence": "R",
+      "date": "2026",
+      "title": "Jetson-PI: onboard real-time control via foresight-aligned asynchronous inference",
+      "publisher": "arXiv 2607.12659",
+      "url": "https://arxiv.org/abs/2607.12659",
+      "numbers": ["8.66x control frequency vs naive PyTorch on Orin", "+14.8% average success vs VLASH on LIBERO"],
+      "why": {
+        "zh": "在同一块硬件上靠系统工程换来近一个数量级的控制频率，说明部署优化的空间常大于换模型。",
+        "en": "Nearly an order of magnitude in control frequency from systems engineering on the same hardware - deployment optimisation often has more headroom than swapping models.",
+        "ja": "同一ハードでシステム工学により制御周期をほぼ一桁改善。モデル交換よりも配備最適化の余地が大きいことを示す。"
+      }
+    },
+    {
+      "id": "roboharness",
+      "lane": "systems",
+      "evidence": "R",
+      "date": "2026",
+      "title": "RoboHarness: memory-driven orchestration of heterogeneous robot policies",
+      "publisher": "arXiv 2607.18060 (Huawei Noah's Ark Lab)",
+      "url": "https://arxiv.org/pdf/2607.18060v1",
+      "numbers": ["VLA + RL + TAMP as agentic skills", "capability-aware routing", "Memory Bridge for policy handoff without retraining"],
+      "why": {
+        "zh": "长程任务的系统形态是编排器加策略池，运维对象从\"一个模型\"变成\"一组可声明的能力边界\"。",
+        "en": "Long-horizon systems are an orchestrator plus a policy pool; the operated object becomes a set of declarable capability boundaries rather than one model.",
+        "ja": "長期タスクのシステム形態はオーケストレーターと方策プール。運用対象は単一モデルから宣言可能な能力境界の集合へ。"
+      }
+    },
+    {
+      "id": "shield-cbf",
+      "lane": "safety",
+      "evidence": "R",
+      "date": "2026",
+      "title": "SHIELD: safety on humanoids via control barrier functions in expectation on learned dynamics",
+      "publisher": "arXiv 2505.11494",
+      "url": "https://arxiv.org/pdf/2505.11494",
+      "numbers": ["runtime constraint specification", "no retraining when constraints change"],
+      "why": {
+        "zh": "把\"改约束不用重训\"变成可能，这正是本地 authority gate 的学术对应物。",
+        "en": "Makes 'change the constraint without retraining' possible - the academic counterpart of a local authority gate.",
+        "ja": "「制約変更に再学習不要」を可能にする。ローカルな権限ゲートの学術的な対応物。"
+      }
+    },
+    {
+      "id": "pl-cbf-fallback",
+      "lane": "safety",
+      "evidence": "R",
+      "date": "2026",
+      "title": "PL-CBF: finite-horizon safety at runtime via parallel fallback rollouts",
+      "publisher": "arXiv 2605.16588",
+      "url": "https://arxiv.org/html/2605.16588",
+      "numbers": ["library of fallback policies", "least-invasive safe mode", "QP minimally modifies the nominal policy"],
+      "why": {
+        "zh": "\"最小侵入回退\"可以直接写进客户验收标准，比\"我们很安全\"具体得多。",
+        "en": "'Least-invasive fallback' can go straight into customer acceptance criteria - far more concrete than 'we are safe'.",
+        "ja": "「最小侵襲のフォールバック」は顧客の受入基準にそのまま書ける。「安全です」より具体的。"
+      }
+    },
+    {
+      "id": "iso-25785-1",
+      "lane": "safety",
+      "evidence": "O",
+      "date": "2026",
+      "title": "ISO 25785-1 (under development): safety for dynamically stable industrial mobile robots",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/91469.html",
+      "numbers": ["committee stage as of 2026-09", "covers legged / self-balancing robots"],
+      "why": {
+        "zh": "人形打破了 ISO 10218 的固定基座前提；专用标准落地前，安全只能靠架构与运行时保证。",
+        "en": "Humanoids break the fixed-base premise of ISO 10218; until the dedicated standard lands, safety rests on architecture and runtime guarantees.",
+        "ja": "ヒューマノイドはISO 10218の固定ベース前提を崩す。専用規格が整うまで安全はアーキテクチャと実行時保証に依存する。"
+      }
+    },
+    {
+      "id": "eu-machinery-2027",
+      "lane": "safety",
+      "evidence": "O",
+      "date": "2027-01-20",
+      "title": "Regulation (EU) 2023/1230 becomes fully applicable",
+      "publisher": "EUR-Lex / TUV SUD",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng",
+      "numbers": ["fully applicable 2027-01-20", "replaces Directive 2006/42/EC"],
+      "why": {
+        "zh": "这是可以直接抄进项目计划的硬日期：之后不合规机械不得在欧盟市场投放。",
+        "en": "A hard date you can copy into a project plan: after it, non-compliant machinery cannot be placed on the EU market.",
+        "ja": "プロジェクト計画にそのまま書ける確定日。以後、非適合機械はEU市場に投入できない。"
+      }
+    },
+    {
+      "id": "cn-embodied-data-standard",
+      "lane": "safety",
+      "evidence": "O",
+      "date": "2026-09",
+      "title": "China approves 60 guiding technical documents incl. embodied-AI data quality (part 1: real data)",
+      "publisher": "SAMR / SAC announcement",
+      "url": "https://www.cqn.com.cn/zj/content/2026-09/04/content_9171400.htm",
+      "numbers": ["60 guiding technical documents", "embodied-AI data quality, part 1: real data"],
+      "why": {
+        "zh": "具身智能的数据质量第一次进入国标体系，数据治理从\"团队习惯\"变成\"可被审的规范\"。",
+        "en": "Embodied-AI data quality enters the national standards system for the first time, turning data governance from team habit into an auditable specification.",
+        "ja": "具身知能のデータ品質が初めて国家標準体系に入り、データガバナンスがチームの慣行から監査可能な規範へ。"
+      }
+    },
+    {
+      "id": "lerobot-v3",
+      "lane": "data",
+      "evidence": "O",
+      "date": "2026",
+      "title": "LeRobotDataset v3.0: a standardised, streamable format for robot learning data",
+      "publisher": "Hugging Face",
+      "url": "https://huggingface.co/docs/lerobot/lerobot-dataset-v3",
+      "numbers": ["Parquet + MP4 + relational metadata", "multi-episode packing", "native streaming for multi-TB datasets"],
+      "why": {
+        "zh": "格式之争正收敛为数据用 LeRobot v3、资产用 OpenUSD；能一键转换的数据，其资产价值远高于锁在私有格式里的同等小时数。",
+        "en": "The format question is converging on LeRobot v3 for data and OpenUSD for assets; data you can convert in one step is worth far more than the same hours locked in a private format.",
+        "ja": "フォーマットはデータがLeRobot v3、アセットがOpenUSDへ収束。ワンステップで変換できるデータは、私有形式に閉じた同時間のデータより価値が高い。"
+      }
+    },
+    {
+      "id": "xpeng-iron-line",
+      "lane": "hardware",
+      "evidence": "O",
+      "date": "2026-09-08",
+      "title": "XPENG commissions its humanoid production lines; IRON walks off the line autonomously",
+      "publisher": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/iron-the-worlds-first-advanced-general-purpose-humanoid-robot-walks-off-the-production-lines-as-xpengs-humanoid-robot-manufacturing-facility-is-officially-commissioned-302871836.html",
+      "numbers": [">80% of core processes automated (reported)", "target 1,000+ units/month by year-end (reported)"],
+      "why": {
+        "zh": "产线投产是可验证事实，月产目标是转述报道；把两者分开引用，是这一轮最容易被抓的口径问题。",
+        "en": "Line commissioning is a verifiable fact; the monthly target is reported second-hand. Separating the two is the easiest citation mistake to get caught on this cycle.",
+        "ja": "産線稼働は検証可能な事実、月産目標は報道ベース。両者を分けて引用することが、今期最も指摘されやすい論点。"
+      }
+    },
+    {
+      "id": "reliability-gap",
+      "lane": "hardware",
+      "evidence": "M",
+      "date": "2026",
+      "title": "The reliability gap: industrial buyers want 95-99% uptime; most humanoids run 30-90 minutes",
+      "publisher": "robozaps / industry analyses",
+      "url": "https://blog.robozaps.com/b/challenges-in-humanoid-robotics",
+      "numbers": ["95-99% expected uptime", "30-90 min continuous operation", "MTBI and autonomy rate are the metrics that matter"],
+      "why": {
+        "zh": "2027 的限速器大概率不是模型能力，而是平均干预间隔与认证空窗期。",
+        "en": "The 2027 rate limiter is unlikely to be model capability; it is mean time between interventions plus the certification gap.",
+        "ja": "2027年の律速は恐らくモデル性能ではなく、介入間平均時間と認証の空白期間である。"
+      }
+    }
+  ]
+}

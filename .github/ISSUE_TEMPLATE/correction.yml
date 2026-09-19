@@ -1,0 +1,40 @@
+name: Correction (number, evidence tag or lane)
+description: Report something the radar got wrong. Corrections are treated as bugs.
+title: "correction: "
+labels: ["correction"]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: The original source the radar cited.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: radar_says
+    attributes:
+      label: What the radar says
+      description: Paste the line or block from the daily page or README.
+    validations:
+      required: true
+  - type: textarea
+    id: source_says
+    attributes:
+      label: What the source actually says
+      description: Quote the relevant sentence, table row or figure.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of error
+      options:
+        - wrong number
+        - wrong evidence tag (O / R / M)
+        - wrong lane
+        - stale or duplicated item
+        - translation or wording
+        - other
+    validations:
+      required: true

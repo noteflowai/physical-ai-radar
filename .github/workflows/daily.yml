@@ -1,0 +1,58 @@
+name: daily radar
+
+on:
+  schedule:
+    # 01:30 UTC = 09:30 Asia/Shanghai = 10:30 Asia/Tokyo — after the arXiv daily announcement.
+    - cron: "30 1 * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Max items on the daily shortlist"
+        required: false
+        default: "8"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-radar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Self-check (no dependencies required)
+        run: python -m unittest discover -s tests
+
+      - name: Generate today's radar
+        run: python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
+
+      - name: Verify trilingual output exists
+        run: |
+          DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
+          for LANG in zh en ja; do
+            test -s "radar/daily/${DAY}.${LANG}.md" || { echo "missing radar/daily/${DAY}.${LANG}.md"; exit 1; }
+          done
+          test -s assets/lane-distribution.svg
+          test -s radar/latest.json
+
+      - name: Commit when something changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "no changes today"
+            exit 0
+          fi
+          DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
+          git add -A
+          git commit -m "radar: ${DAY} update [skip ci]"
+          git push
