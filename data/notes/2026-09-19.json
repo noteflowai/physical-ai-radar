@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-19",
+  "generated": "2026-09-19 14:03 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-4.6",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "http://arxiv.org/abs/2609.20776v1": {
+      "zh": "如果动作分块长度可以随轨迹几何自适应而非固定，VLA 的闭环成功率与泛化代价都要重新测——作者报告了真机验证但未公布具体数字。",
+      "en": "If action chunk length adapts to trajectory geometry instead of being fixed, closed-loop success rates and the data cost of new tasks both need re-benchmarking — the authors report real-robot results but no headline numbers yet.",
+      "ja": "アクションチャンクの長さが軌道の幾何に応じて適応するなら、閉ループ成功率と新規タスクのデータコストの両方を再計測する必要がある。著者は実機結果を報告しているが主要数値は未公表。"
+    },
+    "http://arxiv.org/abs/2609.19104v1": {
+      "zh": "在工厂等重复场景中缓存 VLA 推理的中间结果以降低端侧延迟，意味着部署团队需要按场景结构划分哪些子任务可以走缓存、哪些必须走全量推理。",
+      "en": "Caching intermediate VLA inference for repetitive factory tasks could cut on-device latency, but deployers must now decide per sub-task which motions qualify for the cache and which require full inference.",
+      "ja": "工場の反復作業でVLA推理の中間結果をキャッシュして端末遅延を削減できるなら、どのサブタスクをキャッシュ対象にし、どれをフル推論にするかの運用判断が新たに必要になる。"
+    },
+    "http://arxiv.org/abs/2609.18732v1": {
+      "zh": "50 Hz 控制频率下人形机器人在杂乱环境中的穿行成功率报告为 48.1–70.3%（作者自报）；如果可复现，导航规划器的安全裕度设定需要据此更新。",
+      "en": "Humanoid traversal in clutter at 50 Hz with reported success rates of 48.1–70.3% (self-reported) — if reproducible, navigation planners should update their safety-margin assumptions for perceptive locomotion.",
+      "ja": "50 Hzの制御周期で雑然とした環境を歩行し、成功率48.1–70.3%と報告（著者自報）。再現されれば、知覚型歩行の安全マージン設定を見直す根拠になる。"
+    },
+    "http://arxiv.org/abs/2609.20791v1": {
+      "zh": "用蒸馏学习阶段切换判断，意味着长程编排器的切换逻辑可以从手写规则迁移到学习策略——运维侧需要为每个技能阶段定义可观测的终止条件作为训练信号。",
+      "en": "Learning stage-transition decisions via distillation lets long-horizon orchestrators move from hand-coded switching rules to learned ones — operations teams will need observable termination criteria per skill stage as training signal.",
+      "ja": "蒸留によってステージ遷移判断を学習できるなら、長期タスクの切替ロジックを手書きルールから学習方策へ移行できる。運用側は各スキル段階に観測可能な終了条件を定義する必要が生じる。"
+    },
+    "http://arxiv.org/abs/2609.20761v1": {
+      "zh": "将触觉纳入世界动作模型并实现 11.9 ms 推理延迟（作者自报），说明接触密集任务的基座模型不必牺牲控制频率来换取触觉感知——需关注其真机泛化范围。",
+      "en": "Incorporating tactile input into a world action model at a reported 11.9 ms inference latency suggests contact-rich foundation models need not sacrifice control rate for touch sensing — the open question is how broadly the real-robot results generalise.",
+      "ja": "触覚を世界行動モデルに組み込みつつ推論遅延11.9 ms（著者自報）を実現した点は、接触密集タスクの基盤モデルが触覚のために制御周期を犠牲にしなくてよい可能性を示す。実機での汎化範囲が次の焦点。"
+    },
+    "https://spectrum.ieee.org/tactile-data-robots": {
+      "zh": "二手报道描绘了触觉数据从 100 小时扩展到 30,000 小时、覆盖 12 类任务的路线图——数字来自媒体而非一手来源，数据管线投资决策前需回溯原始出处确认。",
+      "en": "Secondary reporting outlines a tactile-data scaling roadmap from 100 hours to 30,000 hours across 12 tasks — as a media piece, the numbers await primary confirmation before they can anchor data-pipeline investment decisions.",
+      "ja": "メディア報道が触覚データのスケーリングを100時間から30,000時間へ、12タスクにわたって描いている。二次情報のため、データパイプラインへの投資判断にはまず一次ソースの確認が必要。"
+    },
+    "http://arxiv.org/abs/2609.18623v1": {
+      "zh": "641M 参数的紧凑 VLA 在自动驾驶闭环评测中报告碰撞率降低 7.7–10.2%（作者自报）；如果评测协议可复现，小模型在车端部署的参数量-安全性权衡需要重新评估。",
+      "en": "A 641M-parameter VLA reports 7.7–10.2% collision-rate reductions in closed-loop driving benchmarks (self-reported); if the evaluation protocol reproduces, the parameter-count vs. safety trade-off for on-vehicle deployment needs revisiting.",
+      "ja": "641Mパラメータの小型VLAが閉ループ運転ベンチマークで衝突率7.7–10.2%低減と報告（著者自報）。評価プロトコルが再現されれば、車載配備におけるパラメータ数と安全性のトレードオフを再検討すべき。"
+    },
+    "http://arxiv.org/abs/2609.19666v1": {
+      "zh": "对 VLA 做后训练以提升高自由度灵巧操作并开放权重，意味着有真机条件的团队可以直接在自有本体上验证后训练收益，而不必从头预训练。",
+      "en": "Post-training a VLA for high-DoF dexterous manipulation with open weights means teams with real hardware can validate post-training gains on their own embodiment without pre-training from scratch.",
+      "ja": "高自由度の巧緻操作向けにVLAを事後学習し重みを公開したことで、実機を持つチームは事前学習なしに自社機体上で事後学習の効果を検証できるようになる。"
+    }
+  }
+}

@@ -41,6 +41,17 @@ log() { printf '[notes %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
 
 command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
 
+# cron does not inherit an interactive shell's environment. Keep the key in a file
+# only this account can read; the script never writes it anywhere.
+ENV_FILE="${RADAR_ENV_FILE:-$HOME/.config/pairadar/env}"
+if [ -z "${KIRO_API_KEY:-}" ] && [ -r "$ENV_FILE" ]; then
+  set -a; . "$ENV_FILE"; set +a
+fi
+if [ -z "${KIRO_API_KEY:-}" ] && ! kiro-cli whoami >/dev/null 2>&1; then
+  log "no credentials: set KIRO_API_KEY in $ENV_FILE (chmod 600) or run kiro-cli login"
+  exit 1
+fi
+
 # Work from published main, never from a dirty tree.
 git diff --quiet && git diff --cached --quiet || { log "working tree is dirty; refusing to run"; exit 1; }
 git fetch --quiet origin
