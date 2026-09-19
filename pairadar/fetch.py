@@ -8,6 +8,7 @@ Design rules:
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import urllib.error
 import urllib.parse
@@ -125,6 +126,17 @@ def fetch_arxiv(config: Config) -> list[Item]:
     return items
 
 
+def link_digest(link: str) -> str:
+    """Stable short id for a feed entry.
+
+    Python randomises str.hash per process, so hashing the link with the builtin
+    produced a different id on every run: the same article could never be
+    recognised across days, and radar/latest.json churned even when nothing
+    changed. sha1 here is an identity, not a security boundary.
+    """
+    return hashlib.sha1(link.encode("utf-8")).hexdigest()[:12]
+
+
 def _feed_entries(root: ET.Element) -> Iterable[tuple[str, str, str, str]]:
     """Yield (title, url, summary, date) for Atom or RSS 2.0 documents."""
     entries = root.findall(f"{ATOM}entry")
@@ -171,7 +183,7 @@ def fetch_feeds(config: Config) -> list[Item]:
                 continue
             items.append(
                 Item(
-                    id=f"{feed['id']}:{abs(hash(link)) % (10**10)}",
+                    id=f"{feed['id']}:{link_digest(link)}",
                     title=title,
                     url=link,
                     publisher=feed.get("publisher", feed["id"]),

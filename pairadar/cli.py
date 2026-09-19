@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -17,7 +17,7 @@ from .config import (
     load_json,
     now_iso,
 )
-from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select
+from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
 from .fetch import baseline_items, fetch_all
 from .render import inject_readme, update_index, write_daily, write_latest
 
@@ -31,8 +31,28 @@ def load_history() -> list[dict[str, Any]]:
     return []
 
 
-def save_history(runs: list[dict[str, Any]]) -> None:
-    dump_json(HISTORY_PATH, {"runs": sorted(runs, key=lambda entry: entry["date"])[-400:]})
+def save_history(runs: list[dict[str, Any]], keep_urls_days: int = 7) -> None:
+    """Persist the run log, keeping published URLs only while they still matter."""
+    ordered = sorted(runs, key=lambda entry: entry["date"])[-400:]
+    if ordered:
+        newest = date.fromisoformat(ordered[-1]["date"])
+        for entry in ordered:
+            if (newest - date.fromisoformat(entry["date"])).days > keep_urls_days:
+                entry.pop("urls", None)
+    dump_json(HISTORY_PATH, {"runs": ordered})
+
+
+def recent_urls(runs: list[dict[str, Any]], reference: date, days: int) -> set[str]:
+    """URLs published within the repeat window."""
+    urls: set[str] = set()
+    for entry in runs:
+        try:
+            age = (reference - date.fromisoformat(entry["date"])).days
+        except (KeyError, TypeError, ValueError):
+            continue
+        if 0 <= age <= days:
+            urls.update(entry.get("urls", []))
+    return urls
 
 
 def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
@@ -49,9 +69,11 @@ def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
 def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[str, Any]:
     reference = datetime.fromisoformat(day).date()
     lookback = int(config.sources.get("arxiv", {}).get("lookback_days", 3))
+    repeat_days = int(config.sources.get("filters", {}).get("repeat_days", 7))
+    history = [entry for entry in load_history() if entry["date"] != day]
     live = fetch_all(config, offline=offline)
     live = deduplicate(enrich(prefilter(live, config, reference), config, reference))
-    picked = select(live, limit=limit)
+    picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days))
 
     baseline_all = enrich(baseline_items(config), config, reference)
     curated = {
@@ -62,9 +84,12 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     lane_rows = lane_distribution(tracked, config)
     mix = evidence_mix(tracked)
 
-    history = load_history()
-    history = [entry for entry in history if entry["date"] != day]
-    history.append({"date": day, "count": len(picked), "lanes": len({item.lane for item in picked})})
+    history.append({
+        "date": day,
+        "count": len(picked),
+        "lanes": len({item.lane for item in picked}),
+        "urls": [url_key(item.url) for item in picked],
+    })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 
     window_start = (reference - timedelta(days=lookback)).isoformat()
@@ -81,6 +106,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "cadence": cadence,
         "history": history,
         "live_count": len(live),
+        "repeat_days": repeat_days,
     }
 
 
@@ -102,7 +128,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
             written.append(inject_readme(config, lang, ctx))
     written.append(write_latest(ctx))
     written.append(update_index(config, ctx, ctx["history"]))
-    save_history(ctx["history"])
+    save_history(ctx["history"], keep_urls_days=ctx["repeat_days"])
 
     print(
         f"[radar] {day}: {len(ctx['picked'])} picked from {ctx['live_count']} live items, "
