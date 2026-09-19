@@ -108,6 +108,18 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 - 排序是**可解释的加权和**，不是学习到的相关性；权重都写在 `data/` 里，可以 fork 后自行调整。
 - 源限定为公开的机器可读端点，不抓取正文、不绕过付费墙。
 
+## 相关项目
+
+雷达追踪前沿结论，[**Robot Reel**](https://huggingface.co/spaces/glayguo/robot-reel) 做的是另一半：把其中一类结论录制成可检查的证据。
+
+- [SmolVLA Stress Lab](https://noteflowai.github.io/robot-reel/stress/) —— 同一任务在参考光照／降低光照／换视角下的 30 次真实闭环运行（NVIDIA L40S / CUDA 推理），成对种子、置信区间、逐帧动作与推理计时
+- [Butterfly Lab](https://noteflowai.github.io/robot-reel/chaos/) —— 十二个 Newton 世界，释放角相差 0.05°，轨迹长成 3D 时间雕塑
+- [配对结果数据集](https://huggingface.co/datasets/glayguo/robot-reel-paired-outcomes) —— 可直接读取的运行结果
+
+雷达上"边缘与实时性""仿真与评测"两条主线里的结论，在那边通常能找到一个可以点开看的对照实验。
+
+**披露**：两个项目由同一批作者维护。因此雷达的策展基线（`data/baseline.json`）不收录自家项目，上面的链接只出现在这里。
+
 ## 贡献
 
 欢迎 PR：新增源（需机器可读）、修正证据标注、补充策展基线、改进三语措辞。请先读 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [docs/METHODOLOGY.md](docs/METHODOLOGY.md)。

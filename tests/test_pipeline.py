@@ -98,6 +98,13 @@ class DataFilesTest(unittest.TestCase):
             for lang in LANGS:
                 self.assertTrue(raw["why"].get(lang), f"{raw['id']} missing why.{lang}")
 
+    def test_the_curated_baseline_never_cites_our_own_work(self) -> None:
+        # The READMEs disclose this, so it has to be enforced rather than promised:
+        # a radar that grades evidence cannot quietly rank its authors' own project.
+        ours = [raw["id"] for raw in self.config.baseline["items"]
+                if any(host in raw["url"] for host in ("noteflowai", "robot-reel", "glayguo"))]
+        self.assertEqual(ours, [], "a self-citation would make the README disclosure false")
+
     def test_sources_declare_weight_and_evidence(self) -> None:
         for feed in self.config.sources["feeds"]:
             self.assertIn(feed["evidence"], {"O", "R", "M"})
