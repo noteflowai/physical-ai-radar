@@ -89,6 +89,7 @@ class Item:
     published: str
     summary: str = ""
     lane: str = "foundation"
+    lane_locked: bool = False
     lane_hits: int = 0
     score: float = 0.0
     numbers: list[str] = field(default_factory=list)

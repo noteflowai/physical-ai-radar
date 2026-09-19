@@ -141,6 +141,46 @@ class DistillTest(unittest.TestCase):
         picked = select(items, limit=10, per_lane=2, min_score=0.0)
         self.assertLessEqual(len(picked), 2)
 
+    def test_curated_baseline_lanes_survive_enrichment(self) -> None:
+        curated = {f"baseline:{raw['id']}": raw["lane"] for raw in self.config.baseline["items"]}
+        for item in enrich(baseline_items(self.config), self.config, date(2026, 9, 19)):
+            self.assertEqual(item.lane, curated[item.id], f"{item.id} was reclassified")
+
+    def test_locked_lane_is_scored_on_its_own_keywords(self) -> None:
+        item = make_item(
+            id="locked",
+            title="A quarterly note with no lane vocabulary",
+            summary="Nothing in this text matches any lane keyword list.",
+            lane="safety",
+            lane_locked=True,
+        )
+        ranked = enrich([item], self.config, date(2026, 9, 19))
+        self.assertEqual(ranked[0].lane, "safety")
+        self.assertEqual(ranked[0].lane_hits, 0)
+        # The unlocked classifier would have filed it under the fallback lane.
+        self.assertEqual(classify(f"{item.title}. {item.summary}", self.config), ("foundation", 0))
+
+    def test_off_topic_item_clears_the_score_but_is_not_selected(self) -> None:
+        # Evidence plus same-day recency alone reach min_score, so without a lane
+        # gate an unrelated paper would be published under the fallback lane.
+        item = make_item(
+            id="off",
+            title="A recipe for sourdough bread",
+            summary="No robotics content whatsoever.",
+            published=date(2026, 9, 19).isoformat(),
+        )
+        ranked = enrich([item], self.config, date(2026, 9, 19))
+        self.assertEqual(ranked[0].lane_hits, 0)
+        self.assertGreater(ranked[0].score, 0.9)
+        self.assertEqual(select(ranked), [])
+
+    def test_curated_items_stay_selectable_without_keywords(self) -> None:
+        item = make_item(id="curated", title="Regulation timeline", summary="No keywords.",
+                         lane="safety", lane_locked=True, evidence="O",
+                         published=date(2026, 9, 19).isoformat())
+        ranked = enrich([item], self.config, date(2026, 9, 19))
+        self.assertEqual([picked.id for picked in select(ranked)], ["curated"])
+
     def test_one_liner_truncates(self) -> None:
         long_text = "First sentence. " + ("padding words " * 60)
         self.assertLessEqual(len(one_liner(long_text)), 241)
