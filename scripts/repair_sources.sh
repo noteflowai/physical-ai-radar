@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# Repair a source endpoint that stopped answering, on this machine, on a schedule.
+#
+# The counterpart to draft_daily_notes.sh, same shape: outbound only, nothing on
+# GitHub triggers it. pairadar.health decides whether there is anything to do, so a
+# quiet fortnight costs nothing. The agent may edit only data/sources.json and has no
+# shell; this script validates and opens the pull request.
+#
+#   scripts/repair_sources.sh [--threshold N] [--dry-run]
+#
+# Exit codes: 0 nothing to repair or PR opened, 1 something failed loudly.
+set -euo pipefail
+
+REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
+CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
+BRANCH_BASE="${RADAR_BRANCH:-main}"
+AGENT="${RADAR_AGENT:-radar-curator}"
+EFFORT="${RADAR_EFFORT:-medium}"
+THRESHOLD="${RADAR_THRESHOLD:-3}"
+DRY_RUN=0
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --threshold) THRESHOLD="$2"; shift 2 ;;
+    --dry-run) DRY_RUN=1; shift ;;
+    *) echo "unknown argument: $1" >&2; exit 1 ;;
+  esac
+done
+
+if [ ! -d "$REPO_DIR/.git" ]; then
+  printf '[sources] cloning %s into %s\n' "$CLONE_URL" "$REPO_DIR"
+  git clone --quiet "$CLONE_URL" "$REPO_DIR"
+fi
+cd "$REPO_DIR"
+log() { printf '[sources %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
+
+LOGFILE=""
+cleanup() { [ -n "$LOGFILE" ] && rm -f "$LOGFILE"; return 0; }
+trap cleanup EXIT
+
+changed_paths() {
+  git status --porcelain=v1 -z --untracked-files=all |
+    tr '\0' '\n' | sed -e 's/^...//' -e '/^$/d' | sort | tr '\n' ' ' | sed 's/ *$//'
+}
+restore_tree() {
+  git checkout -- . 2>/dev/null || true
+  git clean -qfdx
+}
+
+command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
+ENV_FILE="${RADAR_ENV_FILE:-$HOME/.config/pairadar/env}"
+if [ -z "${KIRO_API_KEY:-}" ] && [ -r "$ENV_FILE" ]; then
+  set -a; . "$ENV_FILE"; set +a
+fi
+if [ -z "${KIRO_API_KEY:-}" ] && ! kiro-cli whoami >/dev/null 2>&1; then
+  log "no credentials: set KIRO_API_KEY in $ENV_FILE (chmod 600) or run kiro-cli login"
+  exit 1
+fi
+
+if [ -n "$(changed_paths)" ]; then
+  log "clearing leftovers from an interrupted run"
+fi
+git fetch --quiet origin
+git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
+git reset --hard --quiet "origin/${BRANCH_BASE}"
+git clean -qfdx
+
+# The gate: no model call unless a source has actually been failing.
+python3 -m pairadar.health --threshold "$THRESHOLD"
+if python3 -m pairadar.health --threshold "$THRESHOLD" --fail-on-struggling >/dev/null; then
+  log "no source is over the threshold; nothing to repair"
+  exit 0
+fi
+SOURCE="$(python3 -c "
+import json, subprocess
+verdict = json.loads(subprocess.run(['python3', '-m', 'pairadar.health', '--threshold', '${THRESHOLD}'],
+                                    capture_output=True, text=True, check=True).stdout)
+print(verdict['struggling'][0]['source'])")"
+log "worst struggling source: ${SOURCE}"
+
+AGENTS="$(kiro-cli agent list 2>&1 || true)"
+case "$AGENTS" in
+  *"$AGENT"*) : ;;
+  *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
+esac
+
+LOGFILE="$(mktemp "/tmp/radar-sources-XXXXXX.log")"
+# Granular trust only: --trust-all-tools would bypass the agent's write path limits.
+kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
+  --trust-tools=read,grep,glob,web_fetch,write \
+  "The health verdict says '${SOURCE}' has stopped answering. Check whether its endpoint still returns a feed. If it moved, fix only that entry in data/sources.json. If it is merely down, change nothing. Then write your report." \
+  2>&1 | tee "$LOGFILE" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
+
+CHANGED="$(changed_paths)"
+if [ -z "$CHANGED" ]; then
+  log "the agent changed nothing, which is the right answer for a transient outage"
+  exit 0
+fi
+if [ "$CHANGED" != "data/sources.json" ]; then
+  log "unexpected files touched: ${CHANGED}; reverting"
+  restore_tree
+  exit 1
+fi
+
+python3 -m unittest discover -s tests
+python3 -c "import json; json.load(open('data/sources.json'))"
+
+if [ "$DRY_RUN" = "1" ]; then
+  log "dry run: keeping the edit in the working tree, no branch, no pull request"
+  exit 0
+fi
+
+BRANCH="sources/repair-${SOURCE}-$(date -u +%Y%m%d)"
+git checkout -q -B "$BRANCH"
+git add data/sources.json
+git commit -q -m "sources: repair ${SOURCE}, which stopped answering
+
+Proposed by ${AGENT} via kiro-cli on the Tokyo workstation after ${SOURCE} missed
+at least ${THRESHOLD} days in the health window. Endpoint verified by the agent;
+confirm it yourself before merging."
+git push -q -u --force-with-lease origin "$BRANCH"
+if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
+  log "updated the open pull request for ${BRANCH}"
+  exit 0
+fi
+gh pr create --base main --head "$BRANCH" \
+  --title "sources: repair ${SOURCE}, which stopped answering" \
+  --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
+    "\`pairadar.health\` reported \`${SOURCE}\` failing on at least ${THRESHOLD} days. Proposed by \`${AGENT}\` on the Tokyo workstation, outside GitHub Actions." \
+    "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
+    "The agent has no shell and can write only \`data/sources.json\`. This script checked that nothing else changed and ran the full test suite. Confirm the endpoint yourself before merging: a source entry must stay a public machine-readable endpoint with a weight and an evidence tag.")
+log "pull request opened for ${SOURCE}"
