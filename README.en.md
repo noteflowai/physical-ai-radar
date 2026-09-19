@@ -109,6 +109,18 @@ docs/        METHODOLOGY.md (method, translation policy, known limits)
 - Ranking is an **explainable weighted sum**, not learned relevance. All weights live in `data/`, so a fork can retune them.
 - Sources are limited to public machine-readable endpoints. No article scraping, no paywall bypass.
 
+## Related project
+
+The radar tracks frontier claims. [**Robot Reel**](https://huggingface.co/spaces/glayguo/robot-reel) does the other half: it records some of those claims as evidence you can inspect.
+
+- [SmolVLA Stress Lab](https://noteflowai.github.io/robot-reel/stress/) — 30 real closed-loop rollouts of one task under reference lighting, reduced light and a shifted camera (NVIDIA L40S / CUDA inference), with paired seeds, confidence intervals, applied actions and separate inference timings
+- [Butterfly Lab](https://noteflowai.github.io/robot-reel/chaos/) — twelve Newton worlds released 0.05° apart, their trajectories drawn as a 3D time sculpture
+- [Paired-outcome dataset](https://huggingface.co/datasets/glayguo/robot-reel-paired-outcomes) — the recorded results, machine-readable
+
+For items in the **Edge & real-time** and **Simulation & evaluation** lanes there is often a matching experiment over there that you can open and step through.
+
+**Disclosure**: both projects are maintained by the same authors. That is why no entry in the curated baseline (`data/baseline.json`) points at our own work — these links live here and nowhere else.
+
 ## Contributing
 
 PRs welcome: new machine-readable sources, evidence-tag corrections, baseline additions, better trilingual wording. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/METHODOLOGY.md](docs/METHODOLOGY.md).

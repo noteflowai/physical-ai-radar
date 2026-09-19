@@ -109,6 +109,18 @@ docs/        METHODOLOGY.md（方法論・翻訳方針・既知の限界）
 - ランキングは**説明可能な重み付き和**であり、学習された関連度ではありません。重みは `data/` にあり、フォークして調整できます。
 - 出典は公開された機械可読エンドポイントに限定し、本文のスクレイピングや有料壁の回避は行いません。
 
+## 関連プロジェクト
+
+レーダーは最前線の主張を追跡します。[**Robot Reel**](https://huggingface.co/spaces/glayguo/robot-reel) はその先を担い、主張の一部を検証できる記録に変えます。
+
+- [SmolVLA Stress Lab](https://noteflowai.github.io/robot-reel/stress/) — 同一タスクを参照照明・減光・カメラ移動の三条件で回した 30 回の実クローズドループ実行（NVIDIA L40S / CUDA 推論）。対応シード、信頼区間、適用アクション、推論時間を個別に記録
+- [Butterfly Lab](https://noteflowai.github.io/robot-reel/chaos/) — 0.05° ずつ異なる初期角の Newton 世界 12 個。軌跡は 3D の時間彫刻になります
+- [対応結果データセット](https://huggingface.co/datasets/glayguo/robot-reel-paired-outcomes) — 記録された結果を機械可読な形で
+
+「エッジとリアルタイム性」「シミュレーションと評価」レーンの項目には、あちらで実際に開いて確認できる対照実験がある場合が多いです。
+
+**開示**：両プロジェクトは同じ著者が維持しています。そのためキュレーション基準（`data/baseline.json`）に自分たちの成果物は入れておらず、これらのリンクはここにのみ置いています。
+
 ## 貢献
 
 PR を歓迎します：機械可読な新規出典、根拠タグの修正、基準項目の追加、三言語表現の改善。まず [CONTRIBUTING.md](CONTRIBUTING.md) と [docs/METHODOLOGY.md](docs/METHODOLOGY.md) をご覧ください。
