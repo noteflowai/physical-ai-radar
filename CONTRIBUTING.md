@@ -71,14 +71,16 @@ reviewer has to judge is the content:
 Reject or rewrite freely — a human-curated line in `data/baseline.json` always outranks
 a draft, and deleting the file simply restores the per-lane templates.
 
-## Workflows and the self-hosted runner
+## Workflows and agent automation
 
-This repository is public and one lane runs on a self-hosted machine. **Only
-`workflow_dispatch` and `schedule` may reach it** — a `pull_request` trigger on that
-runner would execute a contributor's branch on someone's computer.
-`tests/test_workflows.py` enforces this, and
-[docs/self-hosted-runner.md](docs/self-hosted-runner.md) explains the rest of the
-posture, including why the curator agent is given no shell.
+This repository is public, so **no workflow may run on a self-hosted runner**: a
+`pull_request` trigger on such a runner would execute a contributor's branch on
+someone's computer. There is no runner today, and `tests/test_workflows.py` keeps it
+that way — it also forbids `--trust-all-tools` anywhere, because that flag bypasses an
+agent's write path limits.
+
+The agent work runs on a maintainer's machine on a schedule and opens pull requests.
+[docs/automation.md](docs/automation.md) explains what runs where and why.
 
 ## Reporting a mistake
 

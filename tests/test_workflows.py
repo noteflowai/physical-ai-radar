@@ -70,10 +70,13 @@ class WorkflowSafetyTest(unittest.TestCase):
             self.assertTrue(triggers(path.read_text(encoding="utf-8")),
                             f"{path.name}: no triggers parsed, so the check above cannot protect it")
 
-    def test_no_workflow_trusts_every_tool(self) -> None:
+    def test_nothing_trusts_every_tool(self) -> None:
         # Measured on kiro-cli 2.21.2: --trust-all-tools bypasses the agent's own
         # write allowedPaths/deniedPaths, which is the only enforced boundary here.
-        for path in sorted(WORKFLOWS.glob("*.yml")):
+        # The agents now run from scripts rather than workflows, so check both.
+        candidates = sorted(WORKFLOWS.glob("*.yml")) + sorted((ROOT/"scripts").glob("*.sh"))
+        self.assertGreaterEqual(len(candidates), 3, "nothing was scanned")
+        for path in candidates:
             for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
                 if line.lstrip().startswith("#"):
                     continue
