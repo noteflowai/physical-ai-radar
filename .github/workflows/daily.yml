@@ -35,7 +35,7 @@ jobs:
       - name: Generate today's radar
         run: python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
 
-      - name: Verify trilingual output exists
+      - name: Verify trilingual output and report fetch health
         run: |
           DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
           for LANG in zh en ja; do
@@ -43,6 +43,20 @@ jobs:
           done
           test -s assets/lane-distribution.svg
           test -s radar/latest.json
+          # A total outage already failed the previous step. This surfaces the
+          # partial case, which stays green on purpose.
+          python - <<'PY' | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
+          import json, pathlib
+          fetch = json.loads(pathlib.Path("radar/latest.json").read_text(encoding="utf-8")).get("fetch", {})
+          print("### Fetch health\n")
+          print(f"- items collected: {fetch.get('items', 0)}")
+          print(f"- sources answered: {fetch.get('answered', 0)}/{fetch.get('attempted', 0)}")
+          per_source = fetch.get("per_source", {})
+          if per_source:
+              print("- per source: " + ", ".join(f"`{name}` {count}" for name, count in sorted(per_source.items())))
+          if fetch.get("failed"):
+              print("- **no answer from:** " + ", ".join(fetch["failed"]))
+          PY
 
       - name: Commit when something changed
         run: |

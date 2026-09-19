@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import urllib.error
 from datetime import date
 from pathlib import Path
 from unittest.mock import patch
@@ -30,8 +31,20 @@ from pairadar.distill import (  # noqa: E402
     recency_bonus,
     select,
 )
-from pairadar.cli import recent_urls, save_history  # noqa: E402
-from pairadar.fetch import baseline_items, clean_text, link_digest, parse_date  # noqa: E402
+from pairadar.cli import degraded, recent_urls, save_history  # noqa: E402
+from pairadar import fetch as fetch_module  # noqa: E402
+from pairadar.fetch import (  # noqa: E402
+    ARXIV_ENDPOINT,
+    FetchReport,
+    baseline_items,
+    clean_text,
+    fetch_all,
+    fetch_arxiv,
+    http_get,
+    link_digest,
+    parse_date,
+)
+from pairadar import render  # noqa: E402
 from pairadar.render import render_daily  # noqa: E402
 
 
@@ -281,6 +294,98 @@ class RepeatMemoryTest(unittest.TestCase):
     def test_url_key_normalises_tracking_and_slashes(self) -> None:
         self.assertEqual(url_key("https://Example.org/Post/?utm_source=x"),
                          url_key("https://Example.org/Post"))
+
+
+class FetchReliabilityTest(unittest.TestCase):
+    """A dead source must not silently become a quiet day."""
+
+    def setUp(self) -> None:
+        self.config = load_config()
+
+    def test_http_get_retries_a_transient_failure(self) -> None:
+        class Response:
+            def read(self) -> bytes:
+                return b"<feed/>"
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc) -> None:
+                return None
+
+        attempts = []
+
+        def flaky(request, timeout=None):
+            attempts.append(request.full_url)
+            if len(attempts) == 1:
+                raise urllib.error.URLError("connection reset")
+            return Response()
+
+        with patch.object(fetch_module.urllib.request, "urlopen", flaky), \
+                patch.object(fetch_module.time, "sleep") as sleep:
+            self.assertEqual(http_get("https://example.org/feed"), b"<feed/>")
+        self.assertEqual(len(attempts), 2)
+        self.assertEqual(sleep.call_count, 1)
+
+    def test_http_get_gives_up_and_returns_none(self) -> None:
+        def always_fail(request, timeout=None):
+            raise urllib.error.HTTPError(request.full_url, 406, "Not Acceptable", {}, None)
+
+        with patch.object(fetch_module.urllib.request, "urlopen", always_fail), \
+                patch.object(fetch_module.time, "sleep"):
+            self.assertIsNone(http_get("https://example.org/feed", retries=2))
+
+    def test_arxiv_uses_https_and_spaces_its_queries(self) -> None:
+        # arXiv asks for roughly three seconds between API calls.
+        urls: list[str] = []
+        with patch.object(fetch_module, "http_get", lambda url: urls.append(url) or b"<feed/>"), \
+                patch.object(fetch_module.time, "sleep") as sleep:
+            items, answered = fetch_arxiv(self.config)
+        queries = len(self.config.sources["arxiv"]["queries"])
+        self.assertEqual(items, [])
+        self.assertTrue(answered)
+        self.assertEqual(len(urls), queries)
+        self.assertTrue(all(url.startswith("https://") for url in urls), urls)
+        self.assertTrue(ARXIV_ENDPOINT.startswith("https://"))
+        self.assertEqual(sleep.call_count, queries - 1)
+
+    def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
+        with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
+                patch.object(fetch_module.time, "sleep"):
+            report = fetch_all(self.config)
+        expected = {"arxiv", *(feed["id"] for feed in self.config.sources["feeds"])}
+        self.assertEqual(set(report.failed), expected)
+        self.assertEqual(report.answered, [])
+        summary = report.to_dict()
+        self.assertEqual(summary["items"], 0)
+        self.assertEqual(summary["answered"], 0)
+        self.assertEqual(summary["attempted"], len(expected))
+
+    def test_degraded_only_fires_on_a_real_outage(self) -> None:
+        outage = FetchReport(attempted=["arxiv"], failed=["arxiv"]).to_dict()
+        partial = FetchReport(items=[make_item()], attempted=["arxiv", "deepmind"],
+                              failed=["deepmind"]).to_dict()
+        self.assertTrue(degraded(outage, offline=False))
+        self.assertFalse(degraded(outage, offline=True), "offline runs fetch nothing by design")
+        self.assertFalse(degraded(partial, offline=False), "one dead source must not fail the run")
+        self.assertFalse(degraded(FetchReport().to_dict(), offline=False))
+
+    def test_published_payload_carries_fetch_health(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch.object(render, "ROOT", Path(temporary)):
+                path = render.write_latest({
+                    "date": "2026-09-19",
+                    "generated": "2026-09-19 01:30 UTC",
+                    "window": "w",
+                    "picked": [],
+                    "lane_rows": [("edge", 1)],
+                    "mix": {"O": 0, "R": 1, "M": 0},
+                    "baseline_all": [],
+                    "fetch": FetchReport(items=[make_item()], attempted=["arxiv"]).to_dict(),
+                })
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(payload["fetch"]["answered"], 1)
+        self.assertEqual(payload["fetch"]["per_source"], {"arxiv": 1})
 
 
 class RenderTest(unittest.TestCase):

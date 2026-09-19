@@ -234,6 +234,7 @@ def write_latest(ctx: dict[str, Any]) -> Path:
             "picked": [item.to_dict() for item in ctx["picked"]],
             "lane_counts": dict(ctx["lane_rows"]),
             "evidence_mix": ctx["mix"],
+            "fetch": ctx.get("fetch", {}),
             "baseline_count": len(ctx["baseline_all"]),
         },
     )
