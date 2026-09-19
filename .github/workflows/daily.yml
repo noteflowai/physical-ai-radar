@@ -65,11 +65,43 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet && git diff --cached --quiet; then
+          # --porcelain, not `git diff`: a day whose only change is a new file would
+          # otherwise read as "nothing happened".
+          if [ -z "$(git status --porcelain)" ]; then
             echo "no changes today"
             exit 0
           fi
           DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
           git add -A
           git commit -m "radar: ${DAY} update [skip ci]"
-          git push
+          # A run that started before somebody merged to main cannot fast-forward. That
+          # happened on 2026-09-19: the run began at 13:42:20, a pull request merged at
+          # 13:42:35, and the push was rejected with "fetch first" at 13:42:57 -- the day
+          # was simply lost. The output is deterministic, so catch up rather than merge:
+          # rebase the commit onto the new main, and if that cannot be resolved, throw the
+          # commit away and regenerate on top of main instead of resolving a conflict in
+          # generated files. `if` rather than `&&` chains, because a failing left-hand
+          # side of `&&` under bash -e is a trap.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "pushed on attempt ${attempt}"
+              exit 0
+            fi
+            echo "push rejected on attempt ${attempt}; catching up with origin/main"
+            git fetch origin main
+            if git rebase origin/main; then
+              continue
+            fi
+            echo "rebase failed; regenerating on top of the new main"
+            git rebase --abort || true
+            git reset --hard origin/main
+            python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
+            if [ -z "$(git status --porcelain)" ]; then
+              echo "the new main already carries an equivalent update"
+              exit 0
+            fi
+            git add -A
+            git commit -m "radar: ${DAY} update [skip ci]"
+          done
+          echo "::error::could not push the ${DAY} radar after 3 attempts"
+          exit 1
