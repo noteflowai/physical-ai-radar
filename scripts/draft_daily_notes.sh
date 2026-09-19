@@ -68,10 +68,13 @@ if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
   exit 0
 fi
 
-kiro-cli agent list 2>/dev/null | grep -q "$AGENT" || {
-  log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"
-  exit 1
-}
+# Capture first: `| grep -q` closes the pipe early, and under `set -o pipefail`
+# the SIGPIPE from kiro-cli would read as "agent missing".
+AGENTS="$(kiro-cli agent list 2>/dev/null || true)"
+case "$AGENTS" in
+  *"$AGENT"*) : ;;
+  *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
+esac
 
 log "drafting notes for ${DAY}"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
