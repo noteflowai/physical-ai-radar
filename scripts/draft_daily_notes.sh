@@ -68,9 +68,9 @@ if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
   exit 0
 fi
 
-# Capture first: `| grep -q` closes the pipe early, and under `set -o pipefail`
-# the SIGPIPE from kiro-cli would read as "agent missing".
-AGENTS="$(kiro-cli agent list 2>/dev/null || true)"
+# `agent list` prints to stderr, and capturing it through `| grep -q` would also
+# trip pipefail via SIGPIPE. Capture both streams into a variable instead.
+AGENTS="$(kiro-cli agent list 2>&1 || true)"
 case "$AGENTS" in
   *"$AGENT"*) : ;;
   *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
