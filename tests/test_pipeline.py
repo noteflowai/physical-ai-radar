@@ -824,6 +824,19 @@ class ChartsTest(unittest.TestCase):
             self.assertIn('class="plate"', svg)
             self.assertNotIn('fill="#ffffff"/>', svg, "the plate must be themed, not hardcoded")
 
+    def test_every_lane_gets_its_own_colour(self) -> None:
+        # Two lanes sharing a colour in one chart is worse than any single colour
+        # choice, and hashing labels cannot guarantee they differ.
+        import re
+        config = load_config()
+        rows = [(config.chart_label(lane["id"]), 3) for lane in config.lanes]
+        svg = charts.horizontal_bars("T", rows, colors=charts.PALETTE)
+        used = re.findall(r'rx="3" fill="(#[0-9a-f]{6})"', svg)
+        self.assertEqual(len(used), len(rows))
+        self.assertEqual(len(set(used)), len(rows), "two lanes drew the same colour")
+        self.assertNotIn(charts.ACCENT_3, used,
+                         "the alarm red belongs to the media segment, not to a lane")
+
     def test_a_label_keeps_its_colour_across_processes(self) -> None:
         # A lane changing colour from day to day would read as a change in the data.
         expected = charts.color_for("Edge & real-time")
