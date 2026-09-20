@@ -796,6 +796,22 @@ class ChartsTest(unittest.TestCase):
             root = ET.fromstring(svg)
             self.assertTrue(root.tag.endswith("svg"))
 
+    def test_cadence_marks_the_latest_run_and_its_mean(self) -> None:
+        series = [("2026-09-1%d" % day, value) for day, value in enumerate([4, 6, 5, 8, 7, 8], 1)]
+        svg = charts.cadence_bars("Daily cadence", series)
+        self.assertIn("mean 6.3", svg, "the bars need a reference to be read against")
+        self.assertIn('fill-opacity="0.95"', svg, "the latest run has to stand out")
+        self.assertIn('fill-opacity="0.5"', svg, "earlier runs recede")
+        # A single point is still a valid chart, and is its own mean.
+        self.assertIn("mean 3.0", charts.cadence_bars("T", [("2026-09-19", 3)]))
+
+    def test_evidence_strip_shows_shares_when_a_segment_fits_them(self) -> None:
+        svg = charts.evidence_strip("Evidence mix", {"O": 14, "R": 20, "M": 3})
+        for share in ("38%", "54%"):
+            self.assertIn(share, svg, "counts alone are hard to compare between days")
+        self.assertIn("M 3", svg, "a narrow segment keeps its count")
+        self.assertNotIn("M 3 ·", svg, "a narrow segment must not carry text wider than itself")
+
     def test_charts_adapt_to_a_dark_theme(self) -> None:
         # GitHub renders READMEs dark for many readers; a hard white plate glares.
         for svg in (charts.horizontal_bars("T", [("Edge", 3)]),
