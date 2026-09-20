@@ -6,6 +6,7 @@ import hashlib
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -506,6 +507,51 @@ class SourceHealthTest(unittest.TestCase):
         entry = next(run for run in runs if run["date"] == "2026-03-05")
         self.assertIn("failed", entry, "health has to be recorded to be readable later")
         self.assertEqual(entry["failed"], [], "an offline run attempts no source")
+
+
+def unsupported_numbers(text: str, source: str) -> list[str]:
+    """Numeric claims in a drafted line that the published page does not contain.
+
+    The agent is told never to add a number that is not in the source. This is the
+    mechanical half of that rule: every multi-digit figure in a drafted line has to
+    appear in the page the line is about. Single digits are ignored -- "one" or a
+    lane index carries no claim.
+    """
+    haystack = source.replace(",", "")
+    missing = []
+    for token in {match.group(0).strip() for match in re.finditer(r"\d+(?:[.,]\d+)?", text)}:
+        digits = token.replace(",", "")
+        if len(digits.replace(".", "")) >= 2 and digits not in haystack:
+            missing.append(token)
+    return sorted(missing)
+
+
+class DraftedNumbersTest(unittest.TestCase):
+    """A drafted line may not introduce a number the page does not have."""
+
+    def test_the_check_catches_an_invented_figure(self) -> None:
+        page = "PASSAGE: humanoid traversal `50 Hz` `48.1%` reported by the authors."
+        self.assertEqual(unsupported_numbers("50 Hz control, 48.1% success", page), [])
+        self.assertEqual(unsupported_numbers("a 3.2x speedup", page), ["3.2"])
+        self.assertEqual(unsupported_numbers("one embodiment only", page), [])
+
+    def test_every_drafted_note_is_supported_by_its_page(self) -> None:
+        directory = ROOT/"data"/"notes"
+        files = sorted(directory.glob("*.json")) if directory.exists() else []
+        if not files:
+            self.skipTest("no drafted notes in the tree yet")
+        for path in files:
+            document = json.loads(path.read_text(encoding="utf-8"))
+            day = document["date"]
+            pages = [ROOT/"radar"/"daily"/f"{day}.{lang}.md" for lang in LANGS]
+            source = "\n".join(page.read_text(encoding="utf-8") for page in pages if page.exists())
+            if not source:
+                continue
+            for url, note in document["notes"].items():
+                for lang, line in note.items():
+                    with self.subTest(day=day, url=url, lang=lang):
+                        self.assertEqual(unsupported_numbers(line, source), [],
+                                         "a drafted line cites a number the page does not contain")
 
 
 class DraftedNotesTest(unittest.TestCase):
