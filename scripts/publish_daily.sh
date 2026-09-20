@@ -54,7 +54,9 @@ git clean -qfdx
 
 log "generating the ${DAY} radar"
 python3 -m pairadar --limit "$LIMIT"
-python3 -m unittest discover -s tests
+# stdout is the pipeline talking to itself; the verdict and any failure go to
+# stderr, so dropping stdout keeps this log about tonight's run.
+python3 -m unittest discover -s tests >/dev/null
 
 if [ -z "$(changed_paths)" ]; then
   log "nothing changed today"

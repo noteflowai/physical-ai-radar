@@ -102,7 +102,9 @@ if [ "$CHANGED" != "data/sources.json" ]; then
   exit 1
 fi
 
-python3 -m unittest discover -s tests
+# stdout is the pipeline talking to itself; the verdict and any failure go to
+# stderr, so dropping stdout keeps this log about tonight's run.
+python3 -m unittest discover -s tests >/dev/null
 python3 -c "import json; json.load(open('data/sources.json'))"
 
 if [ "$DRY_RUN" = "1" ]; then

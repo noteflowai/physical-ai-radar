@@ -129,7 +129,9 @@ if [ "$CHANGED" != "$NOTES" ]; then
 fi
 
 # The deterministic half: the schema, the render and the full suite must all accept it.
-python3 -m unittest discover -s tests
+# stdout is the pipeline talking to itself; the verdict and any failure go to
+# stderr, so dropping stdout keeps this log about tonight's run.
+python3 -m unittest discover -s tests >/dev/null
 PREVIEW="$(mktemp -d "/tmp/radar-notes-preview-${DAY}-XXXXXX")"
 python3 -m pairadar --offline --out "$PREVIEW" --date "$DAY" >/dev/null
 python3 - "$DAY" "$NOTES" <<'PY'
@@ -161,7 +163,7 @@ if python3 -c "import json,sys; picks=json.load(open('radar/latest.json'))['pick
     restore_tree
     exit 1
   fi
-  python3 -m unittest discover -s tests
+  python3 -m unittest discover -s tests >/dev/null
 else
   log "snapshot has no stored excerpts; leaving the published pages untouched"
 fi
