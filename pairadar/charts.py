@@ -5,6 +5,7 @@ into CI to render identically everywhere. The surrounding prose carries zh / ja.
 """
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Iterable, Sequence
 
@@ -14,6 +15,25 @@ GRID = "#e3e9ef"
 ACCENT = "#7300e5"
 ACCENT_2 = "#41b1e8"
 ACCENT_3 = "#eb003b"
+# Deterministic per-label colours: a lane keeps its colour across days, and sha1
+# rather than hash() so the palette does not shuffle per process.
+PALETTE = ("#7300e5", "#41b1e8", "#eb003b", "#00a878", "#f07c00", "#8a6bff", "#0d8ecf", "#c2185b")
+# GitHub renders READMEs in a dark theme for a large share of readers, where a hard
+# white plate glares. One file adapts instead of shipping two.
+STYLE = (
+    "<style>\n"
+    "  .plate { fill: #ffffff }\n"
+    "  .ink { fill: #161d26 }\n"
+    "  .muted { fill: #5f6b7a }\n"
+    "  .grid { stroke: #e3e9ef }\n"
+    "  @media (prefers-color-scheme: dark) {\n"
+    "    .plate { fill: #0d1117 }\n"
+    "    .ink { fill: #e6edf3 }\n"
+    "    .muted { fill: #8b949e }\n"
+    "    .grid { stroke: #30363d }\n"
+    "  }\n"
+    "</style>"
+)
 FONT = "ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
 
 
@@ -36,6 +56,11 @@ def fit(text: str, budget: float, font_size: int = 12) -> str:
     return text[:keep].rstrip() + "…"
 
 
+def color_for(label: str) -> str:
+    """Stable colour for a label, so a lane looks the same from day to day."""
+    return PALETTE[int(hashlib.sha1(label.encode("utf-8")).hexdigest()[:8], 16) % len(PALETTE)]
+
+
 def _escape(text: str) -> str:
     return (
         text.replace("&", "&amp;")
@@ -49,12 +74,13 @@ def _header(width: int, height: int, title: str, subtitle: str = "") -> list[str
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" '
         f'height="{height}" role="img" aria-label="{_escape(title)}">',
-        f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
-        f'<text x="20" y="30" font-family="{FONT}" font-size="16" font-weight="700" fill="{INK}">{_escape(title)}</text>',
+        STYLE,
+        f'<rect class="plate" width="{width}" height="{height}"/>',
+        f'<text x="20" y="30" font-family="{FONT}" font-size="16" font-weight="700" class="ink">{_escape(title)}</text>',
     ]
     if subtitle:
         parts.append(
-            f'<text x="20" y="50" font-family="{FONT}" font-size="11" fill="{MUTED}">{_escape(subtitle)}</text>'
+            f'<text x="20" y="50" font-family="{FONT}" font-size="11" class="muted">{_escape(subtitle)}</text>'
         )
     return parts
 
@@ -80,9 +106,9 @@ def horizontal_bars(
     for index, (label, value) in enumerate(rows):
         y = top + index * row_height
         bar = max(2, int(plot_width * value / peak)) if value else 2
-        color = ACCENT if index % 3 == 0 else (ACCENT_2 if index % 3 == 1 else ACCENT_3)
+        color = color_for(label)
         svg.append(
-            f'<text x="20" y="{y + 13}" font-family="{FONT}" font-size="12" fill="{INK}">{_escape(label)}</text>'
+            f'<text x="20" y="{y + 13}" font-family="{FONT}" font-size="12" class="ink">{_escape(label)}</text>'
         )
         svg.append(
             f'<rect x="{label_width}" y="{y + 2}" width="{bar}" height="15" rx="3" fill="{color}" '
@@ -90,7 +116,7 @@ def horizontal_bars(
         )
         svg.append(
             f'<text x="{label_width + bar + 8}" y="{y + 14}" font-family="{FONT}" font-size="11" '
-            f'fill="{MUTED}">{value}</text>'
+            f'class="muted">{value}</text>'
         )
     svg.append("</svg>")
     return "\n".join(svg)
@@ -112,7 +138,7 @@ def cadence_bars(
     svg = _header(width, height, title, subtitle)
     for fraction in (0, 0.5, 1.0):
         y = top + plot_h - plot_h * fraction
-        svg.append(f'<line x1="{left}" y1="{y:.1f}" x2="{width - right}" y2="{y:.1f}" stroke="{GRID}"/>')
+        svg.append(f'<line x1="{left}" y1="{y:.1f}" x2="{width - right}" y2="{y:.1f}" class="grid"/>')
         svg.append(
             f'<text x="{left - 8}" y="{y + 4:.1f}" text-anchor="end" font-family="{FONT}" font-size="10" '
             f'fill="{MUTED}">{int(peak * fraction)}</text>'
