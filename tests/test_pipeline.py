@@ -19,7 +19,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import charts, cli, health  # noqa: E402
+from pairadar import charts, cli, health, lanes  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config, load_notes  # noqa: E402
 from pairadar.distill import (  # noqa: E402
     classify,
@@ -524,6 +524,63 @@ def unsupported_numbers(text: str, source: str) -> list[str]:
         if len(digits.replace(".", "")) >= 2 and digits not in haystack:
             missing.append(token)
     return sorted(missing)
+
+
+class LaneEvidenceTest(unittest.TestCase):
+    """Name the items whose lane rests on almost nothing, without changing any lane."""
+
+    def setUp(self) -> None:
+        self.config = load_config()
+
+    def test_ranked_lanes_covers_every_lane_best_first(self) -> None:
+        ranking = lanes.ranked_lanes("on-device inference latency at 23 Hz on Jetson", self.config)
+        self.assertEqual(len(ranking), len(self.config.lanes))
+        self.assertEqual(ranking[0][0], "edge")
+        self.assertGreaterEqual(ranking[0][2], ranking[1][2])
+
+    def test_a_well_matched_item_is_not_flagged(self) -> None:
+        item = make_item(title="On-device inference latency and control frequency",
+                         summary="Quantization for real-time control at 50 Hz on Jetson Thor, measured on-device.")
+        enrich([item], self.config, date(2026, 9, 19))
+        self.assertIsNone(lanes.inspect(item, self.config))
+
+    def test_a_single_keyword_is_reported_as_thin(self) -> None:
+        item = make_item(title="A note mentioning one humanoid", summary="Nothing else matches a lane.")
+        enrich([item], self.config, date(2026, 9, 19))
+        finding = lanes.inspect(item, self.config)
+        self.assertIsNotNone(finding)
+        self.assertIn("thin", finding["reasons"])
+        self.assertEqual(finding["lane"], item.lane)
+
+    def test_two_close_lanes_are_reported_as_ambiguous(self) -> None:
+        item = make_item(
+            title="Closed-loop evaluation of on-device inference",
+            summary="sim2real success rate measured on-device with quantization and real-time control.")
+        enrich([item], self.config, date(2026, 9, 19))
+        finding = lanes.inspect(item, self.config, margin=10.0)
+        self.assertIsNotNone(finding)
+        self.assertIn("ambiguous", finding["reasons"])
+        self.assertNotEqual(finding["best"]["lane"], finding["runner_up"]["lane"])
+
+    def test_the_report_says_how_much_text_it_had(self) -> None:
+        # A snapshot written before excerpts were stored classifies on titles alone,
+        # which inflates "thin"; the report has to admit that rather than hide it.
+        items = [make_item(id="a", summary=""), make_item(id="b", url="https://example.org/b")]
+        verdict = lanes.report(items, self.config)
+        self.assertEqual(verdict["checked"], 2)
+        self.assertEqual(verdict["with_summaries"], 1)
+
+    def test_cli_exit_codes_and_a_missing_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary)/"latest.json"
+            self.assertEqual(lanes.published_picks(path), [], "a missing snapshot is not an error")
+            item = make_item(title="A note mentioning one humanoid", summary="Nothing else.")
+            enrich([item], self.config, date(2026, 9, 19))
+            path.write_text(json.dumps({"picked": [item.to_dict()]}), encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                self.assertEqual(lanes.main(["--latest", str(path)]), 0)
+                self.assertEqual(lanes.main(["--latest", str(path), "--fail-on-suspicious"]), 1)
+            self.assertIn("suspicious", out.getvalue())
 
 
 class DraftedNumbersTest(unittest.TestCase):
