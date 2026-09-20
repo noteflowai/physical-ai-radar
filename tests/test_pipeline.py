@@ -796,6 +796,27 @@ class ChartsTest(unittest.TestCase):
             root = ET.fromstring(svg)
             self.assertTrue(root.tag.endswith("svg"))
 
+    def test_charts_adapt_to_a_dark_theme(self) -> None:
+        # GitHub renders READMEs dark for many readers; a hard white plate glares.
+        for svg in (charts.horizontal_bars("T", [("Edge", 3)]),
+                    charts.cadence_bars("T", [("2026-09-19", 3)]),
+                    charts.evidence_strip("T", {"O": 1, "R": 2, "M": 0})):
+            self.assertIn("prefers-color-scheme: dark", svg)
+            self.assertIn('class="plate"', svg)
+            self.assertNotIn('fill="#ffffff"/>', svg, "the plate must be themed, not hardcoded")
+
+    def test_a_label_keeps_its_colour_across_processes(self) -> None:
+        # A lane changing colour from day to day would read as a change in the data.
+        expected = charts.color_for("Edge & real-time")
+        self.assertIn(expected, charts.PALETTE)
+        script = ("import sys; sys.path.insert(0, %r);"
+                  "from pairadar.charts import color_for; print(color_for('Edge & real-time'))" % str(ROOT))
+        for seed in ("0", "7"):
+            result = subprocess.run([sys.executable, "-c", script], check=True, capture_output=True,
+                                    text=True, env={**os.environ, "PYTHONHASHSEED": seed})
+            self.assertEqual(result.stdout.strip(), expected)
+        self.assertNotEqual(charts.color_for("Edge & real-time"), charts.color_for("Data engine"))
+
     def test_charts_handle_empty_input(self) -> None:
         self.assertIn("<svg", charts.horizontal_bars("Empty", []))
         self.assertIn("<svg", charts.cadence_bars("Empty", []))
