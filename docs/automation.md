@@ -7,7 +7,8 @@ anywhere that matters.
 | What | Where | Trigger | Writes |
 | --- | --- | --- | --- |
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
-| `daily.yml` | GitHub-hosted runner | 01:30 UTC, manual | commits the day's radar to `main` |
+| `daily.yml` | GitHub-hosted runner | manual only, a fallback | commits the day's radar to `main` |
+| `scripts/publish_daily.sh` | maintainer's machine, cron | 09:40 Asia/Singapore | commits the day's radar to `main` |
 | `scripts/draft_daily_notes.sh` | maintainer's machine, cron | 02:30 Asia/Singapore | opens a pull request |
 | `scripts/repair_sources.sh` | maintainer's machine, cron | 03:15 Asia/Singapore | opens a pull request |
 
