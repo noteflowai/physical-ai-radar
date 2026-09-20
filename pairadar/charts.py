@@ -15,6 +15,7 @@ GRID = "#e3e9ef"
 ACCENT = "#7300e5"
 ACCENT_2 = "#41b1e8"
 ACCENT_3 = "#eb003b"
+BAR_MAX = 34.0
 # Deterministic per-label colours: a lane keeps its colour across days, and sha1
 # rather than hash() so the palette does not shuffle per process.
 PALETTE = ("#7300e5", "#41b1e8", "#eb003b", "#00a878", "#f07c00", "#8a6bff", "#0d8ecf", "#c2185b")
@@ -151,10 +152,13 @@ def cadence_bars(
         svg.append(f'<text class="muted" x="{width - right}" y="{y_mean - 5:.1f}" text-anchor="end" '
                    f'font-family="{FONT}" font-size="9">mean {mean:.1f}</text>')
         slot = plot_w / len(points)
-        bar_w = max(4.0, slot * 0.6)
+        # A fresh archive holds two runs. Without a cap each bar becomes a 200px
+        # billboard and the chart reads as a bug rather than as two data points.
+        bar_w = min(BAR_MAX, max(4.0, slot * 0.6))
+        offset = (slot - bar_w) / 2
         for index, (label, value) in enumerate(points):
             bar_h = plot_h * value / peak
-            x = left + slot * index + (slot - bar_w) / 2
+            x = left + slot * index + offset
             y = top + plot_h - bar_h
             latest = index == len(points) - 1
             svg.append(
