@@ -1,9 +1,9 @@
 name: daily radar
 
+# Manual fallback only. The scheduled publish runs on a maintainer's machine via
+# scripts/publish_daily.sh: one scheduler instead of two, and no token with push
+# rights sitting in a public repository's CI. Use this when that machine is down.
 on:
-  schedule:
-    # 01:30 UTC = 09:30 Asia/Shanghai = 10:30 Asia/Tokyo — after the arXiv daily announcement.
-    - cron: "30 1 * * *"
   workflow_dispatch:
     inputs:
       limit:

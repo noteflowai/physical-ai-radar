@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Publish the day's radar from this machine.
+#
+# This used to be a scheduled GitHub Actions job. It moved here because the machine
+# already runs the drafting and repair loops, because one scheduler is easier to
+# reason about than two, and because a hosted runner needed `contents: write` to do
+# it -- a token with push rights on a public repository, for a job that only ever
+# commits generated files.
+#
+# What Actions keeps is the job hosted CI is actually good at: verifying on a clean
+# machine that the committed state builds and passes. It no longer publishes, and it
+# no longer needs write access.
+#
+#   scripts/publish_daily.sh [--limit N] [--dry-run]
+#
+# Exit codes: 0 published or nothing changed, 1 something failed loudly.
+set -euo pipefail
+
+REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
+CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
+BRANCH_BASE="${RADAR_BRANCH:-main}"
+LIMIT="${RADAR_LIMIT:-8}"
+DRY_RUN=0
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --limit) LIMIT="$2"; shift 2 ;;
+    --dry-run) DRY_RUN=1; shift ;;
+    *) echo "unknown argument: $1" >&2; exit 1 ;;
+  esac
+done
+
+if [ ! -d "$REPO_DIR/.git" ]; then
+  printf '[publish] cloning %s into %s\n' "$CLONE_URL" "$REPO_DIR"
+  git clone --quiet "$CLONE_URL" "$REPO_DIR"
+fi
+cd "$REPO_DIR"
+DAY="$(date -u +%F)"
+log() { printf '[publish %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
+
+changed_paths() {
+  git status --porcelain=v1 -z --untracked-files=all |
+    tr '\0' '\n' | sed -e 's/^...//' -e '/^$/d' | sort | tr '\n' ' ' | sed 's/ *$//'
+}
+
+# Start from a known state: leftovers from an interrupted run carry no information.
+if [ -n "$(changed_paths)" ]; then
+  log "clearing leftovers from an interrupted run"
+fi
+git fetch --quiet origin
+git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
+git reset --hard --quiet "origin/${BRANCH_BASE}"
+git clean -qfdx
+
+log "generating the ${DAY} radar"
+python3 -m pairadar --limit "$LIMIT"
+python3 -m unittest discover -s tests
+
+if [ -z "$(changed_paths)" ]; then
+  log "nothing changed today"
+  exit 0
+fi
+if [ "$DRY_RUN" = "1" ]; then
+  log "dry run: leaving $(changed_paths) in the working tree"
+  exit 0
+fi
+
+git config user.name "physical-ai-radar publisher"
+git config user.email "admin@noteflowai.com"
+git add -A
+git commit -q -m "radar: ${DAY} update"
+
+# Another change can land while this runs. The output is deterministic, so catch up
+# rather than merge: rebase, and if that cannot resolve, regenerate on top of main.
+for attempt in 1 2 3; do
+  if git push --quiet origin "$BRANCH_BASE"; then
+    log "published ${DAY} on attempt ${attempt}"
+    exit 0
+  fi
+  log "push rejected on attempt ${attempt}; catching up with origin/${BRANCH_BASE}"
+  git fetch --quiet origin "$BRANCH_BASE"
+  if git rebase --quiet "origin/${BRANCH_BASE}"; then
+    continue
+  fi
+  log "rebase failed; regenerating on top of the new ${BRANCH_BASE}"
+  git rebase --abort || true
+  git reset --hard --quiet "origin/${BRANCH_BASE}"
+  python3 -m pairadar --limit "$LIMIT"
+  if [ -z "$(changed_paths)" ]; then
+    log "the new ${BRANCH_BASE} already carries an equivalent update"
+    exit 0
+  fi
+  git add -A
+  git commit -q -m "radar: ${DAY} update"
+done
+log "could not publish ${DAY} after 3 attempts"
+exit 1
