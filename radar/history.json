@@ -4,6 +4,24 @@
       "date": "2026-09-19",
       "count": 8,
       "lanes": 6
+    },
+    {
+      "date": "2026-09-20",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://spectrum.ieee.org/tactile-data-robots",
+        "https://spectrum.ieee.org/video-friday-quadrotor-from-birotor",
+        "https://aws.amazon.com/blogs/physical-ai/fine-tuning-%cf%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks",
+        "https://spectrum.ieee.org/humanoid-robot-safety",
+        "https://spectrum.ieee.org/video-friday-microduck-robot",
+        "https://spectrum.ieee.org/video-friday-agility-robotics-digit",
+        "https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference",
+        "https://blogs.nvidia.com/blog/geforce-now-thursday-aniimo"
+      ],
+      "failed": [
+        "arxiv"
+      ]
     }
   ]
 }

@@ -18,22 +18,22 @@
 - **零依赖可复现**：整条流水线只用 Python 标准库，图表是手写 SVG，任何人都能在本地跑出同样结果。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-19
+### 今日雷达 · 2026-09-20
 
-`生成时间: 2026-09-19 08:12 UTC` ｜ `统计窗口: 2026-09-16 → 2026-09-19 (UTC)`
+`生成时间: 2026-09-20 01:51 UTC` ｜ `统计窗口: 2026-09-17 → 2026-09-20 (UTC)`
 
-- `[R]` **[GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies](http://arxiv.org/abs/2609.20776v1)** — 基座模型（VLA / WAM）
+- `[M]` **[Robots Are Learning to Feel](https://spectrum.ieee.org/tactile-data-robots)** — 数据引擎（采集 / 清洗 / scaling） ｜ `100 hours` · `12 tasks`
+  - 数据来源与清洗管道是当前真正的护城河，决定单位新任务的成本。
+- `[M]` **[Video Friday: Two Birotors Make a Quadrotor](https://spectrum.ieee.org/video-friday-quadrotor-from-birotor)** — 仿真与评测（sim2real / 闭环） ｜ `33%` · `2x`
+  - 评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。
+- `[O]` **[Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS](https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/)** — 基座模型（VLA / WAM）
   - 基座模型层的变化会直接决定下游所有任务的起点：它影响你需要多少自有数据、能不能跨本体迁移。
-- `[R]` **[rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference](http://arxiv.org/abs/2609.19104v1)** — 边缘与实时性（端侧推理 / 控制频率）
-  - 端侧延迟与控制频率是硬约束：模型再强，超出实时预算就不能进入控制回路。
-- `[R]` **[PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments](http://arxiv.org/abs/2609.18732v1)** — 边缘与实时性（端侧推理 / 控制频率） ｜ `50 Hz` · `48.1%`
-  - 端侧延迟与控制频率是硬约束：模型再强，超出实时预算就不能进入控制回路。
-- `[R]` **[StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation](http://arxiv.org/abs/2609.20791v1)** — 系统与编排（长程 / 多策略）
-  - 长程任务的系统形态是编排器加策略池，运维对象从单个模型变成一组能力边界。
-- `[R]` **[Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control](http://arxiv.org/abs/2609.20761v1)** — 基座模型（VLA / WAM） ｜ `11.9 ms`
-  - 基座模型层的变化会直接决定下游所有任务的起点：它影响你需要多少自有数据、能不能跨本体迁移。
+- `[M]` **[Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe](https://spectrum.ieee.org/humanoid-robot-safety)** — 本体与供应链（硬件 / 成本） ｜ `20 hours`
+  - 本体与供应链决定成本曲线和交付节奏，执行器仍是 BOM 的主要部分。
+- `[M]` **[Video Friday: Meet Microduck](https://spectrum.ieee.org/video-friday-microduck-robot)** — 本体与供应链（硬件 / 成本）
+  - 本体与供应链决定成本曲线和交付节奏，执行器仍是 BOM 的主要部分。
 
-[今日雷达 ›](radar/daily/2026-09-19.zh.md) · [历史归档 ›](radar/INDEX.md)
+[今日雷达 ›](radar/daily/2026-09-20.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.svg)
 

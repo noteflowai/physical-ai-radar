@@ -18,22 +18,22 @@ How this differs from a paper list or a news aggregator:
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-19
+### Today's radar · 2026-09-20
 
-`Generated: 2026-09-19 08:12 UTC` ｜ `Window: 2026-09-16 → 2026-09-19 (UTC)`
+`Generated: 2026-09-20 01:51 UTC` ｜ `Window: 2026-09-17 → 2026-09-20 (UTC)`
 
-- `[R]` **[GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies](http://arxiv.org/abs/2609.20776v1)** — Foundation models (VLA / WAM)
+- `[M]` **[Robots Are Learning to Feel](https://spectrum.ieee.org/tactile-data-robots)** — Data engine (collection / curation / scaling) ｜ `100 hours` · `12 tasks`
+  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
+- `[M]` **[Video Friday: Two Birotors Make a Quadrotor](https://spectrum.ieee.org/video-friday-quadrotor-from-birotor)** — Simulation & evaluation (sim2real / closed-loop) ｜ `33%` · `2x`
+  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+- `[O]` **[Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS](https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/)** — Foundation models (VLA / WAM)
   - Changes at the foundation-model layer reset the starting point for every downstream task: how much of your own data you need, and whether it transfers across embodiments.
-- `[R]` **[rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference](http://arxiv.org/abs/2609.19104v1)** — Edge & real-time (on-device inference / control rate)
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[R]` **[PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments](http://arxiv.org/abs/2609.18732v1)** — Edge & real-time (on-device inference / control rate) ｜ `50 Hz` · `48.1%`
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[R]` **[StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation](http://arxiv.org/abs/2609.20791v1)** — Systems & orchestration (long-horizon / multi-policy)
-  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
-- `[R]` **[Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control](http://arxiv.org/abs/2609.20761v1)** — Foundation models (VLA / WAM) ｜ `11.9 ms`
-  - Changes at the foundation-model layer reset the starting point for every downstream task: how much of your own data you need, and whether it transfers across embodiments.
+- `[M]` **[Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe](https://spectrum.ieee.org/humanoid-robot-safety)** — Embodiment & supply chain (hardware / cost) ｜ `20 hours`
+  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
+- `[M]` **[Video Friday: Meet Microduck](https://spectrum.ieee.org/video-friday-microduck-robot)** — Embodiment & supply chain (hardware / cost)
+  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
 
-[Today's radar ›](radar/daily/2026-09-19.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-20.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.svg)
 
