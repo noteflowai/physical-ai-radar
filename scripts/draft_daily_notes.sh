@@ -23,6 +23,7 @@ REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
 BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-analyst}"
+REVIEWER="${RADAR_REVIEWER:-radar-reviewer}"
 EFFORT="${RADAR_EFFORT:-medium}"
 DAY=""
 DRY_RUN=0
@@ -101,10 +102,12 @@ fi
 # `agent list` prints to stderr, and capturing it through `| grep -q` would also
 # trip pipefail via SIGPIPE. Capture both streams into a variable instead.
 AGENTS="$(kiro-cli agent list 2>&1 || true)"
-case "$AGENTS" in
-  *"$AGENT"*) : ;;
-  *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
-esac
+for required in "$AGENT" "$REVIEWER"; do
+  case "$AGENTS" in
+    *"$required"*) : ;;
+    *) log "agent '${required}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
+  esac
+done
 
 LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
 log "drafting notes for ${DAY}"
@@ -163,6 +166,20 @@ else
   log "snapshot has no stored excerpts; leaving the published pages untouched"
 fi
 
+log "reviewing ${DAY} with ${REVIEWER}"
+REVIEW="$(mktemp "/tmp/radar-review-${DAY}-XXXXXX.log")"
+kiro-cli chat --no-interactive --agent "$REVIEWER" --effort "$EFFORT" \
+  --trust-tools=read,grep,glob \
+  "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed." \
+  2>&1 | sed -e 's/\x1b\[[0-9;]*m//g' | tee "$REVIEW" | tail -25
+VERDICT="$(grep -oE '^(APPROVE|REJECT:.*)$' "$REVIEW" | tail -1)"
+case "$VERDICT" in
+  APPROVE) log "review: approved" ;;
+  REJECT:*) log "review: ${VERDICT}; discarding the draft"; rm -f "$REVIEW"; restore_tree; exit 1 ;;
+  *) log "review produced no verdict; discarding the draft"; rm -f "$REVIEW"; restore_tree; exit 1 ;;
+esac
+rm -f "$REVIEW"
+
 if [ "$DRY_RUN" = "1" ]; then
   log "dry run: keeping $NOTES in the working tree, no branch, no pull request"
   exit 0
@@ -189,4 +206,20 @@ gh pr create --base main --head "$BRANCH" \
     "Per-item analysis drafted for ${DAY} by \`${AGENT}\` on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
     "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, validated the schema and all three languages per item, and ran the full test suite. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
-log "pull request opened for ${DAY}"
+PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
+log "pull request #${PR} opened for ${DAY}; waiting for checks"
+for _ in $(seq 1 30); do
+  sleep 20
+  STATUS="$(gh pr checks "$PR" 2>&1 || true)"
+  case "$STATUS" in
+    *pending*) continue ;;
+    *fail*) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
+    *) break ;;
+  esac
+done
+case "$(gh pr checks "$PR" 2>&1 || true)" in
+  *pending*) log "checks still pending on #${PR}; leaving it open"; exit 0 ;;
+  *fail*) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
+esac
+gh pr merge "$PR" --merge
+log "merged #${PR} for ${DAY}"
