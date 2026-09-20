@@ -720,6 +720,9 @@ class RerenderTest(unittest.TestCase):
                 ctx = cli.rerender(source=root)
             pages = {lang: (root/"radar"/"daily"/f"2026-09-19.{lang}.md").read_text(encoding="utf-8")
                      for lang in LANGS}
+            for name in ("lane-distribution.svg", "cadence.svg", "evidence-mix.svg"):
+                self.assertTrue((root/"assets"/name).exists(),
+                                f"{name}: the pages embed the charts, so a re-render must refresh them")
         self.assertEqual([item.id for item in ctx["picked"]], ["arxiv:1"])
         for lang, page in pages.items():
             self.assertIn("A closed-loop VLA result", page)

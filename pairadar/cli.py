@@ -159,6 +159,15 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
         "fetch": snapshot.get("fetch", {}),
         "notes": load_notes(day),
     }
+    # The pages embed the charts, so re-rendering without them would publish a page
+    # whose numbers and whose images disagree.
+    charts.write_all(
+        root/"assets" if root != ROOT else ASSETS_DIR,
+        [(config.chart_label(lane_id), count) for lane_id, count in ctx["lane_rows"]],
+        ctx["cadence"],
+        ctx["mix"],
+        ctx["generated"],
+    )
     written = write_daily(config, ctx, root)
     if write_readme:
         for lang in LANGS:
