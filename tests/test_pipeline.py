@@ -1,7 +1,9 @@
 """Tests for the Physical AI Radar pipeline (standard library unittest only)."""
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import io
 import json
 import os
 import subprocess
@@ -358,8 +360,11 @@ class FetchReliabilityTest(unittest.TestCase):
 
     def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
         with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
-                patch.object(fetch_module.time, "sleep"):
+                patch.object(fetch_module.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()) as out:
             report = fetch_all(self.config)
+        # Captured: a simulated total outage in the log would read as a real one.
+        self.assertIn("no answer from", out.getvalue())
         expected = {"arxiv", *(feed["id"] for feed in self.config.sources["feeds"])}
         self.assertEqual(set(report.failed), expected)
         self.assertEqual(report.answered, [])
@@ -480,9 +485,17 @@ class SourceHealthTest(unittest.TestCase):
             path = Path(temporary)/"history.json"
             path.write_text(json.dumps({"runs": self.RUNS}), encoding="utf-8")
             common = ["--history", str(path), "--date", "2026-09-19"]
-            self.assertEqual(health.main(common), 0, "the daily run must stay green")
-            self.assertEqual(health.main([*common, "--fail-on-struggling"]), 1)
-            self.assertEqual(health.main([*common, "--fail-on-struggling", "--threshold", "9"]), 0)
+            # health.main prints its verdict; captured so a synthetic fixture cannot
+            # end up in the scheduled job's log looking like a real outage.
+            def verdict(argv):
+                with contextlib.redirect_stdout(io.StringIO()) as out:
+                    code = health.main(argv)
+                self.assertIn("struggling", out.getvalue())
+                return code
+
+            self.assertEqual(verdict(common), 0, "the daily run must stay green")
+            self.assertEqual(verdict([*common, "--fail-on-struggling"]), 1)
+            self.assertEqual(verdict([*common, "--fail-on-struggling", "--threshold", "9"]), 0)
 
     def test_a_run_records_which_sources_did_not_answer(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
