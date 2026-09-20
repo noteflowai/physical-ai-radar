@@ -18,7 +18,10 @@ ACCENT_3 = "#eb003b"
 BAR_MAX = 34.0
 # Deterministic per-label colours: a lane keeps its colour across days, and sha1
 # rather than hash() so the palette does not shuffle per process.
-PALETTE = ("#7300e5", "#41b1e8", "#eb003b", "#00a878", "#f07c00", "#8a6bff", "#0d8ecf", "#c2185b")
+# ACCENT_3, the alarm red, is deliberately absent: it belongs to the media segment
+# of the evidence strip, and a lane wearing it reads as a warning about the lane
+# rather than as a count.
+PALETTE = ("#7300e5", "#41b1e8", "#00a878", "#f07c00", "#8a6bff", "#0d8ecf", "#7cb342", "#00838f")
 # GitHub renders READMEs in a dark theme for a large share of readers, where a hard
 # white plate glares. One file adapts instead of shipping two.
 STYLE = (
@@ -92,6 +95,7 @@ def horizontal_bars(
     subtitle: str = "",
     width: int = 720,
     label_width: int = 250,
+    colors: Sequence[str] | None = None,
 ) -> str:
     """Horizontal bar chart, one row per label, values annotated at the bar end."""
     # Labels are drawn from x=20 and the bars start at label_width, so anything
@@ -107,7 +111,10 @@ def horizontal_bars(
     for index, (label, value) in enumerate(rows):
         y = top + index * row_height
         bar = max(2, int(plot_width * value / peak)) if value else 2
-        color = color_for(label)
+        # Hashing a label cannot guarantee two lanes differ, and two lanes sharing a
+        # colour in one chart is worse than any single colour choice. A caller that
+        # knows the full set passes colours by position instead.
+        color = colors[index % len(colors)] if colors else color_for(label)
         svg.append(
             f'<text x="20" y="{y + 13}" font-family="{FONT}" font-size="12" class="ink">{_escape(label)}</text>'
         )
@@ -239,7 +246,8 @@ def write_all(
     return {
         "lanes": write_svg(
             assets_dir / "lane-distribution.svg",
-            horizontal_bars("Lane distribution (tracked items)", list(lane_rows), subtitle),
+            horizontal_bars("Lane distribution (tracked items)", list(lane_rows), subtitle,
+                            colors=PALETTE),
         ),
         "cadence": write_svg(
             assets_dir / "cadence.svg",
