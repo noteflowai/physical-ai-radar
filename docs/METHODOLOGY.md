@@ -94,8 +94,9 @@ This is the part most repositories get wrong, so it is explicit here:
 5. **Drafted analysis is opt-in, per item, and labelled.** The "why it matters" line may
    come from a draft in `data/notes/<date>.json` instead of the per-lane template. Such a
    file is written outside the pipeline by `scripts/draft_daily_notes.sh`, which runs on a
-   maintainer's machine on a schedule, never in CI, and opens a pull request for review —
-   nothing reaches a reader without a human merge. Precedence is fixed: a human-curated
+   maintainer's machine on a schedule and never in CI. The pull request is merged
+   automatically once every deterministic check passes and a reviewer agent approves it;
+   no human reads it first, and the page says so. Precedence is fixed: a human-curated
    line beats a draft, a draft beats the template. Every drafted line carries a visible
    label next to its heading, the page names the agent and model that drafted it, and each
    language is drafted separately rather than translated. A missing language falls back to

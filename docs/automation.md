@@ -44,7 +44,14 @@ Both scripts share the same shape:
    and no shell;
 4. verification by this repository's own deterministic checks — the touched file set,
    the schema, the full test suite;
-5. a pull request, for a human.
+5. a reviewer agent -- read-only, no shell, no writes -- which must end its reply with
+   `APPROVE` or `REJECT: <reason>`; a rejection discards the draft;
+6. a pull request that merges itself once every check is green.
+
+Nobody reads the notes before they are published. The rendered pages say exactly that:
+drafted by the agent, merged automatically after deterministic checks and an agent
+review, **without human review**. If a check is pending or fails, the pull request is
+left open instead of merged, which is the only path by which a human gets involved.
 
 Measured on kiro-cli 2.21.2, `--trust-all-tools` bypasses the agent's own write path
 allowlist while `--trust-tools=write` enforces it, and a `shell` command allowlist is
