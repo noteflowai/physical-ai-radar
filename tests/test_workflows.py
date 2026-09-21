@@ -12,6 +12,7 @@ no YAML parser available. It reads the top-level `on:` block and looks for
 mentioning self-hosted in a comment still has to justify its triggers.
 """
 from pathlib import Path
+import json
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -110,3 +111,18 @@ class DraftGateTests(unittest.TestCase):
         suite = script.index("python3 -m unittest discover")
         self.assertLess(gate, suite, "parse the agent's JSON before running the suite")
         self.assertIn("restore_tree", script[gate:gate + 200])
+
+
+class AgentBoundaryTests(unittest.TestCase):
+    """The READMEs promise the agents cannot reach the network. Keep that true."""
+
+    FORBIDDEN = {"shell", "execute_bash", "web_fetch", "web_search", "use_aws"}
+
+    def test_the_drafting_agents_declare_no_shell_and_no_network(self):
+        for name in ("radar-analyst", "radar-reviewer"):
+            config = json.loads((ROOT/".kiro/agents"/f"{name}.json").read_text())
+            for field in ("tools", "allowedTools"):
+                declared = set(config.get(field) or [])
+                self.assertEqual(declared & self.FORBIDDEN, set(),
+                                 f"{name}.{field}: the source boundary is enforced here, "
+                                 f"not only described in the README")

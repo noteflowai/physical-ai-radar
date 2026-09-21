@@ -106,8 +106,14 @@ docs/        METHODOLOGY.md (method, translation policy, known limits)
 
 - Summaries are **extractive**: the English source excerpt is shown as a quote and never machine-translated. The analytical layer above it is written per language, never translated sentence by sentence — on most days by an agent, whose every line is labelled as drafted and whose figures must already appear on that day's published page; where no draft exists the per-lane template fills in, unlabelled. [How a draft is reviewed and what it may not claim](docs/METHODOLOGY.md).
 - Each language gets its own chart set, labelled in that language. These are SVG text, so the glyphs come from the reader's browser and nothing is bundled. Long names carry a curated short form in `data/taxonomy.json`; a label is trimmed only if it still does not fit, and a test asserts none currently is.
-- Ranking is an **explainable weighted sum**, not learned relevance. All weights live in `data/`, so a fork can retune them.
-- Sources are limited to public machine-readable endpoints. No article scraping, no paywall bypass.
+- Lane assignment is **keyword matching**, not classification. A lane needs at least one keyword hit, and `python3 -m pairadar.lanes` flags a pick decided by a single keyword (`thin`) or close to its runner-up (`ambiguous`). A wrong lane is findable; it is not prevented.
+
+## Deliberate choices (not limits)
+
+These will not be "fixed". Each one is what makes the rest checkable.
+
+- Ranking is an **explainable weighted sum**, not learned relevance. All weights live in `data/`, so a fork can retune them. An agent may propose new weights as a pull request you can read; it does not get to replace the model with one you cannot.
+- Sources are limited to public machine-readable endpoints. No article scraping, no paywall bypass. This is enforced rather than promised: the drafting and reviewing agents declare `read`, `grep` and `glob` only — no shell, no network — so they can only reason over what the pipeline already fetched and published, and a test asserts it stays that way.
 
 ## Related project
 
