@@ -6,6 +6,7 @@ into CI to render identically everywhere. The surrounding prose carries zh / ja.
 from __future__ import annotations
 
 import hashlib
+import unicodedata
 from pathlib import Path
 from typing import Iterable, Sequence
 
@@ -47,17 +48,34 @@ FONT = "ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans
 CHAR_PX = 6.8
 
 
+def char_width(char: str, font_size: int = 12) -> float:
+    """Estimated width of one glyph. A CJK character occupies about one em, roughly
+    twice a Latin average, so counting characters would under-measure it by half."""
+    if unicodedata.east_asian_width(char) in ("W", "F"):
+        return float(font_size)
+    return CHAR_PX * font_size / 12
+
+
 def text_width(text: str, font_size: int = 12) -> float:
     """Estimated rendered width, used to keep labels out of the plot area."""
-    return len(text) * CHAR_PX * font_size / 12
+    return sum(char_width(char, font_size) for char in text)
 
 
 def fit(text: str, budget: float, font_size: int = 12) -> str:
-    """Trim a label to a pixel budget, marking the cut."""
+    """Trim a label to a pixel budget, marking the cut. Characters are measured one at
+    a time because a mixed label has no single character width to divide by."""
     if text_width(text, font_size) <= budget:
         return text
-    keep = max(1, int(budget / (CHAR_PX * font_size / 12)) - 1)
-    return text[:keep].rstrip() + "…"
+    room = budget - char_width("…", font_size)
+    kept: list[str] = []
+    used = 0.0
+    for char in text:
+        width = char_width(char, font_size)
+        if used + width > room:
+            break
+        kept.append(char)
+        used += width
+    return "".join(kept).rstrip() + "…"
 
 
 def color_for(label: str) -> str:

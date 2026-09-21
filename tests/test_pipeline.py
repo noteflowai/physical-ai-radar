@@ -898,3 +898,19 @@ class OutputArtefactsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LabelWidthTests(unittest.TestCase):
+    """A CJK label is about twice as wide as its character count suggests."""
+
+    def test_a_cjk_label_measures_wider_than_a_latin_one_of_the_same_length(self):
+        latin = charts.text_width("abcdefgh")
+        cjk = charts.text_width("具身智能基础模型")
+        self.assertGreater(cjk, latin * 1.6, "full-width glyphs must not be counted as narrow")
+
+    def test_fit_respects_the_budget_for_every_script(self):
+        for label in ("foundation models and world models", "具身智能基础模型与世界模型",
+                      "ロボット基盤モデルと世界モデル", "mixed 混合 label"):
+            trimmed = charts.fit(label, 120.0)
+            self.assertLessEqual(charts.text_width(trimmed), 120.0, label)
+            self.assertTrue(trimmed == label or trimmed.endswith("…"), label)
