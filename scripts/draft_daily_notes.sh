@@ -128,6 +128,24 @@ if [ "$CHANGED" != "$NOTES" ]; then
   exit 1
 fi
 
+# Last night the agent wrote a file that stopped being JSON at line 23, and the suite
+# reported it as a traceback from an unrelated test. The most likely agent failure
+# deserves its own diagnosis, in one line, before anything else reads the file.
+if ! DIAGNOSIS="$(python3 - "$NOTES" <<'PY' 2>&1
+import json, sys
+try:
+    json.load(open(sys.argv[1], encoding="utf-8"))
+except json.JSONDecodeError as error:
+    sys.exit(f"{error.msg}, line {error.lineno} column {error.colno}")
+except OSError as error:
+    sys.exit(str(error))
+PY
+)"; then
+  log "the draft is not valid JSON: ${DIAGNOSIS}; reverting"
+  restore_tree
+  exit 1
+fi
+
 # The deterministic half: the schema, the render and the full suite must all accept it.
 # stdout is the pipeline talking to itself; the verdict and any failure go to
 # stderr, so dropping stdout keeps this log about tonight's run.

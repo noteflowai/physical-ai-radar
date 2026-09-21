@@ -99,3 +99,14 @@ class WorkflowSafetyTest(unittest.TestCase):
         # The failure this file exists to prevent.
         offending = "name: x\non:\n  pull_request:\njobs:\n  a:\n    runs-on: [self-hosted, tokyo]\n"
         self.assertTrue(triggers(offending) & UNTRUSTED)
+
+
+class DraftGateTests(unittest.TestCase):
+    """The nightly script must diagnose the agent's own most likely mistake."""
+
+    def test_the_draft_is_parsed_before_the_suite_sees_it(self):
+        script = (ROOT/"scripts/draft_daily_notes.sh").read_text()
+        gate = script.index("the draft is not valid JSON")
+        suite = script.index("python3 -m unittest discover")
+        self.assertLess(gate, suite, "parse the agent's JSON before running the suite")
+        self.assertIn("restore_tree", script[gate:gate + 200])
