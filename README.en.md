@@ -18,26 +18,26 @@ How this differs from a paper list or a news aggregator:
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-20
+### Today's radar · 2026-09-21
 
-`Generated: 2026-09-20 01:51 UTC` ｜ `Window: 2026-09-17 → 2026-09-20 (UTC)`
+`Generated: 2026-09-21 01:40 UTC` ｜ `Window: 2026-09-18 → 2026-09-21 (UTC)`
 
-- `[M]` **[Robots Are Learning to Feel](https://spectrum.ieee.org/tactile-data-robots)** — Data engine (collection / curation / scaling) ｜ `100 hours` · `12 tasks`
-  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
-- `[M]` **[Video Friday: Two Birotors Make a Quadrotor](https://spectrum.ieee.org/video-friday-quadrotor-from-birotor)** — Simulation & evaluation (sim2real / closed-loop) ｜ `33%` · `2x`
-  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
-- `[O]` **[Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS](https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/)** — Foundation models (VLA / WAM)
-  - Changes at the foundation-model layer reset the starting point for every downstream task: how much of your own data you need, and whether it transfers across embodiments.
-- `[M]` **[Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe](https://spectrum.ieee.org/humanoid-robot-safety)** — Embodiment & supply chain (hardware / cost) ｜ `20 hours`
+- `[O]` **[Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies](https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/)** — Systems & orchestration (long-horizon / multi-policy)
+  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
+- `[O]` **[Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps](https://huggingface.co/blog/grpo-with-trl-ifstruct)** — Training & self-improvement (RL / post-training)
+  - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
+- `[O]` **[NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC](https://blogs.nvidia.com/blog/ibc-news-2026/)** — Edge & real-time (on-device inference / control rate)
+  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
+- `[O]` **[Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original](https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing)** — Edge & real-time (on-device inference / control rate)
+  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
+- `[M]` **[The Best Way to Explore Lunar Craters Is a Giant Robot Ball](https://spectrum.ieee.org/moon-ball-robot)** — Embodiment & supply chain (hardware / cost)
   - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
-- `[M]` **[Video Friday: Meet Microduck](https://spectrum.ieee.org/video-friday-microduck-robot)** — Embodiment & supply chain (hardware / cost)
-  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
 
-[Today's radar ›](radar/daily/2026-09-20.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-21.en.md) · [Archive ›](radar/INDEX.md)
 
-![lane distribution](assets/lane-distribution.svg)
+![lane distribution](assets/lane-distribution.en.svg)
 
-![cadence](assets/cadence.svg)
+![cadence](assets/cadence.en.svg)
 <!-- RADAR:END -->
 
 ## The eight lanes

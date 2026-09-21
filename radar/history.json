@@ -22,6 +22,24 @@
       "failed": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-21",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform",
+        "https://huggingface.co/blog/grpo-with-trl-ifstruct",
+        "https://blogs.nvidia.com/blog/ibc-news-2026",
+        "https://huggingface.co/blog/multiversecomputingcai/quantization-aware-healing",
+        "https://spectrum.ieee.org/moon-ball-robot",
+        "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations",
+        "https://developer.nvidia.com/blog/how-to-train-a-cross-embodiment-robot-navigation-policy-with-ai-agents",
+        "https://deepmind.google/blog/introducing-agentic-video-in-gemini"
+      ],
+      "failed": [
+        "arxiv"
+      ]
     }
   ]
 }

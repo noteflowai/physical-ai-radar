@@ -18,26 +18,26 @@
 - **依存ゼロで再現可能**：パイプラインは Python 標準ライブラリのみ、図は手書き SVG。誰でも同じ出力をローカルで再現できます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-20
+### 本日のレーダー · 2026-09-21
 
-`生成時刻: 2026-09-20 01:51 UTC` ｜ `対象期間: 2026-09-17 → 2026-09-20 (UTC)`
+`生成時刻: 2026-09-21 01:40 UTC` ｜ `対象期間: 2026-09-18 → 2026-09-21 (UTC)`
 
-- `[M]` **[Robots Are Learning to Feel](https://spectrum.ieee.org/tactile-data-robots)** — データエンジン（収集 / 精査 / スケーリング） ｜ `100 hours` · `12 tasks`
-  - データの取得元と精査パイプラインが現在の真の堀であり、新規タスク単価を決める。
-- `[M]` **[Video Friday: Two Birotors Make a Quadrotor](https://spectrum.ieee.org/video-friday-quadrotor-from-birotor)** — シミュレーションと評価（sim2real / 閉ループ） ｜ `33%` · `2x`
-  - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
-- `[O]` **[Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS](https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/)** — 基盤モデル（VLA / WAM）
-  - 基盤モデル層の変化は下流タスクの出発点を変える：自社データの必要量と、機体間で転移できるかを左右する。
-- `[M]` **[Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe](https://spectrum.ieee.org/humanoid-robot-safety)** — ハードウェアとサプライチェーン（機体 / コスト） ｜ `20 hours`
+- `[O]` **[Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies](https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/)** — システムとオーケストレーション（長期タスク / 複数方策）
+  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
+- `[O]` **[Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps](https://huggingface.co/blog/grpo-with-trl-ifstruct)** — 学習と自己改善（RL / 事後学習）
+  - 事後学習と自己改善は、配備後も方策が強くなれるか、運用で介入データを取る必要があるかを決める。
+- `[O]` **[NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC](https://blogs.nvidia.com/blog/ibc-news-2026/)** — エッジとリアルタイム（オンデバイス推論 / 制御周期）
+  - オンデバイスの遅延と制御周期は硬い制約：実時間予算を超えるモデルは制御ループに入れない。
+- `[O]` **[Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original](https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing)** — エッジとリアルタイム（オンデバイス推論 / 制御周期）
+  - オンデバイスの遅延と制御周期は硬い制約：実時間予算を超えるモデルは制御ループに入れない。
+- `[M]` **[The Best Way to Explore Lunar Craters Is a Giant Robot Ball](https://spectrum.ieee.org/moon-ball-robot)** — ハードウェアとサプライチェーン（機体 / コスト）
   - 機体とサプライチェーンがコスト曲線と納入ペースを決め、アクチュエータがBOMの主要部分を占める。
-- `[M]` **[Video Friday: Meet Microduck](https://spectrum.ieee.org/video-friday-microduck-robot)** — ハードウェアとサプライチェーン（機体 / コスト）
-  - 機体とサプライチェーンがコスト曲線と納入ペースを決め、アクチュエータがBOMの主要部分を占める。
 
-[本日のレーダー ›](radar/daily/2026-09-20.ja.md) · [アーカイブ ›](radar/INDEX.md)
+[本日のレーダー ›](radar/daily/2026-09-21.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
-![lane distribution](assets/lane-distribution.svg)
+![lane distribution](assets/lane-distribution.ja.svg)
 
-![cadence](assets/cadence.svg)
+![cadence](assets/cadence.ja.svg)
 <!-- RADAR:END -->
 
 ## 8つの軸

@@ -1,168 +1,143 @@
 {
-  "date": "2026-09-20",
-  "generated": "2026-09-20 01:51 UTC",
-  "window": "2026-09-17 → 2026-09-20 (UTC)",
+  "date": "2026-09-21",
+  "generated": "2026-09-21 01:40 UTC",
+  "window": "2026-09-18 → 2026-09-21 (UTC)",
   "picked": [
     {
-      "id": "ieee-spectrum-robotics:90089f14f1b8",
-      "title": "Robots Are Learning to Feel",
-      "url": "https://spectrum.ieee.org/tactile-data-robots",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-10",
-      "lane": "data",
-      "score": 3.238,
-      "numbers": [
-        "100 hours",
-        "12 tasks",
-        "3,000 hours",
-        "30,000 hours"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "summary": "Dexterous manipulation remains one of the biggest barriers keeping robots from successfully tackling a wide range of everyday tasks. A sense of touch could be the key, but a lack of quality data has held back progress. This is now starting to change as academic labs and startups race to build new tactile datasets and techniques to put them to use. Over the last few years, vision-language-action (VLA) models have significantly improved the ability of robots to carry out complex tasks involving objects and environments they’ve never encountered before. Pretrained on huge amounts of images, video, and text, and then fine-tuned on a smaller number of teleoperated robot demonstrations, these VLAs can guide robots through a growing range of everyday jobs— like folding laundry, tidying living rooms, and even operating kitchen gadgets —using just a video feed and natural language instructions. But robots still struggle with tasks that require fine-grained hand control, such as handling deformable materials or manipulating small objects—plugging in a USB cable or turning a key in a lock, for example. That’s partly because VLAs ignore one of the primary sources of information humans rely on in these situations: tactile feedback. Manipulating Like Humans “Most dexterous manipulation can be done by humans with their eyes closed,” says Trevor Darrell , professor of computer science at the University of California, Berkeley. “Understanding force, slip, and precise grasping is not something that can be done well with traditional vision sensors.” However, making effective use of tactile sensors is difficult. Tactile sensor data has very different characteristics to the image data VLAs are normally trained on, and tactile datasets lag far behind the internet-scale of many vision and language datasets. To get around this, Darrell’s team devised a way to first pretrain a model on existing datasets before giving it a sense of touch by training a specialist submodel on 100 hours of specially collected, high-quality tactile data , including demonstrations of common actions like wiping, grasping, twisting, or pouring using more than 200 different household objects. Explore an interactive visualizer of a small portion of the T-Rex dataset. T-Rex Putting the tactile data to use was not straightforward. The goal was for a robot to be able to use the tactile signal to correct its grip in real time as it manipulated objects. But this requires reaction times faster than most vision-language models operate at. This mismatch is a significant challenge, Darrell says, so the team used separate submodels, known as “experts,” to handle high-level actions and low-level tactile control in a way that’s quick enough for the tactile feedback to be useful. The action expert produces motion plans, while the tactile expert, which operates four times faster, uses tactile feedback to adjust the motion plan in real time based on what the robot is feeling as it goes. The model was then fine-tuned on about 100 teleoperated demonstrations of relatively complex manipulation tasks, such as screwing in a light bulb, applying toothpaste to a toothbrush, or transferring an egg between trays, where it averaged a success rate of 65 percent across 12 tasks—nearly double the best VLA model. Data Diversity One limitation, admits Darrell, is that his data comes from a single instance of robotic hardware. Robot hands range from fully articulated five-finger designs to simple pincer grippers, and tactile sensors can rely on fundamentally different physics, from measuring changes in resistance to recording images of a soft gel pad deforming. That makes most tactile AI research sensor-specific, says Chengbo Yuan , a master’s student at Tsinghua University in Beijing, and makes it hard to share data and transfer learnings between groups. Yuan recently set out to tackle this problem by aggregating more than 3,000 hours of tactile robotic data from publicly available datasets, covering 21 sensor types and a variety of robot embodiments. Yuan says they were inspired by efforts like the Open X-Embodiment collaboration , which pooled data from many robots and led to models that generalize to hardware not used in training. Yuan’s team then designed a hardware-agnostic model that can train on this diverse data by converting each sensor’s output into a shared format and mapping it onto labeled positions on a template of a human hand. This model was much more successful than a baseline model, even on hardware it had never encountered before. Yuan puts that down to it acquiring “some kind of common sense of tactile knowledge,” by training on such diverse setups. Chasing Scale Despite the promising results, Yuan thinks more tactile data is needed, and his group is now leading an 80-institution collaboration to collate a larger set of teleoperated demonstrations using a standardized approach to tactile data collection and processing. In the meantime, Fudan University in Shanghai and its spin-out NeoteAI have already produced a tactile dataset an order of magnitude larger than previous efforts. Using a proprietary sensor attached to a variety of robotic arms and a handheld gripper operated by humans, they have collected more than 30,000 hours of demonstrations with synchronized visual and tactile data. The researchers used this data to train a model that doesn’t just react to touch, but also proactively predicts what the robot should be feeling to help guide and assess actions, significantly improving performance. Shunlin Lu , a postdoc researcher at Fudan University and CTO of NeoteAI, says the results are clear evidence that access to large-scale and diverse tactile data leads to significant performance gains. Robot manipulation policies with a tactile component offer improved performance on a variety of real-world tasks. NeoteAI Another approach to scaling tactile data could be to piggyback on the vast quantities of visual robotics data already collected. Researchers at the University of Southern California, in Los Angeles, recently released a model that learned to infer tactile information from visual data, by training it on more than 2,700 demonstrations of everyday manipulation using a handheld gripper that records both tactile data and images from a camera on the device. The model learned associations between images of the gripper coming into contact with objects and the amount of pressure felt by the tactile sensors at that moment, giving even robots without tactile sensors a rudimentary sense of touch that the researchers showed to be particularly useful for contact-rich manipulation tasks. But their broader ambition is to use the generator to add tactile data to existing vision datasets. How much tactile data will be required for breakthroughs in dexterous tasks remains unclear. So far, tactile training’s main contribution has been to make robots more efficient learners at tasks already within reach like picking and placing objects, says Yuan, and he suspects new algorithms may be required to tackle problems truly impossible without touch. Long Cheng of the Chinese Academy of Sciences in Beijing also thinks raw data is no panacea. “Data is good,” he says. “But how to use them correctly is another issue.” The problem, he notes, is that vision provides a continuous, high-bandwidth stream of pixels, while tactile signals are sparse and intermittent, so models learn to ignore them. His solution, being presented at IROS 2026 later this month, is a model that predicts what a robot will feel from vision alone and then compares it against real tactile input. A large gap between the two means the sensor is detecting something the robot would otherwise miss, so these surprising signals are amplified while predictable ones are dampened. Across five contact-rich tasks, the approach averaged 62.8 percent success against 28.2 percent for the same model without touch. Lu is more confident that data scaling could have similar benefits to those seen in areas like language and vision. He guesses closer to 100,000 hours, collected in varied, real-world settings rather than in the lab, could unlock new capabilities. Either way, the field now has some early signs that larger tactile datasets and smarter ways to use them can give robots a significant boost on some of the most challenging tasks. “I think tactile intelligence is actually the next step for physical AI,” Lu says."
-    },
-    {
-      "id": "ieee-spectrum-robotics:b055114fbd9e",
-      "title": "Video Friday: Two Birotors Make a Quadrotor",
-      "url": "https://spectrum.ieee.org/video-friday-quadrotor-from-birotor",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-18",
-      "lane": "simeval",
-      "score": 2.355,
-      "numbers": [
-        "33%",
-        "2x"
-      ],
-      "signals": [
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. Humanoids Summit Seoul : 22–23 September 2026, SEOUL IROS 2026 : 27 September–1 October 2026, PITTSBURGH CoRL 2026 : 9–12 November 2026, AUSTIN Enjoy today’s videos! A quadrotor is really just two birotors that love each other very much. [ CLIMB Lab ] The last 30 seconds of this video is fantastic. [ ETH Zurich Robotic Systems Lab ] This is great! But if you really want to impress me, convince me that it’s a.) safe to be in my home and 2.) a realistic alternative to a human. [ Figure ] I doubt anyone would call Digit 5 pretty, but here is what serious humanoid safety looks like. [ Agility ] NYU Tandon researchers built an undulatory robot that pumps water between its head and tail to climb slopes, clear steps and swim, all while keeping the same basic gait. On an incline, shifting water toward the head increases the force pressing the robot’s front contact points against the surface, giving them more traction. Head-biased placement was the only configuration that successfully carried WorMa up the steepest incline tested, 19.5 degrees; every other configuration slid back down. It also reduced the robot’s cost of transport by at least 33% compared with the other configurations. Steps required something different. Neither a fixed head-heavy nor tail-heavy robot could clear a step on its own. The researchers instead had WorMa approach the step with water in its head for traction, then shifted the water to the tail and raised the head and neck so the tail could push the robot closer. Once the head anchored on the step’s edge, the water shifted back to the head and the robot continued. That sequence got WorMa over steps as high as 15 centimeters. [ NYU Tandon School of Engineering ] Kubi 2.0 is a desktop telepresence AI robot that allows remote users to look around and interact as if they were physically present. It is also a Physical AI device enabling AI agents to interact with people in the physical environment. For over the past 10 years in Japan, we have successfully implemented our telepresence solutions to help hospitalized and homebound students attend classes, interact with friends, and participate in school events. Now, we are expanding this initiative globally through Kickstarter. [ Kubi 2.0 Telepresence Kickstarter ] I am oddly impressed by this use case for a wheeled quadruped. [ DEEP Robotics ] Legged robots are versatile on land, but their use in underwater environments remains limited. Extending quadruped locomotion to water enables amphibious mobility with applications in inspection, environmental monitoring and disaster response. This paper presents the design, modeling, and experimental validation of a reproducible underwater quadruped robot. The robot is built around custom waterproof motor housings machined from polyoxymethylene plastic, which use off-the-shelf O-rings and dynamic shaft seals. A simplified model is derived to describe the dynamics of this underwater legged system, capturing how drag forces on spherical end effectors transmit torque to the floating base. Building on this model, a closed-loop attitude controller is developed using an error formulation defined on the special orthogonal group SO(3). The controller is evaluated both in simulation and experimentally in a water tank, where the robot tracks desired orientation setpoints in roll, pitch and yaw. [ Norwegian University of Science & Technology Autonomous Robots Lab ] Thanks, Kostas! Ugo Nova is a domestically produced [in Japan] semi-humanoid robot accelerates the social implementation of physical AI, from research and development to operation in industrial settings. [ Ugo ] I appreciate how much manipulation you can actually do with a good two-finger gripper and a clever robot. [ Daimon Robotics ] One humanoid robot rolls off the line every 10 minutes. UBTECH’s benchmark humanoid robot smart factory just goes live—from 1,000 to 10,000 units, we made the leap in less than 9 months. This is great! But what are they all going to do? [ UBTECH ] MIT engineers have built a robotic optics lab that builds, runs, and dismantles an optics experiment, on demand. The setup centers on a robotic arm that physically arranges mirrors, lenses, and other optical components that are each set in custom-designed, QR-encoded housings. The robot arranges each component in precise alignments to direct and focus a beam of light (red laser). The autonomous system could speed up testing of high-tech materials, from solar cells and sensors to video displays and quantum technologies. This video is sped up 2x. [ MIT ] Student-built rovers. Lunar terrain. High stakes competition at NASA’s Kennedy Space Center. See the energy, engineering and excitement of Lunabotics as university teams put their robotic systems to the test in a simulated lunar environment. These are highlights from the previous competition, as well as a look ahead as teams get ready for Lunabotics 2027. [ Lunabotics ] This CMU Robotics Institute Seminar is by Erol Şahin from METU, on “Augmenting Bee Colonies with Robotics and AI Technologies for Ecosystem Support.” Earth’s ecosystems are facing a rapid decline in biodiversity, with honeybees —keystone pollinators critical to ecosystem stability— being among the most affected. The EU-funded RoboRoyale project addresses this crisis by integrating advanced robotics and AI to augment the beehive, enabling observation at unprecedented resolutions and scales. Featured on the cover of Science Robotics and receiving the 6th Edge of Government Award at the World Government Summit in 2024 our system tracks the Queen’s behaviors, colony efficiency, comb states, and long-term foraging activities, while advancing micro-robotic intervention capabilities to support hive health. In this talk, I will discuss the challenges of developing this system, share key findings regarding complex social interactions, and explore the future potential of bio-hybrid research. [ Carnegie Mellon University Robotics Institute ]"
-    },
-    {
-      "id": "aws-physical-ai:fd11f989e3da",
-      "title": "Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS",
-      "url": "https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
-      "evidence": "O",
-      "published": "2026-09-10",
-      "lane": "foundation",
-      "score": 2.3,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Introduction This post demonstrates how to fine-tune π0 (Pi-Zero), a 3-billion parameter flow matching Vision-Language-Action model from Physical Intelligence, on robot manipulation datasets using Amazon SageMaker HyperPod with Amazon Elastic Kubernetes Service (Amazon EKS) orchestration. Two standard robotics benchmarks provide the training data: DROID for real-world manipulation and LIBERO-10 for simulated tabletop tasks, with a […]"
-    },
-    {
-      "id": "ieee-spectrum-robotics:1429865f576f",
-      "title": "Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe",
-      "url": "https://spectrum.ieee.org/humanoid-robot-safety",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-15",
-      "lane": "hardware",
-      "score": 2.08,
-      "numbers": [
-        "20 hours"
-      ],
-      "signals": [
-        "numbers",
-        "latency"
-      ],
-      "summary": "Despite the recent deluge of videos of humanoid robots doing backflips and kung fu, the actual pace of progress towards humanoids that can do economically viable jobs at scale has at times seemed a bit plodding. There are some good reasons for this : A humanoid robot needs to be powerful enough to do useful work, safe enough for humans to walk past, and have enough battery life to limit how much of the day it’s hooked to a charger. But all three of those necessary features actively work against each other. With its new Digit 5 robot, announced today, Agility Robotics may have found the sweet spot. Digit 5 is a humanoid worker that can lift 23 kilograms up 2.1 meters, can work in close proximity to people without relying on physical barriers, and can operate for more than 20 hours a day. This combination of power, safety, and battery life has resulted in a 1.8-meter tall, 129-kg robot that prioritizes functionality over style and pretty much everything else, but this is exactly what it’s going to take to get humanoids a job. Humanoid robot companies have been reluctant to talk about safety, because there are no easy answers to “What happens if your fundamentally unstable bipedal robot falls over onto me/my pet/my baby?” And there are still no easy answers, but Agility does have an answer that allows Digit to be verifiably safe. That answer is to make sure that it’s physically impossible for Digit to fall over on anyone, ever, by “autonomously avoiding, stopping, or assuming a seated position,” according to today’s press release. In other words, as a person approaches Digit, Digit will put down whatever it’s carrying and then if necessary make sure that it’s stably seated on the ground before that person gets near. It may not be elegant, but it works, which is more than can be said for any other commercial humanoid that I’m aware of. The other big change is Digit’s legs. Somewhat famously, Agility Robotics first introduced Cassie and then a whole series of Digit robots featuring bird-like ‘backwards’ legs. In his 2019 article for IEEE Spectrum , Agility co-founder Jonathan Hurst explained that this leg configuration was the result of a careful analysis of the physics of animal locomotion, rather than for the leg to look like any sort of animal in particular. The unfortunate reality for those of us who were fans of Cassie is that bird legs are optimal for dynamic motion, while human legs are better for squats and lifts, which will make sense to anyone who has seen an ostrich trying to lift a heavy box up off the floor and also anyone who has tried to outrun a cassowary. How much will Digit 5 cost? We also know a couple of things about Digit 5 that weren’t included in today’s announcement, thanks to Agility’s June SEC filing in advance of their plan to go public by the end of 2026 . For example, at launch, Digit 5’s BOM (bill of materials) cost is likely to be somewhere between US $150,000 and $200,000. This is just the cost of the parts that make up a Digit robot, not what it costs for Agility to actually build one. Based on real production data, Agility is anticipating that with some near-term optimizing and at a volume of 10,000 units per year, that cost should drop to under US $50,000 per robot. In this rendering, Digit 5 robots work in a factory with humans nearby, no safety barriers needed. When a human approaches, the robot puts down what it’s carrying and squats down so it can’t fall on anybody. Agility Arguably less important than the per-robot cost is how Agility (and its customers) will profit from Digit 5. In the filing, Agility estimates (using “rounded estimates” which are “purely illustrative”) that Digit 5 robots will be offered to customers as a service at something like $8,500 per month. Based on 20 hours per day of work, and assuming that the total cost of a human worker to their employer is $30.50 per hour, Digit 5 as a service could save employers $100,000 per year, per robot. It’s important to note that all of these numbers are just estimates, and that all kinds of things (many of them not under Agility’s control) could cause them to change. They’re most useful as an illustration of Agility’s broad approach to making Digit 5 profitable. It’s also important to note the assumption here with such a direct comparison is that Digit 5 will be a more or less effortless drop-in replacement for human labor, which is not something that I’m entirely sure has ever happened with any robot, anywhere. Where does Digit 5 go from here? Today’s press release says that “as of May 2026, Agility had more than $300 million in multi-year customer orders for Digit 5, with a sales pipeline of prospective customers across manufacturing, warehousing, and logistics.” That works out to comfortably under 1,000 robots, one-tenth of the full capacity of Agility’s RoboFab factory in Oregon. Between now and all those robots, however, lies an unpredictable entry into the stock market through what’s called a SPAC (special purpose acquisition company) merger . That’s expected to close within the next few months. Agility hopes to raise more than $620 million through the merger, and it will primarily spend the money to scale production of Digit 5 and get it to customers. Those in the European Union and United Kingdom should be able to buy the bots in 2027."
-    },
-    {
-      "id": "ieee-spectrum-robotics:98dfe2746ae5",
-      "title": "Video Friday: Meet Microduck",
-      "url": "https://spectrum.ieee.org/video-friday-microduck-robot",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-08-28",
-      "lane": "hardware",
-      "score": 1.815,
-      "numbers": [],
-      "signals": [
-        "numbers",
-        "real_robot",
-        "open_release",
-        "latency"
-      ],
-      "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. Humanoids Summit Seoul : 22–23 September 2026, SEOUL IROS 2026 : 27 September–1 October 2026, PITTSBURGH CoRL 2026 : 9–12 November 2026, AUSTIN, TEXAS Enjoy today’s videos! Nvidia just paid US $12.9 billion for the company that acquired Pollen Robotics, and this must be why. Meet Microduck. 🦆 The 25-centimeter, 780-gram robot that waddles, falls, gets back up, and learns new tricks. Packed inside: 15 degrees of freedom, a front camera, an 8x8 lidar, two IMUs, mics, a speaker, NFC, Wi-Fi, and Bluetooth. Out of the box, Microduck already walks, sits, crouches, roller skates, picks up objects with its articulated beak, and recovers from falls on its own. Drive it with a game controller, plug-in accessories, and NFC tagged objects, run autonomous behaviors, or gather several Microducks for races and football. Software fully open source. Ready for whatever you throw at it. On pre-order for an astonishingly low $399, and ships before Christmas. [ Microduck ] Thanks, Matthieu! If you’ve chosen to ignore all the earlier DARPA Lift Challenge videos that we’ve posted, now you can get all caught up in about five minutes. [ DARPA ] You had me at “54-gram robot that out-jumps a kangaroo.” [ IEEE Transactions on Robotics ] Sometimes, you just need a video like this. Most fish-inspired robots are built for one size and one job, so scaling them up or down usually means starting from scratch. A team of engineers says it has found a way to solve that problem. They’ve unveiled ScaFi, a robot modeled on fish like cod and mackerel. [ New York University ] Thanks, Leah! Martin writes, “We’re a small robotics team in Czechia, Europe, building practical hardware around the Unitree G1 . Here’s a short demo of our lightweight gripper picking up a strawberry; the gripper weighs under 200 grams and is designed for simple, sensitive manipulation without adding a complex multifinger hand. [ Sentio Robotix ] Thanks, Martin! Hybrid visual markers that are useful for both cameras and lidar is a neat idea. [ Hello Robot ] Thanks, Binit! EmoLo brings emotion-inspired expressive locomotion to Open Duck Mini V2, a low-cost, open-source bipedal robot inspired by Disney’s BDX droids. With a single reinforcement learning policy, the robot can generate distinct walking styles associated with different emotional expressions, showing how characterful and expressive whole-body motion can be achieved on an accessible robotic platform. [ EmoLo ] Thanks, Masato! If it’s possible for a robot with a completely immobile face to look frustrated, this robot absolutely does, starting at three minutes into this video. [ DLR RM ] Noble Machines deployed its first general-purpose robots to a Fortune Global 500 industrial customer within 18 months of the company’s launch and met its first delivery milestone, made possible by its AI-driven whole-body control and industry-leading end-to-end autonomy. [ Noble Machines ] We’ve reduced the time it takes to go from physical prompt → robot behavior. The faster anyone can teach a robot to do something new, the easier it becomes to scale physical work. [ Generalist ] I know this video is mostly a gimmick, but I would totally rent a moderately heavy lift quadruped for a couple of days to help with a move. [ DEEP Robotics ] Is taking two minutes to excellently fold a shirt too long, or do we even care how long it takes, as long as it’s a robot doing it? [ Tokyo Robotics ] TRON 2 × Wuji Hand 2 handles TCM pharmacy work: picking, weighing, grinding, and packaging. The omnidirectional base frees the hands, while precise gripping and dual-arm force control enable midair operations. [ LimX Dynamics ] Person who genuinely knows things about robots, Christian Hubicki, explains everything about robots smashing into walls. [ Christian Hubicki ]"
-    },
-    {
-      "id": "ieee-spectrum-robotics:303bb37851f6",
-      "title": "Video Friday: Digit Redecorates",
-      "url": "https://spectrum.ieee.org/video-friday-agility-robotics-digit",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-04",
-      "lane": "simeval",
-      "score": 1.805,
-      "numbers": [],
-      "signals": [
-        "real_robot",
-        "open_release"
-      ],
-      "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. Humanoids Summit Seoul : 22–23 September 2026, SEOUL IROS 2026 : 27 September–1 October 2026, PITTSBURGH CoRL 2026 : 9–12 November 2026, AUSTIN Enjoy today’s videos! I know these videos from Agility can be a little bit silly, but the couch drag in this one is impressive. [ Agility Robotics ] Stabilizing unsecured payloads against the inherent oscillations of dynamic bipedal locomotion remains a critical engineering bottleneck for humanoids in unstructured environments. To solve this, we introduce ReST-RL, a hierarchical reinforcement-learning architecture that explicitly decouples locomotion from payload stabilization. Successfully deployed on the Unitree G1 humanoid hardware, this modular approach demonstrates highly reliable zero-shot sim-to-real generalization across various objects and external force disturbances. [ SteadyTray ] Thanks, Ioana! Figure is scaling compute so that its robots can...uh...have their compute scaled, I guess? Solving for a robot in every home is not a data-and-compute problem, it’s a safety-and-cost problem. [ Figure ] The most important thing to know about this gripper is that koalas have two thumbs on each hand. [ RAI Institute ] DARPA Triage Challenge Finals are in November! [ DARPA ] Online, humanoid robots are very impressive to watch, but behind the scenes, most of those movements are carefully choreographed. Researchers in Carnegie Mellon University’s Safe AI Lab are instead teaching robots how to adapt. Their system, called APEX, allows a humanoid robot to navigate obstacles using adaptive, full-body maneuvers. [ CMU ] Researchers from North Carolina State University have created teardrop-shaped soft robots that leap upward or forward when exposed to infrared light—and will keep jumping as long as the light is present. The robots are made of a liquid-crystal elastomer ribbon shaped like a teardrop, with a thin aluminum tube shaped like a V at one end. When exposed to light from an infrared lamp, the surface of the ribbon contracts, causing the ribbon to rotate. The stiff V at one end of the robot prevents the ribbon from simply rolling in place, causing the ribbon to twist tighter and tighter. This stores energy until the twist reaches a critical point when the ribbon releases that energy, causing the V at one end of the teardrop to snap downward and strike the surface. This launches the teardrop into the air. [ NC State ] Thanks, Ship! I’ll be honest—I was prepared to be underwhelmed by the DARPA Lift Challenge, but there was such creativity in the heavy-lift drone designs that I’m excited for it to come back in 2028. [ DARPA Lift Challenge ] Thank you, Christian, for attempting to talk some sense into the internet. [ Christian Hubicki ] Humans use not only muscle signals but also stretched skin around joints as a cue for proprioception. To mimic this biological mechanism, we developed a three-layer joint-covering skin with 44 pressure- and stretch-sensitive elements for the musculoskeletal humanoid Musashi-W. It’s not a replicant, but one day, it will be. [ University of Tokyo ] Thanks, Akihiro! Having mobility issues with your robot? Just staple it to the end of an industrial robotic arm. Problem solved! [ LimX Dynamics ] But what if I am the sort of person who needs to speak to a manager? [ Sharpa ] In Turpan, China—known as the City of Fire—summer ground temperatures can exceed 50 °C. During the grape harvest, farmers traditionally carry heavy baskets back and forth under the intense heat, while every extra minute in the sun can affect the freshness of the fruit. This year, the DEEP Robotics Lynx M20S joined the harvest. [ DEEP Robotics ] This video showcases the achievements of the first OH! GYM! Project cohort, a group of university and graduate students who explored, developed, and deployed their own humanoid behaviors using the open-source AI Sapiens K1 platform. Over the course of one month, the students experienced the complete process of humanoid development—from creating motions in simulation to transferring them onto a physical robot through repeated Sim2Real experiments. [ ROBOTIS ]"
-    },
-    {
-      "id": "nvidia-blog:a425146e5e22",
-      "title": "NVIDIA Vera Rubin NVL72 Delivers Leading Performance in MLPerf Inference v6.1 Debut",
-      "url": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/",
+      "id": "nvidia-blog:1adb809c884f",
+      "title": "Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies",
+      "url": "https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-09-16",
-      "lane": "edge",
-      "score": 1.502,
+      "published": "2026-09-10",
+      "lane": "systems",
+      "score": 1.3,
       "numbers": [],
       "signals": [
-        "latency"
+        "numbers"
       ],
-      "summary": "System performance, efficient infrastructure scaling and continuous software optimization are key levers that determine AI inference economics. Higher system performance means more tokens generated, resulting in higher revenue. Efficient scaling means throughput grows proportionally as hardware gets added, requiring fewer resources to serve users at scale. Continuous optimization means generating more value from infrastructure investments. [&#8230;]"
+      "summary": "The global robotaxi market — physical AI’s first commercial breakthrough — is projected to reach $400 billion by 2035, with over 6 million commercial vehicles in operation as driverless fleets are already moving people through some of the world’s busiest and most complex streets. Deploying a driverless vehicle is one challenge. Scaling a fleet is [&#8230;]"
     },
     {
-      "id": "nvidia-blog:04812389539e",
-      "title": "Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW",
-      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-aniimo/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
+      "id": "huggingface-blog:45020768fad9",
+      "title": "Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps",
+      "url": "https://huggingface.co/blog/grpo-with-trl-ifstruct",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
       "evidence": "O",
-      "published": "2026-09-17",
+      "published": "2026-09-03",
       "lane": "training",
-      "score": 1.5,
+      "score": 1.3,
       "numbers": [],
       "signals": [],
-      "summary": "A new creature-catching adventure is ready to stream from the cloud this week. Pawprint Studio’s Aniimo arrives on GeForce NOW at launch, inviting gamers to explore the vibrant continent of Idyll across supported devices. Also this week, 007 First Light receives a path-tracing update on GeForce NOW, alongside a smashing limited-time Deluxe Edition sale on [&#8230;]"
+      "summary": ""
+    },
+    {
+      "id": "nvidia-blog:29c19642921e",
+      "title": "NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC",
+      "url": "https://blogs.nvidia.com/blog/ibc-news-2026/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-09-09",
+      "lane": "edge",
+      "score": 1.252,
+      "numbers": [],
+      "signals": [
+        "latency"
+      ],
+      "summary": "At the IBC conference, running Sept. 11-14 in Amsterdam, the creative, technology and business communities are coming together to turn ideas into action and discuss innovations across the media and entertainment industries. More than 44,000 attendees from 170+ countries are gathering to explore 1,300+ exhibitions in 14+ halls and outdoor spaces, with over 600 speakers [&#8230;]"
+    },
+    {
+      "id": "huggingface-blog:f6b26e55a489",
+      "title": "Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original",
+      "url": "https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
+      "published": "2026-08-25",
+      "lane": "edge",
+      "score": 1.202,
+      "numbers": [],
+      "signals": [
+        "latency"
+      ],
+      "summary": ""
+    },
+    {
+      "id": "ieee-spectrum-robotics:afde8495f51d",
+      "title": "The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
+      "url": "https://spectrum.ieee.org/moon-ball-robot",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-09-03",
+      "lane": "hardware",
+      "score": 1.197,
+      "numbers": [],
+      "signals": [
+        "latency"
+      ],
+      "summary": "On a good day, the rock quarry in central Texas is about 370,000 kilometers (230,000 miles) from the moon. But last February, when Rishi Jangale watched his 1.8-meter-wide, 150-kilogram inflatable robot roll effortlessly over rocks, gravel, and wet clay, his imagination turned the quarry into the lunar surface instead. Jangale is an upbeat mechanical engineer nearing the end of his Ph.D. at Texas A&M University, in College Station, Texas. He and his labmates have been working on this big tan “RoboBall” for about five years. Their goal: create a vehicle capable of exploring some of the most inaccessible terrain in our solar system, such as the 21 km-wide Shackleton crater on the moon’s south pole. The Shackleton crater is 4 km deep and contains many smaller, deeper craters within. Some parts of the crater never see the sun, and within these perpetually dark, frigid pockets lie mysterious substances that planetary scientists have long struggled to examine, including layers of ancient lunar geology and stores of frozen water that could potentially support a future lunar base. “The moon is like an archive of what happened to the Earth,” says Sara Russell , a cosmic mineralogist with London’s Natural History Museum who is not involved with Texas A&M’s work. “Robotic collection works brilliantly well, and it’s great to see that being explored more in this context.” “NASA is not going to let astronauts get anywhere near these craters, because if someone falls in, you’re not going to be able to get them out,” Jangale says. “So we thought, what better shape to roll down a hill than a ball?” In a recent paper published in IEEE Transactions on Field Robotics , Jangale’s team reports on the design of RoboBall, a hypothetical lunar mission, and the results from initial tests in the Texas quarry. Getting Rolling RoboBall is the brainchild of Jangale’s advisor, former NASA robotics engineer Robert Ambrose , who first conceived of the design in 2003. Ambrose figured that a ball could address a pesky mobility risk that robots face on lunar terrain, especially in low gravity: tipping over . An inflatable sphere can’t tip over, and the form factor also insulates its internal components from sharp rocks, dust, and the huge temperature swings from over 93 °C in sunlit spots to minus 240 °C in the shade inside lunar craters. Ambrose imagined a wheeled rover parking at a crater’s edge and releasing a RoboBall to explore its depths. Unlike a small tethered rover , the RoboBall wouldn’t roll its way back up—but with no strings attached, it would have a far greater range to collect geological samples, and then be able to launch them back to the rover outside the crater with small rockets. A robotic rover would ferry RoboBall across the lunar surface to the edge of a crater. R. Jangale, D. Pravecek, et al. NASA hasn’t brought lunar samples back to Earth in over 50 years. Some morsels of moon geology find their way to Earth as meteorites, but Russell says these lack the “gold standard” field work—context about where that sample actually came from. Even as NASA reboots its crewed moon missions, many lunar sites remain inaccessible. In 2022, Ambrose’s lab finished a proof of concept, the 0.5-meter-wide RoboBall II. Creating the full-size RoboBall III then took about 11 months. “We were building these robots really quickly,” Jangale says. “Ambrose really encourages us to use and break these robots.” And designs did go awry. Jangale remembers software errors and a drivetrain that proved too weak to roll over soft bumps in initial tests. Texas A&M RAD Lab/YouTube How to Slow Your Roll RoboBall drives by moving a pendulum within its shell, shifting its entire center of mass. On flat ground, if the pendulum’s arm points forward, the shell rolls forward to compensate, and as long as the pendulum keeps the center of mass in front of the center of the ball, RoboBall will keep rolling forward. If the pendulum leans a few degrees to the left or right, RoboBall steers left or right to match. “The robot wants to go where you point the pendulum,” Jangale says. The 340-pound ball is just soft enough to bounce lightly over bumpy obstacles, but its slight overpressure keeps it relatively firm. On steep slopes, this mechanism also lets the ball control its downhill speed by simply angling the pendulum uphill. “The beauty here is the simplicity,” says Hiro Ono, an aerospace engineer who worked on robot mobility at NASA’s Jet Propulsion Lab for 13 years before joining Georgia Tech. For space robots, Ono describes simplicity in terms of the number of actuators. RoboBall has just two, and both are fully inside of the shell, shielded from environmental risk factors like dust, a feature that Ono describes as “unique.” After the first quarry tests, it took about seven months for the team to design and build an upgraded RoboBall III with 2.5 times more torque—enough to fling itself over small obstacles and roll up 20 degree slopes. A small rocket can launch out of the center of the RoboBall to return a sample back to a rover outside the crater. R. Jangale, D. Pravecek, et al. Getting Mission Ready In the new paper, the remotely operated RoboBall III descended the quarry’s slopes, navigated soft terrain, and launched hypothetical payloads back out of the crater with small rockets. Powered by a large battery, the robot would inflate itself during a lunar mission and charge up from a robotic rover at the edge of a crater before heading out on its own. RoboBall is probably not the right platform for all kinds of missions—its slightly bumbling nature means that it’s not ideal if you want to collect a sample from a very specific rock, for example. For now, the team hopes to work with scientists designing lunar science instruments to physically fit into RoboBall’s carry-on-luggage-size interior, while also fitting in with how RoboBall operates. “The robot is not the mission,” Jangale says. “The robot is a way for you to complete the mission.” The current version of RoboBall cost roughly $250,000 to build, but is not quite ready for the moon in its current form. While its gold-treated aluminum parts are appropriate for space missions, its other materials are not. Space-grade electronics will cost more, and the ball’s shell—made from a material tough enough to roll over steel shards and withstand minus 184 °C temperatures—has never been evaluated in lunar extremes. Aside from materials questions, the team plans to engineer the ball to adapt how it drives on varying slopes autonomously. They also hope to collaborate with government agencies or spaceflight contractors to keep refining the robot’s design for a real, eventual mission . Later this year, Texas A&M will open a new facility in Houston with the world’s largest indoor simulated moon and Mars landscapes. The facility is only 190 km from Jangale’s quarry. It’s still about 370,000 km from the moon, but it’s going to help Jangale get his robot quite a bit closer."
+    },
+    {
+      "id": "deepmind:d9b2bc36ffdf",
+      "title": "Piloting the world's first double-blind AI evaluations",
+      "url": "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/",
+      "publisher": "Google DeepMind",
+      "source_id": "deepmind",
+      "evidence": "O",
+      "published": "2026-08-27",
+      "lane": "simeval",
+      "score": 1.185,
+      "numbers": [],
+      "signals": [],
+      "summary": "Piloting the world's first double-blind AI evaluations"
+    },
+    {
+      "id": "nvidia-developer-robotics:a5ee2ec4c912",
+      "title": "How to Train a Cross-Embodiment Robot Navigation Policy with AI Agents",
+      "url": "https://developer.nvidia.com/blog/how-to-train-a-cross-embodiment-robot-navigation-policy-with-ai-agents/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-08-26",
+      "lane": "data",
+      "score": 1.167,
+      "numbers": [],
+      "signals": [],
+      "summary": "Navigation enables a robot to turn perception and motion into purposeful autonomy. Unlike locomotion, which produces stable movement, navigation must be used to..."
+    },
+    {
+      "id": "deepmind:dfd1ea2e5518",
+      "title": "Introducing agentic video understanding with Gemini",
+      "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/",
+      "publisher": "Google DeepMind",
+      "source_id": "deepmind",
+      "evidence": "O",
+      "published": "2026-09-01",
+      "lane": "systems",
+      "score": 1.15,
+      "numbers": [],
+      "signals": [],
+      "summary": ""
     }
   ],
   "lane_counts": {
-    "foundation": 4,
+    "foundation": 3,
     "data": 6,
     "training": 5,
-    "simeval": 6,
-    "edge": 6,
+    "simeval": 5,
+    "edge": 7,
     "safety": 5,
-    "systems": 1,
-    "hardware": 4
+    "systems": 3,
+    "hardware": 3
   },
   "evidence_mix": {
-    "O": 17,
+    "O": 21,
     "R": 13,
-    "M": 7
+    "M": 3
   },
   "fetch": {
     "items": 1120,
