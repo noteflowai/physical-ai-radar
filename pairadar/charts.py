@@ -258,21 +258,32 @@ def write_all(
     cadence: Iterable[tuple[str, int]],
     mix: dict[str, int],
     generated: str,
+    titles: dict[str, str] | None = None,
+    suffix: str = "",
 ) -> dict[str, Path]:
-    """Render the three standing charts and return their paths."""
+    """Render the three standing charts and return their paths.
+
+    `titles` and `suffix` let one day produce one set per language. The glyphs come
+    from the reader's browser because these are SVG text, so a localized label costs
+    no bundled font and nothing about the render is less reproducible.
+    """
+    heading = {"lanes": "Lane distribution (tracked items)",
+               "cadence": "Daily cadence (items cleared per run)",
+               "mix": "Evidence mix"}
+    heading.update(titles or {})
     subtitle = f"physical-ai-radar · generated {generated}"
     return {
         "lanes": write_svg(
-            assets_dir / "lane-distribution.svg",
-            horizontal_bars("Lane distribution (tracked items)", list(lane_rows), subtitle,
+            assets_dir / f"lane-distribution{suffix}.svg",
+            horizontal_bars(heading["lanes"], list(lane_rows), subtitle,
                             colors=PALETTE),
         ),
         "cadence": write_svg(
-            assets_dir / "cadence.svg",
-            cadence_bars("Daily cadence (items cleared per run)", list(cadence), subtitle),
+            assets_dir / f"cadence{suffix}.svg",
+            cadence_bars(heading["cadence"], list(cadence), subtitle),
         ),
         "evidence": write_svg(
-            assets_dir / "evidence-mix.svg",
-            evidence_strip("Evidence mix", mix, subtitle),
+            assets_dir / f"evidence-mix{suffix}.svg",
+            evidence_strip(heading["mix"], mix, subtitle),
         ),
     }

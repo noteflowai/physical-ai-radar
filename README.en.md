@@ -105,7 +105,7 @@ docs/        METHODOLOGY.md (method, translation policy, known limits)
 ## Known limits (stated up front)
 
 - Summaries are **extractive**: the English source excerpt is shown as a quote and never machine-translated. The analytical layer above it is written per language, never translated sentence by sentence — on most days by an agent, whose every line is labelled as drafted and whose figures must already appear on that day's published page; where no draft exists the per-lane template fills in, unlabelled. [How a draft is reviewed and what it may not claim](docs/METHODOLOGY.md).
-- Chart labels stay in English: rendering CJK glyphs would require bundling a font into CI and would cost reproducibility.
+- Each language gets its own chart set, labelled in that language. These are SVG text, so the glyphs come from the reader's browser and nothing is bundled. Long names carry a curated short form in `data/taxonomy.json`; a label is trimmed only if it still does not fit, and a test asserts none currently is.
 - Ranking is an **explainable weighted sum**, not learned relevance. All weights live in `data/`, so a fork can retune them.
 - Sources are limited to public machine-readable endpoints. No article scraping, no paywall bypass.
 
