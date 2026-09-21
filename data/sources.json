@@ -27,7 +27,13 @@
       "cat:cs.RO AND (abs:\"safety filter\" OR abs:\"control barrier\" OR abs:\"runtime monitor\")",
       "cat:cs.RO AND (abs:\"egocentric\" OR abs:\"human video\" OR abs:\"data scaling\")",
       "cat:cs.RO AND (abs:\"long-horizon\" OR abs:\"orchestration\" OR abs:\"reinforcement learning\")"
-    ]
+    ],
+    "rss_categories": [
+      "cs.RO",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "rss_note": "the Atom API answered 406 to every request from this host on 2026-09-21, including with no headers at all; these category feeds are the documented public fallback and keep the R evidence class from going empty"
   },
   "feeds": [
     {
