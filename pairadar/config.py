@@ -63,8 +63,17 @@ class Config:
     def lane_name(self, lane_id: str, lang: str) -> str:
         return self.lane(lane_id)["name"][lang]
 
-    def chart_label(self, lane_id: str) -> str:
-        """Short English label for plotting; full names overrun the chart gutter."""
+    def chart_label(self, lane_id: str, lang: str = "en") -> str:
+        """Label for plotting. English full names overrun the gutter, so the taxonomy
+        carries a curated short form; Chinese and Japanese names are already compact
+        enough that the localized name is the honest label, trimmed only if it is not."""
+        label = self.lane(lane_id).get("chart_label")
+        if isinstance(label, dict):
+            if label.get(lang):
+                return label[lang]
+        elif label and lang == "en":
+            return label
+        return self.lane(lane_id)["name"][lang]
         lane = self.lane(lane_id)
         return lane.get("chart_label") or lane["name"]["en"]
 

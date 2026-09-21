@@ -777,7 +777,7 @@ class RenderTest(unittest.TestCase):
         for lang in LANGS:
             page = render_daily(self.config, lang, self.ctx)
             self.assertIn(self.config.ui(lang)["title"], page)
-            self.assertIn("assets/lane-distribution.svg", page)
+            self.assertIn(f"assets/lane-distribution.{lang}.svg", page)
             self.assertIn("http", page)
             self.assertGreater(len(page), 1200)
 
@@ -898,3 +898,51 @@ class OutputArtefactsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LabelWidthTests(unittest.TestCase):
+    """A CJK label is about twice as wide as its character count suggests."""
+
+    def test_a_cjk_label_measures_wider_than_a_latin_one_of_the_same_length(self):
+        latin = charts.text_width("abcdefgh")
+        cjk = charts.text_width("具身智能基础模型")
+        self.assertGreater(cjk, latin * 1.6, "full-width glyphs must not be counted as narrow")
+
+    def test_fit_respects_the_budget_for_every_script(self):
+        for label in ("foundation models and world models", "具身智能基础模型与世界模型",
+                      "ロボット基盤モデルと世界モデル", "mixed 混合 label"):
+            trimmed = charts.fit(label, 120.0)
+            self.assertLessEqual(charts.text_width(trimmed), 120.0, label)
+            self.assertTrue(trimmed == label or trimmed.endswith("…"), label)
+
+
+class LocalizedChartTests(unittest.TestCase):
+    """Each language gets its own chart set, with labels in that language."""
+
+    def test_a_run_writes_one_set_per_language_and_the_english_alias(self):
+        with tempfile.TemporaryDirectory() as raw:
+            out = Path(raw)
+            cli.run(offline=True, day="2026-03-05", write_readme=False, out=out)
+            for name in ("lane-distribution", "cadence", "evidence-mix"):
+                self.assertTrue((out/"assets"/f"{name}.svg").exists(), f"{name}: published pages link here")
+                for lang in LANGS:
+                    self.assertTrue((out/"assets"/f"{name}.{lang}.svg").exists(), f"{name}.{lang}")
+            zh = (out/"assets"/"lane-distribution.zh.svg").read_text(encoding="utf-8")
+            en = (out/"assets"/"lane-distribution.en.svg").read_text(encoding="utf-8")
+            self.assertTrue(any("\u4e00" <= ch <= "\u9fff" for ch in zh), "the zh chart must carry Han glyphs")
+            self.assertNotIn("Foundation models", zh, "the zh chart must not fall back to English")
+            self.assertIn("Foundation models", en)
+
+
+class LabelFitTests(unittest.TestCase):
+    """A truncated lane label is a content problem, not a rendering detail."""
+
+    def test_no_lane_label_needs_trimming_in_any_language(self):
+        config = load_config()
+        gutter = charts.LABEL_GUTTER if hasattr(charts, "LABEL_GUTTER") else 230.0
+        for lane in config.taxonomy["lanes"]:
+            for lang in LANGS:
+                label = config.chart_label(lane["id"], lang)
+                self.assertEqual(charts.fit(label, gutter - 10), label,
+                                 f"{lane['id']} ({lang}) does not fit: give it a short form "
+                                 f"in data/taxonomy.json rather than letting the chart cut it")

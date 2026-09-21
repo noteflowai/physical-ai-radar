@@ -10,11 +10,27 @@
         "en": "Foundation models (VLA / WAM)",
         "ja": "基盤モデル（VLA / WAM）"
       },
-      "chart_label": "Foundation models",
+      "chart_label": {
+        "en": "Foundation models",
+        "ja": "基盤モデル（VLA / WAM）"
+      },
       "keywords": [
-        "vision-language-action", "vision language action", "vla", "world action model", "wam",
-        "robot foundation model", "generalist policy", "flow matching", "action chunk",
-        "action expert", "pi0", "\u03c00", "gr00t", "gemini robotics", "cosmos", "diffusion policy"
+        "vision-language-action",
+        "vision language action",
+        "vla",
+        "world action model",
+        "wam",
+        "robot foundation model",
+        "generalist policy",
+        "flow matching",
+        "action chunk",
+        "action expert",
+        "pi0",
+        "π0",
+        "gr00t",
+        "gemini robotics",
+        "cosmos",
+        "diffusion policy"
       ]
     },
     {
@@ -25,11 +41,26 @@
         "en": "Data engine (collection / curation / scaling)",
         "ja": "データエンジン（収集 / 精査 / スケーリング）"
       },
-      "chart_label": "Data engine",
+      "chart_label": {
+        "en": "Data engine",
+        "ja": "データエンジン"
+      },
       "keywords": [
-        "egocentric", "human video", "teleoperation", "demonstration", "data scaling",
-        "scaling law", "data curation", "dataset", "cross-embodiment", "open x-embodiment",
-        "lerobot", "droid", "data collection", "retargeting", "data quality"
+        "egocentric",
+        "human video",
+        "teleoperation",
+        "demonstration",
+        "data scaling",
+        "scaling law",
+        "data curation",
+        "dataset",
+        "cross-embodiment",
+        "open x-embodiment",
+        "lerobot",
+        "droid",
+        "data collection",
+        "retargeting",
+        "data quality"
       ]
     },
     {
@@ -40,11 +71,26 @@
         "en": "Training & self-improvement (RL / post-training)",
         "ja": "学習と自己改善（RL / 事後学習）"
       },
-      "chart_label": "Training & self-improvement",
+      "chart_label": {
+        "en": "Training & self-improvement",
+        "ja": "学習と自己改善"
+      },
       "keywords": [
-        "reinforcement learning", "post-training", "post training", "grpo", "ppo",
-        "advantage", "self-improving", "self improvement", "fine-tuning", "fine tuning",
-        "distillation", "curriculum", "fleet learning", "residual rl", "human correction"
+        "reinforcement learning",
+        "post-training",
+        "post training",
+        "grpo",
+        "ppo",
+        "advantage",
+        "self-improving",
+        "self improvement",
+        "fine-tuning",
+        "fine tuning",
+        "distillation",
+        "curriculum",
+        "fleet learning",
+        "residual rl",
+        "human correction"
       ]
     },
     {
@@ -55,11 +101,29 @@
         "en": "Simulation & evaluation (sim2real / closed-loop)",
         "ja": "シミュレーションと評価（sim2real / 閉ループ）"
       },
-      "chart_label": "Simulation & evaluation",
+      "chart_label": {
+        "en": "Simulation & evaluation",
+        "ja": "シミュレーションと評価"
+      },
       "keywords": [
-        "simulation", "simulator", "sim-to-real", "sim2real", "real-to-sim", "real2sim",
-        "benchmark", "evaluation", "closed-loop", "closed loop", "isaac lab", "mujoco",
-        "newton", "genie sim", "world model evaluation", "policy evaluation", "libero", "robocasa"
+        "simulation",
+        "simulator",
+        "sim-to-real",
+        "sim2real",
+        "real-to-sim",
+        "real2sim",
+        "benchmark",
+        "evaluation",
+        "closed-loop",
+        "closed loop",
+        "isaac lab",
+        "mujoco",
+        "newton",
+        "genie sim",
+        "world model evaluation",
+        "policy evaluation",
+        "libero",
+        "robocasa"
       ]
     },
     {
@@ -70,11 +134,28 @@
         "en": "Edge & real-time (on-device inference / control rate)",
         "ja": "エッジとリアルタイム（オンデバイス推論 / 制御周期）"
       },
-      "chart_label": "Edge & real-time",
+      "chart_label": {
+        "en": "Edge & real-time",
+        "ja": "エッジとリアルタイム"
+      },
       "keywords": [
-        "on-device", "onboard", "edge deployment", "jetson", "thor", "orin", "latency",
-        "real-time", "quantization", "quantized", "inference speed", "control frequency",
-        "asynchronous inference", "test-time compute", "test time training", "kv cache", "throughput"
+        "on-device",
+        "onboard",
+        "edge deployment",
+        "jetson",
+        "thor",
+        "orin",
+        "latency",
+        "real-time",
+        "quantization",
+        "quantized",
+        "inference speed",
+        "control frequency",
+        "asynchronous inference",
+        "test-time compute",
+        "test time training",
+        "kv cache",
+        "throughput"
       ]
     },
     {
@@ -85,11 +166,28 @@
         "en": "Safety, authority & compliance",
         "ja": "安全・権限・コンプライアンス"
       },
-      "chart_label": "Safety & compliance",
+      "chart_label": {
+        "en": "Safety & compliance",
+        "ja": "安全・権限・コンプライアンス"
+      },
       "keywords": [
-        "safety", "safe reinforcement", "control barrier function", "cbf", "runtime monitor",
-        "safety filter", "fallback", "certification", "iso 10218", "iso 25785", "machinery regulation",
-        "ai act", "standard", "compliance", "risk assessment", "fail-safe", "assurance"
+        "safety",
+        "safe reinforcement",
+        "control barrier function",
+        "cbf",
+        "runtime monitor",
+        "safety filter",
+        "fallback",
+        "certification",
+        "iso 10218",
+        "iso 25785",
+        "machinery regulation",
+        "ai act",
+        "standard",
+        "compliance",
+        "risk assessment",
+        "fail-safe",
+        "assurance"
       ]
     },
     {
@@ -100,11 +198,25 @@
         "en": "Systems & orchestration (long-horizon / multi-policy)",
         "ja": "システムとオーケストレーション（長期タスク / 複数方策）"
       },
-      "chart_label": "Systems & orchestration",
+      "chart_label": {
+        "en": "Systems & orchestration",
+        "ja": "システムと編成"
+      },
       "keywords": [
-        "long-horizon", "long horizon", "orchestration", "orchestrator", "hierarchical",
-        "task and motion planning", "tamp", "memory", "agentic", "skill library",
-        "multi-robot", "fleet", "planner", "subtask"
+        "long-horizon",
+        "long horizon",
+        "orchestration",
+        "orchestrator",
+        "hierarchical",
+        "task and motion planning",
+        "tamp",
+        "memory",
+        "agentic",
+        "skill library",
+        "multi-robot",
+        "fleet",
+        "planner",
+        "subtask"
       ]
     },
     {
@@ -115,19 +227,74 @@
         "en": "Embodiment & supply chain (hardware / cost)",
         "ja": "ハードウェアとサプライチェーン（機体 / コスト）"
       },
-      "chart_label": "Embodiment & supply chain",
+      "chart_label": {
+        "en": "Embodiment & supply chain",
+        "ja": "ハードウェアと供給網"
+      },
       "keywords": [
-        "humanoid", "actuator", "dexterous hand", "tactile", "gripper", "bill of materials",
-        "bom", "supply chain", "production line", "mass production", "battery", "torque",
-        "harmonic", "encoder", "sensor suite"
+        "humanoid",
+        "actuator",
+        "dexterous hand",
+        "tactile",
+        "gripper",
+        "bill of materials",
+        "bom",
+        "supply chain",
+        "production line",
+        "mass production",
+        "battery",
+        "torque",
+        "harmonic",
+        "encoder",
+        "sensor suite"
       ]
     }
   ],
   "signals": [
-    { "id": "numbers", "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:%|percent|Hz|ms|fps|GB|TB|B params|billion|hours)\\b" },
-    { "id": "closed_loop", "keywords": ["closed-loop", "closed loop", "success rate", "task success"] },
-    { "id": "real_robot", "keywords": ["real robot", "real-world", "physical robot", "hardware experiments", "deployed"] },
-    { "id": "open_release", "keywords": ["open-source", "open source", "we release", "open weights", "checkpoint", "github.com", "huggingface"] },
-    { "id": "latency", "keywords": ["latency", "ms", "hz", "real-time", "throughput"] }
+    {
+      "id": "numbers",
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:%|percent|Hz|ms|fps|GB|TB|B params|billion|hours)\\b"
+    },
+    {
+      "id": "closed_loop",
+      "keywords": [
+        "closed-loop",
+        "closed loop",
+        "success rate",
+        "task success"
+      ]
+    },
+    {
+      "id": "real_robot",
+      "keywords": [
+        "real robot",
+        "real-world",
+        "physical robot",
+        "hardware experiments",
+        "deployed"
+      ]
+    },
+    {
+      "id": "open_release",
+      "keywords": [
+        "open-source",
+        "open source",
+        "we release",
+        "open weights",
+        "checkpoint",
+        "github.com",
+        "huggingface"
+      ]
+    },
+    {
+      "id": "latency",
+      "keywords": [
+        "latency",
+        "ms",
+        "hz",
+        "real-time",
+        "throughput"
+      ]
+    }
   ]
 }

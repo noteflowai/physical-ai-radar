@@ -107,14 +107,23 @@ This is the part most repositories get wrong, so it is explicit here:
 
 Charts are emitted as hand-written SVG (`pairadar/charts.py`): lane distribution,
 daily cadence and evidence mix. No plotting dependency, no binary diffs, readable in a
-pull request. Labels are English because rendering CJK glyphs identically in CI would
-require bundling a font.
+pull request. One set is written per language, plus an unsuffixed English set because
+already-published pages link to those filenames. Bundling a font was never necessary:
+these are SVG *text*, so the glyphs come from the reader's browser and the bytes this
+repository commits are identical either way.
 
-Each lane declares a short `chart_label` in `data/taxonomy.json`. The full lane names run
-43–53 characters and, drawn at 12px from `x=20`, overran the bars that start at `x=250`.
-Without a font library the renderer estimates advance width at a deliberately generous
-6.8px per character and trims anything still over budget with an ellipsis, so a future
-long label degrades visibly instead of painting over the data.
+Each lane may declare a short `chart_label` per language in `data/taxonomy.json`. The
+full English names run 43–53 characters and, drawn at 12px from `x=20`, overran the bars
+that start at `x=250`. Without a font library the renderer estimates advance width per
+character — East Asian wide and fullwidth forms at one em, everything else at a
+deliberately generous 6.8px — and trims anything still over budget with an ellipsis.
+
+The estimate is per character because a single average is wrong for CJK by a factor of
+two. Chinese lane names fit the gutter unshortened; Japanese ones did not, which was
+visible only after rendering the charts and looking at them: five of eight labels came
+back cut. Short Japanese forms fixed that, and a test now asserts that no lane label in
+any language needs trimming at all — a cut label is a content problem to fix in the
+taxonomy, not a rendering detail to tolerate.
 
 ## 7. Reproducibility
 

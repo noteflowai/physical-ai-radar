@@ -161,13 +161,7 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
     }
     # The pages embed the charts, so re-rendering without them would publish a page
     # whose numbers and whose images disagree.
-    charts.write_all(
-        root/"assets" if root != ROOT else ASSETS_DIR,
-        [(config.chart_label(lane_id), count) for lane_id, count in ctx["lane_rows"]],
-        ctx["cadence"],
-        ctx["mix"],
-        ctx["generated"],
-    )
+    write_charts(config, ctx, root)
     written = write_daily(config, ctx, root)
     if write_readme:
         for lang in LANGS:
@@ -177,6 +171,22 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
     print(f"[rerender] {day}: {len(picked)} published picks, {drafted} drafted notes, "
           f"{len(written)} files written")
     return ctx
+
+
+def write_charts(config: Config, ctx: dict[str, Any], root: Path) -> None:
+    """Render one chart set per language, and an unsuffixed English set because
+    already-published pages link to those names."""
+    assets = root/"assets" if root != ROOT else ASSETS_DIR
+    for lang in LANGS:
+        ui = config.ui(lang)
+        titles = {"lanes": ui["lane_distribution"], "cadence": ui["cadence"],
+                  "mix": ui["source_mix"]}
+        rows = [(config.chart_label(lane_id, lang), count) for lane_id, count in ctx["lane_rows"]]
+        charts.write_all(assets, rows, ctx["cadence"], ctx["mix"], ctx["generated"],
+                         titles=titles, suffix=f".{lang}")
+        if lang == "en":
+            charts.write_all(assets, rows, ctx["cadence"], ctx["mix"], ctx["generated"],
+                             titles=titles)
 
 
 def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True,
@@ -192,13 +202,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     day = day or datetime.now(timezone.utc).date().isoformat()
     ctx = build_context(config, offline=offline, limit=limit, day=day)
 
-    charts.write_all(
-        root/"assets" if root != ROOT else ASSETS_DIR,
-        [(config.chart_label(lane_id), count) for lane_id, count in ctx["lane_rows"]],
-        ctx["cadence"],
-        ctx["mix"],
-        ctx["generated"],
-    )
+    write_charts(config, ctx, root)
     written: list[Path] = write_daily(config, ctx, root)
     if write_readme:
         for lang in ("zh", "en", "ja"):
