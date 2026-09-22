@@ -40,6 +40,24 @@
       "failed": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://blogs.nvidia.com/blog/physical-ai-halos-safety",
+        "https://spectrum.ieee.org/cyborg-rescue-roach",
+        "https://spectrum.ieee.org/video-friday-disaster-response-robots",
+        "https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs",
+        "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai",
+        "https://huggingface.co/blog/allenai/benchmirt",
+        "https://huggingface.co/blog/funes",
+        "https://huggingface.co/blog/asyncgrpo-lora-hfjobs"
+      ],
+      "failed": [
+        "arxiv"
+      ]
     }
   ]
 }

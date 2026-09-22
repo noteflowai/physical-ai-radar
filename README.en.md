@@ -18,22 +18,22 @@ How this differs from a paper list or a news aggregator:
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-21
+### Today's radar · 2026-09-22
 
-`Generated: 2026-09-21 01:40 UTC` ｜ `Window: 2026-09-18 → 2026-09-21 (UTC)`
+`Generated: 2026-09-22 01:40 UTC` ｜ `Window: 2026-09-19 → 2026-09-22 (UTC)`
 
-- `[O]` **[Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies](https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/)** — Systems & orchestration (long-horizon / multi-policy)
-  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
-- `[O]` **[Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps](https://huggingface.co/blog/grpo-with-trl-ifstruct)** — Training & self-improvement (RL / post-training)
+- `[O]` **[Why Deploying Physical AI at Scale Demands Safety at Every Layer](https://blogs.nvidia.com/blog/physical-ai-halos-safety/)** — Safety, authority & compliance
+  - Until dedicated standards land, safety rests on architecture and runtime guarantees; this layer gates access to customer sites.
+- `[M]` **[Cyborg Roaches Can Stab You With Needles](https://spectrum.ieee.org/cyborg-rescue-roach)** — Edge & real-time (on-device inference / control rate)
+  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
+- `[M]` **[Video Friday: Humanoid Robot Takes On Monkey Bars](https://spectrum.ieee.org/video-friday-disaster-response-robots)** — Training & self-improvement (RL / post-training)
   - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
-- `[O]` **[NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC](https://blogs.nvidia.com/blog/ibc-news-2026/)** — Edge & real-time (on-device inference / control rate)
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[O]` **[Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original](https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing)** — Edge & real-time (on-device inference / control rate)
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[M]` **[The Best Way to Explore Lunar Craters Is a Giant Robot Ball](https://spectrum.ieee.org/moon-ball-robot)** — Embodiment & supply chain (hardware / cost)
-  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
+- `[O]` **[Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch](https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/)** — Simulation & evaluation (sim2real / closed-loop)
+  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+- `[O]` **[Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video](https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/)** — Data engine (collection / curation / scaling)
+  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
 
-[Today's radar ›](radar/daily/2026-09-21.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-22.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.en.svg)
 

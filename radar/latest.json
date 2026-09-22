@@ -1,124 +1,125 @@
 {
-  "date": "2026-09-21",
-  "generated": "2026-09-21 01:40 UTC",
-  "window": "2026-09-18 → 2026-09-21 (UTC)",
+  "date": "2026-09-22",
+  "generated": "2026-09-22 01:40 UTC",
+  "window": "2026-09-19 → 2026-09-22 (UTC)",
   "picked": [
     {
-      "id": "nvidia-blog:1adb809c884f",
-      "title": "Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies",
-      "url": "https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/",
+      "id": "nvidia-blog:173eb9a2ab25",
+      "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-09-21",
+      "lane": "safety",
+      "score": 2.235,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots will be deployed between 2026 and 2035. As these machines enter roads, factories, warehouses and other environments shared with people, [&#8230;]"
+    },
+    {
+      "id": "ieee-spectrum-robotics:9fbd3b91fa7b",
+      "title": "Cyborg Roaches Can Stab You With Needles",
+      "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-09-05",
+      "lane": "edge",
+      "score": 1.152,
+      "numbers": [],
+      "signals": [
+        "numbers",
+        "open_release",
+        "latency"
+      ],
+      "summary": "Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you. Although the sight might be unnerving, to say the least, this prototype paramedic cyborg, or “Paraborg,” might one day help deliver lifesaving aid to disaster victims who might be otherwise impossible to reach. The Hardest Problems in Robotics For decades, scientists have sought to develop cyborg insects as “a shortcut around some of the hardest problems in robotics,” says T. Thang Vo-Doan , director of the University of Queensland’s Biorobotics Lab in Brisbane, Australia, which just published a paper on the Paraborgs. The University of Queensland Building an insect-size robot “that can move reliably through rubble, climb over irregular surfaces, recover from falls, carry its own power, and still have room for useful sensors is extraordinarily difficult,” Vo-Doan says. An insect already comes with much of that mobility built in, so instead of trying to create artificial versions of every part of an insect’s body from scratch, researchers can graft an electronic interface onto an insect to make use of its existing capabilities. Previously, scientists have shown they could steer cyborg insects such as beetles and moths . This prior work largely focused on controlling their movements to serve as passive sensor platforms. In 2023, as Vo-Doan and fellow researcher Thanh Nho Do were talking about search-and-rescue cyborg insects shortly before that year’s IEEE International Conference on Robotics and Automation (ICRA), they asked, “What happens after an insect finds a trapped victim?” Vo-Doan recalls. “Could it go beyond locating someone and actually provide some form of assistance while rescuers are still trying to reach them?” Giant Cockroaches to the Rescue To answer this question, the roboticists experimented with giant burrowing cockroaches ( Macropanesthia rhinoceros ), which are native to Australia. The researchers needed an insect capable of carrying a large payload (over half its weight), and at roughly 40 grams in size, this species is the world’s heaviest species of roach . A larger insect is also easier to operate on to implant cybernetic interfaces. The cockroaches were saddled with lightweight electronics that included electrodes implanted into both their antennae and small tail-like appendages known as cerci. Wirelessly activating these electrodes with a handheld gaming controller could steer the roaches left or right, spur them forward, or stop them from moving. The insects were also equipped with either a wireless camera or a remote-controlled injector, which used a spring to launch a drug-filled syringe at a nearby target. A chemical reaction inside the syringe then generated a puff of carbon dioxide, which exerted pressure within the syringe to inject its payload into a target. Paraborgs are designed to work in teams, with some carrying cameras and others carrying injectors with potentially lifesaving medications. The University of Queensland The scientists decided not to load both a camera and an injector onto a single roach because the combined weight and bulk could impair their mobility on complex terrain. Having both sets of electronics would also increase energy demands, resulting in reduced operation time. Instead, the researchers envision a swarm approach with the Paraborgs, with different specialized cyborgs performing complementary roles. In proof-of-concept tests, the scientists were able to successfully navigate the Paraborgs over a 2.5-meter course past three checkpoints before launching their needles at an 8-by-10-centimeter silicone target. In 25 trials, the cockroaches completed the course every single time and succeeded at injecting the target 72 percent of the time. “The long-term goal is to combine the insect’s advanced locomotion with sensing and intervention capabilities so we can reach and help more people, more quickly,” Vo-Doan says. While the Paraborgs can be steered remotely, the cockroaches themselves are still very much alive and able to use their skills as bugs to navigate through complex terrain. The University of Queensland The researchers acknowledge that “for someone who is already trapped or injured, seeing a cyborg insect approaching could understandably be a little surprising or unsettling at first,” Vo-Doan says. Ways to make it clear these insects were part of rescue efforts might include flashing lights, recognizable emergency markings, “or perhaps a tiny speaker delivering a simple message such as, ‘Help is on the way,’ ” Vo-Doan adds. “Making people feel comfortable with the technology is just as important as making it work.” Practical Paraborgs In the future, Vo-Doan and his colleagues aim to address practical issues with the Paraborg. These include compensating for the movements of victims, establishing reliable wireless communications inside collapsed structures, and guiding the cyborgs as they climb over and squeeze through complex environments filled with rubble and dust. Autonomy will become increasingly important for these insects, particularly if the scientists want to operate multiple cyborgs at the same time, he says. In addition, a fundamental challenge when it comes to working with cyborg insects is that they are living creatures with minds of their own. “We are not piloting them like conventional wheeled robots,” Vo-Doan says. “Electrical stimulation influences their direction, but the insect still generates and controls much of its own locomotion.” To deal with this unreliability, the Paraborgs will need better onboard systems to pinpoint their positions and monitor their actions so researchers can recognize when an insect has deviated from its course or become less responsive. “We are not suggesting that this is a medical device ready to be used on people today,” Vo-Doan says. “Real disaster sites are full of unstable debris, narrow gaps, and communication difficulties, so we need to understand how the insect, electronics, and injector all perform under those conditions. There are also important questions around drug choice and dosage, sterility, needle safety, reliability, and regulation.” Ultimately, such research into cyborg cockroaches may help inform robot design, explains Vo-Doan. These insects “can give us useful capabilities sooner while, at the same time, helping us develop the fully artificial systems of the future.” The scientists detailed their findings last month in the journal Advanced Science ."
+    },
+    {
+      "id": "ieee-spectrum-robotics:a35916e8f8c5",
+      "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
+      "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-09-11",
+      "lane": "training",
+      "score": 1.15,
+      "numbers": [],
+      "signals": [
+        "open_release",
+        "latency"
+      ],
+      "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. Humanoids Summit Seoul : 22–23 September 2026, SEOUL IROS 2026 : 27 September–1 October 2026, PITTSBURGH CoRL 2026 : 9–12 November 2026, AUSTIN Enjoy today’s videos! Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions. We study this problem through monkey-bar traversal, where the robot must jump to the structure, traverse it through sparse bar interactions, and land safely. The list of obstacles that you can traverse to escape a robot is getting shorter. [ ETH Zurich Robotic Systems Lab ] YES GIVE ROBOTS TWO HEADS I LOVE IT! [ General Robotics Lab ] 9/11 was the first documented use of robots for urban search and rescue and helped create the field of disaster robotics. Personnel began assembling on the afternoon of September 11 and worked the pile from late on September 11 through October 2, when the last available robot failed. The robots found no survivors, but they located remains and helped search for routes through the rubble toward basements and stairwells where trapped firefighters might have gone. [ CRASAR ] Unitree majorly fully open-sources the UnifoLM-WLA-1.0 embodied foundation model, achieving new SOTA results across multiple benchmarks among open-source models worldwide. A single model coordinates desktop and whole-body mobile manipulation, supporting cross-task and cross-end-effector generalization, driven by one model, whole-body coordination. [ Unitree ] Compliance is very important in physical interaction. In this work, we show how a multi-lined aerial robot uses its centroid and joint motion to achieve hybrid impedance—admittance control in contact-rich aerial manipulation tasks such as surface sliding. This work will be presented in IEEE IROS 2026. [ DRAGON Lab ] Thanks, Moju! Remind me not to get too close to this. [ RaiLab Kaist ] Welcome to this edition of Things That Really Seem Like They Should Not Fly. [ Texas A&M University Advanced Vertical Flight Lab ] Achieving agile and generalized legged locomotion across terrains requires tight integration of perception and control, especially under occlusions and sparse footholds. Existing methods have demonstrated agility on parkour courses but often rely on end-to-end sensorimotor models with limited generalization and interpretability. By contrast, methods targeting generalized locomotion typically exhibit limited agility and struggle with visual occlusions. We introduce a unified reinforcement learning (RL) framework for agile and generalized locomotion that incorporates a novel attention-based map encoder in the control policy. [ ETH Zurich Robotic Systems Lab ] Finally, the killer app for humanoid robots! But we probably shouldn’t call it that. [ Unitree ] I suspect that this demo avoids many of the things that are actually difficult about doing dishes. Not just the water and the slippery soapiness, but also identifying when a dish is dirty as well as when it is actually clean. [ Flexiv ] Sure, I guess I might want a robot to deliver a burrito to me while I’m hiking to the top of a mountain in the rain...? [ DEEP Robotics ] AI has transformed the digital world. It writes our code, generates our images, reasons in our language. But the physical world—the plants that make our power, our fuel, our steel, and chemicals—it has barely touched. ANYbotics CEO and co-founder Péter Fankhauser on the bet behind the company: Why legged robots turned out to be the way into the world’s most demanding industrial plants, what it took to certify one for explosive atmospheres after experts called it impossible, and where autonomous industrial work goes next. [ ANYbotics ]"
+    },
+    {
+      "id": "nvidia-blog:f3468ea93aa3",
+      "title": "Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch",
+      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
       "published": "2026-09-10",
-      "lane": "systems",
-      "score": 1.3,
-      "numbers": [],
-      "signals": [
-        "numbers"
-      ],
-      "summary": "The global robotaxi market — physical AI’s first commercial breakthrough — is projected to reach $400 billion by 2035, with over 6 million commercial vehicles in operation as driverless fleets are already moving people through some of the world’s busiest and most complex streets. Deploying a driverless vehicle is one challenge. Scaling a fleet is [&#8230;]"
-    },
-    {
-      "id": "huggingface-blog:45020768fad9",
-      "title": "Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps",
-      "url": "https://huggingface.co/blog/grpo-with-trl-ifstruct",
-      "publisher": "Hugging Face Blog",
-      "source_id": "huggingface-blog",
-      "evidence": "O",
-      "published": "2026-09-03",
-      "lane": "training",
-      "score": 1.3,
+      "lane": "simeval",
+      "score": 1.035,
       "numbers": [],
       "signals": [],
-      "summary": ""
+      "summary": "Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles joining the cloud. The newest PC releases can demand serious hardware, storage [&#8230;]"
     },
     {
-      "id": "nvidia-blog:29c19642921e",
-      "title": "NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC",
-      "url": "https://blogs.nvidia.com/blog/ibc-news-2026/",
+      "id": "nvidia-blog:683b94332d9b",
+      "title": "Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video",
+      "url": "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-09-09",
-      "lane": "edge",
-      "score": 1.252,
+      "published": "2026-09-10",
+      "lane": "data",
+      "score": 1.018,
       "numbers": [],
-      "signals": [
-        "latency"
-      ],
-      "summary": "At the IBC conference, running Sept. 11-14 in Amsterdam, the creative, technology and business communities are coming together to turn ideas into action and discuss innovations across the media and entertainment industries. More than 44,000 attendees from 170+ countries are gathering to explore 1,300+ exhibitions in 14+ halls and outdoor spaces, with over 600 speakers [&#8230;]"
+      "signals": [],
+      "summary": "Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming. Skild AI’s new S1 robot foundation model helps address this, designed to learn previously unseen, long-horizon tasks from a single video demonstration. The model, launched last week, uses [&#8230;]"
     },
     {
-      "id": "huggingface-blog:f6b26e55a489",
-      "title": "Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original",
-      "url": "https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing",
+      "id": "huggingface-blog:23bdbfdbd061",
+      "title": "BenchMIRT: What are LLM benchmarks actually measuring?",
+      "url": "https://huggingface.co/blog/allenai/benchmirt",
       "publisher": "Hugging Face Blog",
       "source_id": "huggingface-blog",
       "evidence": "O",
-      "published": "2026-08-25",
-      "lane": "edge",
-      "score": 1.202,
+      "published": "2026-09-01",
+      "lane": "simeval",
+      "score": 0.985,
       "numbers": [],
-      "signals": [
-        "latency"
-      ],
+      "signals": [],
       "summary": ""
     },
     {
-      "id": "ieee-spectrum-robotics:afde8495f51d",
-      "title": "The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
-      "url": "https://spectrum.ieee.org/moon-ball-robot",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
+      "id": "huggingface-blog:86b47b47cb74",
+      "title": "Give Your Coding Agents a Memory You Own",
+      "url": "https://huggingface.co/blog/funes",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
       "published": "2026-09-03",
-      "lane": "hardware",
-      "score": 1.197,
-      "numbers": [],
-      "signals": [
-        "latency"
-      ],
-      "summary": "On a good day, the rock quarry in central Texas is about 370,000 kilometers (230,000 miles) from the moon. But last February, when Rishi Jangale watched his 1.8-meter-wide, 150-kilogram inflatable robot roll effortlessly over rocks, gravel, and wet clay, his imagination turned the quarry into the lunar surface instead. Jangale is an upbeat mechanical engineer nearing the end of his Ph.D. at Texas A&M University, in College Station, Texas. He and his labmates have been working on this big tan “RoboBall” for about five years. Their goal: create a vehicle capable of exploring some of the most inaccessible terrain in our solar system, such as the 21 km-wide Shackleton crater on the moon’s south pole. The Shackleton crater is 4 km deep and contains many smaller, deeper craters within. Some parts of the crater never see the sun, and within these perpetually dark, frigid pockets lie mysterious substances that planetary scientists have long struggled to examine, including layers of ancient lunar geology and stores of frozen water that could potentially support a future lunar base. “The moon is like an archive of what happened to the Earth,” says Sara Russell , a cosmic mineralogist with London’s Natural History Museum who is not involved with Texas A&M’s work. “Robotic collection works brilliantly well, and it’s great to see that being explored more in this context.” “NASA is not going to let astronauts get anywhere near these craters, because if someone falls in, you’re not going to be able to get them out,” Jangale says. “So we thought, what better shape to roll down a hill than a ball?” In a recent paper published in IEEE Transactions on Field Robotics , Jangale’s team reports on the design of RoboBall, a hypothetical lunar mission, and the results from initial tests in the Texas quarry. Getting Rolling RoboBall is the brainchild of Jangale’s advisor, former NASA robotics engineer Robert Ambrose , who first conceived of the design in 2003. Ambrose figured that a ball could address a pesky mobility risk that robots face on lunar terrain, especially in low gravity: tipping over . An inflatable sphere can’t tip over, and the form factor also insulates its internal components from sharp rocks, dust, and the huge temperature swings from over 93 °C in sunlit spots to minus 240 °C in the shade inside lunar craters. Ambrose imagined a wheeled rover parking at a crater’s edge and releasing a RoboBall to explore its depths. Unlike a small tethered rover , the RoboBall wouldn’t roll its way back up—but with no strings attached, it would have a far greater range to collect geological samples, and then be able to launch them back to the rover outside the crater with small rockets. A robotic rover would ferry RoboBall across the lunar surface to the edge of a crater. R. Jangale, D. Pravecek, et al. NASA hasn’t brought lunar samples back to Earth in over 50 years. Some morsels of moon geology find their way to Earth as meteorites, but Russell says these lack the “gold standard” field work—context about where that sample actually came from. Even as NASA reboots its crewed moon missions, many lunar sites remain inaccessible. In 2022, Ambrose’s lab finished a proof of concept, the 0.5-meter-wide RoboBall II. Creating the full-size RoboBall III then took about 11 months. “We were building these robots really quickly,” Jangale says. “Ambrose really encourages us to use and break these robots.” And designs did go awry. Jangale remembers software errors and a drivetrain that proved too weak to roll over soft bumps in initial tests. Texas A&M RAD Lab/YouTube How to Slow Your Roll RoboBall drives by moving a pendulum within its shell, shifting its entire center of mass. On flat ground, if the pendulum’s arm points forward, the shell rolls forward to compensate, and as long as the pendulum keeps the center of mass in front of the center of the ball, RoboBall will keep rolling forward. If the pendulum leans a few degrees to the left or right, RoboBall steers left or right to match. “The robot wants to go where you point the pendulum,” Jangale says. The 340-pound ball is just soft enough to bounce lightly over bumpy obstacles, but its slight overpressure keeps it relatively firm. On steep slopes, this mechanism also lets the ball control its downhill speed by simply angling the pendulum uphill. “The beauty here is the simplicity,” says Hiro Ono, an aerospace engineer who worked on robot mobility at NASA’s Jet Propulsion Lab for 13 years before joining Georgia Tech. For space robots, Ono describes simplicity in terms of the number of actuators. RoboBall has just two, and both are fully inside of the shell, shielded from environmental risk factors like dust, a feature that Ono describes as “unique.” After the first quarry tests, it took about seven months for the team to design and build an upgraded RoboBall III with 2.5 times more torque—enough to fling itself over small obstacles and roll up 20 degree slopes. A small rocket can launch out of the center of the RoboBall to return a sample back to a rover outside the crater. R. Jangale, D. Pravecek, et al. Getting Mission Ready In the new paper, the remotely operated RoboBall III descended the quarry’s slopes, navigated soft terrain, and launched hypothetical payloads back out of the crater with small rockets. Powered by a large battery, the robot would inflate itself during a lunar mission and charge up from a robotic rover at the edge of a crater before heading out on its own. RoboBall is probably not the right platform for all kinds of missions—its slightly bumbling nature means that it’s not ideal if you want to collect a sample from a very specific rock, for example. For now, the team hopes to work with scientists designing lunar science instruments to physically fit into RoboBall’s carry-on-luggage-size interior, while also fitting in with how RoboBall operates. “The robot is not the mission,” Jangale says. “The robot is a way for you to complete the mission.” The current version of RoboBall cost roughly $250,000 to build, but is not quite ready for the moon in its current form. While its gold-treated aluminum parts are appropriate for space missions, its other materials are not. Space-grade electronics will cost more, and the ball’s shell—made from a material tough enough to roll over steel shards and withstand minus 184 °C temperatures—has never been evaluated in lunar extremes. Aside from materials questions, the team plans to engineer the ball to adapt how it drives on varying slopes autonomously. They also hope to collaborate with government agencies or spaceflight contractors to keep refining the robot’s design for a real, eventual mission . Later this year, Texas A&M will open a new facility in Houston with the world’s largest indoor simulated moon and Mars landscapes. The facility is only 190 km from Jangale’s quarry. It’s still about 370,000 km from the moon, but it’s going to help Jangale get his robot quite a bit closer."
-    },
-    {
-      "id": "deepmind:d9b2bc36ffdf",
-      "title": "Piloting the world's first double-blind AI evaluations",
-      "url": "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/",
-      "publisher": "Google DeepMind",
-      "source_id": "deepmind",
-      "evidence": "O",
-      "published": "2026-08-27",
-      "lane": "simeval",
-      "score": 1.185,
-      "numbers": [],
-      "signals": [],
-      "summary": "Piloting the world's first double-blind AI evaluations"
-    },
-    {
-      "id": "nvidia-developer-robotics:a5ee2ec4c912",
-      "title": "How to Train a Cross-Embodiment Robot Navigation Policy with AI Agents",
-      "url": "https://developer.nvidia.com/blog/how-to-train-a-cross-embodiment-robot-navigation-policy-with-ai-agents/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-08-26",
-      "lane": "data",
-      "score": 1.167,
-      "numbers": [],
-      "signals": [],
-      "summary": "Navigation enables a robot to turn perception and motion into purposeful autonomy. Unlike locomotion, which produces stable movement, navigation must be used to..."
-    },
-    {
-      "id": "deepmind:dfd1ea2e5518",
-      "title": "Introducing agentic video understanding with Gemini",
-      "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/",
-      "publisher": "Google DeepMind",
-      "source_id": "deepmind",
-      "evidence": "O",
-      "published": "2026-09-01",
       "lane": "systems",
-      "score": 1.15,
+      "score": 0.95,
+      "numbers": [],
+      "signals": [],
+      "summary": ""
+    },
+    {
+      "id": "huggingface-blog:d4e55a9164f4",
+      "title": "Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL",
+      "url": "https://huggingface.co/blog/asyncgrpo-lora-hfjobs",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
+      "published": "2026-09-10",
+      "lane": "training",
+      "score": 0.95,
       "numbers": [],
       "signals": [],
       "summary": ""
@@ -127,20 +128,20 @@
   "lane_counts": {
     "foundation": 3,
     "data": 6,
-    "training": 5,
-    "simeval": 5,
-    "edge": 7,
-    "safety": 5,
-    "systems": 3,
-    "hardware": 3
+    "training": 6,
+    "simeval": 6,
+    "edge": 6,
+    "safety": 6,
+    "systems": 2,
+    "hardware": 2
   },
   "evidence_mix": {
-    "O": 21,
+    "O": 20,
     "R": 13,
-    "M": 3
+    "M": 4
   },
   "fetch": {
-    "items": 1120,
+    "items": 1121,
     "attempted": 7,
     "answered": 6,
     "failed": [
@@ -151,7 +152,7 @@
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
       "deepmind": 100,
-      "huggingface-blog": 862,
+      "huggingface-blog": 863,
       "ieee-spectrum-robotics": 30
     }
   },
