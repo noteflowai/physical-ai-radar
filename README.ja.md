@@ -18,22 +18,22 @@
 - **依存ゼロで再現可能**：パイプラインは Python 標準ライブラリのみ、図は手書き SVG。誰でも同じ出力をローカルで再現できます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-22
+### 本日のレーダー · 2026-09-23
 
-`生成時刻: 2026-09-22 01:40 UTC` ｜ `対象期間: 2026-09-19 → 2026-09-22 (UTC)`
+`生成時刻: 2026-09-23 01:40 UTC` ｜ `対象期間: 2026-09-20 → 2026-09-23 (UTC)`
 
-- `[O]` **[Why Deploying Physical AI at Scale Demands Safety at Every Layer](https://blogs.nvidia.com/blog/physical-ai-halos-safety/)** — 安全・権限・コンプライアンス
-  - 専用規格が整うまで、安全はアーキテクチャと実行時保証に依存し、この層が顧客現場への可否を決める。
-- `[M]` **[Cyborg Roaches Can Stab You With Needles](https://spectrum.ieee.org/cyborg-rescue-roach)** — エッジとリアルタイム（オンデバイス推論 / 制御周期）
-  - オンデバイスの遅延と制御周期は硬い制約：実時間予算を超えるモデルは制御ループに入れない。
-- `[M]` **[Video Friday: Humanoid Robot Takes On Monkey Bars](https://spectrum.ieee.org/video-friday-disaster-response-robots)** — 学習と自己改善（RL / 事後学習）
-  - 事後学習と自己改善は、配備後も方策が強くなれるか、運用で介入データを取る必要があるかを決める。
-- `[O]` **[Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch](https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/)** — シミュレーションと評価（sim2real / 閉ループ）
+- `[O]` **[NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development](https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/)** — システムとオーケストレーション（長期タスク / 複数方策）
+  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
+- `[O]` **[How UK AISI and EvalEval Are Making Benchmark Results Reproducible](https://huggingface.co/blog/evaleval-aisi)** — シミュレーションと評価（sim2real / 閉ループ）
   - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
-- `[O]` **[Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video](https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/)** — データエンジン（収集 / 精査 / スケーリング）
-  - データの取得元と精査パイプラインが現在の真の堀であり、新規タスク単価を決める。
+- `[O]` **[Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community](https://huggingface.co/blog/omlx)** — 学習と自己改善（RL / 事後学習）
+  - 事後学習と自己改善は、配備後も方策が強くなれるか、運用で介入データを取る必要があるかを決める。
+- `[M]` **[Barbara Mazzolai Wants to Build a New Field of Robotics](https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai)** — エッジとリアルタイム（オンデバイス推論 / 制御周期）
+  - オンデバイスの遅延と制御周期は硬い制約：実時間予算を超えるモデルは制御ループに入れない。
+- `[O]` **[NeoMME: an efficient Multimodal-native and Multilingual Encoder](https://huggingface.co/blog/Hcompany/neomme)** — ハードウェアとサプライチェーン（機体 / コスト）
+  - 機体とサプライチェーンがコスト曲線と納入ペースを決め、アクチュエータがBOMの主要部分を占める。
 
-[本日のレーダー ›](radar/daily/2026-09-22.ja.md) · [アーカイブ ›](radar/INDEX.md)
+[本日のレーダー ›](radar/daily/2026-09-23.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.ja.svg)
 

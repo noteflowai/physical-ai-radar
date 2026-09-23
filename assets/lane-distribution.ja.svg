@@ -13,29 +13,29 @@
 </style>
 <rect class="plate" width="720" height="300"/>
 <text x="20" y="30" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" class="ink">軸ごとの分布</text>
-<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-09-22 01:40 UTC</text>
+<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-09-23 01:40 UTC</text>
 <text x="20" y="81" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">基盤モデル（VLA / WAM）</text>
-<rect x="250" y="70" width="200" height="15" rx="3" fill="#7300e5" fill-opacity="0.85"/>
-<text x="458" y="82" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">3</text>
+<rect x="250" y="70" width="171" height="15" rx="3" fill="#7300e5" fill-opacity="0.85"/>
+<text x="429" y="82" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">3</text>
 <text x="20" y="107" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">データエンジン</text>
-<rect x="250" y="96" width="400" height="15" rx="3" fill="#41b1e8" fill-opacity="0.85"/>
-<text x="658" y="108" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">6</text>
+<rect x="250" y="96" width="285" height="15" rx="3" fill="#41b1e8" fill-opacity="0.85"/>
+<text x="543" y="108" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">5</text>
 <text x="20" y="133" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">学習と自己改善</text>
-<rect x="250" y="122" width="400" height="15" rx="3" fill="#00a878" fill-opacity="0.85"/>
-<text x="658" y="134" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">6</text>
+<rect x="250" y="122" width="285" height="15" rx="3" fill="#00a878" fill-opacity="0.85"/>
+<text x="543" y="134" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">5</text>
 <text x="20" y="159" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">シミュレーションと評価</text>
-<rect x="250" y="148" width="400" height="15" rx="3" fill="#f07c00" fill-opacity="0.85"/>
-<text x="658" y="160" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">6</text>
+<rect x="250" y="148" width="285" height="15" rx="3" fill="#f07c00" fill-opacity="0.85"/>
+<text x="543" y="160" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">5</text>
 <text x="20" y="185" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">エッジとリアルタイム</text>
 <rect x="250" y="174" width="400" height="15" rx="3" fill="#8a6bff" fill-opacity="0.85"/>
-<text x="658" y="186" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">6</text>
+<text x="658" y="186" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">7</text>
 <text x="20" y="211" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">安全・権限・コンプライアンス</text>
-<rect x="250" y="200" width="400" height="15" rx="3" fill="#0d8ecf" fill-opacity="0.85"/>
-<text x="658" y="212" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">6</text>
+<rect x="250" y="200" width="285" height="15" rx="3" fill="#0d8ecf" fill-opacity="0.85"/>
+<text x="543" y="212" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">5</text>
 <text x="20" y="237" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">システムと編成</text>
-<rect x="250" y="226" width="133" height="15" rx="3" fill="#7cb342" fill-opacity="0.85"/>
-<text x="391" y="238" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">2</text>
+<rect x="250" y="226" width="114" height="15" rx="3" fill="#7cb342" fill-opacity="0.85"/>
+<text x="372" y="238" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">2</text>
 <text x="20" y="263" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" class="ink">ハードウェアと供給網</text>
-<rect x="250" y="252" width="133" height="15" rx="3" fill="#00838f" fill-opacity="0.85"/>
-<text x="391" y="264" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">2</text>
+<rect x="250" y="252" width="171" height="15" rx="3" fill="#00838f" fill-opacity="0.85"/>
+<text x="429" y="264" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">3</text>
 </svg>

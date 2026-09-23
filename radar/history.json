@@ -58,6 +58,22 @@
       "failed": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-23",
+      "count": 6,
+      "lanes": 5,
+      "urls": [
+        "https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics",
+        "https://huggingface.co/blog/evaleval-aisi",
+        "https://huggingface.co/blog/omlx",
+        "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
+        "https://huggingface.co/blog/hcompany/neomme",
+        "https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta"
+      ],
+      "failed": [
+        "arxiv"
+      ]
     }
   ]
 }

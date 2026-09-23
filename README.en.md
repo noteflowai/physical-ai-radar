@@ -18,22 +18,22 @@ How this differs from a paper list or a news aggregator:
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-22
+### Today's radar · 2026-09-23
 
-`Generated: 2026-09-22 01:40 UTC` ｜ `Window: 2026-09-19 → 2026-09-22 (UTC)`
+`Generated: 2026-09-23 01:40 UTC` ｜ `Window: 2026-09-20 → 2026-09-23 (UTC)`
 
-- `[O]` **[Why Deploying Physical AI at Scale Demands Safety at Every Layer](https://blogs.nvidia.com/blog/physical-ai-halos-safety/)** — Safety, authority & compliance
-  - Until dedicated standards land, safety rests on architecture and runtime guarantees; this layer gates access to customer sites.
-- `[M]` **[Cyborg Roaches Can Stab You With Needles](https://spectrum.ieee.org/cyborg-rescue-roach)** — Edge & real-time (on-device inference / control rate)
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[M]` **[Video Friday: Humanoid Robot Takes On Monkey Bars](https://spectrum.ieee.org/video-friday-disaster-response-robots)** — Training & self-improvement (RL / post-training)
-  - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
-- `[O]` **[Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch](https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/)** — Simulation & evaluation (sim2real / closed-loop)
+- `[O]` **[NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development](https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/)** — Systems & orchestration (long-horizon / multi-policy)
+  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
+- `[O]` **[How UK AISI and EvalEval Are Making Benchmark Results Reproducible](https://huggingface.co/blog/evaleval-aisi)** — Simulation & evaluation (sim2real / closed-loop)
   - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
-- `[O]` **[Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video](https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/)** — Data engine (collection / curation / scaling)
-  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
+- `[O]` **[Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community](https://huggingface.co/blog/omlx)** — Training & self-improvement (RL / post-training)
+  - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
+- `[M]` **[Barbara Mazzolai Wants to Build a New Field of Robotics](https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai)** — Edge & real-time (on-device inference / control rate)
+  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
+- `[O]` **[NeoMME: an efficient Multimodal-native and Multilingual Encoder](https://huggingface.co/blog/Hcompany/neomme)** — Embodiment & supply chain (hardware / cost)
+  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
 
-[Today's radar ›](radar/daily/2026-09-22.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-23.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.en.svg)
 
