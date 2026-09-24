@@ -1,98 +1,35 @@
 {
-  "date": "2026-09-23",
-  "generated": "2026-09-23 01:40 UTC",
-  "window": "2026-09-20 → 2026-09-23 (UTC)",
+  "date": "2026-09-24",
+  "generated": "2026-09-24 01:40 UTC",
+  "window": "2026-09-21 → 2026-09-24 (UTC)",
   "picked": [
     {
-      "id": "nvidia-blog:193bdb306b4d",
-      "title": "NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development",
-      "url": "https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/",
+      "id": "nvidia-blog:301ba2c6df75",
+      "title": "At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia",
+      "url": "https://blogs.nvidia.com/blog/ai-day-singapore/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-09-22",
-      "lane": "systems",
-      "score": 2.05,
+      "published": "2026-09-23",
+      "lane": "training",
+      "score": 1.8,
       "numbers": [],
-      "signals": [
-        "open_release"
-      ],
-      "summary": "To build and deploy sophisticated robotics applications that can perceive, reason and act in dynamic environments, developers need new physical AI models and tools. The ROS open framework is a project from Open Robotics that helps humans build robots. NVIDIA Isaac ROS 5.0 — a collection of GPU-accelerated packages built on ROS, released today at [&#8230;]"
+      "signals": [],
+      "summary": "NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and high-performance computing. At the event, NVIDIA and its partners are showcasing breakthrough AI advancements across the Southeast Asia region [&#8230;]"
     },
     {
-      "id": "huggingface-blog:2960c64a019e",
-      "title": "How UK AISI and EvalEval Are Making Benchmark Results Reproducible",
-      "url": "https://huggingface.co/blog/evaleval-aisi",
+      "id": "huggingface-blog:a70f8ac64edf",
+      "title": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
+      "url": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
       "publisher": "Hugging Face Blog",
       "source_id": "huggingface-blog",
       "evidence": "O",
-      "published": "2026-09-22",
+      "published": "2026-09-23",
       "lane": "simeval",
       "score": 1.785,
       "numbers": [],
       "signals": [],
       "summary": ""
-    },
-    {
-      "id": "huggingface-blog:fb8ad85c459c",
-      "title": "Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community",
-      "url": "https://huggingface.co/blog/omlx",
-      "publisher": "Hugging Face Blog",
-      "source_id": "huggingface-blog",
-      "evidence": "O",
-      "published": "2026-09-22",
-      "lane": "training",
-      "score": 1.75,
-      "numbers": [],
-      "signals": [],
-      "summary": ""
-    },
-    {
-      "id": "ieee-spectrum-robotics:0c1c0768bc71",
-      "title": "Barbara Mazzolai Wants to Build a New Field of Robotics",
-      "url": "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-22",
-      "lane": "edge",
-      "score": 1.402,
-      "numbers": [],
-      "signals": [
-        "latency"
-      ],
-      "summary": "Throughout her career, roboticist Barbara Mazzolai has turned to nature for inspiration. Now she wants to ensure the technology she builds gives back to the environment, too. After starting her career as a biologist, a chance opportunity saw Mazzolai switch streams to engineering and become an early pioneer of bioinspired robotics . Building on her knowledge of biology’s ability to solve a diverse set of problems, she has developed robots based on octopuses, plant roots, and even seeds . “I’ve always been fascinated by living organisms, [and] by the extraordinary variety of solutions in nature, selected by the evolutionary process,” she says. Barbara Mazzolai Employer: Italian Institute of Technology Occupation: Associate director for robotics; director of the Bioinspired Soft Robotics Laboratory Education: Master’s degree in biology, University of Pisa; master’s degree in eco-management and audit schemes, Scuola Superiore Sant’Anna; Ph.D. in microsystems engineering, University of Rome Tor Vergata But Mazzolai, now the associate director for robotics at the Italian Institute of Technology, in Genoa , also believes engineering needs to reckon with its own impact on the natural world. That’s why she is advocating for a new field of research she calls “sustainability robotics.” In a manifesto published in Nature Machine Intelligence in July, she and her collaborators outline a vision for a new approach to designing robots that’s meant to improve the relationship between nature, humanity, and technology. “We need to reduce the footprint of our technology,” she says. “It’s really about thinking in a different way to open new possibilities for robotics [and] for society.” In this new mode of thinking, Mazzolai considers sustainability a core component of the design. A child of nature Mazzolai traces her fascination with the living world back to her childhood growing up on Italy’s Tuscan coast, close to the port city Livorno. Her father was a public-health inspector and a professional mycologist, and the family spent a lot of time exploring forests and learning about the local fungi and plants. After toying with the prospect of pursuing art, her other major passion, Mazzolai ultimately decided to enroll at the University of Pisa in 1987 to study biology. She was particularly drawn to marine biology, but shortly before graduating with a master’s degree in 1995, she secured a research position at the Italian National Research Council’s Institute of Biophysics studying the cycles of heavy metals like mercury through both living and nonliving parts of the environment. This involved collecting and analyzing samples from water, soil, vegetables, and even humans to understand the impact these metals have on health and the environment. She balanced this work with studying environmental management at the Scuola Superiore Sant’Anna , in Pisa, graduating with a master’s degree in 1998. During that time, however, she learned that the university was recruiting biologists to help design new devices for environmental monitoring. She applied for and got the job in 1999 and began working as a research assistant under renowned bioroboticist Paolo Dario , first developing sensors and then robots meant to monitor air, water, and soil. Even before entering a doctoral program, Mazzolai was promoted to assistant professor in 2004 and shortly afterward made her first foray into bioinspired robotics. In collaboration with colleagues at Sant’Anna, she helped design a soft robot inspired by the octopus. “We proposed it as a paradigm for launching this idea of soft robotics: demonstrating that [robots] can be soft, but at the same time apply strong force to the environment, like the animal does,” she says. Back to school In 2007 Mazzolai enrolled in a Ph.D. in microsystems engineering at Tor Vergata University of Rome , which she balanced with her role at Sant’Anna. She was already relying heavily on microfabrication techniques to develop sensors for her robots, and she was keen to push that part of the field forward. While robots frequently feature sensors designed for perception, such as tactile or proprioceptive sensors, these systems typically focus on understanding the robot’s position in its environment, she says. “But there are few robots that integrate physical or chemical sensors to really understand the environment they move in,” she adds. “I’ve always been fascinated by living organisms, [and] by the extraordinary variety of solutions in nature.” Mazzolai was appointed as a team leader at the Center for Micro-BioRobotics of the Italian Institute of Technology in 2009, where she continued her work on the emerging field of bioinspired robotics. Two years later, she completed her Ph.D. and was promoted to director of the center. Planting the seeds Around this time Mazzolai says she became interested in using plants as a model for new kinds of robots, expanding bioinspiration beyond just animals. In particular, she was captivated by the ability of roots to efficiently explore the underground environment, and she imagined machines with the same deftness could have applications in both environmental modeling and precision agriculture . While many bioinspired robots mimic animals, plants also serve as a muse for Mazzolai. This tendril-like bot can coil around other structures like a vine. Italian Institute of Technology When she first proposed the idea, colleagues were somewhat skeptical of robots based on seemingly static organisms. But in reality, she says, plants move nonstop through a process known as indeterminate growth. “They really grow for their entire life,” she says. “They adapt their morphology, their behavior to the external environment; they repair, they sense, they communicate.” Trying to mimic a system that operates on such different principles to conventional robotics required some serious thinking, however. Mazzolai says that working in bioinspired robotics sometimes requires you to have “two separate brains”—one of a biologist and one of an engineer. The process often involves deep study of the target organism to learn the underlying principles that shape how it operates before trying to engineer a robot capable of mimicking them. “It’s not a copy of natural organisms,” says Mazzolai, because a living organism is both difficult to replicate and has different goals. In the case of plant roots, what makes them so efficient at exploring the soil is that they reduce friction by growing only at the very fine tip of the structure, while the thicker base of the root remains static. This significantly reduces the amount of energy required to push through the earth compared to that of a more conventional drill, which must push the entire structure from above. To realize this principle in a robot, her team developed a miniaturized 3D printer that sits at the machine’s tip and feeds thermoplastic filament through a heated nozzle to build a snakelike body behind it. This allows the robot to push through the soil efficiently. The tip also contains sensors that allow it to avoid obstacles and detect nearby nutrients or water. Making robotics sustainable After spending so much of her career borrowing from nature, Mazzolai is now eager to return the favor. Many modern technologies, including plastics and car batteries, have been developed with little thought about how they will affect the environment at the end of their life cycles, she says. She wants to ensure that robotics doesn’t follow the same path. This is the inspiration for what she and collaborators now call sustainability robotics. The approach has three central pillars: ensuring that robots have minimal impact on the environment; that they’re available to people from across the world and all socioeconomic backgrounds; and that they’re “symbiotic,” providing benefits to both humans and nature. More concretely, Mazzolai would like to incorporate the concept of a life cycle into the design of robots, so that at the end of their useful life these machines can be reused, recycled, or even biodegraded. While that might sound ambitious, she’s confident that all the ingredients to make it a reality are in place. And it’s a vision that she is certain will inspire future roboticists. “There are younger people who want to really work in this field because this is the future, their future,” she says. Facing the threat of ongoing environmental damage, “they want to develop something that can help.”"
-    },
-    {
-      "id": "huggingface-blog:96a3500c5a4b",
-      "title": "NeoMME: an efficient Multimodal-native and Multilingual Encoder",
-      "url": "https://huggingface.co/blog/Hcompany/neomme",
-      "publisher": "Hugging Face Blog",
-      "source_id": "huggingface-blog",
-      "evidence": "O",
-      "published": "2026-09-03",
-      "lane": "hardware",
-      "score": 0.932,
-      "numbers": [],
-      "signals": [],
-      "summary": ""
-    },
-    {
-      "id": "ieee-spectrum-robotics:6ed7bf3522de",
-      "title": "This Robot Will Draw Your Blood Now",
-      "url": "https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-09-07",
-      "lane": "edge",
-      "score": 0.902,
-      "numbers": [],
-      "signals": [
-        "numbers",
-        "latency"
-      ],
-      "summary": "You sit down and put your arm in the cradle. You press a button. The machine takes it from there. A near-infrared light sweeps your inner elbow, hunting for a vein. A puff of alcohol hits your skin. An ultrasound probe glides across your arm, mapping how deep the vessel runs and which way it bends. Doppler captures the direction of blood flow to rule out the artery. The cuff tightens around your upper arm. The needle comes down and pierces the skin. Your blood flows into the collection tubes, each one tipped end over end nine times—no more, no less. The needle withdraws. You get a bandage. No human ever touched you. This is what it’s like to have blood taken by Aletta , the first autonomous blood-draw device authorized for use in the United States. Developed by the Dutch medical robotics firm Vitestro , the system combines imaging technologies with advanced robotics and AI to do by algorithm what a human phlebotomist—a trained health care professional who finds veins and draws blood by hand—does by feel. The U.S. Food and Drug Administration gave Aletta the go-ahead on 19 August for use on adults in nonhospitalized settings. The decision follows the lead of European regulators, who authorized the device two years earlier . “You have to tip your cap to them,” says Max Balter , a surgical-robotics specialist at Medtronic who worked on autonomous blood-draw systems during grad school in the mid-2010s. “The engineering that they have is incredible…and with their FDA clearance, it moves the whole industry forward.” Aletta Boosts Lab Capacity Amid Shortages In a clinical trial involving more than 1,600 people in the Netherlands, Aletta successfully drew blood on the first attempt in 94.5 percent of cases , even among those with hard-to-access veins, people with obesity, and the elderly. When Aletta failed to identify a suitable vein, the patient was referred for conventional phlebotomy. “It’s exceptional performance,” says Joe El-Khoury , a clinical chemist at Yale who was not involved in the Dutch trial. “It’s definitely as good if not better” than a typical professional phlebotomist. Complications were minimal, with multiple built-in safeguards to detect problems, such as sensors that track arm movement and needle position, and to halt the process should something go awry. And for those whose veins proved too challenging, a phlebotomist remains on hand to take over when needed. Notably, because a single phlebotomist can supervise up to three Aletta machines, the system should go a long way toward “helping clinical labs address the critical operational challenges related to the staffing shortages of phlebotomists,” says Luuk Giesen , chief medical officer of Vitestro. That’s no small challenge in a profession with a median annual turnover rate of nearly 25 percent and a vacancy rate of close to 10 percent , according to surveys of medical laboratories that draw mostly from U.S. institutions. The resulting staffing shortages can limit labs’ capacity to meet demand for routine diagnostic testing of blood counts, cholesterol, metabolic markers, and more. Aletta could address that bottleneck. Addressing Skin Tone Bias in Blood Draw AI The promise of greater capacity, however, comes with a caveat: Aletta still fails in roughly one case out of 20. Who are those people? Some may simply have elusive or unusually deep veins. But a more significant obstacle could be skin pigmentation. In particular, the melanin in darker skin can interfere with the near-infrared light Aletta uses to first map the veins near the skin’s surface and identify promising puncture sites. The technique relies on hemoglobin absorbing the light differently from surrounding tissue, and darker skin tones can absorb more of that light before it reaches the camera, thereby reducing the contrast. Some experts have raised concerns that Aletta’s infrared sensors will perform poorly for people with darker skin tones, but Vitestro says that its machine also includes an ultrasound sensor, in part to mitigate that risk. Vitestro Giesen recognizes that the issue could affect first-pass imaging, but notes that the main determinant of vein selection and needle placement is the ultrasound system, which relies on sound rather than light and should not be affected by skin pigmentation in the same way. “Ultrasound is skin-tone agnostic,” he says, adding that Vitestro has unpublished data showing no effect of skin tone on the system’s performance. The company thus claims on its website that the “technology works well for all skin tones,” an assertion echoed in the FDA press release announcing the authorization of Vitestro’s device. But given the history of racial disparities in medical devices—particularly optical technologies such as pulse oximeters, which can be less accurate in people with darker skin and went largely unrecognized as a problem for decades—such claims warrant evidence, says El-Khoury, who has written about the issue . Brooke Katzman , a clinical chemist at the Mayo Clinic who is collaborating with Vitestro, also wants more evidence that samples collected by the robot are as suitable for testing as those drawn by hand. The Dutch trial reported little damage to red blood cells, but other measures of sample quality, including clotted tubes, insufficient blood, and proper tube filling, still need to be assessed, as do the results of routine laboratory tests themselves. Katzman plans to launch a U.S.-based trial next year to collect just that sort of data. “We’re going to do our due diligence,” she says. “Like any instrument we would bring into the lab, we’re going to put it through its paces before using it clinically.” The Future of Automated Blood Testing Aletta takes its name from the 19th-century physician Aletta Jacobs , the first female doctor in the Netherlands and founder of what is widely considered the world’s first birth-control clinic. That nod to history is fitting for a technology that builds on decades of research in robotic phlebotomy by groups in Europe , the United States , and China , and MagicNurse . Yet few pushed the concept as far as biomedical engineer Martin Yarmush of Rutgers University in New Jersey, in whose lab Medtronic’s Balter completed his Ph.D. In one version of their platform, the Rutgers team even coupled their robot to a benchtop blood analyzer , allowing it to draw samples and then measure levels of infection-fighting immune cells and oxygen-carrying red blood cells—all within minutes. That all-in system never made it out of laboratory testing. And VascuLogic, the company spun out to commercialize the platform, is long defunct—though others, including ROPHAI , BHealthCare , and MagicNurse , continue to work in the space. But the Rutgers proof-of-concept demonstration points toward the tantalizing possibility of fully automated blood testing at the point of care, with robots handling everything from the needle stick to the analysis. It is, in some ways, the promise that Theranos made—but built on conventional, validated laboratory technology rather than the dubious science and deception that brought that particular company down. “I have no doubt that is the future,” says Gregory Retzinger , a clinical pathologist at the Northwestern University Feinberg School of Medicine, in Chicago, who collaborates with Vitestro and has tried the Aletta device himself. (“It was painless, it was fast,” he says.) For now, Giesen says Vitestro is keeping its ambitions—and its machine—focused on the blood-collection process itself, though he believes Aletta could ultimately do far more. The company plans to launch Aletta in Europe next year, with the U.S. market to follow."
     }
   ],
   "lane_counts": {
@@ -100,29 +37,29 @@
     "data": 5,
     "training": 5,
     "simeval": 5,
-    "edge": 7,
+    "edge": 5,
     "safety": 5,
-    "systems": 2,
-    "hardware": 3
+    "systems": 1,
+    "hardware": 2
   },
   "evidence_mix": {
-    "O": 18,
+    "O": 16,
     "R": 13,
-    "M": 4
+    "M": 2
   },
   "fetch": {
-    "items": 1124,
+    "items": 1025,
     "attempted": 7,
-    "answered": 6,
+    "answered": 5,
     "failed": [
-      "arxiv"
+      "arxiv",
+      "deepmind"
     ],
     "per_source": {
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
-      "huggingface-blog": 866,
+      "huggingface-blog": 867,
       "ieee-spectrum-robotics": 30
     }
   },

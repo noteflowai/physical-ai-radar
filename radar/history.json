@@ -74,6 +74,19 @@
       "failed": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-24",
+      "count": 2,
+      "lanes": 2,
+      "urls": [
+        "https://blogs.nvidia.com/blog/ai-day-singapore",
+        "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp"
+      ],
+      "failed": [
+        "arxiv",
+        "deepmind"
+      ]
     }
   ]
 }

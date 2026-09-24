@@ -18,22 +18,16 @@
 - **零依赖可复现**：整条流水线只用 Python 标准库，图表是手写 SVG，任何人都能在本地跑出同样结果。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-23
+### 今日雷达 · 2026-09-24
 
-`生成时间: 2026-09-23 01:40 UTC` ｜ `统计窗口: 2026-09-20 → 2026-09-23 (UTC)`
+`生成时间: 2026-09-24 01:40 UTC` ｜ `统计窗口: 2026-09-21 → 2026-09-24 (UTC)`
 
-- `[O]` **[NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development](https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/)** — 系统与编排（长程 / 多策略）
-  - 长程任务的系统形态是编排器加策略池，运维对象从单个模型变成一组能力边界。
-- `[O]` **[How UK AISI and EvalEval Are Making Benchmark Results Reproducible](https://huggingface.co/blog/evaleval-aisi)** — 仿真与评测（sim2real / 闭环）
-  - 评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。
-- `[O]` **[Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community](https://huggingface.co/blog/omlx)** — 训练与自我改进（RL / 后训练）
+- `[O]` **[At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia](https://blogs.nvidia.com/blog/ai-day-singapore/)** — 训练与自我改进（RL / 后训练）
   - 后训练与自我改进决定策略在部署后还能不能变强，也决定运维是否要收集干预数据。
-- `[M]` **[Barbara Mazzolai Wants to Build a New Field of Robotics](https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai)** — 边缘与实时性（端侧推理 / 控制频率）
-  - 端侧延迟与控制频率是硬约束：模型再强，超出实时预算就不能进入控制回路。
-- `[O]` **[NeoMME: an efficient Multimodal-native and Multilingual Encoder](https://huggingface.co/blog/Hcompany/neomme)** — 本体与供应链（硬件 / 成本）
-  - 本体与供应链决定成本曲线和交付节奏，执行器仍是 BOM 的主要部分。
+- `[O]` **[How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows](https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp)** — 仿真与评测（sim2real / 闭环）
+  - 评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。
 
-[今日雷达 ›](radar/daily/2026-09-23.zh.md) · [历史归档 ›](radar/INDEX.md)
+[今日雷达 ›](radar/daily/2026-09-24.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.zh.svg)
 

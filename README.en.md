@@ -18,22 +18,16 @@ How this differs from a paper list or a news aggregator:
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-23
+### Today's radar · 2026-09-24
 
-`Generated: 2026-09-23 01:40 UTC` ｜ `Window: 2026-09-20 → 2026-09-23 (UTC)`
+`Generated: 2026-09-24 01:40 UTC` ｜ `Window: 2026-09-21 → 2026-09-24 (UTC)`
 
-- `[O]` **[NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development](https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/)** — Systems & orchestration (long-horizon / multi-policy)
-  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
-- `[O]` **[How UK AISI and EvalEval Are Making Benchmark Results Reproducible](https://huggingface.co/blog/evaleval-aisi)** — Simulation & evaluation (sim2real / closed-loop)
-  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
-- `[O]` **[Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community](https://huggingface.co/blog/omlx)** — Training & self-improvement (RL / post-training)
+- `[O]` **[At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia](https://blogs.nvidia.com/blog/ai-day-singapore/)** — Training & self-improvement (RL / post-training)
   - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
-- `[M]` **[Barbara Mazzolai Wants to Build a New Field of Robotics](https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai)** — Edge & real-time (on-device inference / control rate)
-  - On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.
-- `[O]` **[NeoMME: an efficient Multimodal-native and Multilingual Encoder](https://huggingface.co/blog/Hcompany/neomme)** — Embodiment & supply chain (hardware / cost)
-  - Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.
+- `[O]` **[How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows](https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp)** — Simulation & evaluation (sim2real / closed-loop)
+  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
 
-[Today's radar ›](radar/daily/2026-09-23.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-24.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.en.svg)
 
