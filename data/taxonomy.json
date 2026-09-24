@@ -1,6 +1,75 @@
 {
   "version": "1.0",
-  "note": "Lane keywords are matched case-insensitively against title + summary. Weights bias the ranking.",
+  "note": "Lane keywords, anchors and signal keywords are matched case-insensitively against title + summary as whole terms (a trailing s/es is allowed), never as substrings. Weights bias the ranking.",
+  "anchors_note": "An item from a general-purpose source must name at least one anchor to be picked; feeds marked topical in sources.json and the cs.RO listing are exempt because everything they publish is on-topic.",
+  "anchors": [
+    "robot",
+    "robotic",
+    "robotics",
+    "robotaxi",
+    "embodied",
+    "embodiment",
+    "cross-embodiment",
+    "humanoid",
+    "physical ai",
+    "physical intelligence",
+    "physical world",
+    "manipulation",
+    "manipulator",
+    "locomotion",
+    "legged",
+    "quadruped",
+    "biped",
+    "gripper",
+    "dexterous",
+    "end effector",
+    "end-effector",
+    "teleoperation",
+    "exoskeleton",
+    "cobot",
+    "autonomous vehicle",
+    "autonomous driving",
+    "self-driving",
+    "autonomous machine",
+    "drone",
+    "uav",
+    "sim-to-real",
+    "sim2real",
+    "real-to-sim",
+    "vision-language-action",
+    "vla",
+    "world action model",
+    "world model",
+    "world foundation model",
+    "ros 2",
+    "ros2",
+    "isaac sim",
+    "isaac lab",
+    "isaac ros",
+    "gr00t",
+    "cosmos",
+    "omniverse",
+    "mujoco",
+    "mjwarp",
+    "lerobot",
+    "jetson",
+    "openpi",
+    "openvla",
+    "smolvla",
+    "gemini robotics",
+    "unitree",
+    "figure ai",
+    "boston dynamics",
+    "agility robotics",
+    "apptronik",
+    "agibot",
+    "galbot",
+    "ubtech",
+    "optimus",
+    "skild",
+    "industrial automation",
+    "warehouse automation"
+  ],
   "lanes": [
     {
       "id": "foundation",
@@ -30,7 +99,24 @@
         "gr00t",
         "gemini robotics",
         "cosmos",
-        "diffusion policy"
+        "diffusion policy",
+        "world model",
+        "world foundation model",
+        "openvla",
+        "smolvla",
+        "openpi",
+        "pi0.5",
+        "π0.5",
+        "π0.6",
+        "π0.7",
+        "helix",
+        "large behavior model",
+        "latent action",
+        "action tokenizer",
+        "genie 3",
+        "v-jepa",
+        "rdt",
+        "ge-act"
       ]
     },
     {
@@ -60,7 +146,18 @@
         "droid",
         "data collection",
         "retargeting",
-        "data quality"
+        "data quality",
+        "teleop",
+        "umi",
+        "universal manipulation interface",
+        "agibot world",
+        "motion capture",
+        "mocap",
+        "synthetic data",
+        "data factory",
+        "imitation learning",
+        "behavior cloning",
+        "trajectory dataset"
       ]
     },
     {
@@ -90,7 +187,14 @@
         "curriculum",
         "fleet learning",
         "residual rl",
-        "human correction"
+        "human correction",
+        "rl",
+        "online rl",
+        "dagger",
+        "residual policy",
+        "co-training",
+        "reward model",
+        "value function"
       ]
     },
     {
@@ -123,7 +227,17 @@
         "world model evaluation",
         "policy evaluation",
         "libero",
-        "robocasa"
+        "robocasa",
+        "isaac sim",
+        "isaac lab-arena",
+        "mjwarp",
+        "mujoco playground",
+        "genesis",
+        "maniskill",
+        "robotwin",
+        "digital twin",
+        "physics engine",
+        "warp"
       ]
     },
     {
@@ -155,7 +269,14 @@
         "test-time compute",
         "test time training",
         "kv cache",
-        "throughput"
+        "throughput",
+        "tensorrt",
+        "fp8",
+        "fp4",
+        "int8",
+        "int4",
+        "control loop",
+        "edge ai"
       ]
     },
     {
@@ -187,7 +308,14 @@
         "compliance",
         "risk assessment",
         "fail-safe",
-        "assurance"
+        "assurance",
+        "functional safety",
+        "iso 13482",
+        "collision avoidance",
+        "fcc",
+        "covered list",
+        "export control",
+        "tariff"
       ]
     },
     {
@@ -216,7 +344,16 @@
         "multi-robot",
         "fleet",
         "planner",
-        "subtask"
+        "subtask",
+        "ros 2",
+        "ros2",
+        "isaac ros",
+        "moveit",
+        "vision-language navigation",
+        "vln",
+        "mobile manipulation",
+        "task planning",
+        "multi-agent"
       ]
     },
     {
@@ -246,7 +383,25 @@
         "torque",
         "harmonic",
         "encoder",
-        "sensor suite"
+        "sensor suite",
+        "dexterity",
+        "robot hand",
+        "tendon",
+        "exoskeleton",
+        "quadruped",
+        "legged",
+        "cobot",
+        "whole-body",
+        "unitree",
+        "agility robotics",
+        "apptronik",
+        "boston dynamics",
+        "figure 03",
+        "1x neo",
+        "optimus",
+        "walker s2",
+        "galbot",
+        "agibot"
       ]
     }
   ],
@@ -283,18 +438,23 @@
         "open weights",
         "checkpoint",
         "github.com",
-        "huggingface"
+        "huggingface",
+        "we released",
+        "open-weight",
+        "open-sourced"
       ]
     },
     {
       "id": "latency",
       "keywords": [
         "latency",
-        "ms",
-        "hz",
         "real-time",
-        "throughput"
-      ]
+        "throughput",
+        "control frequency",
+        "control rate",
+        "inference speed"
+      ],
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:ms|Hz|kHz)\\b"
     }
   ]
 }

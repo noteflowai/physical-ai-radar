@@ -50,7 +50,10 @@ def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str
     curated_why = curated.get(item.id, {})
     if curated_why.get(lang):
         return curated_why[lang], False
-    drafted = ((notes or {}).get("notes", {}).get(url_key(item.url), {}) or {}).get(lang, "")
+    # Notes are keyed by the link the drafter saw; compare normalised forms so a note
+    # written against `http://arxiv.org/abs/IDv1` still finds today's canonical link.
+    drafted_notes = {url_key(key): value for key, value in (notes or {}).get("notes", {}).items()}
+    drafted = (drafted_notes.get(url_key(item.url), {}) or {}).get(lang, "")
     if drafted:
         return drafted, True
     return config.glossary["why_templates"].get(item.lane, {}).get(lang, ""), False
@@ -76,7 +79,7 @@ def item_block(
         lines.append(f"- **{ui['numbers']}**: " + " · ".join(f"`{value}`" for value in item.numbers))
     if item.signals:
         tags = [ui["signals"].get(signal, signal) for signal in item.signals]
-        lines.append("- " + " / ".join(tags))
+        lines.append(f"- **{ui['signals_label']}**: " + " · ".join(f"`{tag}`" for tag in tags))
     why, drafted = _why_text(item, config, lang, curated, ctx_notes)
     if why:
         label = f" `{ui['llm_draft']}`" if drafted else ""
@@ -87,6 +90,15 @@ def item_block(
         lines.append(f"> {excerpt}")
     lines.append("")
     return lines
+
+
+def window_text(config: Config, lang: str, ctx: dict[str, Any]) -> str:
+    """The pool's horizons in the reader's language, or the stored string for a
+    snapshot that predates them."""
+    detail = ctx.get("window_detail")
+    if detail:
+        return config.ui(lang)["window_value"].format(**detail)
+    return ctx["window"]
 
 
 def _lane_rows_named(config: Config, lane_rows: Iterable[tuple[str, int]], lang: str) -> list[tuple[str, int]]:
@@ -104,7 +116,7 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         f"> {ui['tagline']}",
         "",
         f"- {ui['generated']}: `{ctx['generated']}`",
-        f"- {ui['window']}: `{ctx['window']}`",
+        f"- {ui['window']}: `{window_text(config, lang, ctx)}`",
         f"- {ui['evidence_legend']}",
         "",
         f"![lane distribution](../../assets/lane-distribution.{lang}.svg)",
@@ -177,7 +189,7 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     lines = [
         f"### {ui['today']} · {stem}",
         "",
-        f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {ctx['window']}`",
+        f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {window_text(config, lang, ctx)}`",
         "",
     ]
     highlights = (ctx["picked"] or ctx["baseline"])[:5]
@@ -257,6 +269,7 @@ def write_latest(ctx: dict[str, Any], root: Path = ROOT) -> Path:
             "date": ctx["date"],
             "generated": ctx["generated"],
             "window": ctx["window"],
+            "window_detail": ctx.get("window_detail"),
             "picked": [item.to_dict() for item in ctx["picked"]],
             "lane_counts": dict(ctx["lane_rows"]),
             "evidence_mix": ctx["mix"],

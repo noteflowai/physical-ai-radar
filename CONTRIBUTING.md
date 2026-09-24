@@ -10,11 +10,15 @@ Edit `data/sources.json`. Requirements:
 - declare an `evidence` tag: `O` first-party official, `R` paper/preprint, `M` media/secondary;
 - declare a `weight` and say why in the PR description;
 - no scrapers, no paywall workarounds, no endpoints that forbid automated access.
+- set `"topical": true` only if every entry the feed publishes is about robots or Physical AI.
+  A general company blog stays unmarked; its posts must then name an anchor term
+  (`anchors` in `data/taxonomy.json`) to be considered at all.
 
 ## 2. Fix a classification or an evidence tag
 
 Lane keywords live in `data/taxonomy.json`. If an item was filed in the wrong lane, the fix is
-usually a keyword, not a special case in code. Evidence tags are not negotiable by preference:
+usually a keyword, not a special case in code. Keywords match whole terms (with an optional plural),
+so a short keyword such as `ppo` is safe. If an off-topic post got in at all, check `anchors` too. Evidence tags are not negotiable by preference:
 a vendor blog is `O` even when the claim is weak, a preprint is `R` even when the result is
 strong, and a great article in the trade press is still `M`.
 

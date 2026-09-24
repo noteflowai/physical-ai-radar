@@ -9,8 +9,8 @@
 #   scripts/draft_daily_notes.sh [--date YYYY-MM-DD] [--dry-run]
 #
 # Timing constraint: the notes are drafted for the current UTC date, whose radar is
-# published at 01:30 UTC. Schedule this after that, not near it. At 02:30 Asia/Singapore
-# (18:30 UTC) the day's radar is already seventeen hours old, which is the intent.
+# published at 01:40 UTC. Schedule this after that, not near it. At 02:30 Asia/Singapore
+# (18:30 UTC) the day's radar is already about seventeen hours old, which is the intent.
 #
 # Requirements: kiro-cli on PATH and authenticated (KIRO_API_KEY or a stored login),
 # gh authenticated for the pull request. Exit codes: 0 nothing to do or PR opened,
@@ -95,7 +95,7 @@ if [ -f "$NOTES" ]; then
   exit 0
 fi
 if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
-  log "no published radar for ${DAY} yet (the 01:30 UTC run comes first); nothing to draft"
+  log "no published radar for ${DAY} yet (the 01:40 UTC run comes first); nothing to draft"
   exit 0
 fi
 

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:arxiv="http://arxiv.org/schemas/atom" version="2.0">
+  <channel>
+    <title>cs.RO updates on arXiv.org</title>
+    <link>http://rss.arxiv.org/rss/cs.RO</link>
+    <description>cs.RO updates on the arXiv.org e-print archive.</description>
+    <language>en-us</language>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <skipDays>
+      <day>Sunday</day>
+      <day>Saturday</day>
+    </skipDays>
+    <item>
+      <title>Towards Adaptive Interaction Strategies for Human Companion Robot via Deep Reinforcement Learning</title>
+      <link>https://arxiv.org/abs/2609.25031</link>
+      <description>arXiv:2609.25031v1 Announce Type: new 
+Abstract: In the field of Human-Robot Interaction (HRI), achieving flexibility in human-accompanying within real-world environments holds great potential for various applications but also poses significant challenges. Traditional methods typically restrict robots to fixed positions relative to humans, such as tracking from behind, in front, or side-by-side, which limits robot adaptability in dynamic workspaces. This study introduces a novel human-companioning strategy that uses Reinforcement Learning (DRL) to enable mobile robots to dynamically adjust their tracking positions according to varying conditions. An interaction space is defined to capture the relationship between the human and the robot while considering the environment, which serves as the basis for state spaces in DRL to assist the robot in adapting to environmental changes. A human-robot companion controller is developed by integrating Model Predictive Path Integral (MPPI) control with Control Barrier Functions (CBF), ensuring that the robot accurately follows the target's movement in both position and orientation while avoiding obstacles and enhancing social acceptance and safety. The proposed approach is evaluated in real-world scenarios, both indoors and outdoors, and compared with other studies. The results show that the proposed method improves the success rate and tracking accuracy by at least 24% and 47%, respectively, while enhancing human comfort. Experiments …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.25031v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models</title>
+      <link>https://arxiv.org/abs/2609.25376</link>
+      <description>arXiv:2609.25376v1 Announce Type: new 
+Abstract: Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration. We introduce \textbf{VLAQuantBench}, a controlled evaluation with 409 runs and 94,574 simulation episodes: four models on LIBERO, with X-VLA additionally evaluated on three simulation benchmark families. Under uncalibrated W4A4 round-to-nearest quantization, expanding a $\pi_{0.5}$ action-head subset from 126 to 167 layers raises success from 7.0\% to 70.5\%. Fixed-observation replay confirms a corresponding numerical recovery. Two-episode calibration removes the severe joint failures in the tested subsets, whereas the same smoothing-and-clipping recipe lowers $\pi_0$ success and does not recover OpenVLA-OFT end-to-end. For OpenVLA-OFT, protecting one 28,672-parameter output projection instead restores near-baseline success: the remaining 441 eligible linear layers retain W3 on LIBERO-Long or eight-bit activations across all four suites. Task-clustered intervals support the large failure and recovery contrasts. These results establish recipe-dependent interactions and identify concrete precision assignments, rather than universal layer-sensitivity rules. Real-kernel and physical-robot measurements complement the accuracy analysis. Code, configurations, and episode records are publicly available at …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.25376v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>DynaForge: Planning-Guided Residual Learning for Dynamic Manipulation Demonstration Generation</title>
+      <link>https://arxiv.org/abs/2609.25631</link>
+      <description>arXiv:2609.25631v1 Announce Type: new 
+Abstract: Dynamic object manipulation is essential for robots operating in real-world environments, yet methods for generating high-quality demonstrations remain limited. Methods designed for static tasks do not readily transfer to dynamic settings. Among dynamic demonstration generators, planning-based methods can fail near contact, while DOMINO-style replay simplifies dynamic interactions and may limit the experience available for policy learning. We present DynaForge, a planning-guided framework that learns residual corrections for dynamic manipulation demonstration generation. DynaForge combines low-frequency global planning with high-frequency object-centric inverse kinematics across task phases, and applies a residual policy to correct actions during dynamic interaction. An implicit curriculum groups rollouts under matched conditions and selects mixed-success groups, focusing residual reinforcement learning on the evolving competence frontier. On Can and Bottle, it uses 0.73x as many optimizer steps as vanilla GRPO at the same nominal environment-step budget, with higher observed final success rates. Across nine simulation tasks, DynaForge increases mean demonstration-generation success from 41.30% of the planning prior to 78.37%. With 800 demonstrations per task, DP3 policies trained on DynaForge data achieve 49.11% mean success, compared with 7.07% for DOMINO data. On three real-world dynamic tasks, DynaForge-trained policies …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.25631v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>Control Barrier Functions for Safe Free-Flying Robotic Spacecraft Operations in Tumbling Target Capture</title>
+      <link>https://arxiv.org/abs/2609.25905</link>
+      <description>arXiv:2609.25905v1 Announce Type: new 
+Abstract: This paper presents a modular control barrier function (CBF) framework for safe free-flying robotic spacecraft operations during tumbling target capture. Motivated by latest ESA guidelines for safe close proximity operations, safety zones and requirements are translated into dedicated CBFs. The 13-DoF system is decomposed into translational, attitude, and robotic subsystems, each equipped with a safety filter that minimally modifies nominal control inputs in a lightweight quadratic program. The filters enforce a conical approach corridor, collision avoidance zone, attitude line-of-sight pointing, angular velocity limits, robotic joint limits, link-base collision avoidance, and actuator constraints. Dynamic coupling between subsystems is handled by treating upstream safe control commands as known interconnection inputs in the downstream safety filters, preserving modularity while supporting system-level safety. The framework is validated in an on-orbit servicing scenario, including final approach, angular rate synchronization, and tumbling target grasping, using the high-fidelity astrodynamics simulator Basilisk. Monte Carlo simulation results demonstrate runtime efficiency and operational safety for various tumbling rates.</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.25905v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection</title>
+      <link>https://arxiv.org/abs/2609.26520</link>
+      <description>arXiv:2609.26520v1 Announce Type: new 
+Abstract: Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills. However, existing humanoid data pipelines primarily focus on individual agents, while physical multi-robot collaboration remains difficult to scale due to costly hardware, dedicated spaces, and repeated resets. In this work, we introduce MATE, a Multi-Agent virtual TEleoperation platform for humanoid collaboration data collection that enables multiple geographically distributed operators to simultaneously control whole-body humanoids in a shared physics-based environment. MATE removes the need for multiple physical robots and co-located operation while preserving physically coupled interactions among humanoids, objects, and environments. Using MATE, we construct a multi-humanoid collaboration dataset comprising 24.1 hours of coordinated behavior across 2,500 joint episodes and five long-horizon tasks, including object handover, relay delivery, environment interaction, and cooperative transport. To improve learning from these interaction-rich demonstrations, we introduce EAIS, an Execution-Aligned Interaction Sampling strategy that computes sampling signals within an execution-aligned prefix and prioritizes task-progressing and interaction-critical behaviors. We evaluate MATE with representative imitation learning and vision-language-action policies across diverse collaboration tasks. Experiments demonstrate …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.26520v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving</title>
+      <link>https://arxiv.org/abs/2609.26792</link>
+      <description>arXiv:2609.26792v1 Announce Type: new 
+Abstract: Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions. Existing platforms, however, exhibit a sim-to-real visual gap that corrupts policy perception, undermining their ability to assess a policy's closed-loop decision-making. To this end, we propose DreamStream, a generative, closed-loop simulator that achieves policy-oriented fidelity using a simulator-grounded autoregressive video model. Our video model is distilled from a large pretrained video model via traffic layout guidance, varying visual appearance while preserving policy-relevant features such as scenario layout and the temporal consistency of dynamic objects. We further observe that perceptual metrics like FID misrank how well these features are preserved. To tackle this, we introduce FD$\pi$, a new multi-representation metric that measures the sim-to-real gap as the Fr\'echet distance over scene-context features from public E2E policies. Under FD$\pi$, DreamStream improves over the strongest prior closed-loop simulator by $1.6\times$ on nuScenes and $4.7\times$ on NAVSIM, and induces the least perturbation to policy's perceptual observability. Based on DreamStream, we construct Navhard-CL benchmark, which turns non-reactive real-world benchmark NAVSIM into interactive testing environments with adversarial driving behaviors and …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.26792v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    </channel>
+</rss>

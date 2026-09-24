@@ -8,8 +8,9 @@ changes, this file changes in the same pull request.
 | Kind | Endpoint | Evidence tag | Why it is trusted at this level |
 | --- | --- | --- | --- |
 | arXiv API | `https://export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
+| arXiv category feeds | `https://rss.arxiv.org/rss/<category>`, read only when the API returns nothing | `R` | the same papers, announced listings instead of search |
 | Official vendor blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face | `O` | first-party statements about their own products |
-| Trade press | IEEE Spectrum Robotics | `M` | professional reporting, still secondary |
+| Trade press | IEEE Spectrum Robotics, The Robot Report | `M` | professional reporting, still secondary |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
 
 Rules:
@@ -29,18 +30,34 @@ Rules:
   that missed three or more days is reported as struggling. The daily run prints the
   verdict and stays green; `--fail-on-struggling` exits 1 for automation that should
   only act when there is something to act on;
-- adding a source requires a weight and an evidence tag in `data/sources.json`.
+- a feed contributes at most its `filters.max_entries_per_feed` newest entries (default
+  100). Some feeds publish their whole archive (the Hugging Face blog serves about 900
+  posts); without the cap one source floods the pool;
+- a feed description longer than 2000 characters is cut at a word boundary. Some feeds
+  carry the full article, and a full article matches every lane;
+- adding a source requires a weight and an evidence tag in `data/sources.json`. A source
+  whose every entry is about robots is also marked `"topical": true` (see section 2).
 
 ## 2. Classification
 
 `data/taxonomy.json` defines eight lanes. Each lane has a keyword list and a weight.
-An item is matched case-insensitively against `title + summary`; the lane with the
-highest `hits × lane_weight` wins. Ties resolve to the first lane in file order, which
+An item is matched case-insensitively against `title + summary`, **as whole terms**: a
+keyword counts only where it is not preceded or followed by a letter or digit, with an
+optional plural `s` / `es`. So `ppo` no longer fires inside "support", `thor` inside
+"author" or `droid` inside "Android". The lane with the highest `hits × lane_weight` wins. Ties resolve to the first lane in file order, which
 makes classification deterministic.
 
 A curated entry in `data/baseline.json` that declares a `lane` keeps it: the lane is an
 editorial decision, and the classifier is not allowed to overrule it. Such an entry is
 scored on its own lane's keywords rather than the best-matching lane's.
+
+Before any lane counts, an item must be **Physical AI at all**. Items from a topical
+source (a `"topical": true` feed, or a paper listed in `cs.RO`) are on-topic by
+construction. Everything else, which means general company blogs and papers found only
+through other arXiv categories, must name at least one term from `anchors` in
+`data/taxonomy.json`: robot, humanoid, embodied, manipulation, VLA, world model, ROS 2,
+Isaac, LeRobot, Jetson and similar. Words like "agent", "benchmark" or "inference" are
+lane keywords but not anchors, because a coding-agent post uses them just as much.
 
 Signals are orthogonal flags: `closed_loop`, `real_robot`, `open_release`, `latency`,
 `numbers`. They are shown as badges and feed the score.
@@ -57,7 +74,15 @@ score = min(lane_hits, 6) × 0.35 × lane_weight
 ```
 
 Selection then applies `min_score = 0.9`, a per-lane cap of 2 and a global limit of 8,
-so a single hot topic cannot take over the page. Two further gates apply:
+so a single hot topic cannot take over the page. Two soft caps sit next to it:
+`filters.per_source` (3) and `filters.per_evidence` (4). Selection makes two passes in
+rank order. The first pass honours every cap. The second pass fills whatever slots are
+still empty with the lane cap only. A soft cap therefore reserves room for other sources
+and evidence kinds but never leaves the page short. Without them, a day when the arXiv
+API refused and the category feeds answered came back as eight `[R]` preprints. The
+shortlist is always shown in rank order. Three further gates apply:
+
+- **on-topic** (the anchor rule in section 2);
 
 - **at least one lane keyword.** Evidence and same-day recency alone clear `min_score`, so
   without this an off-topic hit from the broad arXiv queries would be published under the
@@ -66,7 +91,11 @@ so a single hot topic cannot take over the page. Two further gates apply:
 - **not published in the last `filters.repeat_days` days** (default 7). Each run records the
   normalised URLs it published in `radar/history.json`; the arXiv window looks back three
   days and feeds keep entries for thirty, so without this a strong item would headline
-  again the next day. Matching is on URL, not id, so it survives a feed reassigning ids. Every term is visible and tunable; no
+  again the next day. Matching is on a normalised URL, not id, so it survives a feed reassigning ids. The
+normal form drops query, fragment and trailing slash, lowercases, and upgrades `http` to
+`https`. arXiv links are reduced to `https://arxiv.org/abs/<id>` without the version,
+because the API answers `http://arxiv.org/abs/<id>v1` and the feeds answer
+`https://arxiv.org/abs/<id>`: they are the same paper. Every term is visible and tunable; no
 learned model sits in this path. This is a bias-by-design choice: the radar prefers
 items with real-robot or closed-loop evidence over pure benchmark deltas.
 
@@ -135,6 +164,9 @@ taxonomy, not a rendering detail to tolerate.
   leaving the checkout untouched, for readers who want to inspect before committing to a
   rewrite. The run log is still read from the repository so the repeat window applies.
 - `python3 -m pairadar --date 2026-09-19` pins the run date.
+- The window line on each page states both horizons: papers from `date − lookback_days`
+  and feed posts from `date − max_age_days`, plus the repeat window. An earlier version
+  printed only the paper horizon, which suggested a month-old blog post was new.
 - `radar/history.json` keeps the cadence series plus the URLs published inside the repeat
   window; older entries keep their counts and drop their URL list, so the log does not grow
   without bound. `radar/latest.json` is the machine-readable snapshot for downstream

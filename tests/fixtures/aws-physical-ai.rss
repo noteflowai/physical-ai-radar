@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+
+<channel>
+	<title>AWS Physical AI Blog</title>
+	<link>https://aws.amazon.com/blogs/physical-ai/</link>
+	<description>Just another Amazon Web Services site</description>
+	<language>en-US</language>
+	<item>
+		<title>Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS</title>
+		<link>https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/</link>
+		
+		<pubDate>Thu, 10 Sep 2026 16:38:50 +0000</pubDate>
+				<guid isPermaLink="false">4ccd3e0f77602e3a27cabf08814fd615cb795580</guid>
+
+					<description>Introduction This post demonstrates how to fine-tune π0 (Pi-Zero), a 3-billion parameter flow matching Vision-Language-Action model from Physical Intelligence, on robot manipulation datasets using Amazon SageMaker HyperPod with Amazon Elastic Kubernetes Service (Amazon EKS) orchestration. Two standard robotics benchmarks provide the training data: DROID for real-world manipulation and LIBERO-10 for simulated tabletop tasks, with a […]</description>
+										</item>
+		</channel>
+</rss>
