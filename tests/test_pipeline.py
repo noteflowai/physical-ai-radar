@@ -962,6 +962,34 @@ class ArxivFallbackTests(unittest.TestCase):
     <description>We measure 12 ms per control step.</description>
   </item>
 </channel></rss>"""
+    REVISED = """<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:arxiv="http://arxiv.org/schemas/atom" version="2.0"><channel>
+  <title>cs.RO updates on arXiv.org</title>
+  <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+  <item>
+    <title>A new policy</title>
+    <link>https://arxiv.org/abs/2609.25376</link>
+    <description>arXiv:2609.25376v1 Announce Type: new
+Abstract: We quantize a VLA.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <arxiv:announce_type>new</arxiv:announce_type>
+  </item>
+  <item>
+    <title>An old paper, revised</title>
+    <link>https://arxiv.org/abs/2512.24310</link>
+    <description>arXiv:2512.24310v4 Announce Type: replace
+Abstract: We introduce an ecosystem.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <arxiv:announce_type>replace</arxiv:announce_type>
+  </item>
+  <item>
+    <title>An old cross-list, revised</title>
+    <link>https://arxiv.org/abs/2511.00001</link>
+    <description>arXiv:2511.00001v2 Announce Type: replace-cross
+Abstract: Older still.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+  </item>
+</channel></rss>"""
     EMPTY = """<?xml version='1.0' encoding='UTF-8'?>
 <rss version="2.0"><channel><title>cs.RO</title>
   <pubDate>Sun, 20 Sep 2026 00:00:00 -0400</pubDate>
@@ -984,3 +1012,13 @@ class ArxivFallbackTests(unittest.TestCase):
             items, answered = fetch.fetch_arxiv_rss(cfg, date(2026, 9, 18))
         self.assertEqual(items, [])
         self.assertTrue(answered, "arXiv declares skipDays; a closed archive is not an outage")
+
+    def test_a_revised_old_paper_is_not_todays_news(self):
+        cfg = {"rss_categories": ["cs.RO"], "evidence": "R"}
+        with unittest.mock.patch.object(fetch, "http_get", return_value=self.REVISED.encode()):
+            items, answered = fetch.fetch_arxiv_rss(cfg, date(2026, 9, 21))
+        self.assertTrue(answered)
+        self.assertEqual([item.id for item in items], ["arxiv:2609.25376"],
+                         "replace and replace-cross re-announce old papers with today's date")
+        self.assertEqual(items[0].summary, "We quantize a VLA.",
+                         "the announce boilerplate would otherwise lead every excerpt")
