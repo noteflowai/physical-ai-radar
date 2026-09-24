@@ -11,6 +11,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unittest.mock
 import urllib.error
 from datetime import date
 from pathlib import Path
@@ -19,7 +20,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import charts, cli, health, lanes  # noqa: E402
+from pairadar import fetch, charts, cli, health, lanes  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config, load_notes  # noqa: E402
 from pairadar.distill import (  # noqa: E402
     classify,
@@ -946,3 +947,78 @@ class LabelFitTests(unittest.TestCase):
                 self.assertEqual(charts.fit(label, gutter - 10), label,
                                  f"{lane['id']} ({lang}) does not fit: give it a short form "
                                  f"in data/taxonomy.json rather than letting the chart cut it")
+
+
+class ArxivFallbackTests(unittest.TestCase):
+    """The Atom API answered 406 to everything from this host; the feeds took over."""
+
+    FEED = """<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"><channel>
+  <title>cs.RO updates on arXiv.org</title>
+  <pubDate>Mon, 21 Sep 2026 00:00:00 -0400</pubDate>
+  <item>
+    <title>A policy that reports its own latency</title>
+    <link>https://arxiv.org/abs/2609.01234</link>
+    <description>We measure 12 ms per control step.</description>
+  </item>
+</channel></rss>"""
+    REVISED = """<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:arxiv="http://arxiv.org/schemas/atom" version="2.0"><channel>
+  <title>cs.RO updates on arXiv.org</title>
+  <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+  <item>
+    <title>A new policy</title>
+    <link>https://arxiv.org/abs/2609.25376</link>
+    <description>arXiv:2609.25376v1 Announce Type: new
+Abstract: We quantize a VLA.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <arxiv:announce_type>new</arxiv:announce_type>
+  </item>
+  <item>
+    <title>An old paper, revised</title>
+    <link>https://arxiv.org/abs/2512.24310</link>
+    <description>arXiv:2512.24310v4 Announce Type: replace
+Abstract: We introduce an ecosystem.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <arxiv:announce_type>replace</arxiv:announce_type>
+  </item>
+  <item>
+    <title>An old cross-list, revised</title>
+    <link>https://arxiv.org/abs/2511.00001</link>
+    <description>arXiv:2511.00001v2 Announce Type: replace-cross
+Abstract: Older still.</description>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+  </item>
+</channel></rss>"""
+    EMPTY = """<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0"><channel><title>cs.RO</title>
+  <pubDate>Sun, 20 Sep 2026 00:00:00 -0400</pubDate>
+  <skipDays><day>Sunday</day><day>Saturday</day></skipDays>
+</channel></rss>"""
+
+    def test_an_item_without_its_own_date_takes_the_announcement_day(self):
+        cfg = {"rss_categories": ["cs.RO"], "evidence": "R"}
+        with unittest.mock.patch.object(fetch, "http_get", return_value=self.FEED.encode()):
+            items, answered = fetch.fetch_arxiv_rss(cfg, date(2026, 9, 18))
+        self.assertTrue(answered)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].id, "arxiv:2609.01234")
+        self.assertEqual(items[0].published, "2026-09-21")
+        self.assertEqual(items[0].evidence, "R")
+
+    def test_a_weekend_feed_answers_with_nothing_and_is_not_a_failure(self):
+        cfg = {"rss_categories": ["cs.RO"], "evidence": "R"}
+        with unittest.mock.patch.object(fetch, "http_get", return_value=self.EMPTY.encode()):
+            items, answered = fetch.fetch_arxiv_rss(cfg, date(2026, 9, 18))
+        self.assertEqual(items, [])
+        self.assertTrue(answered, "arXiv declares skipDays; a closed archive is not an outage")
+
+    def test_a_revised_old_paper_is_not_todays_news(self):
+        cfg = {"rss_categories": ["cs.RO"], "evidence": "R"}
+        with unittest.mock.patch.object(fetch, "http_get", return_value=self.REVISED.encode()):
+            items, answered = fetch.fetch_arxiv_rss(cfg, date(2026, 9, 21))
+        self.assertTrue(answered)
+        self.assertEqual([item.id for item in items], ["arxiv:2609.25376"],
+                         "replace and replace-cross re-announce old papers with today's date")
+        self.assertEqual(items[0].summary, "We quantize a VLA.",
+                         "the announce boilerplate would otherwise lead every excerpt")

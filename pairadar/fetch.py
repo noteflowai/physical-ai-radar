@@ -15,7 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from dataclasses import dataclass, field
 from typing import Any, Iterable
 
@@ -23,11 +23,17 @@ from .config import Config, Item
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
 ATOM = "{http://www.w3.org/2005/Atom}"
+ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 TIMEOUT = 25
 # arXiv asks API callers to leave about three seconds between requests; six
 # queries fired back to back is exactly the burst that earns a rate-limit reply.
 ARXIV_ENDPOINT = "https://export.arxiv.org/api/query"
+ARXIV_RSS = "https://rss.arxiv.org/rss"
 ARXIV_DELAY = 3.0
+# Every category-feed description opens with "arXiv:2609.01234v1 Announce Type: new
+# Abstract:". The announce type decides whether the paper is new at all, and the rest
+# is boilerplate that would otherwise lead every excerpt in the digest.
+_ANNOUNCE = re.compile(r"^\s*arXiv:\S+\s+Announce Type:\s*(\S+)\s*(?:Abstract:\s*)?", re.I)
 RETRIES = 2
 RETRY_DELAY = 2.0
 
@@ -153,7 +159,80 @@ def fetch_arxiv(config: Config) -> tuple[list[Item], bool]:
     queries = len(cfg.get("queries", []))
     if failures:
         print(f"[fetch] arxiv: {failures}/{queries} queries unanswered")
+    if queries and failures == queries:
+        # The keyword API is gone from this host's point of view. Category feeds carry
+        # no query, so precision now comes from the lane keywords downstream, which
+        # already require a hit before anything is picked.
+        rss_items, rss_answered = fetch_arxiv_rss(cfg, cutoff)
+        if rss_answered:
+            # A feed that answers with nothing is arXiv being closed, not arXiv being
+            # broken: it declares skipDays for Saturday and Sunday. Reporting a weekend
+            # as a failed source would make health.py cry outage every week.
+            print(f"[fetch] arxiv: {len(rss_items)} items from the category feeds instead")
+            return rss_items, True
     return items, failures < queries
+
+
+def fetch_arxiv_rss(cfg: dict, cutoff: date) -> tuple[list[Item], bool]:
+    """Read the arXiv category RSS feeds, used when the Atom API answers nothing.
+
+    Returns the items and whether any feed answered at all, because an empty feed on a
+    Saturday is a closed archive rather than a broken source.
+    """
+    items: list[Item] = []
+    answered = False
+    for index, category in enumerate(cfg.get("rss_categories", [])):
+        if index:
+            time.sleep(ARXIV_DELAY)
+        payload = http_get(f"{ARXIV_RSS}/{category}")
+        if not payload:
+            continue
+        try:
+            root = ET.fromstring(payload)
+        except ET.ParseError as exc:
+            print(f"[fetch] arxiv rss parse error ({category}): {exc}")
+            continue
+        answered = True
+        channel_date = root.findtext("./channel/pubDate")
+        for entry in root.findall(".//item"):
+            link = clean_text(entry.findtext("link"))
+            title = clean_text(entry.findtext("title"))
+            summary = clean_text(entry.findtext("description"))
+            announce = clean_text(entry.findtext(f"{ARXIV_NS}announce_type"))
+            match = _ANNOUNCE.match(summary)
+            if match:
+                announce = announce or match.group(1)
+                summary = summary[match.end():]
+            # "replace" and "replace-cross" re-announce a revised version of an old
+            # paper. The API path never saw them, because it reads the first-version
+            # date; here they would carry today's date and pass as news.
+            if announce.lower().startswith("replace"):
+                continue
+            # Items may carry no date of their own; the channel speaks for the
+            # announcement day. parse_date never returns "", it falls back to today,
+            # so the choice of raw string has to happen before parsing.
+            published = parse_date(entry.findtext("pubDate") or channel_date)
+            if not title or not link:
+                continue
+            try:
+                if datetime.fromisoformat(published).date() < cutoff:
+                    continue
+            except ValueError:
+                continue
+            short_id = link.rstrip("/").split("/")[-1]
+            items.append(
+                Item(
+                    id=f"arxiv:{short_id}",
+                    title=title,
+                    url=link,
+                    publisher=f"arXiv {short_id}",
+                    source_id="arxiv",
+                    evidence=cfg.get("evidence", "R"),
+                    published=published,
+                    summary=summary,
+                )
+            )
+    return items, answered
 
 
 def link_digest(link: str) -> str:
