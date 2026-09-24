@@ -23,6 +23,7 @@ from .config import (
 )
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
 from .fetch import baseline_items, fetch_all
+from .feeds import write_feeds
 from .render import inject_readme, update_index, write_daily, write_latest
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
@@ -241,6 +242,8 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
             else:
                 print(f"[radar] no {README_FILES[lang]} under {root}: skipping injection")
     written.append(write_latest(ctx, root))
+    # Before the index, which lists the weekly pages this writes.
+    written.extend(write_feeds(config, ctx, root))
     written.append(update_index(config, ctx, ctx["history"], root))
     save_history(ctx["history"], keep_urls_days=ctx["repeat_days"],
                  path=root/"radar"/"history.json")
