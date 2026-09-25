@@ -19,8 +19,10 @@ only rewrites the day's pages, never has to touch the feeds.
 """
 from __future__ import annotations
 
+import argparse
 import html
 import json
+import subprocess
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -111,9 +113,8 @@ def upsert(store: Iterable[dict[str, Any]], picked: Iterable[Item], day: str, ge
            keep_days: int = KEEP_DAYS, keep_items: int = KEEP_ITEMS) -> list[dict[str, Any]]:
     """Replace `day`'s records with today's picks, newest first, trimmed.
 
-    A link already delivered on another day is not delivered again: the repeat guard
-    only covers seven days, and a reader should not see the same item twice within
-    the feed's thirty.
+    A link already delivered on another day is not delivered again: a reader should
+    not see the same item twice within the feed's thirty days.
     """
     kept = [entry for entry in store if entry["date"] != day]
     delivered = {url_key(entry["url"]) for entry in kept}
@@ -127,6 +128,68 @@ def upsert(store: Iterable[dict[str, Any]], picked: Iterable[Item], day: str, ge
     horizon = (date.fromisoformat(day) - timedelta(days=keep_days)).isoformat()
     # Stable sort: within a day the shortlist's rank order survives.
     merged = sorted(fresh + kept, key=lambda entry: entry["date"], reverse=True)
+    return [entry for entry in merged if entry["date"] > horizon][:keep_items]
+
+
+def within(store: Iterable[dict[str, Any]], day: str, days: int) -> list[dict[str, Any]]:
+    """Entries published on `day` or in the `days` before it."""
+    start = (date.fromisoformat(day) - timedelta(days=days)).isoformat()
+    return [entry for entry in store if start <= entry["date"] <= day]
+
+
+def snapshots(root: Path = ROOT) -> dict[str, dict[str, Any]]:
+    """Each published day's `radar/latest.json`, read back from the git history.
+
+    The store began on 2026-09-25, so the week it opened in counted only that day's
+    picks: W39 said 8 where 32 had been published. Every day's snapshot is still in
+    git, and it holds the picks exactly as they were published. The newest commit for
+    a day wins, as it did on the page. Outside a git checkout, or in a shallow one,
+    this finds less or nothing, and the caller keeps what it has.
+    """
+    try:
+        log = subprocess.run(["git", "-C", str(root), "log", "--format=%H", "--", "radar/latest.json"],
+                             capture_output=True, text=True, check=True).stdout.split()
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    days: dict[str, dict[str, Any]] = {}
+    for commit in log:
+        shown = subprocess.run(["git", "-C", str(root), "show", f"{commit}:radar/latest.json"],
+                               capture_output=True, text=True)
+        try:
+            snapshot = json.loads(shown.stdout)
+        except json.JSONDecodeError:
+            continue
+        days.setdefault(snapshot.get("date", ""), snapshot)
+    days.pop("", None)
+    return days
+
+
+def backfill(store: list[dict[str, Any]], history: dict[str, dict[str, Any]], newest: str,
+             keep_days: int = KEEP_DAYS, keep_items: int = KEEP_ITEMS) -> list[dict[str, Any]]:
+    """Add the days the store is missing from their published snapshots.
+
+    Days are replayed oldest first, so a link published on two days is kept on the
+    first, as `upsert` would have done had the store existed then. Days already in
+    the store are replayed from the store, unchanged.
+    """
+    by_day: dict[str, list[dict[str, Any]]] = {}
+    for entry in store:
+        by_day.setdefault(entry["date"], []).append(entry)
+    for day, snapshot in history.items():
+        if day in by_day or day > newest:
+            continue
+        published = rfc3339(snapshot.get("generated", day))
+        by_day[day] = [record(Item.from_dict(raw), day, published) for raw in snapshot.get("picked", [])]
+    delivered: set[str] = set()
+    replayed: list[dict[str, Any]] = []
+    for day in sorted(by_day):
+        for entry in by_day[day]:
+            key = url_key(entry["url"])
+            if key not in delivered:
+                delivered.add(key)
+                replayed.append(entry)
+    horizon = (date.fromisoformat(newest) - timedelta(days=keep_days)).isoformat()
+    merged = sorted(replayed, key=lambda entry: entry["date"], reverse=True)
     return [entry for entry in merged if entry["date"] > horizon][:keep_items]
 
 
@@ -297,19 +360,31 @@ def write_feeds(config: Config, ctx: dict[str, Any], root: Path = ROOT,
     """Upsert the day into the store read from `source`, then write every feed and
     the day's weekly pages under `root`."""
     store = upsert(load_store(source/"radar"/FEED_JSON), ctx["picked"], ctx["date"], ctx["generated"])
+    return write_store(config, store, ctx["generated"], root) + write_weekly(config, store, ctx["date"], root)
+
+
+def write_store(config: Config, store: list[dict[str, Any]], generated: str,
+                root: Path = ROOT) -> list[Path]:
+    """Write the JSON Feed and the Atom feeds from `store`."""
     radar = root/"radar"
     written = [radar/FEED_JSON]
     dump_json(written[0], json_feed(config, store))
     for lang in LANGS:
         path = radar/atom_name(lang)
-        path.write_text(atom_feed(config, store, lang, ctx["generated"]), encoding="utf-8")
+        path.write_text(atom_feed(config, store, lang, generated), encoding="utf-8")
         written.append(path)
-    stem, _, _ = iso_week(ctx["date"])
-    weekly = radar/"weekly"
+    return written
+
+
+def write_weekly(config: Config, store: list[dict[str, Any]], day: str, root: Path = ROOT) -> list[Path]:
+    """Write the pages of the ISO week that holds `day`."""
+    stem, _, _ = iso_week(day)
+    weekly = root/"radar"/"weekly"
     weekly.mkdir(parents=True, exist_ok=True)
+    written = []
     for lang in LANGS:
         path = weekly/f"{stem}.{lang}.md"
-        path.write_text(render_weekly(config, lang, ctx["date"], store), encoding="utf-8")
+        path.write_text(render_weekly(config, lang, day, store), encoding="utf-8")
         written.append(path)
     return written
 
@@ -318,3 +393,37 @@ def weekly_stems(root: Path = ROOT) -> list[str]:
     """Published weeks under `root`, newest first."""
     return sorted({path.name.split(".")[0] for path in (root/"radar"/"weekly").glob("*-W*.en.md")},
                   reverse=True)
+
+
+def main(argv: list[str] | None = None) -> int:
+    """`python3 -m pairadar.feeds --backfill`: fill the store from git, then rewrite
+    the feeds and every weekly page the store touches."""
+    from .config import load_config
+
+    parser = argparse.ArgumentParser(description="Maintain the published feeds.")
+    parser.add_argument("--backfill", action="store_true",
+                        help="add the days missing from radar/feed.json from their git snapshots")
+    args = parser.parse_args(argv)
+    if not args.backfill:
+        parser.print_help()
+        return 0
+    config = load_config()
+    store = load_store(ROOT/"radar"/FEED_JSON)
+    history = snapshots(ROOT)
+    if not history:
+        print("[feeds] no snapshots in the git history: nothing to backfill")
+        return 0
+    newest = max(history)
+    filled = backfill(store, history, newest)
+    added = sorted({entry["date"] for entry in filled} - {entry["date"] for entry in store})
+    written = write_store(config, filled, history[newest].get("generated", newest))
+    weeks = {iso_week(entry["date"])[0]: entry["date"] for entry in filled}
+    for day in weeks.values():
+        written.extend(write_weekly(config, filled, day))
+    print(f"[feeds] {len(filled)} entries, {len(added)} days added ({', '.join(added) or 'none'}), "
+          f"{len(written)} files written")
+    return 0
+
+
+if __name__ == "__main__":  # pragma: no cover
+    raise SystemExit(main())

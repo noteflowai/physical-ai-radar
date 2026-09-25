@@ -23,6 +23,27 @@ Fixes that change what gets published:
   cannot open an HTML element, break a link, or stop the Pages build with Liquid.
 - Entities are decoded once and completely (`&#8217;`, `&#215;`, `&hellip;`).
 
+What a reader gets out of each item:
+
+- "Why it matters" is composed per item from its evidence tag, the checks its text
+  gives or leaves out, and what to watch in its lane. It was one sentence per lane:
+  48 lines in the week of 09-19, 8 of them distinct. `why_templates` in
+  `data/glossary.json` is replaced by `why_parts`.
+- Each figure is quoted with the words around it in the source, so `49.11%` reads
+  as “on DynaForge data achieve 49.11% mean success”.
+- Excerpts no longer quote feed furniture ("The post … appeared first on …", the
+  Video Friday preamble).
+- One story takes one slot: a vendor post and a retelling of it by a trade outlet
+  no longer both make the page, on the same day or within the repeat window.
+- The lane and evidence-mix charts count the last seven days of picks and no longer
+  add the curated baseline. Daily pages state their counts as text instead of
+  embedding charts that the next run overwrites.
+- `python3 -m pairadar.feeds --backfill` fills the feed store from the daily
+  snapshots in git history, so the weekly page counts every published day (W39
+  showed 8 picks of 32).
+- The English safety lane is "Safety, permissions & compliance"; Japanese pages say
+  生産ライン for "production line".
+
 Fetching and source health:
 
 - A garbled status line or a truncated body skips that source instead of ending

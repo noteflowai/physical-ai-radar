@@ -103,6 +103,16 @@ because the API answers `http://arxiv.org/abs/<id>v1` and the feeds answer
 learned model sits in this path. This is a bias-by-design choice: the radar prefers
 items with real-robot or closed-loop evidence over pure benchmark deltas.
 
+A fourth gate keeps one story to one slot. A vendor post and a trade outlet's retelling
+have different URLs, so the repeat guard lets both through: on 2026-09-22 NVIDIA's Isaac
+ROS 5.0 post and The Robot Report's account of it took two of the eight places. Two
+titles tell the same story when they share at least three distinctive words and those
+make up at least half of the shorter title. Function words, press verbs and the names
+that appear in half the pool (NVIDIA, Google, robot, AI…) do not count, so two unrelated
+Isaac Sim posts or two Video Friday issues stay apart. The higher-ranked telling keeps the
+slot, and a story told on an earlier day inside the repeat window is not told again.
+Papers are exempt on both sides: two preprints with similar titles are two papers.
+
 ## 4. Quantitative claim extraction
 
 `distill.extract_numbers` matches percentages, multipliers, `ms` / `Hz` / `fps`,
@@ -110,6 +120,17 @@ parameter counts, hours / episodes / demonstrations / trajectories / tasks, and
 `GB / TB / W / kg / DoF`. Up to four are shown per item, in source order, unmodified.
 Numbers are **quoted, not recomputed** — if the source is wrong, the radar is wrong in
 the same way, and the link is there to check.
+
+A bare `48.1% · 68.9%` does not say what was measured, so each figure on a page is
+followed by the few words around it in the source (`distill.number_context`): up to four
+before and three after, cut at the clause. The metric is not named by guessing from
+nearby words; in "raises success rate and tracking accuracy by at least 24% and 47%" the
+nearest metric to 24% is the wrong one, and a quote lets the reader see that. A figure is
+quoted where it stands alone, so `17.6%` is not quoted from inside `12.1-17.6%` when the
+text also gives it on its own.
+
+Feed furniture is removed before anything is quoted: the WordPress footer "The post …
+appeared first on …" and the fixed Video Friday preamble.
 
 ## 5. Translation policy
 
@@ -120,20 +141,28 @@ This is the part most repositories get wrong, so it is explicit here:
    for live (non-curated) items.
 3. **The analytical layer is authored, not translated.** Lane names, evidence labels,
    signal badges and the "why it matters" line come from `data/glossary.json`
-   (`ui`, `why_templates`) and from hand-written trilingual fields in
+   (`ui`, `why_parts`) and from hand-written trilingual fields in
    `data/baseline.json`.
+
+   Without a curated or drafted line, the line is composed from what the item's text
+   shows (`render.composed_why`): what its evidence tag means, which of the checks
+   expected for that tag it gives or leaves out (real-robot results, closed-loop
+   results, figures for a preprint; figures for a release or a report), and what to watch
+   in its lane. Hardware and safety items are not asked for a closed loop. A single
+   sentence per lane used to be the whole line: the week of 2026-09-19 published 48 lines
+   of which 8 were distinct, and a README opened with two identical ones.
 4. **No machine translation is invoked anywhere in the pipeline.** Titles, numbers and
    evidence tags are never produced or altered by a model.
 5. **Drafted analysis is opt-in, per item, and labelled.** The "why it matters" line may
-   come from a draft in `data/notes/<date>.json` instead of the per-lane template. Such a
+   come from a draft in `data/notes/<date>.json` instead of the composed line. Such a
    file is written outside the pipeline by `scripts/draft_daily_notes.sh`, which runs on a
    maintainer's machine on a schedule and never in CI. The pull request is merged
    automatically once every deterministic check passes and a reviewer agent approves it;
    no human reads it first, and the page says so. Precedence is fixed: a human-curated
-   line beats a draft, a draft beats the template. Every drafted line carries a visible
+   line beats a draft, a draft beats the composed line. Every drafted line carries a visible
    label next to its heading, the page names the agent and model that drafted it, and each
    language is drafted separately rather than translated. A missing language falls back to
-   the template, and a malformed or foreign notes file is ignored with a log line: notes
+   the composed line, and a malformed or foreign notes file is ignored with a log line: notes
    can never break a run or silently replace authored text.
 
 ## 6. Charts
@@ -141,7 +170,18 @@ This is the part most repositories get wrong, so it is explicit here:
 Charts are emitted as hand-written SVG (`pairadar/charts.py`): lane distribution,
 daily cadence and evidence mix. No plotting dependency, no binary diffs, readable in a
 pull request. One set is written per language, plus an unsuffixed English set because
-already-published pages link to those filenames. Bundling a font was never necessary:
+already-published pages link to those filenames.
+
+The lane and evidence-mix charts count the picks published in the last seven days
+(`cli.CHART_DAYS`), read from the feed store, and their titles say so. They used to add
+the 29 curated baseline entries to the day's eight picks, so the bars mostly showed the
+baseline. Seven days, not thirty, because the store keeps at most 100 entries and eight
+picks a day would overflow a thirty-day count. The charts are embedded only in the
+READMEs, which always show the current day. A daily page is frozen when it is published,
+so it states its lane counts, source mix and recent cadence as text instead of linking a
+chart file that the next run overwrites.
+
+Bundling a font was never necessary:
 these are SVG *text*, so the glyphs come from the reader's browser and the bytes this
 repository commits are identical either way.
 
@@ -177,7 +217,7 @@ taxonomy, not a rendering detail to tolerate.
   consumers.
 - `python3 -m pairadar --rerender` rebuilds the most recent published day from
   `radar/latest.json` -- same picks, same counts, no network. A day is rendered once at
-  publish time, so this is how anything that arrives later (drafted notes, a template
+  publish time, so this is how anything that arrives later (drafted notes, a wording
   fix) reaches that day's pages without re-running selection against a moved pool. The
   snapshot therefore stores the source excerpt each page quotes; `--rerender` reads the
   snapshot and never rewrites it.
@@ -193,6 +233,12 @@ taxonomy, not a rendering detail to tolerate.
   rewrite them.
 - `radar/weekly/<ISO week>.<lang>.md` groups the week's picks by lane. Each run rewrites
   the current week from the feed store; earlier weeks are left as published.
+- `python3 -m pairadar.feeds --backfill` rebuilds the store from the `radar/latest.json`
+  of each day in the git history, then rewrites the feeds and every week present. The
+  store began on 2026-09-25, so the W39 page counted 8 picks where 32 had been published.
+  Days already in the store are kept as they are; a day's last commit wins; days replay
+  oldest first, so a link repeated on a later day stays on its first. It needs a full
+  clone: a shallow checkout has no history to read and backfills nothing.
 - `data/notes/<date>.json` is an optional input. Without it the render is unchanged, so
   a reproduction from repository data alone stays deterministic.
 - Item ids are content-derived (`arxiv:<id>`, `<feed>:<sha1(link)[:12]>`) and therefore stable

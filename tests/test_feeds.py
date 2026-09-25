@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT/"tests"))
 
 from pairadar import feeds  # noqa: E402
 from pairadar.config import LANGS, README_FILES, Item, load_config  # noqa: E402
-from pairadar.render import update_index  # noqa: E402
+from pairadar.render import composed_why, update_index  # noqa: E402
 from test_quality import recorded_day, shortlist  # noqa: E402
 
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -217,8 +217,7 @@ class DraftSeparationTest(unittest.TestCase):
                     with self.subTest(path=path.name):
                         self.assertNotIn("Drafted line.", text)
                         for lang in LANGS:
-                            template = config.glossary["why_templates"][item.lane][lang]
-                            self.assertNotIn(template, text)
+                            self.assertNotIn(composed_why(item, config, lang), text)
 
     def test_rerender_leaves_the_feeds_alone(self) -> None:
         # scripts/draft_daily_notes.sh reverts a re-render that touches anything but

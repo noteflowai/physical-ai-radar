@@ -50,7 +50,7 @@ from pairadar.fetch import (  # noqa: E402
     parse_date,
 )
 from pairadar import render  # noqa: E402
-from pairadar.render import readme_block, render_daily  # noqa: E402
+from pairadar.render import composed_why, readme_block, render_daily  # noqa: E402
 
 
 def make_item(**kwargs) -> Item:
@@ -81,8 +81,8 @@ class DataFilesTest(unittest.TestCase):
             for lang in LANGS:
                 self.assertTrue(lane["name"].get(lang), f"{lane['id']} missing {lang}")
                 self.assertTrue(
-                    self.config.glossary["why_templates"][lane["id"]].get(lang),
-                    f"why_template {lane['id']} missing {lang}",
+                    self.config.glossary["why_parts"]["watch"][lane["id"]].get(lang),
+                    f"why_parts.watch {lane['id']} missing {lang}",
                 )
 
     def test_ui_strings_cover_all_languages(self) -> None:
@@ -783,10 +783,10 @@ class DraftedNotesTest(unittest.TestCase):
         self.assertNotIn("中文草稿", page)
         self.assertNotIn(f"`{self.config.ui('zh')['llm_draft']}`", page)
 
-    def test_a_missing_language_falls_back_to_the_template(self) -> None:
+    def test_a_missing_language_falls_back_to_the_composed_line(self) -> None:
         partial = {**self.notes, "notes": {url_key(self.item.url): {"en": "English only"}}}
         page = render_daily(self.config, "zh", self.context(partial))
-        self.assertIn(self.config.glossary["why_templates"][self.item.lane]["zh"], page)
+        self.assertIn(composed_why(self.item, self.config, "zh"), page)
         self.assertNotIn(f"`{self.config.ui('zh')['llm_draft']}`", page)
 
     def test_the_page_names_who_drafted_it(self) -> None:
@@ -906,7 +906,9 @@ class RenderTest(unittest.TestCase):
         for lang in LANGS:
             page = render_daily(self.config, lang, self.ctx)
             self.assertIn(self.config.ui(lang)["title"], page)
-            self.assertIn(f"assets/lane-distribution.{lang}.svg", page)
+            # A day's page is frozen text: the shared charts are redrawn every run.
+            self.assertNotIn(".svg", page)
+            self.assertIn(f"| {self.config.lane_name('edge', lang)} |", page)
             self.assertIn("http", page)
             self.assertGreater(len(page), 1200)
 
