@@ -18,6 +18,9 @@ AGENT="${RADAR_AGENT:-radar-curator}"
 EFFORT="${RADAR_EFFORT:-medium}"
 THRESHOLD="${RADAR_THRESHOLD:-3}"
 AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
+# Tried in order until one answers; the machine's default model has been unavailable
+# for whole nights.
+MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
 DRY_RUN=0
 
 while [ $# -gt 0 ]; do
@@ -59,7 +62,7 @@ restore_tree() {
 ask() {
   local out="$1"; shift
   local status=0
-  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >"$out" 2>&1 || status=$?
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >>"$out" 2>&1 || status=$?
   sed -e 's/\x1b\[[0-9;]*m//g' "$out" | tail -20
   case "$status" in
     0) return 0 ;;
@@ -116,10 +119,29 @@ case "$AGENTS" in
   *"$AGENT"*) : ;;
   *) log "agent '${AGENT}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
 esac
+# The agent file carries the write limits and the fetch blocklist; check it before any model call.
+if ! VALID="$(kiro-cli agent validate --path ".kiro/agents/${AGENT}.json" 2>&1)"; then
+  log "agent '${AGENT}' does not validate: $(printf '%s' "$VALID" | tail -3 | tr '\n' ' ')"
+  exit 1
+fi
+# The first model on the list that answers. A failed attempt may leave a half-made
+# edit, so the source list goes back to the published one before each retry.
+USED=""
+ask_first() {
+  local out="$1" model
+  shift
+  for model in $MODELS; do
+    log "asking ${model}"
+    if ask "$out" --model "$model" "$@"; then USED="$model"; return 0; fi
+    git checkout -- data/sources.json
+  done
+  log "no model answered (tried: ${MODELS})"
+  return 1
+}
 
 LOGFILE="$(mktemp "/tmp/radar-sources-XXXXXX.log")"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
-if ! ask "$LOGFILE" --agent "$AGENT" --effort "$EFFORT" \
+if ! ask_first "$LOGFILE" --agent "$AGENT" --effort "$EFFORT" \
   --trust-tools=read,grep,glob,web_fetch,write \
   "The health verdict says '${SOURCE}' has stopped answering. Check whether its endpoint still returns a feed. If it moved, fix only that entry in data/sources.json. If it is merely down, change nothing. Then write your report."; then
   log "no repair proposed for ${SOURCE}"
@@ -153,7 +175,7 @@ git checkout -q -B "$BRANCH"
 git add data/sources.json
 git commit -q -m "sources: repair ${SOURCE}, which stopped answering
 
-Proposed by ${AGENT} via kiro-cli on the Tokyo workstation after ${SOURCE} missed
+Proposed by ${AGENT} (${USED}) via kiro-cli on the Tokyo workstation after ${SOURCE} missed
 at least ${THRESHOLD} days in the health window. Endpoint verified by the agent;
 confirm it yourself before merging."
 git push -q -u --force-with-lease origin "$BRANCH"
@@ -164,7 +186,7 @@ fi
 gh pr create --base main --head "$BRANCH" \
   --title "sources: repair ${SOURCE}, which stopped answering" \
   --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
-    "\`pairadar.health\` reported \`${SOURCE}\` failing on at least ${THRESHOLD} days. Proposed by \`${AGENT}\` on the Tokyo workstation, outside GitHub Actions." \
+    "\`pairadar.health\` reported \`${SOURCE}\` failing on at least ${THRESHOLD} days. Proposed by \`${AGENT}\` (${USED}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
     "The agent has no shell and can write only \`data/sources.json\`. This script checked that nothing else changed and ran the full test suite. Confirm the endpoint yourself before merging: a source entry must stay a public machine-readable endpoint with a weight and an evidence tag.")
 log "pull request opened for ${SOURCE}"

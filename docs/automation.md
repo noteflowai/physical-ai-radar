@@ -41,12 +41,13 @@ Both scripts share the same shape:
    checkout, and never blocked by leftovers from an interrupted run;
 2. a gate before spending anything: notes are skipped if the day already has them,
    repairs are skipped unless `pairadar.health` reports a source over the threshold;
-3. the agent, with granular trust only (`--trust-tools=…`), a write path allowlist,
-   and no shell;
+3. the agent, checked with `kiro-cli agent validate` before the first call, then run
+   with granular trust only (`--trust-tools=…`), a write path allowlist, no shell,
+   and an explicit `--model`;
 4. verification by this repository's own deterministic checks — the touched file set,
-   the schema, the full test suite;
+   `pairadar.notes check`, the full test suite;
 5. a reviewer agent -- read-only, no shell, no writes -- which must end its reply with
-   `APPROVE` or `REJECT: <reason>`; a rejection discards the draft;
+   `APPROVE` or `REJECT: <reason>`;
 6. a pull request that merges itself once every check is green.
 
 Nobody reads the notes before they are published. The rendered pages say exactly that:
@@ -58,6 +59,32 @@ Measured on kiro-cli 2.21.2, `--trust-all-tools` bypasses the agent's own write 
 allowlist while `--trust-tools=write` enforces it, and a `shell` command allowlist is
 not enforced at all. That is why neither agent is given a shell and why the scripts,
 not the agents, run the commands.
+
+## How a draft gets from the model to the pull request
+
+The drafting job treats the model as a colleague whose work is checked, not as a
+single shot that either lands or loses the night:
+
+- **A model that answers.** Every call names its model and falls back down a list
+  (`RADAR_MODELS`, default `claude-fable-5.1 claude-opus-5 claude-sonnet-5`) when one
+  is unavailable. The machine's default model was "temporarily unavailable" on 09-24
+  and 09-25, and both nights were lost. A failed attempt's partial file is rolled back
+  before the next model starts.
+- **Findings, not tracebacks.** `python3 -m pairadar.notes check DAY` reports, item by
+  item, what is wrong: JSON that stops parsing and where, a key that matches no pick,
+  a missing language, a figure the page does not contain. Those lines go back to the
+  drafter as its next instruction, at most `RADAR_FIX_ROUNDS` (2) times, and the
+  suite runs only on a draft the validator accepts.
+- **A second opinion from a different model.** The reviewer takes the first model on
+  `RADAR_REVIEW_MODELS` that wrote no part of the draft. A rejection goes back to the
+  drafter once (`RADAR_REVIEW_ROUNDS`), through the validator and the suite again, and
+  to a fresh review; a second rejection, or no independent reviewer, discards the draft.
+- **The record says who wrote it.** `pairadar.notes stamp` writes the models that
+  actually ran into `author.model` and `review`, so the rendered pages, the commit and
+  the pull request name them. The agent used to report its own model, which is not
+  evidence.
+
+The repair job uses the same model list.
 
 ## The machine's jobs share a clone, so they share a lock
 

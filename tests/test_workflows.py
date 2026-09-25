@@ -13,6 +13,7 @@ mentioning self-hosted in a comment still has to justify its triggers.
 """
 from pathlib import Path
 import json
+import re
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -103,14 +104,30 @@ class WorkflowSafetyTest(unittest.TestCase):
 
 
 class DraftGateTests(unittest.TestCase):
-    """The nightly script must diagnose the agent's own most likely mistake."""
+    """The nightly script hands the agent its own mistakes before anything else judges them."""
 
-    def test_the_draft_is_parsed_before_the_suite_sees_it(self):
-        script = (ROOT/"scripts/draft_daily_notes.sh").read_text()
-        gate = script.index("the draft is not valid JSON")
-        suite = script.index("python3 -m unittest discover")
-        self.assertLess(gate, suite, "parse the agent's JSON before running the suite")
-        self.assertIn("restore_tree", script[gate:gate + 200])
+    SCRIPT = (ROOT/"scripts/draft_daily_notes.sh").read_text(encoding="utf-8")
+
+    def test_the_validator_runs_before_the_suite_and_feeds_back_to_the_drafter(self):
+        gate = self.SCRIPT.index('python3 -m pairadar.notes check "$DAY"')
+        self.assertLess(gate, self.SCRIPT.index("python3 -m unittest discover"),
+                        "the suite's traceback is no instruction a model can act on")
+        correction = self.SCRIPT[gate:self.SCRIPT.index("\n}", gate)]
+        self.assertIn("FIX_ROUNDS", correction, "corrections must be bounded")
+        self.assertIn("${problems}", correction, "the findings are the drafter's next instruction")
+
+    def test_the_reviewer_is_not_the_drafter(self):
+        review = self.SCRIPT[self.SCRIPT.index('ask_first "$REVIEW"'):]
+        self.assertTrue(review.startswith('ask_first "$REVIEW" "$REVIEW_MODELS" "$DRAFTERS"'),
+                        "a model must not approve its own draft")
+        self.assertIn("REVIEW_ROUNDS", review, "revisions after a rejection must be bounded")
+
+    def test_the_script_records_the_models_that_ran(self):
+        stamp = self.SCRIPT.rindex("python3 -m pairadar.notes stamp")
+        self.assertIn('--reviewer-model "$REVIEW_MODEL"', self.SCRIPT[stamp:stamp + 200])
+        self.assertLess(self.SCRIPT.index("python3 -m pairadar.notes stamp"),
+                        self.SCRIPT.index("python3 -m pairadar --rerender"),
+                        "the pages name the drafter, so stamp before rebuilding them")
 
 
 class AgentBoundaryTests(unittest.TestCase):
@@ -147,6 +164,21 @@ class NightlyJobTests(unittest.TestCase):
             for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
                 if "kiro-cli chat" in line and not line.lstrip().startswith("#"):
                     self.assertIn("timeout", line, f"{path.name}:{number} calls a model with no time limit")
+
+    def test_every_model_call_names_its_model_after_checking_its_agent(self):
+        # The machine's default model was unavailable on 09-24 and 09-25; relying on it
+        # lost both nights.
+        for path in self.SCRIPTS:
+            text = path.read_text(encoding="utf-8")
+            calls = re.findall(r'^.*(?<![\w-])ask "\$\w+".*$', text, re.M)
+            if "kiro-cli chat" not in text:
+                continue
+            with self.subTest(script=path.name):
+                self.assertTrue(calls, "no model call found")
+                for call in calls:
+                    self.assertIn('--model "$model"', call, "only ask_first calls ask, with a model")
+                self.assertLess(text.index("kiro-cli agent validate"), text.index("ask_first \""),
+                                "validate the agent before spending a model call")
 
     def test_a_published_day_is_not_published_again(self):
         script = (ROOT/"scripts"/"publish_daily.sh").read_text(encoding="utf-8")

@@ -51,6 +51,7 @@ from pairadar.fetch import (  # noqa: E402
 )
 from pairadar import render  # noqa: E402
 from pairadar.render import composed_why, readme_block, render_daily  # noqa: E402
+from pairadar.notes import unsupported_numbers  # noqa: E402
 
 
 def make_item(**kwargs) -> Item:
@@ -636,23 +637,6 @@ class SourceHealthTest(unittest.TestCase):
         entry = next(run for run in runs if run["date"] == "2026-03-05")
         self.assertIn("failed", entry, "health has to be recorded to be readable later")
         self.assertEqual(entry["failed"], [], "an offline run attempts no source")
-
-
-def unsupported_numbers(text: str, source: str) -> list[str]:
-    """Numeric claims in a drafted line that the published page does not contain.
-
-    The agent is told never to add a number that is not in the source. This is the
-    mechanical half of that rule: every multi-digit figure in a drafted line has to
-    appear in the page the line is about. Single digits are ignored -- "one" or a
-    lane index carries no claim.
-    """
-    haystack = source.replace(",", "")
-    missing = []
-    for token in {match.group(0).strip() for match in re.finditer(r"\d+(?:[.,]\d+)?", text)}:
-        digits = token.replace(",", "")
-        if len(digits.replace(".", "")) >= 2 and digits not in haystack:
-            missing.append(token)
-    return sorted(missing)
 
 
 class LaneEvidenceTest(unittest.TestCase):

@@ -26,6 +26,13 @@ AGENT="${RADAR_AGENT:-radar-analyst}"
 REVIEWER="${RADAR_REVIEWER:-radar-reviewer}"
 EFFORT="${RADAR_EFFORT:-medium}"
 AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
+# Tried in order until one answers: "temporarily unavailable" on the machine's default
+# model cost the nights of 09-24 and 09-25. The reviewer takes the first model on its
+# list that did not write the draft, so no model is the only check on its own work.
+MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
+REVIEW_MODELS="${RADAR_REVIEW_MODELS:-claude-opus-5 claude-sonnet-5 claude-fable-5.1}"
+FIX_ROUNDS="${RADAR_FIX_ROUNDS:-2}"        # validator findings handed back to the drafter
+REVIEW_ROUNDS="${RADAR_REVIEW_ROUNDS:-1}"  # revisions after a rejection
 DAY=""
 DRY_RUN=0
 
@@ -56,9 +63,11 @@ log() { printf '[notes %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
 
 PREVIEW=""
 LOGFILE=""
+REVIEW=""
 cleanup() {
   [ -n "$PREVIEW" ] && rm -rf "$PREVIEW"
   [ -n "$LOGFILE" ] && rm -f "$LOGFILE"
+  [ -n "$REVIEW" ] && rm -f "$REVIEW"
   return 0
 }
 trap cleanup EXIT
@@ -80,7 +89,7 @@ restore_tree() {
 ask() {
   local out="$1"; shift
   local status=0
-  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >"$out" 2>&1 || status=$?
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >>"$out" 2>&1 || status=$?
   sed -e 's/\x1b\[[0-9;]*m//g' "$out" | tail -20
   case "$status" in
     0) return 0 ;;
@@ -141,105 +150,168 @@ for required in "$AGENT" "$REVIEWER"; do
     *"$required"*) : ;;
     *) log "agent '${required}' is not defined on ${BRANCH_BASE}; refusing to fall back to the default agent"; exit 1 ;;
   esac
+  # The agent files carry the write limits. A malformed one must stop the night before
+  # the first model call, not be discovered by what the agent was allowed to do.
+  if ! VALID="$(kiro-cli agent validate --path ".kiro/agents/${required}.json" 2>&1)"; then
+    log "agent '${required}' does not validate: $(printf '%s' "$VALID" | tail -3 | tr '\n' ' ')"
+    exit 1
+  fi
 done
 
-LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
-log "drafting notes for ${DAY}"
+# ask_first OUT "MODELS" "SKIP" ARGS...: the first model on the list, and not in SKIP,
+# that answers; its name is left in USED. A failed attempt may leave a half-written
+# draft, so the notes file goes back to how it was before each retry.
+USED=""
+ask_first() {
+  local out="$1" models="$2" skip="$3" model tried="" saved=""
+  shift 3
+  if [ -f "$NOTES" ]; then saved="$(mktemp)"; cp "$NOTES" "$saved"; fi
+  USED=""
+  for model in $models; do
+    case " $tried $skip " in *" $model "*) continue ;; esac
+    tried="$tried $model"
+    log "asking ${model}"
+    if ask "$out" --model "$model" "$@"; then USED="$model"; break; fi
+    if [ -n "$saved" ]; then cp "$saved" "$NOTES"; else rm -f "$NOTES"; fi
+  done
+  [ -n "$saved" ] && rm -f "$saved"
+  [ -n "$USED" ] && return 0
+  log "no model answered (tried:${tried:- none})"
+  return 1
+}
+# Every model that wrote any part of the draft, in order. The reviewer may be none of them.
+DRAFTERS=""
+add_drafter() {
+  case " $DRAFTERS " in *" $USED "*) ;; *) DRAFTERS="${DRAFTERS:+$DRAFTERS }$USED" ;; esac
+}
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
-if ! ask "$LOGFILE" --agent "$AGENT" --effort "$EFFORT" \
-  --trust-tools=read,grep,glob,write \
-  "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly."; then
+draft() {
+  ask_first "$LOGFILE" "$DRAFTERS $MODELS" "" --agent "$AGENT" --effort "$EFFORT" \
+    --trust-tools=read,grep,glob,write "$1" || return 1
+  add_drafter
+  local changed
+  changed="$(changed_paths)"
+  if [ -n "$changed" ] && [ "$changed" != "$NOTES" ]; then
+    log "unexpected files touched: ${changed}; reverting"
+    return 1
+  fi
+}
+# The validator's findings go back to the drafter as its next instruction. On 09-22 a
+# stray comma and on 09-23 two invented figures each cost the night, and each fix was
+# one sentence long.
+correct() {
+  local round=0 problems
+  while ! problems="$(python3 -m pairadar.notes check "$DAY")"; do
+    if [ "$round" -ge "$FIX_ROUNDS" ]; then
+      log "the draft still fails the validator after ${FIX_ROUNDS} corrections:"
+      printf '%s\n' "$problems"
+      return 1
+    fi
+    round=$((round + 1))
+    log "correction ${round}/${FIX_ROUNDS}; the validator found:"
+    printf '%s\n' "$problems"
+    draft "The validator rejected ${NOTES}. Fix exactly these problems in that file and keep every other note as it is. Lines marked (optional) are suggestions only.
+${problems}" || return 1
+  done
+  [ -z "$problems" ] || printf '%s\n' "$problems"
+  log "the validator accepts ${NOTES}"
+}
+# The deterministic half, in the tree the pull request will carry: the suite, an
+# offline render, and the reader-facing pages rebuilt around the notes, naming the
+# models that actually wrote them. stdout is the pipeline talking to itself; the
+# verdict and any failure go to stderr, so dropping stdout keeps this log about
+# tonight's run. Called outside any condition, so `set -e` still applies inside.
+prepare() {
+  python3 -m pairadar.notes stamp "$DAY" --drafter "${DRAFTERS// /, }"
+  if ! python3 -m unittest discover -s tests >/dev/null; then
+    log "the suite rejects the draft; reverting"
+    restore_tree
+    exit 1
+  fi
+  [ -n "$PREVIEW" ] || PREVIEW="$(mktemp -d "/tmp/radar-notes-preview-${DAY}-XXXXXX")"
+  python3 -m pairadar --offline --out "$PREVIEW" --date "$DAY" >/dev/null
+
+  # The day's pages were rendered before these notes existed. Rebuild them from the
+  # published snapshot -- no fetch, same picks. Skipped when the snapshot predates
+  # stored excerpts, because the rebuilt pages would silently lose their source quotes.
+  if python3 -c "import json,sys; picks=json.load(open('radar/latest.json'))['picked']; sys.exit(0 if picks and any(p.get('summary') for p in picks) else 1)"; then
+    log "re-rendering ${DAY} from the published snapshot"
+    python3 -m pairadar --rerender --date "$DAY"
+    RENDERED="$(changed_paths)"
+    # The landing pages quote the day's lines too, so they are rebuilt with it.
+    EXPECTED="$(printf '%s\n' "$NOTES" README.en.md README.ja.md README.md \
+      index.html en/index.html ja/index.html \
+      "radar/daily/${DAY}.en.md" "radar/daily/${DAY}.ja.md" "radar/daily/${DAY}.zh.md" |
+      sort | tr '\n' ' ' | sed 's/ *$//')"
+    if [ "$RENDERED" != "$EXPECTED" ]; then
+      log "re-render touched unexpected files: ${RENDERED}; reverting"
+      restore_tree
+      exit 1
+    fi
+    python3 -m unittest discover -s tests >/dev/null
+  else
+    log "snapshot has no stored excerpts; leaving the published pages untouched"
+  fi
+}
+
+LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
+REVIEW="$(mktemp "/tmp/radar-review-${DAY}-XXXXXX.log")"
+log "drafting notes for ${DAY}"
+if ! draft "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly."; then
   log "no draft for ${DAY}"
   restore_tree
   exit 1
 fi
-
-CHANGED="$(changed_paths)"
-if [ -z "$CHANGED" ]; then
+if [ -z "$(changed_paths)" ]; then
   log "the agent wrote nothing; stopping without a pull request"
   exit 0
 fi
-if [ "$CHANGED" != "$NOTES" ]; then
-  log "unexpected files touched: ${CHANGED}; reverting"
+if ! correct; then
+  log "discarding the draft"
   restore_tree
   exit 1
 fi
 
-# Last night the agent wrote a file that stopped being JSON at line 23, and the suite
-# reported it as a traceback from an unrelated test. The most likely agent failure
-# deserves its own diagnosis, in one line, before anything else reads the file.
-if ! DIAGNOSIS="$(python3 - "$NOTES" <<'PY' 2>&1
-import json, sys
-try:
-    json.load(open(sys.argv[1], encoding="utf-8"))
-except json.JSONDecodeError as error:
-    sys.exit(f"{error.msg}, line {error.lineno} column {error.colno}")
-except OSError as error:
-    sys.exit(str(error))
-PY
-)"; then
-  log "the draft is not valid JSON: ${DIAGNOSIS}; reverting"
-  restore_tree
-  exit 1
-fi
-
-# The deterministic half: the schema, the render and the full suite must all accept it.
-# stdout is the pipeline talking to itself; the verdict and any failure go to
-# stderr, so dropping stdout keeps this log about tonight's run.
-python3 -m unittest discover -s tests >/dev/null
-PREVIEW="$(mktemp -d "/tmp/radar-notes-preview-${DAY}-XXXXXX")"
-python3 -m pairadar --offline --out "$PREVIEW" --date "$DAY" >/dev/null
-python3 - "$DAY" "$NOTES" <<'PY'
-import json, sys
-day, path = sys.argv[1], sys.argv[2]
-document = json.load(open(path, encoding="utf-8"))
-assert document.get("schema") == "pairadar-notes-1", "wrong schema"
-assert document.get("date") == day, "date does not match the run"
-assert isinstance(document.get("notes"), dict) and document["notes"], "no notes written"
-for key, note in document["notes"].items():
-    missing = [lang for lang in ("zh", "en", "ja") if not note.get(lang)]
-    assert not missing, f"{key}: missing {missing}"
-print(f"validated {len(document['notes'])} notes for {day}")
-PY
-
-# The day's pages were rendered before these notes existed. Rebuild them from the
-# published snapshot -- no fetch, same picks -- so the pull request carries the reader
-# facing result. Skipped when the snapshot predates stored excerpts, because the
-# rebuilt pages would silently lose their source quotes.
-if python3 -c "import json,sys; picks=json.load(open('radar/latest.json'))['picked']; sys.exit(0 if picks and any(p.get('summary') for p in picks) else 1)"; then
-  log "re-rendering ${DAY} from the published snapshot"
-  python3 -m pairadar --rerender --date "$DAY"
-  RENDERED="$(changed_paths)"
-  EXPECTED="$(printf '%s\n' "$NOTES" README.en.md README.ja.md README.md \
-    "radar/daily/${DAY}.en.md" "radar/daily/${DAY}.ja.md" "radar/daily/${DAY}.zh.md" |
-    sort | tr '\n' ' ' | sed 's/ *$//')"
-  if [ "$RENDERED" != "$EXPECTED" ]; then
-    log "re-render touched unexpected files: ${RENDERED}; reverting"
+# A rejection is a finding like any other: the drafter gets it once, the draft goes
+# back through the validator and the suite, and a reviewer judges it afresh.
+REVISION=0
+while :; do
+  prepare
+  log "reviewing ${DAY} with ${REVIEWER}"
+  : >"$REVIEW"
+  if ! ask_first "$REVIEW" "$REVIEW_MODELS" "$DRAFTERS" --agent "$REVIEWER" --effort "$EFFORT" \
+    --trust-tools=read,grep,glob \
+    "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed."; then
+    log "no review by a model other than the drafter's (${DRAFTERS}); discarding the draft"
     restore_tree
     exit 1
   fi
-  python3 -m unittest discover -s tests >/dev/null
-else
-  log "snapshot has no stored excerpts; leaving the published pages untouched"
-fi
-
-log "reviewing ${DAY} with ${REVIEWER}"
-REVIEW="$(mktemp "/tmp/radar-review-${DAY}-XXXXXX.log")"
-if ! ask "$REVIEW" --agent "$REVIEWER" --effort "$EFFORT" \
-  --trust-tools=read,grep,glob \
-  "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed."; then
-  log "no review; discarding the draft"
-  rm -f "$REVIEW"
-  restore_tree
-  exit 1
-fi
-VERDICT="$(sed -e 's/\x1b\[[0-9;]*m//g' "$REVIEW" | grep -oE '^(APPROVE|REJECT:.*)$' | tail -1 || true)"
-case "$VERDICT" in
-  APPROVE) log "review: approved" ;;
-  REJECT:*) log "review: ${VERDICT}; discarding the draft"; rm -f "$REVIEW"; restore_tree; exit 1 ;;
-  *) log "review produced no verdict; discarding the draft"; rm -f "$REVIEW"; restore_tree; exit 1 ;;
-esac
-rm -f "$REVIEW"
+  REVIEW_MODEL="$USED"
+  VERDICT="$(sed -e 's/\x1b\[[0-9;]*m//g' "$REVIEW" | grep -oE '^(APPROVE|REJECT:.*)$' | tail -1 || true)"
+  case "$VERDICT" in
+    APPROVE) log "review: approved by ${REVIEW_MODEL}"; break ;;
+    REJECT:*) ;;
+    *) log "review produced no verdict; discarding the draft"; restore_tree; exit 1 ;;
+  esac
+  if [ "$REVISION" -ge "$REVIEW_ROUNDS" ]; then
+    log "review: ${VERDICT}; discarding the draft"
+    restore_tree
+    exit 1
+  fi
+  REVISION=$((REVISION + 1))
+  log "review: ${VERDICT}; revision ${REVISION}/${REVIEW_ROUNDS}"
+  # Drop the rebuilt pages; the draft itself is untracked and stays.
+  git checkout -- .
+  if ! draft "The reviewer rejected ${NOTES}:${VERDICT#REJECT:}
+Revise that file to answer exactly this finding and keep every other note as it is." || ! correct; then
+    log "discarding the draft"
+    restore_tree
+    exit 1
+  fi
+done
+python3 -m pairadar.notes stamp "$DAY" --drafter "${DRAFTERS// /, }" \
+  --reviewer "$REVIEWER" --reviewer-model "$REVIEW_MODEL"
+python3 -m unittest discover -s tests >/dev/null
 
 if [ "$DRY_RUN" = "1" ]; then
   log "dry run: keeping $NOTES in the working tree, no branch, no pull request"
@@ -253,9 +325,10 @@ git checkout -q -B "$BRANCH"
 git add -A
 git commit -q -m "notes: drafted per-item analysis for ${DAY}
 
-Drafted on the Tokyo workstation by ${AGENT} via kiro-cli, validated against the
-schema and the full test suite. Every line is labelled as a draft in the rendered
-pages; titles and numbers are untouched. Review before merging."
+Drafted on the Tokyo workstation by ${AGENT} (${DRAFTERS// /, }) via kiro-cli and
+approved by ${REVIEWER} (${REVIEW_MODEL}), after pairadar.notes check and the full
+test suite accepted it. Every line is labelled as a draft in the rendered pages;
+titles and numbers are untouched. Review before merging."
 git push -q -u --force-with-lease origin "$BRANCH"
 if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
   log "updated the open pull request for ${BRANCH}"
@@ -264,9 +337,9 @@ fi
 gh pr create --base main --head "$BRANCH" \
   --title "notes: drafted per-item analysis for ${DAY}" \
   --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
-    "Per-item analysis drafted for ${DAY} by \`${AGENT}\` on the Tokyo workstation, outside GitHub Actions." \
+    "Per-item analysis drafted for ${DAY} by \`${AGENT}\` (${DRAFTERS// /, }) and approved by \`${REVIEWER}\` (${REVIEW_MODEL}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
-    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, validated the schema and all three languages per item, and ran the full test suite. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
+    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a model other than the drafter's review it. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 log "pull request #${PR} opened for ${DAY}; waiting for checks"
 for _ in $(seq 1 30); do
