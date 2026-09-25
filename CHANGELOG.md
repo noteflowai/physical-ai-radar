@@ -20,6 +20,19 @@ The nightly jobs:
   issue; if that fails too, the scheduled run fails and GitHub mails the maintainer.
 - CI runs on every push to main, including the daily commits, lints the scripts and
   workflows, and validates the committed feeds, snapshot and landing pages.
+- Every model call names its model and falls back down `RADAR_MODELS` when one is
+  unavailable, which cost the nights of 09-24 and 09-25.
+- `python3 -m pairadar.notes check` reports what is wrong with a draft item by item,
+  and the drafter gets those findings to fix, at most twice, before the suite runs.
+- The reviewer is a model that wrote no part of the draft. A rejection is handed back
+  for one revision instead of ending the night.
+- The notes record the models that actually ran (`pairadar.notes stamp`), not the
+  agent's account of itself, and the agent files are validated before any model call.
+- A drafted pull request merges only when every check has passed on the commit the
+  script pushed. "No checks reported yet", right after the push, used to count as
+  green; cancelled checks and checks still running after ten minutes now leave it open.
+- The draft's re-render may rewrite the landing pages. With the site in place, every
+  draft would otherwise have been discarded for touching them.
 
 The site:
 
