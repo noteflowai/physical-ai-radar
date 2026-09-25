@@ -5,6 +5,22 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+The nightly jobs:
+
+- The three cron jobs share one lock, so the repair job can no longer reset the
+  clone under a draft still waiting for its checks. `scripts/radar-run` is now
+  tracked; cron calls an installed copy.
+- Every model call has a time limit, and a failed or stopped call says so in the
+  log instead of ending the script silently.
+- A day is published once. A second run on the same UTC date stops instead of
+  committing a new update that differs only in timestamps; `--force` republishes.
+- An open notes or repair pull request is not drafted again the next night.
+- `daily.yml` checks at 03:20 UTC whether the day was published. If the machine
+  missed it, the workflow publishes the day, requests a Pages build and opens an
+  issue; if that fails too, the scheduled run fails and GitHub mails the maintainer.
+- CI runs on every push to main, including the daily commits, lints the scripts and
+  workflows, and validates the committed feeds, snapshot and landing pages.
+
 The site:
 
 - The Pages site opens on a landing page in each language (`/`, `/en/`, `/ja/`): the

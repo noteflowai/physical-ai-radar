@@ -8,8 +8,8 @@
 # commits generated files.
 #
 # What Actions keeps is the job hosted CI is actually good at: verifying on a clean
-# machine that the committed state builds and passes. It no longer publishes, and it
-# no longer needs write access.
+# machine that the committed state builds and passes. It publishes only a day this
+# machine missed (daily.yml, 03:20 UTC), with a token that lives for one run.
 #
 #   scripts/publish_daily.sh [--limit N] [--dry-run] [--force]
 #
