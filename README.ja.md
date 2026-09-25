@@ -1,7 +1,7 @@
 # Physical AI フロンティア・レーダー
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
-[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.ja.xml)
+[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
@@ -18,7 +18,7 @@
 - **前瞻的だが曖昧ではない**：自己改善ループ、推論時計算、世界モデルによる評価、実行時安全、規制スケジュール、信頼性の経済性を対象に、必ず原典リンクを添えます。
 - **依存ゼロで再現可能**：パイプラインは Python 標準ライブラリのみ、図は手書き SVG。誰でも同じ出力をローカルで再現できます。
 
-**購読：** [Atom（日本語）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.ja.xml) · [JSON Feed（英語）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [週間まとめ](radar/INDEX.md)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
+**購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [週間まとめ](radar/INDEX.md)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
 ### 本日のレーダー · 2026-09-25
