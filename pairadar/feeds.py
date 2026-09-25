@@ -31,9 +31,9 @@ from .distill import one_liner, url_key
 
 REPO = "noteflowai/physical-ai-radar"
 HOME_URL = f"https://github.com/{REPO}"
-# raw.githubusercontent.com serves the committed file as it is, with no Pages site
-# required. Feed readers go by content, not by the text/plain content type it sends.
-RAW_URL = f"https://raw.githubusercontent.com/{REPO}/main"
+# GitHub Pages serves the committed feeds from main with XML and JSON content
+# types and a CDN in front, which raw.githubusercontent.com does not.
+SITE_URL = "https://noteflowai.github.io/physical-ai-radar"
 TAG_PREFIX = "tag:noteflowai.github.io,2026:physical-ai-radar"
 JSON_FEED_VERSION = "https://jsonfeed.org/version/1.1"
 ATOM_NS = "http://www.w3.org/2005/Atom"
@@ -192,7 +192,7 @@ def json_feed(config: Config, store: list[dict[str, Any]], lang: str = "en") -> 
         "version": JSON_FEED_VERSION,
         "title": ui["title"],
         "home_page_url": HOME_URL,
-        "feed_url": f"{RAW_URL}/radar/{FEED_JSON}",
+        "feed_url": f"{SITE_URL}/radar/{FEED_JSON}",
         "description": ui["tagline"],
         "language": lang,
         "authors": [{"name": ui["title"], "url": HOME_URL}],
@@ -216,7 +216,7 @@ def atom_feed(config: Config, store: list[dict[str, Any]], lang: str, generated:
     sub(feed, "title", ui["title"])
     sub(feed, "subtitle", ui["tagline"])
     sub(feed, "updated", store[0]["radar_published"] if store else rfc3339(generated))
-    sub(feed, "link", rel="self", type="application/atom+xml", href=f"{RAW_URL}/radar/{atom_name(lang)}")
+    sub(feed, "link", rel="self", type="application/atom+xml", href=f"{SITE_URL}/radar/{atom_name(lang)}")
     sub(feed, "link", rel="alternate", type="text/html", href=f"{HOME_URL}/blob/main/{README_FILES[lang]}")
     author = sub(feed, "author")
     sub(author, "name", ui["title"])

@@ -1,0 +1,7 @@
+# GitHub Pages (https://noteflowai.github.io/physical-ai-radar/) builds from main.
+title: Physical AI Radar
+description: A daily trilingual radar on the Physical AI frontier, with evidence-tagged picks and Atom / JSON feeds.
+exclude:
+  - pairadar
+  - scripts
+  - tests

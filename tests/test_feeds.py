@@ -233,8 +233,8 @@ class ReadmeLinkTest(unittest.TestCase):
         for lang in LANGS:
             text = (ROOT/README_FILES[lang]).read_text(encoding="utf-8")
             with self.subTest(lang=lang):
-                self.assertIn(f"{feeds.RAW_URL}/radar/{feeds.atom_name(lang)}", text)
-                self.assertIn(f"{feeds.RAW_URL}/radar/feed.json", text)
+                self.assertIn(f"{feeds.SITE_URL}/radar/{feeds.atom_name(lang)}", text)
+                self.assertIn(f"{feeds.SITE_URL}/radar/feed.json", text)
 
 
 if __name__ == "__main__":

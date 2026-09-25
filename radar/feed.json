@@ -2,7 +2,7 @@
   "version": "https://jsonfeed.org/version/1.1",
   "title": "Physical AI Radar",
   "home_page_url": "https://github.com/noteflowai/physical-ai-radar",
-  "feed_url": "https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json",
+  "feed_url": "https://noteflowai.github.io/physical-ai-radar/radar/feed.json",
   "description": "A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.",
   "language": "en",
   "authors": [

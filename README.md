@@ -1,7 +1,7 @@
 # Physical AI 前沿雷达 · Physical AI Radar
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
-[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.zh.xml)
+[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
@@ -18,7 +18,7 @@
 - **前瞻但不玄学**：雷达覆盖自我改进闭环、推理时计算、世界模型评测、运行时安全、合规排期与可靠性经济学——每一条都挂原始链接。
 - **零依赖可复现**：整条流水线只用 Python 标准库，图表是手写 SVG，任何人都能在本地跑出同样结果。
 
-**订阅：** [Atom（中文）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.zh.xml) · [JSON Feed（英文）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [每周汇总](radar/INDEX.md)。把链接粘贴到任意 RSS 阅读器即可，每条都带主线、证据等级和关键数字。
+**订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [每周汇总](radar/INDEX.md)。把链接粘贴到任意 RSS 阅读器即可，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
 ### 今日雷达 · 2026-09-25
