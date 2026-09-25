@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.26792" rel="noopener" target="_blank">DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If you lean on generative simulators for closed-loop evaluation, this preprint argues photo-realism metrics can misrank fidelity and offers a policy-feature metric plus code, though the gains are self-reported on driving benchmarks only.</p>
 <p class="excerpt">Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li><li>open code or weights</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.25376" rel="noopener" target="_blank">VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Before shipping a quantized VLA, treat precision recipes as model-specific: this preprint reports that which layers you protect swings closed-loop success sharply and that one model&#x27;s calibration fix degrades another, mostly in simulation.</p>
 <p class="excerpt">Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>open code or weights</li></ul>
 <footer>
@@ -127,7 +127,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.26520" rel="noopener" target="_blank">MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection</a></h3>
 <p class="figure"><strong>24.1 hours</strong><span class="context">“multi-humanoid collaboration dataset comprising 24.1 hours of coordinated behavior”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Collecting multi-humanoid collaboration data no longer requires owning several robots: distributed operators in a shared physics sim produced 24.1 hours of coordinated demos, and the authors report zero-shot transfer to one physical humanoid.</p>
 <p class="excerpt">Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li></ul>
 <footer>
@@ -142,7 +142,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/" rel="noopener" target="_blank">Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> NVIDIA&#x27;s own walkthrough of having an AI agent port a ROS 2 node to Isaac ROS is a reminder that message transport, not the CUDA kernel, usually bounds graph latency; it shows the workflow but gives no timing figures.</p>
 <p class="excerpt">GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-09-22</span>
@@ -156,7 +156,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/" rel="noopener" target="_blank">Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> A trade-press summary of the Isaac ROS 5.0 release: agentic workflows and new platform support are the headline, so check NVIDIA&#x27;s release notes for which hardware and ROS distributions are covered before scheduling a migration.</p>
 <p class="excerpt">The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-22</span>
@@ -170,7 +170,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/" rel="noopener" target="_blank">Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> A first-party account of Telexistence running a world model on AWS for convenience-store tasks; it signals cloud-hosted world models reaching retail pilots, but the post is framed as an experiment and gives no success or latency figures.</p>
 <p class="excerpt">Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-09-09</span>
@@ -184,7 +184,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/" rel="noopener" target="_blank">ANYbotics opens the door for inspections with ANYmal robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Per trade-press reporting, ANYmal can now badge through access-controlled doors via dormakaba and LEGIC integration, so the practical blocker for unattended inspection shifts from locomotion to facility credentials and security policy.</p>
 <p class="excerpt">ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-24</span>
@@ -198,7 +198,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/" rel="noopener" target="_blank">Epson introduces AX6 cobot with compact design, no-code programming</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Trade-press coverage of Epson entering the power-and-force-limited cobot segment with a compact six-axis arm and no-code programming; the summary here carries no payload, reach or price, so compare against the spec sheet before shortlisting.</p>
 <p class="excerpt">Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-24</span>

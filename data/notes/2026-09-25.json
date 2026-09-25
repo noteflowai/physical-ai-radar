@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-25",
+  "generated": "2026-09-25 18:30 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-fable-5.1",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.26792": {
+      "zh": "用生成式仿真器做闭环评测时别只看画面逼真度：作者自报 FID 类指标会错判保真度，改用策略特征距离并开源了代码与数据，但结论仅限自动驾驶基准。",
+      "en": "If you lean on generative simulators for closed-loop evaluation, this preprint argues photo-realism metrics can misrank fidelity and offers a policy-feature metric plus code, though the gains are self-reported on driving benchmarks only.",
+      "ja": "生成シミュレータで閉ループ評価を行うなら、写実性指標では忠実度を誤判定しうると著者は主張し、ポリシー特徴に基づく指標とコードを公開しているが、検証は運転ベンチマークでの自己報告に限られる。"
+    },
+    "https://arxiv.org/abs/2609.25376": {
+      "zh": "给 VLA 做量化部署前别照搬别家的精度配方：作者自报保护哪些层会让闭环成功率大幅波动，同一校准方法在不同模型上效果相反，结论主要来自仿真。",
+      "en": "Before shipping a quantized VLA, treat precision recipes as model-specific: this preprint reports that which layers you protect swings closed-loop success sharply and that one model's calibration fix degrades another, mostly in simulation.",
+      "ja": "VLA を量子化して載せる前に精度レシピはモデルごとに閉ループで検証すべきで、保護する層の選び方で成功率が大きく振れ、同じ校正が別モデルでは逆効果になると報告されている（主にシミュレーション）。"
+    },
+    "https://arxiv.org/abs/2609.26520": {
+      "zh": "采多人形协作数据可以不买第二台机器人：异地操作员在同一物理仿真里遥操作攒出 24.1 小时协作演示，作者自报能零样本迁移到一台真机人形。",
+      "en": "Collecting multi-humanoid collaboration data no longer requires owning several robots: distributed operators in a shared physics sim produced 24.1 hours of coordinated demos, and the authors report zero-shot transfer to one physical humanoid.",
+      "ja": "複数台のヒューマノイドを揃えなくても協調データは集められることを示す結果で、遠隔の操作者が共有物理シミュレーション上で 24.1 時間の協調デモを収集し、著者は実機一台へのゼロショット転移を報告している。"
+    },
+    "https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros": {
+      "zh": "官方演示用 AI agent 把 ROS 2 节点迁到 Isaac ROS，真正的提醒是图的瓶颈常在消息传递而非 CUDA 内核；文中只展示流程，没有给出加速数字。",
+      "en": "NVIDIA's own walkthrough of having an AI agent port a ROS 2 node to Isaac ROS is a reminder that message transport, not the CUDA kernel, usually bounds graph latency; it shows the workflow but gives no timing figures.",
+      "ja": "AI エージェントに ROS 2 ノードを Isaac ROS へ移植させる NVIDIA 公式の手順で、CUDA カーネルよりメッセージ伝送がグラフ遅延を律速するという指摘が本題だが、加速量の数値は示されていない。"
+    },
+    "https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia": {
+      "zh": "这是对 Isaac ROS 5.0 发布的二手转述，重点是 agent 工作流和新平台支持；排迁移计划前请以 NVIDIA 发行说明为准核对支持的硬件与 ROS 版本。",
+      "en": "A trade-press summary of the Isaac ROS 5.0 release: agentic workflows and new platform support are the headline, so check NVIDIA's release notes for which hardware and ROS distributions are covered before scheduling a migration.",
+      "ja": "Isaac ROS 5.0 のリリースを伝える二次報道で、要点はエージェント型ワークフローと対応プラットフォームの拡大にあり、移行を計画するなら対応ハードと ROS ディストリビューションは NVIDIA の一次情報で確認したい。"
+    },
+    "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws": {
+      "zh": "AWS 一手介绍 Telexistence 在便利店场景跑世界模型的实验，说明云端世界模型已进入零售试点，但全文定位为实验，未给出成功率或延迟数据。",
+      "en": "A first-party account of Telexistence running a world model on AWS for convenience-store tasks; it signals cloud-hosted world models reaching retail pilots, but the post is framed as an experiment and gives no success or latency figures.",
+      "ja": "Telexistence がコンビニ業務で世界モデルを AWS 上で動かした一次記事で、クラウド側の世界モデルが小売の実証段階に入ったことを示すが、あくまで実験の位置づけで成功率や遅延の数値は示されていない。"
+    },
+    "https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots": {
+      "zh": "据媒体报道，ANYmal 借 dormakaba 与 LEGIC 的集成能像员工刷卡一样过门禁，这意味着无人巡检的实际瓶颈从运动能力转到了楼宇权限与安全策略。",
+      "en": "Per trade-press reporting, ANYmal can now badge through access-controlled doors via dormakaba and LEGIC integration, so the practical blocker for unattended inspection shifts from locomotion to facility credentials and security policy.",
+      "ja": "報道によれば ANYmal が dormakaba と LEGIC の連携で社員証のように入退室管理を通過できるようになり、無人点検の実装上の課題は移動能力から施設側の権限設計とセキュリティ方針へ移る。"
+    },
+    "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming": {
+      "zh": "媒体报道爱普生推出紧凑型六轴力/功率受限协作臂并支持无代码编程；本条摘要不含负载、臂展与价格，选型前请对照官方规格表。",
+      "en": "Trade-press coverage of Epson entering the power-and-force-limited cobot segment with a compact six-axis arm and no-code programming; the summary here carries no payload, reach or price, so compare against the spec sheet before shortlisting.",
+      "ja": "エプソンが力・パワー制限型の小型六軸協働アームを無コードプログラミング付きで投入したとの報道で、この要約には可搬重量・リーチ・価格がないため、候補に入れる前に公式仕様で比較したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5",
+    "verdict": "APPROVE"
+  }
+}

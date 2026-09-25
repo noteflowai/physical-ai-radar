@@ -27,15 +27,15 @@
 `生成时间: 2026-09-25 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-25 · 博客与报道 2026-08-26 → 2026-09-25 · 7 天内不重复 (UTC)`
 
 - `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — 仿真与评测（sim2real / 闭环）
-  - 评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。
+  - `AI 起草` 用生成式仿真器做闭环评测时别只看画面逼真度：作者自报 FID 类指标会错判保真度，改用策略特征距离并开源了代码与数据，但结论仅限自动驾驶基准。
 - `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — 仿真与评测（sim2real / 闭环）
-  - 评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。
+  - `AI 起草` 给 VLA 做量化部署前别照搬别家的精度配方：作者自报保护哪些层会让闭环成功率大幅波动，同一校准方法在不同模型上效果相反，结论主要来自仿真。
 - `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — 数据引擎（采集 / 清洗 / scaling） ｜ `24.1 hours`
-  - 数据来源与清洗管道是当前真正的护城河，决定单位新任务的成本。
+  - `AI 起草` 采多人形协作数据可以不买第二台机器人：异地操作员在同一物理仿真里遥操作攒出 24.1 小时协作演示，作者自报能零样本迁移到一台真机人形。
 - `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — 系统与编排（长程 / 多策略）
-  - 长程任务的系统形态是编排器加策略池，运维对象从单个模型变成一组能力边界。
+  - `AI 起草` 官方演示用 AI agent 把 ROS 2 节点迁到 Isaac ROS，真正的提醒是图的瓶颈常在消息传递而非 CUDA 内核；文中只展示流程，没有给出加速数字。
 - `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — 系统与编排（长程 / 多策略）
-  - 长程任务的系统形态是编排器加策略池，运维对象从单个模型变成一组能力边界。
+  - `AI 起草` 这是对 Isaac ROS 5.0 发布的二手转述，重点是 agent 工作流和新平台支持；排迁移计划前请以 NVIDIA 发行说明为准核对支持的硬件与 ROS 版本。
 
 [今日雷达 ›](radar/daily/2026-09-25.zh.md) · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
 
