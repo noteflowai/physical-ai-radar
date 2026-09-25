@@ -67,6 +67,13 @@ class WorkflowSafetyTest(unittest.TestCase):
                 f"{sorted(unsafe)}; that hands the machine to anyone who can cause that event",
             )
 
+    def test_every_action_is_pinned_to_a_commit(self) -> None:
+        # A tag can be moved to other code; daily.yml runs with write access.
+        for path in WORKFLOWS.glob("*.yml"):
+            for ref in re.findall(r"uses:\s*(\S+)", path.read_text(encoding="utf-8")):
+                with self.subTest(workflow=path.name, uses=ref):
+                    self.assertRegex(ref, r"^[\w.-]+/[\w./-]+@[0-9a-f]{40}$")
+
     def test_every_workflow_declares_its_triggers(self) -> None:
         for path in sorted(WORKFLOWS.glob("*.yml")):
             self.assertTrue(triggers(path.read_text(encoding="utf-8")),

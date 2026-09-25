@@ -18,6 +18,7 @@ The nightly jobs:
 - `daily.yml` checks at 03:20 UTC whether the day was published. If the machine
   missed it, the workflow publishes the day, requests a Pages build and opens an
   issue; if that fails too, the scheduled run fails and GitHub mails the maintainer.
+- Every workflow action is pinned to a commit, and Dependabot proposes the bumps.
 - CI runs on every push to main, including the daily commits, lints the scripts and
   workflows, and validates the committed feeds, snapshot and landing pages.
 - Every model call names its model and falls back down `RADAR_MODELS` when one is

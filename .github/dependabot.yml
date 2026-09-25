@@ -1,0 +1,12 @@
+# The workflows pin every action to a commit, because a tag can be moved and
+# daily.yml runs with write access to the repository. Dependabot keeps the pins
+# current and proposes each bump as a pull request that CI checks.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
