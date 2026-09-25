@@ -5,7 +5,7 @@
   <subtitle>フィジカルAIの最前線を毎日更新：8つの軸、三言語の要約、追跡可能な根拠。</subtitle>
   <updated>2026-09-25T01:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml" />
-  <link rel="alternate" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/README.ja.md" />
+  <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/ja/" />
   <author>
     <name>Physical AI フロンティア・レーダー</name>
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
@@ -15,7 +15,7 @@
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.26792</id>
     <title>DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving</title>
     <link rel="alternate" href="https://arxiv.org/abs/2609.26792" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -26,13 +26,13 @@
     <summary type="text">Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.26792 · 2026-09-24&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり · コードまたは重み公開&lt;/p&gt;
 &lt;blockquote&gt;Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.25376</id>
     <title>VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models</title>
     <link rel="alternate" href="https://arxiv.org/abs/2609.25376" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -43,13 +43,13 @@
     <summary type="text">Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.25376 · 2026-09-24&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · コードまたは重み公開&lt;/p&gt;
 &lt;blockquote&gt;Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.26520</id>
     <title>MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection</title>
     <link rel="alternate" href="https://arxiv.org/abs/2609.26520" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -60,13 +60,13 @@
     <summary type="text">Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.26520 · 2026-09-24&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 24.1 hours&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 実機実験あり&lt;/p&gt;
 &lt;blockquote&gt;Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-developer-robotics:930fe61380af</id>
     <title>Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS</title>
     <link rel="alternate" href="https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -77,13 +77,13 @@
     <summary type="text">GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Technical Blog (Robotics) · 2026-09-22&lt;/p&gt;
 &lt;blockquote&gt;GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:d07cde754ec6</id>
     <title>Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA</title>
     <link rel="alternate" href="https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -94,13 +94,13 @@
     <summary type="text">The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-09-22&lt;/p&gt;
 &lt;blockquote&gt;The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:b7a93c57417f</id>
     <title>Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS</title>
     <link rel="alternate" href="https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -111,13 +111,13 @@
     <summary type="text">Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: AWS Physical AI Blog · 2026-09-09&lt;/p&gt;
 &lt;blockquote&gt;Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:4ae043b260ed</id>
     <title>ANYbotics opens the door for inspections with ANYmal robots</title>
     <link rel="alternate" href="https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -128,13 +128,13 @@
     <summary type="text">ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-09-24&lt;/p&gt;
 &lt;blockquote&gt;ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:f67b05547254</id>
     <title>Epson introduces AX6 cobot with compact design, no-code programming</title>
     <link rel="alternate" href="https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html" />
     <published>2026-09-25T01:40:00Z</published>
     <updated>2026-09-25T01:40:00Z</updated>
     <author>
@@ -145,13 +145,13 @@
     <summary type="text">Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report .</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-09-24&lt;/p&gt;
 &lt;blockquote&gt;Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report .&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.ja.md"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.ja.html"&gt;2026-09-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:301ba2c6df75</id>
     <title>At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/ai-day-singapore/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-24.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.ja.html" />
     <published>2026-09-24T01:40:00Z</published>
     <updated>2026-09-24T01:40:00Z</updated>
     <author>
@@ -162,13 +162,13 @@
     <summary type="text">NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-23&lt;/p&gt;
 &lt;blockquote&gt;NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-24.ja.md"&gt;2026-09-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.ja.html"&gt;2026-09-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:a70f8ac64edf</id>
     <title>How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows</title>
     <link rel="alternate" href="https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-24.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.ja.html" />
     <published>2026-09-24T01:40:00Z</published>
     <updated>2026-09-24T01:40:00Z</updated>
     <author>
@@ -177,13 +177,13 @@
     <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-23&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-24.ja.md"&gt;2026-09-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.ja.html"&gt;2026-09-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:193bdb306b4d</id>
     <title>NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -194,13 +194,13 @@
     <summary type="text">To build and deploy sophisticated robotics applications that can perceive, reason and act in dynamic environments, developers need new physical AI models and tools.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-22&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: コードまたは重み公開&lt;/p&gt;
 &lt;blockquote&gt;To build and deploy sophisticated robotics applications that can perceive, reason and act in dynamic environments, developers need new physical AI models and tools.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:2960c64a019e</id>
     <title>How UK AISI and EvalEval Are Making Benchmark Results Reproducible</title>
     <link rel="alternate" href="https://huggingface.co/blog/evaleval-aisi" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -209,13 +209,13 @@
     <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-22&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:fb8ad85c459c</id>
     <title>Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community</title>
     <link rel="alternate" href="https://huggingface.co/blog/omlx" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -224,13 +224,13 @@
     <category term="training" label="学習と自己改善（RL / 事後学習）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-22&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:0c1c0768bc71</id>
     <title>Barbara Mazzolai Wants to Build a New Field of Robotics</title>
     <link rel="alternate" href="https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -241,13 +241,13 @@
     <summary type="text">Throughout her career, roboticist Barbara Mazzolai has turned to nature for inspiration. Now she wants to ensure the technology she builds gives back to the environment, too.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-22&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;Throughout her career, roboticist Barbara Mazzolai has turned to nature for inspiration. Now she wants to ensure the technology she builds gives back to the environment, too.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:96a3500c5a4b</id>
     <title>NeoMME: an efficient Multimodal-native and Multilingual Encoder</title>
     <link rel="alternate" href="https://huggingface.co/blog/Hcompany/neomme" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -256,13 +256,13 @@
     <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-03&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:6ed7bf3522de</id>
     <title>This Robot Will Draw Your Blood Now</title>
     <link rel="alternate" href="https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html" />
     <published>2026-09-23T01:40:00Z</published>
     <updated>2026-09-23T01:40:00Z</updated>
     <author>
@@ -273,13 +273,13 @@
     <summary type="text">You sit down and put your arm in the cradle. You press a button.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-07&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;You sit down and put your arm in the cradle. You press a button.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-23.ja.md"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.ja.html"&gt;2026-09-23 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:173eb9a2ab25</id>
     <title>Why Deploying Physical AI at Scale Demands Safety at Every Layer</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/physical-ai-halos-safety/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -290,13 +290,13 @@
     <summary type="text">Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 安全・権限・コンプライアンス&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-21&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり&lt;/p&gt;
 &lt;blockquote&gt;Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:9fbd3b91fa7b</id>
     <title>Cyborg Roaches Can Stab You With Needles</title>
     <link rel="alternate" href="https://spectrum.ieee.org/cyborg-rescue-roach" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -307,13 +307,13 @@
     <summary type="text">Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-05&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · コードまたは重み公開 · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:a35916e8f8c5</id>
     <title>Video Friday: Humanoid Robot Takes On Monkey Bars</title>
     <link rel="alternate" href="https://spectrum.ieee.org/video-friday-disaster-response-robots" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -324,13 +324,13 @@
     <summary type="text">Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-11&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: コードまたは重み公開 · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:f3468ea93aa3</id>
     <title>Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -341,13 +341,13 @@
     <summary type="text">Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-10&lt;/p&gt;
 &lt;blockquote&gt;Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:683b94332d9b</id>
     <title>Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -358,13 +358,13 @@
     <summary type="text">Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-10&lt;/p&gt;
 &lt;blockquote&gt;Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:23bdbfdbd061</id>
     <title>BenchMIRT: What are LLM benchmarks actually measuring?</title>
     <link rel="alternate" href="https://huggingface.co/blog/allenai/benchmirt" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -373,13 +373,13 @@
     <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-01&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:86b47b47cb74</id>
     <title>Give Your Coding Agents a Memory You Own</title>
     <link rel="alternate" href="https://huggingface.co/blog/funes" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -388,13 +388,13 @@
     <category term="systems" label="システムとオーケストレーション（長期タスク / 複数方策）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-03&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:d4e55a9164f4</id>
     <title>Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL</title>
     <link rel="alternate" href="https://huggingface.co/blog/asyncgrpo-lora-hfjobs" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html" />
     <published>2026-09-22T01:40:00Z</published>
     <updated>2026-09-22T01:40:00Z</updated>
     <author>
@@ -403,13 +403,13 @@
     <category term="training" label="学習と自己改善（RL / 事後学習）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-10&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-22.ja.md"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.ja.html"&gt;2026-09-22 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:1adb809c884f</id>
     <title>Physical AI Takes the Wheel: How the World’s Robotaxi Leaders Are Building With NVIDIA Technologies</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -420,13 +420,13 @@
     <summary type="text">The global robotaxi market — physical AI’s first commercial breakthrough — is projected to reach $400 billion by 2035, with over 6 million commercial vehicles in operation as driverless fleets are already moving people through some of the…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-10&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり&lt;/p&gt;
 &lt;blockquote&gt;The global robotaxi market — physical AI’s first commercial breakthrough — is projected to reach $400 billion by 2035, with over 6 million commercial vehicles in operation as driverless fleets are already moving people through some of the…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:45020768fad9</id>
     <title>Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps</title>
     <link rel="alternate" href="https://huggingface.co/blog/grpo-with-trl-ifstruct" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -435,13 +435,13 @@
     <category term="training" label="学習と自己改善（RL / 事後学習）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-09-03&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:29c19642921e</id>
     <title>NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/ibc-news-2026/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -452,13 +452,13 @@
     <summary type="text">At the IBC conference, running Sept. 11-14 in Amsterdam, the creative, technology and business communities are coming together to turn ideas into action and discuss innovations across the media and entertainment industries.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-09&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;At the IBC conference, running Sept. 11-14 in Amsterdam, the creative, technology and business communities are coming together to turn ideas into action and discuss innovations across the media and entertainment industries.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:f6b26e55a489</id>
     <title>Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original</title>
     <link rel="alternate" href="https://huggingface.co/blog/MultiverseComputingCAI/quantization-aware-healing" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -467,13 +467,13 @@
     <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-08-25&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:afde8495f51d</id>
     <title>The Best Way to Explore Lunar Craters Is a Giant Robot Ball</title>
     <link rel="alternate" href="https://spectrum.ieee.org/moon-ball-robot" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -484,13 +484,13 @@
     <summary type="text">On a good day, the rock quarry in central Texas is about 370,000 kilometers (230,000 miles) from the moon. But last February, when Rishi Jangale watched his 1.8-meter-wide, 150-kilogram inflatable robot roll effortlessly over rocks,…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-03&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;On a good day, the rock quarry in central Texas is about 370,000 kilometers (230,000 miles) from the moon. But last February, when Rishi Jangale watched his 1.8-meter-wide, 150-kilogram inflatable robot roll effortlessly over rocks,…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:deepmind:d9b2bc36ffdf</id>
     <title>Piloting the world's first double-blind AI evaluations</title>
     <link rel="alternate" href="https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -501,13 +501,13 @@
     <summary type="text">Piloting the world's first double-blind AI evaluations</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Google DeepMind · 2026-08-27&lt;/p&gt;
 &lt;blockquote&gt;Piloting the world&amp;#x27;s first double-blind AI evaluations&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-developer-robotics:a5ee2ec4c912</id>
     <title>How to Train a Cross-Embodiment Robot Navigation Policy with AI Agents</title>
     <link rel="alternate" href="https://developer.nvidia.com/blog/how-to-train-a-cross-embodiment-robot-navigation-policy-with-ai-agents/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -518,13 +518,13 @@
     <summary type="text">Navigation enables a robot to turn perception and motion into purposeful autonomy. Unlike locomotion, which produces stable movement, navigation must be used to...</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Technical Blog (Robotics) · 2026-08-26&lt;/p&gt;
 &lt;blockquote&gt;Navigation enables a robot to turn perception and motion into purposeful autonomy. Unlike locomotion, which produces stable movement, navigation must be used to...&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:deepmind:dfd1ea2e5518</id>
     <title>Introducing agentic video understanding with Gemini</title>
     <link rel="alternate" href="https://deepmind.google/blog/introducing-agentic-video-in-gemini/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html" />
     <published>2026-09-21T01:40:00Z</published>
     <updated>2026-09-21T01:40:00Z</updated>
     <author>
@@ -533,13 +533,13 @@
     <category term="systems" label="システムとオーケストレーション（長期タスク / 複数方策）" />
     <category term="O" label="[O]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Google DeepMind · 2026-09-01&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-21.ja.md"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-21.ja.html"&gt;2026-09-21 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:b055114fbd9e</id>
     <title>Video Friday: Two Birotors Make a Quadrotor</title>
     <link rel="alternate" href="https://spectrum.ieee.org/video-friday-quadrotor-from-birotor" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -550,13 +550,13 @@
     <summary type="text">A quadrotor is really just two birotors that love each other very much. [ CLIMB Lab ] The last 30 seconds of this video is fantastic.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-18&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 33% · 2x&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;A quadrotor is really just two birotors that love each other very much. [ CLIMB Lab ] The last 30 seconds of this video is fantastic.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:fd11f989e3da</id>
     <title>Fine-Tuning π0 (Pi-Zero) for robotic manipulation on Amazon SageMaker HyperPod EKS</title>
     <link rel="alternate" href="https://aws.amazon.com/blogs/physical-ai/fine-tuning-%CF%800-pi-zero-for-robotic-manipulation-on-amazon-sagemaker-hyperpod-eks/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -567,13 +567,13 @@
     <summary type="text">Introduction This post demonstrates how to fine-tune π0 (Pi-Zero), a 3-billion parameter flow matching Vision-Language-Action model from Physical Intelligence, on robot manipulation datasets using Amazon SageMaker HyperPod with Amazon…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: AWS Physical AI Blog · 2026-09-10&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり&lt;/p&gt;
 &lt;blockquote&gt;Introduction This post demonstrates how to fine-tune π0 (Pi-Zero), a 3-billion parameter flow matching Vision-Language-Action model from Physical Intelligence, on robot manipulation datasets using Amazon SageMaker HyperPod with Amazon…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:1429865f576f</id>
     <title>Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe</title>
     <link rel="alternate" href="https://spectrum.ieee.org/humanoid-robot-safety" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -584,13 +584,13 @@
     <summary type="text">Despite the recent deluge of videos of humanoid robots doing backflips and kung fu, the actual pace of progress towards humanoids that can do economically viable jobs at scale has at times seemed a bit plodding.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-15&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 20 hours&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;Despite the recent deluge of videos of humanoid robots doing backflips and kung fu, the actual pace of progress towards humanoids that can do economically viable jobs at scale has at times seemed a bit plodding.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:98dfe2746ae5</id>
     <title>Video Friday: Meet Microduck</title>
     <link rel="alternate" href="https://spectrum.ieee.org/video-friday-microduck-robot" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -601,13 +601,13 @@
     <summary type="text">Nvidia just paid US $12.9 billion for the company that acquired Pollen Robotics, and this must be why. Meet Microduck.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-08-28&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 実機実験あり · コードまたは重み公開 · 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;Nvidia just paid US $12.9 billion for the company that acquired Pollen Robotics, and this must be why. Meet Microduck.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:303bb37851f6</id>
     <title>Video Friday: Digit Redecorates</title>
     <link rel="alternate" href="https://spectrum.ieee.org/video-friday-agility-robotics-digit" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -618,13 +618,13 @@
     <summary type="text">I know these videos from Agility can be a little bit silly, but the couch drag in this one is impressive. [ Agility Robotics ] Stabilizing unsecured payloads against the inherent oscillations of dynamic bipedal locomotion remains a…</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-04&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり · コードまたは重み公開&lt;/p&gt;
 &lt;blockquote&gt;I know these videos from Agility can be a little bit silly, but the couch drag in this one is impressive. [ Agility Robotics ] Stabilizing unsecured payloads against the inherent oscillations of dynamic bipedal locomotion remains a…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:a425146e5e22</id>
     <title>NVIDIA Vera Rubin NVL72 Delivers Leading Performance in MLPerf Inference v6.1 Debut</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -635,13 +635,13 @@
     <summary type="text">System performance, efficient infrastructure scaling and continuous software optimization are key levers that determine AI inference economics.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-16&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 遅延・制御周期の数値あり&lt;/p&gt;
 &lt;blockquote&gt;System performance, efficient infrastructure scaling and continuous software optimization are key levers that determine AI inference economics.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:04812389539e</id>
     <title>Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW</title>
     <link rel="alternate" href="https://blogs.nvidia.com/blog/geforce-now-thursday-aniimo/" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html" />
     <published>2026-09-20T01:51:00Z</published>
     <updated>2026-09-20T01:51:00Z</updated>
     <author>
@@ -652,13 +652,13 @@
     <summary type="text">A new creature-catching adventure is ready to stream from the cloud this week. Pawprint Studio’s Aniimo arrives on GeForce NOW at launch, inviting gamers to explore the vibrant continent of Idyll across supported devices.</summary>
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: NVIDIA Blog · 2026-09-17&lt;/p&gt;
 &lt;blockquote&gt;A new creature-catching adventure is ready to stream from the cloud this week. Pawprint Studio’s Aniimo arrives on GeForce NOW at launch, inviting gamers to explore the vibrant continent of Idyll across supported devices.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-20.ja.md"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-20.ja.html"&gt;2026-09-20 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.20776v1</id>
     <title>GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.20776v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -667,13 +667,13 @@
     <category term="foundation" label="基盤モデル（VLA / WAM）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.20776v1 · 2026-09-17&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.19104v1</id>
     <title>rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.19104v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -682,13 +682,13 @@
     <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.19104v1 · 2026-09-16&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.18732v1</id>
     <title>PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.18732v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -697,13 +697,13 @@
     <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.18732v1 · 2026-09-16&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 50 Hz · 48.1% · 68.9% · 70.3%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.20791v1</id>
     <title>StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.20791v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -712,13 +712,13 @@
     <category term="systems" label="システムとオーケストレーション（長期タスク / 複数方策）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: システムとオーケストレーション（長期タスク / 複数方策）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.20791v1 · 2026-09-17&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.20761v1</id>
     <title>Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.20761v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -727,13 +727,13 @@
     <category term="foundation" label="基盤モデル（VLA / WAM）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.20761v1 · 2026-09-17&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 11.9 ms&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:825555203</id>
     <title>Robots Are Learning to Feel</title>
     <link rel="alternate" href="https://spectrum.ieee.org/tactile-data-robots" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -742,13 +742,13 @@
     <category term="data" label="データエンジン（収集 / 精査 / スケーリング）" />
     <category term="M" label="[M]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-10&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 100 hours · 12 tasks · 3,000 hours · 30,000 hours&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.18623v1</id>
     <title>FIVE-VLA: Fast and EffectIVE Autonomous Driving with Recurrent Action Memory</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.18623v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -757,13 +757,13 @@
     <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.18623v1 · 2026-09-16&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 641M parameters · 10% · 10.2% · 7.7%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.19666v1</id>
     <title>Towards High-DoF Dexterous Manipulation through VLA Post-Training</title>
     <link rel="alternate" href="http://arxiv.org/abs/2609.19666v1" />
-    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html" />
     <published>2026-09-19T08:12:00Z</published>
     <updated>2026-09-19T08:12:00Z</updated>
     <author>
@@ -772,6 +772,6 @@
     <category term="training" label="学習と自己改善（RL / 事後学習）" />
     <category term="R" label="[R]" />
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2609.19666v1 · 2026-09-17&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり · コードまたは重み公開&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-19.ja.md"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.ja.html"&gt;2026-09-19 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

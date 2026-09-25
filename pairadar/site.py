@@ -25,7 +25,8 @@ from urllib.parse import urlencode
 
 from .config import LANGS, ROOT, Config, Item, load_config
 from .distill import number_context, one_liner, strip_boilerplate
-from .feeds import SITE_URL, atom_name, iso_week
+from .feeds import SITE_URL, atom_name, iso_week, landing_url
+from .feeds import page_url as daily_url
 from .render import why_text
 
 HOME_URL = "https://github.com/noteflowai/physical-ai-radar"
@@ -55,12 +56,7 @@ def prefix(lang: str) -> str:
 
 
 def page_url(lang: str) -> str:
-    return f"{SITE_URL}/{PAGES[lang].removesuffix('index.html')}"
-
-
-def daily_url(day: str, lang: str) -> str:
-    """The day's page on Pages: frozen when published, so it is what a share links to."""
-    return f"{SITE_URL}/radar/daily/{day}.{lang}.html"
+    return landing_url(lang)
 
 
 def _point(angle: float, radius: float) -> tuple[float, float]:

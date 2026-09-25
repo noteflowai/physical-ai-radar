@@ -92,7 +92,7 @@ class RecordedFeedTest(unittest.TestCase):
                     self.assertTrue(entry.findtext(f"{ATOM}id").startswith("tag:"))
                     links = {link.get("rel"): link.get("href") for link in entry.findall(f"{ATOM}link")}
                     self.assertEqual(links["alternate"], item.url)
-                    self.assertTrue(links["related"].endswith(f"/radar/daily/2026-09-25.{lang}.md"))
+                    self.assertEqual(links["related"], f"{feeds.SITE_URL}/radar/daily/2026-09-25.{lang}.html")
 
     def test_the_feeds_are_labelled_in_their_language(self) -> None:
         for lang in LANGS:
