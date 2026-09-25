@@ -81,6 +81,14 @@ class PublishedDayTest(unittest.TestCase):
                 self.assertRegex(root.findtext(f"{ATOM}updated"), RFC3339)
                 self.assertEqual([entry.findtext(f"{ATOM}id") for entry in root.findall(f"{ATOM}entry")], ids)
 
+    def test_every_feed_link_opens_the_site(self) -> None:
+        # The links used to open GitHub's source view of the Markdown pages.
+        for name in [feeds.FEED_JSON] + [feeds.atom_name(lang) for lang in LANGS]:
+            with self.subTest(feed=name):
+                text = (RADAR/name).read_text(encoding="utf-8")
+                self.assertNotIn("/blob/main/", text)
+                self.assertIn(f"{feeds.SITE_URL}/radar/daily/{self.day}.", text)
+
     def test_the_landing_pages_show_the_published_day(self) -> None:
         for lang, page in (("zh", "index.html"), ("en", "en/index.html"), ("ja", "ja/index.html")):
             path = ROOT/page

@@ -28,7 +28,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
-from .config import LANGS, README_FILES, ROOT, Config, Item, dump_json, md_text, md_url
+from .config import LANGS, ROOT, Config, Item, dump_json, md_text, md_url
 from .distill import one_liner, url_key
 
 REPO = "noteflowai/physical-ai-radar"
@@ -52,7 +52,14 @@ def atom_name(lang: str) -> str:
 
 
 def page_url(day: str, lang: str) -> str:
-    return f"{HOME_URL}/blob/main/radar/daily/{day}.{lang}.md"
+    """The day's page on Pages. A reader following a feed lands on the site, not on
+    GitHub's source view of the Markdown."""
+    return f"{SITE_URL}/radar/daily/{day}.{lang}.html"
+
+
+def landing_url(lang: str) -> str:
+    """The language's landing page: `/` for Chinese, `/en/` and `/ja/` otherwise."""
+    return f"{SITE_URL}/" if lang == "zh" else f"{SITE_URL}/{lang}/"
 
 
 def entry_id(item_id: str) -> str:
@@ -254,7 +261,7 @@ def json_feed(config: Config, store: list[dict[str, Any]], lang: str = "en") -> 
     return {
         "version": JSON_FEED_VERSION,
         "title": ui["title"],
-        "home_page_url": HOME_URL,
+        "home_page_url": landing_url(lang),
         "feed_url": f"{SITE_URL}/radar/{FEED_JSON}",
         "description": ui["tagline"],
         "language": lang,
@@ -280,7 +287,7 @@ def atom_feed(config: Config, store: list[dict[str, Any]], lang: str, generated:
     sub(feed, "subtitle", ui["tagline"])
     sub(feed, "updated", store[0]["radar_published"] if store else rfc3339(generated))
     sub(feed, "link", rel="self", type="application/atom+xml", href=f"{SITE_URL}/radar/{atom_name(lang)}")
-    sub(feed, "link", rel="alternate", type="text/html", href=f"{HOME_URL}/blob/main/{README_FILES[lang]}")
+    sub(feed, "link", rel="alternate", type="text/html", href=landing_url(lang))
     author = sub(feed, "author")
     sub(author, "name", ui["title"])
     sub(author, "uri", HOME_URL)

@@ -36,6 +36,9 @@ The nightly jobs:
 
 The site:
 
+- The feeds link each item's day and the feed's home to the Pages site, not to
+  GitHub's source view of the Markdown. Entry ids are unchanged, so readers see no
+  duplicates.
 - The Pages site opens on a landing page in each language (`/`, `/en/`, `/ja/`): the
   day's picks as cards, the eight lanes as a radar, the recent cadence and source mix,
   and share buttons that link the day's page. The daily, weekly and archive pages use
