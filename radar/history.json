@@ -87,6 +87,22 @@
         "arxiv",
         "deepmind"
       ]
+    },
+    {
+      "date": "2026-09-25",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2609.26792",
+        "https://arxiv.org/abs/2609.25376",
+        "https://arxiv.org/abs/2609.26520",
+        "https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros",
+        "https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia",
+        "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws",
+        "https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots",
+        "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming"
+      ],
+      "failed": []
     }
   ]
 }

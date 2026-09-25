@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
+  <title>Physical AI Radar</title>
+  <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
+  <updated>2026-09-25T01:40:00Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.xml" />
+  <link rel="alternate" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/README.en.md" />
+  <author>
+    <name>Physical AI Radar</name>
+    <uri>https://github.com/noteflowai/physical-ai-radar</uri>
+  </author>
+  <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.26792</id>
+    <title>DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.26792" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.26792</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.26792 · 2026-09-24&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments · open code or weights&lt;/p&gt;
+&lt;blockquote&gt;Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.25376</id>
+    <title>VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.25376" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.25376</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.25376 · 2026-09-24&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · open code or weights&lt;/p&gt;
+&lt;blockquote&gt;Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.26520</id>
+    <title>MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.26520" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.26520</name>
+    </author>
+    <category term="data" label="Data engine (collection / curation / scaling)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.26520 · 2026-09-24&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 24.1 hours&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-developer-robotics:930fe61380af</id>
+    <title>Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS</title>
+    <link rel="alternate" href="https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>NVIDIA Technical Blog (Robotics)</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="O" label="[O]" />
+    <summary type="text">GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Technical Blog (Robotics) · 2026-09-22&lt;/p&gt;
+&lt;blockquote&gt;GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:d07cde754ec6</id>
+    <title>Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA</title>
+    <link rel="alternate" href="https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="M" label="[M]" />
+    <summary type="text">The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-22&lt;/p&gt;
+&lt;blockquote&gt;The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:b7a93c57417f</id>
+    <title>Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS</title>
+    <link rel="alternate" href="https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>AWS Physical AI Blog</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="O" label="[O]" />
+    <summary type="text">Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: AWS Physical AI Blog · 2026-09-09&lt;/p&gt;
+&lt;blockquote&gt;Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:4ae043b260ed</id>
+    <title>ANYbotics opens the door for inspections with ANYmal robots</title>
+    <link rel="alternate" href="https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-24&lt;/p&gt;
+&lt;blockquote&gt;ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:f67b05547254</id>
+    <title>Epson introduces AX6 cobot with compact design, no-code programming</title>
+    <link rel="alternate" href="https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/" />
+    <link rel="related" type="text/html" href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md" />
+    <published>2026-09-25T01:40:00Z</published>
+    <updated>2026-09-25T01:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report .</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-24&lt;/p&gt;
+&lt;blockquote&gt;Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report .&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://github.com/noteflowai/physical-ai-radar/blob/main/radar/daily/2026-09-25.en.md"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,66 +1,168 @@
 {
-  "date": "2026-09-24",
-  "generated": "2026-09-24 01:40 UTC",
-  "window": "2026-09-21 → 2026-09-24 (UTC)",
+  "date": "2026-09-25",
+  "generated": "2026-09-25 01:40 UTC",
+  "window": "papers 2026-09-22 → 2026-09-25 · posts 2026-08-26 → 2026-09-25 (UTC)",
+  "window_detail": {
+    "day": "2026-09-25",
+    "papers_from": "2026-09-22",
+    "posts_from": "2026-08-26",
+    "repeat_days": 7
+  },
   "picked": [
     {
-      "id": "nvidia-blog:301ba2c6df75",
-      "title": "At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia",
-      "url": "https://blogs.nvidia.com/blog/ai-day-singapore/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-09-23",
-      "lane": "training",
-      "score": 1.8,
+      "id": "arxiv:2609.26792",
+      "title": "DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving",
+      "url": "https://arxiv.org/abs/2609.26792",
+      "publisher": "arXiv 2609.26792",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-24",
+      "lane": "simeval",
+      "score": 4.225,
       "numbers": [],
-      "signals": [],
-      "summary": "NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and high-performance computing. At the event, NVIDIA and its partners are showcasing breakthrough AI advancements across the Southeast Asia region [&#8230;]"
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "open_release"
+      ],
+      "summary": "Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions. Existing platforms, however, exhibit a sim-to-real visual gap that corrupts policy perception, undermining their ability to assess a policy's closed-loop decision-making. To this end, we propose DreamStream, a generative, closed-loop simulator that achieves policy-oriented fidelity using a simulator-grounded autoregressive video model. Our video model is distilled from a large pretrained video model via traffic layout guidance, varying visual appearance while preserving policy-relevant features such as scenario layout and the temporal consistency of dynamic objects. We further observe that perceptual metrics like FID misrank how well these features are preserved. To tackle this, we introduce FD$\\pi$, a new multi-representation metric that measures the sim-to-real gap as the Fr\\'echet distance over scene-context features from public E2E policies. Under FD$\\pi$, DreamStream improves over the strongest prior closed-loop simulator by $1.6\\times$ on nuScenes and $4.7\\times$ on NAVSIM, and induces the least perturbation to policy's perceptual observability. Based on DreamStream, we construct Navhard-CL benchmark, which turns non-reactive real-world benchmark NAVSIM into interactive testing environments with adversarial driving behaviors and weather variations. This benchmark exposes many failure modes of driving policies, such as scorer bias and lack of recovery behaviors, that prior closed-loop benchmarks overlook. Code and data are available at https://github.com/VAIL-UCLA/DreamStream."
     },
     {
-      "id": "huggingface-blog:a70f8ac64edf",
-      "title": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
-      "url": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
-      "publisher": "Hugging Face Blog",
-      "source_id": "huggingface-blog",
-      "evidence": "O",
-      "published": "2026-09-23",
+      "id": "arxiv:2609.25376",
+      "title": "VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.25376",
+      "publisher": "arXiv 2609.25376",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-24",
       "lane": "simeval",
-      "score": 1.785,
+      "score": 3.825,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "open_release"
+      ],
+      "summary": "Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration. We introduce \\textbf{VLAQuantBench}, a controlled evaluation with 409 runs and 94,574 simulation episodes: four models on LIBERO, with X-VLA additionally evaluated on three simulation benchmark families. Under uncalibrated W4A4 round-to-nearest quantization, expanding a $\\pi_{0.5}$ action-head subset from 126 to 167 layers raises success from 7.0\\% to 70.5\\%. Fixed-observation replay confirms a corresponding numerical recovery. Two-episode calibration removes the severe joint failures in the tested subsets, whereas the same smoothing-and-clipping recipe lowers $\\pi_0$ success and does not recover OpenVLA-OFT end-to-end. For OpenVLA-OFT, protecting one 28,672-parameter output projection instead restores near-baseline success: the remaining 441 eligible linear layers retain W3 on LIBERO-Long or eight-bit activations across all four suites. Task-clustered intervals support the large failure and recovery contrasts. These results establish recipe-dependent interactions and identify concrete precision assignments, rather than universal layer-sensitivity rules. Real-kernel and physical-robot measurements complement the accuracy analysis. Code, configurations, and episode records are publicly available at https://github.com/jiuyixu25/VLAQuantBench."
+    },
+    {
+      "id": "arxiv:2609.26520",
+      "title": "MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection",
+      "url": "https://arxiv.org/abs/2609.26520",
+      "publisher": "arXiv 2609.26520",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-24",
+      "lane": "data",
+      "score": 3.688,
+      "numbers": [
+        "24.1 hours"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills. However, existing humanoid data pipelines primarily focus on individual agents, while physical multi-robot collaboration remains difficult to scale due to costly hardware, dedicated spaces, and repeated resets. In this work, we introduce MATE, a Multi-Agent virtual TEleoperation platform for humanoid collaboration data collection that enables multiple geographically distributed operators to simultaneously control whole-body humanoids in a shared physics-based environment. MATE removes the need for multiple physical robots and co-located operation while preserving physically coupled interactions among humanoids, objects, and environments. Using MATE, we construct a multi-humanoid collaboration dataset comprising 24.1 hours of coordinated behavior across 2,500 joint episodes and five long-horizon tasks, including object handover, relay delivery, environment interaction, and cooperative transport. To improve learning from these interaction-rich demonstrations, we introduce EAIS, an Execution-Aligned Interaction Sampling strategy that computes sampling signals within an execution-aligned prefix and prioritizes task-progressing and interaction-critical behaviors. We evaluate MATE with representative imitation learning and vision-language-action policies across diverse collaboration tasks. Experiments demonstrate efficient data collection, effective policy learning, and zero-shot transfer from virtual demonstrations to a physical humanoid without real-world fine-tuning. Project page: https://yerik-yu.github.io/MATE/"
+    },
+    {
+      "id": "nvidia-developer-robotics:930fe61380af",
+      "title": "Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS",
+      "url": "https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-09-22",
+      "lane": "systems",
+      "score": 2.0,
       "numbers": [],
       "signals": [],
-      "summary": ""
+      "summary": "GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph. As messages move between..."
+    },
+    {
+      "id": "the-robot-report:d07cde754ec6",
+      "title": "Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA",
+      "url": "https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-09-22",
+      "lane": "systems",
+      "score": 1.25,
+      "numbers": [],
+      "signals": [],
+      "summary": "The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster. The post Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA appeared first on The Robot Report ."
+    },
+    {
+      "id": "aws-physical-ai:b7a93c57417f",
+      "title": "Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS",
+      "url": "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-09-09",
+      "lane": "foundation",
+      "score": 1.2,
+      "numbers": [],
+      "signals": [],
+      "summary": "Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat. That’s not a vision of the future, it’s what happens when a world model running on AWS gives a robot the ability to imagine before it […]"
+    },
+    {
+      "id": "the-robot-report:4ae043b260ed",
+      "title": "ANYbotics opens the door for inspections with ANYmal robots",
+      "url": "https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-09-24",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee. The post ANYbotics opens the door for inspections with ANYmal robots appeared first on The Robot Report ."
+    },
+    {
+      "id": "the-robot-report:f67b05547254",
+      "title": "Epson introduces AX6 cobot with compact design, no-code programming",
+      "url": "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-09-24",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report ."
     }
   ],
   "lane_counts": {
-    "foundation": 3,
-    "data": 5,
-    "training": 5,
-    "simeval": 5,
+    "foundation": 4,
+    "data": 6,
+    "training": 4,
+    "simeval": 6,
     "edge": 5,
     "safety": 5,
-    "systems": 1,
-    "hardware": 2
+    "systems": 3,
+    "hardware": 4
   },
   "evidence_mix": {
     "O": 16,
-    "R": 13,
-    "M": 2
+    "R": 16,
+    "M": 5
   },
   "fetch": {
-    "items": 1025,
-    "attempted": 7,
-    "answered": 5,
-    "failed": [
-      "arxiv",
-      "deepmind"
-    ],
+    "items": 924,
+    "attempted": 8,
+    "answered": 8,
+    "failed": [],
     "per_source": {
+      "arxiv": 551,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "huggingface-blog": 867,
-      "ieee-spectrum-robotics": 30
+      "deepmind": 100,
+      "huggingface-blog": 100,
+      "ieee-spectrum-robotics": 30,
+      "the-robot-report": 15
     }
   },
   "baseline_count": 29

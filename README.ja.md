@@ -21,16 +21,22 @@
 **購読：** [Atom（日本語）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.ja.xml) · [JSON Feed（英語）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [週間まとめ](radar/INDEX.md)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-24
+### 本日のレーダー · 2026-09-25
 
-`生成時刻: 2026-09-24 01:40 UTC` ｜ `対象期間: 2026-09-21 → 2026-09-24 (UTC)`
+`生成時刻: 2026-09-25 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-25 · ブログ・報道 2026-08-26 → 2026-09-25 · 7 日以内の重複なし (UTC)`
 
-- `[O]` **[At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia](https://blogs.nvidia.com/blog/ai-day-singapore/)** — 学習と自己改善（RL / 事後学習）
-  - 事後学習と自己改善は、配備後も方策が強くなれるか、運用で介入データを取る必要があるかを決める。
-- `[O]` **[How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows](https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp)** — シミュレーションと評価（sim2real / 閉ループ）
+- `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — シミュレーションと評価（sim2real / 閉ループ）
   - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
+- `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — シミュレーションと評価（sim2real / 閉ループ）
+  - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
+- `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — データエンジン（収集 / 精査 / スケーリング） ｜ `24.1 hours`
+  - データの取得元と精査パイプラインが現在の真の堀であり、新規タスク単価を決める。
+- `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — システムとオーケストレーション（長期タスク / 複数方策）
+  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
+- `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — システムとオーケストレーション（長期タスク / 複数方策）
+  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
 
-[本日のレーダー ›](radar/daily/2026-09-24.ja.md) · [アーカイブ ›](radar/INDEX.md)
+[本日のレーダー ›](radar/daily/2026-09-25.ja.md) · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.ja.svg)
 

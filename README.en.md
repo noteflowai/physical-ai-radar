@@ -21,16 +21,22 @@ How this differs from a paper list or a news aggregator:
 **Subscribe:** [Atom](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.xml) · [JSON Feed](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [weekly roundups](radar/INDEX.md). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-24
+### Today's radar · 2026-09-25
 
-`Generated: 2026-09-24 01:40 UTC` ｜ `Window: 2026-09-21 → 2026-09-24 (UTC)`
+`Generated: 2026-09-25 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-25 · posts 2026-08-26 → 2026-09-25 · no repeats within 7 days (UTC)`
 
-- `[O]` **[At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia](https://blogs.nvidia.com/blog/ai-day-singapore/)** — Training & self-improvement (RL / post-training)
-  - Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.
-- `[O]` **[How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows](https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp)** — Simulation & evaluation (sim2real / closed-loop)
+- `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — Simulation & evaluation (sim2real / closed-loop)
   - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+- `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — Simulation & evaluation (sim2real / closed-loop)
+  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+- `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — Data engine (collection / curation / scaling) ｜ `24.1 hours`
+  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
+- `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — Systems & orchestration (long-horizon / multi-policy)
+  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
+- `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — Systems & orchestration (long-horizon / multi-policy)
+  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
 
-[Today's radar ›](radar/daily/2026-09-24.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-25.en.md) · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.en.svg)
 
