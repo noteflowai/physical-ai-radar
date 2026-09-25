@@ -1,0 +1,41 @@
+<!doctype html>
+{%- comment -%}
+  The daily, weekly and archive pages. Their language is in the file name
+  (2026-09-25.zh.md); README.md is the Chinese one. The landing pages are
+  written by pairadar/site.py as plain HTML and do not use this layout.
+{%- endcomment -%}
+{%- assign lang = "en" -%}
+{%- if page.path contains ".zh." or page.path == "README.md" -%}{%- assign lang = "zh" -%}
+{%- elsif page.path contains ".ja." -%}{%- assign lang = "ja" -%}{%- endif -%}
+{%- assign html_lang = lang -%}{%- if lang == "zh" -%}{%- assign html_lang = "zh-Hans" -%}{%- endif -%}
+{%- assign home = "/" -%}{%- if lang != "zh" -%}{%- assign home = "/" | append: lang | append: "/" -%}{%- endif -%}
+{%- assign feed = "/radar/feed.xml" -%}{%- if lang != "en" -%}{%- assign feed = "/radar/feed." | append: lang | append: ".xml" -%}{%- endif -%}
+<html lang="{{ html_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% seo %}
+<meta property="og:image" content="{{ '/assets/og.' | append: lang | append: '.png' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ '/assets/og.' | append: lang | append: '.png' | absolute_url }}">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+{% include head-custom.html %}
+</head>
+<body class="doc">
+<nav class="top">
+<a class="brand" href="{{ home | relative_url }}"><img src="{{ '/assets/favicon.svg' | relative_url }}" alt="" width="26" height="26"><span>Physical AI Radar</span></a>
+<span class="links"><a href="{{ '/radar/INDEX.html' | relative_url }}">Archive</a><a href="{{ feed | relative_url }}">Atom</a><a href="{{ '/radar/feed.json' | relative_url }}">JSON Feed</a><a href="https://github.com/noteflowai/physical-ai-radar">GitHub</a></span>
+<span class="switch"><a href="{{ '/' | relative_url }}" hreflang="zh-Hans"{% if lang == "zh" %} aria-current="page"{% endif %}>中文</a><a href="{{ '/en/' | relative_url }}" hreflang="en"{% if lang == "en" %} aria-current="page"{% endif %}>EN</a><a href="{{ '/ja/' | relative_url }}" hreflang="ja"{% if lang == "ja" %} aria-current="page"{% endif %}>日本語</a></span>
+</nav>
+<main class="prose">
+{{ content }}
+</main>
+<footer class="foot">
+<p>Code MIT · content CC BY 4.0 · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/docs/METHODOLOGY.md">Methodology</a> · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/{{ page.path }}">Source of this page</a></p>
+</footer>
+</body>
+</html>

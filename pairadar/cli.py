@@ -25,6 +25,7 @@ from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefi
 from .fetch import baseline_items, fetch_all
 from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
 from .render import chart_title, inject_readme, update_index, write_daily, write_latest
+from .site import write_site
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
 # The lane and evidence charts count the picks of this many days, today included.
@@ -206,7 +207,7 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
     # The pages embed the charts, so re-rendering without them would publish a page
     # whose numbers and whose images disagree.
     write_charts(config, ctx, root)
-    written = write_daily(config, ctx, root)
+    written = write_daily(config, ctx, root) + write_site(config, ctx, root)
     if write_readme:
         for lang in LANGS:
             if (root/README_FILES[lang]).exists():
@@ -247,7 +248,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     ctx = build_context(config, offline=offline, limit=limit, day=day)
 
     write_charts(config, ctx, root)
-    written: list[Path] = write_daily(config, ctx, root)
+    written: list[Path] = write_daily(config, ctx, root) + write_site(config, ctx, root)
     if write_readme:
         for lang in ("zh", "en", "ja"):
             if (root/README_FILES[lang]).exists():

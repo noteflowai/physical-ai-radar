@@ -1,6 +1,6 @@
 """Which published items were filed on thin evidence.
 
-`docs/METHODOLOGY.md` section 8 states the known limit plainly: keyword classification
+`docs/METHODOLOGY.md` section 9 states the known limit plainly: keyword classification
 will misfile interdisciplinary work, and corrections belong in `data/taxonomy.json`.
 This is the deterministic half of acting on that -- it names the items whose lane was
 decided by almost nothing, so a reviewer, or a later agent loop, starts from a short

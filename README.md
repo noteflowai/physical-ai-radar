@@ -1,6 +1,7 @@
 # Physical AI 前沿雷达 · Physical AI Radar
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
+[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/)
 [![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
@@ -71,6 +72,7 @@ scripts/publish_daily.sh（维护者机器上的 cron，01:40 UTC / 09:40 CST / 
   └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成
   └─ render   生成三语日报 + 注入三份 README + 更新归档索引与 latest.json
   └─ feeds    radar/feed.json（JSON Feed 1.1）+ 每种语言一份 Atom + 本周汇总（radar/weekly/）
+  └─ site     落地页 index.html · en/ · ja/（深色主题、雷达图、分享卡片）
   └─ commit   有变化才提交并推送到 main
 ```
 
@@ -99,9 +101,9 @@ python3 -m unittest discover -s tests           # 测试
 ```
 data/        sources.json（源与权重）· taxonomy.json（主线与信号）
              glossary.json（三语 UI 与术语）· baseline.json（人工策展基线）
-pairadar/    fetch / distill / charts / render / cli —— 全部标准库
+pairadar/    fetch / distill / charts / render / site / cli —— 全部标准库
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      自动生成的 SVG 图
+assets/      自动生成的 SVG 图 · site.css · 社交分享卡 og.*.png
 docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 ```
 

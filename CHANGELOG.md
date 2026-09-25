@@ -5,6 +5,16 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+The site:
+
+- The Pages site opens on a landing page in each language (`/`, `/en/`, `/ja/`): the
+  day's picks as cards, the eight lanes as a radar, the recent cadence and source mix,
+  and share buttons that link the day's page. The daily, weekly and archive pages use
+  the same dark layout and state their language in `<html lang>`.
+- Each language has a social card (`assets/og.<lang>.png`), so a shared link shows a
+  large preview. `python3 -m pairadar.site --og` redraws them.
+- A sitemap and `robots.txt` are published, and CI builds the site the way Pages does.
+
 Fixes that change what gets published:
 
 - Figures keep their thousands separators and multipliers: `1,000 Hz` was
