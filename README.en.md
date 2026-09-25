@@ -1,6 +1,7 @@
 # Physical AI Radar
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
+[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
@@ -16,6 +17,8 @@ How this differs from a paper list or a news aggregator:
 - **Only checkable numbers**: success rates, latency, Hz, parameter counts and data hours are extracted automatically. An item with no numbers does not get sold as a breakthrough.
 - **Forward-looking without hand-waving**: the radar covers self-improvement loops, test-time compute, world-model evaluation, runtime safety, compliance timing and reliability economics — each with the original link attached.
 - **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
+
+**Subscribe:** [Atom](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.xml) · [JSON Feed](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [weekly roundups](radar/INDEX.md). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
 ### Today's radar · 2026-09-24
@@ -61,6 +64,7 @@ scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST 
   └─ distill  relevance gate → classify into eight lanes → extract quantitative claims → explainable score → per-lane, per-source and per-evidence caps
   └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix
   └─ render   trilingual daily page + inject three READMEs + refresh archive index and latest.json
+  └─ feeds    radar/feed.json (JSON Feed 1.1) + Atom per language + this week's roundup in radar/weekly/
   └─ commit   commit and push to main only when something changed
 ```
 

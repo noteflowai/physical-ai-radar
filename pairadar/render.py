@@ -25,6 +25,7 @@ from .config import (
     dump_json,
 )
 from .distill import one_liner, url_key
+from .feeds import iso_week, weekly_stems
 
 EVIDENCE_LABEL = {"O": "`[O]`", "R": "`[R]`", "M": "`[M]`"}
 LANG_SWITCH = {
@@ -167,7 +168,8 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
             _draft_notice(config, lang, ctx),
             f"*{ui['disclaimer']}*",
             "",
-            f"[{ui['methodology']}](../../docs/METHODOLOGY.md) · [{ui['history']}](../INDEX.md)",
+            f"[{ui['methodology']}](../../docs/METHODOLOGY.md) · "
+            f"[{ui['weekly']}](../weekly/{iso_week(stem)[0]}.{lang}.md) · [{ui['history']}](../INDEX.md)",
             "",
         ]
     )
@@ -206,7 +208,8 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            f"[{ui['today']} ›](radar/daily/{stem}.{lang}.md) · [{ui['history']} ›](radar/INDEX.md)",
+            f"[{ui['today']} ›](radar/daily/{stem}.{lang}.md) · "
+            f"[{ui['weekly']} ›](radar/weekly/{iso_week(stem)[0]}.{lang}.md) · [{ui['history']} ›](radar/INDEX.md)",
             "",
             f"![lane distribution](assets/lane-distribution.{lang}.svg)",
             "",
@@ -247,9 +250,28 @@ def update_index(config: Config, ctx: dict[str, Any], history: list[dict[str, An
     lines = [
         "# Archive · 历史归档 · アーカイブ",
         "",
+        "Subscribe · 订阅 · 購読: Atom [en](feed.xml) · [zh](feed.zh.xml) · [ja](feed.ja.xml)"
+        " ｜ [JSON Feed](feed.json)",
+        "",
+    ]
+    weeks = weekly_stems(root)
+    if weeks:
+        lines.extend([
+            "## Weekly · 每周汇总 · 週間まとめ",
+            "",
+            "| Week | ZH | EN | JA |",
+            "| --- | --- | --- | --- |",
+        ])
+        for stem in weeks[:60]:
+            lines.append(f"| {stem} | [zh](weekly/{stem}.zh.md) | [en](weekly/{stem}.en.md) | "
+                         f"[ja](weekly/{stem}.ja.md) |")
+        lines.append("")
+    lines.extend([
+        "## Daily · 每日 · 日次",
+        "",
         "| Date | Items | Lanes touched | ZH | EN | JA |",
         "| --- | --- | --- | --- | --- | --- |",
-    ]
+    ])
     for entry in sorted(history, key=lambda item: item["date"], reverse=True)[:120]:
         stem = entry["date"]
         lines.append(

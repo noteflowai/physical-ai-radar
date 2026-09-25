@@ -1,6 +1,7 @@
 # Physical AI 前沿雷达 · Physical AI Radar
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
+[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.zh.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
@@ -16,6 +17,8 @@
 - **只留可检验的数字**：自动抽取成功率、延迟、Hz、参数量、数据小时数等量化指标，没有数字的条目不会被吹成突破。
 - **前瞻但不玄学**：雷达覆盖自我改进闭环、推理时计算、世界模型评测、运行时安全、合规排期与可靠性经济学——每一条都挂原始链接。
 - **零依赖可复现**：整条流水线只用 Python 标准库，图表是手写 SVG，任何人都能在本地跑出同样结果。
+
+**订阅：** [Atom（中文）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.zh.xml) · [JSON Feed（英文）](https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/feed.json) · [每周汇总](radar/INDEX.md)。把链接粘贴到任意 RSS 阅读器即可，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
 ### 今日雷达 · 2026-09-24
@@ -61,6 +64,7 @@ scripts/publish_daily.sh（维护者机器上的 cron，01:40 UTC / 09:40 CST / 
   └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线、每来源、每证据等级限额筛选
   └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成
   └─ render   生成三语日报 + 注入三份 README + 更新归档索引与 latest.json
+  └─ feeds    radar/feed.json（JSON Feed 1.1）+ 每种语言一份 Atom + 本周汇总（radar/weekly/）
   └─ commit   有变化才提交并推送到 main
 ```
 

@@ -177,6 +177,18 @@ taxonomy, not a rendering detail to tolerate.
   fix) reaches that day's pages without re-running selection against a moved pool. The
   snapshot therefore stores the source excerpt each page quotes; `--rerender` reads the
   snapshot and never rewrites it.
+- `radar/feed.json` (JSON Feed 1.1), `radar/feed.xml`, `radar/feed.zh.xml` and
+  `radar/feed.ja.xml` (Atom, RFC 4287) carry the picks of the last thirty days, at most
+  100 entries. `feed.json` is also the store: each item keeps its language-neutral record
+  under a `_radar` extension, and a run replaces its own day's entries, so re-running a
+  day never duplicates it. A link already delivered on an earlier day is not delivered
+  again. Entry ids are tag URIs built from the item id, so they are stable across runs.
+  The feeds carry the title, lane, evidence tag, numbers, signals and source excerpt, and
+  link to the day's page for the "why it matters" line. That line stays off the feeds so
+  a drafted line can never appear without its label, and so `--rerender` never has to
+  rewrite them.
+- `radar/weekly/<ISO week>.<lang>.md` groups the week's picks by lane. Each run rewrites
+  the current week from the feed store; earlier weeks are left as published.
 - `data/notes/<date>.json` is an optional input. Without it the render is unchanged, so
   a reproduction from repository data alone stays deterministic.
 - Item ids are content-derived (`arxiv:<id>`, `<feed>:<sha1(link)[:12]>`) and therefore stable
