@@ -129,6 +129,14 @@ class DraftGateTests(unittest.TestCase):
                         self.SCRIPT.index("python3 -m pairadar --rerender"),
                         "the pages name the drafter, so stamp before rebuilding them")
 
+    def test_the_draft_merges_only_on_a_pass_of_the_commit_it_pushed(self):
+        # "no checks reported" once fell through the old case statement as green.
+        gate = self.SCRIPT[self.SCRIPT.index("checks_state()"):]
+        self.assertIn('if length == 0 then "none"', gate)
+        self.assertIn('if [ "$STATE" != "pass" ]', gate)
+        self.assertIn('gh pr merge "$PR" --merge --match-head-commit "$HEAD_SHA"', gate)
+        self.assertEqual(self.SCRIPT.count("gh pr merge"), 1)
+
 
 class AgentBoundaryTests(unittest.TestCase):
     """The READMEs promise the agents cannot reach the network. Keep that true."""

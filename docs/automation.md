@@ -48,12 +48,14 @@ Both scripts share the same shape:
    `pairadar.notes check`, the full test suite;
 5. a reviewer agent -- read-only, no shell, no writes -- which must end its reply with
    `APPROVE` or `REJECT: <reason>`;
-6. a pull request that merges itself once every check is green.
+6. a pull request that merges itself once every check has passed on the commit the
+   script pushed.
 
 Nobody reads the notes before they are published. The rendered pages say exactly that:
 drafted by the agent, merged automatically after deterministic checks and an agent
-review, **without human review**. If a check is pending or fails, the pull request is
-left open instead of merged, which is the only path by which a human gets involved.
+review, **without human review**. If a check fails, is cancelled, or has not passed
+within ten minutes -- including when no check has registered yet -- the pull request
+is left open instead of merged, which is the only path by which a human gets involved.
 
 Measured on kiro-cli 2.21.2, `--trust-all-tools` bypasses the agent's own write path
 allowlist while `--trust-tools=write` enforces it, and a `shell` command allowlist is

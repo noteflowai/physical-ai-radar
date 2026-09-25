@@ -28,6 +28,9 @@ The nightly jobs:
   for one revision instead of ending the night.
 - The notes record the models that actually ran (`pairadar.notes stamp`), not the
   agent's account of itself, and the agent files are validated before any model call.
+- A drafted pull request merges only when every check has passed on the commit the
+  script pushed. "No checks reported yet", right after the push, used to count as
+  green; cancelled checks and checks still running after ten minutes now leave it open.
 - The draft's re-render may rewrite the landing pages. With the site in place, every
   draft would otherwise have been discarded for touching them.
 

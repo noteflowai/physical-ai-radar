@@ -342,18 +342,32 @@ gh pr create --base main --head "$BRANCH" \
     "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a model other than the drafter's review it. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 log "pull request #${PR} opened for ${DAY}; waiting for checks"
+# Merge only on a pass, on the commit that was checked. The old loop treated anything
+# that was neither "pending" nor "fail" as green, and right after the push GitHub has
+# not registered the workflow yet: "no checks reported" merged the draft unchecked.
+# Cancelled or timed-out checks are not a pass either.
+HEAD_SHA="$(git rev-parse HEAD)"
+checks_state() {
+  local state
+  state="$(gh pr checks "$PR" --json bucket -q '[.[].bucket] |
+    if length == 0 then "none"
+    elif any(. == "fail" or . == "cancel") then "fail"
+    elif any(. == "pending") then "pending"
+    else "pass" end' 2>/dev/null || true)"
+  printf '%s\n' "${state:-none}"
+}
+STATE="none"
 for _ in $(seq 1 30); do
   sleep 20
-  STATUS="$(gh pr checks "$PR" 2>&1 || true)"
-  case "$STATUS" in
-    *pending*) continue ;;
-    *fail*) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
-    *) break ;;
+  STATE="$(checks_state)"
+  case "$STATE" in
+    pass) break ;;
+    fail) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
   esac
 done
-case "$(gh pr checks "$PR" 2>&1 || true)" in
-  *pending*) log "checks still pending on #${PR}; leaving it open"; exit 0 ;;
-  *fail*) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
-esac
-gh pr merge "$PR" --merge
+if [ "$STATE" != "pass" ]; then
+  log "checks on #${PR} did not pass within ten minutes (${STATE}); leaving it open"
+  exit 0
+fi
+gh pr merge "$PR" --merge --match-head-commit "$HEAD_SHA"
 log "merged #${PR} for ${DAY}"
