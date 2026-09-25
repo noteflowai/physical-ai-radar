@@ -27,15 +27,15 @@ How this differs from a paper list or a news aggregator:
 `Generated: 2026-09-25 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-25 · posts 2026-08-26 → 2026-09-25 · no repeats within 7 days (UTC)`
 
 - `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — Simulation & evaluation (sim2real / closed-loop)
-  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+  - `AI draft` If you lean on generative simulators for closed-loop evaluation, this preprint argues photo-realism metrics can misrank fidelity and offers a policy-feature metric plus code, though the gains are self-reported on driving benchmarks only.
 - `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — Simulation & evaluation (sim2real / closed-loop)
-  - Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.
+  - `AI draft` Before shipping a quantized VLA, treat precision recipes as model-specific: this preprint reports that which layers you protect swings closed-loop success sharply and that one model's calibration fix degrades another, mostly in simulation.
 - `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — Data engine (collection / curation / scaling) ｜ `24.1 hours`
-  - Data sourcing and curation pipelines are the real moat today; they set the cost per new task.
+  - `AI draft` Collecting multi-humanoid collaboration data no longer requires owning several robots: distributed operators in a shared physics sim produced 24.1 hours of coordinated demos, and the authors report zero-shot transfer to one physical humanoid.
 - `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — Systems & orchestration (long-horizon / multi-policy)
-  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
+  - `AI draft` NVIDIA's own walkthrough of having an AI agent port a ROS 2 node to Isaac ROS is a reminder that message transport, not the CUDA kernel, usually bounds graph latency; it shows the workflow but gives no timing figures.
 - `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — Systems & orchestration (long-horizon / multi-policy)
-  - Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.
+  - `AI draft` A trade-press summary of the Isaac ROS 5.0 release: agentic workflows and new platform support are the headline, so check NVIDIA's release notes for which hardware and ROS distributions are covered before scheduling a migration.
 
 [Today's radar ›](radar/daily/2026-09-25.en.md) · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
 

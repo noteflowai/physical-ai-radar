@@ -27,15 +27,15 @@
 `生成時刻: 2026-09-25 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-25 · ブログ・報道 2026-08-26 → 2026-09-25 · 7 日以内の重複なし (UTC)`
 
 - `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — シミュレーションと評価（sim2real / 閉ループ）
-  - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
+  - `AI 下書き` 生成シミュレータで閉ループ評価を行うなら、写実性指標では忠実度を誤判定しうると著者は主張し、ポリシー特徴に基づく指標とコードを公開しているが、検証は運転ベンチマークでの自己報告に限られる。
 - `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — シミュレーションと評価（sim2real / 閉ループ）
-  - 評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。
+  - `AI 下書き` VLA を量子化して載せる前に精度レシピはモデルごとに閉ループで検証すべきで、保護する層の選び方で成功率が大きく振れ、同じ校正が別モデルでは逆効果になると報告されている（主にシミュレーション）。
 - `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — データエンジン（収集 / 精査 / スケーリング） ｜ `24.1 hours`
-  - データの取得元と精査パイプラインが現在の真の堀であり、新規タスク単価を決める。
+  - `AI 下書き` 複数台のヒューマノイドを揃えなくても協調データは集められることを示す結果で、遠隔の操作者が共有物理シミュレーション上で 24.1 時間の協調デモを収集し、著者は実機一台へのゼロショット転移を報告している。
 - `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — システムとオーケストレーション（長期タスク / 複数方策）
-  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
+  - `AI 下書き` AI エージェントに ROS 2 ノードを Isaac ROS へ移植させる NVIDIA 公式の手順で、CUDA カーネルよりメッセージ伝送がグラフ遅延を律速するという指摘が本題だが、加速量の数値は示されていない。
 - `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — システムとオーケストレーション（長期タスク / 複数方策）
-  - 長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。
+  - `AI 下書き` Isaac ROS 5.0 のリリースを伝える二次報道で、要点はエージェント型ワークフローと対応プラットフォームの拡大にあり、移行を計画するなら対応ハードと ROS ディストリビューションは NVIDIA の一次情報で確認したい。
 
 [本日のレーダー ›](radar/daily/2026-09-25.ja.md) · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
 

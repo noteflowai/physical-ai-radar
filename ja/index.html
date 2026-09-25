@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.26792" rel="noopener" target="_blank">DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 生成シミュレータで閉ループ評価を行うなら、写実性指標では忠実度を誤判定しうると著者は主張し、ポリシー特徴に基づく指標とコードを公開しているが、検証は運転ベンチマークでの自己報告に限られる。</p>
 <p class="excerpt">Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.25376" rel="noopener" target="_blank">VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> VLA を量子化して載せる前に精度レシピはモデルごとに閉ループで検証すべきで、保護する層の選び方で成功率が大きく振れ、同じ校正が別モデルでは逆効果になると報告されている（主にシミュレーション）。</p>
 <p class="excerpt">Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -127,7 +127,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.26520" rel="noopener" target="_blank">MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection</a></h3>
 <p class="figure"><strong>24.1 hours</strong><span class="context">“multi-humanoid collaboration dataset comprising 24.1 hours of coordinated behavior”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 複数台のヒューマノイドを揃えなくても協調データは集められることを示す結果で、遠隔の操作者が共有物理シミュレーション上で 24.1 時間の協調デモを収集し、著者は実機一台へのゼロショット転移を報告している。</p>
 <p class="excerpt">Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -142,7 +142,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/" rel="noopener" target="_blank">Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> AI エージェントに ROS 2 ノードを Isaac ROS へ移植させる NVIDIA 公式の手順で、CUDA カーネルよりメッセージ伝送がグラフ遅延を律速するという指摘が本題だが、加速量の数値は示されていない。</p>
 <p class="excerpt">GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph.</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-09-22</span>
@@ -156,7 +156,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/" rel="noopener" target="_blank">Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Isaac ROS 5.0 のリリースを伝える二次報道で、要点はエージェント型ワークフローと対応プラットフォームの拡大にあり、移行を計画するなら対応ハードと ROS ディストリビューションは NVIDIA の一次情報で確認したい。</p>
 <p class="excerpt">The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-22</span>
@@ -170,7 +170,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/" rel="noopener" target="_blank">Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Telexistence がコンビニ業務で世界モデルを AWS 上で動かした一次記事で、クラウド側の世界モデルが小売の実証段階に入ったことを示すが、あくまで実験の位置づけで成功率や遅延の数値は示されていない。</p>
 <p class="excerpt">Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat.</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-09-09</span>
@@ -184,7 +184,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/" rel="noopener" target="_blank">ANYbotics opens the door for inspections with ANYmal robots</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 報道によれば ANYmal が dormakaba と LEGIC の連携で社員証のように入退室管理を通過できるようになり、無人点検の実装上の課題は移動能力から施設側の権限設計とセキュリティ方針へ移る。</p>
 <p class="excerpt">ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-24</span>
@@ -198,7 +198,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/" rel="noopener" target="_blank">Epson introduces AX6 cobot with compact design, no-code programming</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> エプソンが力・パワー制限型の小型六軸協働アームを無コードプログラミング付きで投入したとの報道で、この要約には可搬重量・リーチ・価格がないため、候補に入れる前に公式仕様で比較したい。</p>
 <p class="excerpt">Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-24</span>
