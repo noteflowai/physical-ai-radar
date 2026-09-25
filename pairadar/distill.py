@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 from datetime import date, datetime
+from functools import lru_cache
 from typing import Any, Iterable
 
 from .config import Config, Item
@@ -45,24 +46,56 @@ def extract_numbers(text: str, limit: int = 4) -> list[str]:
     return found
 
 
+@lru_cache(maxsize=None)
+def _keyword_re(keyword: str) -> re.Pattern[str]:
+    """A keyword matches as a whole term, optionally pluralised.
+
+    Plain substring matching filed a GeForce NOW launch under RL because "ppo" sits
+    inside "support", read "author" as Jetson "thor" and "Android" as the DROID
+    dataset. A term now has to start and end on a word boundary; a trailing "s" or
+    "es" is allowed so "humanoids" and "benchmarks" still count.
+    """
+    return re.compile(r"(?<![a-z0-9])" + re.escape(keyword.lower()) + r"(?:e?s)?(?![a-z0-9])")
+
+
+def has_term(lowered: str, keyword: str) -> bool:
+    return _keyword_re(keyword).search(lowered) is not None
+
+
+def count_terms(text: str, keywords: Iterable[str]) -> int:
+    """How many of the keywords occur in the text, each counted once."""
+    lowered = text.lower()
+    return sum(1 for keyword in keywords if has_term(lowered, keyword))
+
+
 def detect_signals(text: str, taxonomy: dict[str, Any]) -> list[str]:
+    """Flag each signal whose keywords or pattern occur; a signal may declare both."""
     lowered = text.lower()
     signals: list[str] = []
     for signal in taxonomy.get("signals", []):
-        sid = signal["id"]
-        if "keywords" in signal:
-            if any(keyword in lowered for keyword in signal["keywords"]):
-                signals.append(sid)
-        elif "pattern" in signal:
-            if re.search(signal["pattern"], text):
-                signals.append(sid)
+        keywords = signal.get("keywords", [])
+        pattern = signal.get("pattern")
+        if any(has_term(lowered, keyword) for keyword in keywords) or (
+            pattern and re.search(pattern, text)
+        ):
+            signals.append(signal["id"])
     return signals
 
 
 def lane_hits(text: str, lane: dict[str, Any]) -> int:
     """Count how many of a lane's keywords appear in the text."""
-    lowered = text.lower()
-    return sum(1 for keyword in lane["keywords"] if keyword in lowered)
+    return count_terms(text, lane["keywords"])
+
+
+def anchor_hits(text: str, taxonomy: dict[str, Any]) -> int:
+    """How many Physical AI anchor terms the text contains.
+
+    Lane keywords describe *which* part of the field an item is about, and many of
+    them -- benchmark, memory, fine-tuning, safety -- are just as common in posts about
+    chatbots. The anchors answer the earlier question: is this about robots, embodied
+    agents or the physical world at all?
+    """
+    return count_terms(text, taxonomy.get("anchors", []))
 
 
 def classify(text: str, config: Config) -> tuple[str, int]:
@@ -148,6 +181,7 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
             lane, hits = classify(blob, config)
         item.lane = lane
         item.lane_hits = hits
+        item.anchor_hits = anchor_hits(blob, config.taxonomy)
         item.signals = detect_signals(blob, config.taxonomy)
         item.numbers = item.numbers or extract_numbers(blob)
         lane_weight = float(config.lane(lane).get("weight", 1.0))
@@ -163,9 +197,29 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
     return enriched
 
 
+_ARXIV_URL = re.compile(
+    r"^https://(?:export\.|www\.)?arxiv\.org/(?:abs|pdf|html)/"
+    r"(?P<id>\d{4}\.\d{4,5}|[a-z\-]+(?:\.[a-z]{2})?/\d{7})(?:v\d+)?(?:\.pdf)?$"
+)
+
+
 def url_key(url: str) -> str:
-    """Normalise a link so the same article compares equal across runs and feeds."""
-    return url.split("?")[0].rstrip("/").lower()
+    """Normalise a link so the same article compares equal across runs and feeds.
+
+    The arXiv API names a paper `http://arxiv.org/abs/2609.01234v1` while the
+    category feeds say `https://arxiv.org/abs/2609.01234`; left alone, the repeat
+    guard saw two different papers and published the same one twice in a week. So
+    the scheme is folded to https and an arXiv link is reduced to its abstract page
+    without the version. The function is idempotent, because stored keys are fed
+    back through it.
+    """
+    key = url.strip().split("#")[0].split("?")[0].rstrip("/").lower()
+    if key.startswith("http://"):
+        key = "https://" + key[len("http://"):]
+    match = _ARXIV_URL.match(key)
+    if match:
+        return f"https://arxiv.org/abs/{match.group('id')}"
+    return key
 
 
 def deduplicate(items: Iterable[Item]) -> list[Item]:
@@ -185,19 +239,47 @@ def deduplicate(items: Iterable[Item]) -> list[Item]:
     return unique
 
 
+def qualifies(item: Item, min_score: float) -> bool:
+    """The gates every pick must pass, whatever the caps say.
+
+    An item needs at least one lane keyword. Evidence and recency alone can clear
+    `min_score`, and without this gate an off-topic hit from the broad arXiv queries
+    would be published under whichever lane the classifier fell back to -- labelled
+    as if it belonged there.
+
+    It also needs to be about Physical AI at all: either its source is topical by
+    construction (a robotics feed, a cs.RO listing) or its text names at least one
+    anchor term. General vendor blogs post about cloud gaming, chatbots and data
+    centres far more often than about robots, and their vocabulary overlaps the lanes.
+    Curated entries are exempt from both, since a person chose their lane.
+    """
+    if item.lane_locked:
+        return item.score >= min_score
+    if item.lane_hits < 1:
+        return False
+    if not item.topical and item.anchor_hits < 1:
+        return False
+    return item.score >= min_score
+
+
 def select(
     items: list[Item],
     limit: int = 8,
     per_lane: int = 2,
     min_score: float = 0.9,
     seen: Iterable[str] = (),
+    per_source: int | None = None,
+    per_evidence: int | None = None,
 ) -> list[Item]:
     """Pick the daily shortlist, capping each lane so one topic cannot dominate.
 
-    An item needs at least one lane keyword to qualify. Evidence and recency alone
-    can clear `min_score`, and without this gate an off-topic hit from the broad
-    arXiv queries would be published under whichever lane the classifier fell back
-    to -- labelled as if it belonged there.
+    `per_source` and `per_evidence` keep one feed or one evidence class from taking
+    the page. On a day when the arXiv category feeds are the only research source,
+    every paper carries same-day recency and the shortlist used to come back all
+    `[R]`; the official and media items that did qualify were simply outranked.
+    These two caps are soft: they reserve room, they do not leave it empty. Once the
+    capped pass is done, any free slots are filled from what the caps held back, in
+    rank order, still under the lane cap and every gate above.
 
     `seen` holds normalised URLs already published on earlier days. The arXiv
     window looks back three days and feeds keep entries for thirty, so without it
@@ -205,22 +287,31 @@ def select(
     what changed.
     """
     published = {url_key(url) for url in seen}
-    picked: list[Item] = []
+    eligible = [item for item in items
+                if url_key(item.url) not in published and qualifies(item, min_score)]
+    picked: list[int] = []
     lane_counts: dict[str, int] = {}
-    for item in items:
-        if url_key(item.url) in published:
-            continue
-        if item.lane_hits < 1 and not item.lane_locked:
-            continue
-        if item.score < min_score:
-            continue
-        if lane_counts.get(item.lane, 0) >= per_lane:
-            continue
-        picked.append(item)
+    source_counts: dict[str, int] = {}
+    evidence_counts: dict[str, int] = {}
+
+    def take(index: int, item: Item) -> None:
+        picked.append(index)
         lane_counts[item.lane] = lane_counts.get(item.lane, 0) + 1
-        if len(picked) >= limit:
-            break
-    return picked
+        source_counts[item.source_id] = source_counts.get(item.source_id, 0) + 1
+        evidence_counts[item.evidence] = evidence_counts.get(item.evidence, 0) + 1
+
+    for capped in (True, False):
+        for index, item in enumerate(eligible):
+            if len(picked) >= limit:
+                break
+            if index in picked or lane_counts.get(item.lane, 0) >= per_lane:
+                continue
+            if capped and per_source is not None and source_counts.get(item.source_id, 0) >= per_source:
+                continue
+            if capped and per_evidence is not None and evidence_counts.get(item.evidence, 0) >= per_evidence:
+                continue
+            take(index, item)
+    return [eligible[index] for index in sorted(picked)]
 
 
 def lane_distribution(items: Iterable[Item], config: Config) -> list[tuple[str, int]]:

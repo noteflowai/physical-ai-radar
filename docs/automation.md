@@ -62,9 +62,9 @@ not the agents, run the commands.
 ## Timing
 
 The notes are drafted for the current UTC date, and that date's radar publishes at
-01:30 UTC. At 02:30 Asia/Singapore — 18:30 UTC — the day's radar is seventeen hours
-old, so the order is right with plenty of margin. Moving the cron job near 09:30
-Asia/Singapore (01:30 UTC) would race the publish for the same day's output.
+01:40 UTC. At 02:30 Asia/Singapore — 18:30 UTC — the day's radar is about seventeen hours
+old, so the order is right with plenty of margin. Moving the cron job near 09:40
+Asia/Singapore (01:40 UTC) would race the publish for the same day's output.
 
 ## Credentials
 

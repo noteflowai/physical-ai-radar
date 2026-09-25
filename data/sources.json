@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "note": "evidence: O = first-party official, R = research paper/preprint, M = media/secondary. weight biases ranking.",
+  "note": "evidence: O = first-party official, R = research paper/preprint, M = media/secondary. weight biases ranking. topical = the feed only publishes Physical AI material, so its items need no anchor term.",
   "filters": {
     "max_age_days": 30,
     "exclude_phrases": [
@@ -12,7 +12,11 @@
       "webinar registration"
     ],
     "repeat_days": 7,
-    "repeat_note": "an item already shown within this many days is not picked again"
+    "repeat_note": "an item already shown within this many days is not picked again",
+    "max_entries_per_feed": 100,
+    "per_source": 3,
+    "per_evidence": 4,
+    "caps_note": "per_source and per_evidence reserve room on the shortlist for other feeds and evidence classes; slots they leave empty are filled afterwards from what they held back, in rank order"
   },
   "arxiv": {
     "enabled": true,
@@ -33,7 +37,10 @@
       "cs.AI",
       "cs.LG"
     ],
-    "rss_note": "the Atom API answered 406 to every request from this host on 2026-09-21, including with no headers at all; these category feeds are the documented public fallback and keep the R evidence class from going empty"
+    "rss_note": "the Atom API answered 406 to every request from this host on 2026-09-21, including with no headers at all; these category feeds are the documented public fallback and keep the R evidence class from going empty",
+    "rss_topical": [
+      "cs.RO"
+    ]
   },
   "feeds": [
     {
@@ -41,14 +48,16 @@
       "url": "https://aws.amazon.com/blogs/physical-ai/feed/",
       "evidence": "O",
       "weight": 1.25,
-      "publisher": "AWS Physical AI Blog"
+      "publisher": "AWS Physical AI Blog",
+      "topical": true
     },
     {
       "id": "nvidia-developer-robotics",
       "url": "https://developer.nvidia.com/blog/category/robotics/feed/",
       "evidence": "O",
       "weight": 1.2,
-      "publisher": "NVIDIA Technical Blog (Robotics)"
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "topical": true
     },
     {
       "id": "nvidia-blog",
@@ -76,7 +85,16 @@
       "url": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
       "evidence": "M",
       "weight": 0.9,
-      "publisher": "IEEE Spectrum Robotics"
+      "publisher": "IEEE Spectrum Robotics",
+      "topical": true
+    },
+    {
+      "id": "the-robot-report",
+      "url": "https://www.therobotreport.com/feed/",
+      "evidence": "M",
+      "weight": 0.95,
+      "publisher": "The Robot Report",
+      "topical": true
     }
   ],
   "standards_watch": [

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The Atom API's shape, for a paper the cs.RO feed also lists. The API has answered
+     406 to this host since 2026-09-21, so the entry carries the feed's text in the
+     API's form: an http:// id with a version suffix. -->
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
+  <title type="html">ArXiv Query: search_query=cat:cs.RO</title>
+  <id>http://arxiv.org/api/recorded</id>
+  <updated>2026-09-24T00:00:00-04:00</updated>
+  <entry>
+    <id>http://arxiv.org/abs/2609.25031v1</id>
+    <updated>2026-09-23T17:12:04Z</updated>
+    <published>2026-09-23T17:12:04Z</published>
+    <title>Towards Adaptive Interaction Strategies for Human Companion Robot via Deep Reinforcement Learning</title>
+    <summary>In the field of Human-Robot Interaction (HRI), achieving flexibility in human-accompanying within real-world environments holds great potential for various applications but also poses significant challenges.</summary>
+    <link href="http://arxiv.org/abs/2609.25031v1" rel="alternate" type="text/html"/>
+    <arxiv:primary_category term="cs.RO"/>
+  </entry>
+</feed>

@@ -36,6 +36,11 @@ ARXIV_DELAY = 3.0
 _ANNOUNCE = re.compile(r"^\s*arXiv:\S+\s+Announce Type:\s*(\S+)\s*(?:Abstract:\s*)?", re.I)
 RETRIES = 2
 RETRY_DELAY = 2.0
+# Trade-press feeds ship the whole article as the description -- IEEE Spectrum's run to
+# 8,000 characters -- while official blogs send a paragraph or nothing. Scoring every
+# keyword in a full article let a "Video Friday" round-up outscore a focused post, and
+# stored the article in radar/latest.json. About an arXiv abstract's length is kept.
+MAX_SUMMARY_CHARS = 2000
 
 _WS = re.compile(r"\s+")
 _TAGS = re.compile(r"<[^>]+>")
@@ -101,6 +106,22 @@ def parse_date(raw: str | None) -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
+_ARXIV_ID = re.compile(r"(\d{4}\.\d{4,5})(?:v\d+)?$")
+
+
+def arxiv_identity(link: str) -> tuple[str, str]:
+    """(versionless id, canonical abstract URL) for an arXiv link.
+
+    The API reports `http://arxiv.org/abs/2609.01234v1`, the category feeds
+    `https://arxiv.org/abs/2609.01234`. Both paths now name a paper the same way, so
+    its id and link are stable whichever one answered that day.
+    """
+    tail = link.rstrip("/").split("/")[-1]
+    match = _ARXIV_ID.search(tail)
+    short_id = match.group(1) if match else tail
+    return short_id, f"https://arxiv.org/abs/{short_id}"
+
+
 def fetch_arxiv(config: Config) -> tuple[list[Item], bool]:
     """Query the arXiv Atom API for each configured search string.
 
@@ -143,17 +164,19 @@ def fetch_arxiv(config: Config) -> tuple[list[Item], bool]:
                 continue
             if datetime.fromisoformat(published).date() < cutoff:
                 continue
-            short_id = arxiv_id.rstrip("/").split("/")[-1]
+            short_id, link = arxiv_identity(arxiv_id)
             items.append(
                 Item(
                     id=f"arxiv:{short_id}",
                     title=title,
-                    url=arxiv_id,
+                    url=link,
                     publisher=f"arXiv {short_id}",
                     source_id="arxiv",
                     evidence=cfg.get("evidence", "R"),
                     published=published,
                     summary=summary,
+                    # Every configured query is scoped to cat:cs.RO.
+                    topical=True,
                 )
             )
     queries = len(cfg.get("queries", []))
@@ -179,8 +202,9 @@ def fetch_arxiv_rss(cfg: dict, cutoff: date) -> tuple[list[Item], bool]:
     Returns the items and whether any feed answered at all, because an empty feed on a
     Saturday is a closed archive rather than a broken source.
     """
-    items: list[Item] = []
+    items: dict[str, Item] = {}
     answered = False
+    topical = set(cfg.get("rss_topical", ["cs.RO"]))
     for index, category in enumerate(cfg.get("rss_categories", [])):
         if index:
             time.sleep(ARXIV_DELAY)
@@ -219,20 +243,26 @@ def fetch_arxiv_rss(cfg: dict, cutoff: date) -> tuple[list[Item], bool]:
                     continue
             except ValueError:
                 continue
-            short_id = link.rstrip("/").split("/")[-1]
-            items.append(
-                Item(
-                    id=f"arxiv:{short_id}",
-                    title=title,
-                    url=link,
-                    publisher=f"arXiv {short_id}",
-                    source_id="arxiv",
-                    evidence=cfg.get("evidence", "R"),
-                    published=published,
-                    summary=summary,
-                )
+            short_id, link = arxiv_identity(link)
+            if short_id in items:
+                # A cross-list arrives once per category; it is on-topic if any of
+                # them is a Physical AI category.
+                items[short_id].topical = items[short_id].topical or category in topical
+                continue
+            items[short_id] = Item(
+                id=f"arxiv:{short_id}",
+                title=title,
+                url=link,
+                publisher=f"arXiv {short_id}",
+                source_id="arxiv",
+                evidence=cfg.get("evidence", "R"),
+                published=published,
+                summary=summary,
+                # cs.AI and cs.LG carry far more chatbots than robots; papers from
+                # those listings have to name an anchor term to count as on-topic.
+                topical=category in topical,
             )
-    return items, answered
+    return list(items.values()), answered
 
 
 def link_digest(link: str) -> str:
@@ -280,6 +310,7 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer."""
     items: list[Item] = []
     failed: list[str] = []
+    cap = int(config.sources.get("filters", {}).get("max_entries_per_feed", 100))
     for feed in config.sources.get("feeds", []):
         payload = http_get(feed["url"])
         if not payload:
@@ -291,9 +322,16 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
             print(f"[fetch] feed parse error {feed['id']}: {exc}")
             failed.append(feed["id"])
             continue
-        for title, link, summary, published in _feed_entries(root):
-            if not title or not link:
-                continue
+        # Some feeds carry their whole archive -- the Hugging Face blog ships every
+        # post it has ever published, about 870 of them. Only the newest can pass the
+        # age filter anyway, and counting the rest made the fetch report misleading.
+        entries = sorted(
+            (entry for entry in _feed_entries(root) if entry[0] and entry[1]),
+            key=lambda entry: entry[3], reverse=True,
+        )[:cap]
+        for title, link, summary, published in entries:
+            if len(summary) > MAX_SUMMARY_CHARS:
+                summary = summary[:MAX_SUMMARY_CHARS].rsplit(" ", 1)[0] + " …"
             items.append(
                 Item(
                     id=f"{feed['id']}:{link_digest(link)}",
@@ -304,6 +342,7 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
                     evidence=feed.get("evidence", "M"),
                     published=published,
                     summary=summary,
+                    topical=bool(feed.get("topical", False)),
                 )
             )
     return items, failed

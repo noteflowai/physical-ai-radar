@@ -1,10 +1,10 @@
 # Physical AI 前沿雷达 · Physical AI Radar
 
-[![daily radar](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml)
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![updated daily 01:30 UTC](https://img.shields.io/badge/updated-daily%2001%3A30%20UTC-7300e5.svg)](.github/workflows/daily.yml)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
 
 **语言：中文 · [English](README.en.md) · [日本語](README.ja.md)**
 
@@ -56,12 +56,12 @@
 ## 自动更新机制
 
 ```
-GitHub Actions (cron 01:30 UTC / 09:30 CST / 10:30 JST)
-  └─ fetch    arXiv API（六组 cs.RO 查询）+ 官方 Atom/RSS（AWS / NVIDIA / DeepMind / HF / IEEE）
-  └─ distill  归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线限额筛选
+scripts/publish_daily.sh（维护者机器上的 cron，01:40 UTC / 09:40 CST / 10:40 JST）
+  └─ fetch    arXiv API（六组 cs.RO 查询，API 不可用时改读分类 RSS）+ 官方与媒体 Atom/RSS（AWS / NVIDIA / DeepMind / HF / IEEE / The Robot Report）
+  └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线、每来源、每证据等级限额筛选
   └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成
   └─ render   生成三语日报 + 注入三份 README + 更新归档索引与 latest.json
-  └─ commit   有变化才提交（[skip ci]）
+  └─ commit   有变化才提交并推送到 main
 ```
 
 时间点选在 arXiv 当日公告之后，保证早上第一眼看到的是最新一批。
@@ -99,7 +99,7 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 
 - 摘要是**抽取式**的：英文原文摘录会标为引用块，不做机器翻译。上方的分析层**按语言分别成文**，从不逐句翻译：多数日子由 agent 起草，每行都标注为起草，其中的数字必须已出现在当天已发布的页面上；没有起草的语言由主线模板补位，不加标注。[起草如何被复核、以及它不得声称什么](docs/METHODOLOGY.md)。
 - 图表**按语言各出一套**，标签用各自的语言。它们是 SVG 文本，字形由读者浏览器提供，仓库不内置任何字体。过长的名称在 `data/taxonomy.json` 里配有人工短形；仅当仍然放不下时才截断，而一个测试确保当前一条也没被截断。
-- 主线归类是**关键词匹配**，不是分类模型：至少命中一个关键词才会归入某主线，`python3 -m pairadar.lanes` 会标出仅由单个关键词决定（`thin`）或与次选过于接近（`ambiguous`）的条目。归错主线是**可被发现**的，但不是被阻止的。
+- 主线归类是**关键词匹配**（整词匹配，不做子串匹配），不是分类模型：来自综合博客的条目还须命中一个 Physical AI 锚定词（robot、humanoid、VLA、world model 等），至少命中一个关键词才会归入某主线，`python3 -m pairadar.lanes` 会标出仅由单个关键词决定（`thin`）或与次选过于接近（`ambiguous`）的条目。归错主线是**可被发现**的，但不是被阻止的。
 
 ## 刻意的选择（不是局限）
 

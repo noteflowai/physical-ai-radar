@@ -1,10 +1,10 @@
 # Physical AI フロンティア・レーダー
 
-[![daily radar](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml)
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![updated daily 01:30 UTC](https://img.shields.io/badge/updated-daily%2001%3A30%20UTC-7300e5.svg)](.github/workflows/daily.yml)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
 
 **言語：[中文](README.md) · [English](README.en.md) · 日本語**
 
@@ -56,12 +56,12 @@
 ## 自動更新の仕組み
 
 ```
-GitHub Actions（cron 01:30 UTC / 09:30 CST / 10:30 JST）
-  └─ fetch    arXiv API（cs.RO の6クエリ）+ 公式 Atom/RSS（AWS / NVIDIA / DeepMind / HF / IEEE）
-  └─ distill  8軸に分類 → 定量指標を抽出 → 説明可能なスコア → 軸ごとの上限で選抜
+scripts/publish_daily.sh（メンテナーのマシン上の cron、01:40 UTC / 09:40 CST / 10:40 JST）
+  └─ fetch    arXiv API（cs.RO の6クエリ、API が応答しない日はカテゴリ RSS）+ 公式・報道の Atom/RSS（AWS / NVIDIA / DeepMind / HF / IEEE / The Robot Report）
+  └─ distill  関連性ゲート → 8軸に分類 → 定量指標を抽出 → 説明可能なスコア → 軸・ソース・根拠区分ごとの上限で選抜
   └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成
   └─ render   三言語の日報 + 3つの README へ注入 + アーカイブ索引と latest.json を更新
-  └─ commit   変更があるときのみコミット（[skip ci]）
+  └─ commit   変更があるときのみコミットして main に push
 ```
 
 実行時刻は arXiv の当日公告後に設定しており、朝いちばんに最新の一群が読めます。
@@ -100,7 +100,7 @@ docs/        METHODOLOGY.md（方法論・翻訳方針・既知の限界）
 
 - 要約は**抽出型**です。英語原文の抜粋は引用として示し、機械翻訳しません。その上の分析層は**言語ごとに執筆**し、逐語訳は行いません。多くの日はエージェントが下書きし、各行に下書きであることを明記し、記載する数値はその日の公開パージに既に存在するものに限ります。下書きがない言語は軸ごとのテンプレートが補い、注記は付きません。[下書きの査読と主張できないこと](docs/METHODOLOGY.md)。
 - 図は**言語ごとに作成**し、ラベルもその言語で記します。SVG テキストなのでグリフは読者のブラウザが描画し、フォントの同梱はありません。長い名称には `data/taxonomy.json` に短缮形を用意し、それでも入らない場合のみ切り詰めます。現在切り詰めされたラベルがないことはテストで担保しています。
-- 軸の判定は**キーワード一致**であり、分類モデルではありません。少なくとも1件の一致が必要で、`python3 -m pairadar.lanes` は単一のキーワードで決まった項目（`thin`）や次点と近い項目（`ambiguous`）を示します。誤った軸は**見つけられます**が、防がれてはいません。
+- 軸の判定は**キーワード一致**（部分文字列ではなく語単位）であり、分類モデルではありません。汎用ブログの項目は Physical AI のアンカー語（robot、humanoid、VLA、world model など）も含む必要があり、軸には少なくとも1件の一致が必要で、`python3 -m pairadar.lanes` は単一のキーワードで決まった項目（`thin`）や次点と近い項目（`ambiguous`）を示します。誤った軸は**見つけられます**が、防がれてはいません。
 
 ## 意図した選択（限界ではありません）
 

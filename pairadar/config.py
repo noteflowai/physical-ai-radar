@@ -130,6 +130,10 @@ class Item:
     lane: str = "foundation"
     lane_locked: bool = False
     lane_hits: int = 0
+    anchor_hits: int = 0
+    # True when the source only publishes Physical AI material (a robotics feed, the
+    # cs.RO listing), so the item needs no anchor term to count as on-topic.
+    topical: bool = False
     score: float = 0.0
     numbers: list[str] = field(default_factory=list)
     signals: list[str] = field(default_factory=list)

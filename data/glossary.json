@@ -33,7 +33,9 @@
       },
       "llm_draft": "AI 起草",
       "llm_notice": "本页逐条分析由 {agent} 起草（{model}），经确定性检查与 agent 复核后自动合并，**未经人工复核**；标题与数字未经改写。",
-      "cadence": "每日节奏（每轮清出的条目）"
+      "cadence": "每日节奏（每轮清出的条目）",
+      "signals_label": "信号",
+      "window_value": "论文 {papers_from} → {day} · 博客与报道 {posts_from} → {day} · {repeat_days} 天内不重复 (UTC)"
     },
     "en": {
       "title": "Physical AI Radar",
@@ -67,7 +69,9 @@
       },
       "llm_draft": "AI draft",
       "llm_notice": "Per-item analysis on this page was drafted by {agent} ({model}) and merged automatically after deterministic checks and an agent review, **without human review**; titles and numbers are untouched.",
-      "cadence": "Daily cadence (items cleared per run)"
+      "cadence": "Daily cadence (items cleared per run)",
+      "signals_label": "Signals",
+      "window_value": "papers {papers_from} → {day} · posts {posts_from} → {day} · no repeats within {repeat_days} days (UTC)"
     },
     "ja": {
       "title": "Physical AI フロンティア・レーダー",
@@ -101,7 +105,9 @@
       },
       "llm_draft": "AI 下書き",
       "llm_notice": "本ページの項目別分析は {agent}（{model}）が下書きし、決定的な検査とエージェント査読を経て自動的に取り込まれました。**人間の確認は経ていません**。タイトルと数値は改変していません。",
-      "cadence": "日次ペース（各回の採択件数）"
+      "cadence": "日次ペース（各回の採択件数）",
+      "signals_label": "シグナル",
+      "window_value": "論文 {papers_from} → {day} · ブログ・報道 {posts_from} → {day} · {repeat_days} 日以内の重複なし (UTC)"
     }
   },
   "why_templates": {

@@ -1,10 +1,10 @@
 # Physical AI Radar
 
-[![daily radar](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/daily.yml)
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![updated daily 01:30 UTC](https://img.shields.io/badge/updated-daily%2001%3A30%20UTC-7300e5.svg)](.github/workflows/daily.yml)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
 
 **Language: [中文](README.md) · English · [日本語](README.ja.md)**
 
@@ -56,12 +56,12 @@ How this differs from a paper list or a news aggregator:
 ## How the automation works
 
 ```
-GitHub Actions (cron 01:30 UTC / 09:30 CST / 10:30 JST)
-  └─ fetch    arXiv API (six cs.RO queries) + official Atom/RSS (AWS / NVIDIA / DeepMind / HF / IEEE)
-  └─ distill  classify into eight lanes → extract quantitative claims → explainable score → per-lane caps
+scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST / 10:40 JST)
+  └─ fetch    arXiv API (six cs.RO queries; category RSS when the API refuses) + official and press Atom/RSS (AWS / NVIDIA / DeepMind / HF / IEEE / The Robot Report)
+  └─ distill  relevance gate → classify into eight lanes → extract quantitative claims → explainable score → per-lane, per-source and per-evidence caps
   └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix
   └─ render   trilingual daily page + inject three READMEs + refresh archive index and latest.json
-  └─ commit   commit only when something changed ([skip ci])
+  └─ commit   commit and push to main only when something changed
 ```
 
 The run is scheduled after the arXiv daily announcement so the first thing you read in the morning is the newest batch.
@@ -100,7 +100,7 @@ docs/        METHODOLOGY.md (method, translation policy, known limits)
 
 - Summaries are **extractive**: the English source excerpt is shown as a quote and never machine-translated. The analytical layer above it is written per language, never translated sentence by sentence — on most days by an agent, whose every line is labelled as drafted and whose figures must already appear on that day's published page; where no draft exists the per-lane template fills in, unlabelled. [How a draft is reviewed and what it may not claim](docs/METHODOLOGY.md).
 - Each language gets its own chart set, labelled in that language. These are SVG text, so the glyphs come from the reader's browser and nothing is bundled. Long names carry a curated short form in `data/taxonomy.json`; a label is trimmed only if it still does not fit, and a test asserts none currently is.
-- Lane assignment is **keyword matching**, not classification. A lane needs at least one keyword hit, and `python3 -m pairadar.lanes` flags a pick decided by a single keyword (`thin`) or close to its runner-up (`ambiguous`). A wrong lane is findable; it is not prevented.
+- Lane assignment is **keyword matching** (whole terms, never substrings), not classification. An item from a general-purpose blog must also name a Physical AI anchor term (robot, humanoid, VLA, world model, ...), a lane needs at least one keyword hit, and `python3 -m pairadar.lanes` flags a pick decided by a single keyword (`thin`) or close to its runner-up (`ambiguous`). A wrong lane is findable; it is not prevented.
 
 ## Deliberate choices (not limits)
 

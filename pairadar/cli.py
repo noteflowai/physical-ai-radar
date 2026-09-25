@@ -60,6 +60,31 @@ def recent_urls(runs: list[dict[str, Any]], reference: date, days: int) -> set[s
     return urls
 
 
+def _optional_int(value: Any) -> int | None:
+    return None if value in (None, "") else int(value)
+
+
+def window_detail(reference: date, lookback: int, max_age: int, repeat_days: int) -> dict[str, Any]:
+    """What the day's pool actually covered.
+
+    The page used to print only the arXiv lookback ("09-18 → 09-21") while feed posts
+    up to thirty days old were eligible, so a pick dated two weeks earlier looked
+    like a mistake. Both horizons, and the repeat guard, are stated now.
+    """
+    return {
+        "day": reference.isoformat(),
+        "papers_from": (reference - timedelta(days=lookback)).isoformat(),
+        "posts_from": (reference - timedelta(days=max_age)).isoformat(),
+        "repeat_days": repeat_days,
+    }
+
+
+def window_summary(detail: dict[str, Any]) -> str:
+    """The language-neutral form kept in radar/latest.json for existing consumers."""
+    return (f"papers {detail['papers_from']} → {detail['day']} · "
+            f"posts {detail['posts_from']} → {detail['day']} (UTC)")
+
+
 def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
     """Deterministically rotate the curated baseline so the front page stays fresh."""
     if not items:
@@ -74,11 +99,14 @@ def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
 def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[str, Any]:
     reference = datetime.fromisoformat(day).date()
     lookback = int(config.sources.get("arxiv", {}).get("lookback_days", 3))
-    repeat_days = int(config.sources.get("filters", {}).get("repeat_days", 7))
+    filters = config.sources.get("filters", {})
+    repeat_days = int(filters.get("repeat_days", 7))
     history = [entry for entry in load_history() if entry["date"] != day]
     report = fetch_all(config, offline=offline)
     live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
-    picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days))
+    picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
+                    per_source=_optional_int(filters.get("per_source")),
+                    per_evidence=_optional_int(filters.get("per_evidence")))
 
     baseline_all = enrich(baseline_items(config), config, reference)
     curated = {
@@ -100,11 +128,12 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 
-    window_start = (reference - timedelta(days=lookback)).isoformat()
+    window = window_detail(reference, lookback, int(filters.get("max_age_days", 30)), repeat_days)
     return {
         "date": day,
         "generated": now_iso(),
-        "window": f"{window_start} → {day} (UTC)",
+        "window": window_summary(window),
+        "window_detail": window,
         "picked": picked,
         "baseline": rotate_baseline(baseline_all, day),
         "baseline_all": baseline_all,
@@ -147,6 +176,7 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
         "date": day,
         "generated": snapshot["generated"],
         "window": snapshot["window"],
+        "window_detail": snapshot.get("window_detail"),
         "picked": picked,
         "baseline": rotate_baseline(baseline_all, day),
         "baseline_all": baseline_all,

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:arxiv="http://arxiv.org/schemas/atom" version="2.0">
+  <channel>
+    <title>cs.LG updates on arXiv.org</title>
+    <link>http://rss.arxiv.org/rss/cs.LG</link>
+    <description>cs.LG updates on the arXiv.org e-print archive.</description>
+    <language>en-us</language>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+    <skipDays>
+      <day>Sunday</day>
+      <day>Saturday</day>
+    </skipDays>
+    <item>
+      <title>ChipMEM: Verification-Grounded Memory for EDA Agents</title>
+      <link>https://arxiv.org/abs/2609.27067</link>
+      <description>arXiv:2609.27067v1 Announce Type: new 
+Abstract: Large language model (LLM)-based agents use Electronic Design Automation (EDA) tools to generate and revise register-transfer-level (RTL) designs under synthesis and verification feedback. Recent methods learn from this feedback by distilling reusable skills from execution traces or by training on rewards derived from EDA-tools. Both methods are typically evaluated on the tasks that produced the experience. Repeated access to benchmark feedback on the same task can reward task-specific revision rather than creating reusable knowledge that transfers. We introduce ChipMEM, a verification-grounded memory layer for EDA agents. It combines cross-task procedural memory with within-trajectory statistical guidance. Its procedural component distills and stores a skill only after it passes synthesis, simulation, or formal checks, rather than relying on model self-assessments. A Bayesian component maintains hierarchical Beta estimates over tool-call outcomes and ranks recovery strategies that succeeded under comparable errors. A common adapter applies the same memory interface to RTL optimization and testbench-generation agents while preserving each domain's tools and acceptance criteria. We measure performance on training tasks and evaluate whether learned skills transfer to unseen tasks. On RTLRewriter-Bench, under matched model and tool settings, ChipMEM produces equivalence-passing outputs on 39/54 scored designs versus 35/54 without …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.27067v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    <item>
+      <title>RL Starts before RL: On Policy Distillation for Better Reinforcement Learning</title>
+      <link>https://arxiv.org/abs/2609.28145</link>
+      <description>arXiv:2609.28145v1 Announce Type: new 
+Abstract: Reinforcement learning (RL) improves reasoning, but its performance depends on the policy from which training begins. We study on-policy distillation (OPD) as a preparation stage for RL and ask whether its benefits extend beyond improvements in the distilled model's initial accuracy. Under shared RL settings, students initialized with OPD reach higher final performance than those trained with direct RL or supervised fine-tuning followed by RL. This advantage can emerge even when OPD produces little immediate improvement in accuracy. Pre-RL Pass@k does not fully explain the benefit: similar or even higher values do not necessarily lead to better performance after RL. Behavioral analyses point to alignment with the teacher's distribution beyond top-1 agreement as a possible explanation. Such alignment may favor higher-quality reasoning paths while retaining alternatives that RL can further refine using outcome feedback. We further examine how trajectory sources and divergence objectives affect the value of distillation for subsequent RL. Standard reverse-KL OPD performs better before RL, but forward-KL OPD overtakes it afterward; with teacher-generated distillation trajectories, reverse KL remains ahead at both stages. These findings suggest that the preferred distillation objective depends on both the trajectory source and the training that follows. Our results support evaluating OPD as preparation for RL and selecting …</description>
+      <guid isPermaLink="false">oai:arXiv.org:2609.28145v1</guid>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>new</arxiv:announce_type>
+      </item>
+    </channel>
+</rss>
