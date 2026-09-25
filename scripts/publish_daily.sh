@@ -11,7 +11,12 @@
 # machine that the committed state builds and passes. It no longer publishes, and it
 # no longer needs write access.
 #
-#   scripts/publish_daily.sh [--limit N] [--dry-run]
+#   scripts/publish_daily.sh [--limit N] [--dry-run] [--force]
+#
+# A day is published once. A second run on the same UTC date -- cron plus a manual
+# retry, or this machine plus the Actions fallback -- used to fetch again and commit
+# a new "update" that differed only in timestamps and whatever the feeds had added
+# since. It now stops when main already carries the day; --force republishes it.
 #
 # Exit codes: 0 published or nothing changed, 1 something failed loudly.
 set -euo pipefail
@@ -21,14 +26,24 @@ CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.gi
 BRANCH_BASE="${RADAR_BRANCH:-main}"
 LIMIT="${RADAR_LIMIT:-8}"
 DRY_RUN=0
+FORCE=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
     --limit) LIMIT="$2"; shift 2 ;;
     --dry-run) DRY_RUN=1; shift ;;
+    --force) FORCE=1; shift ;;
     *) echo "unknown argument: $1" >&2; exit 1 ;;
   esac
 done
+
+# One job at a time in the shared clone. Under cron, radar-run already holds the lock.
+if [ -z "${RADAR_LOCK_HELD:-}" ]; then
+  LOCK="${RADAR_LOCK:-${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/radar.lock}"
+  mkdir -p "$(dirname "$LOCK")"
+  exec 9>>"$LOCK"
+  flock -n 9 || { echo "another radar job holds $LOCK; run this when it has finished" >&2; exit 1; }
+fi
 
 if [ ! -d "$REPO_DIR/.git" ]; then
   printf '[publish] cloning %s into %s\n' "$CLONE_URL" "$REPO_DIR"
@@ -37,6 +52,10 @@ fi
 cd "$REPO_DIR"
 DAY="$(date -u +%F)"
 log() { printf '[publish %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
+published_day() {
+  python3 -c 'import json; print(json.load(open("radar/latest.json", encoding="utf-8")).get("date", ""))' \
+    2>/dev/null || true
+}
 
 changed_paths() {
   git status --porcelain=v1 -z --untracked-files=all |
@@ -52,6 +71,10 @@ git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
 git reset --hard --quiet "origin/${BRANCH_BASE}"
 git clean -qfdx
 
+if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
+  log "${BRANCH_BASE} already carries the ${DAY} radar; nothing to do (--force republishes it)"
+  exit 0
+fi
 log "generating the ${DAY} radar"
 python3 -m pairadar --limit "$LIMIT"
 # stdout is the pipeline talking to itself; the verdict and any failure go to
@@ -91,6 +114,10 @@ until git push --quiet origin "$BRANCH_BASE"; do
   log "rebase failed; regenerating on top of the new ${BRANCH_BASE}"
   git rebase --abort || true
   git reset --hard --quiet "origin/${BRANCH_BASE}"
+  if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
+    log "${DAY} was published meanwhile by another run; keeping that one"
+    exit 0
+  fi
   python3 -m pairadar --limit "$LIMIT"
   if [ -z "$(changed_paths)" ]; then
     log "the new ${BRANCH_BASE} already carries an equivalent update"

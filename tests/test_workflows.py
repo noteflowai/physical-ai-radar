@@ -126,3 +126,37 @@ class AgentBoundaryTests(unittest.TestCase):
                 self.assertEqual(declared & self.FORBIDDEN, set(),
                                  f"{name}.{field}: the source boundary is enforced here, "
                                  f"not only described in the README")
+
+
+class NightlyJobTests(unittest.TestCase):
+    """The unattended jobs share one clone and run without anyone watching."""
+
+    SCRIPTS = sorted((ROOT/"scripts").glob("*.sh"))
+
+    def test_every_job_takes_the_shared_lock(self):
+        # Each job resets the clone hard; two at once destroy each other's work.
+        self.assertGreaterEqual(len(self.SCRIPTS), 3, "nothing was scanned")
+        for path in self.SCRIPTS + [ROOT/"scripts"/"radar-run"]:
+            with self.subTest(script=path.name):
+                text = path.read_text(encoding="utf-8")
+                self.assertIn("radar.lock", text)
+                self.assertRegex(text, r"flock (-n|-w \S+) 9")
+
+    def test_every_model_call_is_bounded(self):
+        for path in self.SCRIPTS:
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                if "kiro-cli chat" in line and not line.lstrip().startswith("#"):
+                    self.assertIn("timeout", line, f"{path.name}:{number} calls a model with no time limit")
+
+    def test_a_published_day_is_not_published_again(self):
+        script = (ROOT/"scripts"/"publish_daily.sh").read_text(encoding="utf-8")
+        gate = script.index('"$(published_day)" = "$DAY"')
+        self.assertLess(gate, script.index("python3 -m pairadar --limit"), "check before fetching")
+
+    def test_the_fallback_wakes_on_its_own_and_only_acts_on_a_missed_day(self):
+        text = (WORKFLOWS/"daily.yml").read_text(encoding="utf-8")
+        self.assertIn("schedule", triggers(text))
+        steps = text.split("- name: ")[1:]
+        gated = [step.splitlines()[0] for step in steps if "steps.fresh.outputs.run == 'true'" in step]
+        self.assertIn("Generate today's radar", gated)
+        self.assertIn("Commit when something changed", gated)

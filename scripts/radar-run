@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Bootstrap for the scheduled jobs on the maintainer's machine. cron calls an installed
+# copy, because it needs a stable path while the automation clone is reset on every run:
+#
+#   install -m 755 scripts/radar-run ~/.local/bin/radar-run
+#   radar-run scripts/publish_daily.sh [args...]
+#   radar-run scripts/draft_daily_notes.sh [args...]
+#   radar-run scripts/repair_sources.sh [args...]
+#
+# Ensures the automation clone exists and is on the published branch, then hands over
+# to the script that lives in the repository, so the logic stays reviewed.
+#
+# The three jobs share one clone and each of them resets it hard. Without a lock, a
+# draft still waiting on its pull request's checks at 03:15 had its branch reset under
+# it by the repair job. So every job holds the same lock for its whole run, the reset
+# here included, and gives up loudly rather than waiting forever. A job that ends in
+# failure says so in its log with a timestamp; a bare `set -e` exit used to leave the
+# last line of the log looking like a model error half an hour earlier.
+set -euo pipefail
+
+SCRIPT="${1:-scripts/draft_daily_notes.sh}"
+[ $# -gt 0 ] && shift || true
+REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
+CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
+BRANCH="${RADAR_BRANCH:-main}"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/pairadar"
+LOCK="${RADAR_LOCK:-$STATE_DIR/radar.lock}"
+LOCK_WAIT="${RADAR_LOCK_WAIT:-7200}"   # seconds to wait for another job to finish
+TIMEOUT="${RADAR_TIMEOUT:-3h}"         # the longest any one job may run
+log() { printf '[radar-run %s] %s\n' "$(date -u '+%F %H:%M:%S')" "$*"; }
+
+mkdir -p "$STATE_DIR"
+exec 9>>"$LOCK"
+if ! flock -w "$LOCK_WAIT" 9; then
+  log "FAILED ${SCRIPT}: another job held ${LOCK} for ${LOCK_WAIT}s"
+  exit 1
+fi
+# The scripts take the same lock when run by hand; this tells them it is already held.
+export RADAR_LOCK_HELD=1
+
+if [ ! -d "$REPO_DIR/.git" ]; then
+  log "cloning $CLONE_URL into $REPO_DIR"
+  git clone --quiet "$CLONE_URL" "$REPO_DIR"
+fi
+git -C "$REPO_DIR" fetch --quiet origin
+git -C "$REPO_DIR" checkout --quiet -B "$BRANCH" "origin/${BRANCH}"
+git -C "$REPO_DIR" reset --hard --quiet "origin/${BRANCH}"
+
+if [ ! -x "$REPO_DIR/$SCRIPT" ]; then
+  log "${BRANCH} does not carry ${SCRIPT} yet; nothing to run"
+  exit 0
+fi
+status=0
+timeout --kill-after=60 "$TIMEOUT" "$REPO_DIR/$SCRIPT" "$@" || status=$?
+case "$status" in
+  0) ;;
+  124|137) log "FAILED ${SCRIPT}: still running after ${TIMEOUT}, stopped" ;;
+  *) log "FAILED ${SCRIPT}: exit ${status}" ;;
+esac
+exit "$status"
