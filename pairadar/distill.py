@@ -29,6 +29,15 @@ NUMBER_PATTERNS = (
 _NUMBER_RE = re.compile("|".join(NUMBER_PATTERNS))
 _SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
 
+# Feed furniture that says nothing about the item. WordPress appends "The post
+# <title> appeared first on <site>." to every description, and IEEE Spectrum opens
+# each Video Friday with the same paragraph, so both used to be quoted on the page
+# as if they were the source's abstract.
+BOILERPLATE = (
+    re.compile(r"\s*\bThe post\b.*?\bappeared first on\b[^.]*\.?\s*$", re.S),
+    re.compile(r"^\s*Video Friday is your weekly selection\b.*?Enjoy today[’']s videos!\s*", re.S),
+)
+
 EVIDENCE_BONUS = {"O": 0.6, "R": 0.35, "M": 0.1}
 SIGNAL_BONUS = {
     "closed_loop": 0.5,
@@ -37,6 +46,12 @@ SIGNAL_BONUS = {
     "open_release": 0.25,
     "latency": 0.2,
 }
+
+
+def strip_boilerplate(text: str) -> str:
+    for pattern in BOILERPLATE:
+        text = pattern.sub("", text)
+    return text.strip()
 
 
 def extract_numbers(text: str, limit: int = 4) -> list[str]:
@@ -49,6 +64,35 @@ def extract_numbers(text: str, limit: int = 4) -> list[str]:
         if len(found) >= limit:
             break
     return found
+
+
+_CLAUSE_END = re.compile(r"[,;:]")
+
+
+def number_context(token: str, text: str, before: int = 4, after: int = 3) -> str:
+    """The few words around a figure, quoted from the source, or "" if it is not there.
+
+    A bare `48.1% · 68.9%` does not say what was measured. Naming the metric by
+    guessing from nearby words mislabels as often as not -- in "raises success rate
+    and tracking accuracy by at least 24% and 47%" the nearest metric to 24% is the
+    wrong one -- so the page quotes the clause instead and lets the reader see it.
+    """
+    alone = re.compile(r"(?<![\w.\-])" + re.escape(token) + r"(?!\w)")
+    sentences = _SENTENCE_RE.split(text)
+    spans = [(sentence, found.span()) for sentence in sentences if (found := alone.search(sentence))]
+    if not spans:
+        # only inside a range such as 12.1-17.6%: quote the whole range
+        for sentence in sentences:
+            if token in sentence:
+                end = sentence.find(token) + len(token)
+                spans = [(sentence, (sentence.rfind(" ", 0, end) + 1, end))]
+                break
+    if not spans:
+        return ""
+    sentence, (start, end) = spans[0]
+    head = _CLAUSE_END.split(sentence[:start])[-1].split()[-before:]
+    tail = _CLAUSE_END.split(sentence[end:])[0].split()[:after]
+    return " ".join(head + [sentence[start:end]] + tail).rstrip(" .!?")
 
 
 @lru_cache(maxsize=None)
@@ -138,6 +182,7 @@ def recency_bonus(published: str, reference: date) -> float:
 
 def one_liner(summary: str, max_chars: int = 240) -> str:
     """First one or two sentences of the source abstract, hard-capped."""
+    summary = strip_boilerplate(summary)
     if not summary:
         return ""
     sentences = _SENTENCE_RE.split(summary)
@@ -180,6 +225,7 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
     """Classify, score and annotate items in place; returns a ranked copy."""
     enriched: list[Item] = []
     for item in items:
+        item.summary = strip_boilerplate(item.summary)
         blob = f"{item.title}. {item.summary}"
         if item.lane_locked:
             # Keep the curated lane, but score it on its own keywords.
@@ -246,6 +292,34 @@ def deduplicate(items: Iterable[Item]) -> list[Item]:
     return unique
 
 
+# Words that say nothing about which story a title tells: function words, the verbs
+# press titles are built from, and the names nearly every post in the pool carries.
+_STORY_STOP = frozenset("""
+a an the and or of for to in on at by with from into via is are be as its it this that
+your you we our how why what when new now says brings introduces launches takes meet
+up vs using use can will more most first ai nvidia robot robotic robotics google
+deepmind hugging face aws amazon
+""".split())
+
+
+def story_terms(title: str) -> frozenset[str]:
+    """The distinctive words of a title, singularised."""
+    terms = set()
+    for word in re.findall(r"\w[\w.\-]*\w|\w", title.lower()):
+        if len(word) > 3 and word.endswith("s") and not word.endswith("ss"):
+            word = word[:-1]
+        if word not in _STORY_STOP and len(word) > 1:
+            terms.add(word)
+    return frozenset(terms)
+
+
+def same_story(first: frozenset[str], second: frozenset[str]) -> bool:
+    """Two titles tell one story when they share three distinctive words, and those
+    make up at least half of the shorter title."""
+    shared = len(first & second)
+    return shared >= 3 and shared * 2 >= min(len(first), len(second))
+
+
 def qualifies(item: Item, min_score: float) -> bool:
     """The gates every pick must pass, whatever the caps say.
 
@@ -277,6 +351,7 @@ def select(
     seen: Iterable[str] = (),
     per_source: int | None = None,
     per_evidence: int | None = None,
+    told: Iterable[str] = (),
 ) -> list[Item]:
     """Pick the daily shortlist, capping each lane so one topic cannot dominate.
 
@@ -292,8 +367,15 @@ def select(
     window looks back three days and feeds keep entries for thirty, so without it
     a strong item reappears on consecutive days and a daily radar stops showing
     what changed.
+
+    `told` holds the titles of posts published on earlier days. A link is not a
+    story: NVIDIA announced Isaac ROS 5.0 on its blog, The Robot Report retold it the
+    next day and both took a slot, with different URLs. A post is skipped when its
+    title tells the same story as an earlier day's post or a higher-ranked post today.
+    Papers are exempt on both sides: two papers with similar titles are separate work.
     """
     published = {url_key(url) for url in seen}
+    earlier = [story_terms(title) for title in told]
     eligible = [item for item in items
                 if url_key(item.url) not in published and qualifies(item, min_score)]
     picked: list[int] = []
@@ -307,11 +389,21 @@ def select(
         source_counts[item.source_id] = source_counts.get(item.source_id, 0) + 1
         evidence_counts[item.evidence] = evidence_counts.get(item.evidence, 0) + 1
 
+    stories = [story_terms(item.title) for item in eligible]
+
+    def retold(index: int) -> bool:
+        if eligible[index].evidence == "R":
+            return False
+        told_before = earlier + [stories[other] for other in picked if eligible[other].evidence != "R"]
+        return any(same_story(stories[index], other) for other in told_before)
+
     for capped in (True, False):
         for index, item in enumerate(eligible):
             if len(picked) >= limit:
                 break
             if index in picked or lane_counts.get(item.lane, 0) >= per_lane:
+                continue
+            if retold(index):
                 continue
             if capped and per_source is not None and source_counts.get(item.source_id, 0) >= per_source:
                 continue

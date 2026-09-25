@@ -23,10 +23,13 @@ from .config import (
 )
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
 from .fetch import baseline_items, fetch_all
-from .feeds import write_feeds
-from .render import inject_readme, update_index, write_daily, write_latest
+from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
+from .render import chart_title, inject_readme, update_index, write_daily, write_latest
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
+# The lane and evidence charts count the picks of this many days, today included.
+# The feed store they are read from keeps at most 100 entries, so a week always fits.
+CHART_DAYS = 7
 
 
 def load_history(path: Path = HISTORY_PATH) -> list[dict[str, Any]]:
@@ -99,24 +102,31 @@ def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
 
 def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[str, Any]:
     reference = datetime.fromisoformat(day).date()
+    generated = now_iso()
     lookback = int(config.sources.get("arxiv", {}).get("lookback_days", 3))
     filters = config.sources.get("filters", {})
     repeat_days = int(filters.get("repeat_days", 7))
     history = [entry for entry in load_history() if entry["date"] != day]
+    earlier = [entry for entry in load_store(ROOT/"radar"/FEED_JSON) if entry["date"] != day]
+    told = [entry["title"] for entry in within(earlier, day, repeat_days) if entry["evidence"] != "R"]
     report = fetch_all(config, offline=offline, reference=reference)
     live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
                     per_source=_optional_int(filters.get("per_source")),
-                    per_evidence=_optional_int(filters.get("per_evidence")))
+                    per_evidence=_optional_int(filters.get("per_evidence")), told=told)
 
     baseline_all = enrich(baseline_items(config), config, reference)
     curated = {
         f"baseline:{raw['id']}": raw.get("why", {}) for raw in config.baseline.get("items", [])
     }
 
-    tracked = picked + baseline_all
-    lane_rows = lane_distribution(tracked, config)
-    mix = evidence_mix(tracked)
+    # The charts count what was published, not what is tracked: with the 29 curated
+    # baseline entries in the count, today's eight picks barely moved the bars and
+    # the chart looked the same every day.
+    recent = [Item.from_dict(entry) for entry in within(upsert(earlier, picked, day, generated),
+                                                       day, CHART_DAYS - 1)]
+    lane_rows = lane_distribution(recent, config)
+    mix = evidence_mix(recent)
 
     history.append({
         "date": day,
@@ -133,7 +143,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     window = window_detail(reference, lookback, int(filters.get("max_age_days", 30)), repeat_days)
     return {
         "date": day,
-        "generated": now_iso(),
+        "generated": generated,
         "window": window_summary(window),
         "window_detail": window,
         "picked": picked,
@@ -145,6 +155,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "cadence": cadence,
         "history": history,
         "live_count": len(live),
+        "chart_days": CHART_DAYS,
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
         "notes": load_notes(day),
@@ -190,6 +201,7 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
         "history": history,
         "fetch": snapshot.get("fetch", {}),
         "notes": load_notes(day),
+        "chart_days": snapshot.get("chart_days"),
     }
     # The pages embed the charts, so re-rendering without them would publish a page
     # whose numbers and whose images disagree.
@@ -211,8 +223,8 @@ def write_charts(config: Config, ctx: dict[str, Any], root: Path) -> None:
     assets = root/"assets" if root != ROOT else ASSETS_DIR
     for lang in LANGS:
         ui = config.ui(lang)
-        titles = {"lanes": ui["lane_distribution"], "cadence": ui["cadence"],
-                  "mix": ui["source_mix"]}
+        titles = {"lanes": chart_title(ui, ui["lane_distribution"], ctx), "cadence": ui["cadence"],
+                  "mix": chart_title(ui, ui["source_mix"], ctx)}
         rows = [(config.chart_label(lane_id, lang), count) for lane_id, count in ctx["lane_rows"]]
         charts.write_all(assets, rows, ctx["cadence"], ctx["mix"], ctx["generated"],
                          titles=titles, suffix=f".{lang}")

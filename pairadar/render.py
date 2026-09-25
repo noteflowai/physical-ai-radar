@@ -26,7 +26,7 @@ from .config import (
     md_text,
     md_url,
 )
-from .distill import one_liner, url_key
+from .distill import number_context, one_liner, strip_boilerplate, url_key
 from .feeds import iso_week, weekly_stems
 
 EVIDENCE_LABEL = {"O": "`[O]`", "R": "`[R]`", "M": "`[M]`"}
@@ -42,12 +42,54 @@ DAILY_SWITCH = {
 }
 
 
+# What a reader should be able to find in the text, by evidence class. A paper is
+# expected to show a robot, a closed loop and figures; a post or a news story at
+# least figures. Hardware and safety items are rarely evaluated in a closed loop, so
+# its absence there says nothing.
+EXPECTED = {"R": ("real_robot", "closed_loop", "numbers"), "O": ("numbers",), "M": ("numbers",)}
+NO_CLOSED_LOOP = {"hardware", "safety"}
+
+
+def _join(words: list[str], joiner: dict[str, str], closing: str) -> str:
+    if len(words) < 2:
+        return "".join(words)
+    return joiner["list"].join(words[:-1]) + joiner[closing] + words[-1]
+
+
+def composed_why(item: Item, config: Config, lang: str) -> str:
+    """The deterministic "why it matters" line for an item nobody wrote one for.
+
+    It used to be one sentence per lane, so a page of eight items repeated the same
+    few lines word for word, and the README opened with two identical ones. This
+    says what differs between items: the kind of evidence, what the source text
+    leaves out, and what to watch in the lane. It only reports what the signals
+    found in the text, and reads "gives no" rather than "has no": an abstract can
+    omit what the paper contains.
+    """
+    parts = config.glossary["why_parts"]
+    expected = [check for check in EXPECTED.get(item.evidence, ("numbers",))
+                if not (check == "closed_loop" and item.lane in NO_CLOSED_LOOP)]
+    found = set(item.signals) | ({"numbers"} if item.numbers else set())
+    missing = [check for check in expected if check not in found]
+    names = [parts["checks"][check][lang] for check in (missing or expected)]
+    joiner = parts["joiner"][lang]
+    if missing:
+        checks = parts["missing"][lang].format(checks=_join(names, joiner, "last"))
+    else:
+        checks = parts["present"][lang].format(checks=_join(names, joiner, "all"))
+    return parts["sentence"][lang].format(
+        evidence=parts["evidence"].get(item.evidence, parts["evidence"]["M"])[lang],
+        checks=checks,
+        watch=parts["watch"].get(item.lane, {}).get(lang, ""),
+    ).strip()
+
+
 def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str, str]],
               notes: dict[str, Any] | None = None) -> tuple[str, bool]:
     """Return the "why it matters" line and whether it was drafted rather than authored.
 
     Order: a human-curated line wins, then a drafted note for this exact item, then
-    the per-lane template. A drafted line is always reported as drafted so the caller
+    the composed line. A drafted line is always reported as drafted so the caller
     can label it -- docs/METHODOLOGY.md section 5 requires that.
     """
     curated_why = curated.get(item.id, {})
@@ -59,7 +101,7 @@ def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str
     drafted = (drafted_notes.get(url_key(item.url), {}) or {}).get(lang, "")
     if drafted:
         return drafted, True
-    return config.glossary["why_templates"].get(item.lane, {}).get(lang, ""), False
+    return composed_why(item, config, lang), False
 
 
 def item_block(
@@ -80,7 +122,8 @@ def item_block(
         f"`{item.published}`",
     ]
     if item.numbers:
-        lines.append(f"- **{ui['numbers']}**: " + " · ".join(f"`{value}`" for value in item.numbers))
+        lines.append(f"- **{ui['numbers']}**: " + " · ".join(
+            _number(value, f"{item.title}. {strip_boilerplate(item.summary)}") for value in item.numbers))
     if item.signals:
         tags = [ui["signals"].get(signal, signal) for signal in item.signals]
         lines.append(f"- **{ui['signals_label']}**: " + " · ".join(f"`{tag}`" for tag in tags))
@@ -94,6 +137,14 @@ def item_block(
         lines.append(f"> {md_text(excerpt)}")
     lines.append("")
     return lines
+
+
+def _number(value: str, text: str) -> str:
+    """A figure with the words around it in the source, so it says what it measures."""
+    context = number_context(value, text)
+    if not context or context == value:
+        return f"`{value}`"
+    return f"`{value}` (“{md_text(context)}”)"
 
 
 def window_text(config: Config, lang: str, ctx: dict[str, Any]) -> str:
@@ -123,8 +174,6 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         f"- {ui['window']}: `{window_text(config, lang, ctx)}`",
         f"- {ui['evidence_legend']}",
         "",
-        f"![lane distribution](../../assets/lane-distribution.{lang}.svg)",
-        "",
         f"## {ui['top_items']}",
         "",
     ]
@@ -138,9 +187,12 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     for position, item in enumerate(ctx["baseline"], start=1):
         lines.extend(item_block(item, config, lang, ctx["curated"], position, ctx.get("notes")))
 
+    # A day's page is written once and read for months, so it states its numbers as
+    # text. It used to embed the shared charts, which every later run redraws: an
+    # old page showed today's bars under its own date.
     lines.extend(
         [
-            f"## {ui['lane_distribution']}",
+            f"## {chart_title(ui, ui['lane_distribution'], ctx)}",
             "",
             f"| {ui['lane']} | # |",
             "| --- | --- |",
@@ -148,14 +200,16 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     )
     for name, count in _lane_rows_named(config, ctx["lane_rows"], lang):
         lines.append(f"| {name} | {count} |")
+    mix = ctx["mix"]
+    runs = [(day, count) for day, count in ctx["cadence"] if day <= stem][-7:]
     lines.extend(
         [
             "",
             f"## {ui['trend']}",
             "",
-            f"![cadence](../../assets/cadence.{lang}.svg)",
-            "",
-            f"![evidence mix](../../assets/evidence-mix.{lang}.svg)",
+            f"- {chart_title(ui, ui['source_mix'], ctx)}: "
+            f"`[O]` {mix.get('O', 0)} · `[R]` {mix.get('R', 0)} · `[M]` {mix.get('M', 0)}",
+            f"- {ui['cadence_line']}: " + " · ".join(f"{day[5:]} **{count}**" for day, count in runs),
             "",
             f"## {ui['watchlist']}",
             "",
@@ -177,6 +231,16 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines)
+
+
+def chart_title(ui: dict[str, Any], title: str, ctx: dict[str, Any]) -> str:
+    """A chart's title with the window it counts, when the day recorded one.
+
+    Snapshots from before the charts counted a window counted the curated baseline
+    too, and keep their plain title.
+    """
+    days = ctx.get("chart_days")
+    return f"{title} ({ui['chart_window'].format(days=days)})" if days else title
 
 
 def _draft_notice(config: Config, lang: str, ctx: dict[str, Any]) -> str:
@@ -300,6 +364,7 @@ def write_latest(ctx: dict[str, Any], root: Path = ROOT) -> Path:
             "evidence_mix": ctx["mix"],
             "fetch": ctx.get("fetch", {}),
             "baseline_count": len(ctx["baseline_all"]),
+            "chart_days": ctx.get("chart_days"),
         },
     )
     return path

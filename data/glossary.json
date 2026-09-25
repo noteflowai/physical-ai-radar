@@ -39,7 +39,9 @@
       "weekly": "每周汇总",
       "weekly_intro": "{start} → {end} 共发布 {count} 条，按主线分组。标题链接到原始来源，日期链接到当天的雷达。",
       "day_radar": "{day} 雷达全文",
-      "subscribe": "订阅"
+      "subscribe": "订阅",
+      "chart_window": "近 {days} 天入选",
+      "cadence_line": "最近各轮入选条数"
     },
     "en": {
       "title": "Physical AI Radar",
@@ -79,7 +81,9 @@
       "weekly": "Weekly roundup",
       "weekly_intro": "{count} picks published {start} → {end}, grouped by lane. Titles link to the source; dates link to that day's radar.",
       "day_radar": "Full radar for {day}",
-      "subscribe": "Subscribe"
+      "subscribe": "Subscribe",
+      "chart_window": "picks, last {days} days",
+      "cadence_line": "Picks per recent run"
     },
     "ja": {
       "title": "Physical AI フロンティア・レーダー",
@@ -119,49 +123,9 @@
       "weekly": "週間まとめ",
       "weekly_intro": "{start} → {end} に掲載した {count} 件を軸ごとにまとめています。タイトルは原典へ、日付はその日のレーダーへリンクします。",
       "day_radar": "{day} のレーダー全文",
-      "subscribe": "購読"
-    }
-  },
-  "why_templates": {
-    "foundation": {
-      "zh": "基座模型层的变化会直接决定下游所有任务的起点：它影响你需要多少自有数据、能不能跨本体迁移。",
-      "en": "Changes at the foundation-model layer reset the starting point for every downstream task: how much of your own data you need, and whether it transfers across embodiments.",
-      "ja": "基盤モデル層の変化は下流タスクの出発点を変える：自社データの必要量と、機体間で転移できるかを左右する。"
-    },
-    "data": {
-      "zh": "数据来源与清洗管道是当前真正的护城河，决定单位新任务的成本。",
-      "en": "Data sourcing and curation pipelines are the real moat today; they set the cost per new task.",
-      "ja": "データの取得元と精査パイプラインが現在の真の堀であり、新規タスク単価を決める。"
-    },
-    "training": {
-      "zh": "后训练与自我改进决定策略在部署后还能不能变强，也决定运维是否要收集干预数据。",
-      "en": "Post-training and self-improvement decide whether a policy keeps getting better after deployment, and whether operations must capture intervention data.",
-      "ja": "事後学習と自己改善は、配備後も方策が強くなれるか、運用で介入データを取る必要があるかを決める。"
-    },
-    "simeval": {
-      "zh": "评测方式决定你敢不敢上线：离线指标不等于闭环成功率，评测预算结构正在从人力转向 GPU 小时。",
-      "en": "Evaluation method decides what you dare to ship: offline metrics are not closed-loop success, and the evaluation budget is shifting from human hours to GPU hours.",
-      "ja": "評価手法が出荷判断を決める：オフライン指標は閉ループ成功率ではなく、評価予算は人手からGPU時間へ移りつつある。"
-    },
-    "edge": {
-      "zh": "端侧延迟与控制频率是硬约束：模型再强，超出实时预算就不能进入控制回路。",
-      "en": "On-device latency and control rate are hard constraints: however capable the model, it cannot enter the control loop if it misses the real-time budget.",
-      "ja": "オンデバイスの遅延と制御周期は硬い制約：実時間予算を超えるモデルは制御ループに入れない。"
-    },
-    "safety": {
-      "zh": "在专用标准落地前，安全要靠架构与运行时保证；这一层直接决定能否进客户现场。",
-      "en": "Until dedicated standards land, safety rests on architecture and runtime guarantees; this layer gates access to customer sites.",
-      "ja": "専用規格が整うまで、安全はアーキテクチャと実行時保証に依存し、この層が顧客現場への可否を決める。"
-    },
-    "systems": {
-      "zh": "长程任务的系统形态是编排器加策略池，运维对象从单个模型变成一组能力边界。",
-      "en": "Long-horizon systems look like an orchestrator plus a policy pool; the operated object becomes a set of capability boundaries rather than one model.",
-      "ja": "長期タスクのシステム形態はオーケストレーターと方策プールであり、運用対象は単一モデルから能力境界の集合になる。"
-    },
-    "hardware": {
-      "zh": "本体与供应链决定成本曲线和交付节奏，执行器仍是 BOM 的主要部分。",
-      "en": "Embodiment and supply chain set the cost curve and delivery cadence; actuators remain the dominant share of BOM.",
-      "ja": "機体とサプライチェーンがコスト曲線と納入ペースを決め、アクチュエータがBOMの主要部分を占める。"
+      "subscribe": "購読",
+      "chart_window": "直近 {days} 日の採択",
+      "cadence_line": "最近の各回の採択件数"
     }
   },
   "terms": [
@@ -265,5 +229,116 @@
       "zh": "跨本体",
       "ja": "機体横断"
     }
-  ]
+  ],
+  "why_note": "The deterministic why-it-matters line: what kind of evidence the item is, what its text leaves out, and what to watch in its lane. It never claims more than the signals detected in the source text.",
+  "why_parts": {
+    "evidence": {
+      "O": {
+        "zh": "一手官方发布",
+        "en": "First-party release",
+        "ja": "当事者による一次発表"
+      },
+      "R": {
+        "zh": "预印本，尚未经过同行评审",
+        "en": "Preprint, not yet peer-reviewed",
+        "ja": "査読前のプレプリント"
+      },
+      "M": {
+        "zh": "二手报道，引用前请核对原始来源",
+        "en": "Secondary report, so check the primary source before citing",
+        "ja": "二次報道のため、引用前に一次情報の確認を推奨"
+      }
+    },
+    "checks": {
+      "real_robot": {
+        "zh": "真机结果",
+        "en": "real-robot results",
+        "ja": "実機での結果"
+      },
+      "closed_loop": {
+        "zh": "闭环结果",
+        "en": "closed-loop results",
+        "ja": "閉ループ評価の結果"
+      },
+      "numbers": {
+        "zh": "量化数据",
+        "en": "figures",
+        "ja": "定量データ"
+      }
+    },
+    "missing": {
+      "zh": "原文未提及{checks}",
+      "en": "the text gives no {checks}",
+      "ja": "本文に{checks}の記載なし"
+    },
+    "present": {
+      "zh": "原文给出了{checks}",
+      "en": "the text gives {checks}",
+      "ja": "本文に{checks}あり"
+    },
+    "joiner": {
+      "zh": {
+        "list": "、",
+        "last": "、",
+        "all": "、"
+      },
+      "en": {
+        "list": ", ",
+        "last": " or ",
+        "all": " and "
+      },
+      "ja": {
+        "list": "、",
+        "last": "、",
+        "all": "、"
+      }
+    },
+    "sentence": {
+      "zh": "{evidence}；{checks}。{watch}",
+      "en": "{evidence}; {checks}. {watch}",
+      "ja": "{evidence}。{checks}。{watch}"
+    },
+    "watch": {
+      "foundation": {
+        "zh": "关注它能否减少新任务或新本体所需的数据。",
+        "en": "Watch whether it cuts the data a new task or embodiment needs.",
+        "ja": "新しいタスクや機体に必要なデータが減るかに注目。"
+      },
+      "data": {
+        "zh": "关注这些数据能否在作者自己的机器人之外复用。",
+        "en": "Watch whether the data is reusable beyond the authors' own robot.",
+        "ja": "著者自身の機体以外でもデータを再利用できるかに注目。"
+      },
+      "training": {
+        "zh": "关注提升在训练任务之外是否依然成立。",
+        "en": "Watch whether the gain holds outside the training tasks.",
+        "ja": "学習タスクの外でも改善が保たれるかに注目。"
+      },
+      "simeval": {
+        "zh": "关注仿真结果对真机表现的预测有多准。",
+        "en": "Watch how well the simulated result predicts real-robot performance.",
+        "ja": "シミュレーション結果が実機性能をどこまで予測できるかに注目。"
+      },
+      "edge": {
+        "zh": "关注在目标硬件和实际控制频率下加速是否成立。",
+        "en": "Watch whether the speed-up holds on the target hardware at control rate.",
+        "ja": "目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。"
+      },
+      "safety": {
+        "zh": "关注它对认证和上线审批意味着什么。",
+        "en": "Watch what it changes for certification and deployment approval.",
+        "ja": "認証や導入承認に何が変わるかに注目。"
+      },
+      "systems": {
+        "zh": "关注在没有人工重置的长程任务中是否可靠。",
+        "en": "Watch whether it holds up over long tasks without human resets.",
+        "ja": "人手のリセットなしで長時間タスクを維持できるかに注目。"
+      },
+      "hardware": {
+        "zh": "关注价格、供货以及谁在批量交付。",
+        "en": "Watch price, availability and who is shipping it in volume.",
+        "ja": "価格、供給状況、量産出荷の主体に注目。"
+      }
+    }
+  }
 }
