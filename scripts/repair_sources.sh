@@ -17,6 +17,7 @@ BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-curator}"
 EFFORT="${RADAR_EFFORT:-medium}"
 THRESHOLD="${RADAR_THRESHOLD:-3}"
+AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
 DRY_RUN=0
 
 while [ $# -gt 0 ]; do
@@ -26,6 +27,14 @@ while [ $# -gt 0 ]; do
     *) echo "unknown argument: $1" >&2; exit 1 ;;
   esac
 done
+
+# One job at a time in the shared clone. Under cron, radar-run already holds the lock.
+if [ -z "${RADAR_LOCK_HELD:-}" ]; then
+  LOCK="${RADAR_LOCK:-${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/radar.lock}"
+  mkdir -p "$(dirname "$LOCK")"
+  exec 9>>"$LOCK"
+  flock -n 9 || { echo "another radar job holds $LOCK; run this when it has finished" >&2; exit 1; }
+fi
 
 if [ ! -d "$REPO_DIR/.git" ]; then
   printf '[sources] cloning %s into %s\n' "$CLONE_URL" "$REPO_DIR"
@@ -46,11 +55,27 @@ restore_tree() {
   git checkout -- . 2>/dev/null || true
   git clean -qfdx
 }
+# One bounded model call; see draft_daily_notes.sh.
+ask() {
+  local out="$1"; shift
+  local status=0
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >"$out" 2>&1 || status=$?
+  sed -e 's/\x1b\[[0-9;]*m//g' "$out" | tail -20
+  case "$status" in
+    0) return 0 ;;
+    124|137) log "kiro-cli was still running after ${AGENT_TIMEOUT}; stopped it" ;;
+    *) log "kiro-cli exited ${status}" ;;
+  esac
+  return 1
+}
 
 command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
 ENV_FILE="${RADAR_ENV_FILE:-$HOME/.config/pairadar/env}"
 if [ -z "${KIRO_API_KEY:-}" ] && [ -r "$ENV_FILE" ]; then
-  set -a; . "$ENV_FILE"; set +a
+  set -a
+  # shellcheck source=/dev/null
+  . "$ENV_FILE"
+  set +a
 fi
 if [ -z "${KIRO_API_KEY:-}" ] && ! kiro-cli whoami >/dev/null 2>&1; then
   log "no credentials: set KIRO_API_KEY in $ENV_FILE (chmod 600) or run kiro-cli login"
@@ -77,6 +102,14 @@ verdict = json.loads(subprocess.run(['python3', '-m', 'pairadar.health', '--thre
                                     capture_output=True, text=True, check=True).stdout)
 print(verdict['struggling'][0]['source'])")"
 log "worst struggling source: ${SOURCE}"
+# The branch is named by date, so an unreviewed repair used to be proposed again, as a
+# new pull request, every night until somebody merged one of them.
+if [ "$DRY_RUN" = "0" ] &&
+   gh pr list --state open --json headRefName -q '.[].headRefName' 2>/dev/null |
+     grep -q "^sources/repair-${SOURCE}-"; then
+  log "a repair for ${SOURCE} is already waiting for review; nothing to do"
+  exit 0
+fi
 
 AGENTS="$(kiro-cli agent list 2>&1 || true)"
 case "$AGENTS" in
@@ -86,10 +119,13 @@ esac
 
 LOGFILE="$(mktemp "/tmp/radar-sources-XXXXXX.log")"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
-kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
+if ! ask "$LOGFILE" --agent "$AGENT" --effort "$EFFORT" \
   --trust-tools=read,grep,glob,web_fetch,write \
-  "The health verdict says '${SOURCE}' has stopped answering. Check whether its endpoint still returns a feed. If it moved, fix only that entry in data/sources.json. If it is merely down, change nothing. Then write your report." \
-  2>&1 | tee "$LOGFILE" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
+  "The health verdict says '${SOURCE}' has stopped answering. Check whether its endpoint still returns a feed. If it moved, fix only that entry in data/sources.json. If it is merely down, change nothing. Then write your report."; then
+  log "no repair proposed for ${SOURCE}"
+  restore_tree
+  exit 1
+fi
 
 CHANGED="$(changed_paths)"
 if [ -z "$CHANGED" ]; then

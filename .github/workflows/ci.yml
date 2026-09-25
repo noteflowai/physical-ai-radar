@@ -1,13 +1,11 @@
 name: CI
 
+# Every push to main, with no path filter. The filter used to skip the daily commits,
+# so the feeds and pages readers actually receive were never checked here, and a
+# change to scripts/ -- the code that publishes -- was never linted at all.
 on:
   push:
     branches: [main]
-    paths:
-      - "pairadar/**"
-      - "data/**"
-      - "tests/**"
-      - ".github/workflows/**"
   pull_request:
   workflow_dispatch:
 
@@ -53,4 +51,62 @@ jobs:
           for path in sorted(pathlib.Path("data").glob("*.json")):
               json.loads(path.read_text(encoding="utf-8"))
               print("ok", path)
+          PY
+
+  scripts:
+    # The shell that runs unattended every night: syntax, shellcheck at warning level,
+    # and actionlint for the workflows. Pinned, so a new lint release cannot turn a
+    # quiet night red.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Lint the scripts and workflows
+        run: |
+          python -m pip install --quiet shellcheck-py==0.11.0.1 actionlint-py==1.7.12.25
+          for script in scripts/*.sh scripts/radar-run; do bash -n "$script"; done
+          shellcheck -S warning scripts/*.sh scripts/radar-run
+          SHELLCHECK_OPTS="-S warning" actionlint .github/workflows/*.yml
+
+  pages:
+    # Builds the site the way GitHub Pages does, so a broken layout or a Liquid
+    # error in a published page fails here rather than on main.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Render the landing pages for the published day
+        run: python -m pairadar --rerender --no-readme
+
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Check the built site
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          site = pathlib.Path("_site")
+          day = json.loads(pathlib.Path("radar/latest.json").read_text(encoding="utf-8"))["date"]
+          for page, lang in (("index.html", "zh-Hans"), ("en/index.html", "en"), ("ja/index.html", "ja"),
+                             (f"radar/daily/{day}.zh.html", "zh-Hans"), (f"radar/daily/{day}.en.html", "en"),
+                             (f"radar/daily/{day}.ja.html", "ja")):
+              text = (site/page).read_text(encoding="utf-8")
+              assert f'<html lang="{lang}">' in text, f"{page}: lang is not {lang}"
+              assert "assets/site.css" in text, f"{page}: stylesheet missing"
+              assert 'property="og:image"' in text, f"{page}: no social card"
+          for asset in ("assets/site.css", "assets/favicon.svg", "assets/og.zh.png", "assets/og.en.png",
+                        "assets/og.ja.png", "sitemap.xml", "robots.txt", "radar/feed.xml"):
+              assert (site/asset).exists(), f"{asset} not published"
+          assert f"radar/daily/{day}.en.html" in (site/"sitemap.xml").read_text(encoding="utf-8")
+          print("pages ok")
           PY

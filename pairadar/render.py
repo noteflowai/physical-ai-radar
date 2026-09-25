@@ -84,7 +84,7 @@ def composed_why(item: Item, config: Config, lang: str) -> str:
     ).strip()
 
 
-def _why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str, str]],
+def why_text(item: Item, config: Config, lang: str, curated: dict[str, dict[str, str]],
               notes: dict[str, Any] | None = None) -> tuple[str, bool]:
     """Return the "why it matters" line and whether it was drafted rather than authored.
 
@@ -127,7 +127,7 @@ def item_block(
     if item.signals:
         tags = [ui["signals"].get(signal, signal) for signal in item.signals]
         lines.append(f"- **{ui['signals_label']}**: " + " · ".join(f"`{tag}`" for tag in tags))
-    why, drafted = _why_text(item, config, lang, curated, ctx_notes)
+    why, drafted = why_text(item, config, lang, curated, ctx_notes)
     if why:
         label = f" `{ui['llm_draft']}`" if drafted else ""
         lines.append(f"- **{ui['why']}**{label}: {why}")
@@ -263,7 +263,7 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     ]
     highlights = (ctx["picked"] or ctx["baseline"])[:5]
     for item in highlights:
-        why, drafted = _why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
+        why, drafted = why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
         numbers = f" ｜ {' · '.join(f'`{n}`' for n in item.numbers[:2])}" if item.numbers else ""
         lines.append(
             f"- {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} **[{md_text(item.title)}]({md_url(item.url)})** — "

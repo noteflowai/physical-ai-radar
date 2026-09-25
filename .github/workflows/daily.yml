@@ -1,18 +1,33 @@
 name: daily radar
 
-# Manual fallback only. The scheduled publish runs on a maintainer's machine via
-# scripts/publish_daily.sh: one scheduler instead of two, and no token with push
-# rights sitting in a public repository's CI. Use this when that machine is down.
+# The fallback publisher. The daily publish runs on a maintainer's machine via
+# scripts/publish_daily.sh at 01:40 UTC. This workflow wakes at 03:20 UTC and does
+# nothing when main already carries the day, which is every day the machine is up.
+#
+# When the machine missed the day -- asleep, offline, a cron job stuck behind a lock
+# -- nothing used to notice: the site simply showed yesterday. Now this run publishes
+# the day itself and opens an issue saying so, and if publishing fails here too the
+# scheduled run goes red, which GitHub mails to the maintainer. The token it uses is
+# the per-run GITHUB_TOKEN, scoped to this repository and gone when the job ends.
 on:
+  schedule:
+    - cron: "20 3 * * *"
   workflow_dispatch:
     inputs:
       limit:
         description: "Max items on the daily shortlist"
         required: false
         default: "8"
+      force:
+        description: "Publish even when main already carries today's radar"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
+  issues: write
+  pages: write
 
 concurrency:
   group: daily-radar
@@ -29,13 +44,32 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Was today published?
+        id: fresh
+        env:
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: |
+          DAY=$(date -u +%F)
+          PUBLISHED=$(python -c "import json;print(json.load(open('radar/latest.json',encoding='utf-8')).get('date',''))")
+          echo "day=${DAY}" >> "$GITHUB_OUTPUT"
+          if [ "$PUBLISHED" = "$DAY" ] && [ "$FORCE" != "true" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "main already carries the ${DAY} radar; nothing to do." | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "main carries ${PUBLISHED:-no radar}; publishing ${DAY} here." | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Self-check (no dependencies required)
+        if: steps.fresh.outputs.run == 'true'
         run: python -m unittest discover -s tests
 
       - name: Generate today's radar
+        if: steps.fresh.outputs.run == 'true'
         run: python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
 
       - name: Verify trilingual output and report fetch health
+        if: steps.fresh.outputs.run == 'true'
         run: |
           DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
           for LANG in zh en ja; do
@@ -62,6 +96,8 @@ jobs:
           python -m pairadar.health | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
 
       - name: Commit when something changed
+        id: publish
+        if: steps.fresh.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -98,6 +134,11 @@ jobs:
             echo "rebase failed; regenerating on top of the new main"
             git rebase --abort || true
             git reset --hard origin/main
+            PUBLISHED=$(python -c "import json;print(json.load(open('radar/latest.json',encoding='utf-8')).get('date',''))")
+            if [ "$PUBLISHED" = "$DAY" ] && [ "${{ github.event.inputs.force || 'false' }}" != "true" ]; then
+              echo "${DAY} was published meanwhile by another run; keeping that one"
+              exit 0
+            fi
             python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
             if [ -z "$(git status --porcelain)" ]; then
               echo "the new main already carries an equivalent update"
@@ -107,3 +148,29 @@ jobs:
             git commit -m "radar: ${DAY} update [skip ci]"
           done
           echo "pushed on attempt ${attempt}"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild the site
+        # Pages builds on push, but not reliably for a push made with GITHUB_TOKEN;
+        # ask for the build instead of depending on that. Never fatal: the commit is in.
+        if: steps.publish.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" --silent || echo "::warning::could not request a Pages build"
+
+      - name: Tell the maintainer the machine missed a day
+        if: steps.publish.outputs.pushed == 'true' && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DAY: ${{ steps.fresh.outputs.day }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="The local publisher missed a day"
+          BODY="The ${DAY} radar was not on main at 03:20 UTC, so [this run](${RUN}) published it. Check \`~/.local/state/pairadar/publish.log\` on the publishing machine, then close this issue."
+          # One open issue collects the misses, so a machine down for a week is one thread.
+          OPEN=$(gh issue list --state open --search "in:title \"${TITLE}\"" --json number -q '.[0].number')
+          if [ -n "$OPEN" ]; then
+            gh issue comment "$OPEN" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi

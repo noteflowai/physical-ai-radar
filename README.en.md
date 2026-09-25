@@ -1,6 +1,7 @@
 # Physical AI Radar
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
+[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/en/)
 [![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
@@ -71,6 +72,7 @@ scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST 
   └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix
   └─ render   trilingual daily page + inject three READMEs + refresh archive index and latest.json
   └─ feeds    radar/feed.json (JSON Feed 1.1) + Atom per language + this week's roundup in radar/weekly/
+  └─ site     landing pages index.html · en/ · ja/ (dark theme, lane radar, share cards)
   └─ commit   commit and push to main only when something changed
 ```
 
@@ -100,9 +102,9 @@ no-repeat window still applies.
 ```
 data/        sources.json (sources and weights) · taxonomy.json (lanes and signals)
              glossary.json (trilingual UI and terms) · baseline.json (curated baseline)
-pairadar/    fetch / distill / charts / render / cli — standard library only
+pairadar/    fetch / distill / charts / render / site / cli — standard library only
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      generated SVG charts
+assets/      generated SVG charts · site.css · social cards og.*.png
 docs/        METHODOLOGY.md (method, translation policy, known limits)
 ```
 

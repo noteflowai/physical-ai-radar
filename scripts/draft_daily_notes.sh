@@ -25,6 +25,7 @@ BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-analyst}"
 REVIEWER="${RADAR_REVIEWER:-radar-reviewer}"
 EFFORT="${RADAR_EFFORT:-medium}"
+AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
 DAY=""
 DRY_RUN=0
 
@@ -35,6 +36,14 @@ while [ $# -gt 0 ]; do
     *) echo "unknown argument: $1" >&2; exit 1 ;;
   esac
 done
+
+# One job at a time in the shared clone. Under cron, radar-run already holds the lock.
+if [ -z "${RADAR_LOCK_HELD:-}" ]; then
+  LOCK="${RADAR_LOCK:-${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/radar.lock}"
+  mkdir -p "$(dirname "$LOCK")"
+  exec 9>>"$LOCK"
+  flock -n 9 || { echo "another radar job holds $LOCK; run this when it has finished" >&2; exit 1; }
+fi
 
 if [ ! -d "$REPO_DIR/.git" ]; then
   printf '[notes] cloning %s into %s\n' "$CLONE_URL" "$REPO_DIR"
@@ -65,6 +74,21 @@ restore_tree() {
   git checkout -- . 2>/dev/null || true
   git clean -qfdx
 }
+# One model call, bounded, its output kept in a file and its tail shown. A call that
+# hangs must not hold the lock all night, and one that fails must say so: under
+# pipefail a failed `kiro-cli | tee | tail` ended the script without a line of its own.
+ask() {
+  local out="$1"; shift
+  local status=0
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >"$out" 2>&1 || status=$?
+  sed -e 's/\x1b\[[0-9;]*m//g' "$out" | tail -20
+  case "$status" in
+    0) return 0 ;;
+    124|137) log "kiro-cli was still running after ${AGENT_TIMEOUT}; stopped it" ;;
+    *) log "kiro-cli exited ${status}" ;;
+  esac
+  return 1
+}
 
 command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
 
@@ -72,7 +96,10 @@ command -v kiro-cli >/dev/null || { log "kiro-cli is not on PATH"; exit 1; }
 # only this account can read; the script never writes it anywhere.
 ENV_FILE="${RADAR_ENV_FILE:-$HOME/.config/pairadar/env}"
 if [ -z "${KIRO_API_KEY:-}" ] && [ -r "$ENV_FILE" ]; then
-  set -a; . "$ENV_FILE"; set +a
+  set -a
+  # shellcheck source=/dev/null
+  . "$ENV_FILE"
+  set +a
 fi
 if [ -z "${KIRO_API_KEY:-}" ] && ! kiro-cli whoami >/dev/null 2>&1; then
   log "no credentials: set KIRO_API_KEY in $ENV_FILE (chmod 600) or run kiro-cli login"
@@ -98,6 +125,13 @@ if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
   log "no published radar for ${DAY} yet (the 01:40 UTC run comes first); nothing to draft"
   exit 0
 fi
+# A pull request left open is waiting for a human. Drafting again would spend two model
+# calls to force-push over the draft they are about to read.
+if [ "$DRY_RUN" = "0" ] &&
+   gh pr list --head "notes/${DAY}" --state open --json number -q '.[0].number' 2>/dev/null | grep -q .; then
+  log "a pull request for notes/${DAY} is already open; nothing to draft"
+  exit 0
+fi
 
 # `agent list` prints to stderr, and capturing it through `| grep -q` would also
 # trip pipefail via SIGPIPE. Capture both streams into a variable instead.
@@ -112,10 +146,13 @@ done
 LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
 log "drafting notes for ${DAY}"
 # Granular trust only: --trust-all-tools would bypass the agent's write path limits.
-kiro-cli chat --no-interactive --agent "$AGENT" --effort "$EFFORT" \
+if ! ask "$LOGFILE" --agent "$AGENT" --effort "$EFFORT" \
   --trust-tools=read,grep,glob,write \
-  "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly." \
-  2>&1 | tee "$LOGFILE" | sed -e 's/\x1b\[[0-9;]*m//g' | tail -20
+  "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly."; then
+  log "no draft for ${DAY}"
+  restore_tree
+  exit 1
+fi
 
 CHANGED="$(changed_paths)"
 if [ -z "$CHANGED" ]; then
@@ -188,11 +225,15 @@ fi
 
 log "reviewing ${DAY} with ${REVIEWER}"
 REVIEW="$(mktemp "/tmp/radar-review-${DAY}-XXXXXX.log")"
-kiro-cli chat --no-interactive --agent "$REVIEWER" --effort "$EFFORT" \
+if ! ask "$REVIEW" --agent "$REVIEWER" --effort "$EFFORT" \
   --trust-tools=read,grep,glob \
-  "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed." \
-  2>&1 | sed -e 's/\x1b\[[0-9;]*m//g' | tee "$REVIEW" | tail -25
-VERDICT="$(grep -oE '^(APPROVE|REJECT:.*)$' "$REVIEW" | tail -1)"
+  "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed."; then
+  log "no review; discarding the draft"
+  rm -f "$REVIEW"
+  restore_tree
+  exit 1
+fi
+VERDICT="$(sed -e 's/\x1b\[[0-9;]*m//g' "$REVIEW" | grep -oE '^(APPROVE|REJECT:.*)$' | tail -1 || true)"
 case "$VERDICT" in
   APPROVE) log "review: approved" ;;
   REJECT:*) log "review: ${VERDICT}; discarding the draft"; rm -f "$REVIEW"; restore_tree; exit 1 ;;

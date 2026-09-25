@@ -41,7 +41,36 @@
       "day_radar": "{day} 雷达全文",
       "subscribe": "订阅",
       "chart_window": "近 {days} 天入选",
-      "cadence_line": "最近各轮入选条数"
+      "cadence_line": "最近各轮入选条数",
+      "site": {
+        "eyebrow": "每日 01:40 UTC 更新 · {day}",
+        "headline": "具身智能前沿，每天八条，条条有证据",
+        "stat_picks": "今日入选",
+        "stat_scanned": "今日扫描",
+        "stat_sources": "信源应答",
+        "stat_week": "近 {days} 天入选",
+        "cta_today": "阅读今日雷达",
+        "cta_star": "GitHub 上加星",
+        "cta_feed": "订阅 Atom",
+        "radar_caption": "外圈八条主线 · 面积为近 {days} 天入选数 · 亮点为今日入选",
+        "evidence_names": {
+          "O": "官方一手",
+          "R": "论文预印本",
+          "M": "媒体二手"
+        },
+        "share": "分享",
+        "copied": "链接已复制",
+        "post_x": "发到 X",
+        "share_today": "分享今日雷达",
+        "share_text": "Physical AI 前沿雷达 {day}：{title}",
+        "nav_home": "首页",
+        "nav_feeds": "订阅",
+        "picks_heading": "今日入选 · {day}",
+        "baseline_heading": "前沿基线（人工策展）",
+        "trend_heading": "近期节奏",
+        "license": "代码 MIT · 内容 CC BY 4.0",
+        "og_tagline": "八条主线 · 证据分级 · 中英日三语 · 每日更新"
+      }
     },
     "en": {
       "title": "Physical AI Radar",
@@ -83,7 +112,36 @@
       "day_radar": "Full radar for {day}",
       "subscribe": "Subscribe",
       "chart_window": "picks, last {days} days",
-      "cadence_line": "Picks per recent run"
+      "cadence_line": "Picks per recent run",
+      "site": {
+        "eyebrow": "Updated daily at 01:40 UTC · {day}",
+        "headline": "The Physical AI frontier, eight picks a day, every claim tagged",
+        "stat_picks": "picks today",
+        "stat_scanned": "items scanned",
+        "stat_sources": "sources answered",
+        "stat_week": "picks, last {days} days",
+        "cta_today": "Read today's radar",
+        "cta_star": "Star on GitHub",
+        "cta_feed": "Subscribe (Atom)",
+        "radar_caption": "Eight lanes · area is picks over the last {days} days · lit dots are today's picks",
+        "evidence_names": {
+          "O": "Official",
+          "R": "Paper",
+          "M": "Media"
+        },
+        "share": "Share",
+        "copied": "Link copied",
+        "post_x": "Post on X",
+        "share_today": "Share today's radar",
+        "share_text": "Physical AI Radar {day}: {title}",
+        "nav_home": "Home",
+        "nav_feeds": "Feeds",
+        "picks_heading": "Today's picks · {day}",
+        "baseline_heading": "Frontier baseline (curated)",
+        "trend_heading": "Recent cadence",
+        "license": "Code MIT · content CC BY 4.0",
+        "og_tagline": "Eight lanes · evidence-tagged · Chinese, English, Japanese · daily"
+      }
     },
     "ja": {
       "title": "Physical AI フロンティア・レーダー",
@@ -125,7 +183,36 @@
       "day_radar": "{day} のレーダー全文",
       "subscribe": "購読",
       "chart_window": "直近 {days} 日の採択",
-      "cadence_line": "最近の各回の採択件数"
+      "cadence_line": "最近の各回の採択件数",
+      "site": {
+        "eyebrow": "毎日 01:40 UTC 更新 · {day}",
+        "headline": "Physical AI の最前線を、毎日 8 本、根拠つきで",
+        "stat_picks": "本日の採択",
+        "stat_scanned": "本日の走査",
+        "stat_sources": "応答した情報源",
+        "stat_week": "直近 {days} 日の採択",
+        "cta_today": "本日のレーダーを読む",
+        "cta_star": "GitHub でスター",
+        "cta_feed": "Atom で購読",
+        "radar_caption": "外周は 8 つの軸 · 面積は直近 {days} 日の採択数 · 光る点は本日の採択",
+        "evidence_names": {
+          "O": "公式一次",
+          "R": "論文",
+          "M": "報道"
+        },
+        "share": "共有",
+        "copied": "リンクをコピーしました",
+        "post_x": "X に投稿",
+        "share_today": "本日のレーダーを共有",
+        "share_text": "Physical AI レーダー {day}：{title}",
+        "nav_home": "ホーム",
+        "nav_feeds": "購読",
+        "picks_heading": "本日の採択 · {day}",
+        "baseline_heading": "フロンティア基準（キュレーション）",
+        "trend_heading": "最近の推移",
+        "license": "コード MIT · コンテンツ CC BY 4.0",
+        "og_tagline": "8 つの軸 · 根拠タグ · 中英日の三言語 · 毎日更新"
+      }
     }
   },
   "terms": [

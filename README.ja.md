@@ -1,6 +1,7 @@
 # Physical AI フロンティア・レーダー
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
+[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/ja/)
 [![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml)
 [![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
@@ -71,6 +72,7 @@ scripts/publish_daily.sh（メンテナーのマシン上の cron、01:40 UTC / 
   └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成
   └─ render   三言語の日報 + 3つの README へ注入 + アーカイブ索引と latest.json を更新
   └─ feeds    radar/feed.json（JSON Feed 1.1）+ 各言語の Atom + 今週のまとめ（radar/weekly/）
+  └─ site     ランディングページ index.html · en/ · ja/（ダークテーマ、レーダー図、共有カード）
   └─ commit   変更があるときのみコミットして main に push
 ```
 
@@ -100,9 +102,9 @@ pip install も仮想環境も不要。Python 3.10 以上で動きます。
 ```
 data/        sources.json（出典と重み）· taxonomy.json（軸とシグナル）
              glossary.json（三言語 UI と用語）· baseline.json（キュレーション基準）
-pairadar/    fetch / distill / charts / render / cli —— すべて標準ライブラリ
+pairadar/    fetch / distill / charts / render / site / cli —— すべて標準ライブラリ
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      自動生成の SVG 図
+assets/      自動生成の SVG 図 · site.css · 共有カード og.*.png
 docs/        METHODOLOGY.md（方法論・翻訳方針・既知の限界）
 ```
 

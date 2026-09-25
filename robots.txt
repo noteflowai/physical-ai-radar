@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://noteflowai.github.io/physical-ai-radar/sitemap.xml

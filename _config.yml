@@ -1,6 +1,15 @@
 # GitHub Pages (https://noteflowai.github.io/physical-ai-radar/) builds from main.
+# The landing pages (index.html, en/, ja/) are written by pairadar/site.py; the daily,
+# weekly and archive pages are Markdown rendered with _layouts/default.html.
 title: Physical AI Radar
 description: A daily trilingual radar on the Physical AI frontier, with evidence-tagged picks and Atom / JSON feeds.
+url: https://noteflowai.github.io
+baseurl: /physical-ai-radar
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+twitter:
+  card: summary_large_image
 exclude:
   - pairadar
   - scripts

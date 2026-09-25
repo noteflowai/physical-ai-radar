@@ -198,7 +198,28 @@ back cut. Short Japanese forms fixed that, and a test now asserts that no lane l
 any language needs trimming at all — a cut label is a content problem to fix in the
 taxonomy, not a rendering detail to tolerate.
 
-## 7. Reproducibility
+## 7. The site
+
+The Pages site opens on a landing page per language (`index.html` in Chinese, `en/`,
+`ja/`), written by `pairadar/site.py` from the same context as the day's pages, so the
+two cannot disagree. It shows the day's picks as cards (lane, evidence tag, the lead
+figure with its quote, the "why it matters" line) and the eight lanes as a radar: the
+filled shape is the last seven days of picks, and each of today's picks is a dot on its
+lane's spoke that links to its card.
+
+The landing pages are plain HTML without front matter, so Jekyll copies them unchanged
+and no fetched text reaches Liquid; every fetched string is escaped. The daily, weekly
+and archive pages are still Markdown, rendered with `_layouts/default.html`, which takes
+each page's language from its file name so the page says which language it is in.
+
+A shared link is previewed from its Open Graph tags, and previewers read neither scripts
+nor SVG, so each language has a 1200×630 PNG card, `assets/og.<lang>.png`. It is drawn
+from the site stylesheet by `python3 -m pairadar.site --og`, which needs a local Chrome,
+and committed; the daily run never starts a browser. A share button links the day's
+frozen page rather than the landing page, which changes every morning. CI builds the site
+with the same builder as Pages and checks each page's language, stylesheet and card.
+
+## 8. Reproducibility
 
 - Python 3.10+, standard library only.
 - `python3 -m pairadar --offline` reproduces a full render from repository data alone.
@@ -245,7 +266,7 @@ taxonomy, not a rendering detail to tolerate.
   across processes and days.
 - The daily workflow commits only when the working tree actually changed.
 
-## 8. Known limits
+## 9. Known limits
 
 - Extractive summaries can miss the real contribution of a paper; the lane and signals are
   a triage aid, not a review.

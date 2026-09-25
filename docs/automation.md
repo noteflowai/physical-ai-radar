@@ -7,7 +7,7 @@ anywhere that matters.
 | What | Where | Trigger | Writes |
 | --- | --- | --- | --- |
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
-| `daily.yml` | GitHub-hosted runner | manual only, a fallback | commits the day's radar to `main` |
+| `daily.yml` | GitHub-hosted runner | 03:20 UTC, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 09:40 Asia/Singapore | commits the day's radar to `main` |
 | `scripts/draft_daily_notes.sh` | maintainer's machine, cron | 02:30 Asia/Singapore | opens a pull request |
 | `scripts/repair_sources.sh` | maintainer's machine, cron | 03:15 Asia/Singapore | opens a pull request |
@@ -58,6 +58,31 @@ Measured on kiro-cli 2.21.2, `--trust-all-tools` bypasses the agent's own write 
 allowlist while `--trust-tools=write` enforces it, and a `shell` command allowlist is
 not enforced at all. That is why neither agent is given a shell and why the scripts,
 not the agents, run the commands.
+
+## The machine's jobs share a clone, so they share a lock
+
+cron calls `~/.local/bin/radar-run`, an installed copy of `scripts/radar-run`
+(`install -m 755 scripts/radar-run ~/.local/bin/radar-run` after it changes). It takes
+`~/.local/state/pairadar/radar.lock` before resetting the clone and holds it for the
+whole job: every job resets hard, and a draft still waiting for its checks at 03:15 had
+its branch reset under it by the repair job. A job waits up to two hours for the lock
+(`RADAR_LOCK_WAIT`), runs for at most three (`RADAR_TIMEOUT`), and each model call gets
+twenty minutes (`RADAR_AGENT_TIMEOUT`). A script started by hand takes the same lock
+and refuses to start while a job holds it. Every failure ends with a `FAILED` line in
+the job's log under `~/.local/state/pairadar/`.
+
+Re-runs are no-ops: the publish stops when `main` already carries the day (`--force`
+republishes it), the draft stops when the day's pull request is already open, and the
+repair stops when a repair for that source is already waiting for review.
+
+## When the machine misses a day
+
+`daily.yml` wakes at 03:20 UTC, an hour and forty minutes after the publish. When
+`radar/latest.json` on `main` already names the day, it stops there. Otherwise it
+publishes the day with the per-run `GITHUB_TOKEN`, asks Pages for a build, and opens an
+issue titled "The local publisher missed a day" (or comments on the open one). If
+publishing fails there as well, the scheduled run fails, which GitHub mails to the
+maintainer. Run it by hand with `force` to republish a day that is already on `main`.
 
 ## Timing
 
