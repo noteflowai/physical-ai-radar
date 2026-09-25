@@ -13,13 +13,18 @@ from typing import Any, Iterable
 from .config import Config, Item
 from .fetch import source_weight
 
+# A figure starts where no word, digit, point or comma precedes it, so "v2.5" and
+# "1,000" are not read from the middle, and it keeps its thousands separators:
+# "\b\d+" alone published "1,000 Hz" as "000 Hz".
+_FIGURE = r"(?<![\w.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
 NUMBER_PATTERNS = (
-    r"\b\d+(?:\.\d+)?\s?%",
-    r"\b\d+(?:\.\d+)?\s?(?:x|×)\b",
-    r"\b\d+(?:\.\d+)?\s?(?:ms|Hz|hz|fps|FPS)\b",
-    r"\b\d+(?:\.\d+)?\s?[BMK]?\s?(?:parameters|params)\b",
-    r"\b\d+(?:,\d{3})*(?:\.\d+)?\s?(?:hours|episodes|demonstrations|trajectories|tasks)\b",
-    r"\b\d+(?:\.\d+)?\s?(?:GB|TB|W|kg|DoF|dof)\b",
+    _FIGURE + r"\s?%",
+    # "×" is not a word character, so a closing \b after it never matched.
+    _FIGURE + r"\s?(?:x|×)(?![A-Za-z0-9])",
+    _FIGURE + r"\s?(?:ms|Hz|hz|fps|FPS)\b",
+    _FIGURE + r"\s?[BMK]?\s?(?:parameters|params)\b",
+    _FIGURE + r"\s?(?:hours|episodes|demonstrations|trajectories|tasks)\b",
+    _FIGURE + r"\s?(?:GB|TB|W|kg|DoF|dof)\b",
 )
 _NUMBER_RE = re.compile("|".join(NUMBER_PATTERNS))
 _SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
@@ -149,7 +154,9 @@ def prefilter(items: Iterable[Item], config: Config, reference: date) -> list[It
     """Drop stale entries and sponsored/promotional posts before ranking.
 
     Feeds occasionally re-publish old posts and trade press mixes in vendor-sponsored
-    articles; neither belongs on a radar that claims to show what changed today.
+    articles; neither belongs on a radar that claims to show what changed today. An
+    entry whose date could not be read goes too: its age is unknown, so no window
+    on the page could honestly include it.
     """
     rules = config.sources.get("filters", {})
     max_age = int(rules.get("max_age_days", 30))
@@ -160,9 +167,9 @@ def prefilter(items: Iterable[Item], config: Config, reference: date) -> list[It
         if any(phrase in blob for phrase in phrases):
             continue
         try:
-            age = (reference - datetime.fromisoformat(item.published).date()).days
+            age = (reference - date.fromisoformat(item.published)).days
         except ValueError:
-            age = 0
+            continue
         if age > max_age or age < -1:
             continue
         kept.append(item)

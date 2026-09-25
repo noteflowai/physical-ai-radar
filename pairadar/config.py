@@ -6,6 +6,7 @@ daily GitHub Actions run stays fast, reproducible and easy to audit.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -21,6 +22,26 @@ LANGS: tuple[str, ...] = ("zh", "en", "ja")
 README_FILES = {"zh": "README.md", "en": "README.en.md", "ja": "README.ja.md"}
 MARKER_START = "<!-- RADAR:START -->"
 MARKER_END = "<!-- RADAR:END -->"
+
+
+_MD_SPECIAL = re.compile(r"([\\`*_\[\]])")
+
+
+def md_text(text: str) -> str:
+    """Make fetched text inert inside a Markdown line.
+
+    Titles and excerpts come from other people's feeds. A `<details>` in one folded
+    the rest of the page on GitHub, a `]` broke the `**[title](url)**` link around
+    it, and GitHub Pages runs Liquid over every page, so a `{{` or `{%` would fail
+    the site build and freeze the feeds. Entities keep all three visible as typed.
+    """
+    text = _MD_SPECIAL.sub(r"\\\1", text).replace("<", "&lt;")
+    return text.replace("{{", "&#123;&#123;").replace("{%", "&#123;%")
+
+
+def md_url(url: str) -> str:
+    """A link target that cannot end its Markdown link early."""
+    return url.replace(" ", "%20").replace("(", "%28").replace(")", "%29")
 
 
 def load_json(path: Path) -> dict[str, Any]:

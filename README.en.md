@@ -92,7 +92,7 @@ No pip install, no virtualenv. Python 3.10+ is enough.
 
 Without `--out` a run **rewrites in place**: the radar block in all three READMEs,
 `radar/` and `assets/` — which is what the daily job is for. Use `--out` to look
-first. Either way the run log is read from the repository, so the seven-day
+first. Either way the run log is read from the repository, so the 30-day
 no-repeat window still applies.
 
 ## Layout

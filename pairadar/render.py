@@ -23,6 +23,8 @@ from .config import (
     Config,
     Item,
     dump_json,
+    md_text,
+    md_url,
 )
 from .distill import one_liner, url_key
 from .feeds import iso_week, weekly_stems
@@ -70,11 +72,12 @@ def item_block(
 ) -> list[str]:
     ui = config.ui(lang)
     lines = [
-        f"### {index}. {item.title}",
+        f"### {index}. {md_text(item.title)}",
         "",
         f"- **{ui['lane']}**: {config.lane_name(item.lane, lang)} ｜ "
         f"**{ui['evidence']}**: {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} ｜ "
-        f"**{ui['source']}**: [{item.publisher or item.source_id}]({item.url}) ｜ `{item.published}`",
+        f"**{ui['source']}**: [{md_text(item.publisher or item.source_id)}]({md_url(item.url)}) ｜ "
+        f"`{item.published}`",
     ]
     if item.numbers:
         lines.append(f"- **{ui['numbers']}**: " + " · ".join(f"`{value}`" for value in item.numbers))
@@ -88,7 +91,7 @@ def item_block(
     excerpt = one_liner(item.summary)
     if excerpt and item.source_id != "baseline":
         lines.append("")
-        lines.append(f"> {excerpt}")
+        lines.append(f"> {md_text(excerpt)}")
     lines.append("")
     return lines
 
@@ -199,7 +202,7 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         why, drafted = _why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
         numbers = f" ｜ {' · '.join(f'`{n}`' for n in item.numbers[:2])}" if item.numbers else ""
         lines.append(
-            f"- {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} **[{item.title}]({item.url})** — "
+            f"- {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} **[{md_text(item.title)}]({md_url(item.url)})** — "
             f"{config.lane_name(item.lane, lang)}{numbers}"
         )
         if why:

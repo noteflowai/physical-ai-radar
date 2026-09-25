@@ -408,7 +408,7 @@
   "signals": [
     {
       "id": "numbers",
-      "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:%|percent|Hz|ms|fps|GB|TB|B params|billion|hours)\\b"
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:%|(?:percent|Hz|ms|fps|GB|TB|B params|billion|hours)\\b)"
     },
     {
       "id": "closed_loop",

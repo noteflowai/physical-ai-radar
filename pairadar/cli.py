@@ -103,7 +103,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     filters = config.sources.get("filters", {})
     repeat_days = int(filters.get("repeat_days", 7))
     history = [entry for entry in load_history() if entry["date"] != day]
-    report = fetch_all(config, offline=offline)
+    report = fetch_all(config, offline=offline, reference=reference)
     live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
                     per_source=_optional_int(filters.get("per_source")),
@@ -126,6 +126,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         # Kept for every run, not pruned with the URLs: pairadar.health reads a
         # longer window to spot a source that has quietly stopped answering.
         "failed": sorted(report.failed),
+        "fallback": sorted(report.fallback),
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 

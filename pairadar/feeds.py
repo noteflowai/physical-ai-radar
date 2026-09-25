@@ -26,7 +26,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
-from .config import LANGS, README_FILES, ROOT, Config, Item, dump_json
+from .config import LANGS, README_FILES, ROOT, Config, Item, dump_json, md_text, md_url
 from .distill import one_liner, url_key
 
 REPO = "noteflowai/physical-ai-radar"
@@ -276,7 +276,8 @@ def render_weekly(config: Config, lang: str, day: str, store: list[dict[str, Any
         for entry in rows:
             numbers = f" ｜ {' · '.join(f'`{n}`' for n in entry['numbers'][:3])}" if entry["numbers"] else ""
             lines.append(
-                f"- `{_evidence(entry)}` **[{entry['title']}]({entry['url']})** — {entry['publisher']}"
+                f"- `{_evidence(entry)}` **[{md_text(entry['title'])}]({md_url(entry['url'])})** — "
+                f"{md_text(entry['publisher'])}"
                 f"{numbers} ｜ [{entry['date']}](../daily/{entry['date']}.{lang}.md)"
             )
         lines.append("")

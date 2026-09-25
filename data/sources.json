@@ -11,8 +11,8 @@
       "paid content",
       "webinar registration"
     ],
-    "repeat_days": 7,
-    "repeat_note": "an item already shown within this many days is not picked again",
+    "repeat_days": 30,
+    "repeat_note": "an item already shown within this many days is not picked again; it must cover max_age_days and arxiv.lookback_days, or a post still inside the pool is picked a second time the day it leaves the guard",
     "max_entries_per_feed": 100,
     "per_source": 3,
     "per_evidence": 4,
@@ -23,7 +23,8 @@
     "evidence": "R",
     "weight": 1.0,
     "max_results": 120,
-    "lookback_days": 3,
+    "lookback_days": 4,
+    "lookback_note": "the API dates a paper by its first submission; Monday's announcement carries papers submitted from Thursday 18:00 UTC, so a three-day lookback missed them",
     "queries": [
       "cat:cs.RO AND (abs:\"vision-language-action\" OR abs:\"world model\" OR abs:\"foundation model\")",
       "cat:cs.RO AND (abs:\"sim-to-real\" OR abs:\"real-to-sim\" OR abs:\"policy evaluation\")",
@@ -37,7 +38,7 @@
       "cs.AI",
       "cs.LG"
     ],
-    "rss_note": "the Atom API answered 406 to every request from this host on 2026-09-21, including with no headers at all; these category feeds are the documented public fallback and keep the R evidence class from going empty",
+    "rss_note": "the Atom API answered 406 to every request from this host on 2026-09-21, including with no headers at all, and still did on 2026-09-25 for every query shape (cat: alone, id_list): the refusal is per host, not per query. These category feeds are the documented public fallback and keep the R evidence class from going empty",
     "rss_topical": [
       "cs.RO"
     ]

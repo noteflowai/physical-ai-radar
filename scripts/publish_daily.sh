@@ -74,12 +74,16 @@ git commit -q -m "radar: ${DAY} update"
 
 # Another change can land while this runs. The output is deterministic, so catch up
 # rather than merge: rebase, and if that cannot resolve, regenerate on top of main.
-for attempt in 1 2 3; do
-  if git push --quiet origin "$BRANCH_BASE"; then
-    log "published ${DAY} on attempt ${attempt}"
-    exit 0
+# Every catch-up is followed by a push: a loop that caught up and then ended threw
+# its last rebase away and reported a failure it had just fixed.
+attempt=1
+until git push --quiet origin "$BRANCH_BASE"; do
+  if [ "$attempt" -ge 3 ]; then
+    log "could not publish ${DAY} after ${attempt} attempts"
+    exit 1
   fi
   log "push rejected on attempt ${attempt}; catching up with origin/${BRANCH_BASE}"
+  attempt=$((attempt + 1))
   git fetch --quiet origin "$BRANCH_BASE"
   if git rebase --quiet "origin/${BRANCH_BASE}"; then
     continue
@@ -95,5 +99,5 @@ for attempt in 1 2 3; do
   git add -A
   git commit -q -m "radar: ${DAY} update"
 done
-log "could not publish ${DAY} after 3 attempts"
-exit 1
+log "published ${DAY} on attempt ${attempt}"
+exit 0

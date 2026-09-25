@@ -17,7 +17,8 @@ Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
-- every request is timeout-bounded and retried once before the source is given up on;
+- every request is timeout-bounded and retried once before the source is given up on. A
+  4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;
 - a failing source is skipped with a log line and never fails the run — but if **no**
   source answers, the run exits non-zero and nothing is committed, because a radar
@@ -27,7 +28,9 @@ Rules:
   visible without reading the workflow log;
 - every run also records that day's unanswered sources in `radar/history.json`, and
   `python3 -m pairadar.health` turns the last fourteen days into a verdict: a source
-  that missed three or more days is reported as struggling. The daily run prints the
+  that missed three or more days and also missed the latest run is reported as
+  struggling. When the arXiv API refuses and the category feeds serve the day instead,
+  the run records `arxiv` under `fallback`: visible in the verdict, but not a failure. The daily run prints the
   verdict and stays green; `--fail-on-struggling` exits 1 for automation that should
   only act when there is something to act on;
 - a feed contributes at most its `filters.max_entries_per_feed` newest entries (default
@@ -88,10 +91,11 @@ shortlist is always shown in rank order. Three further gates apply:
   without this an off-topic hit from the broad arXiv queries would be published under the
   fallback lane, labelled as if it belonged there. Curated entries are exempt, since a
   person chose their lane.
-- **not published in the last `filters.repeat_days` days** (default 7). Each run records the
-  normalised URLs it published in `radar/history.json`; the arXiv window looks back three
+- **not published in the last `filters.repeat_days` days** (30). Each run records the
+  normalised URLs it published in `radar/history.json`; the arXiv window looks back four
   days and feeds keep entries for thirty, so without this a strong item would headline
-  again the next day. Matching is on a normalised URL, not id, so it survives a feed reassigning ids. The
+  again the next day. The guard has to cover both horizons: at seven days, a post still
+  in the thirty-day pool was picked again on the eighth. Matching is on a normalised URL, not id, so it survives a feed reassigning ids. The
 normal form drops query, fragment and trailing slash, lowercases, and upgrades `http` to
 `https`. arXiv links are reduced to `https://arxiv.org/abs/<id>` without the version,
 because the API answers `http://arxiv.org/abs/<id>v1` and the feeds answer

@@ -82,12 +82,15 @@ jobs:
           # commit away and regenerate on top of main instead of resolving a conflict in
           # generated files. `if` rather than `&&` chains, because a failing left-hand
           # side of `&&` under bash -e is a trap.
-          for attempt in 1 2 3; do
-            if git push; then
-              echo "pushed on attempt ${attempt}"
-              exit 0
+          # Every catch-up is followed by a push; a `for` loop ended on its last one.
+          attempt=1
+          until git push; do
+            if [ "$attempt" -ge 3 ]; then
+              echo "::error::could not push the ${DAY} radar after ${attempt} attempts"
+              exit 1
             fi
             echo "push rejected on attempt ${attempt}; catching up with origin/main"
+            attempt=$((attempt + 1))
             git fetch origin main
             if git rebase origin/main; then
               continue
@@ -103,5 +106,4 @@ jobs:
             git add -A
             git commit -m "radar: ${DAY} update [skip ci]"
           done
-          echo "::error::could not push the ${DAY} radar after 3 attempts"
-          exit 1
+          echo "pushed on attempt ${attempt}"
