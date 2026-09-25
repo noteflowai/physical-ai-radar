@@ -3,7 +3,13 @@
 A single dead source is not allowed to fail the daily run -- that is deliberate --
 so a feed that has stopped answering can go unnoticed for weeks. Each run records
 the sources that did not answer; this module turns that history into a verdict:
-which sources failed often enough, recently enough, to be worth a look.
+which sources failed often enough, and are still failing, to be worth a look.
+
+A source that has recovered is not struggling, however many days it missed: the
+repair job used to wake a model every night for a fortnight after arXiv came back.
+A source served by its fallback endpoint (`fallback` in the run log) is reported
+separately and does not count as failing -- readers got the day's papers, and the
+repair job cannot fix an endpoint that refuses this host.
 
     python3 -m pairadar.health                        # print the verdict
     python3 -m pairadar.health --fail-on-struggling   # exit 1 when one is failing
@@ -22,7 +28,7 @@ from typing import Any
 from .config import ROOT, load_json
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
-WINDOW = 14
+WINDOW = 14  # days, today included
 THRESHOLD = 3
 
 
@@ -32,40 +38,54 @@ def load_runs(path: Path = HISTORY_PATH) -> list[dict[str, Any]]:
     return list(load_json(path).get("runs", []))
 
 
-def failures_by_source(runs: list[dict[str, Any]], reference: date,
-                       window: int = WINDOW) -> dict[str, int]:
-    """Count, per source, the days inside the window on which it did not answer."""
-    counts: dict[str, int] = {}
+def _in_window(runs: list[dict[str, Any]], reference: date, window: int) -> list[dict[str, Any]]:
+    """Runs that recorded source health inside the window, oldest first."""
+    kept = []
     for entry in runs:
         try:
             age = (reference - date.fromisoformat(entry["date"])).days
         except (KeyError, TypeError, ValueError):
             continue
-        if not 0 <= age <= window:
-            continue
-        for source in entry.get("failed", []):
+        if 0 <= age < window and "failed" in entry:
+            kept.append(entry)
+    return sorted(kept, key=lambda entry: entry["date"])
+
+
+def _count(runs: list[dict[str, Any]], key: str) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for entry in runs:
+        for source in entry.get(key, []):
             counts[source] = counts.get(source, 0) + 1
     return counts
 
 
+def failures_by_source(runs: list[dict[str, Any]], reference: date,
+                       window: int = WINDOW) -> dict[str, int]:
+    """Count, per source, the days inside the window on which it did not answer."""
+    return _count(_in_window(runs, reference, window), "failed")
+
+
+def fallbacks_by_source(runs: list[dict[str, Any]], reference: date,
+                        window: int = WINDOW) -> dict[str, int]:
+    """Count, per source, the days inside the window it was served by its fallback."""
+    return _count(_in_window(runs, reference, window), "fallback")
+
+
 def days_observed(runs: list[dict[str, Any]], reference: date, window: int = WINDOW) -> int:
     """Runs inside the window that recorded source health at all."""
-    observed = 0
-    for entry in runs:
-        try:
-            age = (reference - date.fromisoformat(entry["date"])).days
-        except (KeyError, TypeError, ValueError):
-            continue
-        if 0 <= age <= window and "failed" in entry:
-            observed += 1
-    return observed
+    return len(_in_window(runs, reference, window))
 
 
 def struggling(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
                threshold: int = THRESHOLD) -> list[tuple[str, int]]:
-    """Sources at or over the failure threshold, worst first."""
-    counts = failures_by_source(runs, reference, window)
-    ranked = [(source, days) for source, days in counts.items() if days >= threshold]
+    """Sources at or over the failure threshold that also failed the latest run, worst first."""
+    observed = _in_window(runs, reference, window)
+    if not observed:
+        return []
+    latest = set(observed[-1].get("failed", []))
+    counts = _count(observed, "failed")
+    ranked = [(source, days) for source, days in counts.items()
+              if days >= threshold and source in latest]
     return sorted(ranked, key=lambda pair: (-pair[1], pair[0]))
 
 
@@ -77,6 +97,7 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "threshold_days": threshold,
         "runs_with_health": days_observed(runs, reference, window),
         "failures": failures_by_source(runs, reference, window),
+        "fallbacks": fallbacks_by_source(runs, reference, window),
         "struggling": [{"source": source, "failed_days": days}
                        for source, days in struggling(runs, reference, window, threshold)],
     }

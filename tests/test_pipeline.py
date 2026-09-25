@@ -122,9 +122,18 @@ class DistillTest(unittest.TestCase):
     def test_extract_numbers(self) -> None:
         text = "We reach 89.7% MSE reduction, 197 ms per chunk, 23 Hz, 3B parameters, 44,000 hours."
         found = extract_numbers(text, limit=6)
-        self.assertIn("89.7%", found)
-        self.assertTrue(any("ms" in value for value in found))
-        self.assertTrue(any("Hz" in value for value in found))
+        self.assertEqual(found, ["89.7%", "197 ms", "23 Hz", "3B parameters", "44,000 hours"])
+
+    def test_extract_numbers_keeps_whole_figures(self) -> None:
+        # "\b\d+" read these from the middle and published "000 Hz" and "200 ms".
+        self.assertEqual(extract_numbers("control at 1,000 Hz"), ["1,000 Hz"])
+        self.assertEqual(extract_numbers("latency of 1,200 ms"), ["1,200 ms"])
+        self.assertEqual(extract_numbers("a 3× speedup, 2x cheaper"), ["3×", "2x"])
+        self.assertEqual(extract_numbers("since v2.5 % of runs"), [])
+
+    def test_the_numbers_signal_sees_a_percentage(self) -> None:
+        self.assertIn("numbers", detect_signals("improves by 89.7% over baseline", self.config.taxonomy))
+        self.assertNotIn("numbers", detect_signals("no figures here", self.config.taxonomy))
 
     def test_classification_routes_to_expected_lane(self) -> None:
         lane, hits = classify("on-device inference latency on Jetson Thor at 23 Hz", self.config)
@@ -216,6 +225,11 @@ class DistillTest(unittest.TestCase):
         long_text = "First sentence. " + ("padding words " * 60)
         self.assertLessEqual(len(one_liner(long_text)), 241)
 
+    def test_prefilter_drops_an_undated_entry(self) -> None:
+        kept = prefilter([make_item(published=""), make_item(id="t2", published="2026-09-19")],
+                         self.config, date(2026, 9, 19))
+        self.assertEqual([item.id for item in kept], ["t2"])
+
     def test_prefilter_drops_sponsored_and_stale(self) -> None:
         today = date(2026, 9, 19)
         sponsored = make_item(id="ad", summary="This article is brought to you by SomeVendor.")
@@ -257,6 +271,24 @@ class FetchHelpersTest(unittest.TestCase):
         self.assertEqual(parse_date("2026-09-19T04:00:00Z"), "2026-09-19")
         self.assertEqual(parse_date("Fri, 19 Sep 2026 04:00:00 +0000"), "2026-09-19")
         self.assertEqual(parse_date("2026-09-19"), "2026-09-19")
+        # Named zones, no seconds, no weekday: all RFC 822, all once read as today.
+        self.assertEqual(parse_date("Mon, 3 Aug 2026 10:00:00 PST"), "2026-08-03")
+        self.assertEqual(parse_date("Thu, 24 Sep 2026 20:00 +0000"), "2026-09-24")
+        self.assertEqual(parse_date("24 Sep 2026 10:00:00 GMT"), "2026-09-24")
+
+    def test_parse_date_reports_the_utc_day(self) -> None:
+        self.assertEqual(parse_date("Thu, 24 Sep 2026 20:00:00 -0700"), "2026-09-25")
+        self.assertEqual(parse_date("2026-09-19T04:00:00+09:00"), "2026-09-18")
+
+    def test_an_unreadable_date_is_empty_not_today(self) -> None:
+        for raw in ("", None, "sometime last week", "2026-13-45"):
+            self.assertEqual(parse_date(raw), "", raw)
+
+    def test_clean_text_decodes_every_entity_once(self) -> None:
+        self.assertEqual(clean_text("it&#8217;s 3&#215; &hellip;"), "it’s 3× …")
+        # Escaped markup is text about a tag, and stays text.
+        self.assertEqual(clean_text("<p>use &lt;details&gt;</p>"), "use <details>")
+        self.assertEqual(clean_text("&amp;lt;b&amp;gt;"), "&lt;b&gt;")
 
     def test_baseline_items_carry_numbers(self) -> None:
         items = baseline_items(load_config())
@@ -346,19 +378,94 @@ class FetchReliabilityTest(unittest.TestCase):
                 patch.object(fetch_module.time, "sleep"):
             self.assertIsNone(http_get("https://example.org/feed", retries=2))
 
+    ARXIV_REPLY = (
+        '<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+        '<id>http://arxiv.org/abs/2609.01234v1</id><title>A VLA policy</title>'
+        '<summary>We train a policy.</summary><published>2026-09-24T18:00:00Z</published>'
+        '</entry></feed>'
+    ).encode()
+
     def test_arxiv_uses_https_and_spaces_its_queries(self) -> None:
         # arXiv asks for roughly three seconds between API calls.
         urls: list[str] = []
-        with patch.object(fetch_module, "http_get", lambda url: urls.append(url) or b"<feed/>"), \
+        with patch.object(fetch_module, "http_get", lambda url: urls.append(url) or self.ARXIV_REPLY), \
                 patch.object(fetch_module.time, "sleep") as sleep:
-            items, answered = fetch_arxiv(self.config)
+            items, answered = fetch_arxiv(self.config, date(2026, 9, 25))
         queries = len(self.config.sources["arxiv"]["queries"])
-        self.assertEqual(items, [])
+        self.assertEqual({item.id for item in items}, {"arxiv:2609.01234"})
         self.assertTrue(answered)
         self.assertEqual(len(urls), queries)
         self.assertTrue(all(url.startswith("https://") for url in urls), urls)
         self.assertTrue(ARXIV_ENDPOINT.startswith("https://"))
         self.assertEqual(sleep.call_count, queries - 1)
+
+    def test_an_unusable_arxiv_reply_is_no_answer_and_the_feeds_take_over(self) -> None:
+        # An HTML rate-limit page, an empty feed and an error entry all used to count
+        # as an answer, so the category feeds never stood in and the day had no papers.
+        error = (b'<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+                 b'<id>http://arxiv.org/api/errors#incorrect_id_format</id>'
+                 b'<title>Error</title></entry></feed>')
+        for reply in (b"<html><body>Rate exceeded.</body></html>", b"<feed/>", error, b"<html>"):
+            report = FetchReport()
+            with patch.object(fetch_module, "http_get", lambda url, *a, **k: reply), \
+                    patch.object(fetch_module, "fetch_arxiv_rss", return_value=([], True)) as rss, \
+                    patch.object(fetch_module.time, "sleep"), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                items, answered = fetch_arxiv(self.config, date(2026, 9, 25), report)
+            self.assertEqual(items, [], reply)
+            self.assertTrue(rss.called, reply)
+            self.assertTrue(answered)
+            self.assertEqual(report.fallback, ["arxiv"], "served, but the API is still down")
+
+    def test_the_arxiv_cutoff_counts_back_from_the_run_date(self) -> None:
+        with patch.object(fetch_module, "http_get", lambda url: self.ARXIV_REPLY), \
+                patch.object(fetch_module.time, "sleep"):
+            self.assertEqual({item.id for item in fetch_arxiv(self.config, date(2026, 9, 28))[0]},
+                             {"arxiv:2609.01234"},
+                             "Monday's run must still reach Thursday evening's papers")
+            self.assertEqual(fetch_arxiv(self.config, date(2026, 10, 5))[0], [])
+
+    def test_http_get_does_not_retry_a_refusal(self) -> None:
+        calls = []
+
+        def refuse(request, timeout=None):
+            calls.append(1)
+            raise urllib.error.HTTPError(request.full_url, 406, "Not Acceptable", {}, None)
+
+        with patch.object(fetch_module.urllib.request, "urlopen", refuse), \
+                patch.object(fetch_module.time, "sleep") as sleep, \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertIsNone(http_get("https://example.org/feed", retries=3))
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(sleep.call_count, 0)
+
+    def test_http_get_honours_retry_after_within_bounds(self) -> None:
+        calls = []
+
+        def limited(request, timeout=None):
+            calls.append(1)
+            raise urllib.error.HTTPError(request.full_url, 429, "Too Many Requests",
+                                         {"Retry-After": "120"}, None)
+
+        with patch.object(fetch_module.urllib.request, "urlopen", limited), \
+                patch.object(fetch_module.time, "sleep") as sleep, \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertIsNone(http_get("https://example.org/feed", retries=2))
+        self.assertEqual(len(calls), 2)
+        sleep.assert_called_once_with(fetch_module.MAX_RETRY_AFTER)
+
+    def test_http_get_survives_a_protocol_error(self) -> None:
+        # A garbled status line or a truncated body raise http.client errors, which
+        # are not OSErrors; one of them used to end the whole daily run.
+        import http.client
+        for error in (http.client.BadStatusLine("garbage"), http.client.IncompleteRead(b"12345", 995)):
+            def broken(request, timeout=None, error=error):
+                raise error
+
+            with patch.object(fetch_module.urllib.request, "urlopen", broken), \
+                    patch.object(fetch_module.time, "sleep"), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                self.assertIsNone(http_get("https://example.org/feed"), type(error).__name__)
 
     def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
         with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
@@ -473,9 +580,30 @@ class SourceHealthTest(unittest.TestCase):
 
     def test_struggling_applies_the_threshold_and_ranks_worst_first(self) -> None:
         self.assertEqual(health.struggling(self.RUNS, self.TODAY), [("deepmind", 4)])
-        self.assertEqual(health.struggling(self.RUNS, self.TODAY, threshold=1),
-                         [("deepmind", 4), ("nvidia-blog", 1)])
         self.assertEqual(health.struggling(self.RUNS, self.TODAY, threshold=5), [])
+        runs = [{"date": "2026-09-19", "failed": ["deepmind", "nvidia-blog"]}, *self.RUNS[1:]]
+        self.assertEqual(health.struggling(runs, self.TODAY, threshold=1),
+                         [("deepmind", 4), ("nvidia-blog", 2)])
+
+    def test_a_source_that_has_recovered_is_not_struggling(self) -> None:
+        # nvidia-blog missed a day but answered the latest run; so did arXiv after
+        # five straight failures, and the repair job woke a model for a fortnight.
+        self.assertEqual(health.struggling(self.RUNS, self.TODAY, threshold=1), [("deepmind", 4)])
+        recovered = [{"date": "2026-09-20", "failed": []}, *self.RUNS]
+        self.assertEqual(health.struggling(recovered, date(2026, 9, 20)), [])
+        self.assertEqual(health.failures_by_source(recovered, date(2026, 9, 20))["deepmind"], 4,
+                         "the history is still reported")
+
+    def test_the_window_holds_exactly_its_days(self) -> None:
+        runs = [{"date": "2026-09-06", "failed": ["old"]}, {"date": "2026-09-05", "failed": ["older"]}]
+        self.assertEqual(health.failures_by_source(runs, self.TODAY, window=14), {"old": 1})
+
+    def test_a_fallback_is_reported_but_is_not_a_failure(self) -> None:
+        runs = [{"date": f"2026-09-{day}", "failed": [], "fallback": ["arxiv"]} for day in (17, 18, 19)]
+        verdict = health.report(runs, self.TODAY)
+        self.assertEqual(verdict["fallbacks"], {"arxiv": 3})
+        self.assertEqual(verdict["failures"], {})
+        self.assertEqual(verdict["struggling"], [])
 
     def test_only_runs_that_recorded_health_are_counted(self) -> None:
         # Entries written before health was recorded must not read as healthy days.
@@ -785,6 +913,21 @@ class RenderTest(unittest.TestCase):
     def test_evidence_tags_present(self) -> None:
         page = render_daily(self.config, "zh", self.ctx)
         self.assertTrue(any(tag in page for tag in ("`[O]`", "`[R]`", "`[M]`")))
+
+    def test_fetched_text_cannot_break_the_page(self) -> None:
+        # A feed title or excerpt is someone else's text: an unclosed <details> folded
+        # the page on GitHub, "]" broke the link, and "{{" fails the Pages build.
+        hostile = make_item(title="Robots [v2] use <details> {{ site.url }}",
+                            url="https://example.org/a (b)", source_id="nvidia-blog",
+                            summary="An excerpt with <details> and {% raw %} in it.")
+        ctx = {**self.ctx, "picked": [hostile]}
+        for lang in LANGS:
+            page = render_daily(self.config, lang, ctx)
+            self.assertNotIn("<details>", page)
+            self.assertNotIn("{{", page)
+            self.assertNotIn("{%", page)
+            self.assertIn(r"Robots \[v2\] use &lt;details>", page)
+            self.assertIn("(https://example.org/a%20%28b%29)", page)
 
 
 class ChartsTest(unittest.TestCase):
