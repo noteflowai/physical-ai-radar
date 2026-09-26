@@ -10,13 +10,15 @@
 # Ensures the automation clone exists and is on the published branch, then hands over
 # to the script that lives in the repository, so the logic stays reviewed.
 #
-# The three jobs share one clone and each of them resets it hard. Without a lock, a
+# The scheduled jobs share one clone and each of them resets it hard. Without a lock, a
 # draft still waiting on its pull request's checks at 03:15 had its branch reset under
 # it by the repair job. So every job holds the same lock for its whole run, the reset
 # here included, and gives up loudly rather than waiting forever. A job that ends in
 # failure says so in its log with a timestamp; a bare `set -e` exit used to leave the
 # last line of the log looking like a model error half an hour earlier.
 set -euo pipefail
+export GIT_TERMINAL_PROMPT=0 GH_PROMPT_DISABLED=1 PIP_NO_INPUT=1
+exec </dev/null
 
 SCRIPT="${1:-scripts/draft_daily_notes.sh}"
 [ $# -gt 0 ] && shift || true
@@ -40,9 +42,9 @@ export RADAR_LOCK_HELD=1
 
 if [ ! -d "$REPO_DIR/.git" ]; then
   log "cloning $CLONE_URL into $REPO_DIR"
-  git clone --quiet "$CLONE_URL" "$REPO_DIR"
+  timeout --kill-after=15 180 git clone --quiet "$CLONE_URL" "$REPO_DIR"
 fi
-git -C "$REPO_DIR" fetch --quiet origin
+timeout --kill-after=15 120 git -C "$REPO_DIR" fetch --quiet origin
 git -C "$REPO_DIR" checkout --quiet -B "$BRANCH" "origin/${BRANCH}"
 git -C "$REPO_DIR" reset --hard --quiet "origin/${BRANCH}"
 
@@ -50,8 +52,38 @@ if [ ! -x "$REPO_DIR/$SCRIPT" ]; then
   log "${BRANCH} does not carry ${SCRIPT} yet; nothing to run"
   exit 0
 fi
+LIMIT_SECONDS="$(python3 - "$TIMEOUT" <<'PY'
+import re, sys
+m = re.fullmatch(r"([0-9]+(?:\.[0-9]+)?)([smhd]?)", sys.argv[1])
+if not m:
+    raise SystemExit("RADAR_TIMEOUT must be a number with s, m, h, or d")
+print(max(1, int(float(m[1]) * {"": 1, "s": 1, "m": 60, "h": 3600, "d": 86400}[m[2]])))
+PY
+)"
+JOB_STARTED_SECONDS="$SECONDS"
+if [ -f "$REPO_DIR/scripts/agent_pipeline.py" ]; then
+  RECONCILE_SECONDS="$((LIMIT_SECONDS < 600 ? LIMIT_SECONDS : 600))"
+  timeout --kill-after=30 "${RECONCILE_SECONDS}s" \
+    python3 "$REPO_DIR/scripts/agent_pipeline.py" resume --directory "$STATE_DIR/publications" ||
+    log "A prior publication needs another automatic correction; continuing its scheduled job"
+fi
 status=0
-timeout --kill-after=60 "$TIMEOUT" "$REPO_DIR/$SCRIPT" "$@" || status=$?
+for attempt in 1 2 3; do
+  REMAINING_SECONDS="$((LIMIT_SECONDS - SECONDS + JOB_STARTED_SECONDS))"
+  if [ "$REMAINING_SECONDS" -le 0 ]; then status=124; break; fi
+  status=0
+  timeout --kill-after=60 "${REMAINING_SECONDS}s" "$REPO_DIR/$SCRIPT" "$@" || status=$?
+  if [ "$status" -eq 0 ] && [ -f "$REPO_DIR/scripts/agent_pipeline.py" ]; then
+    REMAINING_SECONDS="$((LIMIT_SECONDS - SECONDS + JOB_STARTED_SECONDS))"
+    if [ "$REMAINING_SECONDS" -le 0 ]; then status=124; break; fi
+    timeout --kill-after=30 "${REMAINING_SECONDS}s" \
+      python3 "$REPO_DIR/scripts/agent_pipeline.py" resume --directory "$STATE_DIR/publications" || status=$?
+  fi
+  [ "$status" -eq 0 ] && break
+  [ "$attempt" -eq 3 ] && break
+  log "automatic retry ${attempt}/2 after exit ${status}; saved receipts preserve completed work"
+  sleep 30
+done
 case "$status" in
   0) ;;
   124|137) log "FAILED ${SCRIPT}: still running after ${TIMEOUT}, stopped" ;;

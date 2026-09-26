@@ -137,12 +137,11 @@ class DraftGateTests(unittest.TestCase):
                         "the pages name the drafter, so stamp before rebuilding them")
 
     def test_the_draft_merges_only_on_a_pass_of_the_commit_it_pushed(self):
-        # "no checks reported" once fell through the old case statement as green.
-        gate = self.SCRIPT[self.SCRIPT.index("checks_state()"):]
-        self.assertIn('if length == 0 then "none"', gate)
-        self.assertIn('if [ "$STATE" != "pass" ]', gate)
-        self.assertIn('gh pr merge "$PR" --merge --match-head-commit "$HEAD_SHA"', gate)
-        self.assertEqual(self.SCRIPT.count("gh pr merge"), 1)
+        # The shared controller's empty/cancelled/stale-head cases are exercised
+        # in test_unattended.py; the shell entry point must not bypass that gate.
+        self.assertIn("scripts/agent_pipeline.py finish", self.SCRIPT)
+        self.assertIn('--pr "$PR" --head "$HEAD_SHA" --workflow CI', self.SCRIPT)
+        self.assertNotIn("gh pr merge", self.SCRIPT)
 
 
 class AgentBoundaryTests(unittest.TestCase):
