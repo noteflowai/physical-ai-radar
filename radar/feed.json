@@ -13,6 +13,307 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.28952",
+      "url": "https://arxiv.org/abs/2609.28952",
+      "title": "RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.28952 · 2026-09-25<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.28952 · 2026-09-25\nSignals: closed-loop success reported\n\nRobot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.28952"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "arxiv:2609.28952",
+        "url": "https://arxiv.org/abs/2609.28952",
+        "title": "RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations",
+        "publisher": "arXiv 2609.28952",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop"
+        ],
+        "excerpt": "Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29648",
+      "url": "https://arxiv.org/abs/2609.29648",
+      "title": "Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29648 · 2026-09-25<br><b>Key numbers</b>: 17.6% · 14.4% · 24.9% · 26.1%<br><b>Signals</b>: quantitative results · open code or weights · latency or control-rate numbers</p>\n<blockquote>Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.29648 · 2026-09-25\nKey numbers: 17.6% · 14.4% · 24.9% · 26.1%\nSignals: quantitative results · open code or weights · latency or control-rate numbers\n\nVideo object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29648"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "arxiv:2609.29648",
+        "url": "https://arxiv.org/abs/2609.29648",
+        "title": "Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge",
+        "publisher": "arXiv 2609.29648",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [
+          "17.6%",
+          "14.4%",
+          "24.9%",
+          "26.1%"
+        ],
+        "signals": [
+          "numbers",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.30247",
+      "url": "https://arxiv.org/abs/2609.30247",
+      "title": "Rolling-WAM: World Action Models with Rolling Imagination",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.30247 · 2026-09-25<br><b>Key numbers</b>: 4.5x<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.30247 · 2026-09-25\nKey numbers: 4.5x\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nWorld Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.30247"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "arxiv:2609.30247",
+        "url": "https://arxiv.org/abs/2609.30247",
+        "title": "Rolling-WAM: World Action Models with Rolling Imagination",
+        "publisher": "arXiv 2609.30247",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [
+          "4.5x"
+        ],
+        "signals": [
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29194",
+      "url": "https://arxiv.org/abs/2609.29194",
+      "title": "Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29194 · 2026-09-25<br><b>Key numbers</b>: 4.30 ms<br><b>Signals</b>: quantitative results · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.29194 · 2026-09-25\nKey numbers: 4.30 ms\nSignals: quantitative results · real-robot experiments · latency or control-rate numbers\n\nMobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29194"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "arxiv:2609.29194",
+        "url": "https://arxiv.org/abs/2609.29194",
+        "title": "Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models",
+        "publisher": "arXiv 2609.29194",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [
+          "4.30 ms"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:feb88627a011",
+      "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
+      "title": "Video Friday: Life’s Better With a Little Robot Goose",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-09-25</p>\n<blockquote>Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave!</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-09-25\n\nLife’s better with a little Goose. [ The Robot Works ] Thanks, Dave!\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave!",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "IEEE Spectrum Robotics"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "ieee-spectrum-robotics:feb88627a011",
+        "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
+        "title": "Video Friday: Life’s Better With a Little Robot Goose",
+        "publisher": "IEEE Spectrum Robotics",
+        "source_id": "ieee-spectrum-robotics",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave!"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:b3e6b0c2f18a",
+      "url": "http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning",
+      "title": "Difference-Aware Retrieval Policies for Imitation Learning",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Key numbers</b>: 46%<br><b>Signals</b>: quantitative results</p>\n<blockquote>Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nKey numbers: 46%\nSignals: quantitative results\n\nParametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "tri:b3e6b0c2f18a",
+        "url": "http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning",
+        "title": "Difference-Aware Retrieval Policies for Imitation Learning",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [
+          "46%"
+        ],
+        "signals": [
+          "numbers"
+        ],
+        "excerpt": "Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:50a71a65c0e2",
+      "url": "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/",
+      "title": "Agility Robotics, maker of Digit humanoid, exploring wheeled robots",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-25</p>\n<blockquote>Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-09-25\n\nAgility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "the-robot-report:50a71a65c0e2",
+        "url": "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/",
+        "title": "Agility Robotics, maker of Digit humanoid, exploring wheeled robots",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:4b4ee0ad7c92",
+      "url": "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/",
+      "title": "Qualcomm to acquire PickNik Robotics and keep MoveIt open-source",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-23<br><b>Signals</b>: open code or weights</p>\n<blockquote>Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html\">Full radar for 2026-09-26</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [M]\nSource: The Robot Report · 2026-09-23\nSignals: open code or weights\n\nQualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework.\n\nFull radar for 2026-09-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-26.en.html",
+      "summary": "Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework.",
+      "date_published": "2026-09-26T01:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-26",
+        "id": "the-robot-report:4b4ee0ad7c92",
+        "url": "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/",
+        "title": "Qualcomm to acquire PickNik Robotics and keep MoveIt open-source",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "systems",
+        "published": "2026-09-23",
+        "radar_published": "2026-09-26T01:40:00Z",
+        "numbers": [],
+        "signals": [
+          "open_release"
+        ],
+        "excerpt": "Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.26792",
       "url": "https://arxiv.org/abs/2609.26792",
       "title": "DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving",

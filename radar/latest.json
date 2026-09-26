@@ -1,169 +1,193 @@
 {
-  "date": "2026-09-25",
-  "generated": "2026-09-25 01:40 UTC",
-  "window": "papers 2026-09-22 → 2026-09-25 · posts 2026-08-26 → 2026-09-25 (UTC)",
+  "date": "2026-09-26",
+  "generated": "2026-09-26 01:40 UTC",
+  "window": "papers 2026-09-22 → 2026-09-26 · posts 2026-08-27 → 2026-09-26 (UTC)",
   "window_detail": {
-    "day": "2026-09-25",
+    "day": "2026-09-26",
     "papers_from": "2026-09-22",
-    "posts_from": "2026-08-26",
-    "repeat_days": 7
+    "posts_from": "2026-08-27",
+    "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2609.26792",
-      "title": "DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving",
-      "url": "https://arxiv.org/abs/2609.26792",
-      "publisher": "arXiv 2609.26792",
+      "id": "arxiv:2609.28952",
+      "title": "RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations",
+      "url": "https://arxiv.org/abs/2609.28952",
+      "publisher": "arXiv 2609.28952",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-24",
+      "published": "2026-09-25",
       "lane": "simeval",
-      "score": 4.225,
+      "score": 3.96,
       "numbers": [],
       "signals": [
-        "closed_loop",
-        "real_robot",
-        "open_release"
+        "closed_loop"
       ],
-      "summary": "Faithfully evaluating end-to-end driving policies in simulation requires observations that are not merely photo-realistic, but preserve the scene features a policy relies on to make decisions. Existing platforms, however, exhibit a sim-to-real visual gap that corrupts policy perception, undermining their ability to assess a policy's closed-loop decision-making. To this end, we propose DreamStream, a generative, closed-loop simulator that achieves policy-oriented fidelity using a simulator-grounded autoregressive video model. Our video model is distilled from a large pretrained video model via traffic layout guidance, varying visual appearance while preserving policy-relevant features such as scenario layout and the temporal consistency of dynamic objects. We further observe that perceptual metrics like FID misrank how well these features are preserved. To tackle this, we introduce FD$\\pi$, a new multi-representation metric that measures the sim-to-real gap as the Fr\\'echet distance over scene-context features from public E2E policies. Under FD$\\pi$, DreamStream improves over the strongest prior closed-loop simulator by $1.6\\times$ on nuScenes and $4.7\\times$ on NAVSIM, and induces the least perturbation to policy's perceptual observability. Based on DreamStream, we construct Navhard-CL benchmark, which turns non-reactive real-world benchmark NAVSIM into interactive testing environments with adversarial driving behaviors and weather variations. This benchmark exposes many failure modes of driving policies, such as scorer bias and lack of recovery behaviors, that prior closed-loop benchmarks overlook. Code and data are available at https://github.com/VAIL-UCLA/DreamStream."
+      "summary": "Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states. These evaluations often focus on the initialized scene and the final outcome, while paying less attention to the dynamic interaction process. During closed-loop execution, actions and contacts can alter object relations and task progress, producing off-nominal intermediate states that need recovery. Recovery requires a policy to infer how task progress has changed, correct the relevant relations, and continue the original goal. We introduce RoboRecover, a benchmark for robot policy recovery under execution deviations. RoboRecover selects deviation states from trajectories, reconstructs them by replaying action prefixes, and evaluates policies on the original task. RoboRecover contains 2,000 scenarios across RoboTwin and LIBERO, with 1,000 scenarios and a fixed 800/200 train/test split on each platform. Results show that initial-state performance does not determine recovery performance and policies exhibit different recovery strengths across scenarios. Using its training split, RoboRecover further supports study on recovery interventions. RoboRecover establishes recovery from execution-induced intermediate states as a distinct dimension of robot policy evaluation."
     },
     {
-      "id": "arxiv:2609.25376",
-      "title": "VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2609.25376",
-      "publisher": "arXiv 2609.25376",
+      "id": "arxiv:2609.29648",
+      "title": "Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge",
+      "url": "https://arxiv.org/abs/2609.29648",
+      "publisher": "arXiv 2609.29648",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-24",
-      "lane": "simeval",
-      "score": 3.825,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "open_release"
-      ],
-      "summary": "Post-training quantization reduces the memory requirements of vision-language-action (VLA) models, but precision selection must account for the interaction between layer scope, numerical format, and calibration. We introduce \\textbf{VLAQuantBench}, a controlled evaluation with 409 runs and 94,574 simulation episodes: four models on LIBERO, with X-VLA additionally evaluated on three simulation benchmark families. Under uncalibrated W4A4 round-to-nearest quantization, expanding a $\\pi_{0.5}$ action-head subset from 126 to 167 layers raises success from 7.0\\% to 70.5\\%. Fixed-observation replay confirms a corresponding numerical recovery. Two-episode calibration removes the severe joint failures in the tested subsets, whereas the same smoothing-and-clipping recipe lowers $\\pi_0$ success and does not recover OpenVLA-OFT end-to-end. For OpenVLA-OFT, protecting one 28,672-parameter output projection instead restores near-baseline success: the remaining 441 eligible linear layers retain W3 on LIBERO-Long or eight-bit activations across all four suites. Task-clustered intervals support the large failure and recovery contrasts. These results establish recipe-dependent interactions and identify concrete precision assignments, rather than universal layer-sensitivity rules. Real-kernel and physical-robot measurements complement the accuracy analysis. Code, configurations, and episode records are publicly available at https://github.com/jiuyixu25/VLAQuantBench."
-    },
-    {
-      "id": "arxiv:2609.26520",
-      "title": "MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection",
-      "url": "https://arxiv.org/abs/2609.26520",
-      "publisher": "arXiv 2609.26520",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-24",
-      "lane": "data",
-      "score": 3.688,
+      "published": "2026-09-25",
+      "lane": "edge",
+      "score": 3.912,
       "numbers": [
-        "24.1 hours"
+        "17.6%",
+        "14.4%",
+        "24.9%",
+        "26.1%"
       ],
       "signals": [
         "numbers",
-        "real_robot"
+        "open_release",
+        "latency"
       ],
-      "summary": "Humanoid robots require diverse embodied experiences to acquire complex loco-manipulation and collaborative skills. However, existing humanoid data pipelines primarily focus on individual agents, while physical multi-robot collaboration remains difficult to scale due to costly hardware, dedicated spaces, and repeated resets. In this work, we introduce MATE, a Multi-Agent virtual TEleoperation platform for humanoid collaboration data collection that enables multiple geographically distributed operators to simultaneously control whole-body humanoids in a shared physics-based environment. MATE removes the need for multiple physical robots and co-located operation while preserving physically coupled interactions among humanoids, objects, and environments. Using MATE, we construct a multi-humanoid collaboration dataset comprising 24.1 hours of coordinated behavior across 2,500 joint episodes and five long-horizon tasks, including object handover, relay delivery, environment interaction, and cooperative transport. To improve learning from these interaction-rich demonstrations, we introduce EAIS, an Execution-Aligned Interaction Sampling strategy that computes sampling signals within an execution-aligned prefix and prioritizes task-progressing and interaction-critical behaviors. We evaluate MATE with representative imitation learning and vision-language-action policies across diverse collaboration tasks. Experiments demonstrate efficient data collection, effective policy learning, and zero-shot transfer from virtual demonstrations to a physical humanoid without real-world fine-tuning. Project page: https://yerik-yu.github.io/MATE/"
+      "summary": "Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization. Although consecutive frames are highly redundant, naive frame skipping is content-blind: it skips during critical moments such as object entry, occlusion recovery, and abrupt motion, degrading detection quality. We present Albireo, a detector-agnostic, codec-free adaptive inference framework that wraps off-the-shelf detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state, requiring no detector modification or retraining. Albireo maintains a 10-dimensional Kalman filter (KF) per active object and invokes the detector only when prediction uncertainty exceeds a threshold; on skipped frames, boxes are predicted from the KF state at near-zero GPU cost. A KF-based rescue mechanism preserves confirmed objects through brief detector misses to prevent output fragmentation, while a lightweight empty-scene screen avoids detector calls on objectless frames. We evaluate Albireo on the BDD100K MOT validation split with three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor, AGX Orin). Across all configurations, Albireo keeps AP@50 within +/-1.2 pp of per-frame inference while reducing total energy by 12.1-17.6%. On YOLO26x, it improves AP@50 by +0.8 pp while reducing energy by 17.6% (Thor) and 14.4% (Orin) and per-frame energy-delay product by 24.9% and 26.1%, respectively. Thus, the default operating point improves accuracy, energy, and latency together. In contrast, FixedSkip-2, a fixed-interval baseline with a 50% skip rate, loses 8.6 pp AP@50. Source code, evaluation pipeline, and per-clip results are available at https://github.com/amirtaherin/albireo"
     },
     {
-      "id": "nvidia-developer-robotics:930fe61380af",
-      "title": "Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS",
-      "url": "https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-09-22",
-      "lane": "systems",
-      "score": 2.0,
-      "numbers": [],
-      "signals": [],
-      "summary": "GPU acceleration can speed up compute-intensive robotics workloads, but a fast CUDA kernel alone does not guarantee a fast ROS 2 graph. As messages move between..."
+      "id": "arxiv:2609.30247",
+      "title": "Rolling-WAM: World Action Models with Rolling Imagination",
+      "url": "https://arxiv.org/abs/2609.30247",
+      "publisher": "arXiv 2609.30247",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-25",
+      "lane": "simeval",
+      "score": 3.79,
+      "numbers": [
+        "4.5x"
+      ],
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action updates and limiting closed-loop responsiveness. We present Rolling-WAM, a formulation that distributes joint denoising across successive replanning cycles. Our method maintains a sliding window of video-action chunks at staggered noise levels. At each step, a rolling noise schedule fully denoises the imminent action chunk for execution, while partially refining farther-future chunks. As the window advances with new camera observations, the retained future chunks continue their denoising process. This distributes the computational cost over time while carrying an evolving visual-action context across chunk boundaries. Evaluations on LIBERO, RoboTwin, and a real-world Unitree G1 humanoid show that Rolling-WAM achieves competitive manipulation performance. By removing the need to denoise the entire prediction horizon from scratch, it delivers a 4.5x steady-state replanning speedup over standard joint WAMs."
     },
     {
-      "id": "the-robot-report:d07cde754ec6",
-      "title": "Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA",
-      "url": "https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "arxiv:2609.29194",
+      "title": "Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models",
+      "url": "https://arxiv.org/abs/2609.29194",
+      "publisher": "arXiv 2609.29194",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-25",
+      "lane": "edge",
+      "score": 3.66,
+      "numbers": [
+        "4.30 ms"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware. While deep time-series models excel at unsupervised anomaly detection, their computational cost prohibits high-frequency onboard execution. This paper bridges this gap via a Teacher-Student distillation framework. An offline foundation model (TSPulse) generates pseudo-labels from unlabeled time series augmented with fault injections. A lightweight MiniRocket Student, adapted with a Recursive Least Squares estimator, approximates this complex decision boundary to execute real-time inference onboard. Evaluations on the TSB-AD benchmark and a physical mobile robot demonstrate the Student achieves a 4.30 ms CPU inference latency. During real-world domain shifts, online adaptation enables the Student to recover from unseen mechanical degradation, improving VUS-PR scores from 0.26 to 0.75 without catastrophic forgetting. Crucially, an uncertainty-guided active learning strategy minimizes operator cognitive load, requesting sparse interventions only when encountering novel fault distributions. These results validate the deployment of state-of-the-art anomaly detection on resource-constrained robotics through offline-to-online distillation."
+    },
+    {
+      "id": "ieee-spectrum-robotics:feb88627a011",
+      "title": "Video Friday: Life’s Better With a Little Robot Goose",
+      "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
       "evidence": "M",
-      "published": "2026-09-22",
-      "lane": "systems",
-      "score": 1.25,
+      "published": "2026-09-25",
+      "lane": "hardware",
+      "score": 2.462,
       "numbers": [],
       "signals": [],
-      "summary": "The release brings new agentic workflows and platform support to NVIDIA Isaac ROS to help developers deploy robotics applications faster. The post Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA appeared first on The Robot Report ."
+      "summary": "Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave! Skydio has introduced the F10, a charmingly lopsided fixed-wing drone , that uses a robot arm for autonomous launch and capture. Unfortunately, based on the frequency of that flashing LED on the drone, this video appears to have sped up the capture (and likely the launch) by a substantial amount. [ Skydio ] I want a bunch of these little guys. I don’t know what I’d do with them. But I want them. [ Freeform Robotics ] Walking robots are everywhere now…. But 30 years ago, they were brand new. The first ever robot that could walk by itself was the Honda P2 . The P2 featured motors and hydraulics in the hips, knees, and ankles to walk around, and weighed over 300 pounds. [ IEEE Spectrum ] Precision biomimetic dexterous hand, priced from US $6,500. [ Unitree ] What if all it took to train a drone to do acrobatics was to tell it whether you like the way it flies? [ UZH Robotics and Perception Group ] Why build a humanoid hand when a robot hand can do stuff like this? [ General Robotics Lab ] Diane Heinle, a mechanical engineer at Boston Dynamics, answers questions about endurance testing for Stretch, how her team simulates years of wear on robot parts over a brief time in the lab, and why there are bird heads on them. [ Boston Dynamics ] ULOHA brings learning from demonstrations to two robot arms working underwater. We developed custom leader–follower hardware and software extending LeRobot to connect teleoperation, demonstration collection, and autonomous manipulation. The video shows the …"
     },
     {
-      "id": "aws-physical-ai:b7a93c57417f",
-      "title": "Bringing a Frontier World Model to the Convenience Store: Inside Telexistence’s DreamZero Experiment on AWS",
-      "url": "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
-      "evidence": "O",
+      "id": "tri:b3e6b0c2f18a",
+      "title": "Difference-Aware Retrieval Policies for Imitation Learning",
+      "url": "http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning",
+      "publisher": "Toyota Research Institute",
+      "source_id": "tri",
+      "evidence": "R",
       "published": "2026-09-09",
-      "lane": "foundation",
-      "score": 1.2,
-      "numbers": [],
-      "signals": [],
-      "summary": "Introduction Imagine walking into a convenience store in Tokyo and watching a robot scan your items, bag your groceries, and restock the shelves — all without missing a beat. That’s not a vision of the future, it’s what happens when a world model running on AWS gives a robot the ability to imagine before it […]"
+      "lane": "data",
+      "score": 2.12,
+      "numbers": [
+        "46%"
+      ],
+      "signals": [
+        "numbers"
+      ],
+      "summary": "Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment. We show that reusing the training data during inference via a semi-parametric retrieval-based imitation learning approach can alleviate this challenge. We present Difference-Aware Retrieval Policies for Imitation Learning (DARP), a semi-parametric retrieval-based imitation learning approach that addresses this limitation by reparameterizing the imitation learning problem in terms of local neighborhood structure rather than direct state-to-action mappings. Instead of learning a global policy, DARP trains a model to predict actions based on k-nearest neighbors from expert demonstrations, their corresponding actions, and the relative distance vectors between neighbor states and query states. DARP requires no additional assumptions beyond those made for standard behavior cloning – it does not require additional data collection, online expert feedback, or task-specific knowledge. We demonstrate consistent performance improvements of 15-46% over standard behavior cloning across diverse domains, including continuous control and robotic manipulation, and across different representations, including high-dimensional visual features. Image Jun 8, 2026 Robotics Read More 1 Minute Read"
     },
     {
-      "id": "the-robot-report:4ae043b260ed",
-      "title": "ANYbotics opens the door for inspections with ANYmal robots",
-      "url": "https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots/",
+      "id": "the-robot-report:50a71a65c0e2",
+      "title": "Agility Robotics, maker of Digit humanoid, exploring wheeled robots",
+      "url": "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-09-24",
+      "published": "2026-09-25",
       "lane": "hardware",
-      "score": 1.182,
+      "score": 1.515,
       "numbers": [],
       "signals": [],
-      "summary": "ANYbotics partnered with dormakaba and LEGIC Identsystems to enable the ANYmal quadruped to gain access like a badged employee. The post ANYbotics opens the door for inspections with ANYmal robots appeared first on The Robot Report ."
+      "summary": "Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs."
     },
     {
-      "id": "the-robot-report:f67b05547254",
-      "title": "Epson introduces AX6 cobot with compact design, no-code programming",
-      "url": "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming/",
+      "id": "the-robot-report:4b4ee0ad7c92",
+      "title": "Qualcomm to acquire PickNik Robotics and keep MoveIt open-source",
+      "url": "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-09-24",
-      "lane": "hardware",
-      "score": 1.182,
+      "published": "2026-09-23",
+      "lane": "systems",
+      "score": 1.15,
       "numbers": [],
-      "signals": [],
-      "summary": "Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report ."
+      "signals": [
+        "open_release"
+      ],
+      "summary": "Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework."
     }
   ],
   "lane_counts": {
-    "foundation": 4,
-    "data": 6,
-    "training": 4,
-    "simeval": 6,
-    "edge": 5,
-    "safety": 5,
-    "systems": 3,
-    "hardware": 4
+    "foundation": 2,
+    "data": 4,
+    "training": 6,
+    "simeval": 11,
+    "edge": 8,
+    "safety": 1,
+    "systems": 7,
+    "hardware": 8
   },
   "evidence_mix": {
-    "O": 16,
-    "R": 16,
-    "M": 5
+    "O": 24,
+    "R": 8,
+    "M": 15
   },
   "fetch": {
-    "items": 924,
-    "attempted": 8,
-    "answered": 8,
+    "items": 940,
+    "attempted": 11,
+    "answered": 11,
     "failed": [],
+    "fallback": [
+      "arxiv"
+    ],
     "per_source": {
-      "arxiv": 551,
+      "arxiv": 507,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
       "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
-      "the-robot-report": 15
+      "the-robot-report": 15,
+      "tri": 10,
+      "leiphone": 20,
+      "monoist": 30
     }
   },
-  "baseline_count": 29
+  "baseline_count": 29,
+  "chart_days": 7
 }

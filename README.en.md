@@ -22,22 +22,22 @@ How this differs from a paper list or a news aggregator:
 **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [weekly roundups](radar/INDEX.md). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-25
+### Today's radar · 2026-09-26
 
-`Generated: 2026-09-25 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-25 · posts 2026-08-26 → 2026-09-25 · no repeats within 7 days (UTC)`
+`Generated: 2026-09-26 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-26 · posts 2026-08-27 → 2026-09-26 · no repeats within 30 days (UTC)`
 
-- `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — Simulation & evaluation (sim2real / closed-loop)
-  - `AI draft` If you lean on generative simulators for closed-loop evaluation, this preprint argues photo-realism metrics can misrank fidelity and offers a policy-feature metric plus code, though the gains are self-reported on driving benchmarks only.
-- `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — Simulation & evaluation (sim2real / closed-loop)
-  - `AI draft` Before shipping a quantized VLA, treat precision recipes as model-specific: this preprint reports that which layers you protect swings closed-loop success sharply and that one model's calibration fix degrades another, mostly in simulation.
-- `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — Data engine (collection / curation / scaling) ｜ `24.1 hours`
-  - `AI draft` Collecting multi-humanoid collaboration data no longer requires owning several robots: distributed operators in a shared physics sim produced 24.1 hours of coordinated demos, and the authors report zero-shot transfer to one physical humanoid.
-- `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — Systems & orchestration (long-horizon / multi-policy)
-  - `AI draft` NVIDIA's own walkthrough of having an AI agent port a ROS 2 node to Isaac ROS is a reminder that message transport, not the CUDA kernel, usually bounds graph latency; it shows the workflow but gives no timing figures.
-- `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — Systems & orchestration (long-horizon / multi-policy)
-  - `AI draft` A trade-press summary of the Isaac ROS 5.0 release: agentic workflows and new platform support are the headline, so check NVIDIA's release notes for which hardware and ROS distributions are covered before scheduling a migration.
+- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — Simulation & evaluation (sim2real / closed-loop)
+  - Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — Edge & real-time (on-device inference / control rate) ｜ `17.6%` · `14.4%`
+  - Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — Simulation & evaluation (sim2real / closed-loop) ｜ `4.5x`
+  - Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — Edge & real-time (on-device inference / control rate) ｜ `4.30 ms`
+  - Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — Embodiment & supply chain (hardware / cost)
+  - Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
-[Today's radar ›](radar/daily/2026-09-25.en.md) · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
+[Today's radar ›](radar/daily/2026-09-26.en.md) · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.en.svg)
 

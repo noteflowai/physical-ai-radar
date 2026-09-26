@@ -103,6 +103,25 @@
         "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming"
       ],
       "failed": []
+    },
+    {
+      "date": "2026-09-26",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2609.28952",
+        "https://arxiv.org/abs/2609.29648",
+        "https://arxiv.org/abs/2609.30247",
+        "https://arxiv.org/abs/2609.29194",
+        "https://spectrum.ieee.org/video-friday-goose-household-robots",
+        "https://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning",
+        "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots",
+        "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source"
+      ],
+      "failed": [],
+      "fallback": [
+        "arxiv"
+      ]
     }
   ]
 }

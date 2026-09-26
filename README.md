@@ -22,22 +22,22 @@
 **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [每周汇总](radar/INDEX.md)。把链接粘贴到任意 RSS 阅读器即可，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-25
+### 今日雷达 · 2026-09-26
 
-`生成时间: 2026-09-25 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-25 · 博客与报道 2026-08-26 → 2026-09-25 · 7 天内不重复 (UTC)`
+`生成时间: 2026-09-26 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-26 · 博客与报道 2026-08-27 → 2026-09-26 · 30 天内不重复 (UTC)`
 
-- `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — 仿真与评测（sim2real / 闭环）
-  - `AI 起草` 用生成式仿真器做闭环评测时别只看画面逼真度：作者自报 FID 类指标会错判保真度，改用策略特征距离并开源了代码与数据，但结论仅限自动驾驶基准。
-- `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — 仿真与评测（sim2real / 闭环）
-  - `AI 起草` 给 VLA 做量化部署前别照搬别家的精度配方：作者自报保护哪些层会让闭环成功率大幅波动，同一校准方法在不同模型上效果相反，结论主要来自仿真。
-- `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — 数据引擎（采集 / 清洗 / scaling） ｜ `24.1 hours`
-  - `AI 起草` 采多人形协作数据可以不买第二台机器人：异地操作员在同一物理仿真里遥操作攒出 24.1 小时协作演示，作者自报能零样本迁移到一台真机人形。
-- `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — 系统与编排（长程 / 多策略）
-  - `AI 起草` 官方演示用 AI agent 把 ROS 2 节点迁到 Isaac ROS，真正的提醒是图的瓶颈常在消息传递而非 CUDA 内核；文中只展示流程，没有给出加速数字。
-- `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — 系统与编排（长程 / 多策略）
-  - `AI 起草` 这是对 Isaac ROS 5.0 发布的二手转述，重点是 agent 工作流和新平台支持；排迁移计划前请以 NVIDIA 发行说明为准核对支持的硬件与 ROS 版本。
+- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — 仿真与评测（sim2real / 闭环）
+  - 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — 边缘与实时性（端侧推理 / 控制频率） ｜ `17.6%` · `14.4%`
+  - 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — 仿真与评测（sim2real / 闭环） ｜ `4.5x`
+  - 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — 边缘与实时性（端侧推理 / 控制频率） ｜ `4.30 ms`
+  - 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — 本体与供应链（硬件 / 成本）
+  - 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
-[今日雷达 ›](radar/daily/2026-09-25.zh.md) · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
+[今日雷达 ›](radar/daily/2026-09-26.zh.md) · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.zh.svg)
 

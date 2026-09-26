@@ -22,22 +22,22 @@
 **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [週間まとめ](radar/INDEX.md)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-25
+### 本日のレーダー · 2026-09-26
 
-`生成時刻: 2026-09-25 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-25 · ブログ・報道 2026-08-26 → 2026-09-25 · 7 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-26 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-26 · ブログ・報道 2026-08-27 → 2026-09-26 · 30 日以内の重複なし (UTC)`
 
-- `[R]` **[DreamStream: Towards Policy-Oriented Generative Simulation for End-to-End Driving](https://arxiv.org/abs/2609.26792)** — シミュレーションと評価（sim2real / 閉ループ）
-  - `AI 下書き` 生成シミュレータで閉ループ評価を行うなら、写実性指標では忠実度を誤判定しうると著者は主張し、ポリシー特徴に基づく指標とコードを公開しているが、検証は運転ベンチマークでの自己報告に限られる。
-- `[R]` **[VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-Language-Action Models](https://arxiv.org/abs/2609.25376)** — シミュレーションと評価（sim2real / 閉ループ）
-  - `AI 下書き` VLA を量子化して載せる前に精度レシピはモデルごとに閉ループで検証すべきで、保護する層の選び方で成功率が大きく振れ、同じ校正が別モデルでは逆効果になると報告されている（主にシミュレーション）。
-- `[R]` **[MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection](https://arxiv.org/abs/2609.26520)** — データエンジン（収集 / 精査 / スケーリング） ｜ `24.1 hours`
-  - `AI 下書き` 複数台のヒューマノイドを揃えなくても協調データは集められることを示す結果で、遠隔の操作者が共有物理シミュレーション上で 24.1 時間の協調デモを収集し、著者は実機一台へのゼロショット転移を報告している。
-- `[O]` **[Accelerating a ROS 2 Node with an AI Agent and NVIDIA Isaac ROS](https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros/)** — システムとオーケストレーション（長期タスク / 複数方策）
-  - `AI 下書き` AI エージェントに ROS 2 ノードを Isaac ROS へ移植させる NVIDIA 公式の手順で、CUDA カーネルよりメッセージ伝送がグラフ遅延を律速するという指摘が本題だが、加速量の数値は示されていない。
-- `[M]` **[Isaac ROS 5.0 brings AI agents to robotics development, says NVIDIA](https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia/)** — システムとオーケストレーション（長期タスク / 複数方策）
-  - `AI 下書き` Isaac ROS 5.0 のリリースを伝える二次報道で、要点はエージェント型ワークフローと対応プラットフォームの拡大にあり、移行を計画するなら対応ハードと ROS ディストリビューションは NVIDIA の一次情報で確認したい。
+- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — シミュレーションと評価（sim2real / 閉ループ）
+  - 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — エッジとリアルタイム（オンデバイス推論 / 制御周期） ｜ `17.6%` · `14.4%`
+  - 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — シミュレーションと評価（sim2real / 閉ループ） ｜ `4.5x`
+  - 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — エッジとリアルタイム（オンデバイス推論 / 制御周期） ｜ `4.30 ms`
+  - 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — ハードウェアとサプライチェーン（機体 / コスト）
+  - 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
-[本日のレーダー ›](radar/daily/2026-09-25.ja.md) · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
+[本日のレーダー ›](radar/daily/2026-09-26.ja.md) · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 ![lane distribution](assets/lane-distribution.ja.svg)
 
