@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI Radar · 2026-09-26 · The Physical AI frontier, eight picks a day, every claim tagged">
+<title>Physical AI Radar · 2026-09-26</title>
+<style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
+<defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
+<g clip-path="url(#card)">
+<rect width="1280" height="480" fill="#05070d"/>
+<rect width="1280" height="480" fill="url(#grid)"/>
+<rect width="1280" height="480" fill="url(#glow-a)"/>
+<rect width="1280" height="480" fill="url(#glow-b)"/>
+</g>
+<rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
+<rect x="60" y="56" width="434" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
+<circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">Updated daily at 01:40 UTC · 2026-09-26</text>
+<text x="60" y="144" font-size="40" font-weight="800" fill="url(#shine)">The Physical AI frontier,</text>
+<text x="60" y="194" font-size="40" font-weight="800" fill="url(#shine)">eight picks a day, every</text>
+<text x="60" y="244" font-size="40" font-weight="800" fill="url(#shine)">claim tagged</text>
+<text x="60" y="294" font-size="20" fill="#9fb0c6">Eight lanes · evidence-tagged · Chinese, English,</text>
+<text x="60" y="322" font-size="20" fill="#9fb0c6">Japanese · daily</text>
+<rect x="60" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="75" y="370" font-size="15" fill="#8b98ad">picks today</text>
+<text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
+<rect x="220" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="236" y="370" font-size="15" fill="#8b98ad">items scanned</text>
+<text class="mono" x="236" y="410" font-size="32" font-weight="700" fill="#e6edf3">940</text>
+<rect x="381" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="396" y="370" font-size="15" fill="#8b98ad">sources answered</text>
+<text class="mono" x="396" y="410" font-size="32" font-weight="700" fill="#e6edf3">11/11</text>
+<rect x="542" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="556" y="370" font-size="15" fill="#8b98ad">picks, last 7 days</text>
+<text class="mono" x="556" y="410" font-size="32" font-weight="700" fill="#e6edf3">47</text>
+<svg class="radar" x="684" y="60" width="560" height="360" overflow="visible" viewBox="-340 -212 680 424" role="img" aria-label="Lane distribution">
+<defs><linearGradient id="sweep-fade" gradientUnits="userSpaceOnUse" x1="0" y1="-108" x2="69.4" y2="-82.7"><stop offset="0" stop-color="#34d399" stop-opacity="0"/><stop offset="1" stop-color="#34d399" stop-opacity=".4"/></linearGradient><clipPath id="rim"><polygon points="0.0,-108.0 76.4,-76.4 108.0,-0.0 76.4,76.4 0.0,108.0 -76.4,76.4 -108.0,0.0 -76.4,-76.4"/></clipPath></defs>
+<polygon class="ring" points="0.0,-27.0 19.1,-19.1 27.0,-0.0 19.1,19.1 0.0,27.0 -19.1,19.1 -27.0,0.0 -19.1,-19.1"/>
+<polygon class="ring" points="0.0,-54.0 38.2,-38.2 54.0,-0.0 38.2,38.2 0.0,54.0 -38.2,38.2 -54.0,0.0 -38.2,-38.2"/>
+<polygon class="ring" points="0.0,-81.0 57.3,-57.3 81.0,-0.0 57.3,57.3 0.0,81.0 -57.3,57.3 -81.0,0.0 -57.3,-57.3"/>
+<polygon class="ring rim" points="0.0,-108.0 76.4,-76.4 108.0,-0.0 76.4,76.4 0.0,108.0 -76.4,76.4 -108.0,0.0 -76.4,-76.4"/>
+<line class="spoke" x1="0" y1="0" x2="0.0" y2="-108.0"/>
+<text class="label" x="0.0" y="-124.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">Foundation models <tspan class="count">2</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="76.4" y2="-76.4"/>
+<text class="label" x="87.7" y="-87.7" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">Data engine <tspan class="count">4</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="108.0" y2="-0.0"/>
+<text class="label" x="124.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">Training &amp; self-improvement <tspan class="count">6</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="76.4" y2="76.4"/>
+<text class="label" x="87.7" y="87.7" text-anchor="start" dominant-baseline="middle" fill="#fb923c">Simulation &amp; evaluation <tspan class="count">11</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="0.0" y2="108.0"/>
+<text class="label" x="0.0" y="124.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">Edge &amp; real-time <tspan class="count">8</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-76.4" y2="76.4"/>
+<text class="label" x="-87.7" y="87.7" text-anchor="end" dominant-baseline="middle" fill="#facc15">Safety &amp; compliance <tspan class="count">1</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-108.0" y2="0.0"/>
+<text class="label" x="-124.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">Systems &amp; orchestration <tspan class="count">7</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-76.4" y2="-76.4"/>
+<text class="label" x="-87.7" y="-87.7" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">Embodiment &amp; supply chain <tspan class="count">8</tspan></text>
+<polygon class="area" points="0.0,-19.6 27.8,-27.8 58.9,-0.0 76.4,76.4 0.0,78.5 -6.9,6.9 -68.7,0.0 -55.5,-55.5"/>
+<g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-108 A108,108 0 0,1 69.4,-82.7 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="69.4" y2="-82.7" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
+<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="74.5" cy="62.5" r="11" class="halo"/><circle cx="74.5" cy="62.5" r="5"/><title>RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations</title></a>
+<a href="#p2" class="blip" style="--lane:#f472b6;--delay:0.70s"><circle cx="8.4" cy="96.1" r="11" class="halo"/><circle cx="8.4" cy="96.1" r="5"/><title>Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge</title></a>
+<a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="60.8" cy="72.5" r="11" class="halo"/><circle cx="60.8" cy="72.5" r="5"/><title>Rolling-WAM: World Action Models with Rolling Imagination</title></a>
+<a href="#p4" class="blip" style="--lane:#f472b6;--delay:1.40s"><circle cx="-8.1" cy="92.3" r="11" class="halo"/><circle cx="-8.1" cy="92.3" r="5"/><title>Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models</title></a>
+<a href="#p5" class="blip" style="--lane:#22d3ee;--delay:1.75s"><circle cx="-57.2" cy="-48.0" r="11" class="halo"/><circle cx="-57.2" cy="-48.0" r="5"/><title>Video Friday: Life’s Better With a Little Robot Goose</title></a>
+<a href="#p6" class="blip" style="--lane:#38bdf8;--delay:2.10s"><circle cx="49.2" cy="-49.2" r="11" class="halo"/><circle cx="49.2" cy="-49.2" r="5"/><title>Difference-Aware Retrieval Policies for Imitation Learning</title></a>
+<a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-38.9" cy="-46.4" r="11" class="halo"/><circle cx="-38.9" cy="-46.4" r="5"/><title>Agility Robotics, maker of Digit humanoid, exploring wheeled robots</title></a>
+<a href="#p8" class="blip" style="--lane:#a3e635;--delay:2.80s"><circle cx="-55.0" cy="0.0" r="11" class="halo"/><circle cx="-55.0" cy="0.0" r="5"/><title>Qualcomm to acquire PickNik Robotics and keep MoveIt open-source</title></a>
+<circle class="core" r="3"/></svg>
+</svg>

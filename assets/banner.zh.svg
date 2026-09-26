@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI 前沿雷达 · 2026-09-26 · 具身智能前沿，每天八条，条条有证据">
+<title>Physical AI 前沿雷达 · 2026-09-26</title>
+<style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
+<defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
+<g clip-path="url(#card)">
+<rect width="1280" height="480" fill="#05070d"/>
+<rect width="1280" height="480" fill="url(#grid)"/>
+<rect width="1280" height="480" fill="url(#glow-a)"/>
+<rect width="1280" height="480" fill="url(#glow-b)"/>
+</g>
+<rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
+<rect x="60" y="56" width="357" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
+<circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">每日 01:40 UTC 更新 · 2026-09-26</text>
+<text x="60" y="156" font-size="52" font-weight="800" fill="url(#shine)">具身智能前沿，每天八条，</text>
+<text x="60" y="220" font-size="52" font-weight="800" fill="url(#shine)">条条有证据</text>
+<text x="60" y="270" font-size="20" fill="#9fb0c6">八条主线 · 证据分级 · 中英日三语 · 每日更新</text>
+<rect x="60" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="75" y="370" font-size="15" fill="#8b98ad">今日入选</text>
+<text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
+<rect x="210" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="225" y="370" font-size="15" fill="#8b98ad">今日扫描</text>
+<text class="mono" x="225" y="410" font-size="32" font-weight="700" fill="#e6edf3">940</text>
+<rect x="360" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="375" y="370" font-size="15" fill="#8b98ad">信源应答</text>
+<text class="mono" x="375" y="410" font-size="32" font-weight="700" fill="#e6edf3">11/11</text>
+<rect x="510" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
+<text x="525" y="370" font-size="15" fill="#8b98ad">近 7 天入选</text>
+<text class="mono" x="525" y="410" font-size="32" font-weight="700" fill="#e6edf3">47</text>
+<svg class="radar" x="684" y="60" width="560" height="360" overflow="visible" viewBox="-340 -212 680 424" role="img" aria-label="主线分布">
+<defs><linearGradient id="sweep-fade" gradientUnits="userSpaceOnUse" x1="0" y1="-120" x2="77.1" y2="-91.9"><stop offset="0" stop-color="#34d399" stop-opacity="0"/><stop offset="1" stop-color="#34d399" stop-opacity=".4"/></linearGradient><clipPath id="rim"><polygon points="0.0,-120.0 84.9,-84.9 120.0,-0.0 84.9,84.9 0.0,120.0 -84.9,84.9 -120.0,0.0 -84.9,-84.9"/></clipPath></defs>
+<polygon class="ring" points="0.0,-30.0 21.2,-21.2 30.0,-0.0 21.2,21.2 0.0,30.0 -21.2,21.2 -30.0,0.0 -21.2,-21.2"/>
+<polygon class="ring" points="0.0,-60.0 42.4,-42.4 60.0,-0.0 42.4,42.4 0.0,60.0 -42.4,42.4 -60.0,0.0 -42.4,-42.4"/>
+<polygon class="ring" points="0.0,-90.0 63.6,-63.6 90.0,-0.0 63.6,63.6 0.0,90.0 -63.6,63.6 -90.0,0.0 -63.6,-63.6"/>
+<polygon class="ring rim" points="0.0,-120.0 84.9,-84.9 120.0,-0.0 84.9,84.9 0.0,120.0 -84.9,84.9 -120.0,0.0 -84.9,-84.9"/>
+<line class="spoke" x1="0" y1="0" x2="0.0" y2="-120.0"/>
+<text class="label" x="0.0" y="-136.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">基座模型 <tspan class="count">2</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="84.9" y2="-84.9"/>
+<text class="label" x="96.2" y="-96.2" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">数据引擎 <tspan class="count">4</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="120.0" y2="-0.0"/>
+<text class="label" x="136.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">训练与自我改进 <tspan class="count">6</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="84.9" y2="84.9"/>
+<text class="label" x="96.2" y="96.2" text-anchor="start" dominant-baseline="middle" fill="#fb923c">仿真与评测 <tspan class="count">11</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="0.0" y2="120.0"/>
+<text class="label" x="0.0" y="136.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">边缘与实时性 <tspan class="count">8</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-84.9" y2="84.9"/>
+<text class="label" x="-96.2" y="96.2" text-anchor="end" dominant-baseline="middle" fill="#facc15">安全、权限与合规 <tspan class="count">1</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-120.0" y2="0.0"/>
+<text class="label" x="-136.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">系统与编排 <tspan class="count">7</tspan></text>
+<line class="spoke" x1="0" y1="0" x2="-84.9" y2="-84.9"/>
+<text class="label" x="-96.2" y="-96.2" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">本体与供应链 <tspan class="count">8</tspan></text>
+<polygon class="area" points="0.0,-21.8 30.9,-30.9 65.5,-0.0 84.9,84.9 0.0,87.3 -7.7,7.7 -76.4,0.0 -61.7,-61.7"/>
+<g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-120 A120,120 0 0,1 77.1,-91.9 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="77.1" y2="-91.9" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
+<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="82.7" cy="69.4" r="11" class="halo"/><circle cx="82.7" cy="69.4" r="5"/><title>RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations</title></a>
+<a href="#p2" class="blip" style="--lane:#f472b6;--delay:0.70s"><circle cx="9.3" cy="106.8" r="11" class="halo"/><circle cx="9.3" cy="106.8" r="5"/><title>Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge</title></a>
+<a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="67.6" cy="80.6" r="11" class="halo"/><circle cx="67.6" cy="80.6" r="5"/><title>Rolling-WAM: World Action Models with Rolling Imagination</title></a>
+<a href="#p4" class="blip" style="--lane:#f472b6;--delay:1.40s"><circle cx="-9.0" cy="102.6" r="11" class="halo"/><circle cx="-9.0" cy="102.6" r="5"/><title>Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models</title></a>
+<a href="#p5" class="blip" style="--lane:#22d3ee;--delay:1.75s"><circle cx="-63.6" cy="-53.4" r="11" class="halo"/><circle cx="-63.6" cy="-53.4" r="5"/><title>Video Friday: Life’s Better With a Little Robot Goose</title></a>
+<a href="#p6" class="blip" style="--lane:#38bdf8;--delay:2.10s"><circle cx="54.7" cy="-54.7" r="11" class="halo"/><circle cx="54.7" cy="-54.7" r="5"/><title>Difference-Aware Retrieval Policies for Imitation Learning</title></a>
+<a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-43.2" cy="-51.5" r="11" class="halo"/><circle cx="-43.2" cy="-51.5" r="5"/><title>Agility Robotics, maker of Digit humanoid, exploring wheeled robots</title></a>
+<a href="#p8" class="blip" style="--lane:#a3e635;--delay:2.80s"><circle cx="-61.2" cy="0.0" r="11" class="halo"/><circle cx="-61.2" cy="0.0" r="5"/><title>Qualcomm to acquire PickNik Robotics and keep MoveIt open-source</title></a>
+<circle class="core" r="3"/></svg>
+</svg>

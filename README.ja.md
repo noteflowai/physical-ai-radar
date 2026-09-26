@@ -1,47 +1,97 @@
+<div align="center">
+
+<a href="https://noteflowai.github.io/physical-ai-radar/ja/"><img src="assets/banner.ja.svg" width="100%" alt="Physical AI フロンティア・レーダー：Physical AI の最前線を、毎日 8 本、根拠つきで"></a>
+
 # Physical AI フロンティア・レーダー
 
-[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
-[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/ja/)
-[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml)
-[![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
-[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
-[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
+**Physical AI の最前線を毎日 8 本。8 つの軸に分類し、すべての主張に根拠タグを付け、「なぜ重要か」を中国語・英語・日本語で書きます。**
 
-**言語：[中文](README.md) · [English](README.en.md) · 日本語**
+[![サイトを開く](https://img.shields.io/badge/%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E9%96%8B%E3%81%8F-noteflowai.github.io-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/ja/)
+[![購読](https://img.shields.io/badge/%E8%B3%BC%E8%AA%AD-Atom%20%C2%B7%20JSON%20Feed-f26522?style=for-the-badge&logo=rss&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml)
+[![週間まとめ](https://img.shields.io/badge/%E9%80%B1%E9%96%93%E3%81%BE%E3%81%A8%E3%82%81-%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
-フィジカルAI（Physical AI）の最前線を毎日自動更新するレーダーです。やることは三つだけ：**8つの軸に分類する**、**すべての主張に根拠レベルを付ける**、**「なぜ重要か」を中国語・英語・日本語で書く**。
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
+[![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#ローカル実行)
+[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
+[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg?style=flat-square)](LICENSE-CONTENT)
 
-論文リストやニュース集約との違い：
+[中文](README.md) · [English](README.en.md) · **日本語**
 
-- **根拠が追跡可能で、単位が混ざらない**：`[O]` 一次情報、`[R]` 論文/プレプリント、`[M]` メディア/二次情報。ベンダーの自己報告と査読結果を混ぜません。
-- **検証できる数値のみ**：成功率、遅延、Hz、パラメータ数、データ時間を自動抽出。数値のない項目を「ブレイクスルー」として売りません。
-- **前瞻的だが曖昧ではない**：自己改善ループ、推論時計算、世界モデルによる評価、実行時安全、規制スケジュール、信頼性の経済性を対象に、必ず原典リンクを添えます。
-- **依存ゼロで再現可能**：パイプラインは Python 標準ライブラリのみ、図は手書き SVG。誰でも同じ出力をローカルで再現できます。
+</div>
 
-**購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [週間まとめ](radar/INDEX.md)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🔎 根拠が追跡可能で、単位が混ざらない**<br>
+`[O]` 一次情報 · `[R]` 論文/プレプリント · `[M]` メディア/二次情報。ベンダーの自己報告と査読結果を混ぜません。
+
+</td>
+<td width="50%" valign="top">
+
+**📏 検証できる数値のみ**<br>
+成功率、遅延、Hz、パラメータ数、データ時間を原文の文脈ごと自動抽出。数値のない項目を「ブレイクスルー」として売りません。
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**🧭 前瞻的だが曖昧ではない**<br>
+自己改善ループ、推論時計算、世界モデルによる評価、実行時安全、規制スケジュール、信頼性の経済性。必ず原典リンクを添えます。
+
+</td>
+<td width="50%" valign="top">
+
+**🧪 依存ゼロで再現可能**<br>
+Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar --offline` でどのマシンでも同じページを再現できます。
+
+</td>
+</tr>
+</table>
+
+> [!TIP]
+> **共有する：** [サイト](https://noteflowai.github.io/physical-ai-radar/ja/)で「共有画像を作成」を押すと、QR コード付きの当日ポスターができます。X、LINE、WeChat にそのまま貼れます。「本日のダイジェストをコピー」で 8 本のタイトルとリンクをテキストにしてチャットへ。
+>
+> **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
 ### 本日のレーダー · 2026-09-26
 
 `生成時刻: 2026-09-26 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-26 · ブログ・報道 2026-08-27 → 2026-09-26 · 30 日以内の重複なし (UTC)`
 
-- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — シミュレーションと評価（sim2real / 閉ループ）
-  - 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — エッジとリアルタイム（オンデバイス推論 / 制御周期） ｜ `17.6%` · `14.4%`
-  - 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — シミュレーションと評価（sim2real / 閉ループ） ｜ `4.5x`
-  - 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — エッジとリアルタイム（オンデバイス推論 / 制御周期） ｜ `4.30 ms`
-  - 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — ハードウェアとサプライチェーン（機体 / コスト）
-  - 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+| # | 根拠 | 項目 | 主要数値 |
+| :-: | :-: | --- | --- |
+| 01 | 🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>シミュレーションと評価 · arXiv 2609.28952 · 2026-09-25</sub> | — |
+| 02 | 🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br><sub>エッジとリアルタイム · arXiv 2609.29648 · 2026-09-25</sub> | `17.6%`<br>`14.4%` |
+| 03 | 🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br><sub>シミュレーションと評価 · arXiv 2609.30247 · 2026-09-25</sub> | `4.5x` |
+| 04 | 🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br><sub>エッジとリアルタイム · arXiv 2609.29194 · 2026-09-25</sub> | `4.30 ms` |
+| 05 | 🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026-09-25</sub> | — |
+| 06 | 🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br><sub>データエンジン · Toyota Research Institute · 2026-09-09</sub> | `46%` |
+| 07 | 🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026-09-25</sub> | — |
+| 08 | 🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026-09-23</sub> | — |
 
-[本日のレーダー ›](radar/daily/2026-09-26.ja.md) · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
+🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-![lane distribution](assets/lane-distribution.ja.svg)
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-![cadence](assets/cadence.ja.svg)
+1. **RoboRecover** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Albireo** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Rolling-WAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+
+</details>
+
+**[本日のレーダー ›](radar/daily/2026-09-26.ja.md)** · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
+
+<img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
+<img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
 <!-- RADAR:END -->
 
 ## 8つの軸
@@ -65,18 +115,35 @@
 
 ## 自動更新の仕組み
 
+```mermaid
+flowchart LR
+  F["fetch<br/>arXiv + 公式・報道 10 ソース"] --> D["distill<br/>関連性ゲート · 8 軸に分類<br/>数値抽出 · 説明可能なスコア · 上限"]
+  D --> R["render<br/>三言語の日報 · README · アーカイブ"]
+  D --> S["site<br/>ランディング · 共有ポスター · QR"]
+  D --> E["feeds<br/>Atom × 3 · JSON Feed · 週報"]
+  R --> C["commit<br/>変更時のみ main へ push"]
+  S --> C
+  E --> C
+  C -. "毎晩" .-> A["エージェントが三言語の解説を起草<br/>別モデルが査読 · テスト合格で統合"]
+```
+
+`scripts/publish_daily.sh` はメンテナーのマシン上の cron で 01:40 UTC（09:40 CST / 10:40 JST）に実行されます。arXiv の当日公告後なので、朝いちばんに最新の一群が読めます。
+
+<details>
+<summary>各ステップの詳細</summary>
+
 ```
 scripts/publish_daily.sh（メンテナーのマシン上の cron、01:40 UTC / 09:40 CST / 10:40 JST）
   └─ fetch    arXiv API（cs.RO の6クエリ、API が応答しない日はカテゴリ RSS）+ 公式・報道の Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
   └─ distill  関連性ゲート → 8軸に分類 → 定量指標を抽出 → 説明可能なスコア → 軸・ソース・根拠区分ごとの上限で選抜
-  └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成
+  └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成 / README バナー
   └─ render   三言語の日報 + 3つの README へ注入 + アーカイブ索引と latest.json を更新
   └─ feeds    radar/feed.json（JSON Feed 1.1）+ 各言語の Atom + 今週のまとめ（radar/weekly/）
-  └─ site     ランディングページ index.html · en/ · ja/（ダークテーマ、レーダー図、共有カード）
+  └─ site     ランディングページ index.html · en/ · ja/（ダークテーマ、レーダー図、共有ポスターと QR コード）
   └─ commit   変更があるときのみコミットして main に push
 ```
 
-実行時刻は arXiv の当日公告後に設定しており、朝いちばんに最新の一群が読めます。
+</details>
 
 ## ローカル実行
 
@@ -97,16 +164,19 @@ pip install も仮想環境も不要。Python 3.10 以上で動きます。
 場合は `--out` を使ってください。どちらの場合も実行ログはリポジトリから読むため、
 30 日以内の重複除外はそのまま機能します。
 
-## ディレクトリ構成
+<details>
+<summary>ディレクトリ構成</summary>
 
 ```
 data/        sources.json（出典と重み）· taxonomy.json（軸とシグナル）
              glossary.json（三言語 UI と用語）· baseline.json（キュレーション基準）
-pairadar/    fetch / distill / charts / render / site / cli —— すべて標準ライブラリ
+pairadar/    fetch / distill / charts / banner / render / site / qr / cli —— すべて標準ライブラリ
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      自動生成の SVG 図 · site.css · 共有カード og.*.png
+assets/      自動生成の SVG 図と README バナー · site.css · site.js · 共有カード og.*.png
 docs/        METHODOLOGY.md（方法論・翻訳方針・既知の限界）
 ```
+
+</details>
 
 ## 既知の限界（先に明示します）
 
@@ -141,6 +211,15 @@ PR を歓迎します：機械可読な新規出典、根拠タグの修正、�
 
 - コード：[MIT](LICENSE)
 - コンテンツ（キュレーション文と生成ページ）：[CC BY 4.0](LICENSE-CONTENT)
+
+
+<div align="center">
+
+**役に立ったら ⭐ Star を。明朝 01:40 UTC にまた。** 今日のレーダーを共有： [サイト](https://noteflowai.github.io/physical-ai-radar/ja/) ·
+[X に投稿](https://twitter.com/intent/tweet?text=Physical%20AI%20%E3%83%95%E3%83%AD%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%EF%BC%9A%E6%AF%8E%E6%97%A5%208%20%E6%9C%AC%E3%80%81%E6%A0%B9%E6%8B%A0%E3%81%A4%E3%81%8D&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
+[LINE で送る](https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar)
+
+</div>
 
 ---
 

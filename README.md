@@ -1,47 +1,97 @@
-# Physical AI 前沿雷达 · Physical AI Radar
+<div align="center">
 
-[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
-[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/)
-[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml)
-[![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
-[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
-[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
+<a href="https://noteflowai.github.io/physical-ai-radar/"><img src="assets/banner.zh.svg" width="100%" alt="Physical AI 前沿雷达：具身智能前沿，每天八条，条条有证据"></a>
 
-**语言：中文 · [English](README.en.md) · [日本語](README.ja.md)**
+# Physical AI 前沿雷达
 
-每天自动更新的具身智能（Physical AI）前沿雷达。它只做三件事：**按八条主线归类**、**给每条结论标注证据等级**、**用中英日三语写清"为什么重要"**。
+**每天 8 条具身智能前沿，按八条主线归类，每条都标注证据等级，中英日三语写清“为什么重要”。**
 
-与"论文列表"或"新闻聚合"的区别：
+[![打开网站](https://img.shields.io/badge/%E6%89%93%E5%BC%80%E7%BD%91%E7%AB%99-noteflowai.github.io-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/)
+[![订阅 Atom](https://img.shields.io/badge/%E8%AE%A2%E9%98%85-Atom%20%C2%B7%20JSON%20Feed-f26522?style=for-the-badge&logo=rss&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml)
+[![每周汇总](https://img.shields.io/badge/%E6%AF%8F%E5%91%A8%E6%B1%87%E6%80%BB-%E5%8E%86%E5%8F%B2%E5%BD%92%E6%A1%A3-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
-- **证据可查，口径不混**：`[O]` 一手官方 / `[R]` 论文预印本 / `[M]` 媒体二手，厂商自报与同行评议不混为一谈。
-- **只留可检验的数字**：自动抽取成功率、延迟、Hz、参数量、数据小时数等量化指标，没有数字的条目不会被吹成突破。
-- **前瞻但不玄学**：雷达覆盖自我改进闭环、推理时计算、世界模型评测、运行时安全、合规排期与可靠性经济学——每一条都挂原始链接。
-- **零依赖可复现**：整条流水线只用 Python 标准库，图表是手写 SVG，任何人都能在本地跑出同样结果。
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
+[![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#本地运行)
+[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
+[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg?style=flat-square)](LICENSE-CONTENT)
 
-**订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [每周汇总](radar/INDEX.md)。把链接粘贴到任意 RSS 阅读器即可，每条都带主线、证据等级和关键数字。
+**中文** · [English](README.en.md) · [日本語](README.ja.md)
+
+</div>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🔎 证据可查，口径不混**<br>
+`[O]` 一手官方 · `[R]` 论文预印本 · `[M]` 媒体二手。厂商自报与同行评议不混为一谈。
+
+</td>
+<td width="50%" valign="top">
+
+**📏 只留可检验的数字**<br>
+自动抽取成功率、延迟、Hz、参数量、数据小时数，并附上原文上下文；没有数字的条目不会被吹成突破。
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**🧭 前瞻但不玄学**<br>
+自我改进闭环、推理时计算、世界模型评测、运行时安全、合规排期、可靠性经济学——每一条都挂原始链接。
+
+</td>
+<td width="50%" valign="top">
+
+**🧪 零依赖可复现**<br>
+整条流水线只用 Python 标准库，图表是手写 SVG；`python3 -m pairadar --offline` 在任何机器上跑出同样结果。
+
+</td>
+</tr>
+</table>
+
+> [!TIP]
+> **转发给同事：** 在[网站](https://noteflowai.github.io/physical-ai-radar/)点「生成分享图」，得到一张带二维码的当日海报，适合朋友圈、小红书和 X；「复制今日摘要」则把 8 条标题和链接变成一段纯文本，直接贴进群聊。
+>
+> **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
 ### 今日雷达 · 2026-09-26
 
 `生成时间: 2026-09-26 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-26 · 博客与报道 2026-08-27 → 2026-09-26 · 30 天内不重复 (UTC)`
 
-- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — 仿真与评测（sim2real / 闭环）
-  - 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — 边缘与实时性（端侧推理 / 控制频率） ｜ `17.6%` · `14.4%`
-  - 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — 仿真与评测（sim2real / 闭环） ｜ `4.5x`
-  - 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — 边缘与实时性（端侧推理 / 控制频率） ｜ `4.30 ms`
-  - 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — 本体与供应链（硬件 / 成本）
-  - 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+| # | 证据 | 条目 | 关键数字 |
+| :-: | :-: | --- | --- |
+| 01 | 🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>仿真与评测 · arXiv 2609.28952 · 2026-09-25</sub> | — |
+| 02 | 🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br><sub>边缘与实时性 · arXiv 2609.29648 · 2026-09-25</sub> | `17.6%`<br>`14.4%` |
+| 03 | 🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br><sub>仿真与评测 · arXiv 2609.30247 · 2026-09-25</sub> | `4.5x` |
+| 04 | 🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br><sub>边缘与实时性 · arXiv 2609.29194 · 2026-09-25</sub> | `4.30 ms` |
+| 05 | 🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026-09-25</sub> | — |
+| 06 | 🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br><sub>数据引擎 · Toyota Research Institute · 2026-09-09</sub> | `46%` |
+| 07 | 🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026-09-25</sub> | — |
+| 08 | 🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>系统与编排 · The Robot Report · 2026-09-23</sub> | — |
 
-[今日雷达 ›](radar/daily/2026-09-26.zh.md) · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
+🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-![lane distribution](assets/lane-distribution.zh.svg)
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-![cadence](assets/cadence.zh.svg)
+1. **RoboRecover** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Albireo** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Rolling-WAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+
+</details>
+
+**[今日雷达 ›](radar/daily/2026-09-26.zh.md)** · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
+
+<img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
+<img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
 <!-- RADAR:END -->
 
 ## 八条主线
@@ -65,18 +115,35 @@
 
 ## 自动更新机制
 
+```mermaid
+flowchart LR
+  F["fetch<br/>arXiv + 10 个官方与媒体源"] --> D["distill<br/>相关性门槛 · 八主线归类<br/>抽取数字 · 可解释打分 · 限额"]
+  D --> R["render<br/>三语日报 · README · 归档"]
+  D --> S["site<br/>落地页 · 分享海报 · 二维码"]
+  D --> E["feeds<br/>Atom × 3 · JSON Feed · 周报"]
+  R --> C["commit<br/>有变化才推送 main"]
+  S --> C
+  E --> C
+  C -. "每晚" .-> A["agent 起草三语点评<br/>另一模型复核 · 测试全绿才合并"]
+```
+
+`scripts/publish_daily.sh` 由维护者机器上的 cron 在 01:40 UTC（09:40 CST / 10:40 JST）运行，时间点选在 arXiv 当日公告之后，保证早上第一眼看到的是最新一批。
+
+<details>
+<summary>各步骤明细</summary>
+
 ```
 scripts/publish_daily.sh（维护者机器上的 cron，01:40 UTC / 09:40 CST / 10:40 JST）
   └─ fetch    arXiv API（六组 cs.RO 查询，API 不可用时改读分类 RSS）+ 官方与媒体 Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
   └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线、每来源、每证据等级限额筛选
-  └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成
+  └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成 / README 横幅
   └─ render   生成三语日报 + 注入三份 README + 更新归档索引与 latest.json
   └─ feeds    radar/feed.json（JSON Feed 1.1）+ 每种语言一份 Atom + 本周汇总（radar/weekly/）
-  └─ site     落地页 index.html · en/ · ja/（深色主题、雷达图、分享卡片）
+  └─ site     落地页 index.html · en/ · ja/（深色主题、雷达图、分享海报与二维码）
   └─ commit   有变化才提交并推送到 main
 ```
 
-时间点选在 arXiv 当日公告之后，保证早上第一眼看到的是最新一批。
+</details>
 
 ## 本地运行
 
@@ -96,16 +163,19 @@ python3 -m unittest discover -s tests           # 测试
 （这正是每日任务要做的事）；想先看看产出，用 `--out` 写到别处。
 两种方式都会从仓库读取运行日志，所以"30 天内不重复"仍然生效。
 
-## 目录结构
+<details>
+<summary>目录结构</summary>
 
 ```
 data/        sources.json（源与权重）· taxonomy.json（主线与信号）
              glossary.json（三语 UI 与术语）· baseline.json（人工策展基线）
-pairadar/    fetch / distill / charts / render / site / cli —— 全部标准库
+pairadar/    fetch / distill / charts / banner / render / site / qr / cli —— 全部标准库
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      自动生成的 SVG 图 · site.css · 社交分享卡 og.*.png
+assets/      自动生成的 SVG 图与 README 横幅 · site.css · site.js · 社交分享卡 og.*.png
 docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 ```
+
+</details>
 
 ## 已知局限（先说清楚）
 
@@ -140,6 +210,15 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 
 - 代码：[MIT](LICENSE)
 - 内容（策展文字与生成页面）：[CC BY 4.0](LICENSE-CONTENT)
+
+
+<div align="center">
+
+**觉得有用？点个 ⭐ Star，明早 01:40 UTC 见。** 转发今天的雷达：[网站](https://noteflowai.github.io/physical-ai-radar/) ·
+[分享到 X](https://twitter.com/intent/tweet?text=Physical%20AI%20%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE%EF%BC%9A%E6%AF%8F%E5%A4%A9%208%20%E6%9D%A1%EF%BC%8C%E6%9D%A1%E6%9D%A1%E6%9C%89%E8%AF%81%E6%8D%AE&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
+[分享到微博](https://service.weibo.com/share/share.php?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar&title=Physical%20AI%20%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE%EF%BC%9A%E6%AF%8F%E5%A4%A9%208%20%E6%9D%A1%EF%BC%8C%E6%9D%A1%E6%9D%A1%E6%9C%89%E8%AF%81%E6%8D%AE)
+
+</div>
 
 ---
 

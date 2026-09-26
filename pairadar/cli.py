@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from . import charts
+from .banner import write_banners
 from .config import (
     ASSETS_DIR,
     LANGS,
@@ -232,6 +233,8 @@ def write_charts(config: Config, ctx: dict[str, Any], root: Path) -> None:
         if lang == "en":
             charts.write_all(assets, rows, ctx["cadence"], ctx["mix"], ctx["generated"],
                              titles=titles)
+    # the READMEs open on the day's banner, drawn from the same context
+    write_banners(config, ctx, assets, LANGS)
 
 
 def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True,

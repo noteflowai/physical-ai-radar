@@ -84,7 +84,8 @@
         "scan_heading": "手机扫码读今天",
         "scan_hint": "扫码打开今天的雷达全文，或转发给同事。",
         "poster_scan": "扫码读全文与出处"
-      }
+      },
+      "pick": "条目"
     },
     "en": {
       "title": "Physical AI Radar",
@@ -169,7 +170,8 @@
         "scan_heading": "Read today on your phone",
         "scan_hint": "Scan to open today's full radar, or pass it to a colleague.",
         "poster_scan": "Scan for the full radar and sources"
-      }
+      },
+      "pick": "Item"
     },
     "ja": {
       "title": "Physical AI フロンティア・レーダー",
@@ -254,7 +256,8 @@
         "scan_heading": "スマホで今日を読む",
         "scan_hint": "読み取ると本日のレーダー全文が開きます。同僚への共有にも。",
         "poster_scan": "読み取って全文と出典へ"
-      }
+      },
+      "pick": "項目"
     }
   },
   "terms": [

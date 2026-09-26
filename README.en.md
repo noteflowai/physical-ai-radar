@@ -1,47 +1,97 @@
+<div align="center">
+
+<a href="https://noteflowai.github.io/physical-ai-radar/en/"><img src="assets/banner.en.svg" width="100%" alt="Physical AI Radar: the Physical AI frontier, eight picks a day, every claim tagged"></a>
+
 # Physical AI Radar
 
-[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar)](radar/INDEX.md)
-[![site](https://img.shields.io/badge/site-live-34d399.svg)](https://noteflowai.github.io/physical-ai-radar/en/)
-[![feed: Atom · JSON](https://img.shields.io/badge/feed-Atom%20%C2%B7%20JSON%20Feed-f26522.svg)](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml)
-[![CI](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
-[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
-[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg)](docs/automation.md)
+**Eight Physical AI picks a day, sorted into eight lanes, every claim tagged with its evidence, and why it matters in Chinese, English and Japanese.**
 
-**Language: [中文](README.md) · English · [日本語](README.ja.md)**
+[![Open the site](https://img.shields.io/badge/Open%20the%20site-noteflowai.github.io-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/en/)
+[![Subscribe](https://img.shields.io/badge/Subscribe-Atom%20%C2%B7%20JSON%20Feed-f26522?style=for-the-badge&logo=rss&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml)
+[![Weekly](https://img.shields.io/badge/Weekly-archive-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
-A daily, automatically updated radar on the Physical AI frontier. It does exactly three things: **sort work into eight lanes**, **tag every claim with an evidence level**, and **state why it matters in Chinese, English and Japanese**.
+[![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
+[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
+[![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#run-it-locally)
+[![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
+[![content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg?style=flat-square)](LICENSE-CONTENT)
 
-How this differs from a paper list or a news aggregator:
+[中文](README.md) · **English** · [日本語](README.ja.md)
 
-- **Traceable evidence, no mixed units**: `[O]` first-party official, `[R]` paper/preprint, `[M]` media/secondary. Vendor self-reports and peer-reviewed results are never blended.
-- **Only checkable numbers**: success rates, latency, Hz, parameter counts and data hours are extracted automatically. An item with no numbers does not get sold as a breakthrough.
-- **Forward-looking without hand-waving**: the radar covers self-improvement loops, test-time compute, world-model evaluation, runtime safety, compliance timing and reliability economics — each with the original link attached.
-- **Zero dependencies, reproducible**: the whole pipeline is Python standard library only, charts are hand-written SVG, and anyone can reproduce the same output locally.
+</div>
 
-**Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) · [weekly roundups](radar/INDEX.md). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🔎 Traceable evidence, no mixed units**<br>
+`[O]` first-party official · `[R]` paper/preprint · `[M]` media/secondary. Vendor self-reports and peer-reviewed results are never blended.
+
+</td>
+<td width="50%" valign="top">
+
+**📏 Only checkable numbers**<br>
+Success rates, latency, Hz, parameter counts and data hours are extracted with the words around them. An item with no numbers does not get sold as a breakthrough.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**🧭 Forward-looking without hand-waving**<br>
+Self-improvement loops, test-time compute, world-model evaluation, runtime safety, compliance timing and reliability economics, each with the original link.
+
+</td>
+<td width="50%" valign="top">
+
+**🧪 Zero dependencies, reproducible**<br>
+Python standard library only, hand-written SVG charts; `python3 -m pairadar --offline` reproduces a page on any machine.
+
+</td>
+</tr>
+</table>
+
+> [!TIP]
+> **Pass it on:** on [the site](https://noteflowai.github.io/physical-ai-radar/en/) press “Make a share image” for today's poster with a QR code, sized for X, LinkedIn, WeChat or Xiaohongshu; “Copy today's digest” turns the eight titles and links into plain text for a chat.
+>
+> **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
 ### Today's radar · 2026-09-26
 
 `Generated: 2026-09-26 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-26 · posts 2026-08-27 → 2026-09-26 · no repeats within 30 days (UTC)`
 
-- `[R]` **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)** — Simulation & evaluation (sim2real / closed-loop)
-  - Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-- `[R]` **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)** — Edge & real-time (on-device inference / control rate) ｜ `17.6%` · `14.4%`
-  - Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-- `[R]` **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)** — Simulation & evaluation (sim2real / closed-loop) ｜ `4.5x`
-  - Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-- `[R]` **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)** — Edge & real-time (on-device inference / control rate) ｜ `4.30 ms`
-  - Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-- `[M]` **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)** — Embodiment & supply chain (hardware / cost)
-  - Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+| # | Evidence | Item | Key numbers |
+| :-: | :-: | --- | --- |
+| 01 | 🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>Simulation & evaluation · arXiv 2609.28952 · 2026-09-25</sub> | — |
+| 02 | 🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br><sub>Edge & real-time · arXiv 2609.29648 · 2026-09-25</sub> | `17.6%`<br>`14.4%` |
+| 03 | 🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br><sub>Simulation & evaluation · arXiv 2609.30247 · 2026-09-25</sub> | `4.5x` |
+| 04 | 🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br><sub>Edge & real-time · arXiv 2609.29194 · 2026-09-25</sub> | `4.30 ms` |
+| 05 | 🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026-09-25</sub> | — |
+| 06 | 🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br><sub>Data engine · Toyota Research Institute · 2026-09-09</sub> | `46%` |
+| 07 | 🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026-09-25</sub> | — |
+| 08 | 🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>Systems & orchestration · The Robot Report · 2026-09-23</sub> | — |
 
-[Today's radar ›](radar/daily/2026-09-26.en.md) · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
+🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-![lane distribution](assets/lane-distribution.en.svg)
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-![cadence](assets/cadence.en.svg)
+1. **RoboRecover** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **Albireo** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **Rolling-WAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+
+</details>
+
+**[Today's radar ›](radar/daily/2026-09-26.en.md)** · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
+
+<img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
+<img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
 <!-- RADAR:END -->
 
 ## The eight lanes
@@ -65,18 +115,35 @@ How this differs from a paper list or a news aggregator:
 
 ## How the automation works
 
+```mermaid
+flowchart LR
+  F["fetch<br/>arXiv + 10 official and press feeds"] --> D["distill<br/>relevance gate · eight lanes<br/>figures · explainable score · caps"]
+  D --> R["render<br/>trilingual pages · READMEs · archive"]
+  D --> S["site<br/>landing pages · poster · QR code"]
+  D --> E["feeds<br/>Atom × 3 · JSON Feed · weekly"]
+  R --> C["commit<br/>push to main only on change"]
+  S --> C
+  E --> C
+  C -. "nightly" .-> A["an agent drafts the notes<br/>another model reviews · merged on green"]
+```
+
+`scripts/publish_daily.sh` runs from cron on a maintainer's machine at 01:40 UTC (09:40 CST / 10:40 JST), after the arXiv daily announcement, so the first thing you read in the morning is the newest batch.
+
+<details>
+<summary>Step by step</summary>
+
 ```
 scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST / 10:40 JST)
   └─ fetch    arXiv API (six cs.RO queries; category RSS when the API refuses) + official and press Atom/RSS (AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / Leiphone / MONOist)
   └─ distill  relevance gate → classify into eight lanes → extract quantitative claims → explainable score → per-lane, per-source and per-evidence caps
-  └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix
+  └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix / README banner
   └─ render   trilingual daily page + inject three READMEs + refresh archive index and latest.json
   └─ feeds    radar/feed.json (JSON Feed 1.1) + Atom per language + this week's roundup in radar/weekly/
-  └─ site     landing pages index.html · en/ · ja/ (dark theme, lane radar, share cards)
+  └─ site     landing pages index.html · en/ · ja/ (dark theme, lane radar, share poster and QR code)
   └─ commit   commit and push to main only when something changed
 ```
 
-The run is scheduled after the arXiv daily announcement so the first thing you read in the morning is the newest batch.
+</details>
 
 ## Run it locally
 
@@ -97,16 +164,19 @@ Without `--out` a run **rewrites in place**: the radar block in all three README
 first. Either way the run log is read from the repository, so the 30-day
 no-repeat window still applies.
 
-## Layout
+<details>
+<summary>Layout</summary>
 
 ```
 data/        sources.json (sources and weights) · taxonomy.json (lanes and signals)
              glossary.json (trilingual UI and terms) · baseline.json (curated baseline)
-pairadar/    fetch / distill / charts / render / site / cli — standard library only
+pairadar/    fetch / distill / charts / banner / render / site / qr / cli — standard library only
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
-assets/      generated SVG charts · site.css · social cards og.*.png
+assets/      generated SVG charts and README banners · site.css · site.js · social cards og.*.png
 docs/        METHODOLOGY.md (method, translation policy, known limits)
 ```
+
+</details>
 
 ## Known limits (stated up front)
 
@@ -141,6 +211,15 @@ PRs welcome: new machine-readable sources, evidence-tag corrections, baseline ad
 
 - Code: [MIT](LICENSE)
 - Content (curated text and generated pages): [CC BY 4.0](LICENSE-CONTENT)
+
+
+<div align="center">
+
+**Useful? Give it a ⭐ and see you tomorrow at 01:40 UTC.** Pass today's radar on: [the site](https://noteflowai.github.io/physical-ai-radar/en/) ·
+[post to X](https://twitter.com/intent/tweet?text=Physical%20AI%20Radar%3A%20eight%20picks%20a%20day%2C%20every%20claim%20tagged&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
+[LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar)
+
+</div>
 
 ---
 
