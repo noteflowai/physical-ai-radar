@@ -52,6 +52,8 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 </tr>
 </table>
 
+<p align="center"><a href="https://noteflowai.github.io/physical-ai-radar/ja/"><img src="assets/showcase.ja.webp" width="100%" alt="ランディングページと当日の共有ポスター"></a><br><sub>ランディングページ（左）とワンクリックで作れる当日の共有ポスター（右） · 2026-09-26 撮影</sub></p>
+
 > [!TIP]
 > **共有する：** [サイト](https://noteflowai.github.io/physical-ai-radar/ja/)で「共有画像を作成」を押すと、QR コード付きの当日ポスターができます。X、LINE、WeChat にそのまま貼れます。「本日のダイジェストをコピー」で 8 本のタイトルとリンクをテキストにしてチャットへ。
 >
@@ -94,6 +96,20 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
 <!-- RADAR:END -->
 
+## よくある情報源との違い
+
+| | **Physical AI フロンティア・レーダー** | ニュースレター | awesome リスト | arXiv 日次リスト |
+| --- | --- | --- | --- | --- |
+| 更新 | 毎日 01:40 UTC、自動 | 週次または不定期 | 貢献次第 | 毎日 |
+| 範囲 | 論文 + 公式 + 報道、8 つの軸 | 編集者の選定 | テーマ別に蓄積 | 論文のみ、全件 |
+| 根拠 | 全項目に `O` / `R` / `M` | 通常なし | なし | 論文のみ |
+| 主要数値 | 自動抽出、原文の文脈つき | 著者次第 | — | 自分で読む |
+| 言語 | 中国語・英語・日本語をそれぞれ書き下ろし | 通常 1 言語 | 通常英語 | 英語 |
+| 機械可読 | Atom × 3 · JSON Feed · `latest.json` | メール | Markdown | RSS / API |
+| 再現性 | ルールと重みはすべてリポジトリに、オフラインで再実行可 | — | — | — |
+
+ニュースレターの論評や arXiv の網羅性の代わりではありません。朝いちばんに開く 1 ページです。
+
 ## 8つの軸
 
 | 軸 | 追跡対象 | 独立させる理由 |
@@ -112,6 +128,29 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 1. **主張より先に根拠タグを見る**。`[R]` の数値は著者の自己報告、`[M]` の出荷台数は媒体間で食い違うことが多く、`[O]` でも「プラットフォーム提供可能」と「顧客が導入済み」は別物です。
 2. **形容詞より数値**。各項目は成功率・遅延・データ量を伴うことを目標にしています。数値がなければ、その項目はまだ物語の段階です。
 3. **規制は日付で読む**。標準と規制の項目は発効日や段階日を明記し、プロジェクト計画にそのまま転記できます。
+
+## 持ち出す：購読とデータ
+
+すべて GitHub Pages 上の静的ファイルです。アカウントもキーも不要です。
+
+| 用途 | 場所 |
+| --- | --- |
+| フィードリーダー | [日本語 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [英語 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [中国語 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) |
+| プログラムから当日分 | [`radar/latest.json`](https://noteflowai.github.io/physical-ai-radar/radar/latest.json)：項目ごとの軸・根拠・スコア・数値 |
+| JSON Feed | [`radar/feed.json`](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) |
+| Slack / Discord / Teams | 上の Atom を購読した RSS ボットで配信できます |
+
+```bash
+R=https://noteflowai.github.io/physical-ai-radar/radar
+# 本日の 8 本：根拠タグ・軸・タイトル
+curl -s $R/latest.json | jq -r '.picked[] | "[\(.evidence)] \(.lane)\t\(.title)"'
+# 検証できる数値つきの項目だけ
+curl -s $R/latest.json | jq -r '.picked[] | select(.numbers | length > 0) | "\(.numbers | join(", "))\t\(.title)"'
+# 直近 10 本（JSON Feed 1.1）
+curl -s $R/feed.json | jq -r '.items[:10][] | "\(.date_published[:10])  \(.title)  \(.url)"'
+```
+
+コンテンツは [CC BY 4.0](LICENSE-CONTENT) です。転載、ダイジェスト作成、自分のエージェントへの入力も、出典を明記し元の項目にリンクすれば自由です。
 
 ## 自動更新の仕組み
 
@@ -173,6 +212,7 @@ data/        sources.json（出典と重み）· taxonomy.json（軸とシグナ
 pairadar/    fetch / distill / charts / banner / render / site / qr / cli —— すべて標準ライブラリ
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
 assets/      自動生成の SVG 図と README バナー · site.css · site.js · 共有カード og.*.png
+             · showcase.*.webp（README 用のサイトとポスターのスクリーンショット、手動で撮影）
 docs/        METHODOLOGY.md（方法論・翻訳方針・既知の限界）
 ```
 

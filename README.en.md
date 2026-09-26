@@ -52,6 +52,8 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 </tr>
 </table>
 
+<p align="center"><a href="https://noteflowai.github.io/physical-ai-radar/en/"><img src="assets/showcase.en.webp" width="100%" alt="The landing page and the day's share poster"></a><br><sub>The landing page (left) and the day's share poster, one click away (right) · captured 2026-09-26</sub></p>
+
 > [!TIP]
 > **Pass it on:** on [the site](https://noteflowai.github.io/physical-ai-radar/en/) press “Make a share image” for today's poster with a QR code, sized for X, LinkedIn, WeChat or Xiaohongshu; “Copy today's digest” turns the eight titles and links into plain text for a chat.
 >
@@ -94,6 +96,20 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
 <!-- RADAR:END -->
 
+## How it differs from what you already read
+
+| | **Physical AI Radar** | Newsletters | Awesome lists | arXiv daily lists |
+| --- | --- | --- | --- | --- |
+| Updates | Daily at 01:40 UTC, automated | Weekly or irregular | As contributed | Daily |
+| Scope | Papers + official + media, eight lanes | Editor's picks | Accumulated by topic | Papers only, all of them |
+| Evidence | Every item tagged `O` / `R` / `M` | Usually untagged | Untagged | Papers only |
+| Key numbers | Extracted, with the source's words around them | Depends on the author | — | Read it yourself |
+| Languages | Chinese / English / Japanese, each written natively | Usually one | Usually English | English |
+| Machine-readable | Atom × 3 · JSON Feed · `latest.json` | Email | Markdown | RSS / API |
+| Reproducible | Rules and weights in the repo, re-runs offline | — | — | — |
+
+It does not replace a newsletter's commentary or arXiv's completeness. It is the page you read first.
+
 ## The eight lanes
 
 | Lane | What it tracks | Why it deserves its own lane |
@@ -112,6 +128,29 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 1. **Check the evidence tag before the claim.** `[R]` numbers are author-reported, `[M]` shipment figures often disagree across outlets, and even `[O]` needs the distinction between "platform available" and "customer deployed".
 2. **Prefer numbers over adjectives.** Each entry aims to carry a success rate, latency or data volume. No numbers means the item is still narrative.
 3. **Read compliance as dates.** Standards and regulation entries state effective or stage dates so they can be copied straight into a project plan.
+
+## Take it with you: feeds and data
+
+Everything is a static file on GitHub Pages: no account, no key.
+
+| You want | Where |
+| --- | --- |
+| A feed reader | [English Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [Chinese Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [Japanese Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) |
+| Today, for a program | [`radar/latest.json`](https://noteflowai.github.io/physical-ai-radar/radar/latest.json): lane, evidence, score and figures per item |
+| JSON Feed | [`radar/feed.json`](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) |
+| Slack / Discord / Teams | Any RSS bot subscribed to an Atom feed above |
+
+```bash
+R=https://noteflowai.github.io/physical-ai-radar/radar
+# today's eight: evidence tag, lane, title
+curl -s $R/latest.json | jq -r '.picked[] | "[\(.evidence)] \(.lane)\t\(.title)"'
+# only the items with checkable numbers
+curl -s $R/latest.json | jq -r '.picked[] | select(.numbers | length > 0) | "\(.numbers | join(", "))\t\(.title)"'
+# the latest ten (JSON Feed 1.1)
+curl -s $R/feed.json | jq -r '.items[:10][] | "\(.date_published[:10])  \(.title)  \(.url)"'
+```
+
+The content is [CC BY 4.0](LICENSE-CONTENT): repost it, build a digest on it, feed it to your own agent, with attribution and a link back to the item.
 
 ## How the automation works
 
@@ -173,6 +212,7 @@ data/        sources.json (sources and weights) · taxonomy.json (lanes and sign
 pairadar/    fetch / distill / charts / banner / render / site / qr / cli — standard library only
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
 assets/      generated SVG charts and README banners · site.css · site.js · social cards og.*.png
+             · showcase.*.webp (the README screenshot of the site and poster, taken by hand)
 docs/        METHODOLOGY.md (method, translation policy, known limits)
 ```
 
