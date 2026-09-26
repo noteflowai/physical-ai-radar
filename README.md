@@ -79,14 +79,14 @@
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **RoboRecover** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Albireo** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Rolling-WAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-5. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+1. **RoboRecover** — `AI 起草` 作者指出现有基准多从预设初始状态跑完整轨迹，若你的评测也是如此，就测不到策略偏离后能否恢复；该预印本报告了闭环结果，但本页未见具体数字，请自行核对原文。
+2. **Albireo** — `AI 起草` 若你的感知栈在长视频流上逐帧跑检测器，作者自报在 Thor 上省电 17.6%、Orin 上 14.4%，代码已开放；本页没有真机任务或控制回路的结果，先在自己的板子上复测再决定是否接入。
+3. **Rolling-WAM** — `AI 起草` 如果你曾因联合视频-动作去噪拖慢每个重规划周期而放弃世界动作模型，作者自报的 4.5x 稳态重规划加速、且附真机闭环结果，值得重新评估；成功率数字本页未给出。
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI 起草` 作者自报其 Student 模型在 CPU 上单次推理 4.30 ms 且可持续在线适应，意味着故障检测可以不占 GPU 地挂在控制回路旁；页面显示有真机结果，但没有检测触发后闭环处置的验证。
+5. **Video Friday** — `AI 起草` 这是一期视频集锦，页面上唯一的文字只提到 The Robot Works 的小机器鹅；把它当成发现硬件线索的入口、再去别处核实，不要把其中任何规格、价格或出货说法当作证据。
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI 起草` 若你的行为克隆策略在部署中因误差累积而滑出分布，作者自报的检索式策略比标准行为克隆提升 15-46%；页面未见真机或闭环结果，换方案前先在自己的任务上验证。
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI 起草` 一家行业媒体报道 Digit 的厂商正在为不同作业环境探索包括轮式在内的多种形态，说明人形优先的厂商也不只押注双足；如果你在选型，直接问厂商哪种形态在实际交付。
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI 起草` 如果 MoveIt 在你的操作栈里，报道称高通将保持其开源并接入 Dragonwing 与 Arduino 平台，短期风险是路线图向单一芯片厂商倾斜，而非许可证变更；请以官方公告为准。
 
 </details>
 

@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.28952" rel="noopener" target="_blank">RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 既存ベンチマークは所定の初期状態から全軌道を評価するのが通例だと著者は述べる。自社の評価も同様なら、実行途中の逸脱からの復帰能力は測れていない。閉ループ結果ありとされるが、本ページに数値はない。</p>
 <p class="excerpt">Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29648" rel="noopener" target="_blank">Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge</a></h3>
 <p class="figure"><strong>17.6%</strong><span class="context">“while reducing energy by 17.6% (Thor) and 14.4%”</span></p><p class="chips"><span class="chip">14.4%</span><span class="chip">24.9%</span><span class="chip">26.1%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 長いフレーム列に検出器を回し続ける知覚系なら、著者自己申告で Thor で 17.6%、Orin で 14.4% の省電力、コード公開あり。本ページにロボットタスクや制御ループの結果はなく、まず自機の基板で再測定を。</p>
 <p class="excerpt">Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization.</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.30247" rel="noopener" target="_blank">Rolling-WAM: World Action Models with Rolling Imagination</a></h3>
 <p class="figure"><strong>4.5x</strong><span class="context">“it delivers a 4.5x steady-state replanning speedup”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 映像と行動の同時デノイズで再計画周期が遅すぎると世界行動モデルを見送っていたなら、著者自己申告の定常再計画 4.5 倍高速化と実機・閉ループ結果は再検討に値する。成功率の数値は本ページにない。</p>
 <p class="excerpt">World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29194" rel="noopener" target="_blank">Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models</a></h3>
 <p class="figure"><strong>4.30 ms</strong><span class="context">“the Student achieves a 4.30 ms CPU inference latency”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Student モデルは CPU で推論 4.30 ms（著者自己申告）かつ継続的にオンライン適応できるとされ、GPU なしで制御ループの横に故障検知を常駐させる選択肢になる。実機結果ありだが、検知後の閉ループ対処の検証は本ページにない。</p>
 <p class="excerpt">Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-goose-household-robots" rel="noopener" target="_blank">Video Friday: Life’s Better With a Little Robot Goose</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 動画まとめ回であり、ページ上の文章は The Robot Works の小さなロボットガチョウに触れるだけ。ハードウェアの手がかりを拾う入口として見て、仕様・価格・出荷に関する主張の根拠にはしないこと。</p>
 <p class="excerpt">Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave!</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-09-25</span>
@@ -176,7 +176,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning" rel="noopener" target="_blank">Difference-Aware Retrieval Policies for Imitation Learning</a></h3>
 <p class="figure"><strong>46%</strong><span class="context">“consistent performance improvements of 15-46% over standard behavior”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 行動クローン方策が展開時の誤差蓄積で分布外に逸れて困っているなら、著者自己申告で検索ベース方策が標準の行動クローンを 15-46% 上回るとする。実機・閉ループの結果は本ページになく、切り替え前に自環境で検証を。</p>
 <p class="excerpt">Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment.</p>
 <ul class="signals"><li>定量結果あり</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/" rel="noopener" target="_blank">Agility Robotics, maker of Digit humanoid, exploring wheeled robots</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 業界メディア一報によれば Digit のメーカーが環境ごとに車輪を含む複数形態を検討中で、ヒューマノイド先行のベンダーも脚だけに賭けていないことを示す。機体選定中なら、実際に出荷している形態をベンダーに確認を。</p>
 <p class="excerpt">Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-25</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/" rel="noopener" target="_blank">Qualcomm to acquire PickNik Robotics and keep MoveIt open-source</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> MoveIt を操作スタックに使っているなら、Qualcomm がオープンソースを維持しつつ Dragonwing と Arduino を統合するという報道が意味するのは、ライセンス変更ではなく特定チップベンダーへのロードマップ偏りという短期リスク。一次発表で確認を。</p>
 <p class="excerpt">Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework.</p>
 <ul class="signals"><li>コードまたは重み公開</li></ul>
 <footer>

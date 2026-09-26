@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **RoboRecover** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **Albireo** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-3. **Rolling-WAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+1. **RoboRecover** — `AI 下書き` 既存ベンチマークは所定の初期状態から全軌道を評価するのが通例だと著者は述べる。自社の評価も同様なら、実行途中の逸脱からの復帰能力は測れていない。閉ループ結果ありとされるが、本ページに数値はない。
+2. **Albireo** — `AI 下書き` 長いフレーム列に検出器を回し続ける知覚系なら、著者自己申告で Thor で 17.6%、Orin で 14.4% の省電力、コード公開あり。本ページにロボットタスクや制御ループの結果はなく、まず自機の基板で再測定を。
+3. **Rolling-WAM** — `AI 下書き` 映像と行動の同時デノイズで再計画周期が遅すぎると世界行動モデルを見送っていたなら、著者自己申告の定常再計画 4.5 倍高速化と実機・閉ループ結果は再検討に値する。成功率の数値は本ページにない。
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI 下書き` Student モデルは CPU で推論 4.30 ms（著者自己申告）かつ継続的にオンライン適応できるとされ、GPU なしで制御ループの横に故障検知を常駐させる選択肢になる。実機結果ありだが、検知後の閉ループ対処の検証は本ページにない。
+5. **Video Friday** — `AI 下書き` 動画まとめ回であり、ページ上の文章は The Robot Works の小さなロボットガチョウに触れるだけ。ハードウェアの手がかりを拾う入口として見て、仕様・価格・出荷に関する主張の根拠にはしないこと。
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI 下書き` 行動クローン方策が展開時の誤差蓄積で分布外に逸れて困っているなら、著者自己申告で検索ベース方策が標準の行動クローンを 15-46% 上回るとする。実機・閉ループの結果は本ページになく、切り替え前に自環境で検証を。
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI 下書き` 業界メディア一報によれば Digit のメーカーが環境ごとに車輪を含む複数形態を検討中で、ヒューマノイド先行のベンダーも脚だけに賭けていないことを示す。機体選定中なら、実際に出荷している形態をベンダーに確認を。
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI 下書き` MoveIt を操作スタックに使っているなら、Qualcomm がオープンソースを維持しつつ Dragonwing と Arduino を統合するという報道が意味するのは、ライセンス変更ではなく特定チップベンダーへのロードマップ偏りという短期リスク。一次発表で確認を。
 
 </details>
 

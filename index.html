@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.28952" rel="noopener" target="_blank">RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 作者指出现有基准多从预设初始状态跑完整轨迹，若你的评测也是如此，就测不到策略偏离后能否恢复；该预印本报告了闭环结果，但本页未见具体数字，请自行核对原文。</p>
 <p class="excerpt">Robot-policy benchmarks increasingly cover diverse tasks and preset out-of-distribution conditions, but typically evaluate complete trajectories from predefined initial states.</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29648" rel="noopener" target="_blank">Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge</a></h3>
 <p class="figure"><strong>17.6%</strong><span class="context">“while reducing energy by 17.6% (Thor) and 14.4%”</span></p><p class="chips"><span class="chip">14.4%</span><span class="chip">24.9%</span><span class="chip">26.1%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你的感知栈在长视频流上逐帧跑检测器，作者自报在 Thor 上省电 17.6%、Orin 上 14.4%，代码已开放；本页没有真机任务或控制回路的结果，先在自己的板子上复测再决定是否接入。</p>
 <p class="excerpt">Video object detection on edge devices runs computationally expensive detectors over long frame streams, causing high energy consumption and sustained GPU utilization.</p>
 <ul class="signals"><li>含量化指标</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.30247" rel="noopener" target="_blank">Rolling-WAM: World Action Models with Rolling Imagination</a></h3>
 <p class="figure"><strong>4.5x</strong><span class="context">“it delivers a 4.5x steady-state replanning speedup”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你曾因联合视频-动作去噪拖慢每个重规划周期而放弃世界动作模型，作者自报的 4.5x 稳态重规划加速、且附真机闭环结果，值得重新评估；成功率数字本页未给出。</p>
 <p class="excerpt">World Action Models (WAMs) couple action generation with future visual prediction for robotic manipulation. However, completing the joint video-action denoising process at each replanning cycle incurs substantial latency, delaying action…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29194" rel="noopener" target="_blank">Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models</a></h3>
 <p class="figure"><strong>4.30 ms</strong><span class="context">“the Student achieves a 4.30 ms CPU inference latency”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 作者自报其 Student 模型在 CPU 上单次推理 4.30 ms 且可持续在线适应，意味着故障检测可以不占 GPU 地挂在控制回路旁；页面显示有真机结果，但没有检测触发后闭环处置的验证。</p>
 <p class="excerpt">Mobile robots require robust, real-time fault detection capable of continuous adaptation on constrained edge hardware.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-goose-household-robots" rel="noopener" target="_blank">Video Friday: Life’s Better With a Little Robot Goose</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是一期视频集锦，页面上唯一的文字只提到 The Robot Works 的小机器鹅；把它当成发现硬件线索的入口、再去别处核实，不要把其中任何规格、价格或出货说法当作证据。</p>
 <p class="excerpt">Life’s better with a little Goose. [ The Robot Works ] Thanks, Dave!</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-09-25</span>
@@ -176,7 +176,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning" rel="noopener" target="_blank">Difference-Aware Retrieval Policies for Imitation Learning</a></h3>
 <p class="figure"><strong>46%</strong><span class="context">“consistent performance improvements of 15-46% over standard behavior”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你的行为克隆策略在部署中因误差累积而滑出分布，作者自报的检索式策略比标准行为克隆提升 15-46%；页面未见真机或闭环结果，换方案前先在自己的任务上验证。</p>
 <p class="excerpt">Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment.</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/" rel="noopener" target="_blank">Agility Robotics, maker of Digit humanoid, exploring wheeled robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 一家行业媒体报道 Digit 的厂商正在为不同作业环境探索包括轮式在内的多种形态，说明人形优先的厂商也不只押注双足；如果你在选型，直接问厂商哪种形态在实际交付。</p>
 <p class="excerpt">Agility Robotics is exploring a range of robot designs and form factors, including wheels, to address different operating environments and customer needs.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-25</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/" rel="noopener" target="_blank">Qualcomm to acquire PickNik Robotics and keep MoveIt open-source</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果 MoveIt 在你的操作栈里，报道称高通将保持其开源并接入 Dragonwing 与 Arduino 平台，短期风险是路线图向单一芯片厂商倾斜，而非许可证变更；请以官方公告为准。</p>
 <p class="excerpt">Qualcomm plans to integrate the Dragonwing and Arduino platforms with the MoveIt open-source manipulation framework.</p>
 <ul class="signals"><li>有开放代码或权重</li></ul>
 <footer>

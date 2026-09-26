@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-26",
+  "generated": "2026-09-26 05:04 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-fable-5.1",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.28952": {
+      "zh": "作者指出现有基准多从预设初始状态跑完整轨迹，若你的评测也是如此，就测不到策略偏离后能否恢复；该预印本报告了闭环结果，但本页未见具体数字，请自行核对原文。",
+      "en": "If your evaluation suite only starts policies from clean predefined states, as the authors say most benchmarks do, it says nothing about recovery after a mid-task deviation; the preprint reports closed-loop results, but no figures appear on this page.",
+      "ja": "既存ベンチマークは所定の初期状態から全軌道を評価するのが通例だと著者は述べる。自社の評価も同様なら、実行途中の逸脱からの復帰能力は測れていない。閉ループ結果ありとされるが、本ページに数値はない。"
+    },
+    "https://arxiv.org/abs/2609.29648": {
+      "zh": "若你的感知栈在长视频流上逐帧跑检测器，作者自报在 Thor 上省电 17.6%、Orin 上 14.4%，代码已开放；本页没有真机任务或控制回路的结果，先在自己的板子上复测再决定是否接入。",
+      "en": "For a perception stack that runs a detector on every frame of a long stream, the authors report 17.6% (Thor) and 14.4% (Orin) less energy with code released; nothing on this page ties the result to a robot task or control loop.",
+      "ja": "長いフレーム列に検出器を回し続ける知覚系なら、著者自己申告で Thor で 17.6%、Orin で 14.4% の省電力、コード公開あり。本ページにロボットタスクや制御ループの結果はなく、まず自機の基板で再測定を。"
+    },
+    "https://arxiv.org/abs/2609.30247": {
+      "zh": "如果你曾因联合视频-动作去噪拖慢每个重规划周期而放弃世界动作模型，作者自报的 4.5x 稳态重规划加速、且附真机闭环结果，值得重新评估；成功率数字本页未给出。",
+      "en": "If you shelved world action models because joint video-action denoising made each replanning cycle too slow, the authors' self-reported 4.5x steady-state replanning speedup with real-robot and closed-loop results reopens the question; success figures are not on this page.",
+      "ja": "映像と行動の同時デノイズで再計画周期が遅すぎると世界行動モデルを見送っていたなら、著者自己申告の定常再計画 4.5 倍高速化と実機・閉ループ結果は再検討に値する。成功率の数値は本ページにない。"
+    },
+    "https://arxiv.org/abs/2609.29194": {
+      "zh": "作者自报其 Student 模型在 CPU 上单次推理 4.30 ms 且可持续在线适应，意味着故障检测可以不占 GPU 地挂在控制回路旁；页面显示有真机结果，但没有检测触发后闭环处置的验证。",
+      "en": "A fault detector you can keep adapting online at a self-reported 4.30 ms per inference on CPU fits beside a control loop without a GPU; real-robot results are reported, but the page shows no closed-loop test of acting on a detection.",
+      "ja": "Student モデルは CPU で推論 4.30 ms（著者自己申告）かつ継続的にオンライン適応できるとされ、GPU なしで制御ループの横に故障検知を常駐させる選択肢になる。実機結果ありだが、検知後の閉ループ対処の検証は本ページにない。"
+    },
+    "https://spectrum.ieee.org/video-friday-goose-household-robots": {
+      "zh": "这是一期视频集锦，页面上唯一的文字只提到 The Robot Works 的小机器鹅；把它当成发现硬件线索的入口、再去别处核实，不要把其中任何规格、价格或出货说法当作证据。",
+      "en": "This is a video roundup, and the only text on the page names a small robot goose from The Robot Works; treat it as a place to spot hardware leads to verify elsewhere, not as evidence for any spec, price or shipment claim.",
+      "ja": "動画まとめ回であり、ページ上の文章は The Robot Works の小さなロボットガチョウに触れるだけ。ハードウェアの手がかりを拾う入口として見て、仕様・価格・出荷に関する主張の根拠にはしないこと。"
+    },
+    "http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning": {
+      "zh": "若你的行为克隆策略在部署中因误差累积而滑出分布，作者自报的检索式策略比标准行为克隆提升 15-46%；页面未见真机或闭环结果，换方案前先在自己的任务上验证。",
+      "en": "If your behavior-cloned policy drifts off-distribution and compounds errors, the authors report a retrieval-based alternative gaining 15-46% over standard behavior cloning; the page gives no real-robot or closed-loop result, so verify on your own setup before switching.",
+      "ja": "行動クローン方策が展開時の誤差蓄積で分布外に逸れて困っているなら、著者自己申告で検索ベース方策が標準の行動クローンを 15-46% 上回るとする。実機・閉ループの結果は本ページになく、切り替え前に自環境で検証を。"
+    },
+    "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots": {
+      "zh": "一家行业媒体报道 Digit 的厂商正在为不同作业环境探索包括轮式在内的多种形态，说明人形优先的厂商也不只押注双足；如果你在选型，直接问厂商哪种形态在实际交付。",
+      "en": "A single trade report that the Digit maker is exploring wheeled form factors for different environments suggests even humanoid-first vendors are not betting on legs alone; if you are specifying a fleet, ask vendors which form factor is actually shipping.",
+      "ja": "業界メディア一報によれば Digit のメーカーが環境ごとに車輪を含む複数形態を検討中で、ヒューマノイド先行のベンダーも脚だけに賭けていないことを示す。機体選定中なら、実際に出荷している形態をベンダーに確認を。"
+    },
+    "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source": {
+      "zh": "如果 MoveIt 在你的操作栈里，报道称高通将保持其开源并接入 Dragonwing 与 Arduino 平台，短期风险是路线图向单一芯片厂商倾斜，而非许可证变更；请以官方公告为准。",
+      "en": "If MoveIt is in your manipulation stack, the report that Qualcomm will keep it open-source while integrating its Dragonwing and Arduino platforms means the near-term risk is roadmap tilt toward one silicon vendor, not a license change; confirm with the primary announcement.",
+      "ja": "MoveIt を操作スタックに使っているなら、Qualcomm がオープンソースを維持しつつ Dragonwing と Arduino を統合するという報道が意味するのは、ライセンス変更ではなく特定チップベンダーへのロードマップ偏りという短期リスク。一次発表で確認を。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5",
+    "verdict": "APPROVE"
+  }
+}
