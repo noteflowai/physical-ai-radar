@@ -9,6 +9,7 @@ Translation policy (documented in docs/METHODOLOGY.md):
 """
 from __future__ import annotations
 
+import re
 from datetime import date
 from pathlib import Path
 from typing import Any, Iterable
@@ -27,6 +28,7 @@ from .config import (
     md_url,
 )
 from .distill import number_context, one_liner, strip_boilerplate, url_key
+from .charts import fit
 from .feeds import iso_week, weekly_stems
 
 EVIDENCE_LABEL = {"O": "`[O]`", "R": "`[R]`", "M": "`[M]`"}
@@ -252,35 +254,66 @@ def _draft_notice(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     return f"*{config.ui(lang)['llm_notice'].format(agent=author.get('agent', '?'), model=author.get('model', '?'))}*\n"
 
 
+def short_lane(name: str) -> str:
+    """A lane's name without its parenthesised gloss, for chips and the poster."""
+    return re.split(r"\s*[（(]", name, maxsplit=1)[0]
+
+
+EVIDENCE_DOT = {"O": "🟢", "R": "🔵", "M": "🟡"}
+
+
+def _cell(text: str) -> str:
+    """Fetched text made inert for a Markdown table cell, where `|` ends the cell."""
+    return md_text(text).replace("|", "\\|")
+
+
+def _short_title(title: str) -> str:
+    """"RoboRecover: Benchmarking ..." reads as RoboRecover once the table has named it."""
+    head = title.split(": ", 1)[0]
+    return head if len(head) <= 48 and head != title else fit(title, 520, 12)
+
+
 def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
-    ui = config.ui(lang)
+    """The day as the repository's front page shows it: every pick in one table, the
+    reasons folded beneath it, then the charts."""
+    ui, site = config.ui(lang), config.ui(lang)["site"]
     stem = ctx["date"]
+    shown = ctx["picked"] or ctx["baseline"]
+    names = site["evidence_names"]
     lines = [
         f"### {ui['today']} · {stem}",
         "",
         f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {window_text(config, lang, ctx)}`",
         "",
+        f"| # | {ui['evidence']} | {ui['pick']} | {ui['numbers']} |",
+        "| :-: | :-: | --- | --- |",
     ]
-    highlights = (ctx["picked"] or ctx["baseline"])[:5]
-    for item in highlights:
-        why, drafted = why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
-        numbers = f" ｜ {' · '.join(f'`{n}`' for n in item.numbers[:2])}" if item.numbers else ""
+    for rank, item in enumerate(shown, 1):
+        evidence = item.evidence if item.evidence in EVIDENCE_DOT else "M"
+        figures = "<br>".join(f"`{n.replace(' ', chr(0xA0))}`" for n in item.numbers[:2]) or "—"
+        # the lane leads the line under the title: a column of its own left the titles no room
+        under = " · ".join(part for part in (short_lane(config.lane_name(item.lane, lang)),
+                                             item.publisher or item.source_id, item.published) if part)
         lines.append(
-            f"- {EVIDENCE_LABEL.get(item.evidence, '`[M]`')} **[{md_text(item.title)}]({md_url(item.url)})** — "
-            f"{config.lane_name(item.lane, lang)}{numbers}"
-        )
+            f"| {rank:02d} | {EVIDENCE_DOT[evidence]}&nbsp;`{evidence}` | **[{_cell(item.title)}]({md_url(item.url)})**"
+            f"<br><sub>{_cell(under)}</sub> | {figures} |")
+    lines.extend(["", " · ".join(f"{EVIDENCE_DOT[key]} `{key}` {names[key]}" for key in ("O", "R", "M")), ""])
+    whys = []
+    for rank, item in enumerate(shown, 1):
+        why, drafted = why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
         if why:
             label = f"`{ui['llm_draft']}` " if drafted else ""
-            lines.append(f"  - {label}{why}")
+            whys.append(f"{rank}. **{md_text(_short_title(item.title))}** — {label}{why}")
+    if whys:
+        lines.extend([f"<details><summary><b>{ui['why']}</b> · 01–{len(whys):02d}</summary>", "", *whys, "", "</details>", ""])
     lines.extend(
         [
-            "",
-            f"[{ui['today']} ›](radar/daily/{stem}.{lang}.md) · "
+            f"**[{ui['today']} ›](radar/daily/{stem}.{lang}.md)** · "
             f"[{ui['weekly']} ›](radar/weekly/{iso_week(stem)[0]}.{lang}.md) · [{ui['history']} ›](radar/INDEX.md)",
             "",
-            f"![lane distribution](assets/lane-distribution.{lang}.svg)",
-            "",
-            f"![cadence](assets/cadence.{lang}.svg)",
+            # the banner's radar already counts the lanes; the charts that are left read at full width
+            f'<img src="assets/cadence.{lang}.svg" width="100%" alt="{ui["cadence"]}">',
+            f'<img src="assets/evidence-mix.{lang}.svg" width="100%" alt="{ui["source_mix"]}">',
             "",
         ]
     )

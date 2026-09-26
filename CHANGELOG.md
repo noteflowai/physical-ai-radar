@@ -65,6 +65,15 @@ The site:
   without the chrome. The sharing and motion live in one static `assets/site.js`;
   every page reads without it, and motion stays off under reduced-motion settings.
 
+- The READMEs, the repository's front page, open on the day as a banner
+  (`assets/banner.<lang>.svg`, redrawn with the charts): the headline, the day's four
+  counts and the lane radar with its picks, animated except under reduced motion. The
+  day's picks are one table (evidence, title, lane, source, figures) with the reasons
+  folded beneath it, and the cadence and source-mix charts read at full width. The
+  lane chart is gone from the README; the banner's radar counts the lanes.
+- The cadence chart's mean line has its key in the title row, where the latest bar
+  can no longer cover it.
+
 Fixes that change what gets published:
 
 - Three more sources: Toyota Research Institute's paper pages (`R`), 雷峰网 Leiphone

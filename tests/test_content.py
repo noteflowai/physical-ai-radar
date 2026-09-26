@@ -18,6 +18,7 @@ No test here touches the network.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -207,7 +208,7 @@ class ComposedWhyTest(unittest.TestCase):
                 self.assertGreaterEqual(len(set(lines)), len(lines) - 1)
                 block = readme_block(self.config, lang, {"date": "2026-09-25", "generated": "x", "window": "w",
                                                          "picked": picked, "baseline": [], "curated": {}})
-                whys = [row for row in block.splitlines() if row.startswith("  - ")]
+                whys = [row.split(" — ", 1)[1] for row in block.splitlines() if re.match(r"\d+\. \*\*", row)]
                 self.assertNotEqual(whys[0], whys[1], "the README must not open with two identical lines")
 
 

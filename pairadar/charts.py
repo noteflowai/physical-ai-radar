@@ -174,8 +174,12 @@ def cadence_bars(
         y_mean = top + plot_h - plot_h * mean / peak
         svg.append(f'<line x1="{left}" y1="{y_mean:.1f}" x2="{width - right}" y2="{y_mean:.1f}" '
                    f'stroke="{ACCENT_2}" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.9"/>')
-        svg.append(f'<text class="muted" x="{width - right}" y="{y_mean - 5:.1f}" text-anchor="end" '
-                   f'font-family="{FONT}" font-size="9">mean {mean:.1f}</text>')
+        # the line's key sits in the title row: inside the plot the latest bar covered it
+        key = width - right - text_width(f"mean {mean:.1f}", 10) - 6
+        svg.append(f'<line x1="{key - 22:.1f}" y1="26" x2="{key:.1f}" y2="26" stroke="{ACCENT_2}" '
+                   f'stroke-width="1.2" stroke-dasharray="5 4"/>')
+        svg.append(f'<text class="muted" x="{width - right}" y="30" text-anchor="end" '
+                   f'font-family="{FONT}" font-size="10">mean {mean:.1f}</text>')
         slot = plot_w / len(points)
         # A fresh archive holds two runs. Without a cap each bar becomes a 200px
         # billboard and the chart reads as a bug rather than as two data points.

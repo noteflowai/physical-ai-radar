@@ -20,7 +20,6 @@ import argparse
 import html
 import json
 import math
-import re
 import shutil
 import subprocess
 import tempfile
@@ -34,7 +33,7 @@ from .feeds import SITE_URL, atom_name, iso_week, landing_url
 from .feeds import page_url as daily_url
 from .qr import rows as qr_rows
 from .qr import svg as qr_svg
-from .render import why_text
+from .render import short_lane, why_text
 
 HOME_URL = "https://github.com/noteflowai/physical-ai-radar"
 PAGES = {"zh": "index.html", "en": "en/index.html", "ja": "ja/index.html"}
@@ -71,10 +70,11 @@ def _point(angle: float, radius: float) -> tuple[float, float]:
 
 
 def radar_svg(config: Config, lang: str, lane_rows: list[tuple[str, int]], picked: list[Item],
-              radius: float = 165.0, labels: bool = True) -> str:
+              radius: float = 165.0, labels: bool = True, short: bool = False) -> str:
     """Eight lanes as the spokes of a radar: the filled shape is the recent count per
     lane, and each of today's picks is a blip on its lane's spoke, nearer the rim the
-    higher it scored. A blip links to its card."""
+    higher it scored. A blip links to its card. `short` names each lane without its
+    parenthesis, for the README banner, where the chart is drawn small."""
     lanes = [lane["id"] for lane in config.lanes]
     counts = dict(lane_rows)
     peak = max([counts.get(lane, 0) for lane in lanes] + [1])
@@ -101,7 +101,8 @@ def radar_svg(config: Config, lang: str, lane_rows: list[tuple[str, int]], picke
             baseline = "auto" if ly < -radius * 0.9 else ("hanging" if ly > radius * 0.9 else "middle")
             out.append(f'<text class="label" x="{lx}" y="{ly}" text-anchor="{anchor}" '
                        f'dominant-baseline="{baseline}" fill="{lane_color(config, lane)}">'
-                       f'{e(config.chart_label(lane, lang))} <tspan class="count">{counts.get(lane, 0)}</tspan></text>')
+                       f'{e(short_lane(config.chart_label(lane, lang)) if short else config.chart_label(lane, lang))} '
+                       f'<tspan class="count">{counts.get(lane, 0)}</tspan></text>')
     shape = " ".join("%s,%s" % _point(i * step, radius * max(counts.get(lane, 0) / peak, 0.04))
                      for i, lane in enumerate(lanes))
     out.append(f'<polygon class="area" points="{shape}"/>')
@@ -266,11 +267,6 @@ def nav(config: Config, lang: str, day: str) -> str:
 <span class="links"><a href="{base}radar/daily/{day}.{lang}.html">{e(ui['today'])}</a><a href="{base}radar/weekly/{iso_week(day)[0]}.{lang}.html">{e(ui['weekly'])}</a><a href="{base}radar/INDEX.html">{e(ui['history'])}</a><a href="{base}radar/{atom_name(lang)}">{e(site['nav_feeds'])}</a><a href="{HOME_URL}">GitHub</a></span>
 <span class="switch">{switch}</span>
 </nav>"""
-
-
-def short_lane(name: str) -> str:
-    """A lane's name without its parenthesised gloss, for chips and the poster."""
-    return re.split(r"\s*[（(]", name, maxsplit=1)[0]
 
 
 def json_script(payload: Any) -> str:
