@@ -50,6 +50,9 @@ The site:
 
 Fixes that change what gets published:
 
+- Two links that differ only in their query (`news.php?id=12`, `?id=13`) are two
+  items again; only tracking parameters (`utm_*`, `fbclid`, `oc`, ...) are ignored.
+  Every article of such a site used to count as one, so all but the first were dropped.
 - Figures keep their thousands separators and multipliers: `1,000 Hz` was
   published as `000 Hz`, `1,200 ms` as `200 ms`, and `3×` was not found. A
   version number such as `v2.5` is no longer read as a figure, and the

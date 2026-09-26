@@ -9,6 +9,7 @@ import re
 from datetime import date, datetime
 from functools import lru_cache
 from typing import Any, Iterable
+from urllib.parse import parse_qsl, urlencode
 
 from .config import Config, Item
 from .fetch import source_weight
@@ -250,6 +251,9 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
     return enriched
 
 
+# Campaign and click tags that feeds and newsletters append; never part of what a page is.
+_TRACKING = re.compile(r"^(utm(_\w+)?|fbclid|gclid|dclid|msclkid|mc_cid|mc_eid|_hsenc|_hsmi|mkt_tok"
+                       r"|ref|ref_src|cmpid|ocid|oc|spm|share|rss|feed)$")
 _ARXIV_URL = re.compile(
     r"^https://(?:export\.|www\.)?arxiv\.org/(?:abs|pdf|html)/"
     r"(?P<id>\d{4}\.\d{4,5}|[a-z\-]+(?:\.[a-z]{2})?/\d{7})(?:v\d+)?(?:\.pdf)?$"
@@ -265,14 +269,20 @@ def url_key(url: str) -> str:
     the scheme is folded to https and an arXiv link is reduced to its abstract page
     without the version. The function is idempotent, because stored keys are fed
     back through it.
+
+    Only tracking parameters are dropped from the query. Dropping all of it made every
+    article of a site that names pages by `?id=` the same article.
     """
-    key = url.strip().split("#")[0].split("?")[0].rstrip("/").lower()
+    base, _, query = url.strip().split("#")[0].partition("?")
+    key = base.rstrip("/").lower()
     if key.startswith("http://"):
         key = "https://" + key[len("http://"):]
     match = _ARXIV_URL.match(key)
     if match:
         return f"https://arxiv.org/abs/{match.group('id')}"
-    return key
+    kept = sorted((name, value) for name, value in parse_qsl(query.lower(), keep_blank_values=True)
+                  if not _TRACKING.match(name))
+    return key + "?" + urlencode(kept) if kept else key
 
 
 def deduplicate(items: Iterable[Item]) -> list[Item]:
