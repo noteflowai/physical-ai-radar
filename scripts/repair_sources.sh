@@ -100,6 +100,7 @@ if [ -n "$(changed_paths)" ]; then
 fi
 git fetch --quiet origin
 git reset --hard --quiet HEAD
+git clean -qfd
 git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
 git reset --hard --quiet "origin/${BRANCH_BASE}"
 git clean -qfdx

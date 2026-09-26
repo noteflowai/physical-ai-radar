@@ -31,7 +31,9 @@ class UnattendedTests(unittest.TestCase):
             git("add", ".", cwd=origin); git("commit", "-m", "initial", cwd=origin)
             git("clone", str(origin), str(clone))
             (clone / "README.md").write_text("leftover generated output\n")
+            (clone / "new.txt").write_text("untracked generated output\n")
             (origin / "README.md").write_text("new main\n")
+            (origin / "new.txt").write_text("newly tracked on main\n")
             git("add", ".", cwd=origin); git("commit", "-m", "update", cwd=origin)
             env = {**os.environ, "RADAR_REPO": str(clone), "RADAR_LOCK": str(base / "radar.lock"),
                    "XDG_STATE_HOME": str(base / "state"), "RADAR_TIMEOUT": "10s",
@@ -43,6 +45,7 @@ class UnattendedTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("job completed", result.stdout)
             self.assertEqual((clone / "README.md").read_text(), "new main\n")
+            self.assertEqual((clone / "new.txt").read_text(), "newly tracked on main\n")
 
     def test_missing_cancelled_unknown_and_wholly_skipped_checks_do_not_pass(self):
         def run(conclusion):

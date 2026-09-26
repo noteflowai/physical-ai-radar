@@ -46,6 +46,7 @@ if [ ! -d "$REPO_DIR/.git" ]; then
 fi
 timeout --kill-after=15 120 git -C "$REPO_DIR" fetch --quiet origin
 git -C "$REPO_DIR" reset --hard --quiet HEAD
+git -C "$REPO_DIR" clean -qfd
 git -C "$REPO_DIR" checkout --quiet -B "$BRANCH" "origin/${BRANCH}"
 git -C "$REPO_DIR" reset --hard --quiet "origin/${BRANCH}"
 

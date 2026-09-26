@@ -79,6 +79,8 @@ dependencies, workflows, data, media, or package versions. Preserve existing con
 IDs, source links, download paths, evidence scope and all embedded script contents.
 You have no tools. Return just the requested JSON. All proposed changes are reviewed,
 tested locally and in GitHub, then published automatically on the checked commit.
+For review results, approved:true requires findings:[]; findings contain only
+unresolved problems, never positive observations or already resolved concerns.
 """
 
 
