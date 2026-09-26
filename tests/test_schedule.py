@@ -140,6 +140,34 @@ class BatchTests(unittest.TestCase):
 @unittest.skipUnless(all(shutil.which(tool) for tool in ("git", "flock")),
                      "The local publisher requires Git and flock")
 class PublisherTests(unittest.TestCase):
+    def test_manual_night_entry_bootstraps_into_the_configured_dedicated_clone(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp); origin = base / "origin"; clone = base / "dedicated"
+            origin.mkdir()
+            def git(*args):
+                subprocess.run(["git", *args], cwd=origin, check=True, capture_output=True)
+            git("init", "-b", "main")
+            git("config", "user.name", "Schedule test")
+            git("config", "user.email", "test@example.invalid")
+            (origin / "scripts").mkdir()
+            shutil.copy(ROOT / "scripts/nightly.sh", origin / "scripts/nightly.sh")
+            (origin / "scripts/nightly.sh").chmod(0o755)
+            (origin / "scripts/nightly_batch.py").write_text(
+                "import json,os,sys; from pathlib import Path\n"
+                "print(json.dumps({'root':str(Path.cwd()),'args':sys.argv[1:],"
+                "'lock':os.environ.get('RADAR_LOCK_HELD')}))\n")
+            git("add", "."); git("commit", "-m", "fixture")
+            env = {**os.environ, "RADAR_REPO": str(clone), "RADAR_CLONE_URL": str(origin),
+                   "RADAR_LOCK": str(base / "lock"), "XDG_STATE_HOME": str(base / "state"),
+                   "RADAR_TIMEOUT": "10s", "RADAR_BRANCH": "main"}
+            env.pop("RADAR_LOCK_HELD", None)
+            result = subprocess.run(
+                ["bash", str(ROOT / "scripts/nightly.sh"), "--previous-day"], cwd=base,
+                env=env, stdin=subprocess.DEVNULL, text=True, capture_output=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            probe = json.loads(result.stdout.splitlines()[-1])
+            self.assertEqual(probe, {"root": str(clone), "args": ["--previous-day"], "lock": "1"})
+
     def test_pinned_day_reaches_collector_and_an_old_catchup_cannot_replace_newer_issue(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp); origin = base / "origin"; clone = base / "clone"
@@ -184,6 +212,47 @@ class PublisherTests(unittest.TestCase):
             self.assertEqual(result.returncode, 1)
             self.assertIn("refusing to replace a newer", result.stdout)
             self.assertEqual(json.loads((clone / "radar/latest.json").read_text())["date"], "2026-09-26")
+
+
+class ResearchInputTests(unittest.TestCase):
+    def test_source_date_is_not_replaced_by_issue_or_collection_date(self):
+        sources, failures = [], []
+        improve_repos.radar_sources({
+            "date": "2026-09-26", "generated": "2026-09-26 18:40 UTC",
+            "picked": [{"url": "https://example.org/paper", "title": "研究・研究",
+                        "published": "2026-09-19"},
+                       {"url": "https://example.org/malformed"},
+                       {"url": "javascript:alert(1)", "title": "Unsafe"}],
+        }, "radar-evening", "fixture", sources, failures)
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["date"], "2026-09-19")
+        self.assertEqual(sources[0]["issue_date"], "2026-09-26")
+        self.assertEqual(sources[0]["collected_at"], "2026-09-26 18:40 UTC")
+        self.assertEqual(len(failures), 2)
+
+    def test_utf8_research_is_read_even_under_an_explicit_ascii_locale(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "latest.json"
+            source.write_text(json.dumps({
+                "date": "2026-09-26", "picked": [
+                    {"url": "https://example.org/paper", "title": "研究・研究",
+                     "published": "2026-09-19"}],
+            }, ensure_ascii=False), encoding="utf-8")
+            code = (
+                "import json; from pathlib import Path; from unittest.mock import patch\n"
+                "from scripts.improve_repos import snapshot\n"
+                "with patch('scripts.improve_repos.fetch_json',return_value={'picked':[]}), "
+                "patch('scripts.improve_repos.command',return_value='{\"items\":[]}'):\n"
+                f" print(json.dumps(snapshot(Path({str(source)!r}))))\n"
+            )
+            result = subprocess.run([sys.executable, "-c", code], cwd=ROOT, capture_output=True,
+                                    env={**os.environ, "LC_ALL": "C", "LANG": "C", "PYTHONUTF8": "0",
+                                         "PYTHONCOERCECLOCALE": "0"}, timeout=15)
+            self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+            data = json.loads(result.stdout)
+            fresh = [x for x in data["sources"] if x["id"].startswith("radar-evening")]
+            self.assertEqual(len(fresh), 1)
+            self.assertEqual(fresh[0]["title"], "研究・研究")
 
 
 @unittest.skipUnless(sys.platform == "linux", "Process-group checks require Linux")

@@ -182,6 +182,10 @@ The two night entries override this with a fifteen-minute lock wait and a four-h
 whole-batch budget, leaving a gap between the evening batch, its catch-up and the
 07:40 publisher. Each stage has its own timeout; stopping a stage also stops its
 descendants. A stopped batch retains its incomplete stage for the next retry.
+Stage limits are individual caps, not reserved allocations: the whole-batch deadline
+takes precedence. A slow evening can finish its remaining stages in the catch-up.
+Starting `nightly.sh` by hand delegates to the same bootstrap, so all stages and
+their output checks use the dedicated clone even when invoked from a working checkout.
 
 Re-runs preserve completed work: publishing stops when `main` already carries the
 day (`--force` republishes it); open notes and source-repair PRs resume through the
@@ -220,6 +224,10 @@ At **21:30** a single controller performs:
 4. notes for the verified morning issue, with review, CI, merge and public verification;
 5. the three companion projects, using the fresh evening research plus current
    Hugging Face and GitHub signals, with their existing review and publication gates.
+
+Research inputs keep each item's original `published` value as its source `date`,
+separate from `issue_date` and the collection timestamp. Bad entries are recorded
+as source failures without discarding other valid research.
 
 07:40 precedes arXiv's regular 20:00 US Eastern announcement (08:00 or 09:00
 Singapore, depending on US daylight saving). The morning issue contains sources

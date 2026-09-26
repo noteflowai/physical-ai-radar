@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 import urllib.request
+from urllib.parse import urlsplit
 from html.parser import HTMLParser
 
 try:
@@ -111,6 +112,24 @@ def fetch_json(url: str) -> object:
     return json.loads(raw)
 
 
+def radar_sources(data: dict, prefix: str, origin: str, sources: list, failures: list) -> None:
+    """Keep source dates distinct from issue dates; retain malformed-entry diagnostics."""
+    for index, item in enumerate(data.get("picked", [])):
+        try:
+            url, title = item["url"], item["title"]
+            if (not isinstance(title, str) or not title.strip() or not isinstance(url, str)
+                    or urlsplit(url).scheme not in {"http", "https"} or not urlsplit(url).netloc):
+                raise ValueError("Radar entry needs a title and an HTTP(S) source URL")
+            sources.append({"id": f"{prefix}-{index}", "url": url, "title": title,
+                            "date": item.get("published"), "issue_date": data.get("date"),
+                            "summary": item.get("summary", "")[:650],
+                            "evidence": item.get("evidence"), "collected_at": data.get("generated"),
+                            "signal": ("Fresh evening collection; not the published morning shortlist"
+                                       if prefix == "radar-evening" else "Published morning shortlist")})
+        except (KeyError, TypeError, ValueError) as error:
+            failures.append({"source": f"{origin} item {index}", "error": str(error)})
+
+
 def snapshot(radar_snapshot: Path | None = None) -> dict:
     sources, failures = [], []
     inputs = [
@@ -121,11 +140,7 @@ def snapshot(radar_snapshot: Path | None = None) -> dict:
         try:
             data = fetch_json(url)
             if name == "radar":
-                for item in data.get("picked", []):
-                    sources.append({"id": f"radar-{len(sources)}", "url": item["url"],
-                                    "title": item["title"], "date": data.get("date"),
-                                    "summary": item.get("summary", "")[:650],
-                                    "evidence": item.get("evidence")})
+                radar_sources(data, "radar", url, sources, failures)
             else:
                 for item in data:
                     sources.append({"id": "hf-" + item["id"],
@@ -135,14 +150,13 @@ def snapshot(radar_snapshot: Path | None = None) -> dict:
         except Exception as error:
             failures.append({"source": url, "error": str(error)})
     if radar_snapshot:
-        data = json.loads(radar_snapshot.read_text())
-        for index, item in enumerate(data.get("picked", [])):
-            sources.append({"id": f"radar-evening-{index}", "url": item["url"],
-                            "title": item["title"], "date": data.get("date"),
-                            "summary": item.get("summary", "")[:650],
-                            "evidence": item.get("evidence"),
-                            "signal": "Fresh evening collection; not the published morning shortlist",
-                            "collected_at": data.get("generated")})
+        try:
+            if radar_snapshot.stat().st_size > 4_000_000:
+                raise ValueError("Fresh radar snapshot exceeds the input budget")
+            data = json.loads(radar_snapshot.read_text(encoding="utf-8"))
+            radar_sources(data, "radar-evening", str(radar_snapshot), sources, failures)
+        except Exception as error:
+            failures.append({"source": str(radar_snapshot), "error": str(error)})
     since = (datetime.now(timezone.utc).date() - timedelta(days=7)).isoformat()
     seen = set()
     for terms in ["agent skills", "ai evaluation"]:

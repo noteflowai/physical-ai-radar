@@ -67,7 +67,7 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
     state = state_root / day
     state.mkdir(parents=True, exist_ok=True)
     receipt = state / "run.json"
-    saved = json.loads(receipt.read_text()) if receipt.exists() else {
+    saved = json.loads(receipt.read_text(encoding="utf-8")) if receipt.exists() else {
         "day": day, "timezone": "Asia/Singapore", "stages": {},
     }
     if saved["day"] != day:
@@ -108,7 +108,7 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
             if code == 0 and name == "notes" and not (root / f"data/notes/{day}.json").is_file():
                 raise RuntimeError("Notes command returned without publishing the day's notes")
             if code == 0 and name == "fresh":
-                data = json.loads((fresh / "radar/latest.json").read_text())
+                data = json.loads((fresh / "radar/latest.json").read_text(encoding="utf-8"))
                 if data.get("date") != day:
                     raise RuntimeError("Fresh snapshot has a different batch date")
             record.update(exit_code=code, status="complete" if code == 0 else "retry-needed")
