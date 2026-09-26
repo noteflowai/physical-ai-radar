@@ -67,7 +67,7 @@ How this differs from a paper list or a news aggregator:
 
 ```
 scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST / 10:40 JST)
-  └─ fetch    arXiv API (six cs.RO queries; category RSS when the API refuses) + official and press Atom/RSS (AWS / NVIDIA / DeepMind / HF / IEEE / The Robot Report)
+  └─ fetch    arXiv API (six cs.RO queries; category RSS when the API refuses) + official and press Atom/RSS (AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / Leiphone / MONOist)
   └─ distill  relevance gate → classify into eight lanes → extract quantitative claims → explainable score → per-lane, per-source and per-evidence caps
   └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix
   └─ render   trilingual daily page + inject three READMEs + refresh archive index and latest.json

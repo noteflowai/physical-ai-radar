@@ -49,6 +49,9 @@ RETRYABLE_STATUS = {408, 425, 429}
 # keyword in a full article let a "Video Friday" round-up outscore a focused post, and
 # stored the article in radar/latest.json. About an arXiv abstract's length is kept.
 MAX_SUMMARY_CHARS = 2000
+# A Chinese or Japanese character carries about what three English letters do, so the
+# same number of characters would hold three times the keywords.
+CJK_SUMMARY_CHARS = MAX_SUMMARY_CHARS // 3
 
 _WS = re.compile(r"\s+")
 _TAGS = re.compile(r"<[^>]+>")
@@ -361,6 +364,7 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
     failed: list[str] = []
     cap = int(config.sources.get("filters", {}).get("max_entries_per_feed", 100))
     for feed in config.sources.get("feeds", []):
+        limit = CJK_SUMMARY_CHARS if feed.get("lang") in ("zh", "ja") else MAX_SUMMARY_CHARS
         payload = http_get(feed["url"])
         if not payload:
             failed.append(feed["id"])
@@ -379,8 +383,10 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
             key=lambda entry: entry[3], reverse=True,
         )[:cap]
         for title, link, summary, published in entries:
-            if len(summary) > MAX_SUMMARY_CHARS:
-                summary = summary[:MAX_SUMMARY_CHARS].rsplit(" ", 1)[0] + " …"
+            if len(summary) > limit:
+                cut = summary[:limit]
+                head = cut.rsplit(" ", 1)[0]
+                summary = (head if len(head) > limit // 2 else cut) + " …"
             items.append(
                 Item(
                     id=f"{feed['id']}:{link_digest(link)}",

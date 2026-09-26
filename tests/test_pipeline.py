@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT))
 from pairadar import fetch, charts, cli, health, lanes  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config, load_notes  # noqa: E402
 from pairadar.distill import (  # noqa: E402
+    anchor_hits,
     classify,
     url_key,
     deduplicate,
@@ -114,6 +115,7 @@ class DataFilesTest(unittest.TestCase):
         for feed in self.config.sources["feeds"]:
             self.assertIn(feed["evidence"], {"O", "R", "M"})
             self.assertGreater(float(feed["weight"]), 0)
+            self.assertIn(feed.get("lang", "en"), {"en", *LANGS}, feed["id"])
 
 
 class DistillTest(unittest.TestCase):
@@ -184,6 +186,22 @@ class DistillTest(unittest.TestCase):
         for title, body, expected in cases:
             with self.subTest(title=title):
                 self.assertEqual(classify(f"{title}. {body}", self.config)[0], expected)
+
+    def test_chinese_and_japanese_items_are_read(self) -> None:
+        cases = [
+            ("智元第20000台具身机器人交付，人形机器人进入量产与供应链阶段", "hardware"),
+            ("具身智能的终局，是从被训练走向自我进化：强化学习与后训练", "training"),
+            ("協働ロボットの新型を発表、減速機とアクチュエータを内製", "hardware"),
+            ("フィジカルAI向けエッジAIチップ、低遅延の推論チップ", "edge"),
+        ]
+        for text, expected in cases:
+            with self.subTest(text=text):
+                lane, hits = classify(text, self.config)
+                self.assertEqual(lane, expected)
+                self.assertGreater(hits, 0)
+                self.assertGreater(anchor_hits(text, self.config.taxonomy), 0)
+        # 聊天机器人 is a chatbot: the bare word for robot is not an anchor.
+        self.assertEqual(anchor_hits("新款聊天机器人上线", self.config.taxonomy), 0)
 
     def test_ambiguous_words_no_longer_pick_a_lane(self) -> None:
         # Each was a lane keyword and meant something else as often as not.

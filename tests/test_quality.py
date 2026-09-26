@@ -325,10 +325,10 @@ class FeedHygieneTest(unittest.TestCase):
         )
         return f"<rss version='2.0'><channel><title>t</title>{items}</channel></rss>".encode()
 
-    def config_with(self, payload: bytes):
+    def config_with(self, payload: bytes, **feed: str):
         config = load_config()
         sources = dict(config.sources, feeds=[{"id": "big", "url": "https://example.org/feed",
-                                                "evidence": "O", "weight": 1.0}])
+                                                "evidence": "O", "weight": 1.0, **feed}])
         return type(config)(sources=sources, taxonomy=config.taxonomy,
                             glossary=config.glossary, baseline=config.baseline)
 
@@ -348,9 +348,17 @@ class FeedHygieneTest(unittest.TestCase):
             items, _ = fetch.fetch_feeds(self.config_with(payload))
         self.assertLessEqual(len(items[0].summary), fetch.MAX_SUMMARY_CHARS + 2)
 
+    def test_chinese_descriptions_keep_about_as_much_text_as_english_ones(self) -> None:
+        payload = self.feed(1, summary="具身智能机器人量产交付，" * 400)
+        with patch.object(fetch, "http_get", lambda url, *a, **k: payload):
+            zh, _ = fetch.fetch_feeds(self.config_with(payload, lang="zh"))
+        self.assertLessEqual(len(zh[0].summary), fetch.CJK_SUMMARY_CHARS + 2)
+        # No spaces to break at, and still cut near the limit rather than emptied.
+        self.assertGreater(len(zh[0].summary), fetch.CJK_SUMMARY_CHARS // 2)
+
     def test_general_feeds_are_not_marked_topical(self) -> None:
         feeds = {feed["id"]: feed for feed in load_config().sources["feeds"]}
-        for general in ("nvidia-blog", "huggingface-blog", "deepmind"):
+        for general in ("nvidia-blog", "huggingface-blog", "deepmind", "tri", "leiphone", "monoist"):
             self.assertFalse(feeds[general].get("topical", False), general)
 
 

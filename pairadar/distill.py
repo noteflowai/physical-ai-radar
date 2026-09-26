@@ -28,15 +28,20 @@ NUMBER_PATTERNS = (
     _FIGURE + r"\s?(?:GB|TB|W|kg|DoF|dof)\b",
 )
 _NUMBER_RE = re.compile("|".join(NUMBER_PATTERNS))
-_SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
+# Chinese and Japanese end a sentence with a full-width mark and no space after it.
+_SENTENCE_RE = re.compile(r"(?<=[.!?])\s+|(?<=[。！？])")
 
 # Feed furniture that says nothing about the item. WordPress appends "The post
 # <title> appeared first on <site>." to every description, and IEEE Spectrum opens
 # each Video Friday with the same paragraph, so both used to be quoted on the page
-# as if they were the source's abstract.
+# as if they were the source's abstract. Drupal feeds (TRI) open each description
+# with the title again, the author's handle and a timestamp; Chinese outlets credit
+# the writer and editor inline (作者：… 编辑：…).
 BOILERPLATE = (
     re.compile(r"\s*\bThe post\b.*?\bappeared first on\b[^.]*\.?\s*$", re.S),
     re.compile(r"^\s*Video Friday is your weekly selection\b.*?Enjoy today[’']s videos!\s*", re.S),
+    re.compile(r"^.{0,400}?\S+…\s+(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), \d{2}/\d{2}/\d{4} - \d{2}:\d{2}\s*", re.S),
+    re.compile(r"\s*作者\s*[：:丨|]\s*\S+\s+编辑\s*[：:丨|]\s*\S+(?: \S(?=\s))?\s*"),
 )
 
 EVIDENCE_BONUS = {"O": 0.6, "R": 0.35, "M": 0.1}
@@ -194,10 +199,13 @@ def one_liner(summary: str, max_chars: int = 240) -> str:
     sentences = _SENTENCE_RE.split(summary)
     text = sentences[0]
     if len(text) < 110 and len(sentences) > 1:
-        text = f"{text} {sentences[1]}"
+        text = f"{text}{'' if text.endswith(('。', '！', '？')) else ' '}{sentences[1]}"
     text = text.strip()
     if len(text) > max_chars:
-        text = text[: max_chars - 1].rsplit(" ", 1)[0] + "…"
+        cut = text[: max_chars - 1]
+        # Break at a word, unless the text has none nearby (Chinese, Japanese).
+        head = cut.rsplit(" ", 1)[0]
+        text = (head if len(head) > max_chars // 2 else cut) + "…"
     return text
 
 

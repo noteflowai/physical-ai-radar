@@ -10,7 +10,8 @@ changes, this file changes in the same pull request.
 | arXiv API | `https://export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
 | arXiv category feeds | `https://rss.arxiv.org/rss/<category>`, read only when the API returns nothing | `R` | the same papers, announced listings instead of search |
 | Official vendor blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face | `O` | first-party statements about their own products |
-| Trade press | IEEE Spectrum Robotics, The Robot Report | `M` | professional reporting, still secondary |
+| Lab research pages | Toyota Research Institute | `R` | a lab's own page for each paper: the same standing as the paper |
+| Trade press | IEEE Spectrum Robotics, The Robot Report; 雷峰网 Leiphone (Chinese), MONOist (Japanese) | `M` | professional reporting, still secondary |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
 
 Rules:
@@ -51,6 +52,10 @@ optional plural `s` / `es`. So `ppo` no longer fires inside "support", `thor` in
 `foundation`: nearly every robot-learning paper names the VLA or world model it builds
 on, and one that also names what it does with it belongs to that lane. Other ties
 resolve to the first lane in file order, which makes classification deterministic.
+Keywords and anchors include Chinese and Japanese terms for the zh and ja feeds; those
+items are quoted in their own language on all three pages. Their descriptions are cut
+at a third of the English length, which holds about as much text, so they do not
+collect three times the keywords.
 A keyword that is just as common outside its lane ("encoder", "memory", "standard")
 is listed as a phrase ("rotary encoder", "episodic memory", "safety standard").
 

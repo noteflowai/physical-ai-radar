@@ -71,6 +71,26 @@ class BoilerplateTest(unittest.TestCase):
                    "videos! The couch drag in this one is impressive.")
         self.assertEqual(one_liner(summary), "The couch drag in this one is impressive.")
 
+    def test_the_drupal_byline_is_not_quoted(self) -> None:
+        summary = ("SIRE: SE(3) Intrinsic Rigidity Embeddings robyn.cherinka… Wed, 09/09/2026 - 12:51 "
+                   "Motion serves as a strong cue for segmenting rigid parts.")
+        self.assertEqual(one_liner(summary), "Motion serves as a strong cue for segmenting rigid parts.")
+
+    def test_the_chinese_byline_is_not_quoted(self) -> None:
+        self.assertEqual(strip_boilerplate("机器人缺的是经验。 作者：李秋悦 编辑：吴彤 那是最荒芜的时候。"),
+                         "机器人缺的是经验。那是最荒芜的时候。")
+        self.assertEqual(strip_boilerplate("作者丨高允毅 编辑丨岑 峰 当 RSI 的风吹到了 DeepSeek。"),
+                         "当 RSI 的风吹到了 DeepSeek。")
+
+    def test_chinese_and_japanese_excerpts_end_on_a_sentence(self) -> None:
+        zh = "具身智能最难的问题，是怎么落地。" + "机器人得有足够稳定的量产能力" * 20 + "。"
+        line = one_liner(zh)
+        self.assertTrue(line.startswith("具身智能最难的问题，是怎么落地。机器人"), line)
+        self.assertLessEqual(len(line), 240)
+        # No space to break at: the cut keeps the text instead of falling back to it.
+        self.assertGreater(len(one_liner("2026 年，" + "协作机器人出货量继续增长" * 30)), 200)
+        self.assertEqual(one_liner("協働ロボットの新型を発表した。価格は未定。"), "協働ロボットの新型を発表した。価格は未定。")
+
     def test_text_without_furniture_is_unchanged(self) -> None:
         self.assertEqual(strip_boilerplate("The post-training recipe appeared in 2025."),
                          "The post-training recipe appeared in 2025.")
