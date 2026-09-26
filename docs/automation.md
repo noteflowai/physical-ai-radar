@@ -9,8 +9,74 @@ anywhere that matters.
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
 | `daily.yml` | GitHub-hosted runner | 03:20 UTC, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 09:40 Asia/Singapore | commits the day's radar to `main` |
-| `scripts/draft_daily_notes.sh` | maintainer's machine, cron | 02:30 Asia/Singapore | opens a pull request |
-| `scripts/repair_sources.sh` | maintainer's machine, cron | 03:15 Asia/Singapore | opens a pull request |
+| `scripts/draft_daily_notes.sh` | maintainer's machine, cron | 02:30 Asia/Singapore | validates, reviews, merges and verifies publication |
+| `scripts/repair_sources.sh` | maintainer's machine, cron | 03:15 Asia/Singapore | verifies a replacement feed, reviews, merges and verifies publication |
+| `scripts/improve_repos.sh` | maintainer's machine, cron | 10:10 Asia/Singapore; 16:10 catch-up | maintains the three companion projects through review, CI and publication |
+
+All local jobs are noninteractive. A completed publication receipt requires a
+checked PR head, the merge commit's required deployment workflows, and public
+HTTP readback. Failed work is recorded and retried automatically; a failed,
+cancelled, missing or wholly skipped check set cannot authorize a merge.
+Radar publication waits for both `CI` and `pages-build-deployment` on the merge
+commit before checking the public site.
+The deterministic daily publisher verifies the same gates on its direct main
+commit, including when a retry finds that today's data is already present.
+
+### Companion-project maintenance
+
+The daily maintenance job consumes this radar's published JSON, Hugging Face
+model metadata, GitHub repository search and the three projects' public metadata.
+Search results are described as recently pushed repositories ordered by total
+stars, not weekly star gains or independent user adoption.
+
+It maintains the homepages and bilingual READMEs of Skills Anywhere, EvalArc and
+Robot Reel. It uses dedicated marked clones under
+`~/.local/share/ai-repo-agent/`; it never resets a user's working checkout or
+archived worktree. The author and reviewer receive bounded text snapshots and
+have **no tools**. The controller applies exact, uniquely matching replacements
+to an explicit path allowlist. Executable scripts, interaction IDs, recorded media,
+resource bindings, tests, CI, dependencies and package versions are protected.
+This job does not run new GPU experiments or manufacture daily version releases.
+
+An author call requests Sonnet 5, with a disjoint fallback list from the separate
+Opus 5 review. The model names recorded are the explicit CLI selections; the
+provider does not independently attest an underlying model identity here.
+The controller rejects unsupported agent/model selection and malformed output.
+Validation or review findings return to the author for up to two corrections.
+CI failures get an infrastructure retry and a separately reviewed correction.
+Pending publication transactions survive the process and the calendar day.
+The reviewed commit is saved before pushing or creating its PR. Receipts are
+replaced atomically; a matching remote branch name alone is never an approval.
+
+When there is no justified change, the reviewer must agree. The controller reuses
+the passing deployment checks for the identical commit and exercises the actual
+public pages at 1440, 390 and 320 pixels, including result-image downloads and
+recorded playback or model-seed selection. A no-op is a successful maintenance
+result, not a reason to create a cosmetic commit.
+
+Changes run each project's own checks. After merging only the expected head, the
+controller waits for the required `main` workflows and verifies the public pages.
+Reports and screenshots stay under `~/.local/state/ai-repo-agent/YYYY-MM-DD/`.
+Source snapshots and model inputs retain timestamped copies. The catch-up exits
+without another model call when all three projects already completed that day.
+An unsuccessful attempt is retained as `retry-needed`, not labelled published.
+The bootstrap retries failed jobs twice within its time budget; the next scheduled
+run resumes remaining work without requesting human approval.
+
+The maintenance-only tools require the already configured Kiro CLI, GitHub CLI,
+Node, pnpm and the companion projects' pinned development dependencies. The radar
+collector and renderer retain their Python-standard-library-only runtime.
+
+### Pin the compatible noninteractive engine
+
+Kiro CLI 2.24.0 accepts the existing JSON agent configurations on **engine v1**.
+In an actual routing probe, v3 selected the requested model but rejected the old
+agent schema and fell back to its default agent. Earlier scheduled logs also
+contained a failed model-selection warning. The local jobs therefore explicitly
+pass `--agent-engine v1 --no-interactive` and reject fallback diagnostics.
+Do not remove that pin without verifying the replacement agent's tool boundaries.
+The CLI's v1 terminal renderer may emit a bare `json` language label; the JSON
+parser accepts that known rendering form and rejects additional prose.
 
 ## There is no self-hosted runner, on purpose
 
@@ -54,8 +120,9 @@ Both scripts share the same shape:
 Nobody reads the notes before they are published. The rendered pages say exactly that:
 drafted by the agent, merged automatically after deterministic checks and an agent
 review, **without human review**. If a check fails, is cancelled, or has not passed
-within ten minutes -- including when no check has registered yet -- the pull request
-is left open instead of merged, which is the only path by which a human gets involved.
+within the bounded wait -- including when no check has registered yet -- the pull
+request remains unmerged and its receipt is retained for automatic correction or
+resumption. No human approval is part of the scheduled path.
 
 Measured on kiro-cli 2.21.2, `--trust-all-tools` bypasses the agent's own write path
 allowlist while `--trust-tools=write` enforces it, and a `shell` command allowlist is
@@ -100,9 +167,11 @@ twenty minutes (`RADAR_AGENT_TIMEOUT`). A script started by hand takes the same 
 and refuses to start while a job holds it. Every failure ends with a `FAILED` line in
 the job's log under `~/.local/state/pairadar/`.
 
-Re-runs are no-ops: the publish stops when `main` already carries the day (`--force`
-republishes it), the draft stops when the day's pull request is already open, and the
-repair stops when a repair for that source is already waiting for review.
+Re-runs preserve completed work: publishing stops when `main` already carries the
+day (`--force` republishes it); open notes and source-repair PRs resume through the
+same commit-bound gate. A failed proposed change is regenerated through validation
+and a separate review. Publication receipts distinguish a completed merge from a
+completed deployment.
 
 ## When the machine misses a day
 

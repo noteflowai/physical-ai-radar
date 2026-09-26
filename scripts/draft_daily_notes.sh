@@ -16,6 +16,7 @@
 # gh authenticated for the pull request. Exit codes: 0 nothing to do or PR opened,
 # 1 something failed loudly.
 set -euo pipefail
+export GIT_TERMINAL_PROMPT=0 GH_PROMPT_DISABLED=1
 
 # A dedicated clone by default: this script resets hard, which must never happen
 # inside somebody's working checkout.
@@ -88,9 +89,16 @@ restore_tree() {
 # pipefail a failed `kiro-cli | tee | tail` ended the script without a line of its own.
 ask() {
   local out="$1"; shift
-  local status=0
-  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --no-interactive "$@" >>"$out" 2>&1 || status=$?
-  sed -e 's/\x1b\[[0-9;]*m//g' "$out" | tail -20
+  local status=0 call_log
+  call_log="$(mktemp /tmp/radar-agent-call-XXXXXX.log)"
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --agent-engine v1 --no-interactive "$@" >"$call_log" 2>&1 || status=$?
+  cat "$call_log" >>"$out"
+  if grep -Eiq 'failed to set model|needs upgrading|using ["\x27]?default|Method not found' "$call_log"; then
+    log "agent/model selection was not honored; rejecting this call"
+    status=1
+  fi
+  sed -e 's/\x1b\[[0-9;]*m//g' "$call_log" | tail -20
+  rm -f "$call_log"
   case "$status" in
     0) return 0 ;;
     124|137) log "kiro-cli was still running after ${AGENT_TIMEOUT}; stopped it" ;;
@@ -134,12 +142,20 @@ if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
   log "no published radar for ${DAY} yet (the 01:40 UTC run comes first); nothing to draft"
   exit 0
 fi
-# A pull request left open is waiting for a human. Drafting again would spend two model
-# calls to force-push over the draft they are about to read.
-if [ "$DRY_RUN" = "0" ] &&
-   gh pr list --head "notes/${DAY}" --state open --json number -q '.[0].number' 2>/dev/null | grep -q .; then
-  log "a pull request for notes/${DAY} is already open; nothing to draft"
-  exit 0
+# Resume a previously checked PR; on a real failure the model gets a fresh attempt.
+if [ "$DRY_RUN" = "0" ]; then
+  PENDING="$(gh pr list --head "notes/${DAY}" --state open --json number -q '.[0].number')"
+  if [ -n "$PENDING" ]; then
+    PENDING_HEAD="$(gh pr view "$PENDING" --json headRefOid -q .headRefOid)"
+    if python3 scripts/agent_pipeline.py finish --repo noteflowai/physical-ai-radar \
+      --pr "$PENDING" --head "$PENDING_HEAD" --workflow CI --workflow pages-build-deployment \
+      --url https://noteflowai.github.io/physical-ai-radar/ \
+      --output "$HOME/.local/state/pairadar/publications/notes-${DAY}.json"; then
+      log "resumed and published #${PENDING}"
+      exit 0
+    fi
+    log "the pending PR did not pass; rebuilding through validation and independent review"
+  fi
 fi
 
 # `agent list` prints to stderr, and capturing it through `| grep -q` would also
@@ -328,46 +344,23 @@ git commit -q -m "notes: drafted per-item analysis for ${DAY}
 Drafted on the Tokyo workstation by ${AGENT} (${DRAFTERS// /, }) via kiro-cli and
 approved by ${REVIEWER} (${REVIEW_MODEL}), after pairadar.notes check and the full
 test suite accepted it. Every line is labelled as a draft in the rendered pages;
-titles and numbers are untouched. Review before merging."
+titles and numbers are untouched. Merged automatically only after CI passes."
 git push -q -u --force-with-lease origin "$BRANCH"
 if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
   log "updated the open pull request for ${BRANCH}"
-  exit 0
-fi
+else
 gh pr create --base main --head "$BRANCH" \
   --title "notes: drafted per-item analysis for ${DAY}" \
   --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
     "Per-item analysis drafted for ${DAY} by \`${AGENT}\` (${DRAFTERS// /, }) and approved by \`${REVIEWER}\` (${REVIEW_MODEL}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
-    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a model other than the drafter's review it. Rendered pages label every drafted line and name the drafter. Merge only if the analysis is right.")
+    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a model other than the drafter's review it. Rendered pages label every drafted line and name the drafter. No human review is claimed; the controller merges only the checked commit and verifies publication.")
+fi
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 log "pull request #${PR} opened for ${DAY}; waiting for checks"
-# Merge only on a pass, on the commit that was checked. The old loop treated anything
-# that was neither "pending" nor "fail" as green, and right after the push GitHub has
-# not registered the workflow yet: "no checks reported" merged the draft unchecked.
-# Cancelled or timed-out checks are not a pass either.
 HEAD_SHA="$(git rev-parse HEAD)"
-checks_state() {
-  local state
-  state="$(gh pr checks "$PR" --json bucket -q '[.[].bucket] |
-    if length == 0 then "none"
-    elif any(. == "fail" or . == "cancel") then "fail"
-    elif any(. == "pending") then "pending"
-    else "pass" end' 2>/dev/null || true)"
-  printf '%s\n' "${state:-none}"
-}
-STATE="none"
-for _ in $(seq 1 30); do
-  sleep 20
-  STATE="$(checks_state)"
-  case "$STATE" in
-    pass) break ;;
-    fail) log "checks failed on #${PR}; leaving it open for a human"; exit 1 ;;
-  esac
-done
-if [ "$STATE" != "pass" ]; then
-  log "checks on #${PR} did not pass within ten minutes (${STATE}); leaving it open"
-  exit 0
-fi
-gh pr merge "$PR" --merge --match-head-commit "$HEAD_SHA"
-log "merged #${PR} for ${DAY}"
+python3 scripts/agent_pipeline.py finish --repo noteflowai/physical-ai-radar \
+  --pr "$PR" --head "$HEAD_SHA" --workflow CI --workflow pages-build-deployment \
+  --url https://noteflowai.github.io/physical-ai-radar/ \
+  --output "$HOME/.local/state/pairadar/publications/notes-${DAY}.json"
+log "published #${PR} for ${DAY} after CI and public readback"

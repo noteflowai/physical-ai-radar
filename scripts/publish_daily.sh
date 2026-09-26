@@ -20,6 +20,7 @@
 #
 # Exit codes: 0 published or nothing changed, 1 something failed loudly.
 set -euo pipefail
+export GIT_TERMINAL_PROMPT=0 GH_PROMPT_DISABLED=1 PIP_NO_INPUT=1
 
 REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
@@ -52,6 +53,13 @@ fi
 cd "$REPO_DIR"
 DAY="$(date -u +%F)"
 log() { printf '[publish %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
+verify_publication() {
+  [ "$DRY_RUN" = "1" ] && return 0
+  python3 scripts/agent_pipeline.py verify-commit --repo noteflowai/physical-ai-radar \
+    --commit "$(git rev-parse HEAD)" --workflow CI --workflow pages-build-deployment \
+    --url https://noteflowai.github.io/physical-ai-radar/ \
+    --output "$HOME/.local/state/pairadar/publications/daily-${DAY}.json"
+}
 published_day() {
   python3 -c 'import json; print(json.load(open("radar/latest.json", encoding="utf-8")).get("date", ""))' \
     2>/dev/null || true
@@ -73,6 +81,7 @@ git clean -qfdx
 
 if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
   log "${BRANCH_BASE} already carries the ${DAY} radar; nothing to do (--force republishes it)"
+  verify_publication
   exit 0
 fi
 log "generating the ${DAY} radar"
@@ -83,6 +92,7 @@ python3 -m unittest discover -s tests >/dev/null
 
 if [ -z "$(changed_paths)" ]; then
   log "nothing changed today"
+  verify_publication
   exit 0
 fi
 if [ "$DRY_RUN" = "1" ]; then
@@ -116,15 +126,19 @@ until git push --quiet origin "$BRANCH_BASE"; do
   git reset --hard --quiet "origin/${BRANCH_BASE}"
   if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
     log "${DAY} was published meanwhile by another run; keeping that one"
+    verify_publication
     exit 0
   fi
   python3 -m pairadar --limit "$LIMIT"
   if [ -z "$(changed_paths)" ]; then
     log "the new ${BRANCH_BASE} already carries an equivalent update"
+    verify_publication
     exit 0
   fi
+  python3 -m unittest discover -s tests >/dev/null
   git add -A
   git commit -q -m "radar: ${DAY} update"
 done
+verify_publication
 log "published ${DAY} on attempt ${attempt}"
 exit 0
