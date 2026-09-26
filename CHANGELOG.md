@@ -3,7 +3,11 @@
 Versions cover the pipeline in `pairadar/` and the published formats. The daily
 radar content itself is dated, not versioned.
 
-## Unreleased
+## 1.1.0 — 2026-09-26
+
+The radar gets a front door: a Pages site in each language with a shareable poster,
+a README that opens on the day, three more sources, and nightly jobs that no
+longer lose a night to one unavailable model.
 
 The nightly jobs:
 
