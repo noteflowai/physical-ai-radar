@@ -285,18 +285,20 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         "",
         f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {window_text(config, lang, ctx)}`",
         "",
-        f"| # | {ui['evidence']} | {ui['pick']} | {ui['numbers']} |",
-        "| :-: | :-: | --- | --- |",
+        # two columns: on a phone, four left a title about 110px and pushed the figures off screen
+        f"| # | {ui['pick']} · {ui['numbers']} |",
+        "| :-: | --- |",
     ]
     for rank, item in enumerate(shown, 1):
         evidence = item.evidence if item.evidence in EVIDENCE_DOT else "M"
-        figures = "<br>".join(f"`{n.replace(' ', chr(0xA0))}`" for n in item.numbers[:2]) or "—"
-        # the lane leads the line under the title: a column of its own left the titles no room
+        figures = "&nbsp; ".join(f"`{_cell(n).replace(' ', chr(0xA0))}`" for n in item.numbers[:3])
+        # non-breaking hyphens: a narrow screen split the date as "2026-" and "09-25"
+        day = (item.published or "").replace("-", "\u2011")
         under = " · ".join(part for part in (short_lane(config.lane_name(item.lane, lang)),
-                                             item.publisher or item.source_id, item.published) if part)
+                                             item.publisher or item.source_id, day) if part)
         lines.append(
-            f"| {rank:02d} | {EVIDENCE_DOT[evidence]}&nbsp;`{evidence}` | **[{_cell(item.title)}]({md_url(item.url)})**"
-            f"<br><sub>{_cell(under)}</sub> | {figures} |")
+            f"| {rank:02d}<br>{EVIDENCE_DOT[evidence]}&nbsp;`{evidence}` | **[{_cell(item.title)}]({md_url(item.url)})**"
+            + (f"<br>{figures}" if figures else "") + f"<br><sub>{_cell(under)}</sub> |")
     lines.extend(["", " · ".join(f"{EVIDENCE_DOT[key]} `{key}` {names[key]}" for key in ("O", "R", "M")), ""])
     whys = []
     for rank, item in enumerate(shown, 1):

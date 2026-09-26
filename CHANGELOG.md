@@ -3,6 +3,13 @@
 Versions cover the pipeline in `pairadar/` and the published formats. The daily
 radar content itself is dated, not versioned.
 
+## Unreleased
+
+- The README's picks table has two columns instead of four: the rank and its
+  evidence dot, then the title with up to three figures and a small line for the
+  lane, source and date. On a phone the four columns left each title about 110px
+  wide and pushed the figures off the screen.
+
 ## 1.1.0 — 2026-09-26
 
 The radar gets a front door: a Pages site in each language with a shareable poster,
