@@ -98,30 +98,30 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 ## How it differs from what you already read
 
-| | **Physical AI Radar** | Newsletters | Awesome lists | arXiv daily lists |
-| --- | --- | --- | --- | --- |
-| Updates | Daily at 07:40 Asia/Singapore, automated | Weekly or irregular | As contributed | Daily |
-| Scope | Papers + official + media, eight lanes | Editor's picks | Accumulated by topic | Papers only, all of them |
-| Evidence | Every item tagged `O` / `R` / `M` | Usually untagged | Untagged | Papers only |
-| Key numbers | Extracted, with the source's words around them | Depends on the author | — | Read it yourself |
-| Languages | Chinese / English / Japanese, each written natively | Usually one | Usually English | English |
-| Machine-readable | Atom × 3 · JSON Feed · `latest.json` | Email | Markdown | RSS / API |
-| Reproducible | Rules and weights in the repo, re-runs offline | — | — | — |
+| | **This radar** | Elsewhere |
+| --- | --- | --- |
+| **Updates** | Daily at 07:40 Asia/Singapore, automated | Weekly newsletters · awesome lists as contributed · arXiv daily |
+| **Scope** | Papers + official + media, eight lanes | An editor's picks · lists by topic · arXiv: every paper, papers only |
+| **Evidence** | Every item tagged `O` / `R` / `M` | Usually untagged |
+| **Numbers** | Extracted, with the source's words around them | Depends on the author |
+| **Language** | Chinese / English / Japanese, each written natively | Usually English |
+| **Formats** | Atom × 3 · JSON Feed · `latest.json` | Email · Markdown · arXiv RSS / API |
+| **Rules** | Rules and weights in the repo, re-runs offline | Rarely published |
 
 It does not replace a newsletter's commentary or arXiv's completeness. It is the page you read first.
 
 ## The eight lanes
 
-| Lane | What it tracks | Why it deserves its own lane |
-| --- | --- | --- |
-| Foundation models (VLA / WAM) | vision-language-action and world-action models, open weights | sets the starting point and cross-embodiment transfer for everything downstream |
-| Data engine | teleoperation, egocentric human video, curation, scaling | sets the data cost per new task |
-| Training & self-improvement | RL post-training, advantage conditioning, fleet-scale loops | decides whether a policy keeps improving after deployment |
-| Simulation & evaluation | sim2real, real-to-sim, closed-loop success, eval platforms | offline metrics are not closed-loop success |
-| Edge & real-time | on-device inference, quantization, async inference, control rate | a model that misses the real-time budget cannot enter the control loop |
-| Safety, permissions & compliance | safety filters, CBFs, ISO and regulatory dates | during the certification gap, safety rests on architecture, not certificates |
-| Systems & orchestration | long-horizon tasks, orchestrators, memory, policy routing | the operated object becomes a set of capability boundaries, not one model |
-| Embodiment & supply chain | humanoids, actuators, tactile, BOM and production lines | the real rate limiter on cost curve and delivery cadence |
+| Lane | What it tracks · *why it deserves its own lane* |
+| --- | --- |
+| **Foundation models (VLA / WAM)** | vision-language-action and world-action models, open weights<br>*sets the starting point and cross-embodiment transfer for everything downstream* |
+| **Data engine** | teleoperation, egocentric human video, curation, scaling<br>*sets the data cost per new task* |
+| **Training & self-improvement** | RL post-training, advantage conditioning, fleet-scale loops<br>*decides whether a policy keeps improving after deployment* |
+| **Simulation & evaluation** | sim2real, real-to-sim, closed-loop success, eval platforms<br>*offline metrics are not closed-loop success* |
+| **Edge & real-time** | on-device inference, quantization, async inference, control rate<br>*a model that misses the real-time budget cannot enter the control loop* |
+| **Safety, permissions & compliance** | safety filters, CBFs, ISO and regulatory dates<br>*during the certification gap, safety rests on architecture, not certificates* |
+| **Systems & orchestration** | long-horizon tasks, orchestrators, memory, policy routing<br>*the operated object becomes a set of capability boundaries, not one model* |
+| **Embodiment & supply chain** | humanoids, actuators, tactile, BOM and production lines<br>*the real rate limiter on cost curve and delivery cadence* |
 
 ## How to read it
 

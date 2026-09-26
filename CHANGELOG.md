@@ -9,6 +9,10 @@ radar content itself is dated, not versioned.
   evidence dot, then the title with up to three figures and a small line for the
   lane, source and date. On a phone the four columns left each title about 110px
   wide and pushed the figures off the screen.
+- The comparison table has three columns instead of five, the other sources
+  sharing one, and the lanes table two instead of three, what a lane tracks and
+  why it has its own lane in one cell. On a phone the five columns set
+  "newsletters" one character per line and ran off the side of the screen.
 
 ## 1.1.0 — 2026-09-26
 
