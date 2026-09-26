@@ -67,6 +67,9 @@ without another model call when all three projects already completed that day.
 An unsuccessful attempt is retained as `retry-needed`, not labelled published.
 The bootstrap retries failed jobs twice within its time budget; the next scheduled
 run resumes remaining work without requesting human approval.
+Notes authors use the same published-page excerpts and signals as their reviewer,
+not longer stored summaries. Rejection feedback survives clone resets and bootstrap
+retries; up to three review revisions may address every listed unsupported claim.
 Public checks bind each served homepage to its build manifest or exact committed
 HTML. Radar additionally checks the Pages build commit and committed public JSON.
 Unchanged results explicitly distinguish reused CI from local checks not repeated;

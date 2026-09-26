@@ -33,7 +33,7 @@ AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
 MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
 REVIEW_MODELS="${RADAR_REVIEW_MODELS:-claude-opus-5 claude-sonnet-5 claude-fable-5.1}"
 FIX_ROUNDS="${RADAR_FIX_ROUNDS:-2}"        # validator findings handed back to the drafter
-REVIEW_ROUNDS="${RADAR_REVIEW_ROUNDS:-1}"  # revisions after a rejection
+REVIEW_ROUNDS="${RADAR_REVIEW_ROUNDS:-3}"  # bounded revisions after a rejection
 DAY=""
 DRY_RUN=0
 
@@ -60,6 +60,9 @@ fi
 cd "$REPO_DIR"
 DAY="${DAY:-$(date -u +%F)}"
 NOTES="data/notes/${DAY}.json"
+FEEDBACK_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/feedback"
+FEEDBACK="$FEEDBACK_DIR/notes-${DAY}.txt"
+mkdir -p "$FEEDBACK_DIR"
 log() { printf '[notes %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
 
 PREVIEW=""
@@ -139,6 +142,7 @@ git reset --hard --quiet "origin/${BRANCH_BASE}"
 git clean -qfdx
 
 if [ -f "$NOTES" ]; then
+  rm -f "$FEEDBACK"
   log "$NOTES already exists on ${BRANCH_BASE}; nothing to draft"
   exit 0
 fi
@@ -277,7 +281,11 @@ prepare() {
 LOGFILE="$(mktemp "/tmp/radar-notes-${DAY}-XXXXXX.log")"
 REVIEW="$(mktemp "/tmp/radar-review-${DAY}-XXXXXX.log")"
 log "drafting notes for ${DAY}"
-if ! draft "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly."; then
+PRIOR_FINDINGS=""
+if [ -f "$FEEDBACK" ]; then PRIOR_FINDINGS="$(cat "$FEEDBACK")"; fi
+if ! draft "Draft today's per-item analysis for ${DAY} and write it to ${NOTES}. Follow your agent instructions exactly. Use the quoted evidence and signals visible on radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. Longer stored summaries are not additional evidence for this task.
+Prior review findings from an interrupted attempt (avoid repeating these problems):
+${PRIOR_FINDINGS}"; then
   log "no draft for ${DAY}"
   restore_tree
   exit 1
@@ -292,7 +300,7 @@ if ! correct; then
   exit 1
 fi
 
-# A rejection is a finding like any other: the drafter gets it once, the draft goes
+# A rejection is a finding like any other: within the correction budget, the draft goes
 # back through the validator and the suite, and a reviewer judges it afresh.
 REVISION=0
 while :; do
@@ -313,6 +321,15 @@ while :; do
     REJECT:*) ;;
     *) log "review produced no verdict; discarding the draft"; restore_tree; exit 1 ;;
   esac
+  python3 - "$REVIEW" "$FEEDBACK" <<'PY'
+from pathlib import Path
+import re, sys
+source, target = map(Path, sys.argv[1:])
+text = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", source.read_text())
+temporary = target.with_suffix(".tmp")
+temporary.write_text(text[-12000:])
+temporary.replace(target)
+PY
   if [ "$REVISION" -ge "$REVIEW_ROUNDS" ]; then
     log "review: ${VERDICT}; discarding the draft"
     restore_tree
@@ -322,8 +339,9 @@ while :; do
   log "review: ${VERDICT}; revision ${REVISION}/${REVIEW_ROUNDS}"
   # Drop the rebuilt pages; the draft itself is untracked and stays.
   git checkout -- .
-  if ! draft "The reviewer rejected ${NOTES}:${VERDICT#REJECT:}
-Revise that file to answer exactly this finding and keep every other note as it is." || ! correct; then
+  if ! draft "The reviewer rejected ${NOTES}. Review findings:
+$(cat "$FEEDBACK")
+Revise that file to address every listed unsupported claim in all three languages. Recheck the published page excerpts and keep unaffected notes as they are." || ! correct; then
     log "discarding the draft"
     restore_tree
     exit 1
@@ -368,3 +386,4 @@ python3 scripts/agent_pipeline.py finish --repo noteflowai/physical-ai-radar \
   --url https://noteflowai.github.io/physical-ai-radar/ \
   --output "$HOME/.local/state/pairadar/publications/notes-${DAY}.json"
 log "published #${PR} for ${DAY} after CI and public readback"
+rm -f "$FEEDBACK"
