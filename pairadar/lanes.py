@@ -34,13 +34,16 @@ MARGIN = 0.35
 
 
 def ranked_lanes(text: str, config: Config) -> list[tuple[str, int, float]]:
-    """Every lane scored against the text, best first: (lane_id, hits, weighted score)."""
+    """Every lane scored against the text, best first: (lane_id, hits, weighted score).
+
+    Ties are broken as `classify` breaks them, so the first entry is the lane it chose.
+    """
     scored = [
         (lane["id"], hits, hits * float(lane.get("weight", 1.0)))
         for lane in config.lanes
         for hits in (lane_hits(text, lane),)
     ]
-    return sorted(scored, key=lambda entry: (-entry[2], entry[0]))
+    return sorted(scored, key=lambda entry: (-entry[2], not (entry[1] > 0 and entry[0] != "foundation")))
 
 
 def inspect(item: Item, config: Config, margin: float = MARGIN) -> dict[str, Any] | None:

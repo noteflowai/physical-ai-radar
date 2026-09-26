@@ -47,8 +47,12 @@ Rules:
 An item is matched case-insensitively against `title + summary`, **as whole terms**: a
 keyword counts only where it is not preceded or followed by a letter or digit, with an
 optional plural `s` / `es`. So `ppo` no longer fires inside "support", `thor` inside
-"author" or `droid` inside "Android". The lane with the highest `hits × lane_weight` wins. Ties resolve to the first lane in file order, which
-makes classification deterministic.
+"author" or `droid` inside "Android". The lane with the highest `hits × lane_weight` wins. On a tie, any lane with hits beats
+`foundation`: nearly every robot-learning paper names the VLA or world model it builds
+on, and one that also names what it does with it belongs to that lane. Other ties
+resolve to the first lane in file order, which makes classification deterministic.
+A keyword that is just as common outside its lane ("encoder", "memory", "standard")
+is listed as a phrase ("rotary encoder", "episodic memory", "safety standard").
 
 A curated entry in `data/baseline.json` that declares a `lane` keeps it: the lane is an
 editorial decision, and the classifier is not allowed to overrule it. Such an entry is
