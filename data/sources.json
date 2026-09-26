@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "note": "evidence: O = first-party official, R = research paper/preprint, M = media/secondary. weight biases ranking. topical = the feed only publishes Physical AI material, so its items need no anchor term.",
+  "note": "evidence: O = first-party official, R = research paper/preprint, M = media/secondary. weight biases ranking. topical = the feed only publishes Physical AI material, so its items need no anchor term. lang = the language a feed publishes in, when it is not English; its titles and excerpts are quoted as written.",
   "filters": {
     "max_age_days": 30,
     "exclude_phrases": [
@@ -96,6 +96,29 @@
       "weight": 0.95,
       "publisher": "The Robot Report",
       "topical": true
+    },
+    {
+      "id": "tri",
+      "url": "https://www.tri.global/rss.xml",
+      "evidence": "R",
+      "weight": 1.0,
+      "publisher": "Toyota Research Institute"
+    },
+    {
+      "id": "leiphone",
+      "url": "https://www.leiphone.com/feed",
+      "evidence": "M",
+      "weight": 0.85,
+      "publisher": "雷峰网 Leiphone",
+      "lang": "zh"
+    },
+    {
+      "id": "monoist",
+      "url": "https://rss.itmedia.co.jp/rss/2.0/monoist.xml",
+      "evidence": "M",
+      "weight": 0.8,
+      "publisher": "MONOist (ITmedia)",
+      "lang": "ja"
     }
   ],
   "standards_watch": [

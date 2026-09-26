@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "note": "Lane keywords, anchors and signal keywords are matched case-insensitively against title + summary as whole terms (a trailing s/es is allowed), never as substrings. Weights bias the ranking.",
+  "note": "Lane keywords, anchors and signal keywords are matched case-insensitively against title + summary as whole terms (a trailing s/es is allowed), never as substrings. Weights bias the ranking. Chinese and Japanese terms sit in the same lists, for the zh and ja feeds; a term that is also everyday vocabulary (机器人 in 聊天机器人) is listed only in a longer, unambiguous form.",
   "anchors_note": "An item from a general-purpose source must name at least one anchor to be picked; feeds marked topical in sources.json and the cs.RO listing are exempt because everything they publish is on-topic.",
   "anchors": [
     "robot",
@@ -68,7 +68,26 @@
     "optimus",
     "skild",
     "industrial automation",
-    "warehouse automation"
+    "warehouse automation",
+    "具身智能",
+    "具身机器人",
+    "人形机器人",
+    "工业机器人",
+    "服务机器人",
+    "四足机器人",
+    "机械臂",
+    "灵巧手",
+    "自动驾驶",
+    "世界模型",
+    "物理ai",
+    "ロボット",
+    "ヒューマノイド",
+    "人型ロボット",
+    "協働ロボット",
+    "産業用ロボット",
+    "自動運転",
+    "フィジカルai",
+    "世界モデル"
   ],
   "lanes": [
     {
@@ -116,7 +135,12 @@
         "genie 3",
         "v-jepa",
         "rdt",
-        "ge-act"
+        "ge-act",
+        "世界模型",
+        "具身大模型",
+        "基础模型",
+        "世界モデル",
+        "基盤モデル"
       ]
     },
     {
@@ -161,7 +185,17 @@
         "data factory",
         "imitation learning",
         "behavior cloning",
-        "trajectory dataset"
+        "trajectory dataset",
+        "数据采集",
+        "遥操作",
+        "数据集",
+        "动作捕捉",
+        "合成数据",
+        "模仿学习",
+        "データ収集",
+        "遠隔操作",
+        "データセット",
+        "模倣学習"
       ]
     },
     {
@@ -199,7 +233,13 @@
         "residual policy",
         "co-training",
         "reward model",
-        "value function"
+        "value function",
+        "强化学习",
+        "后训练",
+        "微调",
+        "自我进化",
+        "強化学習",
+        "ファインチューニング"
       ]
     },
     {
@@ -242,7 +282,14 @@
         "robotwin",
         "digital twin",
         "physics engine",
-        "warp"
+        "warp",
+        "仿真",
+        "基准测试",
+        "数字孪生",
+        "シミュレーション",
+        "シミュレータ",
+        "デジタルツイン",
+        "ベンチマーク"
       ]
     },
     {
@@ -286,7 +333,14 @@
         "efficient inference",
         "inference latency",
         "inference acceleration",
-        "faster inference"
+        "faster inference",
+        "端侧",
+        "边缘计算",
+        "低延迟",
+        "推理芯片",
+        "エッジai",
+        "低遅延",
+        "推論チップ"
       ]
     },
     {
@@ -327,7 +381,15 @@
         "fcc",
         "covered list",
         "export control",
-        "tariff"
+        "tariff",
+        "安全标准",
+        "功能安全",
+        "出口管制",
+        "关税",
+        "安全規格",
+        "機能安全",
+        "輸出規制",
+        "関税"
       ]
     },
     {
@@ -368,7 +430,12 @@
         "vln",
         "mobile manipulation",
         "task planning",
-        "multi-agent"
+        "multi-agent",
+        "任务规划",
+        "多机器人",
+        "长程任务",
+        "タスク計画",
+        "複数ロボット"
       ]
     },
     {
@@ -427,7 +494,26 @@
         "medical robotics",
         "surgical robot",
         "surgical robotics",
-        "medical device"
+        "medical device",
+        "人形机器人",
+        "灵巧手",
+        "机械臂",
+        "执行器",
+        "减速器",
+        "量产",
+        "供应链",
+        "四足机器人",
+        "触觉",
+        "ヒューマノイド",
+        "人型ロボット",
+        "アクチュエータ",
+        "減速機",
+        "量産",
+        "サプライチェーン",
+        "ロボットハンド",
+        "触覚",
+        "協働ロボット",
+        "産業用ロボット"
       ]
     }
   ],

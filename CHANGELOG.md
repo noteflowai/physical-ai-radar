@@ -50,6 +50,15 @@ The site:
 
 Fixes that change what gets published:
 
+- Three more sources: Toyota Research Institute's paper pages (`R`), 雷峰网 Leiphone
+  in Chinese and MONOist in Japanese (`M`). Lane keywords and anchors now include
+  Chinese and Japanese terms, so those items can be read at all; 机器人 alone is not
+  an anchor, because 聊天机器人 is a chatbot. Their descriptions are cut at a third of
+  the English length: 2,000 Chinese characters hold about three times the text, and
+  a promotional piece outscored the Qualcomm–PickNik acquisition on keyword count. Chinese and Japanese excerpts end on 。, and a
+  long excerpt without spaces is cut at its length instead of at its last space.
+  TRI's feed repeats the title, author handle and timestamp in every description;
+  that prefix, and the 作者：… 编辑：… credit in Chinese articles, is no longer quoted.
 - Fewer items in the wrong lane. Six keywords that meant something else as often
   as not are now phrases: `encoder` (a text encoder was filed as hardware),
   `demonstration` (a "proof-of-concept demonstration" as teleoperation data),
