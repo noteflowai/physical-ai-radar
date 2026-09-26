@@ -36,6 +36,35 @@ class CalendarTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 run_day(invalid)
 
+    def test_a_new_process_after_midnight_resumes_the_previous_evening(self):
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(night_day(now=datetime(2026, 9, 26, 17, 40, tzinfo=timezone.utc)),
+                             "2026-09-26")  # 01:40 Singapore on Sep 27
+            self.assertEqual(night_day(now=datetime(2026, 9, 27, 13, 29, tzinfo=timezone.utc)),
+                             "2026-09-26")
+            self.assertEqual(night_day(now=datetime(2026, 9, 27, 13, 30, tzinfo=timezone.utc)),
+                             "2026-09-27")
+            self.assertEqual(night_day("2026-09-27", now=datetime(
+                2026, 9, 27, 6, 0, tzinfo=timezone.utc)), "2026-09-27")
+
+    def test_retry_preserves_the_initial_evening_even_after_another_boundary(self):
+        with patch.dict(os.environ, {
+            "RADAR_RUN_STARTED_AT": "2026-09-26T13:30:00Z", "RADAR_RUN_DAY": "2026-09-26",
+        }):
+            self.assertEqual(night_day(now=datetime(2026, 9, 27, 14, tzinfo=timezone.utc)),
+                             "2026-09-26")
+
+    def test_daily_date_cli_does_not_use_the_night_window(self):
+        with patch.dict(os.environ, {
+            "RADAR_RUN_STARTED_AT": "2026-09-26T23:40:00Z", "RADAR_RUN_DAY": "2026-09-27",
+        }):
+            command = [sys.executable, str(ROOT / "scripts/job_schedule.py")]
+            daily = subprocess.run(command, check=True, text=True, capture_output=True).stdout.strip()
+            night = subprocess.run(command + ["--night"], check=True, text=True,
+                                   capture_output=True).stdout.strip()
+            self.assertEqual(daily, "2026-09-27")
+            self.assertEqual(night, "2026-09-26")
+
     def test_companion_catchup_reuses_its_original_day_without_model_calls(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

@@ -186,6 +186,11 @@ Stage limits are individual caps, not reserved allocations: the whole-batch dead
 takes precedence. A slow evening can finish its remaining stages in the catch-up.
 Starting `nightly.sh` by hand delegates to the same bootstrap, so all stages and
 their output checks use the dedicated clone even when invoked from a working checkout.
+With no date option, it resumes the most recent **21:30 Singapore** batch. A new
+manual process at 01:40 therefore resumes the preceding evening; it cannot silently
+publish the upcoming morning issue early. The bootstrap pins `RADAR_RUN_STARTED_AT`
+before lock waits and retries. `--date YYYY-MM-DD` is an explicit manual override,
+including for controlled validation of an already published issue before the evening.
 
 Re-runs preserve completed work: publishing stops when `main` already carries the
 day (`--force` republishes it); open notes and source-repair PRs resume through the

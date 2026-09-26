@@ -26,6 +26,7 @@ SCRIPT="${1:-scripts/draft_daily_notes.sh}"
 # Pin before waiting for the lock or retrying: 07:40 Singapore is the previous UTC
 # date, and a night batch must not switch dates when it crosses local midnight.
 export RADAR_RUN_DAY="${RADAR_RUN_DAY:-$(TZ=Asia/Singapore date +%F)}"
+export RADAR_RUN_STARTED_AT="${RADAR_RUN_STARTED_AT:-$(date -u '+%Y-%m-%dT%H:%M:%SZ')}"
 REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
 BRANCH="${RADAR_BRANCH:-main}"

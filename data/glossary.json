@@ -43,7 +43,7 @@
       "chart_window": "近 {days} 天入选",
       "cadence_line": "最近各轮入选条数",
       "site": {
-        "eyebrow": "每日 01:40 UTC 更新 · {day}",
+        "eyebrow": "每日 07:40 SGT 更新 · {day}",
         "headline": "具身智能前沿，每天八条，条条有证据",
         "stat_picks": "今日入选",
         "stat_scanned": "今日扫描",
@@ -129,7 +129,7 @@
       "chart_window": "picks, last {days} days",
       "cadence_line": "Picks per recent run",
       "site": {
-        "eyebrow": "Updated daily at 01:40 UTC · {day}",
+        "eyebrow": "Updated daily at 07:40 SGT · {day}",
         "headline": "The Physical AI frontier, eight picks a day, every claim tagged",
         "stat_picks": "picks today",
         "stat_scanned": "items scanned",
@@ -215,7 +215,7 @@
       "chart_window": "直近 {days} 日の採択",
       "cadence_line": "最近の各回の採択件数",
       "site": {
-        "eyebrow": "毎日 01:40 UTC 更新 · {day}",
+        "eyebrow": "毎日 07:40 SGT 更新 · {day}",
         "headline": "Physical AI の最前線を、毎日 8 本、根拠つきで",
         "stat_picks": "本日の採択",
         "stat_scanned": "本日の走査",

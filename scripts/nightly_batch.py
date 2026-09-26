@@ -126,7 +126,7 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--date")
+    parser.add_argument("--date", help="explicit issue-date override for a controlled manual run")
     parser.add_argument("--previous-day", action="store_true",
                         help="02:30 catch-up: resume the preceding Singapore evening")
     parser.add_argument("--state", type=Path, default=Path(
