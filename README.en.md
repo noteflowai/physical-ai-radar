@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RoboRecover** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **Albireo** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-3. **Rolling-WAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+1. **RoboRecover** — `AI draft` If your evaluation suite only starts policies from clean predefined states, as the authors say most benchmarks do, it says nothing about recovery after a mid-task deviation; the preprint reports closed-loop results, but no figures appear on this page.
+2. **Albireo** — `AI draft` For a perception stack that runs a detector on every frame of a long stream, the authors report 17.6% (Thor) and 14.4% (Orin) less energy with code released; nothing on this page ties the result to a robot task or control loop.
+3. **Rolling-WAM** — `AI draft` If you shelved world action models because joint video-action denoising made each replanning cycle too slow, the authors' self-reported 4.5x steady-state replanning speedup with real-robot and closed-loop results reopens the question; success figures are not on this page.
+4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI draft` A fault detector you can keep adapting online at a self-reported 4.30 ms per inference on CPU fits beside a control loop without a GPU; real-robot results are reported, but the page shows no closed-loop test of acting on a detection.
+5. **Video Friday** — `AI draft` This is a video roundup, and the only text on the page names a small robot goose from The Robot Works; treat it as a place to spot hardware leads to verify elsewhere, not as evidence for any spec, price or shipment claim.
+6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI draft` If your behavior-cloned policy drifts off-distribution and compounds errors, the authors report a retrieval-based alternative gaining 15-46% over standard behavior cloning; the page gives no real-robot or closed-loop result, so verify on your own setup before switching.
+7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI draft` A single trade report that the Digit maker is exploring wheeled form factors for different environments suggests even humanoid-first vendors are not betting on legs alone; if you are specifying a fleet, ask vendors which form factor is actually shipping.
+8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI draft` If MoveIt is in your manipulation stack, the report that Qualcomm will keep it open-source while integrating its Dragonwing and Arduino platforms means the near-term risk is roadmap tilt toward one silicon vendor, not a license change; confirm with the primary announcement.
 
 </details>
 
