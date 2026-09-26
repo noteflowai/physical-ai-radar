@@ -45,6 +45,7 @@ if [ ! -d "$REPO_DIR/.git" ]; then
   timeout --kill-after=15 180 git clone --quiet "$CLONE_URL" "$REPO_DIR"
 fi
 timeout --kill-after=15 120 git -C "$REPO_DIR" fetch --quiet origin
+git -C "$REPO_DIR" reset --hard --quiet HEAD
 git -C "$REPO_DIR" checkout --quiet -B "$BRANCH" "origin/${BRANCH}"
 git -C "$REPO_DIR" reset --hard --quiet "origin/${BRANCH}"
 

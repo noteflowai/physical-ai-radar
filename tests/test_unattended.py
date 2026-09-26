@@ -1,5 +1,7 @@
 import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -11,6 +13,37 @@ from scripts.verify_source_repair import verify
 
 
 class UnattendedTests(unittest.TestCase):
+    @unittest.skipUnless(all(shutil.which(tool) for tool in ("git", "flock", "timeout")),
+                         "Git and the local scheduler tools are required")
+    def test_bootstrap_recovers_a_dirty_clone_before_switching_to_new_main(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp); origin = base / "origin"; clone = base / "clone"
+            def git(*args, cwd=None):
+                return subprocess.run(["git", *args], cwd=cwd, check=True,
+                                      capture_output=True, text=True).stdout
+            git("init", "-b", "main", str(origin))
+            git("config", "user.name", "Scheduler test", cwd=origin)
+            git("config", "user.email", "test@example.invalid", cwd=origin)
+            (origin / "README.md").write_text("before\n")
+            (origin / "scripts").mkdir()
+            probe = origin / "scripts/probe.sh"
+            probe.write_text("#!/bin/sh\nprintf 'job completed\\n'\n"); probe.chmod(0o755)
+            git("add", ".", cwd=origin); git("commit", "-m", "initial", cwd=origin)
+            git("clone", str(origin), str(clone))
+            (clone / "README.md").write_text("leftover generated output\n")
+            (origin / "README.md").write_text("new main\n")
+            git("add", ".", cwd=origin); git("commit", "-m", "update", cwd=origin)
+            env = {**os.environ, "RADAR_REPO": str(clone), "RADAR_LOCK": str(base / "radar.lock"),
+                   "XDG_STATE_HOME": str(base / "state"), "RADAR_TIMEOUT": "10s",
+                   "RADAR_BRANCH": "main"}
+            runner = Path(__file__).resolve().parents[1] / "scripts/radar-run"
+            result = subprocess.run(["bash", str(runner), "scripts/probe.sh"],
+                                    env=env, stdin=subprocess.DEVNULL, text=True,
+                                    capture_output=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("job completed", result.stdout)
+            self.assertEqual((clone / "README.md").read_text(), "new main\n")
+
     def test_missing_cancelled_unknown_and_wholly_skipped_checks_do_not_pass(self):
         def run(conclusion):
             return {"__typename": "CheckRun", "status": "COMPLETED", "conclusion": conclusion}
