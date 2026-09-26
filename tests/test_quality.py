@@ -365,11 +365,16 @@ class FeedHygieneTest(unittest.TestCase):
 class BadgeHonestyTest(unittest.TestCase):
     """The READMEs' badges must describe how the radar is actually published."""
 
-    def publish_time_utc(self) -> str:
+    def publish_time_singapore(self) -> str:
         text = (ROOT/"docs"/"automation.md").read_text(encoding="utf-8")
         row = next(line for line in text.splitlines() if line.startswith("| `scripts/publish_daily.sh`"))
         hour, minute = re.search(r"(\d{2}):(\d{2}) Asia/Singapore", row).groups()
-        return f"{(int(hour) - 8) % 24:02d}:{minute}"
+        cron = (ROOT/"scripts"/"cron.sg").read_text()
+        entry = next(line for line in cron.splitlines()
+                     if not line.startswith("#") and "scripts/publish_daily.sh" in line)
+        cron_minute, cron_hour = entry.split()[:2]
+        self.assertEqual((int(hour), int(minute)), (int(cron_hour), int(cron_minute)))
+        return f"{hour}:{minute}"
 
     def test_no_badge_reports_a_manual_only_workflow_as_the_daily_run(self) -> None:
         workflows = ROOT/".github"/"workflows"
@@ -383,11 +388,11 @@ class BadgeHonestyTest(unittest.TestCase):
                     self.assertNotIn(f"workflows/{workflow}/badge.svg", text)
 
     def test_the_schedule_badge_matches_the_publisher(self) -> None:
-        expected = self.publish_time_utc().replace(":", "%3A")
+        expected = self.publish_time_singapore().replace(":", "%3A")
         for name in ("README.md", "README.en.md", "README.ja.md"):
             text = (ROOT/name).read_text(encoding="utf-8")
             with self.subTest(readme=name):
-                self.assertIn(f"daily%20{expected}%20UTC", text)
+                self.assertIn(f"daily%20{expected}%20SGT", text)
 
 
 class DataFreshnessTest(unittest.TestCase):

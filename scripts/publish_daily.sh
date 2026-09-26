@@ -9,11 +9,11 @@
 #
 # What Actions keeps is the job hosted CI is actually good at: verifying on a clean
 # machine that the committed state builds and passes. It publishes only a day this
-# machine missed (daily.yml, 03:20 UTC), with a token that lives for one run.
+# machine missed (daily.yml, 01:20 UTC / 09:20 Singapore), with a token for one run.
 #
-#   scripts/publish_daily.sh [--limit N] [--dry-run] [--force]
+#   scripts/publish_daily.sh [--date YYYY-MM-DD] [--limit N] [--dry-run] [--force]
 #
-# A day is published once. A second run on the same UTC date -- cron plus a manual
+# A Singapore issue date is published once. A second run -- cron plus a manual
 # retry, or this machine plus the Actions fallback -- used to fetch again and commit
 # a new "update" that differed only in timestamps and whatever the feeds had added
 # since. It now stops when main already carries the day; --force republishes it.
@@ -28,10 +28,12 @@ BRANCH_BASE="${RADAR_BRANCH:-main}"
 LIMIT="${RADAR_LIMIT:-8}"
 DRY_RUN=0
 FORCE=0
+DAY="${RADAR_RUN_DAY:-}"
 
 while [ $# -gt 0 ]; do
   case "$1" in
     --limit) LIMIT="$2"; shift 2 ;;
+    --date) DAY="$2"; shift 2 ;;
     --dry-run) DRY_RUN=1; shift ;;
     --force) FORCE=1; shift ;;
     *) echo "unknown argument: $1" >&2; exit 1 ;;
@@ -51,7 +53,7 @@ if [ ! -d "$REPO_DIR/.git" ]; then
   git clone --quiet "$CLONE_URL" "$REPO_DIR"
 fi
 cd "$REPO_DIR"
-DAY="$(date -u +%F)"
+DAY="$(python3 scripts/job_schedule.py --date "$DAY")"
 log() { printf '[publish %s] %s\n' "$(date -u +%H:%M:%S)" "$*"; }
 verify_publication() {
   [ "$DRY_RUN" = "1" ] && return 0
@@ -81,13 +83,17 @@ git checkout --quiet -B "$BRANCH_BASE" "origin/${BRANCH_BASE}"
 git reset --hard --quiet "origin/${BRANCH_BASE}"
 git clean -qfdx
 
+if [[ "$(published_day)" > "$DAY" ]]; then
+  log "refusing to replace a newer published issue with ${DAY}"
+  exit 1
+fi
 if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
   log "${BRANCH_BASE} already carries the ${DAY} radar; nothing to do (--force republishes it)"
   verify_publication
   exit 0
 fi
 log "generating the ${DAY} radar"
-python3 -m pairadar --limit "$LIMIT"
+python3 -m pairadar --limit "$LIMIT" --date "$DAY"
 # stdout is the pipeline talking to itself; the verdict and any failure go to
 # stderr, so dropping stdout keeps this log about tonight's run.
 python3 -m unittest discover -s tests >/dev/null
@@ -126,12 +132,16 @@ until git push --quiet origin "$BRANCH_BASE"; do
   log "rebase failed; regenerating on top of the new ${BRANCH_BASE}"
   git rebase --abort || true
   git reset --hard --quiet "origin/${BRANCH_BASE}"
+  if [[ "$(published_day)" > "$DAY" ]]; then
+    log "a newer issue was published meanwhile; refusing to move the site backwards"
+    exit 1
+  fi
   if [ "$FORCE" = "0" ] && [ "$(published_day)" = "$DAY" ]; then
     log "${DAY} was published meanwhile by another run; keeping that one"
     verify_publication
     exit 0
   fi
-  python3 -m pairadar --limit "$LIMIT"
+  python3 -m pairadar --limit "$LIMIT" --date "$DAY"
   if [ -z "$(changed_paths)" ]; then
     log "the new ${BRANCH_BASE} already carries an equivalent update"
     verify_publication

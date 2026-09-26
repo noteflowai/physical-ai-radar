@@ -11,7 +11,7 @@
 [![週間まとめ](https://img.shields.io/badge/%E9%80%B1%E9%96%93%E3%81%BE%E3%81%A8%E3%82%81-%E3%82%A2%E3%83%BC%E3%82%AB%E3%82%A4%E3%83%96-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![published daily 07:40 SGT](https://img.shields.io/badge/published-daily%2007%3A40%20SGT-7300e5.svg?style=flat-square)](docs/automation.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#ローカル実行)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -100,7 +100,7 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 | | **Physical AI フロンティア・レーダー** | ニュースレター | awesome リスト | arXiv 日次リスト |
 | --- | --- | --- | --- | --- |
-| 更新 | 毎日 01:40 UTC、自動 | 週次または不定期 | 貢献次第 | 毎日 |
+| 更新 | 毎日 07:40 Asia/Singapore、自動 | 週次または不定期 | 貢献次第 | 毎日 |
 | 範囲 | 論文 + 公式 + 報道、8 つの軸 | 編集者の選定 | テーマ別に蓄積 | 論文のみ、全件 |
 | 根拠 | 全項目に `O` / `R` / `M` | 通常なし | なし | 論文のみ |
 | 主要数値 | 自動抽出、原文の文脈つき | 著者次第 | — | 自分で読む |
@@ -166,13 +166,13 @@ flowchart LR
   C -. "毎晩" .-> A["エージェントが三言語の解説を起草<br/>別モデルが査読 · テスト合格で統合"]
 ```
 
-`scripts/publish_daily.sh` はメンテナーのマシン上の cron で 01:40 UTC（09:40 CST / 10:40 JST）に実行されます。arXiv の当日公告後なので、朝いちばんに最新の一群が読めます。
+`scripts/publish_daily.sh` は毎日シンガポール時間 07:40（前日 23:40 UTC / 08:40 JST）に、その地域の日付で朝刊を公開します。arXiv の通常の当日公告より早い締切です。21:30 の統合夜間バッチで最新情報の再収集、レーダー分析、関連 3 プロジェクトの改善を行い、翌 02:30 に未完了の処理だけを再開します。
 
 <details>
 <summary>各ステップの詳細</summary>
 
 ```
-scripts/publish_daily.sh（メンテナーのマシン上の cron、01:40 UTC / 09:40 CST / 10:40 JST）
+scripts/publish_daily.sh（メンテナーのマシン上の cron、07:40 Asia/Singapore / 08:40 JST）
   └─ fetch    arXiv API（cs.RO の6クエリ、API が応答しない日はカテゴリ RSS）+ 公式・報道の Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
   └─ distill  関連性ゲート → 8軸に分類 → 定量指標を抽出 → 説明可能なスコア → 軸・ソース・根拠区分ごとの上限で選抜
   └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成 / README バナー
@@ -255,7 +255,7 @@ PR を歓迎します：機械可読な新規出典、根拠タグの修正、�
 
 <div align="center">
 
-**役に立ったら ⭐ Star を。明朝 01:40 UTC にまた。** 今日のレーダーを共有： [サイト](https://noteflowai.github.io/physical-ai-radar/ja/) ·
+**役に立ったら ⭐ Star を。明朝 07:40 Asia/Singapore にまた。** 今日のレーダーを共有： [サイト](https://noteflowai.github.io/physical-ai-radar/ja/) ·
 [X に投稿](https://twitter.com/intent/tweet?text=Physical%20AI%20%E3%83%95%E3%83%AD%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC%EF%BC%9A%E6%AF%8E%E6%97%A5%208%20%E6%9C%AC%E3%80%81%E6%A0%B9%E6%8B%A0%E3%81%A4%E3%81%8D&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
 [LINE で送る](https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar)
 

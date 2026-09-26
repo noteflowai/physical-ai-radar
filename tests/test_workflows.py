@@ -171,6 +171,9 @@ class NightlyJobTests(unittest.TestCase):
             with self.subTest(script=path.name):
                 text = path.read_text(encoding="utf-8")
                 self.assertIn("radar.lock", text)
+                if path.name == "nightly.sh":
+                    self.assertIn('exec "$SCRIPT_DIR/radar-run" scripts/nightly.sh "$@"', text)
+                    continue
                 self.assertRegex(text, r"flock (-n|-w \S+) 9")
 
     def test_every_model_call_is_bounded(self):

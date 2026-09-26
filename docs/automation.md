@@ -7,11 +7,10 @@ anywhere that matters.
 | What | Where | Trigger | Writes |
 | --- | --- | --- | --- |
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
-| `daily.yml` | GitHub-hosted runner | 03:20 UTC, and by hand | publishes only a day the machine missed |
-| `scripts/publish_daily.sh` | maintainer's machine, cron | 09:40 Asia/Singapore | commits the day's radar to `main` |
-| `scripts/draft_daily_notes.sh` | maintainer's machine, cron | 02:30 Asia/Singapore | validates, reviews, merges and verifies publication |
-| `scripts/repair_sources.sh` | maintainer's machine, cron | 03:15 Asia/Singapore | verifies a replacement feed, reviews, merges and verifies publication |
-| `scripts/improve_repos.sh` | maintainer's machine, cron | 10:10 Asia/Singapore; 16:10 catch-up | maintains the three companion projects through review, CI and publication |
+| `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
+| `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
+| `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | runs source repair, publication recovery, fresh research, notes and companion maintenance in order |
+| `scripts/nightly.sh --previous-day` | maintainer's machine, cron | 02:30 Asia/Singapore | resumes only the preceding evening's unfinished stages |
 
 All local jobs are noninteractive. A completed publication receipt requires a
 checked PR head, the merge commit's required deployment workflows, and public
@@ -61,7 +60,8 @@ result, not a reason to create a cosmetic commit.
 
 Changes run each project's own checks. After merging only the expected head, the
 controller waits for the required `main` workflows and verifies the public pages.
-Reports and screenshots stay under `~/.local/state/ai-repo-agent/YYYY-MM-DD/`.
+Reports and screenshots stay under `~/.local/state/ai-repo-agent/YYYY-MM-DD/`,
+using the Singapore batch date passed by the night controller.
 Source snapshots and model inputs retain timestamped copies. The catch-up exits
 without another model call when all three projects already completed that day.
 An unsuccessful attempt is retained as `retry-needed`, not labelled published.
@@ -178,6 +178,19 @@ its branch reset under it by the repair job. A job waits up to two hours for the
 twenty minutes (`RADAR_AGENT_TIMEOUT`). A script started by hand takes the same lock
 and refuses to start while a job holds it. Every failure ends with a `FAILED` line in
 the job's log under `~/.local/state/pairadar/`.
+The two night entries override this with a fifteen-minute lock wait and a four-hour
+whole-batch budget, leaving a gap between the evening batch, its catch-up and the
+07:40 publisher. Each stage has its own timeout; stopping a stage also stops its
+descendants. A stopped batch retains its incomplete stage for the next retry.
+Stage limits are individual caps, not reserved allocations: the whole-batch deadline
+takes precedence. A slow evening can finish its remaining stages in the catch-up.
+Starting `nightly.sh` by hand delegates to the same bootstrap, so all stages and
+their output checks use the dedicated clone even when invoked from a working checkout.
+With no date option, it resumes the most recent **21:30 Singapore** batch. A new
+manual process at 01:40 therefore resumes the preceding evening; it cannot silently
+publish the upcoming morning issue early. The bootstrap pins `RADAR_RUN_STARTED_AT`
+before lock waits and retries. `--date YYYY-MM-DD` is an explicit manual override,
+including for controlled validation of an already published issue before the evening.
 
 Re-runs preserve completed work: publishing stops when `main` already carries the
 day (`--force` republishes it); open notes and source-repair PRs resume through the
@@ -187,7 +200,7 @@ completed deployment.
 
 ## When the machine misses a day
 
-`daily.yml` wakes at 03:20 UTC, an hour and forty minutes after the publish. When
+`daily.yml` wakes at 01:20 UTC / 09:20 Singapore, an hour and forty minutes after the publish. When
 `radar/latest.json` on `main` already names the day, it stops there. Otherwise it
 publishes the day with the per-run `GITHUB_TOKEN`, asks Pages for a build, and opens an
 issue titled "The local publisher missed a day" (or comments on the open one). If
@@ -196,10 +209,46 @@ maintainer. Run it by hand with `force` to republish a day that is already on `m
 
 ## Timing
 
-The notes are drafted for the current UTC date, and that date's radar publishes at
-01:40 UTC. At 02:30 Asia/Singapore — 18:30 UTC — the day's radar is about seventeen hours
-old, so the order is right with plenty of margin. Moving the cron job near 09:40
-Asia/Singapore (01:40 UTC) would race the publish for the same day's output.
+The checked-in schedule is [`scripts/cron.sg`](../scripts/cron.sg). Install it on a
+host whose timezone is **Asia/Singapore**, replacing the earlier standalone notes,
+source-repair and 10:10/16:10 companion entries. Do not add both schedules.
+
+The issue date follows Singapore's calendar. At 07:40 it is still 23:40 UTC on the
+preceding date; using `date -u` here would skip the new issue or label it yesterday.
+The bootstrap pins `RADAR_RUN_DAY` before waiting for a lock or retrying, and the
+publisher passes it explicitly to the collector. The hosted fallback uses the same
+date helper and retains the chosen date in `GITHUB_ENV`. Source timestamps, source
+windows and generation timestamps remain UTC; historical issues are not renamed.
+A late catch-up cannot replace a newer issue with an older one.
+
+At **21:30** a single controller performs:
+
+1. source-health repair, with independent review when a replacement is needed;
+2. an idempotent daily publish/recovery and public deployment check;
+3. a fresh collection into local state, for research without changing the morning picks;
+4. notes for the verified morning issue, with review, CI, merge and public verification;
+5. the three companion projects, using the fresh evening research plus current
+   Hugging Face and GitHub signals, with their existing review and publication gates.
+
+Research inputs keep each item's original `published` value as its source `date`,
+separate from `issue_date` and the collection timestamp. Bad entries are recorded
+as source failures without discarding other valid research.
+
+07:40 precedes arXiv's regular 20:00 US Eastern announcement (08:00 or 09:00
+Singapore, depending on US daylight saving). The morning issue contains sources
+available at its cutoff. The evening research includes later sources for maintenance;
+the following morning can include them in the next public shortlist. No claim is made
+that 07:40 already includes that day's arXiv batch.
+
+Atomic stage receipts and append-only logs live under
+`~/.local/state/pairadar/nightly/YYYY-MM-DD/`. Retries skip successful stages.
+A failed repair does not block independent research or companion work; failed
+publication blocks its dependent notes. The batch remains `retry-needed` if any
+stage fails. A notes command that produces no notes cannot count as completed.
+At **02:30**, `--previous-day` resumes the preceding evening's Singapore date, so
+crossing midnight does not consume the next day's maintenance allowance.
+Completed batches exit without new model calls. All execution is noninteractive;
+an exhausted retry budget records failure for the next automatic catch-up.
 
 ## Credentials
 

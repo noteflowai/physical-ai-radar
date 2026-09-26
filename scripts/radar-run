@@ -6,6 +6,7 @@
 #   radar-run scripts/publish_daily.sh [args...]
 #   radar-run scripts/draft_daily_notes.sh [args...]
 #   radar-run scripts/repair_sources.sh [args...]
+#   radar-run scripts/nightly.sh [--previous-day]
 #
 # Ensures the automation clone exists and is on the published branch, then hands over
 # to the script that lives in the repository, so the logic stays reviewed.
@@ -22,6 +23,10 @@ exec </dev/null
 
 SCRIPT="${1:-scripts/draft_daily_notes.sh}"
 [ $# -gt 0 ] && shift || true
+# Pin before waiting for the lock or retrying: 07:40 Singapore is the previous UTC
+# date, and a night batch must not switch dates when it crosses local midnight.
+export RADAR_RUN_DAY="${RADAR_RUN_DAY:-$(TZ=Asia/Singapore date +%F)}"
+export RADAR_RUN_STARTED_AT="${RADAR_RUN_STARTED_AT:-$(date -u '+%Y-%m-%dT%H:%M:%SZ')}"
 REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
 BRANCH="${RADAR_BRANCH:-main}"
