@@ -52,6 +52,8 @@
 </tr>
 </table>
 
+<p align="center"><a href="https://noteflowai.github.io/physical-ai-radar/"><img src="assets/showcase.zh.webp" width="100%" alt="网站落地页与当日分享海报"></a><br><sub>网站落地页（左）与一键生成的当日分享海报（右） · 2026-09-26 截图</sub></p>
+
 > [!TIP]
 > **转发给同事：** 在[网站](https://noteflowai.github.io/physical-ai-radar/)点「生成分享图」，得到一张带二维码的当日海报，适合朋友圈、小红书和 X；「复制今日摘要」则把 8 条标题和链接变成一段纯文本，直接贴进群聊。
 >
@@ -94,6 +96,20 @@
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
 <!-- RADAR:END -->
 
+## 和常见信息源有什么不同
+
+| | **Physical AI 前沿雷达** | 行业通讯 | awesome 列表 | arXiv 每日列表 |
+| --- | --- | --- | --- | --- |
+| 更新 | 每天 01:40 UTC，自动 | 每周或不定期 | 随贡献 | 每天 |
+| 范围 | 论文 + 官方 + 媒体，八条主线 | 编辑选题 | 按主题累积 | 只有论文，全量 |
+| 证据等级 | 每条标 `O` / `R` / `M` | 通常不标 | 不标 | 只有论文 |
+| 关键数字 | 自动抽取，附原文上下文 | 看作者 | — | 自己读 |
+| 语言 | 中 / 英 / 日各自成文 | 通常单语 | 通常英文 | 英文 |
+| 机器可读 | Atom × 3 · JSON Feed · `latest.json` | 邮件 | Markdown | RSS / API |
+| 可复现 | 规则与权重全在仓库里，离线可重跑 | — | — | — |
+
+它不替代通讯的深度评论，也不替代 arXiv 的全量——它是每天早上先看的那一页。
+
 ## 八条主线
 
 | 主线 | 关注什么 | 为什么值得单独看 |
@@ -112,6 +128,29 @@
 1. **先看证据标注再看结论**。`[R]` 的数字是作者自报，`[M]` 的出货量常有口径冲突，`[O]` 也要区分"平台可用"和"客户已部署"。
 2. **关键数字优先于形容词**。每条尽量给出成功率、延迟、数据量；没有数字说明这条还在叙事阶段。
 3. **合规看日期**。标准与法规条目直接给生效或阶段日期，方便抄进项目计划。
+
+## 拿去用：订阅与数据
+
+全部是 GitHub Pages 上的静态文件，不需要账号或 key。
+
+| 你想要 | 地址 |
+| --- | --- |
+| RSS 阅读器 | [中文 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [英文 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [日文 Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) |
+| 程序读取当天 | [`radar/latest.json`](https://noteflowai.github.io/physical-ai-radar/radar/latest.json)：每条的主线、证据、分数、数字 |
+| JSON Feed | [`radar/feed.json`](https://noteflowai.github.io/physical-ai-radar/radar/feed.json) |
+| 推到 Slack / 飞书 / Discord | 任何支持 RSS 的机器人订阅上面的 Atom 即可 |
+
+```bash
+R=https://noteflowai.github.io/physical-ai-radar/radar
+# 今天的 8 条：证据等级、主线、标题
+curl -s $R/latest.json | jq -r '.picked[] | "[\(.evidence)] \(.lane)\t\(.title)"'
+# 只看带可核对数字的
+curl -s $R/latest.json | jq -r '.picked[] | select(.numbers | length > 0) | "\(.numbers | join(", "))\t\(.title)"'
+# 最近 10 条（JSON Feed 1.1）
+curl -s $R/feed.json | jq -r '.items[:10][] | "\(.date_published[:10])  \(.title)  \(.url)"'
+```
+
+内容以 [CC BY 4.0](LICENSE-CONTENT) 授权：转载、做周报、喂给你自己的 agent 都可以，注明出处并链接回原条目即可。
 
 ## 自动更新机制
 
@@ -172,6 +211,7 @@ data/        sources.json（源与权重）· taxonomy.json（主线与信号）
 pairadar/    fetch / distill / charts / banner / render / site / qr / cli —— 全部标准库
 radar/       daily/YYYY-MM-DD.{zh,en,ja}.md · INDEX.md · latest.json · history.json
 assets/      自动生成的 SVG 图与 README 横幅 · site.css · site.js · 社交分享卡 og.*.png
+             · showcase.*.webp（README 里的网站与海报截图，手动截取）
 docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 ```
 

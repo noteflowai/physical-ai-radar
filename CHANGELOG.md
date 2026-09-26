@@ -71,6 +71,11 @@ The site:
   day's picks are one table (evidence, title, lane, source, figures) with the reasons
   folded beneath it, and the cadence and source-mix charts read at full width. The
   lane chart is gone from the README; the banner's radar counts the lanes.
+- The READMEs show the site and its share poster side by side
+  (`assets/showcase.<lang>.webp`, a screenshot taken by hand), compare the radar
+  with newsletters, awesome lists and arXiv daily lists, and have a "take it with
+  you" section: the feeds, `latest.json`, and `curl | jq` one-liners that run
+  against the live site.
 - The cadence chart's mean line has its key in the title row, where the latest bar
   can no longer cover it.
 
