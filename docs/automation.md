@@ -17,6 +17,9 @@ All local jobs are noninteractive. A completed publication receipt requires a
 checked PR head, the merge commit's required deployment workflows, and public
 HTTP readback. Failed work is recorded and retried automatically; a failed,
 cancelled, missing or wholly skipped check set cannot authorize a merge.
+Closed or externally changed proposals are retired rather than retried forever.
+An interrupted older receipt can be marked `superseded` only after a newer main
+commit is proven to descend from it and its deployment and public content pass.
 Radar publication waits for both `CI` and `pages-build-deployment` on the merge
 commit before checking the public site.
 The deterministic daily publisher verifies the same gates on its direct main
@@ -62,6 +65,10 @@ without another model call when all three projects already completed that day.
 An unsuccessful attempt is retained as `retry-needed`, not labelled published.
 The bootstrap retries failed jobs twice within its time budget; the next scheduled
 run resumes remaining work without requesting human approval.
+Public checks bind each served homepage to its build manifest or exact committed
+HTML. Radar additionally checks the Pages build commit and committed public JSON.
+Unchanged results explicitly distinguish reused CI from local checks not repeated;
+browser receipts enumerate the controls actually exercised at each viewport.
 
 The maintenance-only tools require the already configured Kiro CLI, GitHub CLI,
 Node, pnpm and the companion projects' pinned development dependencies. The radar

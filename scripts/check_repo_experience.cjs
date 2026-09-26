@@ -11,6 +11,7 @@ const {chromium}=require(require.resolve("playwright",{paths:[path.resolve(root)
       const page=await browser.newPage({viewport:{width,height:1000},reducedMotion:"reduce",
         extraHTTPHeaders:{"Cache-Control":"no-cache","Pragma":"no-cache"}});
       const errors=[],bad=[];
+      const exercised={resultImage:false,modelSeed:false,recordedPlayback:false};
       page.on("pageerror",e=>errors.push(e.message));
       page.on("response",r=>{if(r.status()>=400)bad.push({url:r.url(),status:r.status()})});
       await page.goto(url,{waitUntil:"networkidle",timeout:60000});
@@ -28,10 +29,12 @@ const {chromium}=require(require.resolve("playwright",{paths:[path.resolve(root)
         const bytes=await fs.readFile(await download.path());
         assert.equal(bytes.readUInt32BE(16),1200);assert(bytes.length>15000);
         if(width===1440)await download.saveAs(path.join(output,"result.png"));
+        exercised.resultImage=true;
       }
       if(await page.locator('[data-model-seed="29"]').count()){
         await page.locator('[data-model-seed="29"]').click();
         assert.match(await page.locator("#proof-open").getAttribute("href"),/seed=29/);
+        exercised.modelSeed=true;
       }
       const video=page.locator(".hero video");
       if(await video.count()){
@@ -41,12 +44,13 @@ const {chromium}=require(require.resolve("playwright",{paths:[path.resolve(root)
             const timer=setTimeout(()=>reject(new Error("Preview did not advance")),15000);
             v.addEventListener("timeupdate",()=>{clearTimeout(timer);v.pause();resolve()},{once:true});
           })});
+          exercised.recordedPlayback=true;
         }
       }
       await page.evaluate(()=>window.scrollTo(0,0));
       await page.screenshot({path:path.join(output,`viewport-${width}.png`)});
       assert.deepEqual(errors,[]);assert.deepEqual(bad,[]);
-      results.push({width,title:await page.title(),overflow:false,errors,badResponses:bad});
+      results.push({width,title:await page.title(),overflow:false,errors,badResponses:bad,exercised});
       await page.close();
     }
   }finally{await browser.close()}

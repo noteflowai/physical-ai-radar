@@ -5,6 +5,7 @@ import copy
 from datetime import datetime, timezone
 import ipaddress
 import json
+import re
 from pathlib import Path
 import socket
 import urllib.parse
@@ -50,6 +51,8 @@ def verify(before: dict, after: dict, source: str) -> dict:
         if len(raw) > 8_000_000 or response.status != 200:
             raise ValueError("Unexpected feed response")
         final_url = response.url
+    if re.search(rb"<!\s*(?:DOCTYPE|ENTITY)\b", raw.replace(b"\0", b""), re.I):
+        raise ValueError("Feed declarations and entity definitions are not allowed")
     root = ET.fromstring(raw)
     entries = root.findall(".//item") or root.findall("{http://www.w3.org/2005/Atom}entry")
     if not entries:

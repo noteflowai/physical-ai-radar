@@ -5,8 +5,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.agent_pipeline import call_agent, checks_state, finish, finish_commit, parse_object, wait_pr, write_json
-from scripts.improve_repos import apply_edits, push_reviewed
+from scripts.agent_pipeline import PublicationAbandoned, call_agent, checks_state, finish, finish_commit, parse_object, public_commit, reconcile_superseded, wait_pr, write_json
+from scripts.improve_repos import apply_edits, finish_with_repairs, push_reviewed
 from scripts.verify_source_repair import verify
 
 
@@ -50,6 +50,31 @@ class UnattendedTests(unittest.TestCase):
                 self.assertIn("v1", run.call_args.args[0])
                 self.assertEqual(run.call_args.kwargs["stdin"], subprocess.DEVNULL)
                 self.assertGreater(run.call_args.kwargs["timeout"], 0)
+
+    def test_review_can_quote_a_diagnostic_without_triggering_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch("scripts.agent_pipeline.subprocess.run") as run:
+                run.return_value = subprocess.CompletedProcess(
+                    [], 0, '{"approved":false,"findings":["Method not found in old logs"]}', "")
+                output = Path(tmp) / "review.log"
+                call_agent(["--model", "claude-opus-5"], output)
+                self.assertFalse(parse_object(output.with_suffix(".log.stdout").read_text())["approved"])
+
+    def test_merged_pr_still_requires_checks_and_legacy_contexts_count(self):
+        record = {"headRefOid": "reviewed", "baseRefName": "main", "state": "MERGED",
+                  "statusCheckRollup": []}
+        with patch("scripts.agent_pipeline.REQUIRED_PR_CHECKS", {"owner/repo": ["external"]}), \
+             patch("scripts.agent_pipeline.gh", side_effect=lambda *a, **kw: json.dumps(record)), \
+             patch("scripts.agent_pipeline.time.sleep"):
+            with patch("scripts.agent_pipeline.time.monotonic", side_effect=[0, 0, 2]):
+                with self.assertRaises(TimeoutError):
+                    wait_pr("owner/repo", 1, "reviewed", seconds=1)
+            record["statusCheckRollup"] = [
+                {"__typename": "StatusContext", "context": "external", "state": "SUCCESS"}]
+            self.assertEqual(wait_pr("owner/repo", 1, "reviewed")["state"], "MERGED")
+            record["statusCheckRollup"][0]["state"] = "FAILURE"
+            with self.assertRaises(RuntimeError):
+                wait_pr("owner/repo", 1, "reviewed")
 
     def test_terminal_json_is_parsed_without_accepting_extra_prose(self):
         self.assertEqual(parse_object('\x1b[0m> json\n{"approved":true}'), {"approved": True})
@@ -103,6 +128,42 @@ class UnattendedTests(unittest.TestCase):
                 self.assertEqual(resumed["pr"], 7)
                 self.assertEqual(resumed["stage"], "ci")
                 self.assertEqual(json.loads(transaction.read_text())["head"], "reviewed")
+
+    def test_closed_or_changed_proposal_releases_the_saved_transaction(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            config = {"workflows": ["CI"], "urls": ["https://example.org"]}
+            with patch("scripts.improve_repos.finish",
+                       side_effect=PublicationAbandoned("PR is CLOSED")):
+                with self.assertRaises(PublicationAbandoned):
+                    finish_with_repairs(root, "owner/repo", 7, "reviewed", config, {}, root)
+            self.assertFalse((root / ".git/repo-agent-transaction.json").exists())
+            self.assertEqual(json.loads((root / "publication.json").read_text())["status"], "abandoned")
+            self.assertTrue((root / ".git/repo-agent-feedback.txt").exists())
+
+    def test_stale_public_manifest_cannot_identify_a_new_deployment(self):
+        manifest = {"source_commit": "old", "source_dirty": False}
+        with patch("scripts.agent_pipeline.public_bytes",
+                   return_value=json.dumps(manifest).encode()):
+            with self.assertRaisesRegex(ValueError, "provenance"):
+                public_commit("noteflowai/evalarc", "new", "https://example.org/")
+
+    def test_only_a_verified_descendant_can_retire_an_old_publication(self):
+        item = {"repo": "owner/repo", "commit": "old", "workflow_names": ["CI"],
+                "urls": ["https://example.org"], "status": "retry-needed"}
+        for status in ("ahead", "diverged"):
+            with self.subTest(status=status), \
+                 patch("scripts.agent_pipeline.command", side_effect=[
+                     '{"object":{"sha":"new"}}', json.dumps({"status": status})]), \
+                 patch("scripts.agent_pipeline.verify_deployment", return_value=([], [])) as verify:
+                result = reconcile_superseded(item)
+                if status == "ahead":
+                    self.assertEqual(result["status"], "superseded")
+                    self.assertEqual(result["superseding_commit"], "new")
+                    verify.assert_called_once_with("owner/repo", "new", ["CI"], item["urls"])
+                else:
+                    self.assertIsNone(result)
+                    verify.assert_not_called()
 
     def test_replacements_are_atomic_and_cannot_escape_into_execution_or_media(self):
         with tempfile.TemporaryDirectory() as tmp:

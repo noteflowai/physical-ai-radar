@@ -89,16 +89,18 @@ restore_tree() {
 # pipefail a failed `kiro-cli | tee | tail` ended the script without a line of its own.
 ask() {
   local out="$1"; shift
-  local status=0 call_log
+  local status=0 call_log diagnostic_log
   call_log="$(mktemp /tmp/radar-agent-call-XXXXXX.log)"
-  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --agent-engine v1 --no-interactive "$@" >"$call_log" 2>&1 || status=$?
+  diagnostic_log="$(mktemp /tmp/radar-agent-diagnostic-XXXXXX.log)"
+  timeout --kill-after=30 "$AGENT_TIMEOUT" kiro-cli chat --agent-engine v1 --no-interactive "$@" >"$call_log" 2>"$diagnostic_log" || status=$?
+  cat "$diagnostic_log" >>"$out"
   cat "$call_log" >>"$out"
-  if grep -Eiq 'failed to set model|needs upgrading|using ["\x27]?default|Method not found' "$call_log"; then
+  if grep -Eiq 'failed to set model|needs upgrading|using ["\x27]?default|Method not found' "$diagnostic_log"; then
     log "agent/model selection was not honored; rejecting this call"
     status=1
   fi
   sed -e 's/\x1b\[[0-9;]*m//g' "$call_log" | tail -20
-  rm -f "$call_log"
+  rm -f "$call_log" "$diagnostic_log"
   case "$status" in
     0) return 0 ;;
     124|137) log "kiro-cli was still running after ${AGENT_TIMEOUT}; stopped it" ;;

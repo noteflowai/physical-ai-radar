@@ -6,7 +6,7 @@ if [ -z "${RADAR_LOCK_HELD:-}" ]; then
   LOCK="${RADAR_LOCK:-${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/radar.lock}"
   mkdir -p "$(dirname "$LOCK")"
   exec 9>>"$LOCK"
-  flock -n 9 || { echo "Another scheduled job holds the lock"; exit 1; }
+  flock -w "${RADAR_LOCK_WAIT:-7200}" 9 || { echo "Another scheduled job holds the lock"; exit 1; }
 fi
 ENV_FILE="${RADAR_ENV:-$HOME/.config/pairadar/env}"
 if [ -f "$ENV_FILE" ]; then

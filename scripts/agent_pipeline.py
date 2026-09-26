@@ -15,6 +15,10 @@ import subprocess
 import time
 import urllib.request
 
+class PublicationAbandoned(RuntimeError):
+    """A closed or externally changed proposal must not be silently adopted."""
+
+
 REQUIRED_PR_CHECKS = {
     "noteflowai/dsh-skills-anywhere": [
         "Hugging Face showcase", "GitHub Action", "Node 22 on ubuntu-latest",
@@ -77,7 +81,7 @@ def call_agent(args: list[str], output: Path, cwd: Path | None = None) -> None:
     output.with_suffix(output.suffix + ".stdout").write_text(text)
     if result.returncode or re.search(
         r"failed to set model|using [\"']?default|needs upgrading|Method not found",
-        text + diagnostics, re.I,
+        diagnostics, re.I,
     ):
         raise RuntimeError(f"Agent/model selection failed: {diagnostics[-3000:]}")
 
@@ -126,19 +130,22 @@ def wait_pr(repo: str, pr: int, head: str, seconds: int = 1800) -> dict:
     while time.monotonic() < deadline:
         record = json.loads(gh(
             repo, "pr", "view", str(pr), "--json",
-            "headRefOid,baseRefName,state,statusCheckRollup,mergeCommit,url",
+            "headRefOid,baseRefName,isCrossRepository,state,statusCheckRollup,mergeCommit,url",
         ))
         if record["headRefOid"] != head:
-            raise RuntimeError("PR head changed; the checked commit cannot be substituted")
+            raise PublicationAbandoned("PR head changed; the checked commit cannot be substituted")
         if record["baseRefName"] != "main":
             raise RuntimeError("Scheduled publishing only merges into main")
-        if record["state"] == "MERGED":
-            return record
-        if record["state"] != "OPEN":
-            raise RuntimeError(f"PR is {record['state']}")
+        if record.get("isCrossRepository"):
+            raise PublicationAbandoned("Scheduled publishing cannot adopt a fork's proposal")
+        if record["state"] not in {"OPEN", "MERGED"}:
+            raise PublicationAbandoned(f"PR is {record['state']}")
         state = checks_state(record["statusCheckRollup"])
-        successful = {check.get("name") for check in record["statusCheckRollup"]
-                      if check.get("conclusion") == "SUCCESS"}
+        successful = {check.get("name") or check.get("context")
+                      for check in record["statusCheckRollup"]
+                      if check.get("conclusion") == "SUCCESS"
+                      or (check.get("__typename") == "StatusContext"
+                          and check.get("state") == "SUCCESS")}
         required = set(REQUIRED_PR_CHECKS.get(repo, []))
         if state == "pass" and required.issubset(successful):
             return record
@@ -172,7 +179,7 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
     raise TimeoutError("Publication did not complete on the merged commit")
 
 
-def read_public(url: str) -> dict:
+def public_bytes(url: str) -> bytes:
     request = urllib.request.Request(url, headers={
         "User-Agent": "NoteFlowAI-Maintainer/1.0", "Cache-Control": "no-cache",
     })
@@ -183,8 +190,58 @@ def read_public(url: str) -> dict:
         content_type = response.headers.get("Content-Type", "")
         if "html" in content_type and b"<title" not in body.lower():
             raise ValueError("The public page has no title")
-        return {"url": url, "status": response.status, "bytes": len(body),
-                "sha256": hashlib.sha256(body).hexdigest()}
+        return body
+
+
+def read_public(url: str) -> dict:
+    body = public_bytes(url)
+    return {"url": url, "status": 200, "bytes": len(body),
+            "sha256": hashlib.sha256(body).hexdigest()}
+
+
+def public_commit(repo: str, commit: str, url: str) -> dict:
+    """Bind public content to the checked commit using existing build provenance."""
+    root = url.rstrip("/") + "/"
+    if ".hf.space" in url or repo == "noteflowai/evalarc":
+        name = "space-manifest.json" if repo.endswith("/robot-reel") else "manifest.json"
+        manifest = json.loads(public_bytes(root + name))
+        source = manifest.get("source", {})
+        actual = manifest.get("source_commit", source.get("commit"))
+        dirty = manifest.get("source_dirty", source.get("dirty"))
+        if actual != commit or dirty is not False:
+            raise ValueError("Public build provenance differs from the checked commit")
+        body = public_bytes(root + "index.html")
+        if ".hf.space" in url:
+            # Only the platform's exact non-executable creator metadata may differ.
+            body = re.sub(
+                rb'(?<=<head>)<script>window\.huggingface=\{variables:'
+                rb'\{"SPACE_CREATOR_USER_ID":"[0-9a-f]{24}"\}\};</script>',
+                b"", body, count=1,
+            )
+        expected = manifest["files"]["index.html"]
+        if isinstance(expected, dict):
+            expected = expected["sha256"]
+        if hashlib.sha256(body).hexdigest() != expected:
+            raise ValueError("Public homepage differs from its committed build manifest")
+        return {"commit": commit, "manifest": root + name, "homepage_sha256": expected}
+    if repo == "noteflowai/robot-reel":
+        expected = public_bytes(f"https://raw.githubusercontent.com/{repo}/{commit}/docs/index.html")
+        actual = public_bytes(root + "index.html")
+        if actual != expected:
+            raise ValueError("Public Robot Reel homepage differs from the checked commit")
+        return {"commit": commit, "path": "docs/index.html",
+                "homepage_sha256": hashlib.sha256(actual).hexdigest()}
+    if repo == "noteflowai/physical-ai-radar":
+        build = json.loads(command(["gh", "api", f"repos/{repo}/pages/builds/latest"]))
+        if build.get("commit") != commit or build.get("status") != "built":
+            raise ValueError("The Pages build does not identify the checked Radar commit")
+        expected = public_bytes(f"https://raw.githubusercontent.com/{repo}/{commit}/radar/latest.json")
+        actual = public_bytes(root + "radar/latest.json")
+        if actual != expected:
+            raise ValueError("Public Radar data differs from the checked commit")
+        return {"commit": commit, "pages_build": "built",
+                "data_sha256": hashlib.sha256(actual).hexdigest()}
+    raise ValueError("No publication provenance contract is configured for this repository")
 
 
 def verify_deployment(repo: str, commit: str, workflows: list[str], urls: list[str]) -> tuple:
@@ -205,7 +262,20 @@ def verify_deployment(repo: str, commit: str, workflows: list[str], urls: list[s
                 if run and run["conclusion"] in {"failure", "timed_out", "cancelled"}:
                     gh(repo, "run", "rerun", str(run["databaseId"]), "--failed")
             time.sleep(20)
-    return runs, [read_public(url) for url in urls]
+    pages = []
+    for url in urls:
+        deadline = time.monotonic() + 180
+        while True:
+            try:
+                page = read_public(url)
+                page["commit_proof"] = public_commit(repo, commit, url)
+                pages.append(page)
+                break
+            except (ValueError, OSError):
+                if time.monotonic() >= deadline:
+                    raise
+                time.sleep(10)
+    return runs, pages
 
 
 def finish_commit(repo: str, commit: str, workflows: list[str],
@@ -241,17 +311,46 @@ def finish(repo: str, pr: int, head: str, workflows: list[str],
         record = wait_pr(repo, pr, head)
         if record["state"] != "MERGED":
             gh(repo, "pr", "merge", str(pr), "--merge", "--match-head-commit", head)
-            record = json.loads(gh(repo, "pr", "view", str(pr), "--json", "mergeCommit,url"))
+            deadline = time.monotonic() + 120
+            while True:
+                record = json.loads(gh(repo, "pr", "view", str(pr), "--json", "mergeCommit,url"))
+                if record.get("mergeCommit"):
+                    break
+                if time.monotonic() >= deadline:
+                    raise TimeoutError("GitHub has not exposed the completed merge commit")
+                time.sleep(5)
         commit = record["mergeCommit"]["oid"]
         runs, pages = verify_deployment(repo, commit, workflows, urls)
     except Exception as error:
-        write_json(output, {**pending, "status": "retry-needed", "error": str(error)})
+        status = "abandoned" if isinstance(error, PublicationAbandoned) else "retry-needed"
+        write_json(output, {**pending, "status": status, "error": str(error)})
         raise
     receipt = {"repo": repo, "pr": pr, "head": head, "merge_commit": commit,
                "url": record["url"], "workflows": runs, "public_readback": pages,
                "status": "published"}
     write_json(output, receipt)
     return receipt
+
+
+def reconcile_superseded(item: dict) -> dict | None:
+    """A newer verified main deployment can retire an interrupted older receipt."""
+    repo = item["repo"]
+    commit = item.get("commit")
+    if "pr" in item:
+        record = json.loads(gh(repo, "pr", "view", str(item["pr"]),
+                               "--json", "state,mergeCommit"))
+        if record["state"] != "MERGED" or not record.get("mergeCommit"):
+            return None
+        commit = record["mergeCommit"]["oid"]
+    current = json.loads(command(["gh", "api", f"repos/{repo}/git/ref/heads/main"]))["object"]["sha"]
+    if not commit or current == commit:
+        return None
+    comparison = json.loads(command(["gh", "api", f"repos/{repo}/compare/{commit}...{current}"]))
+    if comparison.get("status") != "ahead":
+        return None
+    runs, pages = verify_deployment(repo, current, item["workflow_names"], item["urls"])
+    return {**item, "status": "superseded", "superseding_commit": current,
+            "workflows": runs, "public_readback": pages}
 
 
 def main() -> None:
@@ -293,6 +392,10 @@ def main() -> None:
             if item.get("status") not in {"pending", "retry-needed"}:
                 continue
             try:
+                superseded = reconcile_superseded(item)
+                if superseded:
+                    write_json(file, superseded)
+                    continue
                 if "pr" in item:
                     finish(item["repo"], item["pr"], item["head"], item["workflow_names"],
                            item["urls"], file)
@@ -300,7 +403,8 @@ def main() -> None:
                     finish_commit(item["repo"], item["commit"], item["workflow_names"],
                                   item["urls"], file)
             except Exception as error:
-                failures.append({"file": str(file), "error": str(error)})
+                if not isinstance(error, PublicationAbandoned):
+                    failures.append({"file": str(file), "error": str(error)})
         if failures:
             raise RuntimeError(json.dumps(failures))
 

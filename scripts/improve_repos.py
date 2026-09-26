@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 import urllib.request
@@ -18,9 +19,9 @@ from zoneinfo import ZoneInfo
 from html.parser import HTMLParser
 
 try:
-    from .agent_pipeline import call_agent, command, finish, gh, parse_object, read_public, wait_publication, write_json
+    from .agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
 except ImportError:
-    from agent_pipeline import call_agent, command, finish, gh, parse_object, read_public, wait_publication, write_json
+    from agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
 
 REPOS = {
     "dsh-skills-anywhere": {
@@ -90,7 +91,9 @@ class ResourceMarkup(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag in {"script", "img", "video", "source", "track", "iframe", "object",
                    "embed", "link", "form", "input"}:
-            self.resources.append((tag, attrs))
+            descriptive = {"alt", "title", "aria-label", "aria-describedby",
+                           "lang", "width", "height"}
+            self.resources.append((tag, [(k, v) for k, v in attrs if k not in descriptive]))
         self.resources.extend((tag, name, value) for name, value in attrs
                               if name in {"src", "srcset", "action", "formaction", "ping", "poster"})
         self.hrefs.extend(value for name, value in attrs if name == "href")
@@ -275,9 +278,13 @@ def validate(root: Path, config: dict, state: Path, round_id: int) -> None:
                                     stdin=subprocess.DEVNULL)
             if result.returncode:
                 raise RuntimeError((state / f"checks-{round_id}.log").read_text()[-8000:])
-    changed = command(["git", "diff", "--name-only"], cwd=root).splitlines()
+    changed = command(["git", "diff", "HEAD", "--name-only"], cwd=root).splitlines()
     if not set(changed).issubset(set(config["paths"] + config.get("generated", []))):
         raise ValueError("A build changed files outside the maintenance allowlist")
+    untracked = command(["git", "ls-files", "--others", "--exclude-standard", "-z"],
+                        cwd=root).split("\0")
+    if any(p and not p.startswith("artifacts/") for p in untracked):
+        raise ValueError("A build created unexpected untracked files")
 
 
 def verify_public_browser(root: Path, config: dict, state: Path) -> list[dict]:
@@ -289,17 +296,31 @@ def verify_public_browser(root: Path, config: dict, state: Path) -> list[dict]:
     for index, url in enumerate(config["urls"]):
         command(["node", str(Path(__file__).with_name("check_repo_experience.cjs")),
                  str(root), url, str(state / f"live-{index}")], timeout=240)
-        pages.append(read_public(url))
+        page = read_public(url)
+        page["browser"] = json.loads((state / f"live-{index}/browser.json").read_text())
+        pages.append(page)
     return pages
 
 
 def verify_unchanged(root: Path, repo: str, config: dict, state: Path) -> dict:
     """Reuse tests on the same commit; still exercise the actual hosted experience today."""
     head = command(["git", "rev-parse", "HEAD"], cwd=root).strip()
-    runs = wait_publication(repo, head, config["workflows"])
+    existing = json.loads(gh(repo, "run", "list", "--branch", "main", "--commit", head,
+                             "--limit", "60", "--json", "workflowName"))
+    if not set(config["workflows"]).issubset({r["workflowName"] for r in existing}):
+        # Revalidate the identical main head when old runs/artifacts have expired.
+        # The successful CI/Check workflow also triggers its required Space upload.
+        current = json.loads(command(["gh", "api", f"repos/{repo}/git/ref/heads/main"]))["object"]["sha"]
+        if current != head:
+            raise RuntimeError("Main changed before revalidation; use fresh evidence")
+        gh(repo, "workflow", "run", config["workflows"][0], "--ref", "main")
+    runs, _ = verify_deployment(repo, head, config["workflows"], config["urls"])
     pages = verify_public_browser(root, config, state)
+    for page in pages:
+        page["commit_proof"] = public_commit(repo, head, page["url"])
     return {"head": head, "workflows": runs, "public_readback": pages,
-            "browser": "1440/390/320, result image, model seed or recorded playback"}
+            "local_checks": "not repeated: unchanged commit",
+            "ci_checks": "reused successful runs on this exact commit"}
 
 def checkout(workspace: Path, name: str) -> Path:
     root = workspace / name
@@ -311,6 +332,12 @@ def checkout(workspace: Path, name: str) -> Path:
         raise ValueError("Refusing to reset a checkout not created by this automation")
     command(["git", "fetch", "origin", "main"], cwd=root)
     command(["git", "reset", "--hard", "origin/main"], cwd=root)
+    command(["git", "clean", "-fd"], cwd=root)
+    for output in (root / "artifacts").glob("daily-site-*"):
+        if output.is_symlink():
+            output.unlink()
+        elif output.is_dir():
+            shutil.rmtree(output)
     return root
 
 
@@ -350,6 +377,8 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
             result = finish(repo, pr, head, config["workflows"], config["urls"],
                             state / "publication.json")
             result["public_readback"] = verify_public_browser(root, config, state)
+            for page in result["public_readback"]:
+                page["commit_proof"] = public_commit(repo, result["merge_commit"], page["url"])
             result["public_browser"] = "passed at 1440/390/320"
             write_json(state / "publication.json", result)
             transaction.unlink()
@@ -360,6 +389,13 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
             receipt_file = state / "publication.json"
             receipt = json.loads(receipt_file.read_text()) if receipt_file.exists() else {}
             write_json(receipt_file, {**receipt, "status": "retry-needed", "error": findings})
+            if isinstance(error, PublicationAbandoned):
+                write_json(receipt_file, {**receipt, "status": "abandoned", "error": findings})
+                transaction.unlink(missing_ok=True)
+                (root / ".git/repo-agent-feedback.txt").write_text(
+                    "A previous PR was closed or changed externally. Make a fresh independently "
+                    "reviewed proposal from main; do not adopt the other head.\n" + findings)
+                raise
             record = json.loads(gh(repo, "pr", "view", str(pr), "--json",
                                    "state,headRefOid,headRefName,mergeCommit"))
             if record["headRefOid"] != head:
@@ -393,14 +429,14 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
             command(["git", "fetch", "origin", branch], cwd=root)
             command(["git", "checkout", "-B", branch, "origin/" + branch], cwd=root)
             files = {p: (root / p).read_text() for p in config["paths"]}
-            excerpts = {p: value.encode()[:18000].decode(errors="ignore")
+            excerpts = {p: value.encode()[:9000].decode(errors="ignore")
                         for p, value in files.items()}
             proposal = model_json(
                 'Repair this proposed homepage change using the CI findings. Do not weaken tests. '
                 'Return {"decision":"change"|"noop","reason":"reason","sources":["source-id"],'
                 '"edits":[{"path":"allowed path","old":"one exact existing span","new":"replacement"}]}'
                 + json.dumps({"repo": repo, "snapshot": inputs, "file_prefix_excerpts": excerpts,
-                              "ci_findings": findings[-15000:]}, ensure_ascii=False),
+                              "ci_findings": findings[-8000:]}, ensure_ascii=False),
                 state, f"ci-repair-{attempt}", "claude-sonnet-5",
             )
             changed = apply_edits(root, proposal, config, {s["id"] for s in inputs["sources"]})
@@ -439,7 +475,7 @@ def improve(name: str, inputs: dict, workspace: Path, state: Path) -> dict:
             pending = push_reviewed(root, pending, state)
         return finish_with_repairs(root, repo, pending["pr"], pending["head"],
                                    config, inputs, state)
-    branch = "automation/experience-" + state.parent.name
+    branch = "automation/experience-" + state.parent.name + "-" + time_id()
     # A branch-name prefix is not a review receipt. Only the durable local
     # transaction above may resume a previously reviewed remote proposal.
     command(["git", "checkout", "-B", branch, "origin/main"], cwd=root)
@@ -462,10 +498,10 @@ Return {"decision":"noop"|"change","reason":"specific benefit","sources":["sourc
     for attempt in range(3):
         for path, text in {**files, **generated}.items():
             (root / path).write_text(text)
-        proposal = model_json(task + json.dumps(context, ensure_ascii=False) +
-                              "\nFindings from the previous attempt:\n" + problems,
-                              state, f"draft-{attempt}", "claude-sonnet-5")
         try:
+            proposal = model_json(task + json.dumps(context, ensure_ascii=False) +
+                                  "\nFindings from the previous attempt:\n" + problems[-8000:],
+                                  state, f"draft-{attempt}", "claude-sonnet-5")
             changed = apply_edits(root, proposal, config, {x["id"] for x in inputs["sources"]})
             diff = patch(root)
             review = model_json(
@@ -482,7 +518,7 @@ Return {"decision":"noop"|"change","reason":"specific benefit","sources":["sourc
                 validation = verify_unchanged(root, repo, config, state)
                 feedback.unlink(missing_ok=True)
                 return {"repo": repo, "status": "noop", "reason": proposal.get("reason"),
-                        "checks": "passed", "review": "approved",
+                        "review": "approved",
                         **validation}
             validate(root, config, state, attempt)
             break
@@ -497,7 +533,8 @@ Return {"decision":"noop"|"change","reason":"specific benefit","sources":["sourc
     body = state / "pr.md"
     body.write_text(
         proposal["reason"] + "\n\nGenerated by unattended local maintenance and reviewed "
-        "in a separate CLI call requesting Claude Opus 5. All local checks passed. "
+        "in a separate CLI call with the selected model recorded in the local receipt. "
+        "All local checks passed. "
         "The controller will merge only the checked head, wait for the main deployment, "
         "and read back the public pages. No human review is claimed.\n\n"
         "Evidence sources:\n" + "\n".join(
