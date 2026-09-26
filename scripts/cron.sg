@@ -1,0 +1,9 @@
+# BEGIN NoteFlowAI radar schedule
+# Host timezone: Asia/Singapore. Login environment; no interactive stdin.
+# 07:40 local = 23:40 UTC on the preceding date; scripts use Singapore issue dates.
+40 7 * * * /bin/bash -lc '$HOME/.local/bin/radar-run scripts/publish_daily.sh' >> "$HOME/.local/state/pairadar/publish.log" 2>&1
+# One ordered evening batch. Each retry keeps its original issue date and receipts.
+30 21 * * * /bin/bash -lc 'RADAR_TIMEOUT=4h RADAR_LOCK_WAIT=900 $HOME/.local/bin/radar-run scripts/nightly.sh' >> "$HOME/.local/state/pairadar/nightly.log" 2>&1
+# Resume only yesterday evening's unfinished stages; stop before the morning publish.
+30 2 * * * /bin/bash -lc 'RADAR_TIMEOUT=4h RADAR_LOCK_WAIT=900 $HOME/.local/bin/radar-run scripts/nightly.sh --previous-day' >> "$HOME/.local/state/pairadar/nightly.log" 2>&1
+# END NoteFlowAI radar schedule

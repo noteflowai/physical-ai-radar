@@ -15,13 +15,14 @@ import shutil
 import subprocess
 import sys
 import urllib.request
-from zoneinfo import ZoneInfo
 from html.parser import HTMLParser
 
 try:
     from .agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
+    from .job_schedule import run_day
 except ImportError:
     from agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
+    from job_schedule import run_day
 
 REPOS = {
     "dsh-skills-anywhere": {
@@ -110,7 +111,7 @@ def fetch_json(url: str) -> object:
     return json.loads(raw)
 
 
-def snapshot() -> dict:
+def snapshot(radar_snapshot: Path | None = None) -> dict:
     sources, failures = [], []
     inputs = [
         ("radar", "https://raw.githubusercontent.com/noteflowai/physical-ai-radar/main/radar/latest.json"),
@@ -133,6 +134,15 @@ def snapshot() -> dict:
                                     "signal": "HF trending ranking; not independent user adoption"})
         except Exception as error:
             failures.append({"source": url, "error": str(error)})
+    if radar_snapshot:
+        data = json.loads(radar_snapshot.read_text())
+        for index, item in enumerate(data.get("picked", [])):
+            sources.append({"id": f"radar-evening-{index}", "url": item["url"],
+                            "title": item["title"], "date": data.get("date"),
+                            "summary": item.get("summary", "")[:650],
+                            "evidence": item.get("evidence"),
+                            "signal": "Fresh evening collection; not the published morning shortlist",
+                            "collected_at": data.get("generated")})
     since = (datetime.now(timezone.utc).date() - timedelta(days=7)).isoformat()
     seen = set()
     for terms in ["agent skills", "ai evaluation"]:
@@ -573,6 +583,8 @@ def main() -> None:
     parser.add_argument("--state", type=Path, default=Path.home() / ".local/state/ai-repo-agent")
     parser.add_argument("--workspace", type=Path, default=Path.home() / ".local/share/ai-repo-agent")
     parser.add_argument("--repo", choices=list(REPOS), action="append")
+    parser.add_argument("--date", help="Singapore batch date; retained across midnight and retries")
+    parser.add_argument("--radar-snapshot", type=Path, help="Fresh unpublished evening collection")
     parser.add_argument("--collect-only", action="store_true")
     args = parser.parse_args()
     os.umask(0o077)
@@ -580,7 +592,7 @@ def main() -> None:
     args.workspace.mkdir(parents=True, exist_ok=True)
     with (args.state / "daily.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        day = datetime.now(ZoneInfo("Asia/Singapore")).date().isoformat()
+        day = run_day(args.date)
         state = args.state / day; state.mkdir(exist_ok=True)
         selected = args.repo or list(REPOS)
         if not args.collect_only and all(
@@ -590,7 +602,7 @@ def main() -> None:
         ):
             print(json.dumps({"status": "already-complete", "day": day, "repos": selected}))
             return
-        inputs = snapshot()
+        inputs = snapshot(args.radar_snapshot)
         source_text = json.dumps(inputs, indent=2) + "\n"
         (state / f"sources-{time_id()}.json").write_text(source_text)
         (state / "sources.json").write_text(source_text)

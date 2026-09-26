@@ -11,7 +11,7 @@
 [![每周汇总](https://img.shields.io/badge/%E6%AF%8F%E5%91%A8%E6%B1%87%E6%80%BB-%E5%8E%86%E5%8F%B2%E5%BD%92%E6%A1%A3-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![published daily 07:40 SGT](https://img.shields.io/badge/published-daily%2007%3A40%20SGT-7300e5.svg?style=flat-square)](docs/automation.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#本地运行)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -100,7 +100,7 @@
 
 | | **Physical AI 前沿雷达** | 行业通讯 | awesome 列表 | arXiv 每日列表 |
 | --- | --- | --- | --- | --- |
-| 更新 | 每天 01:40 UTC，自动 | 每周或不定期 | 随贡献 | 每天 |
+| 更新 | 每天 07:40 Asia/Singapore，自动 | 每周或不定期 | 随贡献 | 每天 |
 | 范围 | 论文 + 官方 + 媒体，八条主线 | 编辑选题 | 按主题累积 | 只有论文，全量 |
 | 证据等级 | 每条标 `O` / `R` / `M` | 通常不标 | 不标 | 只有论文 |
 | 关键数字 | 自动抽取，附原文上下文 | 看作者 | — | 自己读 |
@@ -166,13 +166,13 @@ flowchart LR
   C -. "每晚" .-> A["agent 起草三语点评<br/>另一模型复核 · 测试全绿才合并"]
 ```
 
-`scripts/publish_daily.sh` 由维护者机器上的 cron 在 01:40 UTC（09:40 CST / 10:40 JST）运行，时间点选在 arXiv 当日公告之后，保证早上第一眼看到的是最新一批。
+`scripts/publish_daily.sh` 每天在新加坡时间 07:40（前一日 23:40 UTC / 08:40 JST）发布早报，日报日期按新加坡日历计算。07:40 早于 arXiv 当日常规公告；21:30 的统一夜间批次会补采新热点，完成雷达分析和三个关联项目的优化，次日 02:30 自动补跑未完成步骤。
 
 <details>
 <summary>各步骤明细</summary>
 
 ```
-scripts/publish_daily.sh（维护者机器上的 cron，01:40 UTC / 09:40 CST / 10:40 JST）
+scripts/publish_daily.sh（维护者机器上的 cron，07:40 Asia/Singapore / 08:40 JST）
   └─ fetch    arXiv API（六组 cs.RO 查询，API 不可用时改读分类 RSS）+ 官方与媒体 Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
   └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线、每来源、每证据等级限额筛选
   └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成 / README 横幅
@@ -254,7 +254,7 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 
 <div align="center">
 
-**觉得有用？点个 ⭐ Star，明早 01:40 UTC 见。** 转发今天的雷达：[网站](https://noteflowai.github.io/physical-ai-radar/) ·
+**觉得有用？点个 ⭐ Star，明早 07:40 Asia/Singapore 见。** 转发今天的雷达：[网站](https://noteflowai.github.io/physical-ai-radar/) ·
 [分享到 X](https://twitter.com/intent/tweet?text=Physical%20AI%20%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE%EF%BC%9A%E6%AF%8F%E5%A4%A9%208%20%E6%9D%A1%EF%BC%8C%E6%9D%A1%E6%9D%A1%E6%9C%89%E8%AF%81%E6%8D%AE&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
 [分享到微博](https://service.weibo.com/share/share.php?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar&title=Physical%20AI%20%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE%EF%BC%9A%E6%AF%8F%E5%A4%A9%208%20%E6%9D%A1%EF%BC%8C%E6%9D%A1%E6%9D%A1%E6%9C%89%E8%AF%81%E6%8D%AE)
 

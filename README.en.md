@@ -11,7 +11,7 @@
 [![Weekly](https://img.shields.io/badge/Weekly-archive-34d399?style=for-the-badge&logo=bookstack&logoColor=white)](radar/INDEX.md)
 
 [![last radar](https://img.shields.io/github/last-commit/noteflowai/physical-ai-radar/main?path=radar%2Flatest.json&label=last%20radar&style=flat-square)](radar/INDEX.md)
-[![published daily 01:40 UTC](https://img.shields.io/badge/published-daily%2001%3A40%20UTC-7300e5.svg?style=flat-square)](docs/automation.md)
+[![published daily 07:40 SGT](https://img.shields.io/badge/published-daily%2007%3A40%20SGT-7300e5.svg?style=flat-square)](docs/automation.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/noteflowai/physical-ai-radar/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/noteflowai/physical-ai-radar/actions/workflows/ci.yml)
 [![stdlib only](https://img.shields.io/badge/deps-Python%20stdlib%20only-3776ab?style=flat-square&logo=python&logoColor=white)](#run-it-locally)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -100,7 +100,7 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 | | **Physical AI Radar** | Newsletters | Awesome lists | arXiv daily lists |
 | --- | --- | --- | --- | --- |
-| Updates | Daily at 01:40 UTC, automated | Weekly or irregular | As contributed | Daily |
+| Updates | Daily at 07:40 Asia/Singapore, automated | Weekly or irregular | As contributed | Daily |
 | Scope | Papers + official + media, eight lanes | Editor's picks | Accumulated by topic | Papers only, all of them |
 | Evidence | Every item tagged `O` / `R` / `M` | Usually untagged | Untagged | Papers only |
 | Key numbers | Extracted, with the source's words around them | Depends on the author | — | Read it yourself |
@@ -166,13 +166,13 @@ flowchart LR
   C -. "nightly" .-> A["an agent drafts the notes<br/>another model reviews · merged on green"]
 ```
 
-`scripts/publish_daily.sh` runs from cron on a maintainer's machine at 01:40 UTC (09:40 CST / 10:40 JST), after the arXiv daily announcement, so the first thing you read in the morning is the newest batch.
+`scripts/publish_daily.sh` publishes at 07:40 Asia/Singapore (23:40 UTC on the preceding date / 08:40 JST), using the Singapore issue date. This cutoff precedes the regular arXiv announcement. At 21:30 one night batch collects fresh signals, drafts radar notes and maintains the three companion projects; a 02:30 catch-up resumes unfinished stages from that evening.
 
 <details>
 <summary>Step by step</summary>
 
 ```
-scripts/publish_daily.sh (cron on a maintainer's machine, 01:40 UTC / 09:40 CST / 10:40 JST)
+scripts/publish_daily.sh (cron on a maintainer's machine, 07:40 Asia/Singapore / 08:40 JST)
   └─ fetch    arXiv API (six cs.RO queries; category RSS when the API refuses) + official and press Atom/RSS (AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / Leiphone / MONOist)
   └─ distill  relevance gate → classify into eight lanes → extract quantitative claims → explainable score → per-lane, per-source and per-evidence caps
   └─ charts   hand-written SVG: lane distribution / daily cadence / evidence mix / README banner
@@ -255,7 +255,7 @@ PRs welcome: new machine-readable sources, evidence-tag corrections, baseline ad
 
 <div align="center">
 
-**Useful? Give it a ⭐ and see you tomorrow at 01:40 UTC.** Pass today's radar on: [the site](https://noteflowai.github.io/physical-ai-radar/en/) ·
+**Useful? Give it a ⭐ and see you tomorrow at 07:40 Asia/Singapore.** Pass today's radar on: [the site](https://noteflowai.github.io/physical-ai-radar/en/) ·
 [post to X](https://twitter.com/intent/tweet?text=Physical%20AI%20Radar%3A%20eight%20picks%20a%20day%2C%20every%20claim%20tagged&url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar) ·
 [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fnoteflowai%2Fphysical-ai-radar)
 

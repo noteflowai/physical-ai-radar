@@ -1,7 +1,7 @@
 name: daily radar
 
 # The fallback publisher. The daily publish runs on a maintainer's machine via
-# scripts/publish_daily.sh at 01:40 UTC. This workflow wakes at 03:20 UTC and does
+# scripts/publish_daily.sh at 07:40 Asia/Singapore. This workflow wakes at 09:20 Singapore (01:20 UTC) and does
 # nothing when main already carries the day, which is every day the machine is up.
 #
 # When the machine missed the day -- asleep, offline, a cron job stuck behind a lock
@@ -11,7 +11,7 @@ name: daily radar
 # the per-run GITHUB_TOKEN, scoped to this repository and gone when the job ends.
 on:
   schedule:
-    - cron: "20 3 * * *"
+    - cron: "20 1 * * *"
   workflow_dispatch:
     inputs:
       limit:
@@ -49,9 +49,10 @@ jobs:
         env:
           FORCE: ${{ github.event.inputs.force || 'false' }}
         run: |
-          DAY=$(date -u +%F)
+          DAY=$(python scripts/job_schedule.py)
           PUBLISHED=$(python -c "import json;print(json.load(open('radar/latest.json',encoding='utf-8')).get('date',''))")
           echo "day=${DAY}" >> "$GITHUB_OUTPUT"
+          echo "RADAR_RUN_DAY=${DAY}" >> "$GITHUB_ENV"
           if [ "$PUBLISHED" = "$DAY" ] && [ "$FORCE" != "true" ]; then
             echo "run=false" >> "$GITHUB_OUTPUT"
             echo "main already carries the ${DAY} radar; nothing to do." | tee -a "$GITHUB_STEP_SUMMARY"
@@ -66,12 +67,12 @@ jobs:
 
       - name: Generate today's radar
         if: steps.fresh.outputs.run == 'true'
-        run: python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
+        run: python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}" --date "$RADAR_RUN_DAY"
 
       - name: Verify trilingual output and report fetch health
         if: steps.fresh.outputs.run == 'true'
         run: |
-          DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
+          DAY="$RADAR_RUN_DAY"
           for LANG in zh en ja; do
             test -s "radar/daily/${DAY}.${LANG}.md" || { echo "missing radar/daily/${DAY}.${LANG}.md"; exit 1; }
           done
@@ -107,7 +108,7 @@ jobs:
             echo "no changes today"
             exit 0
           fi
-          DAY=$(python -c "import datetime;print(datetime.datetime.now(datetime.timezone.utc).date())")
+          DAY="$RADAR_RUN_DAY"
           git add -A
           git commit -m "radar: ${DAY} update [skip ci]"
           # A run that started before somebody merged to main cannot fast-forward. That
@@ -139,7 +140,7 @@ jobs:
               echo "${DAY} was published meanwhile by another run; keeping that one"
               exit 0
             fi
-            python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}"
+            python -m pairadar --limit "${{ github.event.inputs.limit || '8' }}" --date "$RADAR_RUN_DAY"
             if [ -z "$(git status --porcelain)" ]; then
               echo "the new main already carries an equivalent update"
               exit 0
@@ -166,7 +167,7 @@ jobs:
           RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           TITLE="The local publisher missed a day"
-          BODY="The ${DAY} radar was not on main at 03:20 UTC, so [this run](${RUN}) published it. Check \`~/.local/state/pairadar/publish.log\` on the publishing machine, then close this issue."
+          BODY="The ${DAY} radar was not on main at 09:20 Asia/Singapore (01:20 UTC), so [this run](${RUN}) published it. Check \`~/.local/state/pairadar/publish.log\` on the publishing machine, then close this issue."
           # One open issue collects the misses, so a machine down for a week is one thread.
           OPEN=$(gh issue list --state open --search "in:title \"${TITLE}\"" --json number -q '.[0].number')
           if [ -n "$OPEN" ]; then

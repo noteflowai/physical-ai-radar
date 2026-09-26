@@ -8,9 +8,8 @@
 #
 #   scripts/draft_daily_notes.sh [--date YYYY-MM-DD] [--dry-run]
 #
-# Timing constraint: the notes are drafted for the current UTC date, whose radar is
-# published at 01:40 UTC. Schedule this after that, not near it. At 02:30 Asia/Singapore
-# (18:30 UTC) the day's radar is already about seventeen hours old, which is the intent.
+# The 21:30 Singapore batch verifies the 07:40 issue before drafting its notes.
+# A 02:30 catch-up passes the preceding evening's date explicitly, even after midnight.
 #
 # Requirements: kiro-cli on PATH and authenticated (KIRO_API_KEY or a stored login),
 # gh authenticated for the pull request. Exit codes: 0 nothing to do or PR opened,
@@ -34,7 +33,7 @@ MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
 REVIEW_MODELS="${RADAR_REVIEW_MODELS:-claude-opus-5 claude-sonnet-5 claude-fable-5.1}"
 FIX_ROUNDS="${RADAR_FIX_ROUNDS:-2}"        # validator findings handed back to the drafter
 REVIEW_ROUNDS="${RADAR_REVIEW_ROUNDS:-3}"  # bounded revisions after a rejection
-DAY=""
+DAY="${RADAR_RUN_DAY:-}"
 DRY_RUN=0
 
 while [ $# -gt 0 ]; do
@@ -58,7 +57,7 @@ if [ ! -d "$REPO_DIR/.git" ]; then
   git clone --quiet "$CLONE_URL" "$REPO_DIR"
 fi
 cd "$REPO_DIR"
-DAY="${DAY:-$(date -u +%F)}"
+DAY="$(python3 scripts/job_schedule.py --date "$DAY")"
 NOTES="data/notes/${DAY}.json"
 FEEDBACK_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/pairadar/feedback"
 FEEDBACK="$FEEDBACK_DIR/notes-${DAY}.txt"
@@ -147,7 +146,7 @@ if [ -f "$NOTES" ]; then
   exit 0
 fi
 if [ ! -f "radar/daily/${DAY}.zh.md" ]; then
-  log "no published radar for ${DAY} yet (the 01:40 UTC run comes first); nothing to draft"
+  log "no published radar for ${DAY} yet (the 07:40 Singapore run comes first); nothing to draft"
   exit 0
 fi
 # Resume a previously checked PR; on a real failure the model gets a fresh attempt.
