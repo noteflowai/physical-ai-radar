@@ -9,6 +9,10 @@ A link shared on X, Slack, WeChat or LINE is previewed from its Open Graph tags,
 those previewers do not run scripts or read SVG, so the card is a PNG
 (`assets/og.<lang>.png`) rendered once from `og_card` by `python3 -m pairadar.site
 --og`, which needs a local Chrome. The daily run never calls a browser.
+
+Where a link does not travel -- an image forwarded in WeChat, Xiaohongshu or LINE --
+the reader draws the day's poster in their own browser (`assets/site.js`) from the
+page's `share-data`, QR code included, and the day's digest is one copy away as text.
 """
 from __future__ import annotations
 
@@ -16,6 +20,7 @@ import argparse
 import html
 import json
 import math
+import re
 import shutil
 import subprocess
 import tempfile
@@ -27,6 +32,8 @@ from .config import LANGS, ROOT, Config, Item, load_config
 from .distill import number_context, one_liner, strip_boilerplate
 from .feeds import SITE_URL, atom_name, iso_week, landing_url
 from .feeds import page_url as daily_url
+from .qr import rows as qr_rows
+from .qr import svg as qr_svg
 from .render import why_text
 
 HOME_URL = "https://github.com/noteflowai/physical-ai-radar"
@@ -145,7 +152,7 @@ def card(config: Config, lang: str, ctx: dict[str, Any], item: Item, rank: int) 
     draft_label = f'<span class="draft">{e(ui["llm_draft"])}</span> ' if drafted else ""
     signals = "".join(f'<li>{e(ui["signals"].get(signal, signal))}</li>' for signal in item.signals)
     return "\n".join(part for part in (
-        f'<article class="card" id="p{rank}" style="--lane:{lane_color(config, item.lane)}">',
+        f'<article class="card" id="p{rank}" data-lane="{e(item.lane)}" style="--lane:{lane_color(config, item.lane)}">',
         '<header class="meta">',
         f'<span class="rank">{rank:02d}</span>',
         f'<span class="lane">{e(config.lane_name(item.lane, lang))}</span>',
@@ -202,9 +209,9 @@ def mix_bar(config: Config, lang: str, mix: dict[str, int]) -> str:
     segments = "".join(
         f'<span class="ev-{key}" style="flex:{mix.get(key, 0)}" title="{e(names[key])}: {mix.get(key, 0)}"></span>'
         for key in names if mix.get(key, 0))
-    legend = " · ".join(f'<b class="ev-{key}">{key}</b> {e(names[key])} {round(100 * mix.get(key, 0) / total)}%'
-                        for key in names)
-    return f'<div class="mix">{segments}</div><p class="legend">{legend}</p>'
+    legend = "".join(f'<li><b class="ev-{key}">{round(100 * mix.get(key, 0) / total)}%</b>'
+                     f'<span>{key} · {e(names[key])}</span></li>' for key in names)
+    return f'<div class="mix">{segments}</div><ul class="mix-legend">{legend}</ul>'
 
 
 def head(config: Config, lang: str, ctx: dict[str, Any], title: str, description: str) -> str:
@@ -214,14 +221,12 @@ def head(config: Config, lang: str, ctx: dict[str, Any], title: str, description
     feeds = "\n".join(f'<link rel="alternate" type="application/atom+xml" title="{e(config.ui(other)["title"])}" '
                       f'href="{base}radar/{atom_name(other)}">' for other in LANGS)
     image = f"{SITE_URL}/assets/og.{lang}.png"
-    ld = json.dumps({
+    ld = json_script({
         "@context": "https://schema.org", "@type": "ItemList", "name": title,
         "url": page_url(lang), "dateModified": ctx["date"],
         "itemListElement": [{"@type": "ListItem", "position": rank, "url": item.url, "name": item.title}
                             for rank, item in enumerate(ctx["picked"], 1)],
-    }, ensure_ascii=False)
-    # Inside <script> only "<" can end the element; escaped, JSON reads the same.
-    ld = ld.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    })
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
@@ -263,22 +268,74 @@ def nav(config: Config, lang: str, day: str) -> str:
 </nav>"""
 
 
-SCRIPT = """<script>
-for (const button of document.querySelectorAll("button.share")) {
-  const label = button.textContent;
-  button.addEventListener("click", async () => {
-    const {url, text, done} = button.dataset;
-    if (navigator.share) {
-      try { await navigator.share({title: text, text, url}); return; }
-      catch (error) { if (error.name === "AbortError") return; }
+def short_lane(name: str) -> str:
+    """A lane's name without its parenthesised gloss, for chips and the poster."""
+    return re.split(r"\s*[（(]", name, maxsplit=1)[0]
+
+
+def json_script(payload: Any) -> str:
+    """JSON for a <script> element: inside it only "<" can end the element, and
+    escaped, the JSON reads the same."""
+    text = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    return text.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def digest(config: Config, lang: str, day: str, shown: list[Item]) -> str:
+    """The day as plain text, to paste where a link preview would be lost: a chat,
+    a mail, a slide."""
+    ui, site = config.ui(lang), config.ui(lang)["site"]
+    lines = [f"{ui['title']} · {day}", site["headline"], ""]
+    for rank, item in enumerate(shown, 1):
+        lines.append(f"{rank:02d} [{short_lane(config.lane_name(item.lane, lang))} · {item.evidence}] {item.title}")
+        lines.append(f"   {item.url}")
+    lines += ["", f"{site['digest_more']}: {daily_url(day, lang)}"]
+    return "\n".join(lines)
+
+
+def share_data(config: Config, lang: str, ctx: dict[str, Any], shown: list[Item]) -> dict[str, Any]:
+    """Everything the poster needs, so the script never reads it back out of the page."""
+    ui, site, day = config.ui(lang), config.ui(lang)["site"], ctx["date"]
+    url = daily_url(day, lang)
+    return {
+        "lang": lang, "date": day, "url": url, "title": ui["title"], "headline": site["headline"],
+        "scan": site["poster_scan"], "site": SITE_URL.removeprefix("https://"),
+        "evidence": site["evidence_names"], "qr": qr_rows(url),
+        "digest": digest(config, lang, day, shown),
+        "picks": [{"rank": rank, "title": item.title, "lane": short_lane(config.lane_name(item.lane, lang)),
+                   "color": lane_color(config, item.lane), "evidence": item.evidence,
+                   "figure": item.numbers[0] if item.numbers else ""}
+                  for rank, item in enumerate(shown, 1)],
     }
-    try { await navigator.clipboard.writeText(`${text} ${url}`); }
-    catch (error) { window.prompt(label, url); return; }
-    button.textContent = done;
-    setTimeout(() => { button.textContent = label; }, 2000);
-  });
-}
-</script>"""
+
+
+def toolbar(config: Config, lang: str, shown: list[Item]) -> str:
+    """Lane filters for the cards, and the two ways to take the day elsewhere."""
+    site = config.ui(lang)["site"]
+    counts: dict[str, int] = {}
+    for item in shown:
+        counts[item.lane] = counts.get(item.lane, 0) + 1
+    chips = [f'<button type="button" class="chip-filter" data-lane="" aria-pressed="true">'
+             f'{e(site["filter_all"])} <b>{len(shown)}</b></button>']
+    chips += [f'<button type="button" class="chip-filter" data-lane="{e(lane["id"])}" aria-pressed="false" '
+              f'style="--lane:{lane_color(config, lane["id"])}">{e(short_lane(config.lane_name(lane["id"], lang)))} '
+              f'<b>{counts[lane["id"]]}</b></button>'
+              for lane in config.lanes if lane["id"] in counts]
+    filters = (f'<div class="filters" role="group" aria-label="{e(site["filter_label"])}">{"".join(chips)}</div>'
+               if len(counts) > 1 else "")
+    return (f'<div class="toolbar">{filters}<div class="tools">'
+            f'<button type="button" class="button digest" data-done="{e(site["digest_copied"])}">'
+            f'{e(site["copy_digest"])}</button>'
+            f'<button type="button" class="button primary poster">{e(site["poster"])}</button></div></div>')
+
+
+def poster_dialog(config: Config, lang: str, day: str) -> str:
+    site = config.ui(lang)["site"]
+    return f"""<dialog class="poster-dialog" aria-labelledby="poster-title">
+<div class="poster-head"><h2 id="poster-title">{e(site['poster_title'])}</h2><button type="button" class="close" aria-label="{e(site['close'])}">×</button></div>
+<img alt="{e(site['poster_title'])}" width="1080" height="1440">
+<p class="hint">{e(site['poster_hint'])}</p>
+<p class="poster-actions"><a class="button primary download" download="physical-ai-radar-{day}.{lang}.png">{e(site['download'])}</a><button type="button" class="button share-image" hidden>{e(site['share_image'])}</button></p>
+</dialog>"""
 
 
 def render_landing(config: Config, lang: str, ctx: dict[str, Any]) -> str:
@@ -304,6 +361,7 @@ def render_landing(config: Config, lang: str, ctx: dict[str, Any]) -> str:
 {head(config, lang, ctx, title, description)}
 </head>
 <body>
+<a class="skip" href="#main">{e(heading)}</a>
 {nav(config, lang, day)}
 <header class="hero">
 <div class="pitch">
@@ -319,10 +377,11 @@ def render_landing(config: Config, lang: str, ctx: dict[str, Any]) -> str:
 <figcaption>{e(site['radar_caption'].format(days=days))}</figcaption>
 </figure>
 </header>
-<main>
-<section class="picks">
+<main id="main">
+<section class="picks" id="picks">
 <h2>{e(heading)}</h2>
 <p class="legend">{e(ui['evidence_legend'])}</p>
+{toolbar(config, lang, shown)}
 <div class="grid">
 {cards}
 </div>
@@ -330,13 +389,16 @@ def render_landing(config: Config, lang: str, ctx: dict[str, Any]) -> str:
 <section class="trend">
 <div><h2>{e(site['trend_heading'])}</h2>{cadence_svg(ctx['cadence'])}</div>
 <div><h2>{e(chart_heading(ui, days))}</h2>{mix_bar(config, lang, ctx['mix'])}</div>
+<div class="scan"><h2>{e(site['scan_heading'])}</h2>{qr_svg(daily_url(day, lang), site['scan_heading'])}<p>{e(site['scan_hint'])}</p></div>
 </section>
 </main>
 <footer class="foot">
 <p>{e(ui['disclaimer'])}</p>
 <p><a href="{HOME_URL}/blob/main/docs/METHODOLOGY.md">{e(ui['methodology'])}</a> · <a href="{base}radar/INDEX.html">{e(ui['history'])}</a> · <a href="{base}radar/feed.json">JSON Feed</a> · {e(site['license'])} · {e(ui['generated'])} {e(ctx['generated'])}</p>
 </footer>
-{SCRIPT}
+{poster_dialog(config, lang, day)}
+<script type="application/json" id="share-data">{json_script(share_data(config, lang, ctx, shown))}</script>
+<script src="{base}assets/site.js" defer></script>
 </body>
 </html>
 """

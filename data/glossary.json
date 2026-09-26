@@ -69,7 +69,21 @@
         "baseline_heading": "前沿基线（人工策展）",
         "trend_heading": "近期节奏",
         "license": "代码 MIT · 内容 CC BY 4.0",
-        "og_tagline": "八条主线 · 证据分级 · 中英日三语 · 每日更新"
+        "og_tagline": "八条主线 · 证据分级 · 中英日三语 · 每日更新",
+        "filter_all": "全部",
+        "filter_label": "按主线筛选",
+        "poster": "生成分享图",
+        "poster_title": "今日分享图",
+        "poster_hint": "手机上长按图片保存或转发；电脑上右键另存，或点下载。",
+        "download": "下载 PNG",
+        "share_image": "分享图片",
+        "close": "关闭",
+        "copy_digest": "复制今日摘要",
+        "digest_copied": "摘要已复制",
+        "digest_more": "全文与出处",
+        "scan_heading": "手机扫码读今天",
+        "scan_hint": "扫码打开今天的雷达全文，或转发给同事。",
+        "poster_scan": "扫码读全文与出处"
       }
     },
     "en": {
@@ -140,7 +154,21 @@
         "baseline_heading": "Frontier baseline (curated)",
         "trend_heading": "Recent cadence",
         "license": "Code MIT · content CC BY 4.0",
-        "og_tagline": "Eight lanes · evidence-tagged · Chinese, English, Japanese · daily"
+        "og_tagline": "Eight lanes · evidence-tagged · Chinese, English, Japanese · daily",
+        "filter_all": "All",
+        "filter_label": "Filter by lane",
+        "poster": "Make a share image",
+        "poster_title": "Today's share image",
+        "poster_hint": "On a phone, press and hold the image to save or forward it; on a computer, right-click or download.",
+        "download": "Download PNG",
+        "share_image": "Share image",
+        "close": "Close",
+        "copy_digest": "Copy today's digest",
+        "digest_copied": "Digest copied",
+        "digest_more": "Full radar and sources",
+        "scan_heading": "Read today on your phone",
+        "scan_hint": "Scan to open today's full radar, or pass it to a colleague.",
+        "poster_scan": "Scan for the full radar and sources"
       }
     },
     "ja": {
@@ -211,7 +239,21 @@
         "baseline_heading": "フロンティア基準（キュレーション）",
         "trend_heading": "最近の推移",
         "license": "コード MIT · コンテンツ CC BY 4.0",
-        "og_tagline": "8 つの軸 · 根拠タグ · 中英日の三言語 · 毎日更新"
+        "og_tagline": "8 つの軸 · 根拠タグ · 中英日の三言語 · 毎日更新",
+        "filter_all": "すべて",
+        "filter_label": "レーンで絞り込む",
+        "poster": "共有画像を作成",
+        "poster_title": "本日の共有画像",
+        "poster_hint": "スマートフォンでは画像を長押しして保存・転送、PC では右クリックで保存するかダウンロードしてください。",
+        "download": "PNG をダウンロード",
+        "share_image": "画像を共有",
+        "close": "閉じる",
+        "copy_digest": "本日のダイジェストをコピー",
+        "digest_copied": "ダイジェストをコピーしました",
+        "digest_more": "全文と出典",
+        "scan_heading": "スマホで今日を読む",
+        "scan_hint": "読み取ると本日のレーダー全文が開きます。同僚への共有にも。",
+        "poster_scan": "読み取って全文と出典へ"
       }
     }
   },

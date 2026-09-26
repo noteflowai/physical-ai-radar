@@ -10,6 +10,22 @@
 {%- assign html_lang = lang -%}{%- if lang == "zh" -%}{%- assign html_lang = "zh-Hans" -%}{%- endif -%}
 {%- assign home = "/" -%}{%- if lang != "zh" -%}{%- assign home = "/" | append: lang | append: "/" -%}{%- endif -%}
 {%- assign feed = "/radar/feed.xml" -%}{%- if lang != "en" -%}{%- assign feed = "/radar/feed." | append: lang | append: ".xml" -%}{%- endif -%}
+{%- comment -%} The same words as the landing page's, from data/glossary.json. {%- endcomment -%}
+{%- if lang == "zh" -%}
+{%- assign t_brand = "Physical AI 前沿雷达" -%}{%- assign t_archive = "历史归档" -%}{%- assign t_feed = "订阅" -%}
+{%- assign t_share = "分享" -%}{%- assign t_copy = "复制链接" -%}{%- assign t_copied = "链接已复制" -%}{%- assign t_post_x = "发到 X" -%}
+{%- assign t_home = "首页" -%}{%- assign t_method = "方法论" -%}{%- assign t_source = "本页源文件" -%}
+{%- elsif lang == "ja" -%}
+{%- assign t_brand = "Physical AI フロンティア・レーダー" -%}{%- assign t_archive = "アーカイブ" -%}{%- assign t_feed = "購読" -%}
+{%- assign t_share = "共有" -%}{%- assign t_copy = "リンクをコピー" -%}{%- assign t_copied = "リンクをコピーしました" -%}{%- assign t_post_x = "X に投稿" -%}
+{%- assign t_home = "ホーム" -%}{%- assign t_method = "方法論" -%}{%- assign t_source = "このページのソース" -%}
+{%- else -%}
+{%- assign t_brand = "Physical AI Radar" -%}{%- assign t_archive = "Archive" -%}{%- assign t_feed = "Feeds" -%}
+{%- assign t_share = "Share" -%}{%- assign t_copy = "Copy link" -%}{%- assign t_copied = "Link copied" -%}{%- assign t_post_x = "Post on X" -%}
+{%- assign t_home = "Home" -%}{%- assign t_method = "Methodology" -%}{%- assign t_source = "Source of this page" -%}
+{%- endif -%}
+{%- assign share_url = page.url | absolute_url -%}
+{%- assign share_title = page.title | default: site.title -%}
 <html lang="{{ html_lang }}">
 <head>
 <meta charset="utf-8">
@@ -26,16 +42,19 @@
 {% include head-custom.html %}
 </head>
 <body class="doc">
+<div class="progress" aria-hidden="true"></div>
 <nav class="top">
-<a class="brand" href="{{ home | relative_url }}"><img src="{{ '/assets/favicon.svg' | relative_url }}" alt="" width="26" height="26"><span>Physical AI Radar</span></a>
-<span class="links"><a href="{{ '/radar/INDEX.html' | relative_url }}">Archive</a><a href="{{ feed | relative_url }}">Atom</a><a href="{{ '/radar/feed.json' | relative_url }}">JSON Feed</a><a href="https://github.com/noteflowai/physical-ai-radar">GitHub</a></span>
+<a class="brand" href="{{ home | relative_url }}"><img src="{{ '/assets/favicon.svg' | relative_url }}" alt="" width="26" height="26"><span>{{ t_brand }}</span></a>
+<span class="links"><a href="{{ home | relative_url }}">{{ t_home }}</a><a href="{{ '/radar/INDEX.html' | relative_url }}">{{ t_archive }}</a><a href="{{ feed | relative_url }}">{{ t_feed }}</a><a href="https://github.com/noteflowai/physical-ai-radar">GitHub</a></span>
 <span class="switch"><a href="{{ '/' | relative_url }}" hreflang="zh-Hans"{% if lang == "zh" %} aria-current="page"{% endif %}>中文</a><a href="{{ '/en/' | relative_url }}" hreflang="en"{% if lang == "en" %} aria-current="page"{% endif %}>EN</a><a href="{{ '/ja/' | relative_url }}" hreflang="ja"{% if lang == "ja" %} aria-current="page"{% endif %}>日本語</a></span>
 </nav>
 <main class="prose">
 {{ content }}
 </main>
+<aside class="sharebar"><span>{{ t_share }}</span><button type="button" class="button share" data-url="{{ share_url }}" data-text="{{ share_title | escape }}" data-done="{{ t_copied }}">{{ t_copy }}</button><a class="button" href="https://twitter.com/intent/tweet?text={{ share_title | cgi_escape }}&amp;url={{ share_url | cgi_escape }}" rel="noopener" target="_blank">{{ t_post_x }}</a>{% if lang == "ja" %}<a class="button" href="https://social-plugins.line.me/lineit/share?url={{ share_url | cgi_escape }}" rel="noopener" target="_blank">LINE</a>{% elsif lang == "zh" %}<a class="button" href="https://service.weibo.com/share/share.php?url={{ share_url | cgi_escape }}&amp;title={{ share_title | cgi_escape }}" rel="noopener" target="_blank">微博</a>{% endif %}<a class="button" href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url | cgi_escape }}" rel="noopener" target="_blank">LinkedIn</a></aside>
 <footer class="foot">
-<p>Code MIT · content CC BY 4.0 · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/docs/METHODOLOGY.md">Methodology</a> · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/{{ page.path }}">Source of this page</a></p>
+<p>Code MIT · content CC BY 4.0 · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/docs/METHODOLOGY.md">{{ t_method }}</a> · <a href="https://github.com/noteflowai/physical-ai-radar/blob/main/{{ page.path }}">{{ t_source }}</a></p>
 </footer>
+<script src="{{ '/assets/site.js' | relative_url }}" defer></script>
 </body>
 </html>
