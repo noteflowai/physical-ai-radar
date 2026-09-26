@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-26
+### Today's radar · 2026-09-27
 
-`Generated: 2026-09-26 01:40 UTC` ｜ `Window: papers 2026-09-22 → 2026-09-26 · posts 2026-08-27 → 2026-09-26 · no repeats within 30 days (UTC)`
+`Generated: 2026-09-26 23:40 UTC` ｜ `Window: papers 2026-09-23 → 2026-09-27 · posts 2026-08-28 → 2026-09-27 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>Simulation & evaluation · arXiv 2609.28952 · 2026‑09‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br>`17.6%`&nbsp; `14.4%`&nbsp; `24.9%`<br><sub>Edge & real-time · arXiv 2609.29648 · 2026‑09‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br>`4.5x`<br><sub>Simulation & evaluation · arXiv 2609.30247 · 2026‑09‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br>`4.30 ms`<br><sub>Edge & real-time · arXiv 2609.29194 · 2026‑09‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑09‑25</sub> |
-| 06<br>🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br>`46%`<br><sub>Data engine · Toyota Research Institute · 2026‑09‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑25</sub> |
-| 08<br>🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑09‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy](https://arxiv.org/abs/2609.28838)**<br>`96.02%`<br><sub>Training & self-improvement · arXiv 2609.28838 · 2026‑09‑26</sub> |
+| 02<br>🔵&nbsp;`R` | **[Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge](https://arxiv.org/abs/2609.29029)**<br>`78%`&nbsp; `69%`&nbsp; `45%`<br><sub>Edge & real-time · arXiv 2609.29029 · 2026‑09‑26</sub> |
+| 03<br>🔵&nbsp;`R` | **[Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs](https://arxiv.org/abs/2609.29382)**<br><sub>Foundation models · arXiv 2609.29382 · 2026‑09‑26</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning from Mixed-Quality Deployment Experience for Robot Manipulation](https://arxiv.org/abs/2609.29000)**<br><sub>Training & self-improvement · arXiv 2609.29000 · 2026‑09‑26</sub> |
+| 05<br>🔵&nbsp;`R` | **[AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis](http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis)**<br>`36.4%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
+| 06<br>🔵&nbsp;`R` | **[DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models](https://arxiv.org/abs/2609.29092)**<br><sub>Embodiment & supply chain · arXiv 2609.29092 · 2026‑09‑26</sub> |
+| 07<br>🟡&nbsp;`M` | **[SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人](https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑09‑24</sub> |
+| 08<br>🟡&nbsp;`M` | **[这次云栖，斑马智能亮出了从汽车到具身智能的入场券](https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑24</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RoboRecover** — `AI draft` If your evaluation suite only starts policies from clean predefined states, as the authors say most benchmarks do, it says nothing about recovery after a mid-task deviation; the preprint reports closed-loop results, but no figures appear on this page.
-2. **Albireo** — `AI draft` For a perception stack that runs a detector on every frame of a long stream, the authors report 17.6% (Thor) and 14.4% (Orin) less energy with code released; nothing on this page ties the result to a robot task or control loop.
-3. **Rolling-WAM** — `AI draft` If you shelved world action models because joint video-action denoising made each replanning cycle too slow, the authors' self-reported 4.5x steady-state replanning speedup with real-robot and closed-loop results reopens the question; success figures are not on this page.
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI draft` A fault detector you can keep adapting online at a self-reported 4.30 ms per inference on CPU fits beside a control loop without a GPU; real-robot results are reported, but the page shows no closed-loop test of acting on a detection.
-5. **Video Friday** — `AI draft` This is a video roundup, and the only text on the page names a small robot goose from The Robot Works; treat it as a place to spot hardware leads to verify elsewhere, not as evidence for any spec, price or shipment claim.
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI draft` If your behavior-cloned policy drifts off-distribution and compounds errors, the authors report a retrieval-based alternative gaining 15-46% over standard behavior cloning; the page gives no real-robot or closed-loop result, so verify on your own setup before switching.
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI draft` A single trade report that the Digit maker is exploring wheeled form factors for different environments suggests even humanoid-first vendors are not betting on legs alone; if you are specifying a fleet, ask vendors which form factor is actually shipping.
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI draft` If MoveIt is in your manipulation stack, the report that Qualcomm will keep it open-source while integrating its Dragonwing and Arduino platforms means the near-term risk is roadmap tilt toward one silicon vendor, not a license change; confirm with the primary announcement.
+1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the gain holds outside the training tasks.
+2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
+5. **AnchorDream** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+6. **DAWN** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
+7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-09-26.en.md)** · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-09-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

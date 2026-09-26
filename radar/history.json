@@ -122,6 +122,25 @@
       "fallback": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-27",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2609.28838",
+        "https://arxiv.org/abs/2609.29029",
+        "https://arxiv.org/abs/2609.29382",
+        "https://arxiv.org/abs/2609.29000",
+        "https://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis",
+        "https://arxiv.org/abs/2609.29092",
+        "https://www.leiphone.com/category/ai/k1xgdu6w3n7xggkb.html",
+        "https://www.leiphone.com/category/ai/c5xfhiwwhqsfngrs.html"
+      ],
+      "failed": [],
+      "fallback": [
+        "arxiv"
+      ]
     }
   ]
 }

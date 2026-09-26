@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-26
+### 本日のレーダー · 2026-09-27
 
-`生成時刻: 2026-09-26 01:40 UTC` ｜ `対象期間: 論文 2026-09-22 → 2026-09-26 · ブログ・報道 2026-08-27 → 2026-09-26 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-26 23:40 UTC` ｜ `対象期間: 論文 2026-09-23 → 2026-09-27 · ブログ・報道 2026-08-28 → 2026-09-27 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>シミュレーションと評価 · arXiv 2609.28952 · 2026‑09‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br>`17.6%`&nbsp; `14.4%`&nbsp; `24.9%`<br><sub>エッジとリアルタイム · arXiv 2609.29648 · 2026‑09‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br>`4.5x`<br><sub>シミュレーションと評価 · arXiv 2609.30247 · 2026‑09‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br>`4.30 ms`<br><sub>エッジとリアルタイム · arXiv 2609.29194 · 2026‑09‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑09‑25</sub> |
-| 06<br>🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br>`46%`<br><sub>データエンジン · Toyota Research Institute · 2026‑09‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑25</sub> |
-| 08<br>🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑09‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy](https://arxiv.org/abs/2609.28838)**<br>`96.02%`<br><sub>学習と自己改善 · arXiv 2609.28838 · 2026‑09‑26</sub> |
+| 02<br>🔵&nbsp;`R` | **[Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge](https://arxiv.org/abs/2609.29029)**<br>`78%`&nbsp; `69%`&nbsp; `45%`<br><sub>エッジとリアルタイム · arXiv 2609.29029 · 2026‑09‑26</sub> |
+| 03<br>🔵&nbsp;`R` | **[Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs](https://arxiv.org/abs/2609.29382)**<br><sub>基盤モデル · arXiv 2609.29382 · 2026‑09‑26</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning from Mixed-Quality Deployment Experience for Robot Manipulation](https://arxiv.org/abs/2609.29000)**<br><sub>学習と自己改善 · arXiv 2609.29000 · 2026‑09‑26</sub> |
+| 05<br>🔵&nbsp;`R` | **[AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis](http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis)**<br>`36.4%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 06<br>🔵&nbsp;`R` | **[DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models](https://arxiv.org/abs/2609.29092)**<br><sub>ハードウェアとサプライチェーン · arXiv 2609.29092 · 2026‑09‑26</sub> |
+| 07<br>🟡&nbsp;`M` | **[SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人](https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑09‑24</sub> |
+| 08<br>🟡&nbsp;`M` | **[这次云栖，斑马智能亮出了从汽车到具身智能的入场券](https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑24</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **RoboRecover** — `AI 下書き` 既存ベンチマークは所定の初期状態から全軌道を評価するのが通例だと著者は述べる。自社の評価も同様なら、実行途中の逸脱からの復帰能力は測れていない。閉ループ結果ありとされるが、本ページに数値はない。
-2. **Albireo** — `AI 下書き` 長いフレーム列に検出器を回し続ける知覚系なら、著者自己申告で Thor で 17.6%、Orin で 14.4% の省電力、コード公開あり。本ページにロボットタスクや制御ループの結果はなく、まず自機の基板で再測定を。
-3. **Rolling-WAM** — `AI 下書き` 映像と行動の同時デノイズで再計画周期が遅すぎると世界行動モデルを見送っていたなら、著者自己申告の定常再計画 4.5 倍高速化と実機・閉ループ結果は再検討に値する。成功率の数値は本ページにない。
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI 下書き` Student モデルは CPU で推論 4.30 ms（著者自己申告）かつ継続的にオンライン適応できるとされ、GPU なしで制御ループの横に故障検知を常駐させる選択肢になる。実機結果ありだが、検知後の閉ループ対処の検証は本ページにない。
-5. **Video Friday** — `AI 下書き` 動画まとめ回であり、ページ上の文章は The Robot Works の小さなロボットガチョウに触れるだけ。ハードウェアの手がかりを拾う入口として見て、仕様・価格・出荷に関する主張の根拠にはしないこと。
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI 下書き` 行動クローン方策が展開時の誤差蓄積で分布外に逸れて困っているなら、著者自己申告で検索ベース方策が標準の行動クローンを 15-46% 上回るとする。実機・閉ループの結果は本ページになく、切り替え前に自環境で検証を。
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI 下書き` 業界メディア一報によれば Digit のメーカーが環境ごとに車輪を含む複数形態を検討中で、ヒューマノイド先行のベンダーも脚だけに賭けていないことを示す。機体選定中なら、実際に出荷している形態をベンダーに確認を。
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI 下書き` MoveIt を操作スタックに使っているなら、Qualcomm がオープンソースを維持しつつ Dragonwing と Arduino を統合するという報道が意味するのは、ライセンス変更ではなく特定チップベンダーへのロードマップ偏りという短期リスク。一次発表で確認を。
+1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
+5. **AnchorDream** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **DAWN** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-09-26.ja.md)** · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-09-27.ja.md)** · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

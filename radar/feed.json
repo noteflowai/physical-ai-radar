@@ -13,6 +13,301 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.28838",
+      "url": "https://arxiv.org/abs/2609.28838",
+      "title": "Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.28838 · 2026-09-26<br><b>Key numbers</b>: 96.02%<br><b>Signals</b>: quantitative results · open code or weights</p>\n<blockquote>Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2609.28838 · 2026-09-26\nKey numbers: 96.02%\nSignals: quantitative results · open code or weights\n\nOnline reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.28838"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "arxiv:2609.28838",
+        "url": "https://arxiv.org/abs/2609.28838",
+        "title": "Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy",
+        "publisher": "arXiv 2609.28838",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-09-26",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [
+          "96.02%"
+        ],
+        "signals": [
+          "numbers",
+          "open_release"
+        ],
+        "excerpt": "Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29029",
+      "url": "https://arxiv.org/abs/2609.29029",
+      "title": "Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29029 · 2026-09-26<br><b>Key numbers</b>: 78% · 69% · 45% · 73%<br><b>Signals</b>: quantitative results · latency or control-rate numbers</p>\n<blockquote>Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.29029 · 2026-09-26\nKey numbers: 78% · 69% · 45% · 73%\nSignals: quantitative results · latency or control-rate numbers\n\nOnboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29029"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "arxiv:2609.29029",
+        "url": "https://arxiv.org/abs/2609.29029",
+        "title": "Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge",
+        "publisher": "arXiv 2609.29029",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-26",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [
+          "78%",
+          "69%",
+          "45%",
+          "73%"
+        ],
+        "signals": [
+          "numbers",
+          "latency"
+        ],
+        "excerpt": "Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29382",
+      "url": "https://arxiv.org/abs/2609.29382",
+      "title": "Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29382 · 2026-09-26<br><b>Signals</b>: closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.29382 · 2026-09-26\nSignals: closed-loop success reported · latency or control-rate numbers\n\nFlow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29382"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "arxiv:2609.29382",
+        "url": "https://arxiv.org/abs/2609.29382",
+        "title": "Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs",
+        "publisher": "arXiv 2609.29382",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-09-26",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "latency"
+        ],
+        "excerpt": "Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29000",
+      "url": "https://arxiv.org/abs/2609.29000",
+      "title": "Learning from Mixed-Quality Deployment Experience for Robot Manipulation",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29000 · 2026-09-26<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2609.29000 · 2026-09-26\nSignals: real-robot experiments\n\nRobot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29000"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "arxiv:2609.29000",
+        "url": "https://arxiv.org/abs/2609.29000",
+        "title": "Learning from Mixed-Quality Deployment Experience for Robot Manipulation",
+        "publisher": "arXiv 2609.29000",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-09-26",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:9f86ce04a323",
+      "url": "http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis",
+      "title": "AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Key numbers</b>: 36.4%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nKey numbers: 36.4%\nSignals: quantitative results · real-robot experiments\n\nThe collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "tri:9f86ce04a323",
+        "url": "http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis",
+        "title": "AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [
+          "36.4%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.29092",
+      "url": "https://arxiv.org/abs/2609.29092",
+      "title": "DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.29092 · 2026-09-26</p>\n<blockquote>Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [R]\nSource: arXiv 2609.29092 · 2026-09-26\n\nVision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.29092"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "arxiv:2609.29092",
+        "url": "https://arxiv.org/abs/2609.29092",
+        "title": "DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models",
+        "publisher": "arXiv 2609.29092",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "hardware",
+        "published": "2026-09-26",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:535783e51445",
+      "url": "https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html",
+      "title": "SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-24</p>\n<blockquote>机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-24\n\n机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "leiphone:535783e51445",
+        "url": "https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html",
+        "title": "SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "simeval",
+        "published": "2026-09-24",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:a587843bbfa0",
+      "url": "https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html",
+      "title": "这次云栖，斑马智能亮出了从汽车到具身智能的入场券",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-24</p>\n<blockquote>周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html\">Full radar for 2026-09-27</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-24\n\n周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。\n\nFull radar for 2026-09-27: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-27.en.html",
+      "summary": "周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。",
+      "date_published": "2026-09-26T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-27",
+        "id": "leiphone:a587843bbfa0",
+        "url": "https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html",
+        "title": "这次云栖，斑马智能亮出了从汽车到具身智能的入场券",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-24",
+        "radar_published": "2026-09-26T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.28952",
       "url": "https://arxiv.org/abs/2609.28952",
       "title": "RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations",

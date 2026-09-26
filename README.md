@@ -60,37 +60,37 @@
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-26
+### 今日雷达 · 2026-09-27
 
-`生成时间: 2026-09-26 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-26 · 博客与报道 2026-08-27 → 2026-09-26 · 30 天内不重复 (UTC)`
+`生成时间: 2026-09-26 23:40 UTC` ｜ `统计窗口: 论文 2026-09-23 → 2026-09-27 · 博客与报道 2026-08-28 → 2026-09-27 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>仿真与评测 · arXiv 2609.28952 · 2026‑09‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br>`17.6%`&nbsp; `14.4%`&nbsp; `24.9%`<br><sub>边缘与实时性 · arXiv 2609.29648 · 2026‑09‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br>`4.5x`<br><sub>仿真与评测 · arXiv 2609.30247 · 2026‑09‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br>`4.30 ms`<br><sub>边缘与实时性 · arXiv 2609.29194 · 2026‑09‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑09‑25</sub> |
-| 06<br>🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br>`46%`<br><sub>数据引擎 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑25</sub> |
-| 08<br>🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>系统与编排 · The Robot Report · 2026‑09‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy](https://arxiv.org/abs/2609.28838)**<br>`96.02%`<br><sub>训练与自我改进 · arXiv 2609.28838 · 2026‑09‑26</sub> |
+| 02<br>🔵&nbsp;`R` | **[Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge](https://arxiv.org/abs/2609.29029)**<br>`78%`&nbsp; `69%`&nbsp; `45%`<br><sub>边缘与实时性 · arXiv 2609.29029 · 2026‑09‑26</sub> |
+| 03<br>🔵&nbsp;`R` | **[Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs](https://arxiv.org/abs/2609.29382)**<br><sub>基座模型 · arXiv 2609.29382 · 2026‑09‑26</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning from Mixed-Quality Deployment Experience for Robot Manipulation](https://arxiv.org/abs/2609.29000)**<br><sub>训练与自我改进 · arXiv 2609.29000 · 2026‑09‑26</sub> |
+| 05<br>🔵&nbsp;`R` | **[AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis](http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis)**<br>`36.4%`<br><sub>仿真与评测 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 06<br>🔵&nbsp;`R` | **[DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models](https://arxiv.org/abs/2609.29092)**<br><sub>本体与供应链 · arXiv 2609.29092 · 2026‑09‑26</sub> |
+| 07<br>🟡&nbsp;`M` | **[SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人](https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html)**<br><sub>仿真与评测 · 雷峰网 Leiphone · 2026‑09‑24</sub> |
+| 08<br>🟡&nbsp;`M` | **[这次云栖，斑马智能亮出了从汽车到具身智能的入场券](https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑09‑24</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **RoboRecover** — `AI 起草` 作者指出现有基准多从预设初始状态跑完整轨迹，若你的评测也是如此，就测不到策略偏离后能否恢复；该预印本报告了闭环结果，但本页未见具体数字，请自行核对原文。
-2. **Albireo** — `AI 起草` 若你的感知栈在长视频流上逐帧跑检测器，作者自报在 Thor 上省电 17.6%、Orin 上 14.4%，代码已开放；本页没有真机任务或控制回路的结果，先在自己的板子上复测再决定是否接入。
-3. **Rolling-WAM** — `AI 起草` 如果你曾因联合视频-动作去噪拖慢每个重规划周期而放弃世界动作模型，作者自报的 4.5x 稳态重规划加速、且附真机闭环结果，值得重新评估；成功率数字本页未给出。
-4. **Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models** — `AI 起草` 作者自报其 Student 模型在 CPU 上单次推理 4.30 ms 且可持续在线适应，意味着故障检测可以不占 GPU 地挂在控制回路旁；页面显示有真机结果，但没有检测触发后闭环处置的验证。
-5. **Video Friday** — `AI 起草` 这是一期视频集锦，页面上唯一的文字只提到 The Robot Works 的小机器鹅；把它当成发现硬件线索的入口、再去别处核实，不要把其中任何规格、价格或出货说法当作证据。
-6. **Difference-Aware Retrieval Policies for Imitation Learning** — `AI 起草` 若你的行为克隆策略在部署中因误差累积而滑出分布，作者自报的检索式策略比标准行为克隆提升 15-46%；页面未见真机或闭环结果，换方案前先在自己的任务上验证。
-7. **Agility Robotics, maker of Digit humanoid, exploring wheeled robots** — `AI 起草` 一家行业媒体报道 Digit 的厂商正在为不同作业环境探索包括轮式在内的多种形态，说明人形优先的厂商也不只押注双足；如果你在选型，直接问厂商哪种形态在实际交付。
-8. **Qualcomm to acquire PickNik Robotics and keep MoveIt open-source** — `AI 起草` 如果 MoveIt 在你的操作栈里，报道称高通将保持其开源并接入 Dragonwing 与 Arduino 平台，短期风险是路线图向单一芯片厂商倾斜，而非许可证变更；请以官方公告为准。
+1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注提升在训练任务之外是否依然成立。
+2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+5. **AnchorDream** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。
+6. **DAWN** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。
+7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-09-26.zh.md)** · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-09-27.zh.md)** · [每周汇总 ›](radar/weekly/2026-W39.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
