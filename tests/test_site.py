@@ -6,6 +6,7 @@ No test here touches the network or a browser.
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 import tempfile
@@ -16,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import site  # noqa: E402
+from pairadar import qr, site  # noqa: E402
 from pairadar.config import LANGS, Item, load_config  # noqa: E402
 
 
@@ -145,6 +146,62 @@ class LandingTest(unittest.TestCase):
         self.assertIn("picks, last 7 days", page)
         self.assertIn("<dd>—</dd>", page)
 
+    def share_data(self, page: str) -> dict:
+        raw = re.search(r'<script type="application/json" id="share-data">(.*?)</script>', page, re.S).group(1)
+        self.assertNotIn("</", raw)
+        return json.loads(raw)
+
+    def test_the_poster_has_every_pick_and_a_code_back_to_the_day(self) -> None:
+        for lang in LANGS:
+            with self.subTest(lang=lang):
+                data = self.share_data(site.render_landing(self.config, lang, context(self.picked)))
+                url = f"{site.SITE_URL}/radar/daily/2026-09-25.{lang}.html"
+                self.assertEqual(data["url"], url)
+                self.assertEqual(data["qr"], qr.rows(url))
+                self.assertEqual([pick["title"] for pick in data["picks"]], [entry.title for entry in self.picked])
+                self.assertEqual(data["picks"][0]["figure"], "4.5x")
+                self.assertEqual(data["picks"][1]["color"], site.lane_color(self.config, "hardware"))
+                self.assertEqual(set(data["evidence"]), {"O", "R", "M"})
+                self.assertNotIn("（", data["picks"][0]["lane"])
+                self.assertNotIn("(", data["picks"][0]["lane"])
+
+    def test_the_digest_reads_as_text_with_every_link(self) -> None:
+        text = site.digest(self.config, "zh", "2026-09-25", self.picked)
+        lines = text.splitlines()
+        self.assertEqual(lines[0], f"{self.config.ui('zh')['title']} · 2026-09-25")
+        self.assertIn("01 [仿真与评测 · R] RoboRecover: Benchmarking Robot Policy Recovery", lines)
+        for entry in self.picked:
+            self.assertIn(f"   {entry.url}", lines)
+        self.assertTrue(lines[-1].endswith(f"{site.SITE_URL}/radar/daily/2026-09-25.zh.html"))
+
+    def test_fetched_text_cannot_escape_the_share_data(self) -> None:
+        hostile = item('</script><script>alert(1)</script> & "q"', numbers=["3x"])
+        page = site.render_landing(self.config, "en", context([hostile]))
+        self.assertNotIn("<script>alert", page)
+        self.assertEqual(self.share_data(page)["picks"][0]["title"], hostile.title)
+        parse(page)
+
+    def test_lane_filters_count_the_cards_they_show(self) -> None:
+        page = site.render_landing(self.config, "en", context(self.picked))
+        tags = parse(page)
+        chips = [attrs for tag, attrs in tags.starts if tag == "button" and attrs.get("class") == "chip-filter"]
+        self.assertEqual([chip["data-lane"] for chip in chips], ["", "simeval", "hardware"])
+        self.assertEqual([chip["aria-pressed"] for chip in chips], ["true", "false", "false"])
+        cards = [attrs["data-lane"] for tag, attrs in tags.starts if tag == "article"]
+        self.assertEqual(cards, ["simeval", "hardware"])
+        # one lane has nothing to filter
+        single = site.render_landing(self.config, "en", context(self.picked[:1]))
+        self.assertNotIn('class="chip-filter"', single)
+
+    def test_the_page_loads_the_shared_script_and_scans_to_the_day(self) -> None:
+        page = site.render_landing(self.config, "en", context(self.picked))
+        self.assertIn('<script src="../assets/site.js" defer></script>', page)
+        self.assertTrue((ROOT/"assets"/"site.js").exists())
+        self.assertIn(qr.svg(f"{site.SITE_URL}/radar/daily/2026-09-25.en.html",
+                             self.config.ui("en")["site"]["scan_heading"]), page)
+        self.assertIn('<dialog class="poster-dialog"', page)
+        self.assertIn('download="physical-ai-radar-2026-09-25.en.png"', page)
+
     def test_write_site_writes_one_page_per_language(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             written = site.write_site(self.config, context(self.picked), Path(tmp))
@@ -171,6 +228,28 @@ class RadarTest(unittest.TestCase):
         svg = site.radar_svg(self.config, "en", [], [], radius=150, labels=False)
         self.assertIn('viewBox="-162 -162 324 324"', svg)
         self.assertNotIn('class="label"', svg)
+
+
+class LayoutTest(unittest.TestCase):
+    """The Jekyll layout for the daily pages speaks each page's language and shares it."""
+
+    def test_the_layout_uses_the_glossary_words_in_all_three_languages(self) -> None:
+        layout = (ROOT/"_layouts"/"default.html").read_text(encoding="utf-8")
+        config = load_config()
+        # one block of assigns per language, in the layout's if / elsif / else order
+        blocks = dict(zip(("zh", "ja", "en"), ("{%- assign t_brand" + part.split("{%- endif -%}", 1)[0]
+                                                for part in layout.split("{%- assign t_brand")[1:])))
+        for lang in LANGS:
+            ui, words, block = config.ui(lang), config.ui(lang)["site"], blocks[lang]
+            with self.subTest(lang=lang):
+                for name, value in (("brand", ui["title"]), ("archive", ui["history"]), ("feed", words["nav_feeds"]),
+                                    ("share", words["share"]), ("copied", words["copied"]),
+                                    ("post_x", words["post_x"]), ("home", words["nav_home"]),
+                                    ("method", ui["methodology"])):
+                    self.assertIn(f'assign t_{name} = "{value}"', block)
+        self.assertIn('class="sharebar"', layout)
+        self.assertIn("{{ '/assets/site.js' | relative_url }}", layout)
+        self.assertIn("share_url | cgi_escape", layout)
 
 
 class GlossaryTest(unittest.TestCase):

@@ -104,7 +104,10 @@ jobs:
               assert f'<html lang="{lang}">' in text, f"{page}: lang is not {lang}"
               assert "assets/site.css" in text, f"{page}: stylesheet missing"
               assert 'property="og:image"' in text, f"{page}: no social card"
-          for asset in ("assets/site.css", "assets/favicon.svg", "assets/og.zh.png", "assets/og.en.png",
+              assert "assets/site.js" in text, f"{page}: script missing"
+              if page.startswith("radar/"):
+                  assert 'class="sharebar"' in text, f"{page}: no share bar"
+          for asset in ("assets/site.css", "assets/site.js", "assets/favicon.svg", "assets/og.zh.png", "assets/og.en.png",
                         "assets/og.ja.png", "sitemap.xml", "robots.txt", "radar/feed.xml"):
               assert (site/asset).exists(), f"{asset} not published"
           assert f"radar/daily/{day}.en.html" in (site/"sitemap.xml").read_text(encoding="utf-8")

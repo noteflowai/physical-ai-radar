@@ -47,6 +47,23 @@ The site:
 - Each language has a social card (`assets/og.<lang>.png`), so a shared link shows a
   large preview. `python3 -m pairadar.site --og` redraws them.
 - A sitemap and `robots.txt` are published, and CI builds the site the way Pages does.
+- The landing page draws the day as a 1080×1440 poster in the reader's browser: the
+  picks with their lanes, evidence and lead figures, and a QR code to the day's page,
+  for the places a link does not survive (an image forwarded in WeChat, Xiaohongshu or
+  LINE). On a phone it can be long-pressed to save or sent through the share sheet.
+  The QR encoder (`pairadar/qr.py`) is standard library only and is checked against
+  known answers from Project Nayuki's qrcodegen.
+- "Copy today's digest" puts the picks on the clipboard as text, one title and link
+  each, with the day's page at the end.
+- The cards can be filtered by lane, and the page carries a QR code to the day for
+  a reader moving from desktop to phone.
+- The daily, weekly and archive pages speak their own language in the navigation,
+  end with a share bar (copy link, X, Weibo or LINE, LinkedIn) and show a reading
+  progress bar where the browser supports scroll-driven animation.
+- English titles on Chinese and Japanese pages keep their own punctuation (Latin
+  faces come first in the font stack), keyboard focus is visible, and the pages print
+  without the chrome. The sharing and motion live in one static `assets/site.js`;
+  every page reads without it, and motion stays off under reduced-motion settings.
 
 Fixes that change what gets published:
 
