@@ -72,7 +72,7 @@ class BannerTest(unittest.TestCase):
 class ReadmeBlockTest(unittest.TestCase):
     def setUp(self) -> None:
         self.config = load_config()
-        self.picked = [item("A | B: pipes in a title", numbers=["4.30 ms", "12 Hz", "3x"]),
+        self.picked = [item("A | B: pipes in a title", numbers=["4.30 ms", "12 Hz", "3x", "9 kg"]),
                        item("Soft gripper", lane="hardware", evidence="O"),
                        item("Odd evidence", evidence="?")]
 
@@ -80,30 +80,35 @@ class ReadmeBlockTest(unittest.TestCase):
         return readme_block(self.config, lang, context(self.picked, window="w"))
 
     def rows(self, block: str) -> list[str]:
-        return [line for line in block.splitlines() if re.match(r"\| \d\d \|", line)]
+        return [line for line in block.splitlines() if re.match(r"\| \d\d<br>", line)]
 
-    def test_every_pick_is_one_row_of_four_cells(self) -> None:
+    def test_every_pick_is_one_row_of_two_cells(self) -> None:
+        # two, not four: on a phone four columns left a title about 110px wide
         for lang in LANGS:
             with self.subTest(lang=lang):
                 rows = self.rows(self.block(lang))
                 self.assertEqual(len(rows), len(self.picked))
                 for row in rows:
                     cells = re.split(r"(?<!\\)\|", row)[1:-1]
-                    self.assertEqual(len(cells), 4, row)
+                    self.assertEqual(len(cells), 2, row)
 
     def test_pipes_are_escaped_and_figures_do_not_break(self) -> None:
         row = self.rows(self.block())[0]
         self.assertIn(r"A \| B", row)
-        self.assertIn("`4.30 ms`<br>`12 Hz`", row)
-        self.assertNotIn("3x", row, "at most two figures per row")
+        self.assertIn("`4.30\u00a0ms`&nbsp; `12\u00a0Hz`&nbsp; `3x`", row)
+        self.assertNotIn("kg", row, "at most three figures per row")
+        self.assertIn("<sub>Simulation & evaluation · arXiv · 2026\u201109\u201125</sub>", row)
+
+    def test_a_pick_without_figures_has_no_empty_line(self) -> None:
+        self.assertRegex(self.rows(self.block())[1], r"\)\*\*<br><sub>")
 
     def test_unknown_evidence_reads_as_media(self) -> None:
-        self.assertIn("🟡&nbsp;`M`", self.rows(self.block())[2])
+        self.assertTrue(self.rows(self.block())[2].startswith("| 03<br>\U0001f7e1&nbsp;`M` |"))
 
     def test_the_reasons_fold_under_the_table(self) -> None:
         block = self.block()
         self.assertIn("<details><summary>", block)
-        self.assertLess(block.index("| 03 |"), block.index("<details>"))
+        self.assertLess(block.index("| 03<br>"), block.index("<details>"))
         self.assertLess(block.index("<details>"), block.index("</details>"))
         self.assertIn("1. **A | B** — ", block, "the reasons name each pick by its short title")
 

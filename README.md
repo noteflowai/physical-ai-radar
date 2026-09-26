@@ -64,16 +64,16 @@
 
 `生成时间: 2026-09-26 01:40 UTC` ｜ `统计窗口: 论文 2026-09-22 → 2026-09-26 · 博客与报道 2026-08-27 → 2026-09-26 · 30 天内不重复 (UTC)`
 
-| # | 证据 | 条目 | 关键数字 |
-| :-: | :-: | --- | --- |
-| 01 | 🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>仿真与评测 · arXiv 2609.28952 · 2026-09-25</sub> | — |
-| 02 | 🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br><sub>边缘与实时性 · arXiv 2609.29648 · 2026-09-25</sub> | `17.6%`<br>`14.4%` |
-| 03 | 🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br><sub>仿真与评测 · arXiv 2609.30247 · 2026-09-25</sub> | `4.5x` |
-| 04 | 🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br><sub>边缘与实时性 · arXiv 2609.29194 · 2026-09-25</sub> | `4.30 ms` |
-| 05 | 🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026-09-25</sub> | — |
-| 06 | 🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br><sub>数据引擎 · Toyota Research Institute · 2026-09-09</sub> | `46%` |
-| 07 | 🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026-09-25</sub> | — |
-| 08 | 🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>系统与编排 · The Robot Report · 2026-09-23</sub> | — |
+| # | 条目 · 关键数字 |
+| :-: | --- |
+| 01<br>🔵&nbsp;`R` | **[RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations](https://arxiv.org/abs/2609.28952)**<br><sub>仿真与评测 · arXiv 2609.28952 · 2026‑09‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[Albireo: Adaptive, Energy-Efficient Inference Framework for Video Object Detection on the Edge](https://arxiv.org/abs/2609.29648)**<br>`17.6%`&nbsp; `14.4%`&nbsp; `24.9%`<br><sub>边缘与实时性 · arXiv 2609.29648 · 2026‑09‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)**<br>`4.5x`<br><sub>仿真与评测 · arXiv 2609.30247 · 2026‑09‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[Continuous Online Fault Detection for Mobile Robots via Adaptive Edge Models](https://arxiv.org/abs/2609.29194)**<br>`4.30 ms`<br><sub>边缘与实时性 · arXiv 2609.29194 · 2026‑09‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Life’s Better With a Little Robot Goose](https://spectrum.ieee.org/video-friday-goose-household-robots)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑09‑25</sub> |
+| 06<br>🔵&nbsp;`R` | **[Difference-Aware Retrieval Policies for Imitation Learning](http://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning)**<br>`46%`<br><sub>数据引擎 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Agility Robotics, maker of Digit humanoid, exploring wheeled robots](https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑25</sub> |
+| 08<br>🟡&nbsp;`M` | **[Qualcomm to acquire PickNik Robotics and keep MoveIt open-source](https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source/)**<br><sub>系统与编排 · The Robot Report · 2026‑09‑23</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
