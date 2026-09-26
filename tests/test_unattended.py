@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.agent_pipeline import PublicationAbandoned, call_agent, checks_state, finish, finish_commit, parse_object, public_commit, reconcile_superseded, wait_pr, write_json
+from scripts.agent_pipeline import PublicationAbandoned, call_agent, checks_state, finish, finish_commit, parse_object, public_commit, reconcile_superseded, retry_pr_checks, wait_pr, write_json
 from scripts.improve_repos import apply_edits, finish_with_repairs, push_reviewed
 from scripts.verify_source_repair import verify
 
@@ -164,6 +164,48 @@ class UnattendedTests(unittest.TestCase):
                 else:
                     self.assertIsNone(result)
                     verify.assert_not_called()
+
+    def test_an_old_failed_pr_gets_one_rerun_then_stops_blocking_other_jobs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            file = Path(tmp) / "receipt.json"
+            item = {"repo": "owner/repo", "pr": 7, "head": "checked", "status": "retry-needed"}
+            error = RuntimeError("CI failed or was cancelled on checked")
+            write_json(file, item)
+            with patch("scripts.agent_pipeline.gh", side_effect=[
+                '[{"databaseId":9,"status":"completed","conclusion":"failure"}]', ""
+            ]) as github:
+                self.assertFalse(retry_pr_checks(item, file, error))
+                self.assertEqual(github.call_count, 2)
+            saved = json.loads(file.read_text())
+            self.assertTrue(saved["resume_pr_rerun_attempted"])
+            with patch("scripts.agent_pipeline.gh") as github:
+                self.assertTrue(retry_pr_checks(saved, file, error))
+                github.assert_not_called()
+            self.assertEqual(json.loads(file.read_text())["status"], "abandoned")
+
+    def test_a_rejected_ci_repair_feeds_the_next_automatic_attempt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            def github(repo, *args, **kwargs):
+                if args[:2] == ("pr", "view"):
+                    return json.dumps({"state": "OPEN", "headRefOid": "head",
+                                       "headRefName": "automation/experience-day", "mergeCommit": None})
+                if args[:2] == ("run", "list"):
+                    return '[{"databaseId":9,"status":"completed","conclusion":"failure"}]'
+                return "CI failure details"
+            with patch("scripts.improve_repos.finish", side_effect=RuntimeError("CI failed")), \
+                 patch("scripts.improve_repos.gh", side_effect=github), \
+                 patch("scripts.improve_repos.command", return_value=""), \
+                 patch("scripts.improve_repos.model_json", side_effect=[
+                     ValueError("replacement did not match"), {"decision": "noop"}
+                 ]) as model:
+                with self.assertRaisesRegex(RuntimeError, "Will retry automatically"):
+                    finish_with_repairs(root, "owner/repo", 1, "head",
+                                        {"paths": [], "workflows": ["CI"], "urls": ["https://example.org"]},
+                                        {"sources": []}, root)
+                self.assertEqual(model.call_count, 2)
+                self.assertIn("replacement did not match", model.call_args.args[0])
+                self.assertIn("replacement did not match", (root / "ci-findings-1.txt").read_text())
 
     def test_replacements_are_atomic_and_cannot_escape_into_execution_or_media(self):
         with tempfile.TemporaryDirectory() as tmp:

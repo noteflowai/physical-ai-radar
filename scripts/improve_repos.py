@@ -370,8 +370,9 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
                         inputs: dict, state: Path) -> dict:
     """Retry infrastructure, then repair a failing proposed change within the same gates."""
     findings = ""
+    repair_feedback = ""
     transaction = root / ".git" / "repo-agent-transaction.json"
-    for attempt in range(3):
+    for attempt in range(4):
         write_json(transaction, {"repo": repo, "pr": pr, "head": head, "stage": "ci"})
         try:
             result = finish(repo, pr, head, config["workflows"], config["urls"],
@@ -421,43 +422,56 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
             (state / f"ci-findings-{attempt}.txt").write_text(findings)
             if attempt == 0:
                 continue
-            if record["state"] == "MERGED" or not failed or attempt == 2:
+            if record["state"] == "MERGED" or not failed or attempt == 3:
                 continue
-            branch = record["headRefName"]
-            if not branch.startswith("automation/experience-"):
-                raise RuntimeError("Automatic repair is restricted to its own maintenance branches")
-            command(["git", "fetch", "origin", branch], cwd=root)
-            command(["git", "checkout", "-B", branch, "origin/" + branch], cwd=root)
-            files = {p: (root / p).read_text() for p in config["paths"]}
-            excerpts = {p: value.encode()[:9000].decode(errors="ignore")
-                        for p, value in files.items()}
-            proposal = model_json(
-                'Repair this proposed homepage change using the CI findings. Do not weaken tests. '
-                'Return {"decision":"change"|"noop","reason":"reason","sources":["source-id"],'
-                '"edits":[{"path":"allowed path","old":"one exact existing span","new":"replacement"}]}'
-                + json.dumps({"repo": repo, "snapshot": inputs, "file_prefix_excerpts": excerpts,
-                              "ci_findings": findings[-8000:]}, ensure_ascii=False),
-                state, f"ci-repair-{attempt}", "claude-sonnet-5",
-            )
-            changed = apply_edits(root, proposal, config, {s["id"] for s in inputs["sources"]})
-            if not changed:
+            try:
+                branch = record["headRefName"]
+                if not branch.startswith("automation/experience-"):
+                    raise RuntimeError("Automatic repair is restricted to its own maintenance branches")
+                command(["git", "fetch", "origin", branch], cwd=root)
+                command(["git", "reset", "--hard", "origin/" + branch], cwd=root)
+                command(["git", "checkout", "-B", branch, "origin/" + branch], cwd=root)
+                files = {p: (root / p).read_text() for p in config["paths"]}
+                excerpts = {p: value.encode()[:9000].decode(errors="ignore")
+                            for p, value in files.items()}
+                proposal = model_json(
+                    'Repair this proposed homepage change using the CI findings. Do not weaken tests. '
+                    'Return {"decision":"change"|"noop","reason":"reason","sources":["source-id"],'
+                    '"edits":[{"path":"allowed path","old":"one exact existing span","new":"replacement"}]}'
+                    + json.dumps({"repo": repo, "snapshot": inputs, "file_prefix_excerpts": excerpts,
+                                  "ci_findings": findings[-8000:],
+                                  "prior_repair_findings": repair_feedback[-8000:]}, ensure_ascii=False),
+                    state, f"ci-repair-{attempt}", "claude-sonnet-5",
+                )
+                changed = apply_edits(root, proposal, config, {s["id"] for s in inputs["sources"]})
+                if not changed:
+                    continue
+                review = model_json(
+                    'Review this CI repair. Reject unsupported claims, test circumvention or broken UI. '
+                    'Return {"approved":true|false,"findings":["finding"]}.' +
+                    json.dumps({"proposal": proposal, "diff": patch(root),
+                                "ci_findings": findings[-12000:]}, ensure_ascii=False),
+                    state, f"ci-review-{attempt}", "claude-opus-5",
+                )
+                if review.get("approved") is not True or review.get("findings"):
+                    raise ValueError(json.dumps(review))
+                validate(root, config, state, attempt + 10)
+                command(["git", "add", "--", *config["paths"], *config.get("generated", [])], cwd=root)
+                command(["git", "commit", "-m", "Resolve the automatic CI review findings"], cwd=root)
+                head = command(["git", "rev-parse", "HEAD"], cwd=root).strip()
+                pending = {"repo": repo, "pr": pr, "head": head, "branch": branch, "stage": "push"}
+                write_json(transaction, pending)
+                push_reviewed(root, pending, state)
+            except Exception as repair_error:
+                repair_feedback = str(repair_error)
+                findings += "\nRepair attempt failed: " + str(repair_error)
+                (state / f"ci-findings-{attempt}.txt").write_text(findings)
+                if json.loads(transaction.read_text()).get("stage") == "push":
+                    # This commit already passed review/tests; resume its saved push
+                    # on the bootstrap retry instead of generating another edit.
+                    break
                 continue
-            review = model_json(
-                'Review this CI repair. Reject unsupported claims, test circumvention or broken UI. '
-                'Return {"approved":true|false,"findings":["finding"]}.' +
-                json.dumps({"proposal": proposal, "diff": patch(root),
-                            "ci_findings": findings[-12000:]}, ensure_ascii=False),
-                state, f"ci-review-{attempt}", "claude-opus-5",
-            )
-            if review.get("approved") is not True or review.get("findings"):
-                raise ValueError(json.dumps(review))
-            validate(root, config, state, attempt + 10)
-            command(["git", "add", "--", *config["paths"], *config.get("generated", [])], cwd=root)
-            command(["git", "commit", "-m", "Resolve the automatic CI review findings"], cwd=root)
-            head = command(["git", "rev-parse", "HEAD"], cwd=root).strip()
-            pending = {"repo": repo, "pr": pr, "head": head, "branch": branch, "stage": "push"}
-            write_json(transaction, pending)
-            push_reviewed(root, pending, state)
+
     raise RuntimeError("Will retry automatically from the saved PR: " + findings[-6000:])
 
 

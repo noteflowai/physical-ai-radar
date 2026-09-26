@@ -353,6 +353,30 @@ def reconcile_superseded(item: dict) -> dict | None:
             "workflows": runs, "public_readback": pages}
 
 
+def retry_pr_checks(item: dict, file: Path, error: Exception) -> bool:
+    """Retry an old failed PR once; do not let it poison unrelated scheduled jobs."""
+    if "pr" not in item or "CI failed or was cancelled" not in str(error):
+        return False
+    current = json.loads(file.read_text())
+    if item.get("resume_pr_rerun_attempted"):
+        write_json(file, {**current, "status": "abandoned",
+                          "error": "Recorded PR checks still failed after one automatic rerun: " + str(error)})
+        return True
+    runs = json.loads(gh(item["repo"], "run", "list", "--commit", item["head"], "--limit", "30",
+                        "--json", "databaseId,status,conclusion"))
+    failed = [r for r in runs if r["status"] == "completed"
+              and r["conclusion"] in {"failure", "cancelled", "timed_out"}]
+    if not failed:
+        write_json(file, {**current, "status": "abandoned",
+                          "error": "No rerunnable workflow owns the failed PR checks: " + str(error)})
+        return True
+    for run in failed[:3]:
+        gh(item["repo"], "run", "rerun", str(run["databaseId"]), "--failed")
+    write_json(file, {**current, "resume_pr_rerun_attempted": True,
+                      "status": "retry-needed"})
+    return False
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     subs = parser.add_subparsers(dest="action", required=True)
@@ -403,7 +427,7 @@ def main() -> None:
                     finish_commit(item["repo"], item["commit"], item["workflow_names"],
                                   item["urls"], file)
             except Exception as error:
-                if not isinstance(error, PublicationAbandoned):
+                if not isinstance(error, PublicationAbandoned) and not retry_pr_checks(item, file, error):
                     failures.append({"file": str(file), "error": str(error)})
         if failures:
             raise RuntimeError(json.dumps(failures))

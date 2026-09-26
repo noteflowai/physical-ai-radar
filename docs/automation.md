@@ -46,7 +46,9 @@ Opus 5 review. The model names recorded are the explicit CLI selections; the
 provider does not independently attest an underlying model identity here.
 The controller rejects unsupported agent/model selection and malformed output.
 Validation or review findings return to the author for up to two corrections.
-CI failures get an infrastructure retry and a separately reviewed correction.
+CI failures get an infrastructure retry and up to two separately reviewed corrections.
+An old failed Radar PR gets one check rerun before its receipt is retired, so it
+cannot make unrelated scheduled jobs fail forever.
 Pending publication transactions survive the process and the calendar day.
 The reviewed commit is saved before pushing or creating its PR. Receipts are
 replaced atomically; a matching remote branch name alone is never an approval.
