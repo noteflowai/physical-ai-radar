@@ -335,6 +335,16 @@ class RepeatMemoryTest(unittest.TestCase):
         self.assertEqual(stored["2026-09-18"]["urls"], ["https://example.org/yesterday"])
         self.assertEqual(stored["2026-09-01"]["count"], 3, "counts must survive pruning")
 
+    def test_url_key_keeps_the_query_that_names_the_page(self) -> None:
+        self.assertNotEqual(url_key("https://example.org/news.php?id=12"),
+                            url_key("https://example.org/news.php?id=13"))
+        self.assertEqual(url_key("https://example.org/news.php?id=12&utm_medium=rss&fbclid=x"),
+                         url_key("https://example.org/news.php?id=12"))
+        self.assertEqual(url_key("https://example.org/p?b=2&a=1"), url_key("https://example.org/p?a=1&b=2"))
+        for url in ("https://example.org/p?b=2&a=1&utm_source=x", "http://arxiv.org/abs/2609.01234v2?context=cs"):
+            with self.subTest(url=url):
+                self.assertEqual(url_key(url_key(url)), url_key(url), "stored keys are fed back through it")
+
     def test_url_key_normalises_tracking_and_slashes(self) -> None:
         self.assertEqual(url_key("https://Example.org/Post/?utm_source=x"),
                          url_key("https://Example.org/Post"))
