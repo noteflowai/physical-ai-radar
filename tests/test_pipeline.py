@@ -145,6 +145,54 @@ class DistillTest(unittest.TestCase):
         lane, _ = classify("egocentric human video data scaling for pretraining", self.config)
         self.assertEqual(lane, "data")
 
+    def test_published_items_land_in_the_lane_they_are_about(self) -> None:
+        # Titles as published, bodies paraphrased down to the words that decided the
+        # lane. The first four were misfiled: "onboard" read a cyborg insect as edge
+        # inference, a "proof-of-concept demonstration" as teleoperation data, and a
+        # VLA tie sent post-training to foundation.
+        cases = [
+            ("Cyborg Roaches Can Stab You With Needles",
+             "A cockroach carrying onboard electronics and a spring-loaded needle; researchers "
+             "build cyborg insects as a shortcut around hard problems in robotics, and one day a "
+             "medical device for disaster victims out of reach of safety crews.",
+             "hardware"),
+            ("This Robot Will Draw Your Blood Now",
+             "A medical robotics firm's autonomous blood-draw device won authorization; a "
+             "proof-of-concept demonstration points to automated testing. Like any medical device "
+             "it must meet the standard, with compliance checked by regulators.",
+             "hardware"),
+            ("Towards High-DoF Dexterous Manipulation through VLA Post-Training",
+             "Adapting a VLA to a dexterous task.", "training"),
+            ("rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference",
+             "Reusing cached actions cuts VLA latency on the factory floor.", "edge"),
+            ("GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies",
+             "Adaptive action chunk lengths for diffusion policy rollouts.", "foundation"),
+            ("Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
+             "A world action model for contact-rich control.", "foundation"),
+            ("StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation",
+             "Hierarchical planning over a skill library with a learned stage monitor.", "systems"),
+            ("MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collection",
+             "Teleoperation in VR produces a dataset of human demonstrations.", "data"),
+            ("Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video",
+             "A robot foundation model learns long-horizon tasks on production lines from a single "
+             "video demonstration.", "data"),
+            ("How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
+             "GPU simulation with MuJoCo Warp.", "simeval"),
+            ("The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
+             "A spherical robot with its actuators and battery inside a rolling shell.", "hardware"),
+        ]
+        for title, body, expected in cases:
+            with self.subTest(title=title):
+                self.assertEqual(classify(f"{title}. {body}", self.config)[0], expected)
+
+    def test_ambiguous_words_no_longer_pick_a_lane(self) -> None:
+        # Each was a lane keyword and meant something else as often as not.
+        for text in ("a text encoder for multilingual retrieval", "a demonstration at the trade show",
+                     "an industry standard connector", "mechanical compliance in the wrist",
+                     "coding agents with a memory you own", "a price advantage over rivals"):
+            with self.subTest(text=text):
+                self.assertEqual(classify(text, self.config)[1], 0, text)
+
     def test_signals_detected(self) -> None:
         signals = detect_signals(
             "Closed-loop success rate on a real robot, code open-source on github.com, 40 ms latency",
@@ -660,6 +708,13 @@ class LaneEvidenceTest(unittest.TestCase):
         self.assertEqual(len(ranking), len(self.config.lanes))
         self.assertEqual(ranking[0][0], "edge")
         self.assertGreaterEqual(ranking[0][2], ranking[1][2])
+
+    def test_the_report_names_the_lane_the_classifier_chose(self) -> None:
+        # Ties included: the report used to break them alphabetically.
+        for text in ("VLA post-training", "long-horizon agentic dataset", "a world model benchmark",
+                     "VLA with episodic memory", "a sourdough recipe"):
+            with self.subTest(text=text):
+                self.assertEqual(lanes.ranked_lanes(text, self.config)[0][0], classify(text, self.config)[0])
 
     def test_a_well_matched_item_is_not_flagged(self) -> None:
         item = make_item(title="On-device inference latency and control frequency",

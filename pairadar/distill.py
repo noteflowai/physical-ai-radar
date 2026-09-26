@@ -151,17 +151,22 @@ def anchor_hits(text: str, taxonomy: dict[str, Any]) -> int:
 def classify(text: str, config: Config) -> tuple[str, int]:
     """Return (lane_id, hit_count) for the best matching lane.
 
+    On a tie any lane with hits beats `foundation`: nearly every robot-learning paper
+    names the VLA or world model it builds on, so one that also names what it does
+    with it -- "Dexterous Manipulation through VLA Post-Training" -- belongs to that
+    lane. Other ties go to the earlier lane.
+
     A text that matches no keyword at all still returns a lane, so callers that
     need topical evidence have to look at the hit count -- `select` does.
     """
     best_lane = "foundation"
-    best_score = -1.0
+    best_key = (-1.0, False)
     best_hits = 0
     for lane in config.lanes:
         hits = lane_hits(text, lane)
-        score = hits * float(lane.get("weight", 1.0))
-        if score > best_score:
-            best_lane, best_score, best_hits = lane["id"], score, hits
+        key = (hits * float(lane.get("weight", 1.0)), hits > 0 and lane["id"] != "foundation")
+        if key > best_key:
+            best_lane, best_key, best_hits = lane["id"], key, hits
     return best_lane, best_hits
 
 

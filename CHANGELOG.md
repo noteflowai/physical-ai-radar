@@ -50,6 +50,15 @@ The site:
 
 Fixes that change what gets published:
 
+- Fewer items in the wrong lane. Six keywords that meant something else as often
+  as not are now phrases: `encoder` (a text encoder was filed as hardware),
+  `demonstration` (a "proof-of-concept demonstration" as teleoperation data),
+  `standard`, `compliance`, `memory` and `advantage`. Hardware gained soft,
+  micro-, cyborg and medical robots; edge gained model-inference phrases. On a
+  tie, a lane that names what a paper does beats `foundation`, the VLA it builds
+  on: "Dexterous Manipulation through VLA Post-Training" is a training paper.
+  `python3 -m pairadar.lanes` breaks ties the same way; it used to break them
+  alphabetically and could name a lane the classifier had not chosen.
 - Two links that differ only in their query (`news.php?id=12`, `?id=13`) are two
   items again; only tracking parameters (`utm_*`, `fbclid`, `oc`, ...) are ignored.
   Every article of such a site used to count as one, so all but the first were dropped.
