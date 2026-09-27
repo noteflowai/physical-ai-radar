@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:ja</id>
   <title>Physical AI フロンティア・レーダー</title>
   <subtitle>フィジカルAIの最前線を毎日更新：8つの軸、三言語の要約、追跡可能な根拠。</subtitle>
-  <updated>2026-09-26T23:40:00Z</updated>
+  <updated>2026-09-27T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/ja/" />
   <author>
@@ -11,6 +11,74 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:tri:590f68cd1f2a</id>
+    <title>Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison</title>
+    <link rel="alternate" href="http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html" />
+    <published>2026-09-27T23:40:00Z</published>
+    <updated>2026-09-27T23:40:00Z</updated>
+    <author>
+      <name>Toyota Research Institute</name>
+    </author>
+    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Toyota Research Institute · 2026-09-09&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 70% · 50%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 実機実験あり&lt;/p&gt;
+&lt;blockquote&gt;Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html"&gt;2026-09-28 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:tri:99c546fad695</id>
+    <title>Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning</title>
+    <link rel="alternate" href="http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html" />
+    <published>2026-09-27T23:40:00Z</published>
+    <updated>2026-09-27T23:40:00Z</updated>
+    <author>
+      <name>Toyota Research Institute</name>
+    </author>
+    <category term="data" label="データエンジン（収集 / 精査 / スケーリング）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Toyota Research Institute · 2026-09-09&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり&lt;/p&gt;
+&lt;blockquote&gt;Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html"&gt;2026-09-28 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:tri:4f371475c192</id>
+    <title>TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation</title>
+    <link rel="alternate" href="http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html" />
+    <published>2026-09-27T23:40:00Z</published>
+    <updated>2026-09-27T23:40:00Z</updated>
+    <author>
+      <name>Toyota Research Institute</name>
+    </author>
+    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Toyota Research Institute · 2026-09-09&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり&lt;/p&gt;
+&lt;blockquote&gt;Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html"&gt;2026-09-28 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:35bf01689383</id>
+    <title>ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html" />
+    <published>2026-09-27T23:40:00Z</published>
+    <updated>2026-09-27T23:40:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
+    <category term="M" label="[M]" />
+    <summary type="text">ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: MONOist (ITmedia) · 2026-09-27&lt;/p&gt;
+&lt;blockquote&gt;ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.ja.html"&gt;2026-09-28 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.28838</id>
     <title>Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy</title>

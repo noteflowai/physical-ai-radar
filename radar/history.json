@@ -141,6 +141,21 @@
       "fallback": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "count": 4,
+      "lanes": 3,
+      "urls": [
+        "https://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
+        "https://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
+        "https://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
+        "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html"
+      ],
+      "failed": [],
+      "fallback": [
+        "arxiv"
+      ]
     }
   ]
 }

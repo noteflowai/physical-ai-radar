@@ -13,13 +13,13 @@
 </style>
 <rect class="plate" width="720" height="132"/>
 <text x="20" y="30" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" class="ink">Source mix (picks, last 7 days)</text>
-<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-09-26 23:40 UTC</text>
-<rect x="20.0" y="70" width="297.5" height="22" fill="#7300e5" fill-opacity="0.85"/>
-<text x="168.8" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">O 21 · 44%</text>
-<rect x="317.5" y="70" width="198.3" height="22" fill="#41b1e8" fill-opacity="0.85"/>
-<text x="416.7" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R 14 · 29%</text>
-<rect x="515.8" y="70" width="184.2" height="22" fill="#eb003b" fill-opacity="0.85"/>
-<text x="607.9" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">M 13 · 27%</text>
+<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-09-27 23:40 UTC</text>
+<rect x="20.0" y="70" width="216.4" height="22" fill="#7300e5" fill-opacity="0.85"/>
+<text x="128.2" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">O 14 · 32%</text>
+<rect x="236.4" y="70" width="262.7" height="22" fill="#41b1e8" fill-opacity="0.85"/>
+<text x="367.7" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R 17 · 39%</text>
+<rect x="499.1" y="70" width="200.9" height="22" fill="#eb003b" fill-opacity="0.85"/>
+<text x="599.5" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">M 13 · 30%</text>
 <rect x="20" y="105" width="10" height="10" rx="2" fill="#7300e5"/>
 <text x="35" y="114" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#5f6b7a">O = official (first-party)</text>
 <rect x="240" y="105" width="10" height="10" rx="2" fill="#41b1e8"/>

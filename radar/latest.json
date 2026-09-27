@@ -1,167 +1,98 @@
 {
-  "date": "2026-09-27",
-  "generated": "2026-09-26 23:40 UTC",
-  "window": "papers 2026-09-23 → 2026-09-27 · posts 2026-08-28 → 2026-09-27 (UTC)",
+  "date": "2026-09-28",
+  "generated": "2026-09-27 23:40 UTC",
+  "window": "papers 2026-09-24 → 2026-09-28 · posts 2026-08-29 → 2026-09-28 (UTC)",
   "window_detail": {
-    "day": "2026-09-27",
-    "papers_from": "2026-09-23",
-    "posts_from": "2026-08-28",
+    "day": "2026-09-28",
+    "papers_from": "2026-09-24",
+    "posts_from": "2026-08-29",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2609.28838",
-      "title": "Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy",
-      "url": "https://arxiv.org/abs/2609.28838",
-      "publisher": "arXiv 2609.28838",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-26",
-      "lane": "training",
-      "score": 3.45,
-      "numbers": [
-        "96.02%"
-      ],
-      "signals": [
-        "numbers",
-        "open_release"
-      ],
-      "summary": "Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the aggregate still looks healthy. We study this failure mode, which we call task collapse, under a matched small-compute budget on LIBERO-10 with a 450M-parameter SmolVLA policy trained by PPO with stochastic (SDE) sampling. Three exploration-noise policies differ in one live variable: a fixed noise scale, a ReinFlow-style learned noise network, and an uncertainty-gated controller that redistributes exploration across task streams from task-agnostic novelty and competence signals, without task labels or episode boundaries. Under the pooled definition, fixed noise collapses tasks in two of three seeds and learned noise in every seed measured to iteration 200, while the controller collapses none in any of its three seeds. Measured parameter displacement shows the controller's action expert keeps changing, while its mean applied noise is close to the fixed scale in the available logs. The matched comparison supports the controller's effect on task preservation; the separate contributions of its adaptation across states and over time are not disentangled. A lower fixed scale slows the decline but does not stop it. No arm improves on the behavior-cloning baseline in this budget. Two properties of that regime are measured beside this result, not offered as its cause: following the reference recipe, training runs in bfloat16 with no fp32 master copy, under which 96.02% of the action expert's elements stay bit-identical across three consecutive iterations, and an fp32 master copy at the reference learning rate collapses both arms in a single-seed observation. We release tools measuring per-task collapse under four definitions, rescoring noise and instrument tares."
-    },
-    {
-      "id": "arxiv:2609.29029",
-      "title": "Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge",
-      "url": "https://arxiv.org/abs/2609.29029",
-      "publisher": "arXiv 2609.29029",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-26",
-      "lane": "edge",
-      "score": 3.26,
-      "numbers": [
-        "78%",
-        "69%",
-        "45%",
-        "73%"
-      ],
-      "signals": [
-        "numbers",
-        "latency"
-      ],
-      "summary": "Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive. We identify answer-invariant token redundancy (AITR): image tiles and vision tokens that can be removed without changing the final answer. We present Rift, a two-stage system that performs query-conditioned tile pruning followed by elastic prefill to reduce token budget. We evaluate it on LLaVA-1.5 7B running on Jetson AGX Orin. Compared with exhaustive tiled inference, Rift reduces energy by 78% and latency by 69%, while increasing accuracy from 45% to 73%."
-    },
-    {
-      "id": "arxiv:2609.29382",
-      "title": "Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs",
-      "url": "https://arxiv.org/abs/2609.29382",
-      "publisher": "arXiv 2609.29382",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-26",
-      "lane": "foundation",
-      "score": 3.25,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous robot actions. While these models exhibit impressive capabilities, due to their very high number of parameters, their computational requirements are often prohibitive for robotics control. To mitigate these inefficiencies, existing methods predominantly skip VLM backbone layers with early exits or reduce denoising steps, while leaving action expert depth untouched. We propose a framework that exposes backbone depth $V$, action expert depth $A$, and denoising steps $D$ as three jointly configurable compute axes in a VLA. Starting from a pretrained VLA, we attach lightweight Exit Transformers (ET) at intermediate depths in both the backbone and the action expert, trained to distil the last layer of the policy into each exit. Furthermore, we introduce a KV Cache synthesis mechanism that manages the missing keys and values of the skipped backbone layers, allowing the action expert to exit deeper than the backbone. Finally, we show that the optimal compute budget is task-dependent, with different tasks benefiting from different axes and depths. Notably, our method does not require training the original policy from scratch, and for each exit, it increases the number of parameters by only $2.1\\%$ for SmolVLA and $4.1\\%$ for $\\pi_{0.5}$. We validate our approach across two flow-matching VLAs (SmolVLA, $\\pi_{0.5}$) and two benchmarks (LIBERO, Meta-World), revealing complementary effects: $V$ and $A$ respectively reduce FLOPs and latency, while $D$ improves both. Our joint configurations $(V,A,D)$ reduce latency by $79.2\\%$ and computation (FLOPs) by $31.8\\%$, while improving mean success rate by $5.6\\%$."
-    },
-    {
-      "id": "arxiv:2609.29000",
-      "title": "Learning from Mixed-Quality Deployment Experience for Robot Manipulation",
-      "url": "https://arxiv.org/abs/2609.29000",
-      "publisher": "arXiv 2609.29000",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-26",
-      "lane": "training",
-      "score": 2.25,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures. Although these rollouts provide valuable information for further learning, directly incorporating them into imitation learning may reinforce undesirable behaviors, while offline reinforcement learning often suffers from unreliable value estimation under sparse rewards and limited data coverage. We consider a practical post-deployment setting where learning relies only on naturally accumulated autonomous rollouts, without additional human corrections or exploratory interaction. To effectively exploit such experience, we propose Predictive Action Chunk Learning (PACL). PACL first learns a predictive chunk-level critic that evaluates temporally extended action sequences and augments temporal difference learning with future latent prediction, providing richer supervision for long-horizon value estimation. The learned critic then converts chunk-level Q-values into discrete quality conditions, which guide a diffusion actor to learn jointly from these mixed-quality experiences without treating all behaviors as equivalent supervision. At inference, the actor generates multiple action chunks and the critic selects the highest valued candidate. Experiments across simulated and real-world robot manipulation tasks show that PACL consistently improves the pretrained policy and outperforms strong imitation learning and offline reinforcement learning baselines."
-    },
-    {
-      "id": "tri:9f86ce04a323",
-      "title": "AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis",
-      "url": "http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis",
+      "id": "tri:590f68cd1f2a",
+      "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
+      "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
       "publisher": "Toyota Research Institute",
       "source_id": "tri",
       "evidence": "R",
       "published": "2026-09-09",
       "lane": "simeval",
-      "score": 2.205,
+      "score": 1.82,
       "numbers": [
-        "36.4%"
+        "70%",
+        "50%"
       ],
       "signals": [
         "numbers",
         "real_robot"
       ],
-      "summary": "The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps. While generative models present an attractive solution, existing methods often alter only visual appearances without creating new behaviors, or suffer from embodiment inconsistencies that yield implausible motions. To address these limitations, we introduce AnchorDream, an embodiment-aware world model that repurposes pretrained video diffusion models for robot data synthesis. AnchorDream conditions the diffusion process on robot motion renderings, anchoring the embodiment to prevent hallucination while synthesizing objects and environments consistent with the robot's kinematics. Starting from only a handful of human teleoperation demonstrations, our method scales them into large, diverse, high-quality datasets without requiring explicit environment modeling. Experiments show that the generated data leads to consistent improvements in downstream policy learning, with relative gains of 36.4% in simulator benchmarks and nearly double performance in real-world studies. These results suggest that grounding generative world models in robot motion provides a practical path toward scaling imitation learning. Image Jul 6, 2026 Robotics Read More 1 Minute Read"
+      "summary": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts. This strong resource constraint in real-world testing necessitates both more informative performance measures and reliable and efficient evaluation procedures to properly assess model capabilities and benchmark progress in the field. This work presents a novel framework for robot policy comparison that is sample-efficient, statistically rigorous, and applicable to a broad set of evaluation metrics used in practice. Based on safe, anytime-valid inference (SAVI), our test procedure is sequential, allowing the evaluator to stop early when sufficient statistical evidence has accumulated to reach a decision at a pre-specified level of confidence. Unlike previous work developed for binary success, our unified approach addresses a wide range of informative metrics: from discrete partial credit task progress to continuous measures of episodic reward or trajectory smoothness, spanning both parametric and nonparametric comparison problems. Through extensive validation on simulated and real-world evaluation data, we demonstrate up to 70% reduction in evaluation burden compared to standard batch methods and up to 50% reduction compared to state-of-the-art sequential procedures designed for binary outcomes, with no loss of statistical rigor. Notably, our empirical results show that competing policies can be separated more quickly when using fine-grained task progress than binary success metrics. Image Mar 13, 2026 Robotics Read More 1 Minute Read"
     },
     {
-      "id": "arxiv:2609.29092",
-      "title": "DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models",
-      "url": "https://arxiv.org/abs/2609.29092",
-      "publisher": "arXiv 2609.29092",
-      "source_id": "arxiv",
+      "id": "tri:99c546fad695",
+      "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
+      "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
+      "publisher": "Toyota Research Institute",
+      "source_id": "tri",
       "evidence": "R",
-      "published": "2026-09-26",
-      "lane": "hardware",
-      "score": 2.147,
+      "published": "2026-09-09",
+      "lane": "data",
+      "score": 1.485,
       "numbers": [],
-      "signals": [],
-      "summary": "Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment. However, filter parameters are rarely disclosed, hindering reproducibility, and performance degrades substantially when depth noise is left unaddressed. Building noise robustness directly into the learning pipeline would eliminate this dependency. While such robustness has been explored for proprioceptive inputs, analogous approaches for depth perception remain largely absent in legged locomotion. We propose DAWN (Denoising and Alignment in World models for Noise-robustness), a noise-robust perception framework for legged locomotion, which builds noise robustness directly into a world model via two modifications: (1) feeding noisy depth to the encoder while keeping clean depth as the reconstruction target, forcing the model to implicitly denoise its input; and (2) applying contrastive learning to align the latent states of noisy and clean depth. Importantly, DAWN is not tied to a specific noise model, requiring no manual tuning to the noise distribution at deployment. Furthermore, it incurs no additional inference cost over existing world model-based methods. Without any manual filter calibration -- relying solely on the learned noise-robust representation -- DAWN achieves zero-shot quadruped parkour on a Unitree Go1: traversing stairs up to 18 cm, clearing gaps up to 70 cm, and mounting steps up to 45 cm from raw depth observations. Ablation studies show that denoising and contrastive alignment contribute at complementary levels -- reconstruction and representation, respectively -- and yield additive gains when combined. Videos and code are available at: https://dawn-parkour.github.io/"
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations. However, it remains limited by its reliance on high-quality, task-specific data, restricting adaptability to the diverse range of real-world object configurations and scenarios. In contrast, non-expert data — such as play data, suboptimal demonstrations, partial task completions, or rollouts from suboptimal policies — can offer broader coverage and lower collection costs. However, conventional imitation learning approaches fail to utilize this data effectively. To address these challenges, we posit that with right design decisions, offline reinforcement learning can be used as a tool to harness non-expert data to enhance the performance of imitation learning policies. We show that while standard offline RL approaches can be ineffective at actually leveraging non-expert data under the sparse data coverage settings typically encountered in the real world, simple algorithmic modifications can allow for the utilization of this data, without significant additional assumptions. Our approach shows that broadening the support of the policy distribution can allow imitation algorithms augmented by offline RL to solve tasks robustly, showing considerably enhanced recovery and generalization behavior. In manipulation tasks, these innovations significantly increase the range of initial conditions where learned policies are successful when non-expert data is incorporated. Moreover, we show that these methods are able to leverage all collected data, including partial or suboptimal demonstrations, to bolster task-directed policy performance. This underscores the importance of algorithmic techniques for using non-expert data for robust policy learning in robotics. Image Oct 25, 2025 Robotics Read More 1 Minute Read"
     },
     {
-      "id": "leiphone:535783e51445",
-      "title": "SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人",
-      "url": "https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-09-24",
+      "id": "tri:4f371475c192",
+      "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
+      "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
+      "publisher": "Toyota Research Institute",
+      "source_id": "tri",
+      "evidence": "R",
+      "published": "2026-09-09",
       "lane": "simeval",
-      "score": 1.22,
+      "score": 1.135,
       "numbers": [],
-      "signals": [],
-      "summary": "机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。 没有成熟数据集，没有标准Benchmark，甚至没有一条被验证能走通的技术路线。 穆尧南下港大读博，开始研究具身智能。 2021年，穆尧进入HKUMMLab，成为该实验室创始人罗平教授和中国人工智能奠基人之一的汤晓鸥教授共同指导的学生。 “具身智能会是一个非常 Promising 的方向。”刚入组时导师们的这句话，穆尧一直记到今天。 四年后，这个方向的潜力，开始在穆尧自己的研究中得到印证。 穆尧主导的RoboTwin，成了中国具身智能圈的事实标准之一，GitHub斩获超过 2900 颗星，蚂蚁集团的LingBot-VA、生数科技的Motubrain都抢着在这个基准上刷新成绩。他本人入选国家级青年人才计划，成为上海交通大学长聘教轨助理教授，谷歌学术引用超过 5000 次。 2026年，穆尧做了一个更激进的选择：押注“具身自我进化”，创办SeeAct AI观行智能。他给出一个相当明确的判断： “具身的终局一定会迈向奖励驱动的自我进化。” 这个判断，和他2018年在清华读硕士时坚持的东西一脉相承。 那一年，自动驾驶行业还在把感知、规划、控制拆开做，穆尧坚持端到端Policy和奖励驱动。 后来，特斯拉FSD把整个行业收敛到了端到端，再也没人问他这是不是主流方案。 穆尧把这种坚持归结为一个词：taste。 这里我们理解不仅是技术品味，更是洞察技术发展的科学直觉。 那么穆尧为什么会有这样的直觉？ …"
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break. This setting breaks common implicit assumptions in many learning-based manipulation pipelines: arm configuration tightly couples motion and contact forces, contact state is partially observed under occlusion, and purely learned rollouts can become physically inconsistent under distribution shift because many multi-link contact configurations are sparsely represented in the data. To address this, we propose TACTIC (Tactile and Vision Conditioned Contact-Centric Control), a receding-horizon controller for whole-arm manipulation. TACTIC uses a contact-centric hybrid predictive model that combines RGB-D, distributed tactile sensing, and a compact 2D proximity representation. The model couples a learned, action-conditioned latent dynamics model with analytical kinematics through contact Jacobians, enabling rollouts of future contact configurations and interaction forces. TACTIC integrates these rollouts into a sampling-based MPC planner with contact-aware action sampling: contact Jacobian-based projections steer sampled action sequences toward force-modulating directions, and objectives defined over predicted proximity and interaction forces trade task progress against whole-arm force regulation. We evaluate TACTIC in simulation against state-of-the-art model-based and model-free methods, and perform ablations that isolate the contribution of each design choice. Across experiments, TACTIC consistently outperforms other methods. We further demonstrate real-world performance on a robot with distributed tactile sensing across three whole-arm manipulation tasks that require multi-contact trajectories: turning over and repositioning a manikin, and goal-reaching in a …"
     },
     {
-      "id": "leiphone:a587843bbfa0",
-      "title": "这次云栖，斑马智能亮出了从汽车到具身智能的入场券",
-      "url": "https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "monoist:35bf01689383",
+      "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-09-24",
+      "published": "2026-09-27",
       "lane": "hardware",
-      "score": 1.115,
+      "score": 1.032,
       "numbers": [],
       "signals": [],
-      "summary": "周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。它没有等你开口，先推荐了一个游玩地点 —— 郊外那家亲子农场，因为它知道你女儿喜欢大自然。 AI 系统又想起你上周在车里念叨过 “ 好久没吃江浙菜了 ” ，于是在沿途标记出一家评分最高的江浙菜馆。 你只回了一句话： “ 就按这个来。 ” 没有打开 App ，没有搜索，没有比价，甚至没有一句完整的指令。 在斑马智能的叙事里，这就是 “ 主动智能 ” 真正 落地之后，最普通的一个傍晚。你不再需要把需求翻译成搜索词、点击项，机器直接读懂了你的意图，替你完成任务。 而这样的傍晚，不过是具身智能这场更大变局的一角。人形机器人学会走路，机械臂学会抓取，四足机器狗学会翻越障碍 —— 各路玩家正在技术与场景上全面突破，都在回答同一个问题：机器，什么时候真正走进人的生活。 在 2 026 年云栖大会首日，阿里巴巴集团 CEO吴泳铭表示， “机器正在成为思考的主力，‘思考’将像工业革命中的‘动力’一样，成为规模化供给的商品。未来机器思考总量将是人类的1000倍，而今天这一比例不到3%，至少还有几万倍的增长空间。” 车，正是具身智能里最大、最成熟的那个场景。而斑马智能，是那个从车切入、 让车学会思考、且 正把验证过的能力向多端硬件拓展的典型案例。 01 车，是具身智能的最大的中试场 过去两年，具身智能成了创投圈最热的词，技术上的好消息几乎每个月都有。新的算法、新的模型、新的样机，在实验室里一路狂奔。 但技术突破，不等于 在真实商业场景 …"
+      "summary": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。"
     }
   ],
   "lane_counts": {
     "foundation": 2,
     "data": 4,
-    "training": 7,
-    "simeval": 11,
-    "edge": 8,
+    "training": 6,
+    "simeval": 12,
+    "edge": 6,
     "safety": 1,
-    "systems": 7,
+    "systems": 5,
     "hardware": 8
   },
   "evidence_mix": {
-    "O": 21,
-    "R": 14,
+    "O": 14,
+    "R": 17,
     "M": 13
   },
   "fetch": {
-    "items": 663,
+    "items": 433,
     "attempted": 11,
     "answered": 11,
     "failed": [],
@@ -169,7 +100,6 @@
       "arxiv"
     ],
     "per_source": {
-      "arxiv": 230,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

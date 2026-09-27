@@ -60,37 +60,29 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-27
+### Today's radar · 2026-09-28
 
-`Generated: 2026-09-26 23:40 UTC` ｜ `Window: papers 2026-09-23 → 2026-09-27 · posts 2026-08-28 → 2026-09-27 · no repeats within 30 days (UTC)`
+`Generated: 2026-09-27 23:40 UTC` ｜ `Window: papers 2026-09-24 → 2026-09-28 · posts 2026-08-29 → 2026-09-28 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy](https://arxiv.org/abs/2609.28838)**<br>`96.02%`<br><sub>Training & self-improvement · arXiv 2609.28838 · 2026‑09‑26</sub> |
-| 02<br>🔵&nbsp;`R` | **[Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge](https://arxiv.org/abs/2609.29029)**<br>`78%`&nbsp; `69%`&nbsp; `45%`<br><sub>Edge & real-time · arXiv 2609.29029 · 2026‑09‑26</sub> |
-| 03<br>🔵&nbsp;`R` | **[Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs](https://arxiv.org/abs/2609.29382)**<br><sub>Foundation models · arXiv 2609.29382 · 2026‑09‑26</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning from Mixed-Quality Deployment Experience for Robot Manipulation](https://arxiv.org/abs/2609.29000)**<br><sub>Training & self-improvement · arXiv 2609.29000 · 2026‑09‑26</sub> |
-| 05<br>🔵&nbsp;`R` | **[AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis](http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis)**<br>`36.4%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
-| 06<br>🔵&nbsp;`R` | **[DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models](https://arxiv.org/abs/2609.29092)**<br><sub>Embodiment & supply chain · arXiv 2609.29092 · 2026‑09‑26</sub> |
-| 07<br>🟡&nbsp;`M` | **[SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人](https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑09‑24</sub> |
-| 08<br>🟡&nbsp;`M` | **[这次云栖，斑马智能亮出了从汽车到具身智能的入场券](https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑24</sub> |
+| 01<br>🔵&nbsp;`R` | **[Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison](http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison)**<br>`70%`&nbsp; `50%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning](http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning)**<br><sub>Data engine · Toyota Research Institute · 2026‑09‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation](http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
+| 04<br>🟡&nbsp;`M` | **[ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験](https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑09‑27</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–04</summary>
 
-1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — `AI draft` Anyone planning to keep fine-tuning a deployed flow-matching VLA online should monitor per-task competence, which the authors say continued updates often destroy; the page's lone figure lacks its metric, but open code is flagged, so the self-reported claim can be checked.
-2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — `AI draft` Teams running VLMs on-device over high-resolution imagery may not need exhaustive tiled inference: the authors report 78% less energy and 69% lower latency with accuracy up from 45% to 73%, but on satellite queries, with nothing here on robot cameras or control loops.
-3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — `AI draft` For teams budgeting compute on a flow-matching VLA built from a VLM backbone plus action expert, per-task compute allocation may become a tuning knob; closed-loop and latency results are flagged, but with no figures on this page the trade-off cannot yet be sized.
-4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — `AI draft` If you log deployment runs, this preprint argues partial progress and failures are training material rather than data to filter out; real-robot experiments are flagged, but the page shows no figures, so the size of the gain remains unverified here.
-5. **AnchorDream** — `AI draft` Where demonstration collection is the bottleneck, video-diffusion data synthesis is worth a trial, but the only figure shown is a 36.4% relative gain in simulator benchmarks; real-robot experiments are flagged without numbers here, so don't cut teleoperation budgets yet.
-6. **DAWN** — `AI draft` Quadruped teams whose vision-based gaits assume clean depth in training and hand-tuned filters at deployment should watch this; the page shows no figures or real-robot signal, so it is not yet grounds for replacing an existing filter pipeline.
-7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — `AI draft` An interview whose core claim is that robots lack experience rather than data; useful as one framing when setting data strategy, but as secondary opinion with no figures it should not by itself shift collection spending.
-8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — `AI draft` A secondary report of Zebra positioning its automotive AI for embodied intelligence; the visible excerpt describes only an in-car assistant scene, with no robot product, price or delivery to plan sourcing around.
+1. **Beyond Binary Success** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **TACTIC** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-09-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W39.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-09-28.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

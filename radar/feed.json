@@ -13,6 +13,152 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:590f68cd1f2a",
+      "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
+      "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Key numbers</b>: 70% · 50%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nKey numbers: 70% · 50%\nSignals: quantitative results · real-robot experiments\n\nGeneralist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
+      "summary": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.",
+      "date_published": "2026-09-27T23:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-28",
+        "id": "tri:590f68cd1f2a",
+        "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
+        "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-27T23:40:00Z",
+        "numbers": [
+          "70%",
+          "50%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:99c546fad695",
+      "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
+      "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nSignals: real-robot experiments\n\nImitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
+      "summary": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.",
+      "date_published": "2026-09-27T23:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-28",
+        "id": "tri:99c546fad695",
+        "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
+        "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-27T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:4f371475c192",
+      "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
+      "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nSignals: real-robot experiments\n\nWhole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
+      "summary": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.",
+      "date_published": "2026-09-27T23:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-28",
+        "id": "tri:4f371475c192",
+        "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
+        "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-27T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:monoist:35bf01689383",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
+      "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: MONOist (ITmedia) · 2026-09-27</p>\n<blockquote>ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: MONOist (ITmedia) · 2026-09-27\n\nダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
+      "summary": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。",
+      "date_published": "2026-09-27T23:40:00Z",
+      "authors": [
+        {
+          "name": "MONOist (ITmedia)"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-28",
+        "id": "monoist:35bf01689383",
+        "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
+        "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
+        "publisher": "MONOist (ITmedia)",
+        "source_id": "monoist",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-27",
+        "radar_published": "2026-09-27T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.28838",
       "url": "https://arxiv.org/abs/2609.28838",
       "title": "Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy",

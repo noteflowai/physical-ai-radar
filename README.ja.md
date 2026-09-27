@@ -60,37 +60,29 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-27
+### 本日のレーダー · 2026-09-28
 
-`生成時刻: 2026-09-26 23:40 UTC` ｜ `対象期間: 論文 2026-09-23 → 2026-09-27 · ブログ・報道 2026-08-28 → 2026-09-27 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-27 23:40 UTC` ｜ `対象期間: 論文 2026-09-24 → 2026-09-28 · ブログ・報道 2026-08-29 → 2026-09-28 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy](https://arxiv.org/abs/2609.28838)**<br>`96.02%`<br><sub>学習と自己改善 · arXiv 2609.28838 · 2026‑09‑26</sub> |
-| 02<br>🔵&nbsp;`R` | **[Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge](https://arxiv.org/abs/2609.29029)**<br>`78%`&nbsp; `69%`&nbsp; `45%`<br><sub>エッジとリアルタイム · arXiv 2609.29029 · 2026‑09‑26</sub> |
-| 03<br>🔵&nbsp;`R` | **[Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs](https://arxiv.org/abs/2609.29382)**<br><sub>基盤モデル · arXiv 2609.29382 · 2026‑09‑26</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning from Mixed-Quality Deployment Experience for Robot Manipulation](https://arxiv.org/abs/2609.29000)**<br><sub>学習と自己改善 · arXiv 2609.29000 · 2026‑09‑26</sub> |
-| 05<br>🔵&nbsp;`R` | **[AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis](http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis)**<br>`36.4%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 06<br>🔵&nbsp;`R` | **[DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models](https://arxiv.org/abs/2609.29092)**<br><sub>ハードウェアとサプライチェーン · arXiv 2609.29092 · 2026‑09‑26</sub> |
-| 07<br>🟡&nbsp;`M` | **[SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人](https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑09‑24</sub> |
-| 08<br>🟡&nbsp;`M` | **[这次云栖，斑马智能亮出了从汽车到具身智能的入场券](https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑24</sub> |
+| 01<br>🔵&nbsp;`R` | **[Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison](http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison)**<br>`70%`&nbsp; `50%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning](http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning)**<br><sub>データエンジン · Toyota Research Institute · 2026‑09‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation](http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 04<br>🟡&nbsp;`M` | **[ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験](https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑09‑27</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–04</summary>
 
-1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — `AI 下書き` 展開済みのフローマッチング VLA をオンライン RL で追加学習し続けるなら、更新でタスク単位の能力が失われるという著者指摘の失敗を監視対象にすべき。96.02% は指標が本ページで不明な自己申告値だが、コード公開の表示があり検証可能。
-2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — `AI 下書き` 高解像度画像にエッジで VLM をかける場合、全タイル推論は不要かもしれない。著者はエネルギー 78% 減、遅延 69% 減、精度 45%→73% を自己申告するが、対象は衛星画像の質問応答で、ロボットの制御ループへの転用は本ページでは示されていない。
-3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — `AI 下書き` VLM バックボーンとアクションエキスパートからなるフローマッチング VLA の計算予算を組むなら、タスク別の計算配分は調整項目になり得る。閉ループ成功率と遅延の結果ありとされるが、本ページに数値がなく、得失の大きさはまだ判断できない。
-4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — `AI 下書き` 運用ログを取っているなら、成功例だけに絞らず部分的な進捗や失敗も学習材料として残す価値があるという主張。実機実験ありとされるが本ページに定量結果はなく、効果の大きさは原文で確認が必要。
-5. **AnchorDream** — `AI 下書き` デモ収集コストが律速なら、動画拡散によるデータ合成は試す価値がある。ただし本ページの数値はシミュレータベンチマークでの相対改善 36.4% のみで、実機実験は数値なし。遠隔操作の予算を削る判断はまだ早い。
-6. **DAWN** — `AI 下書き` 学習時はクリーンな深度、運用時は手調整の後処理フィルタに頼る四脚の視覚歩行を使っているなら注目に値する。ただし本ページに数値も実機のシグナルもなく、既存のフィルタ処理を置き換える根拠にはまだならない。
-7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — `AI 下書き` ロボットに欠けているのはデータではなく経験だ、という主張のインタビュー記事。データ戦略を考える際の一つの視点にはなるが、二次報道の意見で数値もなく、収集投資を変える根拠にはならない。
-8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — `AI 下書き` 斑馬智能が車載 AI から具身知能へ進出するという二次報道。本ページの抜粋は車内アシスタントの場面のみで、ロボット製品・価格・出荷の情報はなく、調達判断の材料にはならない。
+1. **Beyond Binary Success** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **TACTIC** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-09-27.ja.md)** · [週間まとめ ›](radar/weekly/2026-W39.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-09-28.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
