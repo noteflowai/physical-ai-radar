@@ -48,13 +48,19 @@ def previous_deferral(task_dir: Path, day: str) -> dict:
     Legacy runs did not save candidates in active.json. Their model receipts are
     read only as proposal data, never as an approval or permission to execute.
     """
+    if not task_dir.exists():
+        return {}
     for state in sorted((p for p in task_dir.iterdir() if p.is_dir()), reverse=True)[:30]:
-        terminal_path, retired_path = state / "terminal.json", state / "retired-task.json"
-        if not terminal_path.exists() or not retired_path.exists():
+        terminal_path = next((p for p in [state / "complete.json", state / "terminal.json"]
+                              if p.exists()), None)
+        if terminal_path is None:
             continue
+        retired_path = state / "retired-task.json"
         terminal = json.loads(terminal_path.read_text())
         if terminal.get("status") != "deferred" or terminal.get("completed_on", day) >= day:
-            continue
+            return {}
+        if not retired_path.exists():
+            return {}
         task = json.loads(retired_path.read_text())
         if task.get("phase") != "plan" or task.get("attempts") or task.get("plan"):
             return {}

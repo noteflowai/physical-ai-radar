@@ -21,7 +21,6 @@ def deferral_details(task: dict, day: str) -> dict:
     return {
         "failed_phase": phase, "planning_attempts": planning,
         "implementation_attempts": implementation, "phase_attempts": count,
-        "reason_code": phase + "-budget-exhausted",
         "last_feedback": task.get("feedback"),
         "retry_after": (date.fromisoformat(day) + timedelta(days=1)).isoformat(),
     }

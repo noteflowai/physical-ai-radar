@@ -29,14 +29,16 @@ def report(state: Path, day: str, *, metrics: bool = True) -> dict:
                 item = json.loads(path.read_text())
                 outcome = {"day": current, "status": item["status"],
                            "feature_id": item.get("feature_id"), "error": item.get("error"),
-                           "reason": item.get("reason")}
+                           "reason": item.get("reason"), "reason_code": item.get("reason_code")}
                 if item["status"] == "deferred":
                     retired = state / "tasks" / name / str(item.get("feature_id")) / "retired-task.json"
                     if retired.exists():
                         outcome.update(deferral_details(json.loads(retired.read_text()), current))
                         # Legacy receipts called planning exhaustion implementation failure.
-                        outcome["reason"] = (f"{outcome['failed_phase']} budget exhausted; "
-                                             "no verified feature release.")
+                        if (outcome["failed_phase"] == "plan" and outcome["planning_attempts"] >= 9
+                                and str(item.get("reason", "")).startswith("Nine implementation attempts failed")):
+                            outcome["reason"] = "Planning budget exhausted; no implementation or verified release."
+                            outcome["reason_code"] = "plan-budget-exhausted"
                 outcomes.append(outcome)
         active = state / "tasks" / name / "active.json"
         item = json.loads(active.read_text()) if active.exists() else {}

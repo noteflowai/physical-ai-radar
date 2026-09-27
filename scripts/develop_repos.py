@@ -652,7 +652,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
 
 
 def retire(task: dict, state: Path, active: Path, service_state: Path,
-           name: str, day: str, reason: str) -> dict:
+           name: str, day: str, reason: str, *, reason_code: str | None = None) -> dict:
     if task.get("pr"):
         record = json.loads(gh(task["repo"], "pr", "view", str(task["pr"]),
                                "--json", "state,headRefOid"))
@@ -662,6 +662,8 @@ def retire(task: dict, state: Path, active: Path, service_state: Path,
               "reason": reason, "completed_on": day,
               **deferral_details(task, day),
               "publication_state": read_json(state / "publication.json", {})}
+    if reason_code:
+        result["reason_code"] = reason_code
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
     write_json(service_state / day / name / "result.json", result)
@@ -718,11 +720,13 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             or task["phase"] == "implement" and task["attempts"] >= 9):
         return retire(task, state, active, service_state, name, day,
                       f"Nine {task['phase']} attempts failed; retained diagnostics, no feature released. "
-                      "A smaller independently reviewed plan may be selected next day.")
+                      "A smaller independently reviewed plan may be selected next day.",
+                      reason_code=task["phase"] + "-budget-exhausted")
     if task["phase"] != "release" and task.get("phase_attempts", {}).get(task["phase"], 0) >= 9:
         return retire(task, state, active, service_state, name, day,
                       "Nine resumptions of the same phase did not complete. "
-                      "Retained the source/publication state and diagnostics; no successful release claimed.")
+                      "Retained the source/publication state and diagnostics; no successful release claimed.",
+                      reason_code=task["phase"] + "-budget-exhausted")
     if task["phase"] in {"validate", "acceptance-review", "push", "ci", "release"}:
         if plan_only:
             return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
@@ -823,6 +827,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             try:
                 task["planning_attempts"] = task.get("planning_attempts", 0) + 1
                 plan_attempt = task["planning_attempts"]
+                correction = correction_context(task)
                 write_json(active, task)
                 for inspection in range(6):
                     instruction = prompt
@@ -831,7 +836,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                                         'one feature plan grounded in the source already inspected; '
                                         'do not request further files in this round.\n')
                     candidate_plan = ask(bounded_prompt(
-                                         instruction, {"correction": correction_context(task)}, ctx),
+                                         instruction, {"correction": correction}, ctx),
                                          state, f"plan-{plan_attempt}-read-{inspection}")
                     if not candidate_plan.get("need_files"):
                         remember_candidate(task, candidate_plan, ctx.get("inspected_files", {}), main)
@@ -902,7 +907,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'Report all currently identifiable blockers together, with concrete '
                     'affected behavior and minimal corrections within this scope. '
                     'Return {"approved":true|false,"findings":[]}.\n',
-                    {"plan": candidate_plan, "correction": correction_context(task)}, ctx),
+                    {"plan": candidate_plan, "correction": correction}, ctx),
                     state, f"plan-review-{plan_attempt}", review=True)
                 require_review(review)
                 task["plan"] = candidate_plan
@@ -917,7 +922,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             if task.get("planning_attempts", 0) >= 9:
                 return retire(task, state, active, service_state, name, day,
                               "Nine planning attempts failed; no implementation or release. "
-                              "Retained proposal and review findings for a smaller next-day plan.")
+                              "Retained proposal and review findings for a smaller next-day plan.",
+                              reason_code="plan-budget-exhausted")
             raise RuntimeError("Feature planning needs correction: " + task["feedback"])
         task["phase"] = "implement"
         write_json(active, task)

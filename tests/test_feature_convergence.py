@@ -74,6 +74,7 @@ class PlanningRestartTests(unittest.TestCase):
         failure = self.active.parent / "fixture/plan-1-failure.json"
         original_failure = failure.read_bytes()
         seen = []
+        revised = {**self.plan, "behavior": self.plan["behavior"] + " Empty input is rejected."}
 
         def resumed(prompt, state, label, *, review=False):
             payload = json.loads(prompt.rsplit("\n", 1)[1])
@@ -82,9 +83,11 @@ class PlanningRestartTests(unittest.TestCase):
             self.assertIn("empty input", payload["correction"]["recent_findings"][0]["feedback"])
             self.assertIn("src/records.py", payload["context"]["inspected_files"])
             if review:
+                self.assertEqual(payload["plan"]["behavior"], revised["behavior"])
+                self.assertNotEqual(payload["plan"], payload["correction"]["previous_candidate"])
                 return {"approved": True, "findings": []}
             self.assertEqual(payload["correction"]["mode"], "narrow")
-            return copy.deepcopy(self.plan)
+            return copy.deepcopy(revised)
 
         with patch.object(developer, "ask", side_effect=resumed):
             self.assertEqual(self.run_feature()["status"], "planned")
@@ -104,6 +107,7 @@ class PlanningRestartTests(unittest.TestCase):
         self.assertEqual(result["planning_attempts"], 9)
         self.assertEqual(result["implementation_attempts"], 0)
         self.assertEqual(result["retry_after"], "2026-09-29")
+        self.assertEqual(result["reason_code"], "plan-budget-exhausted")
         self.assertFalse(self.active.exists())
 
     def test_approved_ninth_plan_does_not_exhaust_implementation_budget(self):
@@ -131,6 +135,44 @@ class PlanningRestartTests(unittest.TestCase):
                    {"id": "2026-09-27-old", "phase": "implement", "attempts": 9, "plan": self.plan})
         self.assertEqual(previous_deferral(self.active.parent, "2026-09-28"), {})
 
+    def test_newer_publication_or_same_day_terminal_does_not_revive_old_deferral(self):
+        older = self.active.parent / "2026-09-26-old"
+        write_json(older / "terminal.json", {"status": "deferred", "completed_on": "2026-09-26"})
+        write_json(older / "retired-task.json",
+                   {"id": "old", "phase": "plan", "attempts": 0, "planning_attempts": 9})
+        newer = self.active.parent / "2026-09-27-new"
+        write_json(newer / "complete.json", {"status": "published", "completed_on": "2026-09-27"})
+        self.assertEqual(previous_deferral(self.active.parent, "2026-09-28"), {})
+        (newer / "complete.json").unlink()
+        write_json(newer / "terminal.json", {"status": "deferred", "completed_on": "2026-09-28"})
+        self.assertEqual(previous_deferral(self.active.parent, "2026-09-28"), {})
+
+    def test_task_creation_recovers_legacy_plan_and_first_ever_run_starts_cleanly(self):
+        self.active.unlink()
+        directory = self.active.parent / "2026-09-27-old"
+        write_json(directory / "terminal.json", {"status": "deferred", "completed_on": "2026-09-27"})
+        write_json(directory / "retired-task.json",
+                   {"id": "2026-09-27-old", "phase": "plan", "attempts": 0,
+                    "planning_attempts": 9, "feedback": "Check duplicates"})
+        write_json(directory / "plan-2-read-0.json", {"result": self.plan})
+        with patch.object(developer, "ask", side_effect=KeyboardInterrupt("created")):
+            with self.assertRaises(KeyboardInterrupt):
+                self.run_feature()
+        task = json.loads(self.active.read_text())
+        self.assertEqual(task["recovery_of"], "2026-09-27-old")
+        self.assertEqual(task["planning_attempts"], 1)
+        self.assertEqual(task["attempts"], 0)
+        self.assertNotEqual(task["id"], "2026-09-27-old")
+        self.assertEqual(task["planning"]["candidate"], self.plan)
+        fresh_state = self.root / "first-ever"
+        with patch.object(developer, "ask", side_effect=KeyboardInterrupt("created")):
+            with self.assertRaises(KeyboardInterrupt):
+                developer.develop("evalarc", {}, self.root / "workspace",
+                                  fresh_state, "2026-09-28", plan_only=True)
+        task = json.loads((fresh_state / "tasks/evalarc/active.json").read_text())
+        self.assertNotIn("recovery_of", task)
+        self.assertEqual(task["planning_attempts"], 1)
+
     def test_report_recovers_actual_phase_from_legacy_retirement(self):
         write_json(self.state / "2026-09-27/evalarc/result.json",
                    {"status": "deferred", "feature_id": "old", "reason": "Nine implementation attempts failed"})
@@ -140,8 +182,18 @@ class PlanningRestartTests(unittest.TestCase):
         row = next(x for x in data["projects"] if x["repo"] == "evalarc")["outcomes"][0]
         self.assertEqual(row["failed_phase"], "plan")
         self.assertEqual(row["implementation_attempts"], 0)
-        self.assertNotIn("implementation", row["reason"])
+        self.assertNotIn("Nine implementation", row["reason"])
         self.assertEqual(row["last_feedback"], "Unknown labels")
+
+    def test_report_preserves_non_budget_deferral_reason(self):
+        write_json(self.state / "2026-09-27/evalarc/result.json",
+                   {"status": "deferred", "feature_id": "old", "reason": "Maintainer cancelled proposal"})
+        write_json(self.active.parent / "old/retired-task.json",
+                   {"phase": "implement", "attempts": 1})
+        data = report(self.state, "2026-09-27", metrics=False)
+        row = next(x for x in data["projects"] if x["repo"] == "evalarc")["outcomes"][0]
+        self.assertEqual(row["reason"], "Maintainer cancelled proposal")
+        self.assertIsNone(row["reason_code"])
 
 
 class TerminalOutcomeTests(unittest.TestCase):
