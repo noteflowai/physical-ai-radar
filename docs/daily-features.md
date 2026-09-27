@@ -80,7 +80,7 @@ The model cannot change environment protection rules or its own preflight checks
 9. Publish its versioned release and verify installable package bytes from the public
    registry. Only then count the feature as complete and enqueue its announcement.
 
-Every author and reviewer requests **Claude Fable 5.1** (`claude-fable-5.1`) with
+Every author and reviewer requests **Claude Opus 5.5** (`claude-opus-5.5`) with
 `high` effort, as pinned centrally in `scripts/agent_model.py`. Daily notes, source
 repairs and their reviewers use the same policy. A failed call stays with this model
 on controller retry or catch-up; no other model is substituted. Review independence
