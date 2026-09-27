@@ -80,6 +80,11 @@ Docker containers. Candidate containers have no network, host home, Docker socke
 GitHub token, AWS credentials or access to a user's working checkout. They run as
 the ordinary user with dropped capabilities, process/memory/CPU limits and explicit
 timeout cleanup. Only a private result directory is mounted writable.
+Source inspection supports tracked product directory searches and read-only build
+metadata. Bounded notes preserve verified source facts when old excerpts are evicted.
+Author JSON uses a fenced code block because the CLI's Markdown renderer otherwise
+alters literal code characters such as PHP comment asterisks. Independent approval
+responses retain strict object parsing.
 
 Dependency preparation uses the already published base commit. Each project's
 prepared image is cached by base commit and setup policy, and its image ID is recorded.

@@ -137,6 +137,8 @@ class FeaturePolicyTests(unittest.TestCase):
         for text in ['{"edits": []}\n{"edits": []}', '{"broken":\n{"edits": []}', 'no object']:
             with self.assertRaises(ValueError):
                 parse_feature_object(text)
+        self.assertEqual(parse_feature_object('> json\n{"value":"/**\\n * sample\\n */"}\n'),
+                         {"value": "/**\n * sample\n */"})
 
     def test_path_only_source_request_and_missing_file_are_supported(self):
         with tempfile.TemporaryDirectory() as tmp:

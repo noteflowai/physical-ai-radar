@@ -100,6 +100,12 @@ unresolved blocking problems. Do not include praise, optional advice or generic
 future implementation reminders. Never approve a proposal while listing blockers.
 """
 
+AUTHOR_SYSTEM = SYSTEM.replace(
+    "Return exactly the requested JSON, without Markdown fences or other prose.",
+    "Return exactly the requested JSON inside one fenced ```json code block, with no other prose. "
+    "The terminal preserves literal code characters only inside this code block. "
+    "Use valid JSON escapes for newlines and quotes inside code strings.")
+
 
 def matches(path: str, prefixes: list[str]) -> bool:
     return any(path.startswith(p) if p.endswith("/") else path == p for p in prefixes)

@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 try:
     from .agent_pipeline import command, finish, gh, reconcile_superseded, write_json
-    from .feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
+    from .feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from .feature_runtime import GPU_IMAGE, archive, execute, image_for
     from .feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from .improve_repos import model_json, snapshot, verify_public_browser
@@ -28,7 +28,7 @@ try:
     from .nightly_batch import execute as execute_stage
 except ImportError:
     from agent_pipeline import command, finish, gh, reconcile_superseded, write_json
-    from feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
+    from feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from feature_runtime import GPU_IMAGE, archive, execute, image_for
     from feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from improve_repos import model_json, snapshot, verify_public_browser
@@ -54,7 +54,8 @@ def record_allowance(result: dict, service_state: Path, name: str) -> None:
 def ask(prompt: str, state: Path, label: str, *, review: bool = False) -> dict:
     options = {} if review else {"object_parser": parse_feature_object}
     return model_json(prompt, state, label,
-                      "claude-opus-5" if review else "claude-sonnet-5", system=SYSTEM, **options)
+                      "claude-opus-5" if review else "claude-sonnet-5",
+                      system=SYSTEM if review else AUTHOR_SYSTEM, **options)
 
 
 def parse_feature_object(text: str) -> dict:
@@ -159,6 +160,16 @@ def requested_context(root: Path, request, config: dict, max_bytes: int = 24000)
     if len(text.encode()) > max_bytes:
         text = "<single source line exceeds the excerpt budget>"
     return f"{path} [lines {start}-{end}]", text
+
+
+def inspect_source(root: Path, request, config: dict, max_bytes: int = 24000) -> tuple[str, str]:
+    """A malformed read request is tool feedback, not a discarded feature attempt."""
+    try:
+        return requested_context(root, request, config, max_bytes)
+    except (ValueError, FileNotFoundError, UnicodeDecodeError) as error:
+        return ("read_error " + json.dumps(request, ensure_ascii=False)[:200],
+                f"{error}. Use a plain relative path and separate search/start_line/end_line "
+                "fields; displayed labels such as [lines 1-100] are not file paths.")
 
 
 def checkout(workspace: Path, name: str) -> Path:
@@ -683,12 +694,15 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     gh(repo, "pr", "close", str(task["pr"]), "--delete-branch")
                 # Same feature, fresh validation and independent review on the correction.
                 task["phase"] = "implement"
+                task.pop("source_notes", None)
                 task["base"] = main
                 task["branch"] += "-r" + str(task["attempts"])
             write_json(active, task)
             raise
     command(["git", "checkout", "-B", task["branch"], main], cwd=root)
     reset(root, main)
+    if task["base"] != main:
+        task.pop("source_notes", None)
     task["base"] = main
     ctx = context(root, name, inputs, config)
     if "plan" not in task:
@@ -738,7 +752,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         raise ValueError("Source inspection requests must be a list")
                     inspected = ctx.setdefault("inspected_files", {})
                     for request in requests[:6]:
-                        key, value = requested_context(root, request, config, max_bytes=10000)
+                        key, value = inspect_source(root, request, config, max_bytes=10000)
                         inspected[key] = value
                     while sum(len(s.encode()) for s in inspected.values()) > 45000:
                         inspected.pop(next(iter(inspected)))
@@ -771,7 +785,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 for request in ranges:
                     remaining = max(1000, 45000 - sum(
                         len(s.encode()) for s in ctx["inspected_files"].values()))
-                    key, value = requested_context(root, request, config, max_bytes=min(24000, remaining))
+                    key, value = inspect_source(root, request, config, max_bytes=min(24000, remaining))
                     ctx["inspected_files"][key] = value
                 if sum(len(s.encode()) for s in ctx["inspected_files"].values()) > 60000:
                     ctx.pop("inspected_files")
@@ -801,8 +815,14 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": plan}
     files = bounded_files(root, plan["read_paths"], 50000)
     for request in plan.get("inspect_ranges", []):
-        key, value = requested_context(root, request, config)
+        key, value = inspect_source(root, request, config)
         files[key] = value
+    release_context = {}
+    if name == "ai-chat-for-amazon-bedrock":
+        for path in [SLUG + ".php", "readme.txt"]:
+            key, value = requested_context(
+                root, {"path": path, "start_line": 1, "end_line": 100}, config, max_bytes=10000)
+            release_context[key] = value
     for attempt in range(min(3, 9 - task["attempts"])):
         task["attempts"] += 1
         attempt_dir = state / f"attempt-{task['attempts']}"
@@ -820,25 +840,55 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'for a new file","new":"replacement or full new file"}]}. '
                 'If essential context is missing, return {"need_files":["relative paths",'
                 '{"path":"relative path","start_line":1,"end_line":200},'
-                '{"path":"relative path","search":"literal symbol"}]} instead. '
+                '{"path":"relative path","search":"literal symbol"}],'
+                '"source_notes":"compact consolidated facts and edit anchors learned so far"} instead. '
+                'Update source_notes so verified facts survive eviction of old excerpts; '
+                'do not re-read facts already established in those notes. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
             for read_round in range(8):
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
+                           "release_context": release_context,
+                           "source_notes": task.get("source_notes", ""),
                            "feedback": task.get("feedback", "")[-10000:]}
+                instruction = prompt + (
+                    f"Source inspection round {read_round + 1} of 8. Use files already supplied; "
+                    "do not request them again. Large-file indexes require a literal function "
+                    "search or a focused line range.\n")
+                if read_round == 7:
+                    instruction += "The inspection budget is exhausted. Return complete edits now, not need_files.\n"
                 overhead = len(json.dumps({**payload, "files": {}}, ensure_ascii=False).encode())
-                fit_context(files, 100000 - overhead - len(prompt.encode()))
-                proposal = ask(prompt + json.dumps(payload, ensure_ascii=False),
+                fit_context(files, 100000 - overhead - len(instruction.encode()))
+                proposal = ask(instruction + json.dumps(payload, ensure_ascii=False),
                                attempt_dir, f"author-{read_round}")
+                if isinstance(proposal.get("source_notes"), str):
+                    task["source_notes"] = proposal["source_notes"][:6000]
+                    write_json(active, task)
                 if not proposal.get("need_files"):
                     break
                 requested = proposal["need_files"]
                 if not isinstance(requested, list):
                     raise ValueError("Invalid context request")
                 for request in requested[:10]:
-                    key, value = requested_context(root, request, config, max_bytes=10000)
+                    key, value = inspect_source(root, request, config, max_bytes=10000)
                     path = request if isinstance(request, str) else request["path"]
-                    if key != path:
+                    full = files.get(path, "")
+                    if key != path and full and not full.startswith("<"):
+                        key, value = path, full
+                    if key == path and not value.startswith("<"):
+                        for old_key in list(files):
+                            if old_key.startswith(path + " ["):
+                                files.pop(old_key)
+                    elif key != path:
                         files.pop(path, None)
+                        current_range = re.search(r" \[lines (\d+)-(\d+)\]$", key)
+                        if current_range:
+                            start, end = map(int, current_range.groups())
+                            for old_key in list(files):
+                                old_range = re.search(r" \[lines (\d+)-(\d+)\]$", old_key)
+                                if old_key.startswith(path + " [") and old_range:
+                                    a, b = map(int, old_range.groups())
+                                    if start <= a <= b <= end:
+                                        files.pop(old_key)
                     files.pop(key, None)
                     files[key] = value
                 fit_context(files)
