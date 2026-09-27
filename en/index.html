@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.28838" rel="noopener" target="_blank">Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy</a></h3>
 <p class="figure"><strong>96.02%</strong><span class="context">“under which 96.02% of the action”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Anyone planning to keep fine-tuning a deployed flow-matching VLA online should monitor per-task competence, which the authors say continued updates often destroy; the page&#x27;s lone figure lacks its metric, but open code is flagged, so the self-reported claim can be checked.</p>
 <p class="excerpt">Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…</p>
 <ul class="signals"><li>quantitative results</li><li>open code or weights</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29029" rel="noopener" target="_blank">Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge</a></h3>
 <p class="figure"><strong>78%</strong><span class="context">“Rift reduces energy by 78% and latency by”</span></p><p class="chips"><span class="chip">69%</span><span class="chip">45%</span><span class="chip">73%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Teams running VLMs on-device over high-resolution imagery may not need exhaustive tiled inference: the authors report 78% less energy and 69% lower latency with accuracy up from 45% to 73%, but on satellite queries, with nothing here on robot cameras or control loops.</p>
 <p class="excerpt">Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.</p>
 <ul class="signals"><li>quantitative results</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29382" rel="noopener" target="_blank">Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> For teams budgeting compute on a flow-matching VLA built from a VLM backbone plus action expert, per-task compute allocation may become a tuning knob; closed-loop and latency results are flagged, but with no figures on this page the trade-off cannot yet be sized.</p>
 <p class="excerpt">Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…</p>
 <ul class="signals"><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29000" rel="noopener" target="_blank">Learning from Mixed-Quality Deployment Experience for Robot Manipulation</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> If you log deployment runs, this preprint argues partial progress and failures are training material rather than data to filter out; real-robot experiments are flagged, but the page shows no figures, so the size of the gain remains unverified here.</p>
 <p class="excerpt">Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis" rel="noopener" target="_blank">AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis</a></h3>
 <p class="figure"><strong>36.4%</strong><span class="context">“with relative gains of 36.4% in simulator benchmarks”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Where demonstration collection is the bottleneck, video-diffusion data synthesis is worth a trial, but the only figure shown is a 36.4% relative gain in simulator benchmarks; real-robot experiments are flagged without numbers here, so don&#x27;t cut teleoperation budgets yet.</p>
 <p class="excerpt">The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29092" rel="noopener" target="_blank">DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Quadruped teams whose vision-based gaits assume clean depth in training and hand-tuned filters at deployment should watch this; the page shows no figures or real-robot signal, so it is not yet grounds for replacing an existing filter pipeline.</p>
 <p class="excerpt">Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.</p>
 <footer>
 <span class="source">arXiv 2609.29092 · 2026-09-26</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html" rel="noopener" target="_blank">SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> An interview whose core claim is that robots lack experience rather than data; useful as one framing when setting data strategy, but as secondary opinion with no figures it should not by itself shift collection spending.</p>
 <p class="excerpt">机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html" rel="noopener" target="_blank">这次云栖，斑马智能亮出了从汽车到具身智能的入场券</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> A secondary report of Zebra positioning its automotive AI for embodied intelligence; the visible excerpt describes only an in-car assistant scene, with no robot product, price or delivery to plan sourcing around.</p>
 <p class="excerpt">周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>

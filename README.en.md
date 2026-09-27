@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the gain holds outside the training tasks.
-2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
-5. **AnchorDream** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-6. **DAWN** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
-7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL F…** — `AI draft` Anyone planning to keep fine-tuning a deployed flow-matching VLA online should monitor per-task competence, which the authors say continued updates often destroy; the page's lone figure lacks its metric, but open code is flagged, so the self-reported claim can be checked.
+2. **Exploiting answer-invariant redundancies in satellite imagery for efficient…** — `AI draft` Teams running VLMs on-device over high-resolution imagery may not need exhaustive tiled inference: the authors report 78% less energy and 69% lower latency with accuracy up from 45% to 73%, but on satellite queries, with nothing here on robot cameras or control loops.
+3. **Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matchin…** — `AI draft` For teams budgeting compute on a flow-matching VLA built from a VLM backbone plus action expert, per-task compute allocation may become a tuning knob; closed-loop and latency results are flagged, but with no figures on this page the trade-off cannot yet be sized.
+4. **Learning from Mixed-Quality Deployment Experience for Robot Manipulation** — `AI draft` If you log deployment runs, this preprint argues partial progress and failures are training material rather than data to filter out; real-robot experiments are flagged, but the page shows no figures, so the size of the gain remains unverified here.
+5. **AnchorDream** — `AI draft` Where demonstration collection is the bottleneck, video-diffusion data synthesis is worth a trial, but the only figure shown is a 36.4% relative gain in simulator benchmarks; real-robot experiments are flagged without numbers here, so don't cut teleoperation budgets yet.
+6. **DAWN** — `AI draft` Quadruped teams whose vision-based gaits assume clean depth in training and hand-tuned filters at deployment should watch this; the page shows no figures or real-robot signal, so it is not yet grounds for replacing an existing filter pipeline.
+7. **SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人** — `AI draft` An interview whose core claim is that robots lack experience rather than data; useful as one framing when setting data strategy, but as secondary opinion with no figures it should not by itself shift collection spending.
+8. **这次云栖，斑马智能亮出了从汽车到具身智能的入场券** — `AI draft` A secondary report of Zebra positioning its automotive AI for embodied intelligence; the visible excerpt describes only an in-car assistant scene, with no robot product, price or delivery to plan sourcing around.
 
 </details>
 
