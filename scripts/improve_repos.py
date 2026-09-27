@@ -186,7 +186,8 @@ def snapshot(radar_snapshot: Path | None = None) -> dict:
             "sources": sources, "source_failures": failures}
 
 
-def model_json(prompt: str, state: Path, label: str, model: str, system: str = SYSTEM) -> dict:
+def model_json(prompt: str, state: Path, label: str, model: str, system: str = SYSTEM,
+               object_parser=parse_object) -> dict:
     if len(prompt.encode()) > 110000:
         raise ValueError("Prompt exceeds the bounded noninteractive input size")
     home = state / "agent"
@@ -208,7 +209,7 @@ def model_json(prompt: str, state: Path, label: str, model: str, system: str = S
         try:
             call_agent(["--agent", "repo-maintainer", "--model", selected, "--effort", "high",
                         prompt], output, cwd=home)
-            result = parse_object(output.with_suffix(".log.stdout").read_text())
+            result = object_parser(output.with_suffix(".log.stdout").read_text())
             (state / (label + ".json")).write_text(json.dumps(
                 {"requested_model": selected, "engine": "v1", "prior_failures": failures,
                  "prompt_file": prompt_file.name,

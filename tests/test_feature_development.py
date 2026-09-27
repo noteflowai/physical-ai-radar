@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.develop_repos import apply, checkpoint, complete, develop, require_review, restore, validate_feature, validate_plan
+from scripts.develop_repos import apply, checkpoint, complete, develop, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
 from scripts.feature_policy import PROJECTS, acceptance_command, allowed
 from scripts.feature_runtime import execute
 from scripts.agent_pipeline import REQUIRED_PR_CHECKS, finish
@@ -128,6 +128,23 @@ class FeaturePolicyTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 require_review(result)
         require_review({"approved": True, "findings": []})
+
+    def test_author_cli_narration_does_not_discard_one_valid_object(self):
+        text = '> I need the export handler first.\n> {"need_files":["includes/export.php"]}'
+        self.assertEqual(parse_feature_object(text), {"need_files": ["includes/export.php"]})
+        for text in ['{"edits": []}\n{"edits": []}', '{"broken":\n{"edits": []}', 'no object']:
+            with self.assertRaises(ValueError):
+                parse_feature_object(text)
+
+    def test_path_only_source_request_and_missing_file_are_supported(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "pairadar").mkdir()
+            (root / "pairadar/model.py").write_text("behavior = 1\n")
+            self.assertEqual(requested_context(root, {"path": "pairadar/model.py"}, self.config),
+                             ("pairadar/model.py", "behavior = 1\n"))
+            self.assertEqual(requested_context(root, {"path": "pairadar/missing.py"}, self.config),
+                             ("pairadar/missing.py", "<file does not exist>"))
 
     @patch("scripts.develop_repos.calendar_day", return_value="2026-09-27")
     def test_allowance_persisted_before_active_transaction_is_removed(self, calendar):

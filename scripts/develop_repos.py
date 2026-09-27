@@ -52,8 +52,26 @@ def record_allowance(result: dict, service_state: Path, name: str) -> None:
 
 
 def ask(prompt: str, state: Path, label: str, *, review: bool = False) -> dict:
+    options = {} if review else {"object_parser": parse_feature_object}
     return model_json(prompt, state, label,
-                      "claude-opus-5" if review else "claude-sonnet-5", system=SYSTEM)
+                      "claude-opus-5" if review else "claude-sonnet-5", system=SYSTEM, **options)
+
+
+def parse_feature_object(text: str) -> dict:
+    """Accept one author object after CLI narration; review responses stay strict."""
+    decoder, objects, end = json.JSONDecoder(), [], 0
+    for match in re.finditer(r"(?m)^[ \t]*(?:>[ \t]*)?(\{)", text):
+        start = match.start(1)
+        if start < end:
+            continue
+        value, consumed = decoder.raw_decode(text[start:])
+        end = start + consumed
+        if not isinstance(value, dict):
+            raise ValueError("Feature author must return an object")
+        objects.append(value)
+    if len(objects) != 1:
+        raise ValueError("Feature author must return exactly one unambiguous JSON object")
+    return objects[0]
 
 
 def read_json(path: Path, default=None):
@@ -91,6 +109,8 @@ def requested_context(root: Path, request, config: dict, max_bytes: int = 24000)
         raise ValueError("Context cannot follow symlinks")
     if not file.is_file():
         return path, "<file does not exist>"
+    if not any(k in request for k in ["search", "start_line", "end_line"]):
+        return path, text_file(root, path, max_bytes)
     lines = file.read_text().splitlines()
     if "search" in request:
         query = request["search"]
@@ -173,6 +193,12 @@ def bounded_files(root: Path, paths: list[str], budget: int) -> dict:
         result[path] = value
         budget -= len(value.encode())
     return result
+
+
+def fit_context(files: dict, budget: int = 65000) -> None:
+    """Keep the newest inspected excerpts within the serialized input budget."""
+    while files and len(json.dumps(files, ensure_ascii=False).encode()) > budget:
+        files.pop(next(iter(files)))
 
 
 def validate_plan(plan: dict, config: dict) -> None:
@@ -697,6 +723,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     for required in [SLUG + ".php", "readme.txt"]:
                         if required not in candidate_plan["read_paths"]:
                             candidate_plan["read_paths"].append(required)
+                    candidate_plan["release_requirements"] = (
+                        "This feature also includes the next minor version in the plugin header, "
+                        "constant and readme stable tag, a changelog entry, upgrade notice and usage "
+                        "documentation. These are mandatory parts of implementation and final review.")
                 validate_plan(candidate_plan, config)
                 if (root / candidate_plan["test_path"]).exists():
                     raise ValueError("Choose a NEW behavioral test file; existing regression tests are immutable")
@@ -719,7 +749,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     raise ValueError("Request fewer source ranges; inspected context exceeds its budget")
                 review = ask(
                     'Review this feature plan for ONE complete capability, project fit, compatibility, '
-                    'testability and realistic scope. Return {"approved":true|false,"findings":[]}.\n' +
+                    'testability and realistic scope. The controller adds release_requirements to '
+                    'WordPress plans and always enforces new behavioral tests and product docs. '
+                    'These mandatory deliverables extend the behavioral scope even if its prose '
+                    'focuses on one implementation file; do not reject solely for missing release '
+                    'boilerplate. Actual wiring, documentation quality and release changes are '
+                    'reviewed again in the complete diff. Return {"approved":true|false,"findings":[]}.\n' +
                     json.dumps({"plan": candidate_plan, "context": ctx}, ensure_ascii=False),
                     state, f"plan-review-{plan_attempt}", review=True)
                 require_review(review)
@@ -758,7 +793,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 '{"path":"relative path","start_line":1,"end_line":200},'
                 '{"path":"relative path","search":"literal symbol"}]} instead. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
-            for read_round in range(4):
+            for read_round in range(8):
+                fit_context(files)
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
                            "feedback": task.get("feedback", "")[-10000:]}
                 proposal = ask(prompt + json.dumps(payload, ensure_ascii=False),
@@ -769,10 +805,13 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 if not isinstance(requested, list):
                     raise ValueError("Invalid context request")
                 for request in requested[:10]:
-                    key, value = requested_context(root, request, config)
+                    key, value = requested_context(root, request, config, max_bytes=10000)
+                    path = request if isinstance(request, str) else request["path"]
+                    if key != path:
+                        files.pop(path, None)
+                    files.pop(key, None)
                     files[key] = value
-                if sum(len(t.encode()) for t in files.values()) > 75000:
-                    raise ValueError("Feature context exceeds its review budget; narrow the implementation")
+                fit_context(files)
             changed = apply(root, proposal, config, plan)
             command(["git", "add", "--", *changed], cwd=root)
             diff = command(["git", "diff", "--cached", "--no-ext-diff"], cwd=root)
