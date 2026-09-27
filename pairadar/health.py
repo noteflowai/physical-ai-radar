@@ -11,6 +11,12 @@ A source served by its fallback endpoint (`fallback` in the run log) is reported
 separately and does not count as failing -- readers got the day's papers, and the
 repair job cannot fix an endpoint that refuses this host.
 
+Each struggling source also carries `streak_days`, the consecutive runs it has
+failed counted back from the latest one, and `failing_since`, the date of the oldest
+run in that streak. A feed dark since one date has usually moved or retired; a feed
+that flaps is usually a flaky host or a rate limit. A run on which the source answered
+or was served by its fallback ends the streak.
+
     python3 -m pairadar.health                        # print the verdict
     python3 -m pairadar.health --fail-on-struggling   # exit 1 when one is failing
 
@@ -89,8 +95,34 @@ def struggling(runs: list[dict[str, Any]], reference: date, window: int = WINDOW
     return sorted(ranked, key=lambda pair: (-pair[1], pair[0]))
 
 
+def streak(runs: list[dict[str, Any]], reference: date, window: int,
+           source: str) -> tuple[int, str | None]:
+    """Consecutive runs, counted back from the latest, on which `source` did not answer.
+
+    Returns the length of that streak and the `date` of its oldest run, or (0, None)
+    when the source is not in the latest run's `failed` list. A run that does not
+    list the source under `failed` ends the streak, whether the source answered,
+    was served by its fallback, or was not attempted at all. Runs outside the window
+    are not consulted, so a streak can never reach further back than the window.
+    """
+    observed = _in_window(runs, reference, window)
+    count = 0
+    since: str | None = None
+    for entry in reversed(observed):
+        if source not in entry.get("failed", []):
+            break
+        count += 1
+        since = entry["date"]
+    return count, since
+
+
 def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
            threshold: int = THRESHOLD) -> dict[str, Any]:
+    entries = []
+    for source, days in struggling(runs, reference, window, threshold):
+        streak_days, failing_since = streak(runs, reference, window, source)
+        entries.append({"source": source, "failed_days": days,
+                        "streak_days": streak_days, "failing_since": failing_since})
     return {
         "reference": reference.isoformat(),
         "window_days": window,
@@ -98,8 +130,7 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "runs_with_health": days_observed(runs, reference, window),
         "failures": failures_by_source(runs, reference, window),
         "fallbacks": fallbacks_by_source(runs, reference, window),
-        "struggling": [{"source": source, "failed_days": days}
-                       for source, days in struggling(runs, reference, window, threshold)],
+        "struggling": entries,
     }
 
 

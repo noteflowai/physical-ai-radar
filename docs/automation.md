@@ -89,6 +89,9 @@ Both scripts share the same shape:
    checkout, and never blocked by leftovers from an interrupted run;
 2. a gate before spending anything: notes are skipped if the day already has them,
    repairs are skipped unless `pairadar.health` reports a source over the threshold;
+   each struggling source also carries `streak_days` (consecutive runs it has failed,
+   counted back from the latest run) and `failing_since` (the date of the oldest run
+   in that streak), so a feed dark since one date can be told from one that flaps;
 3. the agent, checked with `kiro-cli agent validate` before the first call, then run
    with granular trust only (`--trust-tools=…`), a write path allowlist, no shell,
    and an explicit `--model`;
