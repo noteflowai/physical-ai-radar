@@ -4,5 +4,12 @@
     <title>NoteFlowAI project releases</title>
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
+    <item>
+      <title>content-gap insight export as CSV for editorial workflow</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.47.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.47.0/</guid>
+      <description>Export ranked content gaps as CSV for editorial planning.</description>
+      <pubDate>Sun, 27 Sep 2026 04:09:46 +0000</pubDate>
+    </item>
   </channel>
 </rss>

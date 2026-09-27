@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "ai-chat-for-amazon-bedrock/1.47.0",
+    "repo": "noteflowai/ai-chat-for-amazon-bedrock",
+    "version": "1.47.0",
+    "commit": "0768fd2a768de62e42db5725fd2a4fa585732181",
+    "feature_id": "2026-09-27-ai-chat-for-amazon-bedrock-004713034098",
+    "pr": 3,
+    "title": "content-gap insight export as CSV for editorial workflow",
+    "summary": "Export ranked content gaps as CSV for editorial planning.",
+    "usage": "WordPress admin \u2192 AI Chat for Amazon Bedrock \u2192 Conversations \u2192 Content gaps \u2192 Download content gaps CSV.",
+    "limitations": "Administrator access is required. Includes up to 15 ranked groups from the last 30 days of retained exchanges; list filters do not apply. Counts cover gap-contributing exchanges, not all answers. An empty report contains only the header. The CSV contains visitor questions.",
+    "upgrade": "Update to 1.47.0 using the WordPress plugin updater or the release ZIP. Back up the site before upgrading; retain the previous plugin package and backup for rollback. Logging and retention settings continue to apply.",
+    "release_url": "https://github.com/noteflowai/ai-chat-for-amazon-bedrock/releases/tag/1.47.0",
+    "source_url": "https://github.com/noteflowai/ai-chat-for-amazon-bedrock/pull/3",
+    "released_at": "2026-09-27T04:09:46.981177+00:00"
+  }
+]
