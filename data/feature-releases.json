@@ -14,5 +14,21 @@
     "release_url": "https://github.com/noteflowai/ai-chat-for-amazon-bedrock/releases/tag/1.47.0",
     "source_url": "https://github.com/noteflowai/ai-chat-for-amazon-bedrock/pull/3",
     "released_at": "2026-09-27T04:09:46.981177+00:00"
+  },
+  {
+    "id": "physical-ai-radar/1.2.0",
+    "repo": "noteflowai/physical-ai-radar",
+    "version": "1.2.0",
+    "commit": "43dc84ff6087162c7ffacde7361c2bdb63c08eb1",
+    "feature_id": "2026-09-27-physical-ai-radar-042813931917",
+    "pr": 64,
+    "title": "report consecutive-failure streak and failing_since date for struggling sources in pairadar.health",
+    "summary": "`python3 -m pairadar.health` now tells the maintainer and the nightly repair gate whether a struggling source has been continuously dark or is flapping. Each entry under `struggling` gains two fields next to the existing `source` and `failed_days`: `streak_days`, the number of consecutive runs (counted back from the latest run that recorded health inside the window) on which the source appears in `failed`, and `failing_since`, the `date` of the oldest run in that streak. A run on which the source answered, was served by its fallback endpoint, or was not attempted ends the streak. A new public helper `health.streak(runs, reference, window, source)` returns `(streak_days, failing_since)` and `(0, None)` when the source did not fail the latest run. All previously emitted keys (`reference`, `window_days`, `threshold_days`, `runs_with_health`, `failures`, `fallbacks`, and `source`/`failed_days` inside `struggling`), the worst-first ranking, the threshold and latest-run rules, and `--fail-on-struggling` exit codes are unchanged. The module docstring and docs/automation.md explain the two fields.",
+    "usage": "python3 -m pairadar.health --date 2026-09-27\n# {\n#   \"reference\": \"2026-09-27\",\n#   \"window_days\": 14,\n#   \"threshold_days\": 3,\n#   \"runs_with_health\": 6,\n#   \"failures\": {\"ieee-spectrum\": 5},\n#   \"fallbacks\": {},\n#   \"struggling\": [\n#     {\"source\": \"ieee-spectrum\", \"failed_days\": 5, \"streak_days\": 5, \"failing_since\": \"2026-09-23\"}\n#   ]\n# }\n\n# From Python:\nfrom datetime import date\nfrom pairadar import health\nruns = health.load_runs()\nprint(health.streak(runs, date(2026, 9, 27), health.WINDOW, \"ieee-spectrum\"))  # (5, '2026-09-23')\n\n# Tests:\npython3 -m unittest tests.test_feature_644be79e9748",
+    "limitations": "Streaks count consecutive runs that recorded health, not calendar days: if the publisher skipped a day, the gap is invisible and the streak continues across it. `failing_since` is bounded by the window, so an outage older than `--window` reports the oldest run inside the window (with `--window 3` a six-day outage shows `streak_days: 3`). Fallback-served runs are not failures and end the streak, matching the existing policy. No new CLI flags; fetch.py, the history.json schema, the repair job's trigger condition and `--fail-on-struggling` semantics are unchanged. Not covered: per-source item counts, feeds that answer but publish nothing, alerting, or the published site. Standard library only, Python 3.9+ as before (`from __future__ import annotations` is already in the module).",
+    "upgrade": "Additive change to pairadar/health.py (one new function, two new fields per struggling entry, one docstring paragraph), one new test file tests/test_feature_644be79e9748.py, and three lines in docs/automation.md. radar/history.json is only read; no data files are rewritten. Upgrade by pulling the commit; consumers that parse the health JSON keep working because no existing key changes name or value. Rollback is `git revert` of the single commit, which removes the two fields, the helper and the test with no data loss.",
+    "release_url": "https://github.com/noteflowai/physical-ai-radar/releases/tag/v1.2.0",
+    "source_url": "https://github.com/noteflowai/physical-ai-radar/pull/64",
+    "released_at": "2026-09-27T04:36:04.237826+00:00"
   }
 ]
