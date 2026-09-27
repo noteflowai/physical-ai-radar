@@ -339,3 +339,31 @@ Prerequisites are Docker with the NVIDIA runtime, the pinned tool/GPU images,
 Kiro CLI, GitHub CLI, SVN with noninteractive publishing credentials, and the
 installed `radar-run` bootstrap. A missing prerequisite is recorded as a failure;
 it cannot produce a successful release receipt.
+# Optional local decision records
+
+When a verified Kev-4B batch runtime is installed, planners receive `local_decisions.available`.
+A plan may include one bounded `decision_probe` only when real recorded decisions support its
+single user feature. Kiro independently reviews the exact probe before the controller runs it.
+Each probe allows four synthetic cases, four questions per case and eight choices/score levels,
+with a 12 KiB total input budget. Choice, Score and Noul use the TypeSafe request shapes.
+
+The controller invokes the pinned local Kev runtime outside candidate containers. It supplies
+only JSON data, with no model-controlled command, URL, path or credential configuration. The
+runtime owns the shared GPU lock and enforces a ten-minute lifetime. GPU contention or probe
+failure retains the approved feature for a retry. The input/runtime hash identifies the receipt:
+a complete validated result is reused across implementation retries rather than rerun.
+An invalid cached receipt is quarantined and collected again. Controller timeouts first
+terminate the client gracefully, then force its process group only if necessary; cleanup
+selects that attempt's unique job label and preserves other sessions and their metadata.
+
+`decision_evidence` supplies original inputs, distributions, actual model and base revision,
+immutable image ID, measured wall/model latency and timestamp to implementation, code review
+and final acceptance review. A response must match every approved input/question and valid
+probability ranges before the controller accepts it. These examples prove execution, not
+held-out accuracy or calibration. Product fixtures must preserve and label that provenance.
+
+Use each repository's specialty: EvalArc imports and evaluates records; Robot Reel links
+decisions to replay and rule comparisons; Skills Anywhere validates portable decision contracts;
+Radar covers source intelligence; WordPress presents grounded reports within its existing
+permissions. Each repository still chooses one actual code gap. The optional probe does not
+force five copies of the same feature or replace existing checks and release gates.
