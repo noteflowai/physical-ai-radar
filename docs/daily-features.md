@@ -82,6 +82,8 @@ the ordinary user with dropped capabilities, process/memory/CPU limits and expli
 timeout cleanup. Only a private result directory is mounted writable.
 Source inspection supports tracked product directory searches and read-only build
 metadata. Bounded notes preserve verified source facts when old excerpts are evicted.
+Each implementation retry discards those notes when resetting to the published base;
+the author receives an explicit snapshot stating that no candidate edits are applied.
 Author JSON uses a fenced code block because the CLI's Markdown renderer otherwise
 alters literal code characters such as PHP comment asterisks. Independent approval
 responses retain strict object parsing.
