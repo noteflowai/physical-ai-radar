@@ -91,11 +91,48 @@ CLI engine v1, run noninteractively, and reject model/agent fallback diagnostics
 Legacy `RADAR_MODELS`, `RADAR_REVIEW_MODELS` and `RADAR_EFFORT` overrides no longer
 change the pinned policy.
 
+## UI and user experience
+
+Interface quality is part of each complete feature. Planning, implementation, code
+review and final acceptance all ask for professional, attractive, distinctive and
+easy-to-use results within the project's established design language. Inspect the
+existing components and styles before choosing the design; WordPress admin controls
+should remain familiar to site administrators.
+
+Use clear hierarchy, deliberate typography and spacing, consistent controls and an
+obvious primary action. Purposeful visualizations and restrained microinteractions
+can make Physical AI evidence easier to understand. Honor reduced-motion preferences
+and keep effects within the feature's performance and dependency budget.
+
+The existing behavior and acceptance fields describe the path from entry to result,
+relevant loading/empty/error/disabled/success states, recovery, responsive behavior
+and accessibility. Use semantic controls, accessible names, keyboard navigation,
+visible focus, readable contrast and comfortable touch targets. Avoid accidental
+horizontal overflow. CLI/API features instead need clear help, output and actionable
+errors; they do not need an artificial graphical interface.
+
+Use the project's existing browser/DOM test infrastructure to exercise changed
+flows at desktop and narrow mobile widths, keyboard operation and relevant failures
+where available. Rendered screenshots support visual review when available.
+The Kiro author/review protocol currently receives text only: it must not claim to
+have viewed an image or operated a browser. Source inspection and unit-test success
+are not visual verification. Missing browser or visual evidence must be stated in
+`delivery.limitations`; this policy does not add a screenshot evaluator or browser
+runtime to projects that lack one.
+
+Reviewers block concrete usability, accessibility, layout and integration defects,
+and reconcile missing planned validation before approval. Subjective taste alone
+is not a blocker. UI polish stays within the day's single complete feature. The
+plan/delivery JSON schema is unchanged, so saved tasks remain resumable.
+
 ## Functional code and execution
 
 The old homepage-only path is replaced by `scripts/develop_repos.py`.
 `scripts/feature_policy.py` defines each product's code, documentation and test
 directories. PHP, Python, JavaScript and TypeScript product code can change.
+Radar's existing `assets/site.css` and `assets/site.js` are also readable and editable
+for functional interface work; other assets and generated landing pages remain
+outside this source edit allowance.
 New tests and GPU experiments can be added. Existing tests, dependencies, CI,
 release gates, credentials and the automation itself are protected from daily edits.
 Those infrastructure changes remain separately reviewed maintenance work.

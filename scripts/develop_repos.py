@@ -604,6 +604,10 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
             'Final independent acceptance review. Verify the final diff implements the one '
             'feature, tests exercise the promised behavior, and measured claims match actual logs. '
             'The red test must fail for missing behavior, not a harness/runner error or a broken test. '
+            'For changed UI, check the planned interaction/presentation criteria against the diff '
+            'and actual logs, including responsive and keyboard behavior where exercised. '
+            'Reject concrete usability/accessibility defects and unsupported visual-verification '
+            'claims; preserve explicit limitations when browser or visual evidence is unavailable. '
             'Return {"approved":true|false,"findings":[]}.\n' + json.dumps(
                 {"plan": task["plan"], "diff": diff, "checks": task["checks"],
                  "delivery": task.get("delivery", {}), "release": task.get("release", {}),
@@ -766,6 +770,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'Acceptance tests belong directly in tests/: test_*.py, *.test.cjs or *.test.ts, '
             'or *.php for WordPress. Include product, existing-test and documentation paths; '
             'WordPress also needs ai-chat-for-amazon-bedrock.php and readme.txt for the version increment. '
+            'If the feature changes UI, inspect its existing styles/components, include them in '
+            'read_paths, and put the user journey, relevant states, responsive/accessibility criteria '
+            'and feasible validation in the existing behavior/acceptance fields. Design polish is '
+            'part of this one capability, not another feature. CLI/API-only work needs no new UI. '
             'Keep each description below 4000 characters and acceptance to at most eight conditions. '
             'Do not choose pure documentation, a broad refactor or multiple independent features.\n'
         )
@@ -834,7 +842,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     raise ValueError("Request fewer source ranges; inspected context exceeds its budget")
                 review = ask(
                     'Review this feature plan for ONE complete capability, project fit, compatibility, '
-                    'testability and realistic scope. The controller adds release_requirements to '
+                    'testability and realistic scope. For UI changes, require a complete user path, '
+                    'professional visual direction consistent with the product, relevant states '
+                    'and feasible interaction/accessibility validation. The controller adds release_requirements to '
                     'WordPress plans and always enforces new behavioral tests and product docs. '
                     'These mandatory deliverables extend the behavioral scope even if its prose '
                     'focuses on one implementation file; do not reject solely for missing release '
@@ -879,6 +889,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             prompt = (
                 'Implement the saved feature completely, with functional code, focused behavioral '
                 'tests in new files and usage docs. Preserve all existing tests unchanged. '
+                'For changed UI, deliver the planned visual polish and complete interactions, '
+                'responsive layout and accessibility together. Use the existing test infrastructure '
+                'for the changed flow and state any unavailable browser/visual checks honestly. '
                 'The behavioral test must fail before the feature and pass '
                 'after it. Do not merely test implementation details. Return '
                 '{"edits":[{"path":"relative path","old":"exact unique existing span or null '
@@ -959,7 +972,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             review = ask(
                 'Review the complete feature diff and acceptance. Reject incomplete wiring, '
                 'multiple unrelated features, weakened checks, compatibility/security regressions, '
-                'unsupported claims and unsafe GPU work. Return {"approved":true|false,"findings":[]}.\n' +
+                'unsupported claims and unsafe GPU work. For UI changes, inspect visual consistency, '
+                'responsive behavior, control wiring, relevant states and accessibility; report '
+                'concrete defects rather than subjective taste. Return {"approved":true|false,"findings":[]}.\n' +
                 json.dumps({"plan": plan, "delivery": delivery, "release": task["release"],
                             "mission": config["mission"], "diff": diff}),
                 attempt_dir, "code-review", review=True)

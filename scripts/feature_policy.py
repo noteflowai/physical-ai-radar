@@ -8,7 +8,7 @@ PROJECTS = {
     "physical-ai-radar": {
         "mission": "Physical AI source intelligence: collection, provenance, freshness, deduplication and useful research discovery.",
         "avoid": "Robot simulation, general chat, agent frameworks, fabricated source claims.",
-        "code": ["pairadar/"],
+        "code": ["pairadar/", "assets/site.css", "assets/site.js"],
         "docs": ["docs/", "README.md", "README.en.md", "README.ja.md"],
         "tests": ["tests/"],
         "test_runners": ["unittest"],
@@ -97,6 +97,31 @@ You may implement functional code, add behavioral tests and run a reviewed GPU e
 Do not invent benchmark results, remove safeguards, weaken tests, or substitute stubs for behavior.
 Do not modify dependencies, CI, release gates, credentials or this automation's controls.
 Small complete features are preferred to cosmetic changes or disconnected framework scaffolding.
+UI/UX quality is part of completing the feature, not a separate redesign project.
+For interface changes, inspect the existing components, styles and neighboring workflows first.
+Aim for a professional, beautiful, distinctive and easy-to-use result: clear information
+hierarchy, deliberate typography/spacing/color, consistent controls and one obvious primary
+action. Reuse the product's design language; WordPress admin features should feel native.
+Use polished visualization and restrained microinteractions when they clarify state or help
+users understand Physical AI evidence. Respect reduced-motion preferences; decoration must
+not obscure content, slow the primary task, add unnecessary dependencies or replace real behavior.
+Design the complete path from entry to successful result, including relevant loading, empty,
+error, disabled and success states, recovery guidance and preservation of user input.
+Use semantic controls, accessible names, keyboard operation, visible focus, readable contrast,
+comfortable touch targets and responsive layouts without accidental horizontal overflow.
+For changed UI, put concrete interaction and presentation criteria in the existing acceptance
+list and explain the entry point and result in usage. Keep the same one-feature scope.
+Use existing browser/DOM test infrastructure where available to exercise the actual changed
+flow at desktop and narrow mobile widths, keyboard navigation and relevant failure states.
+Review rendered screenshots when the runtime provides them; source inspection or passing
+unit tests alone cannot establish that a screen looks good. You receive text only: assess
+only supplied evidence, never pretend to have seen screenshots or operated a browser.
+If visual/browser evidence cannot be produced, record that limitation in delivery.limitations;
+do not claim visual verification or add unrelated tooling. Static checks are useful but distinct.
+Reviewers must identify concrete usability, accessibility, responsive-layout and integration
+defects as blockers, with the affected control/state and evidence; subjective style preferences
+alone are not blockers. Missing planned validation must be corrected or explicitly narrowed
+before approval. CLI/API-only features need clear help, output and actionable errors, not a UI.
 External actions, packaging, checks, GPU execution and publication belong to the controller.
 Final delivery text must describe the actual reviewed implementation with a usable example
 and honest limitations. Release notes and owned-channel announcements derive only from
