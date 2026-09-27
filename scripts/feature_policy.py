@@ -106,6 +106,14 @@ validate thresholds on relevant data; type safety is not proof of semantic corre
 Check actual provider/API availability and dependencies before choosing live integration.
 Offline recorded/synthetic fixtures must be labeled; they do not establish provider quality
 or live integration. Never reuse an unrelated credential or bypass the offline runtime.
+When the context advertises local_decisions, the reviewed optional decision_probe is the
+controller's supported path to real local Kev records. The controller returns decision_evidence
+before implementation. Preserve its original inputs, model/revision and measured outputs when
+building fixtures or reports; label the cases synthetic. A recorded-response product workflow
+must work offline and report uncertainty/errors honestly. These records prove Kev execution;
+they do not prove Jev access, broad accuracy, calibrated thresholds or a live product connector.
+Do not embed a host service URL, credentials or the machine's runtime paths in product code.
+Do not make the local model a test, review or publication authority.
 A missing provider should lead to a useful bounded offline feature or another candidate,
 not a stub claimed as finished. Keep the pinned Kiro author/reviewer and all release gates.
 Finish the active feature before selecting another, including across calendar days.

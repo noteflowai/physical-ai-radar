@@ -28,6 +28,7 @@ try:
     from .feature_updates import enqueue as queue_update
     from .feature_preflight import check_project as publication_preflight
     from .feature_topics import research_context, topic_context
+    from .feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -41,6 +42,7 @@ except ImportError:
     from feature_updates import enqueue as queue_update
     from feature_preflight import check_project as publication_preflight
     from feature_topics import research_context, topic_context
+    from feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -217,6 +219,7 @@ def context(root: Path, name: str, inputs: dict, config: dict) -> dict:
             "recent_commits": command(["git", "log", "-8", "--format=%h %s"], cwd=root),
              "research": research,
              "topic_notes": topic_context(name),
+            "local_decisions": decision_capability(),
             "allowed_code": config["code"], "allowed_docs": config["docs"],
             "test_runners": config["test_runners"],
             "validation_contract": {
@@ -267,6 +270,8 @@ def validate_plan(plan: dict, config: dict) -> None:
         raise ValueError("GPU experiment must be a reviewed Python test in this repository")
     if gpu and not plan.get("gpu_reason"):
         raise ValueError("A GPU experiment needs a reason tied to this feature")
+    if plan.get("decision_probe") is not None:
+        validate_spec(plan["decision_probe"])
 
 
 def validate_delivery(delivery: dict) -> None:
@@ -611,6 +616,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
             'claims; preserve explicit limitations when browser or visual evidence is unavailable. '
             'Return {"approved":true|false,"findings":[]}.\n' + json.dumps(
                 {"plan": task["plan"], "diff": diff, "checks": task["checks"],
+                 "decision_evidence": task.get("decision_evidence"),
                  "delivery": task.get("delivery", {}), "release": task.get("release", {}),
                  "logs": [Path(r["log"]).read_text()[-6000:] for r in task["checks"]]}),
             attempt_dir, "acceptance-review", review=True)
@@ -767,7 +773,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             '"inspect_ranges":[{"path":"optional large source file","start_line":1,"end_line":200}],'
             '"test_path":"tests/a new focused behavioral test file",'
             '"test_runner":"unittest|pytest|vitest|node|php",'
-            '"gpu_test_path":null,"gpu_reason":null,'
+            '"gpu_test_path":null,"gpu_reason":null,"decision_probe":null,'
             '"target_user":"specific user and task","success_metric":"observable success condition",'
             '"usage":"one complete command or UI path","limitations":"non-goals and compatibility",'
             '"upgrade":"upgrade and rollback without data loss"}. GPU is optional when useful. '
@@ -782,6 +788,20 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'part of this one capability, not another feature. CLI/API-only work needs no new UI. '
             'Keep each description below 4000 characters and acceptance to at most eight conditions. '
             'Do not choose pure documentation, a broad refactor or multiple independent features.\n'
+            'When context.local_decisions.available is true and measured local decision records '
+            'are necessary for this feature, decision_probe may be '
+            '{"purpose":"why these examples support the feature",'
+            '"cases":[{"id":"case-id","request":{"model":"kev-latest","state":"synthetic structured/text state",'
+            '"questions":{"question_id":{"type":"choice","instructions":"decision task",'
+            '"criteria":{"option_id":"description"}}}}}]}. Types choice, score and noul are supported; '
+            'score criteria is an ordered list, noul criteria is omitted or false/true descriptions. '
+            'Use 1..4 cases, 1..4 questions per case, 1..8 options, simple alphanumeric/underscore/hyphen '
+            'case/question IDs; each request <=8 KiB and entire probe <=12 KiB. '
+            'The controller runs this approved data in a separate offline Kev session and returns '
+            'recorded inputs, probabilities, version and measured timings before implementation. '
+            'No shell commands, URLs, filesystem paths or credentials configure this execution. '
+            'These synthetic examples are not a held-out quality evaluation. Default to null when '
+            'the feature does not need live records; do not duplicate another repository contribution.\n'
         )
         for plan_attempt in range(min(3, 9 - task.get("planning_attempts", 0))):
             try:
@@ -827,6 +847,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         "documentation. These are mandatory parts of implementation and final review.")
                 candidate_plan["contract_version"] = 2
                 validate_plan(candidate_plan, config)
+                if candidate_plan.get("decision_probe") and not ctx.get("local_decisions", {}).get("available"):
+                    raise ValueError("Local decision probes are unavailable; choose a feasible feature plan")
                 if (root / candidate_plan["test_path"]).exists():
                     raise ValueError("Choose a NEW behavioral test file; existing regression tests are immutable")
                 inspected = bounded_files(root, candidate_plan["read_paths"], 28000)
@@ -858,6 +880,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'reviewed again in the complete diff. For trend-inspired work, check source '
                     'provenance, actual repository gap, baseline, feasible access and distinct '
                     'project ownership; reject name-dropping or invented integration evidence. '
+                    'For decision_probe, review the exact inputs and question/options contract, '
+                    'its necessity for this one feature and truthful synthetic-data scope. '
                     'Return {"approved":true|false,"findings":[]}.\n' +
                     json.dumps({"plan": candidate_plan, "context": ctx}, ensure_ascii=False),
                     state, f"plan-review-{plan_attempt}", review=True)
@@ -874,6 +898,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
     plan = task["plan"]
     if plan_only:
         return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": plan}
+    if plan.get("decision_probe") is not None:
+        task["decision_evidence"] = collect_decisions(plan["decision_probe"], state)
+        write_json(active, task)
     files = bounded_files(root, plan["read_paths"], 50000)
     for request in plan.get("inspect_ranges", []):
         key, value = inspect_source(root, request, config)
@@ -921,6 +948,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
             for read_round in range(8):
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
+                           "decision_evidence": task.get("decision_evidence"),
                            "release_context": release_context,
                            "source_notes": task.get("source_notes", ""),
                            "snapshot": {"commit": main, "applied_candidate_edits": False},
@@ -985,6 +1013,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'responsive behavior, control wiring, relevant states and accessibility; report '
                 'concrete defects rather than subjective taste. Return {"approved":true|false,"findings":[]}.\n' +
                 json.dumps({"plan": plan, "delivery": delivery, "release": task["release"],
+                            "decision_evidence": task.get("decision_evidence"),
                             "mission": config["mission"], "diff": diff}),
                 attempt_dir, "code-review", review=True)
             require_review(review)
