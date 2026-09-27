@@ -123,10 +123,14 @@ class DraftGateTests(unittest.TestCase):
         self.assertIn("FIX_ROUNDS", correction, "corrections must be bounded")
         self.assertIn("${problems}", correction, "the findings are the drafter's next instruction")
 
-    def test_the_reviewer_is_not_the_drafter(self):
+    def test_the_reviewer_uses_a_separate_read_only_agent_and_fresh_call(self):
         review = self.SCRIPT[self.SCRIPT.index('ask_first "$REVIEW"'):]
-        self.assertTrue(review.startswith('ask_first "$REVIEW" "$REVIEW_MODELS" "$DRAFTERS"'),
-                        "a model must not approve its own draft")
+        self.assertTrue(review.startswith('ask_first "$REVIEW" "$REVIEW_MODELS" "" --agent "$REVIEWER"'),
+                        "the pinned model must remain callable through the separate reviewer")
+        call = review[:review.index("; then")]
+        self.assertIn("--trust-tools=read,grep,glob", call)
+        self.assertNotIn("--resume", call)
+        self.assertNotIn("trust-tools=read,grep,glob,write", call)
         self.assertIn("REVIEW_ROUNDS", review, "revisions after a rejection must be bounded")
 
     def test_the_script_records_the_models_that_ran(self):

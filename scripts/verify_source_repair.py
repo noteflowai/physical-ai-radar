@@ -13,9 +13,11 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 try:
+    from .agent_model import MODEL
     from .agent_pipeline import command
     from .improve_repos import model_json
 except ImportError:
+    from agent_model import MODEL
     from agent_pipeline import command
     from improve_repos import model_json
 
@@ -77,7 +79,7 @@ def main():
     after = json.loads(Path("data/sources.json").read_text())
     evidence = verify(before, after, args.source)
     (args.state / "endpoint.json").write_text(json.dumps(evidence, indent=2) + "\n")
-    reviewer = "claude-opus-5" if args.drafter != "claude-opus-5" else "claude-sonnet-5"
+    reviewer = MODEL
     review = model_json(
         "Review this source endpoint replacement. The controller has already fetched public "
         "HTTP(S), parsed RSS/Atom, and confirmed that only this feed URL changed. Check that "

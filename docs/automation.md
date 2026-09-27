@@ -116,26 +116,26 @@ not the agents, run the commands.
 The drafting job treats the model as a colleague whose work is checked, not as a
 single shot that either lands or loses the night:
 
-- **A model that answers.** Every call names its model and falls back down a list
-  (`RADAR_MODELS`, default `claude-fable-5.1 claude-opus-5 claude-sonnet-5`) when one
-  is unavailable. The machine's default model was "temporarily unavailable" on 09-24
-  and 09-25, and both nights were lost. A failed attempt's partial file is rolled back
-  before the next model starts.
+- **The requested model.** Every role uses `claude-fable-5.1` with `high` effort,
+  pinned in `scripts/agent_model.py`. A failed attempt's partial file is rolled back
+  before the controller retries the same model. Legacy `RADAR_MODELS`,
+  `RADAR_REVIEW_MODELS` and `RADAR_EFFORT` settings do not override this policy.
 - **Findings, not tracebacks.** `python3 -m pairadar.notes check DAY` reports, item by
   item, what is wrong: JSON that stops parsing and where, a key that matches no pick,
   a missing language, a figure the page does not contain. Those lines go back to the
   drafter as its next instruction, at most `RADAR_FIX_ROUNDS` (2) times, and the
   suite runs only on a draft the validator accepts.
-- **A second opinion from a different model.** The reviewer takes the first model on
-  `RADAR_REVIEW_MODELS` that wrote no part of the draft. A rejection goes back to the
-  drafter once (`RADAR_REVIEW_ROUNDS`), through the validator and the suite again, and
-  to a fresh review; a second rejection, or no independent reviewer, discards the draft.
+- **A second opinion in a separate context.** The same pinned model is called afresh
+  through the read-only reviewer agent. It does not resume the drafting conversation.
+  A rejection goes back to the drafter within `RADAR_REVIEW_ROUNDS`, through the
+  validator and the suite again, and to a fresh review; exhausted review attempts or
+  no reviewer response discard the draft.
 - **The record says who wrote it.** `pairadar.notes stamp` writes the models that
   actually ran into `author.model` and `review`, so the rendered pages, the commit and
   the pull request name them. The agent used to report its own model, which is not
   evidence.
 
-The repair job uses the same model list.
+The source repair job and its separate reviewer use the same pinned model policy.
 
 ## The machine's jobs share a clone, so they share a lock
 
