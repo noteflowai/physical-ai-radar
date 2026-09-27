@@ -89,6 +89,8 @@ def requested_context(root: Path, request, config: dict, max_bytes: int = 24000)
     file = root / path
     if file.is_symlink() or not file.resolve().is_relative_to(root.resolve()):
         raise ValueError("Context cannot follow symlinks")
+    if not file.is_file():
+        return path, "<file does not exist>"
     lines = file.read_text().splitlines()
     if "search" in request:
         query = request["search"]
@@ -153,6 +155,11 @@ def context(root: Path, name: str, inputs: dict, config: dict) -> dict:
             "research": research,
             "allowed_code": config["code"], "allowed_docs": config["docs"],
             "test_runners": config["test_runners"],
+            "validation_contract": {
+                "new_acceptance": "The controller explicitly executes test_path using test_runner before and after the feature, even when package scripts enumerate older suites.",
+                "regressions": config["checks"],
+                "wordpress": "The existing bin/prerelease.sh discovers every top-level tests/*.php suite; composer.json is not the release gate.",
+            },
             "gpu": "L40S, serial offline experiments; Python 3.12, PyTorch 2.9.1 CUDA 12.8. GPU checks must use existing dependencies and small synthetic/local fixtures.",
             "wordpress_release": "A new WordPress feature must increment the minor version consistently in the plugin header, constant and stable tag, with changelog and upgrade notice. Preserve PHP 7.4 and WordPress compatibility."}
 
@@ -170,10 +177,10 @@ def bounded_files(root: Path, paths: list[str], budget: int) -> dict:
 
 def validate_plan(plan: dict, config: dict) -> None:
     for field in ["title", "problem", "behavior", "why_this_repo"]:
-        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= 1200:
+        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= 4000:
             raise ValueError(f"Feature needs a concrete {field}")
-    if not 1 <= len(plan.get("acceptance", [])) <= 5:
-        raise ValueError("One feature needs one to five acceptance conditions")
+    if not 1 <= len(plan.get("acceptance", [])) <= 8:
+        raise ValueError("One feature needs one to eight acceptance conditions")
     paths = plan.get("read_paths", [])
     if not isinstance(paths, list) or not 1 <= len(paths) <= 14:
         raise ValueError("Read a bounded implementation and test surface")
@@ -636,7 +643,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
     if "plan" not in task:
         prompt = (
             'Choose ONE complete, small feature with real product behavior. Inspect the existing '
-            'README, file tree and issues. Return {"title":"feat: ...","problem":"...",'
+            'README, file tree and issues. FIRST read implementation before asserting a gap: '
+            'return {"need_files":["path",{"path":"path","search":"symbol"},'
+            '{"path":"path","start_line":1,"end_line":200}]} to inspect source. '
+            'If prior feedback shows the behavior already exists, abandon that proposal and '
+            'choose a different capability; do not restate the existing behavior as a new feature. '
+            'After inspection return {"title":"feat: ...","problem":"...",'
             '"behavior":"...","why_this_repo":"...","acceptance":["observable behavior"],'
             '"read_paths":["implementation and relevant existing tests"],'
             '"inspect_ranges":[{"path":"optional large source file","start_line":1,"end_line":200}],'
@@ -645,19 +657,55 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             '"gpu_test_path":null,"gpu_reason":null}. GPU is optional when useful. '
             'Choose a test_runner from context.test_runners. GPU experiment files must not '
             'match the CPU suite discovery pattern; place a standalone probe under tests/experiments/. '
+            'Acceptance tests belong directly in tests/: test_*.py, *.test.cjs or *.test.ts, '
+            'or *.php for WordPress. Include product, existing-test and documentation paths; '
+            'WordPress also needs ai-chat-for-amazon-bedrock.php and readme.txt for the version increment. '
+            'Keep each description below 4000 characters and acceptance to at most eight conditions. '
             'Do not choose pure documentation, a broad refactor or multiple independent features.\n'
         )
         for plan_attempt in range(3):
             try:
                 task["planning_attempts"] = task.get("planning_attempts", 0) + 1
                 write_json(active, task)
-                candidate_plan = ask(prompt + json.dumps(ctx, ensure_ascii=False) +
-                                     "\nPrior findings:\n" + task.get("feedback", "")[-6000:],
-                                     state, f"plan-{plan_attempt}")
+                for inspection in range(6):
+                    instruction = prompt
+                    if inspection == 5:
+                        instruction += ('The source inspection budget is now exhausted. Return the '
+                                        'one feature plan grounded in the source already inspected; '
+                                        'do not request further files in this round.\n')
+                    candidate_plan = ask(instruction + json.dumps(ctx, ensure_ascii=False) +
+                                         "\nPrior findings:\n" + task.get("feedback", "")[-6000:],
+                                         state, f"plan-{plan_attempt}-read-{inspection}")
+                    if not candidate_plan.get("need_files"):
+                        break
+                    requests = candidate_plan["need_files"]
+                    if not isinstance(requests, list) or len(requests) > 6:
+                        raise ValueError("Read at most six focused source excerpts per inspection")
+                    inspected = ctx.setdefault("inspected_files", {})
+                    for request in requests:
+                        key, value = requested_context(root, request, config, max_bytes=10000)
+                        inspected[key] = value
+                    while sum(len(s.encode()) for s in inspected.values()) > 45000:
+                        inspected.pop(next(iter(inspected)))
+                runner = candidate_plan.get("test_runner")
+                suffix = {"unittest": ".py", "pytest": ".py", "node": ".test.cjs",
+                          "vitest": ".test.ts", "php": ".php"}.get(runner)
+                if suffix:
+                    key = hashlib.sha256(task["id"].encode()).hexdigest()[:12]
+                    candidate_plan["test_path"] = "tests/test_feature_" + key + suffix
+                if name == "ai-chat-for-amazon-bedrock" and "read_paths" in candidate_plan:
+                    for required in [SLUG + ".php", "readme.txt"]:
+                        if required not in candidate_plan["read_paths"]:
+                            candidate_plan["read_paths"].append(required)
                 validate_plan(candidate_plan, config)
                 if (root / candidate_plan["test_path"]).exists():
                     raise ValueError("Choose a NEW behavioral test file; existing regression tests are immutable")
-                ctx["inspected_files"] = bounded_files(root, candidate_plan["read_paths"], 28000)
+                inspected = bounded_files(root, candidate_plan["read_paths"], 28000)
+                # Retain source excerpts used to establish the missing capability.
+                for key, value in reversed(list(ctx.get("inspected_files", {}).items())):
+                    if key not in inspected and sum(len(s.encode()) for s in inspected.values()) + len(value.encode()) <= 45000:
+                        inspected[key] = value
+                ctx["inspected_files"] = inspected
                 ranges = candidate_plan.get("inspect_ranges", [])
                 if not isinstance(ranges, list) or len(ranges) > 5:
                     raise ValueError("Read at most five focused source ranges for the plan")

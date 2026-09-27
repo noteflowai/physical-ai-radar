@@ -44,7 +44,7 @@ that repository forever or claiming that an unchecked release succeeded.
 
 1. Read the actual repository, recent commits, open issues and fresh research.
 2. Choose one bounded capability with a user, problem, expected behavior and one to
-   five acceptance conditions. A separate model reviews project fit and scope.
+   eight acceptance conditions. A separate model reviews project fit and scope.
 3. Read relevant implementation and test files. Implement the complete feature,
    introduce behavioral tests in new files, and document usage.
 4. Independently review the exact proposed diff before executing candidate code.

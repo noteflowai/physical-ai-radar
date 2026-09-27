@@ -62,7 +62,7 @@ PROJECTS = {
         "checks": [["python", "-m", "robot_reel.pages", "--write"],
                    ["npm", "run", "check:js"],
                    ["python", "-m", "unittest", "discover", "-s", "tests"],
-                   ["npm", "test"]],
+                   ["node", "--test"]],
         "generated": ["docs/index.html"],
         "workflows": ["Check", "Hugging Face Space"],
         "urls": ["https://noteflowai.github.io/robot-reel/",
@@ -142,4 +142,10 @@ def acceptance_command(plan: dict, config: dict) -> list[str]:
         or runner in {"vitest", "node"} and not path.endswith((".ts", ".js", ".mjs", ".cjs"))
     ):
         raise ValueError("Unsupported acceptance test runner")
+    name = PurePosixPath(path).name
+    if (str(PurePosixPath(path).parent) != "tests"
+            or runner in {"unittest", "pytest"} and not name.startswith("test_")
+            or runner == "node" and not name.endswith((".test.js", ".test.mjs", ".test.cjs"))
+            or runner == "vitest" and not name.endswith((".test.ts", ".test.js", ".test.mjs", ".test.cjs"))):
+        raise ValueError("Use a top-level tests file matching the project's future regression discovery")
     return commands[runner]

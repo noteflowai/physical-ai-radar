@@ -56,6 +56,18 @@ class FeaturePolicyTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             acceptance_command({**self.plan, "test_path": "pairadar/model.py"}, self.config)
 
+    def test_acceptance_is_discoverable_as_a_future_regression(self):
+        for path in ["tests/check_filter.py", "tests/nested/test_filter.py"]:
+            with self.assertRaisesRegex(ValueError, "future regression discovery"):
+                acceptance_command({**self.plan, "test_path": path}, self.config)
+        robot = PROJECTS["robot-reel"]
+        plan = {"test_path": "tests/new-feature.cjs", "test_runner": "node"}
+        with self.assertRaises(ValueError):
+            acceptance_command(plan, robot)
+        plan["test_path"] = "tests/new-feature.test.cjs"
+        self.assertEqual(acceptance_command(plan, robot), ["node", "--test", plan["test_path"]])
+        self.assertIn(["node", "--test"], robot["checks"])
+
     def proposal(self):
         return {"edits": [
             {"path": "pairadar/model.py", "old": "return items", "new": "return items[:1]"},
