@@ -13,7 +13,12 @@ def acceptance_paths(task_id: str, runners: list[str]) -> dict[str, str]:
 
 def plan_review_prompt(instruction: str, plan: dict, context: dict, budget: int = 100000) -> str:
     """Trim duplicate background before source excerpts; never rewrite the feature plan."""
-    payload = {"plan": plan, "context": copy.deepcopy(context)}
+    return bounded_prompt(instruction, {"plan": plan}, context, budget)
+
+
+def bounded_prompt(instruction: str, required: dict, context: dict, budget: int = 100000) -> str:
+    """Keep the complete proposal/correction contract ahead of duplicate background."""
+    payload = {**required, "context": copy.deepcopy(context)}
     ctx = payload["context"]
 
     def render():

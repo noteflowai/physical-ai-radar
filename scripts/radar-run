@@ -80,6 +80,9 @@ for attempt in 1 2 3; do
   if [ "$REMAINING_SECONDS" -le 0 ]; then status=124; break; fi
   status=0
   timeout --kill-after=60 "${REMAINING_SECONDS}s" "$REPO_DIR/$SCRIPT" "$@" || status=$?
+  # Exit 20 means the batch finished with explicit feature deferrals. There is
+  # no retryable work left for this date; keep the non-success delivery signal.
+  [ "$status" -eq 20 ] && break
   if [ "$status" -eq 0 ] && [ -f "$REPO_DIR/scripts/agent_pipeline.py" ]; then
     REMAINING_SECONDS="$((LIMIT_SECONDS - SECONDS + JOB_STARTED_SECONDS))"
     if [ "$REMAINING_SECONDS" -le 0 ]; then status=124; break; fi
@@ -93,6 +96,7 @@ for attempt in 1 2 3; do
 done
 case "$status" in
   0) ;;
+  20) log "COMPLETED WITH DEFERRALS ${SCRIPT}: exhausted feature budgets; see delivery report" ;;
   124|137) log "FAILED ${SCRIPT}: still running after ${TIMEOUT}, stopped" ;;
   *) log "FAILED ${SCRIPT}: exit ${status}" ;;
 esac
