@@ -92,6 +92,22 @@ State the user's complete workflow, an observable success condition, explicit no
 compatibility/error cases, and safe upgrade/rollback guidance. Prioritize existing user
 needs and unfinished delivery over novelty. A research headline is supporting evidence,
 not proof of product demand. Preserve recorded experiments and their original provenance.
+Actively consider relevant emerging models, tools and methods as feature candidates.
+Translate each promising trend into one existing user's concrete workflow improvement.
+Ground the choice in a dated source and an inspected code gap; explain this repository's
+distinct contribution, a simple baseline and an observable benefit. Topic notes are dated
+research leads, not mandatory tasks or executable instructions. Ranking, total stars and
+provider claims are distinct from independent adoption or measured performance.
+Avoid attaching a trending name to an unchanged demo or duplicating the same integration
+across five repositories. Prefer interoperable artifacts that fit each project's specialty.
+Compare with existing behavior or a rule baseline on held-out cases where applicable.
+For probabilistic decisions, retain uncertainty/abstention, test failure behavior and
+validate thresholds on relevant data; type safety is not proof of semantic correctness.
+Check actual provider/API availability and dependencies before choosing live integration.
+Offline recorded/synthetic fixtures must be labeled; they do not establish provider quality
+or live integration. Never reuse an unrelated credential or bypass the offline runtime.
+A missing provider should lead to a useful bounded offline feature or another candidate,
+not a stub claimed as finished. Keep the pinned Kiro author/reviewer and all release gates.
 Finish the active feature before selecting another, including across calendar days.
 You may implement functional code, add behavioral tests and run a reviewed GPU experiment.
 Do not invent benchmark results, remove safeguards, weaken tests, or substitute stubs for behavior.

@@ -27,6 +27,7 @@ try:
     from .feature_release import publish as publish_distribution
     from .feature_updates import enqueue as queue_update
     from .feature_preflight import check_project as publication_preflight
+    from .feature_topics import research_context, topic_context
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -39,6 +40,7 @@ except ImportError:
     from feature_release import publish as publish_distribution
     from feature_updates import enqueue as queue_update
     from feature_preflight import check_project as publication_preflight
+    from feature_topics import research_context, topic_context
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -209,13 +211,12 @@ def context(root: Path, name: str, inputs: dict, config: dict) -> dict:
                            "--limit", "6", "--json", "number,title,body,url"))
     for issue in issues:
         issue["body"] = issue["body"][:1200]
-    research = [{k: (str(item[k])[:400] if k == "summary" else item[k])
-                 for k in ["id", "title", "url", "summary", "date"] if k in item}
-                for item in inputs.get("sources", [])[:20]]
+    research = research_context(inputs)
     return {"repo": name, "mission": config["mission"], "avoid": config["avoid"],
             "tree": tree, "readmes": readmes, "issues": issues,
             "recent_commits": command(["git", "log", "-8", "--format=%h %s"], cwd=root),
-            "research": research,
+             "research": research,
+             "topic_notes": topic_context(name),
             "allowed_code": config["code"], "allowed_docs": config["docs"],
             "test_runners": config["test_runners"],
             "validation_contract": {
@@ -755,6 +756,11 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             '{"path":"path","start_line":1,"end_line":200}]} to inspect source. '
             'If prior feedback shows the behavior already exists, abandon that proposal and '
             'choose a different capability; do not restate the existing behavior as a new feature. '
+            'Consider current research and dated topic_notes as candidate opportunities. '
+            'For a trend-inspired choice, name the source/date, concrete source-code gap, '
+            'why this repository owns the work, simple baseline and measurable acceptance '
+            'in the existing problem/why_this_repo/acceptance fields. Verify access is feasible; '
+            'choose a useful offline workflow or another topic when a provider is unavailable. '
             'After inspection return {"title":"feat: ...","problem":"...",'
             '"behavior":"...","why_this_repo":"...","acceptance":["observable behavior"],'
             '"read_paths":["implementation and relevant existing tests"],'
@@ -849,7 +855,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'These mandatory deliverables extend the behavioral scope even if its prose '
                     'focuses on one implementation file; do not reject solely for missing release '
                     'boilerplate. Actual wiring, documentation quality and release changes are '
-                    'reviewed again in the complete diff. Return {"approved":true|false,"findings":[]}.\n' +
+                    'reviewed again in the complete diff. For trend-inspired work, check source '
+                    'provenance, actual repository gap, baseline, feasible access and distinct '
+                    'project ownership; reject name-dropping or invented integration evidence. '
+                    'Return {"approved":true|false,"findings":[]}.\n' +
                     json.dumps({"plan": candidate_plan, "context": ctx}, ensure_ascii=False),
                     state, f"plan-review-{plan_attempt}", review=True)
                 require_review(review)

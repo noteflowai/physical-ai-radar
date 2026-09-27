@@ -125,6 +125,54 @@ and reconcile missing planned validation before approval. Subjective taste alone
 is not a blocker. UI polish stays within the day's single complete feature. The
 plan/delivery JSON schema is unchanged, so saved tasks remain resumable.
 
+## Turning current topics into useful features
+
+Agents actively consider emerging models, methods and tools, then select one
+concrete improvement for an existing user. A trend-inspired plan records its dated
+source, inspected code gap, project ownership, simple baseline and observable
+benefit in the existing plan fields. Popularity alone does not justify the feature.
+The same integration should not be copied across all five projects.
+
+The research context takes up to 20 distinct URLs within 18 KB, round-robin across fresh evening
+research, the morning shortlist, GitHub discoveries, HF model rankings and other
+sources. This prevents early entries from exhausting the budget before evening
+research is reached. Source dates, collection/issue dates and the meaning of each
+signal remain distinct; total stars are not recent star growth or proof of adoption.
+
+Reviewed notes in `data/feature-topics.json` provide additional project-specific
+opportunities and primary links. Each has a checked date and expiry date. At most
+three current notes and 12 KB reach a worker; malformed, unavailable or expired
+notes produce diagnostics and do not prevent ordinary work. Notes are maintained
+through reviewed controller changes; daily agents cannot edit them. They are
+research leads, not commitments, and do not execute code, add providers or grant
+network/credential access. Fresh research continues independently after a note expires.
+
+The initial note covers [TypeSafe Jev](https://docs.typesafe.ai/introduction):
+a model for typed probabilistic decisions over text/structured state. Suggested
+directions are distinct and must still survive source inspection:
+
+| Project | Candidate contribution |
+| --- | --- |
+| EvalArc | First investigate a complete recorded-decision import/report flow with error-versus-coverage evaluation |
+| Radar | Evidence-linked relevance or deduplication decisions with uncertainty retained |
+| Skills Anywhere | Portable recommendations over known skill IDs, including a no-match result |
+| Robot Reel | Replay recorded policy choices against a rule baseline in one bounded simulation |
+| WordPress | Optional grounded-passage relevance or intent routing with useful admin feedback |
+
+Jev API integration is **not installed or enabled** by this note. The Kiro developer
+and all independent reviewers remain Opus 5.5/high. The official Jev model docs
+currently describe text-only input; video understanding or local GPU inference
+must not be inferred. Type-safe outputs can still make wrong judgments, and a
+confidence statistic is not a correctness certificate. Thresholds need validation
+on held-out domain data, with abstention and deterministic checks retained.
+
+Without authorized provider access, a recorded-data workflow can still be complete
+and useful. Mark synthetic fixtures honestly; they validate parsing/policy behavior,
+not live model performance. Never claim a Jev integration by renaming a heuristic.
+Actual comparisons should retain data provenance, resolved model version, question
+schema, errors/abstention and measured latency/cost. UI work presents that evidence
+clearly under the shared interface-quality policy.
+
 ## Functional code and execution
 
 The old homepage-only path is replaced by `scripts/develop_repos.py`.

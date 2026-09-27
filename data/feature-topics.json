@@ -1,0 +1,35 @@
+{
+  "topics": [
+    {
+      "id": "typesafe-jev",
+      "title": "Jev: typed probabilistic decisions",
+      "checked_on": "2026-09-27",
+      "expires_on": "2026-10-11",
+      "summary": "TypeSafe announced Jev on 2026-09-15. Official docs describe text/structured-state input and Choice, Score and Noul outputs. Choice and Score include distributions and confidence; Noul returns a yes-probability without a separate confidence field. This is a candidate integration topic, not an instruction to force a Jev feature into every repository. No Jev API call or independent performance evaluation has been performed for this note.",
+      "sources": [
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://docs.typesafe.ai/introduction.md",
+        "https://docs.typesafe.ai/models.md",
+        "https://docs.typesafe.ai/confidence.md",
+        "https://docs.typesafe.ai/model-jaggedness/jev-1.13.md",
+        "https://docs.typesafe.ai/introduction/quickstart.md"
+      ],
+      "constraints": [
+        "First inspect existing source and tests; the opportunities below may already be implemented. Prefer EvalArc evidence and small interoperable artifacts before broader adoption; do not block unrelated useful work waiting for another repository.",
+        "Official docs currently identify jev-1.13.0 and text-only inputs. Do not claim native image/video understanding, local Jev GPU inference, available weights, or access through Kiro/Bedrock. Recheck supported interfaces before live integration.",
+        "Use supplied labeled or recorded decision data for offline evaluation. A fixture validates parsing or policy behavior, not Jev accuracy, cost or latency. Live requests need separately configured TypeSafe credentials and an authorized execution path; never repurpose the Kiro key or put credentials/network access in candidate containers.",
+        "Type-constrained output does not guarantee correct judgments. Confidence is derived from the probability distribution, not an independent correctness certificate. Validate calibration/thresholds on held-out domain data; keep an uncertain/abstain outcome and deterministic validation.",
+        "Separate provider latency/price claims from measured results. Track resolved model version, question schema, data provenance, errors, abstention, latency and cost when actually observed. Compare a simple rule baseline and existing behavior before claiming an improvement.",
+        "Kiro Opus 5.5 remains the developer and independent reviewer. Jev is only a possible product decision component; it must not replace tests, publication checks, access controls or review gates.",
+        "Use English and Chinese evaluation slices where relevant. For Robot Reel, use recorded/synthetic structured simulation state and bounded choices; never direct physical actuation. WordPress use must preserve native administration, existing Bedrock behavior and site data handling."
+      ],
+      "opportunities": {
+        "physical-ai-radar": "Research intelligence: evaluate a relevance/deduplication decision on a labeled source shortlist with evidence links and uncertainty visible. Start with recorded decisions if no live provider is configured; do not hide uncertain sources or present popularity as verified reliability.",
+        "dsh-skills-anywhere": "Portable skills: consume typed recommendations over a known skill shortlist with an explicit no-match result. Validate returned skill IDs/resources and preserve deterministic user selection; prefer a portable decision contract or recorded-response workflow over another hosted routing framework.",
+        "evalarc": "Priority pilot: inspect whether users can import typed decision records and evaluate the error-versus-coverage tradeoff as an abstention threshold changes. If missing, implement one complete import-to-report workflow with held-out labels and malformed/uncertain cases. Keep accuracy, calibration and confidence distinct; no live API is needed for a useful recorded-data feature.",
+        "robot-reel": "Simulation/replay: inspect whether a replay can compare a recorded decision policy against a rule baseline using the same structured state and seed, with visible accept/abstain/fallback events. Build one bounded scenario only; do not claim Jev sees video or controls a real robot.",
+        "ai-chat-for-amazon-bedrock": "WordPress knowledge delivery: investigate a grounded-passage relevance or intent-routing workflow with an uncertain outcome and useful admin feedback. Preserve the Bedrock answering path. Any Jev provider must be optional and explicitly configured; missing provider access is not a reason to relabel a heuristic as Jev."
+      }
+    }
+  ]
+}
