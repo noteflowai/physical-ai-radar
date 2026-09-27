@@ -160,6 +160,8 @@ AUTHOR_SYSTEM = SYSTEM.replace(
     "Return exactly the requested JSON, without Markdown fences or other prose.",
     "Return exactly the requested JSON inside one fenced ```json code block, with no other prose. "
     "The terminal preserves literal code characters only inside this code block. "
+    "Inside JSON string values, encode every backtick as the JSON Unicode escape \\u0060 "
+    "so Markdown fences, inline code and JavaScript template literals survive terminal rendering. "
     "Use valid JSON escapes for newlines and quotes inside code strings.")
 
 
