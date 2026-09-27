@@ -3,6 +3,10 @@
 Versions cover the pipeline in `pairadar/` and the published formats. The daily
 radar content itself is dated, not versioned.
 
+## 1.2.0 — 2026-09-27
+
+- report consecutive-failure streak and failing_since date for struggling sources in pairadar.health. Add a `streak(runs, reference, window, source)` helper returning `(streak_days, failing_since)`: the number of consecutive runs, counted backwards from the latest run with health inside the window, in which the source appears in `failed`, and the `date` of the oldest run in that streak. A run that lists the source under `fallback` or does not list it at all ends the streak. `report()` keeps every existing key and adds `streak_days` and `failing_since` to each entry of `struggling`. Because `struggling` already requires the source to have failed on the latest run, `streak_days` is always >= 1 there. The CLI (`python3 -m pairadar.health`) prints the enriched JSON; `--fail-on-struggling` semantics are unchanged. The module docstring and docs/automation.md gain one sentence explaining the two fields.
+
 ## Unreleased
 
 - The README's picks table has two columns instead of four: the rank and its
