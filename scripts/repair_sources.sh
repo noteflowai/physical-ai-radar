@@ -16,12 +16,11 @@ REPO_DIR="${RADAR_REPO:-$HOME/.local/share/physical-ai-radar}"
 CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.git}"
 BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-curator}"
-EFFORT="${RADAR_EFFORT:-medium}"
+EFFORT="$(python3 "$(dirname "$0")/agent_model.py" effort)"
 THRESHOLD="${RADAR_THRESHOLD:-3}"
 AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
-# Tried in order until one answers; the machine's default model has been unavailable
-# for whole nights.
-MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
+# A failure resumes through the controller with the same user-selected model.
+MODELS="$(python3 "$(dirname "$0")/agent_model.py" model)"
 DRY_RUN=0
 
 while [ $# -gt 0 ]; do

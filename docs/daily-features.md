@@ -44,7 +44,7 @@ that repository forever or claiming that an unchecked release succeeded.
 
 1. Read the actual repository, recent commits, open issues and fresh research.
 2. Choose one bounded capability with a user, problem, expected behavior and one to
-   eight acceptance conditions. A separate model reviews project fit and scope.
+   eight acceptance conditions. A separate review call checks project fit and scope.
 3. Read relevant implementation and test files. Implement the complete feature,
    introduce behavioral tests in new files, and document usage.
 4. Independently review the exact proposed diff before executing candidate code.
@@ -59,10 +59,16 @@ that repository forever or claiming that an unchecked release succeeded.
 8. Save the reviewed commit before pushing. Merge only after the required checks pass
    on that commit, then verify the merged commit's deployment and public content.
 
-The author requests Sonnet 5, with recorded fallbacks to Opus 4.8 or Sonnet 4.6.
-Independent reviews request Opus 5, with a disjoint fallback set. These are requested
-CLI model names, not provider attestations. All calls pin Kiro CLI engine v1,
-run noninteractively, and reject model/agent fallback diagnostics.
+Every author and reviewer requests **Claude Fable 5.1** (`claude-fable-5.1`) with
+`high` effort, as pinned centrally in `scripts/agent_model.py`. Daily notes, source
+repairs and their reviewers use the same policy. A failed call stays with this model
+on controller retry or catch-up; no other model is substituted. Review independence
+comes from a fresh call and separate context, not from a different model family.
+The code and acceptance gates still run independently of model judgments.
+These are requested CLI model names, not provider attestations. All calls pin Kiro
+CLI engine v1, run noninteractively, and reject model/agent fallback diagnostics.
+Legacy `RADAR_MODELS`, `RADAR_REVIEW_MODELS` and `RADAR_EFFORT` overrides no longer
+change the pinned policy.
 
 ## Functional code and execution
 

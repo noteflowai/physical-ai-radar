@@ -54,7 +54,6 @@ def record_allowance(result: dict, service_state: Path, name: str) -> None:
 def ask(prompt: str, state: Path, label: str, *, review: bool = False) -> dict:
     options = {} if review else {"object_parser": parse_feature_object}
     return model_json(prompt, state, label,
-                      "claude-opus-5" if review else "claude-sonnet-5",
                       system=SYSTEM if review else AUTHOR_SYSTEM, **options)
 
 

@@ -24,13 +24,12 @@ CLONE_URL="${RADAR_CLONE_URL:-https://github.com/noteflowai/physical-ai-radar.gi
 BRANCH_BASE="${RADAR_BRANCH:-main}"
 AGENT="${RADAR_AGENT:-radar-analyst}"
 REVIEWER="${RADAR_REVIEWER:-radar-reviewer}"
-EFFORT="${RADAR_EFFORT:-medium}"
+EFFORT="$(python3 "$(dirname "$0")/agent_model.py" effort)"
 AGENT_TIMEOUT="${RADAR_AGENT_TIMEOUT:-20m}"
-# Tried in order until one answers: "temporarily unavailable" on the machine's default
-# model cost the nights of 09-24 and 09-25. The reviewer takes the first model on its
-# list that did not write the draft, so no model is the only check on its own work.
-MODELS="${RADAR_MODELS:-claude-fable-5.1 claude-opus-5 claude-sonnet-5}"
-REVIEW_MODELS="${RADAR_REVIEW_MODELS:-claude-opus-5 claude-sonnet-5 claude-fable-5.1}"
+# All roles use the requested model. Reviews remain fresh calls with a separate
+# read-only agent; the controller owns deterministic validation and publication.
+MODELS="$(python3 "$(dirname "$0")/agent_model.py" model)"
+REVIEW_MODELS="$MODELS"
 FIX_ROUNDS="${RADAR_FIX_ROUNDS:-2}"        # validator findings handed back to the drafter
 REVIEW_ROUNDS="${RADAR_REVIEW_ROUNDS:-3}"  # bounded revisions after a rejection
 DAY="${RADAR_RUN_DAY:-}"
@@ -202,7 +201,7 @@ ask_first() {
   log "no model answered (tried:${tried:- none})"
   return 1
 }
-# Every model that wrote any part of the draft, in order. The reviewer may be none of them.
+# Record the model that wrote the draft; review uses a separate agent and fresh call.
 DRAFTERS=""
 add_drafter() {
   case " $DRAFTERS " in *" $USED "*) ;; *) DRAFTERS="${DRAFTERS:+$DRAFTERS }$USED" ;; esac
@@ -306,10 +305,10 @@ while :; do
   prepare
   log "reviewing ${DAY} with ${REVIEWER}"
   : >"$REVIEW"
-  if ! ask_first "$REVIEW" "$REVIEW_MODELS" "$DRAFTERS" --agent "$REVIEWER" --effort "$EFFORT" \
+  if ! ask_first "$REVIEW" "$REVIEW_MODELS" "" --agent "$REVIEWER" --effort "$EFFORT" \
     --trust-tools=read,grep,glob \
     "Review ${NOTES} against radar/daily/${DAY}.zh.md, radar/daily/${DAY}.en.md and radar/daily/${DAY}.ja.md. End with APPROVE or REJECT as instructed."; then
-    log "no review by a model other than the drafter's (${DRAFTERS}); discarding the draft"
+    log "the separate reviewer did not answer; discarding the draft"
     restore_tree
     exit 1
   fi
@@ -375,7 +374,7 @@ gh pr create --base main --head "$BRANCH" \
   --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
     "Per-item analysis drafted for ${DAY} by \`${AGENT}\` (${DRAFTERS// /, }) and approved by \`${REVIEWER}\` (${REVIEW_MODEL}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
-    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a model other than the drafter's review it. Rendered pages label every drafted line and name the drafter. No human review is claimed; the controller merges only the checked commit and verifies publication.")
+    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a separate read-only agent review it in a fresh context. Rendered pages label every drafted line and name the drafter. No human review is claimed; the controller merges only the checked commit and verifies publication.")
 fi
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 log "pull request #${PR} opened for ${DAY}; waiting for checks"

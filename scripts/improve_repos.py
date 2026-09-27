@@ -19,9 +19,11 @@ from urllib.parse import urlsplit
 from html.parser import HTMLParser
 
 try:
+    from .agent_model import MODEL, EFFORT
     from .agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
     from .job_schedule import run_day
 except ImportError:
+    from agent_model import MODEL, EFFORT
     from agent_pipeline import PublicationAbandoned, call_agent, command, finish, gh, parse_object, read_public, public_commit, verify_deployment, write_json
     from job_schedule import run_day
 
@@ -186,8 +188,10 @@ def snapshot(radar_snapshot: Path | None = None) -> dict:
             "sources": sources, "source_failures": failures}
 
 
-def model_json(prompt: str, state: Path, label: str, model: str, system: str = SYSTEM,
+def model_json(prompt: str, state: Path, label: str, model: str = MODEL, system: str = SYSTEM,
                object_parser=parse_object) -> dict:
+    if model != MODEL:
+        raise ValueError(f"Unattended agents are pinned to {MODEL}")
     if len(prompt.encode()) > 110000:
         raise ValueError("Prompt exceeds the bounded noninteractive input size")
     home = state / "agent"
@@ -201,24 +205,17 @@ def model_json(prompt: str, state: Path, label: str, model: str, system: str = S
     record_id = label + "-" + time_id()
     prompt_file = state / (record_id + ".input.txt")
     prompt_file.write_text(prompt)
-    fallbacks = (["claude-opus-4.8", "claude-sonnet-4.6"] if model == "claude-sonnet-5"
-                 else ["claude-opus-4.7", "claude-opus-4.6"])
-    failures = []
-    for selected in [model, *fallbacks]:
-        output = state / (record_id + "-" + selected + ".log")
-        try:
-            call_agent(["--agent", "repo-maintainer", "--model", selected, "--effort", "high",
-                        prompt], output, cwd=home)
-            result = object_parser(output.with_suffix(".log.stdout").read_text())
-            (state / (label + ".json")).write_text(json.dumps(
-                {"requested_model": selected, "engine": "v1", "prior_failures": failures,
-                 "prompt_file": prompt_file.name,
-                 "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
-                 "result": result}, indent=2) + "\n")
-            return result
-        except Exception as error:
-            failures.append({"model": selected, "error": str(error)})
-    raise RuntimeError("No model returned a valid result: " + json.dumps(failures))
+    output = state / (record_id + "-" + model + ".log")
+    # Retry/catch-up belongs to the controller; never substitute another model.
+    call_agent(["--agent", "repo-maintainer", "--model", model, "--effort", EFFORT,
+                prompt], output, cwd=home)
+    result = object_parser(output.with_suffix(".log.stdout").read_text())
+    (state / (label + ".json")).write_text(json.dumps(
+        {"requested_model": model, "effort": EFFORT, "engine": "v1", "prior_failures": [],
+         "prompt_file": prompt_file.name,
+         "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
+         "result": result}, indent=2) + "\n")
+    return result
 
 
 def apply_edits(root: Path, proposal: dict, config: dict, source_ids: set[str]) -> list[str]:
@@ -468,7 +465,7 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
                     + json.dumps({"repo": repo, "snapshot": inputs, "file_prefix_excerpts": excerpts,
                                   "ci_findings": findings[-8000:],
                                   "prior_repair_findings": repair_feedback[-8000:]}, ensure_ascii=False),
-                    state, f"ci-repair-{attempt}", "claude-sonnet-5",
+                    state, f"ci-repair-{attempt}",
                 )
                 changed = apply_edits(root, proposal, config, {s["id"] for s in inputs["sources"]})
                 if not changed:
@@ -478,7 +475,7 @@ def finish_with_repairs(root: Path, repo: str, pr: int, head: str, config: dict,
                     'Return {"approved":true|false,"findings":["finding"]}.' +
                     json.dumps({"proposal": proposal, "diff": patch(root),
                                 "ci_findings": findings[-12000:]}, ensure_ascii=False),
-                    state, f"ci-review-{attempt}", "claude-opus-5",
+                    state, f"ci-review-{attempt}",
                 )
                 if review.get("approved") is not True or review.get("findings"):
                     raise ValueError(json.dumps(review))
@@ -542,7 +539,7 @@ Return {"decision":"noop"|"change","reason":"specific benefit","sources":["sourc
         try:
             proposal = model_json(task + json.dumps(context, ensure_ascii=False) +
                                   "\nFindings from the previous attempt:\n" + problems[-8000:],
-                                  state, f"draft-{attempt}", "claude-sonnet-5")
+                                  state, f"draft-{attempt}")
             changed = apply_edits(root, proposal, config, {x["id"] for x in inputs["sources"]})
             diff = patch(root)
             review = model_json(
@@ -551,7 +548,7 @@ Return {"decision":"noop"|"change","reason":"specific benefit","sources":["sourc
                 'Return {"approved":true|false,"findings":["specific finding"]}.\n' +
                 json.dumps({"repo": repo, "snapshot": inputs, "proposal": proposal,
                             "diff": diff, "excerpts": excerpts if not changed else None},
-                           ensure_ascii=False), state, f"review-{attempt}", "claude-opus-5",
+                           ensure_ascii=False), state, f"review-{attempt}",
             )
             if review.get("approved") is not True or review.get("findings"):
                 raise ValueError(json.dumps(review))
