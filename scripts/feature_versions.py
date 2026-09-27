@@ -18,6 +18,11 @@ WP = "ai-chat-for-amazon-bedrock"
 def version(root: Path, name: str, ref: str | None = None) -> str:
     def read(path):
         return command(["git", "show", f"{ref}:{path}"], cwd=root) if ref else (root / path).read_text()
+    return read_version(name, read)
+
+
+def read_version(name: str, read) -> str:
+    """Use one metadata contract for local release preparation and remote preflight."""
     if name == NPM:
         value = json.loads(read("package.json"))["version"]
     elif name in {"evalarc", "robot-reel"}:

@@ -363,6 +363,7 @@ class ReleaseLifecycleTests(Temporary):
             starts.append(argv[argv.index("--repo") + 1])
             raise KeyboardInterrupt()
         with patch.object(sys, "argv", args), patch.object(developer, "snapshot", return_value={"sources": []}), \
+                patch.object(developer, "publication_preflight", return_value={"status": "ready"}), \
                 patch.object(developer, "execute_stage", side_effect=killed), redirect_stdout(io.StringIO()):
             for _ in range(2):
                 with self.assertRaises(KeyboardInterrupt):

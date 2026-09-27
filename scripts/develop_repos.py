@@ -26,6 +26,7 @@ try:
     from .feature_versions import prepare as prepare_release
     from .feature_release import publish as publish_distribution
     from .feature_updates import enqueue as queue_update
+    from .feature_preflight import check_project as publication_preflight
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -37,6 +38,7 @@ except ImportError:
     from feature_versions import prepare as prepare_release
     from feature_release import publish as publish_distribution
     from feature_updates import enqueue as queue_update
+    from feature_preflight import check_project as publication_preflight
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -1032,6 +1034,20 @@ def main() -> int:
                               "error": str(error), "at": stamp()}
             else:
                 receipt.parent.mkdir(parents=True, exist_ok=True)
+                if not args.plan_only:
+                    unfinished = read_json(args.state / "tasks" / name / "active.json", {})
+                    release_tag = (unfinished.get("release", {}).get("tag") if unfinished.get("phase")
+                                   in {"validate", "acceptance-review", "push", "ci", "release"} else None)
+                    readiness = publication_preflight(name, release_tag=release_tag)
+                    write_json(receipt.parent / "preflight.json", readiness)
+                    if readiness["status"] != "ready":
+                        result = {"repo": "noteflowai/" + name, "status": "retry-needed",
+                                  "stage": "publication-preflight", "errors": readiness["errors"],
+                                  "error": "; ".join(readiness["errors"]), "at": stamp()}
+                        write_json(receipt, result)
+                        results.append(result)
+                        print(json.dumps(result), flush=True)
+                        continue
                 # Write before starting a bounded child, so a killed batch resumes fairly.
                 write_json(cursor_file, {"last_started": name, "at": stamp()})
                 argv = [sys.executable, str(Path(__file__).resolve()),
