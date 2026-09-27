@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>report consecutive-failure streak and failing_since date for struggling sources in pairadar.health</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.2.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.2.0/</guid>
+      <description>`python3 -m pairadar.health` now tells the maintainer and the nightly repair gate whether a struggling source has been continuously dark or is flapping. Each entry under `struggling` gains two fields next to the existing `source` and `failed_days`: `streak_days`, the number of consecutive runs (counted back from the latest run that recorded health inside the window) on which the source appears in `failed`, and `failing_since`, the `date` of the oldest run in that streak. A run on which the source answered, was served by its fallback endpoint, or was not attempted ends the streak. A new public helper `health.streak(runs, reference, window, source)` returns `(streak_days, failing_since)` and `(0, None)` when the source did not fail the latest run. All previously emitted keys (`reference`, `window_days`, `threshold_days`, `runs_with_health`, `failures`, `fallbacks`, and `source`/`failed_days` inside `struggling`), the worst-first ranking, the threshold and latest-run rules, and `--fail-on-struggling` exit codes are unchanged. The module docstring and docs/automation.md explain the two fields.</description>
+      <pubDate>Sun, 27 Sep 2026 04:36:04 +0000</pubDate>
+    </item>
+    <item>
       <title>content-gap insight export as CSV for editorial workflow</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.47.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.47.0/</guid>
