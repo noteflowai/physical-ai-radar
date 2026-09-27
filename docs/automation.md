@@ -216,7 +216,9 @@ A failed repair does not block independent research or companion work; failed
 publication blocks its dependent notes. The batch remains `retry-needed` if any
 stage fails. A notes command that produces no notes cannot count as completed.
 At **02:30**, `--previous-day` resumes the preceding evening's Singapore date, so
-crossing midnight does not consume the next day's maintenance allowance.
+the batch and research issue keep their original date. Feature releases additionally
+consume the actual Singapore calendar day's allowance: a feature completed during
+catch-up prevents a second feature for that repository in the following evening.
 Completed batches exit without new model calls. All execution is noninteractive;
 an exhausted retry budget records failure for the next automatic catch-up.
 

@@ -663,7 +663,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'Keep each description below 4000 characters and acceptance to at most eight conditions. '
             'Do not choose pure documentation, a broad refactor or multiple independent features.\n'
         )
-        for plan_attempt in range(3):
+        for plan_attempt in range(min(3, 9 - task.get("planning_attempts", 0))):
             try:
                 task["planning_attempts"] = task.get("planning_attempts", 0) + 1
                 write_json(active, task)
@@ -679,10 +679,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     if not candidate_plan.get("need_files"):
                         break
                     requests = candidate_plan["need_files"]
-                    if not isinstance(requests, list) or len(requests) > 6:
-                        raise ValueError("Read at most six focused source excerpts per inspection")
+                    if not isinstance(requests, list):
+                        raise ValueError("Source inspection requests must be a list")
                     inspected = ctx.setdefault("inspected_files", {})
-                    for request in requests:
+                    for request in requests[:6]:
                         key, value = requested_context(root, request, config, max_bytes=10000)
                         inspected[key] = value
                     while sum(len(s.encode()) for s in inspected.values()) > 45000:
@@ -739,7 +739,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
     for request in plan.get("inspect_ranges", []):
         key, value = requested_context(root, request, config)
         files[key] = value
-    for attempt in range(3):
+    for attempt in range(min(3, 9 - task["attempts"])):
         task["attempts"] += 1
         attempt_dir = state / f"attempt-{task['attempts']}"
         attempt_dir.mkdir(exist_ok=True)
@@ -766,9 +766,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 if not proposal.get("need_files"):
                     break
                 requested = proposal["need_files"]
-                if not isinstance(requested, list) or len(requested) > 10:
+                if not isinstance(requested, list):
                     raise ValueError("Invalid context request")
-                for request in requested:
+                for request in requested[:10]:
                     key, value = requested_context(root, request, config)
                     files[key] = value
                 if sum(len(t.encode()) for t in files.values()) > 75000:
