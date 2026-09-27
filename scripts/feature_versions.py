@@ -40,7 +40,8 @@ def read_version(name: str, read) -> str:
     return value
 
 
-def prepare(root: Path, name: str, base: str, plan: dict, day: str) -> dict:
+def prepare(root: Path, name: str, base: str, plan: dict, day: str,
+            *, delivery: dict | None = None) -> dict:
     """Run before code review/validation; the entire resulting diff gets reviewed."""
     old = version(root, name, base)
     major, minor, _ = map(int, old.split("."))
@@ -137,7 +138,8 @@ def prepare(root: Path, name: str, base: str, plan: dict, day: str) -> dict:
                     f"Version **{old}**", f"Version **{new}**").replace(
                     f"# Robot Reel {old} —", f"# Robot Reel {new} —"))
     title = re.sub(r"\s+", " ", plan["title"].removeprefix("feat:").strip())
-    behavior = re.sub(r"\s+", " ", plan["behavior"].strip())
+    summary = delivery["summary"] if delivery else plan["behavior"]
+    behavior = re.sub(r"\s+", " ", summary.strip())
     entry = f"## {new} — {day}\n\n- {title}. {behavior}\n\n"
     edit("CHANGELOG.md", lambda t: re.sub(r"(?m)^## ", lambda m: entry + "## ", t, count=1))
     if "CHANGELOG.md" not in changes:

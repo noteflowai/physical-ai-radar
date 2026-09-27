@@ -458,6 +458,20 @@ class VersionTests(Temporary):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text)
 
+    def test_changelog_uses_delivered_behavior_instead_of_stale_planning_prose(self):
+        self.write("CHANGELOG.md", "# Changes\n\n## 0.16.0 — 2026-09-20\n\nOld release.\n")
+        subprocess.run(["git", "init", "-q"], cwd=self.root, check=True)
+        subprocess.run(["git", "add", "."], cwd=self.root, check=True)
+        subprocess.run(["git", "-c", "user.name=Test", "-c", "user.email=test@example.invalid",
+                        "commit", "-qm", "baseline"], cwd=self.root, check=True)
+        versions.prepare(self.root, "physical-ai-radar", "HEAD",
+                         {"title": "feat: Threshold report", "behavior": "Planned counts inside thresholds."},
+                         "2026-09-27", delivery={"summary": "Report verified counts under `by_threshold`."})
+        text = (self.root / "CHANGELOG.md").read_text()
+        self.assertIn("Report verified counts under `by_threshold`.", text)
+        self.assertNotIn("Planned counts inside thresholds.", text)
+        self.assertIn("Old release.", text)
+
     def test_robot_current_installation_updates_preserve_frozen_evidence_recipe(self):
         self.write("pyproject.toml", '[project]\nversion = "0.16.0"\n')
         self.write("CITATION.cff", "version: 0.16.0\ndate-released: 2026-09-20\n")

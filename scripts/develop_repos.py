@@ -29,6 +29,7 @@ try:
     from .feature_preflight import check_project as publication_preflight
     from .feature_topics import research_context, topic_context
     from .feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
+    from .feature_prompts import acceptance_paths, plan_review_prompt
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -43,6 +44,7 @@ except ImportError:
     from feature_preflight import check_project as publication_preflight
     from feature_topics import research_context, topic_context
     from feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
+    from feature_prompts import acceptance_paths, plan_review_prompt
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -251,7 +253,9 @@ def fit_context(files: dict, budget: int = 90000) -> None:
 def validate_plan(plan: dict, config: dict) -> None:
     for field in ["title", "problem", "behavior", "why_this_repo"]:
         if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= 4000:
-            raise ValueError(f"Feature needs a concrete {field}")
+            length = len(plan[field]) if isinstance(plan.get(field), str) else "non-string"
+            raise ValueError(f"Feature {field} must contain 5..4000 characters; received {length}. "
+                             "Shorten the prose while preserving the one feature contract.")
     if not 1 <= len(plan.get("acceptance", [])) <= 8:
         raise ValueError("One feature needs one to eight acceptance conditions")
     if plan.get("contract_version") == 2:
@@ -754,6 +758,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         task.pop("source_notes", None)
     task["base"] = main
     ctx = context(root, name, inputs, config)
+    ctx["acceptance_paths"] = acceptance_paths(task["id"], config["test_runners"])
     if "plan" not in task:
         prompt = (
             'Choose ONE complete, small feature with real product behavior. Inspect the existing '
@@ -787,6 +792,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'and feasible validation in the existing behavior/acceptance fields. Design polish is '
             'part of this one capability, not another feature. CLI/API-only work needs no new UI. '
             'Keep each description below 4000 characters and acceptance to at most eight conditions. '
+            'Use the exact context.acceptance_paths[test_runner] as test_path and wherever the '
+            'plan mentions its new acceptance test. Do not invent another test filename. '
+            'Request at most six files per inspection. Reuse already inspected source; if feedback '
+            'only concerns the plan schema or wording, return the corrected plan directly. '
             'Do not choose pure documentation, a broad refactor or multiple independent features.\n'
             'When context.local_decisions.available is true and measured local decision records '
             'are necessary for this feature, decision_probe may be '
@@ -832,11 +841,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     while sum(len(s.encode()) for s in inspected.values()) > 45000:
                         inspected.pop(next(iter(inspected)))
                 runner = candidate_plan.get("test_runner")
-                suffix = {"unittest": ".py", "pytest": ".py", "node": ".test.cjs",
-                          "vitest": ".test.ts", "php": ".php"}.get(runner)
-                if suffix:
-                    key = hashlib.sha256(task["id"].encode()).hexdigest()[:12]
-                    candidate_plan["test_path"] = "tests/test_feature_" + key + suffix
+                reserved = ctx["acceptance_paths"].get(runner)
+                if reserved and candidate_plan.get("test_path") != reserved:
+                    raise ValueError(f"Use the reserved acceptance test {reserved} in test_path "
+                                     "and every usage/success_metric reference; preserve the feature.")
                 if name == "ai-chat-for-amazon-bedrock" and "read_paths" in candidate_plan:
                     for required in [SLUG + ".php", "readme.txt"]:
                         if required not in candidate_plan["read_paths"]:
@@ -868,7 +876,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 if sum(len(s.encode()) for s in ctx["inspected_files"].values()) > 60000:
                     ctx.pop("inspected_files")
                     raise ValueError("Request fewer source ranges; inspected context exceeds its budget")
-                review = ask(
+                review = ask(plan_review_prompt(
                     'Review this feature plan for ONE complete capability, project fit, compatibility, '
                     'testability and realistic scope. For UI changes, require a complete user path, '
                     'professional visual direction consistent with the product, relevant states '
@@ -882,8 +890,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'project ownership; reject name-dropping or invented integration evidence. '
                     'For decision_probe, review the exact inputs and question/options contract, '
                     'its necessity for this one feature and truthful synthetic-data scope. '
-                    'Return {"approved":true|false,"findings":[]}.\n' +
-                    json.dumps({"plan": candidate_plan, "context": ctx}, ensure_ascii=False),
+                    'Return {"approved":true|false,"findings":[]}.\n',
+                    candidate_plan, ctx),
                     state, f"plan-review-{plan_attempt}", review=True)
                 require_review(review)
                 task["plan"] = candidate_plan
@@ -1000,7 +1008,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             if plan.get("contract_version") == 2:
                 validate_delivery(delivery)
             task["delivery"] = delivery
-            task["release"] = prepare_release(root, name, task["base"], plan, day)
+            task["release"] = prepare_release(root, name, task["base"], plan, day, delivery=delivery)
             changed = sorted(set(changed + task["release"]["metadata_files"]))
             command(["git", "add", "--", *changed], cwd=root)
             diff = command(["git", "diff", "--cached", "--no-ext-diff"], cwd=root)
