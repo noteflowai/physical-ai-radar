@@ -167,6 +167,57 @@ class FeaturePolicyTests(unittest.TestCase):
         fit_context(files, 100)
         self.assertEqual(files, {"recent": "useful source"})
 
+    @patch("scripts.develop_repos.context", return_value={})
+    @patch("scripts.develop_repos.checkout")
+    @patch("scripts.develop_repos.ask")
+    def test_rejected_patch_cannot_claim_applied_work_in_next_attempt(self, ask, checkout, context):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            top = Path(tmp)
+            root, state = top / "repo", top / "state"
+            (root / "pairadar").mkdir(parents=True)
+            (root / "pairadar/model.py").write_text("return items")
+            (root / "radar").mkdir()
+            (root / "radar/latest.json").write_text('{"date":"2026-09-27"}')
+
+            def git(*args):
+                return subprocess.check_output(["git", *args], cwd=root, text=True,
+                                               stderr=subprocess.DEVNULL).strip()
+
+            git("init", "-q")
+            git("config", "user.name", "Feature test")
+            git("config", "user.email", "test@example.invalid")
+            git("add", ".")
+            git("commit", "-qm", "base")
+            base = git("rev-parse", "HEAD")
+            git("update-ref", "refs/remotes/origin/main", base)
+            directory = state / "tasks/physical-ai-radar"
+            directory.mkdir(parents=True)
+            task = {"id": "fixture", "repo": "noteflowai/physical-ai-radar",
+                    "base": base, "branch": "automation/feature-fixture",
+                    "phase": "implement", "attempts": 0, "plan": self.plan}
+            (directory / "active.json").write_text(json.dumps(task))
+            checkout.return_value = root
+
+            def author(prompt, *args, **kwargs):
+                payload = json.loads(prompt[prompt.index('{"plan":'):])
+                self.assertEqual(payload["source_notes"], "")
+                self.assertEqual(payload["snapshot"],
+                                 {"commit": base, "applied_candidate_edits": False})
+                if ask.call_count == 1:
+                    proposal = self.proposal()
+                    proposal["edits"][0]["old"] = "missing span"
+                    proposal["source_notes"] = "DONE: feature code was already applied"
+                    return proposal
+                self.assertEqual((root / "pairadar/model.py").read_text(), "return items")
+                self.assertEqual(git("status", "--porcelain"), "")
+                raise KeyboardInterrupt("verified retry boundary")
+
+            ask.side_effect = author
+            with self.assertRaisesRegex(KeyboardInterrupt, "verified retry boundary"):
+                develop("physical-ai-radar", {}, top / "workspace", state, "2026-09-27")
+            self.assertEqual(ask.call_count, 2)
+
     @patch("scripts.develop_repos.calendar_day", return_value="2026-09-27")
     def test_allowance_persisted_before_active_transaction_is_removed(self, calendar):
         with tempfile.TemporaryDirectory() as tmp:

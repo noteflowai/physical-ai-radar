@@ -828,6 +828,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         attempt_dir = state / f"attempt-{task['attempts']}"
         attempt_dir.mkdir(exist_ok=True)
         reset(root, main)
+        # apply() is atomic, and every retry starts from the published base.
+        # Author notes may incorrectly describe a rejected proposal as applied.
+        task.pop("source_notes", None)
         task["phase"] = "implement"
         write_json(active, task)
         try:
@@ -843,12 +846,15 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 '{"path":"relative path","search":"literal symbol"}],'
                 '"source_notes":"compact consolidated facts and edit anchors learned so far"} instead. '
                 'Update source_notes so verified facts survive eviction of old excerpts; '
-                'do not re-read facts already established in those notes. '
+                'notes are observations, never proof that edits were applied. '
+                'The controller has applied ZERO candidate edits in this phase. '
+                'Return the ENTIRE feature even if an earlier note claims work is done. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
             for read_round in range(8):
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
                            "release_context": release_context,
                            "source_notes": task.get("source_notes", ""),
+                           "snapshot": {"commit": main, "applied_candidate_edits": False},
                            "feedback": task.get("feedback", "")[-10000:]}
                 instruction = prompt + (
                     f"Source inspection round {read_round + 1} of 8. Use files already supplied; "
