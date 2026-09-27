@@ -23,6 +23,9 @@ try:
     from .feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from .feature_runtime import GPU_IMAGE, archive, execute, image_for
     from .feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
+    from .feature_versions import prepare as prepare_release
+    from .feature_release import publish as publish_distribution
+    from .feature_updates import enqueue as queue_update
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -31,6 +34,9 @@ except ImportError:
     from feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from feature_runtime import GPU_IMAGE, archive, execute, image_for
     from feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
+    from feature_versions import prepare as prepare_release
+    from feature_release import publish as publish_distribution
+    from feature_updates import enqueue as queue_update
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -242,6 +248,10 @@ def validate_plan(plan: dict, config: dict) -> None:
             raise ValueError(f"Feature needs a concrete {field}")
     if not 1 <= len(plan.get("acceptance", [])) <= 8:
         raise ValueError("One feature needs one to eight acceptance conditions")
+    if plan.get("contract_version") == 2:
+        for field in ["target_user", "success_metric", "usage", "limitations", "upgrade"]:
+            if not isinstance(plan.get(field), str) or not 10 <= len(plan[field]) <= 2000:
+                raise ValueError(f"Complete feature contract needs {field}")
     paths = plan.get("read_paths", [])
     if not isinstance(paths, list) or not 1 <= len(paths) <= 14:
         raise ValueError("Read a bounded implementation and test surface")
@@ -254,6 +264,12 @@ def validate_plan(plan: dict, config: dict) -> None:
         raise ValueError("GPU experiment must be a reviewed Python test in this repository")
     if gpu and not plan.get("gpu_reason"):
         raise ValueError("A GPU experiment needs a reason tied to this feature")
+
+
+def validate_delivery(delivery: dict) -> None:
+    for field in ["summary", "usage", "limitations", "upgrade"]:
+        if not isinstance(delivery.get(field), str) or not 10 <= len(delivery[field]) <= 2000:
+            raise ValueError(f"Final delivery needs a concrete {field}")
 
 
 def apply(root: Path, proposal: dict, config: dict, plan: dict) -> list[str]:
@@ -471,6 +487,8 @@ def publish(root: Path, task: dict, config: dict, state: Path) -> dict:
     result["feature"] = task["plan"]
     result["feature_id"] = task["id"]
     result["checks"] = task["checks"]
+    result["delivery"] = task.get("delivery", {})
+    result["changed"] = task["changed"]
     if task["repo"].endswith("/ai-chat-for-amazon-bedrock"):
         runs = result["workflows"]
         run = next(r for r in runs if r["workflowName"] == "Quality gate")
@@ -514,6 +532,8 @@ def complete(result: dict, state: Path, active: Path, service_state: Path,
     result["released_on"] = calendar_day()
     write_json(state / "complete.json", result)
     record_allowance(result, service_state, name)
+    if result.get("distribution", {}).get("status") == "verified":
+        queue_update(result, service_state)
     write_json(service_state / day / name / "result.json", result)
     active.unlink(missing_ok=True)
     return result
@@ -584,6 +604,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
             'The red test must fail for missing behavior, not a harness/runner error or a broken test. '
             'Return {"approved":true|false,"findings":[]}.\n' + json.dumps(
                 {"plan": task["plan"], "diff": diff, "checks": task["checks"],
+                 "delivery": task.get("delivery", {}), "release": task.get("release", {}),
                  "logs": [Path(r["log"]).read_text()[-6000:] for r in task["checks"]]}),
             attempt_dir, "acceptance-review", review=True)
         require_review(review)
@@ -593,9 +614,19 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
     if task["phase"] == "push":
         task.update(push(root, task, state))
         write_json(active, task)
-    if task["phase"] != "ci":
+    if task["phase"] == "ci":
+        result = publish(root, task, config, state)
+        write_json(state / "source-publication.json", result)
+        task["phase"] = "release"
+        write_json(active, task)
+    if task["phase"] != "release":
         raise ValueError("Unknown feature advancement phase")
-    result = publish(root, task, config, state)
+    result = read_json(state / "source-publication.json")
+    if not result:
+        raise ValueError("Distribution needs its source publication receipt")
+    result["distribution"] = publish_distribution(root, result, state / "distribution")
+    result["release_verified_at"] = stamp()
+    write_json(state / "publication.json", result)
     return complete(result, state, active, service_state, name, day)
 
 
@@ -629,6 +660,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         if terminal:
             # Recover a crash between terminal recording, day allowance and active cleanup.
             record_allowance(terminal, service_state, name)
+            if terminal.get("distribution", {}).get("status") == "verified":
+                queue_update(terminal, service_state)
             write_json(service_state / terminal["completed_on"] / name / "result.json", terminal)
             active.unlink()
             if terminal["completed_on"] == day:
@@ -657,7 +690,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         write_json(active, task)
     state = task_dir / task["id"]
     state.mkdir(exist_ok=True)
-    if plan_only and task["phase"] in {"push", "ci"}:
+    if plan_only and task["phase"] in {"push", "ci", "release"}:
         return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
     if task["phase"] in {"plan", "implement"} and (
         task["attempts"] >= 9 or task.get("planning_attempts", 0) >= 9
@@ -665,11 +698,11 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         return retire(task, state, active, service_state, name, day,
                       "Nine implementation attempts failed; retained diagnostics, no feature released. "
                       "A smaller independently reviewed plan may be selected next day.")
-    if task.get("phase_attempts", {}).get(task["phase"], 0) >= 9:
+    if task["phase"] != "release" and task.get("phase_attempts", {}).get(task["phase"], 0) >= 9:
         return retire(task, state, active, service_state, name, day,
                       "Nine resumptions of the same phase did not complete. "
                       "Retained the source/publication state and diagnostics; no successful release claimed.")
-    if task["phase"] in {"validate", "acceptance-review", "push", "ci"}:
+    if task["phase"] in {"validate", "acceptance-review", "push", "ci", "release"}:
         if plan_only:
             return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
         try:
@@ -677,6 +710,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             return advance(root, task, config, state, active, service_state, name, day)
         except Exception as error:
             task["feedback"] = str(error)
+            if task["phase"] == "release":
+                # Keep the merged/tagged transaction; never reauthor to fix a registry.
+                write_json(active, task)
+                raise
             if task["phase"] in {"validate", "acceptance-review"}:
                 task["phase"] = "implement"
                 write_json(active, task)
@@ -718,7 +755,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             '"inspect_ranges":[{"path":"optional large source file","start_line":1,"end_line":200}],'
             '"test_path":"tests/a new focused behavioral test file",'
             '"test_runner":"unittest|pytest|vitest|node|php",'
-            '"gpu_test_path":null,"gpu_reason":null}. GPU is optional when useful. '
+            '"gpu_test_path":null,"gpu_reason":null,'
+            '"target_user":"specific user and task","success_metric":"observable success condition",'
+            '"usage":"one complete command or UI path","limitations":"non-goals and compatibility",'
+            '"upgrade":"upgrade and rollback without data loss"}. GPU is optional when useful. '
             'Choose a test_runner from context.test_runners. GPU experiment files must not '
             'match the CPU suite discovery pattern; place a standalone probe under tests/experiments/. '
             'Acceptance tests belong directly in tests/: test_*.py, *.test.cjs or *.test.ts, '
@@ -769,6 +809,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         "This feature also includes the next minor version in the plugin header, "
                         "constant and readme stable tag, a changelog entry, upgrade notice and usage "
                         "documentation. These are mandatory parts of implementation and final review.")
+                candidate_plan["contract_version"] = 2
                 validate_plan(candidate_plan, config)
                 if (root / candidate_plan["test_path"]).exists():
                     raise ValueError("Choose a NEW behavioral test file; existing regression tests are immutable")
@@ -839,7 +880,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'The behavioral test must fail before the feature and pass '
                 'after it. Do not merely test implementation details. Return '
                 '{"edits":[{"path":"relative path","old":"exact unique existing span or null '
-                'for a new file","new":"replacement or full new file"}]}. '
+                'for a new file","new":"replacement or full new file"}],'
+                '"delivery":{"summary":"final user-visible behavior","usage":"complete runnable example or UI path",'
+                '"limitations":"actual scope and compatibility","upgrade":"upgrade and rollback instructions"}}. '
+                'Describe final delivered behavior, not a proposal or unsupported performance claims. '
+                'The controller stages version metadata and changelog before review; leave dependency '
+                'and release-control files alone. WordPress still needs its planned version changes. '
                 'If essential context is missing, return {"need_files":["relative paths",'
                 '{"path":"relative path","start_line":1,"end_line":200},'
                 '{"path":"relative path","search":"literal symbol"}],'
@@ -898,6 +944,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     files[key] = value
                 fit_context(files)
             changed = apply(root, proposal, config, plan)
+            delivery = proposal.get("delivery", {})
+            if plan.get("contract_version") == 2:
+                validate_delivery(delivery)
+            task["delivery"] = delivery
+            task["release"] = prepare_release(root, name, task["base"], plan, day)
+            changed = sorted(set(changed + task["release"]["metadata_files"]))
             command(["git", "add", "--", *changed], cwd=root)
             diff = command(["git", "diff", "--cached", "--no-ext-diff"], cwd=root)
             if len(diff.encode()) > 80000:
@@ -906,7 +958,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'Review the complete feature diff and acceptance. Reject incomplete wiring, '
                 'multiple unrelated features, weakened checks, compatibility/security regressions, '
                 'unsupported claims and unsafe GPU work. Return {"approved":true|false,"findings":[]}.\n' +
-                json.dumps({"plan": plan, "mission": config["mission"], "diff": diff}),
+                json.dumps({"plan": plan, "delivery": delivery, "release": task["release"],
+                            "mission": config["mission"], "diff": diff}),
                 attempt_dir, "code-review", review=True)
             require_review(review)
             command(["git", "commit", "-m", plan["title"][:120]], cwd=root)
@@ -919,7 +972,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             task["feedback"] = str(error)
             write_json(attempt_dir / "failure.json", {"error": str(error), "at": stamp()})
             write_json(active, task)
-            if task["phase"] in {"push", "ci"}:
+            if task["phase"] in {"push", "ci", "release"}:
                 raise
             task["phase"] = "implement"
             write_json(active, task)
@@ -943,6 +996,12 @@ def main() -> int:
     args.workspace.mkdir(parents=True, exist_ok=True)
     day = run_day(args.date)
     selected = args.repo or list(PROJECTS)
+    cursor_file = args.state / "fair-order.json"
+    if not args.repo:
+        cursor = read_json(cursor_file, {}).get("last_started")
+        if cursor in selected:
+            offset = selected.index(cursor) + 1
+            selected = selected[offset:] + selected[:offset]
     state = args.state / day
     state.mkdir(exist_ok=True)
     if args.worker and (os.environ.get("FEATURE_LOCK_HELD") != "1" or len(selected) != 1):
@@ -973,6 +1032,8 @@ def main() -> int:
                               "error": str(error), "at": stamp()}
             else:
                 receipt.parent.mkdir(parents=True, exist_ok=True)
+                # Write before starting a bounded child, so a killed batch resumes fairly.
+                write_json(cursor_file, {"last_started": name, "at": stamp()})
                 argv = [sys.executable, str(Path(__file__).resolve()),
                         "--state", str(args.state.resolve()), "--workspace", str(args.workspace.resolve()),
                         "--date", day, "--repo", name, "--worker"]

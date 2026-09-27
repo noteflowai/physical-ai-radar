@@ -264,7 +264,7 @@ def nav(config: Config, lang: str, day: str) -> str:
         for other in LANGS)
     return f"""<nav class="top">
 <a class="brand" href="{base}{PAGES[lang].removesuffix('index.html') or './'}"><img src="{base}assets/favicon.svg" alt="" width="26" height="26"><span>{e(ui['title'])}</span></a>
-<span class="links"><a href="{base}radar/daily/{day}.{lang}.html">{e(ui['today'])}</a><a href="{base}radar/weekly/{iso_week(day)[0]}.{lang}.html">{e(ui['weekly'])}</a><a href="{base}radar/INDEX.html">{e(ui['history'])}</a><a href="{base}radar/{atom_name(lang)}">{e(site['nav_feeds'])}</a><a href="{HOME_URL}">GitHub</a></span>
+<span class="links"><a href="{base}radar/daily/{day}.{lang}.html">{e(ui['today'])}</a><a href="{base}radar/weekly/{iso_week(day)[0]}.{lang}.html">{e(ui['weekly'])}</a><a href="{base}radar/INDEX.html">{e(ui['history'])}</a><a href="{base}radar/{atom_name(lang)}">{e(site['nav_feeds'])}</a><a href="{base}updates/">{e({"zh": "项目更新", "en": "Updates", "ja": "更新情報"}[lang])}</a><a href="{HOME_URL}">GitHub</a></span>
 <span class="switch">{switch}</span>
 </nav>"""
 

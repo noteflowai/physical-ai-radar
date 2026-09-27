@@ -108,7 +108,8 @@ jobs:
               if page.startswith("radar/"):
                   assert 'class="sharebar"' in text, f"{page}: no share bar"
           for asset in ("assets/site.css", "assets/site.js", "assets/favicon.svg", "assets/og.zh.png", "assets/og.en.png",
-                        "assets/og.ja.png", "sitemap.xml", "robots.txt", "radar/feed.xml"):
+                        "assets/og.ja.png", "sitemap.xml", "robots.txt", "radar/feed.xml",
+                        "updates/index.html", "updates/feed.xml", "updates/releases.json"):
               assert (site/asset).exists(), f"{asset} not published"
           assert f"radar/daily/{day}.en.html" in (site/"sitemap.xml").read_text(encoding="utf-8")
           print("pages ok")

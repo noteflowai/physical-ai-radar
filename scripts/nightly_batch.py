@@ -72,21 +72,25 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
     }
     if saved["day"] != day:
         raise ValueError("Night receipt has a different batch date")
-    if saved.get("status") == "complete":
+    if saved.get("status") == "complete" and saved.get("pipeline_version") == 2:
         print(json.dumps({"status": "already-complete", "day": day}), flush=True)
         return saved
-    saved.update(status="running", started_at=timestamp())
+    saved.update(status="running", started_at=timestamp(), pipeline_version=2)
     write_json(receipt, saved)
     env = {**os.environ, "RADAR_RUN_DAY": day, "RADAR_LOCK_HELD": "1",
            "GIT_TERMINAL_PROMPT": "0", "GH_PROMPT_DISABLED": "1", "PIP_NO_INPUT": "1"}
     fresh = state / "fresh-radar"
     steps = [
-        ("sources", ["bash", "scripts/repair_sources.sh"], 2400),
-        ("publish", ["bash", "scripts/publish_daily.sh", "--date", day], 2400),
         ("fresh", [sys.executable, "-m", "pairadar", "--date", day,
-                   "--no-readme", "--out", str(fresh)], 600),
-        ("notes", ["bash", "scripts/draft_daily_notes.sh", "--date", day], 5400),
+                   "--no-readme", "--out", str(fresh)], 300),
+        # Reserve the feature budget before editorial tasks. The sum of all stage
+        # caps is 236 minutes, within the bootstrap's four-hour wall-clock limit.
         ("repos", ["bash", "scripts/improve_repos.sh", "--date", day], 10800),
+        ("updates", [sys.executable, "scripts/feature_updates.py"], 600),
+        ("sources", ["bash", "scripts/repair_sources.sh"], 600),
+        ("publish", ["bash", "scripts/publish_daily.sh", "--date", day], 600),
+        ("notes", ["bash", "scripts/draft_daily_notes.sh", "--date", day], 1200),
+        ("report", [sys.executable, "scripts/feature_report.py", "--date", day], 60),
     ]
     for name, argv, seconds in steps:
         old = saved["stages"].get(name, {})
@@ -101,6 +105,10 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
         record = {"status": "running", "started_at": timestamp(),
                   "attempts": old.get("attempts", 0) + 1}
         saved["stages"][name] = record
+        if name == "repos":
+            saved["stages"].pop("updates", None)
+        if name != "report":
+            saved["stages"].pop("report", None)
         write_json(receipt, saved)
         print(f"[night {day}] {name}: attempt {record['attempts']}", flush=True)
         try:

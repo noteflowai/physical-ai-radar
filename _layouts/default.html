@@ -45,7 +45,7 @@
 <div class="progress" aria-hidden="true"></div>
 <nav class="top">
 <a class="brand" href="{{ home | relative_url }}"><img src="{{ '/assets/favicon.svg' | relative_url }}" alt="" width="26" height="26"><span>{{ t_brand }}</span></a>
-<span class="links"><a href="{{ home | relative_url }}">{{ t_home }}</a><a href="{{ '/radar/INDEX.html' | relative_url }}">{{ t_archive }}</a><a href="{{ feed | relative_url }}">{{ t_feed }}</a><a href="https://github.com/noteflowai/physical-ai-radar">GitHub</a></span>
+<span class="links"><a href="{{ home | relative_url }}">{{ t_home }}</a><a href="{{ '/radar/INDEX.html' | relative_url }}">{{ t_archive }}</a><a href="{{ feed | relative_url }}">{{ t_feed }}</a><a href="{{ '/updates/' | relative_url }}">Updates</a><a href="https://github.com/noteflowai/physical-ai-radar">GitHub</a></span>
 <span class="switch"><a href="{{ '/' | relative_url }}" hreflang="zh-Hans"{% if lang == "zh" %} aria-current="page"{% endif %}>中文</a><a href="{{ '/en/' | relative_url }}" hreflang="en"{% if lang == "en" %} aria-current="page"{% endif %}>EN</a><a href="{{ '/ja/' | relative_url }}" hreflang="ja"{% if lang == "ja" %} aria-current="page"{% endif %}>日本語</a></span>
 </nav>
 <main class="prose">

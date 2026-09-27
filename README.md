@@ -263,3 +263,6 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 ---
 
 *本仓库为技术观察，不构成投资建议、产品承诺或安全认证结论。论文与厂商结论均以其自报为准，引用前请回到原始链接核对。*
+
+
+项目版本与功能更新: [Updates](https://noteflowai.github.io/physical-ai-radar/updates/) · [RSS](https://noteflowai.github.io/physical-ai-radar/updates/feed.xml).
