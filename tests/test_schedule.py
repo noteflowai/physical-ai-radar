@@ -104,7 +104,7 @@ class BatchTests(unittest.TestCase):
 
     def executor(self, argv, root, env, log, seconds):
         name = log.stem
-        self.calls.append((name, list(argv), env["RADAR_RUN_DAY"]))
+        self.calls.append((name, list(argv), env["RADAR_RUN_DAY"], seconds))
         if name == "fresh":
             latest = self.state / self.day / "fresh-radar/radar/latest.json"
             latest.parent.mkdir(parents=True, exist_ok=True)
@@ -117,9 +117,11 @@ class BatchTests(unittest.TestCase):
     def test_order_date_propagation_and_repeat_has_no_work(self):
         result = self.run_batch()
         self.assertEqual(result["status"], "complete")
-        self.assertEqual([c[0] for c in self.calls], ["sources", "publish", "fresh", "notes", "repos"])
+        self.assertEqual([c[0] for c in self.calls],
+                         ["fresh", "repos", "updates", "sources", "publish", "notes", "report"])
+        self.assertLessEqual(sum(c[3] for c in self.calls), 4 * 60 * 60)
         self.assertTrue(all(c[2] == self.day for c in self.calls))
-        self.assertIn("--radar-snapshot", self.calls[-1][1])
+        self.assertIn("--radar-snapshot", next(c[1] for c in self.calls if c[0] == "repos"))
         self.calls.clear()
         self.run_batch()
         self.assertEqual(self.calls, [])
@@ -130,7 +132,7 @@ class BatchTests(unittest.TestCase):
         self.assertIn("repos", [c[0] for c in self.calls])
         self.calls.clear(); self.failures.clear()
         self.assertEqual(self.run_batch()["status"], "complete")
-        self.assertEqual([c[0] for c in self.calls], ["sources"])
+        self.assertEqual([c[0] for c in self.calls], ["sources", "report"])
 
     def test_failed_publication_blocks_notes_but_not_independent_research(self):
         self.failures.add("publish")
@@ -140,7 +142,7 @@ class BatchTests(unittest.TestCase):
         self.assertIn("repos", [c[0] for c in self.calls])
         self.failures.clear(); self.calls.clear()
         self.assertEqual(self.run_batch()["status"], "complete")
-        self.assertEqual([c[0] for c in self.calls], ["publish", "notes"])
+        self.assertEqual([c[0] for c in self.calls], ["publish", "notes", "report"])
 
     def test_notes_that_produce_nothing_are_not_completed(self):
         (self.root / f"data/notes/{self.day}.json").unlink()
@@ -163,7 +165,7 @@ class BatchTests(unittest.TestCase):
         receipt.write_text(json.dumps(saved))
         self.calls.clear()
         self.assertEqual(self.run_batch()["status"], "complete")
-        self.assertEqual([c[0] for c in self.calls], ["repos"])
+        self.assertEqual([c[0] for c in self.calls], ["repos", "updates", "report"])
 
 
 @unittest.skipUnless(all(shutil.which(tool) for tool in ("git", "flock")),

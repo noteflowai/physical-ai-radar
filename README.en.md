@@ -264,3 +264,6 @@ PRs welcome: new machine-readable sources, evidence-tag corrections, baseline ad
 ---
 
 *This repository is technical observation. It is not investment advice, a product commitment, or a safety certification conclusion. Paper and vendor claims are reported as such; follow the original link before citing.*
+
+
+Project releases and feature updates: [Updates](https://noteflowai.github.io/physical-ai-radar/updates/) · [RSS](https://noteflowai.github.io/physical-ai-radar/updates/feed.xml).

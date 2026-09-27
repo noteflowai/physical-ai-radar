@@ -264,3 +264,6 @@ PR を歓迎します：機械可読な新規出典、根拠タグの修正、�
 ---
 
 *本リポジトリは技術観察であり、投資助言・製品保証・安全認証の結論ではありません。論文およびベンダーの主張は自己報告として扱い、引用前に原典を確認してください。*
+
+
+プロジェクトのリリースと機能更新: [Updates](https://noteflowai.github.io/physical-ai-radar/updates/) · [RSS](https://noteflowai.github.io/physical-ai-radar/updates/feed.xml).

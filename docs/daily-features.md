@@ -23,28 +23,33 @@ duplicate each other's engines.
 
 ## What happens each day
 
-At 21:30, source repair, daily publication recovery, fresh collection and Radar notes
-run first. The feature stage then visits all five repositories. At 02:30 the previous
+At 21:30, fresh collection runs first, followed by the five feature workers and
+verified-release announcements. Source repair, publication recovery and Radar notes
+follow, then a delivery report. At 02:30 the previous
 evening's unfinished stages resume. The 07:40 publisher remains separate.
 
 Each feature gets a maximum of 35 minutes per worker invocation, including planning,
 coding, local validation, review, CI and publication. The feature stage is capped at
 three hours; the whole nightly batch remains capped at four hours. Catch-up and
 bootstrap retries reuse durable transactions. Time limits prioritize finishing small
-increments and prevent a single project from consuming the entire night.
+increments and prevent a single project from consuming the entire night. A durable
+cursor starts after the last worker launched if a batch was interrupted.
 Planning, implementation, validation, acceptance review, push and publication retain
 separate checkpoints. Validated CPU work is reused on the identical commit when a GPU
 phase resumes. Commit bundles also survive removal of the disposable checkout.
 After nine unsuccessful planning or implementation attempts, the proposal is explicitly
 deferred, its diagnostics retained and no release claimed. A smaller plan can be
 selected on the following day; repeated retries cannot start more features that day.
-Nine unsuccessful resumptions of a validation or publication phase also produce an
-explicit deferred record with the partial publication state, rather than blocking
-that repository forever or claiming that an unchecked release succeeded.
+Nine unsuccessful resumptions of a validation or source-publication phase also
+produce an explicit deferred record. Once distribution starts, the merged/tagged
+version is retained until repaired and verified; a registry failure cannot start
+another feature or replace an immutable package.
 
 1. Read the actual repository, recent commits, open issues and fresh research.
 2. Choose one bounded capability with a user, problem, expected behavior and one to
-   eight acceptance conditions. A separate review call checks project fit and scope.
+   eight acceptance conditions. Specify the target user, an observable success
+   measure, a usage example, limitations and upgrade/rollback guidance. A separate
+   review call checks project fit and scope.
 3. Read relevant implementation and test files. Implement the complete feature,
    introduce behavioral tests in new files, and document usage.
 4. Independently review the exact proposed diff before executing candidate code.
@@ -58,6 +63,8 @@ that repository forever or claiming that an unchecked release succeeded.
 7. Review the final diff and actual validation logs in another independent call.
 8. Save the reviewed commit before pushing. Merge only after the required checks pass
    on that commit, then verify the merged commit's deployment and public content.
+9. Publish its versioned release and verify installable package bytes from the public
+   registry. Only then count the feature as complete and enqueue its announcement.
 
 Every author and reviewer requests **Claude Fable 5.1** (`claude-fable-5.1`) with
 `high` effort, as pinned centrally in `scripts/agent_model.py`. Daily notes, source
@@ -78,6 +85,11 @@ directories. PHP, Python, JavaScript and TypeScript product code can change.
 New tests and GPU experiments can be added. Existing tests, dependencies, CI,
 release gates, credentials and the automation itself are protected from daily edits.
 Those infrastructure changes remain separately reviewed maintenance work.
+The controller advances the next minor version and synchronizes existing package,
+plugin, citation and installation metadata before independent review. It preserves
+dependency versions and frozen experiment identities. WordPress authors continue
+updating the plugin header, constant, stable tag, changelog and upgrade notice,
+with the controller checking their agreement.
 
 Models receive bounded text and return exact edits; they have no tools or host
 credentials. The controller creates dedicated marked clones under
@@ -143,12 +155,56 @@ An already merged feature resumes publishing the same checked package.
 
 No daily worker publishes WordPress posts or connects to physical robot actuators.
 
+## Releases and owned-channel promotion
+
+| Project | Distribution proof required after source publication |
+| --- | --- |
+| Radar | Immutable GitHub tag and feature release |
+| Skills Anywhere | Release workflow gates, GitHub tarball, identical npm bytes and matching MCP Registry record |
+| EvalArc | Exact main CI wheel/sdist artifact, GitHub upload digests and identical PyPI files |
+| Robot Reel | Existing release workflow source/asset gates and identical GitHub/PyPI wheel and sdist |
+| WordPress | Verified WordPress.org files plus the exact CI ZIP on GitHub Releases |
+
+The existing trusted-publisher workflows own registry credentials. Dispatches and
+failed-job retries retain their exact tag/commit and bounded attempt receipts.
+Successful publication jobs are not rerun. A conflicting tag, release or asset
+fails closed; the controller never deletes an existing version to force a retry.
+Registry propagation can complete on the 02:30 catch-up or subsequent runs.
+Persistent workflow, credential or provenance failures need maintenance and remain
+visible in the report.
+
+Release notes use the final reviewed behavior, usage example, limitations and upgrade
+guidance. A durable outbox creates a content PR in Radar for the
+[project updates site](https://noteflowai.github.io/physical-ai-radar/updates/) and
+[RSS feed](https://noteflowai.github.io/physical-ai-radar/updates/feed.xml).
+Its exact PR checks, deployed commit, public JSON, page and RSS entry must agree
+before it is marked announced. An interrupted push or PR creation resumes the saved
+commit; pending announcements do not reauthor completed features.
+Failed PR checks get one automatic rerun. Persistently failing, closed or externally
+changed announcement PRs are quarantined with their diagnostics, allowing later
+release announcements to proceed. Contract errors also stay in separate receipts;
+they cannot retain the active transaction of an already completed product feature.
+After fixing the recorded cause, `python3 scripts/feature_updates.py --retry-repairs`
+requeues quarantined entries. Complete uploaded packages are preserved; only an empty
+failed-upload placeholder in a controller-owned draft can be removed for upload retry.
+
+These channels provide discoverable release notes and subscriptions. The controller
+does not infer audience reach or conversions, post to unspecified social accounts,
+or claim a week of autonomous success from one completed feature. The seven-day
+local report records actual outcomes, unfinished phases and errors. Download metrics
+cover the latest announced GitHub release per project within a bounded query budget.
+
 ## Receipts and operation
 
 - `~/.local/state/ai-feature-agent/YYYY-MM-DD/results.json`: daily outcomes.
 - `tasks/REPO/active.json`: the one unfinished feature and its exact reviewed commit.
 - `tasks/REPO/FEATURE/`: plans, prompts, reviews, attempts, logs and publication proof.
 - `gpu.lock`: the shared local experiment lock.
+- `tasks/REPO/FEATURE/distribution/`: tag, artifact, registry and workflow receipts.
+- `outbox/`: pending/announced release records and channel readback receipts.
+- `announcement-transaction.json`: the recoverable announcement PR.
+- `announcement-errors/` and `announcement-failures/`: retained promotion failures.
+- `reports/YYYY-MM-DD.json`: seven-day delivery health and observed download counts.
 
 Run the real installed entry point for a selected project:
 
@@ -161,6 +217,13 @@ Run the full scheduled path:
 ```sh
 RADAR_TIMEOUT=4h RADAR_LOCK_WAIT=900 radar-run scripts/nightly.sh
 ```
+
+To retry announcements independently, run `python3 scripts/feature_updates.py` from
+the installed Radar checkout. To finish distribution for an older completed feature,
+run `python3 scripts/feature_release.py --backfill /path/to/complete.json --root
+/path/to/managed/repo` there; optional `--delivery /path/to/reviewed-copy.json` supplies
+accurate final release copy. Backfill preserves the original completion and daily
+allowance. It cannot create another feature.
 
 `--date` is a controlled manual override. A normal nightly restart retains the most
 recent 21:30 Singapore batch. No entry needs a foreground Codex conversation.

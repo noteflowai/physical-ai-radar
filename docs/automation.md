@@ -9,7 +9,7 @@ anywhere that matters.
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
 | `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
-| `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | runs source repair, publication recovery, fresh research, notes and companion maintenance in order |
+| `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | collects research, develops specialist features, publishes updates, maintains Radar and reports results |
 | `scripts/nightly.sh --previous-day` | maintainer's machine, cron | 02:30 Asia/Singapore | resumes only the preceding evening's unfinished stages |
 
 All local jobs are noninteractive. A completed publication receipt requires a
@@ -193,12 +193,16 @@ A late catch-up cannot replace a newer issue with an older one.
 
 At **21:30** a single controller performs:
 
-1. source-health repair, with independent review when a replacement is needed;
-2. an idempotent daily publish/recovery and public deployment check;
-3. a fresh collection into local state, for research without changing the morning picks;
-4. notes for the verified morning issue, with review, CI, merge and public verification;
-5. the five specialist projects, using the fresh evening research plus current
-   Hugging Face and GitHub signals, with their existing review and publication gates.
+1. fresh collection into local state (5 minutes);
+2. five specialist feature workers, with a durable fairness cursor (3 hours total);
+3. verified-release updates and RSS publication (10 minutes);
+4. source-health repair with independent review (10 minutes);
+5. daily publish/recovery and public deployment checks (10 minutes);
+6. notes for the verified morning issue, with review and deployment gates (20 minutes);
+7. a seven-day delivery report and bounded release-download metrics (1 minute).
+
+These caps total 236 minutes within the four-hour batch. New feature work keeps its
+own source, distribution and announcement checkpoints; successful stages are reused.
 
 Research inputs keep each item's original `published` value as its source `date`,
 separate from `issue_date` and the collection timestamp. Bad entries are recorded
