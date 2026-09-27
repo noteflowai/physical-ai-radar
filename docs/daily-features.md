@@ -352,6 +352,9 @@ only JSON data, with no model-controlled command, URL, path or credential config
 runtime owns the shared GPU lock and enforces a ten-minute lifetime. GPU contention or probe
 failure retains the approved feature for a retry. The input/runtime hash identifies the receipt:
 a complete validated result is reused across implementation retries rather than rerun.
+An invalid cached receipt is quarantined and collected again. Controller timeouts first
+terminate the client gracefully, then force its process group only if necessary; cleanup
+selects that attempt's unique job label and preserves other sessions and their metadata.
 
 `decision_evidence` supplies original inputs, distributions, actual model and base revision,
 immutable image ID, measured wall/model latency and timestamp to implementation, code review

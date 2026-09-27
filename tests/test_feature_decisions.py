@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 import os
+import signal
 from pathlib import Path
 import subprocess
 import tempfile
@@ -67,7 +68,7 @@ class DecisionTests(unittest.TestCase):
     def test_manifest_detects_changed_runtime(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            files = {"kev_local.py": 'BATCH_SCHEMA = "kev-local-batch-v1"\n',
+            files = {"kev_local.py": 'BATCH_SCHEMA = "kev-local-batch-v1"\nJOB_LABEL = "ai.local.job"\n',
                      "runtime.json": json.dumps({"image_id": IMAGE}),
                      "provenance.json": "{}", "relay.py": "# reviewed relay"}
             lines = []
@@ -93,6 +94,8 @@ class DecisionTests(unittest.TestCase):
             lambda r: r["records"][0]["response"]["answers"]["action"].update(
                 probabilities={"stop": .9, "go": .9}),
             lambda r: r["records"][0].update(wall_ms=True),
+            lambda r: r["records"][0].update(response=[]),
+            lambda r: r["records"][0]["response"].update(answers=[]),
         ]:
             bad = copy.deepcopy(valid)
             mutation(bad)
@@ -106,14 +109,14 @@ class DecisionTests(unittest.TestCase):
                 os.environ, {"KIRO_API_KEY": "test-private", "AWS_SECRET_ACCESS_KEY": "test-private"}):
             state = Path(directory)
             completed = subprocess.CompletedProcess([], 0, json.dumps(result(request)), "")
-            with patch.object(decisions.subprocess, "run", return_value=completed) as run:
+            with patch.object(decisions, "run_probe", return_value=completed) as run:
                 first = decisions.collect(request, state)
                 second = decisions.collect(request, state)
             self.assertEqual(first, second)
             self.assertEqual(run.call_count, 1)
-            self.assertNotIn("KIRO_API_KEY", run.call_args.kwargs["env"])
-            self.assertNotIn("AWS_SECRET_ACCESS_KEY", run.call_args.kwargs["env"])
-            self.assertEqual(run.call_args.kwargs["timeout"], 660)
+            self.assertNotIn("KIRO_API_KEY", run.call_args.args[1])
+            self.assertNotIn("AWS_SECRET_ACCESS_KEY", run.call_args.args[1])
+            self.assertRegex(run.call_args.args[1]["KEV_JOB_ID"], r"^[a-f0-9]{32}$")
 
     @patch.object(decisions, "installation", return_value={"model": decisions.RUN, "image_id": IMAGE})
     def test_failed_or_incomplete_probe_never_becomes_cached_success(self, installation):
@@ -121,7 +124,7 @@ class DecisionTests(unittest.TestCase):
             state = Path(directory)
             for completed in [subprocess.CompletedProcess([], 1, "", "private diagnostic"),
                               subprocess.CompletedProcess([], 0, json.dumps({}), "")]:
-                with patch.object(decisions.subprocess, "run", return_value=completed):
+                with patch.object(decisions, "run_probe", return_value=completed):
                     with self.assertRaises((RuntimeError, ValueError)):
                         decisions.collect(spec(), state)
                 self.assertEqual(list(state.rglob("receipt.json")), [])
@@ -134,11 +137,68 @@ class DecisionTests(unittest.TestCase):
             for text in ["Person is 0.5m away", "Person is 5m away"]:
                 request = spec()
                 request["cases"][0]["request"]["state"] = text
-                with patch.object(decisions.subprocess, "run", return_value=subprocess.CompletedProcess(
+                with patch.object(decisions, "run_probe", return_value=subprocess.CompletedProcess(
                         [], 0, json.dumps(result(request)), "")) as run:
                     decisions.collect(request, state)
                 run.assert_called_once()
             self.assertEqual(len(list(state.rglob("receipt.json"))), 2)
+
+    @patch.object(decisions, "installation", return_value={"model": decisions.RUN, "image_id": IMAGE})
+    def test_corrupt_cache_is_preserved_and_replaced_by_fresh_evidence(self, installation):
+        with tempfile.TemporaryDirectory() as directory:
+            state = Path(directory)
+            completed = subprocess.CompletedProcess([], 0, json.dumps(result(spec())), "")
+            with patch.object(decisions, "run_probe", return_value=completed) as run:
+                decisions.collect(spec(), state)
+                receipt = next(state.rglob("receipt.json"))
+                receipt.write_text('{"truncated":')
+                recovered = decisions.collect(spec(), state)
+            self.assertEqual(run.call_count, 2)
+            self.assertEqual(recovered, result(spec()))
+            self.assertEqual(next(state.rglob("receipt.invalid-*.json")).read_text(), '{"truncated":')
+
+    @patch.object(decisions.subprocess, "Popen")
+    def test_timeout_terminates_gracefully_before_forced_group_kill(self, popen):
+        for hard in (False, True):
+            process = popen.return_value
+            process.reset_mock()
+            process.pid = 98765
+            process.communicate.side_effect = [subprocess.TimeoutExpired("probe", 660)] + (
+                [subprocess.TimeoutExpired("probe", 120)] if hard else []) + [("", "")]
+            with patch.object(decisions.os, "killpg") as kill, self.assertRaises(subprocess.TimeoutExpired):
+                decisions.run_probe(["python3", "probe.py"], {})
+            process.terminate.assert_called_once()
+            self.assertEqual(process.communicate.call_args_list[1].kwargs["timeout"], 120)
+            if hard:
+                kill.assert_called_once_with(98765, signal.SIGKILL)
+            else:
+                kill.assert_not_called()
+            self.assertTrue(popen.call_args.kwargs["start_new_session"])
+
+    @patch.object(decisions, "installation", return_value={"model": decisions.RUN, "image_id": IMAGE})
+    @patch.object(decisions, "cleanup_job")
+    def test_timeout_records_failure_and_cleans_only_its_job(self, cleanup, installation):
+        with tempfile.TemporaryDirectory() as directory, patch.object(
+                decisions, "run_probe", side_effect=subprocess.TimeoutExpired("probe", 660)):
+            state = Path(directory)
+            with self.assertRaisesRegex(RuntimeError, "retain the approved feature"):
+                decisions.collect(spec(), state)
+            self.assertEqual(json.loads(next(state.rglob("failure.json")).read_text())["exit_code"], 124)
+            cleanup.assert_called_once()
+            self.assertEqual(cleanup.call_args.args[0], cleanup.call_args.args[1]["KEV_JOB_ID"])
+            self.assertEqual(list(state.rglob("receipt.json")), [])
+
+    def test_cleanup_selects_exact_attempt_and_preserves_other_metadata(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(
+                decisions, "LOCAL_STATE", Path(directory)), patch.object(decisions.subprocess, "run") as run:
+            state = Path(directory)
+            (state / "active.json").write_text('{"job_id":"different-job"}')
+            run.side_effect = [subprocess.CompletedProcess([], 0, "a" * 12 + "\n", ""),
+                               subprocess.CompletedProcess([], 0, "", "")]
+            decisions.cleanup_job("b" * 32, {})
+            self.assertIn("label=ai.local.job=" + "b" * 32, run.call_args_list[0].args[0])
+            self.assertEqual(run.call_args_list[1].args[0], ["docker", "rm", "--force", "a" * 12])
+            self.assertTrue((state / "active.json").is_file())
 
 
 if __name__ == "__main__":
