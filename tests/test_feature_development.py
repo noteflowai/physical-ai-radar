@@ -51,6 +51,15 @@ class FeaturePolicyTests(unittest.TestCase):
         self.assertTrue(readable("pyproject.toml", self.config))
         self.assertFalse(allowed("pyproject.toml", self.config))
 
+    def test_radar_ui_edits_do_not_open_generated_or_release_assets(self):
+        for path in ["assets/site.css", "assets/site.js"]:
+            self.assertTrue(allowed(path, self.config))
+            self.assertTrue(readable(path, self.config))
+        for path in ["assets/other.js", "assets/site.css/extra.js",
+                     "assets/../scripts/develop_repos.py", "index.html",
+                     "updates/index.html", "_layouts/default.html"]:
+            self.assertFalse(allowed(path, self.config))
+
     def test_acceptance_cannot_be_arbitrary_shell(self):
         for runner in ["bash", "sh", "python -c"]:
             with self.assertRaises(ValueError):
