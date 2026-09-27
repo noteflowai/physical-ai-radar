@@ -20,6 +20,9 @@ class PublicationAbandoned(RuntimeError):
 
 
 REQUIRED_PR_CHECKS = {
+    "noteflowai/ai-chat-for-amazon-bedrock": [
+        "Release gate on PHP 7.4", "Release gate on PHP 8.3", "Official Plugin Check",
+    ],
     "noteflowai/dsh-skills-anywhere": [
         "Hugging Face showcase", "GitHub Action", "Node 22 on ubuntu-latest",
         "Node 24 on ubuntu-latest", "Node 22 on macos-latest", "Node 24 on macos-latest",
@@ -301,7 +304,9 @@ def finish_commit(repo: str, commit: str, workflows: list[str],
 def finish(repo: str, pr: int, head: str, workflows: list[str],
            urls: list[str], output: Path) -> dict:
     """A successful receipt means PR checks, merge, main deployment, and readback."""
-    if not workflows or not urls:
+    package_release = (repo == "noteflowai/ai-chat-for-amazon-bedrock"
+                       and workflows == ["Quality gate"] and not urls)
+    if not workflows or (not urls and not package_release):
         raise ValueError("A publication requires named deployment gates and public readback URLs")
     pending = {"repo": repo, "pr": pr, "head": head, "workflow_names": workflows,
                "urls": urls, "status": "pending"}
@@ -327,7 +332,7 @@ def finish(repo: str, pr: int, head: str, workflows: list[str],
         raise
     receipt = {"repo": repo, "pr": pr, "head": head, "merge_commit": commit,
                "url": record["url"], "workflows": runs, "public_readback": pages,
-               "status": "published"}
+               "status": "source-verified" if package_release else "published"}
     write_json(output, receipt)
     return receipt
 

@@ -16,4 +16,4 @@ if [ -f "$ENV_FILE" ]; then
   set +a
 fi
 cd "$(dirname "$0")/.."
-exec python3 scripts/improve_repos.py "$@"
+exec python3 scripts/develop_repos.py "$@"
