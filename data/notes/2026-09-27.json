@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-27",
+  "generated": "2026-09-27 14:00 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.28838": {
+      "zh": "若打算让已部署的流匹配 VLA 持续在线 RL 微调，作者点名的风险是更新会逐步毁掉单个任务上的既有能力，值得纳入监控；本页唯一数字 96.02% 缺少指标语境，且为作者自报，但标注了开放代码，可自行复核。",
+      "en": "Anyone planning to keep fine-tuning a deployed flow-matching VLA online should monitor per-task competence, which the authors say continued updates often destroy; the page's lone figure lacks its metric, but open code is flagged, so the self-reported claim can be checked.",
+      "ja": "展開済みのフローマッチング VLA をオンライン RL で追加学習し続けるなら、更新でタスク単位の能力が失われるという著者指摘の失敗を監視対象にすべき。96.02% は指標が本ページで不明な自己申告値だが、コード公開の表示があり検証可能。"
+    },
+    "https://arxiv.org/abs/2609.29029": {
+      "zh": "在端侧对高分辨率图像跑 VLM 时，逐块穷举推理未必必要：作者自报能耗降 78%、延迟降 69%，准确率由 45% 升至 73%；但场景是卫星图像问答，能否迁移到机器人相机与控制回路，本页没有证据。",
+      "en": "Teams running VLMs on-device over high-resolution imagery may not need exhaustive tiled inference: the authors report 78% less energy and 69% lower latency with accuracy up from 45% to 73%, but on satellite queries, with nothing here on robot cameras or control loops.",
+      "ja": "高解像度画像にエッジで VLM をかける場合、全タイル推論は不要かもしれない。著者はエネルギー 78% 減、遅延 69% 減、精度 45%→73% を自己申告するが、対象は衛星画像の質問応答で、ロボットの制御ループへの転用は本ページでは示されていない。"
+    },
+    "https://arxiv.org/abs/2609.29382": {
+      "zh": "为 VLM 骨干加动作专家的流匹配 VLA 规划端侧算力时，按任务分配计算可能是一个可调旋钮；该预印本标注了闭环成功率与延迟结果，但本页未给出任何数字，省多少算力、掉多少成功率暂无从判断。",
+      "en": "For teams budgeting compute on a flow-matching VLA built from a VLM backbone plus action expert, per-task compute allocation may become a tuning knob; closed-loop and latency results are flagged, but with no figures on this page the trade-off cannot yet be sized.",
+      "ja": "VLM バックボーンとアクションエキスパートからなるフローマッチング VLA の計算予算を組むなら、タスク別の計算配分は調整項目になり得る。閉ループ成功率と遅延の結果ありとされるが、本ページに数値がなく、得失の大きさはまだ判断できない。"
+    },
+    "https://arxiv.org/abs/2609.29000": {
+      "zh": "若你在记录部署数据，本文提示不应只保留成功轨迹：部分完成和失败同样是训练素材；该预印本标注了真机实验，但本页没有量化结果，收益大小需回原文核对。",
+      "en": "If you log deployment runs, this preprint argues partial progress and failures are training material rather than data to filter out; real-robot experiments are flagged, but the page shows no figures, so the size of the gain remains unverified here.",
+      "ja": "運用ログを取っているなら、成功例だけに絞らず部分的な進捗や失敗も学習材料として残す価値があるという主張。実機実験ありとされるが本ページに定量結果はなく、効果の大きさは原文で確認が必要。"
+    },
+    "http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis": {
+      "zh": "示教采集成本是瓶颈时，可考虑用视频扩散合成机器人数据来补量；但本页唯一数字是仿真基准上 36.4% 的相对提升，真机实验虽有标注却未见数字，采购或替代遥操作前应先看真机结果。",
+      "en": "Where demonstration collection is the bottleneck, video-diffusion data synthesis is worth a trial, but the only figure shown is a 36.4% relative gain in simulator benchmarks; real-robot experiments are flagged without numbers here, so don't cut teleoperation budgets yet.",
+      "ja": "デモ収集コストが律速なら、動画拡散によるデータ合成は試す価値がある。ただし本ページの数値はシミュレータベンチマークでの相対改善 36.4% のみで、実機実験は数値なし。遠隔操作の予算を削る判断はまだ早い。"
+    },
+    "https://arxiv.org/abs/2609.29092": {
+      "zh": "若你的四足视觉步态依赖训练时的干净深度和部署时手调的后处理滤波，这项工作把深度噪声纳入世界模型来处理，值得关注；但本页没有数字或真机信号，仅凭页面还不足以替换现有滤波链路。",
+      "en": "Quadruped teams whose vision-based gaits assume clean depth in training and hand-tuned filters at deployment should watch this; the page shows no figures or real-robot signal, so it is not yet grounds for replacing an existing filter pipeline.",
+      "ja": "学習時はクリーンな深度、運用時は手調整の後処理フィルタに頼る四脚の視覚歩行を使っているなら注目に値する。ただし本ページに数値も実機のシグナルもなく、既存のフィルタ処理を置き換える根拠にはまだならない。"
+    },
+    "https://www.leiphone.com/category/ai/k1xgdu6w3n7xggkb.html": {
+      "zh": "这是一篇访谈观点，核心论断是机器人缺的不是数据而是经验；可作为规划数据策略时的一种立场参考，但没有量化证据，不宜据此调整采集投入。",
+      "en": "An interview whose core claim is that robots lack experience rather than data; useful as one framing when setting data strategy, but as secondary opinion with no figures it should not by itself shift collection spending.",
+      "ja": "ロボットに欠けているのはデータではなく経験だ、という主張のインタビュー記事。データ戦略を考える際の一つの視点にはなるが、二次報道の意見で数値もなく、収集投資を変える根拠にはならない。"
+    },
+    "https://www.leiphone.com/category/ai/c5xfhiwwhqsfngrs.html": {
+      "zh": "二手报道称斑马智能借云栖从汽车转向具身智能，但本页摘录只描述车内助手场景，看不到机器人产品、价格或交付信息，暂时不构成选型或供应链决策的依据。",
+      "en": "A secondary report of Zebra positioning its automotive AI for embodied intelligence; the visible excerpt describes only an in-car assistant scene, with no robot product, price or delivery to plan sourcing around.",
+      "ja": "斑馬智能が車載 AI から具身知能へ進出するという二次報道。本ページの抜粋は車内アシスタントの場面のみで、ロボット製品・価格・出荷の情報はなく、調達判断の材料にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.28838" rel="noopener" target="_blank">Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy</a></h3>
 <p class="figure"><strong>96.02%</strong><span class="context">“under which 96.02% of the action”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 展開済みのフローマッチング VLA をオンライン RL で追加学習し続けるなら、更新でタスク単位の能力が失われるという著者指摘の失敗を監視対象にすべき。96.02% は指標が本ページで不明な自己申告値だが、コード公開の表示があり検証可能。</p>
 <p class="excerpt">Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29029" rel="noopener" target="_blank">Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge</a></h3>
 <p class="figure"><strong>78%</strong><span class="context">“Rift reduces energy by 78% and latency by”</span></p><p class="chips"><span class="chip">69%</span><span class="chip">45%</span><span class="chip">73%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 高解像度画像にエッジで VLM をかける場合、全タイル推論は不要かもしれない。著者はエネルギー 78% 減、遅延 69% 減、精度 45%→73% を自己申告するが、対象は衛星画像の質問応答で、ロボットの制御ループへの転用は本ページでは示されていない。</p>
 <p class="excerpt">Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.</p>
 <ul class="signals"><li>定量結果あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29382" rel="noopener" target="_blank">Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> VLM バックボーンとアクションエキスパートからなるフローマッチング VLA の計算予算を組むなら、タスク別の計算配分は調整項目になり得る。閉ループ成功率と遅延の結果ありとされるが、本ページに数値がなく、得失の大きさはまだ判断できない。</p>
 <p class="excerpt">Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29000" rel="noopener" target="_blank">Learning from Mixed-Quality Deployment Experience for Robot Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 運用ログを取っているなら、成功例だけに絞らず部分的な進捗や失敗も学習材料として残す価値があるという主張。実機実験ありとされるが本ページに定量結果はなく、効果の大きさは原文で確認が必要。</p>
 <p class="excerpt">Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis" rel="noopener" target="_blank">AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis</a></h3>
 <p class="figure"><strong>36.4%</strong><span class="context">“with relative gains of 36.4% in simulator benchmarks”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> デモ収集コストが律速なら、動画拡散によるデータ合成は試す価値がある。ただし本ページの数値はシミュレータベンチマークでの相対改善 36.4% のみで、実機実験は数値なし。遠隔操作の予算を削る判断はまだ早い。</p>
 <p class="excerpt">The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29092" rel="noopener" target="_blank">DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 学習時はクリーンな深度、運用時は手調整の後処理フィルタに頼る四脚の視覚歩行を使っているなら注目に値する。ただし本ページに数値も実機のシグナルもなく、既存のフィルタ処理を置き換える根拠にはまだならない。</p>
 <p class="excerpt">Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.</p>
 <footer>
 <span class="source">arXiv 2609.29092 · 2026-09-26</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html" rel="noopener" target="_blank">SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ロボットに欠けているのはデータではなく経験だ、という主張のインタビュー記事。データ戦略を考える際の一つの視点にはなるが、二次報道の意見で数値もなく、収集投資を変える根拠にはならない。</p>
 <p class="excerpt">机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html" rel="noopener" target="_blank">这次云栖，斑马智能亮出了从汽车到具身智能的入场券</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 斑馬智能が車載 AI から具身知能へ進出するという二次報道。本ページの抜粋は車内アシスタントの場面のみで、ロボット製品・価格・出荷の情報はなく、調達判断の材料にはならない。</p>
 <p class="excerpt">周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.28838" rel="noopener" target="_blank">Uncertainty-Gated Exploration Noise Suppresses Task Collapse in Online RL Fine-Tuning of a Flow-Matching Vision-Language-Action Policy</a></h3>
 <p class="figure"><strong>96.02%</strong><span class="context">“under which 96.02% of the action”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 若打算让已部署的流匹配 VLA 持续在线 RL 微调，作者点名的风险是更新会逐步毁掉单个任务上的既有能力，值得纳入监控；本页唯一数字 96.02% 缺少指标语境，且为作者自报，但标注了开放代码，可自行复核。</p>
 <p class="excerpt">Online reinforcement learning fine-tuning of pretrained flow-matching vision-language-action (VLA) policies promises robots that keep learning after deployment, but continued updates often destroy competence on individual tasks while the…</p>
 <ul class="signals"><li>含量化指标</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29029" rel="noopener" target="_blank">Exploiting answer-invariant redundancies in satellite imagery for efficient VLM inference on edge</a></h3>
 <p class="figure"><strong>78%</strong><span class="context">“Rift reduces energy by 78% and latency by”</span></p><p class="chips"><span class="chip">69%</span><span class="chip">45%</span><span class="chip">73%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 在端侧对高分辨率图像跑 VLM 时，逐块穷举推理未必必要：作者自报能耗降 78%、延迟降 69%，准确率由 45% 升至 73%；但场景是卫星图像问答，能否迁移到机器人相机与控制回路，本页没有证据。</p>
 <p class="excerpt">Onboard vision-language models could enable satellites to answer queries directly, but exhaustive tiled inference over high-resolution imagery is slow and energy-intensive.</p>
 <ul class="signals"><li>含量化指标</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29382" rel="noopener" target="_blank">Decoupled Early Exits for Task-Dependent Compute Allocation in Flow-Matching VLAs</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 为 VLM 骨干加动作专家的流匹配 VLA 规划端侧算力时，按任务分配计算可能是一个可调旋钮；该预印本标注了闭环成功率与延迟结果，但本页未给出任何数字，省多少算力、掉多少成功率暂无从判断。</p>
 <p class="excerpt">Flow-matching Vision-Language-Action (VLA) models have emerged as a potential solution for generalist robot control, designed by combining a pretrained Vision-Language Model (VLM) backbone with an action expert that generates continuous…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29000" rel="noopener" target="_blank">Learning from Mixed-Quality Deployment Experience for Robot Manipulation</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你在记录部署数据，本文提示不应只保留成功轨迹：部分完成和失败同样是训练素材；该预印本标注了真机实验，但本页没有量化结果，收益大小需回原文核对。</p>
 <p class="excerpt">Robot policies deployed in real environments naturally accumulate mixed-quality experience, including successful executions, partial progress, and failures.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis" rel="noopener" target="_blank">AnchorDream: Repurposing Video Diffusion for Embodiment-Aware Robot Data Synthesis</a></h3>
 <p class="figure"><strong>36.4%</strong><span class="context">“with relative gains of 36.4% in simulator benchmarks”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 示教采集成本是瓶颈时，可考虑用视频扩散合成机器人数据来补量；但本页唯一数字是仿真基准上 36.4% 的相对提升，真机实验虽有标注却未见数字，采购或替代遥操作前应先看真机结果。</p>
 <p class="excerpt">The collection of large-scale and diverse robot demonstrations remains a major bottleneck for imitation learning, as real-world data acquisition is costly and simulators offer limited diversity and fidelity with pronounced sim-to-real gaps.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.29092" rel="noopener" target="_blank">DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你的四足视觉步态依赖训练时的干净深度和部署时手调的后处理滤波，这项工作把深度噪声纳入世界模型来处理，值得关注；但本页没有数字或真机信号，仅凭页面还不足以替换现有滤波链路。</p>
 <p class="excerpt">Vision-based legged locomotion methods assume clean depth at training time and rely on hand-tuned post-processing filters at deployment.</p>
 <footer>
 <span class="source">arXiv 2609.29092 · 2026-09-26</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/k1XGdu6w3n7xGgKB.html" rel="noopener" target="_blank">SeeAct AI穆尧：具身智能终局，一定是从“被训练”走向“自我进化”｜物理AI50人</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是一篇访谈观点，核心论断是机器人缺的不是数据而是经验；可作为规划数据策略时的一种立场参考，但没有量化证据，不宜据此调整采集投入。</p>
 <p class="excerpt">机器人真正缺的，不是数据，而是经验。那是具身智能最荒芜的时候。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/c5xfhIwWHqSfnGrS.html" rel="noopener" target="_blank">这次云栖，斑马智能亮出了从汽车到具身智能的入场券</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 二手报道称斑马智能借云栖从汽车转向具身智能，但本页摘录只描述车内助手场景，看不到机器人产品、价格或交付信息，暂时不构成选型或供应链决策的依据。</p>
 <p class="excerpt">周五晚上六点，你坐进车里，什么也没说。 AI 系统已经知道，这周六是女儿的生日。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-24</span>
