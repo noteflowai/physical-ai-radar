@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>stall-threshold sensitivity for recorded step-limit failures</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.17.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.17.0/</guid>
+      <description>Adds --stall-sweep T1,T2,... to python -m robot_reel.stress. It re-labels verified recorded step-limit traces at up to eight stall thresholds in metres and reports per-threshold counts, changed and stable trials, and threshold-dependent boundaries against the unchanged 1 mm reference. No policy is re-run and no threshold is validated.</description>
+      <pubDate>Sun, 27 Sep 2026 14:55:47 +0000</pubDate>
+    </item>
+    <item>
       <title>report consecutive-failure streak and failing_since date for struggling sources in pairadar.health</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.2.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.2.0/</guid>

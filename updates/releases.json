@@ -1,5 +1,21 @@
 [
   {
+    "id": "robot-reel/0.17.0",
+    "repo": "noteflowai/robot-reel",
+    "version": "0.17.0",
+    "commit": "2ff573d936d683395dfbf36537b4fb223be17e2c",
+    "feature_id": "2026-09-27-robot-reel-134533563660",
+    "pr": 84,
+    "title": "stall-threshold sensitivity for recorded step-limit failures",
+    "summary": "Adds --stall-sweep T1,T2,... to python -m robot_reel.stress. It re-labels verified recorded step-limit traces at up to eight stall thresholds in metres and reports per-threshold counts, changed and stable trials, and threshold-dependent boundaries against the unchanged 1 mm reference. No policy is re-run and no threshold is validated.",
+    "usage": "python3 -m robot_reel.stress docs/stress --reliability --stall-sweep 0.0005,0.002,0.005\n\nThe collection is verified first. Then the JSON output gains stall_sensitivity with these fields: schema, trials, reference_threshold_m (0.001), thresholds (sorted, reference included), by_threshold (counts and stalled_trials per threshold), changed (per non-reference threshold: trial, reference_kind, kind, tail_travel_m), step_limit_trials, stable_step_limit_trials, boundary (per step-limit trial: tail_travel_m, kinds per threshold, depends_on_threshold) and scope. Invalid input such as --stall-sweep=2 exits with status 2 and prints a message like: --stall-sweep value '2' exceeds 1 m; thresholds are metres of end-effector travel, not millimetres.",
+    "limitations": "CLI-only; there is no UI change, so no browser or visual checks apply. The sweep describes label sensitivity on the recorded traces, using tail travel over the final tenth of frames as the only motion measure. It does not choose, calibrate or statistically test a threshold, and it does not re-run policies. The behavioral tests use labeled synthetic traces through the real CLI. For those tests, collection verification and loading are patched to stand in for a verified collection. A separate test checks the sweep's reference threshold against the sealed reliability.json of the published collection. The published reliability.json, the summary, the manifests and verify_site are unchanged. I did not run the tests in this environment.",
+    "upgrade": "Upgrade to the release containing this change. The change adds one optional flag and one new output key, so existing commands, published packs and schemas keep working without migration. To roll back, revert the commit or reinstall the previous version. No stored artifact depends on stall_sensitivity.",
+    "release_url": "https://github.com/noteflowai/robot-reel/releases/tag/v0.17.0",
+    "source_url": "https://github.com/noteflowai/robot-reel/pull/84",
+    "released_at": "2026-09-27T14:55:47.203719+00:00"
+  },
+  {
     "id": "physical-ai-radar/1.2.0",
     "repo": "noteflowai/physical-ai-radar",
     "version": "1.2.0",
