@@ -186,14 +186,14 @@ def snapshot(radar_snapshot: Path | None = None) -> dict:
             "sources": sources, "source_failures": failures}
 
 
-def model_json(prompt: str, state: Path, label: str, model: str) -> dict:
+def model_json(prompt: str, state: Path, label: str, model: str, system: str = SYSTEM) -> dict:
     if len(prompt.encode()) > 110000:
         raise ValueError("Prompt exceeds the bounded noninteractive input size")
     home = state / "agent"
     agents = home / ".kiro/agents"
     agents.mkdir(parents=True, exist_ok=True)
     policy = {"name": "repo-maintainer", "description": "Text-only unattended review",
-              "prompt": SYSTEM, "tools": [], "allowedTools": [], "resources": []}
+              "prompt": system, "tools": [], "allowedTools": [], "resources": []}
     agent = agents / "repo-maintainer.json"
     agent.write_text(json.dumps(policy))
     command(["kiro-cli", "agent", "validate", "--path", str(agent)], cwd=home)

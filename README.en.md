@@ -166,7 +166,7 @@ flowchart LR
   C -. "nightly" .-> A["an agent drafts the notes<br/>another model reviews · merged on green"]
 ```
 
-`scripts/publish_daily.sh` publishes at 07:40 Asia/Singapore (23:40 UTC on the preceding date / 08:40 JST), using the Singapore issue date. This cutoff precedes the regular arXiv announcement. At 21:30 one night batch collects fresh signals, drafts radar notes and maintains the three companion projects; a 02:30 catch-up resumes unfinished stages from that evening.
+`scripts/publish_daily.sh` publishes at 07:40 Asia/Singapore (23:40 UTC on the preceding date / 08:40 JST), using the Singapore issue date. This cutoff precedes the regular arXiv announcement. At 21:30 one night batch collects fresh signals, drafts radar notes and develops features for five specialist projects, including this repository and the WordPress plugin. Each repository completes at most one feature per day, with reviewed GPU experiments when useful; a 02:30 catch-up resumes unfinished stages. See [daily feature development](docs/daily-features.md).
 
 <details>
 <summary>Step by step</summary>

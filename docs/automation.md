@@ -24,60 +24,30 @@ commit before checking the public site.
 The deterministic daily publisher verifies the same gates on its direct main
 commit, including when a retry finds that today's data is already present.
 
-### Companion-project maintenance
+### Daily specialist features
 
-The daily maintenance job consumes this radar's published JSON, Hugging Face
-model metadata, GitHub repository search and the three projects' public metadata.
-Search results are described as recently pushed repositories ordered by total
-stars, not weekly star gains or independent user adoption.
+The nightly job develops at most one complete feature per repository per Singapore
+day across Physical AI Radar, Skills Anywhere, EvalArc, Robot Reel and the AI Chat
+for Amazon Bedrock WordPress plugin. Each has a distinct specialty, documented in
+[daily feature development](daily-features.md).
 
-It maintains the homepages and bilingual READMEs of Skills Anywhere, EvalArc and
-Robot Reel. It uses dedicated marked clones under
-`~/.local/share/ai-repo-agent/`; it never resets a user's working checkout or
-archived worktree. The author and reviewer receive bounded text snapshots and
-have **no tools**. The controller applies exact, uniquely matching replacements
-to an explicit path allowlist. Executable scripts, interaction IDs, recorded media,
-resource bindings, tests, CI, dependencies and package versions are protected.
-This job does not run new GPU experiments or manufacture daily version releases.
+The controller reads actual product code and issues as well as fresh research.
+Functional code is editable. A saved feature persists across failures and calendar
+days until implementation, behavioral acceptance, independent review and publication
+are complete. Existing regression tests and release infrastructure remain protected.
+Candidate code runs in isolated containers; reviewed GPU experiments share a bounded
+L40S execution lane and retain measured results. No incomplete feature or failed
+release is counted as a successful day.
 
-An author call requests Sonnet 5, with a disjoint fallback list from the separate
-Opus 5 review. The model names recorded are the explicit CLI selections; the
-provider does not independently attest an underlying model identity here.
-The controller rejects unsupported agent/model selection and malformed output.
-Validation or review findings return to the author for up to two corrections.
-CI failures get an infrastructure retry and up to two separately reviewed corrections.
-An old failed Radar PR gets one check rerun before its receipt is retired, so it
-cannot make unrelated scheduled jobs fail forever.
-Pending publication transactions survive the process and the calendar day.
-The reviewed commit is saved before pushing or creating its PR. Receipts are
-replaced atomically; a matching remote branch name alone is never an approval.
+The WordPress plugin uses its PHP compatibility matrix, official Plugin Check,
+CI-built installable package, an atomic SVN release and public ZIP verification.
+Other projects retain their existing CI and deployment checks with exact commit
+provenance. The previous text-only homepage maintenance implementation is retained
+for historical tests and shared helper functions; the installed shell entry now
+invokes `scripts/develop_repos.py`.
 
-When there is no justified change, the reviewer must agree. The controller reuses
-the passing deployment checks for the identical commit and exercises the actual
-public pages at 1440, 390 and 320 pixels, including result-image downloads and
-recorded playback or model-seed selection. A no-op is a successful maintenance
-result, not a reason to create a cosmetic commit.
-
-Changes run each project's own checks. After merging only the expected head, the
-controller waits for the required `main` workflows and verifies the public pages.
-Reports and screenshots stay under `~/.local/state/ai-repo-agent/YYYY-MM-DD/`,
-using the Singapore batch date passed by the night controller.
-Source snapshots and model inputs retain timestamped copies. The catch-up exits
-without another model call when all three projects already completed that day.
-An unsuccessful attempt is retained as `retry-needed`, not labelled published.
-The bootstrap retries failed jobs twice within its time budget; the next scheduled
-run resumes remaining work without requesting human approval.
-Notes authors use the same published-page excerpts and signals as their reviewer,
-not longer stored summaries. Rejection feedback survives clone resets and bootstrap
-retries; up to three review revisions may address every listed unsupported claim.
-Public checks bind each served homepage to its build manifest or exact committed
-HTML. Radar additionally checks the Pages build commit and committed public JSON.
-Unchanged results explicitly distinguish reused CI from local checks not repeated;
-browser receipts enumerate the controls actually exercised at each viewport.
-
-The maintenance-only tools require the already configured Kiro CLI, GitHub CLI,
-Node, pnpm and the companion projects' pinned development dependencies. The radar
-collector and renderer retain their Python-standard-library-only runtime.
+See [project roles, execution controls and receipts](daily-features.md) for the
+complete contract. No foreground Codex conversation is needed to run the schedule.
 
 ### Pin the compatible noninteractive engine
 
@@ -227,7 +197,7 @@ At **21:30** a single controller performs:
 2. an idempotent daily publish/recovery and public deployment check;
 3. a fresh collection into local state, for research without changing the morning picks;
 4. notes for the verified morning issue, with review, CI, merge and public verification;
-5. the three companion projects, using the fresh evening research plus current
+5. the five specialist projects, using the fresh evening research plus current
    Hugging Face and GitHub signals, with their existing review and publication gates.
 
 Research inputs keep each item's original `published` value as its source `date`,

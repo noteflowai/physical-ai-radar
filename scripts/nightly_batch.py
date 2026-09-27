@@ -86,7 +86,7 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
         ("fresh", [sys.executable, "-m", "pairadar", "--date", day,
                    "--no-readme", "--out", str(fresh)], 600),
         ("notes", ["bash", "scripts/draft_daily_notes.sh", "--date", day], 5400),
-        ("repos", ["bash", "scripts/improve_repos.sh", "--date", day], 5400),
+        ("repos", ["bash", "scripts/improve_repos.sh", "--date", day], 10800),
     ]
     for name, argv, seconds in steps:
         old = saved["stages"].get(name, {})
