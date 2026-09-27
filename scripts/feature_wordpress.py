@@ -2,8 +2,11 @@
 from __future__ import annotations
 
 import hashlib
+import json
+import os
 from pathlib import Path, PurePosixPath
 import re
+import stat
 import subprocess
 import tempfile
 import time
@@ -17,6 +20,50 @@ except ImportError:
 
 SLUG = "ai-chat-for-amazon-bedrock"
 SVN = f"https://plugins.svn.wordpress.org/{SLUG}"
+
+
+def commit_svn(args: list[str], config: Path | None = None) -> str:
+    """Keep the optional publisher credential outside candidate code and argv."""
+    config = config or Path.home() / ".config/ai-feature-agent/wordpress.json"
+    if not config.exists():
+        return command(args, timeout=300)  # Existing SVN authentication cache.
+    try:
+        settings = json.loads(config.read_text())
+        if not isinstance(settings, dict) or set(settings) != {"username", "password_file"}:
+            raise ValueError
+        username, filename = settings["username"], settings["password_file"]
+        if (not isinstance(username, str) or not username.strip()
+                or any(c in username for c in "\r\n\0")
+                or not isinstance(filename, str)):
+            raise ValueError
+        password_file = Path(filename).expanduser()
+        if not password_file.is_absolute():
+            raise ValueError
+    except (OSError, ValueError, TypeError, RuntimeError):
+        raise ValueError("WordPress publisher config needs username and an absolute password_file") from None
+    try:
+        fd = os.open(password_file, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        with os.fdopen(fd, "rb") as handle:
+            info = os.fstat(handle.fileno())
+            if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid()
+                    or info.st_mode & 0o077 or info.st_size > 16384):
+                raise ValueError
+            password = handle.read(16385).decode("utf-8").rstrip("\r\n")
+        if not password or len(password.encode("utf-8")) > 16384 or any(c in password for c in "\r\n\0"):
+            raise ValueError
+    except (OSError, ValueError, UnicodeError):
+        raise ValueError("WordPress password_file must be a private, owned regular file containing one token") from None
+    try:
+        result = subprocess.run(
+            [*args, "--username", username, "--password-from-stdin", "--no-auth-cache"],
+            input=password + "\n", text=True, capture_output=True, timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("WordPress SVN commit timed out; resume to check whether the version was published") from None
+    if result.returncode:
+        detail = result.stderr.replace(password, "[REDACTED]")[-6000:]
+        raise RuntimeError(f"WordPress SVN commit exited {result.returncode}: {detail}")
+    return result.stdout.replace(password, "[REDACTED]")
 
 
 def package_files(package: Path) -> dict[str, bytes]:
@@ -93,8 +140,8 @@ def publish(package: Path, state: Path) -> dict:
                     actions += ["put", str(local), target + "/" + name]
             message = state / "svn-message.txt"
             message.write_text(f"Release {release}: independently reviewed daily feature; CI-checked package\n")
-            command(["svnmucc", "--non-interactive", "-r", revision,
-                     "-F", str(message), *actions], timeout=300)
+            commit_svn(["svnmucc", "--non-interactive", "-r", revision,
+                        "-F", str(message), *actions])
         if remote_files(tag_url) != files or remote_files(SVN + "/trunk") != files:
             raise RuntimeError("WordPress SVN readback differs from the checked package")
     record = {"status": "svn-published", "version": release, "tag": tag_url,

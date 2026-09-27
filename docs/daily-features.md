@@ -110,10 +110,30 @@ the package on the same commit. Cached packages retain their commit and checksum
 
 The controller publishes those exact files to SVN trunk and a new immutable version
 tag in one `svnmucc` transaction. It uses the maintainer's existing noninteractive SVN
-authentication cache. It refuses to overwrite a version with different contents or
+authentication cache, or the publisher configuration below. It refuses to overwrite a version with different contents or
 publish a non-increasing version. It verifies SVN files and then compares every file
 inside the public downloads.wordpress.org ZIP with the checked package. Interrupted
 readback retries the existing release without creating another version.
+
+For unattended WordPress publishing, create
+`~/.config/ai-feature-agent/wordpress.json` on the scheduling host:
+
+```json
+{
+  "username": "YOUR_WORDPRESS_ORG_USERNAME",
+  "password_file": "/absolute/path/to/private-svn-token"
+}
+```
+
+The token file must belong to the scheduling user, be a regular file rather than
+a symlink, have no group/other permissions (`chmod 600`), and contain only the SVN
+password/token on one line. Keep both files outside project checkouts. The publisher
+passes the token through standard input with `--no-auth-cache`; it is never a command
+argument or mounted into development containers. A configured but missing or unsafe
+token fails closed. Without this configuration, the existing SVN cache is used.
+The cron process reads this file directly; no interactive shell export is required.
+After supplying or renewing credentials, rerun the selected project command below.
+An already merged feature resumes publishing the same checked package.
 
 No daily worker publishes WordPress posts or connects to physical robot actuators.
 
