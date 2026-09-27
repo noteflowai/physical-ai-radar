@@ -1,7 +1,7 @@
 """The user's pinned model policy for every unattended agent role."""
 import argparse
 
-MODEL = "claude-fable-5.1"
+MODEL = "claude-opus-5.5"
 EFFORT = "high"
 
 

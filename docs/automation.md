@@ -119,7 +119,7 @@ not the agents, run the commands.
 The drafting job treats the model as a colleague whose work is checked, not as a
 single shot that either lands or loses the night:
 
-- **The requested model.** Every role uses `claude-fable-5.1` with `high` effort,
+- **The requested model.** Every role uses `claude-opus-5.5` with `high` effort,
   pinned in `scripts/agent_model.py`. A failed attempt's partial file is rolled back
   before the controller retries the same model. Legacy `RADAR_MODELS`,
   `RADAR_REVIEW_MODELS` and `RADAR_EFFORT` settings do not override this policy.

@@ -13,10 +13,10 @@ from scripts.improve_repos import model_json
 class PinnedAgentModelTests(unittest.TestCase):
     @patch("scripts.improve_repos.command")
     @patch("scripts.improve_repos.call_agent")
-    def test_author_and_review_use_fable_high_in_fresh_tool_free_calls(self, call, command):
+    def test_author_and_review_use_opus_55_high_in_fresh_tool_free_calls(self, call, command):
         def answer(args, output, cwd):
             self.assertNotIn("--resume", args)
-            self.assertEqual(args[args.index("--model") + 1], "claude-fable-5.1")
+            self.assertEqual(args[args.index("--model") + 1], "claude-opus-5.5")
             self.assertEqual(args[args.index("--effort") + 1], "high")
             policy = json.loads((cwd / ".kiro/agents/repo-maintainer.json").read_text())
             self.assertEqual(policy["tools"], [])
@@ -36,7 +36,7 @@ class PinnedAgentModelTests(unittest.TestCase):
 
     @patch("scripts.improve_repos.command")
     @patch("scripts.improve_repos.call_agent", side_effect=RuntimeError("temporarily unavailable"))
-    def test_unavailable_fable_does_not_invoke_another_model(self, call, command):
+    def test_unavailable_opus_does_not_invoke_another_model(self, call, command):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaisesRegex(RuntimeError, "temporarily unavailable"):
                 model_json("probe", Path(tmp), "probe")
@@ -58,8 +58,8 @@ class PinnedAgentModelTests(unittest.TestCase):
     @patch("scripts.improve_repos.call_agent")
     def test_stale_caller_cannot_select_an_old_model(self, call):
         with tempfile.TemporaryDirectory() as tmp:
-            with self.assertRaisesRegex(ValueError, "pinned to claude-fable-5.1"):
-                model_json("probe", Path(tmp), "probe", "claude-sonnet-5")
+            with self.assertRaisesRegex(ValueError, "pinned to claude-opus-5.5"):
+                model_json("probe", Path(tmp), "probe", "claude-fable-5.1")
         call.assert_not_called()
 
 
