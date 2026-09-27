@@ -45,6 +45,20 @@ produce an explicit deferred record. Once distribution starts, the merged/tagged
 version is retained until repaired and verified; a registry failure cannot start
 another feature or replace an immutable package.
 
+Before starting a paid feature worker, the controller checks the scheduling identity's
+repository push permission, required workflow availability, and npm/PyPI environment
+rules. A version tag must match a **tag** deployment rule; a rule for branch `main`
+does not authorize a tagged workflow dispatch. Required environment reviewers block
+unattended publication. Wait timers are recorded and can resume through catch-up.
+Robot Reel also requires `PYPI_PUBLISH_ENABLED=true`.
+
+Preflight is read-only, bounded to 45 seconds per project, and repeated on retries.
+A blocked project gets a `publication-preflight` result without creating a feature;
+other projects continue. An existing reviewed/releasing feature checks its saved tag
+instead of a hypothetical next version. These checks verify GitHub prerequisites;
+registry credentials and actual package bytes are still verified during publication.
+The model cannot change environment protection rules or its own preflight checks.
+
 1. Read the actual repository, recent commits, open issues and fresh research.
 2. Choose one bounded capability with a user, problem, expected behavior and one to
    eight acceptance conditions. Specify the target user, an observable success
@@ -199,6 +213,7 @@ cover the latest announced GitHub release per project within a bounded query bud
 - `~/.local/state/ai-feature-agent/YYYY-MM-DD/results.json`: daily outcomes.
 - `tasks/REPO/active.json`: the one unfinished feature and its exact reviewed commit.
 - `tasks/REPO/FEATURE/`: plans, prompts, reviews, attempts, logs and publication proof.
+- `YYYY-MM-DD/REPO/preflight.json`: the latest GitHub publication prerequisite check.
 - `gpu.lock`: the shared local experiment lock.
 - `tasks/REPO/FEATURE/distribution/`: tag, artifact, registry and workflow receipts.
 - `outbox/`: pending/announced release records and channel readback receipts.
@@ -210,6 +225,13 @@ Run the real installed entry point for a selected project:
 
 ```sh
 radar-run scripts/improve_repos.sh --repo ai-chat-for-amazon-bedrock
+```
+
+Inspect publication prerequisites without starting models or changing GitHub settings:
+
+```sh
+python3 scripts/feature_preflight.py
+python3 scripts/feature_preflight.py --repo evalarc --output /tmp/evalarc-preflight.json
 ```
 
 Run the full scheduled path:

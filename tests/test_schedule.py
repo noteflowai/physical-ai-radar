@@ -288,6 +288,31 @@ class ResearchInputTests(unittest.TestCase):
 
 @unittest.skipUnless(sys.platform == "linux", "Process-group checks require Linux")
 class LifetimeTests(unittest.TestCase):
+    def assert_process_stopped(self, pid):
+        # killpg delivers a signal asynchronously. A /proc read on another CPU
+        # can still observe R briefly after SIGKILL, before the kernel exits it.
+        import time
+        deadline = time.monotonic() + 1
+        while True:
+            try:
+                state = Path(f"/proc/{pid}/stat").read_text().rsplit(")", 1)[1].split()[0]
+            except FileNotFoundError:
+                return
+            if state == "Z":
+                return
+            if time.monotonic() >= deadline:
+                self.fail(f"descendant {pid} remains running (state {state})")
+            time.sleep(0.01)
+
+    def test_exit_observation_still_rejects_a_live_process(self):
+        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+        try:
+            with self.assertRaisesRegex(AssertionError, "remains running"):
+                self.assert_process_stopped(child.pid)
+        finally:
+            child.kill()
+            child.wait(timeout=5)
+
     def test_timed_out_stage_cannot_leave_its_descendant_running(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -299,9 +324,7 @@ class LifetimeTests(unittest.TestCase):
             self.assertEqual(execute([sys.executable, "-c", code], root, dict(os.environ),
                                      root / "stage.log", 1), 124)
             pid = int((root / "child.pid").read_text())
-            status = Path(f"/proc/{pid}/stat")
-            if status.exists():
-                self.assertEqual(status.read_text().split()[2], "Z", "descendant is still running")
+            self.assert_process_stopped(pid)
 
     def test_bootstrap_termination_also_terminates_active_stage(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -322,9 +345,7 @@ class LifetimeTests(unittest.TestCase):
                 pid = int((root / "stage.pid").read_text())
                 parent.send_signal(signal.SIGTERM)
                 self.assertEqual(parent.wait(timeout=15), 143)
-                status = Path(f"/proc/{pid}/stat")
-                if status.exists():
-                    self.assertEqual(status.read_text().split()[2], "Z")
+                self.assert_process_stopped(pid)
             finally:
                 if parent.poll() is None:
                     parent.kill(); parent.wait()
