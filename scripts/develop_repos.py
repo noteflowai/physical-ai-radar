@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 try:
     from .agent_pipeline import command, finish, gh, reconcile_superseded, write_json
-    from .feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches
+    from .feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from .feature_runtime import GPU_IMAGE, archive, execute, image_for
     from .feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from .improve_repos import model_json, snapshot, verify_public_browser
@@ -28,7 +28,7 @@ try:
     from .nightly_batch import execute as execute_stage
 except ImportError:
     from agent_pipeline import command, finish, gh, reconcile_superseded, write_json
-    from feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches
+    from feature_policy import PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from feature_runtime import GPU_IMAGE, archive, execute, image_for
     from feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from improve_repos import model_json, snapshot, verify_public_browser
@@ -97,12 +97,37 @@ def text_file(root: Path, path: str, limit: int = 24000) -> str:
 
 
 def requested_context(root: Path, request, config: dict, max_bytes: int = 24000) -> tuple[str, str]:
+    path = request if isinstance(request, str) else request.get("path", "")
+    directory = root / path
+    if directory.is_dir() and (path == "." or allowed(path.rstrip("/") + "/context.php", config)):
+        if directory.is_symlink() or not directory.resolve().is_relative_to(root.resolve()):
+            raise ValueError("Context cannot follow symlinks")
+        paths = command(["git", "ls-files", "--", path], cwd=root).splitlines()
+        paths = [p for p in paths if allowed(p, config)]
+        query = request.get("search") if isinstance(request, dict) else None
+        if query is None:
+            return path + " [files]", "\n".join(paths[:200])
+        if not isinstance(query, str) or not 2 <= len(query) <= 150:
+            raise ValueError("Invalid source search")
+        found = []
+        for name in paths[:200]:
+            file = root / name
+            if file.is_symlink() or not file.resolve().is_relative_to(root.resolve()):
+                continue
+            for number, line in enumerate(file.read_text().splitlines(), 1):
+                if query in line:
+                    found.append(f"{name}:{number}: {line[:200]}")
+                    if len(found) >= 80:
+                        break
+            if len(found) >= 80:
+                break
+        return path + " [search " + query + "]", "\n".join(found)[:max_bytes]
     if isinstance(request, str):
-        if not allowed(request, config):
+        if not readable(request, config):
             raise ValueError("Context request is outside the product scope")
         return request, text_file(root, request)
     path = request.get("path", "")
-    if not allowed(path, config):
+    if not readable(path, config):
         raise ValueError("Context request is outside the product scope")
     file = root / path
     if file.is_symlink() or not file.resolve().is_relative_to(root.resolve()):
@@ -195,7 +220,7 @@ def bounded_files(root: Path, paths: list[str], budget: int) -> dict:
     return result
 
 
-def fit_context(files: dict, budget: int = 65000) -> None:
+def fit_context(files: dict, budget: int = 90000) -> None:
     """Keep the newest inspected excerpts within the serialized input budget."""
     while files and len(json.dumps(files, ensure_ascii=False).encode()) > budget:
         files.pop(next(iter(files)))
@@ -210,7 +235,7 @@ def validate_plan(plan: dict, config: dict) -> None:
     paths = plan.get("read_paths", [])
     if not isinstance(paths, list) or not 1 <= len(paths) <= 14:
         raise ValueError("Read a bounded implementation and test surface")
-    if not all(allowed(p, config) for p in paths):
+    if not all(readable(p, config) for p in paths):
         raise ValueError("Plan requested a file outside the product scope")
     acceptance_command(plan, config)
     gpu = plan.get("gpu_test_path")
@@ -699,8 +724,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         instruction += ('The source inspection budget is now exhausted. Return the '
                                         'one feature plan grounded in the source already inspected; '
                                         'do not request further files in this round.\n')
+                    feedback = task.get("feedback", "")[-6000:]
+                    overhead = len(json.dumps({**ctx, "inspected_files": {}}, ensure_ascii=False).encode())
+                    fit_context(ctx.setdefault("inspected_files", {}),
+                                100000 - overhead - len(instruction.encode()) - len(feedback.encode()))
                     candidate_plan = ask(instruction + json.dumps(ctx, ensure_ascii=False) +
-                                         "\nPrior findings:\n" + task.get("feedback", "")[-6000:],
+                                         "\nPrior findings:\n" + feedback,
                                          state, f"plan-{plan_attempt}-read-{inspection}")
                     if not candidate_plan.get("need_files"):
                         break
@@ -794,9 +823,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 '{"path":"relative path","search":"literal symbol"}]} instead. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
             for read_round in range(8):
-                fit_context(files)
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
                            "feedback": task.get("feedback", "")[-10000:]}
+                overhead = len(json.dumps({**payload, "files": {}}, ensure_ascii=False).encode())
+                fit_context(files, 100000 - overhead - len(prompt.encode()))
                 proposal = ask(prompt + json.dumps(payload, ensure_ascii=False),
                                attempt_dir, f"author-{read_round}")
                 if not proposal.get("need_files"):

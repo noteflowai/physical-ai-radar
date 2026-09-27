@@ -123,6 +123,15 @@ def allowed(path: str, config: dict) -> bool:
     return matches(path, config["code"] + config["tests"] + config["docs"])
 
 
+def readable(path: str, config: dict) -> bool:
+    """Build metadata is useful context while remaining closed to daily edits."""
+    return allowed(path, config) or path in {
+        "package.json", "pyproject.toml", "composer.json", "phpcs.xml.dist",
+        "tsconfig.json", "vite.config.ts", "vitest.config.ts", "pytest.ini",
+        "ruff.toml", "setup.cfg", "bin/prerelease.sh", "bin/setup-tools.sh",
+    }
+
+
 def acceptance_command(plan: dict, config: dict) -> list[str]:
     """A focused test file, never a model-supplied shell command."""
     path, runner = plan.get("test_path", ""), plan.get("test_runner", "")

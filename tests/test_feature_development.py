@@ -5,8 +5,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.develop_repos import apply, checkpoint, complete, develop, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
-from scripts.feature_policy import PROJECTS, acceptance_command, allowed
+from scripts.develop_repos import apply, checkpoint, complete, develop, fit_context, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
+from scripts.feature_policy import PROJECTS, acceptance_command, allowed, readable
 from scripts.feature_runtime import execute
 from scripts.agent_pipeline import REQUIRED_PR_CHECKS, finish
 from scripts.feature_wordpress import SLUG, package_files, publish as publish_wordpress, version
@@ -48,6 +48,8 @@ class FeaturePolicyTests(unittest.TestCase):
                      "pyproject.toml", "tests/AGENTS.md", "tests/foo/../bar.py"]:
             with self.subTest(path=path):
                 self.assertFalse(allowed(path, self.config))
+        self.assertTrue(readable("pyproject.toml", self.config))
+        self.assertFalse(allowed("pyproject.toml", self.config))
 
     def test_acceptance_cannot_be_arbitrary_shell(self):
         for runner in ["bash", "sh", "python -c"]:
@@ -145,6 +147,23 @@ class FeaturePolicyTests(unittest.TestCase):
                              ("pairadar/model.py", "behavior = 1\n"))
             self.assertEqual(requested_context(root, {"path": "pairadar/missing.py"}, self.config),
                              ("pairadar/missing.py", "<file does not exist>"))
+
+    @patch("scripts.develop_repos.command", return_value="tests/test_filter.py\n")
+    def test_directory_search_returns_tracked_product_locations(self, command):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "tests").mkdir()
+            (root / "tests/test_filter.py").write_text("def test_insights():\n    pass\n")
+            key, value = requested_context(root, {"path": "tests", "search": "insights"}, self.config)
+            self.assertEqual(key, "tests [search insights]")
+            self.assertIn("tests/test_filter.py:1: def test_insights()", value)
+            with self.assertRaises(ValueError):
+                requested_context(root, {"path": "../tests", "search": "insights"}, self.config)
+
+    def test_context_budget_counts_json_escaping_and_keeps_recent_reads(self):
+        files = {"old": '"' * 100, "recent": "useful source"}
+        fit_context(files, 100)
+        self.assertEqual(files, {"recent": "useful source"})
 
     @patch("scripts.develop_repos.calendar_day", return_value="2026-09-27")
     def test_allowance_persisted_before_active_transaction_is_removed(self, calendar):
