@@ -19,6 +19,10 @@
 # last line of the log looking like a model error half an hour earlier.
 set -euo pipefail
 export GIT_TERMINAL_PROMPT=0 GH_PROMPT_DISABLED=1 PIP_NO_INPUT=1
+KIRO_FAILOVER_BIN="${KIRO_FAILOVER_BIN:-$HOME/.local/share/kiro-failover/bin}"
+if [ -x "$KIRO_FAILOVER_BIN/kiro-cli" ]; then
+  export PATH="$KIRO_FAILOVER_BIN:$PATH"
+fi
 exec </dev/null
 
 SCRIPT="${1:-scripts/draft_daily_notes.sh}"

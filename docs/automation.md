@@ -246,7 +246,19 @@ an exhausted retry budget records failure for the next automatic catch-up.
 
 ## Credentials
 
-The model key lives in the login environment of the maintainer's account, or in
+The primary model key lives in the login environment of the maintainer's account, or in
 `~/.config/pairadar/env` at mode 600 for cron, which is why the cron entries use a
-login shell. Nothing writes the key anywhere, and no GitHub secret is needed: with no
+login shell. The key is never written to the repository or logs, and no GitHub secret is needed: with no
 self-hosted runner, no workflow calls a model.
+
+### Kiro 额度耗尽时切换密钥
+
+定时入口 `radar-run` 优先通过本机
+`~/.local/share/kiro-failover/bin/kiro-cli` 运行非交互 Kiro 会话。
+该入口先使用当前 `KIRO_API_KEY`（或已登录的主账号）；只有在请求一开始
+返回额度耗尽、且尚无正文输出时，才从权限为 `0700` 的
+`~/.config/kiro-failover/` 中读取权限为 `0600` 的 `backup.key` 重试一次。
+密钥不进入仓库、命令行参数或任务日志。已有正文输出时不会重跑，以免重复执行工具操作。
+
+`scripts/kiro_failover.py` 是本机入口的可版本化源文件。安装为上述
+`kiro-cli` 路径，并确保它可执行；没有安装该入口的机器仍按原方式使用 Kiro CLI。
