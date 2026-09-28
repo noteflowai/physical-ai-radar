@@ -14,9 +14,11 @@ import sys
 try:
     from .agent_pipeline import write_json
     from .job_schedule import night_day
+    from .feature_outcomes import DEFERRED_EXIT, TERMINAL_BATCH
 except ImportError:
     from agent_pipeline import write_json
     from job_schedule import night_day
+    from feature_outcomes import DEFERRED_EXIT, TERMINAL_BATCH
 
 
 def timestamp() -> str:
@@ -72,10 +74,11 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
     }
     if saved["day"] != day:
         raise ValueError("Night receipt has a different batch date")
-    if saved.get("status") == "complete" and saved.get("pipeline_version") == 2:
-        print(json.dumps({"status": "already-complete", "day": day}), flush=True)
+    if saved.get("status") in TERMINAL_BATCH and saved.get("pipeline_version") == 3:
+        print(json.dumps({"status": "already-terminal", "outcome": saved["status"], "day": day}), flush=True)
         return saved
-    saved.update(status="running", started_at=timestamp(), pipeline_version=2)
+    saved.pop("finished_at", None)
+    saved.update(status="running", started_at=timestamp(), pipeline_version=3)
     write_json(receipt, saved)
     env = {**os.environ, "RADAR_RUN_DAY": day, "RADAR_LOCK_HELD": "1",
            "GIT_TERMINAL_PROMPT": "0", "GH_PROMPT_DISABLED": "1", "PIP_NO_INPUT": "1"}
@@ -94,7 +97,7 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
     ]
     for name, argv, seconds in steps:
         old = saved["stages"].get(name, {})
-        if old.get("status") == "complete":
+        if old.get("status") in {"complete", "deferred"}:
             continue
         if name == "notes" and saved["stages"].get("publish", {}).get("status") != "complete":
             saved["stages"][name] = {"status": "waiting", "reason": "daily publication not verified"}
@@ -119,15 +122,18 @@ def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
                 data = json.loads((fresh / "radar/latest.json").read_text(encoding="utf-8"))
                 if data.get("date") != day:
                     raise RuntimeError("Fresh snapshot has a different batch date")
-            record.update(exit_code=code, status="complete" if code == 0 else "retry-needed")
+            status = ("deferred" if name == "repos" and code == DEFERRED_EXIT
+                      else "complete" if code == 0 else "retry-needed")
+            record.update(exit_code=code, status=status)
         except Exception as error:
             record.update(status="retry-needed", error=str(error))
         record["finished_at"] = timestamp()
         write_json(receipt, saved)
         print(f"[night {day}] {name}: {record['status']}", flush=True)
-    saved.update(status="complete" if all(
-        saved["stages"].get(name, {}).get("status") == "complete"
-        for name, _, _ in steps) else "retry-needed", finished_at=timestamp())
+    statuses = {saved["stages"].get(name, {}).get("status") for name, _, _ in steps}
+    outcome = ("retry-needed" if statuses - {"complete", "deferred"} else
+               "complete-with-deferrals" if "deferred" in statuses else "complete")
+    saved.update(status=outcome, finished_at=timestamp())
     write_json(receipt, saved)
     return saved
 
@@ -146,7 +152,8 @@ def main() -> int:
     result = run_batch(Path(__file__).resolve().parents[1], args.state.resolve(),
                        night_day(args.date, previous_day=args.previous_day))
     print(json.dumps(result), flush=True)
-    return 0 if result["status"] == "complete" else 1
+    return (0 if result["status"] == "complete" else
+            DEFERRED_EXIT if result["status"] == "complete-with-deferrals" else 1)
 
 
 if __name__ == "__main__":

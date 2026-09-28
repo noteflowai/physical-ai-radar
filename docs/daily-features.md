@@ -45,6 +45,25 @@ produce an explicit deferred record. Once distribution starts, the merged/tagged
 version is retained until repaired and verified; a registry failure cannot start
 another feature or replace an immutable package.
 
+Unapproved planning revisions retain the full previous proposal, source excerpts
+bound to the base commit, and an append-only record of findings. Attempt numbers
+remain unique across process restarts. The author and reviewer both receive the
+previous proposal and the three most recent findings, so corrections preserve
+earlier decisions. After two unsuccessful rounds, narrow the proposal to one
+complete input-to-result workflow; optional formats and integrations can wait.
+Existing safeguards and the retained behavior's acceptance criteria remain required.
+A next-day task can inherit an unapproved deferred proposal and its findings as
+data, with a `recovery_of` link; it must inspect today's source and obtain fresh
+independent approval. It never reopens or resets the old attempt budget.
+
+Reports distinguish planning, implementation and later-phase exhaustion, including
+counts, final feedback and the next eligible batch date. If all project outcomes
+are published or deferred, the worker exits **20** for deferrals and the night batch
+finishes as `complete-with-deferrals`. This is a terminal scheduling outcome, not
+a claim that every feature shipped. Announcements and the delivery report still run;
+the bootstrap and 02:30 catch-up do not retry the exhausted projects. Actual
+retryable failures still exit 1 and resume through the existing bounded retries.
+
 Before starting a paid feature worker, the controller checks the scheduling identity's
 repository push permission, required workflow availability, and npm/PyPI environment
 rules. A version tag must match a **tag** deployment rule; a rule for branch `main`

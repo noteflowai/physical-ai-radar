@@ -167,6 +167,32 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(self.run_batch()["status"], "complete")
         self.assertEqual([c[0] for c in self.calls], ["repos", "updates", "report"])
 
+    def test_deferrals_run_announcements_and_report_then_stop_catchup(self):
+        def execute(argv, root, env, log, seconds):
+            code = self.executor(argv, root, env, log, seconds)
+            return 20 if log.stem == "repos" else code
+        result = run_batch(self.root, self.state, self.day, execute)
+        self.assertEqual(result["status"], "complete-with-deferrals")
+        self.assertEqual(result["stages"]["repos"]["status"], "deferred")
+        self.assertEqual(result["stages"]["updates"]["status"], "complete")
+        self.assertEqual(result["stages"]["report"]["status"], "complete")
+        self.calls.clear()
+        self.assertEqual(run_batch(self.root, self.state, self.day, execute), result)
+        self.assertEqual(self.calls, [])
+
+    def test_retryable_publication_resumes_even_when_features_are_deferred(self):
+        self.failures.add("publish")
+        def execute(argv, root, env, log, seconds):
+            code = self.executor(argv, root, env, log, seconds)
+            return 20 if log.stem == "repos" else code
+        result = run_batch(self.root, self.state, self.day, execute)
+        self.assertEqual(result["status"], "retry-needed")
+        self.failures.clear()
+        self.calls.clear()
+        result = run_batch(self.root, self.state, self.day, execute)
+        self.assertEqual(result["status"], "complete-with-deferrals")
+        self.assertEqual([c[0] for c in self.calls], ["publish", "notes", "report"])
+
 
 @unittest.skipUnless(all(shutil.which(tool) for tool in ("git", "flock")),
                      "The local publisher requires Git and flock")

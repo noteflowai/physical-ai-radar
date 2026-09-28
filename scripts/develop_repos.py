@@ -29,7 +29,9 @@ try:
     from .feature_preflight import check_project as publication_preflight
     from .feature_topics import research_context, topic_context
     from .feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
-    from .feature_prompts import acceptance_paths, plan_review_prompt
+    from .feature_prompts import acceptance_paths, bounded_prompt
+    from .feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
+    from .feature_outcomes import deferral_details, outcome_exit
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -44,7 +46,9 @@ except ImportError:
     from feature_preflight import check_project as publication_preflight
     from feature_topics import research_context, topic_context
     from feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
-    from feature_prompts import acceptance_paths, plan_review_prompt
+    from feature_prompts import acceptance_paths, bounded_prompt
+    from feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
+    from feature_outcomes import deferral_details, outcome_exit
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -648,7 +652,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
 
 
 def retire(task: dict, state: Path, active: Path, service_state: Path,
-           name: str, day: str, reason: str) -> dict:
+           name: str, day: str, reason: str, *, reason_code: str | None = None) -> dict:
     if task.get("pr"):
         record = json.loads(gh(task["repo"], "pr", "view", str(task["pr"]),
                                "--json", "state,headRefOid"))
@@ -656,7 +660,10 @@ def retire(task: dict, state: Path, active: Path, service_state: Path,
             gh(task["repo"], "pr", "close", str(task["pr"]), "--delete-branch")
     result = {"repo": task["repo"], "feature_id": task["id"], "status": "deferred",
               "reason": reason, "completed_on": day,
+              **deferral_details(task, day),
               "publication_state": read_json(state / "publication.json", {})}
+    if reason_code:
+        result["reason_code"] = reason_code
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
     write_json(service_state / day / name / "result.json", result)
@@ -703,22 +710,23 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         identifier = day + "-" + name + "-" + datetime.now(timezone.utc).strftime("%H%M%S%f")
         task = {"id": identifier, "repo": repo, "created_at": stamp(), "created_on": day, "base": main,
                 "branch": "automation/feature-" + identifier, "phase": "plan",
-                "attempts": 0}
+                "attempts": 0, **previous_deferral(task_dir, day)}
         write_json(active, task)
     state = task_dir / task["id"]
     state.mkdir(exist_ok=True)
     if plan_only and task["phase"] in {"push", "ci", "release"}:
         return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
-    if task["phase"] in {"plan", "implement"} and (
-        task["attempts"] >= 9 or task.get("planning_attempts", 0) >= 9
-    ):
+    if (task["phase"] == "plan" and task.get("planning_attempts", 0) >= 9
+            or task["phase"] == "implement" and task["attempts"] >= 9):
         return retire(task, state, active, service_state, name, day,
-                      "Nine implementation attempts failed; retained diagnostics, no feature released. "
-                      "A smaller independently reviewed plan may be selected next day.")
+                      f"Nine {task['phase']} attempts failed; retained diagnostics, no feature released. "
+                      "A smaller independently reviewed plan may be selected next day.",
+                      reason_code=task["phase"] + "-budget-exhausted")
     if task["phase"] != "release" and task.get("phase_attempts", {}).get(task["phase"], 0) >= 9:
         return retire(task, state, active, service_state, name, day,
                       "Nine resumptions of the same phase did not complete. "
-                      "Retained the source/publication state and diagnostics; no successful release claimed.")
+                      "Retained the source/publication state and diagnostics; no successful release claimed.",
+                      reason_code=task["phase"] + "-budget-exhausted")
     if task["phase"] in {"validate", "acceptance-review", "push", "ci", "release"}:
         if plan_only:
             return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
@@ -759,6 +767,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
     task["base"] = main
     ctx = context(root, name, inputs, config)
     ctx["acceptance_paths"] = acceptance_paths(task["id"], config["test_runners"])
+    planning = task.get("planning", {})
+    if planning.get("source_base") == main:
+        ctx["inspected_files"] = planning.get("inspected_files", {})
     if "plan" not in task:
         prompt = (
             'Choose ONE complete, small feature with real product behavior. Inspect the existing '
@@ -812,9 +823,11 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'These synthetic examples are not a held-out quality evaluation. Default to null when '
             'the feature does not need live records; do not duplicate another repository contribution.\n'
         )
-        for plan_attempt in range(min(3, 9 - task.get("planning_attempts", 0))):
+        for _ in range(min(3, 9 - task.get("planning_attempts", 0))):
             try:
                 task["planning_attempts"] = task.get("planning_attempts", 0) + 1
+                plan_attempt = task["planning_attempts"]
+                correction = correction_context(task)
                 write_json(active, task)
                 for inspection in range(6):
                     instruction = prompt
@@ -822,14 +835,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         instruction += ('The source inspection budget is now exhausted. Return the '
                                         'one feature plan grounded in the source already inspected; '
                                         'do not request further files in this round.\n')
-                    feedback = task.get("feedback", "")[-6000:]
-                    overhead = len(json.dumps({**ctx, "inspected_files": {}}, ensure_ascii=False).encode())
-                    fit_context(ctx.setdefault("inspected_files", {}),
-                                100000 - overhead - len(instruction.encode()) - len(feedback.encode()))
-                    candidate_plan = ask(instruction + json.dumps(ctx, ensure_ascii=False) +
-                                         "\nPrior findings:\n" + feedback,
+                    candidate_plan = ask(bounded_prompt(
+                                         instruction, {"correction": correction}, ctx),
                                          state, f"plan-{plan_attempt}-read-{inspection}")
                     if not candidate_plan.get("need_files"):
+                        remember_candidate(task, candidate_plan, ctx.get("inspected_files", {}), main)
+                        write_json(active, task)
                         break
                     requests = candidate_plan["need_files"]
                     if not isinstance(requests, list):
@@ -876,7 +887,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 if sum(len(s.encode()) for s in ctx["inspected_files"].values()) > 60000:
                     ctx.pop("inspected_files")
                     raise ValueError("Request fewer source ranges; inspected context exceeds its budget")
-                review = ask(plan_review_prompt(
+                review = ask(bounded_prompt(
                     'Review this feature plan for ONE complete capability, project fit, compatibility, '
                     'testability and realistic scope. For UI changes, require a complete user path, '
                     'professional visual direction consistent with the product, relevant states '
@@ -890,16 +901,29 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'project ownership; reject name-dropping or invented integration evidence. '
                     'For decision_probe, review the exact inputs and question/options contract, '
                     'its necessity for this one feature and truthful synthetic-data scope. '
+                    'Inspect the correction history for regressions of earlier fixes. '
+                    'Review only the retained capability: optional types, modes or integrations '
+                    'may be removed before approval. Do not demand additional features. '
+                    'Report all currently identifiable blockers together, with concrete '
+                    'affected behavior and minimal corrections within this scope. '
                     'Return {"approved":true|false,"findings":[]}.\n',
-                    candidate_plan, ctx),
+                    {"plan": candidate_plan, "correction": correction}, ctx),
                     state, f"plan-review-{plan_attempt}", review=True)
                 require_review(review)
                 task["plan"] = candidate_plan
                 break
             except Exception as error:
-                task["feedback"] = str(error)
+                remember_failure(task, str(error))
+                task["planning"].update(inspected_files=ctx.get("inspected_files", {}), source_base=main)
+                write_json(state / f"plan-{plan_attempt}-failure.json",
+                           {"attempt": plan_attempt, "error": str(error), "at": stamp()})
                 write_json(active, task)
         else:
+            if task.get("planning_attempts", 0) >= 9:
+                return retire(task, state, active, service_state, name, day,
+                              "Nine planning attempts failed; no implementation or release. "
+                              "Retained proposal and review findings for a smaller next-day plan.",
+                              reason_code="plan-budget-exhausted")
             raise RuntimeError("Feature planning needs correction: " + task["feedback"])
         task["phase"] = "implement"
         write_json(active, task)
@@ -1128,8 +1152,7 @@ def main() -> int:
             print(json.dumps(result), flush=True)
         if not args.worker:
             write_json(state / "results.json", results)
-        successful = {"published", "planned"} if args.plan_only else {"published"}
-        return 1 if any(r["status"] not in successful for r in results) else 0
+        return outcome_exit(results, plan_only=args.plan_only)
 
 
 if __name__ == "__main__":
