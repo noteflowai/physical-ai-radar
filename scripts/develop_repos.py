@@ -256,9 +256,10 @@ def fit_context(files: dict, budget: int = 90000) -> None:
 
 def validate_plan(plan: dict, config: dict) -> None:
     for field in ["title", "problem", "behavior", "why_this_repo"]:
-        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= 4000:
+        limit = 6000 if field == "behavior" else 4000
+        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= limit:
             length = len(plan[field]) if isinstance(plan.get(field), str) else "non-string"
-            raise ValueError(f"Feature {field} must contain 5..4000 characters; received {length}. "
+            raise ValueError(f"Feature {field} must contain 5..{limit} characters; received {length}. "
                              "Shorten the prose while preserving the one feature contract.")
     if not 1 <= len(plan.get("acceptance", [])) <= 8:
         raise ValueError("One feature needs one to eight acceptance conditions")
@@ -855,7 +856,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'read_paths, and put the user journey, relevant states, responsive/accessibility criteria '
             'and feasible validation in the existing behavior/acceptance fields. Design polish is '
             'part of this one capability, not another feature. CLI/API-only work needs no new UI. '
-            'Keep each description below 4000 characters and acceptance to at most eight conditions. '
+            'Aim for 2000..3500 characters of behavior, with a hard limit of 6000 for a complete '
+            'input/output/error contract. Keep other descriptions below 4000 characters and '
+            'acceptance to at most eight conditions. Scope is one workflow, not extra modes. '
             'Use the exact context.acceptance_paths[test_runner] as test_path and wherever the '
             'plan mentions its new acceptance test. Do not invent another test filename. '
             'Request at most six files per inspection. Reuse already inspected source; if feedback '

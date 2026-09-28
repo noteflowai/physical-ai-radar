@@ -52,6 +52,9 @@ previous proposal and the three most recent findings, so corrections preserve
 earlier decisions. After two unsuccessful rounds, narrow the proposal to one
 complete input-to-result workflow; optional formats and integrations can wait.
 Existing safeguards and the retained behavior's acceptance criteria remain required.
+Behavior descriptions target 2,000–3,500 characters and permit up to 6,000 to
+express complete input, output and error contracts. The serialized prompt budget,
+one-workflow review, acceptance count and executable-diff limits remain enforced.
 A next-day task can inherit an unapproved deferred proposal and its findings as
 data, with a `recovery_of` link; it must inspect today's source and obtain fresh
 independent approval. It never reopens or resets the old attempt budget.

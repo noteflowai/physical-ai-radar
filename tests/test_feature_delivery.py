@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts import develop_repos as developer
+from scripts.agent_pipeline import write_json
 from scripts.feature_policy import PROJECTS
 
 
@@ -90,3 +91,30 @@ class DeliveryHandoffTests(unittest.TestCase):
                                   self.active, self.root, "evalarc", "2026-09-28")
         self.assertNotIsInstance(failure.exception, developer.DeliveryCorrectionRequired)
         push.assert_not_called()
+
+    def test_repeated_delivery_rejections_stop_at_existing_phase_budget(self):
+        state = self.root / "service"
+        active = state / "tasks/evalarc/active.json"
+        write_json(active, self.task)
+
+        def ask(_prompt, *_args, review=False, **_kwargs):
+            return ({"approved": False, "findings": ["Unclear scope"], "correction_scope": "delivery"}
+                    if review else {"delivery": copy.deepcopy(self.delivery)})
+
+        with patch.object(developer, "checkout", return_value=self.root), \
+                patch.object(developer, "command", return_value="base"), \
+                patch.object(developer, "restore"), \
+                patch.object(developer, "ask", side_effect=ask) as model:
+            for attempt in range(1, 10):
+                with self.assertRaises(developer.DeliveryCorrectionRequired):
+                    developer.develop("evalarc", {}, self.root / "workspace", state, "2026-09-28")
+                saved = json.loads(active.read_text())
+                self.assertEqual(saved["phase_attempts"]["acceptance-review"], attempt)
+                self.assertEqual(saved["phase"], "acceptance-review")
+                self.assertEqual(saved["head"], "reviewed-head")
+            result = developer.develop("evalarc", {}, self.root / "workspace", state, "2026-09-28")
+        self.assertEqual(model.call_count, 18)
+        self.assertEqual(result["status"], "deferred")
+        self.assertEqual(result["failed_phase"], "acceptance-review")
+        self.assertEqual(result["phase_attempts"], 9)
+        self.assertFalse(active.exists())

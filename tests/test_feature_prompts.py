@@ -37,9 +37,9 @@ class FeaturePromptTests(unittest.TestCase):
         self.assertTrue(paths["php"].endswith(".php"))
 
     def test_overlong_behavior_reports_actionable_length_instead_of_missing_behavior(self):
-        with self.assertRaisesRegex(ValueError, r"behavior.*5\.\.4000.*4078"):
+        with self.assertRaisesRegex(ValueError, r"behavior.*5\.\.6000.*6078"):
             validate_plan({"title": "valid title", "problem": "valid problem",
-                           "behavior": "x" * 4078}, PROJECTS["dsh-skills-anywhere"])
+                           "behavior": "x" * 6078}, PROJECTS["dsh-skills-anywhere"])
 
 
 if __name__ == "__main__":
