@@ -377,6 +377,10 @@ class ReleaseLifecycleTests(Temporary):
             item.pop(field)
             with self.assertRaises(ValueError):
                 developer.validate_delivery(item)
+        item = source()["delivery"]
+        item["summary"] = "s" * 2001
+        with self.assertRaisesRegex(ValueError, r"summary must be 10\.\.2000 characters; received 2001"):
+            developer.validate_delivery(item)
 
     def test_registry_failure_retains_release_without_reauthoring_or_retiring(self):
         name = "evalarc"

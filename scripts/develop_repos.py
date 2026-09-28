@@ -296,8 +296,13 @@ def validate_plan(plan: dict, config: dict) -> None:
 
 def validate_delivery(delivery: dict) -> None:
     for field in ["summary", "usage", "limitations", "upgrade"]:
-        if not isinstance(delivery.get(field), str) or not 10 <= len(delivery[field]) <= 2000:
-            raise ValueError(f"Final delivery needs a concrete {field}")
+        value = delivery.get(field)
+        length = len(value) if isinstance(value, str) else 0
+        if not 10 <= length <= 2000:
+            raise ValueError(
+                f"Final delivery {field} must be 10..2000 characters; received {length}. "
+                "Shorten or complete that field while preserving the saved feature."
+            )
 
 
 def apply(root: Path, proposal: dict, config: dict, plan: dict) -> list[str]:
@@ -1037,6 +1042,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'for a new file","new":"replacement or full new file"}],"continue":false,'
                 '"delivery":{"summary":"final user-visible behavior","usage":"complete runnable example or UI path",'
                 '"limitations":"actual scope and compatibility","upgrade":"upgrade and rollback instructions"}}. '
+                'Each delivery field must be 10..2000 characters; keep summary under 1200. '
                 'For intermediate chunks omit delivery and set continue:true. For a large NEW file, '
                 'send old:null,new:first fragment,file_complete:false; continue it later with '
                 '{"path":"same path","append":true,"new":"next fragment","file_complete":false}. '
