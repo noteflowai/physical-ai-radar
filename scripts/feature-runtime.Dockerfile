@@ -15,5 +15,7 @@ RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
  && pip install --no-cache-dir pytest==8.4.2 ruff==0.15.6 build==1.4.0 \
  && useradd --uid 1000 --create-home worker
 ENV CI=1 PIP_NO_INPUT=1 PLAYWRIGHT_BROWSERS_PATH=/opt/browsers \
- PYTHONDONTWRITEBYTECODE=1 MUJOCO_GL=egl
+ PYTHONDONTWRITEBYTECODE=1 MUJOCO_GL=egl \
+ XDG_DATA_HOME=/opt/feature-data XDG_CACHE_HOME=/opt/feature-cache \
+ XDG_STATE_HOME=/opt/feature-state
 WORKDIR /workspace

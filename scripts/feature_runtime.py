@@ -52,8 +52,10 @@ def image_for(root: Path, base: str, config: dict, state: Path) -> str:
         dockerfile = f"FROM {BASE_IMAGE}\nCOPY source/ /workspace/\n"
         for setup in config["setup"]:
             dockerfile += "RUN " + setup + "\n"
-        dockerfile += (f"RUN mkdir -p /opt/browsers && chown -R {identity} "
-                       f"/workspace /opt/browsers /home/worker\nUSER {identity}\n")
+        dockerfile += (f"RUN mkdir -p /opt/browsers /opt/feature-data /opt/feature-cache "
+                       f"/opt/feature-state && chown -R {identity} "
+                       f"/workspace /opt/browsers /home/worker /opt/feature-data "
+                       f"/opt/feature-cache /opt/feature-state\nUSER {identity}\n")
         (context / "Dockerfile").write_text(dockerfile)
         with (state / "dependencies-build.log").open("a") as log:
             subprocess.run(["docker", "build", "-t", tag, str(context)],
@@ -73,8 +75,9 @@ for p in source.iterdir():
     else: shutil.copy2(p,dest)
 os.chdir(target)
 os.environ.update(PYTHONPATH="/workspace/src:/workspace",SITE_DIR="/tmp/feature-site",
-    HOME="/tmp/feature-home",XDG_CACHE_HOME="/tmp/feature-cache",
+    HOME="/tmp/feature-home",
     MPLCONFIGDIR="/tmp/feature-matplotlib",CI="1")
+os.environ.setdefault("XDG_CACHE_HOME","/tmp/feature-cache")
 pathlib.Path("/tmp/feature-home").mkdir(exist_ok=True)
 subprocess.run(["git","init","-q"],check=True)
 subprocess.run(["git","config","user.email","feature@example.invalid"],check=True)
