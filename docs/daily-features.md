@@ -52,6 +52,9 @@ previous proposal and the three most recent findings, so corrections preserve
 earlier decisions. After two unsuccessful rounds, narrow the proposal to one
 complete input-to-result workflow; optional formats and integrations can wait.
 Existing safeguards and the retained behavior's acceptance criteria remain required.
+Behavior descriptions target 2,000–3,500 characters and permit up to 6,000 to
+express complete input, output and error contracts. The serialized prompt budget,
+one-workflow review, acceptance count and executable-diff limits remain enforced.
 A next-day task can inherit an unapproved deferred proposal and its findings as
 data, with a `recovery_of` link; it must inspect today's source and obtain fresh
 independent approval. It never reopens or resets the old attempt budget.
@@ -105,6 +108,17 @@ credentials, Docker socket or network.
    on that commit, then verify the merged commit's deployment and public content.
 9. Publish its versioned release and verify installable package bytes from the public
    registry. Only then count the feature as complete and enqueue its announcement.
+
+After validation, a separate author call reconciles delivery metadata with the
+actual commit and test receipts before final acceptance. Pre-test statements such
+as “not run” must not survive once the controller has measured those checks.
+This call can return metadata only; it cannot edit code, tests or documentation.
+Its result is bound to the commit and complete verification receipts. The final
+independent reviewer still checks code and evidence. If every remaining blocker
+is confined to delivery metadata, correction retains the validated commit and
+reruns metadata finalization and review. Code, test, product-documentation or
+validation blockers return to implementation. Neither path can publish without
+fresh approval, and the existing phase-attempt limit still applies.
 
 Every author and reviewer requests **Claude Opus 5.5** (`claude-opus-5.5`) with
 `high` effort, as pinned centrally in `scripts/agent_model.py`. Daily notes, source

@@ -256,9 +256,10 @@ def fit_context(files: dict, budget: int = 90000) -> None:
 
 def validate_plan(plan: dict, config: dict) -> None:
     for field in ["title", "problem", "behavior", "why_this_repo"]:
-        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= 4000:
+        limit = 6000 if field == "behavior" else 4000
+        if not isinstance(plan.get(field), str) or not 5 <= len(plan[field]) <= limit:
             length = len(plan[field]) if isinstance(plan.get(field), str) else "non-string"
-            raise ValueError(f"Feature {field} must contain 5..4000 characters; received {length}. "
+            raise ValueError(f"Feature {field} must contain 5..{limit} characters; received {length}. "
                              "Shorten the prose while preserving the one feature contract.")
     if not 1 <= len(plan.get("acceptance", [])) <= 8:
         raise ValueError("One feature needs one to eight acceptance conditions")
@@ -368,6 +369,46 @@ def inspect_checks(records: list[dict]) -> None:
                     for argv in record["commands"]]
         if record["exit_code"] != 0 or record.get("executed_commands") != expected:
             raise RuntimeError(Path(record["log"]).read_text()[-10000:])
+
+
+class DeliveryCorrectionRequired(RuntimeError):
+    """Correct post-test delivery text without discarding a validated commit."""
+
+
+def finalize_delivery(root: Path, task: dict, state: Path, active: Path) -> None:
+    evidence_key = hashlib.sha256(json.dumps(
+        {"head": task["head"], "checks": task["checks"]}, sort_keys=True).encode()).hexdigest()
+    if task.get("delivery_evidence_key") == evidence_key:
+        return
+    try:
+        response = ask(bounded_prompt(
+            'Finalize ONLY the delivery metadata for this already reviewed and tested commit. '
+            'Return {"delivery":{"summary":"actual behavior","usage":"complete runnable example",'
+            '"limitations":"remaining actual limitations","upgrade":"upgrade/rollback guidance"}}. '
+            'Keep each field 10..2000 characters. Do not return edits or change the capability. '
+            'The prior author had no tools; the controller has now executed the attached checks. '
+            'Replace stale pre-test uncertainty with the measured results. Distinguish controller '
+            'execution from your own actions. Passing tests do not prove broad accuracy or visual '
+            'quality. Keep synthetic-data, calibration and actual compatibility limitations; '
+            'Distinguish existing showcase/browser regression checks from visual review of this '
+            'feature: if browser checks ran, do not claim no browser evidence exists. '
+            'Usage must include creation of any sample input file it needs, with prerequisites '
+            'and synthetic/manual examples labeled, not just a comment about a missing file. '
+            'remove unsupported claims rather than guessing. Address prior delivery findings '
+            'using these receipts and inspected source. No new feature or benchmark claims.\n',
+            {"plan": task["plan"], "previous_delivery": task.get("delivery", {}),
+             "checks": task["checks"], "head": task["head"],
+             "logs": [Path(r["log"]).read_text()[-6000:] for r in task["checks"]],
+             "prior_findings": task.get("feedback", "")},
+            {"inspected_files": bounded_files(root, task["plan"]["read_paths"], 16000)}),
+            state, "delivery-" + str(task.get("phase_attempts", {}).get("acceptance-review", 0)))
+        if set(response) != {"delivery"} or not isinstance(response["delivery"], dict):
+            raise ValueError("Delivery finalization must return only delivery metadata")
+        validate_delivery(response["delivery"])
+        task.update(delivery=response["delivery"], delivery_evidence_key=evidence_key)
+        write_json(active, task)
+    except Exception as error:
+        raise DeliveryCorrectionRequired(str(error)) from error
 
 
 def validate_feature(root: Path, task: dict, config: dict, state: Path,
@@ -613,6 +654,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
         task["phase"] = "acceptance-review"
         write_json(active, task)
     if task["phase"] == "acceptance-review":
+        finalize_delivery(root, task, attempt_dir, active)
         diff = command(["git", "diff", task["base"], task["head"], "--"], cwd=root)
         review = ask(
             'Final independent acceptance review. Verify the final diff implements the one '
@@ -622,13 +664,22 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
             'and actual logs, including responsive and keyboard behavior where exercised. '
             'Reject concrete usability/accessibility defects and unsupported visual-verification '
             'claims; preserve explicit limitations when browser or visual evidence is unavailable. '
-            'Return {"approved":true|false,"findings":[]}.\n' + json.dumps(
+            'If ALL blockers concern only delivery metadata, use correction_scope "delivery"; '
+            'if any code, tests, product docs, compatibility or validation must change, use '
+            '"implementation". This scope never grants approval. '
+            'Return {"approved":true|false,"findings":[],"correction_scope":"delivery|implementation"}.\n' + json.dumps(
                 {"plan": task["plan"], "diff": diff, "checks": task["checks"],
                  "decision_evidence": task.get("decision_evidence"),
                  "delivery": task.get("delivery", {}), "release": task.get("release", {}),
                  "logs": [Path(r["log"]).read_text()[-6000:] for r in task["checks"]]}),
             attempt_dir, "acceptance-review", review=True)
-        require_review(review)
+        try:
+            require_review(review)
+        except Exception as error:
+            if review.get("correction_scope") == "delivery":
+                task.pop("delivery_evidence_key", None)
+                raise DeliveryCorrectionRequired(str(error)) from error
+            raise
         task["reviewed_head"] = task["head"]
         task["phase"] = "push"
         write_json(active, task)
@@ -735,6 +786,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             return advance(root, task, config, state, active, service_state, name, day)
         except Exception as error:
             task["feedback"] = str(error)
+            if isinstance(error, DeliveryCorrectionRequired):
+                write_json(active, task)
+                raise
             if task["phase"] == "release":
                 # Keep the merged/tagged transaction; never reauthor to fix a registry.
                 write_json(active, task)
@@ -802,7 +856,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'read_paths, and put the user journey, relevant states, responsive/accessibility criteria '
             'and feasible validation in the existing behavior/acceptance fields. Design polish is '
             'part of this one capability, not another feature. CLI/API-only work needs no new UI. '
-            'Keep each description below 4000 characters and acceptance to at most eight conditions. '
+            'Aim for 2000..3500 characters of behavior, with a hard limit of 6000 for a complete '
+            'input/output/error contract. Keep other descriptions below 4000 characters and '
+            'acceptance to at most eight conditions. Scope is one workflow, not extra modes. '
             'Use the exact context.acceptance_paths[test_runner] as test_path and wherever the '
             'plan mentions its new acceptance test. Do not invent another test filename. '
             'Request at most six files per inspection. Reuse already inspected source; if feedback '
@@ -1059,6 +1115,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             task["feedback"] = str(error)
             write_json(attempt_dir / "failure.json", {"error": str(error), "at": stamp()})
             write_json(active, task)
+            if isinstance(error, DeliveryCorrectionRequired):
+                raise
             if task["phase"] in {"push", "ci", "release"}:
                 raise
             task["phase"] = "implement"
