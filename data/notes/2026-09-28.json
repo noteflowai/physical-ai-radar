@@ -1,0 +1,38 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-28",
+  "generated": "2026-09-28 23:29 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison": {
+      "zh": "如果你比较策略只能靠少量真机 rollout，这篇预印本自报评测量最多可减少 70%，且标有真机实验；在据此缩减评测预算之前，先核对这个降幅是相对哪些基线得出的。",
+      "en": "Teams that compare policies on a handful of hardware rollouts may be able to cut that budget: the preprint self-reports up to 70% less evaluation and flags real-robot experiments, but check which baselines that figure is measured against first.",
+      "ja": "少数の実機ロールアウトで方策を比較しているチームには、評価コストを削れる可能性がある。著者は評価量を最大70%削減できると自己申告し、実機実験もあるとするが、比較対象の手法は原文で要確認。"
+    },
+    "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning": {
+      "zh": "如果你的模仿学习管线只收专家演示，这篇预印本主张非专家数据经离线 RL 也能派上用场；它标有真机实验，但本页没有任何数字，暂时只能当作是否保留这类数据的一条线索。",
+      "en": "If your imitation-learning pipeline keeps only expert demonstrations, this preprint argues the rest can be put to work through offline RL; it flags real-robot experiments but shows no figures here, so treat it as a lead on whether to stop discarding that data.",
+      "ja": "専門家デモだけを残す模倣学習パイプラインなら、非専門家データもオフラインRLで活かせるという主張は、データを捨てる判断を見直す材料になる。実機実験ありとされるが本ページに数値はなく、まだ手がかりの段階。"
+    },
+    "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation": {
+      "zh": "当任务需要整条手臂而不只是夹爪受力、接触在多个连杆上形成、滑动又断开时，这篇预印本给出了带真机实验的控制思路；本页没有数字，传感与控制方案先别据此定型。",
+      "en": "When a task loads the whole arm rather than the gripper, with contacts forming, sliding and breaking across several links, this preprint offers a control approach with real-robot experiments; no figures appear here, so do not fix a sensing design on it yet.",
+      "ja": "グリッパーだけでなく腕全体で接触を受け、複数リンクで接触が生じ、滑り、離れるタスクに向けた制御手法で、実機実験ありとされる。本ページに数値はなく、センサ構成を決める根拠にはまだ弱い。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html": {
+      "zh": "对仓储自动化采购而言，大福此次展出的是自动仓库与 AMR 的组合方案，人形机器人只是被提及的开发方向；这是二手报道且没有量化数据，现阶段不宜把人形纳入选型。",
+      "en": "For warehouse buyers, what Daifuku actually showed was automated storage combined with AMRs; the humanoid is a stated development direction in a secondary report with no figures, so it should not enter a procurement shortlist yet.",
+      "ja": "倉庫の自動化を検討する側にとって、ダイフクが実際に披露したのは自動倉庫とAMRの組み合わせで、ヒューマノイドは開発の方向性に言及した段階にとどまる。二次報道で数値もなく、導入検討の対象にはまだ早い。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

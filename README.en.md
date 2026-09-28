@@ -75,10 +75,10 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–04</summary>
 
-1. **Beyond Binary Success** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **TACTIC** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Beyond Binary Success** — `AI draft` Teams that compare policies on a handful of hardware rollouts may be able to cut that budget: the preprint self-reports up to 70% less evaluation and flags real-robot experiments, but check which baselines that figure is measured against first.
+2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — `AI draft` If your imitation-learning pipeline keeps only expert demonstrations, this preprint argues the rest can be put to work through offline RL; it flags real-robot experiments but shows no figures here, so treat it as a lead on whether to stop discarding that data.
+3. **TACTIC** — `AI draft` When a task loads the whole arm rather than the gripper, with contacts forming, sliding and breaking across several links, this preprint offers a control approach with real-robot experiments; no figures appear here, so do not fix a sensing design on it yet.
+4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — `AI draft` For warehouse buyers, what Daifuku actually showed was automated storage combined with AMRs; the humanoid is a stated development direction in a secondary report with no figures, so it should not enter a procurement shortlist yet.
 
 </details>
 
