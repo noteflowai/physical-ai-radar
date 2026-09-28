@@ -100,6 +100,18 @@ class ChunkTests(unittest.TestCase):
         self.task["draft"]["edits"] = [self.edit]
         self.assertEqual(draft_for(self.task, "new-base", {**self.plan, "title": "Different"})["edits"], [])
 
+    def test_a_retained_complete_proposal_is_invalidated_on_changed_base_or_plan(self):
+        draft, proposal = add_chunk(self.root, self.draft, {
+            "edits": [self.edit], "delivery": {"summary": "Complete proposal"},
+        }, self.config)
+        self.assertIsNotNone(proposal)
+        for base, plan in [("advanced-base", self.plan),
+                           ("base", {**self.plan, "title": "Revised approved contract"})]:
+            with self.subTest(base=base, plan=plan):
+                task = {"draft": copy.deepcopy(draft), "source_notes": "Old candidate"}
+                self.assertEqual(draft_for(task, base, plan)["edits"], [])
+                self.assertNotIn("source_notes", task)
+
     def test_legacy_complete_proposal_and_sequential_virtual_edits(self):
         edits = [{"path": "src/cli.py", "old": "old anchor", "new": "new anchor"},
                  {"path": "src/cli.py", "old": "new anchor", "new": "finished"}]
@@ -206,6 +218,58 @@ class ChunkTests(unittest.TestCase):
                 with self.assertRaisesRegex(KeyboardInterrupt, "focused correction verified"):
                     developer.develop("evalarc", {}, state / "workspace", state, "2026-09-28")
             self.assertEqual(calls, [False, True, False])
+
+            # Restart after review rejection, make the correction, approve the entire
+            # candidate again, then reproduce a downstream regression-check failure.
+            def after_review_restart(prompt, *_args, review=False, **_kwargs):
+                if review:
+                    self.assertIn("assert 1 == 1", prompt)
+                    return {"approved": True, "findings": []}
+                payload = json.loads(prompt.rsplit("\n", 1)[1])
+                self.assertEqual(len(payload["saved_draft"]), 3)
+                self.assertEqual(git("status", "--porcelain"), "")
+                if "Regression failed" in payload["feedback"]:
+                    raise KeyboardInterrupt("restart after regression failure")
+                self.assertIn("contradictory assertion", payload["feedback"])
+                return {"edits": [{"path": "tests/test_new.py", "old": "assert 1 == 2",
+                                   "new": "assert 1 == 1"}], "delivery": {}}
+            with patch.object(developer, "checkout", return_value=self.root), \
+                    patch.object(developer, "context", return_value={}), \
+                    patch.object(developer, "prepare_release", return_value={"metadata_files": []}), \
+                    patch.object(developer, "checkpoint"), \
+                    patch.object(developer, "advance", side_effect=ValueError("Regression failed: edge case")) \
+                    as advance, patch.object(developer, "ask", side_effect=after_review_restart) as ask:
+                with self.assertRaisesRegex(KeyboardInterrupt, "restart after regression failure"):
+                    developer.develop("evalarc", {}, state / "workspace", state, "2026-09-28")
+                self.assertEqual(advance.call_count, 1)
+                self.assertEqual(ask.call_count, 3)
+            prior_head = json.loads(active.read_text())["head"]
+
+            # A second process restart preserves the test failure and corrected test,
+            # and a code correction must pass a fresh full review and validation.
+            def after_validation_restart(prompt, *_args, review=False, **_kwargs):
+                if review:
+                    self.assertIn("complete behavior", prompt)
+                    self.assertIn("assert 1 == 1", prompt)
+                    return {"approved": True, "findings": []}
+                payload = json.loads(prompt.rsplit("\n", 1)[1])
+                self.assertIn("Regression failed: edge case", payload["feedback"])
+                self.assertEqual(len(payload["saved_draft"]), 3)
+                self.assertEqual(git("status", "--porcelain"), "")
+                return {"edits": [{"path": "src/cli.py", "old": "new behavior",
+                                   "new": "complete behavior"}], "delivery": {}}
+            with patch.object(developer, "checkout", return_value=self.root), \
+                    patch.object(developer, "context", return_value={}), \
+                    patch.object(developer, "prepare_release", return_value={"metadata_files": []}), \
+                    patch.object(developer, "checkpoint"), \
+                    patch.object(developer, "advance", return_value={"status": "validation fixture"}) \
+                    as advance, patch.object(developer, "ask", side_effect=after_validation_restart) as ask:
+                result = developer.develop(
+                    "evalarc", {}, state / "workspace", state, "2026-09-28")
+                self.assertEqual(result, {"status": "validation fixture"})
+                self.assertEqual(ask.call_count, 2)
+                self.assertEqual(advance.call_count, 1)
+                self.assertNotEqual(advance.call_args.args[1]["head"], prior_head)
 
 
 if __name__ == "__main__":
