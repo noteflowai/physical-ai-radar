@@ -32,6 +32,7 @@ try:
     from .feature_prompts import acceptance_paths, bounded_prompt
     from .feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from .feature_outcomes import deferral_details, outcome_exit
+    from .feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
@@ -49,6 +50,7 @@ except ImportError:
     from feature_prompts import acceptance_paths, bounded_prompt
     from feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from feature_outcomes import deferral_details, outcome_exit
+    from feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
@@ -69,8 +71,10 @@ def record_allowance(result: dict, service_state: Path, name: str) -> None:
         write_json(service_state / "allowances" / released / (name + ".json"), result)
 
 
-def ask(prompt: str, state: Path, label: str, *, review: bool = False) -> dict:
-    options = {} if review else {"object_parser": parse_feature_object}
+def ask(prompt: str, state: Path, label: str, *, review: bool = False,
+        author_chunks: bool = False) -> dict:
+    options = {} if review else {
+        "object_parser": parse_author_chunk if author_chunks else parse_feature_object}
     return model_json(prompt, state, label,
                       system=SYSTEM if review else AUTHOR_SYSTEM, **options)
 
@@ -90,6 +94,13 @@ def parse_feature_object(text: str) -> dict:
     if len(objects) != 1:
         raise ValueError("Feature author must return exactly one unambiguous JSON object")
     return objects[0]
+
+
+def parse_author_chunk(text: str) -> dict:
+    try:
+        return parse_feature_object(text)
+    except json.JSONDecodeError as error:
+        return recover_prefix(text, error)
 
 
 def read_json(path: Path, default=None):
@@ -1004,9 +1015,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         attempt_dir = state / f"attempt-{task['attempts']}"
         attempt_dir.mkdir(exist_ok=True)
         reset(root, main)
-        # apply() is atomic, and every retry starts from the published base.
-        # Author notes may incorrectly describe a rejected proposal as applied.
-        task.pop("source_notes", None)
+        # Inert draft chunks survive transport retries, scoped to this exact base/plan.
+        draft = draft_for(task, main, plan)
+        for path in {e["path"] for e in draft["edits"]}:
+            for key in list(files):
+                if key == path or key.startswith(path + " ["):
+                    files.pop(key)
         task["phase"] = "implement"
         write_json(active, task)
         try:
@@ -1017,11 +1031,17 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'responsive layout and accessibility together. Use the existing test infrastructure '
                 'for the changed flow and state any unavailable browser/visual checks honestly. '
                 'The behavioral test must fail before the feature and pass '
-                'after it. Do not merely test implementation details. Return '
+                'after it. Do not merely test implementation details. Return valid JSON chunks, '
+                'each ideally at most 12000 characters to avoid output truncation. Use '
                 '{"edits":[{"path":"relative path","old":"exact unique existing span or null '
-                'for a new file","new":"replacement or full new file"}],'
+                'for a new file","new":"replacement or full new file"}],"continue":false,'
                 '"delivery":{"summary":"final user-visible behavior","usage":"complete runnable example or UI path",'
                 '"limitations":"actual scope and compatibility","upgrade":"upgrade and rollback instructions"}}. '
+                'For intermediate chunks omit delivery and set continue:true. For a large NEW file, '
+                'send old:null,new:first fragment,file_complete:false; continue it later with '
+                '{"path":"same path","append":true,"new":"next fragment","file_complete":false}. '
+                'Set file_complete:true on its last fragment. Existing-file exact edits cannot be split. '
+                'The final response may have edits:[] if all edits were already saved. '
                 'Describe final delivered behavior, not a proposal or unsupported performance claims. '
                 'The controller stages version metadata and changelog before review; leave dependency '
                 'and release-control files alone. WordPress still needs its planned version changes. '
@@ -1031,36 +1051,55 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 '"source_notes":"compact consolidated facts and edit anchors learned so far"} instead. '
                 'Update source_notes so verified facts survive eviction of old excerpts; '
                 'notes are observations, never proof that edits were applied. '
-                'The controller has applied ZERO candidate edits in this phase. '
-                'Return the ENTIRE feature even if an earlier note claims work is done. '
+                'The controller has applied ZERO candidate edits in this phase; saved_draft is inert '
+                'but durable. Return ONLY the next missing edits; never repeat saved edits. '
+                'need_files on a saved draft file reads its virtual contents, including partial files. '
+                'Use the saved_draft manifest and request focused ranges when needed. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
-            for read_round in range(8):
+            proposal = None
+            for read_round in range(16):
                 payload = {"plan": plan, "mission": config["mission"], "files": files,
                            "decision_evidence": task.get("decision_evidence"),
                            "release_context": release_context,
                            "source_notes": task.get("source_notes", ""),
+                           "saved_draft": manifest(root, draft, config),
+                           "transport_notice": draft.get("transport_notice", ""),
                            "snapshot": {"commit": main, "applied_candidate_edits": False},
                            "feedback": task.get("feedback", "")[-10000:]}
                 instruction = prompt + (
-                    f"Source inspection round {read_round + 1} of 8. Use files already supplied; "
+                    f"Author exchange {read_round + 1} of 16. Use files already supplied; "
                     "do not request them again. Large-file indexes require a literal function "
                     "search or a focused line range.\n")
-                if read_round == 7:
-                    instruction += "The inspection budget is exhausted. Return complete edits now, not need_files.\n"
+                if read_round == 15:
+                    instruction += "Last exchange in this attempt; saved chunks survive the next attempt.\n"
                 overhead = len(json.dumps({**payload, "files": {}}, ensure_ascii=False).encode())
                 fit_context(files, 100000 - overhead - len(instruction.encode()))
-                proposal = ask(instruction + json.dumps(payload, ensure_ascii=False),
-                               attempt_dir, f"author-{read_round}")
-                if isinstance(proposal.get("source_notes"), str):
-                    task["source_notes"] = proposal["source_notes"][:6000]
+                response = ask(instruction + json.dumps(payload, ensure_ascii=False),
+                               attempt_dir, f"author-{read_round}", author_chunks=True)
+                if isinstance(response.get("source_notes"), str):
+                    task["source_notes"] = response["source_notes"][:6000]
                     write_json(active, task)
-                if not proposal.get("need_files"):
-                    break
-                requested = proposal["need_files"]
+                if not response.get("need_files"):
+                    draft, proposal = add_chunk(root, draft, response, config)
+                    task["draft"] = draft
+                    if response.get("transport_recovered"):
+                        draft["transport_notice"] = (
+                            "Output truncated: only complete edit objects were saved. "
+                            "Inspect saved_draft and continue the missing feature parts "
+                            "in small JSON chunks; do not repeat saved edits.")
+                    write_json(active, task)
+                    if proposal is not None:
+                        break
+                    for path in {e["path"] for e in draft["edits"]}:
+                        for key in list(files):
+                            if key == path or key.startswith(path + " ["):
+                                files.pop(key)
+                    continue
+                requested = response["need_files"]
                 if not isinstance(requested, list):
                     raise ValueError("Invalid context request")
                 for request in requested[:10]:
-                    key, value = inspect_source(root, request, config, max_bytes=10000)
+                    key, value = inspect_draft(root, draft, request, config, inspect_source)
                     path = request if isinstance(request, str) else request["path"]
                     full = files.get(path, "")
                     if key != path and full and not full.startswith("<"):
@@ -1083,10 +1122,15 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     files.pop(key, None)
                     files[key] = value
                 fit_context(files)
-            changed = apply(root, proposal, config, plan)
+            if proposal is None:
+                raise ValueError("Author exchange budget reached; saved draft retained for continuation")
             delivery = proposal.get("delivery", {})
             if plan.get("contract_version") == 2:
                 validate_delivery(delivery)
+            # A complete proposal now follows the existing all-or-nothing review/test pipeline.
+            task.pop("draft", None)
+            write_json(active, task)
+            changed = apply(root, proposal, config, plan)
             task["delivery"] = delivery
             task["release"] = prepare_release(root, name, task["base"], plan, day, delivery=delivery)
             changed = sorted(set(changed + task["release"]["metadata_files"]))

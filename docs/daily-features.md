@@ -379,6 +379,17 @@ Prerequisites are Docker with the NVIDIA runtime, the pinned tool/GPU images,
 Kiro CLI, GitHub CLI, SVN with noninteractive publishing credentials, and the
 installed `radar-run` bootstrap. A missing prerequisite is recorded as a failure;
 it cannot produce a successful release receipt.
+
+Feature authors return bounded JSON chunks (target 12,000 characters). The controller
+persists exact edits as inert drafts tied to the published base and approved plan;
+worker restarts resume those drafts. Large new files can be continued with explicit
+append fragments, and focused source reads show the draft's virtual contents. When
+the CLI truncates a response, only fully decoded edit objects are recovered, never
+partial strings. Authors see the saved-file manifest and complete missing work.
+All files and delivery metadata must be finished before any candidate is applied.
+The existing size limits, independent review, red/green acceptance, regression checks
+and release verification still apply to the entire feature. A rejected complete
+implementation starts a fresh draft; model transport retries preserve unfinished work.
 # Optional local decision records
 
 When a verified Kev-4B batch runtime is installed, planners receive `local_decisions.available`.
