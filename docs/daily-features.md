@@ -292,7 +292,10 @@ The cron process reads this file directly; no interactive shell export is requir
 After supplying or renewing credentials, rerun the selected project command below.
 An already merged feature resumes publishing the same checked package.
 
-No daily worker publishes WordPress posts or connects to physical robot actuators.
+The nightly specialist-feature worker does not publish WordPress posts or
+connect to physical robot actuators. The separate morning content and course
+jobs publish reviewed posts and lessons as described in
+[automation](automation.md).
 
 ## Releases and owned-channel promotion
 

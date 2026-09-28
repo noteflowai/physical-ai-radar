@@ -10,6 +10,7 @@ anywhere that matters.
 | `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
 | `oneai-content-run` | maintainer's machine, cron | 10:00 Asia/Singapore; 16:00 retry | publishes one reviewed, illustrated zh/en/ja article group on oneai.host |
+| `oneai-course-run` | maintainer's machine, cron | 11:30 Asia/Singapore; 18:30 retry | produces and reviews one course lesson, then publishes its video on oneai.host |
 | `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | collects research, develops specialist features, publishes updates, maintains Radar and reports results |
 | `scripts/nightly.sh --previous-day` | maintainer's machine, cron | 02:30 Asia/Singapore | resumes only the preceding evening's unfinished stages |
 
@@ -192,6 +193,13 @@ The 10:00 article job uses the private
 from an independent clone. It begins after the 09:20 hosted Radar fallback and
 does not consume the 21:30 specialist-feature budget. Its 16:00 invocation only
 resumes an unfinished receipt; it cannot publish a second article for the date.
+
+The 11:30 course job uses the private
+[`physical-ai-academy` course controller](https://github.com/noteflowai/physical-ai-academy/blob/main/scripts/daily_course.py)
+in a dedicated clone. It renders one planned lesson, runs audio, visual and
+source QA, and uses an independent Kiro reviewer before publishing the exact
+approved MP4 and transcript through WordPress. Its 18:30 run resumes a failed
+episode. The video is hosted through the `wordpress-aws` CourseMedia stack.
 
 The issue date follows Singapore's calendar. At 07:40 it is still 23:40 UTC on the
 preceding date; using `date -u` here would skip the new issue or label it yesterday.
