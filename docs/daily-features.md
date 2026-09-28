@@ -388,8 +388,14 @@ the CLI truncates a response, only fully decoded edit objects are recovered, nev
 partial strings. Authors see the saved-file manifest and complete missing work.
 All files and delivery metadata must be finished before any candidate is applied.
 The existing size limits, independent review, red/green acceptance, regression checks
-and release verification still apply to the entire feature. A rejected complete
-implementation starts a fresh draft; model transport retries preserve unfinished work.
+and release verification still apply to the entire feature. Review or test rejection
+retains the complete inert draft so authors can correct exact spans against its virtual
+contents. Every correction repeats the full review and test gates on a fresh checkout.
+Code review precedes candidate execution; the separate final acceptance review requires
+actual execution receipts. A changed base or approved plan invalidates the draft.
+Kiro v1 decodes HTML entities even in fenced output. JSON author and reviewer policies
+therefore encode ampersands as `\u0026` (and author backticks as `\u0060`) so code,
+HTML-escaping assertions and literal review findings survive terminal rendering.
 # Optional local decision records
 
 When a verified Kev-4B batch runtime is installed, planners receive `local_decisions.available`.

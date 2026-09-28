@@ -1,5 +1,6 @@
 """Long author responses must resume without applying or trusting partial features."""
 import copy
+import html
 import json
 from pathlib import Path
 import tempfile
@@ -43,6 +44,17 @@ class ChunkTests(unittest.TestCase):
                      '{"edits":[]}\n{"edits":[]}']:
             with self.subTest(text=text), self.assertRaises(ValueError):
                 parse_author_chunk(text)
+
+    def test_observed_v1_unicode_transport_preserves_entities_operators_and_templates(self):
+        # Exact stdout shape observed from Kiro v1 after its terminal renderer.
+        text = (r'> json' + '\n' +
+                r'{"literal":"\u0026lt;script\u0026gt;alert(1)\u0026lt;/script\u0026gt;",'
+                r'"amp":"\u0026amp;","operator":"left \u0026\u0026 right",'
+                r'"template":"\u0060hello\u0060"}')
+        self.assertEqual(parse_feature_object(html.unescape(text)), {
+            "literal": "&lt;script&gt;alert(1)&lt;/script&gt;", "amp": "&amp;",
+            "operator": "left && right", "template": "`hello`",
+        })
 
     def test_large_new_file_can_resume_after_restart_and_virtual_read_is_inert(self):
         draft, proposal = add_chunk(self.root, self.draft, {
@@ -141,6 +153,59 @@ class ChunkTests(unittest.TestCase):
                     patch.object(developer, "ask", side_effect=resumed_author):
                 with self.assertRaisesRegex(KeyboardInterrupt, "resume verified"):
                     developer.develop("evalarc", {}, state / "workspace", state, "2026-09-28")
+
+    def test_rejected_complete_feature_is_retained_for_focused_correction(self):
+        def git(*args):
+            return subprocess.check_output(["git", *args], cwd=self.root, text=True,
+                                           stderr=subprocess.DEVNULL).strip()
+        git("init", "-q")
+        git("config", "user.name", "Feature test")
+        git("config", "user.email", "test@example.invalid")
+        git("add", ".")
+        git("commit", "-qm", "base")
+        base = git("rev-parse", "HEAD")
+        git("update-ref", "refs/remotes/origin/main", base)
+        edits = [{"path": "src/cli.py", "old": "old anchor", "new": "new behavior"},
+                 {"path": "docs/feature.md", "old": None, "new": "Complete feature usage\n"},
+                 {"path": "tests/test_new.py", "old": None, "new": "assert 1 == 2\n"}]
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp)
+            active = state / "tasks/evalarc/active.json"
+            active.parent.mkdir(parents=True)
+            active.write_text(json.dumps({
+                "id": "fixture", "repo": "noteflowai/evalarc", "base": base,
+                "branch": "automation/fixture", "phase": "implement", "attempts": 0,
+                "plan": {**self.plan, "read_paths": ["src/cli.py"]},
+            }))
+            calls = []
+            def author(prompt, *_args, review=False, **_kwargs):
+                calls.append(review)
+                if len(calls) == 1:
+                    return {"edits": edits, "delivery": {}}
+                if review:
+                    self.assertIn("BEFORE candidate execution", prompt)
+                    return {"approved": False, "findings": ["Correct contradictory assertion"]}
+                payload = json.loads(prompt.rsplit("\n", 1)[1])
+                self.assertEqual(len(payload["saved_draft"]), 3)
+                self.assertIn("contradictory assertion", payload["feedback"])
+                self.assertEqual(git("status", "--porcelain"), "")
+                self.assertEqual((self.root / "src/cli.py").read_text(), "old anchor\n")
+                saved = json.loads(active.read_text())["draft"]
+                fixed, proposal = add_chunk(self.root, saved, {
+                    "edits": [{"path": "tests/test_new.py", "old": "assert 1 == 2",
+                               "new": "assert 1 == 1"}], "delivery": {},
+                }, self.config)
+                self.assertEqual(proposal["edits"][:3], edits)
+                self.assertIn("assert 1 == 1", inspect_draft(
+                    self.root, fixed, "tests/test_new.py", self.config, requested_context)[1])
+                raise KeyboardInterrupt("focused correction verified")
+            with patch.object(developer, "checkout", return_value=self.root), \
+                    patch.object(developer, "context", return_value={}), \
+                    patch.object(developer, "prepare_release", return_value={"metadata_files": []}), \
+                    patch.object(developer, "ask", side_effect=author):
+                with self.assertRaisesRegex(KeyboardInterrupt, "focused correction verified"):
+                    developer.develop("evalarc", {}, state / "workspace", state, "2026-09-28")
+            self.assertEqual(calls, [False, True, False])
 
 
 if __name__ == "__main__":
