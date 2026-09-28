@@ -1063,6 +1063,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                            "release_context": release_context,
                            "source_notes": task.get("source_notes", ""),
                            "saved_draft": manifest(root, draft, config),
+                           "transport_notice": draft.get("transport_notice", ""),
                            "snapshot": {"commit": main, "applied_candidate_edits": False},
                            "feedback": task.get("feedback", "")[-10000:]}
                 instruction = prompt + (
@@ -1082,9 +1083,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     draft, proposal = add_chunk(root, draft, response, config)
                     task["draft"] = draft
                     if response.get("transport_recovered"):
-                        task["feedback"] = ("Output truncated: only complete edit objects were saved. "
-                                            "Inspect saved_draft and continue the missing feature parts "
-                                            "in small JSON chunks; do not repeat saved edits.")
+                        draft["transport_notice"] = (
+                            "Output truncated: only complete edit objects were saved. "
+                            "Inspect saved_draft and continue the missing feature parts "
+                            "in small JSON chunks; do not repeat saved edits.")
                     write_json(active, task)
                     if proposal is not None:
                         break

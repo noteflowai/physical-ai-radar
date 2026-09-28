@@ -115,12 +115,13 @@ class ChunkTests(unittest.TestCase):
             active.write_text(json.dumps({
                 "id": "fixture", "repo": "noteflowai/evalarc", "base": base,
                 "branch": "automation/fixture", "phase": "implement", "attempts": 0,
+                "feedback": "Independent review: preserve held-out split isolation",
                 "plan": {**self.plan, "read_paths": ["src/cli.py"]},
             }))
             with patch.object(developer, "checkout", return_value=self.root), \
                     patch.object(developer, "context", return_value={}), \
                     patch.object(developer, "ask", side_effect=[
-                        {"edits": [self.edit], "continue": True},
+                        {"edits": [self.edit], "continue": True, "transport_recovered": True},
                         KeyboardInterrupt("simulated worker restart"),
                     ]):
                 with self.assertRaises(KeyboardInterrupt):
@@ -129,6 +130,8 @@ class ChunkTests(unittest.TestCase):
             def resumed_author(prompt, *_args, **_kwargs):
                 payload = json.loads(prompt.rsplit("\n", 1)[1])
                 self.assertEqual(payload["saved_draft"][0]["path"], "src/new.py")
+                self.assertIn("preserve held-out split isolation", payload["feedback"])
+                self.assertIn("Output truncated", payload["transport_notice"])
                 self.assertEqual(payload["snapshot"]["applied_candidate_edits"], False)
                 self.assertFalse((self.root / "src/new.py").exists())
                 self.assertEqual(git("status", "--porcelain"), "")
