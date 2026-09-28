@@ -260,13 +260,22 @@ prepare() {
     log "re-rendering ${DAY} from the published snapshot"
     python3 -m pairadar --rerender --date "$DAY"
     RENDERED="$(changed_paths)"
-    # The landing pages quote the day's lines too, so they are rebuilt with it.
-    EXPECTED="$(printf '%s\n' "$NOTES" README.en.md README.ja.md README.md \
+    # The landing pages quote the day's lines. Re-render also regenerates the
+    # language banners, which may change when the rendering code has advanced.
+    ALLOWED="$(printf '%s\n' "$NOTES" README.en.md README.ja.md README.md \
       index.html en/index.html ja/index.html \
+      assets/banner.en.svg assets/banner.ja.svg assets/banner.zh.svg \
       "radar/daily/${DAY}.en.md" "radar/daily/${DAY}.ja.md" "radar/daily/${DAY}.zh.md" |
       sort | tr '\n' ' ' | sed 's/ *$//')"
-    if [ "$RENDERED" != "$EXPECTED" ]; then
-      log "re-render touched unexpected files: ${RENDERED}; reverting"
+    UNEXPECTED=""
+    for path in $RENDERED; do
+      case " $ALLOWED " in
+        *" $path "*) ;;
+        *) UNEXPECTED="${UNEXPECTED:+$UNEXPECTED }$path" ;;
+      esac
+    done
+    if [ -n "$UNEXPECTED" ]; then
+      log "re-render touched unexpected files: ${UNEXPECTED}; reverting"
       restore_tree
       exit 1
     fi
