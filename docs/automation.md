@@ -9,6 +9,7 @@ anywhere that matters.
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
 | `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
+| `oneai-content-run` | maintainer's machine, cron | 10:00 Asia/Singapore; 16:00 retry | publishes one reviewed, illustrated zh/en/ja article group on oneai.host |
 | `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | collects research, develops specialist features, publishes updates, maintains Radar and reports results |
 | `scripts/nightly.sh --previous-day` | maintainer's machine, cron | 02:30 Asia/Singapore | resumes only the preceding evening's unfinished stages |
 
@@ -185,6 +186,12 @@ maintainer. Run it by hand with `force` to republish a day that is already on `m
 The checked-in schedule is [`scripts/cron.sg`](../scripts/cron.sg). Install it on a
 host whose timezone is **Asia/Singapore**, replacing the earlier standalone notes,
 source-repair and 10:10/16:10 companion entries. Do not add both schedules.
+
+The 10:00 article job uses the private
+[`wordpress-aws` content controller](https://github.com/noteflowai/wordpress-aws/blob/main/content/README.md)
+from an independent clone. It begins after the 09:20 hosted Radar fallback and
+does not consume the 21:30 specialist-feature budget. Its 16:00 invocation only
+resumes an unfinished receipt; it cannot publish a second article for the date.
 
 The issue date follows Singapore's calendar. At 07:40 it is still 23:40 UTC on the
 preceding date; using `date -u` here would skip the new issue or label it yesterday.
