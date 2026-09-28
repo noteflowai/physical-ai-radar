@@ -13,6 +13,296 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:13f2fc913cf2",
+      "url": "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/",
+      "title": "NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [O]<br><b>Source</b>: AWS Physical AI Blog · 2026-09-28<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [O]\nSource: AWS Physical AI Blog · 2026-09-28\nSignals: real-robot experiments\n\nIntroduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when…\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when…",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "AWS Physical AI Blog"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "aws-physical-ai:13f2fc913cf2",
+        "url": "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/",
+        "title": "NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI",
+        "publisher": "AWS Physical AI Blog",
+        "source_id": "aws-physical-ai",
+        "evidence": "O",
+        "lane": "foundation",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.30833",
+      "url": "https://arxiv.org/abs/2609.30833",
+      "title": "Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.30833 · 2026-09-25<br><b>Key numbers</b>: 91.0% · 96.2% · 95.85% · 98.45%<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.30833 · 2026-09-25\nKey numbers: 91.0% · 96.2% · 95.85% · 98.45%\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nHierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions.",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.30833"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "arxiv:2609.30833",
+        "url": "https://arxiv.org/abs/2609.30833",
+        "title": "Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models",
+        "publisher": "arXiv 2609.30833",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [
+          "91.0%",
+          "96.2%",
+          "95.85%",
+          "98.45%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "latency"
+        ],
+        "excerpt": "Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:24cb331b239b",
+      "url": "https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html",
+      "title": "三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-28<br><b>Signals</b>: quantitative results · latency or control-rate numbers</p>\n<blockquote>美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-28\nSignals: quantitative results · latency or control-rate numbers\n\n美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "leiphone:24cb331b239b",
+        "url": "https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html",
+        "title": "三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "numbers",
+          "latency"
+        ],
+        "excerpt": "美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.30868",
+      "url": "https://arxiv.org/abs/2609.30868",
+      "title": "VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.30868 · 2026-09-25<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2609.30868 · 2026-09-25\nSignals: real-robot experiments\n\nVision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction.",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.30868"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "arxiv:2609.30868",
+        "url": "https://arxiv.org/abs/2609.30868",
+        "title": "VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL",
+        "publisher": "arXiv 2609.30868",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.30735",
+      "url": "https://arxiv.org/abs/2609.30735",
+      "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.30735 · 2026-09-25<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2609.30735 · 2026-09-25\nSignals: closed-loop success reported\n\nMobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.30735"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "arxiv:2609.30735",
+        "url": "https://arxiv.org/abs/2609.30735",
+        "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
+        "publisher": "arXiv 2609.30735",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-09-25",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop"
+        ],
+        "excerpt": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:33804ee215ed",
+      "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
+      "title": "本田重申Momenta合作，中国智驾全球布局提速",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-28</p>\n<blockquote>本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-28\n\n本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "leiphone:33804ee215ed",
+        "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
+        "title": "本田重申Momenta合作，中国智驾全球布局提速",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:952353d51a5d",
+      "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
+      "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-28</p>\n<blockquote>Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-09-28\n\nGecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "the-robot-report:952353d51a5d",
+        "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
+        "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:4ccaa7c04c64",
+      "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
+      "title": "Capturing Visual Environment Structure Correlates with Control Performance",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09</p>\n<blockquote>The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\n\nThe choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
+      "summary": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.",
+      "date_published": "2026-09-28T23:40:00Z",
+      "authors": [
+        {
+          "name": "Toyota Research Institute"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-29",
+        "id": "tri:4ccaa7c04c64",
+        "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
+        "title": "Capturing Visual Environment Structure Correlates with Control Performance",
+        "publisher": "Toyota Research Institute",
+        "source_id": "tri",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-09",
+        "radar_published": "2026-09-28T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:590f68cd1f2a",
       "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
       "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",

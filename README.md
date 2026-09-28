@@ -60,29 +60,37 @@
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-28
+### 今日雷达 · 2026-09-29
 
-`生成时间: 2026-09-27 23:40 UTC` ｜ `统计窗口: 论文 2026-09-24 → 2026-09-28 · 博客与报道 2026-08-29 → 2026-09-28 · 30 天内不重复 (UTC)`
+`生成时间: 2026-09-28 23:40 UTC` ｜ `统计窗口: 论文 2026-09-25 → 2026-09-29 · 博客与报道 2026-08-30 → 2026-09-29 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison](http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison)**<br>`70%`&nbsp; `50%`<br><sub>仿真与评测 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning](http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning)**<br><sub>数据引擎 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation](http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation)**<br><sub>仿真与评测 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 04<br>🟡&nbsp;`M` | **[ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験](https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑09‑27</sub> |
+| 01<br>🟢&nbsp;`O` | **[NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI](https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/)**<br><sub>基座模型 · AWS Physical AI Blog · 2026‑09‑28</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2609.30833)**<br>`91.0%`&nbsp; `96.2%`&nbsp; `95.85%`<br><sub>基座模型 · arXiv 2609.30833 · 2026‑09‑25</sub> |
+| 03<br>🟡&nbsp;`M` | **[三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限](https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](https://arxiv.org/abs/2609.30868)**<br><sub>训练与自我改进 · arXiv 2609.30868 · 2026‑09‑25</sub> |
+| 05<br>🔵&nbsp;`R` | **[Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation](https://arxiv.org/abs/2609.30735)**<br><sub>数据引擎 · arXiv 2609.30735 · 2026‑09‑25</sub> |
+| 06<br>🟡&nbsp;`M` | **[本田重申Momenta合作，中国智驾全球布局提速](https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 07<br>🟡&nbsp;`M` | **[Gecko Robotics works with NVIDIA to add AI agent security and control](https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑09‑28</sub> |
+| 08<br>🔵&nbsp;`R` | **[Capturing Visual Environment Structure Correlates with Control Performance](http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance)**<br><sub>仿真与评测 · Toyota Research Institute · 2026‑09‑09</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–04</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Beyond Binary Success** — `AI 起草` 如果你比较策略只能靠少量真机 rollout，这篇预印本自报评测量最多可减少 70%，且标有真机实验；在据此缩减评测预算之前，先核对这个降幅是相对哪些基线得出的。
-2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — `AI 起草` 如果你的模仿学习管线只收专家演示，这篇预印本主张非专家数据经离线 RL 也能派上用场；它标有真机实验，但本页没有任何数字，暂时只能当作是否保留这类数据的一条线索。
-3. **TACTIC** — `AI 起草` 当任务需要整条手臂而不只是夹爪受力、接触在多个连杆上形成、滑动又断开时，这篇预印本给出了带真机实验的控制思路；本页没有数字，传感与控制方案先别据此定型。
-4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — `AI 起草` 对仓储自动化采购而言，大福此次展出的是自动仓库与 AMR 的组合方案，人形机器人只是被提及的开发方向；这是二手报道且没有量化数据，现阶段不宜把人形纳入选型。
+1. **NVIDIA Cosmos 3 on AWS** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **Fast Plans, Faithful Actions** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+4. **VLaRL** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+5. **Praxis** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+6. **本田重申Momenta合作，中国智驾全球布局提速** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+8. **Capturing Visual Environment Structure Correlates with Control Performance** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-09-28.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-09-29.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

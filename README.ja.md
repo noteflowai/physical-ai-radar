@@ -60,29 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-28
+### 本日のレーダー · 2026-09-29
 
-`生成時刻: 2026-09-27 23:40 UTC` ｜ `対象期間: 論文 2026-09-24 → 2026-09-28 · ブログ・報道 2026-08-29 → 2026-09-28 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-28 23:40 UTC` ｜ `対象期間: 論文 2026-09-25 → 2026-09-29 · ブログ・報道 2026-08-30 → 2026-09-29 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison](http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison)**<br>`70%`&nbsp; `50%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning](http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning)**<br><sub>データエンジン · Toyota Research Institute · 2026‑09‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation](http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
-| 04<br>🟡&nbsp;`M` | **[ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験](https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑09‑27</sub> |
+| 01<br>🟢&nbsp;`O` | **[NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI](https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/)**<br><sub>基盤モデル · AWS Physical AI Blog · 2026‑09‑28</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2609.30833)**<br>`91.0%`&nbsp; `96.2%`&nbsp; `95.85%`<br><sub>基盤モデル · arXiv 2609.30833 · 2026‑09‑25</sub> |
+| 03<br>🟡&nbsp;`M` | **[三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限](https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](https://arxiv.org/abs/2609.30868)**<br><sub>学習と自己改善 · arXiv 2609.30868 · 2026‑09‑25</sub> |
+| 05<br>🔵&nbsp;`R` | **[Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation](https://arxiv.org/abs/2609.30735)**<br><sub>データエンジン · arXiv 2609.30735 · 2026‑09‑25</sub> |
+| 06<br>🟡&nbsp;`M` | **[本田重申Momenta合作，中国智驾全球布局提速](https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 07<br>🟡&nbsp;`M` | **[Gecko Robotics works with NVIDIA to add AI agent security and control](https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑09‑28</sub> |
+| 08<br>🔵&nbsp;`R` | **[Capturing Visual Environment Structure Correlates with Control Performance](http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–04</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Beyond Binary Success** — `AI 下書き` 少数の実機ロールアウトで方策を比較しているチームには、評価コストを削れる可能性がある。著者は評価量を最大70%削減できると自己申告し、実機実験もあるとするが、比較対象の手法は原文で要確認。
-2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — `AI 下書き` 専門家デモだけを残す模倣学習パイプラインなら、非専門家データもオフラインRLで活かせるという主張は、データを捨てる判断を見直す材料になる。実機実験ありとされるが本ページに数値はなく、まだ手がかりの段階。
-3. **TACTIC** — `AI 下書き` グリッパーだけでなく腕全体で接触を受け、複数リンクで接触が生じ、滑り、離れるタスクに向けた制御手法で、実機実験ありとされる。本ページに数値はなく、センサ構成を決める根拠にはまだ弱い。
-4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — `AI 下書き` 倉庫の自動化を検討する側にとって、ダイフクが実際に披露したのは自動倉庫とAMRの組み合わせで、ヒューマノイドは開発の方向性に言及した段階にとどまる。二次報道で数値もなく、導入検討の対象にはまだ早い。
+1. **NVIDIA Cosmos 3 on AWS** — 当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+2. **Fast Plans, Faithful Actions** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+4. **VLaRL** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
+5. **Praxis** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **本田重申Momenta合作，中国智驾全球布局提速** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+8. **Capturing Visual Environment Structure Correlates with Control Performance** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-09-28.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-09-29.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

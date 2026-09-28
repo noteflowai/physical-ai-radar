@@ -60,29 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-28
+### Today's radar · 2026-09-29
 
-`Generated: 2026-09-27 23:40 UTC` ｜ `Window: papers 2026-09-24 → 2026-09-28 · posts 2026-08-29 → 2026-09-28 · no repeats within 30 days (UTC)`
+`Generated: 2026-09-28 23:40 UTC` ｜ `Window: papers 2026-09-25 → 2026-09-29 · posts 2026-08-30 → 2026-09-29 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison](http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison)**<br>`70%`&nbsp; `50%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning](http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning)**<br><sub>Data engine · Toyota Research Institute · 2026‑09‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation](http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
-| 04<br>🟡&nbsp;`M` | **[ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験](https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑09‑27</sub> |
+| 01<br>🟢&nbsp;`O` | **[NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI](https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/)**<br><sub>Foundation models · AWS Physical AI Blog · 2026‑09‑28</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2609.30833)**<br>`91.0%`&nbsp; `96.2%`&nbsp; `95.85%`<br><sub>Foundation models · arXiv 2609.30833 · 2026‑09‑25</sub> |
+| 03<br>🟡&nbsp;`M` | **[三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限](https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](https://arxiv.org/abs/2609.30868)**<br><sub>Training & self-improvement · arXiv 2609.30868 · 2026‑09‑25</sub> |
+| 05<br>🔵&nbsp;`R` | **[Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation](https://arxiv.org/abs/2609.30735)**<br><sub>Data engine · arXiv 2609.30735 · 2026‑09‑25</sub> |
+| 06<br>🟡&nbsp;`M` | **[本田重申Momenta合作，中国智驾全球布局提速](https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑28</sub> |
+| 07<br>🟡&nbsp;`M` | **[Gecko Robotics works with NVIDIA to add AI agent security and control](https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑09‑28</sub> |
+| 08<br>🔵&nbsp;`R` | **[Capturing Visual Environment Structure Correlates with Control Performance](http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–04</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Beyond Binary Success** — `AI draft` Teams that compare policies on a handful of hardware rollouts may be able to cut that budget: the preprint self-reports up to 70% less evaluation and flags real-robot experiments, but check which baselines that figure is measured against first.
-2. **Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforce…** — `AI draft` If your imitation-learning pipeline keeps only expert demonstrations, this preprint argues the rest can be put to work through offline RL; it flags real-robot experiments but shows no figures here, so treat it as a lead on whether to stop discarding that data.
-3. **TACTIC** — `AI draft` When a task loads the whole arm rather than the gripper, with contacts forming, sliding and breaking across several links, this preprint offers a control approach with real-robot experiments; no figures appear here, so do not fix a sensing design on it yet.
-4. **ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験** — `AI draft` For warehouse buyers, what Daifuku actually showed was automated storage combined with AMRs; the humanoid is a stated development direction in a secondary report with no figures, so it should not enter a procurement shortlist yet.
+1. **NVIDIA Cosmos 3 on AWS** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **Fast Plans, Faithful Actions** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
+4. **VLaRL** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
+5. **Praxis** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
+6. **本田重申Momenta合作，中国智驾全球布局提速** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+8. **Capturing Visual Environment Structure Correlates with Control Performance** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-09-28.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-09-29.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

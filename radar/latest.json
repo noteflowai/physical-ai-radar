@@ -1,109 +1,173 @@
 {
-  "date": "2026-09-28",
-  "generated": "2026-09-27 23:40 UTC",
-  "window": "papers 2026-09-24 → 2026-09-28 · posts 2026-08-29 → 2026-09-28 (UTC)",
+  "date": "2026-09-29",
+  "generated": "2026-09-28 23:40 UTC",
+  "window": "papers 2026-09-25 → 2026-09-29 · posts 2026-08-30 → 2026-09-29 (UTC)",
   "window_detail": {
-    "day": "2026-09-28",
-    "papers_from": "2026-09-24",
-    "posts_from": "2026-08-29",
+    "day": "2026-09-29",
+    "papers_from": "2026-09-25",
+    "posts_from": "2026-08-30",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "tri:590f68cd1f2a",
-      "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
-      "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
+      "id": "aws-physical-ai:13f2fc913cf2",
+      "title": "NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI",
+      "url": "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-09-28",
+      "lane": "foundation",
+      "score": 3.1,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when real-world robot and sensor data is expensive, unsafe, or impractical to collect at scale. We introduced two production-ready architectures: Cosmos NIM […]"
+    },
+    {
+      "id": "arxiv:2609.30833",
+      "title": "Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.30833",
+      "publisher": "arXiv 2609.30833",
+      "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-09",
-      "lane": "simeval",
-      "score": 1.82,
+      "published": "2026-09-25",
+      "lane": "foundation",
+      "score": 2.65,
       "numbers": [
-        "70%",
-        "50%"
+        "91.0%",
+        "96.2%",
+        "95.85%",
+        "98.45%"
       ],
       "signals": [
         "numbers",
-        "real_robot"
+        "closed_loop",
+        "latency"
       ],
-      "summary": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts. This strong resource constraint in real-world testing necessitates both more informative performance measures and reliable and efficient evaluation procedures to properly assess model capabilities and benchmark progress in the field. This work presents a novel framework for robot policy comparison that is sample-efficient, statistically rigorous, and applicable to a broad set of evaluation metrics used in practice. Based on safe, anytime-valid inference (SAVI), our test procedure is sequential, allowing the evaluator to stop early when sufficient statistical evidence has accumulated to reach a decision at a pre-specified level of confidence. Unlike previous work developed for binary success, our unified approach addresses a wide range of informative metrics: from discrete partial credit task progress to continuous measures of episodic reward or trajectory smoothness, spanning both parametric and nonparametric comparison problems. Through extensive validation on simulated and real-world evaluation data, we demonstrate up to 70% reduction in evaluation burden compared to standard batch methods and up to 50% reduction compared to state-of-the-art sequential procedures designed for binary outcomes, with no loss of statistical rigor. Notably, our empirical results show that competing policies can be separated more quickly when using fine-grained task progress than binary success metrics. Image Mar 13, 2026 Robotics Read More 1 Minute Read"
+      "summary": "Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions. This hierarchical design has practical value only if the planner can generate plans fast enough to meet real-time control requirements, and the resulting plans actually contribute to the generation of action. We study one such system, a waypoint hierarchy pipeline adapted from $π_{0.5}$, and find that neither requirement is satisfied. This baseline relies on token-level autoregressive decoding (Token-AR) to generate a waypoint plan, requiring 57 very expensive vision-language model (VLM) forward passes. However, we find that erasing the waypoint endpoints has little effect on task success. Two findings reveal the misalignment of planner-executor: the planner generates outputs at an excessively fine granularity, and the executor underuses plans as a control condition. We address the latency issue with waypoint-aligned block-autoregressive decoding (Block-AR), and plan underuse issue with normalized goal modulation (NGM), a layer-wise goal path constrained by phase gating and anti-shortcut training so that the waypoint influences action generation maintaining other signals. Our method reduces the maximum number of VLM forward passes from 57 to 8 on LIBERO, including one prefix prefill, and achieves an $8.7\\times$ reduction in planning latency on a Rokae dual-arm robot. With normalized goal modulation and anti-shortcut training, Block-AR's success rate on LIBERO-Long increases from 91.0% to 96.2%, while its average success rate across the four suites increases from 95.85% to 98.45%. On three bimanual tasks with this robot, success rates remain comparable across methods."
     },
     {
-      "id": "tri:99c546fad695",
-      "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
-      "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
+      "id": "leiphone:24cb331b239b",
+      "title": "三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限",
+      "url": "https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-09-28",
+      "lane": "hardware",
+      "score": 2.58,
+      "numbers": [],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "summary": "美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。三款产品分别面向全身动作执行、手部精细操作与高质量操作数据采集，覆盖机器人如何运动、如何接触和操控物体，以及如何借助人的自然动作完成遥操作与数据获取三大关键环节，为真实环境中的复杂富接触操作提供了一套完整的硬件闭环。 从机器人本体、末端执行器到连接人与机器人的数据采集设备，三款全自研新品共同指向同一个目标：进一步提升机器人完成复杂操作任务的速度、精度与触觉感知能力。D01、W02与AE01的同时发布，标志着Sharpa将带有全身电子皮肤的高性能本体、全掌触觉灵巧手和高精度数据采集设备连接成一套完整系统，从动作执行、精细操控延伸至数据获取，以三位一体的方式将机器人灵巧操作的性能边界与任务复杂度推向崭新高度。 更强、更快、更精准：D01，专为灵巧操作而生的通用人形机器人 作为Sharpa推出的首款一体式触觉感知灵巧操作机器人，D01从设计之初即围绕灵巧性、敏捷性与精准性展开，面向需要同时兼顾高速运动、高精度控制与复杂物理接触的操作任务。 在富接触操作场景中，机器人常被迫在速度、力量与精度之间取舍：移动得快，难保精细；力量够大，又难谈灵敏。D01打破这一取舍——手臂载荷自重比接近1:1，最大末端执行器速度超过10.5 m/s，通信频率达1,000 Hz，重复定位精度0.2 …"
+    },
+    {
+      "id": "arxiv:2609.30868",
+      "title": "VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL",
+      "url": "https://arxiv.org/abs/2609.30868",
+      "publisher": "arXiv 2609.30868",
+      "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-09",
-      "lane": "data",
-      "score": 1.485,
+      "published": "2026-09-25",
+      "lane": "training",
+      "score": 2.4,
       "numbers": [],
       "signals": [
         "real_robot"
       ],
-      "summary": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations. However, it remains limited by its reliance on high-quality, task-specific data, restricting adaptability to the diverse range of real-world object configurations and scenarios. In contrast, non-expert data — such as play data, suboptimal demonstrations, partial task completions, or rollouts from suboptimal policies — can offer broader coverage and lower collection costs. However, conventional imitation learning approaches fail to utilize this data effectively. To address these challenges, we posit that with right design decisions, offline reinforcement learning can be used as a tool to harness non-expert data to enhance the performance of imitation learning policies. We show that while standard offline RL approaches can be ineffective at actually leveraging non-expert data under the sparse data coverage settings typically encountered in the real world, simple algorithmic modifications can allow for the utilization of this data, without significant additional assumptions. Our approach shows that broadening the support of the policy distribution can allow imitation algorithms augmented by offline RL to solve tasks robustly, showing considerably enhanced recovery and generalization behavior. In manipulation tasks, these innovations significantly increase the range of initial conditions where learned policies are successful when non-expert data is incorporated. Moreover, we show that these methods are able to leverage all collected data, including partial or suboptimal demonstrations, to bolster task-directed policy performance. This underscores the importance of algorithmic techniques for using non-expert data for robust policy learning in robotics. Image Oct 25, 2025 Robotics Read More 1 Minute Read"
+      "summary": "Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction. Residual reinforcement learning (RL) can correct such errors while keeping the VLA frozen, but real-robot RL is costly and safety-critical. We propose VLA Latent-Conditioned RL (VLaRL), which enables residual RL for frozen VLAs to be trained in simulation and deployed on real robots without real-world RL or online adaptation. The key challenge is transferring the learned residual policy despite the visual gap between simulation and reality. Rather than requiring pixel-level visual correspondence, VLaRL uses the VLA's internal vision-language latent representation to condition residual control and as the sim-to-real transfer interface, and learns a lightweight mapper that transforms simulation-derived latents toward the real latent distribution. Across four contact-rich manipulation tasks and two VLA backbones, VLaRL improves real-world success in all task-backbone combinations, while controlled ablations demonstrate the importance of both latent conditioning and latent alignment for transferring simulation-trained residual control."
     },
     {
-      "id": "tri:4f371475c192",
-      "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
-      "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
+      "id": "arxiv:2609.30735",
+      "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
+      "url": "https://arxiv.org/abs/2609.30735",
+      "publisher": "arXiv 2609.30735",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-25",
+      "lane": "data",
+      "score": 2.202,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "summary": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change. Learning these behaviors from limited task-specific data remains challenging. To bridge this gap, we introduce Praxis, a whole-body manipulation framework that combines physical interaction priors from one-shot egocentric video demonstrations with closed-loop posture calibration and online perception. The framework coordinates three stages: vision-language-guided navigation toward target objects, closed-loop posture calibration to align the arm-hand workspace, and dexterous manipulation with synchronized upper- and lower-body control. Online visual feedback re-grounds demonstrated interaction geometry under new object poses and scene configurations, while tactile feedback adapts hand motions to actual contact conditions. Each manipulation skill is specified by one human demonstration, without task-specific manipulation-policy retraining. Experiments across five long-horizon manipulation tasks demonstrate spatial, visual, and cross-object generalization, as well as recovery from external physical disturbances across all three stages."
+    },
+    {
+      "id": "leiphone:33804ee215ed",
+      "title": "本田重申Momenta合作，中国智驾全球布局提速",
+      "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-09-28",
+      "lane": "hardware",
+      "score": 1.415,
+      "numbers": [],
+      "signals": [],
+      "summary": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。双方此前公布的合作方案覆盖高速、城区NOA及泊车等场景。 值得注意的是，在本田此次展示的中国技术合作伙伴中，Momenta成为唯一入选的高阶智驾供应商，华为仅提供智能座舱能力。 据媒体统计，2025年本田全球汽车销量超350万辆，位列全球第九。对于Momenta，与本田合作的价值不仅在于中国市场的量产项目，更在于通过一家全球头部车企的供应链，为拓展更多车型与市场建立基础。 技术演进为合作深化提供了更多可能。Momenta R7世界模型通过理解物体属性、运动规律及交通参与者之间的交互关系，提升复杂场景下的预测与规划能力。这一技术方向，有望为适应不同国家的道路环境、探索更高级别自动驾驶提供支撑。 以中国市场合作为起点，双方积累的开发、适配与量产经验，未来有望延伸至本田更多全球车型，并为从L2级高阶辅助驾驶向L3级有条件自动驾驶的合作探索创造条件。 本田再次强调与Momenta的合作，也折射出全球车企持续深化与中国智驾企业的协作。从奔驰、宝马、奥迪，到本田、丰田、通用，Momenta合作名单已覆盖德系、日系、美系等国际头部主机厂，进一步坐实“全球品牌的共同选择”。 …"
+    },
+    {
+      "id": "the-robot-report:952353d51a5d",
+      "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
+      "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-09-28",
+      "lane": "safety",
+      "score": 1.235,
+      "numbers": [],
+      "signals": [],
+      "summary": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems."
+    },
+    {
+      "id": "tri:4ccaa7c04c64",
+      "title": "Capturing Visual Environment Structure Correlates with Control Performance",
+      "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
       "publisher": "Toyota Research Institute",
       "source_id": "tri",
       "evidence": "R",
       "published": "2026-09-09",
       "lane": "simeval",
-      "score": 1.135,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break. This setting breaks common implicit assumptions in many learning-based manipulation pipelines: arm configuration tightly couples motion and contact forces, contact state is partially observed under occlusion, and purely learned rollouts can become physically inconsistent under distribution shift because many multi-link contact configurations are sparsely represented in the data. To address this, we propose TACTIC (Tactile and Vision Conditioned Contact-Centric Control), a receding-horizon controller for whole-arm manipulation. TACTIC uses a contact-centric hybrid predictive model that combines RGB-D, distributed tactile sensing, and a compact 2D proximity representation. The model couples a learned, action-conditioned latent dynamics model with analytical kinematics through contact Jacobians, enabling rollouts of future contact configurations and interaction forces. TACTIC integrates these rollouts into a sampling-based MPC planner with contact-aware action sampling: contact Jacobian-based projections steer sampled action sequences toward force-modulating directions, and objectives defined over predicted proximity and interaction forces trade task progress against whole-arm force regulation. We evaluate TACTIC in simulation against state-of-the-art model-based and model-free methods, and perform ablations that isolate the contribution of each design choice. Across experiments, TACTIC consistently outperforms other methods. We further demonstrate real-world performance on a robot with distributed tactile sensing across three whole-arm manipulation tasks that require multi-contact trajectories: turning over and repositioning a manikin, and goal-reaching in a …"
-    },
-    {
-      "id": "monoist:35bf01689383",
-      "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
-      "publisher": "MONOist (ITmedia)",
-      "source_id": "monoist",
-      "evidence": "M",
-      "published": "2026-09-27",
-      "lane": "hardware",
-      "score": 1.032,
+      "score": 1.12,
       "numbers": [],
       "signals": [],
-      "summary": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。"
+      "summary": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation. Existing proxy metrics focus on the representation's capacity to capture narrow aspects of the visual world, like object shape, limiting generalization across environments. In this paper, we take an analytical perspective: we probe pretrained visual encoders by measuring how well they support decoding of environment state — including geometry, object structure, and physical attributes — from images. Leveraging simulation environments with access to ground-truth state, we show that this probing accuracy strongly correlates with downstream policy performance across diverse environments and learning settings, significantly outperforming prior metrics and enabling efficient representation selection. More broadly, our study provides insight into the representational properties that support generalizable manipulation, suggesting that learning to encode the latent physical state of the environment is a promising objective for control. Image Feb 4, 2026 Robotics Read More 1 Minute Read"
     }
   ],
   "lane_counts": {
-    "foundation": 2,
+    "foundation": 4,
     "data": 4,
-    "training": 6,
-    "simeval": 12,
-    "edge": 6,
+    "training": 5,
+    "simeval": 11,
+    "edge": 5,
     "safety": 1,
-    "systems": 5,
-    "hardware": 8
+    "systems": 4,
+    "hardware": 10
   },
   "evidence_mix": {
-    "O": 14,
-    "R": 17,
-    "M": 13
+    "O": 9,
+    "R": 21,
+    "M": 14
   },
   "fetch": {
-    "items": 433,
+    "items": 358,
     "attempted": 11,
-    "answered": 11,
-    "failed": [],
-    "fallback": [
-      "arxiv"
+    "answered": 10,
+    "failed": [
+      "deepmind"
     ],
+    "fallback": [],
     "per_source": {
+      "arxiv": 25,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

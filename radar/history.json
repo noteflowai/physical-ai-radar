@@ -156,6 +156,25 @@
       "fallback": [
         "arxiv"
       ]
+    },
+    {
+      "date": "2026-09-29",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai",
+        "https://arxiv.org/abs/2609.30833",
+        "https://www.leiphone.com/category/robot/pd6wmxbcwh6plqu5.html",
+        "https://arxiv.org/abs/2609.30868",
+        "https://arxiv.org/abs/2609.30735",
+        "https://www.leiphone.com/category/industrynews/ubfs2eq8httymmn0.html",
+        "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control",
+        "https://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }
