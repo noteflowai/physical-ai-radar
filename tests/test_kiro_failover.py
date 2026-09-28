@@ -33,12 +33,14 @@ class KiroFailoverTests(unittest.TestCase):
             "with Path(os.environ['FAKE_CALLS']).open('a') as out:\n"
             "    out.write(('backup' if key.endswith('b' * 24) else 'primary') + '\\n')\n"
             "case = os.environ['FAKE_CASE']\n"
-            "if key.endswith('a' * 24) and case != 'primary-ok':\n"
+            "if key.endswith('a' * 24) and case not in ('primary-ok', 'primary-text-quota'):\n"
             "    if case == 'partial': print('already wrote an article')\n"
             "    print('Monthly request limit reached', file=sys.stderr)\n"
             "elif key.endswith('b' * 24) and case == 'backup-fails':\n"
             "    print('invalid API key', file=sys.stderr)\n"
             "    sys.exit(1)\n"
+            "elif case in ('primary-text-quota', 'backup-text-quota'):\n"
+            "    print('The API guide says quota exceeded. ' + key)\n"
             "else:\n"
             "    print('OK ' + key)\n",
             encoding="utf-8",
@@ -67,6 +69,19 @@ class KiroFailoverTests(unittest.TestCase):
         result = self.invoke("primary-ok")
         self.assertEqual(result.returncode, 0)
         self.assertEqual(self.calls.read_text().splitlines(), ["primary"])
+
+    def test_quota_phrase_in_primary_answer_is_not_an_account_error(self) -> None:
+        result = self.invoke("primary-text-quota")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("quota exceeded", result.stdout)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary"])
+
+    def test_quota_phrase_in_backup_answer_is_not_an_account_error(self) -> None:
+        result = self.invoke("backup-text-quota")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("quota exceeded", result.stdout)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup"])
+        self.assertNotIn("Monthly request limit reached", result.stderr)
 
     def test_partial_primary_output_is_not_repeated(self) -> None:
         result = self.invoke("partial")

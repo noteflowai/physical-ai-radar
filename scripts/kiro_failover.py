@@ -26,6 +26,12 @@ ANSI = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
 active: subprocess.Popen[str] | None = None
 
 
+def quota_diagnostic(result: subprocess.CompletedProcess[str]) -> bool:
+    # Model answers may discuss quotas on stdout. Kiro reports account errors
+    # on stderr, including when it exits successfully without an answer.
+    return bool(QUOTA.search(ANSI.sub("", result.stderr)))
+
+
 def redact(text: str, *secrets: str) -> str:
     for secret in secrets:
         if secret:
@@ -88,12 +94,12 @@ def main(args: list[str]) -> int:
     signal.signal(signal.SIGTERM, forward)
     primary = os.environ.get("KIRO_API_KEY", "")
     first = run(command, os.environ.copy())
-    if not QUOTA.search(first.stdout + first.stderr):
+    if not quota_diagnostic(first):
         emit(first, primary)
         return status(first.returncode)
 
-    # A quota error at the start has no stdout. If Kiro already produced output,
-    # it may also have used tools; another attempt could repeat side effects.
+    # If Kiro already produced output, it may also have used tools; another
+    # attempt could repeat side effects.
     if ANSI.sub("", first.stdout).strip():
         emit(first, primary)
         sys.stderr.write("[kiro-failover] quota after output; refusing duplicate run\n")
@@ -113,7 +119,7 @@ def main(args: list[str]) -> int:
 
     sys.stderr.write("[kiro-failover] primary quota exhausted; retrying with backup key\n")
     second = run(command, {**os.environ, "KIRO_API_KEY": second_key})
-    if second.returncode == 0 and not QUOTA.search(second.stdout + second.stderr):
+    if second.returncode == 0 and not quota_diagnostic(second):
         emit(second, primary, second_key)
         return 0
 
