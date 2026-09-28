@@ -96,6 +96,14 @@ class UnattendedTests(unittest.TestCase):
                 call_agent(["--model", "claude-opus-5"], output)
                 self.assertFalse(parse_object(output.with_suffix(".log.stdout").read_text())["approved"])
 
+    def test_monthly_quota_is_reported_before_json_parsing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch("scripts.agent_pipeline.subprocess.run") as run:
+                run.return_value = subprocess.CompletedProcess(
+                    [], 0, "", "Monthly request limit reached\nThe limits reset on 10/01.")
+                with self.assertRaisesRegex(RuntimeError, "monthly request limit"):
+                    call_agent(["--model", "claude-opus-5"], Path(tmp) / "call.log")
+
     def test_merged_pr_still_requires_checks_and_legacy_contexts_count(self):
         record = {"headRefOid": "reviewed", "baseRefName": "main", "state": "MERGED",
                   "statusCheckRollup": []}

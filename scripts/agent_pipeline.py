@@ -82,6 +82,8 @@ def call_agent(args: list[str], output: Path, cwd: Path | None = None) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(text + "\n" + diagnostics)
     output.with_suffix(output.suffix + ".stdout").write_text(text)
+    if "Monthly request limit reached" in diagnostics + text:
+        raise RuntimeError("Kiro monthly request limit reached; requests reset on 10/01")
     if result.returncode or re.search(
         r"failed to set model|using [\"']?default|needs upgrading|Method not found",
         diagnostics, re.I,
