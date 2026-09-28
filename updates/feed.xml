@@ -5,6 +5,20 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>Decision coverage for recorded choices</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.0/</guid>
+      <description>How often does a recorded choice component answer when it abstains below a confidence threshold, and how often is it wrong? EvalArc 0.16.0 chooses the threshold on calibration decisions, then reports coverage and selective error on held-out decisions. Invalid responses stay visible instead of being counted as wrong answers.</description>
+      <pubDate>Mon, 28 Sep 2026 05:05:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>Check a skill choice against the installed shortlist</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.16.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.16.0/</guid>
+      <description>Skills Anywhere 0.16.0 adds a two-step route command. Prepare builds a shortlist of installed skills that can actually be opened; apply checks a saved choice against that shortlist before it is used. The result says whether the pick is selected, absent, below the confidence threshold, stale or invalid. The command does not load or run the skill.</description>
+      <pubDate>Mon, 28 Sep 2026 01:15:09 +0000</pubDate>
+    </item>
+    <item>
       <title>stall-threshold sensitivity for recorded step-limit failures</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.17.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.17.0/</guid>

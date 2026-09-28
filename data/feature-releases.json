@@ -16,6 +16,38 @@
     "released_at": "2026-09-27T04:09:46.981177+00:00"
   },
   {
+    "id": "dsh-skills-anywhere/0.16.0",
+    "repo": "noteflowai/dsh-skills-anywhere",
+    "version": "0.16.0",
+    "commit": "5231dc2903907c827142281f38bcea921d2e13d6",
+    "feature_id": "2026-09-28-dsh-skills-anywhere-000156509309",
+    "pr": 72,
+    "title": "Check a skill choice against the installed shortlist",
+    "summary": "Skills Anywhere 0.16.0 adds a two-step route command. Prepare builds a shortlist of installed skills that can actually be opened; apply checks a saved choice against that shortlist before it is used. The result says whether the pick is selected, absent, below the confidence threshold, stale or invalid. The command does not load or run the skill.",
+    "usage": "npm install -g dsh-skills-anywhere@0.16.0\ndsh-skills-anywhere route prepare \"fill PDF forms\" --json > request.json\n# Save the recorded choice as response.json, then check it:\ndsh-skills-anywhere route apply --request request.json --response response.json",
+    "limitations": "The route command is CLI-only and checks installed skills on the current machine. Its default confidence threshold of 0.7 is a user-set cutoff, not evidence that any classifier is calibrated. Preparing or applying a route does not execute a skill or send it over the network.",
+    "upgrade": "Install dsh-skills-anywhere 0.16.0 for the new route command. Reinstall 0.15.0 to roll back; saved request and response JSON files remain untouched.",
+    "release_url": "https://github.com/noteflowai/dsh-skills-anywhere/releases/tag/v0.16.0",
+    "source_url": "https://github.com/noteflowai/dsh-skills-anywhere/pull/72",
+    "released_at": "2026-09-28T01:15:09.287484+00:00"
+  },
+  {
+    "id": "evalarc/0.16.0",
+    "repo": "noteflowai/evalarc",
+    "version": "0.16.0",
+    "commit": "91e3d638f4a076721d075943cc263ffb4881bd5c",
+    "feature_id": "2026-09-28-evalarc-002637901793",
+    "pr": 49,
+    "title": "Decision coverage for recorded choices",
+    "summary": "How often does a recorded choice component answer when it abstains below a confidence threshold, and how often is it wrong? EvalArc 0.16.0 chooses the threshold on calibration decisions, then reports coverage and selective error on held-out decisions. Invalid responses stay visible instead of being counted as wrong answers.",
+    "usage": "python -m pip install evalarc==0.16.0\nevalarc decision-coverage RECORDS.json --max-error 0.2 --output runs/decision-review\n# Open runs/decision-review/index.html; the release guide has a synthetic input example.",
+    "limitations": "This reviews saved choice decisions only. The bundled example is synthetic and says nothing about a provider\u2019s accuracy. Reported confidence is not calibrated by this command. The new HTML report passed structure and escaping tests; its layout and keyboard behavior were not checked in a real browser.",
+    "upgrade": "Install EvalArc 0.16.0 to add this command. Reinstall 0.15.0 to roll back; existing inputs and generated reports are left alone.",
+    "release_url": "https://github.com/noteflowai/evalarc/releases/tag/v0.16.0",
+    "source_url": "https://github.com/noteflowai/evalarc/pull/49",
+    "released_at": "2026-09-28T05:05:07.868763+00:00"
+  },
+  {
     "id": "physical-ai-radar/1.2.0",
     "repo": "noteflowai/physical-ai-radar",
     "version": "1.2.0",
