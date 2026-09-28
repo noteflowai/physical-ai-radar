@@ -78,6 +78,13 @@ instead of a hypothetical next version. These checks verify GitHub prerequisites
 registry credentials and actual package bytes are still verified during publication.
 The model cannot change environment protection rules or its own preflight checks.
 
+Dependency images use stable, worker-owned XDG data/cache/state directories during
+both installation and offline verification. This retains pnpm's verified package
+store across the root-to-worker and temporary-HOME transition. A release-version
+change may trigger pnpm dependency revalidation; it must find the already-installed
+package bytes without network access. Candidate containers still receive no host
+credentials, Docker socket or network.
+
 1. Read the actual repository, recent commits, open issues and fresh research.
 2. Choose one bounded capability with a user, problem, expected behavior and one to
    eight acceptance conditions. Specify the target user, an observable success
