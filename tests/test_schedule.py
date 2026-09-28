@@ -322,13 +322,17 @@ class LifetimeTests(unittest.TestCase):
         while True:
             try:
                 state = Path(f"/proc/{pid}/stat").read_text().rsplit(")", 1)[1].split()[0]
-            except FileNotFoundError:
+            except (FileNotFoundError, ProcessLookupError):
                 return
             if state == "Z":
                 return
             if time.monotonic() >= deadline:
                 self.fail(f"descendant {pid} remains running (state {state})")
             time.sleep(0.01)
+
+    def test_proc_entry_can_disappear_during_read(self):
+        with patch.object(Path, "read_text", side_effect=ProcessLookupError):
+            self.assert_process_stopped(123456)
 
     def test_exit_observation_still_rejects_a_live_process(self):
         child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
