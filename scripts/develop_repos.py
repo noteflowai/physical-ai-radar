@@ -1053,6 +1053,9 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 'notes are observations, never proof that edits were applied. '
                 'The controller has applied ZERO candidate edits in this phase; saved_draft is inert '
                 'but durable. Return ONLY the next missing edits; never repeat saved edits. '
+                'If a complete draft was rejected by review or tests, correct it with exact edits '
+                'against its virtual contents; keep the rest of the feature. An existing draft new '
+                'file can be corrected with an old/new span even though it is absent from the base. '
                 'need_files on a saved draft file reads its virtual contents, including partial files. '
                 'Use the saved_draft manifest and request focused ranges when needed. '
                 'Preserve PHP 7.4 support for WordPress. Do not change the chosen capability.\n')
@@ -1127,8 +1130,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             delivery = proposal.get("delivery", {})
             if plan.get("contract_version") == 2:
                 validate_delivery(delivery)
-            # A complete proposal now follows the existing all-or-nothing review/test pipeline.
-            task.pop("draft", None)
+            # Preserve the complete inert proposal for focused review/test corrections.
+            # A new base/plan invalidates it; publication removes the active task.
             write_json(active, task)
             changed = apply(root, proposal, config, plan)
             task["delivery"] = delivery
@@ -1139,7 +1142,13 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             if len(diff.encode()) > 80000:
                 raise ValueError("Feature diff exceeds independent review budget")
             review = ask(
-                'Review the complete feature diff and acceptance. Reject incomplete wiring, '
+                'This is the code review BEFORE candidate execution. Your approval permits the '
+                'controller to run red/green acceptance and regression checks; a separate final '
+                'acceptance review then verifies actual receipts and finalized delivery text. '
+                'Do not require executed results at this pre-execution stage or reject honest '
+                'statements that tests have not run yet. Assess whether the code and tests are '
+                'correct and sufficient to execute. Review the complete feature diff and acceptance. '
+                'Reject incomplete wiring, '
                 'multiple unrelated features, weakened checks, compatibility/security regressions, '
                 'unsupported claims and unsafe GPU work. For UI changes, inspect visual consistency, '
                 'responsive behavior, control wiring, relevant states and accessibility; report '
