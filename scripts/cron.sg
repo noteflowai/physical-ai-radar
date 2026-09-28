@@ -4,8 +4,12 @@
 40 7 * * * /bin/bash -lc '$HOME/.local/bin/radar-run scripts/publish_daily.sh' >> "$HOME/.local/state/pairadar/publish.log" 2>&1
 # One sourced, illustrated trilingual WordPress article after the 09:20 hosted Radar fallback.
 0 10 * * * /bin/bash -lc '$HOME/.local/bin/oneai-content-run' >> "$HOME/.local/state/oneai-content/daily.log" 2>&1
+# One reviewed course lesson, hosted on the WordPress course page.
+30 11 * * * /bin/bash -lc '$HOME/.local/bin/oneai-course-run' >> "$HOME/.local/state/pai-course/daily.log" 2>&1
 # Reuse today's receipt; do not create a second article if the first run succeeded.
 0 16 * * * /bin/bash -lc '$HOME/.local/bin/oneai-content-run' >> "$HOME/.local/state/oneai-content/daily.log" 2>&1
+# Evening run resumes the selected lesson on failure.
+30 18 * * * /bin/bash -lc '$HOME/.local/bin/oneai-course-run' >> "$HOME/.local/state/pai-course/daily.log" 2>&1
 # One ordered evening batch. Each retry keeps its original issue date and receipts.
 30 21 * * * /bin/bash -lc 'RADAR_TIMEOUT=4h RADAR_LOCK_WAIT=900 $HOME/.local/bin/radar-run scripts/nightly.sh' >> "$HOME/.local/state/pairadar/nightly.log" 2>&1
 # Resume only yesterday evening's unfinished stages; stop before the morning publish.
