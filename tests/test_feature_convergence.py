@@ -24,12 +24,19 @@ class PlanningRestartTests(unittest.TestCase):
         self.repo = self.root / "repo"
         (self.repo / "src").mkdir(parents=True)
         (self.repo / "src/records.py").write_text("def existing():\n    return []\n")
+        (self.repo / "ROADMAP.md").write_text(
+            "# Roadmap\nUpdated: 2026-09-28\n\n## Now\n"
+            "| EA-01 | Preserve recorded evidence | Reject duplicate IDs |\n")
         self.state = self.root / "state"
         self.active = self.state / "tasks/evalarc/active.json"
         self.task = {"id": "fixture", "repo": "noteflowai/evalarc", "base": "base",
                      "branch": "automation/fixture", "phase": "plan", "attempts": 0}
         write_json(self.active, self.task)
         self.plan = {
+            "work_type": "fix", "milestone_id": "EA-01",
+            "problem_evidence": "The existing reader silently replaces repeated record identifiers.",
+            "expected_outcome": "Every recorded observation retains its identity or fails explicitly.",
+            "follow_up_on": "2026-09-29",
             "title": "feat: reject duplicate record identifiers",
             "problem": "Repeated identifiers silently replace earlier observations",
             "behavior": "The existing reader rejects duplicate IDs with a field-specific error.",

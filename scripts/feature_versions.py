@@ -7,8 +7,10 @@ import re
 
 try:
     from .agent_pipeline import command
+    from .feature_governance import next_version
 except ImportError:
     from agent_pipeline import command
+    from feature_governance import next_version
 
 VERSION = r"\d+\.\d+\.\d+"
 NPM = "dsh-skills-anywhere"
@@ -44,8 +46,7 @@ def prepare(root: Path, name: str, base: str, plan: dict, day: str,
             *, delivery: dict | None = None) -> dict:
     """Run before code review/validation; the entire resulting diff gets reviewed."""
     old = version(root, name, base)
-    major, minor, _ = map(int, old.split("."))
-    new = f"{major}.{minor + 1}.0"
+    new = next_version(old, plan.get("work_type", "feature"))
     if name == WP:
         if version(root, name) != new:
             raise ValueError(f"WordPress feature must advance to {new}")
