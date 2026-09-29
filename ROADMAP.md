@@ -16,6 +16,14 @@ Reviewed `fac4451` / v1.3.0. Daily collection, source classification, freshness,
 
 The repository also contains a general multi-repository development/release controller. That is useful operational code but a different product boundary. Extract it incrementally after preserving receipts and release gates.
 
+## External evidence and positioning — reviewed 2026-09-29
+
+[Hugging Face Paper Pages](https://huggingface.co/docs/hub/paper-pages) already connects papers with models, datasets, demos and discussion. [Google's helpful-content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=en) emphasizes original analysis and substantial value beyond rewriting sources. A translated link digest alone has a weak reason for repeat use.
+
+Test a narrower editorial promise: explain what evidence changed, what remains uncertain, and what a practitioner can reproduce or decide next. Mark author/vendor claims separately from independently checked results; never imply that editorial review reproduced an experiment. Existing provenance and deduplication are foundations, not missing features to rebuild.
+
+For RA-01/RA-02, compare a saved issue with reading the linked primary sources or HF paper pages directly. Within 30 days, ask three practitioners to find an actionable development; record time, relevance and any misleading summary. Keep sparse high-quality issues, corrections and updates valid. If readers gain no decision value, narrow the topic/source set before adding feeds or increasing output.
+
 ## Now
 
 | ID | Outcome | Acceptance evidence |
