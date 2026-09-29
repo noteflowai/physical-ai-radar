@@ -5,6 +5,15 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: fail the diff gate when a check has fewer assessed attempts than the baseline</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.1/</guid>
+      <description>evalarc diff now has a blocking change kind, less_covered. A check gets it when the current run assessed fewer attempts than the baseline and the pass rate did not fall. A smaller sample can no longer be reported as improved or unchanged. For example, 2/2 to 1/1, 1/2 to 1/1, and 2/2 to 1/1 with one unassessed attempt are all less_covered, and the command exits 1. The existing kinds still take precedence. A lower pass rate is still reported as regressed or less_reliable. A check that passed before and now has zero assessed attempts is still unassessed. The CLI now reads its list of blocking kinds from BLOCKING, so it prints lines such as '  less_covered: cancel-pending / match'. With --output, diff.json keeps schema evalarc.results-diff.v1 and lists less_covered in counts and changes. summary.md shows a 'less covered' row with the baseline and current fractions, and the index.html row uses the existing failed styling. Comparisons where no check lost assessed attempts give the same results as before. docs/ci-gate.md and docs/ci-gate.zh-CN.md list less_covered in the change table.
+
+Controller-executed checks on image sha256:3effc5c7...: On base commit e99bc9e, the new tests/test_feature_3412504c3ce6.py failed 6 of 15 tests. The trimmed comparison exited 0 and reported 'Unchanged: 16', which confirms the gap. On candidate commit d4a4afd, all of the following exited 0: that test file, the full pytest suite (including the unchanged tests/test_results_diff.py), ruff check, ruff format --check, scripts/build_site.py and node scripts/check_site.cjs. The earlier review finding that ruff format --check would fail is resolved by that passing run. I did not run these checks myself.</description>
+      <pubDate>Tue, 29 Sep 2026 15:30:08 +0000</pubDate>
+    </item>
+    <item>
       <title>score keyword lane classification against a labeled shortlist</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/</guid>
