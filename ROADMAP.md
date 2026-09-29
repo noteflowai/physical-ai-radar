@@ -46,4 +46,4 @@ More sources and trend analytics need demonstrable incremental relevance and man
 
 Each task references a milestone ID, reader problem, source/reproduction evidence and an observable acceptance condition. Keep one active product milestone. A bug fix, quality correction or justified no-change outcome is valid.
 
-The current feature controller does not yet enforce this roadmap or support a value-based no-change result. Integrating those policies is a separate controller change, with replay tests for task states, reporting and retry behavior. Product documentation must not imply that integration is already deployed.
+The controller's roadmap integration binds new work to Now milestones and supports independently reviewed no-change decisions. Source and replay tests accompany that controller change; operational deployment and observation are tracked separately in the private control repository.

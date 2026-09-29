@@ -30,6 +30,10 @@ def report(state: Path, day: str, *, metrics: bool = True) -> dict:
                 outcome = {"day": current, "status": item["status"],
                            "feature_id": item.get("feature_id"), "error": item.get("error"),
                            "reason": item.get("reason"), "reason_code": item.get("reason_code")}
+                if item["status"] == "no-change":
+                    outcome.update({key: item.get(key) for key in (
+                        "milestone_id", "problem_evidence", "expected_outcome",
+                        "follow_up_on", "governance")})
                 if item["status"] == "deferred":
                     retired = state / "tasks" / name / str(item.get("feature_id")) / "retired-task.json"
                     if retired.exists():

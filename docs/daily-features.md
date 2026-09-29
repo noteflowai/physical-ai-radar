@@ -1,11 +1,38 @@
-# Daily specialist feature development
+# Daily roadmap-guided development
 
-The local nightly controller develops **at most one complete feature per repository
+The local nightly controller delivers **at most one reviewed code change per repository
 per Singapore day**. It carries an unfinished feature into the next run and day.
 Completing yesterday's feature consumes today's allowance. A failed test, review,
 deployment or package readback remains unfinished; it is never reported as released.
 The release allowance uses the actual Singapore calendar date even when a 02:30
 catch-up retains yesterday's batch date.
+
+## Roadmap and work decisions
+
+Before new paid planning, the controller reads a regular, bounded `ROADMAP.md`
+from the checked-out main revision. The Now section's stable milestone IDs,
+full text, update date, revision and SHA-256 enter the planning/review context.
+New proposals need `work_type` (`feature`, `fix`, `maintenance`, `no-change`),
+`milestone_id`, concrete `problem_evidence`, `expected_outcome` and a
+`follow_up_on` date 1–30 days after today's Singapore date.
+
+Later milestones are not eligible. A roadmap older than 35 days blocks new
+features while allowing justified fixes, maintenance or no-change. Missing or
+malformed roadmaps fail before a model call. Daily workers can read the roadmap
+but cannot edit it. Previously approved in-flight plans retain their contract.
+
+There is no minimum feature count. A no-change decision needs source evidence
+and a separate review; it records a terminal receipt and a follow-up date.
+Same-day retry/catch-up reuses that receipt without another model call.
+The follow-up date is reported for portfolio review; new days still assess fresh
+source/issues, so newly discovered defects are not suppressed by a cooldown.
+No-change never advances a version, consumes a release allowance, executes a
+probe, queues an announcement or counts as a published artifact.
+
+Features use a minor version increment; fixes and maintenance use a patch
+increment. Code work retains before/after behavioral acceptance, code review,
+CI and distribution checks. Documentation-only tasks remain maintainer work;
+this executable delivery lane does not bypass its behavioral test requirement.
 
 | Repository | Specialty | A useful feature must serve |
 | --- | --- | --- |
@@ -13,7 +40,7 @@ catch-up retains yesterday's batch date.
 | Skills Anywhere | Portable skill delivery | Reliable delivery of skills and their resources across agent clients |
 | EvalArc | Evaluation and reproducibility | Behavioral regressions, experiment comparison and verifiable evidence |
 | Robot Reel | Robot experiments and replay | Simulation, failure inspection, policy comparison and measured GPU experiments |
-| AI Chat for Amazon Bedrock | WordPress knowledge delivery | Grounded knowledge retrieval and useful Physical AI report workflows |
+| AI Chat for Amazon Bedrock | WordPress knowledge delivery | Grounded answers, permission-aware retrieval and reliable operator workflows |
 
 The shared Physical AI focus does not remove existing general-purpose workflows.
 Skills Anywhere retains Agent Skills compatibility; EvalArc continues serving general
@@ -61,7 +88,7 @@ independent approval. It never reopens or resets the old attempt budget.
 
 Reports distinguish planning, implementation and later-phase exhaustion, including
 counts, final feedback and the next eligible batch date. If all project outcomes
-are published or deferred, the worker exits **20** for deferrals and the night batch
+are published, no-change or deferred, the worker exits **20** for deferrals and the night batch
 finishes as `complete-with-deferrals`. This is a terminal scheduling outcome, not
 a claim that every feature shipped. Announcements and the delivery report still run;
 the bootstrap and 02:30 catch-up do not retry the exhausted projects. Actual
