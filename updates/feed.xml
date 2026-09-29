@@ -5,6 +5,40 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>score keyword lane classification against a labeled shortlist</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/</guid>
+      <description>python3 -m pairadar.lanes has a new --labels PATH option. It compares the keyword lane classifier with a hand-labeled JSON file. For each entry it scores title + '. ' + summary using ranked_lanes, whose top lane is the one distill.classify picks. It then applies the existing thin/ambiguous rules. Those rules now live in a flag_reasons helper that inspect() also calls.
+
+The command prints a JSON report with:
+- labels: the file's basename only
+- labeled and margin
+- agreement for all, confident (unflagged) and flagged entries, each as n, agree and rate (rate is null when n is 0)
+- disagreements in input order, each with id (null when absent), title, label, predicted, reasons, best and runner_up
+
+A disagreement with reasons [] is a confident misfile that the flags missed.
+
+The whole file is validated before anything is scored. Invalid input exits 2 with one 'lanes: ' stderr line and empty stdout. This covers an unreadable file, invalid JSON or non-UTF-8 text, no items list, a non-object entry, an empty or non-string title or lane, a non-string id or summary, an unknown lane (the valid ids are listed), and combining --labels with --latest or --fail-on-suspicious. In labels mode the exit code is 0 whenever a report is printed. docs/METHODOLOGY.md section 9 documents the format and its limits.
+
+The controller ran the checks, not me. In the pre-feature run, 8 of the 10 feature tests errored because argparse rejected --labels. On candidate c109acf the controller ran python -m pairadar --rerender --no-readme (exit 0), the 10 feature tests (all passed) and the full unittest suite (446 tests, OK).</description>
+      <pubDate>Tue, 29 Sep 2026 08:58:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>choose the content gaps period and export the same window</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.48.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.48.0/</guid>
+      <description>The Content gaps card on the Conversations screen now has a Period control with Last 7 days, Last 30 days and Last 90 days, plus a Show button. The form does not submit when the select changes. After Show, the summary sentence, the gap table and the empty state cover the chosen window. The empty state names the window and suggests trying a longer period.
+
+The period carries over to the Stored exchanges filter, pagination and the Reset link. Reset clears only the log search, source and rating. At 30 days, including when invalid input falls back to 30, none of those forms or URLs gain aicfab_gap_days, and Reset is the plain page URL, as in 1.47.6.
+
+Download content gaps CSV exports the window shown on screen. Seven-day and 90-day files are named ai-chat-bedrock-content-gaps-7d-YYYYMMDD-HHMMSS.csv and ...-90d-.... A 30-day file, or one with a missing or rejected period, keeps the legacy name. The columns are unchanged.
+
+The new AI_Chat_Bedrock_Insights::gap_window() accepts only an int, or a string of digits alone, equal to 7, 30 or 90. Anything else returns 30. The export handler reads the period only after the manage_options and nonce checks. The version is 1.48.0.
+
+The controller ran the checks on commit f279e41. The feature test failed on the base commit, which lacks the feature, and passed on the candidate. On the candidate, bin/prerelease.sh passed: 40 suites, including admin-ux.php, insights.php and the earlier content-gap test test_feature_9ecd4de5ba50.php, which had failed in the prior attempt; phpcs was clean across 75 files. tests/tooling.php and bin/build-package.py also passed (89 files).</description>
+      <pubDate>Tue, 29 Sep 2026 08:24:55 +0000</pubDate>
+    </item>
+    <item>
       <title>Decision coverage for recorded choices</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.16.0/</guid>
