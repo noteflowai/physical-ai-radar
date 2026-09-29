@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-29",
+  "generated": "2026-09-29 13:56 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai": {
+      "zh": "如果你的感知、预测或控制模型卡在训练数据不足上，这是 AWS 延续此前“用 Cosmos 世界基座模型缓解数据稀缺”的一手续篇；本页未给数字，是否据此调整数据预算，要等实测结果。",
+      "en": "Teams whose perception, prediction or control models are starved for training data get a first-party follow-up to AWS's earlier Cosmos-for-data-scarcity post; the page shows no figures, so hold any change to data budgets until measured results appear.",
+      "ja": "知覚・予測・制御モデルの学習データ不足に悩むチーム向けに、Cosmos 世界基盤モデルでデータ不足に対処するという AWS 前回記事の一次続編。本ページに数値はなく、データ予算の見直しは実測結果を待ちたい。"
+    },
+    "https://arxiv.org/abs/2609.30833": {
+      "zh": "如果你在用“高层视觉语言规划器 + 低层动作专家”的分层 VLA，这篇预印本自报 LIBERO-Long 从 91.0% 升到 96.2%；但页面上只有仿真基准的提升、没有真机结果，改架构前先看能否在自己的平台复现。",
+      "en": "For anyone running a hierarchical VLA with a vision-language planner over an action expert, the authors report LIBERO-Long rising from 91.0% to 96.2%, but the page shows only benchmark deltas and no real-robot results, so reproduce before re-architecting.",
+      "ja": "視覚言語プランナーと低レベル行動エキスパートを組み合わせた階層型 VLA を使うなら、LIBERO-Long で 91.0% から 96.2% への改善という自己申告は参考になる。ただし本ページはベンチマーク上の差分のみで実機結果はなく、構成変更の前に自前環境での再現を。"
+    },
+    "https://www.leiphone.com/category/robot/pd6wmxbcwh6plqu5.html": {
+      "zh": "Sharpa 一次推出触觉灵巧操作机器人 D01、灵巧手 W02 和外骨骼触感数据手套 AE01，意味着手部硬件与采集手套可能来自同一家；这是媒体转述，选型前应向厂商核实规格与供货。",
+      "en": "Sharpa launching a tactile manipulation robot (D01), a hand (W02) and an exoskeleton data glove (AE01) together means hand hardware and tactile data capture could come from one vendor; this is a secondary report, so confirm specs and availability directly before shortlisting.",
+      "ja": "触覚付きマニピュレーションロボット D01、ハンド W02、外骨格型触覚データグローブ AE01 の同時発表で、ハンドと触覚データ収集を一社で揃えられる可能性が出た。ただし二次報道であり、選定前に仕様と供給をメーカーに直接確認したい。"
+    },
+    "https://arxiv.org/abs/2609.30868": {
+      "zh": "如果你的 VLA 在接触密集的操作中执行不够精确，这篇预印本提出在其上叠加仿真训练的残差 RL，并标有真机实验；但本页没有任何数字，还不足以决定是否引入这类后训练环节。",
+      "en": "If your VLA is imprecise in contact-rich manipulation, this preprint proposes a simulation-trained residual RL layer on top and flags real-robot experiments, but the page shows no figures, so it is not yet enough to justify adding that post-training stage.",
+      "ja": "接触の多い操作で VLA の実行精度が足りないなら、シミュレーションで学習した残差 RL を上乗せする案は検討候補になる。実機実験ありとされるが本ページに数値はなく、事後学習段を追加する根拠としてはまだ弱い。"
+    },
+    "https://arxiv.org/abs/2609.30735": {
+      "zh": "做移动人形操作的团队要同时解决“够到可用工作空间”和“在物体位姿与接触变化时保持手-物交互”，这篇预印本主张可从第一人称视频中提炼先验；标有闭环成功率但页面无数字，只能先当线索。",
+      "en": "Mobile-humanoid teams juggling workspace reach against hand-object contact that shifts with object pose may be able to draw interaction priors from egocentric video; the preprint flags closed-loop success but the page gives no figures, so treat it as a lead.",
+      "ja": "作業空間への到達と、物体姿勢や接触の変化に応じた手と物体の相互作用維持を両立させたいモバイルヒューマノイド開発では、一人称動画から事前知識を得る道が示された。閉ループ成功率ありとされるが本ページに数値はなく、現時点では手がかり止まり。"
+    },
+    "https://www.leiphone.com/category/industrynews/ubfs2eq8httymmn0.html": {
+      "zh": "据报道本田明确采用 Momenta 高阶智驾方案，并称从 2027 年上市车型开始导入；对评估中国自动驾驶供应商能否进入海外量产车型的团队，这是一个时间锚点，但属媒体转述，需以本田官方口径为准。",
+      "en": "Honda reportedly confirmed Momenta's advanced driver-assistance stack for models launching from 2027, a timing marker for anyone judging whether Chinese autonomy suppliers win foreign production programmes; it is secondhand, so rely on Honda's own statement before planning around it.",
+      "ja": "報道によればホンダは Momenta の高度運転支援を採用し、2027 年発売車から順次導入するとした。中国の自動運転サプライヤーが海外量産車に入れるかを見極める時間軸の目安だが、二次報道なので計画に使う前にホンダ自身の発表で確認を。"
+    },
+    "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control": {
+      "zh": "如果你要让 AI agent 自主控制机器人系统，Gecko 据报道采用 NVIDIA 新的 Open Agent Safety Platform，说明 agent 权限控制开始有现成平台可选；但这是二手报道且无数字，能否支撑安全审批仍待验证。",
+      "en": "Letting AI agents drive robot systems autonomously now has an off-the-shelf control layer to evaluate, with Gecko reportedly adopting NVIDIA's new Open Agent Safety Platform; the report is secondhand with no figures, so its weight in a safety case is unproven.",
+      "ja": "AI エージェントにロボットシステムを自律制御させる場合、Gecko が NVIDIA の新しい Open Agent Safety Platform を採用したとの報道は、既製の権限管理基盤が選択肢になりつつあることを示す。ただし二次報道で数値もなく、安全審査の根拠になるかは未確認。"
+    },
+    "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance": {
+      "zh": "既然连仿真中的策略 rollout 评测都很昂贵，TRI 这项工作主张可先按视觉表征对环境结构的刻画程度来筛选表征；本页没有数字，在用它代替 rollout 之前，先看相关性到底有多强。",
+      "en": "Because policy rollouts are expensive even in simulation, TRI's work suggests screening visual representations by how well they capture environment structure before committing to rollouts; the page gives no figures, so check how strong that correlation is before relying on it.",
+      "ja": "シミュレーションでも方策ロールアウト評価は高くつくため、環境構造をどれだけ捉えるかで視覚表現を事前に絞り込むという TRI の提案は評価コストの削減につながり得る。本ページに数値はなく、ロールアウトの代わりに使う前に相関の強さを確認したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **NVIDIA Cosmos 3 on AWS** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **Fast Plans, Faithful Actions** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
-4. **VLaRL** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
-5. **Praxis** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
-6. **本田重申Momenta合作，中国智驾全球布局提速** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-8. **Capturing Visual Environment Structure Correlates with Control Performance** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+1. **NVIDIA Cosmos 3 on AWS** — `AI draft` Teams whose perception, prediction or control models are starved for training data get a first-party follow-up to AWS's earlier Cosmos-for-data-scarcity post; the page shows no figures, so hold any change to data budgets until measured results appear.
+2. **Fast Plans, Faithful Actions** — `AI draft` For anyone running a hierarchical VLA with a vision-language planner over an action expert, the authors report LIBERO-Long rising from 91.0% to 96.2%, but the page shows only benchmark deltas and no real-robot results, so reproduce before re-architecting.
+3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — `AI draft` Sharpa launching a tactile manipulation robot (D01), a hand (W02) and an exoskeleton data glove (AE01) together means hand hardware and tactile data capture could come from one vendor; this is a secondary report, so confirm specs and availability directly before shortlisting.
+4. **VLaRL** — `AI draft` If your VLA is imprecise in contact-rich manipulation, this preprint proposes a simulation-trained residual RL layer on top and flags real-robot experiments, but the page shows no figures, so it is not yet enough to justify adding that post-training stage.
+5. **Praxis** — `AI draft` Mobile-humanoid teams juggling workspace reach against hand-object contact that shifts with object pose may be able to draw interaction priors from egocentric video; the preprint flags closed-loop success but the page gives no figures, so treat it as a lead.
+6. **本田重申Momenta合作，中国智驾全球布局提速** — `AI draft` Honda reportedly confirmed Momenta's advanced driver-assistance stack for models launching from 2027, a timing marker for anyone judging whether Chinese autonomy suppliers win foreign production programmes; it is secondhand, so rely on Honda's own statement before planning around it.
+7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — `AI draft` Letting AI agents drive robot systems autonomously now has an off-the-shelf control layer to evaluate, with Gecko reportedly adopting NVIDIA's new Open Agent Safety Platform; the report is secondhand with no figures, so its weight in a safety case is unproven.
+8. **Capturing Visual Environment Structure Correlates with Control Performance** — `AI draft` Because policy rollouts are expensive even in simulation, TRI's work suggests screening visual representations by how well they capture environment structure before committing to rollouts; the page gives no figures, so check how strong that correlation is before relying on it.
 
 </details>
 

@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **NVIDIA Cosmos 3 on AWS** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-2. **Fast Plans, Faithful Actions** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
-4. **VLaRL** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-5. **Praxis** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-6. **本田重申Momenta合作，中国智驾全球布局提速** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-8. **Capturing Visual Environment Structure Correlates with Control Performance** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+1. **NVIDIA Cosmos 3 on AWS** — `AI 起草` 如果你的感知、预测或控制模型卡在训练数据不足上，这是 AWS 延续此前“用 Cosmos 世界基座模型缓解数据稀缺”的一手续篇；本页未给数字，是否据此调整数据预算，要等实测结果。
+2. **Fast Plans, Faithful Actions** — `AI 起草` 如果你在用“高层视觉语言规划器 + 低层动作专家”的分层 VLA，这篇预印本自报 LIBERO-Long 从 91.0% 升到 96.2%；但页面上只有仿真基准的提升、没有真机结果，改架构前先看能否在自己的平台复现。
+3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — `AI 起草` Sharpa 一次推出触觉灵巧操作机器人 D01、灵巧手 W02 和外骨骼触感数据手套 AE01，意味着手部硬件与采集手套可能来自同一家；这是媒体转述，选型前应向厂商核实规格与供货。
+4. **VLaRL** — `AI 起草` 如果你的 VLA 在接触密集的操作中执行不够精确，这篇预印本提出在其上叠加仿真训练的残差 RL，并标有真机实验；但本页没有任何数字，还不足以决定是否引入这类后训练环节。
+5. **Praxis** — `AI 起草` 做移动人形操作的团队要同时解决“够到可用工作空间”和“在物体位姿与接触变化时保持手-物交互”，这篇预印本主张可从第一人称视频中提炼先验；标有闭环成功率但页面无数字，只能先当线索。
+6. **本田重申Momenta合作，中国智驾全球布局提速** — `AI 起草` 据报道本田明确采用 Momenta 高阶智驾方案，并称从 2027 年上市车型开始导入；对评估中国自动驾驶供应商能否进入海外量产车型的团队，这是一个时间锚点，但属媒体转述，需以本田官方口径为准。
+7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — `AI 起草` 如果你要让 AI agent 自主控制机器人系统，Gecko 据报道采用 NVIDIA 新的 Open Agent Safety Platform，说明 agent 权限控制开始有现成平台可选；但这是二手报道且无数字，能否支撑安全审批仍待验证。
+8. **Capturing Visual Environment Structure Correlates with Control Performance** — `AI 起草` 既然连仿真中的策略 rollout 评测都很昂贵，TRI 这项工作主张可先按视觉表征对环境结构的刻画程度来筛选表征；本页没有数字，在用它代替 rollout 之前，先看相关性到底有多强。
 
 </details>
 

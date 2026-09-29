@@ -98,7 +98,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/" rel="noopener" target="_blank">NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 知覚・予測・制御モデルの学習データ不足に悩むチーム向けに、Cosmos 世界基盤モデルでデータ不足に対処するという AWS 前回記事の一次続編。本ページに数値はなく、データ予算の見直しは実測結果を待ちたい。</p>
 <p class="excerpt">Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when…</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.30833" rel="noopener" target="_blank">Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models</a></h3>
 <p class="figure"><strong>91.0%</strong><span class="context">“on LIBERO-Long increases from 91.0% to 96.2%”</span></p><p class="chips"><span class="chip">96.2%</span><span class="chip">95.85%</span><span class="chip">98.45%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 視覚言語プランナーと低レベル行動エキスパートを組み合わせた階層型 VLA を使うなら、LIBERO-Long で 91.0% から 96.2% への改善という自己申告は参考になる。ただし本ページはベンチマーク上の差分のみで実機結果はなく、構成変更の前に自前環境での再現を。</p>
 <p class="excerpt">Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html" rel="noopener" target="_blank">三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 触覚付きマニピュレーションロボット D01、ハンド W02、外骨格型触覚データグローブ AE01 の同時発表で、ハンドと触覚データ収集を一社で揃えられる可能性が出た。ただし二次報道であり、選定前に仕様と供給をメーカーに直接確認したい。</p>
 <p class="excerpt">美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。</p>
 <ul class="signals"><li>定量結果あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.30868" rel="noopener" target="_blank">VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL</a></h3>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 接触の多い操作で VLA の実行精度が足りないなら、シミュレーションで学習した残差 RL を上乗せする案は検討候補になる。実機実験ありとされるが本ページに数値はなく、事後学習段を追加する根拠としてはまだ弱い。</p>
 <p class="excerpt">Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.30735" rel="noopener" target="_blank">Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 作業空間への到達と、物体姿勢や接触の変化に応じた手と物体の相互作用維持を両立させたいモバイルヒューマノイド開発では、一人称動画から事前知識を得る道が示された。閉ループ成功率ありとされるが本ページに数値はなく、現時点では手がかり止まり。</p>
 <p class="excerpt">Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -174,7 +174,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html" rel="noopener" target="_blank">本田重申Momenta合作，中国智驾全球布局提速</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 報道によればホンダは Momenta の高度運転支援を採用し、2027 年発売車から順次導入するとした。中国の自動運転サプライヤーが海外量産車に入れるかを見極める時間軸の目安だが、二次報道なので計画に使う前にホンダ自身の発表で確認を。</p>
 <p class="excerpt">本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-28</span>
@@ -188,7 +188,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/" rel="noopener" target="_blank">Gecko Robotics works with NVIDIA to add AI agent security and control</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> AI エージェントにロボットシステムを自律制御させる場合、Gecko が NVIDIA の新しい Open Agent Safety Platform を採用したとの報道は、既製の権限管理基盤が選択肢になりつつあることを示す。ただし二次報道で数値もなく、安全審査の根拠になるかは未確認。</p>
 <p class="excerpt">Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-28</span>
@@ -202,7 +202,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance" rel="noopener" target="_blank">Capturing Visual Environment Structure Correlates with Control Performance</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> シミュレーションでも方策ロールアウト評価は高くつくため、環境構造をどれだけ捉えるかで視覚表現を事前に絞り込むという TRI の提案は評価コストの削減につながり得る。本ページに数値はなく、ロールアウトの代わりに使う前に相関の強さを確認したい。</p>
 <p class="excerpt">The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.</p>
 <footer>
 <span class="source">Toyota Research Institute · 2026-09-09</span>
