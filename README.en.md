@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-29
+### Today's radar · 2026-09-30
 
-`Generated: 2026-09-28 23:40 UTC` ｜ `Window: papers 2026-09-25 → 2026-09-29 · posts 2026-08-30 → 2026-09-29 · no repeats within 30 days (UTC)`
+`Generated: 2026-09-29 23:40 UTC` ｜ `Window: papers 2026-09-26 → 2026-09-30 · posts 2026-08-31 → 2026-09-30 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🟢&nbsp;`O` | **[NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI](https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/)**<br><sub>Foundation models · AWS Physical AI Blog · 2026‑09‑28</sub> |
-| 02<br>🔵&nbsp;`R` | **[Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2609.30833)**<br>`91.0%`&nbsp; `96.2%`&nbsp; `95.85%`<br><sub>Foundation models · arXiv 2609.30833 · 2026‑09‑25</sub> |
-| 03<br>🟡&nbsp;`M` | **[三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限](https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](https://arxiv.org/abs/2609.30868)**<br><sub>Training & self-improvement · arXiv 2609.30868 · 2026‑09‑25</sub> |
-| 05<br>🔵&nbsp;`R` | **[Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation](https://arxiv.org/abs/2609.30735)**<br><sub>Data engine · arXiv 2609.30735 · 2026‑09‑25</sub> |
-| 06<br>🟡&nbsp;`M` | **[本田重申Momenta合作，中国智驾全球布局提速](https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑09‑28</sub> |
-| 07<br>🟡&nbsp;`M` | **[Gecko Robotics works with NVIDIA to add AI agent security and control](https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑09‑28</sub> |
-| 08<br>🔵&nbsp;`R` | **[Capturing Visual Environment Structure Correlates with Control Performance](http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑09‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model](https://arxiv.org/abs/2609.35570)**<br>`16 GB`&nbsp; `11.35 GB`<br><sub>Edge & real-time · arXiv 2609.35570 · 2026‑09‑28</sub> |
+| 02<br>🔵&nbsp;`R` | **[ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning](https://arxiv.org/abs/2609.34982)**<br>`9.8%`&nbsp; `6.1%`&nbsp; `11.4%`<br><sub>Foundation models · arXiv 2609.34982 · 2026‑09‑28</sub> |
+| 03<br>🔵&nbsp;`R` | **[F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575)**<br>`93.75%`&nbsp; `90.0%`<br><sub>Simulation & evaluation · arXiv 2609.35575 · 2026‑09‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching](https://arxiv.org/abs/2609.35469)**<br><sub>Foundation models · arXiv 2609.35469 · 2026‑09‑28</sub> |
+| 05<br>🔵&nbsp;`R` | **[RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2609.34170)**<br><sub>Edge & real-time · arXiv 2609.34170 · 2026‑09‑28</sub> |
+| 06<br>🟡&nbsp;`M` | **[ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness](https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑29</sub> |
+| 07<br>🟡&nbsp;`M` | **[Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents](https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑29</sub> |
+| 08<br>🟡&nbsp;`M` | **[动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 \| IROS 2026](https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑09‑29</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **NVIDIA Cosmos 3 on AWS** — `AI draft` Teams whose perception, prediction or control models are starved for training data get a first-party follow-up to AWS's earlier Cosmos-for-data-scarcity post; the page shows no figures, so hold any change to data budgets until measured results appear.
-2. **Fast Plans, Faithful Actions** — `AI draft` For anyone running a hierarchical VLA with a vision-language planner over an action expert, the authors report LIBERO-Long rising from 91.0% to 96.2%, but the page shows only benchmark deltas and no real-robot results, so reproduce before re-architecting.
-3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — `AI draft` Sharpa launching a tactile manipulation robot (D01), a hand (W02) and an exoskeleton data glove (AE01) together means hand hardware and tactile data capture could come from one vendor; this is a secondary report, so confirm specs and availability directly before shortlisting.
-4. **VLaRL** — `AI draft` If your VLA is imprecise in contact-rich manipulation, this preprint proposes a simulation-trained residual RL layer on top and flags real-robot experiments, but the page shows no figures, so it is not yet enough to justify adding that post-training stage.
-5. **Praxis** — `AI draft` Mobile-humanoid teams juggling workspace reach against hand-object contact that shifts with object pose may be able to draw interaction priors from egocentric video; the preprint flags closed-loop success but the page gives no figures, so treat it as a lead.
-6. **本田重申Momenta合作，中国智驾全球布局提速** — `AI draft` Honda reportedly confirmed Momenta's advanced driver-assistance stack for models launching from 2027, a timing marker for anyone judging whether Chinese autonomy suppliers win foreign production programmes; it is secondhand, so rely on Honda's own statement before planning around it.
-7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — `AI draft` Letting AI agents drive robot systems autonomously now has an off-the-shelf control layer to evaluate, with Gecko reportedly adopting NVIDIA's new Open Agent Safety Platform; the report is secondhand with no figures, so its weight in a safety case is unproven.
-8. **Capturing Visual Environment Structure Correlates with Control Performance** — `AI draft` Because policy rollouts are expensive even in simulation, TRI's work suggests screening visual representations by how well they capture environment structure before committing to rollouts; the page gives no figures, so check how strong that correlation is before relying on it.
+1. **EdgeVLN** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+2. **ActionUNet** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+3. **F4R** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **RAVEL** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-09-29.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-09-30.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

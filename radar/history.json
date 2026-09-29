@@ -175,6 +175,23 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-09-30",
+      "count": 8,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2609.35570",
+        "https://arxiv.org/abs/2609.34982",
+        "https://arxiv.org/abs/2609.35575",
+        "https://arxiv.org/abs/2609.35469",
+        "https://arxiv.org/abs/2609.34170",
+        "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026",
+        "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents",
+        "https://www.leiphone.com/category/private/zoj7chgidi7iphvn.html"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

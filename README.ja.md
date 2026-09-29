@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-29
+### 本日のレーダー · 2026-09-30
 
-`生成時刻: 2026-09-28 23:40 UTC` ｜ `対象期間: 論文 2026-09-25 → 2026-09-29 · ブログ・報道 2026-08-30 → 2026-09-29 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-29 23:40 UTC` ｜ `対象期間: 論文 2026-09-26 → 2026-09-30 · ブログ・報道 2026-08-31 → 2026-09-30 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🟢&nbsp;`O` | **[NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI](https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/)**<br><sub>基盤モデル · AWS Physical AI Blog · 2026‑09‑28</sub> |
-| 02<br>🔵&nbsp;`R` | **[Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2609.30833)**<br>`91.0%`&nbsp; `96.2%`&nbsp; `95.85%`<br><sub>基盤モデル · arXiv 2609.30833 · 2026‑09‑25</sub> |
-| 03<br>🟡&nbsp;`M` | **[三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限](https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](https://arxiv.org/abs/2609.30868)**<br><sub>学習と自己改善 · arXiv 2609.30868 · 2026‑09‑25</sub> |
-| 05<br>🔵&nbsp;`R` | **[Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation](https://arxiv.org/abs/2609.30735)**<br><sub>データエンジン · arXiv 2609.30735 · 2026‑09‑25</sub> |
-| 06<br>🟡&nbsp;`M` | **[本田重申Momenta合作，中国智驾全球布局提速](https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑09‑28</sub> |
-| 07<br>🟡&nbsp;`M` | **[Gecko Robotics works with NVIDIA to add AI agent security and control](https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑09‑28</sub> |
-| 08<br>🔵&nbsp;`R` | **[Capturing Visual Environment Structure Correlates with Control Performance](http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑09‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model](https://arxiv.org/abs/2609.35570)**<br>`16 GB`&nbsp; `11.35 GB`<br><sub>エッジとリアルタイム · arXiv 2609.35570 · 2026‑09‑28</sub> |
+| 02<br>🔵&nbsp;`R` | **[ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning](https://arxiv.org/abs/2609.34982)**<br>`9.8%`&nbsp; `6.1%`&nbsp; `11.4%`<br><sub>基盤モデル · arXiv 2609.34982 · 2026‑09‑28</sub> |
+| 03<br>🔵&nbsp;`R` | **[F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575)**<br>`93.75%`&nbsp; `90.0%`<br><sub>シミュレーションと評価 · arXiv 2609.35575 · 2026‑09‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching](https://arxiv.org/abs/2609.35469)**<br><sub>基盤モデル · arXiv 2609.35469 · 2026‑09‑28</sub> |
+| 05<br>🔵&nbsp;`R` | **[RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2609.34170)**<br><sub>エッジとリアルタイム · arXiv 2609.34170 · 2026‑09‑28</sub> |
+| 06<br>🟡&nbsp;`M` | **[ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness](https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑29</sub> |
+| 07<br>🟡&nbsp;`M` | **[Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents](https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑29</sub> |
+| 08<br>🟡&nbsp;`M` | **[动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 \| IROS 2026](https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑09‑29</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **NVIDIA Cosmos 3 on AWS** — `AI 下書き` 知覚・予測・制御モデルの学習データ不足に悩むチーム向けに、Cosmos 世界基盤モデルでデータ不足に対処するという AWS 前回記事の一次続編。本ページに数値はなく、データ予算の見直しは実測結果を待ちたい。
-2. **Fast Plans, Faithful Actions** — `AI 下書き` 視覚言語プランナーと低レベル行動エキスパートを組み合わせた階層型 VLA を使うなら、LIBERO-Long で 91.0% から 96.2% への改善という自己申告は参考になる。ただし本ページはベンチマーク上の差分のみで実機結果はなく、構成変更の前に自前環境での再現を。
-3. **三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限** — `AI 下書き` 触覚付きマニピュレーションロボット D01、ハンド W02、外骨格型触覚データグローブ AE01 の同時発表で、ハンドと触覚データ収集を一社で揃えられる可能性が出た。ただし二次報道であり、選定前に仕様と供給をメーカーに直接確認したい。
-4. **VLaRL** — `AI 下書き` 接触の多い操作で VLA の実行精度が足りないなら、シミュレーションで学習した残差 RL を上乗せする案は検討候補になる。実機実験ありとされるが本ページに数値はなく、事後学習段を追加する根拠としてはまだ弱い。
-5. **Praxis** — `AI 下書き` 作業空間への到達と、物体姿勢や接触の変化に応じた手と物体の相互作用維持を両立させたいモバイルヒューマノイド開発では、一人称動画から事前知識を得る道が示された。閉ループ成功率ありとされるが本ページに数値はなく、現時点では手がかり止まり。
-6. **本田重申Momenta合作，中国智驾全球布局提速** — `AI 下書き` 報道によればホンダは Momenta の高度運転支援を採用し、2027 年発売車から順次導入するとした。中国の自動運転サプライヤーが海外量産車に入れるかを見極める時間軸の目安だが、二次報道なので計画に使う前にホンダ自身の発表で確認を。
-7. **Gecko Robotics works with NVIDIA to add AI agent security and control** — `AI 下書き` AI エージェントにロボットシステムを自律制御させる場合、Gecko が NVIDIA の新しい Open Agent Safety Platform を採用したとの報道は、既製の権限管理基盤が選択肢になりつつあることを示す。ただし二次報道で数値もなく、安全審査の根拠になるかは未確認。
-8. **Capturing Visual Environment Structure Correlates with Control Performance** — `AI 下書き` シミュレーションでも方策ロールアウト評価は高くつくため、環境構造をどれだけ捉えるかで視覚表現を事前に絞り込むという TRI の提案は評価コストの削減につながり得る。本ページに数値はなく、ロールアウトの代わりに使う前に相関の強さを確認したい。
+1. **EdgeVLN** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+2. **ActionUNet** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+3. **F4R** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **RAVEL** — 査読前のプレプリント。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-09-29.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-09-30.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

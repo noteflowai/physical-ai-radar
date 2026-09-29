@@ -13,6 +13,309 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.35570",
+      "url": "https://arxiv.org/abs/2609.35570",
+      "title": "EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.35570 · 2026-09-28<br><b>Key numbers</b>: 16 GB · 11.35 GB<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.35570 · 2026-09-28\nKey numbers: 16 GB · 11.35 GB\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nVision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices.\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices.",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.35570"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "arxiv:2609.35570",
+        "url": "https://arxiv.org/abs/2609.35570",
+        "title": "EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model",
+        "publisher": "arXiv 2609.35570",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [
+          "16 GB",
+          "11.35 GB"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.34982",
+      "url": "https://arxiv.org/abs/2609.34982",
+      "title": "ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.34982 · 2026-09-28<br><b>Key numbers</b>: 9.8% · 6.1% · 11.4%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.34982 · 2026-09-28\nKey numbers: 9.8% · 6.1% · 11.4%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights\n\nVision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions.\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions.",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.34982"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "arxiv:2609.34982",
+        "url": "https://arxiv.org/abs/2609.34982",
+        "title": "ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning",
+        "publisher": "arXiv 2609.34982",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [
+          "9.8%",
+          "6.1%",
+          "11.4%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.35575",
+      "url": "https://arxiv.org/abs/2609.35575",
+      "title": "F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.35575 · 2026-09-28<br><b>Key numbers</b>: 93.75% · 90.0%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.35575 · 2026-09-28\nKey numbers: 93.75% · 90.0%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nThe real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions.\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions.",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.35575"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "arxiv:2609.35575",
+        "url": "https://arxiv.org/abs/2609.35575",
+        "title": "F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement",
+        "publisher": "arXiv 2609.35575",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [
+          "93.75%",
+          "90.0%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.35469",
+      "url": "https://arxiv.org/abs/2609.35469",
+      "title": "Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.35469 · 2026-09-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.35469 · 2026-09-28\nSignals: closed-loop success reported · real-robot experiments\n\nAutoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.35469"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "arxiv:2609.35469",
+        "url": "https://arxiv.org/abs/2609.35469",
+        "title": "Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching",
+        "publisher": "arXiv 2609.35469",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.34170",
+      "url": "https://arxiv.org/abs/2609.34170",
+      "title": "RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.34170 · 2026-09-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.34170 · 2026-09-28\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nFlow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2609.34170"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "arxiv:2609.34170",
+        "url": "https://arxiv.org/abs/2609.34170",
+        "title": "RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models",
+        "publisher": "arXiv 2609.34170",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-28",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:392aedc8ddeb",
+      "url": "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/",
+      "title": "ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-29</p>\n<blockquote>Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-09-29\n\nAttendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it.\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it.",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "the-robot-report:392aedc8ddeb",
+        "url": "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/",
+        "title": "ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-29",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:8694fbb8d919",
+      "url": "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/",
+      "title": "Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-29</p>\n<blockquote>Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-09-29\n\nFlourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation.\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation.",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "the-robot-report:8694fbb8d919",
+        "url": "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/",
+        "title": "Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-09-29",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:f13a1af74402",
+      "url": "https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html",
+      "title": "动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-29</p>\n<blockquote>顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html\">Full radar for 2026-09-30</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-29\n\n顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。\n\nFull radar for 2026-09-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-30.en.html",
+      "summary": "顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。",
+      "date_published": "2026-09-29T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-09-30",
+        "id": "leiphone:f13a1af74402",
+        "url": "https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html",
+        "title": "动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "simeval",
+        "published": "2026-09-29",
+        "radar_published": "2026-09-29T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:13f2fc913cf2",
       "url": "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/",
       "title": "NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI",

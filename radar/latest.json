@@ -1,173 +1,185 @@
 {
-  "date": "2026-09-29",
-  "generated": "2026-09-28 23:40 UTC",
-  "window": "papers 2026-09-25 → 2026-09-29 · posts 2026-08-30 → 2026-09-29 (UTC)",
+  "date": "2026-09-30",
+  "generated": "2026-09-29 23:40 UTC",
+  "window": "papers 2026-09-26 → 2026-09-30 · posts 2026-08-31 → 2026-09-30 (UTC)",
   "window_detail": {
-    "day": "2026-09-29",
-    "papers_from": "2026-09-25",
-    "posts_from": "2026-08-30",
+    "day": "2026-09-30",
+    "papers_from": "2026-09-26",
+    "posts_from": "2026-08-31",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "aws-physical-ai:13f2fc913cf2",
-      "title": "NVIDIA Cosmos 3 on AWS: Omnimodal World Models for Physical AI",
-      "url": "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
-      "evidence": "O",
-      "published": "2026-09-28",
-      "lane": "foundation",
-      "score": 3.1,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Introduction In our previous blog, we demonstrated how NVIDIA Cosmos world foundation models on AWS address the data scarcity problem in physical AI: the challenge of training robust perception, prediction, and control models when real-world robot and sensor data is expensive, unsafe, or impractical to collect at scale. We introduced two production-ready architectures: Cosmos NIM […]"
-    },
-    {
-      "id": "arxiv:2609.30833",
-      "title": "Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2609.30833",
-      "publisher": "arXiv 2609.30833",
+      "id": "arxiv:2609.35570",
+      "title": "EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model",
+      "url": "https://arxiv.org/abs/2609.35570",
+      "publisher": "arXiv 2609.35570",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-25",
-      "lane": "foundation",
-      "score": 2.65,
+      "published": "2026-09-28",
+      "lane": "edge",
+      "score": 4.665,
       "numbers": [
-        "91.0%",
-        "96.2%",
-        "95.85%",
-        "98.45%"
+        "16 GB",
+        "11.35 GB"
       ],
       "signals": [
         "numbers",
         "closed_loop",
+        "real_robot",
         "latency"
       ],
-      "summary": "Hierarchical vision-language-action (VLA) systems consist of a high-level vision-language planner and a low-level action expert that generates continuous actions. This hierarchical design has practical value only if the planner can generate plans fast enough to meet real-time control requirements, and the resulting plans actually contribute to the generation of action. We study one such system, a waypoint hierarchy pipeline adapted from $π_{0.5}$, and find that neither requirement is satisfied. This baseline relies on token-level autoregressive decoding (Token-AR) to generate a waypoint plan, requiring 57 very expensive vision-language model (VLM) forward passes. However, we find that erasing the waypoint endpoints has little effect on task success. Two findings reveal the misalignment of planner-executor: the planner generates outputs at an excessively fine granularity, and the executor underuses plans as a control condition. We address the latency issue with waypoint-aligned block-autoregressive decoding (Block-AR), and plan underuse issue with normalized goal modulation (NGM), a layer-wise goal path constrained by phase gating and anti-shortcut training so that the waypoint influences action generation maintaining other signals. Our method reduces the maximum number of VLM forward passes from 57 to 8 on LIBERO, including one prefix prefill, and achieves an $8.7\\times$ reduction in planning latency on a Rokae dual-arm robot. With normalized goal modulation and anti-shortcut training, Block-AR's success rate on LIBERO-Long increases from 91.0% to 96.2%, while its average success rate across the four suites increases from 95.85% to 98.45%. On three bimanual tasks with this robot, success rates remain comparable across methods."
+      "summary": "Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices. Compression alone does not establish whether a VLN model fits the memory, latency, and energy budgets of an edge platform while preserving navigation behavior. We introduce EdgeVLN, a runtime-aware, deployment-ready quantized VLN model that closes this gap. EdgeVLN combines a quantized StreamVLN model with Latent Trajectory Termination Extractor (LATTE), a lightweight causal transformer that improves real-time stopping by predicting a Stop Action verifier rank. Both execute through our llama.cpp VLN driver, which reconstructs streaming context and prunes memory tokens on-board. We characterize a pretrained StreamVLN backbone across weight quantization from 8 to 2 bits and multiple inference runtimes to identify a feasible operating point. LATTE reuses backbone hidden states within the budget freed by quantization, requiring neither a second vision encoder nor an additional backbone forward pass. We evaluate six backbone precisions and seven candidate stop heads on BF16 and IQ4 NL across all 1,839 R2R VLN-CE val-unseen episodes. We measure success rate (SR) in simulation and latency, energy, and resident memory on an NVIDIA Jetson Orin NX 16 GB. LATTE achieves our highest SR, 58.02 percent on the deployed 4-bit model, exceeding the BF16 baseline with only 0.013 s additional latency per navigation step. Four-bit formats achieve nearly identical SR, but step energy varies 36.8 times by execution path. Only IQ4 NL under our VLN driver fits the board, using 11.35 GB resident memory while running 20.8 times faster and using 13.3 times less energy than storage-streamed BF16. INT2 collapses. Runtime selection, memory-token pruning, and quantization are essential for efficient edge deployment."
     },
     {
-      "id": "leiphone:24cb331b239b",
-      "title": "三箭齐发！Sharpa三大新品IROS全球首秀，三位一体再次刷新灵巧操作上限",
-      "url": "https://www.leiphone.com/category/robot/PD6wmXBcwh6pLqU5.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
+      "id": "arxiv:2609.34982",
+      "title": "ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning",
+      "url": "https://arxiv.org/abs/2609.34982",
+      "publisher": "arXiv 2609.34982",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-09-28",
-      "lane": "hardware",
-      "score": 2.58,
-      "numbers": [],
+      "lane": "foundation",
+      "score": 4.05,
+      "numbers": [
+        "9.8%",
+        "6.1%",
+        "11.4%"
+      ],
       "signals": [
         "numbers",
-        "latency"
+        "closed_loop",
+        "real_robot",
+        "open_release"
       ],
-      "summary": "美国匹兹堡，9月28日——美国匹兹堡智能机器人与系统国际会议（IROS）现场，Sharpa正式发布三款重磅全自研新品：首个一体式触觉感知灵巧操作机器人D01、新一代全触觉超紧凑、轻量化灵巧手W02，以及高保真外骨骼触感数据手套AE01。三款产品分别面向全身动作执行、手部精细操作与高质量操作数据采集，覆盖机器人如何运动、如何接触和操控物体，以及如何借助人的自然动作完成遥操作与数据获取三大关键环节，为真实环境中的复杂富接触操作提供了一套完整的硬件闭环。 从机器人本体、末端执行器到连接人与机器人的数据采集设备，三款全自研新品共同指向同一个目标：进一步提升机器人完成复杂操作任务的速度、精度与触觉感知能力。D01、W02与AE01的同时发布，标志着Sharpa将带有全身电子皮肤的高性能本体、全掌触觉灵巧手和高精度数据采集设备连接成一套完整系统，从动作执行、精细操控延伸至数据获取，以三位一体的方式将机器人灵巧操作的性能边界与任务复杂度推向崭新高度。 更强、更快、更精准：D01，专为灵巧操作而生的通用人形机器人 作为Sharpa推出的首款一体式触觉感知灵巧操作机器人，D01从设计之初即围绕灵巧性、敏捷性与精准性展开，面向需要同时兼顾高速运动、高精度控制与复杂物理接触的操作任务。 在富接触操作场景中，机器人常被迫在速度、力量与精度之间取舍：移动得快，难保精细；力量够大，又难谈灵敏。D01打破这一取舍——手臂载荷自重比接近1:1，最大末端执行器速度超过10.5 m/s，通信频率达1,000 Hz，重复定位精度0.2 …"
+      "summary": "Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions. However, this mapping inherently struggles to align these coarse-grained semantics with fine-grained temporal execution. It leaves VLA models with limited generalization and insufficient robustness in cluttered environments. To overcome this issue, we propose ActionUNet, an efficient multi-scale fine-tuning framework that enhances pre-trained VLA models with minimal computational cost. ActionUNet first constructs a lightweight temporal U-Net within the temporal-aligned action feature space to fuse hierarchical structural priors, effectively bridging the scale gap between semantics and temporal executions. Recognizing that multi-scale modeling can disrupt microscopic temporal continuity and cause mechanical oscillations, ActionUNet then employs a conditional SIREN as a continuous action decoder. Equipped with explicit second-order smoothness constraints, this decoder guarantees temporal continuity and reduces high-frequency motion jitter. By smoothing temporal discontinuities from multi-scale fusion, this continuous formulation reduces mechanical execution failures while preserving the base VLA model's generalization and manipulation robustness. Extensive experiments on RoboTwin 2.0 and LIBERO-Plus benchmarks, together with real-world hard evaluations, demonstrate that ActionUNet significantly improves π0.5 success rates by absolute 9.8%, 6.1%, and 11.4%, respectively, while also generalizing to the regression-based OpenVLA-OFT backbone, highlighting its effectiveness and efficiency as a fine-tuning strategy. Code and implementation details are available at https://github.com/Di-Zhu123/ActionUNet."
     },
     {
-      "id": "arxiv:2609.30868",
-      "title": "VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL",
-      "url": "https://arxiv.org/abs/2609.30868",
-      "publisher": "arXiv 2609.30868",
+      "id": "arxiv:2609.35575",
+      "title": "F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement",
+      "url": "https://arxiv.org/abs/2609.35575",
+      "publisher": "arXiv 2609.35575",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-25",
-      "lane": "training",
-      "score": 2.4,
-      "numbers": [],
+      "published": "2026-09-28",
+      "lane": "simeval",
+      "score": 3.59,
+      "numbers": [
+        "93.75%",
+        "90.0%"
+      ],
       "signals": [
+        "numbers",
+        "closed_loop",
         "real_robot"
       ],
-      "summary": "Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction. Residual reinforcement learning (RL) can correct such errors while keeping the VLA frozen, but real-robot RL is costly and safety-critical. We propose VLA Latent-Conditioned RL (VLaRL), which enables residual RL for frozen VLAs to be trained in simulation and deployed on real robots without real-world RL or online adaptation. The key challenge is transferring the learned residual policy despite the visual gap between simulation and reality. Rather than requiring pixel-level visual correspondence, VLaRL uses the VLA's internal vision-language latent representation to condition residual control and as the sim-to-real transfer interface, and learns a lightweight mapper that transforms simulation-derived latents toward the real latent distribution. Across four contact-rich manipulation tasks and two VLA backbones, VLaRL improves real-world success in all task-backbone combinations, while controlled ablations demonstrate the importance of both latent conditioning and latent alignment for transferring simulation-trained residual control."
+      "summary": "The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions. A common remedy is to collect additional real-world demonstrations of newly encountered failures. However, this process is costly, inefficient, potentially unsafe, and difficult to scale. To address this challenge, we propose Failure for Rising (F4R), a failure-driven real-to-sim-to-real closed-loop learning framework that converts real-world failures into targeted policy improvement. F4R first uses an agent to automatically identify and diagnose failures from rollouts. It reconstructs each failure as an interactive, object-centric table-top environment that preserves the task-relevant spatial and physical conditions. The policy is then refined through failure-conditioned sim-real co-training followed by targeted reinforcement learning in the reconstructed environments. The improved policy is subsequently redeployed, while newly observed failures are continuously fed back into the next reconstruction and learning cycle. Real-world evaluations on four manipulation tasks show that F4R achieves 93.75% In-Distribution and 90.0% Out-of-Distribution (OOD) success, outperforming the budget-matched Targeted BC baseline by 18.75 percentage points under OOD conditions without collecting additional real-world corrective demonstrations."
     },
     {
-      "id": "arxiv:2609.30735",
-      "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
-      "url": "https://arxiv.org/abs/2609.30735",
-      "publisher": "arXiv 2609.30735",
+      "id": "arxiv:2609.35469",
+      "title": "Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching",
+      "url": "https://arxiv.org/abs/2609.35469",
+      "publisher": "arXiv 2609.35469",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-25",
-      "lane": "data",
-      "score": 2.202,
+      "published": "2026-09-28",
+      "lane": "foundation",
+      "score": 3.5,
       "numbers": [],
       "signals": [
-        "closed_loop"
+        "closed_loop",
+        "real_robot"
       ],
-      "summary": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change. Learning these behaviors from limited task-specific data remains challenging. To bridge this gap, we introduce Praxis, a whole-body manipulation framework that combines physical interaction priors from one-shot egocentric video demonstrations with closed-loop posture calibration and online perception. The framework coordinates three stages: vision-language-guided navigation toward target objects, closed-loop posture calibration to align the arm-hand workspace, and dexterous manipulation with synchronized upper- and lower-body control. Online visual feedback re-grounds demonstrated interaction geometry under new object poses and scene configurations, while tactile feedback adapts hand motions to actual contact conditions. Each manipulation skill is specified by one human demonstration, without task-specific manipulation-policy retraining. Experiments across five long-horizon manipulation tasks demonstrate spatial, visual, and cross-object generalization, as well as recovery from external physical disturbances across all three stages."
+      "summary": "Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the autoregressive backbone. We propose CATok, a causal action tokenizer that reframes tokenization as a causally structured generative process. CATok introduces a conditional annealing mechanism that extracts action tokens by progressively annealing a flow-matching process: each token is conditioned on all preceding tokens and encodes the residual reconstruction signal at a specific noise level, establishing a coarse-to-fine causal token space whose generative semantics are structurally aligned with autoregressive modeling. A token-conditioned flow-matching decoder built on Multimodal Diffusion Transformer (MMDiT) reconstructs continuous action chunks from these discrete tokens with the precision of hybrid diffusion-head architectures. This discrete bottleneck enforces knowledge insulation by design, cleanly separating high-level semantic reasoning from low-level motor execution without requiring explicit attention masking. Extensive evaluations across three simulation benchmarks and real-world robotic manipulation tasks demonstrate that CATok consistently surpasses existing tokenization methods in both reconstruction fidelity-compression tradeoff and inference efficiency, while improving VLA task success rate and training efficiency, establishing a high-performance, scalable foundation for purely autoregressive VLA systems."
     },
     {
-      "id": "leiphone:33804ee215ed",
-      "title": "本田重申Momenta合作，中国智驾全球布局提速",
-      "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
+      "id": "arxiv:2609.34170",
+      "title": "RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2609.34170",
+      "publisher": "arXiv 2609.34170",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-09-28",
-      "lane": "hardware",
-      "score": 1.415,
+      "lane": "edge",
+      "score": 3.157,
       "numbers": [],
-      "signals": [],
-      "summary": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。双方此前公布的合作方案覆盖高速、城区NOA及泊车等场景。 值得注意的是，在本田此次展示的中国技术合作伙伴中，Momenta成为唯一入选的高阶智驾供应商，华为仅提供智能座舱能力。 据媒体统计，2025年本田全球汽车销量超350万辆，位列全球第九。对于Momenta，与本田合作的价值不仅在于中国市场的量产项目，更在于通过一家全球头部车企的供应链，为拓展更多车型与市场建立基础。 技术演进为合作深化提供了更多可能。Momenta R7世界模型通过理解物体属性、运动规律及交通参与者之间的交互关系，提升复杂场景下的预测与规划能力。这一技术方向，有望为适应不同国家的道路环境、探索更高级别自动驾驶提供支撑。 以中国市场合作为起点，双方积累的开发、适配与量产经验，未来有望延伸至本田更多全球车型，并为从L2级高阶辅助驾驶向L3级有条件自动驾驶的合作探索创造条件。 本田再次强调与Momenta的合作，也折射出全球车企持续深化与中国智驾企业的协作。从奔驰、宝马、奥迪，到本田、丰田、通用，Momenta合作名单已覆盖德系、日系、美系等国际头部主机厂，进一步坐实“全球品牌的共同选择”。 …"
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency bottleneck. The resulting inference latency makes it difficult for robots to respond quickly, especially in dynamic environments. We address this limitation with RAVEL (Rolling Asynchronous VLA Enabling Low-Latency Control), an asynchronous inference framework that addresses the computational bottlenecks of both the VLM backbone and the action expert. To reduce the delay from multi-step action denoising, RAVEL allows near-term actions to be executed after a single denoising step by carrying partially denoised future actions forward in a rolling buffer. To avoid blocking on slow VLM encoding, RAVEL decouples VLM encoding from rolling action generation, allowing the action expert to operate continuously using the latest available VLM context, while a lightweight Fast Observation Pathway (FOP) directly conditions the action expert on current observations. Across simulated and real-world manipulation tasks, RAVEL consistently achieves substantially lower response latency while maintaining the task capability of the underlying VLA, enabling high-frequency and responsive closed-loop control."
     },
     {
-      "id": "the-robot-report:952353d51a5d",
-      "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
-      "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
+      "id": "the-robot-report:392aedc8ddeb",
+      "title": "ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness",
+      "url": "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-09-28",
-      "lane": "safety",
-      "score": 1.235,
+      "published": "2026-09-29",
+      "lane": "hardware",
+      "score": 1.515,
       "numbers": [],
       "signals": [],
-      "summary": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems."
+      "summary": "Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it."
     },
     {
-      "id": "tri:4ccaa7c04c64",
-      "title": "Capturing Visual Environment Structure Correlates with Control Performance",
-      "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
-      "evidence": "R",
-      "published": "2026-09-09",
-      "lane": "simeval",
-      "score": 1.12,
+      "id": "the-robot-report:8694fbb8d919",
+      "title": "Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents",
+      "url": "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-09-29",
+      "lane": "hardware",
+      "score": 1.182,
       "numbers": [],
       "signals": [],
-      "summary": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation. Existing proxy metrics focus on the representation's capacity to capture narrow aspects of the visual world, like object shape, limiting generalization across environments. In this paper, we take an analytical perspective: we probe pretrained visual encoders by measuring how well they support decoding of environment state — including geometry, object structure, and physical attributes — from images. Leveraging simulation environments with access to ground-truth state, we show that this probing accuracy strongly correlates with downstream policy performance across diverse environments and learning settings, significantly outperforming prior metrics and enabling efficient representation selection. More broadly, our study provides insight into the representational properties that support generalizable manipulation, suggesting that learning to encode the latent physical state of the environment is a promising objective for control. Image Feb 4, 2026 Robotics Read More 1 Minute Read"
+      "summary": "Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation."
+    },
+    {
+      "id": "leiphone:f13a1af74402",
+      "title": "动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026",
+      "url": "https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-09-29",
+      "lane": "simeval",
+      "score": 1.135,
+      "numbers": [],
+      "signals": [],
+      "summary": "顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。 一颗球被重杀出去时，初速能飙到两三百公里每小时，却因为十六片羽毛带来的巨大空气阻力，速度在飞行中急剧衰减。轨迹也不再是抛物线，变为前段平直、后段陡降的不对称弧线。 同时，一头是软木、一头是羽毛，重心和压力中心错开，每颗球在半空都会自己翻跟头。这个翻转，让它的轨迹变得更难预测。 可以说，打羽毛球是一场动态的冥想，身体要灵敏移动，心却要足够安静，才能提前一秒“看”到落球点。 对于人形机器人来说，这种难度系数的动静结合，需要一套分工明确的大小脑。 小脑这一层，过去三年进化很快。 人形机器人的全身控制已经从“走得稳”走到“学得像”：先用人体动捕数据训练机器人跟踪各类动作，再靠系统辨识、域随机化缩小仿真与现实的差距，跑、跳、舞蹈这类技能逐渐稳定，也出现了让机器人复现高动态全身动作的工作，比如 ASAP 提出的对齐仿真与真实物理的方法。 在此基础上，球类成了检验大小脑的新考场。 回顾领域内过去的工作，能看到两个趋势。 一是 分层 ：AdaPT 的核心思路，就是让规划器生成风格化动作，让跟踪器负责执行，并尽量不干扰规划；HITTER、LATENT 也都是“高层决策，低层执行”的结构。二是 人类先验： 动捕、视频、业余数据，都在给机器人提供人类运动的经验。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 4,
+    "foundation": 6,
     "data": 4,
-    "training": 5,
-    "simeval": 11,
+    "training": 4,
+    "simeval": 12,
     "edge": 5,
     "safety": 1,
-    "systems": 4,
-    "hardware": 10
+    "systems": 3,
+    "hardware": 11
   },
   "evidence_mix": {
-    "O": 9,
-    "R": 21,
-    "M": 14
+    "O": 5,
+    "R": 26,
+    "M": 15
   },
   "fetch": {
-    "items": 358,
+    "items": 506,
     "attempted": 11,
-    "answered": 10,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 11,
+    "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 25,
+      "arxiv": 73,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
