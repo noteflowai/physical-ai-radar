@@ -9,7 +9,7 @@ anywhere that matters.
 | `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
 | `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
-| `oneai-content-run` | maintainer's machine, cron | 10:00 Asia/Singapore; 16:00 retry | publishes one reviewed, illustrated zh/en/ja article group on oneai.host |
+| `oneai-content-run` | maintainer's machine, cron | 10:00 Asia/Singapore; 16:00 retry | publishes up to three distinct, reviewed, illustrated zh/en/ja article groups on oneai.host when sources and quality justify them |
 | `oneai-course-run` | maintainer's machine, cron | 11:30 Asia/Singapore; 18:30 retry | produces and reviews one course lesson, then publishes its video on oneai.host |
 | `scripts/nightly.sh` | maintainer's machine, cron | 21:30 Asia/Singapore | collects research, develops specialist features, publishes updates, maintains Radar and reports results |
 | `scripts/nightly.sh --previous-day` | maintainer's machine, cron | 02:30 Asia/Singapore | resumes only the preceding evening's unfinished stages |
