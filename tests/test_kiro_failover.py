@@ -11,6 +11,7 @@ import unittest
 SHIM = Path(__file__).resolve().parents[1] / "scripts/kiro_failover.py"
 PRIMARY = "ksk_aaaaaaaaaaaaaaaaaaaaaaaa"
 BACKUP = "ksk_bbbbbbbbbbbbbbbbbbbbbbbb"
+BACKUP2 = "ksk_cccccccccccccccccccccccc"
 
 
 class KiroFailoverTests(unittest.TestCase):
@@ -23,6 +24,7 @@ class KiroFailoverTests(unittest.TestCase):
         self.key_file = folder / "backup.key"
         self.key_file.write_text(BACKUP, encoding="utf-8")
         self.key_file.chmod(0o600)
+        self.key_file2 = folder / "backup2.key"
         self.calls = root / "calls"
         self.fake = root / "fake-kiro"
         self.fake.write_text(
@@ -31,8 +33,12 @@ class KiroFailoverTests(unittest.TestCase):
             "from pathlib import Path\n"
             "key = os.environ.get('KIRO_API_KEY', '')\n"
             "with Path(os.environ['FAKE_CALLS']).open('a') as out:\n"
-            "    out.write(('backup' if key.endswith('b' * 24) else 'primary') + '\\n')\n"
+            "    out.write(('backup2' if key.endswith('c' * 24) else 'backup' if key.endswith('b' * 24) else 'primary') + '\\n')\n"
             "case = os.environ['FAKE_CASE']\n"
+            "if case == 'all-quota' or (key.endswith('b' * 24) and case in ('third-ok','second-partial')):\n"
+            "    if case == 'second-partial': print('already changed a file')\n"
+            "    print('The monthly usage limit has been reached', file=sys.stderr)\n"
+            "    sys.exit(1)\n"
             "if key.endswith('a' * 24) and case not in ('primary-ok', 'primary-text-quota'):\n"
             "    if case == 'partial': print('already wrote an article')\n"
             "    print('Monthly request limit reached', file=sys.stderr)\n"
@@ -52,6 +58,7 @@ class KiroFailoverTests(unittest.TestCase):
             [sys.executable, str(SHIM), "chat", "--no-interactive", "hello"],
             env={**os.environ, "KIRO_API_KEY": PRIMARY, "KIRO_REAL_CLI": str(self.fake),
                  "KIRO_BACKUP_KEY_FILE": str(self.key_file), "FAKE_CALLS": str(self.calls),
+                 "KIRO_BACKUP2_KEY_FILE": str(self.key_file2),
                  "FAKE_CASE": case},
             capture_output=True, text=True, timeout=20,
         )
@@ -88,6 +95,7 @@ class KiroFailoverTests(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertEqual(self.calls.read_text().splitlines(), ["primary"])
         self.assertIn("refusing duplicate run", result.stderr)
+        self.assertNotIn("Monthly request limit reached", result.stdout + result.stderr)
 
     def test_backup_failure_keeps_quota_signal_for_existing_fallback(self) -> None:
         result = self.invoke("backup-fails")
@@ -101,6 +109,50 @@ class KiroFailoverTests(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertEqual(self.calls.read_text().splitlines(), ["primary"])
         self.assertIn("backup unavailable", result.stderr)
+
+    def enable_third(self) -> None:
+        self.key_file2.write_text(BACKUP2)
+        self.key_file2.chmod(0o600)
+
+    def test_third_key_is_used_in_order_and_redacted(self) -> None:
+        self.enable_third()
+        result = self.invoke("third-ok")
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup", "backup2"])
+        self.assertIn("OK [redacted key]", result.stdout)
+        self.assertNotIn(BACKUP2, result.stdout + result.stderr)
+        self.assertNotIn("monthly usage", result.stderr)
+
+    def test_all_three_exhausted_stops_with_provider_signal(self) -> None:
+        self.enable_third()
+        result = self.invoke("all-quota")
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup", "backup2"])
+        self.assertIn("monthly usage limit has been reached", result.stderr)
+        self.assertIn("Monthly request limit reached", result.stderr)
+
+    def test_partial_backup_never_reaches_third_key(self) -> None:
+        self.enable_third()
+        result = self.invoke("second-partial")
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup"])
+        self.assertIn("refusing duplicate run", result.stderr)
+        self.assertNotIn("Monthly request limit reached", result.stdout + result.stderr)
+        self.assertIn("RECONCILE_REQUIRED", result.stderr)
+
+    def test_duplicate_backup_is_skipped(self) -> None:
+        self.enable_third()
+        self.key_file.write_text(PRIMARY)
+        result = self.invoke("third-ok")
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup2"])
+
+    def test_insecure_third_file_is_not_used(self) -> None:
+        self.enable_third()
+        self.key_file2.chmod(0o644)
+        result = self.invoke("third-ok")
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(self.calls.read_text().splitlines(), ["primary", "backup"])
 
 
 if __name__ == "__main__":
