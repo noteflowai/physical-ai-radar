@@ -280,7 +280,32 @@ with the same builder as Pages and checks each page's language, stylesheet and c
 - Extractive summaries can miss the real contribution of a paper; the lane and signals are
   a triage aid, not a review.
 - Keyword classification will misfile interdisciplinary work; corrections are welcome as PRs
-  against `data/taxonomy.json`.
+  against `data/taxonomy.json`. To see whether a taxonomy edit helps, score the classifier
+  against a file of hand-labeled items before and after the edit:
+
+  ```
+  python3 -m pairadar.lanes --labels my-labels.json --margin 0.35
+  ```
+
+  The file is UTF-8 JSON, `{"items": [{"id": "a1", "title": "...", "summary": "...", "lane": "data"}]}`.
+  `title` and `lane` are required non-empty strings, and `lane` must be a lane id from
+  `data/taxonomy.json`. `id` and `summary` are optional, but when present they must be strings.
+  Each entry is scored on `title. summary`, the same text the pipeline classifies, and the file
+  is only read. The report gives the file's basename (`labels`), `labeled`, `margin`,
+  `agreement` and `disagreements`. `agreement` has `n`, `agree` and `rate` for three groups:
+  `all` entries; `confident` entries, which carry no thin or ambiguous flag; and `flagged`
+  entries, which do. If the flags work, `flagged` agreement should be lower than `confident`.
+  `rate` is `null` when a group is empty. `disagreements` lists the misfiles in input order,
+  with the label, the predicted lane, the flag reasons and the top two lane scores. An entry
+  with no id shows `id: null`. A misfile with `reasons: []` is one the flags missed, and
+  those are the cases a keyword edit most needs to address. The command exits 0 whenever it
+  prints a report. It exits 2 with a single `lanes: ` line on stderr, and prints nothing on
+  stdout, when the file is unreadable, is not UTF-8 JSON, has no `items` list, contains a
+  malformed entry (the message names the entry's number) or uses an unknown lane (the message
+  lists the valid ones). It also exits 2 when `--labels` is combined with `--latest` or
+  `--fail-on-suspicious`. A small hand-labeled set shows agreement on those items only; it is
+  not general accuracy or calibration. Keep it separate from the examples used to tune keywords,
+  otherwise the number only confirms the edit that was fitted to it.
 - `[M]` items frequently disagree on shipment and market numbers. When two credible outlets
   conflict, the curated baseline says so instead of picking a winner.
 - Nothing here is a safety argument. Standards entries report status and dates only.
