@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.develop_repos import apply, checkpoint, complete, develop, fit_context, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
+from scripts.develop_repos import apply, checkpoint, complete, develop, fit_context, generated_for, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
 from scripts.feature_policy import PROJECTS, acceptance_command, allowed, readable
 from scripts.feature_runtime import execute
 from scripts.agent_pipeline import REQUIRED_PR_CHECKS, finish
@@ -33,6 +33,19 @@ class FeaturePolicyTests(unittest.TestCase):
         self.assertIn("Official Plugin Check", checks)
         self.assertIn("Release gate on PHP 7.4", checks)
         self.assertIn("Release gate on PHP 8.3", checks)
+
+    def test_lanes_only_feature_keeps_unrelated_published_banners(self):
+        config = {"generated": ["index.html", "assets/banner.en.svg",
+                                "assets/banner.ja.svg", "radar/daily/day.zh.md"]}
+        task = {"repo": "noteflowai/physical-ai-radar",
+                "changed": ["pairadar/lanes.py", "tests/test_lanes.py",
+                            "docs/METHODOLOGY.md", "CHANGELOG.md"]}
+        self.assertEqual(generated_for(task, config),
+                         ["index.html", "radar/daily/day.zh.md"])
+        task["changed"].append("pairadar/banner.py")
+        self.assertEqual(generated_for(task, config), config["generated"])
+        task["repo"] = "noteflowai/robot-reel"
+        self.assertEqual(generated_for(task, config), config["generated"])
 
     def test_functional_source_and_gpu_test_are_allowed(self):
         self.assertTrue(allowed("robot_reel/replay.py", PROJECTS["robot-reel"]))

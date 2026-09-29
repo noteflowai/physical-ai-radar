@@ -387,6 +387,21 @@ def inspect_checks(records: list[dict]) -> None:
             raise RuntimeError(Path(record["log"]).read_text()[-10000:])
 
 
+def generated_for(task: dict, config: dict) -> list[str]:
+    """Keep README banners fixed when a lanes-only feature cannot affect them."""
+    paths = list(config.get("generated", []))
+    if task.get("repo") != "noteflowai/physical-ai-radar":
+        return paths
+    changed = task.get("changed", [])
+    if changed and all(
+        path in {"pairadar/lanes.py", "CHANGELOG.md"}
+        or path.startswith(("tests/", "docs/"))
+        for path in changed
+    ):
+        return [path for path in paths if not path.startswith("assets/banner.")]
+    return paths
+
+
 class DeliveryCorrectionRequired(RuntimeError):
     """Correct post-test delivery text without discarding a validated commit."""
 
@@ -483,11 +498,12 @@ def validate_feature(root: Path, task: dict, config: dict, state: Path,
                 or executed[-1].get("exit_code", 0) in {0, 124, 125, 126, 127}
                 or executed[:-1] != [{"argv": argv, "exit_code": 0, "executed": True} for argv in setup]):
             raise ValueError("Acceptance must fail on the old behavior, without a container/timeout failure")
+        generated_paths = generated_for(task, config)
         passing = checked(green, image, [*setup, test, *config["checks"]], "checks",
-                          generated=config.get("generated", []), timeout=1800)
+                          generated=generated_paths, timeout=1800)
         inspect_checks([passing])
         records = [failing, passing]
-        for path in config.get("generated", []):
+        for path in generated_paths:
             generated = state / "checks/artifacts/generated" / path
             if generated.exists():
                 boundary = (state / "checks/artifacts").resolve()
@@ -656,7 +672,7 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
             dirty = command(["git", "diff", "--name-only"], cwd=root).splitlines()
             if not dirty:
                 break
-            generated = config.get("generated", [])
+            generated = generated_for(task, config)
             if not set(dirty).issubset(generated):
                 raise ValueError("Validation changed unapproved source files")
             command(["git", "add", "--", *generated], cwd=root)
