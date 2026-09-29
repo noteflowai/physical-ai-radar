@@ -4,6 +4,8 @@
 
 # Physical AI 前沿雷达
 
+Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
+
 **每天 8 条具身智能前沿，按八条主线归类，每条都标注证据等级，中英日三语写清“为什么重要”。**
 
 [![打开网站](https://img.shields.io/badge/%E6%89%93%E5%BC%80%E7%BD%91%E7%AB%99-noteflowai.github.io-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://noteflowai.github.io/physical-ai-radar/)
