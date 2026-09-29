@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>score keyword lane classification against a labeled shortlist · NoteFlowAI</title><meta name="description" content="python3 -m pairadar.lanes has a new --labels PATH option. It compares the keyword lane classifier with a hand-labeled JSON file. For each entry it scores title + &#x27;. &#x27; + summary using ranked_lanes, whose top lane is the one distill.classify picks. It "><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/"><meta property="og:type" content="article"><meta property="og:title" content="score keyword lane classification against a labeled shortlist"><meta property="og:description" content="python3 -m pairadar.lanes has a new --labels PATH option. It compares the keyword lane classifier with a hand-labeled JSON file. For each entry it scores title + &#x27;. &#x27; + summary using ranked_lanes, whose top lane is the one distill.classify picks. It "><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.3.0/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/physical-ai-radar · 1.3.0 · 2026-09-29</p><h1>score keyword lane classification against a labeled shortlist</h1><p>python3 -m pairadar.lanes has a new --labels PATH option. It compares the keyword lane classifier with a hand-labeled JSON file. For each entry it scores title + &#x27;. &#x27; + summary using ranked_lanes, whose top lane is the one distill.classify picks. It then applies the existing thin/ambiguous rules. Those rules now live in a flag_reasons helper that inspect() also calls.
+
+The command prints a JSON report with:
+- labels: the file&#x27;s basename only
+- labeled and margin
+- agreement for all, confident (unflagged) and flagged entries, each as n, agree and rate (rate is null when n is 0)
+- disagreements in input order, each with id (null when absent), title, label, predicted, reasons, best and runner_up
+
+A disagreement with reasons [] is a confident misfile that the flags missed.
+
+The whole file is validated before anything is scored. Invalid input exits 2 with one &#x27;lanes: &#x27; stderr line and empty stdout. This covers an unreadable file, invalid JSON or non-UTF-8 text, no items list, a non-object entry, an empty or non-string title or lane, a non-string id or summary, an unknown lane (the valid ids are listed), and combining --labels with --latest or --fail-on-suspicious. In labels mode the exit code is 0 whenever a report is printed. docs/METHODOLOGY.md section 9 documents the format and its limits.
+
+The controller ran the checks, not me. In the pre-feature run, 8 of the 10 feature tests errored because argparse rejected --labels. On candidate c109acf the controller ran python -m pairadar --rerender --no-readme (exit 0), the 10 feature tests (all passed) and the full unittest suite (446 tests, OK).</p><h2>Use it</h2><pre>Prerequisites: a checkout of this repository, Python 3.12 (the version in the controller&#x27;s image), no extra packages. Run from the repository root.
+
+1. List the valid lane ids:
+python3 -c &quot;from pairadar.config import load_config; print(&#x27;, &#x27;.join(l[&#x27;id&#x27;] for l in load_config().lanes))&quot;
+
+2. Create a SYNTHETIC sample file. The lane values are placeholders, not real human judgments. Replace them with your own labels:
+python3 - &lt;&lt;&#x27;EOF&#x27;
+import json
+from pairadar.config import load_config
+lanes = [l[&quot;id&quot;] for l in load_config().lanes]
+items = [
+    {&quot;id&quot;: &quot;s1&quot;, &quot;title&quot;: &quot;Control barrier function safety filter with runtime monitor&quot;, &quot;summary&quot;: &quot;Synthetic example.&quot;, &quot;lane&quot;: lanes[0]},
+    {&quot;title&quot;: &quot;Untitled robotics note&quot;, &quot;lane&quot;: lanes[-1]},
+]
+with open(&quot;my-labels.json&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fh:
+    json.dump({&quot;items&quot;: items}, fh, ensure_ascii=False, indent=2)
+EOF
+
+3. Score it:
+python3 -m pairadar.lanes --labels my-labels.json --margin 0.35
+
+4. Read agreement.all.rate, then compare agreement.confident with agreement.flagged. Look first at disagreements whose reasons is [], because the flags missed those. Edit data/taxonomy.json and re-run on the same file to compare before and after.
+
+5. Error example:
+python3 -m pairadar.lanes --labels missing.json
+This exits 2 and prints a single &#x27;lanes: cannot read missing.json: ...&#x27; line.
+
+Tests: python3 -m unittest discover -s tests -p test_feature_5621e4c46330.py</pre><h2>Scope</h2><p>Scope:
+- One input format (a JSON items list) and one entry point. --labels combines only with --margin.
+- There is no threshold-based failure exit, CSV input, automatic taxonomy editing or model/provider call.
+- Classification and scoring are unchanged.
+
+What the numbers mean:
+- Labels come from the user.
+- The test fixtures and the usage sample are synthetic and labeled as such.
+- The passing tests show that the counts, ordering and error handling match hand-computed expectations. They do not show broad classifier accuracy.
+- Agreement on a small labeled set measures the current taxonomy on those items only. It is not general accuracy, and the margin is not calibrated.
+- Keep the labeled set separate from the examples used to tune keywords.
+
+Verification gaps:
+- This is a CLI-only feature. No browser or visual review of it was done, and I did not check whether the full suite includes browser or showcase tests.
+- An earlier review flagged unrelated banner SVG coordinate changes and a CHANGELOG file-list claim. The controller receipts do not include the final diff&#x27;s file list, and I could not inspect it. So this text makes no claim about which files the commit touches beyond the lanes feature.
+- The rerender check exiting 0 does not prove that assets are unchanged.
+- Issue #73 is not addressed.</p><h2>Upgrade and rollback</h2><p>Additive. Without --labels, the existing command and its --latest, --margin and --fail-on-suspicious options keep their output and exit codes. The --latest default now resolves internally to the same radar/latest.json path. inspect() now calls the extracted flag_reasons helper, which uses the same rules. Label files are only read, and the feature adds no stored data or schema.
+
+To roll back, revert the feature commit. Label files are user-owned and stay intact. Before releasing, confirm the commit&#x27;s file list matches the lanes feature (see limitations).</p><p class="links"><a href="https://github.com/noteflowai/physical-ai-radar/releases/tag/v1.3.0">Release and downloads</a><a href="https://github.com/noteflowai/physical-ai-radar/pull/93">Implementation and checks</a></p><p class="meta">Source commit: <code>7533347e3f3155290588d0f0468594f029c793cf</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
