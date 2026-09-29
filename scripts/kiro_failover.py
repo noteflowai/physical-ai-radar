@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Run scheduled Kiro chats with a private backup API key on exhausted credits.
+"""Run scheduled Kiro chats with two private backup keys on exhausted credits.
 
 Install this file as ~/.local/share/kiro-failover/bin/kiro-cli, ahead of the
-real ~/.local/bin/kiro-cli on the scheduled jobs' PATH. The backup key lives in
-~/.config/kiro-failover/backup.key (owner-only directory and file), never here.
+real ~/.local/bin/kiro-cli on the scheduled jobs' PATH. The ordered backups live
+in ~/.config/kiro-failover/{backup,backup2}.key (owner-only), never here.
 """
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ import subprocess
 import sys
 
 QUOTA = re.compile(
-    r"monthly request limit reached|monthly usage limit reached|"
+    r"monthly (?:request|usage) limit (?:has been )?reached|"
     r"quota exceeded|insufficient credits|spending limit reached|"
     r"usage limit exceeded|overage limit reached",
     re.IGNORECASE,
@@ -42,6 +42,14 @@ def redact(text: str, *secrets: str) -> str:
 def emit(result: subprocess.CompletedProcess[str], *secrets: str) -> None:
     sys.stdout.write(redact(result.stdout, *secrets))
     sys.stderr.write(redact(result.stderr, *secrets))
+
+
+def emit_reconcile(result: subprocess.CompletedProcess[str], *secrets: str) -> None:
+    # Legacy domain callers match a literal quota phrase to invoke Codex.
+    # Preserve partial output but prevent that phrase from authorizing replay.
+    for text, target in [(result.stdout, sys.stdout), (result.stderr, sys.stderr)]:
+        target.write(QUOTA.sub("[provider capacity error; reconcile first]", redact(text, *secrets)))
+    sys.stderr.write("[kiro-failover] RECONCILE_REQUIRED: output observed; refusing duplicate run\n")
 
 
 def status(code: int) -> int:
@@ -101,33 +109,49 @@ def main(args: list[str]) -> int:
     # If Kiro already produced output, it may also have used tools; another
     # attempt could repeat side effects.
     if ANSI.sub("", first.stdout).strip():
-        emit(first, primary)
-        sys.stderr.write("[kiro-failover] quota after output; refusing duplicate run\n")
+        emit_reconcile(first, primary)
         return 1
 
-    path = Path(os.environ.get(
-        "KIRO_BACKUP_KEY_FILE", str(Path.home() / ".config/kiro-failover/backup.key"),
-    ))
-    try:
-        second_key = backup_key(path)
-        if second_key == primary:
-            raise ValueError("backup key matches the active key")
-    except (OSError, ValueError) as error:
-        emit(first, primary)
-        sys.stderr.write(f"[kiro-failover] backup unavailable: {error}\n")
-        return 1
+    secrets = [primary]
+    current = first
+    for name, variable, filename in [
+        ("backup", "KIRO_BACKUP_KEY_FILE", "backup.key"),
+        ("backup2", "KIRO_BACKUP2_KEY_FILE", "backup2.key"),
+    ]:
+        path = Path(os.environ.get(variable, str(Path.home() / ".config/kiro-failover" / filename)))
+        try:
+            key = backup_key(path)
+            if key in secrets:
+                raise ValueError("credential already attempted")
+        except (OSError, ValueError) as error:
+            sys.stderr.write(f"[kiro-failover] {name} unavailable: {error}\n")
+            continue
 
-    sys.stderr.write("[kiro-failover] primary quota exhausted; retrying with backup key\n")
-    second = run(command, {**os.environ, "KIRO_API_KEY": second_key})
-    if second.returncode == 0 and not quota_diagnostic(second):
-        emit(second, primary, second_key)
-        return 0
+        secrets.append(key)
+        sys.stderr.write(f"[kiro-failover] trying {name} credential\n")
+        current = run(command, {**os.environ, "KIRO_API_KEY": key})
+        quota = quota_diagnostic(current)
+        if not quota and current.returncode == 0:
+            emit(current, *secrets)
+            return 0
+        if ANSI.sub("", current.stdout).strip():
+            # Applies to EVERY attempt, not just the primary. Do not expose a
+            # previous quota diagnostic that could trigger the caller's replay.
+            emit_reconcile(current, *secrets)
+            return status(current.returncode) or 1
+        if not quota:
+            # Preserve the legacy empty-output failure signal for the existing
+            # domain fallback. A non-quota failure does not rotate more keys.
+            emit(first, *secrets)
+            emit(current, *secrets)
+            sys.stderr.write("[kiro-failover] Monthly request limit reached; backup request failed before output\n")
+            return status(current.returncode) or 1
 
-    # Keep the quota marker for article/course's existing Codex fallback.
-    emit(first, primary, second_key)
-    emit(second, primary, second_key)
-    sys.stderr.write("[kiro-failover] backup request failed\n")
-    return status(second.returncode) or 1
+    # At most three distinct credentials. Keep the final provider quota marker
+    # for article/course's existing fallback after every attempt had no output.
+    emit(current, *secrets)
+    sys.stderr.write("[kiro-failover] Monthly request limit reached; credential chain exhausted before output\n")
+    return status(current.returncode) or 1
 
 
 if __name__ == "__main__":
