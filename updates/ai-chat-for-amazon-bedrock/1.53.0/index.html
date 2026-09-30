@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>count final Bedrock chat failures by cause on the dashboard · NoteFlowAI</title><meta name="description" content="Version 1.53.0 makes failed Amazon Bedrock chat calls visible on the existing admin dashboard. The Usage today card has a fourth metric, Failed requests. The seven-day usage panel has one line, for example &#x27;Failed chat requests, last 7 days: 4. Throt"><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/"><meta property="og:type" content="article"><meta property="og:title" content="count final Bedrock chat failures by cause on the dashboard"><meta property="og:description" content="Version 1.53.0 makes failed Amazon Bedrock chat calls visible on the existing admin dashboard. The Usage today card has a fourth metric, Failed requests. The seven-day usage panel has one line, for example &#x27;Failed chat requests, last 7 days: 4. Throt"><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/ai-chat-for-amazon-bedrock · 1.53.0 · 2026-09-30</p><h1>count final Bedrock chat failures by cause on the dashboard</h1><p>Version 1.53.0 makes failed Amazon Bedrock chat calls visible on the existing admin dashboard. The Usage today card has a fourth metric, Failed requests. The seven-day usage panel has one line, for example &#x27;Failed chat requests, last 7 days: 4. Throttled 3, access denied 1.&#x27; When there are none it reads &#x27;No failed chat requests recorded in the last 7 days.&#x27; The line also appears in the existing empty state. A site where every call fails no longer looks like a quiet site.
+
+A failure is counted once per handle_chat_message() or stream_chat_message() call, only if that call sent at least one Bedrock HTTP request and still returned an error after fallback and Converse adaptation retries. AI_Chat_Bedrock_Usage::classify_failure() sorts it into one of six categories using the HTTP status and the plugin error code: throttled (429), access_denied (401/403), validation (400), unavailable (5xx), network (status 0 with aicfab_unreachable or aicfab_stream_interrupted) or other.
+
+Some cases are not counted:
+- Missing credentials, an invalid region or model, the daily limit, and encoding errors. None of these send a request.
+- Retries that later succeeded.
+- Stopped streams.
+
+Only per-day category counts are stored in the existing ai_chat_bedrock_usage option. No message, prompt, output, error text, user ID or IP is kept. Requests, tokens, per-model counts and the daily cap still count successful invocations only.
+
+Controller-run checks on commit d1da36b:
+- Before the change, the new test failed with exit 255 (undefined classify_failure) on the base code.
+- tests/test_feature_364f48c382c4.php passed with assertions enabled.
+- bin/prerelease.sh passed: 47 suites including usage.php and admin-ux.php, phpcs clean, and versions all 1.53.0.
+- tests/tooling.php passed.
+- bin/build-package.py built the 1.53.0 zip.
+
+The stream_chat_message() return-path check that failed in the prior review now passes.</p><h2>Use it</h2><pre>Dashboard (no setup): sign in to wp-admin as a user with manage_options and open admin.php?page=ai-chat-for-amazon-bedrock. Read Failed requests in the Usage today card, then the &#x27;Failed chat requests, last 7 days&#x27; line in the seven-day usage panel.
+
+Expected behavior: with a fallback model set, if the primary model returns 429 and the fallback returns 500, the call sends 2 requests. Failed requests rises by 1, and the line reads &#x27;Failed chat requests, last 7 days: 1. Throttled 1.&#x27;
+
+Synthetic example. Prerequisites: WP-CLI on a staging site with 1.53.0 active. This writes a real counter to that site&#x27;s usage option, so do not run it in production. No input file is needed.
+
+wp eval &#x27;AI_Chat_Bedrock_Usage::record_failure( &quot;throttled&quot; ); print_r( AI_Chat_Bedrock_Usage::failure_totals( 7 ) );&#x27;
+
+This prints total 1 (or one more than before) with by_category keys in the order throttled, access_denied, validation, unavailable, network, other. Reload the dashboard to see the line. To clear it, use the plugin&#x27;s usage reset, which also clears request and token counters.
+
+Regression test (prerequisites: PHP CLI and a repository checkout; uses synthetic stubbed Bedrock responses and needs no AWS access):
+
+php -d zend.assertions=1 -d assert.exception=1 tests/test_feature_364f48c382c4.php
+
+Expected output: &#x27;All final-failure counter checks passed.&#x27; Full gate: bash bin/prerelease.sh --php /usr/bin/php</pre><h2>Scope</h2><p>Scope:
+- Only chat calls through handle_chat_message() and stream_chat_message() are counted, including Diagnostics model tests, evaluations and content generation.
+- Knowledge Bases, embeddings, MCP and AgentCore failures are not counted.
+- Counts show what this plugin observed, not AWS service health.
+- There are no failure rates, per-model or per-attempt counts, stored error messages, alerts or WP-CLI reporting.
+- Failures from before the upgrade are not reconstructed.
+- Categories come from a fixed status/code rule table. There is no AWS error-type classification, so anything unrecognized counts as other.
+
+Test evidence:
+- Every Bedrock response in the tests is a synthetic stub. Nothing reached AWS, so the tests show counting and classification logic, not behavior against live Bedrock.
+- The streamed path is covered through the shared record_chat_outcome() method and a static source check, because cURL is not stubbed in this suite.
+- Missing credentials are simulated by clearing client properties through reflection.
+- In prerelease.sh, the official Plugin Check and the live WordPress integration step were skipped (no --wp-cli given).
+
+Visual evidence:
+- These receipts include no browser, screenshot, showcase or visual review of the new metric and line. public-script.test.mjs ran as a script test only.
+- Layout, keyboard and responsive behavior rest on static review. The markup reuses existing aicfab-metric and aicfab-card-detail classes and adds no controls, scripts or style attributes.
+- Passing tests do not establish visual quality.</p><h2>Upgrade and rollback</h2><p>Update to 1.53.0 as usual. There is no migration. Each day entry in the existing ai_chat_bedrock_usage option can gain an optional failures map of positive counts, and every day keeps its existing requests, tokens and models keys. Days recorded earlier read as zero failures. Failure counts follow the existing 30-day retention.
+
+To roll back, reinstall the release you ran before 1.53.0. Its dashboard does not read the failures key. That release&#x27;s handling of the extra key was not exercised in these checks. The design expects its prune() to rebuild each day from known keys and drop failures the next time it records a request, while keeping request and token counters. If in doubt, reset usage counters after rolling back. That reset clears failure, request and token counts together.</p><p class="links"><a href="https://github.com/noteflowai/ai-chat-for-amazon-bedrock/releases/tag/1.53.0">Release and downloads</a><a href="https://github.com/noteflowai/ai-chat-for-amazon-bedrock/pull/21">Implementation and checks</a></p><p class="meta">Source commit: <code>de2ec72c98313325db5e607984c2f6d3eb2171b3</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
