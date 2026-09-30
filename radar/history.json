@@ -192,6 +192,23 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-01",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2609.38059",
+        "https://arxiv.org/abs/2609.37560",
+        "https://arxiv.org/abs/2609.36588",
+        "https://arxiv.org/abs/2609.37772",
+        "https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people",
+        "https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html",
+        "https://www.leiphone.com/category/yanxishe/ngx4ckx3mbuwlis3.html"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

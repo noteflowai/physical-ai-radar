@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-09-29T23:40:00Z</updated>
+  <updated>2026-09-30T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.38059</id>
+    <title>WorldLine: Action-Driven Visual Simulation for Robotic Manipulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.38059" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.38059</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.38059 · 2026-09-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 10,000 hours · 2,000 hours · 74%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.37560</id>
+    <title>RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.37560" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.37560</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.37560 · 2026-09-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 77.15% · 84.47% · 97.41%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.36588</id>
+    <title>Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.36588" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.36588</name>
+    </author>
+    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
+    <category term="R" label="[R]" />
+    <summary type="text">We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.36588 · 2026-09-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 11 tasks&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.37772</id>
+    <title>Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2609.37772" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2609.37772</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2609.37772 · 2026-09-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 1.89x&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:65f7743af268</id>
+    <title>Innodata opens motion-capture lab to help humanoids move more like people</title>
+    <link rel="alternate" href="https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">Innodata uses Vicon cameras to measure movements with sub-millimeter accuracy and to collect real-world training data for robots.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-30&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Innodata uses Vicon cameras to measure movements with sub-millimeter accuracy and to collect real-world training data for robots.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:0a04517fc2b6</id>
+    <title>Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets</title>
+    <link rel="alternate" href="https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="M" label="[M]" />
+    <summary type="text">ASI and SoftBank join forces with $225M to scale brand-agnostic autonomous heavy equipment across infrastructure projects.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-30&lt;/p&gt;
+&lt;blockquote&gt;ASI and SoftBank join forces with $225M to scale brand-agnostic autonomous heavy equipment across infrastructure projects.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:8247ec0c4975</id>
+    <title>日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="M" label="[M]" />
+    <summary type="text">日立製作所とファナックはフィジカルAI（人工知能）実装の共同事業化に向けた戦略的パートナーシップを締結した。日立のAI技術とファナックの産業用ロボットを組み合わせたフィジカルAIの共同実証と共同展開を推進する。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: MONOist (ITmedia) · 2026-09-30&lt;/p&gt;
+&lt;blockquote&gt;日立製作所とファナックはフィジカルAI（人工知能）実装の共同事業化に向けた戦略的パートナーシップを締結した。日立のAI技術とファナックの産業用ロボットを組み合わせたフィジカルAIの共同実証と共同展開を推進する。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:3f5aca924a94</id>
+    <title>从海拉鲁到现实世界：视频模型如何理解「变化」</title>
+    <link rel="alternate" href="https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html" />
+    <published>2026-09-30T23:40:00Z</published>
+    <updated>2026-09-30T23:40:00Z</updated>
+    <author>
+      <name>雷峰网 Leiphone</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="M" label="[M]" />
+    <summary type="text">HiDream-O1-Video 的三场世界回应测试。在《塞尔达传说：旷野之息》中，玩家点燃一片草地，火焰会沿着草叶蔓延，热空气随之升起。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: 雷峰网 Leiphone · 2026-09-30&lt;/p&gt;
+&lt;blockquote&gt;HiDream-O1-Video 的三场世界回应测试。在《塞尔达传说：旷野之息》中，玩家点燃一片草地，火焰会沿着草叶蔓延，热空气随之升起。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html"&gt;Full radar for 2026-10-01&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.35570</id>
     <title>EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model</title>

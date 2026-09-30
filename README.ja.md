@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-09-30
+### 本日のレーダー · 2026-10-01
 
-`生成時刻: 2026-09-29 23:40 UTC` ｜ `対象期間: 論文 2026-09-26 → 2026-09-30 · ブログ・報道 2026-08-31 → 2026-09-30 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-09-30 23:40 UTC` ｜ `対象期間: 論文 2026-09-27 → 2026-10-01 · ブログ・報道 2026-09-01 → 2026-10-01 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model](https://arxiv.org/abs/2609.35570)**<br>`16 GB`&nbsp; `11.35 GB`<br><sub>エッジとリアルタイム · arXiv 2609.35570 · 2026‑09‑28</sub> |
-| 02<br>🔵&nbsp;`R` | **[ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning](https://arxiv.org/abs/2609.34982)**<br>`9.8%`&nbsp; `6.1%`&nbsp; `11.4%`<br><sub>基盤モデル · arXiv 2609.34982 · 2026‑09‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575)**<br>`93.75%`&nbsp; `90.0%`<br><sub>シミュレーションと評価 · arXiv 2609.35575 · 2026‑09‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching](https://arxiv.org/abs/2609.35469)**<br><sub>基盤モデル · arXiv 2609.35469 · 2026‑09‑28</sub> |
-| 05<br>🔵&nbsp;`R` | **[RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2609.34170)**<br><sub>エッジとリアルタイム · arXiv 2609.34170 · 2026‑09‑28</sub> |
-| 06<br>🟡&nbsp;`M` | **[ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness](https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents](https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑29</sub> |
-| 08<br>🟡&nbsp;`M` | **[动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 \| IROS 2026](https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑09‑29</sub> |
+| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>シミュレーションと評価 · arXiv 2609.38059 · 2026‑09‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>シミュレーションと評価 · arXiv 2609.37560 · 2026‑09‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>学習と自己改善 · arXiv 2609.36588 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>エッジとリアルタイム · arXiv 2609.37772 · 2026‑09‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑30</sub> |
+| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑09‑30</sub> |
+| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>エッジとリアルタイム · MONOist (ITmedia) · 2026‑09‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑09‑30</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **EdgeVLN** — `AI 下書き` Jetson Orin NX 16 GB のようなメモリ・電力制約のあるエッジ機に視覚言語ナビゲーションを載せる検討では、著者申告の常駐メモリ 11.35 GB がメモリ予算の目安になる。プレプリントの自己申告なので、機材選定前に自前のスタックで実測を。
-2. **ActionUNet** — `AI 下書き` 既存 VLA の操作方策を再学習ではなくファインチューニングで頑健にしたいなら、成功率が絶対値で 9.8% 動いたという自己申告があり、コードまたは重みの公開も示されている。採用前にまず自分のタスクで手軽に再現を試す価値がある。
-3. **F4R** — `AI 下書き` 専門家デモの網羅性が足りないとき、デモを積み増す代わりに失敗から学んで再配備するループが選択肢になる。著者は分布内 93.75%、分布外 90.0% の成功率を自己申告しており差は小さいが、計画に織り込む前に検証が要る。
-4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — `AI 下書き` 自己回帰型 VLA を使うチームは、行動トークナイザを単なる圧縮工程ではなく設計上の選択肢として扱うべきだと著者は主張する。ただし本ページに数値はなく、現時点でトークナイザ変更の根拠にはならない。
-5. **RAVEL** — `AI 下書き` フロー型 VLA の遅さが高コストな VLM エンコードと多段の反復的な行動生成に起因するなら、非同期推論は追う価値のある方向だ。ただし本ページに具体的な数値はなく、制御ループの予算見積もりにはまだ使えない。
-6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — `AI 下書き` ヒューマノイド開発では、力覚・トルクセンサの使いどころと破損をどう防ぐかは設計段階で詰めるべき論点だ。本記事は講演の二次的な告知で製品データはなく、根拠ではなく点検項目のきっかけとして扱いたい。
-7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — `AI 下書き` $3,555 の家庭用ロボットが、スマートフォンでの教示とクラウド学習による家事自動化を前提とするなら、利用者は通信への依存も信頼性の一部として見る必要がある。発表を伝える二次報道で、出荷状況は一次情報での確認が要る。
-8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — `AI 下書き` ヒューマノイドの高ダイナミック運動が産業レベルに進んだと紹介されているが、学会取材の二次報道で、本ページには手法の詳細も評価データもない。運動制御の方式選定に使うのは一次資料を待ってからにしたい。
+1. **WorldLine** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **RoboFin3D** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+4. **Urgent Actions Go First** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Innodata opens motion-capture lab to help humanoids move more like people** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **Tackling construction labor shortages** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-09-30.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-01.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

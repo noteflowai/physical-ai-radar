@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-09-30
+### Today's radar · 2026-10-01
 
-`Generated: 2026-09-29 23:40 UTC` ｜ `Window: papers 2026-09-26 → 2026-09-30 · posts 2026-08-31 → 2026-09-30 · no repeats within 30 days (UTC)`
+`Generated: 2026-09-30 23:40 UTC` ｜ `Window: papers 2026-09-27 → 2026-10-01 · posts 2026-09-01 → 2026-10-01 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model](https://arxiv.org/abs/2609.35570)**<br>`16 GB`&nbsp; `11.35 GB`<br><sub>Edge & real-time · arXiv 2609.35570 · 2026‑09‑28</sub> |
-| 02<br>🔵&nbsp;`R` | **[ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning](https://arxiv.org/abs/2609.34982)**<br>`9.8%`&nbsp; `6.1%`&nbsp; `11.4%`<br><sub>Foundation models · arXiv 2609.34982 · 2026‑09‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575)**<br>`93.75%`&nbsp; `90.0%`<br><sub>Simulation & evaluation · arXiv 2609.35575 · 2026‑09‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching](https://arxiv.org/abs/2609.35469)**<br><sub>Foundation models · arXiv 2609.35469 · 2026‑09‑28</sub> |
-| 05<br>🔵&nbsp;`R` | **[RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2609.34170)**<br><sub>Edge & real-time · arXiv 2609.34170 · 2026‑09‑28</sub> |
-| 06<br>🟡&nbsp;`M` | **[ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness](https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents](https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑29</sub> |
-| 08<br>🟡&nbsp;`M` | **[动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 \| IROS 2026](https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑09‑29</sub> |
+| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>Simulation & evaluation · arXiv 2609.38059 · 2026‑09‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>Simulation & evaluation · arXiv 2609.37560 · 2026‑09‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>Training & self-improvement · arXiv 2609.36588 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>Edge & real-time · arXiv 2609.37772 · 2026‑09‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑30</sub> |
+| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑09‑30</sub> |
+| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>Edge & real-time · MONOist (ITmedia) · 2026‑09‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑09‑30</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **EdgeVLN** — `AI draft` Teams sizing vision-language navigation for a memory- and power-constrained module like the Jetson Orin NX 16 GB get a self-reported 11.35 GB resident-memory figure to budget against; it is a preprint claim, so measure on your own stack before choosing hardware.
-2. **ActionUNet** — `AI draft` If you want a sturdier VLA manipulation policy through fine-tuning rather than retraining, this preprint reports success rates moving by an absolute 9.8% and the page flags an open code or weights release, so a cheap reproduction on your own tasks comes before adoption.
-3. **F4R** — `AI draft` When expert demonstrations cover too little, a loop that learns from failures and redeploys is an alternative to collecting more of them; the authors self-report 93.75% in-distribution and 90.0% out-of-distribution success, a narrow gap worth verifying before planning around it.
-4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — `AI draft` Teams on autoregressive VLAs should treat the action tokenizer as a design choice rather than a compression step, as the authors argue current ones are semantically misaligned; with no figures on the page, it is not yet grounds to swap tokenizers.
-5. **RAVEL** — `AI draft` If costly VLM encoding and multi-step action generation are what slow your flow-based VLA, asynchronous inference is a direction to track, but the page lists no concrete figures, so there is nothing yet to size a control-loop budget against.
-6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — `AI draft` For humanoid builders, where force and torque sensors go and how to keep them from breaking are design-stage questions; this is a secondary preview of a conference session with no product data, so treat it as a checklist prompt, not evidence.
-7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — `AI draft` A home robot priced at $3,555 that relies on phone-based and cloud-trained chore automation makes connectivity part of its reliability story for buyers; this is secondary coverage of an announced release, so shipping status still needs a primary source.
-8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — `AI draft` High-dynamic humanoid motion is described as reaching industrial-grade progress, but this is secondary conference coverage with no method detail or evaluation data on the page, so wait for primary material before it informs a motion-control choice.
+1. **WorldLine** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **RoboFin3D** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+4. **Urgent Actions Go First** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Innodata opens motion-capture lab to help humanoids move more like people** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **Tackling construction labor shortages** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-09-30.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-01.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

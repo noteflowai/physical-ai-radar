@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-09-30
+### 今日雷达 · 2026-10-01
 
-`生成时间: 2026-09-29 23:40 UTC` ｜ `统计窗口: 论文 2026-09-26 → 2026-09-30 · 博客与报道 2026-08-31 → 2026-09-30 · 30 天内不重复 (UTC)`
+`生成时间: 2026-09-30 23:40 UTC` ｜ `统计窗口: 论文 2026-09-27 → 2026-10-01 · 博客与报道 2026-09-01 → 2026-10-01 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model](https://arxiv.org/abs/2609.35570)**<br>`16 GB`&nbsp; `11.35 GB`<br><sub>边缘与实时性 · arXiv 2609.35570 · 2026‑09‑28</sub> |
-| 02<br>🔵&nbsp;`R` | **[ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning](https://arxiv.org/abs/2609.34982)**<br>`9.8%`&nbsp; `6.1%`&nbsp; `11.4%`<br><sub>基座模型 · arXiv 2609.34982 · 2026‑09‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575)**<br>`93.75%`&nbsp; `90.0%`<br><sub>仿真与评测 · arXiv 2609.35575 · 2026‑09‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching](https://arxiv.org/abs/2609.35469)**<br><sub>基座模型 · arXiv 2609.35469 · 2026‑09‑28</sub> |
-| 05<br>🔵&nbsp;`R` | **[RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2609.34170)**<br><sub>边缘与实时性 · arXiv 2609.34170 · 2026‑09‑28</sub> |
-| 06<br>🟡&nbsp;`M` | **[ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness](https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents](https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑29</sub> |
-| 08<br>🟡&nbsp;`M` | **[动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 \| IROS 2026](https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html)**<br><sub>仿真与评测 · 雷峰网 Leiphone · 2026‑09‑29</sub> |
+| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>仿真与评测 · arXiv 2609.38059 · 2026‑09‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>仿真与评测 · arXiv 2609.37560 · 2026‑09‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>训练与自我改进 · arXiv 2609.36588 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>边缘与实时性 · arXiv 2609.37772 · 2026‑09‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑30</sub> |
+| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>系统与编排 · The Robot Report · 2026‑09‑30</sub> |
+| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>边缘与实时性 · MONOist (ITmedia) · 2026‑09‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑09‑30</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **EdgeVLN** — `AI 起草` 如果你想把视觉语言导航放到 Jetson Orin NX 16 GB 这类受内存和功耗限制的端侧设备上，作者自报 11.35 GB 常驻内存，可作为选型时的内存预算参照；这是预印本自报，上机前请在自己的导航栈上复测。
-2. **ActionUNet** — `AI 起草` 如果你在考虑用微调提升现有 VLA 操作策略的鲁棒性，而不是重新训练，这篇预印本自报成功率绝对变化 9.8%，页面也标出了代码或权重开放，适合先在自己的任务上低成本复现，再决定是否纳入流程。
-3. **F4R** — `AI 起草` 专家示范覆盖不足时，与其继续堆示范，不如考虑从失败中回收并重新部署的闭环；作者自报分布内 93.75%、分布外 90.0% 成功率，两者差距不大，但属预印本自报，页面未说明任务规模。
-4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — `AI 起草` 用自回归 VLA 的团队应把动作分词器当作设计变量，而不只是压缩环节：作者认为现有分词器在语义上与任务错位；页面未给出任何数字，暂不足以据此更换分词方案。
-5. **RAVEL** — `AI 起草` 如果你的流式 VLA 被昂贵的 VLM 编码和多步迭代生成动作拖慢，异步推理是值得跟踪的方向；但页面没有列出任何具体数字，暂时无法据此估算控制回路能省下多少时间。
-6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — `AI 起草` 对人形机器人团队来说，力/扭矩传感器的用法和防损坏都是设计阶段就该考虑的问题；这只是一场会议讲座的二手预告，没有产品或数据，只能当作排查清单的提示。
-7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — `AI 起草` 家用机器人报出 $3,555 的价位，并靠手机训练、云端训练完成家务，这意味着使用方要把联网依赖算进可用性；这是媒体对发布的二手报道，交付情况尚待一手确认。
-8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — `AI 起草` 人形机器人高动态运动被描述为已有工业级进展，但这是媒体围绕顶会的二手报道，页面没有方法细节或评测数据，做运动控制选型前应等一手材料。
+1. **WorldLine** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **RoboFin3D** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。
+3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+4. **Urgent Actions Go First** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Innodata opens motion-capture lab to help humanoids move more like people** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **Tackling construction labor shortages** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-09-30.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-01.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
