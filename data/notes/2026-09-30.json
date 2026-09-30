@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-09-30",
+  "generated": "2026-09-30 14:25 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.35570": {
+      "zh": "如果你想把视觉语言导航放到 Jetson Orin NX 16 GB 这类受内存和功耗限制的端侧设备上，作者自报 11.35 GB 常驻内存，可作为选型时的内存预算参照；这是预印本自报，上机前请在自己的导航栈上复测。",
+      "en": "Teams sizing vision-language navigation for a memory- and power-constrained module like the Jetson Orin NX 16 GB get a self-reported 11.35 GB resident-memory figure to budget against; it is a preprint claim, so measure on your own stack before choosing hardware.",
+      "ja": "Jetson Orin NX 16 GB のようなメモリ・電力制約のあるエッジ機に視覚言語ナビゲーションを載せる検討では、著者申告の常駐メモリ 11.35 GB がメモリ予算の目安になる。プレプリントの自己申告なので、機材選定前に自前のスタックで実測を。"
+    },
+    "https://arxiv.org/abs/2609.34982": {
+      "zh": "如果你在考虑用微调提升现有 VLA 操作策略的鲁棒性，而不是重新训练，这篇预印本自报成功率绝对变化 9.8%，页面也标出了代码或权重开放，适合先在自己的任务上低成本复现，再决定是否纳入流程。",
+      "en": "If you want a sturdier VLA manipulation policy through fine-tuning rather than retraining, this preprint reports success rates moving by an absolute 9.8% and the page flags an open code or weights release, so a cheap reproduction on your own tasks comes before adoption.",
+      "ja": "既存 VLA の操作方策を再学習ではなくファインチューニングで頑健にしたいなら、成功率が絶対値で 9.8% 動いたという自己申告があり、コードまたは重みの公開も示されている。採用前にまず自分のタスクで手軽に再現を試す価値がある。"
+    },
+    "https://arxiv.org/abs/2609.35575": {
+      "zh": "专家示范覆盖不足时，与其继续堆示范，不如考虑从失败中回收并重新部署的闭环；作者自报分布内 93.75%、分布外 90.0% 成功率，两者差距不大，但属预印本自报，页面未说明任务规模。",
+      "en": "When expert demonstrations cover too little, a loop that learns from failures and redeploys is an alternative to collecting more of them; the authors self-report 93.75% in-distribution and 90.0% out-of-distribution success, a narrow gap worth verifying before planning around it.",
+      "ja": "専門家デモの網羅性が足りないとき、デモを積み増す代わりに失敗から学んで再配備するループが選択肢になる。著者は分布内 93.75%、分布外 90.0% の成功率を自己申告しており差は小さいが、計画に織り込む前に検証が要る。"
+    },
+    "https://arxiv.org/abs/2609.35469": {
+      "zh": "用自回归 VLA 的团队应把动作分词器当作设计变量，而不只是压缩环节：作者认为现有分词器在语义上与任务错位；页面未给出任何数字，暂不足以据此更换分词方案。",
+      "en": "Teams on autoregressive VLAs should treat the action tokenizer as a design choice rather than a compression step, as the authors argue current ones are semantically misaligned; with no figures on the page, it is not yet grounds to swap tokenizers.",
+      "ja": "自己回帰型 VLA を使うチームは、行動トークナイザを単なる圧縮工程ではなく設計上の選択肢として扱うべきだと著者は主張する。ただし本ページに数値はなく、現時点でトークナイザ変更の根拠にはならない。"
+    },
+    "https://arxiv.org/abs/2609.34170": {
+      "zh": "如果你的流式 VLA 被昂贵的 VLM 编码和多步迭代生成动作拖慢，异步推理是值得跟踪的方向；但页面没有列出任何具体数字，暂时无法据此估算控制回路能省下多少时间。",
+      "en": "If costly VLM encoding and multi-step action generation are what slow your flow-based VLA, asynchronous inference is a direction to track, but the page lists no concrete figures, so there is nothing yet to size a control-loop budget against.",
+      "ja": "フロー型 VLA の遅さが高コストな VLM エンコードと多段の反復的な行動生成に起因するなら、非同期推論は追う価値のある方向だ。ただし本ページに具体的な数値はなく、制御ループの予算見積もりにはまだ使えない。"
+    },
+    "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026": {
+      "zh": "对人形机器人团队来说，力/扭矩传感器的用法和防损坏都是设计阶段就该考虑的问题；这只是一场会议讲座的二手预告，没有产品或数据，只能当作排查清单的提示。",
+      "en": "For humanoid builders, where force and torque sensors go and how to keep them from breaking are design-stage questions; this is a secondary preview of a conference session with no product data, so treat it as a checklist prompt, not evidence.",
+      "ja": "ヒューマノイド開発では、力覚・トルクセンサの使いどころと破損をどう防ぐかは設計段階で詰めるべき論点だ。本記事は講演の二次的な告知で製品データはなく、根拠ではなく点検項目のきっかけとして扱いたい。"
+    },
+    "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents": {
+      "zh": "家用机器人报出 $3,555 的价位，并靠手机训练、云端训练完成家务，这意味着使用方要把联网依赖算进可用性；这是媒体对发布的二手报道，交付情况尚待一手确认。",
+      "en": "A home robot priced at $3,555 that relies on phone-based and cloud-trained chore automation makes connectivity part of its reliability story for buyers; this is secondary coverage of an announced release, so shipping status still needs a primary source.",
+      "ja": "$3,555 の家庭用ロボットが、スマートフォンでの教示とクラウド学習による家事自動化を前提とするなら、利用者は通信への依存も信頼性の一部として見る必要がある。発表を伝える二次報道で、出荷状況は一次情報での確認が要る。"
+    },
+    "https://www.leiphone.com/category/private/zoj7chgidi7iphvn.html": {
+      "zh": "人形机器人高动态运动被描述为已有工业级进展，但这是媒体围绕顶会的二手报道，页面没有方法细节或评测数据，做运动控制选型前应等一手材料。",
+      "en": "High-dynamic humanoid motion is described as reaching industrial-grade progress, but this is secondary conference coverage with no method detail or evaluation data on the page, so wait for primary material before it informs a motion-control choice.",
+      "ja": "ヒューマノイドの高ダイナミック運動が産業レベルに進んだと紹介されているが、学会取材の二次報道で、本ページには手法の詳細も評価データもない。運動制御の方式選定に使うのは一次資料を待ってからにしたい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

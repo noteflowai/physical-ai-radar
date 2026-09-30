@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **EdgeVLN** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-2. **ActionUNet** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-3. **F4R** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **RAVEL** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+1. **EdgeVLN** — `AI draft` Teams sizing vision-language navigation for a memory- and power-constrained module like the Jetson Orin NX 16 GB get a self-reported 11.35 GB resident-memory figure to budget against; it is a preprint claim, so measure on your own stack before choosing hardware.
+2. **ActionUNet** — `AI draft` If you want a sturdier VLA manipulation policy through fine-tuning rather than retraining, this preprint reports success rates moving by an absolute 9.8% and the page flags an open code or weights release, so a cheap reproduction on your own tasks comes before adoption.
+3. **F4R** — `AI draft` When expert demonstrations cover too little, a loop that learns from failures and redeploys is an alternative to collecting more of them; the authors self-report 93.75% in-distribution and 90.0% out-of-distribution success, a narrow gap worth verifying before planning around it.
+4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — `AI draft` Teams on autoregressive VLAs should treat the action tokenizer as a design choice rather than a compression step, as the authors argue current ones are semantically misaligned; with no figures on the page, it is not yet grounds to swap tokenizers.
+5. **RAVEL** — `AI draft` If costly VLM encoding and multi-step action generation are what slow your flow-based VLA, asynchronous inference is a direction to track, but the page lists no concrete figures, so there is nothing yet to size a control-loop budget against.
+6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — `AI draft` For humanoid builders, where force and torque sensors go and how to keep them from breaking are design-stage questions; this is a secondary preview of a conference session with no product data, so treat it as a checklist prompt, not evidence.
+7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — `AI draft` A home robot priced at $3,555 that relies on phone-based and cloud-trained chore automation makes connectivity part of its reliability story for buyers; this is secondary coverage of an announced release, so shipping status still needs a primary source.
+8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — `AI draft` High-dynamic humanoid motion is described as reaching industrial-grade progress, but this is secondary conference coverage with no method detail or evaluation data on the page, so wait for primary material before it informs a motion-control choice.
 
 </details>
 

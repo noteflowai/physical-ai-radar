@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35570" rel="noopener" target="_blank">EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model</a></h3>
 <p class="figure"><strong>16 GB</strong><span class="context">“NVIDIA Jetson Orin NX 16 GB”</span></p><p class="chips"><span class="chip">11.35 GB</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你想把视觉语言导航放到 Jetson Orin NX 16 GB 这类受内存和功耗限制的端侧设备上，作者自报 11.35 GB 常驻内存，可作为选型时的内存预算参照；这是预印本自报，上机前请在自己的导航栈上复测。</p>
 <p class="excerpt">Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.34982" rel="noopener" target="_blank">ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning</a></h3>
 <p class="figure"><strong>9.8%</strong><span class="context">“success rates by absolute 9.8%”</span></p><p class="chips"><span class="chip">6.1%</span><span class="chip">11.4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你在考虑用微调提升现有 VLA 操作策略的鲁棒性，而不是重新训练，这篇预印本自报成功率绝对变化 9.8%，页面也标出了代码或权重开放，适合先在自己的任务上低成本复现，再决定是否纳入流程。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35575" rel="noopener" target="_blank">F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement</a></h3>
 <p class="figure"><strong>93.75%</strong><span class="context">“show that F4R achieves 93.75% In-Distribution and 90.0%”</span></p><p class="chips"><span class="chip">90.0%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 专家示范覆盖不足时，与其继续堆示范，不如考虑从失败中回收并重新部署的闭环；作者自报分布内 93.75%、分布外 90.0% 成功率，两者差距不大，但属预印本自报，页面未说明任务规模。</p>
 <p class="excerpt">The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35469" rel="noopener" target="_blank">Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 用自回归 VLA 的团队应把动作分词器当作设计变量，而不只是压缩环节：作者认为现有分词器在语义上与任务错位；页面未给出任何数字，暂不足以据此更换分词方案。</p>
 <p class="excerpt">Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.34170" rel="noopener" target="_blank">RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你的流式 VLA 被昂贵的 VLM 编码和多步迭代生成动作拖慢，异步推理是值得跟踪的方向；但页面没有列出任何具体数字，暂时无法据此估算控制回路能省下多少时间。</p>
 <p class="excerpt">Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/" rel="noopener" target="_blank">ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 对人形机器人团队来说，力/扭矩传感器的用法和防损坏都是设计阶段就该考虑的问题；这只是一场会议讲座的二手预告，没有产品或数据，只能当作排查清单的提示。</p>
 <p class="excerpt">Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-29</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/" rel="noopener" target="_blank">Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 家用机器人报出 $3,555 的价位，并靠手机训练、云端训练完成家务，这意味着使用方要把联网依赖算进可用性；这是媒体对发布的二手报道，交付情况尚待一手确认。</p>
 <p class="excerpt">Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-29</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html" rel="noopener" target="_blank">动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 人形机器人高动态运动被描述为已有工业级进展，但这是媒体围绕顶会的二手报道，页面没有方法细节或评测数据，做运动控制选型前应等一手材料。</p>
 <p class="excerpt">顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-29</span>
