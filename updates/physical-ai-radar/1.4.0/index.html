@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>claim-audit worksheet for recently published numeric claims (RA-01) · NoteFlowAI</title><meta name="description" content="Adds python3 -m pairadar.claims, an offline, read-only command for the RA-01 claim review. It reads the published JSON Feed store (radar/feed.json by default). For each figure in the items[]._radar entries within the chosen window, it prints one row "><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.0/"><meta property="og:type" content="article"><meta property="og:title" content="claim-audit worksheet for recently published numeric claims (RA-01)"><meta property="og:description" content="Adds python3 -m pairadar.claims, an offline, read-only command for the RA-01 claim review. It reads the published JSON Feed store (radar/feed.json by default). For each figure in the items[]._radar entries within the chosen window, it prints one row "><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.0/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/physical-ai-radar · 1.4.0 · 2026-09-30</p><h1>claim-audit worksheet for recently published numeric claims (RA-01)</h1><p>Adds python3 -m pairadar.claims, an offline, read-only command for the RA-01 claim review. It reads the published JSON Feed store (radar/feed.json by default). For each figure in the items[]._radar entries within the chosen window, it prints one row of a deterministic Markdown review sheet. The columns are #, day, evidence, claim, status, context, source and an empty review cell. Each status comes from distill.number_context applied to the stored text:
+- quoted: the figure was found in the stored excerpt.
+- title: the figure was found only in the title.
+- no-excerpt: the stored excerpt is empty, as it is for baseline entries.
+- unlocated: the figure is not in the stored title or truncated excerpt. Check the original source first.
+
+The reference day is the newest valid entry date, not the system clock. The header gives the store path, reference day, days, total figures T, rows shown S and skipped entries K. A whole-window status-count line always appears. When the sheet is capped, a line gives the number of hidden unlocated and no-excerpt figures and a --limit T rerun value. Items that are not objects, lack a _radar dict or have a non-canonical date are skipped and counted. Store problems (missing, unreadable or invalid JSON, wrong shape or version, no dated entries) exit 2 with one &#x27;claims: &#x27; stderr line and no traceback.
+
+Controller-executed checks on candidate 3bd0c4f:
+- The feature test ran on the pre-change tree and failed with ImportError because pairadar.claims did not exist yet.
+- On the candidate, python -m pairadar --rerender --no-readme exited 0.
+- tests/test_feature_02985cec3631.py exited 0.
+- The full unittest suite passed: 469 tests, OK.
+
+The author did not run any of these checks.</p><h2>Use it</h2><pre>Prerequisites: run from the repository root with Python 3 (the controller used 3.12). No network access or extra packages are needed.
+
+1. Build a SYNTHETIC sample store. The data below is labeled and invented, not real radar data:
+
+python3 - &lt;&lt;&#x27;EOF&#x27;
+import json
+from pairadar import feeds
+from pairadar.config import Item
+# SYNTHETIC example entry for trying the tool
+item = Item(id=&quot;synthetic-1&quot;, title=&quot;Synthetic gripper reaches 92% success&quot;, url=&quot;https://example.org/synthetic-1&quot;, publisher=&quot;Example Lab&quot;, source_id=&quot;example&quot;, evidence=&quot;M&quot;, published=&quot;2026-09-29&quot;, summary=&quot;Synthetic summary: the gripper reached 92% success over 40 trials.&quot;, numbers=[&quot;92%&quot;, &quot;40&quot;])
+store = {&quot;version&quot;: feeds.JSON_FEED_VERSION, &quot;items&quot;: [{&quot;_radar&quot;: feeds.record(item, &quot;2026-09-30&quot;, &quot;2026-09-30 06:00 UTC&quot;)}]}
+with open(&quot;/tmp/claims-sample.json&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fh:
+    json.dump(store, fh)
+EOF
+
+2. Run the audit on the sample:
+
+python3 -m pairadar.claims --store /tmp/claims-sample.json --days 7 --limit 30
+
+3. For the real review, use the published store:
+
+python3 -m pairadar.claims --days 7 --limit 30 &gt; /tmp/claim-review.md
+
+Options: --days takes 1 to 30 and --limit takes 1 or more. Invalid values give an argparse usage error with exit 2.
+
+4. Open /tmp/claim-review.md and check the header (reference day, T, S, K) and the whole-window status line. If the sheet says &#x27;Rerun with --limit T&#x27;, rerun with that value.
+
+5. Open each source link, starting with the unlocated and no-excerpt rows. Fill in the review column with the date, unit, population and limitations you checked.
+
+Run the feature tests with: python3 -m unittest tests.test_feature_02985cec3631</pre><h2>Scope</h2><p>Scope:
+- The tool reads only the radar/feed.json store format. It does not audit data/baseline.json or snapshots, fetch original sources, write correction records or produce JSON or CSV.
+- The issue #73 EgoScale figure (44k vs 20,854 hours) still needs a maintainer data correction.
+
+What a status means:
+- The store keeps only the title and a truncated excerpt, so unlocated means the figure is not in that stored text. It does not mean the claim is unsupported.
+- No status checks the date, unit, population or correctness of a claim.
+
+Context cells:
+- The context is exactly the distill.number_context output. The tests check that it equals that output and contains the figure.
+- The tests do not check that the context is a verbatim substring of the stored title or excerpt. number_context joins words with single spaces, so a clause that crossed a line break or repeated whitespace can differ from the raw stored text.
+
+Other behavior:
+- Entries with non-canonical dates, items without _radar and non-object items are skipped and counted, not repaired.
+- Non-string text fields are shown as empty.
+- The pipeline limits the store to 30 days and 100 entries.
+
+Evidence:
+- All test fixtures are synthetic and labeled. The passing controller checks cover the behavior on those fixtures plus the existing rerender and the full 469-test suite. They do not show accuracy on real published claims.
+- This is a CLI with Markdown output. No browser or visual review of this feature was done, and none applies.</p><h2>Upgrade and rollback</h2><p>The change is additive:
+- new module pairadar/claims.py
+- new tests in tests/test_feature_02985cec3631.py
+- a paragraph in section 4 of docs/METHODOLOGY.md
+
+feeds.py, the pipeline, pages, feeds, snapshots and data files are unchanged. On the candidate commit, the controller&#x27;s rerender check and the full existing test suite passed. The tool only reads the store and writes nothing, so no migration is needed and no data can be lost.
+
+To roll back, revert the commit. Existing stores and daily runs are unaffected. Any review sheets you saved (for example /tmp/claim-review.md) are ordinary files and are not touched by a rollback.</p><p class="links"><a href="https://github.com/noteflowai/physical-ai-radar/releases/tag/v1.4.0">Release and downloads</a><a href="https://github.com/noteflowai/physical-ai-radar/pull/103">Implementation and checks</a></p><p class="meta">Source commit: <code>f302ac86e23e34b048781cfcdd2309be8a62e4f3</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
