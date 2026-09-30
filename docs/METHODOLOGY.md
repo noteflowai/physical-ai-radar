@@ -141,6 +141,29 @@ text also gives it on its own.
 Feed furniture is removed before anything is quoted: the WordPress footer "The post …
 appeared first on …" and the fixed Video Friday preamble.
 
+Published figures can be reviewed against their sources (roadmap RA-01) with
+`python3 -m pairadar.claims [--store PATH] [--days N] [--limit N]`. The tool is offline and
+read-only. It reads `radar/feed.json` and prints a Markdown worksheet with one row per figure
+published in the `--days` (1–30, default 7) before the newest entry date. It never uses the
+wall clock. Each row gives the day, evidence tag, source link, a status, a quoted context and an
+empty review column. The header and a whole-window status line count every figure, even when
+`--limit` (default 30, no upper bound) caps the table. A truncation line then says how many
+unlocated and no-excerpt figures are hidden and gives the `--limit` value that lists them all.
+The statuses come from `number_context` over what the store kept:
+
+- **quoted**: the figure is in the stored excerpt, and the context is the quoted clause;
+- **title**: the figure is only in the title;
+- **no-excerpt**: the entry has no excerpt, as with baseline entries;
+- **unlocated**: the figure is in neither. The store keeps only a one- or two-sentence
+  excerpt, while figures are extracted from the full summary. Unlocated therefore means
+  "check the original source first", not "unsupported".
+
+No status verifies a date, unit, population or result. Items that are not objects, items
+without a `_radar` object, and entries whose date is not a canonical `YYYY-MM-DD` string are
+skipped and counted in the header. Non-string text fields are shown as empty. An unreadable
+store, invalid JSON, the wrong JSON Feed version, a non-list `items` or no dated entries exits
+2 with one `claims:` line.
+
 ## 5. Translation policy
 
 This is the part most repositories get wrong, so it is explicit here:
