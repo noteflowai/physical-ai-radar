@@ -5,6 +5,38 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>count final Bedrock chat failures by cause on the dashboard</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/</guid>
+      <description>Version 1.53.0 makes failed Amazon Bedrock chat calls visible on the existing admin dashboard. The Usage today card has a fourth metric, Failed requests. The seven-day usage panel has one line, for example 'Failed chat requests, last 7 days: 4. Throttled 3, access denied 1.' When there are none it reads 'No failed chat requests recorded in the last 7 days.' The line also appears in the existing empty state. A site where every call fails no longer looks like a quiet site.
+
+A failure is counted once per handle_chat_message() or stream_chat_message() call, only if that call sent at least one Bedrock HTTP request and still returned an error after fallback and Converse adaptation retries. AI_Chat_Bedrock_Usage::classify_failure() sorts it into one of six categories using the HTTP status and the plugin error code: throttled (429), access_denied (401/403), validation (400), unavailable (5xx), network (status 0 with aicfab_unreachable or aicfab_stream_interrupted) or other.
+
+Some cases are not counted:
+- Missing credentials, an invalid region or model, the daily limit, and encoding errors. None of these send a request.
+- Retries that later succeeded.
+- Stopped streams.
+
+Only per-day category counts are stored in the existing ai_chat_bedrock_usage option. No message, prompt, output, error text, user ID or IP is kept. Requests, tokens, per-model counts and the daily cap still count successful invocations only.
+
+Controller-run checks on commit d1da36b:
+- Before the change, the new test failed with exit 255 (undefined classify_failure) on the base code.
+- tests/test_feature_364f48c382c4.php passed with assertions enabled.
+- bin/prerelease.sh passed: 47 suites including usage.php and admin-ux.php, phpcs clean, and versions all 1.53.0.
+- tests/tooling.php passed.
+- bin/build-package.py built the 1.53.0 zip.
+
+The stream_chat_message() return-path check that failed in the prior review now passes.</description>
+      <pubDate>Wed, 30 Sep 2026 18:43:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>fix: name the first bad frame in LeRobot timeline errors</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.18.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.18.1/</guid>
+      <description>robot-reel lerobot now names the first frame that breaks an episode's timeline. It still stops with exit status 2 and writes no output. Each message gives the dataset-relative data file, the episode and the first bad frame_index. There are five cases: a missing frame (with the next recorded frame_index), a repeated frame, an unexpected value (negative, null, NaN or non-numeric), a frame with no finite timestamp, and a timestamp that is not after the previous frame's (both values shown). Frame indices are now checked before the metadata length check, so a frame dropped mid-episode is reported as a gap instead of a count mismatch. A missing final frame keeps the old 'Episode metadata lists N frames but ... holds N-1' message. Every timeline message ends with 'Robot Reel does not reorder, fill or interpolate frames; repair or re-export the episode.' The accept/reject rule is unchanged, so float or bool frame_index columns equal to 0..length-1 are still accepted. docs/lerobot.md has a new 'Timeline errors' section. Controller results for commit f8e0c1e: before the fix, the new test file ran 10 tests on the base code with 5 failures (the old generic messages) and 5 skips. After the fix, one gated run passed the new test file, the full Python unittest suite, npm run check:js, node --test (52 of 52) and robot_reel.pages --write (0 files updated). I wrote this delivery text only; I did not run any of these checks myself.</description>
+      <pubDate>Wed, 30 Sep 2026 18:30:18 +0000</pubDate>
+    </item>
+    <item>
       <title>claim-audit worksheet for recently published numeric claims (RA-01)</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.0/</guid>
