@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35570" rel="noopener" target="_blank">EdgeVLN: Runtime-Aware Deployment Ready Quantized Vision Language Navigation Model</a></h3>
 <p class="figure"><strong>16 GB</strong><span class="context">“NVIDIA Jetson Orin NX 16 GB”</span></p><p class="chips"><span class="chip">11.35 GB</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Jetson Orin NX 16 GB のようなメモリ・電力制約のあるエッジ機に視覚言語ナビゲーションを載せる検討では、著者申告の常駐メモリ 11.35 GB がメモリ予算の目安になる。プレプリントの自己申告なので、機材選定前に自前のスタックで実測を。</p>
 <p class="excerpt">Vision-language navigation (VLN) models perform well but target compute-rich platforms, limiting deployment on memory- and power-constrained robotic edge devices.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.34982" rel="noopener" target="_blank">ActionUNet: Improving Robustness of VLA Models with Efficient Multi-scale Fine-tuning</a></h3>
 <p class="figure"><strong>9.8%</strong><span class="context">“success rates by absolute 9.8%”</span></p><p class="chips"><span class="chip">6.1%</span><span class="chip">11.4%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 既存 VLA の操作方策を再学習ではなくファインチューニングで頑健にしたいなら、成功率が絶対値で 9.8% 動いたという自己申告があり、コードまたは重みの公開も示されている。採用前にまず自分のタスクで手軽に再現を試す価値がある。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models have shown great promise for robotic manipulation by mapping multi-modal semantics to physical actions.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35575" rel="noopener" target="_blank">F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement</a></h3>
 <p class="figure"><strong>93.75%</strong><span class="context">“show that F4R achieves 93.75% In-Distribution and 90.0%”</span></p><p class="chips"><span class="chip">90.0%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 専門家デモの網羅性が足りないとき、デモを積み増す代わりに失敗から学んで再配備するループが選択肢になる。著者は分布内 93.75%、分布外 90.0% の成功率を自己申告しており差は小さいが、計画に織り込む前に検証が要る。</p>
 <p class="excerpt">The real-world performance of current vision-language-action models is fundamentally constrained by the limited coverage of expert demonstrations and their insufficient understanding of physical interactions.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.35469" rel="noopener" target="_blank">Rethinking Causal Action Tokenization with Conditional Annealing in Flow Matching</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 自己回帰型 VLA を使うチームは、行動トークナイザを単なる圧縮工程ではなく設計上の選択肢として扱うべきだと著者は主張する。ただし本ページに数値はなく、現時点でトークナイザ変更の根拠にはならない。</p>
 <p class="excerpt">Autoregressive Vision-Language-Action (VLA) models offer a scalable path to robot learning, yet existing action tokenizers treat tokenization as a compression problem, producing representations that are semantically misaligned with the…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.34170" rel="noopener" target="_blank">RAVEL: Asynchronous Rolling Inference for Flow-Based Vision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> フロー型 VLA の遅さが高コストな VLM エンコードと多段の反復的な行動生成に起因するなら、非同期推論は追う価値のある方向だ。ただし本ページに具体的な数値はなく、制御ループの予算見積もりにはまだ使えない。</p>
 <p class="excerpt">Flow-based vision-language-action (VLA) models are highly effective for generalist robot manipulation, yet their reliance on computationally expensive VLM encoding and multi-step iterative action generation imposes a significant latency…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/" rel="noopener" target="_blank">ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ヒューマノイド開発では、力覚・トルクセンサの使いどころと破損をどう防ぐかは設計段階で詰めるべき論点だ。本記事は講演の二次的な告知で製品データはなく、根拠ではなく点検項目のきっかけとして扱いたい。</p>
 <p class="excerpt">Attendees will learn about the many ways they can use force and torque sensors in humanoids and how to avoid breaking them while doing it.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-29</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/" rel="noopener" target="_blank">Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> $3,555 の家庭用ロボットが、スマートフォンでの教示とクラウド学習による家事自動化を前提とするなら、利用者は通信への依存も信頼性の一部として見る必要がある。発表を伝える二次報道で、出荷状況は一次情報での確認が要る。</p>
 <p class="excerpt">Flourish is releasing a $3,555 phone-trainable home robot, targeting busy parents with personalized, cloud-trained chore automation.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-29</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/private/zoJ7chGiDi7IPHvN.html" rel="noopener" target="_blank">动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ヒューマノイドの高ダイナミック運動が産業レベルに進んだと紹介されているが、学会取材の二次報道で、本ページには手法の詳細も評価データもない。運動制御の方式選定に使うのは一次資料を待ってからにしたい。</p>
 <p class="excerpt">顶会上的人形机器人高动态运动场景的最新工业级进展。羽毛球大概是所有球类里最“不讲道理”的项目。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-29</span>

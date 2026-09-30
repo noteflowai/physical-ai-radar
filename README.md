@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **EdgeVLN** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-2. **ActionUNet** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-3. **F4R** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-5. **RAVEL** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+1. **EdgeVLN** — `AI 起草` 如果你想把视觉语言导航放到 Jetson Orin NX 16 GB 这类受内存和功耗限制的端侧设备上，作者自报 11.35 GB 常驻内存，可作为选型时的内存预算参照；这是预印本自报，上机前请在自己的导航栈上复测。
+2. **ActionUNet** — `AI 起草` 如果你在考虑用微调提升现有 VLA 操作策略的鲁棒性，而不是重新训练，这篇预印本自报成功率绝对变化 9.8%，页面也标出了代码或权重开放，适合先在自己的任务上低成本复现，再决定是否纳入流程。
+3. **F4R** — `AI 起草` 专家示范覆盖不足时，与其继续堆示范，不如考虑从失败中回收并重新部署的闭环；作者自报分布内 93.75%、分布外 90.0% 成功率，两者差距不大，但属预印本自报，页面未说明任务规模。
+4. **Rethinking Causal Action Tokenization with Conditional Annealing in Flow Ma…** — `AI 起草` 用自回归 VLA 的团队应把动作分词器当作设计变量，而不只是压缩环节：作者认为现有分词器在语义上与任务错位；页面未给出任何数字，暂不足以据此更换分词方案。
+5. **RAVEL** — `AI 起草` 如果你的流式 VLA 被昂贵的 VLM 编码和多步迭代生成动作拖慢，异步推理是值得跟踪的方向；但页面没有列出任何具体数字，暂时无法据此估算控制回路能省下多少时间。
+6. **ForceN to give a crash course on force and torque sensing for humanoids at…** — `AI 起草` 对人形机器人团队来说，力/扭矩传感器的用法和防损坏都是设计阶段就该考虑的问题；这只是一场会议讲座的二手预告，没有产品或数据，只能当作排查清单的提示。
+7. **Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents** — `AI 起草` 家用机器人报出 $3,555 的价位，并靠手机训练、云端训练完成家务，这意味着使用方要把联网依赖算进可用性；这是媒体对发布的二手报道，交付情况尚待一手确认。
+8. **动易科技刘晨澔：人形机器人羽毛球对拉 40 拍背后的分层革命 | IROS 2026** — `AI 起草` 人形机器人高动态运动被描述为已有工业级进展，但这是媒体围绕顶会的二手报道，页面没有方法细节或评测数据，做运动控制选型前应等一手材料。
 
 </details>
 
