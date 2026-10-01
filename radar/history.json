@@ -209,6 +209,25 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-02",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2609.39198",
+        "https://arxiv.org/abs/2609.39763",
+        "https://arxiv.org/abs/2609.37771",
+        "https://arxiv.org/abs/2609.39822",
+        "https://spectrum.ieee.org/robust-robot-hand",
+        "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand",
+        "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies",
+        "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }

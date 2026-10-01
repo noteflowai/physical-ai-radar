@@ -1,182 +1,178 @@
 {
-  "date": "2026-10-01",
-  "generated": "2026-09-30 23:40 UTC",
-  "window": "papers 2026-09-27 → 2026-10-01 · posts 2026-09-01 → 2026-10-01 (UTC)",
+  "date": "2026-10-02",
+  "generated": "2026-10-01 23:40 UTC",
+  "window": "papers 2026-09-28 → 2026-10-02 · posts 2026-09-02 → 2026-10-02 (UTC)",
   "window_detail": {
-    "day": "2026-10-01",
-    "papers_from": "2026-09-27",
-    "posts_from": "2026-09-01",
+    "day": "2026-10-02",
+    "papers_from": "2026-09-28",
+    "posts_from": "2026-09-02",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2609.38059",
-      "title": "WorldLine: Action-Driven Visual Simulation for Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2609.38059",
-      "publisher": "arXiv 2609.38059",
+      "id": "arxiv:2609.39198",
+      "title": "DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction",
+      "url": "https://arxiv.org/abs/2609.39198",
+      "publisher": "arXiv 2609.39198",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-29",
-      "lane": "simeval",
-      "score": 3.975,
-      "numbers": [
-        "10,000 hours",
-        "2,000 hours",
-        "74%"
-      ],
+      "published": "2026-09-30",
+      "lane": "foundation",
+      "score": 3.95,
+      "numbers": [],
       "signals": [
-        "numbers",
         "closed_loop",
-        "real_robot"
+        "real_robot",
+        "open_release",
+        "latency"
       ],
-      "summary": "Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors. Video generation models offer a scalable foundation for visual simulators that predict action outcomes before physical execution. Yet they often favor visual plausibility over accurate action following and coherent robot--object dynamics, while action-conditioned simulators depend on scarce, embodiment-specific data that are difficult to share across incompatible control spaces. We introduce WorldLine, an action-driven visual simulator that decouples transferable dynamics learning from heterogeneous action grounding. WorldLine learns manipulation dynamics from more than 10,000 hours of action-free robot videos and grounds them using over 2,000 hours of action trajectories across more than ten embodiments. An image-space action representation provides a shared control interface across embodiments, while multi-view and failure-enriched training with relational regularization improves interaction-sensitive prediction. Robot-focused few-step distillation enables efficient causal rollout while preserving action-critical motion. Across held-out and out-of-domain settings, WorldLine maintains strong visual quality and robot-motion agreement; on failed trajectories, it improves robot-mask IoU by 0.1626 over the strongest baseline. It predicts trajectory success with 74% mean accuracy across RoboTwin and AgiBot, one percentage point above the strongest baseline. Without RoboTwin training or adaptation, its rollouts improve task success by up to 21.4 percentage points over direct policy execution. Together, these capabilities make WorldLine a scalable and efficient visual simulator for policy evaluation and embodied planning. More results are available at \\href{https://zhengsh123.github.io/WorldLine/}{project page}."
+      "summary": "While Vision-Language-Action (VLA) models excel in static tasks, they struggle in dynamic environments where objects are in motion (e.g., conveyor belt manipulation). We identify three fundamental limitations hindering current VLAs in these scenarios: the \\textbf{perception gap}, where static visual inputs lack temporal motion cues; the \\textbf{latency gap}, where inference delays render actions obsolete; and the \\textbf{control gap}, caused by the open-loop action chunk execution without real-time adjustment. In this work, we propose \\textbf{DSDyn-VLA}, a Slow-Fast \\textbf{D}ual-\\textbf{S}tream \\textbf{Dyn}amic manipulation framework that integrates motion-aware foresighted planning with real-time residual correction. The slow \\textbf{Flow-Planner} serves as a macro-planner. By enhancing the VLA with optical flow for temporal perception and a future state awareness mechanism to preemptively offset inference latency, it produces globally consistent, motion-aware action chunks. Complementing this, the fast \\textbf{Res-Refiner} employs a lightweight RL policy to inject high-frequency, closed-loop corrections into the planned action chunks based on real-time observations. In addition, we introduce \\textbf{DynBench}, a MuJoCo-based benchmark for dynamic object manipulation that comprises nine tasks. Extensive experiments demonstrate that DSDyn-VLA reduces the failure rate by over 76\\% compared to current SOTA method in high-latency setting on the Kinetix dynamic benchmark, while achieving about 6$\\times$ the success rate of PI0.5 in real-world dynamic settings and about 5$\\times$ on DynBench. We will open-source all the code and weights."
     },
     {
-      "id": "arxiv:2609.37560",
-      "title": "RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing",
-      "url": "https://arxiv.org/abs/2609.37560",
-      "publisher": "arXiv 2609.37560",
+      "id": "arxiv:2609.39763",
+      "title": "DiffWAM: A Fast and Efficient Navigation World Action Model",
+      "url": "https://arxiv.org/abs/2609.39763",
+      "publisher": "arXiv 2609.39763",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-09-29",
-      "lane": "simeval",
+      "published": "2026-09-30",
+      "lane": "edge",
       "score": 3.86,
       "numbers": [
-        "77.15%",
-        "84.47%",
-        "97.41%"
+        "74.40%"
       ],
       "signals": [
         "numbers",
-        "real_robot"
-      ],
-      "summary": "Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult. We present RoboFin3D, a sim-to-real platform built on Isaac Sim and the Newton physics engine, that provides physics-based grinding and sanding simulation for cheap and repeatable robotic surface finishing experiments. RoboFin3D utilizes a signed distance field (SDF) to model the changing geometry of the workpiece, enabling contact computation, live updates and rendering without an intermediate mesh. It additionally uses a separate surface field to model progressive surface appearance change during sanding. We also introduce WeldGen, a weld sampling module, to generate weld beads on 8,918 real-world workpiece meshes for providing diverse simulation assets. The simulation parameters are calibrated on real experimental results and our evaluation demonstrates our simulation's fidelity against the real world. We also demonstrate that simulation-generated data can be used to improve the performance of perception models. Simulation-only fine-tuning of SAM2 improves IoU for segmentation of unsanded regions from 77.15% to 84.47%, while combined synthetic and real training reaches 97.41%."
-    },
-    {
-      "id": "arxiv:2609.36588",
-      "title": "Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning",
-      "url": "https://arxiv.org/abs/2609.36588",
-      "publisher": "arXiv 2609.36588",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-29",
-      "lane": "training",
-      "score": 3.5,
-      "numbers": [
-        "11 tasks"
-      ],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained coordination skills required for inter-robot collaboration. Supervised fine-tuning (SFT) on multi-robot demonstrations partially bridges this gap, but its performance is bounded by the demonstration data and cannot improve from its own experience. We present a three-stage reinforced fine-tuning (RFT) pipeline for multi-agent VLAs. First, initialization-aware data collection sweeps over initial configurations and invokes human demonstrations only when the pretrained VLA repeatedly fails, yielding robustness to initialization shift with reduced human cost. Second, offline credit-filtered tuning assigns credit to individual agents and fine-tunes on per-agent trajectories with positive advantage rather than on entire joint rollouts. Third, we find existing online RL for VLAs are less effective for hard multi-agent tasks, which we attribute to noisy co-exploration and unstable updates. We instead use online latent-space fine tuning, which freeze the VLA and perform RL in its latent noise space. We evaluate our multi-agent VLA with both $π_0$ and $π_{0.5}$ backbones across 11 tasks in RoboTwin, RoboFactory and real-world manipulation with two Franka robots. Our multi-agent VLA improves the average success rate by $+23.1\\%$, $+16.4\\%$, and $+44\\%$ on RoboTwin, RoboFactory, and real-world tasks, respectively. Code available at https://anonymous.4open.science/r/mavla_rft-2BC0/."
-    },
-    {
-      "id": "arxiv:2609.37772",
-      "title": "Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control",
-      "url": "https://arxiv.org/abs/2609.37772",
-      "publisher": "arXiv 2609.37772",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-09-29",
-      "lane": "edge",
-      "score": 3.157,
-      "numbers": [
-        "1.89x"
-      ],
-      "signals": [
         "closed_loop",
         "real_robot",
         "latency"
       ],
-      "summary": "Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control. Existing acceleration methods treat an action chunk as a monolithic computational unit, ignoring a crucial physical reality of receding-horizon control: actions are generated jointly but consumed sequentially, resulting in inherently heterogeneous execution urgencies. We exploit this asymmetry to introduce Urgency-Aware Denoising (UAD), a novel inference-time framework that allocates denoising computation according to when each action is physically needed. UAD releases time-critical urgent actions after fewer denoising steps while overlapping the continued background refinement of tail actions with physical execution. However, heterogeneous denoising introduces two key challenges: early-release errors in urgent actions and trajectory inconsistency in tail actions. UAD elegantly resolves both through two core mechanisms: Trajectory Reconciliation, which reconstructs unified internal state evolution to restore joint denoising coherence without additional model evaluations, and Ghost Action Correction, which leverages non-executed ghost continuations to dynamically compensate for early-release errors across remaining executable actions. Extensive evaluations across multiple VLA architectures, simulation benchmarks, and real-world manipulation tasks demonstrate that UAD achieves up to a 1.89x speedup in average action availability latency while maintaining comparable success rates to vanilla inference with optimal denoising budget, offering a more favorable success-latency trade-off than state-of-the-art VLA acceleration baselines."
+      "summary": "Pretrained video foundation models encode rich semantic and spatiotemporal priors for embodied navigation, yet converting these priors into UAV motion typically requires expensive future-video synthesis and geometric reconstruction. We investigate whether the motion implicit in future visual prediction can instead be recovered directly from the predictive representations of a frozen video model. To this end, we present DiffWAM, a geometry-conditioned navigation world-action model that directly transforms multi-level predictive features into continuous camera trajectories. Its Grid-Motion module preserves spatial-temporal motion associations, while Latent2Pose grounds them with first-frame geometry to recover metrically meaningful 3D motion. Complete video rollouts and geometric reconstruction are required only for offline supervision, eliminating future-video decoding and multi-frame reconstruction during deployment. We further introduce FastDreamer, which overlaps predictive and geometric computation with ongoing flight and performs timestamp-aware asynchronous trajectory handoff for continuous UAV execution. DiffWAM achieves a trajectory RMSE of 0.3492 m and an endpoint success rate of 74.40% on the 1,000-sample DiffWAM-1000 benchmark, while representative real-world experiments demonstrate complex behaviors including constrained traversal, orbiting, S-shaped flight, and multi-stage navigation. An onboard DiffWAM-Flash implementation further reaches 1.08 s model-pipeline latency on NVIDIA Jetson AGX Thor. These results demonstrate that predictive video representations can be efficiently grounded into continuous 3D motion, providing a direct alternative to generate-then-reconstruct navigation pipelines. Project page: https://zzmmzzm.github.io/diffwam.github.io/."
     },
     {
-      "id": "the-robot-report:65f7743af268",
-      "title": "Innodata opens motion-capture lab to help humanoids move more like people",
-      "url": "https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-09-30",
-      "lane": "hardware",
-      "score": 1.583,
+      "id": "arxiv:2609.37771",
+      "title": "Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration",
+      "url": "https://arxiv.org/abs/2609.37771",
+      "publisher": "arXiv 2609.37771",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-29",
+      "lane": "simeval",
+      "score": 3.725,
       "numbers": [],
       "signals": [
-        "real_robot"
+        "closed_loop",
+        "open_release",
+        "latency"
       ],
-      "summary": "Innodata uses Vicon cameras to measure movements with sub-millimeter accuracy and to collect real-world training data for robots."
+      "summary": "Simulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment. On these benchmarks, we observe that some training-free acceleration methods, which approximate the baseline policy's computation, achieve higher measured success rates than the baseline itself. Success rates alone cannot establish whether such gains come from better task execution or from evaluation flaws. We therefore investigate two kinds of benchmark flaws behind these gains: bugs, where the implementation does not match the intended task or evaluation protocol, and design limitations, where success criteria and simulation settings do not fully capture how acceleration affects task execution. Starting from tasks with anomalous gains, we localize root causes by plotting object trajectories against checker acceptance regions, and classify the resulting bugs into task consistency, initialization, and reproducibility. Extending this audit to seven benchmarks, including RoboTwin, LIBERO-Plus, and VLABench, we identify 22 bugs of these types and 4 design limitations. For the latter, we revise permissive success checkers, correct unrealistic object masses, and add a motion-aware score that favors smoother actions. Experiments show that bug fixes can reverse method rankings, moving the baseline from last to first on one task. Addressing design limitations can likewise remove anomalous gains: on another task, the baseline moves from 21 percentage points behind an accelerated method to 5 points ahead. Gains attributed to acceleration can therefore be artifacts of the benchmark rather than better task execution. We release our bug fixes and revised benchmark settings to support trustworthy evaluation of VLA acceleration."
     },
     {
-      "id": "the-robot-report:0a04517fc2b6",
-      "title": "Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets",
-      "url": "https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/",
+      "id": "arxiv:2609.39822",
+      "title": "Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation",
+      "url": "https://arxiv.org/abs/2609.39822",
+      "publisher": "arXiv 2609.39822",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-09-30",
+      "lane": "foundation",
+      "score": 3.6,
+      "numbers": [
+        "61.557 ms",
+        "21.956 ms"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Vision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution. We characterize this gap through end-to-end latency measurements of model inference and the robot execution chain. Repeated Flow Matching denoising contributes substantially to inference cost, while robot-side delays mainly arise from perception acquisition, communication scheduling, and physical response. Analysis of the velocity field shows relatively stable magnitude and direction in early integration, followed by stronger directional correction near the terminal steps. Based on this stage heterogeneity, we propose two-stage non-uniform denoising, reducing the number of steps from 10 to 2 and model-inference time from 61.557 ms to 21.956 ms. We also develop a distributed real-time VLA framework with independent inference, action-publication, and robot-control rates, modular observation acquisition, and action-provenance logging. Using π0.5 as the baseline, we evaluate six real-time execution methods on a long-horizon physical garment-folding task. Legato performs best overall among training-based methods, while Temporal Smoothing leads among training-free methods; both perform strongly in task success, completion time, action continuity, and acceleration smoothness. Combining two-step denoising with representative execution methods substantially reduces inference cost with a small reduction in task performance. These results motivate joint optimization of model-inference efficiency and robot-system timing."
+    },
+    {
+      "id": "ieee-spectrum-robotics:73878f37956b",
+      "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
+      "url": "https://spectrum.ieee.org/robust-robot-hand",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-10-01",
+      "lane": "hardware",
+      "score": 1.797,
+      "numbers": [],
+      "signals": [],
+      "summary": "Today, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of thousands. Switching from research hardware to a scalable product makes previously ignorable questions suddenly paramount: How can you make a hand that does everything you need it to do but is also rugged and reliable and cost-effective? It’s questions like these that drove the design of the new Atlas hand, and while it doesn’t look much like a human hand, it might be a hand that makes it out into the real world. - YouTube www.youtube.com Compared to the almost eerily humanlike hands designed by a litany of other humanoid robotics companies , Atlas’s new hand does look awfully clunky. We’ve certainly seen some of those robots with much more humanlike hands perform dexterous manipulation tasks that are, speaking as someone who has personally witnessed robots haplessly fumble their way through the world for nearly two decades now, nothing short of incredible. And it’s not just what these hands can do—it’s how they look while doing it, as slim, graceful mechanical copies of our own hands. They seem like science fiction, and to some extent, that’s exactly what they are. “Hands are a ruthless design trade-off,” Alberto Rodriguez , director of robot behavior at Boston Dynamics, tells IEEE Spectrum . “There’s no way around it, you’re always giving up on something. And many of the current designs are giving up on things like reliability and manufacturability.” This is what invariably happens when you try and cram everything necessary to make a robotic hand function into the form factor of a human hand: it’s going to be either very fragile or very expensive, and likely both at the same time. The unfortunate reality is that for now, and likely for the immediate future, all that these sorts of hands are good for are research and demos. With …"
+    },
+    {
+      "id": "the-robot-report:147d35dd5178",
+      "title": "Boston Dynamics drops pinkie on new humanoid hand",
+      "url": "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-09-30",
+      "published": "2026-10-01",
+      "lane": "hardware",
+      "score": 1.515,
+      "numbers": [],
+      "signals": [],
+      "summary": "Boston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do."
+    },
+    {
+      "id": "the-robot-report:99805b279c40",
+      "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
+      "url": "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-01",
+      "lane": "safety",
+      "score": 1.235,
+      "numbers": [],
+      "signals": [],
+      "summary": "A robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence."
+    },
+    {
+      "id": "the-robot-report:7d547966b72a",
+      "title": "ANYbotics launches Shift to streamline robot fleet operations, scale inspections",
+      "url": "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-01",
       "lane": "systems",
       "score": 1.2,
       "numbers": [],
       "signals": [],
-      "summary": "ASI and SoftBank join forces with $225M to scale brand-agnostic autonomous heavy equipment across infrastructure projects."
-    },
-    {
-      "id": "monoist:8247ec0c4975",
-      "title": "日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html",
-      "publisher": "MONOist (ITmedia)",
-      "source_id": "monoist",
-      "evidence": "M",
-      "published": "2026-09-30",
-      "lane": "edge",
-      "score": 1.103,
-      "numbers": [],
-      "signals": [],
-      "summary": "日立製作所とファナックはフィジカルAI（人工知能）実装の共同事業化に向けた戦略的パートナーシップを締結した。日立のAI技術とファナックの産業用ロボットを組み合わせたフィジカルAIの共同実証と共同展開を推進する。共同実証で得られたフィジカルAIの実装／運用ノウハウを生かして、2027年度からグローバルなインストールベースを活用して展開する。"
-    },
-    {
-      "id": "leiphone:3f5aca924a94",
-      "title": "从海拉鲁到现实世界：视频模型如何理解「变化」",
-      "url": "https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-09-30",
-      "lane": "foundation",
-      "score": 1.1,
-      "numbers": [],
-      "signals": [],
-      "summary": "HiDream-O1-Video 的三场世界回应测试。在《塞尔达传说：旷野之息》中，玩家点燃一片草地，火焰会沿着草叶蔓延，热空气随之升起。此时展开滑翔帆，林克便能借助上升气流离开地面。雷雨中装备金属武器可能招来闪电，降雨又会让攀爬变得困难。海拉鲁并没有追求照片级的视觉拟真，却通过一组稳定、可组合的规则，让玩家感受到一个世界正在持续运行。 这种体验的关键是无论世界里有多少种物体，系统都会回应玩家的行动，并且符合物理规律。规则稳定，玩家才有可能根据经验作出预测；多条规则相互作用，又会产生未被逐一写死的解法。一个可信的虚拟世界，因而同时包含状态、变化、交互与反馈。 素材出自抖音博主「丑丑鱼-主机游戏」 《塞尔达》当然不是机器学习语境中的世界模型。前者的规则主要由设计师与工程师显式构建，后者则试图从数据和交互中学习状态、行动与后果之间的关系。两者机制不同，但指向了同一种直观体验：一个世界之所以成立，肯定不是因为它看起来真实，关键是它能够对行动作出符合人们物理世界的回应。 这也是理解世界模型的一个有效入口。世界模型不是更大规模的视频生成器，也不是把图像、视频、三维空间和机器人排列在同一张矩阵图里。它需要形成对世界状态及其变化规律的表征，并进一步支持预测、规划或行动。 智象（HiDream.ai）将新发布的 HiDream-O1-Video-1.0 (下文简称为HiDream V1)定义为“更懂真实世界的视频生成模型”，并把它放在“一个 UiT( Unified …"
+      "summary": "ANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders."
     }
   ],
   "lane_counts": {
-    "foundation": 7,
-    "data": 4,
+    "foundation": 8,
+    "data": 3,
     "training": 4,
-    "simeval": 13,
-    "edge": 7,
-    "safety": 1,
-    "systems": 4,
+    "simeval": 12,
+    "edge": 8,
+    "safety": 2,
+    "systems": 3,
     "hardware": 12
   },
   "evidence_mix": {
-    "O": 3,
-    "R": 30,
-    "M": 19
+    "O": 1,
+    "R": 31,
+    "M": 20
   },
   "fetch": {
-    "items": 529,
+    "items": 440,
     "attempted": 11,
-    "answered": 11,
-    "failed": [],
+    "answered": 10,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "per_source": {
-      "arxiv": 96,
+      "arxiv": 107,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-01
+### 本日のレーダー · 2026-10-02
 
-`生成時刻: 2026-09-30 23:40 UTC` ｜ `対象期間: 論文 2026-09-27 → 2026-10-01 · ブログ・報道 2026-09-01 → 2026-10-01 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-01 23:40 UTC` ｜ `対象期間: 論文 2026-09-28 → 2026-10-02 · ブログ・報道 2026-09-02 → 2026-10-02 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>シミュレーションと評価 · arXiv 2609.38059 · 2026‑09‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>シミュレーションと評価 · arXiv 2609.37560 · 2026‑09‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>学習と自己改善 · arXiv 2609.36588 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>エッジとリアルタイム · arXiv 2609.37772 · 2026‑09‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑09‑30</sub> |
-| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑09‑30</sub> |
-| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>エッジとリアルタイム · MONOist (ITmedia) · 2026‑09‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>基盤モデル · arXiv 2609.39198 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>エッジとリアルタイム · arXiv 2609.39763 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>シミュレーションと評価 · arXiv 2609.37771 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>基盤モデル · arXiv 2609.39822 · 2026‑09‑30</sub> |
+| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
+| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑01</sub> |
+| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑01</sub> |
+| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑10‑01</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **WorldLine** — `AI 下書き` 候補行動の実機評価コストが重いチームには、軌道の成否を平均 74% の精度で予測できるという著者申告が事前ふるい分けの手がかりになる。ただしプレプリントの自己申告であり、実機評価の代わりにはならない。
-2. **RoboFin3D** — `AI 下書き` 研削・研磨の実機試行がワークを消費する現場向けに、未研磨領域に関する指標が 77.15% から 84.47% へ、実機学習で 97.41% に達したとプレプリントは報告する。試行をシミュレーションへ移す前に各数値の定義を原文で確認したい。
-3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — `AI 下書き` 複数の VLA エージェントを協調させる計画なら、このプレプリントは単一エージェントでの事前学習を障壁とみなし、RoboTwin の 11 タスクで RL 微調整を試している。ページに成功率の引用はないため、改善幅は原文で確かめたい。
-4. **Urgent Actions Go First** — `AI 下書き` 拡散・フローマッチング型 VLA の反復デノイズが制御周期を圧迫しているなら、著者は平均で最大 1.89x の高速化を主張する。引用部にハードウェアの記載はないため、遅延予算を緩める前に自前の制御器で実測を。
-5. **Innodata opens motion-capture lab to help humanoids move more like people** — `AI 下書き` ヒューマノイド向けの動作データを外部調達するなら選択肢が一つ増えた。二次報道によれば Innodata は Vicon カメラでサブミリ精度の動作を計測し学習データにする。契約前に自社機体への対応づけを確認したい。
-6. **Tackling construction labor shortages** — `AI 下書き` 複数メーカーの重機を抱える施工会社は、メーカーを問わない自律化をインフラ案件に広げる $225M 規模の提携に注目。ただし提携を伝える二次報道で、現場での信頼性はまだ読み取れない。
-7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — `AI 下書き` ファナック機を主力とする工場には、日立の AI を組み合わせた共同提案が届く可能性がある。ただ抜粋は提携と共同実証・共同展開の表明にとどまり成果の数値はないため、導入計画は検証結果を待ってからでよい。
-8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — `AI 下書き` 動画モデルを世界モデルとして検討しているなら、この二次記事が示すのはゼルダで草地に火が広がるといったゲーム場面の定性的なもっともらしさで、抜粋にロボットの行動は出てこない。データ計画を変える根拠にはならない。
+1. **DSDyn-VLA** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+2. **DiffWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Toward Real-Time VLAs** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **Boston Dynamics drops pinkie on new humanoid hand** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-01.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-02.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-01
+### 今日雷达 · 2026-10-02
 
-`生成时间: 2026-09-30 23:40 UTC` ｜ `统计窗口: 论文 2026-09-27 → 2026-10-01 · 博客与报道 2026-09-01 → 2026-10-01 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-01 23:40 UTC` ｜ `统计窗口: 论文 2026-09-28 → 2026-10-02 · 博客与报道 2026-09-02 → 2026-10-02 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>仿真与评测 · arXiv 2609.38059 · 2026‑09‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>仿真与评测 · arXiv 2609.37560 · 2026‑09‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>训练与自我改进 · arXiv 2609.36588 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>边缘与实时性 · arXiv 2609.37772 · 2026‑09‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>本体与供应链 · The Robot Report · 2026‑09‑30</sub> |
-| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>系统与编排 · The Robot Report · 2026‑09‑30</sub> |
-| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>边缘与实时性 · MONOist (ITmedia) · 2026‑09‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>基座模型 · arXiv 2609.39198 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>边缘与实时性 · arXiv 2609.39763 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>仿真与评测 · arXiv 2609.37771 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>基座模型 · arXiv 2609.39822 · 2026‑09‑30</sub> |
+| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
+| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑01</sub> |
+| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑01</sub> |
+| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>系统与编排 · The Robot Report · 2026‑10‑01</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **WorldLine** — `AI 起草` 真机评估候选策略成本高的团队可以关注：作者自报预测轨迹成功的平均准确率为 74%，或可用于先筛掉一部分候选行为；但这是预印本自报，只能当作筛选辅助，不能替代真机评测。
-2. **RoboFin3D** — `AI 起草` 研磨、打磨产线每次实物试验都要消耗工件；该预印本给出未打磨区域相关指标从 77.15% 到 84.47%，真机训练达到 97.41%，在把试验搬进仿真前，先读原文弄清每个数字衡量的是什么。
-3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — `AI 起草` 打算让多个 VLA 智能体协作完成任务的团队，该预印本把单智能体预训练视为主要障碍，并在 RoboTwin 的 11 个任务上尝试 RL 微调；页面未引用成功率，提升幅度需回原文核对。
-4. **Urgent Actions Go First** — `AI 起草` 扩散或流匹配 VLA 的迭代去噪会吃掉控制预算；作者自报平均最高 1.89x 加速，但引文未说明硬件，放宽延迟预算前应在自己的控制器上实测。
-5. **Innodata opens motion-capture lab to help humanoids move more like people** — `AI 起草` 采购人形机器人动作数据的团队多了一个外部供应选项：据这篇二手报道，Innodata 用 Vicon 相机以亚毫米精度采集人体动作作为训练数据；签约前要问清这些数据如何映射到你的机器人本体。
-6. **Tackling construction labor shortages** — `AI 起草` 设备品牌混杂的施工方值得留意：报道称双方以 $225M 推动不限品牌的重型设备自动驾驶落地基础设施项目；这只是对合作的二手报道，现场可靠性尚无从判断。
-7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — `AI 起草` 以 FANUC 机械臂为主的工厂可能会多一个日立 AI 联合方案；但摘录只描述了战略合作与共同验证、共同推广，没有给出效果数据，做导入规划前先等验证结果。
-8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — `AI 起草` 在评估视频模型能否充当世界模型的团队，这篇二手文章展示的是《塞尔达》中火焰沿草地蔓延这类游戏场景测试，属于定性的物理合理性，摘录未涉及机器人动作，不宜据此调整数据预算。
+1. **DSDyn-VLA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **DiffWAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **Toward Real-Time VLAs** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **Boston Dynamics drops pinkie on new humanoid hand** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-01.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-02.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

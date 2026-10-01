@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-01
+### Today's radar · 2026-10-02
 
-`Generated: 2026-09-30 23:40 UTC` ｜ `Window: papers 2026-09-27 → 2026-10-01 · posts 2026-09-01 → 2026-10-01 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-01 23:40 UTC` ｜ `Window: papers 2026-09-28 → 2026-10-02 · posts 2026-09-02 → 2026-10-02 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WorldLine: Action-Driven Visual Simulation for Robotic Manipulation](https://arxiv.org/abs/2609.38059)**<br>`10,000 hours`&nbsp; `2,000 hours`&nbsp; `74%`<br><sub>Simulation & evaluation · arXiv 2609.38059 · 2026‑09‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing](https://arxiv.org/abs/2609.37560)**<br>`77.15%`&nbsp; `84.47%`&nbsp; `97.41%`<br><sub>Simulation & evaluation · arXiv 2609.37560 · 2026‑09‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning](https://arxiv.org/abs/2609.36588)**<br>`11 tasks`<br><sub>Training & self-improvement · arXiv 2609.36588 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control](https://arxiv.org/abs/2609.37772)**<br>`1.89x`<br><sub>Edge & real-time · arXiv 2609.37772 · 2026‑09‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[Innodata opens motion-capture lab to help humanoids move more like people](https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑09‑30</sub> |
-| 06<br>🟡&nbsp;`M` | **[Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets](https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑09‑30</sub> |
-| 07<br>🟡&nbsp;`M` | **[日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証](https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html)**<br><sub>Edge & real-time · MONOist (ITmedia) · 2026‑09‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[从海拉鲁到现实世界：视频模型如何理解「变化」](https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>Foundation models · arXiv 2609.39198 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>Edge & real-time · arXiv 2609.39763 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>Simulation & evaluation · arXiv 2609.37771 · 2026‑09‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>Foundation models · arXiv 2609.39822 · 2026‑09‑30</sub> |
+| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
+| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑01</sub> |
+| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑01</sub> |
+| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑10‑01</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WorldLine** — `AI draft` If real-robot time is your bottleneck for screening candidate behaviors, the authors' self-reported 74% mean accuracy at predicting trajectory success hints at a pre-filter, but as a preprint claim it is a triage aid, not a substitute for real evaluation.
-2. **RoboFin3D** — `AI draft` Where every grinding or sanding trial consumes a workpiece, this preprint quotes a figure on unsanded regions going from 77.15% to 84.47% and real training reaching 97.41%; check what each measures before moving trials into simulation.
-3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — `AI draft` Teams planning several cooperating VLA agents should note this preprint treats single-agent pretraining as the obstacle and tests RL fine-tuning across 11 RoboTwin tasks; the page quotes no success rate, so check the size of any gain in the paper.
-4. **Urgent Actions Go First** — `AI draft` For diffusion or flow-matching VLA policies whose iterative denoising eats the control budget, the authors claim up to a 1.89x average speedup; the quote names no hardware, so benchmark on your own controller before relaxing latency budgets.
-5. **Innodata opens motion-capture lab to help humanoids move more like people** — `AI draft` Humanoid teams buying motion data have another outside supplier: per this secondary report, Innodata records movement with Vicon cameras at sub-millimeter accuracy as robot training data; ask how it maps onto your robot's body before signing.
-6. **Tackling construction labor shortages** — `AI draft` Contractors running heavy equipment from several brands should note the reported $225M push for brand-agnostic autonomy on infrastructure projects; this is a secondary report of a partnership and shows nothing yet about field reliability.
-7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — `AI draft` Plants built around FANUC arms may soon be offered Hitachi AI as a jointly backed package, but the excerpt describes a partnership with joint demonstrations and gives no results, so wait for validation figures before planning around it.
-8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — `AI draft` If you are weighing video models as world models, this secondary piece shows game-scene tests such as fire spreading across grass in Zelda; that is qualitative plausibility, and the excerpt says nothing about robot actions, so it should not move a data budget.
+1. **DSDyn-VLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **DiffWAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+4. **Toward Real-Time VLAs** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **Boston Dynamics drops pinkie on new humanoid hand** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-01.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-02.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
