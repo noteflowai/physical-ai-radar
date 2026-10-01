@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-01",
+  "generated": "2026-10-01 14:13 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.38059": {
+      "zh": "真机评估候选策略成本高的团队可以关注：作者自报预测轨迹成功的平均准确率为 74%，或可用于先筛掉一部分候选行为；但这是预印本自报，只能当作筛选辅助，不能替代真机评测。",
+      "en": "If real-robot time is your bottleneck for screening candidate behaviors, the authors' self-reported 74% mean accuracy at predicting trajectory success hints at a pre-filter, but as a preprint claim it is a triage aid, not a substitute for real evaluation.",
+      "ja": "候補行動の実機評価コストが重いチームには、軌道の成否を平均 74% の精度で予測できるという著者申告が事前ふるい分けの手がかりになる。ただしプレプリントの自己申告であり、実機評価の代わりにはならない。"
+    },
+    "https://arxiv.org/abs/2609.37560": {
+      "zh": "研磨、打磨产线每次实物试验都要消耗工件；该预印本给出未打磨区域相关指标从 77.15% 到 84.47%，真机训练达到 97.41%，在把试验搬进仿真前，先读原文弄清每个数字衡量的是什么。",
+      "en": "Where every grinding or sanding trial consumes a workpiece, this preprint quotes a figure on unsanded regions going from 77.15% to 84.47% and real training reaching 97.41%; check what each measures before moving trials into simulation.",
+      "ja": "研削・研磨の実機試行がワークを消費する現場向けに、未研磨領域に関する指標が 77.15% から 84.47% へ、実機学習で 97.41% に達したとプレプリントは報告する。試行をシミュレーションへ移す前に各数値の定義を原文で確認したい。"
+    },
+    "https://arxiv.org/abs/2609.36588": {
+      "zh": "打算让多个 VLA 智能体协作完成任务的团队，该预印本把单智能体预训练视为主要障碍，并在 RoboTwin 的 11 个任务上尝试 RL 微调；页面未引用成功率，提升幅度需回原文核对。",
+      "en": "Teams planning several cooperating VLA agents should note this preprint treats single-agent pretraining as the obstacle and tests RL fine-tuning across 11 RoboTwin tasks; the page quotes no success rate, so check the size of any gain in the paper.",
+      "ja": "複数の VLA エージェントを協調させる計画なら、このプレプリントは単一エージェントでの事前学習を障壁とみなし、RoboTwin の 11 タスクで RL 微調整を試している。ページに成功率の引用はないため、改善幅は原文で確かめたい。"
+    },
+    "https://arxiv.org/abs/2609.37772": {
+      "zh": "扩散或流匹配 VLA 的迭代去噪会吃掉控制预算；作者自报平均最高 1.89x 加速，但引文未说明硬件，放宽延迟预算前应在自己的控制器上实测。",
+      "en": "For diffusion or flow-matching VLA policies whose iterative denoising eats the control budget, the authors claim up to a 1.89x average speedup; the quote names no hardware, so benchmark on your own controller before relaxing latency budgets.",
+      "ja": "拡散・フローマッチング型 VLA の反復デノイズが制御周期を圧迫しているなら、著者は平均で最大 1.89x の高速化を主張する。引用部にハードウェアの記載はないため、遅延予算を緩める前に自前の制御器で実測を。"
+    },
+    "https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people": {
+      "zh": "采购人形机器人动作数据的团队多了一个外部供应选项：据这篇二手报道，Innodata 用 Vicon 相机以亚毫米精度采集人体动作作为训练数据；签约前要问清这些数据如何映射到你的机器人本体。",
+      "en": "Humanoid teams buying motion data have another outside supplier: per this secondary report, Innodata records movement with Vicon cameras at sub-millimeter accuracy as robot training data; ask how it maps onto your robot's body before signing.",
+      "ja": "ヒューマノイド向けの動作データを外部調達するなら選択肢が一つ増えた。二次報道によれば Innodata は Vicon カメラでサブミリ精度の動作を計測し学習データにする。契約前に自社機体への対応づけを確認したい。"
+    },
+    "https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets": {
+      "zh": "设备品牌混杂的施工方值得留意：报道称双方以 $225M 推动不限品牌的重型设备自动驾驶落地基础设施项目；这只是对合作的二手报道，现场可靠性尚无从判断。",
+      "en": "Contractors running heavy equipment from several brands should note the reported $225M push for brand-agnostic autonomy on infrastructure projects; this is a secondary report of a partnership and shows nothing yet about field reliability.",
+      "ja": "複数メーカーの重機を抱える施工会社は、メーカーを問わない自律化をインフラ案件に広げる $225M 規模の提携に注目。ただし提携を伝える二次報道で、現場での信頼性はまだ読み取れない。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html": {
+      "zh": "以 FANUC 机械臂为主的工厂可能会多一个日立 AI 联合方案；但摘录只描述了战略合作与共同验证、共同推广，没有给出效果数据，做导入规划前先等验证结果。",
+      "en": "Plants built around FANUC arms may soon be offered Hitachi AI as a jointly backed package, but the excerpt describes a partnership with joint demonstrations and gives no results, so wait for validation figures before planning around it.",
+      "ja": "ファナック機を主力とする工場には、日立の AI を組み合わせた共同提案が届く可能性がある。ただ抜粋は提携と共同実証・共同展開の表明にとどまり成果の数値はないため、導入計画は検証結果を待ってからでよい。"
+    },
+    "https://www.leiphone.com/category/yanxishe/ngx4ckx3mbuwlis3.html": {
+      "zh": "在评估视频模型能否充当世界模型的团队，这篇二手文章展示的是《塞尔达》中火焰沿草地蔓延这类游戏场景测试，属于定性的物理合理性，摘录未涉及机器人动作，不宜据此调整数据预算。",
+      "en": "If you are weighing video models as world models, this secondary piece shows game-scene tests such as fire spreading across grass in Zelda; that is qualitative plausibility, and the excerpt says nothing about robot actions, so it should not move a data budget.",
+      "ja": "動画モデルを世界モデルとして検討しているなら、この二次記事が示すのはゼルダで草地に火が広がるといったゲーム場面の定性的なもっともらしさで、抜粋にロボットの行動は出てこない。データ計画を変える根拠にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

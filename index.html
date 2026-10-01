@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.38059" rel="noopener" target="_blank">WorldLine: Action-Driven Visual Simulation for Robotic Manipulation</a></h3>
 <p class="figure"><strong>10,000 hours</strong><span class="context">“dynamics from more than 10,000 hours of action-free robot”</span></p><p class="chips"><span class="chip">2,000 hours</span><span class="chip">74%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 真机评估候选策略成本高的团队可以关注：作者自报预测轨迹成功的平均准确率为 74%，或可用于先筛掉一部分候选行为；但这是预印本自报，只能当作筛选辅助，不能替代真机评测。</p>
 <p class="excerpt">Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.37560" rel="noopener" target="_blank">RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing</a></h3>
 <p class="figure"><strong>77.15%</strong><span class="context">“of unsanded regions from 77.15% to 84.47%”</span></p><p class="chips"><span class="chip">84.47%</span><span class="chip">97.41%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 研磨、打磨产线每次实物试验都要消耗工件；该预印本给出未打磨区域相关指标从 77.15% 到 84.47%，真机训练达到 97.41%，在把试验搬进仿真前，先读原文弄清每个数字衡量的是什么。</p>
 <p class="excerpt">Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.36588" rel="noopener" target="_blank">Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning</a></h3>
 <p class="figure"><strong>11 tasks</strong><span class="context">“and $π_{0.5}$ backbones across 11 tasks in RoboTwin”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 打算让多个 VLA 智能体协作完成任务的团队，该预印本把单智能体预训练视为主要障碍，并在 RoboTwin 的 11 个任务上尝试 RL 微调；页面未引用成功率，提升幅度需回原文核对。</p>
 <p class="excerpt">We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.37772" rel="noopener" target="_blank">Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control</a></h3>
 <p class="figure"><strong>1.89x</strong><span class="context">“achieves up to a 1.89x speedup in average”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 扩散或流匹配 VLA 的迭代去噪会吃掉控制预算；作者自报平均最高 1.89x 加速，但引文未说明硬件，放宽延迟预算前应在自己的控制器上实测。</p>
 <p class="excerpt">Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/" rel="noopener" target="_blank">Innodata opens motion-capture lab to help humanoids move more like people</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 采购人形机器人动作数据的团队多了一个外部供应选项：据这篇二手报道，Innodata 用 Vicon 相机以亚毫米精度采集人体动作作为训练数据；签约前要问清这些数据如何映射到你的机器人本体。</p>
 <p class="excerpt">Innodata uses Vicon cameras to measure movements with sub-millimeter accuracy and to collect real-world training data for robots.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/" rel="noopener" target="_blank">Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 设备品牌混杂的施工方值得留意：报道称双方以 $225M 推动不限品牌的重型设备自动驾驶落地基础设施项目；这只是对合作的二手报道，现场可靠性尚无从判断。</p>
 <p class="excerpt">ASI and SoftBank join forces with $225M to scale brand-agnostic autonomous heavy equipment across infrastructure projects.</p>
 <footer>
 <span class="source">The Robot Report · 2026-09-30</span>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html" rel="noopener" target="_blank">日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 以 FANUC 机械臂为主的工厂可能会多一个日立 AI 联合方案；但摘录只描述了战略合作与共同验证、共同推广，没有给出效果数据，做导入规划前先等验证结果。</p>
 <p class="excerpt">日立製作所とファナックはフィジカルAI（人工知能）実装の共同事業化に向けた戦略的パートナーシップを締結した。日立のAI技術とファナックの産業用ロボットを組み合わせたフィジカルAIの共同実証と共同展開を推進する。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-09-30</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/yanxishe/NGx4Ckx3MbUWlIs3.html" rel="noopener" target="_blank">从海拉鲁到现实世界：视频模型如何理解「变化」</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在评估视频模型能否充当世界模型的团队，这篇二手文章展示的是《塞尔达》中火焰沿草地蔓延这类游戏场景测试，属于定性的物理合理性，摘录未涉及机器人动作，不宜据此调整数据预算。</p>
 <p class="excerpt">HiDream-O1-Video 的三场世界回应测试。在《塞尔达传说：旷野之息》中，玩家点燃一片草地，火焰会沿着草叶蔓延，热空气随之升起。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-09-30</span>
