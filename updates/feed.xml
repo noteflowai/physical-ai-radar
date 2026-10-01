@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>record the Git source commit in MCP open_skill receipts</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.17.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.17.0/</guid>
+      <description>On candidate commit 59390b7, a successful MCP open_skill call that passes its expected_sha256 and expected_bundle_sha256 checks now returns structuredContent.receipt.source_commit. For a skill from a Git source, it is the 40-character lowercase HEAD SHA of that source's cache checkout at load time. For agent directories, plugin marketplaces and extra local directories it is null, and no Git command runs for them. For a Git source whose commit cannot be proven, it is also null and the server logs one 'skills-anywhere: source commit unavailable for &lt;name&gt;: &lt;reason&gt;' warning. That covers Git missing or failing, a timeout, or a work tree with no .git of its own or one outside the cache. The load still returns unchanged content in that case. Git runs without a shell and with GIT_* variables removed. Discovery stops at the cache directory, so the commit of an enclosing repository is never reported. Rejected loads throw their existing errors before any Git lookup. The advertised outputSchema declares source_commit. The schema string stays skills-anywhere-load-1. These are unchanged: loadReceipt(), LoadReceipt, OpenedSkill, the exported openSkill(), dsh provider and tool receipts, skill:// resources and rendered text. Controller-run checks on 59390b7: an acceptance-before run failed 3/3 feature tests because the receipt had only 11 fields. After the change, pnpm run build passed. tests/test_feature_ea6b51801ed9.test.ts passed. pnpm run check passed, and its log shows 24 test files and 245 tests passing. pnpm run showcase:build and pnpm run showcase:check also passed.</description>
+      <pubDate>Thu, 01 Oct 2026 14:20:15 +0000</pubDate>
+    </item>
+    <item>
       <title>count final Bedrock chat failures by cause on the dashboard</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.53.0/</guid>
