@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>fix: fail the diff gate when the baseline run did not finish · NoteFlowAI</title><meta name="description" content="evalarc diff and the GitHub Action now fail the gate (exit 1) when the baseline run did not finish. Before this change, an Inspect baseline log whose status was not success could pass. Checks missing from it were classified as &#x27;added&#x27;, and &#x27;added&#x27; ne"><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/"><meta property="og:type" content="article"><meta property="og:title" content="fix: fail the diff gate when the baseline run did not finish"><meta property="og:description" content="evalarc diff and the GitHub Action now fail the gate (exit 1) when the baseline run did not finish. Before this change, an Inspect baseline log whose status was not success could pass. Checks missing from it were classified as &#x27;added&#x27;, and &#x27;added&#x27; ne"><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/evalarc · 0.17.3 · 2026-10-01</p><h1>fix: fail the diff gate when the baseline run did not finish</h1><p>evalarc diff and the GitHub Action now fail the gate (exit 1) when the baseline run did not finish. Before this change, an Inspect baseline log whose status was not success could pass. Checks missing from it were classified as &#x27;added&#x27;, and &#x27;added&#x27; never blocks. Change classification, counts and blocking rules are unchanged. When the baseline is incomplete, diff.json gains &quot;baseline_incomplete&quot;: true and gate_passed is false. When the baseline is complete, the key is left out, so those reports keep their previous content apart from created_at and version.
+
+After the existing summary line, default stdout prints: &#x27;The baseline run is incomplete (status error); N check(s) appear only in the current run and were not compared. Rerun the baseline to completion; the gate fails.&#x27;
+
+summary.md and --markdown add a line below the table: &#x27;The baseline run did not finish (status `error`); the gate fails because checks missing from it cannot be compared. N check(s) appear only in the current run. Rerun the baseline to completion.&#x27; The heading reads &#x27;EvalArc: the baseline run is incomplete&#x27; only when there are no blocking changes and the current run finished. Otherwise it shows the existing blocking heading or &#x27;the baseline and current runs are incomplete&#x27;.
+
+index.html shows &#x27;Gate failed&#x27; with the reason &#x27;the baseline run is incomplete&#x27;. When there are no blocking rows, it says &#x27;Rerun the baseline to completion and compare again.&#x27; evalarc verify recomputes the same result. docs/ci-gate.md and the README CI-gate paragraph document the rule.
+
+The controller ran the checks; the author did not run anything. On base commit dc848cc, tests/test_feature_f107c0a41d3a.py failed (5 failed, 1 passed), which confirms the gap. On candidate bc6089b, these all exited 0: the feature test, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and node scripts/check_site.cjs.</p><h2>Use it</h2><pre>Prerequisites: evalarc at commit bc6089b or later is installed (for example, pip install -e . in a repository checkout), and the commands run from the repository root, which contains examples/results-diff/inspect/baseline.json.
+
+Step 1. Create a SYNTHETIC unfinished baseline. This copies the bundled example log, sets status to error and removes the refund-duplicate samples, imitating an interrupted Inspect run:
+
+python - &lt;&lt;&#x27;EOF&#x27;
+import json, pathlib
+src = pathlib.Path(&#x27;examples/results-diff/inspect/baseline.json&#x27;)
+log = json.loads(src.read_text(encoding=&#x27;utf-8&#x27;))
+log[&#x27;status&#x27;] = &#x27;error&#x27;
+log[&#x27;samples&#x27;] = [s for s in log[&#x27;samples&#x27;] if s.get(&#x27;id&#x27;) != &#x27;refund-duplicate&#x27;]
+pathlib.Path(&#x27;/tmp/unfinished-baseline.json&#x27;).write_text(json.dumps(log), encoding=&#x27;utf-8&#x27;)
+EOF
+
+Step 2. Compare it with the finished example log. The --output folder must not already exist:
+
+evalarc diff /tmp/unfinished-baseline.json examples/results-diff/inspect/baseline.json --output /tmp/diff-review --markdown /tmp/summary.md
+echo &quot;exit: $?&quot;
+
+Expected results:
+- Exit code 1.
+- Stdout contains &#x27;The baseline run is incomplete (status error); 2 check(s) appear only in the current run and were not compared. Rerun the baseline to completion; the gate fails.&#x27;
+- /tmp/diff-review/diff.json contains &quot;baseline_incomplete&quot;: true.
+- /tmp/diff-review/index.html shows &#x27;Gate failed&#x27;, &#x27;the baseline run is incomplete&#x27; and &#x27;Rerun the baseline to completion and compare again.&#x27;
+- /tmp/summary.md contains &#x27;The baseline run did not finish (status `error`)&#x27;.
+
+Step 3. Confirm the saved folder recomputes:
+
+evalarc verify /tmp/diff-review --json
+
+In CI: evalarc diff evals/baseline.json results/current.json --output runs/diff-review --markdown &quot;$GITHUB_STEP_SUMMARY&quot;. If this fails because the baseline is incomplete, regenerate a finished baseline (for example, rerun inspect eval to completion) and compare again.</pre><h2>Scope</h2><p>Scope: one gate rule for an unfinished baseline. It appears in the existing terminal, JSON, Markdown and HTML outputs. docs/ci-gate.md and the README CI-gate paragraph state the rule. The translated docs, docs/ci-gate.zh-CN.md and README.zh-CN.md, are not updated with it. Not included: new flags or override modes, relabelling &#x27;added&#x27; checks, reconstructing missing samples, duplicate-ID or malformed-record handling, and other EA-02 corpus items.
+
+The rule depends on the run status that the export records. Exports with no run status, such as JUnit, are never marked incomplete, so the rule cannot fire for them.
+
+The acceptance tests use synthetic fixtures derived from the bundled example Inspect log. No live or real interrupted Inspect run was tested. Passing tests show the specified behavior on those fixtures, not correctness across every Inspect version or log variant.
+
+The new HTML text is covered by string assertions only. The controller&#x27;s node scripts/check_site.cjs run passed the existing showcase browser regression checks (keyboard, links and downloads at 1440, 390 and 320 px widths). Those checks do not exercise this feature&#x27;s diff-report banner. No screenshot or visual review of the new state was performed.
+
+Behavior change: pipelines that passed with an interrupted baseline now fail. Report folders saved by 0.17.2 with an incomplete baseline will show a recomputation mismatch in evalarc verify, because they recorded a pass. Folders with finished baselines are unaffected.</p><h2>Upgrade and rollback</h2><p>To upgrade, install the patch release that contains commit bc6089b (the CHANGELOG 0.17.3 entry) or pin the matching Action tag. No migration is needed, and existing result files and report folders are not modified. The new diff.json key appears only when the baseline is incomplete, so schema-v1 consumers keep working.
+
+Expect pipelines that compared against an interrupted baseline to start exiting 1. The intended fix is to regenerate a finished baseline.
+
+To roll back, pin noteflowai/evalarc@v0.17.2 or evalarc==0.17.2. Nothing is rewritten, so rollback loses no data. However, rollback restores the old behavior, in which an unfinished baseline can pass the gate.
+
+If you rerun evalarc verify on a folder saved by 0.17.2 with an incomplete baseline, expect a mismatch. Regenerate that report with the new version instead of editing it.</p><p class="links"><a href="https://github.com/noteflowai/evalarc/releases/tag/v0.17.3">Release and downloads</a><a href="https://github.com/noteflowai/evalarc/pull/62">Implementation and checks</a></p><p class="meta">Source commit: <code>99a159f2acbc23750e2bf3f205bdd61e79e81116</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
