@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WorldLine** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **RoboFin3D** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-4. **Urgent Actions Go First** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Innodata opens motion-capture lab to help humanoids move more like people** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **Tackling construction labor shortages** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **WorldLine** — `AI draft` If real-robot time is your bottleneck for screening candidate behaviors, the authors' self-reported 74% mean accuracy at predicting trajectory success hints at a pre-filter, but as a preprint claim it is a triage aid, not a substitute for real evaluation.
+2. **RoboFin3D** — `AI draft` Where every grinding or sanding trial consumes a workpiece, this preprint quotes a figure on unsanded regions going from 77.15% to 84.47% and real training reaching 97.41%; check what each measures before moving trials into simulation.
+3. **Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine T…** — `AI draft` Teams planning several cooperating VLA agents should note this preprint treats single-agent pretraining as the obstacle and tests RL fine-tuning across 11 RoboTwin tasks; the page quotes no success rate, so check the size of any gain in the paper.
+4. **Urgent Actions Go First** — `AI draft` For diffusion or flow-matching VLA policies whose iterative denoising eats the control budget, the authors claim up to a 1.89x average speedup; the quote names no hardware, so benchmark on your own controller before relaxing latency budgets.
+5. **Innodata opens motion-capture lab to help humanoids move more like people** — `AI draft` Humanoid teams buying motion data have another outside supplier: per this secondary report, Innodata records movement with Vicon cameras at sub-millimeter accuracy as robot training data; ask how it maps onto your robot's body before signing.
+6. **Tackling construction labor shortages** — `AI draft` Contractors running heavy equipment from several brands should note the reported $225M push for brand-agnostic autonomy on infrastructure projects; this is a secondary report of a partnership and shows nothing yet about field reliability.
+7. **日立とファナックがフィジカルAI協業 日立エッジAI×ファナックロボ有効性も検証** — `AI draft` Plants built around FANUC arms may soon be offered Hitachi AI as a jointly backed package, but the excerpt describes a partnership with joint demonstrations and gives no results, so wait for validation figures before planning around it.
+8. **从海拉鲁到现实世界：视频模型如何理解「变化」** — `AI draft` If you are weighing video models as world models, this secondary piece shows game-scene tests such as fire spreading across grass in Zelda; that is qualitative plausibility, and the excerpt says nothing about robot actions, so it should not move a data budget.
 
 </details>
 
