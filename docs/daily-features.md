@@ -20,6 +20,14 @@ Later milestones are not eligible. A roadmap older than 35 days blocks new
 features while allowing justified fixes, maintenance or no-change. Missing or
 malformed roadmaps fail before a model call. Daily workers can read the roadmap
 but cannot edit it. Previously approved in-flight plans retain their contract.
+Before planning or implementation resumes, that approval must still refer to
+current main. If main advanced, the controller defers the task with
+`approved-source-changed` before another model call or source edit, retaining the
+original plan, attempts, diagnostics and publication state. The next eligible
+batch inspects current source and obtains fresh independent approval; an old
+approval cannot authorize work on a different revision. A transaction already
+in validation, acceptance review or publication continues restoring its exact
+saved commit through the existing checks and recovery path.
 
 There is no minimum feature count. A no-change decision needs source evidence
 and a separate review; it records a terminal receipt and a follow-up date.

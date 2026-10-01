@@ -868,6 +868,17 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 task["branch"] += "-r" + str(task["attempts"])
             write_json(active, task)
             raise
+    if "plan" in task:
+        approved_base = (task["plan"].get("governance", {}).get("revision")
+                         or task.get("planning", {}).get("source_base")
+                         or task["base"])
+        if approved_base != main:
+            return retire(
+                task, state, active, service_state, name, day,
+                "Main changed after independent plan approval. Retained the approved contract, "
+                "attempt counts and diagnostics without applying it to a different source revision. "
+                "The next eligible batch must inspect current source and obtain fresh approval.",
+                reason_code="approved-source-changed")
     command(["git", "checkout", "-B", task["branch"], main], cwd=root)
     reset(root, main)
     if task["base"] != main:

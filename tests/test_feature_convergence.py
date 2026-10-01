@@ -123,6 +123,75 @@ class PlanningRestartTests(unittest.TestCase):
         self.assertEqual(self.run_feature()["status"], "planned")
         self.assertTrue(self.active.exists())
 
+    def test_changed_main_defers_approved_plan_before_worker_or_checkout(self):
+        self.task.update(phase="implement", planning_attempts=2, attempts=3,
+                         plan=self.plan, draft={"edits": [{"path": "src/records.py"}]})
+        write_json(self.active, self.task)
+        publication = self.active.parent / "fixture/publication.json"
+        write_json(publication, {"status": "unverified"})
+        original_publication = publication.read_bytes()
+        with patch.object(developer, "command", return_value="new-base") as command, \
+                patch.object(developer, "ask") as ask, \
+                patch.object(developer, "reset") as reset:
+            result = self.run_feature()
+        self.assertEqual(result["status"], "deferred")
+        self.assertEqual(result["reason_code"], "approved-source-changed")
+        self.assertEqual(result["implementation_attempts"], 3)
+        self.assertEqual(result["planning_attempts"], 2)
+        self.assertEqual(result["publication_state"], {"status": "unverified"})
+        self.assertEqual(result["retry_after"], "2026-09-29")
+        self.assertEqual(command.call_count, 1)  # Read main; never switch or edit source.
+        ask.assert_not_called()
+        reset.assert_not_called()
+        self.assertFalse(self.active.exists())
+        self.assertEqual(json.loads((publication.parent / "retired-task.json").read_text()),
+                         self.task)
+        self.assertEqual(publication.read_bytes(), original_publication)
+        self.assertFalse((self.state / "allowances").exists())
+
+    def test_saved_approval_revision_survives_a_correction_rebase(self):
+        approved = {**self.plan, "governance": {"revision": "original-base"}}
+        self.task.update(phase="implement", plan=approved)
+        write_json(self.active, self.task)
+        with patch.object(developer, "ask") as ask:
+            result = self.run_feature()
+        self.assertEqual(result["reason_code"], "approved-source-changed")
+        ask.assert_not_called()
+
+    def test_legacy_inspected_revision_is_used_without_governance(self):
+        self.task.update(phase="implement", plan=self.plan,
+                         planning={"source_base": "original-base"})
+        write_json(self.active, self.task)
+        with patch.object(developer, "ask") as ask:
+            result = self.run_feature()
+        self.assertEqual(result["reason_code"], "approved-source-changed")
+        ask.assert_not_called()
+
+    def test_changed_main_without_approval_still_inspects_and_plans(self):
+        with patch.object(developer, "command", return_value="new-base"), \
+                patch.object(developer, "ask", side_effect=KeyboardInterrupt("planning")) as ask:
+            with self.assertRaises(KeyboardInterrupt):
+                self.run_feature()
+        ask.assert_called_once()
+        saved = json.loads(self.active.read_text())
+        self.assertEqual(saved["base"], "new-base")
+        self.assertNotIn("plan", saved)
+
+    def test_validated_transaction_keeps_its_exact_commit_when_main_changes(self):
+        self.task.update(phase="validate", plan=self.plan)
+        write_json(self.active, self.task)
+        with patch.object(developer, "command", return_value="new-base"), \
+                patch.object(developer, "restore") as restore, \
+                patch.object(developer, "advance", return_value={"status": "resumed"}) as advance, \
+                patch.object(developer, "ask") as ask:
+            result = developer.develop("evalarc", {}, self.root / "workspace",
+                                       self.state, "2026-09-28")
+        self.assertEqual(result["status"], "resumed")
+        restore.assert_called_once()
+        advance.assert_called_once()
+        ask.assert_not_called()
+        self.assertEqual(json.loads(self.active.read_text()), self.task)
+
     def test_next_day_inherits_legacy_proposal_but_not_approval_or_old_source(self):
         directory = self.active.parent / "2026-09-27-old"
         write_json(directory / "terminal.json", {"status": "deferred", "completed_on": "2026-09-27"})
