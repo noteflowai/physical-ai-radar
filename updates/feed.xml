@@ -5,6 +5,21 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: fail the diff gate when the baseline run did not finish</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/</guid>
+      <description>evalarc diff and the GitHub Action now fail the gate (exit 1) when the baseline run did not finish. Before this change, an Inspect baseline log whose status was not success could pass. Checks missing from it were classified as 'added', and 'added' never blocks. Change classification, counts and blocking rules are unchanged. When the baseline is incomplete, diff.json gains "baseline_incomplete": true and gate_passed is false. When the baseline is complete, the key is left out, so those reports keep their previous content apart from created_at and version.
+
+After the existing summary line, default stdout prints: 'The baseline run is incomplete (status error); N check(s) appear only in the current run and were not compared. Rerun the baseline to completion; the gate fails.'
+
+summary.md and --markdown add a line below the table: 'The baseline run did not finish (status `error`); the gate fails because checks missing from it cannot be compared. N check(s) appear only in the current run. Rerun the baseline to completion.' The heading reads 'EvalArc: the baseline run is incomplete' only when there are no blocking changes and the current run finished. Otherwise it shows the existing blocking heading or 'the baseline and current runs are incomplete'.
+
+index.html shows 'Gate failed' with the reason 'the baseline run is incomplete'. When there are no blocking rows, it says 'Rerun the baseline to completion and compare again.' evalarc verify recomputes the same result. docs/ci-gate.md and the README CI-gate paragraph document the rule.
+
+The controller ran the checks; the author did not run anything. On base commit dc848cc, tests/test_feature_f107c0a41d3a.py failed (5 failed, 1 passed), which confirms the gap. On candidate bc6089b, these all exited 0: the feature test, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and node scripts/check_site.cjs.</description>
+      <pubDate>Thu, 01 Oct 2026 18:30:10 +0000</pubDate>
+    </item>
+    <item>
       <title>record the Git source commit in MCP open_skill receipts</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.17.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.17.0/</guid>
