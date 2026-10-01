@@ -59,6 +59,13 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 >
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
+> [!NOTE]
+> **Quiet days:** if no new item clears the quality bar, the block below says so first. The rotated curated entries then appear under a bold curated-baseline label, so they are not passed off as today's picks. If there are no curated entries either, only the notice is shown. Days with picks look the same as before. To preview a quiet day without fetching:
+>
+> ```sh
+> python3 -c "import tempfile; from pairadar import cli; from pairadar.config import load_config; from pairadar.render import readme_block; ctx = cli.rerender(out=tempfile.mkdtemp(), write_readme=False); ctx['picked'] = []; print(readme_block(load_config(), 'en', ctx))"
+> ```
+
 <!-- RADAR:START -->
 ### Today's radar · 2026-10-01
 

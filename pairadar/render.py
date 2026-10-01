@@ -285,10 +285,16 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         "",
         f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {window_text(config, lang, ctx)}`",
         "",
-        # two columns: on a phone, four left a title about 110px and pushed the figures off screen
-        f"| # | {ui['pick']} · {ui['numbers']} |",
-        "| :-: | --- |",
     ]
+    if not ctx["picked"]:
+        # An empty day says so and names what it lists instead: the curated baseline
+        # is not today's evidence. render_daily states the same with the same strings.
+        lines.extend([ui["no_items"], ""])
+        if shown:
+            lines.extend([f"**{ui['baseline']}**", ""])
+    if shown:
+        # two columns: on a phone, four left a title about 110px and pushed the figures off screen
+        lines.extend([f"| # | {ui['pick']} · {ui['numbers']} |", "| :-: | --- |"])
     for rank, item in enumerate(shown, 1):
         evidence = item.evidence if item.evidence in EVIDENCE_DOT else "M"
         figures = "&nbsp; ".join(f"`{_cell(n).replace(' ', chr(0xA0))}`" for n in item.numbers[:3])
@@ -299,7 +305,8 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         lines.append(
             f"| {rank:02d}<br>{EVIDENCE_DOT[evidence]}&nbsp;`{evidence}` | **[{_cell(item.title)}]({md_url(item.url)})**"
             + (f"<br>{figures}" if figures else "") + f"<br><sub>{_cell(under)}</sub> |")
-    lines.extend(["", " · ".join(f"{EVIDENCE_DOT[key]} `{key}` {names[key]}" for key in ("O", "R", "M")), ""])
+    if shown:
+        lines.extend(["", " · ".join(f"{EVIDENCE_DOT[key]} `{key}` {names[key]}" for key in ("O", "R", "M")), ""])
     whys = []
     for rank, item in enumerate(shown, 1):
         why, drafted = why_text(item, config, lang, ctx["curated"], ctx.get("notes"))
