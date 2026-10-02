@@ -154,7 +154,10 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
         elif workspace_bytes is not None:
             argv += ["--read-only", "--log-driver", "none",
                      "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}",
-                     "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728"]
+                     "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728",
+                     "--env", "XDG_STATE_HOME=/tmp/feature-state",
+                     "--env", "XDG_DATA_HOME=/tmp/feature-data",
+                     "--env", "XDG_CACHE_HOME=/tmp/feature-cache"]
         argv += [image, "/harness.py"]
         def cleanup():
             subprocess.run(["docker", "rm", "-f", container], stdout=subprocess.DEVNULL,

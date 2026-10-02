@@ -39,6 +39,9 @@ class CpuCheckSandboxTests(unittest.TestCase):
         self.assertEqual(argv[argv.index("--network") + 1], "none")
         self.assertTrue(any(x.startswith("/workspace:") and "size=134217728" in x for x in argv))
         self.assertTrue(any(x.startswith("/tmp:") and "size=134217728" in x for x in argv))
+        self.assertIn("XDG_STATE_HOME=/tmp/feature-state", argv)
+        self.assertIn("XDG_DATA_HOME=/tmp/feature-data", argv)
+        self.assertIn("XDG_CACHE_HOME=/tmp/feature-cache", argv)
         self.assertFalse(result["gpu"])
 
     def test_existing_callers_keep_resource_defaults(self):
@@ -46,6 +49,7 @@ class CpuCheckSandboxTests(unittest.TestCase):
         self.assertEqual(argv[argv.index("--memory") + 1], "24g")
         self.assertNotIn("--read-only", argv)
         self.assertNotIn("--tmpfs", argv)
+        self.assertNotIn("XDG_STATE_HOME=/tmp/feature-state", argv)
 
     def test_invalid_resource_requests_fail_before_launch(self):
         for options in ({"cpus": 0}, {"cpus": True}, {"memory_bytes": 0},
