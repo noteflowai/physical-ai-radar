@@ -122,6 +122,15 @@ Isaac Sim posts or two Video Friday issues stay apart. The higher-ranked telling
 slot, and a story told on an earlier day inside the repeat window is not told again.
 Papers are exempt on both sides: two preprints with similar titles are two papers.
 
+The global limit is an upper bound, not a quota (roadmap RA-02). When fewer items survive the
+quality gates, the lane cap and the repeat and retold-story guards, the day publishes fewer and
+the radar does not lower the bar to fill the page. The daily page then says so in one line under
+the top-items heading: "Only N of up to M items passed today's quality, topic-diversity and repeat
+checks" (`render.sparse_note`). The line names the class of checks, not which check removed which
+item. The run stores the limit as `limit` in `radar/latest.json`, so `cli.rerender()` keeps the
+line. A snapshot written before this field existed re-renders without it. Full and empty days
+have no such line; an empty day keeps its existing message.
+
 ## 4. Quantitative claim extraction
 
 `distill.extract_numbers` matches percentages, multipliers, `ms` / `Hz` / `fps`,

@@ -158,6 +158,43 @@ def window_text(config: Config, lang: str, ctx: dict[str, Any]) -> str:
     return ctx["window"]
 
 
+# Shown on a day that publishes fewer items than the configured maximum (roadmap RA-02).
+# The sentence names only the checks distill.select() applies -- quality gates, the
+# per-lane cap and the repeat/retold-story guards -- and never which one removed which
+# item, because the page does not know that. Both numbers are ASCII integers so the
+# three languages state identical counts.
+SPARSE_NOTE = {
+    "en": ("Only {n} of up to {limit} items passed today's quality, topic-diversity and repeat "
+           "checks. The radar leaves the remaining slots empty rather than lowering the bar."),
+    "zh": "今天有 {n} 条通过质量、主题多样性与重复检查（上限 {limit} 条）。雷达不为凑数降低门槛，其余名额留空。",
+    "ja": ("本日、品質・トピック多様性・重複の各チェックを通過したのは {n} 件でした（上限 {limit} 件）。"
+           "件数を揃えるために基準を下げず、残りの枠は空けています。"),
+}
+
+
+def _valid_limit(limit: Any) -> bool:
+    """A usable item limit: a non-negative int. bool is rejected although it is an int."""
+    return isinstance(limit, int) and not isinstance(limit, bool) and limit >= 0
+
+
+def sparse_note(lang: str, picked_count: Any, limit: Any) -> Optional[str]:
+    """The sentence explaining a short day, or None when there is nothing to explain.
+
+    None for an unusable limit (missing, non-int, bool, negative), for an empty day
+    (the existing no_items text covers it) and for a full day. Never raises.
+    """
+    if not _valid_limit(limit):
+        return None
+    if isinstance(picked_count, bool) or not isinstance(picked_count, int):
+        return None
+    if picked_count <= 0 or picked_count >= limit:
+        return None
+    template = SPARSE_NOTE.get(lang)
+    if template is None:
+        return None
+    return template.format(n=picked_count, limit=limit)
+
+
 def _lane_rows_named(config: Config, lane_rows: Iterable[tuple[str, int]], lang: str) -> list[tuple[str, int]]:
     return [(config.lane_name(lane_id, lang), count) for lane_id, count in lane_rows]
 
@@ -179,6 +216,9 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         f"## {ui['top_items']}",
         "",
     ]
+    note = sparse_note(lang, len(ctx["picked"]), ctx.get("limit"))
+    if note:
+        lines.extend([f"> {note}", ""])
     if ctx["picked"]:
         for position, item in enumerate(ctx["picked"], start=1):
             lines.extend(item_block(item, config, lang, ctx["curated"], position, ctx.get("notes")))
@@ -400,6 +440,8 @@ def write_latest(ctx: dict[str, Any], root: Path = ROOT) -> Path:
             "fetch": ctx.get("fetch", {}),
             "baseline_count": len(ctx["baseline_all"]),
             "chart_days": ctx.get("chart_days"),
+            # Additive: lets rerender() explain a short day the way the run did.
+            **({"limit": ctx["limit"]} if _valid_limit(ctx.get("limit")) else {}),
         },
     )
     return path

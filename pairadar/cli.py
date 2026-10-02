@@ -161,6 +161,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
         "notes": load_notes(day),
+        "limit": limit,
     }
 
 
@@ -204,6 +205,8 @@ def rerender(day: str | None = None, out: Path | None = None, write_readme: bool
         "fetch": snapshot.get("fetch", {}),
         "notes": load_notes(day),
         "chart_days": snapshot.get("chart_days"),
+        # Absent in snapshots written before RA-02: such a day re-renders without a note.
+        "limit": snapshot.get("limit"),
     }
     # The pages embed the charts, so re-rendering without them would publish a page
     # whose numbers and whose images disagree.

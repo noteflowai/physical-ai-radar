@@ -110,6 +110,8 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 It does not replace a newsletter's commentary or arXiv's completeness. It is the page you read first.
 
+The daily count (8 by default) is an upper bound, not a quota. When fewer items pass the quality, lane-diversity and repeat checks, the day publishes fewer, and the daily page says "Only N of up to M items passed…".
+
 ## The eight lanes
 
 | Lane | What it tracks · *why it deserves its own lane* |
