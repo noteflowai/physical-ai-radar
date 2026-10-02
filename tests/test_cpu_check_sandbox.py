@@ -51,10 +51,23 @@ class CpuCheckSandboxTests(unittest.TestCase):
         self.assertNotIn("--tmpfs", argv)
         self.assertNotIn("XDG_STATE_HOME=/tmp/feature-state", argv)
 
+    def test_executable_cpu_workspace_preserves_other_isolation(self):
+        argv, _ = self.run_sandbox(workspace_bytes=1024**3, cpus=1,
+                                  memory_bytes=2 * 1024**3, workspace_executable=True)
+        self.assertTrue(any(x.startswith("/workspace:") and x.endswith(",exec") for x in argv))
+        self.assertFalse(any(x.startswith("/tmp:") and ",exec" in x for x in argv))
+        self.assertIn("--read-only", argv)
+        self.assertEqual(argv[argv.index("--network") + 1], "none")
+        self.assertNotIn("--gpus", argv)
+        self.assertEqual(argv[argv.index("--memory") + 1], str(2 * 1024**3))
+
     def test_invalid_resource_requests_fail_before_launch(self):
         for options in ({"cpus": 0}, {"cpus": True}, {"memory_bytes": 0},
                         {"workspace_bytes": 1}, {"workspace_bytes": 2 * 1024**3},
-                        {"workspace_bytes": 128 * 1024**2, "gpu": True}):
+                        {"workspace_bytes": 128 * 1024**2, "gpu": True},
+                        {"workspace_executable": True},
+                        {"workspace_executable": "true", "workspace_bytes": 128 * 1024**2},
+                        {"workspace_executable": True, "workspace_bytes": 128 * 1024**2, "gpu": True}):
             with self.subTest(options=options), tempfile.TemporaryDirectory() as temporary, \
                     patch.object(feature_runtime.subprocess, "run") as launch:
                 root = Path(temporary)
