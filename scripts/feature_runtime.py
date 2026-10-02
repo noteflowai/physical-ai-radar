@@ -112,7 +112,8 @@ for name in spec.get("generated",[]):
 def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
             label: str, *, gpu: bool = False, generated: list[str] | None = None,
             timeout: int = 1200, workspace_bytes: int | None = None,
-            cpus: int = 4, memory_bytes: int | None = None) -> dict:
+            cpus: int = 4, memory_bytes: int | None = None,
+            workspace_executable: bool = False) -> dict:
     if type(cpus) is not int or not 1 <= cpus <= 4:
         raise ValueError("CPU limit must be between one and four")
     if memory_bytes is not None and (type(memory_bytes) is not int or memory_bytes < 256 * 1024**2):
@@ -120,6 +121,9 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
     if workspace_bytes is not None and (gpu or type(workspace_bytes) is not int
                                        or not 64 * 1024**2 <= workspace_bytes <= 1024**3):
         raise ValueError("Bounded CPU workspace must be 64 MiB to 1 GiB")
+    if (type(workspace_executable) is not bool
+            or workspace_executable and (gpu or workspace_bytes is None)):
+        raise ValueError("Executable workspaces require bounded CPU isolation")
     state.mkdir(parents=True, exist_ok=True)
     output = state / label
     output.mkdir(exist_ok=True)
@@ -153,7 +157,8 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
                      f"/workspace:uid={os.getuid()},gid={os.getgid()},size=4g"]
         elif workspace_bytes is not None:
             argv += ["--read-only", "--log-driver", "none",
-                     "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}",
+                     "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}"
+                     + (",exec" if workspace_executable else ""),
                      "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728",
                      "--env", "XDG_STATE_HOME=/tmp/feature-state",
                      "--env", "XDG_DATA_HOME=/tmp/feature-data",
