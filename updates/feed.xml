@@ -5,6 +5,17 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>require a reviewed Git source commit when opening a skill over MCP</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.18.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.18.0/</guid>
+      <description>MCP open_skill accepts a new optional input, expected_source_commit. Set it to the receipt.source_commit value from an earlier load, and the skill is delivered only while the Git-source checkout HEAD is still that commit. When the field is supplied, the checks run in this order: format (40 lowercase hex characters, enforced by the input schema), Git-source origin, the existing expected_sha256 and expected_bundle_sha256 checks (wording unchanged), a provable commit from the existing sourceCommit() probe, and an exact match. Any failure returns isError true with an actionable message and no instruction text or receipt. A mismatch names both the expected and the found commit. A rejected digest still runs no Git command. Calls that omit the field behave as before. tools/list shows the field as optional.
+
+Results from the controller's runs on commit 6a40534. These are the controller's executions, not mine. With the new test file run against the base code, 4 of its 6 tests failed: the moved-checkout, unprovable-commit, malformed-pin/non-Git and tools/list tests. The 2 tests that check unchanged existing behavior passed. On the candidate, every check passed: pnpm run build, the feature test (6 tests), pnpm run check (25 test files, 251 tests), pnpm run showcase:build and pnpm run showcase:check.
+
+The prior review finding is addressed. As the logged test source shows, the malformed-pin test reads the resolved callTool result directly and asserts both isError true and the schema message (must be a full 40-character lowercase Git commit). It no longer wraps the call in a try/catch that would turn thrown errors into isError.</description>
+      <pubDate>Fri, 02 Oct 2026 23:57:45 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: fail the diff gate when the baseline run did not finish</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.3/</guid>
