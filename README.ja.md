@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-02
+### 本日のレーダー · 2026-10-03
 
-`生成時刻: 2026-10-01 23:40 UTC` ｜ `対象期間: 論文 2026-09-28 → 2026-10-02 · ブログ・報道 2026-09-02 → 2026-10-02 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-02 23:40 UTC` ｜ `対象期間: 論文 2026-09-29 → 2026-10-03 · ブログ・報道 2026-09-03 → 2026-10-03 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>基盤モデル · arXiv 2609.39198 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>エッジとリアルタイム · arXiv 2609.39763 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>シミュレーションと評価 · arXiv 2609.37771 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>基盤モデル · arXiv 2609.39822 · 2026‑09‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑01</sub> |
-| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑01</sub> |
-| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>シミュレーションと評価 · arXiv 2610.00575 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>学習と自己改善 · arXiv 2610.00360 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>エッジとリアルタイム · arXiv 2610.00864 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>エッジとリアルタイム · arXiv 2610.00355 · 2026‑09‑30</sub> |
+| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑10‑02</sub> |
+| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>基盤モデル · The Robot Report · 2026‑10‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑02</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — `AI 下書き` コンベア上の把持など動く対象を扱うチームは、VLA が動的環境で苦戦するという課題に向けた自己申告のプレプリントとして押さえたい。実機・閉ループのシグナルはあるが数値は示されておらず、現時点では手掛かり止まり。
-2. **DiffWAM** — `AI 下書き` 動画基盤モデルで UAV 航法を組む場合、抜粋が挙げるボトルネックは高コストな将来映像合成と幾何再構成。終点成功率 74.40% は著者の自己申告で、どのベンチマークかはページから読み取れないため、採用前に再現を。
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI 下書き` シミュレーション操作ベンチマークの結果で VLA 高速化手法を選ぶなら一度立ち止まりたい。このプレプリントはベンチマーク側の欠陥が比較を歪めると主張するが、歪みの大きさを示す数値はページにない。
-4. **Toward Real-Time VLAs** — `AI 下書き` 推論の遅さが高頻度実行とのずれを生んでいるなら、モデル推論時間が 61.557 ms から 21.956 ms に縮んだという著者報告は再現する価値がある。ただし実機結果は示されておらず、実ハードでの効果は未検証。
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI 下書き` ヒューマノイド導入側にとっての要点は、三本指の旧世代が量産向けでなかったため Boston Dynamics が Atlas の手を作り直したこと。二次報道で数値はなく、価格や生産量はまだ判断できない。
-6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI 下書き` ハンド設計者は報じられた要件の洗い出し方が参考になる。技術者が小指と薬指を一日テープで固定し、できなくなる作業を確かめたという。ただ作業データはなく、指を減らす代償は定量化されていない。
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI 下書き` 安全担当は入力の信頼性を安全論証の対象に含めるべきだ。記事は、安全機能が規則どおり動いても操作された情報に基づいて行動しうると指摘し、試験と証拠の強化を促す。数値のない二次的な論評である。
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI 下書き` 点検ロボットを運用する工場では、データ収集よりも、設備異常の検出が保全チームの作業指示に結び付くかが評価の焦点になる。数値のない発表報道で、フリート規模での信頼性はまだ示されていない。
+1. **Token-World** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **DexPolicy** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+3. **Kinematic MeanFlow** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **IndoorBEV** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Isaac Lab on AWS** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Runway introduces Praxis-1 world action model for robotics** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Inside Omron’s next-generation LD mobile robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-02.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-03.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

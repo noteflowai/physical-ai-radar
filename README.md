@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-02
+### 今日雷达 · 2026-10-03
 
-`生成时间: 2026-10-01 23:40 UTC` ｜ `统计窗口: 论文 2026-09-28 → 2026-10-02 · 博客与报道 2026-09-02 → 2026-10-02 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-02 23:40 UTC` ｜ `统计窗口: 论文 2026-09-29 → 2026-10-03 · 博客与报道 2026-09-03 → 2026-10-03 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>基座模型 · arXiv 2609.39198 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>边缘与实时性 · arXiv 2609.39763 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>仿真与评测 · arXiv 2609.37771 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>基座模型 · arXiv 2609.39822 · 2026‑09‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑01</sub> |
-| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑01</sub> |
-| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>系统与编排 · The Robot Report · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>仿真与评测 · arXiv 2610.00575 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>训练与自我改进 · arXiv 2610.00360 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>边缘与实时性 · arXiv 2610.00864 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>边缘与实时性 · arXiv 2610.00355 · 2026‑09‑30</sub> |
+| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑10‑02</sub> |
+| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>基座模型 · The Robot Report · 2026‑10‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑02</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — `AI 起草` 做传送带等动态抓取的团队可以留意：摘录指出 VLA 擅长静态任务、遇到运动物体就吃力，这篇自报预印本正针对此；页面标注了真机与闭环信号但未给出任何数字，暂且只当线索。
-2. **DiffWAM** — `AI 起草` 用视频基础模型做无人机导航时，摘录点出的成本瓶颈是昂贵的未来视频合成与几何重建；作者自报 74.40% 的终点成功率，但页面看不出是哪个基准，选型前需自行复现。
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI 起草` 若要依据仿真操作基准上的速度与成功率来挑选 VLA 加速方案，先别急着下结论：这篇预印本认为基准本身的缺陷会扭曲此类比较，不过页面没有给出它自己的数字。
-4. **Toward Real-Time VLAs** — `AI 起草` 如果推理延迟是 VLA 跟不上高频执行的瓶颈，作者自报模型推理时间从 61.557 ms 降到 21.956 ms，值得复现；但页面未见真机结果，实际硬件上的收益尚待验证。
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI 起草` 对人形机器人采购方而言，信号在于 Boston Dynamics 重做 Atlas 的手，是因为三指旧款本就不是为量产设计的；这是二手报道且没有数字，价格与产量仍无从判断。
-6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI 起草` 做灵巧手的团队可借鉴其需求验证方式：据报道，工程师把小指和无名指绑在一起过了一天，看哪些事做不了；但报道没有任务数据，少一根手指的代价并未量化。
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI 起草` 安全团队应把输入数据的可信性纳入安全论证：文章认为安全功能照规则执行，机器人仍可能依据被操纵的信息行动，并建议加强测试与证据；这是二手评论，未给出数字。
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI 起草` 对部署巡检机器人的工厂，评估重点从采数据转向检测结果能否变成维护团队手里的工单；这是发布报道且没有数字，车队规模下的可靠性尚未得到展示。
+1. **Token-World** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **DexPolicy** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+3. **Kinematic MeanFlow** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **IndoorBEV** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Isaac Lab on AWS** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Runway introduces Praxis-1 world action model for robotics** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **Inside Omron’s next-generation LD mobile robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-02.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-03.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

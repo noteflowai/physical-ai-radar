@@ -228,6 +228,23 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-03",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.00575",
+        "https://arxiv.org/abs/2610.00360",
+        "https://arxiv.org/abs/2610.00864",
+        "https://arxiv.org/abs/2610.00355",
+        "https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy",
+        "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
+        "https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics",
+        "https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

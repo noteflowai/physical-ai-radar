@@ -13,6 +13,312 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00575",
+      "url": "https://arxiv.org/abs/2610.00575",
+      "title": "Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.00575 · 2026-09-30<br><b>Signals</b>: closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.00575 · 2026-09-30\nSignals: closed-loop success reported · latency or control-rate numbers\n\nA common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.00575"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "arxiv:2610.00575",
+        "url": "https://arxiv.org/abs/2610.00575",
+        "title": "Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation",
+        "publisher": "arXiv 2610.00575",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-09-30",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "latency"
+        ],
+        "excerpt": "A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00360",
+      "url": "https://arxiv.org/abs/2610.00360",
+      "title": "DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.00360 · 2026-09-30<br><b>Key numbers</b>: 49.4% · 68.1% · 14.1% · 45.4%<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights</p>\n<blockquote>Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.00360 · 2026-09-30\nKey numbers: 49.4% · 68.1% · 14.1% · 45.4%\nSignals: quantitative results · closed-loop success reported · open code or weights\n\nReinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.00360"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "arxiv:2610.00360",
+        "url": "https://arxiv.org/abs/2610.00360",
+        "title": "DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation",
+        "publisher": "arXiv 2610.00360",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-09-30",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [
+          "49.4%",
+          "68.1%",
+          "14.1%",
+          "45.4%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "open_release"
+        ],
+        "excerpt": "Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00864",
+      "url": "https://arxiv.org/abs/2610.00864",
+      "title": "Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.00864 · 2026-10-01<br><b>Key numbers</b>: 67.5% · 74.4% · 30.3% · 54.9%<br><b>Signals</b>: quantitative results · open code or weights · latency or control-rate numbers</p>\n<blockquote>In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.00864 · 2026-10-01\nKey numbers: 67.5% · 74.4% · 30.3% · 54.9%\nSignals: quantitative results · open code or weights · latency or control-rate numbers\n\nIn this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.00864"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "arxiv:2610.00864",
+        "url": "https://arxiv.org/abs/2610.00864",
+        "title": "Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models",
+        "publisher": "arXiv 2610.00864",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-10-01",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [
+          "67.5%",
+          "74.4%",
+          "30.3%",
+          "54.9%"
+        ],
+        "signals": [
+          "numbers",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00355",
+      "url": "https://arxiv.org/abs/2610.00355",
+      "title": "IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.00355 · 2026-09-30<br><b>Key numbers</b>: 0.6M parameters · 169.6 ms · 200 ms<br><b>Signals</b>: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.00355 · 2026-09-30\nKey numbers: 0.6M parameters · 169.6 ms · 200 ms\nSignals: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers\n\nEfficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.00355"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "arxiv:2610.00355",
+        "url": "https://arxiv.org/abs/2610.00355",
+        "title": "IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots",
+        "publisher": "arXiv 2610.00355",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-09-30",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [
+          "0.6M parameters",
+          "169.6 ms",
+          "200 ms"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:b9f6fd764f44",
+      "url": "https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/",
+      "title": "Isaac Lab on AWS: From Simulation to Registered Policy",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: AWS Physical AI Blog · 2026-10-02<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: AWS Physical AI Blog · 2026-10-02\nSignals: real-robot experiments\n\nIntroduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "AWS Physical AI Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "aws-physical-ai:b9f6fd764f44",
+        "url": "https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/",
+        "title": "Isaac Lab on AWS: From Simulation to Registered Policy",
+        "publisher": "AWS Physical AI Blog",
+        "source_id": "aws-physical-ai",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:00bb782fa200",
+      "url": "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
+      "title": "Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-02</p>\n<blockquote>We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-02\n\nWe’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "IEEE Spectrum Robotics"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "ieee-spectrum-robotics:00bb782fa200",
+        "url": "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
+        "title": "Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away",
+        "publisher": "IEEE Spectrum Robotics",
+        "source_id": "ieee-spectrum-robotics",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:013398c4f77b",
+      "url": "https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/",
+      "title": "Runway introduces Praxis-1 world action model for robotics",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-02<br><b>Signals</b>: open code or weights</p>\n<blockquote>When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: The Robot Report · 2026-10-02\nSignals: open code or weights\n\nWhen Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "the-robot-report:013398c4f77b",
+        "url": "https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/",
+        "title": "Runway introduces Praxis-1 world action model for robotics",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "open_release"
+        ],
+        "excerpt": "When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:71461f9591ea",
+      "url": "https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/",
+      "title": "Inside Omron’s next-generation LD mobile robots",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-02</p>\n<blockquote>In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html\">Full radar for 2026-10-03</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-02\n\nIn mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.\n\nFull radar for 2026-10-03: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.en.html",
+      "summary": "In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.",
+      "date_published": "2026-10-02T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-03",
+        "id": "the-robot-report:71461f9591ea",
+        "url": "https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/",
+        "title": "Inside Omron’s next-generation LD mobile robots",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-02T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.39198",
       "url": "https://arxiv.org/abs/2609.39198",
       "title": "DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction",
@@ -3360,290 +3666,6 @@
         "signals": [
           "closed_loop",
           "real_robot"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.19104v1",
-      "url": "http://arxiv.org/abs/2609.19104v1",
-      "title": "rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.19104v1 · 2026-09-16<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.19104v1 · 2026-09-16\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.19104v1"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.19104v1",
-        "url": "http://arxiv.org/abs/2609.19104v1",
-        "title": "rMuscle: Robotic Muscle Memory for Efficient Vision-Language-Action Model Inference",
-        "publisher": "arXiv 2609.19104v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-09-16",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.18732v1",
-      "url": "http://arxiv.org/abs/2609.18732v1",
-      "title": "PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.18732v1 · 2026-09-16<br><b>Key numbers</b>: 50 Hz · 48.1% · 68.9% · 70.3%<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.18732v1 · 2026-09-16\nKey numbers: 50 Hz · 48.1% · 68.9% · 70.3%\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.18732v1"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.18732v1",
-        "url": "http://arxiv.org/abs/2609.18732v1",
-        "title": "PASSAGE: Scaling Scene-Aligned Motion Learning for Perceptive Humanoid Traversal in Cluttered Environments",
-        "publisher": "arXiv 2609.18732v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-09-16",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [
-          "50 Hz",
-          "48.1%",
-          "68.9%",
-          "70.3%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "latency"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.20791v1",
-      "url": "http://arxiv.org/abs/2609.20791v1",
-      "title": "StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.20791v1 · 2026-09-17<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2609.20791v1 · 2026-09-17\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.20791v1"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.20791v1",
-        "url": "http://arxiv.org/abs/2609.20791v1",
-        "title": "StageGuard: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation",
-        "publisher": "arXiv 2609.20791v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-09-17",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.20761v1",
-      "url": "http://arxiv.org/abs/2609.20761v1",
-      "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.20761v1 · 2026-09-17<br><b>Key numbers</b>: 11.9 ms<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.20761v1 · 2026-09-17\nKey numbers: 11.9 ms\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.20761v1"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.20761v1",
-        "url": "http://arxiv.org/abs/2609.20761v1",
-        "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
-        "publisher": "arXiv 2609.20761v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "foundation",
-        "published": "2026-09-17",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [
-          "11.9 ms"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:825555203",
-      "url": "https://spectrum.ieee.org/tactile-data-robots",
-      "title": "Robots Are Learning to Feel",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-09-10<br><b>Key numbers</b>: 100 hours · 12 tasks · 3,000 hours · 30,000 hours<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-09-10\nKey numbers: 100 hours · 12 tasks · 3,000 hours · 30,000 hours\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "Robots Are Learning to Feel",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "ieee-spectrum-robotics:825555203",
-        "url": "https://spectrum.ieee.org/tactile-data-robots",
-        "title": "Robots Are Learning to Feel",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "data",
-        "published": "2026-09-10",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [
-          "100 hours",
-          "12 tasks",
-          "3,000 hours",
-          "30,000 hours"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.18623v1",
-      "url": "http://arxiv.org/abs/2609.18623v1",
-      "title": "FIVE-VLA: Fast and EffectIVE Autonomous Driving with Recurrent Action Memory",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.18623v1 · 2026-09-16<br><b>Key numbers</b>: 641M parameters · 10% · 10.2% · 7.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.18623v1 · 2026-09-16\nKey numbers: 641M parameters · 10% · 10.2% · 7.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "FIVE-VLA: Fast and EffectIVE Autonomous Driving with Recurrent Action Memory",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.18623v1"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.18623v1",
-        "url": "http://arxiv.org/abs/2609.18623v1",
-        "title": "FIVE-VLA: Fast and EffectIVE Autonomous Driving with Recurrent Action Memory",
-        "publisher": "arXiv 2609.18623v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-16",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [
-          "641M parameters",
-          "10%",
-          "10.2%",
-          "7.7%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.19666v1",
-      "url": "http://arxiv.org/abs/2609.19666v1",
-      "title": "Towards High-DoF Dexterous Manipulation through VLA Post-Training",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.19666v1 · 2026-09-17<br><b>Signals</b>: real-robot experiments · open code or weights</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html\">Full radar for 2026-09-19</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2609.19666v1 · 2026-09-17\nSignals: real-robot experiments · open code or weights\n\nFull radar for 2026-09-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-19.en.html",
-      "summary": "Towards High-DoF Dexterous Manipulation through VLA Post-Training",
-      "date_published": "2026-09-19T08:12:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.19666v1"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-19",
-        "id": "arxiv:2609.19666v1",
-        "url": "http://arxiv.org/abs/2609.19666v1",
-        "title": "Towards High-DoF Dexterous Manipulation through VLA Post-Training",
-        "publisher": "arXiv 2609.19666v1",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-09-17",
-        "radar_published": "2026-09-19T08:12:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot",
-          "open_release"
         ],
         "excerpt": ""
       }

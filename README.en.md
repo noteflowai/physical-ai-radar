@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-02
+### Today's radar · 2026-10-03
 
-`Generated: 2026-10-01 23:40 UTC` ｜ `Window: papers 2026-09-28 → 2026-10-02 · posts 2026-09-02 → 2026-10-02 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-02 23:40 UTC` ｜ `Window: papers 2026-09-29 → 2026-10-03 · posts 2026-09-03 → 2026-10-03 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction](https://arxiv.org/abs/2609.39198)**<br><sub>Foundation models · arXiv 2609.39198 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiffWAM: A Fast and Efficient Navigation World Action Model](https://arxiv.org/abs/2609.39763)**<br>`74.40%`<br><sub>Edge & real-time · arXiv 2609.39763 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration](https://arxiv.org/abs/2609.37771)**<br><sub>Simulation & evaluation · arXiv 2609.37771 · 2026‑09‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation](https://arxiv.org/abs/2609.39822)**<br>`61.557 ms`&nbsp; `21.956 ms`<br><sub>Foundation models · arXiv 2609.39822 · 2026‑09‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[Atlas Robot’s New Hand May Outperform Humanlike Designs](https://spectrum.ieee.org/robust-robot-hand)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑01</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics drops pinkie on new humanoid hand](https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑01</sub> |
-| 07<br>🟡&nbsp;`M` | **[Your Robot’s Safety Functions Already Work. What If the Input Lies?](https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑01</sub> |
-| 08<br>🟡&nbsp;`M` | **[ANYbotics launches Shift to streamline robot fleet operations, scale inspections](https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>Simulation & evaluation · arXiv 2610.00575 · 2026‑09‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>Training & self-improvement · arXiv 2610.00360 · 2026‑09‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>Edge & real-time · arXiv 2610.00864 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>Edge & real-time · arXiv 2610.00355 · 2026‑09‑30</sub> |
+| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑10‑02</sub> |
+| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>Foundation models · The Robot Report · 2026‑10‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑02</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — `AI draft` Teams handling moving objects, such as conveyor-belt picking, should note this self-reported preprint targets the dynamic case where the excerpt says VLAs struggle; the page flags real-robot and closed-loop work but quotes no figures, so treat it as a lead.
-2. **DiffWAM** — `AI draft` For UAV navigation built on video foundation models, the excerpt names costly future-video synthesis and geometric reconstruction as the bottleneck; the 74.40% endpoint success rate is author-reported and the page does not show which benchmark, so reproduce before adopting.
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI draft` Anyone picking a VLA acceleration method from simulated manipulation benchmark results should hold off: this preprint argues flaws in those benchmarks skew the comparison, though the page shows no figures to size the distortion.
-4. **Toward Real-Time VLAs** — `AI draft` Where inference latency keeps a VLA from matching high-rate execution, the author-reported cut in model-inference time from 61.557 ms to 21.956 ms is worth reproducing; the page shows no real-robot result, so on-hardware gains remain unverified.
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI draft` For humanoid buyers, the signal is that Boston Dynamics redesigned the Atlas hand because the three-finger predecessor was never meant for mass production; this secondary report gives no figures, so price and volume remain open.
-6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI draft` Hand designers can borrow the requirements method reported here, engineers taping pinkie and ring finger together for a day to find what they could not do; the secondary piece gives no task data, so the cost of fewer fingers is unquantified.
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI draft` Safety teams should bring input integrity into the safety case: the piece argues a robot can obey its safety rules yet act on manipulated information, and urges stronger testing and evidence; it is secondary commentary without figures.
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI draft` For plants running inspection robots, the evaluation question moves from collecting data to whether detected equipment failures become work orders for maintenance teams; this launch report has no figures, so fleet-scale reliability is not yet shown.
+1. **Token-World** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **DexPolicy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+3. **Kinematic MeanFlow** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **IndoorBEV** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Isaac Lab on AWS** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Runway introduces Praxis-1 world action model for robotics** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Inside Omron’s next-generation LD mobile robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-02.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-03.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
