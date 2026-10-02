@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39198" rel="noopener" target="_blank">DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness, and Realtime Correction</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 做传送带等动态抓取的团队可以留意：摘录指出 VLA 擅长静态任务、遇到运动物体就吃力，这篇自报预印本正针对此；页面标注了真机与闭环信号但未给出任何数字，暂且只当线索。</p>
 <p class="excerpt">While Vision-Language-Action (VLA) models excel in static tasks, they struggle in dynamic environments where objects are in motion (e.g., conveyor belt manipulation).</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39763" rel="noopener" target="_blank">DiffWAM: A Fast and Efficient Navigation World Action Model</a></h3>
 <p class="figure"><strong>74.40%</strong><span class="context">“endpoint success rate of 74.40% on the 1”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 用视频基础模型做无人机导航时，摘录点出的成本瓶颈是昂贵的未来视频合成与几何重建；作者自报 74.40% 的终点成功率，但页面看不出是哪个基准，选型前需自行复现。</p>
 <p class="excerpt">Pretrained video foundation models encode rich semantic and spatiotemporal priors for embodied navigation, yet converting these priors into UAV motion typically requires expensive future-video synthesis and geometric reconstruction.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.37771" rel="noopener" target="_blank">Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若要依据仿真操作基准上的速度与成功率来挑选 VLA 加速方案，先别急着下结论：这篇预印本认为基准本身的缺陷会扭曲此类比较，不过页面没有给出它自己的数字。</p>
 <p class="excerpt">Simulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment.</p>
 <ul class="signals"><li>含闭环成功率</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39822" rel="noopener" target="_blank">Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation</a></h3>
 <p class="figure"><strong>61.557 ms</strong><span class="context">“and model-inference time from 61.557 ms to 21.956 ms”</span></p><p class="chips"><span class="chip">21.956 ms</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果推理延迟是 VLA 跟不上高频执行的瓶颈，作者自报模型推理时间从 61.557 ms 降到 21.956 ms，值得复现；但页面未见真机结果，实际硬件上的收益尚待验证。</p>
 <p class="excerpt">Vision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/robust-robot-hand" rel="noopener" target="_blank">Atlas Robot’s New Hand May Outperform Humanlike Designs</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 对人形机器人采购方而言，信号在于 Boston Dynamics 重做 Atlas 的手，是因为三指旧款本就不是为量产设计的；这是二手报道且没有数字，价格与产量仍无从判断。</p>
 <p class="excerpt">Today, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of…</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-01</span>
@@ -174,7 +174,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/" rel="noopener" target="_blank">Boston Dynamics drops pinkie on new humanoid hand</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 做灵巧手的团队可借鉴其需求验证方式：据报道，工程师把小指和无名指绑在一起过了一天，看哪些事做不了；但报道没有任务数据，少一根手指的代价并未量化。</p>
 <p class="excerpt">Boston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-01</span>
@@ -188,7 +188,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/" rel="noopener" target="_blank">Your Robot’s Safety Functions Already Work. What If the Input Lies?</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 安全团队应把输入数据的可信性纳入安全论证：文章认为安全功能照规则执行，机器人仍可能依据被操纵的信息行动，并建议加强测试与证据；这是二手评论，未给出数字。</p>
 <p class="excerpt">A robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-01</span>
@@ -202,7 +202,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/" rel="noopener" target="_blank">ANYbotics launches Shift to streamline robot fleet operations, scale inspections</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 对部署巡检机器人的工厂，评估重点从采数据转向检测结果能否变成维护团队手里的工单；这是发布报道且没有数字，车队规模下的可靠性尚未得到展示。</p>
 <p class="excerpt">ANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-01</span>

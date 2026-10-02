@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **DiffWAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-4. **Toward Real-Time VLAs** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **Boston Dynamics drops pinkie on new humanoid hand** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+1. **DSDyn-VLA** — `AI draft` Teams handling moving objects, such as conveyor-belt picking, should note this self-reported preprint targets the dynamic case where the excerpt says VLAs struggle; the page flags real-robot and closed-loop work but quotes no figures, so treat it as a lead.
+2. **DiffWAM** — `AI draft` For UAV navigation built on video foundation models, the excerpt names costly future-video synthesis and geometric reconstruction as the bottleneck; the 74.40% endpoint success rate is author-reported and the page does not show which benchmark, so reproduce before adopting.
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI draft` Anyone picking a VLA acceleration method from simulated manipulation benchmark results should hold off: this preprint argues flaws in those benchmarks skew the comparison, though the page shows no figures to size the distortion.
+4. **Toward Real-Time VLAs** — `AI draft` Where inference latency keeps a VLA from matching high-rate execution, the author-reported cut in model-inference time from 61.557 ms to 21.956 ms is worth reproducing; the page shows no real-robot result, so on-hardware gains remain unverified.
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI draft` For humanoid buyers, the signal is that Boston Dynamics redesigned the Atlas hand because the three-finger predecessor was never meant for mass production; this secondary report gives no figures, so price and volume remain open.
+6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI draft` Hand designers can borrow the requirements method reported here, engineers taping pinkie and ring finger together for a day to find what they could not do; the secondary piece gives no task data, so the cost of fewer fingers is unquantified.
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI draft` Safety teams should bring input integrity into the safety case: the piece argues a robot can obey its safety rules yet act on manipulated information, and urges stronger testing and evidence; it is secondary commentary without figures.
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI draft` For plants running inspection robots, the evaluation question moves from collecting data to whether detected equipment failures become work orders for maintenance teams; this launch report has no figures, so fleet-scale reliability is not yet shown.
 
 </details>
 

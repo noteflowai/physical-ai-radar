@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-02",
+  "generated": "2026-10-02 14:33 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2609.39198": {
+      "zh": "做传送带等动态抓取的团队可以留意：摘录指出 VLA 擅长静态任务、遇到运动物体就吃力，这篇自报预印本正针对此；页面标注了真机与闭环信号但未给出任何数字，暂且只当线索。",
+      "en": "Teams handling moving objects, such as conveyor-belt picking, should note this self-reported preprint targets the dynamic case where the excerpt says VLAs struggle; the page flags real-robot and closed-loop work but quotes no figures, so treat it as a lead.",
+      "ja": "コンベア上の把持など動く対象を扱うチームは、VLA が動的環境で苦戦するという課題に向けた自己申告のプレプリントとして押さえたい。実機・閉ループのシグナルはあるが数値は示されておらず、現時点では手掛かり止まり。"
+    },
+    "https://arxiv.org/abs/2609.39763": {
+      "zh": "用视频基础模型做无人机导航时，摘录点出的成本瓶颈是昂贵的未来视频合成与几何重建；作者自报 74.40% 的终点成功率，但页面看不出是哪个基准，选型前需自行复现。",
+      "en": "For UAV navigation built on video foundation models, the excerpt names costly future-video synthesis and geometric reconstruction as the bottleneck; the 74.40% endpoint success rate is author-reported and the page does not show which benchmark, so reproduce before adopting.",
+      "ja": "動画基盤モデルで UAV 航法を組む場合、抜粋が挙げるボトルネックは高コストな将来映像合成と幾何再構成。終点成功率 74.40% は著者の自己申告で、どのベンチマークかはページから読み取れないため、採用前に再現を。"
+    },
+    "https://arxiv.org/abs/2609.37771": {
+      "zh": "若要依据仿真操作基准上的速度与成功率来挑选 VLA 加速方案，先别急着下结论：这篇预印本认为基准本身的缺陷会扭曲此类比较，不过页面没有给出它自己的数字。",
+      "en": "Anyone picking a VLA acceleration method from simulated manipulation benchmark results should hold off: this preprint argues flaws in those benchmarks skew the comparison, though the page shows no figures to size the distortion.",
+      "ja": "シミュレーション操作ベンチマークの結果で VLA 高速化手法を選ぶなら一度立ち止まりたい。このプレプリントはベンチマーク側の欠陥が比較を歪めると主張するが、歪みの大きさを示す数値はページにない。"
+    },
+    "https://arxiv.org/abs/2609.39822": {
+      "zh": "如果推理延迟是 VLA 跟不上高频执行的瓶颈，作者自报模型推理时间从 61.557 ms 降到 21.956 ms，值得复现；但页面未见真机结果，实际硬件上的收益尚待验证。",
+      "en": "Where inference latency keeps a VLA from matching high-rate execution, the author-reported cut in model-inference time from 61.557 ms to 21.956 ms is worth reproducing; the page shows no real-robot result, so on-hardware gains remain unverified.",
+      "ja": "推論の遅さが高頻度実行とのずれを生んでいるなら、モデル推論時間が 61.557 ms から 21.956 ms に縮んだという著者報告は再現する価値がある。ただし実機結果は示されておらず、実ハードでの効果は未検証。"
+    },
+    "https://spectrum.ieee.org/robust-robot-hand": {
+      "zh": "对人形机器人采购方而言，信号在于 Boston Dynamics 重做 Atlas 的手，是因为三指旧款本就不是为量产设计的；这是二手报道且没有数字，价格与产量仍无从判断。",
+      "en": "For humanoid buyers, the signal is that Boston Dynamics redesigned the Atlas hand because the three-finger predecessor was never meant for mass production; this secondary report gives no figures, so price and volume remain open.",
+      "ja": "ヒューマノイド導入側にとっての要点は、三本指の旧世代が量産向けでなかったため Boston Dynamics が Atlas の手を作り直したこと。二次報道で数値はなく、価格や生産量はまだ判断できない。"
+    },
+    "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand": {
+      "zh": "做灵巧手的团队可借鉴其需求验证方式：据报道，工程师把小指和无名指绑在一起过了一天，看哪些事做不了；但报道没有任务数据，少一根手指的代价并未量化。",
+      "en": "Hand designers can borrow the requirements method reported here, engineers taping pinkie and ring finger together for a day to find what they could not do; the secondary piece gives no task data, so the cost of fewer fingers is unquantified.",
+      "ja": "ハンド設計者は報じられた要件の洗い出し方が参考になる。技術者が小指と薬指を一日テープで固定し、できなくなる作業を確かめたという。ただ作業データはなく、指を減らす代償は定量化されていない。"
+    },
+    "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies": {
+      "zh": "安全团队应把输入数据的可信性纳入安全论证：文章认为安全功能照规则执行，机器人仍可能依据被操纵的信息行动，并建议加强测试与证据；这是二手评论，未给出数字。",
+      "en": "Safety teams should bring input integrity into the safety case: the piece argues a robot can obey its safety rules yet act on manipulated information, and urges stronger testing and evidence; it is secondary commentary without figures.",
+      "ja": "安全担当は入力の信頼性を安全論証の対象に含めるべきだ。記事は、安全機能が規則どおり動いても操作された情報に基づいて行動しうると指摘し、試験と証拠の強化を促す。数値のない二次的な論評である。"
+    },
+    "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections": {
+      "zh": "对部署巡检机器人的工厂，评估重点从采数据转向检测结果能否变成维护团队手里的工单；这是发布报道且没有数字，车队规模下的可靠性尚未得到展示。",
+      "en": "For plants running inspection robots, the evaluation question moves from collecting data to whether detected equipment failures become work orders for maintenance teams; this launch report has no figures, so fleet-scale reliability is not yet shown.",
+      "ja": "点検ロボットを運用する工場では、データ収集よりも、設備異常の検出が保全チームの作業指示に結び付くかが評価の焦点になる。数値のない発表報道で、フリート規模での信頼性はまだ示されていない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

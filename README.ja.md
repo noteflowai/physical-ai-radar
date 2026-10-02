@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-2. **DiffWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-4. **Toward Real-Time VLAs** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-6. **Boston Dynamics drops pinkie on new humanoid hand** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+1. **DSDyn-VLA** — `AI 下書き` コンベア上の把持など動く対象を扱うチームは、VLA が動的環境で苦戦するという課題に向けた自己申告のプレプリントとして押さえたい。実機・閉ループのシグナルはあるが数値は示されておらず、現時点では手掛かり止まり。
+2. **DiffWAM** — `AI 下書き` 動画基盤モデルで UAV 航法を組む場合、抜粋が挙げるボトルネックは高コストな将来映像合成と幾何再構成。終点成功率 74.40% は著者の自己申告で、どのベンチマークかはページから読み取れないため、採用前に再現を。
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI 下書き` シミュレーション操作ベンチマークの結果で VLA 高速化手法を選ぶなら一度立ち止まりたい。このプレプリントはベンチマーク側の欠陥が比較を歪めると主張するが、歪みの大きさを示す数値はページにない。
+4. **Toward Real-Time VLAs** — `AI 下書き` 推論の遅さが高頻度実行とのずれを生んでいるなら、モデル推論時間が 61.557 ms から 21.956 ms に縮んだという著者報告は再現する価値がある。ただし実機結果は示されておらず、実ハードでの効果は未検証。
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI 下書き` ヒューマノイド導入側にとっての要点は、三本指の旧世代が量産向けでなかったため Boston Dynamics が Atlas の手を作り直したこと。二次報道で数値はなく、価格や生産量はまだ判断できない。
+6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI 下書き` ハンド設計者は報じられた要件の洗い出し方が参考になる。技術者が小指と薬指を一日テープで固定し、できなくなる作業を確かめたという。ただ作業データはなく、指を減らす代償は定量化されていない。
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI 下書き` 安全担当は入力の信頼性を安全論証の対象に含めるべきだ。記事は、安全機能が規則どおり動いても操作された情報に基づいて行動しうると指摘し、試験と証拠の強化を促す。数値のない二次的な論評である。
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI 下書き` 点検ロボットを運用する工場では、データ収集よりも、設備異常の検出が保全チームの作業指示に結び付くかが評価の焦点になる。数値のない発表報道で、フリート規模での信頼性はまだ示されていない。
 
 </details>
 

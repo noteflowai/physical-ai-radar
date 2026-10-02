@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **DSDyn-VLA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-2. **DiffWAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Toward Real-Time VLAs** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-6. **Boston Dynamics drops pinkie on new humanoid hand** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+1. **DSDyn-VLA** — `AI 起草` 做传送带等动态抓取的团队可以留意：摘录指出 VLA 擅长静态任务、遇到运动物体就吃力，这篇自报预印本正针对此；页面标注了真机与闭环信号但未给出任何数字，暂且只当线索。
+2. **DiffWAM** — `AI 起草` 用视频基础模型做无人机导航时，摘录点出的成本瓶颈是昂贵的未来视频合成与几何重建；作者自报 74.40% 的终点成功率，但页面看不出是哪个基准，选型前需自行复现。
+3. **Faster and Better? Benchmark Bugs and Design Limitations Distort the Evalua…** — `AI 起草` 若要依据仿真操作基准上的速度与成功率来挑选 VLA 加速方案，先别急着下结论：这篇预印本认为基准本身的缺陷会扭曲此类比较，不过页面没有给出它自己的数字。
+4. **Toward Real-Time VLAs** — `AI 起草` 如果推理延迟是 VLA 跟不上高频执行的瓶颈，作者自报模型推理时间从 61.557 ms 降到 21.956 ms，值得复现；但页面未见真机结果，实际硬件上的收益尚待验证。
+5. **Atlas Robot’s New Hand May Outperform Humanlike Designs** — `AI 起草` 对人形机器人采购方而言，信号在于 Boston Dynamics 重做 Atlas 的手，是因为三指旧款本就不是为量产设计的；这是二手报道且没有数字，价格与产量仍无从判断。
+6. **Boston Dynamics drops pinkie on new humanoid hand** — `AI 起草` 做灵巧手的团队可借鉴其需求验证方式：据报道，工程师把小指和无名指绑在一起过了一天，看哪些事做不了；但报道没有任务数据，少一根手指的代价并未量化。
+7. **Your Robot’s Safety Functions Already Work. What If the Input Lies?** — `AI 起草` 安全团队应把输入数据的可信性纳入安全论证：文章认为安全功能照规则执行，机器人仍可能依据被操纵的信息行动，并建议加强测试与证据；这是二手评论，未给出数字。
+8. **ANYbotics launches Shift to streamline robot fleet operations, scale inspec…** — `AI 起草` 对部署巡检机器人的工厂，评估重点从采数据转向检测结果能否变成维护团队手里的工单；这是发布报道且没有数字，车队规模下的可靠性尚未得到展示。
 
 </details>
 
