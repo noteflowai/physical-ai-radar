@@ -111,7 +111,15 @@ for name in spec.get("generated",[]):
 
 def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
             label: str, *, gpu: bool = False, generated: list[str] | None = None,
-            timeout: int = 1200) -> dict:
+            timeout: int = 1200, workspace_bytes: int | None = None,
+            cpus: int = 4, memory_bytes: int | None = None) -> dict:
+    if type(cpus) is not int or not 1 <= cpus <= 4:
+        raise ValueError("CPU limit must be between one and four")
+    if memory_bytes is not None and (type(memory_bytes) is not int or memory_bytes < 256 * 1024**2):
+        raise ValueError("Invalid memory limit")
+    if workspace_bytes is not None and (gpu or type(workspace_bytes) is not int
+                                       or not 64 * 1024**2 <= workspace_bytes <= 1024**3):
+        raise ValueError("Bounded CPU workspace must be 64 MiB to 1 GiB")
     state.mkdir(parents=True, exist_ok=True)
     output = state / label
     output.mkdir(exist_ok=True)
@@ -131,7 +139,8 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
             p.chmod(0o644)
         argv = ["docker", "run", "--rm", "--name", container, "--network", "none",
                 "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
-                "--pids-limit", "512", "--memory", "24g", "--cpus", str(min(os.cpu_count() or 1, 4)),
+                "--pids-limit", "512", "--memory", str(memory_bytes) if memory_bytes else "24g",
+                "--cpus", str(min(os.cpu_count() or 1, cpus)),
                 "--user", f"{os.getuid()}:{os.getgid()}",
                 "--mount", f"type=bind,src={snapshot},dst=/candidate,readonly",
                 "--mount", f"type=bind,src={config / 'harness.py'},dst=/harness.py,readonly",
@@ -142,6 +151,10 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
         if gpu:
             argv += ["--gpus", "device=0", "--tmpfs",
                      f"/workspace:uid={os.getuid()},gid={os.getgid()},size=4g"]
+        elif workspace_bytes is not None:
+            argv += ["--read-only", "--log-driver", "none",
+                     "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}",
+                     "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728"]
         argv += [image, "/harness.py"]
         def cleanup():
             subprocess.run(["docker", "rm", "-f", container], stdout=subprocess.DEVNULL,
