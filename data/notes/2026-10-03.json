@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-03",
+  "generated": "2026-10-03 14:04 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.00575": {
+      "zh": "若你的世界模型评测先生成 RGB 画面、再重新编码喂给策略，这篇自报预印本认为这条间接接口正是问题所在；页面标出闭环与延迟信号，却没给出任何数字，暂不足以支撑改架构。",
+      "en": "If your world-model evaluator renders RGB frames only to re-encode them as policy inputs, this self-reported preprint argues that indirect interface is the weak point; the page flags closed-loop and latency results but quotes no figures, so it is not yet grounds to re-architect.",
+      "ja": "世界モデル評価で RGB を予測してから方策入力へ再エンコードしているなら、その間接的な接続こそ弱点だと論じる自己報告のプレプリント。閉ループと遅延のシグナルはあるが数値は示されず、設計変更の根拠にはまだ足りない。"
+    },
+    "https://arxiv.org/abs/2610.00360": {
+      "zh": "做灵巧手 RL 的团队值得验证摘录里的判断：用来找接触的动作噪声会干扰精细控物；作者自报目标成功率 FPO 从 49.4% 升到 68.1%、GRPO 从 14.1% 升到 45.4%，页面未见真机结果，代码标为开放。",
+      "en": "For dexterous RL, the excerpt's claim that exploration noise for finding contacts undermines precise object control is worth testing in your own setup; target success reportedly rises 49.4% to 68.1% (FPO) and 14.1% to 45.4% (GRPO), with no real-robot result shown.",
+      "ja": "接触を探す行動ノイズが精密な物体制御を妨げる、という抜粋の指摘は巧緻操作の RL で確かめる価値がある。目標成功率は FPO で 49.4% から 68.1%、GRPO で 14.1% から 45.4% と著者自己報告だが、実機結果はページに見当たらない。"
+    },
+    "https://arxiv.org/abs/2610.00864": {
+      "zh": "用多步流匹配跑 GR00T-N1.6、被推理延迟卡住的团队，可先考虑一步生成而非换硬件：作者自报含 L40 在内延迟降 67.5%~74.4%、端到端降 30.3%~54.9%，但页面没有闭环或真机成功率，需自行确认精度不掉。",
+      "en": "Teams whose GR00T-N1.6 deployment is bottlenecked by multi-step flow matching may get latency back without new hardware: the authors self-report 67.5%–74.4% lower latency including on L40 and 30.3%–54.9% end-to-end, but no closed-loop success is shown, so verify task performance holds.",
+      "ja": "多段フローマッチングの推論遅延で GR00T-N1.6 の運用が詰まっているなら、ハード更新より先に一段生成を検討する余地がある。L40 を含め遅延 67.5%~74.4%、エンドツーエンドで 30.3%~54.9% 減と自己報告されるが、閉ループ成功率は未提示で、精度維持は自前で確認したい。"
+    },
+    "https://arxiv.org/abs/2610.00355": {
+      "zh": "算力吃紧的室内移动机器人可以把它列入候选：0.6M 参数的 LiDAR BEV 感知，平均延迟 169.6 ms，对 200 ms 的感知时限余量不大；页面标有真机实验与开放代码，上车前请在自家硬件上测最坏情况延迟。",
+      "en": "For compute-constrained indoor mobile robots, a 0.6M-parameter LiDAR BEV stack averaging 169.6 ms against a 200 ms perception deadline is a candidate, but a mean that close to the deadline means measuring worst-case latency on your own hardware before adopting it.",
+      "ja": "計算資源の限られた屋内移動ロボットには候補になる。0.6M パラメータの LiDAR BEV 認識で平均 169.6 ms だが、200 ms の認識期限に対し平均値で余裕は小さく、採用前に自社ハードで最悪ケースの遅延を測るべきだ。実機実験とコード公開のシグナルあり。"
+    },
+    "https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy": {
+      "zh": "在 AWS 上用 Isaac Lab 训练的团队可参考这篇官方文章：它称 AWS 上的 Physical AI 缺了一层，而系统正从研究快速走向生产部署，流程以注册好的策略收尾；文中没有量化数据，宜当作流程参考，而非性能依据。",
+      "en": "For teams training in Isaac Lab on AWS, this first-party post names a missing layer in Physical AI on AWS as systems move from research into production, and walks a path ending in a registered policy; it gives no figures, so read it as a workflow pattern, not a performance claim.",
+      "ja": "AWS 上で Isaac Lab を使うチーム向けの一次情報。研究から本番配備へ急速に移る中で AWS 上の Physical AI に「欠けている層」があるとし、登録済み方策に至る流れを示す。定量データはなく、性能の根拠ではなくワークフローの型として読むのが妥当。"
+    },
+    "https://spectrum.ieee.org/video-friday-bioinspired-robotics": {
+      "zh": "做海上投放平台的可以留意这种思路：摘录描述 ALBATROSS 空投后无需降落伞即可自旋降落到水面，落水后被动自扶正，再把同一副刚性机翼当帆用；这是 Video Friday 的二手转述且无数字，引用前请查原始来源。",
+      "en": "Designers of sea-deployed platforms may note the quoted ALBATROSS concept: air-dropped, autorotating to the water without a parachute, passively self-righting, then reusing the same rigid wings as sails; it is a secondhand Video Friday item with no figures, so check the primary source.",
+      "ja": "海上投入型の機体を設計するなら参考になる発想。抜粋では ALBATROSS が空中投下後パラシュートなしで自動回転降下し、着水後に受動的に姿勢を戻し、同じ剛性翼を帆として再利用する。Video Friday の二次情報で数値はなく、一次情報の確認が必要。"
+    },
+    "https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics": {
+      "zh": "在挑选世界动作模型作底座的团队先别急着押注：报道称 Runway 打算在公开发布 Praxis-1 时附带开放权重，但这是二手消息，页面未见发布时间或任何数字，眼下只宜列入观察名单。",
+      "en": "If you are choosing a world action model to build on, the report says Runway plans to ship Praxis-1 with open weights once it is publicly released; this is secondhand, and the page shows no release date or figures, so keep it on a watchlist rather than in a plan.",
+      "ja": "基盤とする世界行動モデルを選定中なら、Runway が Praxis-1 の一般公開時に重みを公開する方針だと報じられた点は押さえておきたい。ただし二次報道で、公開時期も数値もページにはなく、現時点では計画ではなく注視リストに留めるべき。"
+    },
+    "https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots": {
+      "zh": "采购 AMR 的团队可以据此调整评估重心：报道引述 Omron 一位项目经理的看法，软件、安全与车队管理正变得和机器人本身一样重要；这只是二手转述的一家之言，且没有数据。",
+      "en": "AMR buyers may want to weight the fleet-management and safety software as heavily as the vehicle, per the Omron project manager quoted here; that is one vendor's view relayed secondhand, with no figures to back it.",
+      "ja": "AMR を選定する側は、機体と同等に安全機能やフリート管理ソフトを評価に組み込むべきだという示唆。ただし根拠は Omron のプロジェクトマネージャー一人の発言を伝えた二次報道で、裏づける数値はない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

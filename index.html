@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00575" rel="noopener" target="_blank">Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你的世界模型评测先生成 RGB 画面、再重新编码喂给策略，这篇自报预印本认为这条间接接口正是问题所在；页面标出闭环与延迟信号，却没给出任何数字，暂不足以支撑改架构。</p>
 <p class="excerpt">A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00360" rel="noopener" target="_blank">DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation</a></h3>
 <p class="figure"><strong>49.4%</strong><span class="context">“Target success rises from 49.4% to 68.1% (FPO)”</span></p><p class="chips"><span class="chip">68.1%</span><span class="chip">14.1%</span><span class="chip">45.4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 做灵巧手 RL 的团队值得验证摘录里的判断：用来找接触的动作噪声会干扰精细控物；作者自报目标成功率 FPO 从 49.4% 升到 68.1%、GRPO 从 14.1% 升到 45.4%，页面未见真机结果，代码标为开放。</p>
 <p class="excerpt">Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00864" rel="noopener" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></h3>
 <p class="figure"><strong>67.5%</strong><span class="context">“latency of GR00T-N1.6 by 67.5% ~74.4% across L40”</span></p><p class="chips"><span class="chip">74.4%</span><span class="chip">30.3%</span><span class="chip">54.9%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 用多步流匹配跑 GR00T-N1.6、被推理延迟卡住的团队，可先考虑一步生成而非换硬件：作者自报含 L40 在内延迟降 67.5%~74.4%、端到端降 30.3%~54.9%，但页面没有闭环或真机成功率，需自行确认精度不掉。</p>
 <p class="excerpt">In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.</p>
 <ul class="signals"><li>含量化指标</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00355" rel="noopener" target="_blank">IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots</a></h3>
 <p class="figure"><strong>0.6M parameters</strong><span class="context">“IndoorBEV contains only 0.6M parameters and requires 2.3”</span></p><p class="chips"><span class="chip">169.6 ms</span><span class="chip">200 ms</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 算力吃紧的室内移动机器人可以把它列入候选：0.6M 参数的 LiDAR BEV 感知，平均延迟 169.6 ms，对 200 ms 的感知时限余量不大；页面标有真机实验与开放代码，上车前请在自家硬件上测最坏情况延迟。</p>
 <p class="excerpt">Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/" rel="noopener" target="_blank">Isaac Lab on AWS: From Simulation to Registered Policy</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 在 AWS 上用 Isaac Lab 训练的团队可参考这篇官方文章：它称 AWS 上的 Physical AI 缺了一层，而系统正从研究快速走向生产部署，流程以注册好的策略收尾；文中没有量化数据，宜当作流程参考，而非性能依据。</p>
 <p class="excerpt">Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-bioinspired-robotics" rel="noopener" target="_blank">Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 做海上投放平台的可以留意这种思路：摘录描述 ALBATROSS 空投后无需降落伞即可自旋降落到水面，落水后被动自扶正，再把同一副刚性机翼当帆用；这是 Video Friday 的二手转述且无数字，引用前请查原始来源。</p>
 <p class="excerpt">We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-02</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/" rel="noopener" target="_blank">Runway introduces Praxis-1 world action model for robotics</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在挑选世界动作模型作底座的团队先别急着押注：报道称 Runway 打算在公开发布 Praxis-1 时附带开放权重，但这是二手消息，页面未见发布时间或任何数字，眼下只宜列入观察名单。</p>
 <p class="excerpt">When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.</p>
 <ul class="signals"><li>有开放代码或权重</li></ul>
 <footer>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/" rel="noopener" target="_blank">Inside Omron’s next-generation LD mobile robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 采购 AMR 的团队可以据此调整评估重心：报道引述 Omron 一位项目经理的看法，软件、安全与车队管理正变得和机器人本身一样重要；这只是二手转述的一家之言，且没有数据。</p>
 <p class="excerpt">In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-02</span>

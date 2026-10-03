@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Token-World** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **DexPolicy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-3. **Kinematic MeanFlow** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **IndoorBEV** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Isaac Lab on AWS** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Runway introduces Praxis-1 world action model for robotics** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Inside Omron’s next-generation LD mobile robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+1. **Token-World** — `AI draft` If your world-model evaluator renders RGB frames only to re-encode them as policy inputs, this self-reported preprint argues that indirect interface is the weak point; the page flags closed-loop and latency results but quotes no figures, so it is not yet grounds to re-architect.
+2. **DexPolicy** — `AI draft` For dexterous RL, the excerpt's claim that exploration noise for finding contacts undermines precise object control is worth testing in your own setup; target success reportedly rises 49.4% to 68.1% (FPO) and 14.1% to 45.4% (GRPO), with no real-robot result shown.
+3. **Kinematic MeanFlow** — `AI draft` Teams whose GR00T-N1.6 deployment is bottlenecked by multi-step flow matching may get latency back without new hardware: the authors self-report 67.5%–74.4% lower latency including on L40 and 30.3%–54.9% end-to-end, but no closed-loop success is shown, so verify task performance holds.
+4. **IndoorBEV** — `AI draft` For compute-constrained indoor mobile robots, a 0.6M-parameter LiDAR BEV stack averaging 169.6 ms against a 200 ms perception deadline is a candidate, but a mean that close to the deadline means measuring worst-case latency on your own hardware before adopting it.
+5. **Isaac Lab on AWS** — `AI draft` For teams training in Isaac Lab on AWS, this first-party post names a missing layer in Physical AI on AWS as systems move from research into production, and walks a path ending in a registered policy; it gives no figures, so read it as a workflow pattern, not a performance claim.
+6. **Video Friday** — `AI draft` Designers of sea-deployed platforms may note the quoted ALBATROSS concept: air-dropped, autorotating to the water without a parachute, passively self-righting, then reusing the same rigid wings as sails; it is a secondhand Video Friday item with no figures, so check the primary source.
+7. **Runway introduces Praxis-1 world action model for robotics** — `AI draft` If you are choosing a world action model to build on, the report says Runway plans to ship Praxis-1 with open weights once it is publicly released; this is secondhand, and the page shows no release date or figures, so keep it on a watchlist rather than in a plan.
+8. **Inside Omron’s next-generation LD mobile robots** — `AI draft` AMR buyers may want to weight the fleet-management and safety software as heavily as the vehicle, per the Omron project manager quoted here; that is one vendor's view relayed secondhand, with no figures to back it.
 
 </details>
 
