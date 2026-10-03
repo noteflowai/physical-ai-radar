@@ -268,3 +268,16 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 
 
 项目版本与功能更新: [Updates](https://noteflowai.github.io/physical-ai-radar/updates/) · [RSS](https://noteflowai.github.io/physical-ai-radar/updates/feed.xml).
+
+## AWS security first for automation
+
+Scheduled jobs require the independently pinned
+`~/.local/bin/noteflow-publication-check` from the private Agent Control repository
+(`docs/aws-security-first.md`). The bootstrap scopes its trusted pre-push hook
+to automation children; release bodies also pass an exact-text check before
+remote writes. Missing tools, invalid receipts and findings stop publication.
+Security failures preserve the existing transaction and do not authorize provider
+rotation, IAM changes or new public exposure. Authors and reviewers must preserve
+least privilege, short-lived credentials, private storage, scoped trust, safe
+networking, encryption and auditing. Public examples use placeholders; actual
+rendered images and narration need their existing artifact reviews.

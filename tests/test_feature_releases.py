@@ -40,6 +40,11 @@ def source():
 
 class Temporary(unittest.TestCase):
     def setUp(self):
+        # These tests isolate release ownership/integrity. Security boundaries
+        # have separate failure tests; no installed host gateway is assumed.
+        security = patch.object(release, "require_safe_publication")
+        self.security = security.start()
+        self.addCleanup(security.stop)
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)

@@ -14,6 +14,7 @@ from scripts.feature_outcomes import outcome_exit
 from scripts.feature_planning import previous_deferral
 from scripts.feature_prompts import acceptance_paths
 from scripts.feature_report import report
+from publication_fixture import security_home
 
 
 class PlanningRestartTests(unittest.TestCase):
@@ -293,7 +294,8 @@ class TerminalOutcomeTests(unittest.TestCase):
                 subprocess.run(["git", *args], cwd=origin, capture_output=True, check=True)
             bootstrap = Path(__file__).resolve().parents[1] / "scripts/radar-run"
             result = subprocess.run(["bash", str(bootstrap), "scripts/nightly.sh"],
-                                    env={**os.environ, "RADAR_REPO": str(root / "clone"),
+                                    env={**os.environ, "HOME": security_home(root),
+                                         "RADAR_REPO": str(root / "clone"),
                                          "RADAR_CLONE_URL": str(origin), "RADAR_BRANCH": "main",
                                          "RADAR_LOCK": str(root / "lock"), "RADAR_TIMEOUT": "5s"},
                                     capture_output=True, text=True, timeout=10)

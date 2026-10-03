@@ -14,6 +14,7 @@ from unittest.mock import patch
 from scripts.job_schedule import night_day, run_day
 from scripts.nightly_batch import execute, run_batch
 from scripts import improve_repos
+from publication_fixture import security_home
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -214,7 +215,8 @@ class PublisherTests(unittest.TestCase):
                 "print(json.dumps({'root':str(Path.cwd()),'args':sys.argv[1:],"
                 "'lock':os.environ.get('RADAR_LOCK_HELD')}))\n")
             git("add", "."); git("commit", "-m", "fixture")
-            env = {**os.environ, "RADAR_REPO": str(clone), "RADAR_CLONE_URL": str(origin),
+            env = {**os.environ, "HOME": security_home(base),
+                   "RADAR_REPO": str(clone), "RADAR_CLONE_URL": str(origin),
                    "RADAR_LOCK": str(base / "lock"), "XDG_STATE_HOME": str(base / "state"),
                    "RADAR_TIMEOUT": "10s", "RADAR_BRANCH": "main"}
             env.pop("RADAR_LOCK_HELD", None)
