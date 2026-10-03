@@ -17,9 +17,11 @@ import urllib.request
 try:
     from .agent_pipeline import command, gh, write_json
     from .feature_versions import version, WP, NPM
+    from .security_gate import require_safe_publication
 except ImportError:
     from agent_pipeline import command, gh, write_json
     from feature_versions import version, WP, NPM
+    from security_gate import require_safe_publication
 
 REPOS = {"physical-ai-radar", NPM, "evalarc", "robot-reel", WP}
 
@@ -256,6 +258,7 @@ def managed_release(repo: str, tag: str, source: dict, files: list[Path],
     item = optional_api(f"repos/{repo}/releases/tags/{tag}")
     notes = state / "release-notes.md"
     notes.write_text(release_notes(source, number))
+    require_safe_publication(source["feature"]["title"] + "\n" + notes.read_text())
     if item is None:
         # `gh release view` also finds an interrupted draft hidden from public APIs.
         probe = subprocess.run(["gh", "release", "view", tag, "--repo", repo,
@@ -271,6 +274,7 @@ def managed_release(repo: str, tag: str, source: dict, files: list[Path],
             raise RuntimeError(probe.stderr[-2000:])
     if f"feature-release:{source['feature_id']}" not in item.get("body", ""):
         raise ValueError("Existing release is not owned by this feature; preserve its contents")
+    require_safe_publication(item.get("body", ""))
     existing = {a["name"]: a for a in item.get("assets", [])}
     for file in files:
         digest = "sha256:" + hashlib.sha256(file.read_bytes()).hexdigest()
@@ -417,6 +421,7 @@ def publish(root: Path, source: dict, state: Path) -> dict:
         marker = f"feature-release:{source['feature_id']}"
         if marker not in item.get("body", ""):
             notes.write_text(item.get("body", "") + "\n\n" + release_notes(source, number))
+            require_safe_publication(notes.read_text())
             gh(repo, "release", "edit", tag, "--notes-file", str(notes))
             item = api(f"repos/{repo}/releases/tags/{tag}")
         proof["workflow"] = run

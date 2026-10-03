@@ -24,6 +24,15 @@ if [ -x "$KIRO_FAILOVER_BIN/kiro-cli" ]; then
   export PATH="$KIRO_FAILOVER_BIN:$PATH"
 fi
 exec </dev/null
+# The reviewed gateway is an independent pin; candidate Git config cannot replace
+# its rules. This hook is inherited only by scheduled automation children.
+SECURITY_HOOKS="$("$HOME/.local/bin/noteflow-publication-check" hooks-path)"
+case "${GIT_CONFIG_COUNT:-0}" in *[!0-9]*|'') exit 43 ;; esac
+SECURITY_INDEX="${GIT_CONFIG_COUNT:-0}"
+[ "$SECURITY_INDEX" -lt 100 ] || exit 43
+export "GIT_CONFIG_KEY_${SECURITY_INDEX}=core.hooksPath"
+export "GIT_CONFIG_VALUE_${SECURITY_INDEX}=$SECURITY_HOOKS"
+export GIT_CONFIG_COUNT="$((SECURITY_INDEX + 1))"
 
 SCRIPT="${1:-scripts/draft_daily_notes.sh}"
 [ $# -gt 0 ] && shift || true

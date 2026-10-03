@@ -10,6 +10,7 @@ from unittest.mock import patch
 from scripts.agent_pipeline import PublicationAbandoned, call_agent, checks_state, finish, finish_commit, parse_object, public_commit, reconcile_superseded, retry_pr_checks, wait_pr, write_json
 from scripts.improve_repos import apply_edits, finish_with_repairs, push_reviewed
 from scripts.verify_source_repair import verify
+from publication_fixture import security_home
 
 
 class UnattendedTests(unittest.TestCase):
@@ -35,7 +36,8 @@ class UnattendedTests(unittest.TestCase):
             (origin / "README.md").write_text("new main\n")
             (origin / "new.txt").write_text("newly tracked on main\n")
             git("add", ".", cwd=origin); git("commit", "-m", "update", cwd=origin)
-            env = {**os.environ, "RADAR_REPO": str(clone), "RADAR_LOCK": str(base / "radar.lock"),
+            env = {**os.environ, "HOME": security_home(base),
+                   "RADAR_REPO": str(clone), "RADAR_LOCK": str(base / "radar.lock"),
                    "XDG_STATE_HOME": str(base / "state"), "RADAR_TIMEOUT": "10s",
                    "RADAR_BRANCH": "main"}
             runner = Path(__file__).resolve().parents[1] / "scripts/radar-run"
