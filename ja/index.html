@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00575" rel="noopener" target="_blank">Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 世界モデル評価で RGB を予測してから方策入力へ再エンコードしているなら、その間接的な接続こそ弱点だと論じる自己報告のプレプリント。閉ループと遅延のシグナルはあるが数値は示されず、設計変更の根拠にはまだ足りない。</p>
 <p class="excerpt">A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00360" rel="noopener" target="_blank">DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation</a></h3>
 <p class="figure"><strong>49.4%</strong><span class="context">“Target success rises from 49.4% to 68.1% (FPO)”</span></p><p class="chips"><span class="chip">68.1%</span><span class="chip">14.1%</span><span class="chip">45.4%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 接触を探す行動ノイズが精密な物体制御を妨げる、という抜粋の指摘は巧緻操作の RL で確かめる価値がある。目標成功率は FPO で 49.4% から 68.1%、GRPO で 14.1% から 45.4% と著者自己報告だが、実機結果はページに見当たらない。</p>
 <p class="excerpt">Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00864" rel="noopener" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></h3>
 <p class="figure"><strong>67.5%</strong><span class="context">“latency of GR00T-N1.6 by 67.5% ~74.4% across L40”</span></p><p class="chips"><span class="chip">74.4%</span><span class="chip">30.3%</span><span class="chip">54.9%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 多段フローマッチングの推論遅延で GR00T-N1.6 の運用が詰まっているなら、ハード更新より先に一段生成を検討する余地がある。L40 を含め遅延 67.5%~74.4%、エンドツーエンドで 30.3%~54.9% 減と自己報告されるが、閉ループ成功率は未提示で、精度維持は自前で確認したい。</p>
 <p class="excerpt">In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00355" rel="noopener" target="_blank">IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots</a></h3>
 <p class="figure"><strong>0.6M parameters</strong><span class="context">“IndoorBEV contains only 0.6M parameters and requires 2.3”</span></p><p class="chips"><span class="chip">169.6 ms</span><span class="chip">200 ms</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 計算資源の限られた屋内移動ロボットには候補になる。0.6M パラメータの LiDAR BEV 認識で平均 169.6 ms だが、200 ms の認識期限に対し平均値で余裕は小さく、採用前に自社ハードで最悪ケースの遅延を測るべきだ。実機実験とコード公開のシグナルあり。</p>
 <p class="excerpt">Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/" rel="noopener" target="_blank">Isaac Lab on AWS: From Simulation to Registered Policy</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> AWS 上で Isaac Lab を使うチーム向けの一次情報。研究から本番配備へ急速に移る中で AWS 上の Physical AI に「欠けている層」があるとし、登録済み方策に至る流れを示す。定量データはなく、性能の根拠ではなくワークフローの型として読むのが妥当。</p>
 <p class="excerpt">Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-bioinspired-robotics" rel="noopener" target="_blank">Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 海上投入型の機体を設計するなら参考になる発想。抜粋では ALBATROSS が空中投下後パラシュートなしで自動回転降下し、着水後に受動的に姿勢を戻し、同じ剛性翼を帆として再利用する。Video Friday の二次情報で数値はなく、一次情報の確認が必要。</p>
 <p class="excerpt">We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-02</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/" rel="noopener" target="_blank">Runway introduces Praxis-1 world action model for robotics</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 基盤とする世界行動モデルを選定中なら、Runway が Praxis-1 の一般公開時に重みを公開する方針だと報じられた点は押さえておきたい。ただし二次報道で、公開時期も数値もページにはなく、現時点では計画ではなく注視リストに留めるべき。</p>
 <p class="excerpt">When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.</p>
 <ul class="signals"><li>コードまたは重み公開</li></ul>
 <footer>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/" rel="noopener" target="_blank">Inside Omron’s next-generation LD mobile robots</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> AMR を選定する側は、機体と同等に安全機能やフリート管理ソフトを評価に組み込むべきだという示唆。ただし根拠は Omron のプロジェクトマネージャー一人の発言を伝えた二次報道で、裏づける数値はない。</p>
 <p class="excerpt">In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-02</span>

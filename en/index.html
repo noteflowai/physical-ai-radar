@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00575" rel="noopener" target="_blank">Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If your world-model evaluator renders RGB frames only to re-encode them as policy inputs, this self-reported preprint argues that indirect interface is the weak point; the page flags closed-loop and latency results but quotes no figures, so it is not yet grounds to re-architect.</p>
 <p class="excerpt">A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…</p>
 <ul class="signals"><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00360" rel="noopener" target="_blank">DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation</a></h3>
 <p class="figure"><strong>49.4%</strong><span class="context">“Target success rises from 49.4% to 68.1% (FPO)”</span></p><p class="chips"><span class="chip">68.1%</span><span class="chip">14.1%</span><span class="chip">45.4%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> For dexterous RL, the excerpt&#x27;s claim that exploration noise for finding contacts undermines precise object control is worth testing in your own setup; target success reportedly rises 49.4% to 68.1% (FPO) and 14.1% to 45.4% (GRPO), with no real-robot result shown.</p>
 <p class="excerpt">Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>open code or weights</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00864" rel="noopener" target="_blank">Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models</a></h3>
 <p class="figure"><strong>67.5%</strong><span class="context">“latency of GR00T-N1.6 by 67.5% ~74.4% across L40”</span></p><p class="chips"><span class="chip">74.4%</span><span class="chip">30.3%</span><span class="chip">54.9%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Teams whose GR00T-N1.6 deployment is bottlenecked by multi-step flow matching may get latency back without new hardware: the authors self-report 67.5%–74.4% lower latency including on L40 and 30.3%–54.9% end-to-end, but no closed-loop success is shown, so verify task performance holds.</p>
 <p class="excerpt">In this paper, we study how to achieve one-step action generation in Robotic Foundation Models (RFMs), aiming to overcome the high inference latency of multi-step flow matching.</p>
 <ul class="signals"><li>quantitative results</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00355" rel="noopener" target="_blank">IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots</a></h3>
 <p class="figure"><strong>0.6M parameters</strong><span class="context">“IndoorBEV contains only 0.6M parameters and requires 2.3”</span></p><p class="chips"><span class="chip">169.6 ms</span><span class="chip">200 ms</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> For compute-constrained indoor mobile robots, a 0.6M-parameter LiDAR BEV stack averaging 169.6 ms against a 200 ms perception deadline is a candidate, but a mean that close to the deadline means measuring worst-case latency on your own hardware before adopting it.</p>
 <p class="excerpt">Efficient indoor LiDAR perception is challenging because mobile robots must understand cluttered three-dimensional environments under strict latency and memory constraints.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/" rel="noopener" target="_blank">Isaac Lab on AWS: From Simulation to Registered Policy</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> For teams training in Isaac Lab on AWS, this first-party post names a missing layer in Physical AI on AWS as systems move from research into production, and walks a path ending in a registered policy; it gives no figures, so read it as a workflow pattern, not a performance claim.</p>
 <p class="excerpt">Introduction: The missing layer in Physical AI on AWS Physical AI systems, those that perceive, reason, and act in the physical world, are moving fast from research into production deployments.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-bioinspired-robotics" rel="noopener" target="_blank">Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Designers of sea-deployed platforms may note the quoted ALBATROSS concept: air-dropped, autorotating to the water without a parachute, passively self-righting, then reusing the same rigid wings as sails; it is a secondhand Video Friday item with no figures, so check the primary source.</p>
 <p class="excerpt">We’ve developed ALBATROSS, a hybrid aerial–marine robot that can be released from the air, autorotate down to the water without a parachute, passively self-right after landing, and then reuse the same rigid wings as sails for autonomous…</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-02</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/" rel="noopener" target="_blank">Runway introduces Praxis-1 world action model for robotics</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If you are choosing a world action model to build on, the report says Runway plans to ship Praxis-1 with open weights once it is publicly released; this is secondhand, and the page shows no release date or figures, so keep it on a watchlist rather than in a plan.</p>
 <p class="excerpt">When Runway does release Praxis-1 publicly, it plans to ship it with open weights rather than as a closed model.</p>
 <ul class="signals"><li>open code or weights</li></ul>
 <footer>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/" rel="noopener" target="_blank">Inside Omron’s next-generation LD mobile robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> AMR buyers may want to weight the fleet-management and safety software as heavily as the vehicle, per the Omron project manager quoted here; that is one vendor&#x27;s view relayed secondhand, with no figures to back it.</p>
 <p class="excerpt">In mobile robotics, software, safety, and fleet management are becoming just as important as the robot itself, according to an OMROM project manager.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-02</span>
