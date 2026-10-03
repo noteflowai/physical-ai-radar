@@ -274,8 +274,8 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 Scheduled jobs require the independently pinned
 `~/.local/bin/noteflow-publication-check` from the private Agent Control repository
 (`docs/aws-security-first.md`). The bootstrap scopes its trusted pre-push hook
-to automation children; release bodies also pass an exact-text check before
-remote writes. Missing tools, invalid receipts and findings stop publication.
+to automation children; PR/issue titles and bodies (including diagnostic log
+excerpts) and release bodies also pass an exact-text check before remote writes. Missing tools, invalid receipts and findings stop publication.
 Security failures preserve the existing transaction and do not authorize provider
 rotation, IAM changes or new public exposure. Authors and reviewers must preserve
 least privilege, short-lived credentials, private storage, scoped trust, safe

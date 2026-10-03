@@ -378,12 +378,14 @@ git push -q -u --force-with-lease origin "$BRANCH"
 if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
   log "updated the open pull request for ${BRANCH}"
 else
-gh pr create --base main --head "$BRANCH" \
-  --title "notes: drafted per-item analysis for ${DAY}" \
-  --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
+PR_TITLE="notes: drafted per-item analysis for ${DAY}"
+PR_BODY="$(printf '%s\n\n```\n%s\n```\n\n%s\n' \
     "Per-item analysis drafted for ${DAY} by \`${AGENT}\` (${DRAFTERS// /, }) and approved by \`${REVIEWER}\` (${REVIEW_MODEL}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
-    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a separate read-only agent review it in a fresh context. Rendered pages label every drafted line and name the drafter. No human review is claimed; the controller merges only the checked commit and verifies publication.")
+    "The agent can write only under \`data/notes/\`. This script checked that nothing else changed, ran \`pairadar.notes check\` (schema, keys, all three languages, no figure the page lacks) and the full test suite, and had a separate read-only agent review it in a fresh context. Rendered pages label every drafted line and name the drafter. No human review is claimed; the controller merges only the checked commit and verifies publication.")"
+printf '%s\n%s\n' "$PR_TITLE" "$PR_BODY" | "$HOME/.local/bin/noteflow-publication-check" stdin >"$LOGFILE.security.json"
+gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" \
+  --body-file <(printf '%s\n' "$PR_BODY")
 fi
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 log "pull request #${PR} opened for ${DAY}; waiting for checks"
