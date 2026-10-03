@@ -245,6 +245,23 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-04",
+      "count": 8,
+      "lanes": 7,
+      "urls": [
+        "https://arxiv.org/abs/2610.01612",
+        "https://arxiv.org/abs/2610.02161",
+        "https://arxiv.org/abs/2610.01856",
+        "https://arxiv.org/abs/2609.39403",
+        "https://arxiv.org/abs/2609.38905",
+        "https://arxiv.org/abs/2609.39611",
+        "https://arxiv.org/abs/2609.39600",
+        "https://arxiv.org/abs/2609.38873"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

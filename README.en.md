@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-03
+### Today's radar · 2026-10-04
 
-`Generated: 2026-10-02 23:40 UTC` ｜ `Window: papers 2026-09-29 → 2026-10-03 · posts 2026-09-03 → 2026-10-03 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-03 23:40 UTC` ｜ `Window: papers 2026-09-30 → 2026-10-04 · posts 2026-09-04 → 2026-10-04 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>Simulation & evaluation · arXiv 2610.00575 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>Training & self-improvement · arXiv 2610.00360 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>Edge & real-time · arXiv 2610.00864 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>Edge & real-time · arXiv 2610.00355 · 2026‑09‑30</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑10‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>Foundation models · The Robot Report · 2026‑10‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>Simulation & evaluation · arXiv 2610.01612 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>Systems & orchestration · arXiv 2610.02161 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>Foundation models · arXiv 2610.01856 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>Data engine · arXiv 2609.39403 · 2026‑09‑30</sub> |
+| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>Simulation & evaluation · arXiv 2609.38905 · 2026‑09‑30</sub> |
+| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>Edge & real-time · arXiv 2609.39611 · 2026‑09‑30</sub> |
+| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>Training & self-improvement · arXiv 2609.39600 · 2026‑09‑30</sub> |
+| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>Safety, permissions & compliance · arXiv 2609.38873 · 2026‑09‑30</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Token-World** — `AI draft` If your world-model evaluator renders RGB frames only to re-encode them as policy inputs, this self-reported preprint argues that indirect interface is the weak point; the page flags closed-loop and latency results but quotes no figures, so it is not yet grounds to re-architect.
-2. **DexPolicy** — `AI draft` For dexterous RL, the excerpt's claim that exploration noise for finding contacts undermines precise object control is worth testing in your own setup; target success reportedly rises 49.4% to 68.1% (FPO) and 14.1% to 45.4% (GRPO), with no real-robot result shown.
-3. **Kinematic MeanFlow** — `AI draft` Teams whose GR00T-N1.6 deployment is bottlenecked by multi-step flow matching may get latency back without new hardware: the authors self-report 67.5%–74.4% lower latency including on L40 and 30.3%–54.9% end-to-end, but no closed-loop success is shown, so verify task performance holds.
-4. **IndoorBEV** — `AI draft` For compute-constrained indoor mobile robots, a 0.6M-parameter LiDAR BEV stack averaging 169.6 ms against a 200 ms perception deadline is a candidate, but a mean that close to the deadline means measuring worst-case latency on your own hardware before adopting it.
-5. **Isaac Lab on AWS** — `AI draft` For teams training in Isaac Lab on AWS, this first-party post names a missing layer in Physical AI on AWS as systems move from research into production, and walks a path ending in a registered policy; it gives no figures, so read it as a workflow pattern, not a performance claim.
-6. **Video Friday** — `AI draft` Designers of sea-deployed platforms may note the quoted ALBATROSS concept: air-dropped, autorotating to the water without a parachute, passively self-righting, then reusing the same rigid wings as sails; it is a secondhand Video Friday item with no figures, so check the primary source.
-7. **Runway introduces Praxis-1 world action model for robotics** — `AI draft` If you are choosing a world action model to build on, the report says Runway plans to ship Praxis-1 with open weights once it is publicly released; this is secondhand, and the page shows no release date or figures, so keep it on a watchlist rather than in a plan.
-8. **Inside Omron’s next-generation LD mobile robots** — `AI draft` AMR buyers may want to weight the fleet-management and safety software as heavily as the vehicle, per the Omron project manager quoted here; that is one vendor's view relayed secondhand, with no figures to back it.
+1. **ReCo** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **DuoMind** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it holds up over long tasks without human resets.
+3. **ChunkVLA-AM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **IronMind** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
+5. **EmbodiRSI** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+6. **Towards Agile Vision-Based Multi-UAV Flight** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+7. **GroundAnything** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
+8. **DODGER** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-03.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-04.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-03
+### 本日のレーダー · 2026-10-04
 
-`生成時刻: 2026-10-02 23:40 UTC` ｜ `対象期間: 論文 2026-09-29 → 2026-10-03 · ブログ・報道 2026-09-03 → 2026-10-03 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-03 23:40 UTC` ｜ `対象期間: 論文 2026-09-30 → 2026-10-04 · ブログ・報道 2026-09-04 → 2026-10-04 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>シミュレーションと評価 · arXiv 2610.00575 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>学習と自己改善 · arXiv 2610.00360 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>エッジとリアルタイム · arXiv 2610.00864 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>エッジとリアルタイム · arXiv 2610.00355 · 2026‑09‑30</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑10‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>基盤モデル · The Robot Report · 2026‑10‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>シミュレーションと評価 · arXiv 2610.01612 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>システムとオーケストレーション · arXiv 2610.02161 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>基盤モデル · arXiv 2610.01856 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>データエンジン · arXiv 2609.39403 · 2026‑09‑30</sub> |
+| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>シミュレーションと評価 · arXiv 2609.38905 · 2026‑09‑30</sub> |
+| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>エッジとリアルタイム · arXiv 2609.39611 · 2026‑09‑30</sub> |
+| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>学習と自己改善 · arXiv 2609.39600 · 2026‑09‑30</sub> |
+| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>安全・権限・コンプライアンス · arXiv 2609.38873 · 2026‑09‑30</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Token-World** — `AI 下書き` 世界モデル評価で RGB を予測してから方策入力へ再エンコードしているなら、その間接的な接続こそ弱点だと論じる自己報告のプレプリント。閉ループと遅延のシグナルはあるが数値は示されず、設計変更の根拠にはまだ足りない。
-2. **DexPolicy** — `AI 下書き` 接触を探す行動ノイズが精密な物体制御を妨げる、という抜粋の指摘は巧緻操作の RL で確かめる価値がある。目標成功率は FPO で 49.4% から 68.1%、GRPO で 14.1% から 45.4% と著者自己報告だが、実機結果はページに見当たらない。
-3. **Kinematic MeanFlow** — `AI 下書き` 多段フローマッチングの推論遅延で GR00T-N1.6 の運用が詰まっているなら、ハード更新より先に一段生成を検討する余地がある。L40 を含め遅延 67.5%~74.4%、エンドツーエンドで 30.3%~54.9% 減と自己報告されるが、閉ループ成功率は未提示で、精度維持は自前で確認したい。
-4. **IndoorBEV** — `AI 下書き` 計算資源の限られた屋内移動ロボットには候補になる。0.6M パラメータの LiDAR BEV 認識で平均 169.6 ms だが、200 ms の認識期限に対し平均値で余裕は小さく、採用前に自社ハードで最悪ケースの遅延を測るべきだ。実機実験とコード公開のシグナルあり。
-5. **Isaac Lab on AWS** — `AI 下書き` AWS 上で Isaac Lab を使うチーム向けの一次情報。研究から本番配備へ急速に移る中で AWS 上の Physical AI に「欠けている層」があるとし、登録済み方策に至る流れを示す。定量データはなく、性能の根拠ではなくワークフローの型として読むのが妥当。
-6. **Video Friday** — `AI 下書き` 海上投入型の機体を設計するなら参考になる発想。抜粋では ALBATROSS が空中投下後パラシュートなしで自動回転降下し、着水後に受動的に姿勢を戻し、同じ剛性翼を帆として再利用する。Video Friday の二次情報で数値はなく、一次情報の確認が必要。
-7. **Runway introduces Praxis-1 world action model for robotics** — `AI 下書き` 基盤とする世界行動モデルを選定中なら、Runway が Praxis-1 の一般公開時に重みを公開する方針だと報じられた点は押さえておきたい。ただし二次報道で、公開時期も数値もページにはなく、現時点では計画ではなく注視リストに留めるべき。
-8. **Inside Omron’s next-generation LD mobile robots** — `AI 下書き` AMR を選定する側は、機体と同等に安全機能やフリート管理ソフトを評価に組み込むべきだという示唆。ただし根拠は Omron のプロジェクトマネージャー一人の発言を伝えた二次報道で、裏づける数値はない。
+1. **ReCo** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **DuoMind** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+3. **ChunkVLA-AM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+4. **IronMind** — 査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **EmbodiRSI** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **Towards Agile Vision-Based Multi-UAV Flight** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+7. **GroundAnything** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+8. **DODGER** — 査読前のプレプリント。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-03.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-04.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

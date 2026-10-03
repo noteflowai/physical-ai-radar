@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-03
+### 今日雷达 · 2026-10-04
 
-`生成时间: 2026-10-02 23:40 UTC` ｜ `统计窗口: 论文 2026-09-29 → 2026-10-03 · 博客与报道 2026-09-03 → 2026-10-03 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-03 23:40 UTC` ｜ `统计窗口: 论文 2026-09-30 → 2026-10-04 · 博客与报道 2026-09-04 → 2026-10-04 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation](https://arxiv.org/abs/2610.00575)**<br><sub>仿真与评测 · arXiv 2610.00575 · 2026‑09‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation](https://arxiv.org/abs/2610.00360)**<br>`49.4%`&nbsp; `68.1%`&nbsp; `14.1%`<br><sub>训练与自我改进 · arXiv 2610.00360 · 2026‑09‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Kinematic MeanFlow: One-Step Action Generation Policy for Robotic Foundation Models](https://arxiv.org/abs/2610.00864)**<br>`67.5%`&nbsp; `74.4%`&nbsp; `30.3%`<br><sub>边缘与实时性 · arXiv 2610.00864 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IndoorBEV: A Lightweight Real-Time LiDAR BEV Perception System for Indoor Mobile Robots](https://arxiv.org/abs/2610.00355)**<br>`0.6M parameters`&nbsp; `169.6 ms`&nbsp; `200 ms`<br><sub>边缘与实时性 · arXiv 2610.00355 · 2026‑09‑30</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab on AWS: From Simulation to Registered Policy](https://aws.amazon.com/blogs/physical-ai/isaac-lab-on-aws-from-simulation-to-registered-policy/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑10‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away](https://spectrum.ieee.org/video-friday-bioinspired-robotics)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[Runway introduces Praxis-1 world action model for robotics](https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/)**<br><sub>基座模型 · The Robot Report · 2026‑10‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Inside Omron’s next-generation LD mobile robots](https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>仿真与评测 · arXiv 2610.01612 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>系统与编排 · arXiv 2610.02161 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>基座模型 · arXiv 2610.01856 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>数据引擎 · arXiv 2609.39403 · 2026‑09‑30</sub> |
+| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>仿真与评测 · arXiv 2609.38905 · 2026‑09‑30</sub> |
+| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>边缘与实时性 · arXiv 2609.39611 · 2026‑09‑30</sub> |
+| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>训练与自我改进 · arXiv 2609.39600 · 2026‑09‑30</sub> |
+| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>安全、权限与合规 · arXiv 2609.38873 · 2026‑09‑30</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Token-World** — `AI 起草` 若你的世界模型评测先生成 RGB 画面、再重新编码喂给策略，这篇自报预印本认为这条间接接口正是问题所在；页面标出闭环与延迟信号，却没给出任何数字，暂不足以支撑改架构。
-2. **DexPolicy** — `AI 起草` 做灵巧手 RL 的团队值得验证摘录里的判断：用来找接触的动作噪声会干扰精细控物；作者自报目标成功率 FPO 从 49.4% 升到 68.1%、GRPO 从 14.1% 升到 45.4%，页面未见真机结果，代码标为开放。
-3. **Kinematic MeanFlow** — `AI 起草` 用多步流匹配跑 GR00T-N1.6、被推理延迟卡住的团队，可先考虑一步生成而非换硬件：作者自报含 L40 在内延迟降 67.5%~74.4%、端到端降 30.3%~54.9%，但页面没有闭环或真机成功率，需自行确认精度不掉。
-4. **IndoorBEV** — `AI 起草` 算力吃紧的室内移动机器人可以把它列入候选：0.6M 参数的 LiDAR BEV 感知，平均延迟 169.6 ms，对 200 ms 的感知时限余量不大；页面标有真机实验与开放代码，上车前请在自家硬件上测最坏情况延迟。
-5. **Isaac Lab on AWS** — `AI 起草` 在 AWS 上用 Isaac Lab 训练的团队可参考这篇官方文章：它称 AWS 上的 Physical AI 缺了一层，而系统正从研究快速走向生产部署，流程以注册好的策略收尾；文中没有量化数据，宜当作流程参考，而非性能依据。
-6. **Video Friday** — `AI 起草` 做海上投放平台的可以留意这种思路：摘录描述 ALBATROSS 空投后无需降落伞即可自旋降落到水面，落水后被动自扶正，再把同一副刚性机翼当帆用；这是 Video Friday 的二手转述且无数字，引用前请查原始来源。
-7. **Runway introduces Praxis-1 world action model for robotics** — `AI 起草` 在挑选世界动作模型作底座的团队先别急着押注：报道称 Runway 打算在公开发布 Praxis-1 时附带开放权重，但这是二手消息，页面未见发布时间或任何数字，眼下只宜列入观察名单。
-8. **Inside Omron’s next-generation LD mobile robots** — `AI 起草` 采购 AMR 的团队可以据此调整评估重心：报道引述 Omron 一位项目经理的看法，软件、安全与车队管理正变得和机器人本身一样重要；这只是二手转述的一家之言，且没有数据。
+1. **ReCo** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **DuoMind** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+3. **ChunkVLA-AM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **IronMind** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
+5. **EmbodiRSI** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。
+6. **Towards Agile Vision-Based Multi-UAV Flight** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+7. **GroundAnything** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。
+8. **DODGER** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-03.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-04.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
