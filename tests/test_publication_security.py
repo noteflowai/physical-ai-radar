@@ -7,9 +7,28 @@ import unittest
 from unittest.mock import patch
 
 from scripts import feature_release, security_gate
+from scripts import agent_pipeline
 
 
 class PublicationSecurityTests(unittest.TestCase):
+    def test_public_pr_title_body_and_logs_are_checked_before_any_gh_write(self):
+        with tempfile.TemporaryDirectory() as directory:
+            body = Path(directory) / "body.md"
+            body.write_text("Private diagnostic fixture")
+            with patch.object(security_gate, "require_safe_publication",
+                              side_effect=RuntimeError("blocked")) as gate, \
+                    patch.object(agent_pipeline, "command") as command:
+                with self.assertRaises(RuntimeError):
+                    agent_pipeline.gh("owner/repo", "pr", "create",
+                                      "--title", "Fixture", "--body-file", str(body))
+                gate.assert_called_once_with("Fixture\nPrivate diagnostic fixture")
+                command.assert_not_called()
+            with patch.object(security_gate, "require_safe_publication") as gate, \
+                    patch.object(agent_pipeline, "command") as command:
+                agent_pipeline.gh("owner/repo", "pr", "view", "1")
+                gate.assert_not_called()
+                command.assert_called_once()
+
     def test_security_failure_stops_release_creation_and_assets(self):
         source = {"feature": {"title": "safe"}, "feature_id": "test"}
         with tempfile.TemporaryDirectory() as directory, \

@@ -204,12 +204,14 @@ git push -q -u --force-with-lease origin "$BRANCH"
 if gh pr list --head "$BRANCH" --state open --json number -q '.[0].number' | grep -q .; then
   log "updated the open pull request for ${BRANCH}"
 else
-gh pr create --base main --head "$BRANCH" \
-  --title "sources: repair ${SOURCE}, which stopped answering" \
-  --body-file <(printf '%s\n\n```\n%s\n```\n\n%s\n' \
+PR_TITLE="sources: repair ${SOURCE}, which stopped answering"
+PR_BODY="$(printf '%s\n\n```\n%s\n```\n\n%s\n' \
     "\`pairadar.health\` reported \`${SOURCE}\` failing on at least ${THRESHOLD} days. Proposed by \`${AGENT}\` (${USED}) on the Tokyo workstation, outside GitHub Actions." \
     "$(sed -e 's/\x1b\[[0-9;]*m//g' "$LOGFILE" | tail -25)" \
-    "The agent has no shell and can write only \`data/sources.json\`. This script checked that nothing else changed and ran the full test suite. The controller fetched and parsed the public feed, preserved identity/weights/evidence tags, and requested a separate model review. No human review is claimed.")
+    "The agent has no shell and can write only \`data/sources.json\`. This script checked that nothing else changed and ran the full test suite. The controller fetched and parsed the public feed, preserved identity/weights/evidence tags, and requested a separate model review. No human review is claimed.")"
+printf '%s\n%s\n' "$PR_TITLE" "$PR_BODY" | "$HOME/.local/bin/noteflow-publication-check" stdin >"$LOGFILE.security.json"
+gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" \
+  --body-file <(printf '%s\n' "$PR_BODY")
 fi
 PR="$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')"
 HEAD_SHA="$(git rev-parse HEAD)"

@@ -105,6 +105,11 @@ def parse_object(text: str) -> dict:
 
 
 def gh(repo: str, *args: str, timeout: int = 120) -> str:
+    try:
+        from .security_gate import require_safe_github_text
+    except ImportError:
+        from security_gate import require_safe_github_text
+    require_safe_github_text(args)
     return command(["gh", *args, "--repo", repo], timeout=timeout)
 
 
