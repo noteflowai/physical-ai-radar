@@ -285,10 +285,21 @@ def readme_block(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         "",
         f"`{ui['generated']}: {ctx['generated']}` ｜ `{ui['window']}: {window_text(config, lang, ctx)}`",
         "",
-        # two columns: on a phone, four left a title about 110px and pushed the figures off screen
-        f"| # | {ui['pick']} · {ui['numbers']} |",
-        "| :-: | --- |",
     ]
+    if not ctx["picked"]:
+        # A sparse day: say that nothing met the selection rules, and label the curated
+        # fallback as the baseline, as the daily page does. Without this the front page
+        # showed baseline entries under today's heading as if they were today's picks.
+        lines.extend([f"> {ui['no_items']}", ""])
+        if ctx["baseline"]:
+            lines.extend([f"**{ui['baseline']}**", ""])
+    lines.extend(
+        [
+            # two columns: on a phone, four left a title about 110px and pushed the figures off screen
+            f"| # | {ui['pick']} · {ui['numbers']} |",
+            "| :-: | --- |",
+        ]
+    )
     for rank, item in enumerate(shown, 1):
         evidence = item.evidence if item.evidence in EVIDENCE_DOT else "M"
         figures = "&nbsp; ".join(f"`{_cell(n).replace(' ', chr(0xA0))}`" for n in item.numbers[:3])
