@@ -13,34 +13,35 @@
 </style>
 <rect class="plate" width="720" height="220"/>
 <text x="20" y="30" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" class="ink">日次ペース（各回の採択件数）</text>
-<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-10-03 23:40 UTC</text>
+<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-10-04 23:40 UTC</text>
 <line x1="44" y1="186.0" x2="704" y2="186.0" class="grid"/>
 <text x="36" y="190.0" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#5f6b7a">0</text>
 <line x1="44" y1="128.0" x2="704" y2="128.0" class="grid"/>
 <text x="36" y="132.0" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#5f6b7a">4</text>
 <line x1="44" y1="70.0" x2="704" y2="70.0" class="grid"/>
 <text x="36" y="74.0" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" fill="#5f6b7a">8</text>
-<line x1="44" y1="80.9" x2="704" y2="80.9" stroke="#41b1e8" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.9"/>
+<line x1="44" y1="80.2" x2="704" y2="80.2" stroke="#41b1e8" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.9"/>
 <line x1="630.7" y1="26" x2="652.7" y2="26" stroke="#41b1e8" stroke-width="1.2" stroke-dasharray="5 4"/>
-<text class="muted" x="704" y="30" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10">mean 7.2</text>
-<rect x="52.2" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<text x="64.6" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">09-19</text>
-<rect x="93.5" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="134.8" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="176.0" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="217.2" y="99.0" width="24.8" height="87.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="258.5" y="157.0" width="24.8" height="29.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="299.8" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="341.0" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="382.2" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<text x="394.6" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">09-27</text>
-<rect x="423.5" y="128.0" width="24.8" height="58.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="464.8" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="506.0" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="547.2" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="588.5" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="629.8" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
-<rect x="671.0" y="70.0" width="24.8" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.95"/>
-<text class="ink" x="683.4" y="65.0" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700">8</text>
-<text x="683.4" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">10-04</text>
+<text class="muted" x="704" y="30" text-anchor="end" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10">mean 7.3</text>
+<rect x="51.8" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<text x="63.4" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">09-19</text>
+<rect x="90.6" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="129.4" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="168.2" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="207.1" y="99.0" width="23.3" height="87.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="245.9" y="157.0" width="23.3" height="29.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="284.7" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="323.5" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="362.4" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<text x="374.0" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">09-27</text>
+<rect x="401.2" y="128.0" width="23.3" height="58.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="440.0" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="478.8" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="517.6" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="556.5" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="595.3" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="634.1" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.5"/>
+<rect x="672.9" y="70.0" width="23.3" height="116.0" rx="2" fill="#7300e5" fill-opacity="0.95"/>
+<text class="ink" x="684.6" y="65.0" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700">8</text>
+<text x="684.6" y="208" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9" fill="#5f6b7a">10-05</text>
 </svg>

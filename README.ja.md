@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-04
+### 本日のレーダー · 2026-10-05
 
-`生成時刻: 2026-10-03 23:40 UTC` ｜ `対象期間: 論文 2026-09-30 → 2026-10-04 · ブログ・報道 2026-09-04 → 2026-10-04 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-04 23:40 UTC` ｜ `対象期間: 論文 2026-10-01 → 2026-10-05 · ブログ・報道 2026-09-05 → 2026-10-05 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>シミュレーションと評価 · arXiv 2610.01612 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>システムとオーケストレーション · arXiv 2610.02161 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>基盤モデル · arXiv 2610.01856 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>データエンジン · arXiv 2609.39403 · 2026‑09‑30</sub> |
-| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>シミュレーションと評価 · arXiv 2609.38905 · 2026‑09‑30</sub> |
-| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>エッジとリアルタイム · arXiv 2609.39611 · 2026‑09‑30</sub> |
-| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>学習と自己改善 · arXiv 2609.39600 · 2026‑09‑30</sub> |
-| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>安全・権限・コンプライアンス · arXiv 2609.38873 · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>シミュレーションと評価 · arXiv 2610.01351 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>シミュレーションと評価 · arXiv 2610.01083 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>基盤モデル · arXiv 2610.00981 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>基盤モデル · arXiv 2610.00982 · 2026‑10‑01</sub> |
+| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>学習と自己改善 · arXiv 2610.01260 · 2026‑10‑01</sub> |
+| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>エッジとリアルタイム · arXiv 2610.00899 · 2026‑10‑01</sub> |
+| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>データエンジン · arXiv 2610.02054 · 2026‑10‑01</sub> |
+| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>システムとオーケストレーション · arXiv 2610.02196 · 2026‑10‑01</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **ReCo** — `AI 下書き` 歩行中の脚ロボットで RL 歩容方策と MPC を組み合わせ手先追従を行う構成なら参考になる自己報告のプレプリント。RMSE を 28.7% と 27.4% 低減し実機・閉ループのシグナルもあるが、引用部分からは比較対象が読み取れないため原文で確認を。
-2. **DuoMind** — `AI 下書き` VLM・VLA による汎用ロボットの進展が単体設定に偏る中、複数台協調に踏み込むプレプリント。ページ上は閉ループのシグナルのみで数値も実機シグナルもなく、マルチロボット設計の判断材料というより追跡対象。
-3. **ChunkVLA-AM** — `AI 下書き` 積層造形の現場に VLA 制御を導入するか検討しているなら、実機・閉ループのシグナル付きで成功率 92.9% を自己報告するプレプリント。タスク構成や比較対象はページに見えないため、試験導入の前に原文で確認したい。
-4. **IronMind** — `AI 下書き` 人型ロボットの巧緻操作向けに一人称人間動画の収集規模を決めるなら、5,000 hours 以下の事前学習では最大 11.7% に対し 55.0% という自己報告は、効果が大規模でしか現れない可能性を示す。ページに実機実験のシグナルはない。
-5. **EmbodiRSI** — `AI 下書き` 方策を新タスクへ適応させる際、次に集めるデータを現方策の失敗モードに合わせるべきだと主張する自己報告のプレプリント。RSI 2 回でシミュレーション成功率が 50.4% から 83.5% に、実環境では比較手法の 75.0% に対し 83.1%。
-6. **Towards Agile Vision-Based Multi-UAV Flight** — `AI 下書き` 複数 UAV の衝突回避が近傍機体の運動状態の機上推定に頼っているなら要注意。加速度推定に約 300 ms の一定遅延が生じる例を指摘し、誤差を 40% と 57% 削減したと自己報告する。編隊間隔を詰める前に自機の推定器の遅れを確認したい。
-7. **GroundAnything** — `AI 下書き` 自己回帰型グラウンディングの逐次デコードが知覚系の遅延要因になっているなら、まさにその遅延を狙う自己報告のプレプリント。ただしページ上の根拠は主にベンチマーク値（平均 61.75% 対 53.32%）で、置き換え前に自前のパイプラインで端到端の遅延を測るべき。
-8. **DODGER** — `AI 下書き` 人や複数の動的障害物の間を走る移動ロボットが対象で、実機実験のシグナルはあるものの、ページには衝突率や成功率の数値がない。現時点では安全性の論証にも、既存の回避層の置き換え判断にも使えない。
+1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **WBAG** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **NarrativeFlow** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **Divide-and-Remember** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **PROMO** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+6. **TOAST** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+7. **UniWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+8. **InterEvolve** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-04.ja.md)** · [週間まとめ ›](radar/weekly/2026-W40.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-05.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-04
+### Today's radar · 2026-10-05
 
-`Generated: 2026-10-03 23:40 UTC` ｜ `Window: papers 2026-09-30 → 2026-10-04 · posts 2026-09-04 → 2026-10-04 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-04 23:40 UTC` ｜ `Window: papers 2026-10-01 → 2026-10-05 · posts 2026-09-05 → 2026-10-05 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>Simulation & evaluation · arXiv 2610.01612 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>Systems & orchestration · arXiv 2610.02161 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>Foundation models · arXiv 2610.01856 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>Data engine · arXiv 2609.39403 · 2026‑09‑30</sub> |
-| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>Simulation & evaluation · arXiv 2609.38905 · 2026‑09‑30</sub> |
-| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>Edge & real-time · arXiv 2609.39611 · 2026‑09‑30</sub> |
-| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>Training & self-improvement · arXiv 2609.39600 · 2026‑09‑30</sub> |
-| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>Safety, permissions & compliance · arXiv 2609.38873 · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>Simulation & evaluation · arXiv 2610.01351 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>Simulation & evaluation · arXiv 2610.01083 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>Foundation models · arXiv 2610.00981 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>Foundation models · arXiv 2610.00982 · 2026‑10‑01</sub> |
+| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>Training & self-improvement · arXiv 2610.01260 · 2026‑10‑01</sub> |
+| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>Edge & real-time · arXiv 2610.00899 · 2026‑10‑01</sub> |
+| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>Data engine · arXiv 2610.02054 · 2026‑10‑01</sub> |
+| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>Systems & orchestration · arXiv 2610.02196 · 2026‑10‑01</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **ReCo** — `AI draft` If you pair an RL locomotion policy with MPC to track the end effector while the base walks, this self-reported preprint claims RMSE cuts of 28.7% and 27.4% with real-robot and closed-loop signals; the quoted text does not show the baseline, so check it first.
-2. **DuoMind** — `AI draft` For teams taking VLM- or VLA-driven robots beyond single-robot settings, this preprint targets exactly that gap, but the page flags only closed-loop results with no figures or real-robot signal, so it is one to track rather than a design input.
-3. **ChunkVLA-AM** — `AI draft` Anyone weighing VLA control for additive-manufacturing cells gets a self-reported 92.9% success figure with real-robot and closed-loop signals, though the page does not show the task mix or comparison, which matter before scoping a pilot.
-4. **IronMind** — `AI draft` If you are budgeting egocentric human-video collection for humanoid hands, this self-reported preprint suggests the payoff appears only at scale, 55.0% success against at most 11.7% for budgets up to 5,000 hours; the page flags no real-robot experiments.
-5. **EmbodiRSI** — `AI draft` When adapting manipulation policies, this self-reported preprint argues the next data round should follow the policy's current failure modes, reporting simulation success rising from 50.4% to 83.5% over two RSI rounds and 83.1% real-world against 75.0% for another adaptation.
-6. **Towards Agile Vision-Based Multi-UAV Flight** — `AI draft` If multi-UAV collision avoidance relies on onboard estimates of neighbours' motion, this self-reported preprint points to a constant ~300 ms acceleration lag in some estimates and claims 40% and 57% lower acceleration error; check your estimator's lag before tightening spacing.
-7. **GroundAnything** — `AI draft` For robot perception stacks held up by serial autoregressive grounding, this self-reported preprint targets that latency, but the visible evidence is mainly benchmark scores, 61.75% average against 53.32%, so measure end-to-end latency in your own pipeline before swapping.
-8. **DODGER** — `AI draft` For mobile robots sharing space with people and moving obstacles, this preprint flags real-robot experiments but the page quotes no collision or success figures, so it cannot yet support a safety case or justify replacing an existing avoidance layer.
+1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **WBAG** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **NarrativeFlow** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **Divide-and-Remember** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **PROMO** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the gain holds outside the training tasks.
+6. **TOAST** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
+7. **UniWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **InterEvolve** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch whether it holds up over long tasks without human resets.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-04.en.md)** · [Weekly roundup ›](radar/weekly/2026-W40.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-05.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

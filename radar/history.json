@@ -262,6 +262,25 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-05",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.01351",
+        "https://arxiv.org/abs/2610.01083",
+        "https://arxiv.org/abs/2610.00981",
+        "https://arxiv.org/abs/2610.00982",
+        "https://arxiv.org/abs/2610.01260",
+        "https://arxiv.org/abs/2610.00899",
+        "https://arxiv.org/abs/2610.02054",
+        "https://arxiv.org/abs/2610.02196"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }

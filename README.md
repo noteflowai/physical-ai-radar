@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-04
+### 今日雷达 · 2026-10-05
 
-`生成时间: 2026-10-03 23:40 UTC` ｜ `统计窗口: 论文 2026-09-30 → 2026-10-04 · 博客与报道 2026-09-04 → 2026-10-04 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-04 23:40 UTC` ｜ `统计窗口: 论文 2026-10-01 → 2026-10-05 · 博客与报道 2026-09-05 → 2026-10-05 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation](https://arxiv.org/abs/2610.01612)**<br>`28.7%`&nbsp; `27.4%`<br><sub>仿真与评测 · arXiv 2610.01612 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication](https://arxiv.org/abs/2610.02161)**<br><sub>系统与编排 · arXiv 2610.02161 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing](https://arxiv.org/abs/2610.01856)**<br>`92.9%`<br><sub>基座模型 · arXiv 2610.01856 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining](https://arxiv.org/abs/2609.39403)**<br>`10,000 hours`&nbsp; `55.0%`&nbsp; `11.7%`<br><sub>数据引擎 · arXiv 2609.39403 · 2026‑09‑30</sub> |
-| 05<br>🔵&nbsp;`R` | **[EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905)**<br>`50.4%`&nbsp; `83.5%`&nbsp; `83.1%`<br><sub>仿真与评测 · arXiv 2609.38905 · 2026‑09‑30</sub> |
-| 06<br>🔵&nbsp;`R` | **[Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation](https://arxiv.org/abs/2609.39611)**<br>`40%`&nbsp; `57%`&nbsp; `300 ms`<br><sub>边缘与实时性 · arXiv 2609.39611 · 2026‑09‑30</sub> |
-| 07<br>🔵&nbsp;`R` | **[GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed](https://arxiv.org/abs/2609.39600)**<br>`72.42%`&nbsp; `71.35%`&nbsp; `61.75%`<br><sub>训练与自我改进 · arXiv 2609.39600 · 2026‑09‑30</sub> |
-| 08<br>🔵&nbsp;`R` | **[DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles](https://arxiv.org/abs/2609.38873)**<br><sub>安全、权限与合规 · arXiv 2609.38873 · 2026‑09‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>仿真与评测 · arXiv 2610.01351 · 2026‑10‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>仿真与评测 · arXiv 2610.01083 · 2026‑10‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>基座模型 · arXiv 2610.00981 · 2026‑10‑01</sub> |
+| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>基座模型 · arXiv 2610.00982 · 2026‑10‑01</sub> |
+| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>训练与自我改进 · arXiv 2610.01260 · 2026‑10‑01</sub> |
+| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>边缘与实时性 · arXiv 2610.00899 · 2026‑10‑01</sub> |
+| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>数据引擎 · arXiv 2610.02054 · 2026‑10‑01</sub> |
+| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>系统与编排 · arXiv 2610.02196 · 2026‑10‑01</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **ReCo** — `AI 起草` 若你在行走底座上用 RL 步态策略加 MPC 做末端跟踪，这篇自报预印本称跟踪 RMSE 相对降低 28.7% 和 27.4%，并标出真机与闭环信号；页面引文未显示对比基线是谁，采纳前先核对。
-2. **DuoMind** — `AI 起草` VLM/VLA 机器人的进展多停留在单机，这篇预印本瞄准多机协同这一空白；页面只标出闭环信号，没有数字也没有真机信号，适合列入观察清单，还不足以作为多机架构的设计依据。
-3. **ChunkVLA-AM** — `AI 起草` 考虑在增材制造产线引入 VLA 控制的团队可以留意：这篇自报预印本给出 92.9% 的成功率，并标出真机与闭环信号；页面未显示任务构成与对比方法，立项试点前应回原文确认。
-4. **IronMind** — `AI 起草` 规划第一人称人类视频采集预算时值得参考：这篇自报预印本称成功率 55.0%，而 5,000 小时及以下的预训练预算最高只有 11.7%，暗示收益要到大规模才出现；页面未标出真机实验信号。
-5. **EmbodiRSI** — `AI 起草` 适配新任务时，这篇自报预印本主张让下一轮数据取决于策略当前的失败模式：两轮 RSI 后仿真成功率从 50.4% 升至 83.5%，真机自主成功率 83.1%，对比另一种适配方式的 75.0%。
-6. **Towards Agile Vision-Based Multi-UAV Flight** — `AI 起草` 多无人机避碰若依赖机载估计邻机运动状态，这篇自报预印本指出某些估计存在约 300 ms 的恒定加速度延迟，并称加速度估计误差降低 40% 和 57%；收紧编队间距前先确认你的估计器是否有同样滞后。
-7. **GroundAnything** — `AI 起草` 机器人感知链路若卡在自回归 grounding 的串行解码延迟上，这篇自报预印本正针对此；页面可见的证据主要是基准分数（平均 61.75% 对 53.32%），替换前应在自己的链路上实测端到端延迟。
-8. **DODGER** — `AI 起草` 对在人群中运行的移动机器人，这篇预印本处理多个动态障碍物下的避碰，并标出真机实验信号；但页面没有任何碰撞率或成功率数字，暂时不能作为安全论证的依据，也不足以替换现有避障层。
+1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **WBAG** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **NarrativeFlow** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Divide-and-Remember** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+5. **PROMO** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注提升在训练任务之外是否依然成立。
+6. **TOAST** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+7. **UniWAM** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+8. **InterEvolve** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-04.zh.md)** · [每周汇总 ›](radar/weekly/2026-W40.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-05.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
