@@ -462,6 +462,18 @@ class ReportTests(Temporary):
 
 
 class VersionTests(Temporary):
+    def setUp(self):
+        super().setUp()
+        # This suite checks native metadata ownership. The pure transformer and
+        # pending-section promotion are tested by its canonical private owner.
+        # No installed operator runtime is required inside the CPU sandbox.
+        fixture = patch.object(
+            versions, "changelog",
+            side_effect=lambda text, new, day, entry:
+            text.replace("## ", f"## {new} — {day}\n\n{entry}\n\n## ", 1))
+        fixture.start()
+        self.addCleanup(fixture.stop)
+
     def write(self, path, text):
         target = self.root / path
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -480,6 +492,21 @@ class VersionTests(Temporary):
         self.assertIn("Report verified counts under `by_threshold`.", text)
         self.assertNotIn("Planned counts inside thresholds.", text)
         self.assertIn("Old release.", text)
+
+    def test_transformer_failure_does_not_write_any_native_metadata(self):
+        self.write("CHANGELOG.md", "# Changes\n\n## 0.16.0 — 2026-09-20\n")
+        subprocess.run(["git", "init", "-q"], cwd=self.root, check=True)
+        subprocess.run(["git", "add", "."], cwd=self.root, check=True)
+        subprocess.run(["git", "-c", "user.name=Test", "-c", "user.email=test@example.invalid",
+                        "commit", "-qm", "baseline"], cwd=self.root, check=True)
+        before = (self.root / "CHANGELOG.md").read_bytes()
+        with patch.object(versions, "changelog", side_effect=ValueError("unavailable")):
+            with self.assertRaises(ValueError):
+                versions.prepare(self.root, "physical-ai-radar", "HEAD",
+                                 {"title": "feat: Report", "behavior": "Report."}, "2026-10-05")
+        self.assertEqual((self.root / "CHANGELOG.md").read_bytes(), before)
+        self.assertEqual(subprocess.check_output(
+            ["git", "status", "--porcelain"], cwd=self.root), b"")
 
     def test_robot_current_installation_updates_preserve_frozen_evidence_recipe(self):
         self.write("pyproject.toml", '[project]\nversion = "0.16.0"\n')

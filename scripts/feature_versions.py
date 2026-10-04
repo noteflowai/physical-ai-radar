@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import re
+import subprocess
 
 try:
     from .agent_pipeline import command
@@ -15,6 +17,32 @@ except ImportError:
 VERSION = r"\d+\.\d+\.\d+"
 NPM = "dsh-skills-anywhere"
 WP = "ai-chat-for-amazon-bedrock"
+
+
+def changelog(text: str, new: str, day: str, entry: str) -> str:
+    """Use the single private, pinned metadata transformer; no model or effects."""
+    request = {"changelog": text, "version": new, "day": day, "entry": entry}
+    try:
+        result = subprocess.run(
+            [str(Path.home() / ".local/bin/noteflow-release-changelog")],
+            input=json.dumps(request, ensure_ascii=False), text=True, capture_output=True,
+            env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8"},
+            timeout=10, check=False)
+        if result.returncode or len(result.stdout.encode()) > 8 * 1024 * 1024:
+            raise ValueError("unavailable")
+        receipt = json.loads(result.stdout)
+        output = receipt["changelog"]
+        if (set(receipt) != {"schema_version", "changelog", "input_sha256", "output_sha256",
+                            "publication_approved", "model_calls"}
+                or receipt["schema_version"] != 1 or not isinstance(output, str)
+                or len(output.encode()) > 1024 * 1024
+                or receipt["input_sha256"] != hashlib.sha256(text.encode()).hexdigest()
+                or receipt["output_sha256"] != hashlib.sha256(output.encode()).hexdigest()
+                or receipt["publication_approved"] is not False or receipt["model_calls"] != 0):
+            raise ValueError("invalid receipt")
+    except (OSError, ValueError, TypeError, KeyError, subprocess.SubprocessError):
+        raise ValueError("Private release changelog preparation unavailable") from None
+    return output
 
 
 def version(root: Path, name: str, ref: str | None = None) -> str:
@@ -141,8 +169,8 @@ def prepare(root: Path, name: str, base: str, plan: dict, day: str,
     title = re.sub(r"\s+", " ", plan["title"].removeprefix("feat:").strip())
     summary = delivery["summary"] if delivery else plan["behavior"]
     behavior = re.sub(r"\s+", " ", summary.strip())
-    entry = f"## {new} — {day}\n\n- {title}. {behavior}\n\n"
-    edit("CHANGELOG.md", lambda t: re.sub(r"(?m)^## ", lambda m: entry + "## ", t, count=1))
+    entry = f"- {title}. {behavior}"
+    edit("CHANGELOG.md", lambda t: changelog(t, new, day, entry))
     if "CHANGELOG.md" not in changes:
         raise ValueError("Release needs an existing changelog section")
     for path, text in changes.items():
