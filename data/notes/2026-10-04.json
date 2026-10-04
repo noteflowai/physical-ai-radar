@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-04",
+  "generated": "2026-10-04 14:20 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.01612": {
+      "zh": "若你在行走底座上用 RL 步态策略加 MPC 做末端跟踪，这篇自报预印本称跟踪 RMSE 相对降低 28.7% 和 27.4%，并标出真机与闭环信号；页面引文未显示对比基线是谁，采纳前先核对。",
+      "en": "If you pair an RL locomotion policy with MPC to track the end effector while the base walks, this self-reported preprint claims RMSE cuts of 28.7% and 27.4% with real-robot and closed-loop signals; the quoted text does not show the baseline, so check it first.",
+      "ja": "歩行中の脚ロボットで RL 歩容方策と MPC を組み合わせ手先追従を行う構成なら参考になる自己報告のプレプリント。RMSE を 28.7% と 27.4% 低減し実機・閉ループのシグナルもあるが、引用部分からは比較対象が読み取れないため原文で確認を。"
+    },
+    "https://arxiv.org/abs/2610.02161": {
+      "zh": "VLM/VLA 机器人的进展多停留在单机，这篇预印本瞄准多机协同这一空白；页面只标出闭环信号，没有数字也没有真机信号，适合列入观察清单，还不足以作为多机架构的设计依据。",
+      "en": "For teams taking VLM- or VLA-driven robots beyond single-robot settings, this preprint targets exactly that gap, but the page flags only closed-loop results with no figures or real-robot signal, so it is one to track rather than a design input.",
+      "ja": "VLM・VLA による汎用ロボットの進展が単体設定に偏る中、複数台協調に踏み込むプレプリント。ページ上は閉ループのシグナルのみで数値も実機シグナルもなく、マルチロボット設計の判断材料というより追跡対象。"
+    },
+    "https://arxiv.org/abs/2610.01856": {
+      "zh": "考虑在增材制造产线引入 VLA 控制的团队可以留意：这篇自报预印本给出 92.9% 的成功率，并标出真机与闭环信号；页面未显示任务构成与对比方法，立项试点前应回原文确认。",
+      "en": "Anyone weighing VLA control for additive-manufacturing cells gets a self-reported 92.9% success figure with real-robot and closed-loop signals, though the page does not show the task mix or comparison, which matter before scoping a pilot.",
+      "ja": "積層造形の現場に VLA 制御を導入するか検討しているなら、実機・閉ループのシグナル付きで成功率 92.9% を自己報告するプレプリント。タスク構成や比較対象はページに見えないため、試験導入の前に原文で確認したい。"
+    },
+    "https://arxiv.org/abs/2609.39403": {
+      "zh": "规划第一人称人类视频采集预算时值得参考：这篇自报预印本称成功率 55.0%，而 5,000 小时及以下的预训练预算最高只有 11.7%，暗示收益要到大规模才出现；页面未标出真机实验信号。",
+      "en": "If you are budgeting egocentric human-video collection for humanoid hands, this self-reported preprint suggests the payoff appears only at scale, 55.0% success against at most 11.7% for budgets up to 5,000 hours; the page flags no real-robot experiments.",
+      "ja": "人型ロボットの巧緻操作向けに一人称人間動画の収集規模を決めるなら、5,000 hours 以下の事前学習では最大 11.7% に対し 55.0% という自己報告は、効果が大規模でしか現れない可能性を示す。ページに実機実験のシグナルはない。"
+    },
+    "https://arxiv.org/abs/2609.38905": {
+      "zh": "适配新任务时，这篇自报预印本主张让下一轮数据取决于策略当前的失败模式：两轮 RSI 后仿真成功率从 50.4% 升至 83.5%，真机自主成功率 83.1%，对比另一种适配方式的 75.0%。",
+      "en": "When adapting manipulation policies, this self-reported preprint argues the next data round should follow the policy's current failure modes, reporting simulation success rising from 50.4% to 83.5% over two RSI rounds and 83.1% real-world against 75.0% for another adaptation.",
+      "ja": "方策を新タスクへ適応させる際、次に集めるデータを現方策の失敗モードに合わせるべきだと主張する自己報告のプレプリント。RSI 2 回でシミュレーション成功率が 50.4% から 83.5% に、実環境では比較手法の 75.0% に対し 83.1%。"
+    },
+    "https://arxiv.org/abs/2609.39611": {
+      "zh": "多无人机避碰若依赖机载估计邻机运动状态，这篇自报预印本指出某些估计存在约 300 ms 的恒定加速度延迟，并称加速度估计误差降低 40% 和 57%；收紧编队间距前先确认你的估计器是否有同样滞后。",
+      "en": "If multi-UAV collision avoidance relies on onboard estimates of neighbours' motion, this self-reported preprint points to a constant ~300 ms acceleration lag in some estimates and claims 40% and 57% lower acceleration error; check your estimator's lag before tightening spacing.",
+      "ja": "複数 UAV の衝突回避が近傍機体の運動状態の機上推定に頼っているなら要注意。加速度推定に約 300 ms の一定遅延が生じる例を指摘し、誤差を 40% と 57% 削減したと自己報告する。編隊間隔を詰める前に自機の推定器の遅れを確認したい。"
+    },
+    "https://arxiv.org/abs/2609.39600": {
+      "zh": "机器人感知链路若卡在自回归 grounding 的串行解码延迟上，这篇自报预印本正针对此；页面可见的证据主要是基准分数（平均 61.75% 对 53.32%），替换前应在自己的链路上实测端到端延迟。",
+      "en": "For robot perception stacks held up by serial autoregressive grounding, this self-reported preprint targets that latency, but the visible evidence is mainly benchmark scores, 61.75% average against 53.32%, so measure end-to-end latency in your own pipeline before swapping.",
+      "ja": "自己回帰型グラウンディングの逐次デコードが知覚系の遅延要因になっているなら、まさにその遅延を狙う自己報告のプレプリント。ただしページ上の根拠は主にベンチマーク値（平均 61.75% 対 53.32%）で、置き換え前に自前のパイプラインで端到端の遅延を測るべき。"
+    },
+    "https://arxiv.org/abs/2609.38873": {
+      "zh": "对在人群中运行的移动机器人，这篇预印本处理多个动态障碍物下的避碰，并标出真机实验信号；但页面没有任何碰撞率或成功率数字，暂时不能作为安全论证的依据，也不足以替换现有避障层。",
+      "en": "For mobile robots sharing space with people and moving obstacles, this preprint flags real-robot experiments but the page quotes no collision or success figures, so it cannot yet support a safety case or justify replacing an existing avoidance layer.",
+      "ja": "人や複数の動的障害物の間を走る移動ロボットが対象で、実機実験のシグナルはあるものの、ページには衝突率や成功率の数値がない。現時点では安全性の論証にも、既存の回避層の置き換え判断にも使えない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

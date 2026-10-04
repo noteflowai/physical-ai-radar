@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.01612" rel="noopener" target="_blank">ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation</a></h3>
 <p class="figure"><strong>28.7%</strong><span class="context">“root-mean-square error (RMSE) by 28.7% and 27.4% relative”</span></p><p class="chips"><span class="chip">27.4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你在行走底座上用 RL 步态策略加 MPC 做末端跟踪，这篇自报预印本称跟踪 RMSE 相对降低 28.7% 和 27.4%，并标出真机与闭环信号；页面引文未显示对比基线是谁，采纳前先核对。</p>
 <p class="excerpt">Continuous legged manipulation requires accurate end-effector tracking while the base keeps walking. Combining reinforcement learning (RL) with model predictive control (MPC) suits this task: the learned policy provides robust locomotion,…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.02161" rel="noopener" target="_blank">DuoMind: Enabling Distributed Multi-Robot Coordination with Semantic Communication</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> VLM/VLA 机器人的进展多停留在单机，这篇预印本瞄准多机协同这一空白；页面只标出闭环信号，没有数字也没有真机信号，适合列入观察清单，还不足以作为多机架构的设计依据。</p>
 <p class="excerpt">Vision-language models (VLMs) and vision-language-action models (VLAs) have recently driven rapid progress in general-purpose robots, yet most progress has focused on single-robot settings.</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.01856" rel="noopener" target="_blank">ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing</a></h3>
 <p class="figure"><strong>92.9%</strong><span class="context">“succeeded in 39 ( 92.9% )”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 考虑在增材制造产线引入 VLA 控制的团队可以留意：这篇自报预印本给出 92.9% 的成功率，并标出真机与闭环信号；页面未显示任务构成与对比方法，立项试点前应回原文确认。</p>
 <p class="excerpt">Vision-language-action (VLA) models unify visual perception, language understanding, and action generation, offering new opportunities for automation in additive manufacturing (AM).</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39403" rel="noopener" target="_blank">IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining</a></h3>
 <p class="figure"><strong>10,000 hours</strong><span class="context">“budgets from 250 to 10,000 hours”</span></p><p class="chips"><span class="chip">55.0%</span><span class="chip">11.7%</span><span class="chip">5,000 hours</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 规划第一人称人类视频采集预算时值得参考：这篇自报预印本称成功率 55.0%，而 5,000 小时及以下的预训练预算最高只有 11.7%，暗示收益要到大规模才出现；页面未标出真机实验信号。</p>
 <p class="excerpt">Egocentric human video offers a scalable data source for dexterous manipulation, yet using it to train humanoid robots presents two challenges: (1) an embodiment gap, as human hands differ structurally from robot end-effectors and…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.38905" rel="noopener" target="_blank">EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation</a></h3>
 <p class="figure"><strong>50.4%</strong><span class="context">“autonomous simulation success from 50.4% to 83.5% over”</span></p><p class="chips"><span class="chip">83.5%</span><span class="chip">83.1%</span><span class="chip">75.0%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 适配新任务时，这篇自报预印本主张让下一轮数据取决于策略当前的失败模式：两轮 RSI 后仿真成功率从 50.4% 升至 83.5%，真机自主成功率 83.1%，对比另一种适配方式的 75.0%。</p>
 <p class="excerpt">Adapting robot manipulation policies to new tasks and environments remains highly data-intensive, while the data needed for further improvement depends on the policy&#x27;s current capabilities and failure modes.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39611" rel="noopener" target="_blank">Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation</a></h3>
 <p class="figure"><strong>40%</strong><span class="context">“acceleration estimation errors by 40% and 57% across”</span></p><p class="chips"><span class="chip">57%</span><span class="chip">300 ms</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 多无人机避碰若依赖机载估计邻机运动状态，这篇自报预印本指出某些估计存在约 300 ms 的恒定加速度延迟，并称加速度估计误差降低 40% 和 57%；收紧编队间距前先确认你的估计器是否有同样滞后。</p>
 <p class="excerpt">Agile multi-UAV flight requires accurate and low-latency onboard estimation of the kinematic states of neighboring UAVs for collision avoidance, motion coordination, etc.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2609.39600" rel="noopener" target="_blank">GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</a></h3>
 <p class="figure"><strong>72.42%</strong><span class="context">“similarly sized models at 72.42%”</span></p><p class="chips"><span class="chip">71.35%</span><span class="chip">61.75%</span><span class="chip">53.32%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 机器人感知链路若卡在自回归 grounding 的串行解码延迟上，这篇自报预印本正针对此；页面可见的证据主要是基准分数（平均 61.75% 对 53.32%），替换前应在自己的链路上实测端到端延迟。</p>
 <p class="excerpt">Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2609.38873" rel="noopener" target="_blank">DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 对在人群中运行的移动机器人，这篇预印本处理多个动态障碍物下的避碰，并标出真机实验信号；但页面没有任何碰撞率或成功率数字，暂时不能作为安全论证的依据，也不足以替换现有避障层。</p>
 <p class="excerpt">Robots operating in human-centered environments must safely navigate among multiple dynamic obstacles to avoid collisions with people and surrounding infrastructure.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
