@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **ReCo** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **DuoMind** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it holds up over long tasks without human resets.
-3. **ChunkVLA-AM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **IronMind** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
-5. **EmbodiRSI** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-6. **Towards Agile Vision-Based Multi-UAV Flight** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-7. **GroundAnything** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
-8. **DODGER** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
+1. **ReCo** — `AI draft` If you pair an RL locomotion policy with MPC to track the end effector while the base walks, this self-reported preprint claims RMSE cuts of 28.7% and 27.4% with real-robot and closed-loop signals; the quoted text does not show the baseline, so check it first.
+2. **DuoMind** — `AI draft` For teams taking VLM- or VLA-driven robots beyond single-robot settings, this preprint targets exactly that gap, but the page flags only closed-loop results with no figures or real-robot signal, so it is one to track rather than a design input.
+3. **ChunkVLA-AM** — `AI draft` Anyone weighing VLA control for additive-manufacturing cells gets a self-reported 92.9% success figure with real-robot and closed-loop signals, though the page does not show the task mix or comparison, which matter before scoping a pilot.
+4. **IronMind** — `AI draft` If you are budgeting egocentric human-video collection for humanoid hands, this self-reported preprint suggests the payoff appears only at scale, 55.0% success against at most 11.7% for budgets up to 5,000 hours; the page flags no real-robot experiments.
+5. **EmbodiRSI** — `AI draft` When adapting manipulation policies, this self-reported preprint argues the next data round should follow the policy's current failure modes, reporting simulation success rising from 50.4% to 83.5% over two RSI rounds and 83.1% real-world against 75.0% for another adaptation.
+6. **Towards Agile Vision-Based Multi-UAV Flight** — `AI draft` If multi-UAV collision avoidance relies on onboard estimates of neighbours' motion, this self-reported preprint points to a constant ~300 ms acceleration lag in some estimates and claims 40% and 57% lower acceleration error; check your estimator's lag before tightening spacing.
+7. **GroundAnything** — `AI draft` For robot perception stacks held up by serial autoregressive grounding, this self-reported preprint targets that latency, but the visible evidence is mainly benchmark scores, 61.75% average against 53.32%, so measure end-to-end latency in your own pipeline before swapping.
+8. **DODGER** — `AI draft` For mobile robots sharing space with people and moving obstacles, this preprint flags real-robot experiments but the page quotes no collision or success figures, so it cannot yet support a safety case or justify replacing an existing avoidance layer.
 
 </details>
 
