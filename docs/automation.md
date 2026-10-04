@@ -41,6 +41,15 @@ Candidate code runs in isolated containers; reviewed GPU experiments share a bou
 L40S execution lane and retain measured results. No incomplete feature or failed
 release is counted as a successful day.
 
+Release changelog preparation uses the commit-pinned private Agent Control
+utility `~/.local/bin/noteflow-release-changelog`. It moves the leading plain
+`Unreleased` notes into the version that ships them and keeps historical release
+sections intact. Missing tools, ambiguous layouts or mismatched result digests
+stop preparation before native metadata is written. The full resulting diff
+still requires independent review. The domain writer retains version files,
+task identities and release authority; this utility has no model, network or
+publication effect.
+
 The WordPress plugin uses its PHP compatibility matrix, official Plugin Check,
 CI-built installable package, an atomic SVN release and public ZIP verification.
 Other projects retain their existing CI and deployment checks with exact commit
