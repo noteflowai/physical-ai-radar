@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: label README baseline fallback on days with no live picks</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.1/</guid>
+      <description>On a day with no live picks, the README radar block in all three languages (README.md, README.en.md, README.ja.md) now explains the empty day the same way the frozen daily page does. readme_block in pairadar/render.py keeps the existing day heading and generated/window line. After them it adds the localized no-items sentence as a Markdown quote, then a bold label from the existing glossary baseline string, then the curated baseline table, evidence legend, reasons and links. Before this change, the baseline entries appeared under the day's heading, ranked and in the pick column, with no explanation. If there are no picks and no baseline, the block shows the no-items line and an empty table header without raising. Days with picks keep the previous rendering. docs/METHODOLOGY.md describes the empty-day README behavior. Checks run by the controller on candidate dfb3436 (base 047ef4a): before the change, the new test file failed 2 of 3 tests (the empty-day label test and the nothing-at-all test), which confirms the defect. After the change, rerender exited 0, the 3 tests in tests/test_feature_b41f745004f1.py passed, and the full suite of 484 tests passed.</description>
+      <pubDate>Sun, 04 Oct 2026 14:07:11 +0000</pubDate>
+    </item>
+    <item>
       <title>require a reviewed Git source commit when opening a skill over MCP</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.18.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/dsh-skills-anywhere/0.18.0/</guid>
