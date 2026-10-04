@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>seal one frame/channel finding into a LeRobot replay bundle · NoteFlowAI</title><meta name="description" content="Adds a --mark option to the existing robot-reel lerobot command: robot-reel lerobot EXPORT_DIR --mark FRAME --signal KEY/NAME [--signal ...] --note TEXT. It runs verify() on the export first. It then writes one finding.json containing: the episode, t"><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.19.0/"><meta property="og:type" content="article"><meta property="og:title" content="seal one frame/channel finding into a LeRobot replay bundle"><meta property="og:description" content="Adds a --mark option to the existing robot-reel lerobot command: robot-reel lerobot EXPORT_DIR --mark FRAME --signal KEY/NAME [--signal ...] --note TEXT. It runs verify() on the export first. It then writes one finding.json containing: the episode, t"><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.19.0/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/robot-reel · 0.19.0 · 2026-10-04</p><h1>seal one frame/channel finding into a LeRobot replay bundle</h1><p>Adds a --mark option to the existing robot-reel lerobot command: robot-reel lerobot EXPORT_DIR --mark FRAME --signal KEY/NAME [--signal ...] --note TEXT. It runs verify() on the export first. It then writes one finding.json containing: the episode, the zero-based frame, timestamps[frame], 1 to 8 key/name/value signals read from episode.json, the note, the manifest hash of episode.json, the package version (or null) and a fixed limitations statement. The sha256 of finding.json is added to manifest.json, and every other manifest entry stays the same. With --verify, alone or with --check-media / --check-source, the JSON result includes the sealed finding. An unmarked export gives the same result as before. Verify exits 2 with a named error if finding.json was edited without re-hashing, if finding.json is present but not listed in the manifest, if a listed finding.json is missing, if episode.json or a clip changed, or if a re-hashed finding disagrees with episode.json or breaks the input rules. Invalid --mark arguments, an already-marked export and any verify failure exit 2 and write nothing. If the manifest replacement fails, --mark removes the finding.json it placed in that run. Controller-executed checks: on base commit 4ed6d4b, the new feature test exited 1 with &#x27;unrecognized arguments: --mark&#x27;, so the test exercises the new option. On candidate commit 6f393b3, the controller ran robot_reel.pages --write, tests/test_feature_11ffe2c50b07.py, npm run check:js, the full Python unittest suite and node --test. All exited 0, and node --test reported 53/53 passed. My own action was writing this metadata; I ran no commands.</p><h2>Use it</h2><pre>Prerequisites: Linux or macOS shell, Python, a checkout of this commit, and the package installed from it with its LeRobot extra: pip install &#x27;.[lerobot]&#x27; (the docs pin the planned release robot-reel[lerobot]==0.19.0). --check-media needs the ffmpeg provided by that extra.
+
+Sample input: docs/lerobot ships in the repository. It is a real recorded episode from lerobot/svla_so101_pickplace at a pinned revision, not synthetic data. The note text below is a manual example.
+
+1. Sender: create the input copy, then mark it (the original docs/lerobot stays unchanged):
+cp -r docs/lerobot /tmp/so101
+robot-reel lerobot /tmp/so101 --mark 239 --signal action/shoulder_pan.pos --signal observation.state/shoulder_pan.pos --note &quot;Command and measurement diverge while the gripper approaches the box&quot;
+This exits 0 and prints JSON with episode 0, frame 239, its timestamp, the values 45.14706 and 61.75649, and the finding.json path.
+
+2. Recipient: simulate another machine by moving the bundle to another path:
+mkdir -p /tmp/received &amp;&amp; cp -r /tmp/so101 /tmp/received/so101
+robot-reel lerobot /tmp/received/so101 --verify --check-media
+The result includes the finding object. To view it, open /tmp/received/so101/index.html and step to frame 239 with the existing frame controls.
+
+3. Optional tamper demo (GNU sed). This exits 2 with &#x27;Hash mismatch: finding.json&#x27;:
+sed -i &#x27;s/diverge/agree/&#x27; /tmp/received/so101/finding.json
+robot-reel lerobot /tmp/received/so101 --verify
+
+If verify reports that finding.json is present but not listed in manifest.json, delete finding.json and mark a fresh copy.</pre><h2>Scope</h2><p>CLI only. The viewer and its embedded data are unchanged and do not highlight the finding. The controller&#x27;s node --test run (53/53 passed) included the existing LeRobot replay browser regression checks at desktop and mobile widths. Those checks cover the unchanged viewer, not this feature. No one visually reviewed this feature, and no screenshots were provided.
+
+Scope: one finding per bundle, one frame and 1 to 8 channels. There are no frame ranges and no command to edit or remove a finding.
+
+Integrity: sha256 hashes, not a signature, and verify does not check who wrote the finding. A re-hashed rewrite that stays consistent with episode.json is not detected. Examples are a different valid note, a different robot_reel string, or another frame with its matching recorded values.
+
+A finding records an observation. It is not a failure label or a calibrated threshold.
+
+Test coverage: the passing tests cover the specified cases on the published SO-101 episode and on copies made by the tests. They do not show compatibility across other LeRobot datasets.
+
+Writes: the two renames are not one atomic operation. A crash between them can leave an unlisted finding.json, which verify reports.
+
+Compatibility: robot-reel versions without --mark reject a marked bundle as &#x27;Incomplete LeRobot replay manifest&#x27;. The docs pin 0.19.0, so if the release ships under another version, both doc pins must be updated.</p><h2>Upgrade and rollback</h2><p>Upgrade both sender and recipient to the release that contains --mark (the docs pin robot-reel[lerobot]==0.19.0). Existing exports need no migration and give the same verify result as before. --mark edits the folder in place, so mark a copy if older versions must still read the original.
+
+To roll back a bundle, delete finding.json and remove its single entry from manifest.json. All other hashes are untouched, so the folder then verifies with both old and new versions. If only one of the two is removed, verify reports it.
+
+To roll back the package, reinstall the previous version. It will reject marked bundles until they are reverted as described above.</p><p class="links"><a href="https://github.com/noteflowai/robot-reel/releases/tag/v0.19.0">Release and downloads</a><a href="https://github.com/noteflowai/robot-reel/pull/110">Implementation and checks</a></p><p class="meta">Source commit: <code>c4bbdbb2ee7749971cbe40f8db7f828b7f3782ab</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>

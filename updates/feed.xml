@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>seal one frame/channel finding into a LeRobot replay bundle</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.19.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/robot-reel/0.19.0/</guid>
+      <description>Adds a --mark option to the existing robot-reel lerobot command: robot-reel lerobot EXPORT_DIR --mark FRAME --signal KEY/NAME [--signal ...] --note TEXT. It runs verify() on the export first. It then writes one finding.json containing: the episode, the zero-based frame, timestamps[frame], 1 to 8 key/name/value signals read from episode.json, the note, the manifest hash of episode.json, the package version (or null) and a fixed limitations statement. The sha256 of finding.json is added to manifest.json, and every other manifest entry stays the same. With --verify, alone or with --check-media / --check-source, the JSON result includes the sealed finding. An unmarked export gives the same result as before. Verify exits 2 with a named error if finding.json was edited without re-hashing, if finding.json is present but not listed in the manifest, if a listed finding.json is missing, if episode.json or a clip changed, or if a re-hashed finding disagrees with episode.json or breaks the input rules. Invalid --mark arguments, an already-marked export and any verify failure exit 2 and write nothing. If the manifest replacement fails, --mark removes the finding.json it placed in that run. Controller-executed checks: on base commit 4ed6d4b, the new feature test exited 1 with 'unrecognized arguments: --mark', so the test exercises the new option. On candidate commit 6f393b3, the controller ran robot_reel.pages --write, tests/test_feature_11ffe2c50b07.py, npm run check:js, the full Python unittest suite and node --test. All exited 0, and node --test reported 53/53 passed. My own action was writing this metadata; I ran no commands.</description>
+      <pubDate>Sun, 04 Oct 2026 18:07:01 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: label README baseline fallback on days with no live picks</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.1/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/physical-ai-radar/1.4.1/</guid>
