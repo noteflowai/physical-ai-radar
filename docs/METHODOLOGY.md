@@ -122,6 +122,13 @@ Isaac Sim posts or two Video Friday issues stay apart. The higher-ranked telling
 slot, and a story told on an earlier day inside the repeat window is not told again.
 Papers are exempt on both sides: two preprints with similar titles are two papers.
 
+A day may publish fewer than eight picks, or none. When no live item meets these rules, the
+daily page says so and then lists the curated baseline under its own heading. The radar
+block in each README does the same: directly under the day's heading and window line it
+quotes the same "no items" sentence, then a bold baseline label, then the table of
+curated entries. Before this, the README put the baseline under today's heading with
+ranks and reasons, as if it were the day's selection. Days with picks render unchanged.
+
 ## 4. Quantitative claim extraction
 
 `distill.extract_numbers` matches percentages, multipliers, `ms` / `Hz` / `fps`,

@@ -3,6 +3,10 @@
 Versions cover the pipeline in `pairadar/` and the published formats. The daily
 radar content itself is dated, not versioned.
 
+## 1.4.1 — 2026-10-04
+
+- fix: label README baseline fallback on days with no live picks. On a day with no live picks, the README radar block (ZH/EN/JA) now matches the daily page. Under the day's heading and generated/window line it shows the localized no-items sentence as a quote, followed by a bold baseline label, and then the curated baseline table, reasons and links as before. Previously these baseline entries appeared under today's heading with ranks, with no explanation. When there are no picks and no baseline, the block shows the no-items line and an empty table header without raising. Days with picks render exactly as before. docs/METHODOLOGY.md section 3 describes the behavior. New tests in tests/test_feature_b41f745004f1.py cover all three cases in every language.
+
 ## 1.4.0 — 2026-09-30
 
 - claim-audit worksheet for recently published numeric claims (RA-01). Adds python3 -m pairadar.claims, an offline, read-only command for the RA-01 review. It reads the published radar/feed.json store and prints a deterministic Markdown review sheet with one row per published figure. Each row has the day, evidence tag, figure, status, the quoted clause, a source link and an empty review cell. Statuses are quoted (found in the stored excerpt), title (found only in the title), no-excerpt (a baseline entry with no stored excerpt) and unlocated (not found in the stored title or truncated excerpt, so check the original source first). The reference day is the newest entry date, not the clock. The header gives the whole-window figure total, the rows shown and the skipped malformed entries. A whole-window status-count line always appears. When rows are capped, a truncation line says how many unlocated and no-excerpt figures are hidden and gives a --limit value that works. Text in cells is escaped for Markdown and table pipes. Store problems exit 2 with one 'claims: ' line and no traceback.
