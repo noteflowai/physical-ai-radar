@@ -188,6 +188,9 @@ scripts/publish_daily.sh（维护者机器上的 cron，07:40 Asia/Singapore / 0
 
 ## 本地运行
 
+微信公众号内容包可以先做[离线校验与交付](docs/wechat-editorial.md)：
+保留稿件、配图和公开来源，逐项核对实际哈希；本地通过与平台发布分别记录。
+
 ```bash
 git clone https://github.com/noteflowai/physical-ai-radar.git
 cd physical-ai-radar
