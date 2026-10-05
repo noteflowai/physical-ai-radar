@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.01351" rel="noopener" target="_blank">Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ベンチマーク成功率だけで VLA のチェックポイントを選んでいるなら、その前提を問う自己報告のプレプリント。引用部分は成功率の高さに触れるのみで数値はないため、評価手順を変える前に何を追加で測っているか原文で確認を。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.01083" rel="noopener" target="_blank">WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ロボットの様々な部位が衝突しうる実環境へ VLA マニピュレーションを展開するなら、評価候補となる安全層。ただし自己報告のプレプリントで、ページ上は閉ループのシグナルのみ、数値はまだ示されていない。</p>
 <p class="excerpt">Vision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the…</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00981" rel="noopener" target="_blank">NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 複数の機体で集めたデータを抱えているなら、機体非依存で動作中心のロボット速度場表現でそれらをまとめて使える可能性がある。自己報告ながら実機・閉ループのシグナルはあるが、ページに数値はなく効果の大きさは未確認。</p>
 <p class="excerpt">We focus on language-conditioned flow-based manipulation, where robot flows (robot velocity fields) serve as embodiment-agnostic, motion-centric representations for leveraging data collected from multiple robot platforms.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -143,7 +143,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00982" rel="noopener" target="_blank">Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 現在の観測だけでは行動が決まらず履歴の記憶が要るタスクなら、独自のメモリ機構を作る前に試す価値がある。コード公開と閉ループのシグナルはあるが、自己報告のプレプリントでページ上に数値はない。</p>
 <p class="excerpt">Vision-language-action (VLA) models struggle on history-dependent manipulation tasks, where the current observation alone does not determine the action, and the policy needs a memory of the history.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.01260" rel="noopener" target="_blank">PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots</a></h3>
 <p class="figure"><strong>30.4%</strong><span class="context">“energy by up to 30.4%”</span></p><p class="chips"><span class="chip">38.7%</span><span class="chip">59.0%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 四足歩行の RL で追従・安定性・省エネの優先度を学習時の固定スカラー報酬に埋め込んでいるなら注目。コード公開の自己報告で、エネルギー最大 30.4%、位置誤差 38.7%、姿勢偏差ピーク 59.0% を示すが、比較対象はページ上で途切れている。</p>
 <p class="excerpt">Quadrupedal locomotion requires balancing conflicting objectives such as command tracking, stability, and energy efficiency, yet conventional reinforcement learning (RL) hardcodes these priorities into a fixed scalar reward at training…</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -174,7 +174,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.00899" rel="noopener" target="_blank">TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 連続行動を離散トークン列にする自己回帰型 VLA を使っているなら、トークン化の設計を見直す材料。ただし自己報告のプレプリントで、ページ上は閉ループのシグナルのみ。エッジ軸に分類されているが遅延や速度の数値はない。</p>
 <p class="excerpt">Autoregressive Vision-Language-Action models often represent continuous robot actions as discrete token sequences, enabling action prediction with standard next-token objectives.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -189,7 +189,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.02054" rel="noopener" target="_blank">UniWAM: Unified World-Action Model</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> VLA を行動ラベルだけで教師あり学習しているなら、それでは世界のダイナミクスへの接地が弱いと論じる自己報告のプレプリント。ページに数値も実機・閉ループのシグナルもなく、成果ではなく設計の方向性として読むべき。</p>
 <p class="excerpt">Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provides limited grounding in world dynamics.</p>
 <footer>
 <span class="source">arXiv 2610.02054 · 2026-10-01</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.02196" rel="noopener" target="_blank">InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人型ロボットに新タスクを足すたびにコントローラを再学習しているなら、既存スキルの転用と自らの試行からの改善・保持をテスト時に行う提案。自己報告で、ページに数値も実機・閉ループのシグナルもなく、導入判断の根拠にはまだ遠い。</p>
 <p class="excerpt">We study test-time evolution for humanoid loco-manipulation: solving tasks that a controller was never trained for by repurposing its existing skills, improving from its own attempts, and retaining what it learns, without retraining.</p>
 <footer>
 <span class="source">arXiv 2610.02196 · 2026-10-01</span>
