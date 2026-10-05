@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: reject duplicate Inspect samples instead of counting them as extra attempts</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.5/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.5/</guid>
+      <description>evalarc diff now rejects an Inspect AI log that contains the same (sample id, epoch) pair more than once. This applies to JSON logs and .eval archives. Before this change the copy was silently counted as an extra attempt, which inflated the assessed count and could hide a less_covered change. Ids are compared after str(), so an integer 7 and a string '7' in the same epoch count as duplicates. A duplicate in either the baseline or the current file makes load_results raise ValueError. evalarc diff then prints the message to stderr and exits 2 before any comparison, so no diff.json is written. The message names the sample id and epoch and points to re-exporting with inspect log dump. The id is shown with repr() and truncated to 80 characters, so control characters stay escaped. Samples without an integer epoch are not checked. The same id in different epochs still counts as repeated attempts. The diff.json schema, change kinds and gate logic are unchanged. docs/ci-gate.md and docs/ci-gate.zh-CN.md add this case to the exit-2 list. Both explain the 7 vs "7" collision and why counting a copy would misstate coverage and mask less_covered. Both give the recovery step inspect log dump LOG.eval &gt; LOG.json (or rerun) and note that samples without an integer epoch are not checked. The commit sets the version to 0.17.5. Controller results: on base 1d62bef, tests/test_feature_e0a029ce3b1b.py had 5 failures and 1 pass. Duplicates on either side exited 1 instead of 2, and the 7/'7' collision, duplicate .eval members and control-character ids raised no error. On candidate 37e8719 these all passed: that test file, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and node scripts/check_site.cjs.</description>
+      <pubDate>Mon, 05 Oct 2026 15:35:59 +0000</pubDate>
+    </item>
+    <item>
       <title>show streamed time to first text in wp ai-chat-bedrock usage</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.66.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.66.0/</guid>
