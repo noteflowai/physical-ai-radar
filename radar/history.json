@@ -281,6 +281,25 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-06",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.02832",
+        "https://arxiv.org/abs/2610.03620",
+        "https://arxiv.org/abs/2610.03476",
+        "https://arxiv.org/abs/2610.03607",
+        "https://arxiv.org/abs/2610.02784",
+        "https://arxiv.org/abs/2610.03283",
+        "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }

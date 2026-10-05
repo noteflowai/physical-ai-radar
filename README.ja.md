@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-05
+### 本日のレーダー · 2026-10-06
 
-`生成時刻: 2026-10-04 23:40 UTC` ｜ `対象期間: 論文 2026-10-01 → 2026-10-05 · ブログ・報道 2026-09-05 → 2026-10-05 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-05 23:40 UTC` ｜ `対象期間: 論文 2026-10-02 → 2026-10-06 · ブログ・報道 2026-09-06 → 2026-10-06 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>シミュレーションと評価 · arXiv 2610.01351 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>シミュレーションと評価 · arXiv 2610.01083 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>基盤モデル · arXiv 2610.00981 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>基盤モデル · arXiv 2610.00982 · 2026‑10‑01</sub> |
-| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>学習と自己改善 · arXiv 2610.01260 · 2026‑10‑01</sub> |
-| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>エッジとリアルタイム · arXiv 2610.00899 · 2026‑10‑01</sub> |
-| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>データエンジン · arXiv 2610.02054 · 2026‑10‑01</sub> |
-| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>システムとオーケストレーション · arXiv 2610.02196 · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[FastOPD: On-Policy Distillation for Lightweight VLA Deployment](https://arxiv.org/abs/2610.02832)**<br>`84%`&nbsp; `78.1%`<br><sub>基盤モデル · arXiv 2610.02832 · 2026‑10‑02</sub> |
+| 02<br>🔵&nbsp;`R` | **[UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning](https://arxiv.org/abs/2610.03620)**<br>`89.67%`&nbsp; `0.77%`&nbsp; `94.6%`<br><sub>学習と自己改善 · arXiv 2610.03620 · 2026‑10‑02</sub> |
+| 03<br>🔵&nbsp;`R` | **[MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation](https://arxiv.org/abs/2610.03476)**<br>`7.50%`&nbsp; `27.50%`&nbsp; `32.5%`<br><sub>システムとオーケストレーション · arXiv 2610.03476 · 2026‑10‑02</sub> |
+| 04<br>🔵&nbsp;`R` | **[World Action Learning via Interaction-Centric Spectral Latent Guidance](https://arxiv.org/abs/2610.03607)**<br>`99.20%`&nbsp; `93.80%`&nbsp; `57.7%`<br><sub>シミュレーションと評価 · arXiv 2610.03607 · 2026‑10‑02</sub> |
+| 05<br>🔵&nbsp;`R` | **[SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?](https://arxiv.org/abs/2610.02784)**<br>`50 demonstrations`&nbsp; `77.5%`&nbsp; `45.2%`<br><sub>基盤モデル · arXiv 2610.02784 · 2026‑10‑02</sub> |
+| 06<br>🔵&nbsp;`R` | **[HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs](https://arxiv.org/abs/2610.03283)**<br>`67%`&nbsp; `86%`&nbsp; `30 fps`<br><sub>エッジとリアルタイム · arXiv 2610.03283 · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[FCC robot restrictions could accelerate shift to local AI](https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑05</sub> |
+| 08<br>🟡&nbsp;`M` | **[川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か](https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html)**<br><sub>シミュレーションと評価 · MONOist (ITmedia) · 2026‑10‑05</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — `AI 下書き` ベンチマーク成功率だけで VLA のチェックポイントを選んでいるなら、その前提を問う自己報告のプレプリント。引用部分は成功率の高さに触れるのみで数値はないため、評価手順を変える前に何を追加で測っているか原文で確認を。
-2. **WBAG** — `AI 下書き` ロボットの様々な部位が衝突しうる実環境へ VLA マニピュレーションを展開するなら、評価候補となる安全層。ただし自己報告のプレプリントで、ページ上は閉ループのシグナルのみ、数値はまだ示されていない。
-3. **NarrativeFlow** — `AI 下書き` 複数の機体で集めたデータを抱えているなら、機体非依存で動作中心のロボット速度場表現でそれらをまとめて使える可能性がある。自己報告ながら実機・閉ループのシグナルはあるが、ページに数値はなく効果の大きさは未確認。
-4. **Divide-and-Remember** — `AI 下書き` 現在の観測だけでは行動が決まらず履歴の記憶が要るタスクなら、独自のメモリ機構を作る前に試す価値がある。コード公開と閉ループのシグナルはあるが、自己報告のプレプリントでページ上に数値はない。
-5. **PROMO** — `AI 下書き` 四足歩行の RL で追従・安定性・省エネの優先度を学習時の固定スカラー報酬に埋め込んでいるなら注目。コード公開の自己報告で、エネルギー最大 30.4%、位置誤差 38.7%、姿勢偏差ピーク 59.0% を示すが、比較対象はページ上で途切れている。
-6. **TOAST** — `AI 下書き` 連続行動を離散トークン列にする自己回帰型 VLA を使っているなら、トークン化の設計を見直す材料。ただし自己報告のプレプリントで、ページ上は閉ループのシグナルのみ。エッジ軸に分類されているが遅延や速度の数値はない。
-7. **UniWAM** — `AI 下書き` VLA を行動ラベルだけで教師あり学習しているなら、それでは世界のダイナミクスへの接地が弱いと論じる自己報告のプレプリント。ページに数値も実機・閉ループのシグナルもなく、成果ではなく設計の方向性として読むべき。
-8. **InterEvolve** — `AI 下書き` 人型ロボットに新タスクを足すたびにコントローラを再学習しているなら、既存スキルの転用と自らの試行からの改善・保持をテスト時に行う提案。自己報告で、ページに数値も実機・閉ループのシグナルもなく、導入判断の根拠にはまだ遠い。
+1. **FastOPD** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+2. **UniIntervene++** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+3. **MobiAgent** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+4. **World Action Learning via Interaction-Centric Spectral Latent Guidance** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **SimpleTouch** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+6. **HexVIO** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+7. **FCC robot restrictions could accelerate shift to local AI** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+8. **川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-05.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-06.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

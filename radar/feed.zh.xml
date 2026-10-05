@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:zh</id>
   <title>Physical AI 前沿雷达</title>
   <subtitle>每日自动更新的具身智能前沿雷达：八条主线、三语精炼、证据可查。</subtitle>
-  <updated>2026-10-04T23:40:00Z</updated>
+  <updated>2026-10-05T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02832</id>
+    <title>FastOPD: On-Policy Distillation for Lightweight VLA Deployment</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.02832" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.02832</name>
+    </author>
+    <category term="foundation" label="基座模型（VLA / WAM）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 基座模型（VLA / WAM）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.02832 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 84% · 78.1%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验 · 含延迟或控制频率&lt;/p&gt;
+&lt;blockquote&gt;Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03620</id>
+    <title>UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.03620" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.03620</name>
+    </author>
+    <category term="training" label="训练与自我改进（RL / 后训练）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 训练与自我改进（RL / 后训练）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.03620 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 89.67% · 0.77% · 94.6%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验 · 有开放代码或权重&lt;/p&gt;
+&lt;blockquote&gt;Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03476</id>
+    <title>MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.03476" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.03476</name>
+    </author>
+    <category term="systems" label="系统与编排（长程 / 多策略）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 系统与编排（长程 / 多策略）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.03476 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 7.50% · 27.50% · 32.5% · 57.5%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含真机实验&lt;/p&gt;
+&lt;blockquote&gt;Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03607</id>
+    <title>World Action Learning via Interaction-Centric Spectral Latent Guidance</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.03607" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.03607</name>
+    </author>
+    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.03607 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 99.20% · 93.80% · 57.7%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验&lt;/p&gt;
+&lt;blockquote&gt;Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02784</id>
+    <title>SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.02784" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.02784</name>
+    </author>
+    <category term="foundation" label="基座模型（VLA / WAM）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 基座模型（VLA / WAM）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.02784 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 50 demonstrations · 77.5% · 45.2% · 66.7%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验&lt;/p&gt;
+&lt;blockquote&gt;Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03283</id>
+    <title>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.03283" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.03283</name>
+    </author>
+    <category term="edge" label="边缘与实时性（端侧推理 / 控制频率）" />
+    <category term="R" label="[R]" />
+    <summary type="text">The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 边缘与实时性（端侧推理 / 控制频率）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.03283 · 2026-10-02&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 67% · 86% · 30 fps · 0.83 W&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含延迟或控制频率&lt;/p&gt;
+&lt;blockquote&gt;The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:077068b67d2b</id>
+    <title>FCC robot restrictions could accelerate shift to local AI</title>
+    <link rel="alternate" href="https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="safety" label="安全、权限与合规" />
+    <category term="M" label="[M]" />
+    <summary type="text">Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 安全、权限与合规&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: The Robot Report · 2026-10-05&lt;/p&gt;
+&lt;blockquote&gt;Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:7aaa16ae267f</id>
+    <title>川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html" />
+    <published>2026-10-05T23:40:00Z</published>
+    <updated>2026-10-05T23:40:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
+    <category term="M" label="[M]" />
+    <summary type="text">川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: MONOist (ITmedia) · 2026-10-05&lt;/p&gt;
+&lt;blockquote&gt;川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.zh.html"&gt;2026-10-06 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.01351</id>
     <title>Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks</title>
@@ -1566,135 +1702,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 边缘与实时性（端侧推理 / 控制频率）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-07&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含延迟或控制频率&lt;/p&gt;
 &lt;blockquote&gt;You sit down and put your arm in the cradle. You press a button.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.zh.html"&gt;2026-09-23 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:173eb9a2ab25</id>
-    <title>Why Deploying Physical AI at Scale Demands Safety at Every Layer</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/physical-ai-halos-safety/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="safety" label="安全、权限与合规" />
-    <category term="O" label="[O]" />
-    <summary type="text">Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 安全、权限与合规&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: NVIDIA Blog · 2026-09-21&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含真机实验&lt;/p&gt;
-&lt;blockquote&gt;Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:9fbd3b91fa7b</id>
-    <title>Cyborg Roaches Can Stab You With Needles</title>
-    <link rel="alternate" href="https://spectrum.ieee.org/cyborg-rescue-roach" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>IEEE Spectrum Robotics</name>
-    </author>
-    <category term="edge" label="边缘与实时性（端侧推理 / 控制频率）" />
-    <category term="M" label="[M]" />
-    <summary type="text">Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 边缘与实时性（端侧推理 / 控制频率）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-05&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 有开放代码或权重 · 含延迟或控制频率&lt;/p&gt;
-&lt;blockquote&gt;Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:a35916e8f8c5</id>
-    <title>Video Friday: Humanoid Robot Takes On Monkey Bars</title>
-    <link rel="alternate" href="https://spectrum.ieee.org/video-friday-disaster-response-robots" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>IEEE Spectrum Robotics</name>
-    </author>
-    <category term="training" label="训练与自我改进（RL / 后训练）" />
-    <category term="M" label="[M]" />
-    <summary type="text">Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 训练与自我改进（RL / 后训练）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-11&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 有开放代码或权重 · 含延迟或控制频率&lt;/p&gt;
-&lt;blockquote&gt;Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:f3468ea93aa3</id>
-    <title>Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
-    <category term="O" label="[O]" />
-    <summary type="text">Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: NVIDIA Blog · 2026-09-10&lt;/p&gt;
-&lt;blockquote&gt;Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:683b94332d9b</id>
-    <title>Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="data" label="数据引擎（采集 / 清洗 / scaling）" />
-    <category term="O" label="[O]" />
-    <summary type="text">Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 数据引擎（采集 / 清洗 / scaling）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: NVIDIA Blog · 2026-09-10&lt;/p&gt;
-&lt;blockquote&gt;Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:23bdbfdbd061</id>
-    <title>BenchMIRT: What are LLM benchmarks actually measuring?</title>
-    <link rel="alternate" href="https://huggingface.co/blog/allenai/benchmirt" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: Hugging Face Blog · 2026-09-01&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:86b47b47cb74</id>
-    <title>Give Your Coding Agents a Memory You Own</title>
-    <link rel="alternate" href="https://huggingface.co/blog/funes" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="systems" label="系统与编排（长程 / 多策略）" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 系统与编排（长程 / 多策略）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: Hugging Face Blog · 2026-09-03&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:d4e55a9164f4</id>
-    <title>Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL</title>
-    <link rel="alternate" href="https://huggingface.co/blog/asyncgrpo-lora-hfjobs" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html" />
-    <published>2026-09-22T01:40:00Z</published>
-    <updated>2026-09-22T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="training" label="训练与自我改进（RL / 后训练）" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 训练与自我改进（RL / 后训练）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: Hugging Face Blog · 2026-09-10&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.zh.html"&gt;2026-09-22 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

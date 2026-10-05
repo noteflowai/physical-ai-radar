@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-05
+### Today's radar · 2026-10-06
 
-`Generated: 2026-10-04 23:40 UTC` ｜ `Window: papers 2026-10-01 → 2026-10-05 · posts 2026-09-05 → 2026-10-05 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-05 23:40 UTC` ｜ `Window: papers 2026-10-02 → 2026-10-06 · posts 2026-09-06 → 2026-10-06 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>Simulation & evaluation · arXiv 2610.01351 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>Simulation & evaluation · arXiv 2610.01083 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>Foundation models · arXiv 2610.00981 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>Foundation models · arXiv 2610.00982 · 2026‑10‑01</sub> |
-| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>Training & self-improvement · arXiv 2610.01260 · 2026‑10‑01</sub> |
-| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>Edge & real-time · arXiv 2610.00899 · 2026‑10‑01</sub> |
-| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>Data engine · arXiv 2610.02054 · 2026‑10‑01</sub> |
-| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>Systems & orchestration · arXiv 2610.02196 · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[FastOPD: On-Policy Distillation for Lightweight VLA Deployment](https://arxiv.org/abs/2610.02832)**<br>`84%`&nbsp; `78.1%`<br><sub>Foundation models · arXiv 2610.02832 · 2026‑10‑02</sub> |
+| 02<br>🔵&nbsp;`R` | **[UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning](https://arxiv.org/abs/2610.03620)**<br>`89.67%`&nbsp; `0.77%`&nbsp; `94.6%`<br><sub>Training & self-improvement · arXiv 2610.03620 · 2026‑10‑02</sub> |
+| 03<br>🔵&nbsp;`R` | **[MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation](https://arxiv.org/abs/2610.03476)**<br>`7.50%`&nbsp; `27.50%`&nbsp; `32.5%`<br><sub>Systems & orchestration · arXiv 2610.03476 · 2026‑10‑02</sub> |
+| 04<br>🔵&nbsp;`R` | **[World Action Learning via Interaction-Centric Spectral Latent Guidance](https://arxiv.org/abs/2610.03607)**<br>`99.20%`&nbsp; `93.80%`&nbsp; `57.7%`<br><sub>Simulation & evaluation · arXiv 2610.03607 · 2026‑10‑02</sub> |
+| 05<br>🔵&nbsp;`R` | **[SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?](https://arxiv.org/abs/2610.02784)**<br>`50 demonstrations`&nbsp; `77.5%`&nbsp; `45.2%`<br><sub>Foundation models · arXiv 2610.02784 · 2026‑10‑02</sub> |
+| 06<br>🔵&nbsp;`R` | **[HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs](https://arxiv.org/abs/2610.03283)**<br>`67%`&nbsp; `86%`&nbsp; `30 fps`<br><sub>Edge & real-time · arXiv 2610.03283 · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[FCC robot restrictions could accelerate shift to local AI](https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑05</sub> |
+| 08<br>🟡&nbsp;`M` | **[川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か](https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html)**<br><sub>Simulation & evaluation · MONOist (ITmedia) · 2026‑10‑05</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — `AI draft` If you pick VLA checkpoints on benchmark success rate alone, this self-reported preprint questions that habit; the quoted text only notes high benchmark success and shows no figures, so see what else it measures before changing your evaluation.
-2. **WBAG** — `AI draft` For teams putting VLA manipulation into the real world, where collisions can involve different parts of the robot, this is a safety-layer candidate to evaluate; it is a self-reported preprint showing a closed-loop signal but no figures on the page.
-3. **NarrativeFlow** — `AI draft` If you hold demonstrations from several robot platforms, robot velocity fields as an embodiment-agnostic, motion-centric representation may let you pool them; the self-reported preprint carries real-robot and closed-loop signals but no figures on the page.
-4. **Divide-and-Remember** — `AI draft` If your tasks need history because the current observation alone does not determine the action, try this self-reported preprint, flagged with open code, before building your own memory module; the page shows a closed-loop signal but no figures.
-5. **PROMO** — `AI draft` If your quadruped RL fixes the tracking, stability and energy trade-off in a scalar reward at training time, this self-reported preprint with open code reports up to 30.4% on energy, 38.7% on position error and 59.0% on peak body-attitude deviation; the baseline is cut off on the page.
-6. **TOAST** — `AI draft` If you run an autoregressive VLA that turns continuous actions into discrete token sequences, the tokenizer is worth revisiting; this self-reported preprint shows only a closed-loop signal on the page, and despite its edge filing no latency or speed figures.
-7. **UniWAM** — `AI draft` If your VLA is trained on action labels alone, this self-reported preprint argues that gives limited grounding in world dynamics; with no figures and no real-robot or closed-loop signal on the page, treat it as a design direction, not a result.
-8. **InterEvolve** — `AI draft` If adding a humanoid task today means retraining the controller, this self-reported preprint proposes reusing existing skills at test time and keeping what the robot learns from its own attempts; no figures, real-robot or closed-loop signal appear on the page yet.
+1. **FastOPD** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **UniIntervene++** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+3. **MobiAgent** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it holds up over long tasks without human resets.
+4. **World Action Learning via Interaction-Centric Spectral Latent Guidance** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+5. **SimpleTouch** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **HexVIO** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+7. **FCC robot restrictions could accelerate shift to local AI** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+8. **川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-05.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-06.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

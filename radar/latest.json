@@ -1,163 +1,194 @@
 {
-  "date": "2026-10-05",
-  "generated": "2026-10-04 23:40 UTC",
-  "window": "papers 2026-10-01 → 2026-10-05 · posts 2026-09-05 → 2026-10-05 (UTC)",
+  "date": "2026-10-06",
+  "generated": "2026-10-05 23:40 UTC",
+  "window": "papers 2026-10-02 → 2026-10-06 · posts 2026-09-06 → 2026-10-06 (UTC)",
   "window_detail": {
-    "day": "2026-10-05",
-    "papers_from": "2026-10-01",
-    "posts_from": "2026-09-05",
+    "day": "2026-10-06",
+    "papers_from": "2026-10-02",
+    "posts_from": "2026-09-06",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.01351",
-      "title": "Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks",
-      "url": "https://arxiv.org/abs/2610.01351",
-      "publisher": "arXiv 2610.01351",
+      "id": "arxiv:2610.02832",
+      "title": "FastOPD: On-Policy Distillation for Lightweight VLA Deployment",
+      "url": "https://arxiv.org/abs/2610.02832",
+      "publisher": "arXiv 2610.02832",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "simeval",
-      "score": 2.255,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "summary": "Vision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks. More recently, there has been an emphasis on evaluating the robustness of VLA models to perturbations. However, this robustness is still predominantly measured through Task Success Rate (TSR). In this work, we propose a benchmark-agnostic evaluation framework to measure the behavioural robustness of models by characterising how successful trajectories are executed under perturbation. We implement this methodology by extending the widely-used LIBERO and LIBERO-Plus benchmarks. Across three state-of-the-art VLA models, four LIBERO task suites and seven perturbation conditions, we evaluate changes in both typical successful behaviour and its variability, including metrics of motion smoothness, efficiency and gripper behaviour. We find that perturbations can alter the behaviour of successful trajectories, a phenomenon which cannot necessarily be inferred from TSR alone. Across LIBERO suites, we identify cases where state-of-the-art VLA models achieve comparable TSR under the same perturbation condition, yet behaviour on successful trajectories diverges substantially. Therefore, to have a more robust assessment of task performance, we argue that suitable measures of robustness should capture not only whether a task is completed, but also how the robot behaves while completing it. When evaluating the robustness of VLA models, TSR may be complemented by behavioural evaluation metrics that characterise the nature and variability of successful task execution by robots."
-    },
-    {
-      "id": "arxiv:2610.01083",
-      "title": "WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation",
-      "url": "https://arxiv.org/abs/2610.01083",
-      "publisher": "arXiv 2610.01083",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "simeval",
-      "score": 2.255,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "summary": "Vision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the robot, manipulated objects, and the surrounding environment. Existing inference-time VLA safety frameworks typically rely on simplified end-effector-centered representations that do not explicitly model the full articulated robot and attached-object geometry. In this paper, we present WBAG, a safety framework that models the robot's whole-body and grasp-dependent attached geometry. WBAG constructs a grasp-conditioned safe set that adapts the protected geometry as objects are grasped, then converts this evolving geometry into differentiable CBF constraints that minimally modify the VLA's native six-dimensional operational-space action for collision avoidance across robot, scene, and attached geometry. On the SafeLIBERO benchmark, a variant of LIBERO augmented with obstacles for safety evaluation, WBAG achieves the best overall safety and safe task success among the evaluated methods under a scene-level safety evaluator that monitors all eligible non-task objects, reaching 97.38\\% aggregate Scene Safety and 59.38\\% Safe Success."
-    },
-    {
-      "id": "arxiv:2610.00981",
-      "title": "NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields",
-      "url": "https://arxiv.org/abs/2610.00981",
-      "publisher": "arXiv 2610.00981",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
+      "published": "2026-10-02",
       "lane": "foundation",
-      "score": 2.2,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "We focus on language-conditioned flow-based manipulation, where robot flows (robot velocity fields) serve as embodiment-agnostic, motion-centric representations for leveraging data collected from multiple robot platforms. This task is crucial because language-conditioned manipulation is essential for practical robotic systems, yet scaling robot foundation models remains limited by the labor-intensive collection of embodiment-specific data. Existing methods either coarsely approximate robot flows with sparse keypoint displacements, or cannot handle language-conditioned manipulation. To address this limitation, we propose NarrativeFlow, which models robot flows as continuous velocity fields using a flow-matching formulation conditioned on language. Accordingly, NarrativeFlow generates robot flows that are physically consistent with real-world manipulation. To validate NarrativeFlow, we have conducted experiments on standard datasets for language-conditioned manipulation. The experimental results show that NarrativeFlow outperforms representative baseline methods on standard evaluation metrics. Furthermore, through real-world experiments, we show that NarrativeFlow achieves higher success rates than baseline methods across multiple manipulation tasks. The project page is available at https://shota0520.github.io/NarrativeFlow-project-page/"
-    },
-    {
-      "id": "arxiv:2610.00982",
-      "title": "Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies",
-      "url": "https://arxiv.org/abs/2610.00982",
-      "publisher": "arXiv 2610.00982",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "foundation",
-      "score": 2.05,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "open_release"
-      ],
-      "summary": "Vision-language-action (VLA) models struggle on history-dependent manipulation tasks, where the current observation alone does not determine the action, and the policy needs a memory of the history. Existing memory methods decide what to remember by design, for example, keeping frames with large pixel changes, and show inconsistent gains across tasks. We view what to remember as an optimisation problem. From the POMDP formulation of imitation learning, we show that the optimal memory maximises the conditional mutual information $I(a_t; m_t \\mid o_t)$ between the action and the memory given the current observation. Intuitively, this means preserving the action-relevant information in the history that is not already contained in the current observation. Based on our analysis, we propose Divide-and-Remember (D&R), a recursive memory method that learns a memory function $m_t = M(h_t)$ and scales to long contexts while staying compute-light. It involves two strategies: (1) the selection over the full history is divided recursively into subproblems of top-$K$ selection over $2K$ tokens, so that fixed-size, lightweight selectors learned end-to-end support an unbounded history; (2) all recursion blocks share one selector, which captures the selection rule common to every block and keeps the method efficient. On RoboMME, a benchmark of 16 long-horizon manipulation tasks that require remembering when, where, what, and how to act, D&R achieves a state-of-the-art average success rate with consistent gains across all four suites under a budget of only 64 tokens; real-robot experiments show the same gain. Code, checkpoints and more results are at https://dnr-memory.github.io/"
-    },
-    {
-      "id": "arxiv:2610.01260",
-      "title": "PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots",
-      "url": "https://arxiv.org/abs/2610.01260",
-      "publisher": "arXiv 2610.01260",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "training",
-      "score": 1.85,
+      "score": 3.4,
       "numbers": [
-        "30.4%",
-        "38.7%",
-        "59.0%"
+        "84%",
+        "78.1%"
       ],
       "signals": [
         "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging. Existing approaches typically mitigate this issue by designing smaller architectures or reducing the iterative denoising steps in flow-based policies. In this work, we propose FastOPD, a foundation-to-lightweight VLA framework that enables the practical deployment of large-scale VLAs through efficient on-policy distillation. Specifically, FastOPD adapts a flow map for single-state teacher supervision and combines it with a self-consistency objective to construct a compact student that learns the teacher dynamics. Furthermore, we theoretically demonstrate that minimizing this objective allows the distilled student to recover a distribution on par with that induced by an ideal few-step teacher model. We evaluate FastOPD across diverse foundation policies in simulation and real-world experiments. On LIBERO, FastOPD retains 84% of the performance of $π_{0.5}$ with only two inference steps, reducing inference latency by 78.1% while outperforming existing few-step distillation baselines in average success rate. With LingBot-VLA as the teacher, FastOPD improves the single-step success rate over the base student by 15.9 percentage points on RoboTwin 2.0. We further demonstrate its applicability to a World Action Model (WAM) and deploy a compact student distilled from MolmoAct2 on a real robot."
+    },
+    {
+      "id": "arxiv:2610.03620",
+      "title": "UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2610.03620",
+      "publisher": "arXiv 2610.03620",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-02",
+      "lane": "training",
+      "score": 3.1,
+      "numbers": [
+        "89.67%",
+        "0.77%",
+        "94.6%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
         "open_release"
       ],
-      "summary": "Quadrupedal locomotion requires balancing conflicting objectives such as command tracking, stability, and energy efficiency, yet conventional reinforcement learning (RL) hardcodes these priorities into a fixed scalar reward at training time. We present PROMO (Preference-Conditioned Multi-Objective Reinforcement Learning), a semantic multi-objective approach that makes this trade-off an explicit runtime input to a single locomotion policy. PROMO conditions the policy on deployment facing preferences while keeping embodiment-specific locomotion priors fixed, thereby separating operator intent from reward shaping terms required for viable gait generation. Compared with fixed-objective controllers, multi-objective baselines, and independently trained specialists, PROMO achieves objective specialization and robustness from a single deployable policy. Across 100 sampled preferences in simulation, 67 behaviors are non-dominated under exact Pareto dominance, with a mean preference-objective correlation of 0.843, demonstrating broad Pareto coverage and predictable preference response. The same policy transfers zero-shot to a Unitree Go2, where preference changes alone reduce specific energy by up to 30.4%, position error by 38.7%, and peak body-attitude deviation by 59.0% relative to the balanced preference. These results establish preference-conditioned multi-objective RL as a practical runtime interface for adaptive legged locomotion, extending its role beyond offline Pareto-set construction. Open-source code and videos are available at https://amrmousa.com/promo/."
+      "summary": "Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves. Existing intervention strategies based on offline estimates or fixed decision rules can therefore become mismatched to the current policy. To address this, we propose UniIntervene++, an adaptive intervention agent that learns to allocate control between autonomous execution and heterogeneous assisted behaviors during online RL. Specifically, UniIntervene++ first formulates the evolving RL policy, trajectory correction, and a task-structured CodePolicy as Options in a unified semi-Markov decision process and learns their relative values online. Building on this, competence-adaptive intervention periodically probes the RL policy through unassisted execution, keeping control allocation responsive to its evolving capability. Finally, coupled experience learning allows assisted behaviors to improve the RL policy, whose evolving outcomes in turn reshape future intervention decisions. In this way, UniIntervene++ jointly determines when to intervene, how to intervene, and when to return control as the RL policy improves. Across five real-world manipulation tasks, UniIntervene++ achieves an average success rate of 89.67%, outperforming all baselines by at least 6 percentage points, while reducing human intervention to 0.77%, a relative reduction of at least 94.6% from the best baseline. Code is available in our \\href{https://github.com/dannyyudong/An-Adaptive-Intervention-Agent-for-Efficient-Real-World-Reinforcement-Learning}{GitHub repository}."
     },
     {
-      "id": "arxiv:2610.00899",
-      "title": "TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2610.00899",
-      "publisher": "arXiv 2610.00899",
+      "id": "arxiv:2610.03476",
+      "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
+      "url": "https://arxiv.org/abs/2610.03476",
+      "publisher": "arXiv 2610.03476",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "edge",
-      "score": 1.502,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "summary": "Autoregressive Vision-Language-Action models often represent continuous robot actions as discrete token sequences, enabling action prediction with standard next-token objectives. FAST has substantially improved this representation by compactly encoding action containing diverse temporal frequencies into relatively few tokens. However, while such compression reduces the number of action tokens required for autoregressive prediction, it does not necessarily improve the efficiency of policy learning from limited demonstrations. In particular, FAST typically assigns a single deterministic tokenization to each quantized action sequence, although multiple token sequences can represent and decode to the same robot motion. We investigate whether exploiting this representational redundancy can improve policy learning. In this paper, we propose TOkenization of Action sequences with STochastic sampling (TOAST), a stochastic action tokenization method that samples alternative tokenizations of the same quantized action sequence during policy training. This diversifies the discrete supervision while preserving the underlying robot action and requires no additional demonstrations. Experiments on LIBERO show that TOAST consistently improves over its deterministic counterpart, with the improvement increasing as training data decreases, achieving a 6.8 point gain in success rate when only 1/16 of training data is available. Across four real-robot manipulation tasks, TOAST further improves mean success rate by 15.8 points over the deterministic counterpart. These results demonstrate the effectiveness of stochastic action tokenization for autoregressive robot policy learning, particularly when training data are limited."
-    },
-    {
-      "id": "arxiv:2610.02054",
-      "title": "UniWAM: Unified World-Action Model",
-      "url": "https://arxiv.org/abs/2610.02054",
-      "publisher": "arXiv 2610.02054",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
-      "lane": "data",
-      "score": 1.335,
-      "numbers": [],
-      "signals": [],
-      "summary": "Vision-language-action models benefit from the understanding and reasoning capabilities of pretrained vision-language models, but action-only supervision provides limited grounding in world dynamics. Conversely, world-action models inherit spatiotemporal priors from video generation models, yet remain limited in semantic understanding and reasoning under distribution shifts. We introduce UniWAM, a unified architecture that integrates a physical reasoner, a world generator, and an action predictor to jointly learn semantic understanding of the physical world, visual generation, and action prediction. To ensure the quality of the training data, we developed a rigorous data cleaning and annotation pipeline for both human egocentric data and robot data. To adapt the vision-language component to embodied tasks while preserving its inherited language capabilities, we represent low-level actions in natural language and introduce a pre-training recipe that assigns complementary supervision from visual question answering (VQA) data, human egocentric data, and robot demonstrations to the appropriate model components. During post-training, future visual noise augmentation reduces reliance on precise future predictions, while history-conditioned flow matching uses encoded action history to initialize action generation. Together, these designs significantly reduce denoising steps while maintaining performance. UniWAM achieves state-of-the-art (SOTA) performance across multiple evaluations, including in-distribution performance, robustness, generalization, instruction following, and long-horizon task execution. Furthermore, we uncover a log-linear scaling law of unified human-robot co-training, demonstrating the effectiveness of large-scale pre-training on a mixture of human and robot data."
-    },
-    {
-      "id": "arxiv:2610.02196",
-      "title": "InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation",
-      "url": "https://arxiv.org/abs/2610.02196",
-      "publisher": "arXiv 2610.02196",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-01",
+      "published": "2026-10-02",
       "lane": "systems",
-      "score": 1.3,
+      "score": 3.05,
+      "numbers": [
+        "7.50%",
+        "27.50%",
+        "32.5%",
+        "57.5%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control. While recent Vision-Language-Action models excel at short-horizon tasks, they lack the hierarchical reasoning required for multi-stage objectives. Furthermore, existing hierarchical agents suffer from rigid sub-task mapping, inflexible replanning, and a lack of continuous learning. To address these limitations, we introduce MobiAgent, a dual-loop agentic framework that bridges robust deployment execution and recursive policy self-improvement. During deployment, the Inner Loop decouples high-level reasoning from low-level control through highly composable atomic skills. It employs Vision-Language models for receding-horizon planning and visual reflection, dynamically composing skills to ensure robust error recovery. These skills are executed by specialized flow-matching experts that share a unified VLM backbone, maximizing reusability while mitigating capacity interference. Concurrently, the Outer Loop drives automated lifelong learning by autonomously segmenting and verifying deployment rollouts, clustering them to discover atomic skills, and continuously fine-tuning the skill library without human annotations. Evaluations on RoboCasa, BEHAVIOR-1K, and real-world tasks demonstrate the effectiveness of MobiAgent. It outperforms $π_{0.5}$-TA by 22.5 percentage points on BEHAVIOR-1K and enables robust recovery from execution failures. Through autonomous data recycling, success improves from 7.50% to 27.50% on RoboCasa and from 32.5% to 57.5% on Astribot S1."
+    },
+    {
+      "id": "arxiv:2610.03607",
+      "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
+      "url": "https://arxiv.org/abs/2610.03607",
+      "publisher": "arXiv 2610.03607",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-02",
+      "lane": "simeval",
+      "score": 2.955,
+      "numbers": [
+        "99.20%",
+        "93.80%",
+        "57.7%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale. Egocentric videos offer abundant human interaction experience with task-relevant semantics for robotic manipulation, but direct transfer is challenging for two reasons: latent actions inferred from frame reconstruction can be dominated by nuisance variation such as ego-camera motion, and human and robot behaviors often exhibit different temporal dynamics. We propose WING (World Action Learning via INteraction-Centric Spectral Latent Guidance), a framework for transferring interaction knowledge from egocentric videos to robot policies. WING first separates observer-induced motion from hand-object interaction and distills the interaction-centric component into latent actions. It then exploits the observation that cross-embodiment task semantics are concentrated in slowly varying temporal structures, identifying shared low-frequency components between egocentric latent actions and robot behaviors in the spectral domain and using them to guide action generation. WING achieves average success rates of 99.20% on LIBERO, 93.80% on RoboTwin 2.0, and 57.7% on RoboCasa-GR1, and also performs strongly across four real-world manipulation tasks under diverse generalization settings. These results show that interaction-centric spectral guidance provides an effective and scalable way to transfer physical interaction knowledge from human egocentric video to robot control. Project page: https://mikuz12.github.io/wing/"
+    },
+    {
+      "id": "arxiv:2610.02784",
+      "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
+      "url": "https://arxiv.org/abs/2610.02784",
+      "publisher": "arXiv 2610.02784",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-02",
+      "lane": "foundation",
+      "score": 2.5,
+      "numbers": [
+        "50 demonstrations",
+        "77.5%",
+        "45.2%",
+        "66.7%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging. A common concern is that simply introducing touch during task-specific fine-tuning may fail to bridge the cross-modal gap, yielding limited gains or even reduced success. Consequently, existing methods often rely on large-scale tactile policy pretraining or separate visuotactile alignment, adding data requirements and training stages. We introduce SimpleTouch, a simple VLA extension that augments $π_{0.5}$ with a tactile expert, to test whether these additional stages are necessary. Leveraging all tokens from a frozen pretrained tactile encoder, the expert learns from action supervision and multi-horizon prediction of future tactile latents. This single-stage training uses only task demonstrations, without additional tactile policy pretraining or separate alignment. With 50 demonstrations per task, SimpleTouch achieves the highest success rate among evaluated methods on all six UniVTAC tasks. Its average success rate reaches 77.5%, compared with 45.2% for FTP-$π_{0.5}$ and 66.7% for FTP-1, corresponding to gains of 32.3 and 10.8 percentage points, respectively. Across four real-world tasks, it averages 71.3%, exceeding FTP-1 by 8.8 percentage points. These results demonstrate that, given pretrained VLA and tactile representations, additional tactile policy pretraining is not a prerequisite for strong performance on these tasks, offering a simpler route to contact-rich manipulation. Project page: https://simpletouch-robot.github.io/"
+    },
+    {
+      "id": "arxiv:2610.03283",
+      "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
+      "url": "https://arxiv.org/abs/2610.03283",
+      "publisher": "arXiv 2610.03283",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-02",
+      "lane": "edge",
+      "score": 2.307,
+      "numbers": [
+        "67%",
+        "86%",
+        "30 fps",
+        "0.83 W"
+      ],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "summary": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing. Visual-inertial odometry (VIO) has proven to be a cost-effective and accurate solution for this task. Robots, wearables, XR devices, and drones can benefit significantly from efficient implementations of VIO since they allow for cooler, lighter, and cheaper devices with longer battery life and a better user experience. In this work, we propose to enhance the efficiency of a VIO system by leveraging the Hexagon DSP, a commodity co-processor present in many modern smartphones and XR devices. Our approach offloads the visual frontend of a stereo-inertial odometry system to the DSP while keeping the backend on the main CPU. By optimizing the implementation for the DSP architecture, we achieve significant reductions in power consumption and latency compared to CPU-only execution. Our system, HexVIO, demonstrates a 67% reduction in power consumption or an 86% increase in throughput on a commodity smartphone, with the ability to sustain long-term real-time 30 fps tracking for 0.83 W, corresponding to ~18 hours of tracking on the testing device. These results highlight the potential of commodity DSPs for enabling all-day visual-inertial tracking in robotics and mobile devices."
+    },
+    {
+      "id": "the-robot-report:077068b67d2b",
+      "title": "FCC robot restrictions could accelerate shift to local AI",
+      "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-05",
+      "lane": "safety",
+      "score": 1.62,
       "numbers": [],
       "signals": [],
-      "summary": "We study test-time evolution for humanoid loco-manipulation: solving tasks that a controller was never trained for by repurposing its existing skills, improving from its own attempts, and retaining what it learns, without retraining. Our key insight is that a broad controller already holds much of the competence a new task needs, and that this competence becomes accessible through an interface between planning and control that is expressive enough to specify contact-rich, multi-stage interactions, yet executable and measurable enough that execution feedback can guide planning from experience. InterEvolve realizes this interface with two components. First, we develop an object-aware forward-backward (FB) behavioral foundation model, whose object residuals on a frozen body prior turn a new reward about the body or objects into loco-manipulation behavior at test time. Second, we specify tasks as reward programs: staged rewards with completion conditions and tunable constants. A large language model (LLM) agent revises the program structure in context, drawing on execution feedback and a skill library of verified programs, while a numerical optimizer tunes its constants. With every candidate verified across parallel simulation scenarios, the program explores new ways to induce, repurpose, and compose the controller's existing motor competence for the task at hand, and thus improves over iterations. Experiments show that human-designed rewards leave much of the FB model's loco-manipulation competence untapped, whereas the programs InterEvolve evolves release it, sometimes through novel strategies. It further produces behaviors for diverse tasks, complex scenes, and long-horizon compositions in simulation, and evolved skills run autonomously on a physical Unitree G1 from egocentric onboard perception."
+      "summary": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain transparency."
+    },
+    {
+      "id": "monoist:7aaa16ae267f",
+      "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
+      "evidence": "M",
+      "published": "2026-10-05",
+      "lane": "simeval",
+      "score": 1.085,
+      "numbers": [],
+      "signals": [],
+      "summary": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。"
     }
   ],
   "lane_counts": {
     "foundation": 11,
-    "data": 3,
+    "data": 2,
     "training": 5,
-    "simeval": 12,
-    "edge": 9,
+    "simeval": 13,
+    "edge": 10,
     "safety": 4,
-    "systems": 4,
-    "hardware": 8
+    "systems": 5,
+    "hardware": 6
   },
   "evidence_mix": {
-    "O": 2,
-    "R": 37,
-    "M": 17
+    "O": 1,
+    "R": 39,
+    "M": 16
   },
   "fetch": {
-    "items": 373,
+    "items": 368,
     "attempted": 11,
     "answered": 10,
     "failed": [
@@ -165,7 +196,7 @@
     ],
     "fallback": [],
     "per_source": {
-      "arxiv": 40,
+      "arxiv": 35,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

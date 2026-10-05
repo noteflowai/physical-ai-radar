@@ -13,6 +13,328 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02832",
+      "url": "https://arxiv.org/abs/2610.02832",
+      "title": "FastOPD: On-Policy Distillation for Lightweight VLA Deployment",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.02832 · 2026-10-02<br><b>Key numbers</b>: 84% · 78.1%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.02832 · 2026-10-02\nKey numbers: 84% · 78.1%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nVision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.02832"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.02832",
+        "url": "https://arxiv.org/abs/2610.02832",
+        "title": "FastOPD: On-Policy Distillation for Lightweight VLA Deployment",
+        "publisher": "arXiv 2610.02832",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "84%",
+          "78.1%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03620",
+      "url": "https://arxiv.org/abs/2610.03620",
+      "title": "UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03620 · 2026-10-02<br><b>Key numbers</b>: 89.67% · 0.77% · 94.6%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.03620 · 2026-10-02\nKey numbers: 89.67% · 0.77% · 94.6%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights\n\nOnline reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.03620"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.03620",
+        "url": "https://arxiv.org/abs/2610.03620",
+        "title": "UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning",
+        "publisher": "arXiv 2610.03620",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "89.67%",
+          "0.77%",
+          "94.6%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03476",
+      "url": "https://arxiv.org/abs/2610.03476",
+      "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03476 · 2026-10-02<br><b>Key numbers</b>: 7.50% · 27.50% · 32.5% · 57.5%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.03476 · 2026-10-02\nKey numbers: 7.50% · 27.50% · 32.5% · 57.5%\nSignals: quantitative results · real-robot experiments\n\nLong-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.03476"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.03476",
+        "url": "https://arxiv.org/abs/2610.03476",
+        "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
+        "publisher": "arXiv 2610.03476",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "systems",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "7.50%",
+          "27.50%",
+          "32.5%",
+          "57.5%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03607",
+      "url": "https://arxiv.org/abs/2610.03607",
+      "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03607 · 2026-10-02<br><b>Key numbers</b>: 99.20% · 93.80% · 57.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.03607 · 2026-10-02\nKey numbers: 99.20% · 93.80% · 57.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLearning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.03607"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.03607",
+        "url": "https://arxiv.org/abs/2610.03607",
+        "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
+        "publisher": "arXiv 2610.03607",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "99.20%",
+          "93.80%",
+          "57.7%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02784",
+      "url": "https://arxiv.org/abs/2610.02784",
+      "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.02784 · 2026-10-02<br><b>Key numbers</b>: 50 demonstrations · 77.5% · 45.2% · 66.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.02784 · 2026-10-02\nKey numbers: 50 demonstrations · 77.5% · 45.2% · 66.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nTactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.02784"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.02784",
+        "url": "https://arxiv.org/abs/2610.02784",
+        "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
+        "publisher": "arXiv 2610.02784",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "50 demonstrations",
+          "77.5%",
+          "45.2%",
+          "66.7%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03283",
+      "url": "https://arxiv.org/abs/2610.03283",
+      "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03283 · 2026-10-02<br><b>Key numbers</b>: 67% · 86% · 30 fps · 0.83 W<br><b>Signals</b>: quantitative results · latency or control-rate numbers</p>\n<blockquote>The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.03283 · 2026-10-02\nKey numbers: 67% · 86% · 30 fps · 0.83 W\nSignals: quantitative results · latency or control-rate numbers\n\nThe ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.03283"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "arxiv:2610.03283",
+        "url": "https://arxiv.org/abs/2610.03283",
+        "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
+        "publisher": "arXiv 2610.03283",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-10-02",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [
+          "67%",
+          "86%",
+          "30 fps",
+          "0.83 W"
+        ],
+        "signals": [
+          "numbers",
+          "latency"
+        ],
+        "excerpt": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:077068b67d2b",
+      "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
+      "title": "FCC robot restrictions could accelerate shift to local AI",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-05</p>\n<blockquote>Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-05\n\nCompanies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "the-robot-report:077068b67d2b",
+        "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
+        "title": "FCC robot restrictions could accelerate shift to local AI",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-10-05",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:monoist:7aaa16ae267f",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
+      "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: MONOist (ITmedia) · 2026-10-05</p>\n<blockquote>川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: MONOist (ITmedia) · 2026-10-05\n\n川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
+      "summary": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。",
+      "date_published": "2026-10-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "MONOist (ITmedia)"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-06",
+        "id": "monoist:7aaa16ae267f",
+        "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
+        "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
+        "publisher": "MONOist (ITmedia)",
+        "source_id": "monoist",
+        "evidence": "M",
+        "lane": "simeval",
+        "published": "2026-10-05",
+        "radar_published": "2026-10-05T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.01351",
       "url": "https://arxiv.org/abs/2610.01351",
       "title": "Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks",
@@ -3423,287 +3745,6 @@
           "latency"
         ],
         "excerpt": "You sit down and put your arm in the cradle. You press a button."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:173eb9a2ab25",
-      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
-      "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Blog · 2026-09-21<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [O]\nSource: NVIDIA Blog · 2026-09-21\nSignals: real-robot experiments\n\nPhysical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "NVIDIA Blog"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "nvidia-blog:173eb9a2ab25",
-        "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
-        "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
-        "publisher": "NVIDIA Blog",
-        "source_id": "nvidia-blog",
-        "evidence": "O",
-        "lane": "safety",
-        "published": "2026-09-21",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:9fbd3b91fa7b",
-      "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
-      "title": "Cyborg Roaches Can Stab You With Needles",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-09-05<br><b>Signals</b>: quantitative results · open code or weights · latency or control-rate numbers</p>\n<blockquote>Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-09-05\nSignals: quantitative results · open code or weights · latency or control-rate numbers\n\nImagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you.",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "ieee-spectrum-robotics:9fbd3b91fa7b",
-        "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
-        "title": "Cyborg Roaches Can Stab You With Needles",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "edge",
-        "published": "2026-09-05",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [
-          "numbers",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Imagine you are trapped under rubble after an earthquake and you see an electronics-covered cockroach with a spring-loaded needle on its back scuttling toward you."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:a35916e8f8c5",
-      "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
-      "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-09-11<br><b>Signals</b>: open code or weights · latency or control-rate numbers</p>\n<blockquote>Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-09-11\nSignals: open code or weights · latency or control-rate numbers\n\nTraversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions.",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "ieee-spectrum-robotics:a35916e8f8c5",
-        "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
-        "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "training",
-        "published": "2026-09-11",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Traversing sparse 3D structures requires humanoid robots to perceive thin, overhanging geometry while executing agile, accurate whole-body motions."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:f3468ea93aa3",
-      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/",
-      "title": "Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Blog · 2026-09-10</p>\n<blockquote>Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: NVIDIA Blog · 2026-09-10\n\nGear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "NVIDIA Blog"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "nvidia-blog:f3468ea93aa3",
-        "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-wardogs/",
-        "title": "Boots on the Ground: ‘WARDOGS’ Goes All Out on GeForce NOW at Early-Access Launch",
-        "publisher": "NVIDIA Blog",
-        "source_id": "nvidia-blog",
-        "evidence": "O",
-        "lane": "simeval",
-        "published": "2026-09-10",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Gear up: The latest PC games and major updates are ready to play on GeForce NOW this week. WARDOGS drops onto the cloud at early-access launch, alongside the Valheim 1.0 Deep North update and Bus Simulator 27 — part of nine new titles…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:683b94332d9b",
-      "url": "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/",
-      "title": "Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Blog · 2026-09-10</p>\n<blockquote>Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [O]\nSource: NVIDIA Blog · 2026-09-10\n\nManufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming.",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "NVIDIA Blog"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "nvidia-blog:683b94332d9b",
-        "url": "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/",
-        "title": "Skild AI Taps NVIDIA Physical AI to Teach Robots New Tasks From a Single Video",
-        "publisher": "NVIDIA Blog",
-        "source_id": "nvidia-blog",
-        "evidence": "O",
-        "lane": "data",
-        "published": "2026-09-10",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Manufacturing floors, warehouses and production lines rarely stay fixed — tasks change, layouts shift and new products arrive, and most robots can’t keep up without significant reprogramming."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:23bdbfdbd061",
-      "url": "https://huggingface.co/blog/allenai/benchmirt",
-      "title": "BenchMIRT: What are LLM benchmarks actually measuring?",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-09-01</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-09-01\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "BenchMIRT: What are LLM benchmarks actually measuring?",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "huggingface-blog:23bdbfdbd061",
-        "url": "https://huggingface.co/blog/allenai/benchmirt",
-        "title": "BenchMIRT: What are LLM benchmarks actually measuring?",
-        "publisher": "Hugging Face Blog",
-        "source_id": "huggingface-blog",
-        "evidence": "O",
-        "lane": "simeval",
-        "published": "2026-09-01",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:86b47b47cb74",
-      "url": "https://huggingface.co/blog/funes",
-      "title": "Give Your Coding Agents a Memory You Own",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-09-03</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-09-03\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Give Your Coding Agents a Memory You Own",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "huggingface-blog:86b47b47cb74",
-        "url": "https://huggingface.co/blog/funes",
-        "title": "Give Your Coding Agents a Memory You Own",
-        "publisher": "Hugging Face Blog",
-        "source_id": "huggingface-blog",
-        "evidence": "O",
-        "lane": "systems",
-        "published": "2026-09-03",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": ""
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:d4e55a9164f4",
-      "url": "https://huggingface.co/blog/asyncgrpo-lora-hfjobs",
-      "title": "Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-09-10</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html\">Full radar for 2026-09-22</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-09-10\n\nFull radar for 2026-09-22: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-22.en.html",
-      "summary": "Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL",
-      "date_published": "2026-09-22T01:40:00Z",
-      "authors": [
-        {
-          "name": "Hugging Face Blog"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-22",
-        "id": "huggingface-blog:d4e55a9164f4",
-        "url": "https://huggingface.co/blog/asyncgrpo-lora-hfjobs",
-        "title": "Async GRPO with LoRA across HF Jobs: a bucket, a proxy, and no NCCL",
-        "publisher": "Hugging Face Blog",
-        "source_id": "huggingface-blog",
-        "evidence": "O",
-        "lane": "training",
-        "published": "2026-09-10",
-        "radar_published": "2026-09-22T01:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": ""
       }
     }
   ]

@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-05
+### 今日雷达 · 2026-10-06
 
-`生成时间: 2026-10-04 23:40 UTC` ｜ `统计窗口: 论文 2026-10-01 → 2026-10-05 · 博客与报道 2026-09-05 → 2026-10-05 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-05 23:40 UTC` ｜ `统计窗口: 论文 2026-10-02 → 2026-10-06 · 博客与报道 2026-09-06 → 2026-10-06 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks](https://arxiv.org/abs/2610.01351)**<br><sub>仿真与评测 · arXiv 2610.01351 · 2026‑10‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation](https://arxiv.org/abs/2610.01083)**<br><sub>仿真与评测 · arXiv 2610.01083 · 2026‑10‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[NarrativeFlow: Flow-Based Vision-Language-Action Model Using Robot Velocity Fields](https://arxiv.org/abs/2610.00981)**<br><sub>基座模型 · arXiv 2610.00981 · 2026‑10‑01</sub> |
-| 04<br>🔵&nbsp;`R` | **[Divide-and-Remember: Recursive Action-Relevant Memory for Long-Horizon VLA Policies](https://arxiv.org/abs/2610.00982)**<br><sub>基座模型 · arXiv 2610.00982 · 2026‑10‑01</sub> |
-| 05<br>🔵&nbsp;`R` | **[PROMO: Preference-conditioned Multi-Objective Reinforcement Learning for Quadrupedal Robots](https://arxiv.org/abs/2610.01260)**<br>`30.4%`&nbsp; `38.7%`&nbsp; `59.0%`<br><sub>训练与自我改进 · arXiv 2610.01260 · 2026‑10‑01</sub> |
-| 06<br>🔵&nbsp;`R` | **[TOAST: Stochastic Robot Action Tokenization for Autoregressive Vision-Language-Action Models](https://arxiv.org/abs/2610.00899)**<br><sub>边缘与实时性 · arXiv 2610.00899 · 2026‑10‑01</sub> |
-| 07<br>🔵&nbsp;`R` | **[UniWAM: Unified World-Action Model](https://arxiv.org/abs/2610.02054)**<br><sub>数据引擎 · arXiv 2610.02054 · 2026‑10‑01</sub> |
-| 08<br>🔵&nbsp;`R` | **[InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.02196)**<br><sub>系统与编排 · arXiv 2610.02196 · 2026‑10‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[FastOPD: On-Policy Distillation for Lightweight VLA Deployment](https://arxiv.org/abs/2610.02832)**<br>`84%`&nbsp; `78.1%`<br><sub>基座模型 · arXiv 2610.02832 · 2026‑10‑02</sub> |
+| 02<br>🔵&nbsp;`R` | **[UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning](https://arxiv.org/abs/2610.03620)**<br>`89.67%`&nbsp; `0.77%`&nbsp; `94.6%`<br><sub>训练与自我改进 · arXiv 2610.03620 · 2026‑10‑02</sub> |
+| 03<br>🔵&nbsp;`R` | **[MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation](https://arxiv.org/abs/2610.03476)**<br>`7.50%`&nbsp; `27.50%`&nbsp; `32.5%`<br><sub>系统与编排 · arXiv 2610.03476 · 2026‑10‑02</sub> |
+| 04<br>🔵&nbsp;`R` | **[World Action Learning via Interaction-Centric Spectral Latent Guidance](https://arxiv.org/abs/2610.03607)**<br>`99.20%`&nbsp; `93.80%`&nbsp; `57.7%`<br><sub>仿真与评测 · arXiv 2610.03607 · 2026‑10‑02</sub> |
+| 05<br>🔵&nbsp;`R` | **[SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?](https://arxiv.org/abs/2610.02784)**<br>`50 demonstrations`&nbsp; `77.5%`&nbsp; `45.2%`<br><sub>基座模型 · arXiv 2610.02784 · 2026‑10‑02</sub> |
+| 06<br>🔵&nbsp;`R` | **[HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs](https://arxiv.org/abs/2610.03283)**<br>`67%`&nbsp; `86%`&nbsp; `30 fps`<br><sub>边缘与实时性 · arXiv 2610.03283 · 2026‑10‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[FCC robot restrictions could accelerate shift to local AI](https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑05</sub> |
+| 08<br>🟡&nbsp;`M` | **[川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か](https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html)**<br><sub>仿真与评测 · MONOist (ITmedia) · 2026‑10‑05</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — `AI 起草` 若你只按基准成功率挑选 VLA 检查点，这篇自报预印本对此提出质疑；页面引文只说明 VLA 在基准上成功率很高，未给出数字，调整评测流程前先看它还测量了哪些行为。
-2. **WBAG** — `AI 起草` 在真实场景部署 VLA 操作策略、且碰撞可能涉及机器人不同部位时，这是一个可评估的安全层候选；自报预印本，页面只显示闭环信号、没有数字，暂不足以替代现有防护。
-3. **NarrativeFlow** — `AI 起草` 手里有多个机器人平台采集的数据时，用机器人速度场作跨本体、以运动为中心的表示，或许能把这些数据合并利用；自报预印本带真机与闭环信号，但页面没有数字，收益大小待核对。
-4. **Divide-and-Remember** — `AI 起草` 如果你的任务仅凭当前观测无法决定动作、需要记住历史，这篇标有开放代码的自报预印本值得在自研记忆模块前先试；页面带闭环信号，但没有数字。
-5. **PROMO** — `AI 起草` 若你的四足 RL 把跟踪、稳定与能耗的取舍写死在训练时的固定标量奖励里，这篇开放代码的自报预印本给出能耗最多 30.4%、位置误差 38.7%、峰值姿态偏差 59.0% 的变化，对比基线在页面上未显示。
-6. **TOAST** — `AI 起草` 如果你用自回归 VLA 把连续动作离散成 token 序列，动作分词方式值得重新审视；不过这篇自报预印本页面只有闭环信号，虽归入边缘主线却没有延迟或速度数据。
-7. **UniWAM** — `AI 起草` 若你的 VLA 只用动作标签监督，这篇自报预印本认为这对世界动力学的约束有限、主张补上这类监督；页面没有数字，也没有真机或闭环信号，只能当作设计方向参考。
-8. **InterEvolve** — `AI 起草` 如果给人形机器人加新任务目前意味着重训控制器，这篇自报预印本提出在测试时复用已有技能、从自身尝试中改进并保留所学；页面没有数字、真机或闭环信号，离部署依据还远。
+1. **FastOPD** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **UniIntervene++** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+3. **MobiAgent** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在没有人工重置的长程任务中是否可靠。
+4. **World Action Learning via Interaction-Centric Spectral Latent Guidance** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+5. **SimpleTouch** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+6. **HexVIO** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+7. **FCC robot restrictions could accelerate shift to local AI** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+8. **川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-05.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-06.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
