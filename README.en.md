@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **WBAG** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **NarrativeFlow** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **Divide-and-Remember** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **PROMO** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the gain holds outside the training tasks.
-6. **TOAST** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
-7. **UniWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **InterEvolve** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch whether it holds up over long tasks without human resets.
+1. **Is Success All You Need? Investigating the Impact of Input Perturbations on…** — `AI draft` If you pick VLA checkpoints on benchmark success rate alone, this self-reported preprint questions that habit; the quoted text only notes high benchmark success and shows no figures, so see what else it measures before changing your evaluation.
+2. **WBAG** — `AI draft` For teams putting VLA manipulation into the real world, where collisions can involve different parts of the robot, this is a safety-layer candidate to evaluate; it is a self-reported preprint showing a closed-loop signal but no figures on the page.
+3. **NarrativeFlow** — `AI draft` If you hold demonstrations from several robot platforms, robot velocity fields as an embodiment-agnostic, motion-centric representation may let you pool them; the self-reported preprint carries real-robot and closed-loop signals but no figures on the page.
+4. **Divide-and-Remember** — `AI draft` If your tasks need history because the current observation alone does not determine the action, try this self-reported preprint, flagged with open code, before building your own memory module; the page shows a closed-loop signal but no figures.
+5. **PROMO** — `AI draft` If your quadruped RL fixes the tracking, stability and energy trade-off in a scalar reward at training time, this self-reported preprint with open code reports up to 30.4% on energy, 38.7% on position error and 59.0% on peak body-attitude deviation; the baseline is cut off on the page.
+6. **TOAST** — `AI draft` If you run an autoregressive VLA that turns continuous actions into discrete token sequences, the tokenizer is worth revisiting; this self-reported preprint shows only a closed-loop signal on the page, and despite its edge filing no latency or speed figures.
+7. **UniWAM** — `AI draft` If your VLA is trained on action labels alone, this self-reported preprint argues that gives limited grounding in world dynamics; with no figures and no real-robot or closed-loop signal on the page, treat it as a design direction, not a result.
+8. **InterEvolve** — `AI draft` If adding a humanoid task today means retraining the controller, this self-reported preprint proposes reusing existing skills at test time and keeping what the robot learns from its own attempts; no figures, real-robot or closed-loop signal appear on the page yet.
 
 </details>
 
