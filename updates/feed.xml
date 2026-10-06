@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: escape untrusted run status and metric name in the Markdown gate summary</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.7/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.7/</guid>
+      <description>evalarc diff now escapes untrusted input-file text in specific parts of its main Markdown gate summary (summary.md, the --summary target and the GitHub Action job summary). It does not escape the whole summary. Three parts are covered: the run-status sentence for an unfinished current or baseline run, the 'Headline metric: ... from the source tool.' sentence, and the case and check identifiers in the change table. A new private helper, _inline_code_text, does the escaping. It turns pipes into \|, turns backticks into apostrophes, and replaces each CRLF, CR or LF with a space. A crafted status, metric name or identifier therefore stays inside one single-line code span. It cannot add a fake '### EvalArc' heading line. Before this change, table cells and the baseline-incomplete sentence already escaped pipes and backticks. They now also replace carriage returns. Ordinary values render the same as in 0.17.6, with backtick code spans. diff.json and the result dict still hold the raw values. gate_passed, blocking_changes and exit codes 0, 1 and 2 are unchanged. docs/ci-gate.md Limits describes the escaping. Checks were run by the controller, not by me. On base commit 20babd1, the new test failed 5 of 8 cases because a raw CR was still in the output. On candidate f4daf73, the controller ran six checks and all exited 0: the new test file, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs.</description>
+      <pubDate>Tue, 06 Oct 2026 19:05:09 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: reject duplicate Inspect samples instead of counting them as extra attempts</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.5/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.5/</guid>
