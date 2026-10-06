@@ -33,6 +33,7 @@ try:
     from .feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from .feature_outcomes import deferral_details, outcome_exit
     from .feature_governance import bind_decision, load_roadmap, next_version, validate_decision
+    from .feature_recovery import check_original_effects
     from .feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
@@ -52,6 +53,7 @@ except ImportError:
     from feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from feature_outcomes import deferral_details, outcome_exit
     from feature_governance import bind_decision, load_roadmap, next_version, validate_decision
+    from feature_recovery import check_original_effects
     from feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
@@ -773,6 +775,8 @@ def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
 def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: str,
             *, plan_only: bool = False) -> dict:
     config, repo = {**PROJECTS[name]}, "noteflowai/" + name
+    # Before any new ID, source checkout, model admission or receipt mutation.
+    check_original_effects(service_state, repo)
     task_dir = service_state / "tasks" / name
     task_dir.mkdir(parents=True, exist_ok=True)
     active = task_dir / "active.json"
