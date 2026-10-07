@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-06
+### 今日雷达 · 2026-10-07
 
-`生成时间: 2026-10-05 23:40 UTC` ｜ `统计窗口: 论文 2026-10-02 → 2026-10-06 · 博客与报道 2026-09-06 → 2026-10-06 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-07 07:19 UTC` ｜ `统计窗口: 论文 2026-10-03 → 2026-10-07 · 博客与报道 2026-09-07 → 2026-10-07 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[FastOPD: On-Policy Distillation for Lightweight VLA Deployment](https://arxiv.org/abs/2610.02832)**<br>`84%`&nbsp; `78.1%`<br><sub>基座模型 · arXiv 2610.02832 · 2026‑10‑02</sub> |
-| 02<br>🔵&nbsp;`R` | **[UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning](https://arxiv.org/abs/2610.03620)**<br>`89.67%`&nbsp; `0.77%`&nbsp; `94.6%`<br><sub>训练与自我改进 · arXiv 2610.03620 · 2026‑10‑02</sub> |
-| 03<br>🔵&nbsp;`R` | **[MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation](https://arxiv.org/abs/2610.03476)**<br>`7.50%`&nbsp; `27.50%`&nbsp; `32.5%`<br><sub>系统与编排 · arXiv 2610.03476 · 2026‑10‑02</sub> |
-| 04<br>🔵&nbsp;`R` | **[World Action Learning via Interaction-Centric Spectral Latent Guidance](https://arxiv.org/abs/2610.03607)**<br>`99.20%`&nbsp; `93.80%`&nbsp; `57.7%`<br><sub>仿真与评测 · arXiv 2610.03607 · 2026‑10‑02</sub> |
-| 05<br>🔵&nbsp;`R` | **[SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?](https://arxiv.org/abs/2610.02784)**<br>`50 demonstrations`&nbsp; `77.5%`&nbsp; `45.2%`<br><sub>基座模型 · arXiv 2610.02784 · 2026‑10‑02</sub> |
-| 06<br>🔵&nbsp;`R` | **[HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs](https://arxiv.org/abs/2610.03283)**<br>`67%`&nbsp; `86%`&nbsp; `30 fps`<br><sub>边缘与实时性 · arXiv 2610.03283 · 2026‑10‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[FCC robot restrictions could accelerate shift to local AI](https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑05</sub> |
-| 08<br>🟡&nbsp;`M` | **[川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か](https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html)**<br><sub>仿真与评测 · MONOist (ITmedia) · 2026‑10‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2](https://arxiv.org/abs/2610.08618)**<br>`16ms`&nbsp; `60 Hz`&nbsp; `7.4%`<br><sub>仿真与评测 · arXiv 2610.08618 · 2026‑10‑06</sub> |
+| 02<br>🔵&nbsp;`R` | **[StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models](https://arxiv.org/abs/2610.07756)**<br>`96.5%`&nbsp; `97.8%`&nbsp; `115.0 ms`<br><sub>仿真与评测 · arXiv 2610.07756 · 2026‑10‑06</sub> |
+| 03<br>🔵&nbsp;`R` | **[ESP: Energy-Score Policy for One-Step Multimodal Action Generation](https://arxiv.org/abs/2610.07696)**<br><sub>基座模型 · arXiv 2610.07696 · 2026‑10‑06</sub> |
+| 04<br>🔵&nbsp;`R` | **[Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution](https://arxiv.org/abs/2610.07946)**<br>`43.9%`&nbsp; `53.2%`&nbsp; `58.7%`<br><sub>基座模型 · arXiv 2610.07946 · 2026‑10‑06</sub> |
+| 05<br>🔵&nbsp;`R` | **[LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation](https://arxiv.org/abs/2610.05024)**<br>`50.93%`&nbsp; `36.14%`&nbsp; `25.83%`<br><sub>边缘与实时性 · arXiv 2610.05024 · 2026‑10‑04</sub> |
+| 06<br>🔵&nbsp;`R` | **[ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference](https://arxiv.org/abs/2610.08444)**<br><sub>边缘与实时性 · arXiv 2610.08444 · 2026‑10‑06</sub> |
+| 07<br>🟡&nbsp;`M` | **[ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現](https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑07</sub> |
+| 08<br>🟡&nbsp;`M` | **[Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO](https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑06</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **FastOPD** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-2. **UniIntervene++** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-3. **MobiAgent** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在没有人工重置的长程任务中是否可靠。
-4. **World Action Learning via Interaction-Centric Spectral Latent Guidance** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-5. **SimpleTouch** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-6. **HexVIO** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-7. **FCC robot restrictions could accelerate shift to local AI** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-8. **川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+1. **Demo** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+2. **StairVLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **ESP** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Adapting Vision-Language-Action Models to Unknown Visual Disruptions During…** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
+5. **LightVLN** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+6. **ActTune** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+7. **ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-06.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-07.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

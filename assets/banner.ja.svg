@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI フロンティア・レーダー · 2026-10-06 · Physical AI の最前線を、毎日 8 本、根拠つきで">
-<title>Physical AI フロンティア・レーダー · 2026-10-06</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI フロンティア・レーダー · 2026-10-07 · Physical AI の最前線を、毎日 8 本、根拠つきで">
+<title>Physical AI フロンティア・レーダー · 2026-10-07</title>
 <style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans CJK JP", "Noto Sans JP", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
 <defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
 <g clip-path="url(#card)">
@@ -11,7 +11,7 @@
 <rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
 <rect x="60" y="56" width="357" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
 <circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
-<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">毎日 07:40 SGT 更新 · 2026-10-06</text>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">毎日 07:40 SGT 更新 · 2026-10-07</text>
 <text x="60" y="156" font-size="52" font-weight="800" fill="url(#shine)">Physical AI の最前線を、</text>
 <text x="60" y="220" font-size="52" font-weight="800" fill="url(#shine)">毎日 8 本、根拠つきで</text>
 <text x="60" y="270" font-size="20" fill="#9fb0c6">8 つの軸 · 根拠タグ · 中英日の三言語 · 毎日更新</text>
@@ -20,7 +20,7 @@
 <text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
 <rect x="218" y="340" width="146" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="232" y="370" font-size="15" fill="#8b98ad">本日の走査</text>
-<text class="mono" x="232" y="410" font-size="32" font-weight="700" fill="#e6edf3">368</text>
+<text class="mono" x="232" y="410" font-size="32" font-weight="700" fill="#e6edf3">517</text>
 <rect x="375" y="340" width="146" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="390" y="370" font-size="15" fill="#8b98ad">応答した情報源</text>
 <text class="mono" x="390" y="410" font-size="32" font-weight="700" fill="#e6edf3">10/11</text>
@@ -51,13 +51,13 @@
 <text class="label" x="-96.2" y="-96.2" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">ハードウェアと供給網 <tspan class="count">6</tspan></text>
 <polygon class="area" points="0.0,-101.5 13.1,-13.1 46.2,-0.0 84.9,84.9 0.0,92.3 -26.1,26.1 -46.2,0.0 -39.2,-39.2"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-120 A120,120 0 0,1 77.1,-91.9 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="77.1" y2="-91.9" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
-<a href="#p1" class="blip" style="--lane:#8b5cf6;--delay:0.35s"><circle cx="-9.4" cy="-107.6" r="11" class="halo"/><circle cx="-9.4" cy="-107.6" r="5"/><title>FastOPD: On-Policy Distillation for Lightweight VLA Deployment</title></a>
-<a href="#p2" class="blip" style="--lane:#34d399;--delay:0.70s"><circle cx="102.2" cy="-0.0" r="11" class="halo"/><circle cx="102.2" cy="-0.0" r="5"/><title>UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning</title></a>
-<a href="#p3" class="blip" style="--lane:#a3e635;--delay:1.05s"><circle cx="-101.2" cy="0.0" r="11" class="halo"/><circle cx="-101.2" cy="0.0" r="5"/><title>MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation</title></a>
-<a href="#p4" class="blip" style="--lane:#fb923c;--delay:1.40s"><circle cx="76.1" cy="63.9" r="11" class="halo"/><circle cx="76.1" cy="63.9" r="5"/><title>World Action Learning via Interaction-Centric Spectral Latent Guidance</title></a>
-<a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="7.9" cy="-90.2" r="11" class="halo"/><circle cx="7.9" cy="-90.2" r="5"/><title>SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?</title></a>
-<a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="0.0" cy="86.8" r="11" class="halo"/><circle cx="0.0" cy="86.8" r="5"/><title>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs</title></a>
-<a href="#p7" class="blip" style="--lane:#facc15;--delay:2.45s"><circle cx="-51.9" cy="51.9" r="11" class="halo"/><circle cx="-51.9" cy="51.9" r="5"/><title>FCC robot restrictions could accelerate shift to local AI</title></a>
-<a href="#p8" class="blip" style="--lane:#fb923c;--delay:2.80s"><circle cx="40.5" cy="48.3" r="11" class="halo"/><circle cx="40.5" cy="48.3" r="5"/><title>川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か</title></a>
+<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="82.7" cy="69.4" r="11" class="halo"/><circle cx="82.7" cy="69.4" r="5"/><title>Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2</title></a>
+<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="65.4" cy="78.0" r="11" class="halo"/><circle cx="65.4" cy="78.0" r="5"/><title>StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models</title></a>
+<a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-8.8" cy="-100.7" r="11" class="halo"/><circle cx="-8.8" cy="-100.7" r="5"/><title>ESP: Energy-Score Policy for One-Step Multimodal Action Generation</title></a>
+<a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="8.7" cy="-99.9" r="11" class="halo"/><circle cx="8.7" cy="-99.9" r="5"/><title>Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution</title></a>
+<a href="#p5" class="blip" style="--lane:#f472b6;--delay:1.75s"><circle cx="8.5" cy="97.7" r="11" class="halo"/><circle cx="8.5" cy="97.7" r="5"/><title>LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation</title></a>
+<a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="-8.5" cy="97.7" r="11" class="halo"/><circle cx="-8.5" cy="97.7" r="5"/><title>ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference</title></a>
+<a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-47.5" cy="-39.8" r="11" class="halo"/><circle cx="-47.5" cy="-39.8" r="5"/><title>ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-39.3" cy="-46.8" r="11" class="halo"/><circle cx="-39.3" cy="-46.8" r="5"/><title>Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO</title></a>
 <circle class="core" r="3"/></svg>
 </svg>

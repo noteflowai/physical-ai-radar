@@ -1,175 +1,166 @@
 {
-  "date": "2026-10-06",
-  "generated": "2026-10-05 23:40 UTC",
-  "window": "papers 2026-10-02 → 2026-10-06 · posts 2026-09-06 → 2026-10-06 (UTC)",
+  "date": "2026-10-07",
+  "generated": "2026-10-07 07:19 UTC",
+  "window": "papers 2026-10-03 → 2026-10-07 · posts 2026-09-07 → 2026-10-07 (UTC)",
   "window_detail": {
-    "day": "2026-10-06",
-    "papers_from": "2026-10-02",
-    "posts_from": "2026-09-06",
+    "day": "2026-10-07",
+    "papers_from": "2026-10-03",
+    "posts_from": "2026-09-07",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.02832",
-      "title": "FastOPD: On-Policy Distillation for Lightweight VLA Deployment",
-      "url": "https://arxiv.org/abs/2610.02832",
-      "publisher": "arXiv 2610.02832",
+      "id": "arxiv:2610.08618",
+      "title": "Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2",
+      "url": "https://arxiv.org/abs/2610.08618",
+      "publisher": "arXiv 2610.08618",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-02",
-      "lane": "foundation",
-      "score": 3.4,
-      "numbers": [
-        "84%",
-        "78.1%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "summary": "Vision-Language-Action (VLA) foundation models have scaled rapidly to enhance manipulation performance and generalizability, but this scaling incurs high computational costs that render real-world deployment increasingly challenging. Existing approaches typically mitigate this issue by designing smaller architectures or reducing the iterative denoising steps in flow-based policies. In this work, we propose FastOPD, a foundation-to-lightweight VLA framework that enables the practical deployment of large-scale VLAs through efficient on-policy distillation. Specifically, FastOPD adapts a flow map for single-state teacher supervision and combines it with a self-consistency objective to construct a compact student that learns the teacher dynamics. Furthermore, we theoretically demonstrate that minimizing this objective allows the distilled student to recover a distribution on par with that induced by an ideal few-step teacher model. We evaluate FastOPD across diverse foundation policies in simulation and real-world experiments. On LIBERO, FastOPD retains 84% of the performance of $π_{0.5}$ with only two inference steps, reducing inference latency by 78.1% while outperforming existing few-step distillation baselines in average success rate. With LingBot-VLA as the teacher, FastOPD improves the single-step success rate over the base student by 15.9 percentage points on RoboTwin 2.0. We further demonstrate its applicability to a World Action Model (WAM) and deploy a compact student distilled from MolmoAct2 on a real robot."
-    },
-    {
-      "id": "arxiv:2610.03620",
-      "title": "UniIntervene++: An Adaptive Intervention Agent for Efficient Real-World Reinforcement Learning",
-      "url": "https://arxiv.org/abs/2610.03620",
-      "publisher": "arXiv 2610.03620",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-02",
-      "lane": "training",
-      "score": 3.1,
-      "numbers": [
-        "89.67%",
-        "0.77%",
-        "94.6%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "open_release"
-      ],
-      "summary": "Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves. Existing intervention strategies based on offline estimates or fixed decision rules can therefore become mismatched to the current policy. To address this, we propose UniIntervene++, an adaptive intervention agent that learns to allocate control between autonomous execution and heterogeneous assisted behaviors during online RL. Specifically, UniIntervene++ first formulates the evolving RL policy, trajectory correction, and a task-structured CodePolicy as Options in a unified semi-Markov decision process and learns their relative values online. Building on this, competence-adaptive intervention periodically probes the RL policy through unassisted execution, keeping control allocation responsive to its evolving capability. Finally, coupled experience learning allows assisted behaviors to improve the RL policy, whose evolving outcomes in turn reshape future intervention decisions. In this way, UniIntervene++ jointly determines when to intervene, how to intervene, and when to return control as the RL policy improves. Across five real-world manipulation tasks, UniIntervene++ achieves an average success rate of 89.67%, outperforming all baselines by at least 6 percentage points, while reducing human intervention to 0.77%, a relative reduction of at least 94.6% from the best baseline. Code is available in our \\href{https://github.com/dannyyudong/An-Adaptive-Intervention-Agent-for-Efficient-Real-World-Reinforcement-Learning}{GitHub repository}."
-    },
-    {
-      "id": "arxiv:2610.03476",
-      "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
-      "url": "https://arxiv.org/abs/2610.03476",
-      "publisher": "arXiv 2610.03476",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-02",
-      "lane": "systems",
-      "score": 3.05,
-      "numbers": [
-        "7.50%",
-        "27.50%",
-        "32.5%",
-        "57.5%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control. While recent Vision-Language-Action models excel at short-horizon tasks, they lack the hierarchical reasoning required for multi-stage objectives. Furthermore, existing hierarchical agents suffer from rigid sub-task mapping, inflexible replanning, and a lack of continuous learning. To address these limitations, we introduce MobiAgent, a dual-loop agentic framework that bridges robust deployment execution and recursive policy self-improvement. During deployment, the Inner Loop decouples high-level reasoning from low-level control through highly composable atomic skills. It employs Vision-Language models for receding-horizon planning and visual reflection, dynamically composing skills to ensure robust error recovery. These skills are executed by specialized flow-matching experts that share a unified VLM backbone, maximizing reusability while mitigating capacity interference. Concurrently, the Outer Loop drives automated lifelong learning by autonomously segmenting and verifying deployment rollouts, clustering them to discover atomic skills, and continuously fine-tuning the skill library without human annotations. Evaluations on RoboCasa, BEHAVIOR-1K, and real-world tasks demonstrate the effectiveness of MobiAgent. It outperforms $π_{0.5}$-TA by 22.5 percentage points on BEHAVIOR-1K and enables robust recovery from execution failures. Through autonomous data recycling, success improves from 7.50% to 27.50% on RoboCasa and from 32.5% to 57.5% on Astribot S1."
-    },
-    {
-      "id": "arxiv:2610.03607",
-      "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
-      "url": "https://arxiv.org/abs/2610.03607",
-      "publisher": "arXiv 2610.03607",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-02",
+      "published": "2026-10-06",
       "lane": "simeval",
-      "score": 2.955,
+      "score": 4.075,
       "numbers": [
-        "99.20%",
-        "93.80%",
-        "57.7%"
+        "16ms",
+        "60 Hz",
+        "7.4%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale. Egocentric videos offer abundant human interaction experience with task-relevant semantics for robotic manipulation, but direct transfer is challenging for two reasons: latent actions inferred from frame reconstruction can be dominated by nuisance variation such as ego-camera motion, and human and robot behaviors often exhibit different temporal dynamics. We propose WING (World Action Learning via INteraction-Centric Spectral Latent Guidance), a framework for transferring interaction knowledge from egocentric videos to robot policies. WING first separates observer-induced motion from hand-object interaction and distills the interaction-centric component into latent actions. It then exploits the observation that cross-embodiment task semantics are concentrated in slowly varying temporal structures, identifying shared low-frequency components between egocentric latent actions and robot behaviors in the spectral domain and using them to guide action generation. WING achieves average success rates of 99.20% on LIBERO, 93.80% on RoboTwin 2.0, and 57.7% on RoboCasa-GR1, and also performs strongly across four real-world manipulation tasks under diverse generalization settings. These results show that interaction-centric spectral guidance provides an effective and scalable way to transfer physical interaction knowledge from human egocentric video to robot control. Project page: https://mikuz12.github.io/wing/"
-    },
-    {
-      "id": "arxiv:2610.02784",
-      "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
-      "url": "https://arxiv.org/abs/2610.02784",
-      "publisher": "arXiv 2610.02784",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-02",
-      "lane": "foundation",
-      "score": 2.5,
-      "numbers": [
-        "50 demonstrations",
-        "77.5%",
-        "45.2%",
-        "66.7%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging. A common concern is that simply introducing touch during task-specific fine-tuning may fail to bridge the cross-modal gap, yielding limited gains or even reduced success. Consequently, existing methods often rely on large-scale tactile policy pretraining or separate visuotactile alignment, adding data requirements and training stages. We introduce SimpleTouch, a simple VLA extension that augments $π_{0.5}$ with a tactile expert, to test whether these additional stages are necessary. Leveraging all tokens from a frozen pretrained tactile encoder, the expert learns from action supervision and multi-horizon prediction of future tactile latents. This single-stage training uses only task demonstrations, without additional tactile policy pretraining or separate alignment. With 50 demonstrations per task, SimpleTouch achieves the highest success rate among evaluated methods on all six UniVTAC tasks. Its average success rate reaches 77.5%, compared with 45.2% for FTP-$π_{0.5}$ and 66.7% for FTP-1, corresponding to gains of 32.3 and 10.8 percentage points, respectively. Across four real-world tasks, it averages 71.3%, exceeding FTP-1 by 8.8 percentage points. These results demonstrate that, given pretrained VLA and tactile representations, additional tactile policy pretraining is not a prerequisite for strong performance on these tasks, offering a simpler route to contact-rich manipulation. Project page: https://simpletouch-robot.github.io/"
-    },
-    {
-      "id": "arxiv:2610.03283",
-      "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
-      "url": "https://arxiv.org/abs/2610.03283",
-      "publisher": "arXiv 2610.03283",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-02",
-      "lane": "edge",
-      "score": 2.307,
-      "numbers": [
-        "67%",
-        "86%",
-        "30 fps",
-        "0.83 W"
-      ],
-      "signals": [
-        "numbers",
         "latency"
       ],
-      "summary": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing. Visual-inertial odometry (VIO) has proven to be a cost-effective and accurate solution for this task. Robots, wearables, XR devices, and drones can benefit significantly from efficient implementations of VIO since they allow for cooler, lighter, and cheaper devices with longer battery life and a better user experience. In this work, we propose to enhance the efficiency of a VIO system by leveraging the Hexagon DSP, a commodity co-processor present in many modern smartphones and XR devices. Our approach offloads the visual frontend of a stereo-inertial odometry system to the DSP while keeping the backend on the main CPU. By optimizing the implementation for the DSP architecture, we achieve significant reductions in power consumption and latency compared to CPU-only execution. Our system, HexVIO, demonstrates a 67% reduction in power consumption or an 86% increase in throughput on a commodity smartphone, with the ability to sustain long-term real-time 30 fps tracking for 0.83 W, corresponding to ~18 hours of tracking on the testing device. These results highlight the potential of commodity DSPs for enabling all-day visual-inertial tracking in robotics and mobile devices."
+      "summary": "A robot that offloads its control loop to the network carries the receiver with it, so link quality is decided by where it goes. Simulating this requires both a physics engine and a site-specific propagation model at once; to our knowledge no simulator natively unifies both, with existing couplings of the two limited to offline analyses. We demonstrate a real-time co-simulation framework coupling NVIDIA Isaac Sim and NVIDIA Sionna over ROS 2 that closes the perception-action-communication (PAC) loop between them. Sionna ray-traces the base-station-to-robot channel over the exact geometry Isaac Sim simulates on, rather than modeling it stochastically, and feeds channel states back into the control loop in real time. Ray-traced on GPU, the coverage map is refreshed in ~16ms (~60 Hz), fast enough for real-time control. To showcase the framework's utility, we implement a wireless-aware navigation application in an OpenStreetMap(OSM)-derived SUTD campus twin with two Nova Carter robots: the closed-loop planner eliminates communication outage at only +7.4% traversal time over the shortest-path baseline (which spends 7.9 s of its 81.2 s run disconnected)."
     },
     {
-      "id": "the-robot-report:077068b67d2b",
-      "title": "FCC robot restrictions could accelerate shift to local AI",
-      "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-05",
-      "lane": "safety",
-      "score": 1.62,
+      "id": "arxiv:2610.07756",
+      "title": "StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.07756",
+      "publisher": "arXiv 2610.07756",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-06",
+      "lane": "simeval",
+      "score": 3.69,
+      "numbers": [
+        "96.5%",
+        "97.8%",
+        "115.0 ms",
+        "44.2 ms"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Vision-language-action (VLA) models increasingly rely on diffusion- or flow-matching-based action heads to generate continuous robot actions. These action heads typically process the denoising trajectory in a largely uniform manner. However, we observe that the conditioning focus naturally shifts across denoising stages: early stages combine language instructions and visual observations to establish a coarse action trajectory, whereas later stages place greater emphasis on current visual observations for action alignment. Based on this insight, we introduce StairVLA, a stage-aware hierarchical action generation framework that uses partially denoised actions as a natural interface between coarse long-horizon action generation and local refinement. A high-level VLA performs early denoising to produce a reusable long-horizon partially denoised action trajectory, while a lightweight refiner operates at a higher frequency to refine local action chunks using the latest observations. This design amortizes expensive high-level VLA computation while preserving frequent closed-loop correction. On LIBERO, our GR00T-style instantiation improves average success from 96.5% to 97.8% while reducing amortized inference latency from 115.0 ms to 44.2 ms per action chunk. More broadly, across two VLA backbones, simulation benchmarks, and real-robot tasks, StairVLA consistently reduces inference cost while maintaining strong task performance."
+    },
+    {
+      "id": "arxiv:2610.07696",
+      "title": "ESP: Energy-Score Policy for One-Step Multimodal Action Generation",
+      "url": "https://arxiv.org/abs/2610.07696",
+      "publisher": "arXiv 2610.07696",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-06",
+      "lane": "foundation",
+      "score": 3.65,
       "numbers": [],
-      "signals": [],
-      "summary": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain transparency."
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Generative action models based on diffusion and flow matching have been increasingly adopted in vision-language-action (VLA) policies for their ability to capture diverse behaviors, including multiple valid action sequences under the same observation and instruction. Their iterative sampling procedures, however, require repeated network evaluations to generate each action chunk, increasing inference latency in closed-loop control. We propose ESP (Energy-Score Policy), a teacher-free approach that maps policy context and noise directly to an action chunk in a single network evaluation. ESP trains the action head with the energy score rather than mean squared error. Whereas squared-error regression targets the conditional mean, the energy score is strictly proper: its expected value is uniquely minimized by the target distribution. This provides a principled objective for learning multimodal action distributions without iterative sampling, with exact recovery at the population optimum when the model can represent the target distribution. Experiments on both simulation and real-world manipulation tasks demonstrate competitive task success with substantially lower action-generation latency than the flow matching baseline. These results support direct distributional learning as an efficient alternative to iterative generative robot policies."
     },
     {
-      "id": "monoist:7aaa16ae267f",
-      "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
+      "id": "arxiv:2610.07946",
+      "title": "Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution",
+      "url": "https://arxiv.org/abs/2610.07946",
+      "publisher": "arXiv 2610.07946",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-06",
+      "lane": "foundation",
+      "score": 3.6,
+      "numbers": [
+        "43.9%",
+        "53.2%",
+        "58.7%",
+        "66.0%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Visual disruptions can arise while a robot is executing a task, leaving a vision-language-action (VLA) policy to respond without knowing the disruption type or timing. We introduce Self-supervised Adaptation from Leftover Trajectories (SALT), which uses the leftover trajectory, the unexecuted part of the previous action chunk, as self-supervision for test-time adaptation. Because consecutive chunks overlap in time, the leftover provides a temporally aligned target for the current prediction over the same future control interval. At the onset of a visual shift, the leftover can retain a plan formed before the corruption, so updating the policy toward it anchors the adaptation across the shift (Transition Anchoring). SALT keeps the adapted policy and regenerates the current chunk, whose leftover becomes the target at the next replan, carrying the correction forward along the execution trajectory (Sequential Correction Propagation). Supervision comes entirely from the policy's own predictions, requiring no disruption annotations, expert actions, or target-domain demonstrations, and a lightweight adaptation gate calibrated only on nominal trajectories decides when updates begin. On LIBERO-10, SALT increases average success across five persistent visual corruptions from 43.9% to 53.2% with SmolVLA and from 58.7% to 66.0% with GR00T N1.7, while largely preserving nominal performance. On a real robot, it raises task progress averaged over digital and physical disruptions from 0.49 to 0.61."
+    },
+    {
+      "id": "arxiv:2610.05024",
+      "title": "LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation",
+      "url": "https://arxiv.org/abs/2610.05024",
+      "publisher": "arXiv 2610.05024",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-04",
+      "lane": "edge",
+      "score": 3.46,
+      "numbers": [
+        "50.93%",
+        "36.14%",
+        "25.83%",
+        "16 GB"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Aerial vision-and-language navigation (VLN) enables unmanned aerial vehicles to execute long-horizon natural-language instructions from visual observations in complex three-dimensional environments. However, recent aerial VLN models often rely on large-scale vision-language backbones and dense visual histories, imposing substantial computation and memory costs that hinder onboard deployment. We propose LightVLN, a lightweight history-aware aerial VLN framework that combines a compact 0.5B language backbone with compact representations of both historical and current observations. LightVLN compresses each historical frame into a single token using visual features already computed by the policy. It further introduces history- and instruction-conditioned local aggregation to reduce the current observation from 256 to 32 visual tokens while preserving navigation-relevant spatial information. With up to 16 historical frames, the policy uses at most 48 observation-derived tokens. On the public OpenFly dataset, LightVLN achieves 50.93% Test-Seen and 36.14% Test-Unseen success rates (SR), outperforming the evaluated 7B language-backbone baselines on most reported metrics. It also achieves 25.83% SR on AerialVLN-S Val-Seen. In a reconstructed unseen campus, we deploy LightVLN on a DJI M350 RTK with an external Jetson Orin NX 16 GB for closed-loop onboard-compute real-to-sim hardware-in-the-loop (HIL) evaluation, achieving 14.61 Hz model inference and 11.13 Hz end-to-end decision updates. These results demonstrate the effectiveness and efficiency of LightVLN for aerial navigation."
+    },
+    {
+      "id": "arxiv:2610.08444",
+      "title": "ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference",
+      "url": "https://arxiv.org/abs/2610.08444",
+      "publisher": "arXiv 2610.08444",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-06",
+      "lane": "edge",
+      "score": 3.46,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Vision-language-action (VLA) policies repeatedly invoke inference to control robots, making graphics processing unit (GPU) energy a recurring cost of task execution. Reducing energy per inference call, however, may not reduce energy per successful task if numerical errors increase failures or slower inference prolongs execution. We therefore target GPU energy per successful task while preserving task success and keeping the inference-latency increase within 10\\%. Our approach builds on two observations: quantization sensitivity varies across action classes, model layers, and weights versus activations; and numerical precision changes the workload, shifting favorable GPU operating points. We introduce ActTune, an action-aware framework that connects layer-wise precision allocation with workload-dependent GPU operating-point selection over requested frequency--power-cap pairs. A lightweight decision tree learns its splits and leaf precision configurations directly from configuration action errors, then selects precision before each policy call. The controller forecasts the next workload and applies the selected GPU operating point asynchronously using a lookup table calibrated under a latency budget. A shared resident quantized weight bank enables configuration switching without weight reconstruction or additional policy evaluations. On LIBERO, a benchmark for lifelong robot learning, ActTune improves mean task success by up to 2.3\\% relative to state of the art. Relative to the original BF16 implementations, it delivers up to $2.02\\times$ faster inference and, with GPU operating-point adaptation, reduces energy per successful task by up to 76.8\\%."
+    },
+    {
+      "id": "monoist:41b504f26025",
+      "title": "ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html",
       "publisher": "MONOist (ITmedia)",
       "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-05",
-      "lane": "simeval",
-      "score": 1.085,
+      "published": "2026-10-07",
+      "lane": "hardware",
+      "score": 1.233,
       "numbers": [],
       "signals": [],
-      "summary": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。"
+      "summary": "ルネサス エレクトロニクスは、同社初となる100V耐圧のEモードGaNパワートランジスタ製品群を発売した。AIデータセンターやヒューマノイドロボットなど向けに、超高速スイッチングと優れた放熱性能を実現する。"
+    },
+    {
+      "id": "the-robot-report:04735ae4ac05",
+      "title": "Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO",
+      "url": "https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-06",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "Before Boston Dynamics, Prasad served as senior vice president and head scientist for Alexa and artificial general intelligence at Amazon."
     }
   ],
   "lane_counts": {
@@ -184,26 +175,26 @@
   },
   "evidence_mix": {
     "O": 1,
-    "R": 39,
-    "M": 16
+    "R": 40,
+    "M": 15
   },
   "fetch": {
-    "items": 368,
+    "items": 517,
     "attempted": 11,
     "answered": 10,
     "failed": [
-      "deepmind"
+      "tri"
     ],
     "fallback": [],
     "per_source": {
-      "arxiv": 35,
+      "arxiv": 94,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
-      "tri": 10,
       "leiphone": 20,
       "monoist": 30
     }

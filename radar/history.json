@@ -300,6 +300,25 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-07",
+      "count": 8,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2610.08618",
+        "https://arxiv.org/abs/2610.07756",
+        "https://arxiv.org/abs/2610.07696",
+        "https://arxiv.org/abs/2610.07946",
+        "https://arxiv.org/abs/2610.05024",
+        "https://arxiv.org/abs/2610.08444",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html",
+        "https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo"
+      ],
+      "failed": [
+        "tri"
+      ],
+      "fallback": []
     }
   ]
 }

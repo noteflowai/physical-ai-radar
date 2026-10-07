@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-10-05T23:40:00Z</updated>
+  <updated>2026-10-07T07:19:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.08618</id>
+    <title>Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.08618" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.08618</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">A robot that offloads its control loop to the network carries the receiver with it, so link quality is decided by where it goes.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.08618 · 2026-10-06&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 16ms · 60 Hz · 7.4%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;A robot that offloads its control loop to the network carries the receiver with it, so link quality is decided by where it goes.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.07756</id>
+    <title>StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.07756" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.07756</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-language-action (VLA) models increasingly rely on diffusion- or flow-matching-based action heads to generate continuous robot actions.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.07756 · 2026-10-06&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 96.5% · 97.8% · 115.0 ms · 44.2 ms&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Vision-language-action (VLA) models increasingly rely on diffusion- or flow-matching-based action heads to generate continuous robot actions.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.07696</id>
+    <title>ESP: Energy-Score Policy for One-Step Multimodal Action Generation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.07696" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.07696</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Generative action models based on diffusion and flow matching have been increasingly adopted in vision-language-action (VLA) policies for their ability to capture diverse behaviors, including multiple valid action sequences under the same…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.07696 · 2026-10-06&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Generative action models based on diffusion and flow matching have been increasingly adopted in vision-language-action (VLA) policies for their ability to capture diverse behaviors, including multiple valid action sequences under the same…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.07946</id>
+    <title>Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.07946" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.07946</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Visual disruptions can arise while a robot is executing a task, leaving a vision-language-action (VLA) policy to respond without knowing the disruption type or timing.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.07946 · 2026-10-06&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 43.9% · 53.2% · 58.7% · 66.0%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Visual disruptions can arise while a robot is executing a task, leaving a vision-language-action (VLA) policy to respond without knowing the disruption type or timing.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.05024</id>
+    <title>LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.05024" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.05024</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Aerial vision-and-language navigation (VLN) enables unmanned aerial vehicles to execute long-horizon natural-language instructions from visual observations in complex three-dimensional environments.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.05024 · 2026-10-04&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 50.93% · 36.14% · 25.83% · 16 GB&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Aerial vision-and-language navigation (VLN) enables unmanned aerial vehicles to execute long-horizon natural-language instructions from visual observations in complex three-dimensional environments.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.08444</id>
+    <title>ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.08444" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>arXiv 2610.08444</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-language-action (VLA) policies repeatedly invoke inference to control robots, making graphics processing unit (GPU) energy a recurring cost of task execution.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.08444 · 2026-10-06&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Vision-language-action (VLA) policies repeatedly invoke inference to control robots, making graphics processing unit (GPU) energy a recurring cost of task execution.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:41b504f26025</id>
+    <title>ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">ルネサス エレクトロニクスは、同社初となる100V耐圧のEモードGaNパワートランジスタ製品群を発売した。AIデータセンターやヒューマノイドロボットなど向けに、超高速スイッチングと優れた放熱性能を実現する。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: MONOist (ITmedia) · 2026-10-07&lt;/p&gt;
+&lt;blockquote&gt;ルネサス エレクトロニクスは、同社初となる100V耐圧のEモードGaNパワートランジスタ製品群を発売した。AIデータセンターやヒューマノイドロボットなど向けに、超高速スイッチングと優れた放熱性能を実現する。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:04735ae4ac05</id>
+    <title>Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO</title>
+    <link rel="alternate" href="https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html" />
+    <published>2026-10-07T07:19:00Z</published>
+    <updated>2026-10-07T07:19:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">Before Boston Dynamics, Prasad served as senior vice president and head scientist for Alexa and artificial general intelligence at Amazon.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-10-06&lt;/p&gt;
+&lt;blockquote&gt;Before Boston Dynamics, Prasad served as senior vice president and head scientist for Alexa and artificial general intelligence at Amazon.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-07.en.html"&gt;Full radar for 2026-10-07&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02832</id>
     <title>FastOPD: On-Policy Distillation for Lightweight VLA Deployment</title>
@@ -1574,133 +1710,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-09-24&lt;/p&gt;
 &lt;blockquote&gt;Epson Robots has expanded its six-axis robot line with the AX6, a lightweight force- and power-limited arm. The post Epson introduces AX6 cobot with compact design, no-code programming appeared first on The Robot Report .&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-25.en.html"&gt;Full radar for 2026-09-25&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:301ba2c6df75</id>
-    <title>At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/ai-day-singapore/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.en.html" />
-    <published>2026-09-24T01:40:00Z</published>
-    <updated>2026-09-24T01:40:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
-    <category term="O" label="[O]" />
-    <summary type="text">NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-09-23&lt;/p&gt;
-&lt;blockquote&gt;NVIDIA AI Day Singapore, which takes place Sept. 22-23 at the Raffles City Convention Centre, is offering attendees opportunities to explore the hands-on training, expert-led sessions and advanced tools to accelerate their work in AI and…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.en.html"&gt;Full radar for 2026-09-24&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:a70f8ac64edf</id>
-    <title>How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows</title>
-    <link rel="alternate" href="https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.en.html" />
-    <published>2026-09-24T01:40:00Z</published>
-    <updated>2026-09-24T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: Hugging Face Blog · 2026-09-23&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-24.en.html"&gt;Full radar for 2026-09-24&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:193bdb306b4d</id>
-    <title>NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
-    <category term="O" label="[O]" />
-    <summary type="text">To build and deploy sophisticated robotics applications that can perceive, reason and act in dynamic environments, developers need new physical AI models and tools.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-09-22&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: open code or weights&lt;/p&gt;
-&lt;blockquote&gt;To build and deploy sophisticated robotics applications that can perceive, reason and act in dynamic environments, developers need new physical AI models and tools.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:2960c64a019e</id>
-    <title>How UK AISI and EvalEval Are Making Benchmark Results Reproducible</title>
-    <link rel="alternate" href="https://huggingface.co/blog/evaleval-aisi" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: Hugging Face Blog · 2026-09-22&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:fb8ad85c459c</id>
-    <title>Jun Kim, oMLX creator and maintainer, joins Hugging Face to support the MLX community</title>
-    <link rel="alternate" href="https://huggingface.co/blog/omlx" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: Hugging Face Blog · 2026-09-22&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:0c1c0768bc71</id>
-    <title>Barbara Mazzolai Wants to Build a New Field of Robotics</title>
-    <link rel="alternate" href="https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>IEEE Spectrum Robotics</name>
-    </author>
-    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
-    <category term="M" label="[M]" />
-    <summary type="text">Throughout her career, roboticist Barbara Mazzolai has turned to nature for inspiration. Now she wants to ensure the technology she builds gives back to the environment, too.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-22&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;Throughout her career, roboticist Barbara Mazzolai has turned to nature for inspiration. Now she wants to ensure the technology she builds gives back to the environment, too.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:96a3500c5a4b</id>
-    <title>NeoMME: an efficient Multimodal-native and Multilingual Encoder</title>
-    <link rel="alternate" href="https://huggingface.co/blog/Hcompany/neomme" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>Hugging Face Blog</name>
-    </author>
-    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
-    <category term="O" label="[O]" />
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: Hugging Face Blog · 2026-09-03&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:6ed7bf3522de</id>
-    <title>This Robot Will Draw Your Blood Now</title>
-    <link rel="alternate" href="https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html" />
-    <published>2026-09-23T01:40:00Z</published>
-    <updated>2026-09-23T01:40:00Z</updated>
-    <author>
-      <name>IEEE Spectrum Robotics</name>
-    </author>
-    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
-    <category term="M" label="[M]" />
-    <summary type="text">You sit down and put your arm in the cradle. You press a button.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: IEEE Spectrum Robotics · 2026-09-07&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;You sit down and put your arm in the cradle. You press a button.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-23.en.html"&gt;Full radar for 2026-09-23&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
