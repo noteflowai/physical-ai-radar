@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-07
+### Today's radar · 2026-10-08
 
-`Generated: 2026-10-07 07:19 UTC` ｜ `Window: papers 2026-10-03 → 2026-10-07 · posts 2026-09-07 → 2026-10-07 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-08 07:30 UTC` ｜ `Window: papers 2026-10-04 → 2026-10-08 · posts 2026-09-08 → 2026-10-08 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2](https://arxiv.org/abs/2610.08618)**<br>`16ms`&nbsp; `60 Hz`&nbsp; `7.4%`<br><sub>Simulation & evaluation · arXiv 2610.08618 · 2026‑10‑06</sub> |
-| 02<br>🔵&nbsp;`R` | **[StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models](https://arxiv.org/abs/2610.07756)**<br>`96.5%`&nbsp; `97.8%`&nbsp; `115.0 ms`<br><sub>Simulation & evaluation · arXiv 2610.07756 · 2026‑10‑06</sub> |
-| 03<br>🔵&nbsp;`R` | **[ESP: Energy-Score Policy for One-Step Multimodal Action Generation](https://arxiv.org/abs/2610.07696)**<br><sub>Foundation models · arXiv 2610.07696 · 2026‑10‑06</sub> |
-| 04<br>🔵&nbsp;`R` | **[Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution](https://arxiv.org/abs/2610.07946)**<br>`43.9%`&nbsp; `53.2%`&nbsp; `58.7%`<br><sub>Foundation models · arXiv 2610.07946 · 2026‑10‑06</sub> |
-| 05<br>🔵&nbsp;`R` | **[LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation](https://arxiv.org/abs/2610.05024)**<br>`50.93%`&nbsp; `36.14%`&nbsp; `25.83%`<br><sub>Edge & real-time · arXiv 2610.05024 · 2026‑10‑04</sub> |
-| 06<br>🔵&nbsp;`R` | **[ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference](https://arxiv.org/abs/2610.08444)**<br><sub>Edge & real-time · arXiv 2610.08444 · 2026‑10‑06</sub> |
-| 07<br>🟡&nbsp;`M` | **[ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現](https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑07</sub> |
-| 08<br>🟡&nbsp;`M` | **[Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO](https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[Agentic RSR: Real-to-Sim-to-Real through Scene Reconstruction and Execution-Grounded Robot Policies](https://arxiv.org/abs/2610.10479)**<br>`80%`<br><sub>Simulation & evaluation · arXiv 2610.10479 · 2026‑10‑07</sub> |
+| 02<br>🔵&nbsp;`R` | **[RealtimeWAM: How Fast Can I Run My World Action Model?](https://arxiv.org/abs/2610.10079)**<br>`63.09 ms`&nbsp; `82.75%`&nbsp; `87.41%`<br><sub>Simulation & evaluation · arXiv 2610.10079 · 2026‑10‑07</sub> |
+| 03<br>🔵&nbsp;`R` | **[RFPO: Rectified Flow Policy Optimization for Embodied Control](https://arxiv.org/abs/2610.10453)**<br>`2.4%`&nbsp; `98.5%`&nbsp; `4.39 ms`<br><sub>Edge & real-time · arXiv 2610.10453 · 2026‑10‑07</sub> |
+| 04<br>🔵&nbsp;`R` | **[PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Steering for Tactile Manipulation](https://arxiv.org/abs/2610.08784)**<br>`53.2%`&nbsp; `95%`&nbsp; `90%`<br><sub>Training & self-improvement · arXiv 2610.08784 · 2026‑10‑06</sub> |
+| 05<br>🟡&nbsp;`M` | **[研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化](https://www.leiphone.com/category/private/wEpCJ4T8v9cJFgCn.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 06<br>🟡&nbsp;`M` | **[对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒](https://www.leiphone.com/category/transportation/ESCXNijR4DVx6uDl.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 07<br>🟡&nbsp;`M` | **[IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖](https://www.leiphone.com/category/private/VYRZFCnadDOcPDeX.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 08<br>🟡&nbsp;`M` | **[Harmonic Drive to share how integrated actuators can reduce engineering at RoboBusiness](https://www.therobotreport.com/harmonic-drive-share-how-integrated-actuators-reduce-engineering-robobusiness/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑07</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Demo** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-2. **StairVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **ESP** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **Adapting Vision-Language-Action Models to Unknown Visual Disruptions During…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-5. **LightVLN** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-6. **ActTune** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
-7. **ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Agentic RSR** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **RealtimeWAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **RFPO** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **PEARS** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+5. **研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+7. **IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Harmonic Drive to share how integrated actuators can reduce engineering at…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-07.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-08.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

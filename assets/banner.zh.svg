@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI 前沿雷达 · 2026-10-07 · 具身智能前沿，每天八条，条条有证据">
-<title>Physical AI 前沿雷达 · 2026-10-07</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI 前沿雷达 · 2026-10-08 · 具身智能前沿，每天八条，条条有证据">
+<title>Physical AI 前沿雷达 · 2026-10-08</title>
 <style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
 <defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
 <g clip-path="url(#card)">
@@ -11,7 +11,7 @@
 <rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
 <rect x="60" y="56" width="357" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
 <circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
-<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">每日 07:40 SGT 更新 · 2026-10-07</text>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">每日 07:40 SGT 更新 · 2026-10-08</text>
 <text x="60" y="156" font-size="52" font-weight="800" fill="url(#shine)">具身智能前沿，每天八条，</text>
 <text x="60" y="220" font-size="52" font-weight="800" fill="url(#shine)">条条有证据</text>
 <text x="60" y="270" font-size="20" fill="#9fb0c6">八条主线 · 证据分级 · 中英日三语 · 每日更新</text>
@@ -20,7 +20,7 @@
 <text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
 <rect x="210" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="225" y="370" font-size="15" fill="#8b98ad">今日扫描</text>
-<text class="mono" x="225" y="410" font-size="32" font-weight="700" fill="#e6edf3">517</text>
+<text class="mono" x="225" y="410" font-size="32" font-weight="700" fill="#e6edf3">529</text>
 <rect x="360" y="340" width="138" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="375" y="370" font-size="15" fill="#8b98ad">信源应答</text>
 <text class="mono" x="375" y="410" font-size="32" font-weight="700" fill="#e6edf3">10/11</text>
@@ -36,28 +36,28 @@
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="-120.0"/>
 <text class="label" x="0.0" y="-136.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">基座模型 <tspan class="count">11</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="84.9" y2="-84.9"/>
-<text class="label" x="96.2" y="-96.2" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">数据引擎 <tspan class="count">2</tspan></text>
+<text class="label" x="96.2" y="-96.2" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">数据引擎 <tspan class="count">3</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="120.0" y2="-0.0"/>
 <text class="label" x="136.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">训练与自我改进 <tspan class="count">5</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="84.9" y2="84.9"/>
 <text class="label" x="96.2" y="96.2" text-anchor="start" dominant-baseline="middle" fill="#fb923c">仿真与评测 <tspan class="count">13</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="120.0"/>
-<text class="label" x="0.0" y="136.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">边缘与实时性 <tspan class="count">10</tspan></text>
+<text class="label" x="0.0" y="136.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">边缘与实时性 <tspan class="count">9</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-84.9" y2="84.9"/>
 <text class="label" x="-96.2" y="96.2" text-anchor="end" dominant-baseline="middle" fill="#facc15">安全、权限与合规 <tspan class="count">4</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-120.0" y2="0.0"/>
-<text class="label" x="-136.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">系统与编排 <tspan class="count">5</tspan></text>
+<text class="label" x="-136.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">系统与编排 <tspan class="count">4</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-84.9" y2="-84.9"/>
-<text class="label" x="-96.2" y="-96.2" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">本体与供应链 <tspan class="count">6</tspan></text>
-<polygon class="area" points="0.0,-101.5 13.1,-13.1 46.2,-0.0 84.9,84.9 0.0,92.3 -26.1,26.1 -46.2,0.0 -39.2,-39.2"/>
+<text class="label" x="-96.2" y="-96.2" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">本体与供应链 <tspan class="count">7</tspan></text>
+<polygon class="area" points="0.0,-101.5 19.6,-19.6 46.2,-0.0 84.9,84.9 0.0,83.1 -26.1,26.1 -36.9,0.0 -45.7,-45.7"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-120 A120,120 0 0,1 77.1,-91.9 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="77.1" y2="-91.9" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
-<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="82.7" cy="69.4" r="11" class="halo"/><circle cx="82.7" cy="69.4" r="5"/><title>Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2</title></a>
-<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="65.4" cy="78.0" r="11" class="halo"/><circle cx="65.4" cy="78.0" r="5"/><title>StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models</title></a>
-<a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-8.8" cy="-100.7" r="11" class="halo"/><circle cx="-8.8" cy="-100.7" r="5"/><title>ESP: Energy-Score Policy for One-Step Multimodal Action Generation</title></a>
-<a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="8.7" cy="-99.9" r="11" class="halo"/><circle cx="8.7" cy="-99.9" r="5"/><title>Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution</title></a>
-<a href="#p5" class="blip" style="--lane:#f472b6;--delay:1.75s"><circle cx="8.5" cy="97.7" r="11" class="halo"/><circle cx="8.5" cy="97.7" r="5"/><title>LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation</title></a>
-<a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="-8.5" cy="97.7" r="11" class="halo"/><circle cx="-8.5" cy="97.7" r="5"/><title>ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference</title></a>
-<a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-47.5" cy="-39.8" r="11" class="halo"/><circle cx="-47.5" cy="-39.8" r="5"/><title>ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現</title></a>
-<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-39.3" cy="-46.8" r="11" class="halo"/><circle cx="-39.3" cy="-46.8" r="5"/><title>Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO</title></a>
+<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="82.7" cy="69.4" r="11" class="halo"/><circle cx="82.7" cy="69.4" r="5"/><title>Agentic RSR: Real-to-Sim-to-Real through Scene Reconstruction and Execution-Grounded Robot Policies</title></a>
+<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="67.4" cy="80.3" r="11" class="halo"/><circle cx="67.4" cy="80.3" r="5"/><title>RealtimeWAM: How Fast Can I Run My World Action Model?</title></a>
+<a href="#p3" class="blip" style="--lane:#f472b6;--delay:1.05s"><circle cx="0.0" cy="101.5" r="11" class="halo"/><circle cx="0.0" cy="101.5" r="5"/><title>RFPO: Rectified Flow Policy Optimization for Embodied Control</title></a>
+<a href="#p4" class="blip" style="--lane:#34d399;--delay:1.40s"><circle cx="94.6" cy="-0.0" r="11" class="halo"/><circle cx="94.6" cy="-0.0" r="5"/><title>PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Steering for Tactile Manipulation</title></a>
+<a href="#p5" class="blip" style="--lane:#22d3ee;--delay:1.75s"><circle cx="-61.8" cy="-51.9" r="11" class="halo"/><circle cx="-61.8" cy="-51.9" r="5"/><title>研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化</title></a>
+<a href="#p6" class="blip" style="--lane:#38bdf8;--delay:2.10s"><circle cx="49.9" cy="-49.9" r="11" class="halo"/><circle cx="49.9" cy="-49.9" r="5"/><title>对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒</title></a>
+<a href="#p7" class="blip" style="--lane:#8b5cf6;--delay:2.45s"><circle cx="0.0" cy="-70.0" r="11" class="halo"/><circle cx="0.0" cy="-70.0" r="5"/><title>IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-43.5" cy="-51.9" r="11" class="halo"/><circle cx="-43.5" cy="-51.9" r="5"/><title>Harmonic Drive to share how integrated actuators can reduce engineering at RoboBusiness</title></a>
 <circle class="core" r="3"/></svg>
 </svg>

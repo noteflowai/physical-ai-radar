@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-07
+### 本日のレーダー · 2026-10-08
 
-`生成時刻: 2026-10-07 07:19 UTC` ｜ `対象期間: 論文 2026-10-03 → 2026-10-07 · ブログ・報道 2026-09-07 → 2026-10-07 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-08 07:30 UTC` ｜ `対象期間: 論文 2026-10-04 → 2026-10-08 · ブログ・報道 2026-09-08 → 2026-10-08 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Demo: Closed-Loop Sionna-Isaac Sim Co-Simulation Framework for Wireless-Aware Robot Navigation over ROS 2](https://arxiv.org/abs/2610.08618)**<br>`16ms`&nbsp; `60 Hz`&nbsp; `7.4%`<br><sub>シミュレーションと評価 · arXiv 2610.08618 · 2026‑10‑06</sub> |
-| 02<br>🔵&nbsp;`R` | **[StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models](https://arxiv.org/abs/2610.07756)**<br>`96.5%`&nbsp; `97.8%`&nbsp; `115.0 ms`<br><sub>シミュレーションと評価 · arXiv 2610.07756 · 2026‑10‑06</sub> |
-| 03<br>🔵&nbsp;`R` | **[ESP: Energy-Score Policy for One-Step Multimodal Action Generation](https://arxiv.org/abs/2610.07696)**<br><sub>基盤モデル · arXiv 2610.07696 · 2026‑10‑06</sub> |
-| 04<br>🔵&nbsp;`R` | **[Adapting Vision-Language-Action Models to Unknown Visual Disruptions During Execution](https://arxiv.org/abs/2610.07946)**<br>`43.9%`&nbsp; `53.2%`&nbsp; `58.7%`<br><sub>基盤モデル · arXiv 2610.07946 · 2026‑10‑06</sub> |
-| 05<br>🔵&nbsp;`R` | **[LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation](https://arxiv.org/abs/2610.05024)**<br>`50.93%`&nbsp; `36.14%`&nbsp; `25.83%`<br><sub>エッジとリアルタイム · arXiv 2610.05024 · 2026‑10‑04</sub> |
-| 06<br>🔵&nbsp;`R` | **[ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference](https://arxiv.org/abs/2610.08444)**<br><sub>エッジとリアルタイム · arXiv 2610.08444 · 2026‑10‑06</sub> |
-| 07<br>🟡&nbsp;`M` | **[ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現](https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑07</sub> |
-| 08<br>🟡&nbsp;`M` | **[Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO](https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[Agentic RSR: Real-to-Sim-to-Real through Scene Reconstruction and Execution-Grounded Robot Policies](https://arxiv.org/abs/2610.10479)**<br>`80%`<br><sub>シミュレーションと評価 · arXiv 2610.10479 · 2026‑10‑07</sub> |
+| 02<br>🔵&nbsp;`R` | **[RealtimeWAM: How Fast Can I Run My World Action Model?](https://arxiv.org/abs/2610.10079)**<br>`63.09 ms`&nbsp; `82.75%`&nbsp; `87.41%`<br><sub>シミュレーションと評価 · arXiv 2610.10079 · 2026‑10‑07</sub> |
+| 03<br>🔵&nbsp;`R` | **[RFPO: Rectified Flow Policy Optimization for Embodied Control](https://arxiv.org/abs/2610.10453)**<br>`2.4%`&nbsp; `98.5%`&nbsp; `4.39 ms`<br><sub>エッジとリアルタイム · arXiv 2610.10453 · 2026‑10‑07</sub> |
+| 04<br>🔵&nbsp;`R` | **[PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Steering for Tactile Manipulation](https://arxiv.org/abs/2610.08784)**<br>`53.2%`&nbsp; `95%`&nbsp; `90%`<br><sub>学習と自己改善 · arXiv 2610.08784 · 2026‑10‑06</sub> |
+| 05<br>🟡&nbsp;`M` | **[研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化](https://www.leiphone.com/category/private/wEpCJ4T8v9cJFgCn.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 06<br>🟡&nbsp;`M` | **[对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒](https://www.leiphone.com/category/transportation/ESCXNijR4DVx6uDl.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 07<br>🟡&nbsp;`M` | **[IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖](https://www.leiphone.com/category/private/VYRZFCnadDOcPDeX.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 08<br>🟡&nbsp;`M` | **[Harmonic Drive to share how integrated actuators can reduce engineering at RoboBusiness](https://www.therobotreport.com/harmonic-drive-share-how-integrated-actuators-reduce-engineering-robobusiness/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑07</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Demo** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **StairVLA** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **ESP** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-4. **Adapting Vision-Language-Action Models to Unknown Visual Disruptions During…** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-5. **LightVLN** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-6. **ActTune** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-7. **ルネサスが低耐圧GaNデバイス市場に参入、業界トップクラスの性能指数を実現** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-8. **Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **Agentic RSR** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **RealtimeWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **RFPO** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **PEARS** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+5. **研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+7. **IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Harmonic Drive to share how integrated actuators can reduce engineering at…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-07.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-08.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

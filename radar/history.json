@@ -319,6 +319,25 @@
         "tri"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-08",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.10479",
+        "https://arxiv.org/abs/2610.10079",
+        "https://arxiv.org/abs/2610.10453",
+        "https://arxiv.org/abs/2610.08784",
+        "https://www.leiphone.com/category/private/wepcj4t8v9cjfgcn.html",
+        "https://www.leiphone.com/category/transportation/escxnijr4dvx6udl.html",
+        "https://www.leiphone.com/category/private/vyrzfcnaddocpdex.html",
+        "https://www.therobotreport.com/harmonic-drive-share-how-integrated-actuators-reduce-engineering-robobusiness"
+      ],
+      "failed": [
+        "tri"
+      ],
+      "fallback": []
     }
   ]
 }
