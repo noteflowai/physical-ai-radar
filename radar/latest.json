@@ -1,168 +1,165 @@
 {
-  "date": "2026-10-08",
-  "generated": "2026-10-08 07:30 UTC",
-  "window": "papers 2026-10-04 → 2026-10-08 · posts 2026-09-08 → 2026-10-08 (UTC)",
+  "date": "2026-10-09",
+  "generated": "2026-10-09 07:28 UTC",
+  "window": "papers 2026-10-05 → 2026-10-09 · posts 2026-09-09 → 2026-10-09 (UTC)",
   "window_detail": {
-    "day": "2026-10-08",
-    "papers_from": "2026-10-04",
-    "posts_from": "2026-09-08",
+    "day": "2026-10-09",
+    "papers_from": "2026-10-05",
+    "posts_from": "2026-09-09",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.10479",
-      "title": "Agentic RSR: Real-to-Sim-to-Real through Scene Reconstruction and Execution-Grounded Robot Policies",
-      "url": "https://arxiv.org/abs/2610.10479",
-      "publisher": "arXiv 2610.10479",
+      "id": "arxiv:2610.11508",
+      "title": "WARP-VLA: Wrist-Camera Adaptation for View-Robust Policy Execution in Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.11508",
+      "publisher": "arXiv 2610.11508",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-07",
+      "published": "2026-10-08",
       "lane": "simeval",
-      "score": 3.89,
+      "score": 4.14,
       "numbers": [
-        "80%"
+        "39.2%",
+        "78.3%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "open_release"
+      ],
+      "summary": "Despite recent advances in Vision-Language-Action models (VLAs) for robotic manipulation, their performance remains sensitive to changes in camera configuration. The problem becomes more evident in cross-setup deployment, as reproducing the exact camera pose used for training is nearly impossible. Unlike fixed external views, wrist views are more challenging because the camera moves with the robot, causing even small mounting variations to alter fine-grained geometric cues. To address this, we propose WARP-VLA, a camera-view robust VLA for diverse wrist camera configurations. WARP-VLA adopts a Mixture-of-Experts (MoE) architecture where individual experts learn view-specific feature transformations, and a router combines them based on implicit view information. This allows the policy to be deployed without requiring camera extrinsic parameters as additional input. Through experiments on the LIBERO benchmark, WARP-VLA improves the average success rate of pi-0.5 from 39.2% to 78.3% under wrist-view perturbations. The real-robot experiments further show that the feature-level adaptation learned in simulation successfully transfers to diverse deployment settings. To facilitate reproducibility and future research, we release our wrist viewpoint robustness benchmark and a plug-and-play implementation."
+    },
+    {
+      "id": "arxiv:2610.12007",
+      "title": "REACT: Rolling Denoising and Dual Decoupling for Reactive Robot Control with VLA Models",
+      "url": "https://arxiv.org/abs/2610.12007",
+      "publisher": "arXiv 2610.12007",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-08",
+      "lane": "simeval",
+      "score": 3.79,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Flow-based vision-language-action (VLA) models generate action chunks for temporally coherent robot motion, but chunked control creates a fundamental closed-loop trade-off: long chunks provide smooth execution, whereas frequent replanning improves reactivity at the cost of action discontinuities. We introduce REACT, a rolling-denoising framework that makes flow-based VLAs more reactive while preserving long-horizon context. Instead of regenerating entire action chunks from scratch, REACT maintains a persistent action buffer with staggered flow timesteps. At each control step, the full horizon is denoised using the latest observation, the cleanest action block is executed, partially refined future blocks are shifted forward, and fresh noise is appended to the tail. As a result, each executed action block is refined across multiple recent observations before deployment. To support real-time control, we further introduce dual decoupling, which separates sensing, VLM encoding, DiT denoising, and action execution, enabling high-frequency observation updates and action streaming under practical compute constraints. Across the RoboTwin 2.0 simulation benchmark and real-world tasks spanning bimanual manipulation and dynamic control on multiple robot platforms, REACT improves task success and reduces reaction latency while producing smoother trajectories than frequent-replanning and asynchronous baselines."
+    },
+    {
+      "id": "arxiv:2610.12140",
+      "title": "Leveraging Human-In-The-Loop Demonstrations in Reinforcement Learning for Digital Twin-Driven Robot Flexibility",
+      "url": "https://arxiv.org/abs/2610.12140",
+      "publisher": "arXiv 2610.12140",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-08",
+      "lane": "data",
+      "score": 3.452,
+      "numbers": [
+        "100%",
+        "17%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "summary": "A simulation of a real robot workspace must preserve task-relevant interactions, while policies developed in it must operate on observations available to the real robot. Yet scene reconstruction and policy development are often treated separately. We present Agentic Real-to-Sim-to-Real (Agentic RSR), a framework that links scene reconstruction, policy development, and real-robot execution through the same manipulation task. Given a workspace video, a task description, and a known robot model, an agent recovers metric scale, iteratively refines the scene using visual feedback, and checks task-relevant interactions in MuJoCo. A coding agent then develops an executable policy, progressing from privileged object poses to visual observations and randomized simulation. The policy can interleave multiple observations and actions within one invocation, while the agent uses execution feedback to continue, retry, or revise its approach. A shared task-level interface carries the policy and accumulated experience to the real robot, where fresh observations and safety checks guide execution. Across 18 reconstructed scenes involving two robots, the mean four-view Depth MAE against reference depth estimates is 0.1057 m, the mean Lab $ΔE_{76}$ is 11.04, and the mean grayscale SSIM is 0.6990. In real-robot experiments, the aggregate task success rate reaches 80% of the simulation task success rate, indicating substantial retention of simulated performance on hardware. Code and reconstructed scene data will be made publicly available."
+      "summary": "Growing automation makes collaborative robots work in more variable environments, increasing the need for adaptation. We propose a human-in-the-loop online training framework combining a digital twin (DT), reinforcement learning (RL), and human demonstrations. Unlike DTs used mainly to generate synthetic data before task execution, our DT is synchronized with the physical system in real time through camera feeds, allowing the virtual robot to update its observations and policy from real-world feedback. A dual actor framework integrates imitation learning (IL) without adding a direct imitation loss to the RL actor, so demonstrations can guide adaptation instead of manual reprogramming. The proposed framework is demonstrated on the Ufactory Xarm5 collaborative robot, where the robot's end-effector aims to reach the target position while avoiding obstacles. The experiments show that the framework can resume training after a change in the physical workspace and that, with a fixed set of non-optimal demonstrations, the dual actor framework achieves a much higher final success rate than two methods that add an imitation loss to the actor. The same pattern holds with real human demonstrations collected in virtual reality (VR): with demonstrations that never reach the goal, the dual actor framework reached 83-100% mean deterministic evaluation success, against 0-17% for the two imitation-loss methods."
     },
     {
-      "id": "arxiv:2610.10079",
-      "title": "RealtimeWAM: How Fast Can I Run My World Action Model?",
-      "url": "https://arxiv.org/abs/2610.10079",
-      "publisher": "arXiv 2610.10079",
+      "id": "arxiv:2610.11952",
+      "title": "Tell Robot What Not to Do: A Negation Understanding Perspective",
+      "url": "https://arxiv.org/abs/2610.11952",
+      "publisher": "arXiv 2610.11952",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-07",
-      "lane": "simeval",
-      "score": 3.705,
+      "published": "2026-10-08",
+      "lane": "foundation",
+      "score": 3.4,
       "numbers": [
-        "63.09 ms",
-        "82.75%",
-        "87.41%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "summary": "World Action Models (WAMs) combine visual dynamics modeling with action generation, but their high inference latency limits responsive robot control. Recent efforts accelerate inference by removing explicit future-video generation at test time, as in FastWAM, an approach that requires a specially tailored architectural design. More general caching strategies exploit feature redundancy, but redundancy alone does not capture the changing computational demands of closed-loop control. To address these challenges, we present RealtimeWAM, a general, training-free framework that coordinates parallel execution with adaptive computation for low-latency inference across diverse WAM architectures. We exploit layerwise dependencies to overlap observation processing with prediction. However, concurrent branches still compete for GPU resources, limiting the benefit of parallel execution. We therefore adapt computation throughout the pipeline through selective reuse, caching observation features in visually stable regions and reusing Transformer residuals while reserving additional refinement for small predicted adjustments. We evaluate RealtimeWAM on FastWAM and OpenWAM across RoboTwin, LIBERO, and LIBERO-Plus. On an RTX 4090, measured mean inference latencies are 24.09 and 63.09 ms, corresponding to average speedups of 8.90$\\times$ and 10.67$\\times$. Average success rates are 82.75% and 87.41%, respectively, within 0.02 and 0.53 percentage points of native inference. Across five real-world tasks, RealtimeWAM improves average success rates over native inference by 17.2 and 37.2 percentage points on FastWAM and OpenWAM, respectively."
-    },
-    {
-      "id": "arxiv:2610.10453",
-      "title": "RFPO: Rectified Flow Policy Optimization for Embodied Control",
-      "url": "https://arxiv.org/abs/2610.10453",
-      "publisher": "arXiv 2610.10453",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-07",
-      "lane": "edge",
-      "score": 3.507,
-      "numbers": [
-        "2.4%",
-        "98.5%",
-        "4.39 ms",
-        "0.08 ms"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot",
-        "open_release",
-        "latency"
-      ],
-      "summary": "Flow-based policies provide an expressive framework for continuous robot control, but their iterative ODE integration incurs substantial inference cost. Naively reducing the integration budget can severely degrade control, since policies optimized under full-step execution are not explicitly constrained to remain reliable under coarse numerical integration. We refer to this mismatch as the few-step discretization gap. To address this problem, we introduce RFPO, a flow-policy optimization framework for reliable few-step execution. Reward-aware online Reflow rectifies student-induced transport paths during on-policy learning, making the resulting policy more robust to coarse integration. A frozen Gaussian PPO controller supplies complementary action-space supervision at full and intermediate integration budgets, while the deployed policy remains a single flow student executed with one Euler step. Across Unitree Go2, Boston Dynamics Spot, Unitree H1, and Unitree G1, RFPO consistently preserves full-step control performance under one-step execution, with one-step returns remaining within 2.4% of their corresponding 64-step values across both zero and random initialization. On Unitree Go2, one-step execution retains 98.5% of the 64-step reward while reducing onboard mean inference latency from 4.39 ms to 0.08 ms, yielding a 54.9x speedup. Real-robot experiments further validate stable one-step locomotion. Code: https://github.com/AIGeeksGroup/RFPO. Website: https://aigeeksgroup.github.io/RFPO."
-    },
-    {
-      "id": "arxiv:2610.08784",
-      "title": "PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Steering for Tactile Manipulation",
-      "url": "https://arxiv.org/abs/2610.08784",
-      "publisher": "arXiv 2610.08784",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-06",
-      "lane": "training",
-      "score": 3.1,
-      "numbers": [
-        "53.2%",
-        "95%",
-        "90%"
+        "2.60%",
+        "88.45%",
+        "12.4%",
+        "88.8%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "summary": "Pretrained robotic policies can suffer substantial performance degradation under out-of-distribution (OOD) conditions encountered during deployment, motivating post-training through real-world interaction. However, reinforcement-learning (RL)-based post-training typically requires substantial environment interactions, a burden that is especially significant in manipulation, where each trial can be slow, costly, or destructive. Therefore, we present PEARS, a physics-prior-guided hybrid RL framework for sample-efficient online adaptation of pretrained policies with tactile feedback. After each episode, its physics-guided force reasoning (PFR) module uses physical priors encoded in a vision-language model (VLM) to diagnose failures from the visual outcome and tactile interaction history and update task-appropriate contact-force bounds. A high-frequency hybrid force-position controller then enforces these bounds during contact. Complementarily, tactile-conditioned diffusion steering reinforcement learning adjusts the latent noise of the frozen flow-matching policy to correct errors in free-space motion and contact timing without updating the base model. In simulation, PEARS improves success rates by 12.4-37.4 percentage points over the strongest per-task baselines. PEARS also reduces the number of interaction episodes required for a certain success threshold by up to 53.2% relative to the fastest baseline. In real-world experiments, PEARS achieves success rates of 95% on Whiteboard Erasing and 90% on Pipette Liquid Aspiration. These results show that combining the PFR module with policy steering can accelerate adaptation while reducing costly interactions. The project website is available at https://song-kun.github.io/pears."
+      "summary": "Instruction following enables robots to perform diverse tasks specified in natural language, making it a fundamental capability for human-robot interaction. Beyond communicating desired outcomes, users also need to specify constraints on what not to do. We investigate how to enable vision-language-action models (VLAs) to follow negated instructions, where robots must accomplish task goals while respecting explicit exclusions. To this end, we propose NegaAlign, a parameter-efficient, plug-and-play framework that extends pretrained VLAs to follow negated instructions through image-language supervision alone. Specifically, we introduce Negation Transformation Layers into selected layers of the vision-language backbone to reshape intermediate instruction representations. Meanwhile, a teacher-guided alignment mechanism is designed to align instruction-relevant visual tokens, transferring action-relevant grounding from instructions that satisfy the negated constraint. The training phase uses supervision constructed from existing demonstrations and updates only the inserted layers, keeping all pretrained parameters frozen, including the action generator. We further introduce NegaBench, a simulation benchmark spanning 10 scenarios across five domains for systematically evaluating manipulation under negated constraints. Experiments across GR00T, $π_0$, and $π_{0.5}$ demonstrate consistent improvements in negated instruction following. With 11.6M trainable parameters, NegaAlign increases the negated-instruction success rate of $π_{0.5}$ from 2.60% to 88.45% on NegaBench and from 12.4% to 88.8% on real-world tasks, while retaining performance on affirmative instructions."
     },
     {
-      "id": "leiphone:4b07be24d804",
-      "title": "研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化",
-      "url": "https://www.leiphone.com/category/private/wEpCJ4T8v9cJFgCn.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "ieee-spectrum-robotics:a2b57285998e",
+      "title": "This Disembodied Hand Is All the Robot You Need",
+      "url": "https://spectrum.ieee.org/walking-robotic-hand",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
       "evidence": "M",
       "published": "2026-10-08",
       "lane": "hardware",
-      "score": 2.28,
+      "score": 1.797,
       "numbers": [],
       "signals": [],
-      "summary": "大模型并没有“吃掉”机器人学。9月27日，IROS 2026 将在匹兹堡开幕。重隔31年后，IROS 重回这座钢铁之城。 作为全球规模最大的机器人学术会议之一，今年进入正式议程的论文达到 1933 篇。把这近两千篇论文铺开来看，它更像是一张 2026 年机器人研究的横截面：从强化学习、模仿学习，到路径规划、视觉感知、运动控制、灵巧操作，再到人形机器人、触觉和大模型，过去几年机器人领域几乎所有重要技术路线，都同时出现在这张图谱里。 但真正值得注意的，并不是 Humanoid、VLA 或 World Model 这些更容易获得产业和媒体关注的关键词。 对 1933 篇论文进行多标签梳理后可以看到，Robot Learning / Embodied AI 相关论文约有 809 篇，Navigation / Planning 564 篇，Perception / Vision 556 篇，Control / Dynamics 546 篇，Manipulation 520 篇，而 Humanoid / Legged 相关论文约为 213 篇。 由于一篇论文可能同时涉及多个方向，这些数字不能简单相加，但它们说明了一件事：机器人研究并没有因为大模型进入，而被重新归并成一个单一的“AI 问题”。 相反，学习、感知、规划、控制和操作正在以前所未有的密度交织在一起。 在万众瞩目的 AGI 狂热大背景下，这近两千篇论文却释放了一个信号： 大模型并没有 “ 吃掉 ” 机器人学。 …"
+      "summary": "A hand attached to the end of an arm is a given for most humans, but what if robots didn’t have to play by the same rules as we do? Researchers from ETH Zurich have turned an off-the-shelf robotic hand into a completely self-contained robot that walks on its fingertips while using those same fingers to manipulate its environment. Besides making the perfect Halloween accessory for anyone planning to dress up as a member of the Addams Family—who were famously accompanied by a disembodied walking hand called Thing —this robotic hand could make it possible to operate controls and handle objects in places a traditional robot arm can’t reach, the researchers say. Soft Robotics Lab, ETH Zurich/YouTube Amirhossein Kazemipour , a Ph.D. candidate in the Soft Robotics Lab at ETH Zurich who led the project, believes this hand could prove useful in contexts like fiddly maintenance tasks in industrial settings, or in search and rescue, where a robot could detach its hand to explore confined spaces too tight for the rest of its body. More broadly, he says, the work is a step toward a new approach to robotics in which body parts are not confined to a single role. “I wanted to see how much a robotic hand could do without the rest of the robot,” Kazemipour told IEEE Spectrum . “Instead of having this traditional view of robotic parts, what if we could use those parts to do other tasks that they are not designed to do?” This is not the first attempt to get a robot hand to walk , but previous work has typically relied on specially designed hands. The ETH team instead decided to use off-the-shelf hardware from Wuji Technology , augmented with an 80-gram backpack containing a battery, an inertial measurement unit (IMU), and a Raspberry Pi Zero. Kazemipour says they decided to go with a commercial robot hand because they didn’t want to compromise on the hand’s manipulation capabilities. This introduced significant challenges, he adds, because a hand’s shape is optimized for grasping …"
     },
     {
-      "id": "leiphone:f05eb6e1da2e",
-      "title": "对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒",
-      "url": "https://www.leiphone.com/category/transportation/ESCXNijR4DVx6uDl.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-08",
-      "lane": "data",
-      "score": 1.685,
-      "numbers": [],
-      "signals": [],
-      "summary": "过去一年，“物理AI”几乎成了自动驾驶、车企共同争夺的下一张船票。 世界模型、具身大模型、机器人数据……众多公司从不同切入口布局物理AI，试图成为新风口之下的主角，相比之下，如祺出行选择了一条不那么显眼的路径，不自己训练大模型，而是尝试成为模型背后的数据基础设施。 实际上，如祺出行在2023年就开始思考，除了提供包括Robotaxi等出行服务，一家出行平台还能在AI产业里扮演什么角色。随后两年，如祺出行逐步完成数据闭环，一端连接驾驶员、Robotaxi和城市道路，另一端服务自动驾驶模型的训练与迭代。 而具身智能的兴起，让这套能力有了新的用武之地。 在如祺出行COO韩锋看来，自动驾驶与智能机器人需要的数据并不完全相同，因为前者主要在二维道路空间中完成感知、决策和运动，机器人则要进入三维空间，处理抓取、搬运和精细操作。但两者背后的数据处理流程高度相似，从采集、预处理到标注、质检和导出，底层工具链可以复用。 然而，由于真实数据采集成本高昂，且周期漫长，越来越多智驾和具身智能公司借助世界模型和仿真平台生成合成数据，补充真实数据不足，以提升模型训练效率。 但在韩锋看来，世界模型能力越强，真实数据的重要性并不会因此降低。合成数据能够以真实长尾案例为基础，扩展难以反复采集的危险、临界和复杂交通场景；真实场景数据则能持续记录交通参与者不可预设的行为、道路环境的变化和传感器的物理响应，帮助发现尚未被识别的问题，并为合成结果提供校准和验证依据。两者共同形成“真实数据发现与验证、合成数据定向扩展”的互补闭环。 …"
-    },
-    {
-      "id": "leiphone:bee8b4023118",
-      "title": "IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖",
-      "url": "https://www.leiphone.com/category/private/VYRZFCnadDOcPDeX.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-08",
-      "lane": "foundation",
-      "score": 1.65,
-      "numbers": [],
-      "signals": [],
-      "summary": "在机器人领域，一个更大的模型并不能自动解决所有问题。当地时间 9 月 30 日，IROS 2026 主会在美国匹兹堡落下帷幕，本届大会的主要奖项也在最后一天正式揭晓。 AI科技评论在现场获悉，今年的 Best Paper Award 最终颁给了一项关于机器人“长期记忆”的研究。Yumin Lee、Hyoseok Ju 和 Giseop Kim 凭借《LT-Mem: Volatility-Aware Spatio-Temporal Memory for Lifelong Scene Understanding》拿下最佳论文。 Best Student Paper Award 则由 Pei-An Hsieh、Fengjun Yang、Nikolai Matni 和 M. Ani Hsieh 获得。他们研究的是多架四旋翼无人机以极近距离编队飞行时，如何应对彼此之间复杂的气流干扰。 另外两项颇为吸睛的奖项属于人形机器人。一项工作让人形机器人学习真人网球动作，另一项则让人形机器人端起托盘，在双足行走的同时保持托盘上的物体稳定。 如果把今年的获奖论文和 Best Paper Finalist 放在一起看，长期记忆、VLA、世界模型、4D 场景理解、视触觉操作、飞行控制、人形机器人、软体机器人和生物制造机器人等方向都出现在了名单之中。 相比单纯讨论机器人又“学会了什么新动作”，今年的一批获奖工作开始触及一个更加现实的问题。当机器人真正进入现实环境之后，怎样让这些能力持续、稳定地工作？ 01 …"
-    },
-    {
-      "id": "the-robot-report:42327a98fe3f",
-      "title": "Harmonic Drive to share how integrated actuators can reduce engineering at RoboBusiness",
-      "url": "https://www.therobotreport.com/harmonic-drive-share-how-integrated-actuators-reduce-engineering-robobusiness/",
+      "id": "the-robot-report:bcb1ebbc55ff",
+      "title": "Jabil discusses the pace of humanoid robot development and production",
+      "url": "https://www.therobotreport.com/jabil-discusses-pace-humanoid-robot-development-production/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-07",
+      "published": "2026-10-08",
       "lane": "hardware",
       "score": 1.515,
       "numbers": [],
       "signals": [],
-      "summary": "Attendees will learn how integrated actuators can reduce engineering effort by simplifying system integration."
+      "summary": "Jabil, which is working with robot developers such as Apptronik, provides a design perspective on humanoid progress."
+    },
+    {
+      "id": "the-robot-report:6b2f68612d16",
+      "title": "AWS launches open-source Physical AI Toolchain for robotics",
+      "url": "https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-08",
+      "lane": "edge",
+      "score": 1.502,
+      "numbers": [],
+      "signals": [
+        "open_release"
+      ],
+      "summary": "The toolchain combines AWS and NVIDIA tools for synthetic data generation, model training, simulation and validation, edge deployment, and continuous improvement."
+    },
+    {
+      "id": "leiphone:df0a0c0416fd",
+      "title": "独家 | 清华 AIR 首届博士李健雄创立本溯智能：五源资本领投，押注动作原生具身模型",
+      "url": "https://www.leiphone.com/category/ai/WbD0Tf6P1oA2WDdq.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-08",
+      "lane": "training",
+      "score": 1.1,
+      "numbers": [],
+      "signals": [],
+      "summary": "常春藤、线性、华山资本跟投，AIR副教授詹仙园任首席科学家。雷峰网·鲸犀独家获悉，清华大学智能产业研究院（AIR）首届博士生李健雄已毕业，并创立具身智能公司 本溯智能 （BASAL Intelligence，简称 BASAL）。目前，本溯智能已获得五源资本领投，常春藤资本、线性资本、华山资本 WestSummit Capital 参与投资。 团队核心成员包括首席科学家、清华 AIR 副教授詹仙园，以及 7 名长期合作的年轻研究者。据本溯智能称，创始团队组建前，核心成员分别拿到字节跳动 Top Seed、英伟达、小米等企业的高薪 offer 和海外高校博士录取机会，合计放弃的年薪总包接近 4000 万元，其中李健雄个人放弃的最高年薪总包接近千万元。 本溯智能官方资料显示，公司不会追随市面上已成主流的“预训练基模＋后训练部署”范式，而是选择押注动作原生的 In-Context 具身基础模型，试图让机器人在更换场景后无需重新训练，在现场完成学习与适应。 01 环境一变，一切推倒重来 当前具身智能的主流路线，是先预训练一个基础模型，再针对每个任务做后训练部署交付。 这套范式在工厂标准化场景下已经跑通，但一旦环境、物体或作业流程发生变化，机器人往往需要重新采集数据、重新训练。面对现实世界中无穷无尽的长尾场景和长尾任务，这条路的规模化天花板显而易见。 本溯智能对此有一个直接的判断：这 本质上还是工业自动化的延伸，并不是真正意义上的具身智能 。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 11,
-    "data": 3,
-    "training": 5,
-    "simeval": 13,
+    "foundation": 10,
+    "data": 4,
+    "training": 6,
+    "simeval": 14,
     "edge": 9,
-    "safety": 4,
-    "systems": 4,
+    "safety": 3,
+    "systems": 3,
     "hardware": 7
   },
   "evidence_mix": {
@@ -171,7 +168,7 @@
     "M": 15
   },
   "fetch": {
-    "items": 529,
+    "items": 531,
     "attempted": 11,
     "answered": 10,
     "failed": [
@@ -179,7 +176,7 @@
     ],
     "fallback": [],
     "per_source": {
-      "arxiv": 106,
+      "arxiv": 108,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

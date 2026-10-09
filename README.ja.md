@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-08
+### 本日のレーダー · 2026-10-09
 
-`生成時刻: 2026-10-08 07:30 UTC` ｜ `対象期間: 論文 2026-10-04 → 2026-10-08 · ブログ・報道 2026-09-08 → 2026-10-08 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-09 07:28 UTC` ｜ `対象期間: 論文 2026-10-05 → 2026-10-09 · ブログ・報道 2026-09-09 → 2026-10-09 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Agentic RSR: Real-to-Sim-to-Real through Scene Reconstruction and Execution-Grounded Robot Policies](https://arxiv.org/abs/2610.10479)**<br>`80%`<br><sub>シミュレーションと評価 · arXiv 2610.10479 · 2026‑10‑07</sub> |
-| 02<br>🔵&nbsp;`R` | **[RealtimeWAM: How Fast Can I Run My World Action Model?](https://arxiv.org/abs/2610.10079)**<br>`63.09 ms`&nbsp; `82.75%`&nbsp; `87.41%`<br><sub>シミュレーションと評価 · arXiv 2610.10079 · 2026‑10‑07</sub> |
-| 03<br>🔵&nbsp;`R` | **[RFPO: Rectified Flow Policy Optimization for Embodied Control](https://arxiv.org/abs/2610.10453)**<br>`2.4%`&nbsp; `98.5%`&nbsp; `4.39 ms`<br><sub>エッジとリアルタイム · arXiv 2610.10453 · 2026‑10‑07</sub> |
-| 04<br>🔵&nbsp;`R` | **[PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Steering for Tactile Manipulation](https://arxiv.org/abs/2610.08784)**<br>`53.2%`&nbsp; `95%`&nbsp; `90%`<br><sub>学習と自己改善 · arXiv 2610.08784 · 2026‑10‑06</sub> |
-| 05<br>🟡&nbsp;`M` | **[研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化](https://www.leiphone.com/category/private/wEpCJ4T8v9cJFgCn.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑08</sub> |
-| 06<br>🟡&nbsp;`M` | **[对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒](https://www.leiphone.com/category/transportation/ESCXNijR4DVx6uDl.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑08</sub> |
-| 07<br>🟡&nbsp;`M` | **[IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖](https://www.leiphone.com/category/private/VYRZFCnadDOcPDeX.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑08</sub> |
-| 08<br>🟡&nbsp;`M` | **[Harmonic Drive to share how integrated actuators can reduce engineering at RoboBusiness](https://www.therobotreport.com/harmonic-drive-share-how-integrated-actuators-reduce-engineering-robobusiness/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑07</sub> |
+| 01<br>🔵&nbsp;`R` | **[WARP-VLA: Wrist-Camera Adaptation for View-Robust Policy Execution in Vision-Language-Action Models](https://arxiv.org/abs/2610.11508)**<br>`39.2%`&nbsp; `78.3%`<br><sub>シミュレーションと評価 · arXiv 2610.11508 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[REACT: Rolling Denoising and Dual Decoupling for Reactive Robot Control with VLA Models](https://arxiv.org/abs/2610.12007)**<br><sub>シミュレーションと評価 · arXiv 2610.12007 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Leveraging Human-In-The-Loop Demonstrations in Reinforcement Learning for Digital Twin-Driven Robot Flexibility](https://arxiv.org/abs/2610.12140)**<br>`100%`&nbsp; `17%`<br><sub>データエンジン · arXiv 2610.12140 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[Tell Robot What Not to Do: A Negation Understanding Perspective](https://arxiv.org/abs/2610.11952)**<br>`2.60%`&nbsp; `88.45%`&nbsp; `12.4%`<br><sub>基盤モデル · arXiv 2610.11952 · 2026‑10‑08</sub> |
+| 05<br>🟡&nbsp;`M` | **[This Disembodied Hand Is All the Robot You Need](https://spectrum.ieee.org/walking-robotic-hand)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑08</sub> |
+| 06<br>🟡&nbsp;`M` | **[Jabil discusses the pace of humanoid robot development and production](https://www.therobotreport.com/jabil-discusses-pace-humanoid-robot-development-production/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑08</sub> |
+| 07<br>🟡&nbsp;`M` | **[AWS launches open-source Physical AI Toolchain for robotics](https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑10‑08</sub> |
+| 08<br>🟡&nbsp;`M` | **[独家 \| 清华 AIR 首届博士李健雄创立本溯智能：五源资本领投，押注动作原生具身模型](https://www.leiphone.com/category/ai/WbD0Tf6P1oA2WDdq.html)**<br><sub>学習と自己改善 · 雷峰网 Leiphone · 2026‑10‑08</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Agentic RSR** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **RealtimeWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **RFPO** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-4. **PEARS** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
-5. **研究了1933篇 IROS 论文，我们看到了机器人学的六项新变化** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-6. **对话如祺出行COO韩锋：世界模型越强，真实数据才是真壁垒** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-7. **IROS 2026大奖揭晓：长期记忆拿下最佳论文，人形机器人打网球、端托盘双双获奖** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-8. **Harmonic Drive to share how integrated actuators can reduce engineering at…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **WARP-VLA** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **REACT** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Leveraging Human-In-The-Loop Demonstrations in Reinforcement Learning for D…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **Tell Robot What Not to Do** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+5. **This Disembodied Hand Is All the Robot You Need** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **Jabil discusses the pace of humanoid robot development and production** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **AWS launches open-source Physical AI Toolchain for robotics** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+8. **独家 | 清华 AIR 首届博士李健雄创立本溯智能：五源资本领投，押注动作原生具身模型** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-08.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-09.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

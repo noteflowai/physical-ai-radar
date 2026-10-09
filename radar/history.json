@@ -338,6 +338,25 @@
         "tri"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-09",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.11508",
+        "https://arxiv.org/abs/2610.12007",
+        "https://arxiv.org/abs/2610.12140",
+        "https://arxiv.org/abs/2610.11952",
+        "https://spectrum.ieee.org/walking-robotic-hand",
+        "https://www.therobotreport.com/jabil-discusses-pace-humanoid-robot-development-production",
+        "https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics",
+        "https://www.leiphone.com/category/ai/wbd0tf6p1oa2wddq.html"
+      ],
+      "failed": [
+        "tri"
+      ],
+      "fallback": []
     }
   ]
 }
