@@ -6,7 +6,7 @@ anywhere that matters.
 
 | What | Where | Trigger | Writes |
 | --- | --- | --- | --- |
-| `ci.yml` | GitHub-hosted runner | push, pull request | nothing |
+| `ci.yml` | GitHub-hosted runner | push, pull request, explicit dispatch | nothing |
 | `daily.yml` | GitHub-hosted runner | 01:20 UTC / 09:20 Asia/Singapore, and by hand | publishes only a day the machine missed |
 | `scripts/publish_daily.sh` | maintainer's machine, cron | 07:40 Asia/Singapore | commits the day's radar to `main` |
 | `oneai-content-run` | maintainer's machine, cron | 10:00 Asia/Singapore; 16:00 retry | publishes up to three distinct, reviewed, illustrated zh/en/ja article groups on oneai.host when sources and quality justify them |
@@ -25,6 +25,12 @@ Radar publication waits for both `CI` and `pages-build-deployment` on the merge
 commit before checking the public site.
 The deterministic daily publisher verifies the same gates on its direct main
 commit, including when a retry finds that today's data is already present.
+The hosted fallback explicitly requests existing CI after its `GITHUB_TOKEN`
+push, which does not trigger push workflows. A separate job has only
+`contents: read` and `actions: write`; it first checks the exact main commit and
+existing CI inventory. Changed heads or unavailable inventory stop the request,
+and a failed dispatch is not blindly retried. Request acceptance never replaces
+the original exact-commit CI, Pages and public-content verification.
 
 ### Daily specialist features
 

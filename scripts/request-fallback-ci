@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Domain adapter: request existing Radar CI after this fallback actually pushed.
+# Invoked in an isolated hosted job; it does not use or reset the local clone.
+# Request acceptance is not passing CI or publication acceptance. Preserve the
+# original CI + Pages + public-commit gates in agent_pipeline.py.
+# A failed/unknown dispatch stops this job; never blindly retry its write.
+set -euo pipefail
+export GH_PROMPT_DISABLED=1
+
+expected="${EXPECTED_RADAR_COMMIT:?published commit required}"
+[[ "$expected" =~ ^[a-f0-9]{40}$ ]] || { echo "invalid published commit" >&2; exit 42; }
+
+actual="$(gh api --method GET repos/noteflowai/physical-ai-radar/git/ref/heads/main --jq '.object.sha')"
+[[ "$actual" == "$expected" ]] || {
+  echo "main changed; reconcile the original publication before requesting CI" >&2
+  exit 42
+}
+count="$(gh api --method GET \
+  "repos/noteflowai/physical-ai-radar/actions/workflows/ci.yml/runs?head_sha=${expected}&exclude_pull_requests=true&per_page=1" \
+  --jq '.total_count')"
+[[ "$count" =~ ^[0-9]+$ ]] || { echo "CI inventory unavailable" >&2; exit 42; }
+if [[ "$count" != "0" ]]; then
+  echo "CI already recorded for ${expected}; the original verifier checks its outcome"
+  exit 0
+fi
+# main can advance after the GET. The original verifier still requires the exact
+# recorded run head and public commit; a request cannot certify that binding.
+gh workflow run ci.yml --ref main --repo noteflowai/physical-ai-radar
+echo "CI requested; original commit verification remains pending"
