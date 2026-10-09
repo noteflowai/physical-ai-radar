@@ -24,10 +24,7 @@ on:
         required: false
         default: false
 
-permissions:
-  contents: write
-  issues: write
-  pages: write
+permissions: {}
 
 concurrency:
   group: daily-radar
@@ -37,6 +34,13 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+      pages: write
+    outputs:
+      pushed: ${{ steps.publish.outputs.pushed }}
+      commit: ${{ steps.publish.outputs.commit }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -150,6 +154,7 @@ jobs:
           done
           echo "pushed on attempt ${attempt}"
           echo "pushed=true" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Rebuild the site
         # Pages builds on push, but not reliably for a push made with GITHUB_TOKEN;
@@ -175,3 +180,24 @@ jobs:
           else
             gh issue create --title "$TITLE" --body "$BODY"
           fi
+
+  verify-published-commit:
+    needs: update
+    if: always() && needs.update.outputs.pushed == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    # A GITHUB_TOKEN push does not trigger CI. Explicit workflow_dispatch does.
+    # Keep dispatch permission apart from the publisher's repository writes.
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.update.outputs.commit }}
+          persist-credentials: false
+      - name: Request existing CI for the published commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_RADAR_COMMIT: ${{ needs.update.outputs.commit }}
+        run: bash scripts/request-fallback-ci
