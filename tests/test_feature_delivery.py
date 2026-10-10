@@ -9,10 +9,12 @@ from unittest.mock import patch
 from scripts import develop_repos as developer
 from scripts.agent_pipeline import write_json
 from scripts.feature_policy import PROJECTS
+from publication_fixture import isolate_private_recovery
 
 
 class DeliveryHandoffTests(unittest.TestCase):
     def setUp(self):
+        isolate_private_recovery(self)
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         self.root = Path(tmp.name)

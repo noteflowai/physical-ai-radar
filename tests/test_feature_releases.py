@@ -19,6 +19,7 @@ from scripts import feature_updates as updates
 from scripts import feature_versions as versions
 from scripts import feature_report
 from scripts.agent_pipeline import write_json
+from publication_fixture import isolate_private_recovery
 
 SHA = "a" * 40
 
@@ -359,6 +360,10 @@ class AnnouncementTests(Temporary):
 
 
 class ReleaseLifecycleTests(Temporary):
+    def setUp(self):
+        super().setUp()
+        isolate_private_recovery(self)
+
     def test_interrupted_batch_starts_next_project_on_resume(self):
         names = list(developer.PROJECTS)
         args = ["develop_repos", "--state", str(self.root / "state"),

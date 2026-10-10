@@ -10,10 +10,12 @@ from scripts.feature_policy import PROJECTS, acceptance_command, allowed, readab
 from scripts.feature_runtime import execute
 from scripts.agent_pipeline import REQUIRED_PR_CHECKS, finish
 from scripts.feature_wordpress import SLUG, package_files, publish as publish_wordpress, version
+from publication_fixture import isolate_private_recovery
 
 
 class FeaturePolicyTests(unittest.TestCase):
     def setUp(self):
+        isolate_private_recovery(self)
         self.config = PROJECTS["physical-ai-radar"]
         self.plan = {
             "title": "feat: filter research by source",

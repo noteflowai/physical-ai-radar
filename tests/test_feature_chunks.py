@@ -12,10 +12,12 @@ from scripts import develop_repos as developer
 from scripts.develop_repos import parse_author_chunk, parse_feature_object, requested_context
 from scripts.feature_chunks import add_chunk, draft_for, inspect_draft, manifest
 from scripts.feature_policy import PROJECTS
+from publication_fixture import isolate_private_recovery
 
 
 class ChunkTests(unittest.TestCase):
     def setUp(self):
+        isolate_private_recovery(self)
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         self.root = Path(tmp.name)

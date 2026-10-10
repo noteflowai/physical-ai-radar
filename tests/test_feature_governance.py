@@ -12,6 +12,7 @@ from scripts.feature_governance import load_roadmap, next_version, validate_deci
 from scripts.feature_outcomes import outcome_exit
 from scripts.feature_policy import PROJECTS, allowed, readable
 from scripts.feature_report import report
+from publication_fixture import isolate_private_recovery
 
 DAY = "2026-09-29"
 ROADMAP = """# Roadmap
@@ -27,6 +28,7 @@ Updated: 2026-09-29
 
 class GovernanceTests(unittest.TestCase):
     def setUp(self):
+        isolate_private_recovery(self)
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
         self.root = Path(temp.name)
