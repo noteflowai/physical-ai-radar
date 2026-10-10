@@ -1,5 +1,14 @@
-"""Scheduler-only fixture; actual detection is tested in Agent Control."""
+"""Isolated domain fixtures; operator policy has its own integration tests."""
+import os
 from pathlib import Path
+from unittest.mock import patch
+
+
+def isolate_private_recovery(test_case):
+    """Keep synthetic domain states independent of the operator's live recovery."""
+    environment = patch.dict(os.environ, {"NOTEFLOW_FEATURE_RECOVERY": ""})
+    environment.start()
+    test_case.addCleanup(environment.stop)
 
 
 def security_home(root):

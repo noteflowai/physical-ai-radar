@@ -14,11 +14,12 @@ from scripts.feature_outcomes import outcome_exit
 from scripts.feature_planning import previous_deferral
 from scripts.feature_prompts import acceptance_paths
 from scripts.feature_report import report
-from publication_fixture import security_home
+from publication_fixture import isolate_private_recovery, security_home
 
 
 class PlanningRestartTests(unittest.TestCase):
     def setUp(self):
+        isolate_private_recovery(self)
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         self.root = Path(tmp.name)
