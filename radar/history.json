@@ -357,6 +357,25 @@
         "tri"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-10",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.09254",
+        "https://arxiv.org/abs/2610.11322",
+        "https://arxiv.org/abs/2610.12026",
+        "https://arxiv.org/abs/2610.12089",
+        "https://spectrum.ieee.org/video-friday-reachy-mini-raps",
+        "https://www.leiphone.com/category/robot/pz34omtbnw9y0lho.html",
+        "https://www.leiphone.com/category/ai/4i8ykksz9v10ih1r.html",
+        "https://www.leiphone.com/category/zaobao/ggmq1ribgxy2gsvl.html"
+      ],
+      "failed": [
+        "tri"
+      ],
+      "fallback": []
     }
   ]
 }

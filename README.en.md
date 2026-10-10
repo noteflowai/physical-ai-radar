@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-09
+### Today's radar · 2026-10-10
 
-`Generated: 2026-10-09 07:28 UTC` ｜ `Window: papers 2026-10-05 → 2026-10-09 · posts 2026-09-09 → 2026-10-09 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-10 07:15 UTC` ｜ `Window: papers 2026-10-06 → 2026-10-10 · posts 2026-09-10 → 2026-10-10 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WARP-VLA: Wrist-Camera Adaptation for View-Robust Policy Execution in Vision-Language-Action Models](https://arxiv.org/abs/2610.11508)**<br>`39.2%`&nbsp; `78.3%`<br><sub>Simulation & evaluation · arXiv 2610.11508 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[REACT: Rolling Denoising and Dual Decoupling for Reactive Robot Control with VLA Models](https://arxiv.org/abs/2610.12007)**<br><sub>Simulation & evaluation · arXiv 2610.12007 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Leveraging Human-In-The-Loop Demonstrations in Reinforcement Learning for Digital Twin-Driven Robot Flexibility](https://arxiv.org/abs/2610.12140)**<br>`100%`&nbsp; `17%`<br><sub>Data engine · arXiv 2610.12140 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[Tell Robot What Not to Do: A Negation Understanding Perspective](https://arxiv.org/abs/2610.11952)**<br>`2.60%`&nbsp; `88.45%`&nbsp; `12.4%`<br><sub>Foundation models · arXiv 2610.11952 · 2026‑10‑08</sub> |
-| 05<br>🟡&nbsp;`M` | **[This Disembodied Hand Is All the Robot You Need](https://spectrum.ieee.org/walking-robotic-hand)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑08</sub> |
-| 06<br>🟡&nbsp;`M` | **[Jabil discusses the pace of humanoid robot development and production](https://www.therobotreport.com/jabil-discusses-pace-humanoid-robot-development-production/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑08</sub> |
-| 07<br>🟡&nbsp;`M` | **[AWS launches open-source Physical AI Toolchain for robotics](https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics/)**<br><sub>Edge & real-time · The Robot Report · 2026‑10‑08</sub> |
-| 08<br>🟡&nbsp;`M` | **[独家 \| 清华 AIR 首届博士李健雄创立本溯智能：五源资本领投，押注动作原生具身模型](https://www.leiphone.com/category/ai/WbD0Tf6P1oA2WDdq.html)**<br><sub>Training & self-improvement · 雷峰网 Leiphone · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[RoboRender: Robot-Oriented Video Generation for Visual Sim-to-Real Transfer](https://arxiv.org/abs/2610.09254)**<br>`71%`&nbsp; `7.1x`&nbsp; `3.6x`<br><sub>Simulation & evaluation · arXiv 2610.09254 · 2026‑10‑07</sub> |
+| 02<br>🔵&nbsp;`R` | **[USDCraft: Geometrically Grounded Programmatic Modeling of Articulated 3D Assets for Simulation](https://arxiv.org/abs/2610.11322)**<br><sub>Simulation & evaluation · arXiv 2610.11322 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Humanoid World Action Model With Joint State--Action Generation](https://arxiv.org/abs/2610.12026)**<br>`70.6%`&nbsp; `43.3%`<br><sub>Foundation models · arXiv 2610.12026 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[ManiUnit: A Manipulation Skill Dataset and Benchmark for Long-Horizon Tasks](https://arxiv.org/abs/2610.12089)**<br>`56%`&nbsp; `78.7%`&nbsp; `49.3%`<br><sub>Systems & orchestration · arXiv 2610.12089 · 2026‑10‑08</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Robot Decommissioning Takes a Fun Turn](https://spectrum.ieee.org/video-friday-reachy-mini-raps)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑09</sub> |
+| 06<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/Pz34omTBnW9Y0LhO.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑10</sub> |
+| 07<br>🟡&nbsp;`M` | **[这届 IROS 2026 上，具身学术与产业边界正在消融](https://www.leiphone.com/category/ai/4I8YKksz9V10Ih1R.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑10</sub> |
+| 08<br>🟡&nbsp;`M` | **[再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券，或筹钱加码AI；OpenAI全面上线GPT-6](https://www.leiphone.com/category/zaobao/GGmq1RiBgXY2GSVL.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑09</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WARP-VLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **REACT** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-3. **Leveraging Human-In-The-Loop Demonstrations in Reinforcement Learning for D…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **Tell Robot What Not to Do** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **This Disembodied Hand Is All the Robot You Need** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **Jabil discusses the pace of humanoid robot development and production** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **AWS launches open-source Physical AI Toolchain for robotics** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-8. **独家 | 清华 AIR 首届博士李健雄创立本溯智能：五源资本领投，押注动作原生具身模型** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
+1. **RoboRender** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **USDCraft** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **Humanoid World Action Model With Joint State--Action Generation** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+4. **ManiUnit** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
+5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **这届 IROS 2026 上，具身学术与产业边界正在消融** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-09.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-10.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
