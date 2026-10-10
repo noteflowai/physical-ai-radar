@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-10
+### Today's radar · 2026-10-11
 
-`Generated: 2026-10-10 07:15 UTC` ｜ `Window: papers 2026-10-06 → 2026-10-10 · posts 2026-09-10 → 2026-10-10 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-10 23:40 UTC` ｜ `Window: papers 2026-10-07 → 2026-10-11 · posts 2026-09-11 → 2026-10-11 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboRender: Robot-Oriented Video Generation for Visual Sim-to-Real Transfer](https://arxiv.org/abs/2610.09254)**<br>`71%`&nbsp; `7.1x`&nbsp; `3.6x`<br><sub>Simulation & evaluation · arXiv 2610.09254 · 2026‑10‑07</sub> |
-| 02<br>🔵&nbsp;`R` | **[USDCraft: Geometrically Grounded Programmatic Modeling of Articulated 3D Assets for Simulation](https://arxiv.org/abs/2610.11322)**<br><sub>Simulation & evaluation · arXiv 2610.11322 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Humanoid World Action Model With Joint State--Action Generation](https://arxiv.org/abs/2610.12026)**<br>`70.6%`&nbsp; `43.3%`<br><sub>Foundation models · arXiv 2610.12026 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[ManiUnit: A Manipulation Skill Dataset and Benchmark for Long-Horizon Tasks](https://arxiv.org/abs/2610.12089)**<br>`56%`&nbsp; `78.7%`&nbsp; `49.3%`<br><sub>Systems & orchestration · arXiv 2610.12089 · 2026‑10‑08</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Robot Decommissioning Takes a Fun Turn](https://spectrum.ieee.org/video-friday-reachy-mini-raps)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑09</sub> |
-| 06<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/Pz34omTBnW9Y0LhO.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑10</sub> |
-| 07<br>🟡&nbsp;`M` | **[这届 IROS 2026 上，具身学术与产业边界正在消融](https://www.leiphone.com/category/ai/4I8YKksz9V10Ih1R.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑10</sub> |
-| 08<br>🟡&nbsp;`M` | **[再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券，或筹钱加码AI；OpenAI全面上线GPT-6](https://www.leiphone.com/category/zaobao/GGmq1RiBgXY2GSVL.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control](https://arxiv.org/abs/2610.12185)**<br>`8.70%`&nbsp; `6.28%`&nbsp; `6.83%`<br><sub>Simulation & evaluation · arXiv 2610.12185 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[Being-M0.7: A Latent World-Action Model for Humanoid Robots](https://arxiv.org/abs/2610.11283)**<br>`10,000 hours`<br><sub>Embodiment & supply chain · arXiv 2610.11283 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning](https://arxiv.org/abs/2610.12231)**<br><sub>Simulation & evaluation · arXiv 2610.12231 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/abs/2610.12386)**<br><sub>Foundation models · arXiv 2610.12386 · 2026‑10‑08</sub> |
+| 05<br>🔵&nbsp;`R` | **[SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills](https://arxiv.org/abs/2610.12046)**<br>`27%`&nbsp; `65%`&nbsp; `87%`<br><sub>Data engine · arXiv 2610.12046 · 2026‑10‑08</sub> |
+| 06<br>🔵&nbsp;`R` | **[FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems](https://arxiv.org/abs/2610.12432)**<br>`99.95%`&nbsp; `97%`<br><sub>Safety, permissions & compliance · arXiv 2610.12432 · 2026‑10‑08</sub> |
+| 07<br>🔵&nbsp;`R` | **[Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer](https://arxiv.org/abs/2610.11416)**<br><sub>Foundation models · arXiv 2610.11416 · 2026‑10‑08</sub> |
+| 08<br>🟡&nbsp;`M` | **[Why humanoid robot demos still fail the generalization test](https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑09</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RoboRender** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **USDCraft** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **Humanoid World Action Model With Joint State--Action Generation** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-4. **ManiUnit** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **这届 IROS 2026 上，具身学术与产业边界正在消融** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **RESETTLE** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+2. **Being-M0.7** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
+3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+4. **ARC** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **SkillWeave** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+6. **FAITH** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
+7. **Rewiring Semantics, Dynamics, and Control** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Why humanoid robot demos still fail the generalization test** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-10.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-11.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

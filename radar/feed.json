@@ -13,6 +13,318 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12185",
+      "url": "https://arxiv.org/abs/2610.12185",
+      "title": "RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12185 · 2026-10-08<br><b>Key numbers</b>: 8.70% · 6.28% · 6.83% · 74.04%<br><b>Signals</b>: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Reliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.12185 · 2026-10-08\nKey numbers: 8.70% · 6.28% · 6.83% · 74.04%\nSignals: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers\n\nReliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Reliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.12185"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.12185",
+        "url": "https://arxiv.org/abs/2610.12185",
+        "title": "RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control",
+        "publisher": "arXiv 2610.12185",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [
+          "8.70%",
+          "6.28%",
+          "6.83%",
+          "74.04%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Reliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.11283",
+      "url": "https://arxiv.org/abs/2610.11283",
+      "title": "Being-M0.7: A Latent World-Action Model for Humanoid Robots",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.11283 · 2026-10-08<br><b>Key numbers</b>: 10,000 hours<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Humanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [R]\nSource: arXiv 2610.11283 · 2026-10-08\nKey numbers: 10,000 hours\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nHumanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Humanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.11283"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.11283",
+        "url": "https://arxiv.org/abs/2610.11283",
+        "title": "Being-M0.7: A Latent World-Action Model for Humanoid Robots",
+        "publisher": "arXiv 2610.11283",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "hardware",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [
+          "10,000 hours"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Humanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12231",
+      "url": "https://arxiv.org/abs/2610.12231",
+      "title": "Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12231 · 2026-10-08<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Learning from demonstration has enabled impressive robot behaviors. A common choice for policy learning is to use diffusion or flow matching (Flow-Policies), which often outperforms direct action regression trained with mean squared error…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.12231 · 2026-10-08\nSignals: closed-loop success reported · real-robot experiments\n\nLearning from demonstration has enabled impressive robot behaviors. A common choice for policy learning is to use diffusion or flow matching (Flow-Policies), which often outperforms direct action regression trained with mean squared error…\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Learning from demonstration has enabled impressive robot behaviors. A common choice for policy learning is to use diffusion or flow matching (Flow-Policies), which often outperforms direct action regression trained with mean squared error…",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.12231"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.12231",
+        "url": "https://arxiv.org/abs/2610.12231",
+        "title": "Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning",
+        "publisher": "arXiv 2610.12231",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Learning from demonstration has enabled impressive robot behaviors. A common choice for policy learning is to use diffusion or flow matching (Flow-Policies), which often outperforms direct action regression trained with mean squared error…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12386",
+      "url": "https://arxiv.org/abs/2610.12386",
+      "title": "ARC: A Reasoning Recipe for Robot Foundation Models",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12386 · 2026-10-08<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>The prevailing approach to improving robot foundation models (RFMs) relies on larger models, more robot demonstrations, and costly training at scale.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.12386 · 2026-10-08\nSignals: closed-loop success reported · real-robot experiments\n\nThe prevailing approach to improving robot foundation models (RFMs) relies on larger models, more robot demonstrations, and costly training at scale.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "The prevailing approach to improving robot foundation models (RFMs) relies on larger models, more robot demonstrations, and costly training at scale.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.12386"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.12386",
+        "url": "https://arxiv.org/abs/2610.12386",
+        "title": "ARC: A Reasoning Recipe for Robot Foundation Models",
+        "publisher": "arXiv 2610.12386",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "The prevailing approach to improving robot foundation models (RFMs) relies on larger models, more robot demonstrations, and costly training at scale."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12046",
+      "url": "https://arxiv.org/abs/2610.12046",
+      "title": "SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12046 · 2026-10-08<br><b>Key numbers</b>: 27% · 65% · 87%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Dexterous manipulation requires both large-scale task progression and precise contact-rich interaction, making it challenging to collect demonstrations that effectively support both regimes.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.12046 · 2026-10-08\nKey numbers: 27% · 65% · 87%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nDexterous manipulation requires both large-scale task progression and precise contact-rich interaction, making it challenging to collect demonstrations that effectively support both regimes.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Dexterous manipulation requires both large-scale task progression and precise contact-rich interaction, making it challenging to collect demonstrations that effectively support both regimes.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.12046"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.12046",
+        "url": "https://arxiv.org/abs/2610.12046",
+        "title": "SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills",
+        "publisher": "arXiv 2610.12046",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [
+          "27%",
+          "65%",
+          "87%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Dexterous manipulation requires both large-scale task progression and precise contact-rich interaction, making it challenging to collect demonstrations that effectively support both regimes."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12432",
+      "url": "https://arxiv.org/abs/2610.12432",
+      "title": "FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12432 · 2026-10-08<br><b>Key numbers</b>: 99.95% · 97%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Safe reinforcement learning commonly places safety and task performance in the same policy objective, where they can introduce competing updates.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [R]\nSource: arXiv 2610.12432 · 2026-10-08\nKey numbers: 99.95% · 97%\nSignals: quantitative results · real-robot experiments\n\nSafe reinforcement learning commonly places safety and task performance in the same policy objective, where they can introduce competing updates.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Safe reinforcement learning commonly places safety and task performance in the same policy objective, where they can introduce competing updates.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.12432"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.12432",
+        "url": "https://arxiv.org/abs/2610.12432",
+        "title": "FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems",
+        "publisher": "arXiv 2610.12432",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "safety",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [
+          "99.95%",
+          "97%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "Safe reinforcement learning commonly places safety and task performance in the same policy objective, where they can introduce competing updates."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.11416",
+      "url": "https://arxiv.org/abs/2610.11416",
+      "title": "Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.11416 · 2026-10-08<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Vision-Language-Action (VLA) models have emerged as a prominent framework for complex robotic manipulation, building on the strong semantic understanding of pretrained Vision-Language Models (VLMs).</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.11416 · 2026-10-08\nSignals: real-robot experiments\n\nVision-Language-Action (VLA) models have emerged as a prominent framework for complex robotic manipulation, building on the strong semantic understanding of pretrained Vision-Language Models (VLMs).\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "Vision-Language-Action (VLA) models have emerged as a prominent framework for complex robotic manipulation, building on the strong semantic understanding of pretrained Vision-Language Models (VLMs).",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.11416"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "arxiv:2610.11416",
+        "url": "https://arxiv.org/abs/2610.11416",
+        "title": "Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer",
+        "publisher": "arXiv 2610.11416",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Vision-Language-Action (VLA) models have emerged as a prominent framework for complex robotic manipulation, building on the strong semantic understanding of pretrained Vision-Language Models (VLMs)."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:0698575e496b",
+      "url": "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/",
+      "title": "Why humanoid robot demos still fail the generalization test",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>How better data and human judgment can help robots move beyond demos toward reliable real-world performance.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html\">Full radar for 2026-10-11</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-10-09\nSignals: real-robot experiments\n\nHow better data and human judgment can help robots move beyond demos toward reliable real-world performance.\n\nFull radar for 2026-10-11: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html",
+      "summary": "How better data and human judgment can help robots move beyond demos toward reliable real-world performance.",
+      "date_published": "2026-10-10T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-11",
+        "id": "the-robot-report:0698575e496b",
+        "url": "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/",
+        "title": "Why humanoid robot demos still fail the generalization test",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-09",
+        "radar_published": "2026-10-10T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "How better data and human judgment can help robots move beyond demos toward reliable real-world performance."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.09254",
       "url": "https://arxiv.org/abs/2610.09254",
       "title": "RoboRender: Robot-Oriented Video Generation for Visual Sim-to-Real Transfer",
@@ -3518,290 +3830,6 @@
           "real_robot"
         ],
         "excerpt": "Vision-language-action (VLA) models provide broad, instruction-conditioned manipulation behaviors, but their physical execution can remain imprecise during contact-rich interaction."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.30735",
-      "url": "https://arxiv.org/abs/2609.30735",
-      "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.30735 · 2026-09-25<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2609.30735 · 2026-09-25\nSignals: closed-loop success reported\n\nMobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
-      "summary": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change.",
-      "date_published": "2026-09-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.30735"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-29",
-        "id": "arxiv:2609.30735",
-        "url": "https://arxiv.org/abs/2609.30735",
-        "title": "Praxis: Distilling Physical Interaction Priors from Egocentric Videos for Generalizable Whole-Body Manipulation",
-        "publisher": "arXiv 2609.30735",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-09-25",
-        "radar_published": "2026-09-28T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop"
-        ],
-        "excerpt": "Mobile humanoid manipulation requires both reaching a usable workspace and preserving precise hand-object interactions as object poses and contact conditions change."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:33804ee215ed",
-      "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
-      "title": "本田重申Momenta合作，中国智驾全球布局提速",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-09-28</p>\n<blockquote>本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-09-28\n\n本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
-      "summary": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。",
-      "date_published": "2026-09-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-29",
-        "id": "leiphone:33804ee215ed",
-        "url": "https://www.leiphone.com/category/industrynews/uBfs2Eq8httYmMN0.html",
-        "title": "本田重申Momenta合作，中国智驾全球布局提速",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-09-28",
-        "radar_published": "2026-09-28T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "本田与Momenta此前达成的智能驾驶合作，在近期媒体沟通会上再次受到关注。 除了再次明确采用Momenta高阶智驾方案外，本田还给出了具体的量产时间表，称相关技术将从2027年上市的车型开始陆续导入。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:952353d51a5d",
-      "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
-      "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-09-28</p>\n<blockquote>Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-09-28\n\nGecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
-      "summary": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems.",
-      "date_published": "2026-09-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-29",
-        "id": "the-robot-report:952353d51a5d",
-        "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
-        "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "safety",
-        "published": "2026-09-28",
-        "radar_published": "2026-09-28T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Gecko Robotics is using the new NVIDIA Open Agent Safety Platform to ensure the secure autonomous control of systems."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:4ccaa7c04c64",
-      "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
-      "title": "Capturing Visual Environment Structure Correlates with Control Performance",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09</p>\n<blockquote>The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html\">Full radar for 2026-09-29</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\n\nThe choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.\n\nFull radar for 2026-09-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-29.en.html",
-      "summary": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation.",
-      "date_published": "2026-09-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "Toyota Research Institute"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-29",
-        "id": "tri:4ccaa7c04c64",
-        "url": "http://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance",
-        "title": "Capturing Visual Environment Structure Correlates with Control Performance",
-        "publisher": "Toyota Research Institute",
-        "source_id": "tri",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-09",
-        "radar_published": "2026-09-28T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "The choice of visual representation is key to scaling generalist robot policies. However, direct evaluation via policy rollouts is expensive, even in simulation."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:590f68cd1f2a",
-      "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
-      "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Key numbers</b>: 70% · 50%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nKey numbers: 70% · 50%\nSignals: quantitative results · real-robot experiments\n\nGeneralist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
-      "summary": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts.",
-      "date_published": "2026-09-27T23:40:00Z",
-      "authors": [
-        {
-          "name": "Toyota Research Institute"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-28",
-        "id": "tri:590f68cd1f2a",
-        "url": "http://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
-        "title": "Beyond Binary Success: Sample-Efficient and Statistically Rigorous Robot Policy Comparison",
-        "publisher": "Toyota Research Institute",
-        "source_id": "tri",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-09",
-        "radar_published": "2026-09-27T23:40:00Z",
-        "numbers": [
-          "70%",
-          "50%"
-        ],
-        "signals": [
-          "numbers",
-          "real_robot"
-        ],
-        "excerpt": "Generalist robot manipulation policies are becoming increasingly capable, but are limited in evaluation to a small number of hardware rollouts."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:99c546fad695",
-      "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
-      "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nSignals: real-robot experiments\n\nImitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
-      "summary": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations.",
-      "date_published": "2026-09-27T23:40:00Z",
-      "authors": [
-        {
-          "name": "Toyota Research Institute"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-28",
-        "id": "tri:99c546fad695",
-        "url": "http://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
-        "title": "Using Non-Expert Data to Robustify Imitation Learning via Offline Reinforcement Learning",
-        "publisher": "Toyota Research Institute",
-        "source_id": "tri",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-09-09",
-        "radar_published": "2026-09-27T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Imitation learning has proven effective for training robots to perform complex tasks from expert human demonstrations."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:tri:4f371475c192",
-      "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
-      "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: Toyota Research Institute · 2026-09-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: Toyota Research Institute · 2026-09-09\nSignals: real-robot experiments\n\nWhole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
-      "summary": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break.",
-      "date_published": "2026-09-27T23:40:00Z",
-      "authors": [
-        {
-          "name": "Toyota Research Institute"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-28",
-        "id": "tri:4f371475c192",
-        "url": "http://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
-        "title": "TACTIC: Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
-        "publisher": "Toyota Research Institute",
-        "source_id": "tri",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-09",
-        "radar_published": "2026-09-27T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:monoist:35bf01689383",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
-      "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: MONOist (ITmedia) · 2026-09-27</p>\n<blockquote>ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html\">Full radar for 2026-09-28</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: MONOist (ITmedia) · 2026-09-27\n\nダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。\n\nFull radar for 2026-09-28: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-09-28.en.html",
-      "summary": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。",
-      "date_published": "2026-09-27T23:40:00Z",
-      "authors": [
-        {
-          "name": "MONOist (ITmedia)"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-09-28",
-        "id": "monoist:35bf01689383",
-        "url": "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html",
-        "title": "ダイフクが物流倉庫の完全自動化へヒューマノイドを開発、2030年に実証実験",
-        "publisher": "MONOist (ITmedia)",
-        "source_id": "monoist",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-09-27",
-        "radar_published": "2026-09-27T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "ダイフクは、「国際物流総合展2026」において、自動倉庫やAMRを組み合わせた物流倉庫向けの自動化ソリューションを披露。併せて、物流倉庫の完全自動化の鍵となるヒューマノイド開発の方向性についても言及した。"
       }
     }
   ]

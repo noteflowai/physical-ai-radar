@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-10
+### 本日のレーダー · 2026-10-11
 
-`生成時刻: 2026-10-10 07:15 UTC` ｜ `対象期間: 論文 2026-10-06 → 2026-10-10 · ブログ・報道 2026-09-10 → 2026-10-10 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-10 23:40 UTC` ｜ `対象期間: 論文 2026-10-07 → 2026-10-11 · ブログ・報道 2026-09-11 → 2026-10-11 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboRender: Robot-Oriented Video Generation for Visual Sim-to-Real Transfer](https://arxiv.org/abs/2610.09254)**<br>`71%`&nbsp; `7.1x`&nbsp; `3.6x`<br><sub>シミュレーションと評価 · arXiv 2610.09254 · 2026‑10‑07</sub> |
-| 02<br>🔵&nbsp;`R` | **[USDCraft: Geometrically Grounded Programmatic Modeling of Articulated 3D Assets for Simulation](https://arxiv.org/abs/2610.11322)**<br><sub>シミュレーションと評価 · arXiv 2610.11322 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Humanoid World Action Model With Joint State--Action Generation](https://arxiv.org/abs/2610.12026)**<br>`70.6%`&nbsp; `43.3%`<br><sub>基盤モデル · arXiv 2610.12026 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[ManiUnit: A Manipulation Skill Dataset and Benchmark for Long-Horizon Tasks](https://arxiv.org/abs/2610.12089)**<br>`56%`&nbsp; `78.7%`&nbsp; `49.3%`<br><sub>システムとオーケストレーション · arXiv 2610.12089 · 2026‑10‑08</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Robot Decommissioning Takes a Fun Turn](https://spectrum.ieee.org/video-friday-reachy-mini-raps)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑09</sub> |
-| 06<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/Pz34omTBnW9Y0LhO.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑10</sub> |
-| 07<br>🟡&nbsp;`M` | **[这届 IROS 2026 上，具身学术与产业边界正在消融](https://www.leiphone.com/category/ai/4I8YKksz9V10Ih1R.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑10</sub> |
-| 08<br>🟡&nbsp;`M` | **[再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券，或筹钱加码AI；OpenAI全面上线GPT-6](https://www.leiphone.com/category/zaobao/GGmq1RiBgXY2GSVL.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control](https://arxiv.org/abs/2610.12185)**<br>`8.70%`&nbsp; `6.28%`&nbsp; `6.83%`<br><sub>シミュレーションと評価 · arXiv 2610.12185 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[Being-M0.7: A Latent World-Action Model for Humanoid Robots](https://arxiv.org/abs/2610.11283)**<br>`10,000 hours`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.11283 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning](https://arxiv.org/abs/2610.12231)**<br><sub>シミュレーションと評価 · arXiv 2610.12231 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/abs/2610.12386)**<br><sub>基盤モデル · arXiv 2610.12386 · 2026‑10‑08</sub> |
+| 05<br>🔵&nbsp;`R` | **[SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills](https://arxiv.org/abs/2610.12046)**<br>`27%`&nbsp; `65%`&nbsp; `87%`<br><sub>データエンジン · arXiv 2610.12046 · 2026‑10‑08</sub> |
+| 06<br>🔵&nbsp;`R` | **[FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems](https://arxiv.org/abs/2610.12432)**<br>`99.95%`&nbsp; `97%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.12432 · 2026‑10‑08</sub> |
+| 07<br>🔵&nbsp;`R` | **[Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer](https://arxiv.org/abs/2610.11416)**<br><sub>基盤モデル · arXiv 2610.11416 · 2026‑10‑08</sub> |
+| 08<br>🟡&nbsp;`M` | **[Why humanoid robot demos still fail the generalization test](https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑09</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **RoboRender** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **USDCraft** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **Humanoid World Action Model With Joint State--Action Generation** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-4. **ManiUnit** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
-5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-6. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-7. **这届 IROS 2026 上，具身学术与产业边界正在消融** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-8. **再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+1. **RESETTLE** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Being-M0.7** — 査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。
+3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **ARC** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **SkillWeave** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **FAITH** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
+7. **Rewiring Semantics, Dynamics, and Control** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Why humanoid robot demos still fail the generalization test** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-10.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-11.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

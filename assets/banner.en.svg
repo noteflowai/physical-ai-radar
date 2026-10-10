@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI Radar · 2026-10-10 · The Physical AI frontier, eight picks a day, every claim tagged">
-<title>Physical AI Radar · 2026-10-10</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI Radar · 2026-10-11 · The Physical AI frontier, eight picks a day, every claim tagged">
+<title>Physical AI Radar · 2026-10-11</title>
 <style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
 <defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
 <g clip-path="url(#card)">
@@ -11,7 +11,7 @@
 <rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
 <rect x="60" y="56" width="434" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
 <circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
-<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">Updated daily at 07:40 SGT · 2026-10-10</text>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">Updated daily at 07:40 SGT · 2026-10-11</text>
 <text x="60" y="144" font-size="40" font-weight="800" fill="url(#shine)">The Physical AI frontier,</text>
 <text x="60" y="194" font-size="40" font-weight="800" fill="url(#shine)">eight picks a day, every</text>
 <text x="60" y="244" font-size="40" font-weight="800" fill="url(#shine)">claim tagged</text>
@@ -22,10 +22,10 @@
 <text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
 <rect x="220" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="236" y="370" font-size="15" fill="#8b98ad">items scanned</text>
-<text class="mono" x="236" y="410" font-size="32" font-weight="700" fill="#e6edf3">523</text>
+<text class="mono" x="236" y="410" font-size="32" font-weight="700" fill="#e6edf3">511</text>
 <rect x="381" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="396" y="370" font-size="15" fill="#8b98ad">sources answered</text>
-<text class="mono" x="396" y="410" font-size="32" font-weight="700" fill="#e6edf3">10/11</text>
+<text class="mono" x="396" y="410" font-size="32" font-weight="700" fill="#e6edf3">11/11</text>
 <rect x="542" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="556" y="370" font-size="15" fill="#8b98ad">picks, last 7 days</text>
 <text class="mono" x="556" y="410" font-size="32" font-weight="700" fill="#e6edf3">56</text>
@@ -36,30 +36,30 @@
 <polygon class="ring" points="0.0,-81.0 57.3,-57.3 81.0,-0.0 57.3,57.3 0.0,81.0 -57.3,57.3 -81.0,0.0 -57.3,-57.3"/>
 <polygon class="ring rim" points="0.0,-108.0 76.4,-76.4 108.0,-0.0 76.4,76.4 0.0,108.0 -76.4,76.4 -108.0,0.0 -76.4,-76.4"/>
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="-108.0"/>
-<text class="label" x="0.0" y="-124.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">Foundation models <tspan class="count">11</tspan></text>
+<text class="label" x="0.0" y="-124.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">Foundation models <tspan class="count">12</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="76.4" y2="-76.4"/>
 <text class="label" x="87.7" y="-87.7" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">Data engine <tspan class="count">5</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="108.0" y2="-0.0"/>
-<text class="label" x="124.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">Training &amp; self-improvement <tspan class="count">5</tspan></text>
+<text class="label" x="124.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">Training &amp; self-improvement <tspan class="count">4</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="76.4" y2="76.4"/>
 <text class="label" x="87.7" y="87.7" text-anchor="start" dominant-baseline="middle" fill="#fb923c">Simulation &amp; evaluation <tspan class="count">14</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="108.0"/>
-<text class="label" x="0.0" y="124.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">Edge &amp; real-time <tspan class="count">7</tspan></text>
+<text class="label" x="0.0" y="124.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">Edge &amp; real-time <tspan class="count">6</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-76.4" y2="76.4"/>
 <text class="label" x="-87.7" y="87.7" text-anchor="end" dominant-baseline="middle" fill="#facc15">Safety &amp; compliance <tspan class="count">2</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-108.0" y2="0.0"/>
-<text class="label" x="-124.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">Systems &amp; orchestration <tspan class="count">4</tspan></text>
+<text class="label" x="-124.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">Systems &amp; orchestration <tspan class="count">3</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-76.4" y2="-76.4"/>
-<text class="label" x="-87.7" y="-87.7" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">Embodiment &amp; supply chain <tspan class="count">8</tspan></text>
-<polygon class="area" points="0.0,-84.9 27.3,-27.3 38.6,-0.0 76.4,76.4 0.0,54.0 -10.9,10.9 -30.9,0.0 -43.6,-43.6"/>
+<text class="label" x="-87.7" y="-87.7" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">Embodiment &amp; supply chain <tspan class="count">10</tspan></text>
+<polygon class="area" points="0.0,-92.6 27.3,-27.3 30.9,-0.0 76.4,76.4 0.0,46.3 -10.9,10.9 -23.1,0.0 -54.5,-54.5"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-108 A108,108 0 0,1 69.4,-82.7 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="69.4" y2="-82.7" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
-<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="74.5" cy="62.5" r="11" class="halo"/><circle cx="74.5" cy="62.5" r="5"/><title>RoboRender: Robot-Oriented Video Generation for Visual Sim-to-Real Transfer</title></a>
-<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="62.1" cy="74.0" r="11" class="halo"/><circle cx="62.1" cy="74.0" r="5"/><title>USDCraft: Geometrically Grounded Programmatic Modeling of Articulated 3D Assets for Simulation</title></a>
-<a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-8.2" cy="-94.0" r="11" class="halo"/><circle cx="-8.2" cy="-94.0" r="5"/><title>Humanoid World Action Model With Joint State--Action Generation</title></a>
-<a href="#p4" class="blip" style="--lane:#a3e635;--delay:1.40s"><circle cx="-94.3" cy="0.0" r="11" class="halo"/><circle cx="-94.3" cy="0.0" r="5"/><title>ManiUnit: A Manipulation Skill Dataset and Benchmark for Long-Horizon Tasks</title></a>
-<a href="#p5" class="blip" style="--lane:#22d3ee;--delay:1.75s"><circle cx="-59.2" cy="-49.7" r="11" class="halo"/><circle cx="-59.2" cy="-49.7" r="5"/><title>Video Friday: Robot Decommissioning Takes a Fun Turn</title></a>
-<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-43.5" cy="-51.9" r="11" class="halo"/><circle cx="-43.5" cy="-51.9" r="5"/><title>让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026</title></a>
-<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="44.0" cy="-44.0" r="11" class="halo"/><circle cx="44.0" cy="-44.0" r="5"/><title>这届 IROS 2026 上，具身学术与产业边界正在消融</title></a>
-<a href="#p8" class="blip" style="--lane:#8b5cf6;--delay:2.80s"><circle cx="5.1" cy="-58.0" r="11" class="halo"/><circle cx="5.1" cy="-58.0" r="5"/><title>再裁员5000人！保时捷明确回归燃油车，高端车型计划涨价20%；腾讯拟发行50亿美元离岸债券，或筹钱加码AI；OpenAI全面上线GPT-6</title></a>
+<a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="74.5" cy="62.5" r="11" class="halo"/><circle cx="74.5" cy="62.5" r="5"/><title>RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control</title></a>
+<a href="#p2" class="blip" style="--lane:#22d3ee;--delay:0.70s"><circle cx="-72.9" cy="-61.2" r="11" class="halo"/><circle cx="-72.9" cy="-61.2" r="5"/><title>Being-M0.7: A Latent World-Action Model for Humanoid Robots</title></a>
+<a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="59.5" cy="70.9" r="11" class="halo"/><circle cx="59.5" cy="70.9" r="5"/><title>Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning</title></a>
+<a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="-7.9" cy="-90.2" r="11" class="halo"/><circle cx="-7.9" cy="-90.2" r="5"/><title>ARC: A Reasoning Recipe for Robot Foundation Models</title></a>
+<a href="#p5" class="blip" style="--lane:#38bdf8;--delay:1.75s"><circle cx="63.8" cy="-63.8" r="11" class="halo"/><circle cx="63.8" cy="-63.8" r="5"/><title>SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills</title></a>
+<a href="#p6" class="blip" style="--lane:#facc15;--delay:2.10s"><circle cx="-62.7" cy="62.7" r="11" class="halo"/><circle cx="-62.7" cy="62.7" r="5"/><title>FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems</title></a>
+<a href="#p7" class="blip" style="--lane:#8b5cf6;--delay:2.45s"><circle cx="7.6" cy="-87.4" r="11" class="halo"/><circle cx="7.6" cy="-87.4" r="5"/><title>Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-39.8" cy="-47.5" r="11" class="halo"/><circle cx="-39.8" cy="-47.5" r="5"/><title>Why humanoid robot demos still fail the generalization test</title></a>
 <circle class="core" r="3"/></svg>
 </svg>

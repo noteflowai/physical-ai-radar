@@ -376,6 +376,23 @@
         "tri"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-11",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.12185",
+        "https://arxiv.org/abs/2610.11283",
+        "https://arxiv.org/abs/2610.12231",
+        "https://arxiv.org/abs/2610.12386",
+        "https://arxiv.org/abs/2610.12046",
+        "https://arxiv.org/abs/2610.12432",
+        "https://arxiv.org/abs/2610.11416",
+        "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }
