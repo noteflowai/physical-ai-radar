@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-11
+### 今日雷达 · 2026-10-12
 
-`生成时间: 2026-10-10 23:40 UTC` ｜ `统计窗口: 论文 2026-10-07 → 2026-10-11 · 博客与报道 2026-09-11 → 2026-10-11 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-11 23:40 UTC` ｜ `统计窗口: 论文 2026-10-08 → 2026-10-12 · 博客与报道 2026-09-12 → 2026-10-12 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control](https://arxiv.org/abs/2610.12185)**<br>`8.70%`&nbsp; `6.28%`&nbsp; `6.83%`<br><sub>仿真与评测 · arXiv 2610.12185 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[Being-M0.7: A Latent World-Action Model for Humanoid Robots](https://arxiv.org/abs/2610.11283)**<br>`10,000 hours`<br><sub>本体与供应链 · arXiv 2610.11283 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning](https://arxiv.org/abs/2610.12231)**<br><sub>仿真与评测 · arXiv 2610.12231 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/abs/2610.12386)**<br><sub>基座模型 · arXiv 2610.12386 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills](https://arxiv.org/abs/2610.12046)**<br>`27%`&nbsp; `65%`&nbsp; `87%`<br><sub>数据引擎 · arXiv 2610.12046 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems](https://arxiv.org/abs/2610.12432)**<br>`99.95%`&nbsp; `97%`<br><sub>安全、权限与合规 · arXiv 2610.12432 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer](https://arxiv.org/abs/2610.11416)**<br><sub>基座模型 · arXiv 2610.11416 · 2026‑10‑08</sub> |
-| 08<br>🟡&nbsp;`M` | **[Why humanoid robot demos still fail the generalization test](https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>仿真与评测 · arXiv 2610.12368 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>仿真与评测 · arXiv 2610.11480 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>数据引擎 · arXiv 2610.12440 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>基座模型 · arXiv 2610.12407 · 2026‑10‑08</sub> |
+| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>训练与自我改进 · arXiv 2610.12457 · 2026‑10‑08</sub> |
+| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>边缘与实时性 · arXiv 2610.12249 · 2026‑10‑08</sub> |
+| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>边缘与实时性 · arXiv 2610.11809 · 2026‑10‑08</sub> |
+| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>安全、权限与合规 · arXiv 2610.12467 · 2026‑10‑08</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **RESETTLE** — `AI 起草` 若你的操作系统缺少执行出错后的及时纠偏，这篇自报预印本声称成功率最高提升 8.70%，监控与恢复的计算延迟也更低；页面未写明对比基线，评估前先核对原文。
-2. **Being-M0.7** — `AI 起草` 人形全身移动操作受限于机器人示范稀缺的团队，可关注这条从超过 10,000 hours 原始以人为中心数据入手的路线；结果为作者自报，迁移到自家本体的效果仍需自测。
-3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — `AI 起草` 在扩散/流匹配策略与 MSE 直接回归之间做选型时，这篇预印本值得一读：它报告了闭环与真机实验，但页面没有数字，暂不足以据此更换现有策略架构。
-4. **ARC** — `AI 起草` 计划靠更大模型、更多示范和高成本训练提升机器人基座模型的团队，可以把这条以推理为核心的路线列为备选；自报预印本，有闭环与真机信号，但页面没有数字可供权衡投入。
-5. **SkillWeave** — `AI 起草` 若灵巧操作的示范要同时覆盖长程任务推进和接触密集交互，这篇预印本报告平均端到端成功率 27%、组合效率 87%；端到端数字偏低，作者自报，采集方案调整前宜先复现。
-6. **FAITH** — `AI 起草` 若你的安全强化学习把安全与任务性能放在同一目标里互相拉扯，这篇预印本报告安全率 99.95%、同时保留未过滤策略的 97%；属作者自报，安全率本身不能当作认证依据。
-7. **Rewiring Semantics, Dynamics, and Control** — `AI 起草` 对基于预训练 VLM 语义能力构建的 VLA，这篇预印本提出以动作为中心的结构并报告了真机实验；页面没有数字，现阶段适合跟踪，而非据此改动现有模型栈。
-8. **Why humanoid robot demos still fail the generalization test** — `AI 起草` 评估人形厂商演示时可参考：这篇二手报道认为，要从演示走向可靠的真实表现，靠的是更好的数据与人的判断；文中没有数字，适合用来列采购问题，而非作为证据。
+1. **LiteNWM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **RoboAware** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+4. **LeWAM** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+5. **SpatialHarness** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+6. **Real-Time Motion Planning with Dynamic Hazards** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+7. **WAND** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+8. **CSF** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-11.zh.md)** · [每周汇总 ›](radar/weekly/2026-W41.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-12.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

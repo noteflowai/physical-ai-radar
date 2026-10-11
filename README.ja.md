@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-11
+### 本日のレーダー · 2026-10-12
 
-`生成時刻: 2026-10-10 23:40 UTC` ｜ `対象期間: 論文 2026-10-07 → 2026-10-11 · ブログ・報道 2026-09-11 → 2026-10-11 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-11 23:40 UTC` ｜ `対象期間: 論文 2026-10-08 → 2026-10-12 · ブログ・報道 2026-09-12 → 2026-10-12 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control](https://arxiv.org/abs/2610.12185)**<br>`8.70%`&nbsp; `6.28%`&nbsp; `6.83%`<br><sub>シミュレーションと評価 · arXiv 2610.12185 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[Being-M0.7: A Latent World-Action Model for Humanoid Robots](https://arxiv.org/abs/2610.11283)**<br>`10,000 hours`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.11283 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning](https://arxiv.org/abs/2610.12231)**<br><sub>シミュレーションと評価 · arXiv 2610.12231 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/abs/2610.12386)**<br><sub>基盤モデル · arXiv 2610.12386 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills](https://arxiv.org/abs/2610.12046)**<br>`27%`&nbsp; `65%`&nbsp; `87%`<br><sub>データエンジン · arXiv 2610.12046 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems](https://arxiv.org/abs/2610.12432)**<br>`99.95%`&nbsp; `97%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.12432 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer](https://arxiv.org/abs/2610.11416)**<br><sub>基盤モデル · arXiv 2610.11416 · 2026‑10‑08</sub> |
-| 08<br>🟡&nbsp;`M` | **[Why humanoid robot demos still fail the generalization test](https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>シミュレーションと評価 · arXiv 2610.12368 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>シミュレーションと評価 · arXiv 2610.11480 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>データエンジン · arXiv 2610.12440 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>基盤モデル · arXiv 2610.12407 · 2026‑10‑08</sub> |
+| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>学習と自己改善 · arXiv 2610.12457 · 2026‑10‑08</sub> |
+| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>エッジとリアルタイム · arXiv 2610.12249 · 2026‑10‑08</sub> |
+| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>エッジとリアルタイム · arXiv 2610.11809 · 2026‑10‑08</sub> |
+| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.12467 · 2026‑10‑08</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **RESETTLE** — `AI 下書き` 実行エラー後の即時修正が手薄なマニピュレーション系なら検討対象。自己報告のプレプリントで成功率は最大 8.70% 向上、監視・回復の計算遅延も低いとするが、比較対象はページに明記されておらず原文確認が必要。
-2. **Being-M0.7** — `AI 下書き` ロボットのデモ不足に悩むヒューマノイドの移動マニピュレーション開発では、10,000 hours 超の人間中心の生データから出発する方針が参考になる。結果は著者の自己報告で、自社機体への移行は自前の検証が要る。
-3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — `AI 下書き` 拡散・フローマッチング方策と MSE 回帰のどちらを採るか検討中なら一読の価値あり。閉ループ・実機実験を報告するが、ページに数値はなく、現行の方策構成を切り替える根拠としてはまだ弱い。
-4. **ARC** — `AI 下書き` 大規模化・デモ追加・高コスト学習でロボット基盤モデルを伸ばす計画なら、推論を軸にした代替案として比較検討の対象に。自己報告のプレプリントで閉ループと実機のシグナルはあるが、投資判断に使える数値はページにない。
-5. **SkillWeave** — `AI 下書き` 巧緻操作のデモで長期のタスク進行と接触の多い操作を両立させたいなら参考に。プレプリントは平均エンドツーエンド成功率 27%、合成効率 87% と自己報告しており、成功率はまだ低いため収集方針を変える前に再現を。
-6. **FAITH** — `AI 下書き` 安全性とタスク性能を同じ目的関数に入れて更新が競合している安全強化学習なら注目。安全率 99.95%、フィルタなしの 97% を維持と報告するが著者の自己報告であり、安全率そのものは認証の根拠にならない。
-7. **Rewiring Semantics, Dynamics, and Control** — `AI 下書き` 事前学習済み VLM の意味理解に依拠する VLA に対し、行動中心の構成を提案し実機実験も報告するプレプリント。ページに数値がないため、現時点ではモデル構成を変える根拠ではなく追跡対象。
-8. **Why humanoid robot demos still fail the generalization test** — `AI 下書き` ヒューマノイドのデモを評価する際の視点として、デモから信頼できる実環境性能へ進むにはより良いデータと人の判断が要ると論じる二次報道。数値はないため、根拠ではなく調達時の質問づくりに使うのが妥当。
+1. **LiteNWM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **RoboAware** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **LeWAM** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **SpatialHarness** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+6. **Real-Time Motion Planning with Dynamic Hazards** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+7. **WAND** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+8. **CSF** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-11.ja.md)** · [週間まとめ ›](radar/weekly/2026-W41.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-12.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

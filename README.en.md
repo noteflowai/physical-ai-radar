@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-11
+### Today's radar · 2026-10-12
 
-`Generated: 2026-10-10 23:40 UTC` ｜ `Window: papers 2026-10-07 → 2026-10-11 · posts 2026-09-11 → 2026-10-11 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-11 23:40 UTC` ｜ `Window: papers 2026-10-08 → 2026-10-12 · posts 2026-09-12 → 2026-10-12 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control](https://arxiv.org/abs/2610.12185)**<br>`8.70%`&nbsp; `6.28%`&nbsp; `6.83%`<br><sub>Simulation & evaluation · arXiv 2610.12185 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[Being-M0.7: A Latent World-Action Model for Humanoid Robots](https://arxiv.org/abs/2610.11283)**<br>`10,000 hours`<br><sub>Embodiment & supply chain · arXiv 2610.11283 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Residual Modeling Closes the Regression and Generative Policy Gap in Robot Learning](https://arxiv.org/abs/2610.12231)**<br><sub>Simulation & evaluation · arXiv 2610.12231 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/abs/2610.12386)**<br><sub>Foundation models · arXiv 2610.12386 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills](https://arxiv.org/abs/2610.12046)**<br>`27%`&nbsp; `65%`&nbsp; `87%`<br><sub>Data engine · arXiv 2610.12046 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems](https://arxiv.org/abs/2610.12432)**<br>`99.95%`&nbsp; `97%`<br><sub>Safety, permissions & compliance · arXiv 2610.12432 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer](https://arxiv.org/abs/2610.11416)**<br><sub>Foundation models · arXiv 2610.11416 · 2026‑10‑08</sub> |
-| 08<br>🟡&nbsp;`M` | **[Why humanoid robot demos still fail the generalization test](https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>Simulation & evaluation · arXiv 2610.12368 · 2026‑10‑08</sub> |
+| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>Simulation & evaluation · arXiv 2610.11480 · 2026‑10‑08</sub> |
+| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>Data engine · arXiv 2610.12440 · 2026‑10‑08</sub> |
+| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>Foundation models · arXiv 2610.12407 · 2026‑10‑08</sub> |
+| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>Training & self-improvement · arXiv 2610.12457 · 2026‑10‑08</sub> |
+| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>Edge & real-time · arXiv 2610.12249 · 2026‑10‑08</sub> |
+| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>Edge & real-time · arXiv 2610.11809 · 2026‑10‑08</sub> |
+| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>Safety, permissions & compliance · arXiv 2610.12467 · 2026‑10‑08</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RESETTLE** — `AI draft` If your manipulation stack lacks timely correction after execution errors, this self-reported preprint claims success-rate gains of up to 8.70% with lower monitoring-and-recovery latency; the page does not name the comparison, so check it before adopting.
-2. **Being-M0.7** — `AI draft` For humanoid loco-manipulation teams short of robot demonstrations, this preprint builds on more than 10,000 hours of raw human-centric data; results are author-reported, so transfer to your own platform still needs your own testing.
-3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — `AI draft` If you are choosing between diffusion or flow-matching policies and plain MSE regression, this preprint is worth reading for its closed-loop and real-robot experiments, but the page shows no figures to justify switching architectures yet.
-4. **ARC** — `AI draft` Teams planning to improve a robot foundation model through larger models, more demonstrations and costly training get a reasoning-centred alternative to weigh; it is a self-reported preprint with closed-loop and real-robot signals but no figures on the page.
-5. **SkillWeave** — `AI draft` If your dexterous demonstrations must cover both long task progression and contact-rich interaction, this preprint reports 27% average end-to-end success and 87% composition efficiency; the end-to-end figure is modest and self-reported, so reproduce before reshaping collection.
-6. **FAITH** — `AI draft` If your safe RL puts safety and task performance in one objective that pulls both ways, this preprint reports a 99.95% safety rate while retaining 97% relative to the unfiltered policy; it is self-reported, and a safety rate is not a certification argument.
-7. **Rewiring Semantics, Dynamics, and Control** — `AI draft` For VLAs built on a pretrained VLM's semantic understanding, this preprint proposes an action-centric architecture and reports real-robot experiments; with no figures on the page, it is one to track rather than a reason to change your model stack now.
-8. **Why humanoid robot demos still fail the generalization test** — `AI draft` When assessing a humanoid vendor's demo, this secondary piece argues that moving beyond demos to reliable real-world performance depends on better data and human judgment; it gives no figures, so use it to frame procurement questions, not as evidence.
+1. **LiteNWM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **RoboAware** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **LeWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **SpatialHarness** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+6. **Real-Time Motion Planning with Dynamic Hazards** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
+7. **WAND** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
+8. **CSF** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-11.en.md)** · [Weekly roundup ›](radar/weekly/2026-W41.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-12.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
