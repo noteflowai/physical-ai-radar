@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: reject duplicated promptfoo result rows instead of counting them as attempts</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.9/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.9/</guid>
+      <description>evalarc diff now rejects a promptfoo --output JSON file that contains the same result row twice, instead of counting the copy as an extra attempt. The promptfoo loader keys each row of results.results[] by (testIdx, promptIdx, provider). The key is checked only when testIdx is an integer and not a bool. If a key repeats, loading stops with a ValueError, the same way duplicate Inspect samples are already handled. The message names the duplicated testIdx, promptIdx and provider and the test label. The label and provider are escaped and truncated with the existing _shown_id helper. The message also tells the user to re-export with promptfoo eval --output. evalarc diff exits 2 for a duplicate in either the baseline or the current file, prints the message to stderr and gives no gate verdict. A list or object promptIdx used to crash the loader with an unhandled TypeError. It is now reported as malformed input with exit 2. Output from --repeat, which gives each repeat a new testIdx, still loads as attempts of one test. The unmodified promptfoo example pair still exits 1. docs/ci-gate.md and docs/ci-gate.zh-CN.md describe the rule, exit 2 and how to recover. Controller results: before the fix, the new test file failed on the base code (9 failed, 5 passed). The duplicate cases did not raise, and the non-scalar promptIdx cases crashed with TypeError at results_diff.py line 543. At commit f18d1890 the controller ran the new tests, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs, and all exited 0. The author had no tools and ran none of these checks.</description>
+      <pubDate>Sun, 11 Oct 2026 14:35:37 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: escape untrusted run status and metric name in the Markdown gate summary</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.7/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.7/</guid>
