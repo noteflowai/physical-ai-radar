@@ -60,6 +60,6 @@
 <a href="#p5" class="blip" style="--lane:#38bdf8;--delay:1.75s"><circle cx="63.8" cy="-63.8" r="11" class="halo"/><circle cx="63.8" cy="-63.8" r="5"/><title>SkillWeave: Weaving Heterogeneous Demonstrations into Long-Horizon Manipulation Skills</title></a>
 <a href="#p6" class="blip" style="--lane:#facc15;--delay:2.10s"><circle cx="-62.7" cy="62.7" r="11" class="halo"/><circle cx="-62.7" cy="62.7" r="5"/><title>FAITH: Feasibility-Aware Safety-Filtered RL for High-Dimensional Systems</title></a>
 <a href="#p7" class="blip" style="--lane:#8b5cf6;--delay:2.45s"><circle cx="7.6" cy="-87.4" r="11" class="halo"/><circle cx="7.6" cy="-87.4" r="5"/><title>Rewiring Semantics, Dynamics, and Control: A Simple yet Effective Action-Centric Tri-Stream Transformer</title></a>
-<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-39.8" cy="-47.5" r="11" class="halo"/><circle cx="-39.8" cy="-47.5" r="5"/><title>Why humanoid robot demos still fail the generalization test</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-39.8" cy="-47.4" r="11" class="halo"/><circle cx="-39.8" cy="-47.4" r="5"/><title>Why humanoid robot demos still fail the generalization test</title></a>
 <circle class="core" r="3"/></svg>
 </svg>
