@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-11",
+  "generated": "2026-10-11 13:57 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.12185": {
+      "zh": "若你的操作系统缺少执行出错后的及时纠偏，这篇自报预印本声称成功率最高提升 8.70%，监控与恢复的计算延迟也更低；页面未写明对比基线，评估前先核对原文。",
+      "en": "If your manipulation stack lacks timely correction after execution errors, this self-reported preprint claims success-rate gains of up to 8.70% with lower monitoring-and-recovery latency; the page does not name the comparison, so check it before adopting.",
+      "ja": "実行エラー後の即時修正が手薄なマニピュレーション系なら検討対象。自己報告のプレプリントで成功率は最大 8.70% 向上、監視・回復の計算遅延も低いとするが、比較対象はページに明記されておらず原文確認が必要。"
+    },
+    "https://arxiv.org/abs/2610.11283": {
+      "zh": "人形全身移动操作受限于机器人示范稀缺的团队，可关注这条从超过 10,000 hours 原始以人为中心数据入手的路线；结果为作者自报，迁移到自家本体的效果仍需自测。",
+      "en": "For humanoid loco-manipulation teams short of robot demonstrations, this preprint builds on more than 10,000 hours of raw human-centric data; results are author-reported, so transfer to your own platform still needs your own testing.",
+      "ja": "ロボットのデモ不足に悩むヒューマノイドの移動マニピュレーション開発では、10,000 hours 超の人間中心の生データから出発する方針が参考になる。結果は著者の自己報告で、自社機体への移行は自前の検証が要る。"
+    },
+    "https://arxiv.org/abs/2610.12231": {
+      "zh": "在扩散/流匹配策略与 MSE 直接回归之间做选型时，这篇预印本值得一读：它报告了闭环与真机实验，但页面没有数字，暂不足以据此更换现有策略架构。",
+      "en": "If you are choosing between diffusion or flow-matching policies and plain MSE regression, this preprint is worth reading for its closed-loop and real-robot experiments, but the page shows no figures to justify switching architectures yet.",
+      "ja": "拡散・フローマッチング方策と MSE 回帰のどちらを採るか検討中なら一読の価値あり。閉ループ・実機実験を報告するが、ページに数値はなく、現行の方策構成を切り替える根拠としてはまだ弱い。"
+    },
+    "https://arxiv.org/abs/2610.12386": {
+      "zh": "计划靠更大模型、更多示范和高成本训练提升机器人基座模型的团队，可以把这条以推理为核心的路线列为备选；自报预印本，有闭环与真机信号，但页面没有数字可供权衡投入。",
+      "en": "Teams planning to improve a robot foundation model through larger models, more demonstrations and costly training get a reasoning-centred alternative to weigh; it is a self-reported preprint with closed-loop and real-robot signals but no figures on the page.",
+      "ja": "大規模化・デモ追加・高コスト学習でロボット基盤モデルを伸ばす計画なら、推論を軸にした代替案として比較検討の対象に。自己報告のプレプリントで閉ループと実機のシグナルはあるが、投資判断に使える数値はページにない。"
+    },
+    "https://arxiv.org/abs/2610.12046": {
+      "zh": "若灵巧操作的示范要同时覆盖长程任务推进和接触密集交互，这篇预印本报告平均端到端成功率 27%、组合效率 87%；端到端数字偏低，作者自报，采集方案调整前宜先复现。",
+      "en": "If your dexterous demonstrations must cover both long task progression and contact-rich interaction, this preprint reports 27% average end-to-end success and 87% composition efficiency; the end-to-end figure is modest and self-reported, so reproduce before reshaping collection.",
+      "ja": "巧緻操作のデモで長期のタスク進行と接触の多い操作を両立させたいなら参考に。プレプリントは平均エンドツーエンド成功率 27%、合成効率 87% と自己報告しており、成功率はまだ低いため収集方針を変える前に再現を。"
+    },
+    "https://arxiv.org/abs/2610.12432": {
+      "zh": "若你的安全强化学习把安全与任务性能放在同一目标里互相拉扯，这篇预印本报告安全率 99.95%、同时保留未过滤策略的 97%；属作者自报，安全率本身不能当作认证依据。",
+      "en": "If your safe RL puts safety and task performance in one objective that pulls both ways, this preprint reports a 99.95% safety rate while retaining 97% relative to the unfiltered policy; it is self-reported, and a safety rate is not a certification argument.",
+      "ja": "安全性とタスク性能を同じ目的関数に入れて更新が競合している安全強化学習なら注目。安全率 99.95%、フィルタなしの 97% を維持と報告するが著者の自己報告であり、安全率そのものは認証の根拠にならない。"
+    },
+    "https://arxiv.org/abs/2610.11416": {
+      "zh": "对基于预训练 VLM 语义能力构建的 VLA，这篇预印本提出以动作为中心的结构并报告了真机实验；页面没有数字，现阶段适合跟踪，而非据此改动现有模型栈。",
+      "en": "For VLAs built on a pretrained VLM's semantic understanding, this preprint proposes an action-centric architecture and reports real-robot experiments; with no figures on the page, it is one to track rather than a reason to change your model stack now.",
+      "ja": "事前学習済み VLM の意味理解に依拠する VLA に対し、行動中心の構成を提案し実機実験も報告するプレプリント。ページに数値がないため、現時点ではモデル構成を変える根拠ではなく追跡対象。"
+    },
+    "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test": {
+      "zh": "评估人形厂商演示时可参考：这篇二手报道认为，要从演示走向可靠的真实表现，靠的是更好的数据与人的判断；文中没有数字，适合用来列采购问题，而非作为证据。",
+      "en": "When assessing a humanoid vendor's demo, this secondary piece argues that moving beyond demos to reliable real-world performance depends on better data and human judgment; it gives no figures, so use it to frame procurement questions, not as evidence.",
+      "ja": "ヒューマノイドのデモを評価する際の視点として、デモから信頼できる実環境性能へ進むにはより良いデータと人の判断が要ると論じる二次報道。数値はないため、根拠ではなく調達時の質問づくりに使うのが妥当。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

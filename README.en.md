@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RESETTLE** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-2. **Being-M0.7** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
-3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-4. **ARC** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **SkillWeave** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-6. **FAITH** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
-7. **Rewiring Semantics, Dynamics, and Control** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Why humanoid robot demos still fail the generalization test** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **RESETTLE** — `AI draft` If your manipulation stack lacks timely correction after execution errors, this self-reported preprint claims success-rate gains of up to 8.70% with lower monitoring-and-recovery latency; the page does not name the comparison, so check it before adopting.
+2. **Being-M0.7** — `AI draft` For humanoid loco-manipulation teams short of robot demonstrations, this preprint builds on more than 10,000 hours of raw human-centric data; results are author-reported, so transfer to your own platform still needs your own testing.
+3. **Residual Modeling Closes the Regression and Generative Policy Gap in Robot…** — `AI draft` If you are choosing between diffusion or flow-matching policies and plain MSE regression, this preprint is worth reading for its closed-loop and real-robot experiments, but the page shows no figures to justify switching architectures yet.
+4. **ARC** — `AI draft` Teams planning to improve a robot foundation model through larger models, more demonstrations and costly training get a reasoning-centred alternative to weigh; it is a self-reported preprint with closed-loop and real-robot signals but no figures on the page.
+5. **SkillWeave** — `AI draft` If your dexterous demonstrations must cover both long task progression and contact-rich interaction, this preprint reports 27% average end-to-end success and 87% composition efficiency; the end-to-end figure is modest and self-reported, so reproduce before reshaping collection.
+6. **FAITH** — `AI draft` If your safe RL puts safety and task performance in one objective that pulls both ways, this preprint reports a 99.95% safety rate while retaining 97% relative to the unfiltered policy; it is self-reported, and a safety rate is not a certification argument.
+7. **Rewiring Semantics, Dynamics, and Control** — `AI draft` For VLAs built on a pretrained VLM's semantic understanding, this preprint proposes an action-centric architecture and reports real-robot experiments; with no figures on the page, it is one to track rather than a reason to change your model stack now.
+8. **Why humanoid robot demos still fail the generalization test** — `AI draft` When assessing a humanoid vendor's demo, this secondary piece argues that moving beyond demos to reliable real-world performance depends on better data and human judgment; it gives no figures, so use it to frame procurement questions, not as evidence.
 
 </details>
 
