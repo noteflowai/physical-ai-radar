@@ -52,6 +52,9 @@ More sources and trend analytics need demonstrable incremental relevance and man
 
 ## Delivery policy
 
+Shared local CI tools use the documented [process lifecycle](docs/local-ci-process-lifecycle.md).
+Keep bounded isolation and exact consumer pins when adopting provider repairs.
+
 Each task references a milestone ID, reader problem, source/reproduction evidence and an observable acceptance condition. Keep one active product milestone. A bug fix, quality correction or justified no-change outcome is valid.
 
 The controller's roadmap integration binds new work to Now milestones and supports independently reviewed no-change decisions. Source and replay tests accompany that controller change; operational deployment and observation are tracked separately in the private control repository.
