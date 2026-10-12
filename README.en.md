@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **LiteNWM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **RoboAware** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **LeWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **SpatialHarness** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-6. **Real-Time Motion Planning with Dynamic Hazards** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
-7. **WAND** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the speed-up holds on the target hardware at control rate.
-8. **CSF** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
+1. **LiteNWM** — `AI draft` If your visual navigation policy generates trajectories without evaluating their consequences, this preprint reports navigation success rising from 43.3% to 83.3% relative to NoMaD, with real-robot and closed-loop signals; the figures are self-reported, so retest on your own routes.
+2. **RoboAware** — `AI draft` If a coding agent composes your modular skills with frozen end-to-end policies, this preprint reports a 77.0% overall success rate across 100 tasks; the page shows benchmark results only, with no real-robot evidence, so treat it as a routing idea to test.
+3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — `AI draft` Teams that want human demonstrations for dexterous manipulation but are blocked by the embodiment gap should track this preprint; the page shows a closed-loop signal but no figures, which is not yet enough to change a collection plan.
+4. **LeWAM** — `AI draft` If your world action model sits on a reconstruction-based representation, this preprint argues that such representations carry noisy, redundant information that complicates downstream prediction; with a closed-loop signal but no figures on the page, it is a direction, not grounds to switch.
+5. **SpatialHarness** — `AI draft` If you drive a robot directly with a frontier multimodal foundation model and hit limits on fine manipulation, this preprint reports plug insertion going from 26.7% to 66.7%, with real-robot signals; these are self-reported per-task figures, so generality is unproven.
+6. **Real-Time Motion Planning with Dynamic Hazards** — `AI draft` When choosing between classical and learning-based motion planners for dynamic hazard fields, this controlled-comparison preprint is useful input; the page carries closed-loop and latency signals but no figures, so read its test conditions before acting on the verdict.
+7. **WAND** — `AI draft` For quadrotor teams flying through clutter where strong wind perturbs dynamics and limits control authority, this preprint is worth tracking; it shows closed-loop and latency signals but no figures on the page, so fit to your airframe still needs testing.
+8. **CSF** — `AI draft` If text-conditioned motion generators drive your whole-body motion, they cannot tell whether an action targets an object or a person; this preprint reports a rate cut by up to 90% with real-robot signals, but the page excerpt does not name the metric, and it is no certification argument.
 
 </details>
 

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12368" rel="noopener" target="_blank">LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild</a></h3>
 <p class="figure"><strong>17.56%</strong><span class="context">“macro-averaged trajectory error by 17.56% relative to NoMaD+NWM-XL”</span></p><p class="chips"><span class="chip">16.2%</span><span class="chip">43.3%</span><span class="chip">83.3%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 軌道を生成するだけで結果を評価しない視覚ナビゲーション方策を使っているなら検討対象。NoMaD 比でナビゲーション成功率が 43.3% から 83.3% に上がり、実機・閉ループのシグナルもあるが、自己報告の数値なので自社環境での再試験が前提。</p>
 <p class="excerpt">Direct visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.11480" rel="noopener" target="_blank">RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes</a></h3>
 <p class="figure"><strong>100 tasks</strong><span class="context">“Comprehensive single-episode evaluations on 100 tasks show that RoboAware”</span></p><p class="chips"><span class="chip">77.0%</span><span class="chip">90.0%</span><span class="chip">73.8%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> コーディングエージェントでモジュール型スキルと凍結したエンドツーエンド方策を組み合わせる構成なら参考に。100 tasks で総合成功率 77.0% と報告するが、ページにあるのはベンチマーク結果のみで実機の裏付けは見えない。</p>
 <p class="excerpt">Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12440" rel="noopener" target="_blank">Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人間のデモで巧緻操作を学ばせたいが機体差が壁になっているチームは追跡しておきたいプレプリント。閉ループのシグナルはあるもののページに数値はなく、収集計画を変える根拠にはまだならない。</p>
 <p class="excerpt">Human demonstrations are a scalable data source for learning dexterous manipulation, but the embodiment gap prevents human motion from being executed directly on robots.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12407" rel="noopener" target="_blank">LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 世界行動モデルを再構成ベースの表現の上に組んでいるなら、その表現がノイズと冗長な情報を含み下流の予測を難しくするという指摘は確認に値する。閉ループのシグナルはあるが数値はなく、表現を切り替える根拠には弱い。</p>
 <p class="excerpt">World action models (WAMs) predict actions and future observations, typically from a reconstruction-based representation that carries noisy, redundant information which can complicate downstream predictions.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12457" rel="noopener" target="_blank">SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation</a></h3>
 <p class="figure"><strong>26.7%</strong><span class="context">“including from 26.7% to 66.7% on”</span></p><p class="chips"><span class="chip">66.7%</span><span class="chip">0%</span><span class="chip">100%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 最先端のマルチモーダル基盤モデルで直接ロボットを制御し、精密操作で頭打ちになっているなら注目。プラグ挿入が 26.7% から 66.7% になったと実機シグナル付きで報告するが、個別タスクの自己報告であり汎化は未確認。</p>
 <p class="excerpt">Frontier multimodal foundation models (e.g., GPT-6 Astra) have recently shown strong potential for direct robotic control, yet their performance on fine manipulation remains limited.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12249" rel="noopener" target="_blank">Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 動的な危険場での動作計画に古典手法と学習手法のどちらを採るか決める際、統制比較を行ったこのプレプリントは判断材料になる。閉ループと遅延のシグナルはあるが数値がなく、実験条件を原文で確かめてから採用を。</p>
 <p class="excerpt">We study real-time motion planning in dynamic hazard fields through a controlled comparison between classical planning and learning-based methods.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.11809" rel="noopener" target="_blank">WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 強風で機体ダイナミクスが乱れ制御余裕が削られる中、障害物の多い環境を飛ぶクアッドロータの開発なら追う価値あり。閉ループと遅延のシグナルはあるがページに数値はなく、自機への適合は自前の試験が必要。</p>
 <p class="excerpt">Robust navigation in cluttered environments remains a fundamental challenge for quadrotors, particularly when strong wind disturbances arise, which perturb vehicle dynamics, limit control authority, and substantially increase collision…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -207,7 +207,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.12467" rel="noopener" target="_blank">CSF: Contextual Safety Filtering for Motion Generators</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“rate by up to 90%”</span></p><p class="chips"><span class="chip">100%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> テキスト条件付きの動作生成器で全身動作を出しているなら、同じ動作が物体にも人にも向き得る点が課題。ある比率を最大 90% 下げたと実機シグナル付きで報告するが、指標名はページに見えず、自己報告であり認証の根拠にはならない。</p>
 <p class="excerpt">Text-conditioned motion generators produce trackable whole-body motion, but they have no notion of scene-dependent safety: the same action may target an object or a person.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
