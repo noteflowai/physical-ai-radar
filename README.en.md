@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-12
+### Today's radar · 2026-10-13
 
-`Generated: 2026-10-11 23:40 UTC` ｜ `Window: papers 2026-10-08 → 2026-10-12 · posts 2026-09-12 → 2026-10-12 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-12 23:40 UTC` ｜ `Window: papers 2026-10-09 → 2026-10-13 · posts 2026-09-13 → 2026-10-13 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>Simulation & evaluation · arXiv 2610.12368 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>Simulation & evaluation · arXiv 2610.11480 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>Data engine · arXiv 2610.12440 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>Foundation models · arXiv 2610.12407 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>Training & self-improvement · arXiv 2610.12457 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>Edge & real-time · arXiv 2610.12249 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>Edge & real-time · arXiv 2610.11809 · 2026‑10‑08</sub> |
-| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>Safety, permissions & compliance · arXiv 2610.12467 · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>Simulation & evaluation · arXiv 2610.13643 · 2026‑10‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>Foundation models · arXiv 2610.13117 · 2026‑10‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>Training & self-improvement · arXiv 2610.13345 · 2026‑10‑09</sub> |
+| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑10‑06</sub> |
+| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>Edge & real-time · The Robot Report · 2026‑10‑12</sub> |
+| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>Training & self-improvement · 雷峰网 Leiphone · 2026‑10‑12</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **LiteNWM** — `AI draft` If your visual navigation policy generates trajectories without evaluating their consequences, this preprint reports navigation success rising from 43.3% to 83.3% relative to NoMaD, with real-robot and closed-loop signals; the figures are self-reported, so retest on your own routes.
-2. **RoboAware** — `AI draft` If a coding agent composes your modular skills with frozen end-to-end policies, this preprint reports a 77.0% overall success rate across 100 tasks; the page shows benchmark results only, with no real-robot evidence, so treat it as a routing idea to test.
-3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — `AI draft` Teams that want human demonstrations for dexterous manipulation but are blocked by the embodiment gap should track this preprint; the page shows a closed-loop signal but no figures, which is not yet enough to change a collection plan.
-4. **LeWAM** — `AI draft` If your world action model sits on a reconstruction-based representation, this preprint argues that such representations carry noisy, redundant information that complicates downstream prediction; with a closed-loop signal but no figures on the page, it is a direction, not grounds to switch.
-5. **SpatialHarness** — `AI draft` If you drive a robot directly with a frontier multimodal foundation model and hit limits on fine manipulation, this preprint reports plug insertion going from 26.7% to 66.7%, with real-robot signals; these are self-reported per-task figures, so generality is unproven.
-6. **Real-Time Motion Planning with Dynamic Hazards** — `AI draft` When choosing between classical and learning-based motion planners for dynamic hazard fields, this controlled-comparison preprint is useful input; the page carries closed-loop and latency signals but no figures, so read its test conditions before acting on the verdict.
-7. **WAND** — `AI draft` For quadrotor teams flying through clutter where strong wind perturbs dynamics and limits control authority, this preprint is worth tracking; it shows closed-loop and latency signals but no figures on the page, so fit to your airframe still needs testing.
-8. **CSF** — `AI draft` If text-conditioned motion generators drive your whole-body motion, they cannot tell whether an action targets an object or a person; this preprint reports a rate cut by up to 90% with real-robot signals, but the page excerpt does not name the metric, and it is no certification argument.
+1. **AutoBio+** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **Forward Dynamics Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+3. **Evo-RL** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+4. **3D Gaussian Splatting in practice** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+5. **Closing the reality gap** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-12.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-13.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

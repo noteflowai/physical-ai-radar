@@ -412,6 +412,23 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-13",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.13643",
+        "https://arxiv.org/abs/2610.13117",
+        "https://arxiv.org/abs/2610.13345",
+        "https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases",
+        "https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage",
+        "https://www.leiphone.com/category/transportation/y6glcnioywvn3u7k.html",
+        "https://www.leiphone.com/category/industrynews/zfamcctm7kuw5gr3.html",
+        "https://www.leiphone.com/category/industrynews/ukm5yjk3ot5x29yv.html"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

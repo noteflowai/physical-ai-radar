@@ -1,197 +1,175 @@
 {
-  "date": "2026-10-12",
-  "generated": "2026-10-11 23:40 UTC",
-  "window": "papers 2026-10-08 → 2026-10-12 · posts 2026-09-12 → 2026-10-12 (UTC)",
+  "date": "2026-10-13",
+  "generated": "2026-10-12 23:40 UTC",
+  "window": "papers 2026-10-09 → 2026-10-13 · posts 2026-09-13 → 2026-10-13 (UTC)",
   "window_detail": {
-    "day": "2026-10-12",
-    "papers_from": "2026-10-08",
-    "posts_from": "2026-09-12",
+    "day": "2026-10-13",
+    "papers_from": "2026-10-09",
+    "posts_from": "2026-09-13",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.12368",
-      "title": "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild",
-      "url": "https://arxiv.org/abs/2610.12368",
-      "publisher": "arXiv 2610.12368",
+      "id": "arxiv:2610.13643",
+      "title": "AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories",
+      "url": "https://arxiv.org/abs/2610.13643",
+      "publisher": "arXiv 2610.13643",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-08",
+      "published": "2026-10-09",
       "lane": "simeval",
-      "score": 2.57,
+      "score": 3.81,
       "numbers": [
-        "17.56%",
-        "16.2%",
-        "43.3%",
-        "83.3%"
+        "14 tasks"
       ],
       "signals": [
-        "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "summary": "Direct visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences. Generative navigation world models provide this foresight through visual rollouts, which are costly when evaluating multiple candidates. We present LiteNWM, a latent navigation world model that shares visual encoding across candidates and jointly predicts their action-conditioned future representations at multiple horizons, while a learned scorer uses these predictions to select trajectories. In offline evaluations on RECON, SCAND, and SACSoN, LiteNWM reduces macro-averaged trajectory error by 17.56% relative to NoMaD+NWM-XL and achieves a 128.00-fold end-to-end speedup on an RTX 5090. The same evaluator transfers from NoMaD to MBRA without proposer-specific retraining, reducing MBRA's macro-averaged trajectory error by 16.2%. In real-robot experiments in unseen indoor and outdoor environments, LiteNWM improves navigation success from 43.3% to 83.3% relative to NoMaD. These results demonstrate that LiteNWM can be deployed for future-aware planning and closed-loop navigation on a physical robot."
+      "summary": "Automating biological laboratories requires robots to perform dexterous tool interactions under realistic visual conditions while handling dynamic experimental phenomena, presenting significant challenges for robotic manipulation. To enable systematic evaluation under these conditions, we introduce AutoBio+, a simulation benchmark and framework for dexterous manipulation in realistic biological laboratory environments. AutoBio+ comprises 14 tasks across 4 robot embodiments, spanning functional tool use, precision manipulation, language-conditioned visual grounding, and instrument operation. We introduce controllable dynamic experimental phenomena, including flames, vapor, and bubbles, to capture the evolving visual conditions of laboratory procedures. To further enhance environmental realism, we develop a hybrid rendering pipeline that integrates interactive simulated foreground objects with Gaussian-splatting backgrounds reconstructed from 6 real laboratory scenes. For efficient large-scale data generation and evaluation, we further build a parallel simulation framework on top of mjlab, proposing Parallel Finite-State Machine (PFSM) and integrating batched rendering with decoupled trajectory replay for demonstration generation and model-independent closed-loop policy evaluation. Our evaluation reveals substantial variation in policy performance across tasks, exposing distinct strengths and weaknesses of current manipulation policies. Real-world experiments further demonstrate a reduced sim-to-real gap, supporting the validity of AutoBio+ for realistic manipulation evaluation. Supplementary materials are available at https://autobio-plus.github.io/AutoBioPlus."
     },
     {
-      "id": "arxiv:2610.11480",
-      "title": "RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes",
-      "url": "https://arxiv.org/abs/2610.11480",
-      "publisher": "arXiv 2610.11480",
+      "id": "arxiv:2610.13117",
+      "title": "Forward Dynamics Models",
+      "url": "https://arxiv.org/abs/2610.13117",
+      "publisher": "arXiv 2610.13117",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-08",
-      "lane": "simeval",
-      "score": 2.555,
-      "numbers": [
-        "100 tasks",
-        "77.0%",
-        "90.0%",
-        "73.8%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "summary": "Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state. We present RoboAware, which builds on coding agents' skill orchestration by learning only a state-conditioned responsibility coordinator from counterfactual outcomes. Inspired by the success of REPL, we propose the $P^5$ schema and formulate a hierarchical MDP based on it. $P^5$ organizes skills uniformly into five semantic stages, defining where responsibility can be compared. To address the lack of counterfactual branch outcomes in existing work, we introduce State-Locked Counterfactual Branching (SCB), which restores the same training state to generate and execute a code block from each admissible family, exposing outcomes that selected-branch experience leaves unobserved. Building on this, we propose Execution-Aware Learning (EAL), which combines Monte Carlo tree search with Q-learning to distill these outcomes into family-conditioned values. At deployment, the coordinator selects the policy family according to observable context, and the frozen coding agent generates the next local code block. Comprehensive single-episode evaluations on 100 tasks show that RoboAware reaches a 77.0% overall success rate, with SOTA averages of 90.0% on RoboSuite, 73.8% on diverse LIBERO-Pro task clusters, and 90.0% on challenging RoboTwin bimanual tasks, outperforming existing code-as-policy and VLA-harness baselines."
-    },
-    {
-      "id": "arxiv:2610.12440",
-      "title": "Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation",
-      "url": "https://arxiv.org/abs/2610.12440",
-      "publisher": "arXiv 2610.12440",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-08",
-      "lane": "data",
-      "score": 2.202,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "summary": "Human demonstrations are a scalable data source for learning dexterous manipulation, but the embodiment gap prevents human motion from being executed directly on robots. Inverse kinematics (IK) retargets human motion to robots efficiently but ignores dynamics, often producing infeasible motions. Reinforcement learning (RL) and sampling-based model predictive control (MPC) are commonly employed to yield dynamically feasible motions, but both are sample-inefficient and sensitive to hyperparameters. RL suffers from costly and unstable training and tedious reward engineering; MPC avoids policy optimization, yet retargets each trajectory in isolation, and solving one does not make the next easier. Sampling cost grows rapidly with dataset size and task difficulty. We hypothesize that dynamically feasible trajectories concentrate near a low-dimensional manifold shared across demonstrations, so that retargeting can be reduced to sampling from that manifold, conditioned on human motion, rather than solving a fresh optimization problem for every demonstration. We propose \\textbf{Generative Neural Retargeting} (GNR), which uses a flow matching model to sample feasible trajectories. GNR outperforms MPC with only $8.5\\%$ of the samples required by MPC, achieving a success rate of $56.20\\%$ compared to $27.20\\%$ for MPC. GNR can be used for scalable and efficient retargeting of large-scale, long-horizon, and millimeter precision human demonstrations: by applying GNR within a real-to-sim data engine, we produce a dexterous manipulation dataset with dense contact-force labels, spanning $223$k demonstrations and $3.3$k object geometries."
-    },
-    {
-      "id": "arxiv:2610.12407",
-      "title": "LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC",
-      "url": "https://arxiv.org/abs/2610.12407",
-      "publisher": "arXiv 2610.12407",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-08",
+      "published": "2026-10-09",
       "lane": "foundation",
-      "score": 2.15,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
+      "score": 3.2,
+      "numbers": [
+        "99.4%",
+        "13%"
       ],
-      "summary": "World action models (WAMs) predict actions and future observations, typically from a reconstruction-based representation that carries noisy, redundant information which can complicate downstream predictions. We introduce LeWAM, a bidirectional transformer for forward, backward, inverse dynamics and policy prediction, on a decoder-free JEPA latent trained end-to-end through all four modes. We see the following benefits: 1) Alignment: linear probes read robot and object state from LeWAM's latent better than from a regular Le World Model (a forward-only JEPA world model), while the latent ignores visual distractors as well as LeWM does and far better than a reconstruction-based WAM. 2) Acting: Closed-loop evaluations of LeWAM match a regular flow-matching policy trained on the same encoder at matched size, while also providing a world model. 3) Planning: Sampling raw actions when planning with WAMs lets MPC exploit dynamics-model inaccuracies; planning in the noise space of the policy head instead improves the closed-loop performance of these WAMs."
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Vision-language-action (VLA) models and world action models (WAMs) have advanced robotic policy learning by building on pretrained vision-language models (VLMs) and video generative models (VGMs), respectively. Yet VLAs learn without explicit supervision from future world states, while WAMs that condition actions on predicted futures incur extra inference cost and let visual prediction errors propagate into actions. We present Forward Dynamics Models (FDM), a family of robotic action models that couples action and future world-state prediction through an action-to-future paradigm. Future prediction is conditioned on action features, never the reverse: end-to-end training lets ground-truth future states supervise the policy through these features, while prediction errors cannot propagate into actions. At inference, FDM skips future generation entirely, avoiding its computational cost. The paradigm is backbone-agnostic, and we instantiate it with both VLM and VGM backbones. Experiments in simulation and on real robots demonstrate the effectiveness of FDM across both backbone families, achieving a state-of-the-art 99.4% average success rate on LIBERO and absolute gains of up to 13% over VLA and WAM methods on real-world tasks."
     },
     {
-      "id": "arxiv:2610.12457",
-      "title": "SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2610.12457",
-      "publisher": "arXiv 2610.12457",
+      "id": "arxiv:2610.13345",
+      "title": "Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience",
+      "url": "https://arxiv.org/abs/2610.13345",
+      "publisher": "arXiv 2610.13345",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-08",
+      "published": "2026-10-09",
       "lane": "training",
-      "score": 2.15,
+      "score": 3.1,
       "numbers": [
-        "26.7%",
-        "66.7%",
-        "0%",
-        "100%"
+        "1,000 hours"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot"
+        "real_robot",
+        "open_release"
       ],
-      "summary": "Frontier multimodal foundation models (e.g., GPT-6 Astra) have recently shown strong potential for direct robotic control, yet their performance on fine manipulation remains limited. We argue that an important source of failure is not necessarily insufficient policy capability, but insufficient spatial observability, where task-critical spatial relationships may be poorly revealed by the existing physical camera setup. We introduce SpatialHarness, a test-time embodied harness that provides test-time spatial scaffolding for fine robotic manipulation without policy fine-tuning or changes to the physical sensing setup. SpatialHarness maintains an online simulated scene synchronized with real-world execution, identifies task-critical spatial relationships, and renders complementary virtual views that expose them to a frozen multimodal policy. To keep the simulated scene aligned during interaction, we develop interaction-aware scene synchronization that distinguishes static, held, and transition modes. We evaluate SpatialHarness on four real-robot manipulation tasks spanning precise geometric alignment, object-relative placement, and articulated-object interaction. Using the same frozen GPT-6 Astra policy, SpatialHarness substantially improves task success, including from 26.7% to 66.7% on plug insertion and from 0% to 100% on Tower of Hanoi. These results indicate that improving spatial observability at test time can unlock fine-manipulation capabilities already present in strong multimodal foundation models. Project website: https://emilia113.github.io/SpatialHarness/."
+      "summary": "Existing real-world reinforcement learning methods improve robot policies by combining human corrections with autonomous rollouts. However, accumulated experience varies in its value for policy improvement, and even successful trajectories can contain inefficient or redundant behavior, motivating more selective experience reuse. To this end, we propose Evo-RL, an iterative reinforcement learning method that combines human interventions with advantage-guided experience selection. Evo-RL uses human corrections and experience with positive estimated advantages from successful trajectories to iteratively refine the policy. To support learning from these different experience sources, we introduce RW-RL-Dataset, which spans over 1,000 hours across four robot embodiments. On a real-world high-precision manipulation task, Evo-RL improves attempt success rate over RECAP by 30.46\\%. Our code, model checkpoints, and dataset are publicly available."
     },
     {
-      "id": "arxiv:2610.12249",
-      "title": "Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods",
-      "url": "https://arxiv.org/abs/2610.12249",
-      "publisher": "arXiv 2610.12249",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-08",
+      "id": "aws-physical-ai:a07068e67300",
+      "title": "3D Gaussian Splatting in practice: Industry use cases",
+      "url": "https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-10-06",
+      "lane": "simeval",
+      "score": 1.485,
+      "numbers": [],
+      "signals": [],
+      "summary": "Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real estate. AWS Physical AI | Blog #2 in the 3D Gaussian Splatting Series From Research Breakthrough to Business Advantage When we introduced 3D […]"
+    },
+    {
+      "id": "the-robot-report:fb73046bfc9e",
+      "title": "Closing the reality gap: Why real-time execution has become the new competitive advantage",
+      "url": "https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-12",
       "lane": "edge",
-      "score": 2.105,
+      "score": 1.452,
       "numbers": [],
       "signals": [
-        "closed_loop",
         "latency"
       ],
-      "summary": "We study real-time motion planning in dynamic hazard fields through a controlled comparison between classical planning and learning-based methods. Rather than introducing a new planner, we construct a unified benchmark in which representative classical and learning-based methods face the same environments, motion constraints, information assumptions, and evaluation metrics. The test environment consists of planar domains populated with rotating sprinkler-like hazards that generate time-varying forbidden regions via sweeping angular sectors. Our results show a clear regime shift. In deterministic environments, classical planners achieve near-perfect success and higher-quality paths, though sometimes at the cost of substantial planning or replanning time. Under stochastic obstacle dynamics, however, online search becomes strongly budget-sensitive: low budgets lead to frequent failure, while high budgets improve success at the cost of latency and longer trajectories. PPO-based policies, trained under the same scenario distribution, consistently outperform in latency, success rate, and path quality in these stochastic regimes. Overall, the results indicate that uncertainty in obstacle evolution, more than partial observability, is the dominant factor determining which planning paradigm is practically effective for the problem at hand."
+      "summary": "Daifuku's Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization."
     },
     {
-      "id": "arxiv:2610.11809",
-      "title": "WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors",
-      "url": "https://arxiv.org/abs/2610.11809",
-      "publisher": "arXiv 2610.11809",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-08",
-      "lane": "edge",
-      "score": 2.105,
+      "id": "leiphone:9c414b247031",
+      "title": "费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人",
+      "url": "https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-12",
+      "lane": "hardware",
+      "score": 1.415,
       "numbers": [],
-      "signals": [
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Robust navigation in cluttered environments remains a fundamental challenge for quadrotors, particularly when strong wind disturbances arise, which perturb vehicle dynamics, limit control authority, and substantially increase collision risk. Existing learning-based navigation policies typically rely on obstacle perception and proprioceptive observations, requiring the policy to infer time-varying disturbance effects implicitly and thereby limiting robustness under partial observability. This paper proposes WAND (Wind-Aware Navigation with Disturbance Estimation), a reinforcement learning framework for navigation under time-varying wind disturbances in dense obstacle fields. Specifically, WAND estimates wind-induced disturbance acceleration from historical proprioceptive states using a Temporal Convolutional Network (TCN). This estimation is integrated into the policy via a zero-initialized residual module, \\emph{WindAdapter}, while simultaneously providing feedforward compensation for low-level control. The dual use of the estimate couples disturbance-conditioned navigation with feedforward disturbance rejection. Across 12 wind-disturbed simulation settings, WAND improved the observed success rate by 8.3 percentage points on average relative to feedforward compensation alone. Controlled opposite-crosswind experiments further showed wind-direction-dependent trajectory adaptation. In indoor fan-induced flight tests, WAND succeeded in 18 of 20 trials, demonstrating the feasibility of real-time onboard navigation."
+      "signals": [],
+      "summary": "刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。他曾在英特尔做过新工艺和设备研发，创业做过物联网和工业智能化。2018年加入自动驾驶公司元戎启行，他又从硬件一路做到Robotaxi运营、产品、数据、量产和售后。 2026年，刘念邱又多了一个身份——费莫一科技创始人。 事实上，从2024年开始，他就一直密切关注具身智能的发展，翻看大量论文，也持续研究上游供应链和技术路线。到2025年底，他判断创业的时机开始成熟：一方面，机器人供应链已经足够完善，创业公司不必再把大量精力花在补齐本体和硬件短板上；另一方面，AI驱动的技术和数据范式逐渐清晰，可以开始形成真正有长期价值的技术积累。 决定创业后，刘念邱与多位元戎联合创始人沟通，大家都支持他出去再做一次从0到1。 甫一创业，费莫一科技就获得IDG资本领投、云启资本、滴滴出行、复星锐正、耀途资本、禾赛科技等头部资本的近亿美元种子轮融资，而在早期接触投资人时，刘念邱甚至没来得及准备商业计划书。 刘念邱更愿意把费莫一的机器人称为“Physical Agent”，他认为机器人最终要进入开放的生活环境，在不同时间、不同地点替不同的人完成任务。 过去两年，具身智能最常见的落地路径，是先找到一个边界足够清晰的场景。工厂拧螺丝、酒店送东西、仓库搬运，先把任务定义清楚，再通过工程和模型把成功率做上去。 …"
     },
     {
-      "id": "arxiv:2610.12467",
-      "title": "CSF: Contextual Safety Filtering for Motion Generators",
-      "url": "https://arxiv.org/abs/2610.12467",
-      "publisher": "arXiv 2610.12467",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-08",
-      "lane": "safety",
-      "score": 2.07,
-      "numbers": [
-        "90%",
-        "100%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "Text-conditioned motion generators produce trackable whole-body motion, but they have no notion of scene-dependent safety: the same action may target an object or a person. Existing safeguards either inspect the prompt, require labeled motion data, or enforce geometric constraints; therefore, they do not directly account for how scene context changes a motion's meaning. We introduce contextual safety filtering (CSF), a training-free filter that grounds natural-language safety rules in safe and unsafe reference trajectories produced by the generator. For each active rule, safe and unsafe reference trajectories define an affine safety value that a safe reference tracking CBF-QP enforces. Across four pretrained generators with different architectures, CSF activates the intended rules in all explicit and scene-triggered unsafe cases and reduces the danger-event rate by up to 90%, while preserving 88-100% of benign motions. We demonstrate the complete system on a real-world Unitree G1, where it successfully prevents unsafe motions in a variety of scenarios, including interactions with humans and objects."
+      "id": "leiphone:28b795de6185",
+      "title": "产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力",
+      "url": "https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-12",
+      "lane": "data",
+      "score": 1.118,
+      "numbers": [],
+      "signals": [],
+      "summary": "实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。大赛以「劳动最光荣，选最能干活的机器劳模」为口号，坚持产业出题、科技答题，着力打造全国具身智能领域实景实战示范平台，形成可复制、可推广的上海实景实训示范样板。 本次 大会 坚持以赛带会、 以会促 研 、 以会促产，突出实景实训、真抓实干定位，构建「训 —赛—产—融」产业闭环。基于工信部面向全国征集的千余条具身智能应用场景数据，大赛设置 生产制造、检测分析、维修维护、仓储物流、餐饮零售、医疗康养、安全生产、应急救援、文旅宣教 9大赛道、23个赛项， 计划 汇聚竞赛队伍 千 余支。 大赛坚持「真实场景为赛场、真实岗位任务为赛题、真实作业数据为成绩依据」，统一采用「任务执行、具身数据采集与回流、自主智能、创新能力」四模块百分制测评框架，按人形、四足、轮式 等 本体形态及自主、遥操两种作业模式设置差异化折算系数，确保不同技术路线队伍横向可比、公平竞技。评审方面，组建具身智能科学家评审团、人工智能技术专家团、技能大师 /实景场景代表 评审团三元交叉评审体系，从严守牢安全底线，确保评审权威公正。 大赛设置一、二、三等奖及单项奖。 23个赛项每项设 …"
+    },
+    {
+      "id": "leiphone:9be94d2c68ce",
+      "title": "百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」",
+      "url": "https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-12",
+      "lane": "training",
+      "score": 1.1,
+      "numbers": [],
+      "signals": [],
+      "summary": "10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。 本届大会以「下一幕，智能组织」为主题。十年前，百度创始人李彦宏在百度世界2016上提出“互联网的下一幕，是人工智能”。十年后，「下一幕，智能组织」的大会主题与这一判断形成呼应，将关注点进一步引向AI驱动的组织重构。自去年百度世界以来，李彦宏多次谈及AI在组织中的应用，从企业内化AI能力到组织自我进化，持续探讨AI推动组织变革的可能性。今年百度世界再次以“下一幕”为题，李彦宏将如何进一步阐释AI与组织进化的关系，也成为外界关注的看点。 官方信息显示，百度世界2026将设置1场主论坛、12场分论坛、30+AI公开课及6000平展区。大会或将发布百度全栈AI布局下的多项产品进展，探讨AI如何重塑生产关系、推动组织持续进化，为企业和开发者探索智能化转型提供实践参考。 其中，12场分论坛将聚焦AI驱动组织跃迁，涵盖组织进化、AI办公激发组织动能、企业推进智能体规模化落地、数字人跨场景应用等方向，并探讨RSI、具身智能、AI4S等前沿议题；30+AI公开课将邀请行业专家分享AI应用新思路和实战经验；现场6000平AI展区则将集中展示百度“芯-云-模-体”全栈AI能力，并场景化推演展示智能组织进化的实践案例，为参会观众带来兼具技术前瞻性与应用参考价值的观展体验。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 11,
-    "data": 5,
-    "training": 4,
+    "foundation": 10,
+    "data": 6,
+    "training": 5,
     "simeval": 14,
     "edge": 7,
-    "safety": 3,
-    "systems": 2,
-    "hardware": 10
+    "safety": 2,
+    "systems": 1,
+    "hardware": 11
   },
   "evidence_mix": {
-    "O": 0,
-    "R": 39,
-    "M": 17
+    "O": 1,
+    "R": 36,
+    "M": 19
   },
   "fetch": {
-    "items": 392,
+    "items": 475,
     "attempted": 11,
-    "answered": 10,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 11,
+    "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 59,
+      "arxiv": 42,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-12
+### 今日雷达 · 2026-10-13
 
-`生成时间: 2026-10-11 23:40 UTC` ｜ `统计窗口: 论文 2026-10-08 → 2026-10-12 · 博客与报道 2026-09-12 → 2026-10-12 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-12 23:40 UTC` ｜ `统计窗口: 论文 2026-10-09 → 2026-10-13 · 博客与报道 2026-09-13 → 2026-10-13 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>仿真与评测 · arXiv 2610.12368 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>仿真与评测 · arXiv 2610.11480 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>数据引擎 · arXiv 2610.12440 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>基座模型 · arXiv 2610.12407 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>训练与自我改进 · arXiv 2610.12457 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>边缘与实时性 · arXiv 2610.12249 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>边缘与实时性 · arXiv 2610.11809 · 2026‑10‑08</sub> |
-| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>安全、权限与合规 · arXiv 2610.12467 · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>仿真与评测 · arXiv 2610.13643 · 2026‑10‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>基座模型 · arXiv 2610.13117 · 2026‑10‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>训练与自我改进 · arXiv 2610.13345 · 2026‑10‑09</sub> |
+| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑10‑06</sub> |
+| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑10‑12</sub> |
+| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>训练与自我改进 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **LiteNWM** — `AI 起草` 若你的视觉导航策略只生成轨迹、不评估其后果，这篇预印本报告导航成功率相对 NoMaD 从 43.3% 提升到 83.3%，并带真机与闭环信号；数字为作者自报，换栈前应在自家场景复测。
-2. **RoboAware** — `AI 起草` 若你让编码 agent 在模块化技能与冻结的端到端策略之间做组合，这篇预印本报告 100 tasks 上总体成功率 77.0%；页面只见基准结果、未见真机证据，先当作路由思路参考。
-3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — `AI 起草` 想用人类示范训练灵巧手、却卡在本体差异上的团队，可把这篇预印本列入跟踪；页面有闭环信号但没有数字，尚不足以据此调整数据采集方案。
-4. **LeWAM** — `AI 起草` 若你的世界动作模型建立在重建式表征上，这篇预印本指出此类表征带有噪声和冗余、会干扰下游预测；页面有闭环信号但无数字，暂作方向参考，不足以支撑更换表征。
-5. **SpatialHarness** — `AI 起草` 若你直接用前沿多模态基座模型控制机器人、却在精细操作上受限，这篇预印本报告插头插入从 26.7% 提升到 66.7%，并带真机信号；属作者自报的个别任务数字，泛化性仍待核实。
-6. **Real-Time Motion Planning with Dynamic Hazards** — `AI 起草` 在动态危险场景下为运动规划在经典方法与学习方法之间选型时，这篇受控对比预印本可作输入；页面有闭环与延迟信号但没有数字，结论需读原文的实验条件后再采用。
-7. **WAND** — `AI 起草` 做四旋翼在密集障碍中飞行、又要应对强风扰动削弱控制权限的团队，可关注这篇预印本；页面有闭环与延迟信号但无数字，能否用于你的机型仍需自测。
-8. **CSF** — `AI 起草` 若你用文本条件运动生成器驱动全身动作，它不区分动作对象是物体还是人；这篇预印本报告某项比率最多降低 90%，并带真机信号，但具体指标页面未写明，且作者自报，不能当认证依据。
+1. **AutoBio+** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Forward Dynamics Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+3. **Evo-RL** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+4. **3D Gaussian Splatting in practice** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+5. **Closing the reality gap** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-12.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-13.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

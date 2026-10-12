@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-12
+### 本日のレーダー · 2026-10-13
 
-`生成時刻: 2026-10-11 23:40 UTC` ｜ `対象期間: 論文 2026-10-08 → 2026-10-12 · ブログ・報道 2026-09-12 → 2026-10-12 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-12 23:40 UTC` ｜ `対象期間: 論文 2026-10-09 → 2026-10-13 · ブログ・報道 2026-09-13 → 2026-10-13 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild](https://arxiv.org/abs/2610.12368)**<br>`17.56%`&nbsp; `16.2%`&nbsp; `43.3%`<br><sub>シミュレーションと評価 · arXiv 2610.12368 · 2026‑10‑08</sub> |
-| 02<br>🔵&nbsp;`R` | **[RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes](https://arxiv.org/abs/2610.11480)**<br>`100 tasks`&nbsp; `77.0%`&nbsp; `90.0%`<br><sub>シミュレーションと評価 · arXiv 2610.11480 · 2026‑10‑08</sub> |
-| 03<br>🔵&nbsp;`R` | **[Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation](https://arxiv.org/abs/2610.12440)**<br><sub>データエンジン · arXiv 2610.12440 · 2026‑10‑08</sub> |
-| 04<br>🔵&nbsp;`R` | **[LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC](https://arxiv.org/abs/2610.12407)**<br><sub>基盤モデル · arXiv 2610.12407 · 2026‑10‑08</sub> |
-| 05<br>🔵&nbsp;`R` | **[SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation](https://arxiv.org/abs/2610.12457)**<br>`26.7%`&nbsp; `66.7%`&nbsp; `0%`<br><sub>学習と自己改善 · arXiv 2610.12457 · 2026‑10‑08</sub> |
-| 06<br>🔵&nbsp;`R` | **[Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods](https://arxiv.org/abs/2610.12249)**<br><sub>エッジとリアルタイム · arXiv 2610.12249 · 2026‑10‑08</sub> |
-| 07<br>🔵&nbsp;`R` | **[WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors](https://arxiv.org/abs/2610.11809)**<br><sub>エッジとリアルタイム · arXiv 2610.11809 · 2026‑10‑08</sub> |
-| 08<br>🔵&nbsp;`R` | **[CSF: Contextual Safety Filtering for Motion Generators](https://arxiv.org/abs/2610.12467)**<br>`90%`&nbsp; `100%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.12467 · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>シミュレーションと評価 · arXiv 2610.13643 · 2026‑10‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>基盤モデル · arXiv 2610.13117 · 2026‑10‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>学習と自己改善 · arXiv 2610.13345 · 2026‑10‑09</sub> |
+| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑10‑06</sub> |
+| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑10‑12</sub> |
+| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>学習と自己改善 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **LiteNWM** — `AI 下書き` 軌道を生成するだけで結果を評価しない視覚ナビゲーション方策を使っているなら検討対象。NoMaD 比でナビゲーション成功率が 43.3% から 83.3% に上がり、実機・閉ループのシグナルもあるが、自己報告の数値なので自社環境での再試験が前提。
-2. **RoboAware** — `AI 下書き` コーディングエージェントでモジュール型スキルと凍結したエンドツーエンド方策を組み合わせる構成なら参考に。100 tasks で総合成功率 77.0% と報告するが、ページにあるのはベンチマーク結果のみで実機の裏付けは見えない。
-3. **Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation** — `AI 下書き` 人間のデモで巧緻操作を学ばせたいが機体差が壁になっているチームは追跡しておきたいプレプリント。閉ループのシグナルはあるもののページに数値はなく、収集計画を変える根拠にはまだならない。
-4. **LeWAM** — `AI 下書き` 世界行動モデルを再構成ベースの表現の上に組んでいるなら、その表現がノイズと冗長な情報を含み下流の予測を難しくするという指摘は確認に値する。閉ループのシグナルはあるが数値はなく、表現を切り替える根拠には弱い。
-5. **SpatialHarness** — `AI 下書き` 最先端のマルチモーダル基盤モデルで直接ロボットを制御し、精密操作で頭打ちになっているなら注目。プラグ挿入が 26.7% から 66.7% になったと実機シグナル付きで報告するが、個別タスクの自己報告であり汎化は未確認。
-6. **Real-Time Motion Planning with Dynamic Hazards** — `AI 下書き` 動的な危険場での動作計画に古典手法と学習手法のどちらを採るか決める際、統制比較を行ったこのプレプリントは判断材料になる。閉ループと遅延のシグナルはあるが数値がなく、実験条件を原文で確かめてから採用を。
-7. **WAND** — `AI 下書き` 強風で機体ダイナミクスが乱れ制御余裕が削られる中、障害物の多い環境を飛ぶクアッドロータの開発なら追う価値あり。閉ループと遅延のシグナルはあるがページに数値はなく、自機への適合は自前の試験が必要。
-8. **CSF** — `AI 下書き` テキスト条件付きの動作生成器で全身動作を出しているなら、同じ動作が物体にも人にも向き得る点が課題。ある比率を最大 90% 下げたと実機シグナル付きで報告するが、指標名はページに見えず、自己報告であり認証の根拠にはならない。
+1. **AutoBio+** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Forward Dynamics Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+3. **Evo-RL** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+4. **3D Gaussian Splatting in practice** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **Closing the reality gap** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-12.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-13.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
