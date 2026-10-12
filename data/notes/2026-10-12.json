@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-12",
+  "generated": "2026-10-12 14:05 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.12368": {
+      "zh": "若你的视觉导航策略只生成轨迹、不评估其后果，这篇预印本报告导航成功率相对 NoMaD 从 43.3% 提升到 83.3%，并带真机与闭环信号；数字为作者自报，换栈前应在自家场景复测。",
+      "en": "If your visual navigation policy generates trajectories without evaluating their consequences, this preprint reports navigation success rising from 43.3% to 83.3% relative to NoMaD, with real-robot and closed-loop signals; the figures are self-reported, so retest on your own routes.",
+      "ja": "軌道を生成するだけで結果を評価しない視覚ナビゲーション方策を使っているなら検討対象。NoMaD 比でナビゲーション成功率が 43.3% から 83.3% に上がり、実機・閉ループのシグナルもあるが、自己報告の数値なので自社環境での再試験が前提。"
+    },
+    "https://arxiv.org/abs/2610.11480": {
+      "zh": "若你让编码 agent 在模块化技能与冻结的端到端策略之间做组合，这篇预印本报告 100 tasks 上总体成功率 77.0%；页面只见基准结果、未见真机证据，先当作路由思路参考。",
+      "en": "If a coding agent composes your modular skills with frozen end-to-end policies, this preprint reports a 77.0% overall success rate across 100 tasks; the page shows benchmark results only, with no real-robot evidence, so treat it as a routing idea to test.",
+      "ja": "コーディングエージェントでモジュール型スキルと凍結したエンドツーエンド方策を組み合わせる構成なら参考に。100 tasks で総合成功率 77.0% と報告するが、ページにあるのはベンチマーク結果のみで実機の裏付けは見えない。"
+    },
+    "https://arxiv.org/abs/2610.12440": {
+      "zh": "想用人类示范训练灵巧手、却卡在本体差异上的团队，可把这篇预印本列入跟踪；页面有闭环信号但没有数字，尚不足以据此调整数据采集方案。",
+      "en": "Teams that want human demonstrations for dexterous manipulation but are blocked by the embodiment gap should track this preprint; the page shows a closed-loop signal but no figures, which is not yet enough to change a collection plan.",
+      "ja": "人間のデモで巧緻操作を学ばせたいが機体差が壁になっているチームは追跡しておきたいプレプリント。閉ループのシグナルはあるもののページに数値はなく、収集計画を変える根拠にはまだならない。"
+    },
+    "https://arxiv.org/abs/2610.12407": {
+      "zh": "若你的世界动作模型建立在重建式表征上，这篇预印本指出此类表征带有噪声和冗余、会干扰下游预测；页面有闭环信号但无数字，暂作方向参考，不足以支撑更换表征。",
+      "en": "If your world action model sits on a reconstruction-based representation, this preprint argues that such representations carry noisy, redundant information that complicates downstream prediction; with a closed-loop signal but no figures on the page, it is a direction, not grounds to switch.",
+      "ja": "世界行動モデルを再構成ベースの表現の上に組んでいるなら、その表現がノイズと冗長な情報を含み下流の予測を難しくするという指摘は確認に値する。閉ループのシグナルはあるが数値はなく、表現を切り替える根拠には弱い。"
+    },
+    "https://arxiv.org/abs/2610.12457": {
+      "zh": "若你直接用前沿多模态基座模型控制机器人、却在精细操作上受限，这篇预印本报告插头插入从 26.7% 提升到 66.7%，并带真机信号；属作者自报的个别任务数字，泛化性仍待核实。",
+      "en": "If you drive a robot directly with a frontier multimodal foundation model and hit limits on fine manipulation, this preprint reports plug insertion going from 26.7% to 66.7%, with real-robot signals; these are self-reported per-task figures, so generality is unproven.",
+      "ja": "最先端のマルチモーダル基盤モデルで直接ロボットを制御し、精密操作で頭打ちになっているなら注目。プラグ挿入が 26.7% から 66.7% になったと実機シグナル付きで報告するが、個別タスクの自己報告であり汎化は未確認。"
+    },
+    "https://arxiv.org/abs/2610.12249": {
+      "zh": "在动态危险场景下为运动规划在经典方法与学习方法之间选型时，这篇受控对比预印本可作输入；页面有闭环与延迟信号但没有数字，结论需读原文的实验条件后再采用。",
+      "en": "When choosing between classical and learning-based motion planners for dynamic hazard fields, this controlled-comparison preprint is useful input; the page carries closed-loop and latency signals but no figures, so read its test conditions before acting on the verdict.",
+      "ja": "動的な危険場での動作計画に古典手法と学習手法のどちらを採るか決める際、統制比較を行ったこのプレプリントは判断材料になる。閉ループと遅延のシグナルはあるが数値がなく、実験条件を原文で確かめてから採用を。"
+    },
+    "https://arxiv.org/abs/2610.11809": {
+      "zh": "做四旋翼在密集障碍中飞行、又要应对强风扰动削弱控制权限的团队，可关注这篇预印本；页面有闭环与延迟信号但无数字，能否用于你的机型仍需自测。",
+      "en": "For quadrotor teams flying through clutter where strong wind perturbs dynamics and limits control authority, this preprint is worth tracking; it shows closed-loop and latency signals but no figures on the page, so fit to your airframe still needs testing.",
+      "ja": "強風で機体ダイナミクスが乱れ制御余裕が削られる中、障害物の多い環境を飛ぶクアッドロータの開発なら追う価値あり。閉ループと遅延のシグナルはあるがページに数値はなく、自機への適合は自前の試験が必要。"
+    },
+    "https://arxiv.org/abs/2610.12467": {
+      "zh": "若你用文本条件运动生成器驱动全身动作，它不区分动作对象是物体还是人；这篇预印本报告某项比率最多降低 90%，并带真机信号，但具体指标页面未写明，且作者自报，不能当认证依据。",
+      "en": "If text-conditioned motion generators drive your whole-body motion, they cannot tell whether an action targets an object or a person; this preprint reports a rate cut by up to 90% with real-robot signals, but the page excerpt does not name the metric, and it is no certification argument.",
+      "ja": "テキスト条件付きの動作生成器で全身動作を出しているなら、同じ動作が物体にも人にも向き得る点が課題。ある比率を最大 90% 下げたと実機シグナル付きで報告するが、指標名はページに見えず、自己報告であり認証の根拠にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
