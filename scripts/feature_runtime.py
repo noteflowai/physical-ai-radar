@@ -141,7 +141,9 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
                                         "generated": generated or []})
         for p in config.iterdir():
             p.chmod(0o644)
-        argv = ["docker", "run", "--rm", "--name", container, "--network", "none",
+        # Reap orphaned children from candidate tools (including Git maintenance).
+        # A Python PID 1 otherwise accumulates zombies until the PID limit is hit.
+        argv = ["docker", "run", "--init", "--rm", "--name", container, "--network", "none",
                 "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
                 "--pids-limit", "512", "--memory", str(memory_bytes) if memory_bytes else "24g",
                 "--cpus", str(min(os.cpu_count() or 1, cpus)),

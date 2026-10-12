@@ -156,6 +156,9 @@ curl -s $R/feed.json | jq -r '.items[:10][] | "\(.date_published[:10])  \(.title
 
 ## 自动更新机制
 
+跨仓库本机 CI 的公共容器提供器使用 Docker 标准进程回收器；
+固定版本采用与回滚见[本机 CI 进程生命周期](docs/local-ci-process-lifecycle.md)。
+
 ```mermaid
 flowchart LR
   F["fetch<br/>arXiv + 10 个官方与媒体源"] --> D["distill<br/>相关性门槛 · 八主线归类<br/>抽取数字 · 可解释打分 · 限额"]

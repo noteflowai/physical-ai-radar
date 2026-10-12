@@ -31,6 +31,8 @@ class CpuCheckSandboxTests(unittest.TestCase):
         argv, result = self.run_sandbox(workspace_bytes=128 * 1024**2, cpus=1,
                                         memory_bytes=2 * 1024**3)
         self.assertIn("--read-only", argv)
+        self.assertIn("--init", argv)
+        self.assertEqual(argv[argv.index("--pids-limit") + 1], "512")
         self.assertEqual(argv[argv.index("--log-driver") + 1], "none")
         self.assertEqual(argv[argv.index("--memory") + 1], str(2 * 1024**3))
         self.assertEqual(argv[argv.index("--cpus") + 1], "1")
@@ -46,6 +48,7 @@ class CpuCheckSandboxTests(unittest.TestCase):
 
     def test_existing_callers_keep_resource_defaults(self):
         argv, _ = self.run_sandbox()
+        self.assertIn("--init", argv)
         self.assertEqual(argv[argv.index("--memory") + 1], "24g")
         self.assertNotIn("--read-only", argv)
         self.assertNotIn("--tmpfs", argv)
