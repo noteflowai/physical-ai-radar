@@ -5,6 +5,15 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: reject Inspect samples without a usable id instead of inventing case None</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.10/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.10/</guid>
+      <description>evalarc diff and load_results now reject Inspect samples that have no usable identity. This covers JSON logs and .eval archives. Each sample is checked in recorded order, before any case bookkeeping and before the duplicate-sample guard. A sample that is not a JSON object fails with ValueError: 'Inspect log sample at position N is not an object (got TYPE)'. A sample whose id is missing, null, boolean, float, a list or an object fails with: 'Inspect log sample at position N has an invalid id SHOWN (TYPE): expected an integer or a string'. Both messages end with re-export guidance. The CLI prints evalarc: MESSAGE, exits 2, writes no diff.json, and leaves the --markdown file unchanged. Two null-id samples now get the invalid-id message instead of 'duplicate sample None epoch 1'. Integer, string and empty-string ids behave as before. docs/ci-gate.md and docs/ci-gate.zh-CN.md describe the accepted id types, both messages and the re-export command.
+
+Controller-executed evidence: at base c722b75, tests/test_feature_b64744a8af0c.py had 13 failures and 1 pass. The failures were KeyError 'id', TypeError for non-object samples, no error for null/true/1.5/list/object ids, the misleading duplicate message, and CLI exit 1 (a gate verdict computed on an invented case) instead of 2. At candidate e835b05, the controller ran the feature tests, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs. All exited 0. I did not run anything myself.</description>
+      <pubDate>Tue, 13 Oct 2026 18:30:12 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: reject duplicated promptfoo result rows instead of counting them as attempts</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.9/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.9/</guid>
