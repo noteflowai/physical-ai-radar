@@ -60,37 +60,25 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-13
+### Today's radar · 2026-10-14
 
-`Generated: 2026-10-12 23:40 UTC` ｜ `Window: papers 2026-10-09 → 2026-10-13 · posts 2026-09-13 → 2026-10-13 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-13 23:40 UTC` ｜ `Window: papers 2026-10-10 → 2026-10-14 · posts 2026-09-14 → 2026-10-14 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>Simulation & evaluation · arXiv 2610.13643 · 2026‑10‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>Foundation models · arXiv 2610.13117 · 2026‑10‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>Training & self-improvement · arXiv 2610.13345 · 2026‑10‑09</sub> |
-| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑10‑06</sub> |
-| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>Edge & real-time · The Robot Report · 2026‑10‑12</sub> |
-| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>Training & self-improvement · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>Simulation & evaluation · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
+| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑10‑08</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–02</summary>
 
-1. **AutoBio+** — `AI draft` If you are automating lab bench work, this preprint offers 14 tasks across four robots that test dexterous tool use under realistic visual conditions and dynamic experimental phenomena; real-robot and closed-loop signals are flagged, but results are self-reported.
-2. **Forward Dynamics Models** — `AI draft` When choosing between a VLA and a world action model as your policy backbone, this preprint argues for forward dynamics models, self-reporting a 99.4% average success rate and gains of up to 13% over VLA baselines; the page does not name the benchmark.
-3. **Evo-RL** — `AI draft` If your real-world RL loop mixes human corrections with autonomous rollouts, this preprint proposes iterating on selectively chosen experience, cites over 1,000 hours across four robots and flags an open release, so you can test it on your own platform before trusting the claims.
-4. **3D Gaussian Splatting in practice** — `AI draft` If photorealistic scene capture is the bottleneck in your simulation pipeline, AWS argues Gaussian Splatting has cut the cost and complexity of photorealistic 3D enough to make near real-time capture, robotics and simulation viable use cases; it is a vendor position with no figures and no sim-to-real evidence on the page.
-5. **Closing the reality gap** — `AI draft` Operators setting KPIs for automated systems may note that Daifuku's Cecile Dick-Calmes, as quoted, no longer judges success solely by automation density or equipment utilization; it is a secondary opinion piece and the page gives no real-time figures.
-6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — `AI draft` If you are weighing whether map-free driving techniques carry over to robots, read this as one founder's view from outside both robotics labs and the recent Physical AI startup wave; it is a profile, with no data or deployment evidence on the page.
-7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — `AI draft` Humanoid teams looking for third-party evaluation on real job tasks can track the review round in Shanghai on October 23–25, framed under an MIIT and SASAC real-scenario training campaign; this is a secondary preview with no results yet.
-8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — `AI draft` There is nothing yet for robot builders to act on: the excerpt gives only the event date, the Beijing venue and ticketing, with no robotics or training content named, so wait for the agenda before treating it as a signal.
+1. **HiPHI** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **Into the Omniverse** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-13.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-14.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

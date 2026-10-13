@@ -13,6 +13,76 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:e3c4600c5330",
+      "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
+      "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-07<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>This White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-14.en.html\">Full radar for 2026-10-14</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-07\nSignals: real-robot experiments\n\nThis White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning.\n\nFull radar for 2026-10-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-14.en.html",
+      "summary": "This White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning.",
+      "date_published": "2026-10-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "IEEE Spectrum Robotics"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-14",
+        "id": "ieee-spectrum-robotics:e3c4600c5330",
+        "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
+        "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
+        "publisher": "IEEE Spectrum Robotics",
+        "source_id": "ieee-spectrum-robotics",
+        "evidence": "M",
+        "lane": "simeval",
+        "published": "2026-10-07",
+        "radar_published": "2026-10-13T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "This White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:baf7193e75c1",
+      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Blog · 2026-10-08</p>\n<blockquote>Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-14.en.html\">Full radar for 2026-10-14</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: NVIDIA Blog · 2026-10-08\n\nTurning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.\n\nFull radar for 2026-10-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-14.en.html",
+      "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.",
+      "date_published": "2026-10-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "NVIDIA Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-14",
+        "id": "nvidia-blog:baf7193e75c1",
+        "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "publisher": "NVIDIA Blog",
+        "source_id": "nvidia-blog",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-10-08",
+        "radar_published": "2026-10-13T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.13643",
       "url": "https://arxiv.org/abs/2610.13643",
       "title": "AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories",
@@ -3765,85 +3835,6 @@
           "real_robot"
         ],
         "excerpt": "Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.36588",
-      "url": "https://arxiv.org/abs/2609.36588",
-      "title": "Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.36588 · 2026-09-29<br><b>Key numbers</b>: 11 tasks<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html\">Full radar for 2026-10-01</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2609.36588 · 2026-09-29\nKey numbers: 11 tasks\nSignals: closed-loop success reported · real-robot experiments\n\nWe study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…\n\nFull radar for 2026-10-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html",
-      "summary": "We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…",
-      "date_published": "2026-09-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.36588"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-01",
-        "id": "arxiv:2609.36588",
-        "url": "https://arxiv.org/abs/2609.36588",
-        "title": "Cooperative Multi-Agent Vision-Language-Action Models via Reinforced Fine Tuning",
-        "publisher": "arXiv 2609.36588",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-09-29",
-        "radar_published": "2026-09-30T23:40:00Z",
-        "numbers": [
-          "11 tasks"
-        ],
-        "signals": [
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "We study reinforcement learning (RL) methods for cooperative multi-agent Vision-Language-Action (VLA) models. This problem is challenging because VLAs are pretrained on large-scale single-agent data and therefore lack the fine-grained…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.37772",
-      "url": "https://arxiv.org/abs/2609.37772",
-      "title": "Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.37772 · 2026-09-29<br><b>Key numbers</b>: 1.89x<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html\">Full radar for 2026-10-01</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2609.37772 · 2026-09-29\nKey numbers: 1.89x\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nDiffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.\n\nFull radar for 2026-10-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html",
-      "summary": "Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control.",
-      "date_published": "2026-09-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.37772"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-01",
-        "id": "arxiv:2609.37772",
-        "url": "https://arxiv.org/abs/2609.37772",
-        "title": "Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control",
-        "publisher": "arXiv 2609.37772",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-09-29",
-        "radar_published": "2026-09-30T23:40:00Z",
-        "numbers": [
-          "1.89x"
-        ],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control."
       }
     }
   ]

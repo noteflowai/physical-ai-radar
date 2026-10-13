@@ -429,6 +429,17 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-14",
+      "count": 2,
+      "lanes": 1,
+      "urls": [
+        "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction",
+        "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

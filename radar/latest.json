@@ -1,171 +1,67 @@
 {
-  "date": "2026-10-13",
-  "generated": "2026-10-12 23:40 UTC",
-  "window": "papers 2026-10-09 → 2026-10-13 · posts 2026-09-13 → 2026-10-13 (UTC)",
+  "date": "2026-10-14",
+  "generated": "2026-10-13 23:40 UTC",
+  "window": "papers 2026-10-10 → 2026-10-14 · posts 2026-09-14 → 2026-10-14 (UTC)",
   "window_detail": {
-    "day": "2026-10-13",
-    "papers_from": "2026-10-09",
-    "posts_from": "2026-09-13",
+    "day": "2026-10-14",
+    "papers_from": "2026-10-10",
+    "posts_from": "2026-09-14",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.13643",
-      "title": "AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories",
-      "url": "https://arxiv.org/abs/2610.13643",
-      "publisher": "arXiv 2610.13643",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-09",
+      "id": "ieee-spectrum-robotics:e3c4600c5330",
+      "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
+      "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-10-07",
       "lane": "simeval",
-      "score": 3.81,
-      "numbers": [
-        "14 tasks"
-      ],
+      "score": 1.42,
+      "numbers": [],
       "signals": [
-        "closed_loop",
         "real_robot"
       ],
-      "summary": "Automating biological laboratories requires robots to perform dexterous tool interactions under realistic visual conditions while handling dynamic experimental phenomena, presenting significant challenges for robotic manipulation. To enable systematic evaluation under these conditions, we introduce AutoBio+, a simulation benchmark and framework for dexterous manipulation in realistic biological laboratory environments. AutoBio+ comprises 14 tasks across 4 robot embodiments, spanning functional tool use, precision manipulation, language-conditioned visual grounding, and instrument operation. We introduce controllable dynamic experimental phenomena, including flames, vapor, and bubbles, to capture the evolving visual conditions of laboratory procedures. To further enhance environmental realism, we develop a hybrid rendering pipeline that integrates interactive simulated foreground objects with Gaussian-splatting backgrounds reconstructed from 6 real laboratory scenes. For efficient large-scale data generation and evaluation, we further build a parallel simulation framework on top of mjlab, proposing Parallel Finite-State Machine (PFSM) and integrating batched rendering with decoupled trajectory replay for demonstration generation and model-independent closed-loop policy evaluation. Our evaluation reveals substantial variation in policy performance across tasks, exposing distinct strengths and weaknesses of current manipulation policies. Real-world experiments further demonstrate a reduced sim-to-real gap, supporting the validity of AutoBio+ for realistic manipulation evaluation. Supplementary materials are available at https://autobio-plus.github.io/AutoBioPlus."
+      "summary": "This White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning. It also shows how policies trained on the dataset transfer to a real humanoid robot. What you will learn about: Why humanoid robot learning, a central problem in embodied AI and Physical AI, needs data that internet video and existing motion capture datasets cannot provide. How FrameNet , a linguistic framework for human action, can guide motion capture collection to systematically cover a broad range of whole-body motion. Why synchronized object trajectories and meshes make human-object interaction data useful for teaching robots real-world tasks such as carrying, pushing, and pulling. How reinforcement learning policies trained on this motion capture data improve with scale, and how sim-to-real transfer carries them onto a physical humanoid robot. Download this free whitepaper now!"
     },
     {
-      "id": "arxiv:2610.13117",
-      "title": "Forward Dynamics Models",
-      "url": "https://arxiv.org/abs/2610.13117",
-      "publisher": "arXiv 2610.13117",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-09",
-      "lane": "foundation",
-      "score": 3.2,
-      "numbers": [
-        "99.4%",
-        "13%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Vision-language-action (VLA) models and world action models (WAMs) have advanced robotic policy learning by building on pretrained vision-language models (VLMs) and video generative models (VGMs), respectively. Yet VLAs learn without explicit supervision from future world states, while WAMs that condition actions on predicted futures incur extra inference cost and let visual prediction errors propagate into actions. We present Forward Dynamics Models (FDM), a family of robotic action models that couples action and future world-state prediction through an action-to-future paradigm. Future prediction is conditioned on action features, never the reverse: end-to-end training lets ground-truth future states supervise the policy through these features, while prediction errors cannot propagate into actions. At inference, FDM skips future generation entirely, avoiding its computational cost. The paradigm is backbone-agnostic, and we instantiate it with both VLM and VGM backbones. Experiments in simulation and on real robots demonstrate the effectiveness of FDM across both backbone families, achieving a state-of-the-art 99.4% average success rate on LIBERO and absolute gains of up to 13% over VLA and WAM methods on real-world tasks."
-    },
-    {
-      "id": "arxiv:2610.13345",
-      "title": "Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience",
-      "url": "https://arxiv.org/abs/2610.13345",
-      "publisher": "arXiv 2610.13345",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-09",
-      "lane": "training",
-      "score": 3.1,
-      "numbers": [
-        "1,000 hours"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "open_release"
-      ],
-      "summary": "Existing real-world reinforcement learning methods improve robot policies by combining human corrections with autonomous rollouts. However, accumulated experience varies in its value for policy improvement, and even successful trajectories can contain inefficient or redundant behavior, motivating more selective experience reuse. To this end, we propose Evo-RL, an iterative reinforcement learning method that combines human interventions with advantage-guided experience selection. Evo-RL uses human corrections and experience with positive estimated advantages from successful trajectories to iteratively refine the policy. To support learning from these different experience sources, we introduce RW-RL-Dataset, which spans over 1,000 hours across four robot embodiments. On a real-world high-precision manipulation task, Evo-RL improves attempt success rate over RECAP by 30.46\\%. Our code, model checkpoints, and dataset are publicly available."
-    },
-    {
-      "id": "aws-physical-ai:a07068e67300",
-      "title": "3D Gaussian Splatting in practice: Industry use cases",
-      "url": "https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
+      "id": "nvidia-blog:baf7193e75c1",
+      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-10-06",
+      "published": "2026-10-08",
       "lane": "simeval",
-      "score": 1.485,
+      "score": 1.285,
       "numbers": [],
       "signals": [],
-      "summary": "Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real estate. AWS Physical AI | Blog #2 in the 3D Gaussian Splatting Series From Research Breakthrough to Business Advantage When we introduced 3D […]"
-    },
-    {
-      "id": "the-robot-report:fb73046bfc9e",
-      "title": "Closing the reality gap: Why real-time execution has become the new competitive advantage",
-      "url": "https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-12",
-      "lane": "edge",
-      "score": 1.452,
-      "numbers": [],
-      "signals": [
-        "latency"
-      ],
-      "summary": "Daifuku's Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization."
-    },
-    {
-      "id": "leiphone:9c414b247031",
-      "title": "费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人",
-      "url": "https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-12",
-      "lane": "hardware",
-      "score": 1.415,
-      "numbers": [],
-      "signals": [],
-      "summary": "刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。他曾在英特尔做过新工艺和设备研发，创业做过物联网和工业智能化。2018年加入自动驾驶公司元戎启行，他又从硬件一路做到Robotaxi运营、产品、数据、量产和售后。 2026年，刘念邱又多了一个身份——费莫一科技创始人。 事实上，从2024年开始，他就一直密切关注具身智能的发展，翻看大量论文，也持续研究上游供应链和技术路线。到2025年底，他判断创业的时机开始成熟：一方面，机器人供应链已经足够完善，创业公司不必再把大量精力花在补齐本体和硬件短板上；另一方面，AI驱动的技术和数据范式逐渐清晰，可以开始形成真正有长期价值的技术积累。 决定创业后，刘念邱与多位元戎联合创始人沟通，大家都支持他出去再做一次从0到1。 甫一创业，费莫一科技就获得IDG资本领投、云启资本、滴滴出行、复星锐正、耀途资本、禾赛科技等头部资本的近亿美元种子轮融资，而在早期接触投资人时，刘念邱甚至没来得及准备商业计划书。 刘念邱更愿意把费莫一的机器人称为“Physical Agent”，他认为机器人最终要进入开放的生活环境，在不同时间、不同地点替不同的人完成任务。 过去两年，具身智能最常见的落地路径，是先找到一个边界足够清晰的场景。工厂拧螺丝、酒店送东西、仓库搬运，先把任务定义清楚，再通过工程和模型把成功率做上去。 …"
-    },
-    {
-      "id": "leiphone:28b795de6185",
-      "title": "产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力",
-      "url": "https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-12",
-      "lane": "data",
-      "score": 1.118,
-      "numbers": [],
-      "signals": [],
-      "summary": "实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。大赛以「劳动最光荣，选最能干活的机器劳模」为口号，坚持产业出题、科技答题，着力打造全国具身智能领域实景实战示范平台，形成可复制、可推广的上海实景实训示范样板。 本次 大会 坚持以赛带会、 以会促 研 、 以会促产，突出实景实训、真抓实干定位，构建「训 —赛—产—融」产业闭环。基于工信部面向全国征集的千余条具身智能应用场景数据，大赛设置 生产制造、检测分析、维修维护、仓储物流、餐饮零售、医疗康养、安全生产、应急救援、文旅宣教 9大赛道、23个赛项， 计划 汇聚竞赛队伍 千 余支。 大赛坚持「真实场景为赛场、真实岗位任务为赛题、真实作业数据为成绩依据」，统一采用「任务执行、具身数据采集与回流、自主智能、创新能力」四模块百分制测评框架，按人形、四足、轮式 等 本体形态及自主、遥操两种作业模式设置差异化折算系数，确保不同技术路线队伍横向可比、公平竞技。评审方面，组建具身智能科学家评审团、人工智能技术专家团、技能大师 /实景场景代表 评审团三元交叉评审体系，从严守牢安全底线，确保评审权威公正。 大赛设置一、二、三等奖及单项奖。 23个赛项每项设 …"
-    },
-    {
-      "id": "leiphone:9be94d2c68ce",
-      "title": "百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」",
-      "url": "https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-12",
-      "lane": "training",
-      "score": 1.1,
-      "numbers": [],
-      "signals": [],
-      "summary": "10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。 本届大会以「下一幕，智能组织」为主题。十年前，百度创始人李彦宏在百度世界2016上提出“互联网的下一幕，是人工智能”。十年后，「下一幕，智能组织」的大会主题与这一判断形成呼应，将关注点进一步引向AI驱动的组织重构。自去年百度世界以来，李彦宏多次谈及AI在组织中的应用，从企业内化AI能力到组织自我进化，持续探讨AI推动组织变革的可能性。今年百度世界再次以“下一幕”为题，李彦宏将如何进一步阐释AI与组织进化的关系，也成为外界关注的看点。 官方信息显示，百度世界2026将设置1场主论坛、12场分论坛、30+AI公开课及6000平展区。大会或将发布百度全栈AI布局下的多项产品进展，探讨AI如何重塑生产关系、推动组织持续进化，为企业和开发者探索智能化转型提供实践参考。 其中，12场分论坛将聚焦AI驱动组织跃迁，涵盖组织进化、AI办公激发组织动能、企业推进智能体规模化落地、数字人跨场景应用等方向，并探讨RSI、具身智能、AI4S等前沿议题；30+AI公开课将邀请行业专家分享AI应用新思路和实战经验；现场6000平AI展区则将集中展示百度“芯-云-模-体”全栈AI能力，并场景化推演展示智能组织进化的实践案例，为参会观众带来兼具技术前瞻性与应用参考价值的观展体验。 …"
+      "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended. Developers are combining frontier AI models with NVIDIA Omniverse libraries to help carry out that work — building applications for exploring scenarios, investigating failures and improving designs. Developers direct AI agents through […]"
     }
   ],
   "lane_counts": {
-    "foundation": 10,
+    "foundation": 8,
     "data": 6,
     "training": 5,
     "simeval": 14,
-    "edge": 7,
+    "edge": 5,
     "safety": 2,
     "systems": 1,
-    "hardware": 11
+    "hardware": 9
   },
   "evidence_mix": {
-    "O": 1,
-    "R": 36,
-    "M": 19
+    "O": 2,
+    "R": 30,
+    "M": 18
   },
   "fetch": {
-    "items": 475,
+    "items": 433,
     "attempted": 11,
     "answered": 11,
     "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 42,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

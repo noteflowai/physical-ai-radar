@@ -60,37 +60,25 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-13
+### 本日のレーダー · 2026-10-14
 
-`生成時刻: 2026-10-12 23:40 UTC` ｜ `対象期間: 論文 2026-10-09 → 2026-10-13 · ブログ・報道 2026-09-13 → 2026-10-13 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-13 23:40 UTC` ｜ `対象期間: 論文 2026-10-10 → 2026-10-14 · ブログ・報道 2026-09-14 → 2026-10-14 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>シミュレーションと評価 · arXiv 2610.13643 · 2026‑10‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>基盤モデル · arXiv 2610.13117 · 2026‑10‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>学習と自己改善 · arXiv 2610.13345 · 2026‑10‑09</sub> |
-| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑10‑06</sub> |
-| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑10‑12</sub> |
-| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>学習と自己改善 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>シミュレーションと評価 · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
+| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑08</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–02</summary>
 
-1. **AutoBio+** — `AI 下書き` ラボ自動化に取り組むなら、実際的な視覚条件下での巧緻な道具操作と動的な実験現象を問う評価セットとして候補になる。14 tasks・4 種のロボット構成で、実機・閉ループのシグナルはあるが著者の自己報告。
-2. **Forward Dynamics Models** — `AI 下書き` 方策の土台を VLA か世界行動モデルかで選ぶ段階なら、順動力学モデルという第三の選択肢を示すプレプリント。平均成功率 99.4%、VLA 系比で最大 13% の改善を自己報告するが、ページ上ではベンチマーク名が分からない。
-3. **Evo-RL** — `AI 下書き` 人手の修正と自律ロールアウトを組み合わせた実機 RL を回しているなら、経験を選別して反復する手法として要確認。4 種のロボットにまたがる 1,000 hours 超に言及し公開の兆候もあるため、自前の機体で検証できる。
-4. **3D Gaussian Splatting in practice** — `AI 下書き` シミュレーション用のフォトリアルな環境構築がボトルネックなら、AWS は Gaussian Splatting がフォトリアルな 3D のコストと複雑さを下げ、ほぼリアルタイムの取り込み、ロボティクス、シミュレーションといった用途が実用的になったと述べる。ただしベンダーの見解で、数値も実機転移の検証もページにはない。
-5. **Closing the reality gap** — `AI 下書き` 自動化設備の KPI を設計する運用側には一考の材料。Daifuku の Cecile Dick-Calmes 氏が、成功はもはや自動化密度や設備稼働率だけでは測れないと語ったと報じるが、二次報道の見解でリアルタイム実行の数値はページにない。
-6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — `AI 下書き` 自動運転のマップレス手法をロボットに持ち込むか検討中なら、ロボット研究室出身でも近年参入の連続起業家でもない創業者の一意見として読むべき記事。人物インタビューで、移行を裏付けるデータや導入実績はページにない。
-7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — `AI 下書き` 実際の職務タスクで第三者評価を受けたいヒューマノイド開発チームは、10月23日から25日に上海で行われる大会の「检阅赛」に注目。工業情報化部と国資委の実地訓練施策の一環とされるが、二次報道による予告で結果はまだない。
-8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — `AI 下書き` ロボット開発者が今動く理由はまだない。抜粋にあるのは開催日、北京の会場、チケット販売の情報だけで、ロボットや学習に関する内容は示されていないため、議題の公表を待つのが妥当。
+1. **HiPHI** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Into the Omniverse** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-13.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-14.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

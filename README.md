@@ -62,37 +62,25 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-13
+### 今日雷达 · 2026-10-14
 
-`生成时间: 2026-10-12 23:40 UTC` ｜ `统计窗口: 论文 2026-10-09 → 2026-10-13 · 博客与报道 2026-09-13 → 2026-10-13 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-13 23:40 UTC` ｜ `统计窗口: 论文 2026-10-10 → 2026-10-14 · 博客与报道 2026-09-14 → 2026-10-14 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories](https://arxiv.org/abs/2610.13643)**<br>`14 tasks`<br><sub>仿真与评测 · arXiv 2610.13643 · 2026‑10‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[Forward Dynamics Models](https://arxiv.org/abs/2610.13117)**<br>`99.4%`&nbsp; `13%`<br><sub>基座模型 · arXiv 2610.13117 · 2026‑10‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience](https://arxiv.org/abs/2610.13345)**<br>`1,000 hours`<br><sub>训练与自我改进 · arXiv 2610.13345 · 2026‑10‑09</sub> |
-| 04<br>🟢&nbsp;`O` | **[3D Gaussian Splatting in practice: Industry use cases](https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑10‑06</sub> |
-| 05<br>🟡&nbsp;`M` | **[Closing the reality gap: Why real-time execution has become the new competitive advantage](https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑10‑12</sub> |
-| 06<br>🟡&nbsp;`M` | **[费莫一刘念邱：智驾无图的经验，也能迁移到机器人 \| 物理AI 50人](https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 07<br>🟡&nbsp;`M` | **[产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力](https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html)**<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
-| 08<br>🟡&nbsp;`M` | **[百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」](https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html)**<br><sub>训练与自我改进 · 雷峰网 Leiphone · 2026‑10‑12</sub> |
+| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>仿真与评测 · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
+| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑10‑08</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–02</summary>
 
-1. **AutoBio+** — `AI 起草` 做生物实验室自动化的团队可以拿它当上台前的评测集：14 tasks 覆盖 4 种机器人，考的是真实视觉条件下的灵巧工具操作与动态实验现象；页面带真机与闭环信号，但属作者自报。
-2. **Forward Dynamics Models** — `AI 起草` 在 VLA 与世界动作模型之间选骨干时，这篇预印本把前向动力学模型作为第三条路，自报平均成功率 99.4%、相对 VLA 等基线最高提升 13%；页面未写明基准，换栈前需自行复测。
-3. **Evo-RL** — `AI 起草` 若你的真机 RL 流程靠人工纠正加自主 rollout，这篇预印本主张有选择地复用经验做迭代，页面提到跨四种机器人的 1,000 hours 以上规模且有开放发布信号，可先拿开源部分在自家平台验证。
-4. **3D Gaussian Splatting in practice** — `AI 起草` 搭建照片级仿真场景时，AWS 认为 Gaussian Splatting 已把真实感 3D 的成本和复杂度降到可用于近实时采集、机器人与仿真；这是厂商一手立场，页面没有数字，也没有仿真到真机的验证。
-5. **Closing the reality gap** — `AI 起草` 评估自动化系统的运营方可留意：报道引述 Daifuku 的 Cecile Dick-Calmes，称成功已不只看自动化密度或设备利用率；属二手观点，页面没有给出实时执行的具体数字。
-6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — `AI 起草` 在考虑把自动驾驶的无图方案搬到机器人上的团队，可把这篇当作一位非实验室、非近两年入局创业者的经验之谈来读；它是人物专访，页面没有数据或部署证据支撑这种迁移。
-7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — `AI 起草` 想要第三方真实岗位考核的人形机器人团队，可关注 10月23日至25日在上海举行的检阅赛，它被置于工信部与国务院国资委的实景实训专项行动之下；目前只是赛事预告，尚无成绩。
-8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — `AI 起草` 对机器人开发者而言目前没有可据以行动的内容：摘录只有大会日期、北京国家会议中心二期的场地和售票信息，未提及机器人或训练方面的议题，等议程公布再看。
+1. **HiPHI** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Into the Omniverse** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-13.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-14.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
