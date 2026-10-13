@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.13643" rel="noopener" target="_blank">AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories</a></h3>
 <p class="figure"><strong>14 tasks</strong><span class="context">“AutoBio+ comprises 14 tasks across 4 robot”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ラボ自動化に取り組むなら、実際的な視覚条件下での巧緻な道具操作と動的な実験現象を問う評価セットとして候補になる。14 tasks・4 種のロボット構成で、実機・閉ループのシグナルはあるが著者の自己報告。</p>
 <p class="excerpt">Automating biological laboratories requires robots to perform dexterous tool interactions under realistic visual conditions while handling dynamic experimental phenomena, presenting significant challenges for robotic manipulation.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.13117" rel="noopener" target="_blank">Forward Dynamics Models</a></h3>
 <p class="figure"><strong>99.4%</strong><span class="context">“achieving a state-of-the-art 99.4% average success rate”</span></p><p class="chips"><span class="chip">13%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 方策の土台を VLA か世界行動モデルかで選ぶ段階なら、順動力学モデルという第三の選択肢を示すプレプリント。平均成功率 99.4%、VLA 系比で最大 13% の改善を自己報告するが、ページ上ではベンチマーク名が分からない。</p>
 <p class="excerpt">Vision-language-action (VLA) models and world action models (WAMs) have advanced robotic policy learning by building on pretrained vision-language models (VLMs) and video generative models (VGMs), respectively.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.13345" rel="noopener" target="_blank">Evo-RL: Iterative Robot Reinforcement Learning from Selective Experience</a></h3>
 <p class="figure"><strong>1,000 hours</strong><span class="context">“which spans over 1,000 hours across four robot”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人手の修正と自律ロールアウトを組み合わせた実機 RL を回しているなら、経験を選別して反復する手法として要確認。4 種のロボットにまたがる 1,000 hours 超に言及し公開の兆候もあるため、自前の機体で検証できる。</p>
 <p class="excerpt">Existing real-world reinforcement learning methods improve robot policies by combining human corrections with autonomous rollouts.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/" rel="noopener" target="_blank">3D Gaussian Splatting in practice: Industry use cases</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> シミュレーション用のフォトリアルな環境構築がボトルネックなら、AWS は Gaussian Splatting がフォトリアルな 3D のコストと複雑さを下げ、ほぼリアルタイムの取り込み、ロボティクス、シミュレーションといった用途が実用的になったと述べる。ただしベンダーの見解で、数値も実機転移の検証もページにはない。</p>
 <p class="excerpt">Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real…</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-10-06</span>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/" rel="noopener" target="_blank">Closing the reality gap: Why real-time execution has become the new competitive advantage</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 自動化設備の KPI を設計する運用側には一考の材料。Daifuku の Cecile Dick-Calmes 氏が、成功はもはや自動化密度や設備稼働率だけでは測れないと語ったと報じるが、二次報道の見解でリアルタイム実行の数値はページにない。</p>
 <p class="excerpt">Daifuku&#x27;s Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization.</p>
 <ul class="signals"><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html" rel="noopener" target="_blank">费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 自動運転のマップレス手法をロボットに持ち込むか検討中なら、ロボット研究室出身でも近年参入の連続起業家でもない創業者の一意見として読むべき記事。人物インタビューで、移行を裏付けるデータや導入実績はページにない。</p>
 <p class="excerpt">刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-12</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html" rel="noopener" target="_blank">产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 実際の職務タスクで第三者評価を受けたいヒューマノイド開発チームは、10月23日から25日に上海で行われる大会の「检阅赛」に注目。工業情報化部と国資委の実地訓練施策の一環とされるが、二次報道による予告で結果はまだない。</p>
 <p class="excerpt">实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-12</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html" rel="noopener" target="_blank">百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ロボット開発者が今動く理由はまだない。抜粋にあるのは開催日、北京の会場、チケット販売の情報だけで、ロボットや学習に関する内容は示されていないため、議題の公表を待つのが妥当。</p>
 <p class="excerpt">10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-12</span>
