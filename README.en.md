@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **AutoBio+** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **Forward Dynamics Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-3. **Evo-RL** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-4. **3D Gaussian Splatting in practice** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-5. **Closing the reality gap** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
+1. **AutoBio+** — `AI draft` If you are automating lab bench work, this preprint offers 14 tasks across four robots that test dexterous tool use under realistic visual conditions and dynamic experimental phenomena; real-robot and closed-loop signals are flagged, but results are self-reported.
+2. **Forward Dynamics Models** — `AI draft` When choosing between a VLA and a world action model as your policy backbone, this preprint argues for forward dynamics models, self-reporting a 99.4% average success rate and gains of up to 13% over VLA baselines; the page does not name the benchmark.
+3. **Evo-RL** — `AI draft` If your real-world RL loop mixes human corrections with autonomous rollouts, this preprint proposes iterating on selectively chosen experience, cites over 1,000 hours across four robots and flags an open release, so you can test it on your own platform before trusting the claims.
+4. **3D Gaussian Splatting in practice** — `AI draft` If photorealistic scene capture is the bottleneck in your simulation pipeline, AWS argues Gaussian Splatting has cut the cost and complexity of photorealistic 3D enough to make near real-time capture, robotics and simulation viable use cases; it is a vendor position with no figures and no sim-to-real evidence on the page.
+5. **Closing the reality gap** — `AI draft` Operators setting KPIs for automated systems may note that Daifuku's Cecile Dick-Calmes, as quoted, no longer judges success solely by automation density or equipment utilization; it is a secondary opinion piece and the page gives no real-time figures.
+6. **费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人** — `AI draft` If you are weighing whether map-free driving techniques carry over to robots, read this as one founder's view from outside both robotics labs and the recent Physical AI startup wave; it is a profile, with no data or deployment evidence on the page.
+7. **产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力** — `AI draft` Humanoid teams looking for third-party evaluation on real job tasks can track the review round in Shanghai on October 23–25, framed under an MIIT and SASAC real-scenario training campaign; this is a secondary preview with no results yet.
+8. **百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」** — `AI draft` There is nothing yet for robot builders to act on: the excerpt gives only the event date, the Beijing venue and ticketing, with no robotics or training content named, so wait for the agenda before treating it as a signal.
 
 </details>
 
