@@ -73,8 +73,8 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–02</summary>
 
-1. **HiPHI** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **Into the Omniverse** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+1. **HiPHI** — `AI draft` Humanoid teams short on training data can shortlist this new large-scale motion-capture dataset, but what is visible is a secondhand white-paper overview with no figures, so check the primary dataset's scale and licence before planning around it.
+2. **Into the Omniverse** — `AI draft` NVIDIA frames asset assembly, physics-rendering hookup and behaviour checks as the real work of shipping a simulation; with no figures given, sim teams should trial agent-assisted scene building on their own scenes rather than budget for a proven speed-up.
 
 </details>
 

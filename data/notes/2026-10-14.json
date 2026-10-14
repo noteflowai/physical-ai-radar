@@ -1,0 +1,28 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-14",
+  "generated": "2026-10-14 13:40 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction": {
+      "zh": "人形机器人团队若受训练数据不足所限，可把这个新的大规模动捕数据集列入候选；但这里只是白皮书概述的二手转述，页面未给出任何数字，接入前应先核对原始数据集的规模与授权。",
+      "en": "Humanoid teams short on training data can shortlist this new large-scale motion-capture dataset, but what is visible is a secondhand white-paper overview with no figures, so check the primary dataset's scale and licence before planning around it.",
+      "ja": "学習データ不足に悩むヒューマノイド開発チームには候補となる新しい大規模モーションキャプチャデータセットだが、確認できるのはホワイトペーパー概要の二次情報で数値もないため、採用前に一次資料で規模と利用条件を確かめたい。"
+    },
+    "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents": {
+      "zh": "NVIDIA 把资产拼装、物理与渲染对接、场景行为校验视为仿真落地的主要工作量；文中没有量化数据，搭建仿真管线的团队应把 agent 辅助建场景当作值得在自家场景上试用的选项，而非已证实的提速。",
+      "en": "NVIDIA frames asset assembly, physics-rendering hookup and behaviour checks as the real work of shipping a simulation; with no figures given, sim teams should trial agent-assisted scene building on their own scenes rather than budget for a proven speed-up.",
+      "ja": "NVIDIA はアセット組み立て、物理とレンダリングの接続、シーン挙動の確認をシミュレーション構築の実作業と位置づけるが、数値は示されていない。エージェントによるシーン構築は実証済みの効率化ではなく、自社シーンで試す候補として扱うべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
