@@ -62,25 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-14
+### 今日雷达 · 2026-10-15
 
-`生成时间: 2026-10-13 23:40 UTC` ｜ `统计窗口: 论文 2026-10-10 → 2026-10-14 · 博客与报道 2026-09-14 → 2026-10-14 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-14 23:40 UTC` ｜ `统计窗口: 论文 2026-10-11 → 2026-10-15 · 博客与报道 2026-09-15 → 2026-10-15 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>仿真与评测 · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
-| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction](https://arxiv.org/abs/2610.18568)**<br>`91.47%`&nbsp; `98.7%`&nbsp; `88.0%`<br><sub>基座模型 · arXiv 2610.18568 · 2026‑10‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Steertuning Policies from a Few Human Videos](https://arxiv.org/abs/2610.18711)**<br>`100 hours`&nbsp; `5 demonstrations`&nbsp; `71%`<br><sub>数据引擎 · arXiv 2610.18711 · 2026‑10‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation](https://arxiv.org/abs/2610.17521)**<br><sub>仿真与评测 · arXiv 2610.17521 · 2026‑10‑13</sub> |
+| 04<br>🔵&nbsp;`R` | **[Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors](https://arxiv.org/abs/2610.15556)**<br>`20M parameters`&nbsp; `14 ms`&nbsp; `10 demonstrations`<br><sub>边缘与实时性 · arXiv 2610.15556 · 2026‑10‑11</sub> |
+| 05<br>🟢&nbsp;`O` | **[European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑10‑14</sub> |
+| 06<br>🟡&nbsp;`M` | **[宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026](https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html)**<br>`83%`<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑10‑14</sub> |
+| 07<br>🟡&nbsp;`M` | **[Timken Precision Drives puts the motion challenge first in humanoid robots](https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開](https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑14</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–02</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **HiPHI** — `AI 起草` 人形机器人团队若受训练数据不足所限，可把这个新的大规模动捕数据集列入候选；但这里只是白皮书概述的二手转述，页面未给出任何数字，接入前应先核对原始数据集的规模与授权。
-2. **Into the Omniverse** — `AI 起草` NVIDIA 把资产拼装、物理与渲染对接、场景行为校验视为仿真落地的主要工作量；文中没有量化数据，搭建仿真管线的团队应把 agent 辅助建场景当作值得在自家场景上试用的选项，而非已证实的提速。
+1. **WAVE-0** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **Steertuning Policies from a Few Human Videos** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **YUBI-Real2Sim** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **Vision-Predictor-Action** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注这些数据能否在作者自己的机器人之外复用。
+7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-14.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-15.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

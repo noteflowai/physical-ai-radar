@@ -1,49 +1,165 @@
 {
-  "date": "2026-10-14",
-  "generated": "2026-10-13 23:40 UTC",
-  "window": "papers 2026-10-10 → 2026-10-14 · posts 2026-09-14 → 2026-10-14 (UTC)",
+  "date": "2026-10-15",
+  "generated": "2026-10-14 23:40 UTC",
+  "window": "papers 2026-10-11 → 2026-10-15 · posts 2026-09-15 → 2026-10-15 (UTC)",
   "window_detail": {
-    "day": "2026-10-14",
-    "papers_from": "2026-10-10",
-    "posts_from": "2026-09-14",
+    "day": "2026-10-15",
+    "papers_from": "2026-10-11",
+    "posts_from": "2026-09-15",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "ieee-spectrum-robotics:e3c4600c5330",
-      "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
-      "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-10-07",
+      "id": "arxiv:2610.18568",
+      "title": "WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction",
+      "url": "https://arxiv.org/abs/2610.18568",
+      "publisher": "arXiv 2610.18568",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-13",
+      "lane": "foundation",
+      "score": 4.15,
+      "numbers": [
+        "91.47%",
+        "98.7%",
+        "88.0%",
+        "61.4%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences. World action models (WAMs) incorporate future prediction, yet most rely on costly video generation, while latent alternatives either use predicted futures only as auxiliary targets or infer latent actions from suboptimal visual transitions through costly large-scale video pretraining. We introduce WAVE-0 (World-model-Augmented VLA Execution), a framework that bridges VLAs and WAMs through a lightweight latent world model. By connecting the semantic understanding of pretrained VLAs with explicit future prediction, WAVE-0 allows anticipated action consequences to directly guide action generation. Built on a pretrained VLA, its 257M world model translates VLM-generated latent action plans into predicted future representations that condition the action expert, unifying latent planning, future prediction, and action generation. The world model is trained directly on ground-truth robot actions with a counterfactual ranking objective, requiring neither pixel reconstruction nor large-scale video pretraining. WAVE-0 achieves success rates of 91.47% on RoboTwin 2.0 and 98.7% on LIBERO, along with 88.0%, 61.4%, and 75.0% on LIBERO-Plus, LIBERO-Pro, and LIBERO-Para, respectively. On real-world tasks, it improves the success rate of $π_{0.5}$ from 38.3% to 73.3%. These results demonstrate strong manipulation performance and generalization across diverse distribution shifts."
+    },
+    {
+      "id": "arxiv:2610.18711",
+      "title": "Steertuning Policies from a Few Human Videos",
+      "url": "https://arxiv.org/abs/2610.18711",
+      "publisher": "arXiv 2610.18711",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-13",
+      "lane": "data",
+      "score": 3.888,
+      "numbers": [
+        "100 hours",
+        "5 demonstrations",
+        "71%",
+        "12 tasks"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies. In this work, we introduce Steertuning, a system that enables robots to learn new tasks in new environments from 5 human demonstrations in under 5 Steertuning consists of two parts. (1) We pretrain a 400M-parameter diffusion policy on our egocentric human dataset, which consists of 100 hours of densely annotated random interactions. This pretraining makes Steertuning robust to background differences and enables spatial and object generalization when deployed on new tasks. (2) Given 5 demonstrations of a new task, we finetune our model for only 2 minutes (2000 training updates) and steer the policy's actions during reverse sampling using the demonstration whose observation is closest to that of the deployment environment. Together with a carefully designed data processing pipeline for embodiment transfer, this enables Steertuning to achieve a 71% success rate across 12 tasks in 12 new environments, ranging from lab settings to kitchens in new homes. The entire process, from data collection for a new task to robot policy deployment, takes less than 5 minutes. Our full dataset, model weights, codebase, and robot videos will be made available at our website: https://steertuning.github.io."
+    },
+    {
+      "id": "arxiv:2610.17521",
+      "title": "YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation",
+      "url": "https://arxiv.org/abs/2610.17521",
+      "publisher": "arXiv 2610.17521",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-13",
       "lane": "simeval",
-      "score": 1.42,
+      "score": 3.56,
       "numbers": [],
       "signals": [
         "real_robot"
       ],
-      "summary": "This White Paper gives robotics researchers and engineers an overview of a new large-scale motion capture dataset built to close the data gap limiting humanoid robot learning. It also shows how policies trained on the dataset transfer to a real humanoid robot. What you will learn about: Why humanoid robot learning, a central problem in embodied AI and Physical AI, needs data that internet video and existing motion capture datasets cannot provide. How FrameNet , a linguistic framework for human action, can guide motion capture collection to systematically cover a broad range of whole-body motion. Why synchronized object trajectories and meshes make human-object interaction data useful for teaching robots real-world tasks such as carrying, pushing, and pulling. How reinforcement learning policies trained on this motion capture data improve with scale, and how sim-to-real transfer carries them onto a physical humanoid robot. Download this free whitepaper now!"
+      "summary": "Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation. While 3D Gaussian Splatting (3DGS) enables rapid real-to-sim scene generation, the reconstruction quality required for reliable policy evaluation remains unquantified. In particular, policies relying on wrist-mounted fisheye cameras (e.g., YUBI handheld gripper data) are heavily exposed to visual artifacts (holes, floaters) in wide-angle views, directly degrading task performance. To address this, we present YUBI-Real2Sim, a unified framework for 3DGS-based scene reconstruction and real-to-sim policy evaluation under dual fisheye wrist views. We develop an integrated pipeline combining 200-degree fisheye camera capture, 3DGS training, 3D foundation models for object modeling, and MuJoCo-based physical simulation, reproducing the observed real-world policy ordering in eight of nine scene-task comparisons. Using this framework, we construct a benchmark across two bimanual robot platforms, three scenes, three tasks, and dual pi0.5-based policies. This systematically measures real-to-sim rank agreement and evaluates policy sensitivity against counterfactual 3DGS artifacts (ceiling holes, floaters, warping) and capture disturbances. We further analyze whether novel-view quality scores can indicate policy-ranking reliability under a scene-held-out evaluation protocol. The results show task-dependent performance and limitations of quality-based reliability prediction, highlighting the need to assess reconstruction quality when using Real2Sim for policy evaluation. These results do not yet establish a generally reliable scene-acceptance rule. Project Page: https://yubi-real2sim.airoa.io."
     },
     {
-      "id": "nvidia-blog:baf7193e75c1",
-      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
-      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+      "id": "arxiv:2610.15556",
+      "title": "Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors",
+      "url": "https://arxiv.org/abs/2610.15556",
+      "publisher": "arXiv 2610.15556",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-11",
+      "lane": "edge",
+      "score": 3.46,
+      "numbers": [
+        "20M parameters",
+        "14 ms",
+        "10 demonstrations",
+        "40.0%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "open_release",
+        "latency"
+      ],
+      "summary": "Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency. We present Goal-Conditioned Vision-Predictor-Action (VPA), which replaces autoregressive decoders with a lightweight latent control loop. A shared vision encoder and a frozen text encoder embed observations, goal images, and instructions; a neuro-symbolic selector chooses a discrete skill; a Joint-Embedding Predictive Architecture (JEPA) predictor forecasts the next latent state; and a flow-matching solver generates an entire action chunk in a few integration steps, so that sequential network evaluations per decision step do not depend on the action horizon. We analyze inference complexity, regularization against representation collapse, and conditions under which latent sub-goal thresholding limits error accumulation across task phases. As an initial proof of concept, we evaluated VPA on the LIBERO-10 suite. The trainable model has under 20M parameters (checkpoint under 75 MB, excluding a frozen 63.4M-parameter CLIP text encoder); a decision step of a single-camera reference configuration takes 10-14 ms on an Apple M4; and trained only on LIBERO-10 demonstrations in under three hours on a single GPU, a two-camera policy succeeded in 40.0% of 200 evaluation episodes. These preliminary results from a single training run suggest the approach is workable. Code and weights are available at https://github.com/ylee-sling/Vision-Predictor-Action and https://huggingface.co/ylee-sling/vpa-libero10, and archived at https://doi.org/10.5281/zenodo.22960920."
+    },
+    {
+      "id": "nvidia-blog:5f7238246fc0",
+      "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+      "url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-10-08",
+      "published": "2026-10-14",
       "lane": "simeval",
-      "score": 1.285,
+      "score": 1.835,
       "numbers": [],
       "signals": [],
-      "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended. Developers are combining frontier AI models with NVIDIA Omniverse libraries to help carry out that work — building applications for exploring scenarios, investigating failures and improving designs. Developers direct AI agents through […]"
+      "summary": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical AI agents and digital twins that help teams make […]"
+    },
+    {
+      "id": "leiphone:633e7997fc78",
+      "title": "宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026",
+      "url": "https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-14",
+      "lane": "data",
+      "score": 1.417,
+      "numbers": [
+        "83%"
+      ],
+      "signals": [
+        "numbers"
+      ],
+      "summary": "剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。然而只要把杯子换成未见过的款式，或者稍微改变物体的摆放位置，策略的成功率就会急剧下降。 这种靠海量遥操作数据硬堆技能的方式，很难让机器人真正具备应对新环境的泛化能力。更棘手的是，即便当前的视频预测模型已经能准确画出合理的未来画面，但一旦接入动作模块驱动实机，机械臂依然频频出错。 在 IROS 2026 大会上，来自 UPenn、MIT 与 Stanford 联合团队的茅佳源分享了他们的思考。 她不仅介绍了只需一次人类演示就能泛化执行多种非抓取任务的 RAPID 闭环框架，还首次提出了诊断“视觉会了、手却做不对”这一机制脱节的 TR 指标。 借由基于 TR 的自适应引导机制，团队最终将双臂机器人在复杂组合任务上的真机泛化成功率提升到了 83%。 以下是茅佳源的演讲分享，AI科技评论在不改变原意的情况下，进行了编辑和整理： 01 百条轨迹换一项技能， 纯数据拟合为何难做物理泛化？ 过去几年，构建通用物理智能的主流思路是“数据拟合”，试图通过端到端学习，实现从视觉观察到控制动作的直接映射。 这一路径虽推动了大量研究，但在面对真实复杂的物理交互时，瓶颈迅速显现。 以 Actor Labs 的挖掘机实验为例，其团队将 Physical Intelligence 的 …"
+    },
+    {
+      "id": "the-robot-report:9b9a13ce4b03",
+      "title": "Timken Precision Drives puts the motion challenge first in humanoid robots",
+      "url": "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-14",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems."
+    },
+    {
+      "id": "monoist:c384d6e2f1d4",
+      "title": "AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
+      "evidence": "M",
+      "published": "2026-10-14",
+      "lane": "hardware",
+      "score": 1.032,
+      "numbers": [],
+      "signals": [],
+      "summary": "富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。"
     }
   ],
   "lane_counts": {
     "foundation": 8,
-    "data": 6,
-    "training": 5,
+    "data": 7,
+    "training": 4,
     "simeval": 14,
     "edge": 5,
     "safety": 2,
@@ -51,21 +167,23 @@
     "hardware": 9
   },
   "evidence_mix": {
-    "O": 2,
+    "O": 3,
     "R": 30,
-    "M": 18
+    "M": 17
   },
   "fetch": {
-    "items": 433,
+    "items": 408,
     "attempted": 11,
-    "answered": 11,
-    "failed": [],
+    "answered": 10,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "per_source": {
+      "arxiv": 75,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

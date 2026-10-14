@@ -60,25 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-14
+### Today's radar · 2026-10-15
 
-`Generated: 2026-10-13 23:40 UTC` ｜ `Window: papers 2026-10-10 → 2026-10-14 · posts 2026-09-14 → 2026-10-14 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-14 23:40 UTC` ｜ `Window: papers 2026-10-11 → 2026-10-15 · posts 2026-09-15 → 2026-10-15 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>Simulation & evaluation · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
-| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction](https://arxiv.org/abs/2610.18568)**<br>`91.47%`&nbsp; `98.7%`&nbsp; `88.0%`<br><sub>Foundation models · arXiv 2610.18568 · 2026‑10‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Steertuning Policies from a Few Human Videos](https://arxiv.org/abs/2610.18711)**<br>`100 hours`&nbsp; `5 demonstrations`&nbsp; `71%`<br><sub>Data engine · arXiv 2610.18711 · 2026‑10‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation](https://arxiv.org/abs/2610.17521)**<br><sub>Simulation & evaluation · arXiv 2610.17521 · 2026‑10‑13</sub> |
+| 04<br>🔵&nbsp;`R` | **[Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors](https://arxiv.org/abs/2610.15556)**<br>`20M parameters`&nbsp; `14 ms`&nbsp; `10 demonstrations`<br><sub>Edge & real-time · arXiv 2610.15556 · 2026‑10‑11</sub> |
+| 05<br>🟢&nbsp;`O` | **[European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑10‑14</sub> |
+| 06<br>🟡&nbsp;`M` | **[宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026](https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html)**<br>`83%`<br><sub>Data engine · 雷峰网 Leiphone · 2026‑10‑14</sub> |
+| 07<br>🟡&nbsp;`M` | **[Timken Precision Drives puts the motion challenge first in humanoid robots](https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開](https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑14</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–02</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **HiPHI** — `AI draft` Humanoid teams short on training data can shortlist this new large-scale motion-capture dataset, but what is visible is a secondhand white-paper overview with no figures, so check the primary dataset's scale and licence before planning around it.
-2. **Into the Omniverse** — `AI draft` NVIDIA frames asset assembly, physics-rendering hookup and behaviour checks as the real work of shipping a simulation; with no figures given, sim teams should trial agent-assisted scene building on their own scenes rather than budget for a proven speed-up.
+1. **WAVE-0** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **Steertuning Policies from a Few Human Videos** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **YUBI-Real2Sim** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+4. **Vision-Predictor-Action** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether the data is reusable beyond the authors' own robot.
+7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-14.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-15.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

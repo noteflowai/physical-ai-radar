@@ -13,6 +13,312 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.18568",
+      "url": "https://arxiv.org/abs/2610.18568",
+      "title": "WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.18568 · 2026-10-13<br><b>Key numbers</b>: 91.47% · 98.7% · 88.0% · 61.4%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.18568 · 2026-10-13\nKey numbers: 91.47% · 98.7% · 88.0% · 61.4%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nVision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.18568"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "arxiv:2610.18568",
+        "url": "https://arxiv.org/abs/2610.18568",
+        "title": "WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction",
+        "publisher": "arXiv 2610.18568",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-13",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [
+          "91.47%",
+          "98.7%",
+          "88.0%",
+          "61.4%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.18711",
+      "url": "https://arxiv.org/abs/2610.18711",
+      "title": "Steertuning Policies from a Few Human Videos",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.18711 · 2026-10-13<br><b>Key numbers</b>: 100 hours · 5 demonstrations · 71% · 12 tasks<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.18711 · 2026-10-13\nKey numbers: 100 hours · 5 demonstrations · 71% · 12 tasks\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nCurrent recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.18711"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "arxiv:2610.18711",
+        "url": "https://arxiv.org/abs/2610.18711",
+        "title": "Steertuning Policies from a Few Human Videos",
+        "publisher": "arXiv 2610.18711",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-13",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [
+          "100 hours",
+          "5 demonstrations",
+          "71%",
+          "12 tasks"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.17521",
+      "url": "https://arxiv.org/abs/2610.17521",
+      "title": "YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.17521 · 2026-10-13<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.17521 · 2026-10-13\nSignals: real-robot experiments\n\nEvaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.17521"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "arxiv:2610.17521",
+        "url": "https://arxiv.org/abs/2610.17521",
+        "title": "YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation",
+        "publisher": "arXiv 2610.17521",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-13",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.15556",
+      "url": "https://arxiv.org/abs/2610.15556",
+      "title": "Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.15556 · 2026-10-11<br><b>Key numbers</b>: 20M parameters · 14 ms · 10 demonstrations · 40.0%<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights · latency or control-rate numbers</p>\n<blockquote>Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.15556 · 2026-10-11\nKey numbers: 20M parameters · 14 ms · 10 demonstrations · 40.0%\nSignals: quantitative results · closed-loop success reported · open code or weights · latency or control-rate numbers\n\nVision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.15556"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "arxiv:2610.15556",
+        "url": "https://arxiv.org/abs/2610.15556",
+        "title": "Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors",
+        "publisher": "arXiv 2610.15556",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-10-11",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [
+          "20M parameters",
+          "14 ms",
+          "10 demonstrations",
+          "40.0%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:5f7238246fc0",
+      "url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
+      "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Blog · 2026-10-14</p>\n<blockquote>Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: NVIDIA Blog · 2026-10-14\n\nKeeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "NVIDIA Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "nvidia-blog:5f7238246fc0",
+        "url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
+        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+        "publisher": "NVIDIA Blog",
+        "source_id": "nvidia-blog",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-10-14",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:633e7997fc78",
+      "url": "https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html",
+      "title": "宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-14<br><b>Key numbers</b>: 83%<br><b>Signals</b>: quantitative results</p>\n<blockquote>剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-14\nKey numbers: 83%\nSignals: quantitative results\n\n剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "leiphone:633e7997fc78",
+        "url": "https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html",
+        "title": "宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "data",
+        "published": "2026-10-14",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [
+          "83%"
+        ],
+        "signals": [
+          "numbers"
+        ],
+        "excerpt": "剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:9b9a13ce4b03",
+      "url": "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/",
+      "title": "Timken Precision Drives puts the motion challenge first in humanoid robots",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-14</p>\n<blockquote>Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-10-14\n\nTimken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems.\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems.",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "the-robot-report:9b9a13ce4b03",
+        "url": "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/",
+        "title": "Timken Precision Drives puts the motion challenge first in humanoid robots",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-14",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:monoist:c384d6e2f1d4",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html",
+      "title": "AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: MONOist (ITmedia) · 2026-10-14</p>\n<blockquote>富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html\">Full radar for 2026-10-15</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: MONOist (ITmedia) · 2026-10-14\n\n富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。\n\nFull radar for 2026-10-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-15.en.html",
+      "summary": "富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。",
+      "date_published": "2026-10-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "MONOist (ITmedia)"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-15",
+        "id": "monoist:c384d6e2f1d4",
+        "url": "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html",
+        "title": "AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開",
+        "publisher": "MONOist (ITmedia)",
+        "source_id": "monoist",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-14",
+        "radar_published": "2026-10-14T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:e3c4600c5330",
       "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
       "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
@@ -3537,304 +3843,6 @@
           "latency"
         ],
         "excerpt": "Pretrained video foundation models encode rich semantic and spatiotemporal priors for embodied navigation, yet converting these priors into UAV motion typically requires expensive future-video synthesis and geometric reconstruction."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.37771",
-      "url": "https://arxiv.org/abs/2609.37771",
-      "title": "Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.37771 · 2026-09-29<br><b>Signals</b>: closed-loop success reported · open code or weights · latency or control-rate numbers</p>\n<blockquote>Simulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.37771 · 2026-09-29\nSignals: closed-loop success reported · open code or weights · latency or control-rate numbers\n\nSimulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment.\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "Simulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment.",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.37771"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "arxiv:2609.37771",
-        "url": "https://arxiv.org/abs/2609.37771",
-        "title": "Faster and Better? Benchmark Bugs and Design Limitations Distort the Evaluation of Vision-Language-Action Acceleration",
-        "publisher": "arXiv 2609.37771",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-29",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Simulated manipulation benchmarks are the standard tool for evaluating vision-language-action (VLA) policies and the acceleration methods that reduce their inference latency for on-robot deployment."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.39822",
-      "url": "https://arxiv.org/abs/2609.39822",
-      "title": "Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.39822 · 2026-09-30<br><b>Key numbers</b>: 61.557 ms · 21.956 ms<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Vision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2609.39822 · 2026-09-30\nKey numbers: 61.557 ms · 21.956 ms\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nVision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution.\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "Vision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution.",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.39822"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "arxiv:2609.39822",
-        "url": "https://arxiv.org/abs/2609.39822",
-        "title": "Toward Real-Time VLAs: Stage-Aware Two-Step Flow Denoising and System-Level Evaluation",
-        "publisher": "arXiv 2609.39822",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "foundation",
-        "published": "2026-09-30",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [
-          "61.557 ms",
-          "21.956 ms"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "latency"
-        ],
-        "excerpt": "Vision-language-action (VLA) models face a timing gap between low-rate inference and high-rate robot execution."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:73878f37956b",
-      "url": "https://spectrum.ieee.org/robust-robot-hand",
-      "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-01</p>\n<blockquote>Today, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-01\n\nToday, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of…\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "Today, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of…",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "ieee-spectrum-robotics:73878f37956b",
-        "url": "https://spectrum.ieee.org/robust-robot-hand",
-        "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Today, Boston Dynamics is announcing a redesigned hand for its Atlas robot . The previous generation could do some crazy superhuman things with its three fingers, but it was never intended for mass production in the tens or hundreds of…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:147d35dd5178",
-      "url": "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/",
-      "title": "Boston Dynamics drops pinkie on new humanoid hand",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-01</p>\n<blockquote>Boston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-10-01\n\nBoston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do.\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "Boston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do.",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "the-robot-report:147d35dd5178",
-        "url": "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/",
-        "title": "Boston Dynamics drops pinkie on new humanoid hand",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Boston Dynamics engineers taped their pinkies and ring fingers together for a day to learn what they weren’t able to do."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:99805b279c40",
-      "url": "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/",
-      "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-01</p>\n<blockquote>A robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-01\n\nA robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence.\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "A robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence.",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "the-robot-report:99805b279c40",
-        "url": "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/",
-        "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "safety",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "A robot can follow its safety rules and still act on manipulated information. See what this means for robot safety and how teams can strengthen their testing and evidence."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:7d547966b72a",
-      "url": "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/",
-      "title": "ANYbotics launches Shift to streamline robot fleet operations, scale inspections",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-01</p>\n<blockquote>ANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html\">Full radar for 2026-10-02</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [M]\nSource: The Robot Report · 2026-10-01\n\nANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders.\n\nFull radar for 2026-10-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-02.en.html",
-      "summary": "ANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders.",
-      "date_published": "2026-10-01T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-02",
-        "id": "the-robot-report:7d547966b72a",
-        "url": "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/",
-        "title": "ANYbotics launches Shift to streamline robot fleet operations, scale inspections",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "systems",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-01T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "ANYbotics designed Shift to help maintenance teams run industrial inspections, detect failing equipment, and turn data into work orders."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.38059",
-      "url": "https://arxiv.org/abs/2609.38059",
-      "title": "WorldLine: Action-Driven Visual Simulation for Robotic Manipulation",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.38059 · 2026-09-29<br><b>Key numbers</b>: 10,000 hours · 2,000 hours · 74%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html\">Full radar for 2026-10-01</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.38059 · 2026-09-29\nKey numbers: 10,000 hours · 2,000 hours · 74%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nReal-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.\n\nFull radar for 2026-10-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html",
-      "summary": "Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors.",
-      "date_published": "2026-09-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.38059"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-01",
-        "id": "arxiv:2609.38059",
-        "url": "https://arxiv.org/abs/2609.38059",
-        "title": "WorldLine: Action-Driven Visual Simulation for Robotic Manipulation",
-        "publisher": "arXiv 2609.38059",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-29",
-        "radar_published": "2026-09-30T23:40:00Z",
-        "numbers": [
-          "10,000 hours",
-          "2,000 hours",
-          "74%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Real-world robot learning is constrained by the cost of collecting experience and evaluating candidate behaviors."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.37560",
-      "url": "https://arxiv.org/abs/2609.37560",
-      "title": "RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2609.37560 · 2026-09-29<br><b>Key numbers</b>: 77.15% · 84.47% · 97.41%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html\">Full radar for 2026-10-01</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2609.37560 · 2026-09-29\nKey numbers: 77.15% · 84.47% · 97.41%\nSignals: quantitative results · real-robot experiments\n\nGrinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.\n\nFull radar for 2026-10-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-01.en.html",
-      "summary": "Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult.",
-      "date_published": "2026-09-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2609.37560"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-01",
-        "id": "arxiv:2609.37560",
-        "url": "https://arxiv.org/abs/2609.37560",
-        "title": "RoboFin3D: A Sim-to-Real Platform for Robotic Surface Finishing",
-        "publisher": "arXiv 2609.37560",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-09-29",
-        "radar_published": "2026-09-30T23:40:00Z",
-        "numbers": [
-          "77.15%",
-          "84.47%",
-          "97.41%"
-        ],
-        "signals": [
-          "numbers",
-          "real_robot"
-        ],
-        "excerpt": "Grinding and sanding are fundamental processes in industrial robotic surface finishing. However, physical trials are expensive and consume workpieces, making reproducible experiments difficult."
       }
     }
   ]

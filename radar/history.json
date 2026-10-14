@@ -440,6 +440,25 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-15",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.18568",
+        "https://arxiv.org/abs/2610.18711",
+        "https://arxiv.org/abs/2610.17521",
+        "https://arxiv.org/abs/2610.15556",
+        "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations",
+        "https://www.leiphone.com/category/private/x6dmlw9up0rlyckh.html",
+        "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }

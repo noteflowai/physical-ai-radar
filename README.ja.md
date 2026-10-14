@@ -60,25 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-14
+### 本日のレーダー · 2026-10-15
 
-`生成時刻: 2026-10-13 23:40 UTC` ｜ `対象期間: 論文 2026-10-10 → 2026-10-14 · ブログ・報道 2026-09-14 → 2026-10-14 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-14 23:40 UTC` ｜ `対象期間: 論文 2026-10-11 → 2026-10-15 · ブログ・報道 2026-09-15 → 2026-10-15 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🟡&nbsp;`M` | **[HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction](https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/)**<br><sub>シミュレーションと評価 · IEEE Spectrum Robotics · 2026‑10‑07</sub> |
-| 02<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑08</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction](https://arxiv.org/abs/2610.18568)**<br>`91.47%`&nbsp; `98.7%`&nbsp; `88.0%`<br><sub>基盤モデル · arXiv 2610.18568 · 2026‑10‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Steertuning Policies from a Few Human Videos](https://arxiv.org/abs/2610.18711)**<br>`100 hours`&nbsp; `5 demonstrations`&nbsp; `71%`<br><sub>データエンジン · arXiv 2610.18711 · 2026‑10‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation](https://arxiv.org/abs/2610.17521)**<br><sub>シミュレーションと評価 · arXiv 2610.17521 · 2026‑10‑13</sub> |
+| 04<br>🔵&nbsp;`R` | **[Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors](https://arxiv.org/abs/2610.15556)**<br>`20M parameters`&nbsp; `14 ms`&nbsp; `10 demonstrations`<br><sub>エッジとリアルタイム · arXiv 2610.15556 · 2026‑10‑11</sub> |
+| 05<br>🟢&nbsp;`O` | **[European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑14</sub> |
+| 06<br>🟡&nbsp;`M` | **[宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026](https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html)**<br>`83%`<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑14</sub> |
+| 07<br>🟡&nbsp;`M` | **[Timken Precision Drives puts the motion challenge first in humanoid robots](https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開](https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑14</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–02</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **HiPHI** — `AI 下書き` 学習データ不足に悩むヒューマノイド開発チームには候補となる新しい大規模モーションキャプチャデータセットだが、確認できるのはホワイトペーパー概要の二次情報で数値もないため、採用前に一次資料で規模と利用条件を確かめたい。
-2. **Into the Omniverse** — `AI 下書き` NVIDIA はアセット組み立て、物理とレンダリングの接続、シーン挙動の確認をシミュレーション構築の実作業と位置づけるが、数値は示されていない。エージェントによるシーン構築は実証済みの効率化ではなく、自社シーンで試す候補として扱うべきだ。
+1. **WAVE-0** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+2. **Steertuning Policies from a Few Human Videos** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **YUBI-Real2Sim** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Vision-Predictor-Action** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-14.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-15.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
