@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WAVE-0** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **Steertuning Policies from a Few Human Videos** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **YUBI-Real2Sim** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-4. **Vision-Predictor-Action** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether the data is reusable beyond the authors' own robot.
-7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **WAVE-0** — `AI draft` Teams considering adding consequence prediction to a VLA get author-reported 91.47% on RoboTwin 2.0 and 98.7% on LIBERO as reason to try it; the page flags real-robot experiments but quotes no real-robot figure, so read it as a benchmark result.
+2. **Steertuning Policies from a Few Human Videos** — `AI draft` If the self-reported 71% success across 12 tasks given 5 demonstrations holds up, new-task data budgets could shrink from large collection campaigns to a handful of demos; it is an unreviewed preprint, and the page does not show what the 100 hours of annotated data contain.
+3. **YUBI-Real2Sim** — `AI draft` Teams hoping to replace costly, hard-to-reproduce real-robot VLA evaluation with real-to-sim replicas should note that the visible text gives no closed-loop results or figures on how closely the scenes track reality, so keep real-robot spot checks in the plan.
+4. **Vision-Predictor-Action** — `AI draft` Edge teams slowed by token-by-token VLA decoding get a lead worth retesting: the authors report under 20M trainable parameters and 10-14 ms on Apple hardware, but the only quoted success figure is a self-reported 40.0% over 200 evaluations, and the page quotes no real-robot result.
+5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — `AI draft` Nothing visible here involves a robot: the excerpt concerns city decisions such as when to repair roads and how to use energy, with no figures, so robotics teams can skip it unless they also build city-operations agents.
+6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — `AI draft` Arm teams recording a hundred-plus demonstrations just to grasp one mug should look at the TR metric and adaptive guidance in the underlying IROS 2026 work, but the 83% appears only in this secondhand headline, so check the paper's setup before citing it.
+7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — `AI draft` Humanoid builders sourcing motion components can shortlist Timken as one supplier spanning Cone Drive, SPINEA, CGI Motion and Timken Encoders, but this secondhand report gives no figures, so price and lead time still have to come from the vendor.
+8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — `AI draft` Integrators mixing AMRs and cobots in Japan now have a site where Fuji Soft demonstrates robot coordination on its fleet-management platform, but this secondhand report gives no figures, so treat it as a place to visit rather than evidence of interoperability.
 
 </details>
 
