@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-15
+### 今日雷达 · 2026-10-16
 
-`生成时间: 2026-10-14 23:40 UTC` ｜ `统计窗口: 论文 2026-10-11 → 2026-10-15 · 博客与报道 2026-09-15 → 2026-10-15 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-15 23:40 UTC` ｜ `统计窗口: 论文 2026-10-12 → 2026-10-16 · 博客与报道 2026-09-16 → 2026-10-16 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction](https://arxiv.org/abs/2610.18568)**<br>`91.47%`&nbsp; `98.7%`&nbsp; `88.0%`<br><sub>基座模型 · arXiv 2610.18568 · 2026‑10‑13</sub> |
-| 02<br>🔵&nbsp;`R` | **[Steertuning Policies from a Few Human Videos](https://arxiv.org/abs/2610.18711)**<br>`100 hours`&nbsp; `5 demonstrations`&nbsp; `71%`<br><sub>数据引擎 · arXiv 2610.18711 · 2026‑10‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation](https://arxiv.org/abs/2610.17521)**<br><sub>仿真与评测 · arXiv 2610.17521 · 2026‑10‑13</sub> |
-| 04<br>🔵&nbsp;`R` | **[Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors](https://arxiv.org/abs/2610.15556)**<br>`20M parameters`&nbsp; `14 ms`&nbsp; `10 demonstrations`<br><sub>边缘与实时性 · arXiv 2610.15556 · 2026‑10‑11</sub> |
-| 05<br>🟢&nbsp;`O` | **[European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑10‑14</sub> |
-| 06<br>🟡&nbsp;`M` | **[宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026](https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html)**<br>`83%`<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑10‑14</sub> |
-| 07<br>🟡&nbsp;`M` | **[Timken Precision Drives puts the motion challenge first in humanoid robots](https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑14</sub> |
-| 08<br>🟡&nbsp;`M` | **[AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開](https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑14</sub> |
+| 01<br>🔵&nbsp;`R` | **[Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System](https://arxiv.org/abs/2610.19600)**<br>`80%`&nbsp; `19%`&nbsp; `47%`<br><sub>系统与编排 · arXiv 2610.19600 · 2026‑10‑14</sub> |
+| 02<br>🔵&nbsp;`R` | **[DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting](https://arxiv.org/abs/2610.17789)**<br>`92.4%`&nbsp; `80.0%`&nbsp; `77.5%`<br><sub>数据引擎 · arXiv 2610.17789 · 2026‑10‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[Complementary Future Token Pruning for World Action Models](https://arxiv.org/abs/2610.19957)**<br>`35%`&nbsp; `1.27x`&nbsp; `50%`<br><sub>仿真与评测 · arXiv 2610.19957 · 2026‑10‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation](https://arxiv.org/abs/2610.19765)**<br>`66.6%`&nbsp; `55.0%`&nbsp; `72.5%`<br><sub>仿真与评测 · arXiv 2610.19765 · 2026‑10‑14</sub> |
+| 05<br>🔵&nbsp;`R` | **[3D Lane Detection with Odometry for High-Speed Vehicle Racing](http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing)**<br>`300Hz`&nbsp; `30%`<br><sub>数据引擎 · Toyota Research Institute · 2026‑10‑15</sub> |
+| 06<br>🟡&nbsp;`M` | **[Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid](https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/)**<br>`20 hours`<br><sub>本体与供应链 · The Robot Report · 2026‑10‑15</sub> |
+| 07<br>🟡&nbsp;`M` | **[日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題](https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑15</sub> |
+| 08<br>🟡&nbsp;`M` | **[昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源](https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html)**<br>`60 FPS`&nbsp; `83 FPS`<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑15</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **WAVE-0** — `AI 起草` 想给 VLA 补上对动作后果的预测的团队，可以把作者自报的 RoboTwin 2.0 上 91.47%、LIBERO 上 98.7% 当作试一试的理由；页面虽标有真机实验，却没引用任何真机数字，目前应按基准成绩看待。
-2. **Steertuning Policies from a Few Human Videos** — `AI 起草` 若作者自报的“给定 5 条演示、在 12 个任务上达到 71% 成功率”站得住，新任务的数据预算可以从海量机器人演示缩到少量演示；但这是未经评审的预印本，那 100 小时标注数据具体是什么，页面并未说明。
-3. **YUBI-Real2Sim** — `AI 起草` 打算用 real-to-sim 复刻场景替代昂贵、难复现的真机 VLA 评测的团队要注意：这篇预印本在页面上没有给出闭环结果或任何数字，看不出复刻场景与真机结果吻合到什么程度，评测计划里仍应保留真机抽检。
-4. **Vision-Predictor-Action** — `AI 起草` 受限于逐 token 解码延迟的端侧团队，可以把作者自报的可训练参数不足 20M、在 Apple 设备上 10-14 ms 当作值得复测的线索；但页面引用的成功率只有作者自报的双相机策略 200 次评测中 40.0%，也未引用任何真机结果，更适合当延迟线索而非可部署策略。
-5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — `AI 起草` 页面上看不到任何与机器人相关的内容：摘录讲的是城市运营决策，比如何时修路、如何更高效地用能，也没有数字；除非你同时在做城市运营类 agent，否则机器人团队可以跳过这条。
-6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — `AI 起草` 为抓一个马克杯就要录上百条示范的机械臂团队，值得去读这项 IROS 2026 工作里的 TR 指标与自适应引导；但 83% 只出现在这篇二手报道的标题里，引用前先回原论文核对实验设置。
-7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — `AI 起草` 为人形机器人选型运动部件的团队，可以把整合了 Cone Drive、SPINEA、CGI Motion 与 Timken Encoders 的 Timken 视作一站式供应商候选；但这是二手报道且没有数字，比价和交期仍要直接向厂商确认。
-8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — `AI 起草` 在日本混用 AMR 与协作机器人的集成商，多了一个能现场看富士软件车队统一管理平台联动演示的地方；但这是二手报道、没有数字，应把它当作值得参观的据点，而不是互操作性的证据。
+1. **Cracking Mobile Manipulation** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
+2. **DexStitch** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
+3. **Complementary Future Token Pruning for World Action Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **Refine Actions If Needed** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。
+6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-15.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-16.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

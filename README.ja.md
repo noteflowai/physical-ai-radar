@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-15
+### 本日のレーダー · 2026-10-16
 
-`生成時刻: 2026-10-14 23:40 UTC` ｜ `対象期間: 論文 2026-10-11 → 2026-10-15 · ブログ・報道 2026-09-15 → 2026-10-15 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-15 23:40 UTC` ｜ `対象期間: 論文 2026-10-12 → 2026-10-16 · ブログ・報道 2026-09-16 → 2026-10-16 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction](https://arxiv.org/abs/2610.18568)**<br>`91.47%`&nbsp; `98.7%`&nbsp; `88.0%`<br><sub>基盤モデル · arXiv 2610.18568 · 2026‑10‑13</sub> |
-| 02<br>🔵&nbsp;`R` | **[Steertuning Policies from a Few Human Videos](https://arxiv.org/abs/2610.18711)**<br>`100 hours`&nbsp; `5 demonstrations`&nbsp; `71%`<br><sub>データエンジン · arXiv 2610.18711 · 2026‑10‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation](https://arxiv.org/abs/2610.17521)**<br><sub>シミュレーションと評価 · arXiv 2610.17521 · 2026‑10‑13</sub> |
-| 04<br>🔵&nbsp;`R` | **[Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors](https://arxiv.org/abs/2610.15556)**<br>`20M parameters`&nbsp; `14 ms`&nbsp; `10 demonstrations`<br><sub>エッジとリアルタイム · arXiv 2610.15556 · 2026‑10‑11</sub> |
-| 05<br>🟢&nbsp;`O` | **[European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑14</sub> |
-| 06<br>🟡&nbsp;`M` | **[宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026](https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html)**<br>`83%`<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑10‑14</sub> |
-| 07<br>🟡&nbsp;`M` | **[Timken Precision Drives puts the motion challenge first in humanoid robots](https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑14</sub> |
-| 08<br>🟡&nbsp;`M` | **[AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開](https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑14</sub> |
+| 01<br>🔵&nbsp;`R` | **[Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System](https://arxiv.org/abs/2610.19600)**<br>`80%`&nbsp; `19%`&nbsp; `47%`<br><sub>システムとオーケストレーション · arXiv 2610.19600 · 2026‑10‑14</sub> |
+| 02<br>🔵&nbsp;`R` | **[DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting](https://arxiv.org/abs/2610.17789)**<br>`92.4%`&nbsp; `80.0%`&nbsp; `77.5%`<br><sub>データエンジン · arXiv 2610.17789 · 2026‑10‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[Complementary Future Token Pruning for World Action Models](https://arxiv.org/abs/2610.19957)**<br>`35%`&nbsp; `1.27x`&nbsp; `50%`<br><sub>シミュレーションと評価 · arXiv 2610.19957 · 2026‑10‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation](https://arxiv.org/abs/2610.19765)**<br>`66.6%`&nbsp; `55.0%`&nbsp; `72.5%`<br><sub>シミュレーションと評価 · arXiv 2610.19765 · 2026‑10‑14</sub> |
+| 05<br>🔵&nbsp;`R` | **[3D Lane Detection with Odometry for High-Speed Vehicle Racing](http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing)**<br>`300Hz`&nbsp; `30%`<br><sub>データエンジン · Toyota Research Institute · 2026‑10‑15</sub> |
+| 06<br>🟡&nbsp;`M` | **[Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid](https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/)**<br>`20 hours`<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑15</sub> |
+| 07<br>🟡&nbsp;`M` | **[日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題](https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑15</sub> |
+| 08<br>🟡&nbsp;`M` | **[昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源](https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html)**<br>`60 FPS`&nbsp; `83 FPS`<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑15</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **WAVE-0** — `AI 下書き` VLA に行動結果の予測を組み込むか検討するチームには、著者自己申告の RoboTwin 2.0 で 91.47%、LIBERO で 98.7% が試す根拠になる。実機実験の表示はあるが実機の数値は引用されておらず、現時点ではベンチマーク上の結果と見るべきだ。
-2. **Steertuning Policies from a Few Human Videos** — `AI 下書き` 5 件のデモから 12 タスクで成功率 71% という著者の自己申告が再現されれば、新タスクのデータ予算は大規模収集から少数デモへ縮められる。ただし査読前で、100 hours の注釈付きデータの中身はページから読み取れない。
-3. **YUBI-Real2Sim** — `AI 下書き` 高コストで再現しにくい実機での VLA 評価を real-to-sim の再現シーンで置き換えたいチームは、本文に閉ループ結果も数値もなく、再現シーンが実機結果とどこまで一致するか分からない点に留意し、実機での抜き取り評価を残しておきたい。
-4. **Vision-Predictor-Action** — `AI 下書き` トークン逐次デコードの遅延に縛られるエッジ向けチームには、著者自己申告の学習対象パラメータ 20M 未満・Apple 機上 10-14 ms が再検証に値する手掛かりだ。ただし引用された成功率は 2 カメラ方策の 200 回評価で 40.0%（自己申告）のみで、実機での結果もページには引用されていない。
-5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — `AI 下書き` ページ上にロボットに関わる記述は見当たらない。抜粋は道路補修の時期やエネルギー効率といった都市運営の判断の話で、数値もない。都市運営向けエージェントも手掛けていない限り、ロボット開発チームは読み飛ばしてよい。
-6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — `AI 下書き` マグカップ一つの把持に百件以上のデモを録るアームのチームは、元の IROS 2026 研究の TR 指標と適応的ガイダンスを確認する価値がある。ただし 83% はこの二次報道の見出しにしか出てこないため、引用前に論文の実験条件を確かめたい。
-7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — `AI 下書き` ヒューマノイドの駆動系部品を選定するチームにとって、Cone Drive、SPINEA、CGI Motion、Timken Encoders を束ねる Timken は一括調達先の候補になる。ただし二次報道で数値もなく、価格や納期はメーカーに直接確認する必要がある。
-8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — `AI 下書き` AMR と協働ロボットを組み合わせる国内のインテグレーターにとって、富士ソフトのフリート統合管理プラットフォームによる連携デモを現地で確認できる拠点ができた。ただし二次報道で数値はなく、相互運用性の実証ではなく見学先として扱うのが妥当だ。
+1. **Cracking Mobile Manipulation** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+2. **DexStitch** — 査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **Complementary Future Token Pruning for World Action Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Refine Actions If Needed** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-15.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-16.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

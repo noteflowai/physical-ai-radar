@@ -1,178 +1,195 @@
 {
-  "date": "2026-10-15",
-  "generated": "2026-10-14 23:40 UTC",
-  "window": "papers 2026-10-11 → 2026-10-15 · posts 2026-09-15 → 2026-10-15 (UTC)",
+  "date": "2026-10-16",
+  "generated": "2026-10-15 23:40 UTC",
+  "window": "papers 2026-10-12 → 2026-10-16 · posts 2026-09-16 → 2026-10-16 (UTC)",
   "window_detail": {
-    "day": "2026-10-15",
-    "papers_from": "2026-10-11",
-    "posts_from": "2026-09-15",
+    "day": "2026-10-16",
+    "papers_from": "2026-10-12",
+    "posts_from": "2026-09-16",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.18568",
-      "title": "WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction",
-      "url": "https://arxiv.org/abs/2610.18568",
-      "publisher": "arXiv 2610.18568",
+      "id": "arxiv:2610.19600",
+      "title": "Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System",
+      "url": "https://arxiv.org/abs/2610.19600",
+      "publisher": "arXiv 2610.19600",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-13",
-      "lane": "foundation",
-      "score": 4.15,
+      "published": "2026-10-14",
+      "lane": "systems",
+      "score": 3.65,
       "numbers": [
-        "91.47%",
-        "98.7%",
-        "88.0%",
-        "61.4%"
+        "80%",
+        "19%",
+        "47%",
+        "49%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot"
+        "open_release"
       ],
-      "summary": "Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences. World action models (WAMs) incorporate future prediction, yet most rely on costly video generation, while latent alternatives either use predicted futures only as auxiliary targets or infer latent actions from suboptimal visual transitions through costly large-scale video pretraining. We introduce WAVE-0 (World-model-Augmented VLA Execution), a framework that bridges VLAs and WAMs through a lightweight latent world model. By connecting the semantic understanding of pretrained VLAs with explicit future prediction, WAVE-0 allows anticipated action consequences to directly guide action generation. Built on a pretrained VLA, its 257M world model translates VLM-generated latent action plans into predicted future representations that condition the action expert, unifying latent planning, future prediction, and action generation. The world model is trained directly on ground-truth robot actions with a counterfactual ranking objective, requiring neither pixel reconstruction nor large-scale video pretraining. WAVE-0 achieves success rates of 91.47% on RoboTwin 2.0 and 98.7% on LIBERO, along with 88.0%, 61.4%, and 75.0% on LIBERO-Plus, LIBERO-Pro, and LIBERO-Para, respectively. On real-world tasks, it improves the success rate of $π_{0.5}$ from 38.3% to 73.3%. These results demonstrate strong manipulation performance and generalization across diverse distribution shifts."
+      "summary": "Recent vision-language-action (VLA) models have shown strong performance on local robot manipulation, yet their success does not readily translate to long-horizon mobile manipulation. In our experiments, a pretrained subtask VLA achieves 80% success rate on atomic manipulation tasks but only 19% when these skills are composed into mobile manipulation. We argue that this gap stems from failures across the execution process rather than from local manipulation capability alone. To uncover these bottlenecks, we systematically diagnose failures in long-horizon mobile manipulation and identify three dominant regimes: task planning, navigation and base positioning, and local manipulation. Based on this diagnosis, we develop failure-guided agentic intervention that augments a fixed subtask VLA with demonstration-based planning guidance, adaptive visual memory, accessibility-aware base adjustment, and local end-effector adjustment. On RoboCasa365, these interventions progressively improve task success from 19% to 47%, with the finalized system reaching 49% on held-out episode seeds, compared with 18% for the baseline. The same design improves performance from 14% to 37% on BEHAVIOR-1K and from 5/20 to 13/20 on real-robot tasks. These results suggest that reliable mobile manipulation can be advanced by diagnosing and intervening on the current bottleneck, rather than uniformly scaling the underlying policy. Our code will be released at https://github.com/PKU-VaLuE-Lab/Cracking-Mobile-Manipulation.git."
     },
     {
-      "id": "arxiv:2610.18711",
-      "title": "Steertuning Policies from a Few Human Videos",
-      "url": "https://arxiv.org/abs/2610.18711",
-      "publisher": "arXiv 2610.18711",
+      "id": "arxiv:2610.17789",
+      "title": "DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting",
+      "url": "https://arxiv.org/abs/2610.17789",
+      "publisher": "arXiv 2610.17789",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-13",
       "lane": "data",
-      "score": 3.888,
+      "score": 3.487,
       "numbers": [
-        "100 hours",
-        "5 demonstrations",
-        "71%",
-        "12 tasks"
+        "92.4%",
+        "80.0%",
+        "77.5%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot"
+        "closed_loop"
       ],
-      "summary": "Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies. In this work, we introduce Steertuning, a system that enables robots to learn new tasks in new environments from 5 human demonstrations in under 5 Steertuning consists of two parts. (1) We pretrain a 400M-parameter diffusion policy on our egocentric human dataset, which consists of 100 hours of densely annotated random interactions. This pretraining makes Steertuning robust to background differences and enables spatial and object generalization when deployed on new tasks. (2) Given 5 demonstrations of a new task, we finetune our model for only 2 minutes (2000 training updates) and steer the policy's actions during reverse sampling using the demonstration whose observation is closest to that of the deployment environment. Together with a carefully designed data processing pipeline for embodiment transfer, this enables Steertuning to achieve a 71% success rate across 12 tasks in 12 new environments, ranging from lab settings to kitchens in new homes. The entire process, from data collection for a new task to robot policy deployment, takes less than 5 minutes. Our full dataset, model weights, codebase, and robot videos will be made available at our website: https://steertuning.github.io."
+      "summary": "A long-horizon manipulation task consists of primitive skills and the transitions connecting them. Learning skills that can be executed in sequence requires supervision for both, which is costly to collect on a robot. Human videos offer a scalable source of demonstrations, but transferring them to robots requires extracting robot-compatible observations and actions together with their skill structure. We present DexStitch, a framework that cuts long-horizon human videos into skills and transitions, converts them into aligned robot observation-action-skill data, and stitches the learned skills into a requested sequence. A skill classifier first segments the videos into manipulation skills and transitions. DexStitch then converts the human demonstrations into robot observations and actions while retaining their corresponding skill labels. During conversion, per-finger human-object contacts guide dexterous hand retargeting and robotic inpainting, preserving contact geometry and finger-object occlusion ordering. To stitch the learned skills into a sequence, a shared skill-conditioned policy is pretrained on the resulting synthetic data and finetuned on a mixture of synthetic data and a small set of single-skill teleoperation episodes. Conditioning on the current and next skills guides each transition toward the following skill, while predicted skill progression enables closed-loop switching. On a held-out session, the classifier agrees with manual annotations on 92.4% of frames. Across four household skills, DexStitch achieves 80.0% single-skill success and 77.5% sequence success."
     },
     {
-      "id": "arxiv:2610.17521",
-      "title": "YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation",
-      "url": "https://arxiv.org/abs/2610.17521",
-      "publisher": "arXiv 2610.17521",
+      "id": "arxiv:2610.19957",
+      "title": "Complementary Future Token Pruning for World Action Models",
+      "url": "https://arxiv.org/abs/2610.19957",
+      "publisher": "arXiv 2610.19957",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-13",
+      "published": "2026-10-14",
       "lane": "simeval",
-      "score": 3.56,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation. While 3D Gaussian Splatting (3DGS) enables rapid real-to-sim scene generation, the reconstruction quality required for reliable policy evaluation remains unquantified. In particular, policies relying on wrist-mounted fisheye cameras (e.g., YUBI handheld gripper data) are heavily exposed to visual artifacts (holes, floaters) in wide-angle views, directly degrading task performance. To address this, we present YUBI-Real2Sim, a unified framework for 3DGS-based scene reconstruction and real-to-sim policy evaluation under dual fisheye wrist views. We develop an integrated pipeline combining 200-degree fisheye camera capture, 3DGS training, 3D foundation models for object modeling, and MuJoCo-based physical simulation, reproducing the observed real-world policy ordering in eight of nine scene-task comparisons. Using this framework, we construct a benchmark across two bimanual robot platforms, three scenes, three tasks, and dual pi0.5-based policies. This systematically measures real-to-sim rank agreement and evaluates policy sensitivity against counterfactual 3DGS artifacts (ceiling holes, floaters, warping) and capture disturbances. We further analyze whether novel-view quality scores can indicate policy-ranking reliability under a scene-held-out evaluation protocol. The results show task-dependent performance and limitations of quality-based reliability prediction, highlighting the need to assess reconstruction quality when using Real2Sim for policy evaluation. These results do not yet establish a generally reliable scene-acceptance rule. Project Page: https://yubi-real2sim.airoa.io."
-    },
-    {
-      "id": "arxiv:2610.15556",
-      "title": "Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors",
-      "url": "https://arxiv.org/abs/2610.15556",
-      "publisher": "arXiv 2610.15556",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-11",
-      "lane": "edge",
-      "score": 3.46,
+      "score": 3.405,
       "numbers": [
-        "20M parameters",
-        "14 ms",
-        "10 demonstrations",
-        "40.0%"
+        "35%",
+        "1.27x",
+        "50%",
+        "1.33x"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "open_release",
+        "real_robot",
         "latency"
       ],
-      "summary": "Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency. We present Goal-Conditioned Vision-Predictor-Action (VPA), which replaces autoregressive decoders with a lightweight latent control loop. A shared vision encoder and a frozen text encoder embed observations, goal images, and instructions; a neuro-symbolic selector chooses a discrete skill; a Joint-Embedding Predictive Architecture (JEPA) predictor forecasts the next latent state; and a flow-matching solver generates an entire action chunk in a few integration steps, so that sequential network evaluations per decision step do not depend on the action horizon. We analyze inference complexity, regularization against representation collapse, and conditions under which latent sub-goal thresholding limits error accumulation across task phases. As an initial proof of concept, we evaluated VPA on the LIBERO-10 suite. The trainable model has under 20M parameters (checkpoint under 75 MB, excluding a frozen 63.4M-parameter CLIP text encoder); a decision step of a single-camera reference configuration takes 10-14 ms on an Apple M4; and trained only on LIBERO-10 demonstrations in under three hours on a single GPU, a two-camera policy succeeded in 40.0% of 200 evaluation episodes. These preliminary results from a single training run suggest the approach is workable. Code and weights are available at https://github.com/ylee-sling/Vision-Predictor-Action and https://huggingface.co/ylee-sling/vpa-libero10, and archived at https://doi.org/10.5281/zenodo.22960920."
+      "summary": "World action models (WAMs) jointly predict future visual states and robot actions, but processing dense future-frame tokens incurs substantial inference latency. We propose CF-Prune, a training-free framework for pruning future-frame tokens in pretrained WAMs. Our key insight is that future visual predictions support action generation and therefore need not preserve every visual detail required for high-fidelity video synthesis. CF-Prune combines instruction and action attention to identify task-relevant tokens during the initial denoising forward pass, even when future-frame and action representations remain highly noisy. An entropy-based phase identification mechanism further retains dense computation during precision phases to mitigate pruning-induced performance degradation. Experiments on RoboLab, RoboCasa, and real-world manipulation tasks demonstrate consistent inference speedups. At a 35% pruning ratio, CF-Prune achieves average speedups of 1.19-1.27x while improving task success rates. At a 50% pruning ratio, it achieves 1.29-1.33x average speedups on both simulation benchmarks, with overall success rates within 1.0 percentage point of the baseline."
     },
     {
-      "id": "nvidia-blog:5f7238246fc0",
-      "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
-      "url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
+      "id": "arxiv:2610.19765",
+      "title": "Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2610.19765",
+      "publisher": "arXiv 2610.19765",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-10-14",
       "lane": "simeval",
-      "score": 1.835,
-      "numbers": [],
-      "signals": [],
-      "summary": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical AI agents and digital twins that help teams make […]"
+      "score": 3.405,
+      "numbers": [
+        "66.6%",
+        "55.0%",
+        "72.5%",
+        "26.6%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "summary": "Computationally lightweight manipulation policies predict executable actions with low inference latency, but prediction errors can limit task success. Iterative generative policies can achieve higher task success rates, but repeated network evaluations increase inference latency. Refining action proposals from computationally lightweight policies can combine these strengths, but the amount of refinement needed varies across states. We introduce RAIN (Refine Actions If Needed), a framework that predicts action errors at different refinement levels to decide whether and how much to refine each executable proposal, before performing any refinement. We train an ensemble to predict these errors by comparing action proposals and their refined versions with expert actions from offline demonstrations, without requiring explicit labels of refinement needs. Calibration balances uncertainty, computation, and temporal consistency. We evaluate RAIN on eight ManiSkill tasks and four real-robot tasks. In simulation, our policy achieves 66.6% success, approaching the best evaluated diffusion-policy success rate with 5.71 times lower policy latency. On the real robot, success increases from 55.0% with Action Chunking with Transformers (ACT) to 72.5%, with comparable average successful completion time. Matched controls show that dynamic routing maintains the strongest observed fixed-refinement success level with 26.6% fewer refiner evaluations. Project page: https://rain-policy.github.io/."
     },
     {
-      "id": "leiphone:633e7997fc78",
-      "title": "宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026",
-      "url": "https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-14",
+      "id": "tri:3a35a756f7d5",
+      "title": "3D Lane Detection with Odometry for High-Speed Vehicle Racing",
+      "url": "http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing",
+      "publisher": "Toyota Research Institute",
+      "source_id": "tri",
+      "evidence": "R",
+      "published": "2026-10-15",
       "lane": "data",
-      "score": 1.417,
+      "score": 2.018,
       "numbers": [
-        "83%"
+        "300Hz",
+        "30%"
+      ],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "summary": "Lane boundary detection is a critical component in autonomous driving systems and has been rigorously studied in regular driving scenarios. However, it is less explored in vehicle racing, where the car moves at higher speeds across more extreme road geometries. To study this problem, we introduce a new dataset for 3D lane detection in racing, featuring >250k images from multiple camera feeds and inertial measurements taken with a Lexus LC 500 driving on a closed circuit. With this dataset, we compare various approaches to 3D lane detection and propose modifications that permit frames to be processed at rates of almost 300Hz while retaining high predictive performance in the racing application. This facilitates a multi-camera ensemble approach that is validated on hardware. We show that sensing modalities such as inertial measurements can be leveraged for pre-integration to regress road geometries over both cameras and time, yielding improvements in key metrics. Compared to methods such as BevLaneDet, adding odometry and ensemble predictions improves the F1 score by 3 points and reduces near-vehicle mean absolute errors (MAEs) by >30%. We show F1 scores >0.9 and lateral MAEs of <0.18m in vehicle deployments. Image Jul 15, 2026 Human Interactive Driving Read More 1 Minute Read"
+    },
+    {
+      "id": "the-robot-report:c50118c63ad1",
+      "title": "Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid",
+      "url": "https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-15",
+      "lane": "hardware",
+      "score": 1.482,
+      "numbers": [
+        "20 hours"
       ],
       "signals": [
         "numbers"
       ],
-      "summary": "剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。然而只要把杯子换成未见过的款式，或者稍微改变物体的摆放位置，策略的成功率就会急剧下降。 这种靠海量遥操作数据硬堆技能的方式，很难让机器人真正具备应对新环境的泛化能力。更棘手的是，即便当前的视频预测模型已经能准确画出合理的未来画面，但一旦接入动作模块驱动实机，机械臂依然频频出错。 在 IROS 2026 大会上，来自 UPenn、MIT 与 Stanford 联合团队的茅佳源分享了他们的思考。 她不仅介绍了只需一次人类演示就能泛化执行多种非抓取任务的 RAPID 闭环框架，还首次提出了诊断“视觉会了、手却做不对”这一机制脱节的 TR 指标。 借由基于 TR 的自适应引导机制，团队最终将双臂机器人在复杂组合任务上的真机泛化成功率提升到了 83%。 以下是茅佳源的演讲分享，AI科技评论在不改变原意的情况下，进行了编辑和整理： 01 百条轨迹换一项技能， 纯数据拟合为何难做物理泛化？ 过去几年，构建通用物理智能的主流思路是“数据拟合”，试图通过端到端学习，实现从视觉观察到控制动作的直接映射。 这一路径虽推动了大量研究，但在面对真实复杂的物理交互时，瓶颈迅速显现。 以 Actor Labs 的挖掘机实验为例，其团队将 Physical Intelligence 的 …"
+      "summary": "Nyobolt is providing power technology for Digit 5 that enables Agility's humanoid to work up to 20 hours a day."
     },
     {
-      "id": "the-robot-report:9b9a13ce4b03",
-      "title": "Timken Precision Drives puts the motion challenge first in humanoid robots",
-      "url": "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-14",
-      "lane": "hardware",
-      "score": 1.182,
-      "numbers": [],
-      "signals": [],
-      "summary": "Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems."
-    },
-    {
-      "id": "monoist:c384d6e2f1d4",
-      "title": "AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html",
+      "id": "monoist:d44bce913630",
+      "title": "日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html",
       "publisher": "MONOist (ITmedia)",
       "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-14",
+      "published": "2026-10-15",
       "lane": "hardware",
-      "score": 1.032,
+      "score": 1.365,
       "numbers": [],
       "signals": [],
-      "summary": "富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。"
+      "summary": "中国では現在、ヒューマノイドロボットの開発や量産、社会実装に向けた動きが加速している。しかし、完成品の動向を追うだけでは、その競争力の源泉や本格普及に向けた課題までは見えてこない。SUGENAのセミナー「フィジカルAI解体新書」では、ヒューマノイドをAIや関節、センサー、手などに“解体”し、中国勢の強さと残された課題を解説した。本稿ではその内容を基に、日本企業が勝負できる領域を見ていく。"
+    },
+    {
+      "id": "leiphone:9e9693b8f6c5",
+      "title": "昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源",
+      "url": "https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-15",
+      "lane": "foundation",
+      "score": 1.35,
+      "numbers": [
+        "60 FPS",
+        "83 FPS"
+      ],
+      "signals": [
+        "open_release"
+      ],
+      "summary": "从\"看 AI 生成视频\"，到\"亲手玩 AI 生成的世界\"——中间隔着的，其实是一道关于\"实时\"的坎。 2026年10月15日，昆仑万维正式发布世界上第一款运行在单张消费级显卡上的视频大模型游戏——Matrix-Game 4.0。Matrix-Game 4.0 构建起了游戏世界模型的新范式： 由游戏引擎维护世界状态与交互规则，由视频生成模型实时呈现精细画面。 它把 480p、60 FPS 的实时游戏体验，装进了一张 NVIDIA RTX 5090；从你按下按键，到画面做出反应，延迟低于 150 毫秒。Matrix-Game 4.0 首次跑通了\"代码生成游戏逻辑 → 结构画面提供结构约束 → 视频模型实时渲染\"的完整闭环，让游戏原型开发、个性化定制与 UGC 从此拥有了真正可落地的技术路径。项目已同步开源。 开源地址 Huggingface：https://huggingface.co/Skywork/Matrix-Game-4.0 一、从一段代码到一个可玩的世界——Matrix-Game 4.0 的四块基石 1. 单卡实时：让\"可玩的视频模型\"走出实验室 在消费级显卡上实时生成游戏画面，曾是难以兼得的目标——视频生成模型对算力的胃口，长期把它锁在实验室的多卡集群里。 Matrix-Game 4.0 给出的答案是一组硬指标： 单张 NVIDIA RTX 5090，480p 分辨率下游戏以 60 FPS 运行 ；从玩家按键到首帧响应， 端到端延迟低于 150 毫秒 ；单步去噪的稳态生成速度达 83 FPS ， …"
     }
   ],
   "lane_counts": {
     "foundation": 8,
-    "data": 7,
-    "training": 4,
+    "data": 8,
+    "training": 3,
     "simeval": 14,
-    "edge": 5,
+    "edge": 4,
     "safety": 2,
-    "systems": 1,
+    "systems": 2,
     "hardware": 9
   },
   "evidence_mix": {
     "O": 3,
-    "R": 30,
-    "M": 17
+    "R": 31,
+    "M": 16
   },
   "fetch": {
-    "items": 408,
+    "items": 418,
     "attempted": 11,
     "answered": 10,
     "failed": [
@@ -180,7 +197,7 @@
     ],
     "fallback": [],
     "per_source": {
-      "arxiv": 75,
+      "arxiv": 85,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

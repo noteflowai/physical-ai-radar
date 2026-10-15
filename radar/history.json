@@ -459,6 +459,25 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-16",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.19600",
+        "https://arxiv.org/abs/2610.17789",
+        "https://arxiv.org/abs/2610.19957",
+        "https://arxiv.org/abs/2610.19765",
+        "https://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing",
+        "https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html",
+        "https://www.leiphone.com/category/industrynews/osk0jtfdebasizah.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }
