@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.18568" rel="noopener" target="_blank">WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction</a></h3>
 <p class="figure"><strong>91.47%</strong><span class="context">“achieves success rates of 91.47% on RoboTwin 2.0”</span></p><p class="chips"><span class="chip">98.7%</span><span class="chip">88.0%</span><span class="chip">61.4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 想给 VLA 补上对动作后果的预测的团队，可以把作者自报的 RoboTwin 2.0 上 91.47%、LIBERO 上 98.7% 当作试一试的理由；页面虽标有真机实验，却没引用任何真机数字，目前应按基准成绩看待。</p>
 <p class="excerpt">Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.18711" rel="noopener" target="_blank">Steertuning Policies from a Few Human Videos</a></h3>
 <p class="figure"><strong>100 hours</strong><span class="context">“which consists of 100 hours of densely annotated”</span></p><p class="chips"><span class="chip">5 demonstrations</span><span class="chip">71%</span><span class="chip">12 tasks</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 若作者自报的“给定 5 条演示、在 12 个任务上达到 71% 成功率”站得住，新任务的数据预算可以从海量机器人演示缩到少量演示；但这是未经评审的预印本，那 100 小时标注数据具体是什么，页面并未说明。</p>
 <p class="excerpt">Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.17521" rel="noopener" target="_blank">YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 打算用 real-to-sim 复刻场景替代昂贵、难复现的真机 VLA 评测的团队要注意：这篇预印本在页面上没有给出闭环结果或任何数字，看不出复刻场景与真机结果吻合到什么程度，评测计划里仍应保留真机抽检。</p>
 <p class="excerpt">Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.15556" rel="noopener" target="_blank">Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors</a></h3>
 <p class="figure"><strong>20M parameters</strong><span class="context">“trainable model has under 20M parameters (checkpoint under 75”</span></p><p class="chips"><span class="chip">14 ms</span><span class="chip">10 demonstrations</span><span class="chip">40.0%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 受限于逐 token 解码延迟的端侧团队，可以把作者自报的可训练参数不足 20M、在 Apple 设备上 10-14 ms 当作值得复测的线索；但页面引用的成功率只有作者自报的双相机策略 200 次评测中 40.0%，也未引用任何真机结果，更适合当延迟线索而非可部署策略。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/" rel="noopener" target="_blank">European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 页面上看不到任何与机器人相关的内容：摘录讲的是城市运营决策，比如何时修路、如何更高效地用能，也没有数字；除非你同时在做城市运营类 agent，否则机器人团队可以跳过这条。</p>
 <p class="excerpt">Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently.</p>
 <footer>
 <span class="source">NVIDIA Blog · 2026-10-14</span>
@@ -176,7 +176,7 @@
 </header>
 <h3><a href="https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html" rel="noopener" target="_blank">宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026</a></h3>
 <p class="figure"><strong>83%</strong><span class="context">“宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026”</span></p>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 为抓一个马克杯就要录上百条示范的机械臂团队，值得去读这项 IROS 2026 工作里的 TR 指标与自适应引导；但 83% 只出现在这篇二手报道的标题里，引用前先回原论文核对实验设置。</p>
 <p class="excerpt">剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/" rel="noopener" target="_blank">Timken Precision Drives puts the motion challenge first in humanoid robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 为人形机器人选型运动部件的团队，可以把整合了 Cone Drive、SPINEA、CGI Motion 与 Timken Encoders 的 Timken 视作一站式供应商候选；但这是二手报道且没有数字，比价和交期仍要直接向厂商确认。</p>
 <p class="excerpt">Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-14</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html" rel="noopener" target="_blank">AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 在日本混用 AMR 与协作机器人的集成商，多了一个能现场看富士软件车队统一管理平台联动演示的地方；但这是二手报道、没有数字，应把它当作值得参观的据点，而不是互操作性的证据。</p>
 <p class="excerpt">富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-10-14</span>

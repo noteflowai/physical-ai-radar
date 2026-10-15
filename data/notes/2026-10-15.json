@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-15",
+  "generated": "2026-10-15 13:47 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.18568": {
+      "zh": "想给 VLA 补上对动作后果的预测的团队，可以把作者自报的 RoboTwin 2.0 上 91.47%、LIBERO 上 98.7% 当作试一试的理由；页面虽标有真机实验，却没引用任何真机数字，目前应按基准成绩看待。",
+      "en": "Teams considering adding consequence prediction to a VLA get author-reported 91.47% on RoboTwin 2.0 and 98.7% on LIBERO as reason to try it; the page flags real-robot experiments but quotes no real-robot figure, so read it as a benchmark result.",
+      "ja": "VLA に行動結果の予測を組み込むか検討するチームには、著者自己申告の RoboTwin 2.0 で 91.47%、LIBERO で 98.7% が試す根拠になる。実機実験の表示はあるが実機の数値は引用されておらず、現時点ではベンチマーク上の結果と見るべきだ。"
+    },
+    "https://arxiv.org/abs/2610.18711": {
+      "zh": "若作者自报的“给定 5 条演示、在 12 个任务上达到 71% 成功率”站得住，新任务的数据预算可以从海量机器人演示缩到少量演示；但这是未经评审的预印本，那 100 小时标注数据具体是什么，页面并未说明。",
+      "en": "If the self-reported 71% success across 12 tasks given 5 demonstrations holds up, new-task data budgets could shrink from large collection campaigns to a handful of demos; it is an unreviewed preprint, and the page does not show what the 100 hours of annotated data contain.",
+      "ja": "5 件のデモから 12 タスクで成功率 71% という著者の自己申告が再現されれば、新タスクのデータ予算は大規模収集から少数デモへ縮められる。ただし査読前で、100 hours の注釈付きデータの中身はページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2610.17521": {
+      "zh": "打算用 real-to-sim 复刻场景替代昂贵、难复现的真机 VLA 评测的团队要注意：这篇预印本在页面上没有给出闭环结果或任何数字，看不出复刻场景与真机结果吻合到什么程度，评测计划里仍应保留真机抽检。",
+      "en": "Teams hoping to replace costly, hard-to-reproduce real-robot VLA evaluation with real-to-sim replicas should note that the visible text gives no closed-loop results or figures on how closely the scenes track reality, so keep real-robot spot checks in the plan.",
+      "ja": "高コストで再現しにくい実機での VLA 評価を real-to-sim の再現シーンで置き換えたいチームは、本文に閉ループ結果も数値もなく、再現シーンが実機結果とどこまで一致するか分からない点に留意し、実機での抜き取り評価を残しておきたい。"
+    },
+    "https://arxiv.org/abs/2610.15556": {
+      "zh": "受限于逐 token 解码延迟的端侧团队，可以把作者自报的可训练参数不足 20M、在 Apple 设备上 10-14 ms 当作值得复测的线索；但页面引用的成功率只有作者自报的双相机策略 200 次评测中 40.0%，也未引用任何真机结果，更适合当延迟线索而非可部署策略。",
+      "en": "Edge teams slowed by token-by-token VLA decoding get a lead worth retesting: the authors report under 20M trainable parameters and 10-14 ms on Apple hardware, but the only quoted success figure is a self-reported 40.0% over 200 evaluations, and the page quotes no real-robot result.",
+      "ja": "トークン逐次デコードの遅延に縛られるエッジ向けチームには、著者自己申告の学習対象パラメータ 20M 未満・Apple 機上 10-14 ms が再検証に値する手掛かりだ。ただし引用された成功率は 2 カメラ方策の 200 回評価で 40.0%（自己申告）のみで、実機での結果もページには引用されていない。"
+    },
+    "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations": {
+      "zh": "页面上看不到任何与机器人相关的内容：摘录讲的是城市运营决策，比如何时修路、如何更高效地用能，也没有数字；除非你同时在做城市运营类 agent，否则机器人团队可以跳过这条。",
+      "en": "Nothing visible here involves a robot: the excerpt concerns city decisions such as when to repair roads and how to use energy, with no figures, so robotics teams can skip it unless they also build city-operations agents.",
+      "ja": "ページ上にロボットに関わる記述は見当たらない。抜粋は道路補修の時期やエネルギー効率といった都市運営の判断の話で、数値もない。都市運営向けエージェントも手掛けていない限り、ロボット開発チームは読み飛ばしてよい。"
+    },
+    "https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html": {
+      "zh": "为抓一个马克杯就要录上百条示范的机械臂团队，值得去读这项 IROS 2026 工作里的 TR 指标与自适应引导；但 83% 只出现在这篇二手报道的标题里，引用前先回原论文核对实验设置。",
+      "en": "Arm teams recording a hundred-plus demonstrations just to grasp one mug should look at the TR metric and adaptive guidance in the underlying IROS 2026 work, but the 83% appears only in this secondhand headline, so check the paper's setup before citing it.",
+      "ja": "マグカップ一つの把持に百件以上のデモを録るアームのチームは、元の IROS 2026 研究の TR 指標と適応的ガイダンスを確認する価値がある。ただし 83% はこの二次報道の見出しにしか出てこないため、引用前に論文の実験条件を確かめたい。"
+    },
+    "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots": {
+      "zh": "为人形机器人选型运动部件的团队，可以把整合了 Cone Drive、SPINEA、CGI Motion 与 Timken Encoders 的 Timken 视作一站式供应商候选；但这是二手报道且没有数字，比价和交期仍要直接向厂商确认。",
+      "en": "Humanoid builders sourcing motion components can shortlist Timken as one supplier spanning Cone Drive, SPINEA, CGI Motion and Timken Encoders, but this secondhand report gives no figures, so price and lead time still have to come from the vendor.",
+      "ja": "ヒューマノイドの駆動系部品を選定するチームにとって、Cone Drive、SPINEA、CGI Motion、Timken Encoders を束ねる Timken は一括調達先の候補になる。ただし二次報道で数値もなく、価格や納期はメーカーに直接確認する必要がある。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html": {
+      "zh": "在日本混用 AMR 与协作机器人的集成商，多了一个能现场看富士软件车队统一管理平台联动演示的地方；但这是二手报道、没有数字，应把它当作值得参观的据点，而不是互操作性的证据。",
+      "en": "Integrators mixing AMRs and cobots in Japan now have a site where Fuji Soft demonstrates robot coordination on its fleet-management platform, but this secondhand report gives no figures, so treat it as a place to visit rather than evidence of interoperability.",
+      "ja": "AMR と協働ロボットを組み合わせる国内のインテグレーターにとって、富士ソフトのフリート統合管理プラットフォームによる連携デモを現地で確認できる拠点ができた。ただし二次報道で数値はなく、相互運用性の実証ではなく見学先として扱うのが妥当だ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

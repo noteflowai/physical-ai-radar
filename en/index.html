@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.18568" rel="noopener" target="_blank">WAVE-0: Bridging VLA Policies and WAMs with Lightweight Latent Future Prediction</a></h3>
 <p class="figure"><strong>91.47%</strong><span class="context">“achieves success rates of 91.47% on RoboTwin 2.0”</span></p><p class="chips"><span class="chip">98.7%</span><span class="chip">88.0%</span><span class="chip">61.4%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Teams considering adding consequence prediction to a VLA get author-reported 91.47% on RoboTwin 2.0 and 98.7% on LIBERO as reason to try it; the page flags real-robot experiments but quotes no real-robot figure, so read it as a benchmark result.</p>
 <p class="excerpt">Vision-language-action (VLA) policies excel at generalist robotic manipulation but generate actions without explicitly modeling their environmental consequences.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.18711" rel="noopener" target="_blank">Steertuning Policies from a Few Human Videos</a></h3>
 <p class="figure"><strong>100 hours</strong><span class="context">“which consists of 100 hours of densely annotated”</span></p><p class="chips"><span class="chip">5 demonstrations</span><span class="chip">71%</span><span class="chip">12 tasks</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> If the self-reported 71% success across 12 tasks given 5 demonstrations holds up, new-task data budgets could shrink from large collection campaigns to a handful of demos; it is an unreviewed preprint, and the page does not show what the 100 hours of annotated data contain.</p>
 <p class="excerpt">Current recipes for robot learning require massive amounts of robot demonstrations to obtain robust and adaptive policies.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.17521" rel="noopener" target="_blank">YUBI-Real2Sim: 3DGS Scene Verification for Reliable Policy Evaluation</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams hoping to replace costly, hard-to-reproduce real-robot VLA evaluation with real-to-sim replicas should note that the visible text gives no closed-loop results or figures on how closely the scenes track reality, so keep real-robot spot checks in the plan.</p>
 <p class="excerpt">Evaluating VLA policies on real robots is costly, time-consuming, and difficult to reproduce, making real-to-sim simulation essential for scalable evaluation.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.15556" rel="noopener" target="_blank">Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors</a></h3>
 <p class="figure"><strong>20M parameters</strong><span class="context">“trainable model has under 20M parameters (checkpoint under 75”</span></p><p class="chips"><span class="chip">14 ms</span><span class="chip">10 demonstrations</span><span class="chip">40.0%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Edge teams slowed by token-by-token VLA decoding get a lead worth retesting: the authors report under 20M trainable parameters and 10-14 ms on Apple hardware, but the only quoted success figure is a self-reported 40.0% over 200 evaluations, and the page quotes no real-robot result.</p>
 <p class="excerpt">Vision-Language-Action (VLA) models commonly generate robot actions token by token through Large Language Model (LLM) decoders, causing inference latency to grow with action sequence length and limiting closed-loop control frequency.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/" rel="noopener" target="_blank">European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Nothing visible here involves a robot: the excerpt concerns city decisions such as when to repair roads and how to use energy, with no figures, so robotics teams can skip it unless they also build city-operations agents.</p>
 <p class="excerpt">Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently.</p>
 <footer>
 <span class="source">NVIDIA Blog · 2026-10-14</span>
@@ -176,7 +176,7 @@
 </header>
 <h3><a href="https://www.leiphone.com/category/private/x6DMLw9up0rlycKH.html" rel="noopener" target="_blank">宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026</a></h3>
 <p class="figure"><strong>83%</strong><span class="context">“宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026”</span></p>
-<p class="why">Secondary report, so check the primary source before citing; the text gives figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Arm teams recording a hundred-plus demonstrations just to grasp one mug should look at the TR metric and adaptive guidance in the underlying IROS 2026 work, but the 83% appears only in this secondhand headline, so check the paper&#x27;s setup before citing it.</p>
 <p class="excerpt">剖析视觉与动作脱节，引入 TR 指标与自适应引导，重构具身泛化机制。在机械臂的实机测试中，不少团队都遇到过类似的困扰：为了让机器人学会抓取某个马克杯，往往需要人类抓着机械臂录入上百条示范轨迹。</p>
 <ul class="signals"><li>quantitative results</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots/" rel="noopener" target="_blank">Timken Precision Drives puts the motion challenge first in humanoid robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Humanoid builders sourcing motion components can shortlist Timken as one supplier spanning Cone Drive, SPINEA, CGI Motion and Timken Encoders, but this secondhand report gives no figures, so price and lead time still have to come from the vendor.</p>
 <p class="excerpt">Timken combines the expertise of Cone Drive, SPINEA, CGI Motion, and Timken Encoders to develop application-specific motion systems.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-14</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html" rel="noopener" target="_blank">AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Integrators mixing AMRs and cobots in Japan now have a site where Fuji Soft demonstrates robot coordination on its fleet-management platform, but this secondhand report gives no figures, so treat it as a place to visit rather than evidence of interoperability.</p>
 <p class="excerpt">富士ソフトは新たに開設した富士ソフト初となるロボットの開発、実証拠点「名古屋Lab」を報道陣に公開。会場では、同社のフリート統合管理プラットフォームを活用したロボットによる連携デモを披露した。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-10-14</span>

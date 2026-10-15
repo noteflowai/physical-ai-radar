@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **WAVE-0** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-2. **Steertuning Policies from a Few Human Videos** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-3. **YUBI-Real2Sim** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Vision-Predictor-Action** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注这些数据能否在作者自己的机器人之外复用。
-7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **WAVE-0** — `AI 起草` 想给 VLA 补上对动作后果的预测的团队，可以把作者自报的 RoboTwin 2.0 上 91.47%、LIBERO 上 98.7% 当作试一试的理由；页面虽标有真机实验，却没引用任何真机数字，目前应按基准成绩看待。
+2. **Steertuning Policies from a Few Human Videos** — `AI 起草` 若作者自报的“给定 5 条演示、在 12 个任务上达到 71% 成功率”站得住，新任务的数据预算可以从海量机器人演示缩到少量演示；但这是未经评审的预印本，那 100 小时标注数据具体是什么，页面并未说明。
+3. **YUBI-Real2Sim** — `AI 起草` 打算用 real-to-sim 复刻场景替代昂贵、难复现的真机 VLA 评测的团队要注意：这篇预印本在页面上没有给出闭环结果或任何数字，看不出复刻场景与真机结果吻合到什么程度，评测计划里仍应保留真机抽检。
+4. **Vision-Predictor-Action** — `AI 起草` 受限于逐 token 解码延迟的端侧团队，可以把作者自报的可训练参数不足 20M、在 Apple 设备上 10-14 ms 当作值得复测的线索；但页面引用的成功率只有作者自报的双相机策略 200 次评测中 40.0%，也未引用任何真机结果，更适合当延迟线索而非可部署策略。
+5. **European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operat…** — `AI 起草` 页面上看不到任何与机器人相关的内容：摘录讲的是城市运营决策，比如何时修路、如何更高效地用能，也没有数字；除非你同时在做城市运营类 agent，否则机器人团队可以跳过这条。
+6. **宾大茅佳源：从单次演示到 83% 真机泛化，破解具身智能数据困局｜IROS 2026** — `AI 起草` 为抓一个马克杯就要录上百条示范的机械臂团队，值得去读这项 IROS 2026 工作里的 TR 指标与自适应引导；但 83% 只出现在这篇二手报道的标题里，引用前先回原论文核对实验设置。
+7. **Timken Precision Drives puts the motion challenge first in humanoid robots** — `AI 起草` 为人形机器人选型运动部件的团队，可以把整合了 Cone Drive、SPINEA、CGI Motion 与 Timken Encoders 的 Timken 视作一站式供应商候选；但这是二手报道且没有数字，比价和交期仍要直接向厂商确认。
+8. **AMRや協働ロボットのシステム連携など検証、富士ソフトが「名古屋Lab」公開** — `AI 起草` 在日本混用 AMR 与协作机器人的集成商，多了一个能现场看富士软件车队统一管理平台联动演示的地方；但这是二手报道、没有数字，应把它当作值得参观的据点，而不是互操作性的证据。
 
 </details>
 
