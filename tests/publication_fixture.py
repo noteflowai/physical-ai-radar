@@ -6,7 +6,8 @@ from unittest.mock import patch
 
 def isolate_private_recovery(test_case):
     """Keep synthetic domain states independent of the operator's live recovery."""
-    environment = patch.dict(os.environ, {"NOTEFLOW_FEATURE_RECOVERY": ""})
+    environment = patch.dict(os.environ, {"NOTEFLOW_FEATURE_RECOVERY": "",
+                                         "NOTEFLOW_FEATURE_QUARANTINE": ""})
     environment.start()
     test_case.addCleanup(environment.stop)
 

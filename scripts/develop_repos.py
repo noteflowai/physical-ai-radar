@@ -34,6 +34,7 @@ try:
     from .feature_outcomes import deferral_details, outcome_exit
     from .feature_governance import bind_decision, load_roadmap, next_version, validate_decision
     from .feature_recovery import check_original_effects
+    from .feature_quarantine import before_new_task, terminal_quarantine
     from .feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
@@ -54,6 +55,7 @@ except ImportError:
     from feature_outcomes import deferral_details, outcome_exit
     from feature_governance import bind_decision, load_roadmap, next_version, validate_decision
     from feature_recovery import check_original_effects
+    from feature_quarantine import before_new_task, terminal_quarantine
     from feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
@@ -618,11 +620,12 @@ def publish(root: Path, task: dict, config: dict, state: Path) -> dict:
 
 
 def complete(result: dict, state: Path, active: Path, service_state: Path,
-             name: str, day: str) -> dict:
+             name: str, day: str, *, root: Path | None = None) -> dict:
     """Durably consume today's allowance before removing the active transaction."""
     result["completed_on"] = day
     result["released_on"] = calendar_day()
     write_json(state / "complete.json", result)
+    terminal_quarantine(root, service_state, read_json(active))
     record_allowance(result, service_state, name)
     if result.get("distribution", {}).get("status") == "verified":
         queue_update(result, service_state)
@@ -734,11 +737,12 @@ def advance(root: Path, task: dict, config: dict, state: Path, active: Path,
     result["distribution"] = publish_distribution(root, result, state / "distribution")
     result["release_verified_at"] = stamp()
     write_json(state / "publication.json", result)
-    return complete(result, state, active, service_state, name, day)
+    return complete(result, state, active, service_state, name, day, root=root)
 
 
 def retire(task: dict, state: Path, active: Path, service_state: Path,
-           name: str, day: str, reason: str, *, reason_code: str | None = None) -> dict:
+           name: str, day: str, reason: str, *, reason_code: str | None = None,
+           root: Path | None = None) -> dict:
     if task.get("pr"):
         record = json.loads(gh(task["repo"], "pr", "view", str(task["pr"]),
                                "--json", "state,headRefOid"))
@@ -752,13 +756,14 @@ def retire(task: dict, state: Path, active: Path, service_state: Path,
         result["reason_code"] = reason_code
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
+    terminal_quarantine(root, service_state, task)
     write_json(service_state / day / name / "result.json", result)
     active.unlink(missing_ok=True)
     return result
 
 
 def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
-                     service_state: Path, name: str, day: str) -> dict:
+                     service_state: Path, name: str, day: str, *, root: Path | None = None) -> dict:
     """Terminal planning outcome; never a release, allowance or announcement."""
     result = {"repo": task["repo"], "feature_id": task["id"], "status": "no-change",
               "completed_on": day, "base": task["base"],
@@ -766,7 +771,9 @@ def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
                   "reason", "milestone_id", "problem_evidence", "expected_outcome",
                   "follow_up_on", "governance")}}
     write_json(state / "decision.json", decision)
+    write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
+    terminal_quarantine(root, service_state, task)
     write_json(service_state / day / name / "result.json", result)
     active.unlink(missing_ok=True)
     return result
@@ -786,9 +793,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         terminal = read_json(previous_state / "complete.json") or read_json(previous_state / "terminal.json")
         if not terminal and task.get("phase") == "no-change":
             terminal = finish_no_change(task, task["decision"], previous_state, active,
-                                        service_state, name, task["decision_on"])
+                                        service_state, name, task["decision_on"], root=workspace / name)
         if terminal:
             # Recover a crash between terminal recording, day allowance and active cleanup.
+            terminal_quarantine(workspace / name, service_state, task)
             record_allowance(terminal, service_state, name)
             if terminal.get("distribution", {}).get("status") == "verified":
                 queue_update(terminal, service_state)
@@ -803,6 +811,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
     allowance = read_json(service_state / "allowances" / calendar_day() / (name + ".json"))
     if allowance:
         return {**allowance, "daily_limit_reused": True}
+    if task is None:
+        before_new_task(workspace / name, service_state, repo)
     root = checkout(workspace, name)
     main = command(["git", "rev-parse", "origin/main"], cwd=root).strip()
     if name == "physical-ai-radar":
@@ -830,12 +840,12 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         return retire(task, state, active, service_state, name, day,
                       f"Nine {task['phase']} attempts failed; retained diagnostics, no feature released. "
                       "A smaller independently reviewed plan may be selected next day.",
-                      reason_code=task["phase"] + "-budget-exhausted")
+                      reason_code=task["phase"] + "-budget-exhausted", root=root)
     if task["phase"] != "release" and task.get("phase_attempts", {}).get(task["phase"], 0) >= 9:
         return retire(task, state, active, service_state, name, day,
                       "Nine resumptions of the same phase did not complete. "
                       "Retained the source/publication state and diagnostics; no successful release claimed.",
-                      reason_code=task["phase"] + "-budget-exhausted")
+                      reason_code=task["phase"] + "-budget-exhausted", root=root)
     if task["phase"] in {"validate", "acceptance-review", "push", "ci", "release"}:
         if plan_only:
             return {"repo": repo, "status": "planned", "feature_id": task["id"], "plan": task["plan"]}
@@ -882,7 +892,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 "Main changed after independent plan approval. Retained the approved contract, "
                 "attempt counts and diagnostics without applying it to a different source revision. "
                 "The next eligible batch must inspect current source and obtain fresh approval.",
-                reason_code="approved-source-changed")
+                reason_code="approved-source-changed", root=root)
     command(["git", "checkout", "-B", task["branch"], main], cwd=root)
     reset(root, main)
     if task["base"] != main:
@@ -1092,11 +1102,11 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                 return retire(task, state, active, service_state, name, day,
                               "Nine planning attempts failed; no implementation or release. "
                               "Retained proposal and review findings for a smaller next-day plan.",
-                              reason_code="plan-budget-exhausted")
+                              reason_code="plan-budget-exhausted", root=root)
             raise RuntimeError("Feature planning needs correction: " + task["feedback"])
         if task["phase"] == "no-change":
             return finish_no_change(task, task["decision"], state, active,
-                                    service_state, name, day)
+                                    service_state, name, day, root=root)
         task["phase"] = "implement"
         write_json(active, task)
     plan = task["plan"]
@@ -1358,7 +1368,8 @@ def main() -> int:
                 if args.plan_only:
                     argv.append("--plan-only")
                 code = execute_stage(argv, Path(__file__).resolve().parents[1],
-                                     {**os.environ, "FEATURE_LOCK_HELD": "1"},
+                                     {**os.environ, "FEATURE_LOCK_HELD": "1",
+                                      "FEATURE_LOCK_FD": str(lock.fileno())},
                                      receipt.parent / "worker.log", 2100)
                 result = read_json(receipt, {"repo": "noteflowai/" + name,
                                             "status": "retry-needed", "at": stamp()})
