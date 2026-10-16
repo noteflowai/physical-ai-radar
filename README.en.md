@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Cracking Mobile Manipulation** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-2. **DexStitch** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
-3. **Complementary Future Token Pruning for World Action Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **Refine Actions If Needed** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
-6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
-7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **Cracking Mobile Manipulation** — `AI draft` Before building long-horizon mobile manipulation on strong local VLA skills, note the self-reported fall from 80% for a pretrained subtask VLA to 19% at long horizon; the authors' system recovers to 47%, 49% held-out, with no real-robot figure on the page.
+2. **DexStitch** — `AI draft` Where skill-transition supervision is the costly part of robot data collection, the self-reported 77.5% sequence success against 80.0% single-skill suggests chaining costs little; the page does not say where these were measured, so treat it as unverified.
+3. **Complementary Future Token Pruning for World Action Models** — `AI draft` When a world action model misses its latency budget, pruning future-frame tokens is worth trying before buying hardware, but the self-reported gains are modest: average speedups up to 1.27x at a 35% pruning ratio and up to 1.33x at 50%.
+4. **Refine Actions If Needed** — `AI draft` Teams running a lightweight policy such as ACT can weigh adding an on-demand refiner instead of moving to a heavier model: the preprint reports ACT rising from 55.0% to 72.5%, matching fixed refinement with 26.6% fewer refiner evaluations.
+5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — `AI draft` For high-speed vehicle perception, a lane detector reported at almost 300Hz with mean absolute errors cut by more than 30% becomes a candidate for running at control rate, though the page shows no closed-loop driving result to back that up.
+6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — `AI draft` Operators sizing a humanoid fleet for multi-shift work could plan fewer spare units if Digit 5 really works up to 20 hours a day, but the figure arrives via a trade report, so confirm it with Agility or Nyobolt before planning shifts.
+7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — `AI draft` Anyone benchmarking against Chinese humanoids is urged by this secondary piece to look past finished products to what a teardown reveals about strengths and open problems; it quotes no figures, so use it as framing, not data.
+8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — `AI draft` Teams wanting an interactive generated world on one consumer GPU can test this open release, reported at 480p and 60 FPS; it is a game, the page shows no robot use, and the figures come second-hand via Leiphone.
 
 </details>
 

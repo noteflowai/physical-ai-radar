@@ -73,7 +73,7 @@
 <polygon class="area" points="0.0,-94.3 66.7,-66.7 35.4,-0.0 116.7,116.7 0.0,47.1 -16.7,16.7 -23.6,0.0 -75.0,-75.0"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#a3e635;--delay:0.35s"><circle cx="-148.5" cy="0.0" r="11" class="halo"/><circle cx="-148.5" cy="0.0" r="5"/><title>Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System</title></a>
-<a href="#p2" class="blip" style="--lane:#38bdf8;--delay:0.70s"><circle cx="92.9" cy="-110.7" r="11" class="halo"/><circle cx="92.9" cy="-110.7" r="5"/><title>DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting</title></a>
+<a href="#p2" class="blip" style="--lane:#38bdf8;--delay:0.70s"><circle cx="92.8" cy="-110.7" r="11" class="halo"/><circle cx="92.8" cy="-110.7" r="5"/><title>DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting</title></a>
 <a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="109.1" cy="91.5" r="11" class="halo"/><circle cx="109.1" cy="91.5" r="5"/><title>Complementary Future Token Pruning for World Action Models</title></a>
 <a href="#p4" class="blip" style="--lane:#fb923c;--delay:1.40s"><circle cx="91.5" cy="109.1" r="11" class="halo"/><circle cx="91.5" cy="109.1" r="5"/><title>Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation</title></a>
 <a href="#p5" class="blip" style="--lane:#38bdf8;--delay:1.75s"><circle cx="82.7" cy="-69.4" r="11" class="halo"/><circle cx="82.7" cy="-69.4" r="5"/><title>3D Lane Detection with Odometry for High-Speed Vehicle Racing</title></a>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.19600" rel="noopener" target="_blank">Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System</a></h3>
 <p class="figure"><strong>80%</strong><span class="context">“pretrained subtask VLA achieves 80% success rate on”</span></p><p class="chips"><span class="chip">19%</span><span class="chip">47%</span><span class="chip">49%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 想靠局部操作很强的 VLA 撑起移动操作长程任务的团队要留意：作者自报预训练子任务 VLA 有 80%，放到长程任务里只剩 19%，其系统也只拉到 47%、留出集 49%；页面未见真机数字。</p>
 <p class="excerpt">Recent vision-language-action (VLA) models have shown strong performance on local robot manipulation, yet their success does not readily translate to long-horizon mobile manipulation.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.17789" rel="noopener" target="_blank">DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting</a></h3>
 <p class="figure"><strong>92.4%</strong><span class="context">“with manual annotations on 92.4% of frames”</span></p><p class="chips"><span class="chip">80.0%</span><span class="chip">77.5%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果技能之间的衔接监督是你在机器人上最贵的采集环节，作者自报的序列成功率 77.5% 对单技能 80.0%，意味着串联几乎不掉点；但页面没说明在什么平台上测得，暂作未经验证看待。</p>
 <p class="excerpt">A long-horizon manipulation task consists of primitive skills and the transitions connecting them. Learning skills that can be executed in sequence requires supervision for both, which is costly to collect on a robot.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.19957" rel="noopener" target="_blank">Complementary Future Token Pruning for World Action Models</a></h3>
 <p class="figure"><strong>35%</strong><span class="context">“At a 35% pruning ratio”</span></p><p class="chips"><span class="chip">1.27x</span><span class="chip">50%</span><span class="chip">1.33x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 世界动作模型推理延迟超标时，可先试裁剪未来帧 token 而非升级硬件；但作者自报的收益有限：35% 裁剪比下平均加速至多 1.27x，50% 下至多 1.33x。</p>
 <p class="excerpt">World action models (WAMs) jointly predict future visual states and robot actions, but processing dense future-frame tokens incurs substantial inference latency.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.19765" rel="noopener" target="_blank">Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation</a></h3>
 <p class="figure"><strong>66.6%</strong><span class="context">“our policy achieves 66.6% success”</span></p><p class="chips"><span class="chip">55.0%</span><span class="chip">72.5%</span><span class="chip">26.6%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 在用 ACT 这类轻量策略的团队，与其换更重的模型，不如考虑加一个按需调用的精修器：作者自报 ACT 从 55.0% 提到 72.5%，且以少 26.6% 的精修调用达到固定精修的成功率。</p>
 <p class="excerpt">Computationally lightweight manipulation policies predict executable actions with low inference latency, but prediction errors can limit task success.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -163,7 +163,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing" rel="noopener" target="_blank">3D Lane Detection with Odometry for High-Speed Vehicle Racing</a></h3>
 <p class="figure"><strong>300Hz</strong><span class="context">“at rates of almost 300Hz while retaining high”</span></p><p class="chips"><span class="chip">30%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 做高速车辆感知的团队可以关注：车道线检测报告接近 300Hz、平均绝对误差降低超过 30%，速度上已可考虑放进控制回路；但页面没有闭环驾驶结果来证明这一点。</p>
 <p class="excerpt">Lane boundary detection is a critical component in autonomous driving systems and has been rigorously studied in regular driving scenarios.</p>
 <ul class="signals"><li>含量化指标</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -179,7 +179,7 @@
 </header>
 <h3><a href="https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/" rel="noopener" target="_blank">Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid</a></h3>
 <p class="figure"><strong>20 hours</strong><span class="context">“to work up to 20 hours a day”</span></p>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 按多班次规划人形机器人车队时，若 Digit 5 真能每天工作最多 20 小时，备用机数量可以压缩；但这是行业媒体的转述，排班前应向 Agility 或 Nyobolt 核实。</p>
 <p class="excerpt">Nyobolt is providing power technology for Digit 5 that enables Agility&#x27;s humanoid to work up to 20 hours a day.</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html" rel="noopener" target="_blank">日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 对标中国人形机器人时，这篇二手报道主张别只盯整机动态，而要从拆解看竞争力来源与待解难题；文中没有引用数字，适合作为分析框架而非数据来源。</p>
 <p class="excerpt">中国では現在、ヒューマノイドロボットの開発や量産、社会実装に向けた動きが加速している。しかし、完成品の動向を追うだけでは、その競争力の源泉や本格普及に向けた課題までは見えてこない。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-10-15</span>
@@ -209,7 +209,7 @@
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html" rel="noopener" target="_blank">昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源</a></h3>
 <p class="figure"><strong>60 FPS</strong><span class="context">“它把 480p、 60 FPS 的实时游戏体验，装进了一张 NVIDIA RTX”</span></p><p class="chips"><span class="chip">83 FPS</span></p>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 想在单张消费级显卡上跑交互式生成世界的团队可以试这个开源发布，报道称 480p、60 FPS；但它是游戏，页面未见任何机器人用途，数字也来自雷峰网的二手报道。</p>
 <p class="excerpt">从&quot;看 AI 生成视频&quot;，到&quot;亲手玩 AI 生成的世界&quot;——中间隔着的，其实是一道关于&quot;实时&quot;的坎。 2026年10月15日，昆仑万维正式发布世界上第一款运行在单张消费级显卡上的视频大模型游戏——Matrix-Game 4.0。</p>
 <ul class="signals"><li>有开放代码或权重</li></ul>
 <footer>

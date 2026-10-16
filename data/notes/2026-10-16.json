@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-16",
+  "generated": "2026-10-16 14:10 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.19600": {
+      "zh": "想靠局部操作很强的 VLA 撑起移动操作长程任务的团队要留意：作者自报预训练子任务 VLA 有 80%，放到长程任务里只剩 19%，其系统也只拉到 47%、留出集 49%；页面未见真机数字。",
+      "en": "Before building long-horizon mobile manipulation on strong local VLA skills, note the self-reported fall from 80% for a pretrained subtask VLA to 19% at long horizon; the authors' system recovers to 47%, 49% held-out, with no real-robot figure on the page.",
+      "ja": "局所操作に強い VLA を長期の移動マニピュレーションに流用するなら、事前学習済みサブタスク VLA の 80% が長期では 19% に落ちるという著者報告を踏まえるべきだ。提案システムでも 47%、ホールドアウトで 49% にとどまり、実機の数値は示されていない。"
+    },
+    "https://arxiv.org/abs/2610.17789": {
+      "zh": "如果技能之间的衔接监督是你在机器人上最贵的采集环节，作者自报的序列成功率 77.5% 对单技能 80.0%，意味着串联几乎不掉点；但页面没说明在什么平台上测得，暂作未经验证看待。",
+      "en": "Where skill-transition supervision is the costly part of robot data collection, the self-reported 77.5% sequence success against 80.0% single-skill suggests chaining costs little; the page does not say where these were measured, so treat it as unverified.",
+      "ja": "スキル間のつなぎの教師データ収集が最もコストのかかる工程なら、単一スキル 80.0% に対し連続実行 77.5% という自己申告は、連結による落ち込みが小さいことを示唆する。ただし測定環境はページから読み取れず、未検証扱いが妥当。"
+    },
+    "https://arxiv.org/abs/2610.19957": {
+      "zh": "世界动作模型推理延迟超标时，可先试裁剪未来帧 token 而非升级硬件；但作者自报的收益有限：35% 裁剪比下平均加速至多 1.27x，50% 下至多 1.33x。",
+      "en": "When a world action model misses its latency budget, pruning future-frame tokens is worth trying before buying hardware, but the self-reported gains are modest: average speedups up to 1.27x at a 35% pruning ratio and up to 1.33x at 50%.",
+      "ja": "世界行動モデルが遅延要件を満たせないとき、ハードウェア増強の前に未来フレームのトークン削減を試す価値はある。ただし著者報告の効果は控えめで、削減率 35% で平均最大 1.27x、50% で最大 1.33x の高速化にとどまる。"
+    },
+    "https://arxiv.org/abs/2610.19765": {
+      "zh": "在用 ACT 这类轻量策略的团队，与其换更重的模型，不如考虑加一个按需调用的精修器：作者自报 ACT 从 55.0% 提到 72.5%，且以少 26.6% 的精修调用达到固定精修的成功率。",
+      "en": "Teams running a lightweight policy such as ACT can weigh adding an on-demand refiner instead of moving to a heavier model: the preprint reports ACT rising from 55.0% to 72.5%, matching fixed refinement with 26.6% fewer refiner evaluations.",
+      "ja": "ACT のような軽量方策を使うチームは、重いモデルに乗り換える前に必要時だけ呼ぶリファイナの追加を検討できる。著者報告では ACT が 55.0% から 72.5% に上がり、固定リファインと同等の成功率をリファイナ評価 26.6% 減で達成した。"
+    },
+    "https://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing": {
+      "zh": "做高速车辆感知的团队可以关注：车道线检测报告接近 300Hz、平均绝对误差降低超过 30%，速度上已可考虑放进控制回路；但页面没有闭环驾驶结果来证明这一点。",
+      "en": "For high-speed vehicle perception, a lane detector reported at almost 300Hz with mean absolute errors cut by more than 30% becomes a candidate for running at control rate, though the page shows no closed-loop driving result to back that up.",
+      "ja": "高速走行車両の認識では、ほぼ 300Hz で動作し平均絶対誤差を 30% 超削減したと報告されるレーン検出は、制御周期で回す候補になり得る。ただし閉ループ走行の結果はページに示されていない。"
+    },
+    "https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid": {
+      "zh": "按多班次规划人形机器人车队时，若 Digit 5 真能每天工作最多 20 小时，备用机数量可以压缩；但这是行业媒体的转述，排班前应向 Agility 或 Nyobolt 核实。",
+      "en": "Operators sizing a humanoid fleet for multi-shift work could plan fewer spare units if Digit 5 really works up to 20 hours a day, but the figure arrives via a trade report, so confirm it with Agility or Nyobolt before planning shifts.",
+      "ja": "複数シフトでヒューマノイドを運用する計画では、Digit 5 が本当に 1 日最大 20 時間稼働できるなら予備機を減らせる。ただし業界メディア経由の数字なので、シフトを組む前に Agility か Nyobolt に確認したい。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html": {
+      "zh": "对标中国人形机器人时，这篇二手报道主张别只盯整机动态，而要从拆解看竞争力来源与待解难题；文中没有引用数字，适合作为分析框架而非数据来源。",
+      "en": "Anyone benchmarking against Chinese humanoids is urged by this secondary piece to look past finished products to what a teardown reveals about strengths and open problems; it quotes no figures, so use it as framing, not data.",
+      "ja": "中国のヒューマノイドと比較検討するなら、完成品の動向だけでなく「解剖」から競争力の源泉と課題を見よというのがこの二次報道の主張だ。数値の引用はなく、データではなく分析の枠組みとして読むべきだろう。"
+    },
+    "https://www.leiphone.com/category/industrynews/osk0jtfdebasizah.html": {
+      "zh": "想在单张消费级显卡上跑交互式生成世界的团队可以试这个开源发布，报道称 480p、60 FPS；但它是游戏，页面未见任何机器人用途，数字也来自雷峰网的二手报道。",
+      "en": "Teams wanting an interactive generated world on one consumer GPU can test this open release, reported at 480p and 60 FPS; it is a game, the page shows no robot use, and the figures come second-hand via Leiphone.",
+      "ja": "単一のコンシューマ GPU で対話的な生成世界を動かしたいなら、480p・60 FPS と報じられたこのオープン公開を試す価値はある。ただしゲームであり、ロボット用途はページに見当たらず、数値も雷峰網の二次報道による。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

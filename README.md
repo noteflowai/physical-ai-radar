@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Cracking Mobile Manipulation** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
-2. **DexStitch** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
-3. **Complementary Future Token Pruning for World Action Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Refine Actions If Needed** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注这些数据能否在作者自己的机器人之外复用。
-6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
-7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。
+1. **Cracking Mobile Manipulation** — `AI 起草` 想靠局部操作很强的 VLA 撑起移动操作长程任务的团队要留意：作者自报预训练子任务 VLA 有 80%，放到长程任务里只剩 19%，其系统也只拉到 47%、留出集 49%；页面未见真机数字。
+2. **DexStitch** — `AI 起草` 如果技能之间的衔接监督是你在机器人上最贵的采集环节，作者自报的序列成功率 77.5% 对单技能 80.0%，意味着串联几乎不掉点；但页面没说明在什么平台上测得，暂作未经验证看待。
+3. **Complementary Future Token Pruning for World Action Models** — `AI 起草` 世界动作模型推理延迟超标时，可先试裁剪未来帧 token 而非升级硬件；但作者自报的收益有限：35% 裁剪比下平均加速至多 1.27x，50% 下至多 1.33x。
+4. **Refine Actions If Needed** — `AI 起草` 在用 ACT 这类轻量策略的团队，与其换更重的模型，不如考虑加一个按需调用的精修器：作者自报 ACT 从 55.0% 提到 72.5%，且以少 26.6% 的精修调用达到固定精修的成功率。
+5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — `AI 起草` 做高速车辆感知的团队可以关注：车道线检测报告接近 300Hz、平均绝对误差降低超过 30%，速度上已可考虑放进控制回路；但页面没有闭环驾驶结果来证明这一点。
+6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — `AI 起草` 按多班次规划人形机器人车队时，若 Digit 5 真能每天工作最多 20 小时，备用机数量可以压缩；但这是行业媒体的转述，排班前应向 Agility 或 Nyobolt 核实。
+7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — `AI 起草` 对标中国人形机器人时，这篇二手报道主张别只盯整机动态，而要从拆解看竞争力来源与待解难题；文中没有引用数字，适合作为分析框架而非数据来源。
+8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — `AI 起草` 想在单张消费级显卡上跑交互式生成世界的团队可以试这个开源发布，报道称 480p、60 FPS；但它是游戏，页面未见任何机器人用途，数字也来自雷峰网的二手报道。
 
 </details>
 
