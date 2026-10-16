@@ -109,6 +109,16 @@ does not authorize a tagged workflow dispatch. Required environment reviewers bl
 unattended publication. Wait timers are recorded and can resume through catch-up.
 Robot Reel also requires `PYPI_PUBLISH_ENABLED=true`.
 
+Operator installations may configure `NOTEFLOW_FEATURE_QUARANTINE` as a reviewed,
+pinned private helper. At terminal recording and retirement, the controller retains
+the active task pointer until the helper confirms archive and quarantine-reference
+readback under the original inherited feature lock. The helper owns archive policy;
+this repository supplies a thin adapter. A configured helper failure holds the
+repository before the next task checkout, retaining task counts and diagnostics.
+Terminal orphan recovery uses only the exact feature-branch task and original
+terminal records. Standalone installations without that configuration retain their
+existing lifecycle; they must not claim the private policy is installed.
+
 Preflight is read-only, bounded to 45 seconds per project, and repeated on retries.
 A blocked project gets a `publication-preflight` result without creating a feature;
 other projects continue. An existing reviewed/releasing feature checks its saved tag

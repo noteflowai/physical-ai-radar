@@ -27,10 +27,15 @@ def timestamp() -> str:
 
 def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> int:
     """Bound a whole stage process tree; outer bootstrap termination also cleans it up."""
+    pass_fds = ()
+    if env.get("FEATURE_LOCK_FD"):
+        fd = int(env["FEATURE_LOCK_FD"])
+        os.fstat(fd)
+        pass_fds = (fd,)
     with log.open("ab", buffering=0) as output:
         child = subprocess.Popen(argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
                                  stdout=output, stderr=subprocess.STDOUT,
-                                 start_new_session=True)
+                                 start_new_session=True, pass_fds=pass_fds)
 
         def stop() -> None:
             try:
