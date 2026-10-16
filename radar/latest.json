@@ -1,206 +1,181 @@
 {
-  "date": "2026-10-16",
-  "generated": "2026-10-15 23:40 UTC",
-  "window": "papers 2026-10-12 → 2026-10-16 · posts 2026-09-16 → 2026-10-16 (UTC)",
+  "date": "2026-10-17",
+  "generated": "2026-10-16 23:40 UTC",
+  "window": "papers 2026-10-13 → 2026-10-17 · posts 2026-09-17 → 2026-10-17 (UTC)",
   "window_detail": {
-    "day": "2026-10-16",
-    "papers_from": "2026-10-12",
-    "posts_from": "2026-09-16",
+    "day": "2026-10-17",
+    "papers_from": "2026-10-13",
+    "posts_from": "2026-09-17",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.19600",
-      "title": "Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System",
-      "url": "https://arxiv.org/abs/2610.19600",
-      "publisher": "arXiv 2610.19600",
+      "id": "arxiv:2610.21792",
+      "title": "Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation",
+      "url": "https://arxiv.org/abs/2610.21792",
+      "publisher": "arXiv 2610.21792",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-14",
-      "lane": "systems",
+      "published": "2026-10-15",
+      "lane": "data",
+      "score": 3.955,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Imitation learning enables robots to perform complex tasks by leveraging human-collected demonstrations. However, most existing approaches require labor-intensive data collection with additional teleoperation systems, which hinders scalability. Human videos represent a natural source of data that implicitly contain knowledge of manipulation behaviors. However, transferring them to robots remains challenging due to the visual domain gap and the absence of explicit action labels. In this work, we introduce TDV, a trajectory-based framework that leverages data generation to enable generalizable manipulation. TDV focuses on task-relevant objects by leveraging plug-and-play 6D pose estimation techniques to extract object trajectories from human videos, thereby mitigating the impact of irrelevant backgrounds and varying viewpoints. As a modality-agnostic intermediate representation, trajectories are inherently independent of the visual domains and different embodiments, enabling efficient data generation. Our method outperforms previous approaches on RLBench simulation tasks, achieving near 100\\% success rates across seven tasks. In real-world experiments, TDV enables cross-embodiment generalization manipulation from one-shot human demonstrations by leveraging efficient trajectory generation techniques."
+    },
+    {
+      "id": "arxiv:2610.21985",
+      "title": "VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models",
+      "url": "https://arxiv.org/abs/2610.21985",
+      "publisher": "arXiv 2610.21985",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "foundation",
       "score": 3.65,
       "numbers": [
-        "80%",
-        "19%",
-        "47%",
-        "49%"
+        "50.8%",
+        "65.5%",
+        "326 ms",
+        "66.4%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "open_release"
+        "real_robot",
+        "latency"
       ],
-      "summary": "Recent vision-language-action (VLA) models have shown strong performance on local robot manipulation, yet their success does not readily translate to long-horizon mobile manipulation. In our experiments, a pretrained subtask VLA achieves 80% success rate on atomic manipulation tasks but only 19% when these skills are composed into mobile manipulation. We argue that this gap stems from failures across the execution process rather than from local manipulation capability alone. To uncover these bottlenecks, we systematically diagnose failures in long-horizon mobile manipulation and identify three dominant regimes: task planning, navigation and base positioning, and local manipulation. Based on this diagnosis, we develop failure-guided agentic intervention that augments a fixed subtask VLA with demonstration-based planning guidance, adaptive visual memory, accessibility-aware base adjustment, and local end-effector adjustment. On RoboCasa365, these interventions progressively improve task success from 19% to 47%, with the finalized system reaching 49% on held-out episode seeds, compared with 18% for the baseline. The same design improves performance from 14% to 37% on BEHAVIOR-1K and from 5/20 to 13/20 on real-robot tasks. These results suggest that reliable mobile manipulation can be advanced by diagnosing and intervening on the current bottleneck, rather than uniformly scaling the underlying policy. Our code will be released at https://github.com/PKU-VaLuE-Lab/Cracking-Mobile-Manipulation.git."
+      "summary": "Flow-based Vision-Language-Action (VLA) policies are inherently stochastic: different noise seeds can produce action chunks of varying quality from the same observation. At test time, however, the policy typically commits to a single sample without an explicit estimate of its quality. In fine-grained manipulation, executing a suboptimal action can irreversibly disrupt task progress and lead to failure. To exploit policy stochasticity, we introduce a training-free two-axis trigger that uses two initial samples to measure within-chunk temporal variation and cross-sample variance, detecting the critical states. Once triggered, a JEPA-based latent world model ranks candidate action chunks by predicting action-conditioned future latent states and the corresponding changes in task progress. By operating in latent space, the verifier avoids pixel reconstruction and enables efficient and more accurate ranking. Across three real-world tasks, $\\textit{i.e.,}$ pen insertion, pipetting, and apple placement), our method raises the average completion score from 50.8% to 65.5%, while adding 326 ms for sampling and verification per triggered decision on a single RTX 4090. Consistent gains are also observed in simulation, where the average success rate rises from 66.4% to 73.6% in the clean setting of RoboTwin 2.0, from 62.8% to 69.6% in its randomized setting, and from 96.9% to 97.6% on LIBERO."
     },
     {
-      "id": "arxiv:2610.17789",
-      "title": "DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting",
-      "url": "https://arxiv.org/abs/2610.17789",
-      "publisher": "arXiv 2610.17789",
+      "id": "arxiv:2610.20904",
+      "title": "EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos",
+      "url": "https://arxiv.org/abs/2610.20904",
+      "publisher": "arXiv 2610.20904",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-13",
+      "published": "2026-10-14",
       "lane": "data",
-      "score": 3.487,
+      "score": 3.52,
       "numbers": [
-        "92.4%",
-        "80.0%",
-        "77.5%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "summary": "A long-horizon manipulation task consists of primitive skills and the transitions connecting them. Learning skills that can be executed in sequence requires supervision for both, which is costly to collect on a robot. Human videos offer a scalable source of demonstrations, but transferring them to robots requires extracting robot-compatible observations and actions together with their skill structure. We present DexStitch, a framework that cuts long-horizon human videos into skills and transitions, converts them into aligned robot observation-action-skill data, and stitches the learned skills into a requested sequence. A skill classifier first segments the videos into manipulation skills and transitions. DexStitch then converts the human demonstrations into robot observations and actions while retaining their corresponding skill labels. During conversion, per-finger human-object contacts guide dexterous hand retargeting and robotic inpainting, preserving contact geometry and finger-object occlusion ordering. To stitch the learned skills into a sequence, a shared skill-conditioned policy is pretrained on the resulting synthetic data and finetuned on a mixture of synthetic data and a small set of single-skill teleoperation episodes. Conditioning on the current and next skills guides each transition toward the following skill, while predicted skill progression enables closed-loop switching. On a held-out session, the classifier agrees with manual annotations on 92.4% of frames. Across four household skills, DexStitch achieves 80.0% single-skill success and 77.5% sequence success."
-    },
-    {
-      "id": "arxiv:2610.19957",
-      "title": "Complementary Future Token Pruning for World Action Models",
-      "url": "https://arxiv.org/abs/2610.19957",
-      "publisher": "arXiv 2610.19957",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-14",
-      "lane": "simeval",
-      "score": 3.405,
-      "numbers": [
-        "35%",
-        "1.27x",
-        "50%",
-        "1.33x"
+        "74%",
+        "65%",
+        "47.2%",
+        "392.7 hours"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot",
-        "latency"
+        "real_robot"
       ],
-      "summary": "World action models (WAMs) jointly predict future visual states and robot actions, but processing dense future-frame tokens incurs substantial inference latency. We propose CF-Prune, a training-free framework for pruning future-frame tokens in pretrained WAMs. Our key insight is that future visual predictions support action generation and therefore need not preserve every visual detail required for high-fidelity video synthesis. CF-Prune combines instruction and action attention to identify task-relevant tokens during the initial denoising forward pass, even when future-frame and action representations remain highly noisy. An entropy-based phase identification mechanism further retains dense computation during precision phases to mitigate pruning-induced performance degradation. Experiments on RoboLab, RoboCasa, and real-world manipulation tasks demonstrate consistent inference speedups. At a 35% pruning ratio, CF-Prune achieves average speedups of 1.19-1.27x while improving task success rates. At a 50% pruning ratio, it achieves 1.29-1.33x average speedups on both simulation benchmarks, with overall success rates within 1.0 percentage point of the baseline."
+      "summary": "Egocentric human videos offer a scalable alternative to costly robot demonstra- tions, yet transferring their manipulation priors to robot control remains chal- lenging. The commonly adopted retargeting-based approaches convert human wrist and finger poses into embodiment-specific action commands through hand- crafted geometric mappings. However, such mappings require meticulous recal- ibration across different embodiments and risk propagating hand-tracking errors into downstream robot control pipelines. To this end, we propose EgoJEPA, a three-stage framework that learns embodiment-agnostic representations from ego- centric human videos without rule-based human-to-robot retargeting: 1) Human- action pre-training learns effect-aware latent actions through JEPA-style visual prediction conditioned on hand-motion differences; 2) Latent-action-based world modeling jointly predicts future visual dynamics and latent actions, which decou- ples human prior pre-training from robot-specific control parameterizations; 3) Embodiment-specific tuning adapts the pretrained model to diverse robots through lightweight action adapters. Experiments on five real-world manipulation tasks across three robot embodiments demonstrate the effectiveness and efficiency of EgoJEPA. It achieves a 74% average success rate under the out-of-domain evalu- ation, compared with 65% for the retargeting baseline, while reducing cumulative cross-embodiment wall-clock cost by 47.2%, from 743.2 to 392.7 hours."
     },
     {
-      "id": "arxiv:2610.19765",
-      "title": "Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation",
-      "url": "https://arxiv.org/abs/2610.19765",
-      "publisher": "arXiv 2610.19765",
+      "id": "arxiv:2610.22146",
+      "title": "FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2610.22146",
+      "publisher": "arXiv 2610.22146",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-14",
+      "published": "2026-10-15",
       "lane": "simeval",
-      "score": 3.405,
-      "numbers": [
-        "66.6%",
-        "55.0%",
-        "72.5%",
-        "26.6%"
-      ],
+      "score": 3.355,
+      "numbers": [],
       "signals": [
-        "numbers",
         "closed_loop",
         "real_robot",
+        "open_release",
         "latency"
       ],
-      "summary": "Computationally lightweight manipulation policies predict executable actions with low inference latency, but prediction errors can limit task success. Iterative generative policies can achieve higher task success rates, but repeated network evaluations increase inference latency. Refining action proposals from computationally lightweight policies can combine these strengths, but the amount of refinement needed varies across states. We introduce RAIN (Refine Actions If Needed), a framework that predicts action errors at different refinement levels to decide whether and how much to refine each executable proposal, before performing any refinement. We train an ensemble to predict these errors by comparing action proposals and their refined versions with expert actions from offline demonstrations, without requiring explicit labels of refinement needs. Calibration balances uncertainty, computation, and temporal consistency. We evaluate RAIN on eight ManiSkill tasks and four real-robot tasks. In simulation, our policy achieves 66.6% success, approaching the best evaluated diffusion-policy success rate with 5.71 times lower policy latency. On the real robot, success increases from 55.0% with Action Chunking with Transformers (ACT) to 72.5%, with comparable average successful completion time. Matched controls show that dynamic routing maintains the strongest observed fixed-refinement success level with 26.6% fewer refiner evaluations. Project page: https://rain-policy.github.io/."
+      "summary": "Vision-Language-Action (VLA) models present a promising paradigm for general-purpose robot manipulation, but closed-loop deployment is often limited by inference efficiency: at each timestep, high-resolution, often multi-view images are encoded into hundreds of visual tokens that dominate transformer computation and latency. Token compression via attention is a natural solution but is challenging for VLA control because (1) decision-critical tokens are determined by the task, not generic visual saliency, and (2) the token budget varies substantially across steps, so static metrics and budgets waste computation or discard control-critical tokens. We introduce FastVLA, a training-free, task-aware, and temporally adaptive visual token compression framework. At each step, FastVLA scores token importance via task-to-vision attention and adaptively sets the compression rate from the importance-distribution uniformity, measured by an inverse-Simpson metric with online sliding-window calibration. We evaluate FastVLA on OpenVLA, OpenVLA-OFT, and CogACT across LIBERO and SIMPLER, and on a physical Franka Research 3 robot. In simulation, it reduces LLM-backbone FLOPs by 35-59\\% and action latency by 9-32\\% (a 1.09$\\times$-1.46$\\times$ speedup) while maintaining task success, achieving a comparable or better efficiency-performance trade-off than existing plug-and-play token compression/pruning/reuse baselines. On the real robot, it cuts end-to-end latency by 20\\% (1.25$\\times$ speedup) at comparable success. Code is available at https://github.com/jiuyixu25/FastVLA."
     },
     {
-      "id": "tri:3a35a756f7d5",
-      "title": "3D Lane Detection with Odometry for High-Speed Vehicle Racing",
-      "url": "http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing",
+      "id": "ieee-spectrum-robotics:b8f4f36ff32f",
+      "title": "Video Friday: When Two Robots Become One",
+      "url": "https://spectrum.ieee.org/video-friday-reconfigurable-robots",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-10-16",
+      "lane": "simeval",
+      "score": 1.955,
+      "numbers": [],
+      "signals": [],
+      "summary": "When one robot loves another robot very much, and they’re connected by a wire, they can get together and make a brand new robot! SFW. [ JSK Lab ] What happens when Microducks meet? They start to sing together. Each Microduck syncs with its neighbors over Bluetooth, then they compose a song on the fly, in harmony and in perfect time. There’s no score and no conductor. Two, three, or four ducks are enough for a choir to break out. If Pollen isn’t selling Microducks in four packs for this exact reason, WHAT ARE THEY EVEN DOING!? [ Pollen ] In an internal test, Google DeepMind robotics researchers instructed Gemini 4 Argon to watch a video of a human playing cornhole. Using its video understanding and advanced reasoning capabilities, Gemini 4 built a virtual simulation in MuJoCo and accurately calculated the physics and whole-body control required for Apptronik’s Apollo 2 humanoid to sink seven consecutive shots in the real world. This Video-to-Sim-to-Real pipeline compresses weeks of manual modeling into a few hours, transforming ordinary videos into an infinite training ground for physical AI. [ Google DeepMind ] As of Oct. 11, 2026, NASA’s Perseverance rover has driven 28.10 miles (45.22 kilometers), becoming the new off-world record-holder for total distance driven by any vehicle on the surface of another world. The previous record of 28.06 miles (45.16 kilometers) was held by NASA’s Opportunity rover. Perseverance reached that mark on the 2,006th Martian day, or sol, of its mission, covering in five and a half years a distance that took Opportunity almost 15. [ JPL ] Let’s not argue about whether these are robots …"
+    },
+    {
+      "id": "tri:46ade5329db4",
+      "title": "Vision-Conditioned Variational Bayesian Last Layer Dynamics Models",
+      "url": "http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models",
       "publisher": "Toyota Research Institute",
       "source_id": "tri",
       "evidence": "R",
       "published": "2026-10-15",
-      "lane": "data",
-      "score": 2.018,
-      "numbers": [
-        "300Hz",
-        "30%"
-      ],
-      "signals": [
-        "numbers",
-        "latency"
-      ],
-      "summary": "Lane boundary detection is a critical component in autonomous driving systems and has been rigorously studied in regular driving scenarios. However, it is less explored in vehicle racing, where the car moves at higher speeds across more extreme road geometries. To study this problem, we introduce a new dataset for 3D lane detection in racing, featuring >250k images from multiple camera feeds and inertial measurements taken with a Lexus LC 500 driving on a closed circuit. With this dataset, we compare various approaches to 3D lane detection and propose modifications that permit frames to be processed at rates of almost 300Hz while retaining high predictive performance in the racing application. This facilitates a multi-camera ensemble approach that is validated on hardware. We show that sensing modalities such as inertial measurements can be leveraged for pre-integration to regress road geometries over both cameras and time, yielding improvements in key metrics. Compared to methods such as BevLaneDet, adding odometry and ensemble predictions improves the F1 score by 3 points and reduces near-vehicle mean absolute errors (MAEs) by >30%. We show F1 scores >0.9 and lateral MAEs of <0.18m in vehicle deployments. Image Jul 15, 2026 Human Interactive Driving Read More 1 Minute Read"
+      "lane": "safety",
+      "score": 1.235,
+      "numbers": [],
+      "signals": [],
+      "summary": "Agile control of robotic systems often requires anticipating how the environment affects system behavior. For example, a driver must perceive the road ahead to anticipate available friction and plan actions accordingly. Achieving such proactive adaptation within autonomous frameworks remains a challenge, particularly under rapidly changing conditions. Traditional modeling approaches often struggle to capture abrupt variations in system behavior, while adaptive methods are inherently reactive and may adapt too late to ensure safety. We propose a vision-conditioned variational Bayesian last-layer dynamics model that leverages visual context to anticipate changes in the environment. The model first learns nominal vehicle dynamics and is then fine-tuned with feature-wise affine transformations of latent features, enabling context-aware dynamics prediction. The resulting model is integrated into an optimal controller for vehicle racing. We validate our method on a Lexus LC500 racing through water puddles. With vision-conditioning, the system completed all 12 attempted laps under varying conditions. In contrast, all baselines without visual context consistently lost control, demonstrating the importance of proactive dynamics adaptation in high-performance applications. Image Jan 16, 2026 Human Interactive Driving Read More 1 Minute Read"
     },
     {
-      "id": "the-robot-report:c50118c63ad1",
-      "title": "Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid",
-      "url": "https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-15",
-      "lane": "hardware",
-      "score": 1.482,
-      "numbers": [
-        "20 hours"
-      ],
-      "signals": [
-        "numbers"
-      ],
-      "summary": "Nyobolt is providing power technology for Digit 5 that enables Agility's humanoid to work up to 20 hours a day."
-    },
-    {
-      "id": "monoist:d44bce913630",
-      "title": "日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html",
+      "id": "monoist:9243b433d2d6",
+      "title": "ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html",
       "publisher": "MONOist (ITmedia)",
       "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-15",
+      "published": "2026-10-16",
       "lane": "hardware",
-      "score": 1.365,
+      "score": 1.032,
       "numbers": [],
       "signals": [],
-      "summary": "中国では現在、ヒューマノイドロボットの開発や量産、社会実装に向けた動きが加速している。しかし、完成品の動向を追うだけでは、その競争力の源泉や本格普及に向けた課題までは見えてこない。SUGENAのセミナー「フィジカルAI解体新書」では、ヒューマノイドをAIや関節、センサー、手などに“解体”し、中国勢の強さと残された課題を解説した。本稿ではその内容を基に、日本企業が勝負できる領域を見ていく。"
+      "summary": "ZOZO NEXTとAVITAが、ヒューマノイドに特化した衣服に関する共同研究に向けた基本合意書（MOU）を締結した。今後は、両社で研究テーマの詳細について協議を進め、2027年1月の共同研究開始を目指す。"
     },
     {
-      "id": "leiphone:9e9693b8f6c5",
-      "title": "昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源",
-      "url": "https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "monoist:0b4e42cf0acf",
+      "title": "ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-15",
-      "lane": "foundation",
-      "score": 1.35,
-      "numbers": [
-        "60 FPS",
-        "83 FPS"
-      ],
-      "signals": [
-        "open_release"
-      ],
-      "summary": "从\"看 AI 生成视频\"，到\"亲手玩 AI 生成的世界\"——中间隔着的，其实是一道关于\"实时\"的坎。 2026年10月15日，昆仑万维正式发布世界上第一款运行在单张消费级显卡上的视频大模型游戏——Matrix-Game 4.0。Matrix-Game 4.0 构建起了游戏世界模型的新范式： 由游戏引擎维护世界状态与交互规则，由视频生成模型实时呈现精细画面。 它把 480p、60 FPS 的实时游戏体验，装进了一张 NVIDIA RTX 5090；从你按下按键，到画面做出反应，延迟低于 150 毫秒。Matrix-Game 4.0 首次跑通了\"代码生成游戏逻辑 → 结构画面提供结构约束 → 视频模型实时渲染\"的完整闭环，让游戏原型开发、个性化定制与 UGC 从此拥有了真正可落地的技术路径。项目已同步开源。 开源地址 Huggingface：https://huggingface.co/Skywork/Matrix-Game-4.0 一、从一段代码到一个可玩的世界——Matrix-Game 4.0 的四块基石 1. 单卡实时：让\"可玩的视频模型\"走出实验室 在消费级显卡上实时生成游戏画面，曾是难以兼得的目标——视频生成模型对算力的胃口，长期把它锁在实验室的多卡集群里。 Matrix-Game 4.0 给出的答案是一组硬指标： 单张 NVIDIA RTX 5090，480p 分辨率下游戏以 60 FPS 运行 ；从玩家按键到首帧响应， 端到端延迟低于 150 毫秒 ；单步去噪的稳态生成速度达 83 FPS ， …"
+      "published": "2026-10-16",
+      "lane": "hardware",
+      "score": 1.032,
+      "numbers": [],
+      "signals": [],
+      "summary": "2026年10月16日に公開されたMONOistの新着記事をピックアップしてお届けします。"
     }
   ],
   "lane_counts": {
-    "foundation": 8,
-    "data": 8,
+    "foundation": 7,
+    "data": 9,
     "training": 3,
     "simeval": 14,
     "edge": 4,
-    "safety": 2,
-    "systems": 2,
+    "safety": 3,
+    "systems": 1,
     "hardware": 9
   },
   "evidence_mix": {
     "O": 3,
-    "R": 31,
-    "M": 16
+    "R": 32,
+    "M": 15
   },
   "fetch": {
-    "items": 418,
+    "items": 528,
     "attempted": 11,
-    "answered": 10,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 11,
+    "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 85,
+      "arxiv": 95,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

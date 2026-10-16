@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-16
+### Today's radar · 2026-10-17
 
-`Generated: 2026-10-15 23:40 UTC` ｜ `Window: papers 2026-10-12 → 2026-10-16 · posts 2026-09-16 → 2026-10-16 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-16 23:40 UTC` ｜ `Window: papers 2026-10-13 → 2026-10-17 · posts 2026-09-17 → 2026-10-17 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System](https://arxiv.org/abs/2610.19600)**<br>`80%`&nbsp; `19%`&nbsp; `47%`<br><sub>Systems & orchestration · arXiv 2610.19600 · 2026‑10‑14</sub> |
-| 02<br>🔵&nbsp;`R` | **[DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting](https://arxiv.org/abs/2610.17789)**<br>`92.4%`&nbsp; `80.0%`&nbsp; `77.5%`<br><sub>Data engine · arXiv 2610.17789 · 2026‑10‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[Complementary Future Token Pruning for World Action Models](https://arxiv.org/abs/2610.19957)**<br>`35%`&nbsp; `1.27x`&nbsp; `50%`<br><sub>Simulation & evaluation · arXiv 2610.19957 · 2026‑10‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation](https://arxiv.org/abs/2610.19765)**<br>`66.6%`&nbsp; `55.0%`&nbsp; `72.5%`<br><sub>Simulation & evaluation · arXiv 2610.19765 · 2026‑10‑14</sub> |
-| 05<br>🔵&nbsp;`R` | **[3D Lane Detection with Odometry for High-Speed Vehicle Racing](http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing)**<br>`300Hz`&nbsp; `30%`<br><sub>Data engine · Toyota Research Institute · 2026‑10‑15</sub> |
-| 06<br>🟡&nbsp;`M` | **[Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid](https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/)**<br>`20 hours`<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑15</sub> |
-| 07<br>🟡&nbsp;`M` | **[日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題](https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑15</sub> |
-| 08<br>🟡&nbsp;`M` | **[昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源](https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html)**<br>`60 FPS`&nbsp; `83 FPS`<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑15</sub> |
+| 01<br>🔵&nbsp;`R` | **[Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation](https://arxiv.org/abs/2610.21792)**<br><sub>Data engine · arXiv 2610.21792 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models](https://arxiv.org/abs/2610.21985)**<br>`50.8%`&nbsp; `65.5%`&nbsp; `326 ms`<br><sub>Foundation models · arXiv 2610.21985 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos](https://arxiv.org/abs/2610.20904)**<br>`74%`&nbsp; `65%`&nbsp; `47.2%`<br><sub>Data engine · arXiv 2610.20904 · 2026‑10‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models](https://arxiv.org/abs/2610.22146)**<br><sub>Simulation & evaluation · arXiv 2610.22146 · 2026‑10‑15</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: When Two Robots Become One](https://spectrum.ieee.org/video-friday-reconfigurable-robots)**<br><sub>Simulation & evaluation · IEEE Spectrum Robotics · 2026‑10‑16</sub> |
+| 06<br>🔵&nbsp;`R` | **[Vision-Conditioned Variational Bayesian Last Layer Dynamics Models](http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models)**<br><sub>Safety, permissions & compliance · Toyota Research Institute · 2026‑10‑15</sub> |
+| 07<br>🟡&nbsp;`M` | **[ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究](https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑16</sub> |
+| 08<br>🟡&nbsp;`M` | **[ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？](https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑16</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Cracking Mobile Manipulation** — `AI draft` Before building long-horizon mobile manipulation on strong local VLA skills, note the self-reported fall from 80% for a pretrained subtask VLA to 19% at long horizon; the authors' system recovers to 47%, 49% held-out, with no real-robot figure on the page.
-2. **DexStitch** — `AI draft` Where skill-transition supervision is the costly part of robot data collection, the self-reported 77.5% sequence success against 80.0% single-skill suggests chaining costs little; the page does not say where these were measured, so treat it as unverified.
-3. **Complementary Future Token Pruning for World Action Models** — `AI draft` When a world action model misses its latency budget, pruning future-frame tokens is worth trying before buying hardware, but the self-reported gains are modest: average speedups up to 1.27x at a 35% pruning ratio and up to 1.33x at 50%.
-4. **Refine Actions If Needed** — `AI draft` Teams running a lightweight policy such as ACT can weigh adding an on-demand refiner instead of moving to a heavier model: the preprint reports ACT rising from 55.0% to 72.5%, matching fixed refinement with 26.6% fewer refiner evaluations.
-5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — `AI draft` For high-speed vehicle perception, a lane detector reported at almost 300Hz with mean absolute errors cut by more than 30% becomes a candidate for running at control rate, though the page shows no closed-loop driving result to back that up.
-6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — `AI draft` Operators sizing a humanoid fleet for multi-shift work could plan fewer spare units if Digit 5 really works up to 20 hours a day, but the figure arrives via a trade report, so confirm it with Agility or Nyobolt before planning shifts.
-7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — `AI draft` Anyone benchmarking against Chinese humanoids is urged by this secondary piece to look past finished products to what a teardown reveals about strengths and open problems; it quotes no figures, so use it as framing, not data.
-8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — `AI draft` Teams wanting an interactive generated world on one consumer GPU can test this open release, reported at 480p and 60 FPS; it is a game, the page shows no robot use, and the figures come second-hand via Leiphone.
+1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+2. **VeriVLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+3. **EgoJEPA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **FastVLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch what it changes for certification and deployment approval.
+7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-16.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-17.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

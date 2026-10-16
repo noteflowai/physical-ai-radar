@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:zh</id>
   <title>Physical AI 前沿雷达</title>
   <subtitle>每日自动更新的具身智能前沿雷达：八条主线、三语精炼、证据可查。</subtitle>
-  <updated>2026-10-15T23:40:00Z</updated>
+  <updated>2026-10-16T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21792</id>
+    <title>Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.21792" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.21792</name>
+    </author>
+    <category term="data" label="数据引擎（采集 / 清洗 / scaling）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Imitation learning enables robots to perform complex tasks by leveraging human-collected demonstrations. However, most existing approaches require labor-intensive data collection with additional teleoperation systems, which hinders…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 数据引擎（采集 / 清洗 / scaling）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.21792 · 2026-10-15&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含闭环成功率 · 含真机实验&lt;/p&gt;
+&lt;blockquote&gt;Imitation learning enables robots to perform complex tasks by leveraging human-collected demonstrations. However, most existing approaches require labor-intensive data collection with additional teleoperation systems, which hinders…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21985</id>
+    <title>VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.21985" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.21985</name>
+    </author>
+    <category term="foundation" label="基座模型（VLA / WAM）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Flow-based Vision-Language-Action (VLA) policies are inherently stochastic: different noise seeds can produce action chunks of varying quality from the same observation.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 基座模型（VLA / WAM）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.21985 · 2026-10-15&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 50.8% · 65.5% · 326 ms · 66.4%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验 · 含延迟或控制频率&lt;/p&gt;
+&lt;blockquote&gt;Flow-based Vision-Language-Action (VLA) policies are inherently stochastic: different noise seeds can produce action chunks of varying quality from the same observation.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.20904</id>
+    <title>EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.20904" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.20904</name>
+    </author>
+    <category term="data" label="数据引擎（采集 / 清洗 / scaling）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Egocentric human videos offer a scalable alternative to costly robot demonstra- tions, yet transferring their manipulation priors to robot control remains chal- lenging.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 数据引擎（采集 / 清洗 / scaling）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.20904 · 2026-10-14&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 74% · 65% · 47.2% · 392.7 hours&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验&lt;/p&gt;
+&lt;blockquote&gt;Egocentric human videos offer a scalable alternative to costly robot demonstra- tions, yet transferring their manipulation priors to robot control remains chal- lenging.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22146</id>
+    <title>FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.22146" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.22146</name>
+    </author>
+    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-Language-Action (VLA) models present a promising paradigm for general-purpose robot manipulation, but closed-loop deployment is often limited by inference efficiency: at each timestep, high-resolution, often multi-view images are…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.22146 · 2026-10-15&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含闭环成功率 · 含真机实验 · 有开放代码或权重 · 含延迟或控制频率&lt;/p&gt;
+&lt;blockquote&gt;Vision-Language-Action (VLA) models present a promising paradigm for general-purpose robot manipulation, but closed-loop deployment is often limited by inference efficiency: at each timestep, high-resolution, often multi-view images are…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:b8f4f36ff32f</id>
+    <title>Video Friday: When Two Robots Become One</title>
+    <link rel="alternate" href="https://spectrum.ieee.org/video-friday-reconfigurable-robots" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>IEEE Spectrum Robotics</name>
+    </author>
+    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
+    <category term="M" label="[M]" />
+    <summary type="text">When one robot loves another robot very much, and they’re connected by a wire, they can get together and make a brand new robot!</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: IEEE Spectrum Robotics · 2026-10-16&lt;/p&gt;
+&lt;blockquote&gt;When one robot loves another robot very much, and they’re connected by a wire, they can get together and make a brand new robot!&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:tri:46ade5329db4</id>
+    <title>Vision-Conditioned Variational Bayesian Last Layer Dynamics Models</title>
+    <link rel="alternate" href="http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>Toyota Research Institute</name>
+    </author>
+    <category term="safety" label="安全、权限与合规" />
+    <category term="R" label="[R]" />
+    <summary type="text">Agile control of robotic systems often requires anticipating how the environment affects system behavior. For example, a driver must perceive the road ahead to anticipate available friction and plan actions accordingly.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 安全、权限与合规&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: Toyota Research Institute · 2026-10-15&lt;/p&gt;
+&lt;blockquote&gt;Agile control of robotic systems often requires anticipating how the environment affects system behavior. For example, a driver must perceive the road ahead to anticipate available friction and plan actions accordingly.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:9243b433d2d6</id>
+    <title>ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="hardware" label="本体与供应链（硬件 / 成本）" />
+    <category term="M" label="[M]" />
+    <summary type="text">ZOZO NEXTとAVITAが、ヒューマノイドに特化した衣服に関する共同研究に向けた基本合意書（MOU）を締結した。今後は、両社で研究テーマの詳細について協議を進め、2027年1月の共同研究開始を目指す。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 本体与供应链（硬件 / 成本）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: MONOist (ITmedia) · 2026-10-16&lt;/p&gt;
+&lt;blockquote&gt;ZOZO NEXTとAVITAが、ヒューマノイドに特化した衣服に関する共同研究に向けた基本合意書（MOU）を締結した。今後は、両社で研究テーマの詳細について協議を進め、2027年1月の共同研究開始を目指す。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:0b4e42cf0acf</id>
+    <title>ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？</title>
+    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html" />
+    <published>2026-10-16T23:40:00Z</published>
+    <updated>2026-10-16T23:40:00Z</updated>
+    <author>
+      <name>MONOist (ITmedia)</name>
+    </author>
+    <category term="hardware" label="本体与供应链（硬件 / 成本）" />
+    <category term="M" label="[M]" />
+    <summary type="text">2026年10月16日に公開されたMONOistの新着記事をピックアップしてお届けします。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 本体与供应链（硬件 / 成本）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: MONOist (ITmedia) · 2026-10-16&lt;/p&gt;
+&lt;blockquote&gt;2026年10月16日に公開されたMONOistの新着記事をピックアップしてお届けします。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-17.zh.html"&gt;2026-10-17 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.19600</id>
     <title>Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System</title>
@@ -1574,141 +1710,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 系统与编排（长程 / 多策略）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.02161 · 2026-10-01&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含闭环成功率&lt;/p&gt;
 &lt;blockquote&gt;Vision-language models (VLMs) and vision-language-action models (VLAs) have recently driven rapid progress in general-purpose robots, yet most progress has focused on single-robot settings.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.01856</id>
-    <title>ChunkVLA-AM: Parallel Action Chunking for Vision-Language-Action Robot Control in Additive Manufacturing</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.01856" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.01856</name>
-    </author>
-    <category term="foundation" label="基座模型（VLA / WAM）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Vision-language-action (VLA) models unify visual perception, language understanding, and action generation, offering new opportunities for automation in additive manufacturing (AM).</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 基座模型（VLA / WAM）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.01856 · 2026-10-01&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 92.9%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验&lt;/p&gt;
-&lt;blockquote&gt;Vision-language-action (VLA) models unify visual perception, language understanding, and action generation, offering new opportunities for automation in additive manufacturing (AM).&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.39403</id>
-    <title>IronMind: Scaling Humanoid Dexterous Manipulation via Camera-Space Ego-Centric Pretraining</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2609.39403" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2609.39403</name>
-    </author>
-    <category term="data" label="数据引擎（采集 / 清洗 / scaling）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Egocentric human video offers a scalable data source for dexterous manipulation, yet using it to train humanoid robots presents two challenges: (1) an embodiment gap, as human hands differ structurally from robot end-effectors and…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 数据引擎（采集 / 清洗 / scaling）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2609.39403 · 2026-09-30&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 10,000 hours · 55.0% · 11.7% · 5,000 hours&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率&lt;/p&gt;
-&lt;blockquote&gt;Egocentric human video offers a scalable data source for dexterous manipulation, yet using it to train humanoid robots presents two challenges: (1) an embodiment gap, as human hands differ structurally from robot end-effectors and…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.38905</id>
-    <title>EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2609.38905" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2609.38905</name>
-    </author>
-    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Adapting robot manipulation policies to new tasks and environments remains highly data-intensive, while the data needed for further improvement depends on the policy's current capabilities and failure modes.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2609.38905 · 2026-09-30&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 50.4% · 83.5% · 83.1% · 75.0%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含真机实验&lt;/p&gt;
-&lt;blockquote&gt;Adapting robot manipulation policies to new tasks and environments remains highly data-intensive, while the data needed for further improvement depends on the policy&amp;#x27;s current capabilities and failure modes.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.39611</id>
-    <title>Towards Agile Vision-Based Multi-UAV Flight: Revisiting State Estimation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2609.39611" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2609.39611</name>
-    </author>
-    <category term="edge" label="边缘与实时性（端侧推理 / 控制频率）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Agile multi-UAV flight requires accurate and low-latency onboard estimation of the kinematic states of neighboring UAVs for collision avoidance, motion coordination, etc.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 边缘与实时性（端侧推理 / 控制频率）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2609.39611 · 2026-09-30&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 40% · 57% · 300 ms&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 含真机实验 · 含延迟或控制频率&lt;/p&gt;
-&lt;blockquote&gt;Agile multi-UAV flight requires accurate and low-latency onboard estimation of the kinematic states of neighboring UAVs for collision avoidance, motion coordination, etc.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.39600</id>
-    <title>GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2609.39600" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2609.39600</name>
-    </author>
-    <category term="training" label="训练与自我改进（RL / 后训练）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 训练与自我改进（RL / 后训练）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2609.39600 · 2026-09-30&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 72.42% · 71.35% · 61.75% · 53.32%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含真机实验 · 含延迟或控制频率&lt;/p&gt;
-&lt;blockquote&gt;Autoregressive (AR) grounding models serialize spatial predictions, introducing sequential latency and imposing a causal order on output tokens.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2609.38873</id>
-    <title>DODGER: Safety-Guided Reinforcement Learning for Robot Navigation Among Dynamic Obstacles</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2609.38873" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html" />
-    <published>2026-10-03T23:40:00Z</published>
-    <updated>2026-10-03T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2609.38873</name>
-    </author>
-    <category term="safety" label="安全、权限与合规" />
-    <category term="R" label="[R]" />
-    <summary type="text">Robots operating in human-centered environments must safely navigate among multiple dynamic obstacles to avoid collisions with people and surrounding infrastructure.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 安全、权限与合规&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2609.38873 · 2026-09-30&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含真机实验&lt;/p&gt;
-&lt;blockquote&gt;Robots operating in human-centered environments must safely navigate among multiple dynamic obstacles to avoid collisions with people and surrounding infrastructure.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-04.zh.html"&gt;2026-10-04 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00575</id>
-    <title>Token-World: World Modeling in Vision-Language Model Token Space for Robot Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.00575" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.zh.html" />
-    <published>2026-10-02T23:40:00Z</published>
-    <updated>2026-10-02T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.00575</name>
-    </author>
-    <category term="simeval" label="仿真与评测（sim2real / 闭环）" />
-    <category term="R" label="[R]" />
-    <summary type="text">A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 仿真与评测（sim2real / 闭环）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.00575 · 2026-09-30&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含闭环成功率 · 含延迟或控制频率&lt;/p&gt;
-&lt;blockquote&gt;A common approach to world-model simulation for vision-language-action (VLA) systems is to predict future RGB observations and then re-encode them into policy inputs, introducing an indirect interface between simulation and downstream…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.zh.html"&gt;2026-10-03 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.00360</id>
-    <title>DexPolicy: Scheduled Exploration for Trajectory-Guided Dexterous Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.00360" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.zh.html" />
-    <published>2026-10-02T23:40:00Z</published>
-    <updated>2026-10-02T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.00360</name>
-    </author>
-    <category term="training" label="训练与自我改进（RL / 后训练）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;主线&lt;/b&gt;: 训练与自我改进（RL / 后训练）&lt;br&gt;&lt;b&gt;证据&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;来源&lt;/b&gt;: arXiv 2610.00360 · 2026-09-30&lt;br&gt;&lt;b&gt;关键数字&lt;/b&gt;: 49.4% · 68.1% · 14.1% · 45.4%&lt;br&gt;&lt;b&gt;信号&lt;/b&gt;: 含量化指标 · 含闭环成功率 · 有开放代码或权重&lt;/p&gt;
-&lt;blockquote&gt;Reinforcement learning (RL) for dexterous manipulation must discover finger-object contacts and then control the object precisely; the action noise that serves the first goal can interfere with the second.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-03.zh.html"&gt;2026-10-03 雷达全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-16
+### 今日雷达 · 2026-10-17
 
-`生成时间: 2026-10-15 23:40 UTC` ｜ `统计窗口: 论文 2026-10-12 → 2026-10-16 · 博客与报道 2026-09-16 → 2026-10-16 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-16 23:40 UTC` ｜ `统计窗口: 论文 2026-10-13 → 2026-10-17 · 博客与报道 2026-09-17 → 2026-10-17 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Cracking Mobile Manipulation: From Failure Diagnosis to Agentic Robot System](https://arxiv.org/abs/2610.19600)**<br>`80%`&nbsp; `19%`&nbsp; `47%`<br><sub>系统与编排 · arXiv 2610.19600 · 2026‑10‑14</sub> |
-| 02<br>🔵&nbsp;`R` | **[DexStitch: Learning and Composing Dexterous Skills from Human Videos via Contact-Aware Robotic Inpainting](https://arxiv.org/abs/2610.17789)**<br>`92.4%`&nbsp; `80.0%`&nbsp; `77.5%`<br><sub>数据引擎 · arXiv 2610.17789 · 2026‑10‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[Complementary Future Token Pruning for World Action Models](https://arxiv.org/abs/2610.19957)**<br>`35%`&nbsp; `1.27x`&nbsp; `50%`<br><sub>仿真与评测 · arXiv 2610.19957 · 2026‑10‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[Refine Actions If Needed: Adaptive Action Chunk Refinement for Robot Manipulation](https://arxiv.org/abs/2610.19765)**<br>`66.6%`&nbsp; `55.0%`&nbsp; `72.5%`<br><sub>仿真与评测 · arXiv 2610.19765 · 2026‑10‑14</sub> |
-| 05<br>🔵&nbsp;`R` | **[3D Lane Detection with Odometry for High-Speed Vehicle Racing](http://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing)**<br>`300Hz`&nbsp; `30%`<br><sub>数据引擎 · Toyota Research Institute · 2026‑10‑15</sub> |
-| 06<br>🟡&nbsp;`M` | **[Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid](https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid/)**<br>`20 hours`<br><sub>本体与供应链 · The Robot Report · 2026‑10‑15</sub> |
-| 07<br>🟡&nbsp;`M` | **[日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題](https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑15</sub> |
-| 08<br>🟡&nbsp;`M` | **[昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源](https://www.leiphone.com/category/industrynews/OSk0jtFDeBaSizAH.html)**<br>`60 FPS`&nbsp; `83 FPS`<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑15</sub> |
+| 01<br>🔵&nbsp;`R` | **[Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation](https://arxiv.org/abs/2610.21792)**<br><sub>数据引擎 · arXiv 2610.21792 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models](https://arxiv.org/abs/2610.21985)**<br>`50.8%`&nbsp; `65.5%`&nbsp; `326 ms`<br><sub>基座模型 · arXiv 2610.21985 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos](https://arxiv.org/abs/2610.20904)**<br>`74%`&nbsp; `65%`&nbsp; `47.2%`<br><sub>数据引擎 · arXiv 2610.20904 · 2026‑10‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models](https://arxiv.org/abs/2610.22146)**<br><sub>仿真与评测 · arXiv 2610.22146 · 2026‑10‑15</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: When Two Robots Become One](https://spectrum.ieee.org/video-friday-reconfigurable-robots)**<br><sub>仿真与评测 · IEEE Spectrum Robotics · 2026‑10‑16</sub> |
+| 06<br>🔵&nbsp;`R` | **[Vision-Conditioned Variational Bayesian Last Layer Dynamics Models](http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models)**<br><sub>安全、权限与合规 · Toyota Research Institute · 2026‑10‑15</sub> |
+| 07<br>🟡&nbsp;`M` | **[ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究](https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑16</sub> |
+| 08<br>🟡&nbsp;`M` | **[ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？](https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑16</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Cracking Mobile Manipulation** — `AI 起草` 想靠局部操作很强的 VLA 撑起移动操作长程任务的团队要留意：作者自报预训练子任务 VLA 有 80%，放到长程任务里只剩 19%，其系统也只拉到 47%、留出集 49%；页面未见真机数字。
-2. **DexStitch** — `AI 起草` 如果技能之间的衔接监督是你在机器人上最贵的采集环节，作者自报的序列成功率 77.5% 对单技能 80.0%，意味着串联几乎不掉点；但页面没说明在什么平台上测得，暂作未经验证看待。
-3. **Complementary Future Token Pruning for World Action Models** — `AI 起草` 世界动作模型推理延迟超标时，可先试裁剪未来帧 token 而非升级硬件；但作者自报的收益有限：35% 裁剪比下平均加速至多 1.27x，50% 下至多 1.33x。
-4. **Refine Actions If Needed** — `AI 起草` 在用 ACT 这类轻量策略的团队，与其换更重的模型，不如考虑加一个按需调用的精修器：作者自报 ACT 从 55.0% 提到 72.5%，且以少 26.6% 的精修调用达到固定精修的成功率。
-5. **3D Lane Detection with Odometry for High-Speed Vehicle Racing** — `AI 起草` 做高速车辆感知的团队可以关注：车道线检测报告接近 300Hz、平均绝对误差降低超过 30%，速度上已可考虑放进控制回路；但页面没有闭环驾驶结果来证明这一点。
-6. **Agility chooses Nyobolt for ultra-fast charging for Digit 5 humanoid** — `AI 起草` 按多班次规划人形机器人车队时，若 Digit 5 真能每天工作最多 20 小时，备用机数量可以压缩；但这是行业媒体的转述，排班前应向 Agility 或 Nyobolt 核实。
-7. **日本に本当に勝ち筋はあるのか ヒューマノイド「解剖」で見る中国の強さと課題** — `AI 起草` 对标中国人形机器人时，这篇二手报道主张别只盯整机动态，而要从拆解看竞争力来源与待解难题；文中没有引用数字，适合作为分析框架而非数据来源。
-8. **昆仑万维诞生世界上第一款消费级显卡视频大模型游戏，同步开源** — `AI 起草` 想在单张消费级显卡上跑交互式生成世界的团队可以试这个开源发布，报道称 480p、60 FPS；但它是游戏，页面未见任何机器人用途，数字也来自雷峰网的二手报道。
+1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+2. **VeriVLA** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+3. **EgoJEPA** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+4. **FastVLA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+5. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它对认证和上线审批意味着什么。
+7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-16.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-17.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

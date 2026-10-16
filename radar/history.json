@@ -478,6 +478,23 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-17",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.21792",
+        "https://arxiv.org/abs/2610.21985",
+        "https://arxiv.org/abs/2610.20904",
+        "https://arxiv.org/abs/2610.22146",
+        "https://spectrum.ieee.org/video-friday-reconfigurable-robots",
+        "https://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }
