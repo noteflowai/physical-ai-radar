@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-2. **VeriVLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-3. **EgoJEPA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **FastVLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch what it changes for certification and deployment approval.
-7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — `AI draft` Teams budgeting a separate teleoperation setup for imitation data can track this attempt to learn from a single human video instead; the page flags real-robot and closed-loop experiments but quotes no figures, so the collection saving is still unquantified.
+2. **VeriVLA** — `AI draft` If your flow-based VLA's action-chunk quality swings with the noise seed, sampling and verifying candidates is an option, but the self-reported lift in average completion score from 50.8% to 65.5% costs an added 326 ms, so check your control budget first.
+3. **EgoJEPA** — `AI draft` Teams retargeting egocentric human video for dexterous manipulation have a self-reported alternative to benchmark against: 74% average success versus 65% for the retargeting baseline, and cross-embodiment wall-clock cost cut by 47.2%, from 743.2 to 392.7 hours.
+4. **FastVLA** — `AI draft` When high-resolution, multi-view images at every timestep make VLA inference the bottleneck for closed-loop deployment, task-conditioned token compression is worth a trial, with code or weights flagged as open; the page gives no speed-up figure, so measure it yourself.
+5. **Video Friday** — `AI draft` This secondary video roundup offers only a playful teaser about two wire-connected robots combining into a new one, with no figures or primary study on the page; use it as a pointer to the original reconfigurable-robot work, not as design evidence.
+6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — `AI draft` For agile controllers that must anticipate environmental effects such as available friction, conditioning the dynamics model on vision is the direction to watch; with no figures or real-robot results on the page, it is not yet a basis for a safety case.
+7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — `AI draft` Humanoid builders thinking about garments for their robots should note this is only an MOU per a secondary report: research topics are still being negotiated and joint work aims to start in January 2027, so there is nothing to specify against yet.
+8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — `AI draft` This is MONOist's digest of the day's new articles, and the excerpt on the page is a one-line introduction with no substance on Chinese humanoids; read the underlying article before it informs any benchmarking or sourcing call.
 
 </details>
 
