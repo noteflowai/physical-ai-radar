@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21792" rel="noopener" target="_blank">Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 模倣学習のために専用の遠隔操作系を用意しようとしているチームは、人間の動画 1 本で代替するこの試みを追う価値がある。実機・閉ループ実験ありとされるが数値はページになく、収集コストの削減幅はまだ判断できない。</p>
 <p class="excerpt">Imitation learning enables robots to perform complex tasks by leveraging human-collected demonstrations. However, most existing approaches require labor-intensive data collection with additional teleoperation systems, which hinders…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21985" rel="noopener" target="_blank">VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models</a></h3>
 <p class="figure"><strong>50.8%</strong><span class="context">“average completion score from 50.8% to 65.5%”</span></p><p class="chips"><span class="chip">65.5%</span><span class="chip">326 ms</span><span class="chip">66.4%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> フロー型 VLA で行動チャンクの品質がノイズシードに左右されるなら、複数サンプルを検証して選ぶ手がある。ただし著者報告の平均完了スコア 50.8% から 65.5% への改善にはサンプリング等で 326 ms の追加がかかり、制御周期の予算に収まるかが先決だ。</p>
 <p class="excerpt">Flow-based Vision-Language-Action (VLA) policies are inherently stochastic: different noise seeds can produce action chunks of varying quality from the same observation.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.20904" rel="noopener" target="_blank">EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos</a></h3>
 <p class="figure"><strong>74%</strong><span class="context">“It achieves a 74% average success rate”</span></p><p class="chips"><span class="chip">65%</span><span class="chip">47.2%</span><span class="chip">392.7 hours</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 一人称視点の人間動画をリターゲティングで巧緻操作に移しているチームには、比較すべき代替案だ。著者の自己申告では平均成功率 74%（リターゲティング側は 65%）、機体横断の実時間コストは 743.2 時間から 392.7 時間へ 47.2% 減。</p>
 <p class="excerpt">Egocentric human videos offer a scalable alternative to costly robot demonstra- tions, yet transferring their manipulation priors to robot control remains chal- lenging.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22146" rel="noopener" target="_blank">FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 毎ステップの高解像度・多視点画像で VLA 推論が閉ループ運用の律速になっているなら、タスク条件付きのトークン圧縮を試す余地がある。コードか重みの公開も示されているが、高速化の数値はページになく、自前のハードウェアで測る必要がある。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models present a promising paradigm for general-purpose robot manipulation, but closed-loop deployment is often limited by inference efficiency: at each timestep, high-resolution, often multi-view images are…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-reconfigurable-robots" rel="noopener" target="_blank">Video Friday: When Two Robots Become One</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 二次的な動画まとめで、ページにあるのはワイヤでつながった 2 台が新しいロボットになるという軽い導入文だけだ。数値も一次研究への言及もなく、再構成可能ロボットの原典を探す手がかり程度に扱うべきだろう。</p>
 <p class="excerpt">When one robot loves another robot very much, and they’re connected by a wire, they can get together and make a brand new robot!</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-16</span>
@@ -174,7 +174,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models" rel="noopener" target="_blank">Vision-Conditioned Variational Bayesian Last Layer Dynamics Models</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 路面摩擦のような環境の影響を先読みすべき俊敏な制御では、ダイナミクスモデルを視覚で条件付けるこの方向性に注目したい。ただし数値も実機結果もページになく、安全性の論拠や導入承認の根拠にはまだならない。</p>
 <p class="excerpt">Agile control of robotic systems often requires anticipating how the environment affects system behavior. For example, a driver must perceive the road ahead to anticipate available friction and plan actions accordingly.</p>
 <footer>
 <span class="source">Toyota Research Institute · 2026-10-15</span>
@@ -188,7 +188,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html" rel="noopener" target="_blank">ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ヒューマノイドに衣服を着せる設計を検討する企業にとって、これは二次報道によれば基本合意書の段階にすぎない。研究テーマは協議中で共同研究の開始は 2027 年 1 月を目指すとされ、仕様に反映できる成果はまだない。</p>
 <p class="excerpt">ZOZO NEXTとAVITAが、ヒューマノイドに特化した衣服に関する共同研究に向けた基本合意書（MOU）を締結した。今後は、両社で研究テーマの詳細について協議を進め、2027年1月の共同研究開始を目指す。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-10-16</span>
@@ -202,7 +202,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html" rel="noopener" target="_blank">ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> MONOist の当日新着記事のまとめで、ページの抜粋は一行の紹介文にとどまり、中国のヒューマノイドについての中身は示されていない。比較検討や調達の判断に使う前に、元の記事を読むべきだ。</p>
 <p class="excerpt">2026年10月16日に公開されたMONOistの新着記事をピックアップしてお届けします。</p>
 <footer>
 <span class="source">MONOist (ITmedia) · 2026-10-16</span>

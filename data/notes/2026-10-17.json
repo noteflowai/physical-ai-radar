@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-17",
+  "generated": "2026-10-17 13:55 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.21792": {
+      "zh": "正在为模仿学习预算额外遥操作系统的团队可以留意这条思路：用单段人类视频替代费力的遥操作采集；页面标注有真机和闭环实验，但没有任何数字，省下多少采集成本仍无从判断。",
+      "en": "Teams budgeting a separate teleoperation setup for imitation data can track this attempt to learn from a single human video instead; the page flags real-robot and closed-loop experiments but quotes no figures, so the collection saving is still unquantified.",
+      "ja": "模倣学習のために専用の遠隔操作系を用意しようとしているチームは、人間の動画 1 本で代替するこの試みを追う価値がある。実機・閉ループ実験ありとされるが数値はページになく、収集コストの削減幅はまだ判断できない。"
+    },
+    "https://arxiv.org/abs/2610.21985": {
+      "zh": "流式 VLA 的动作块质量随噪声种子波动，若你也遇到，可考虑多采样再校验：作者自报平均完成分从 50.8% 提到 65.5%，代价是采样等环节多出 326 ms，需先核对控制预算能否容纳。",
+      "en": "If your flow-based VLA's action-chunk quality swings with the noise seed, sampling and verifying candidates is an option, but the self-reported lift in average completion score from 50.8% to 65.5% costs an added 326 ms, so check your control budget first.",
+      "ja": "フロー型 VLA で行動チャンクの品質がノイズシードに左右されるなら、複数サンプルを検証して選ぶ手がある。ただし著者報告の平均完了スコア 50.8% から 65.5% への改善にはサンプリング等で 326 ms の追加がかかり、制御周期の予算に収まるかが先決だ。"
+    },
+    "https://arxiv.org/abs/2610.20904": {
+      "zh": "靠重定向把第一人称人类视频迁到灵巧操作上的团队，值得拿这条替代路线做对比：作者自报平均成功率 74%，重定向基线为 65%，跨本体耗时降低 47.2%，从 743.2 小时降到 392.7 小时；仍是预印本自报。",
+      "en": "Teams retargeting egocentric human video for dexterous manipulation have a self-reported alternative to benchmark against: 74% average success versus 65% for the retargeting baseline, and cross-embodiment wall-clock cost cut by 47.2%, from 743.2 to 392.7 hours.",
+      "ja": "一人称視点の人間動画をリターゲティングで巧緻操作に移しているチームには、比較すべき代替案だ。著者の自己申告では平均成功率 74%（リターゲティング側は 65%）、機体横断の実時間コストは 743.2 時間から 392.7 時間へ 47.2% 減。"
+    },
+    "https://arxiv.org/abs/2610.22146": {
+      "zh": "如果每个时间步的高分辨率多视角图像让 VLA 推理拖慢了闭环部署，可以试按任务压缩视觉 token，页面也标注了开放代码或权重；但页面没有给出加速数字，效果需在自家硬件上实测。",
+      "en": "When high-resolution, multi-view images at every timestep make VLA inference the bottleneck for closed-loop deployment, task-conditioned token compression is worth a trial, with code or weights flagged as open; the page gives no speed-up figure, so measure it yourself.",
+      "ja": "毎ステップの高解像度・多視点画像で VLA 推論が閉ループ運用の律速になっているなら、タスク条件付きのトークン圧縮を試す余地がある。コードか重みの公開も示されているが、高速化の数値はページになく、自前のハードウェアで測る必要がある。"
+    },
+    "https://spectrum.ieee.org/video-friday-reconfigurable-robots": {
+      "zh": "这是二手视频合集，页面只有一句俏皮的引子，说用线相连的两台机器人可以组合成一台新机器人；没有数字也没有指向原始研究，只能当作去找可重构机器人原始工作的线索。",
+      "en": "This secondary video roundup offers only a playful teaser about two wire-connected robots combining into a new one, with no figures or primary study on the page; use it as a pointer to the original reconfigurable-robot work, not as design evidence.",
+      "ja": "二次的な動画まとめで、ページにあるのはワイヤでつながった 2 台が新しいロボットになるという軽い導入文だけだ。数値も一次研究への言及もなく、再構成可能ロボットの原典を探す手がかり程度に扱うべきだろう。"
+    },
+    "https://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models": {
+      "zh": "做敏捷控制、需要预判摩擦等环境影响的团队，可以关注用视觉条件化动力学模型这条路线；但页面既无数字也无真机结果，还不足以作为安全论证或上线审批的依据。",
+      "en": "For agile controllers that must anticipate environmental effects such as available friction, conditioning the dynamics model on vision is the direction to watch; with no figures or real-robot results on the page, it is not yet a basis for a safety case.",
+      "ja": "路面摩擦のような環境の影響を先読みすべき俊敏な制御では、ダイナミクスモデルを視覚で条件付けるこの方向性に注目したい。ただし数値も実機結果もページになく、安全性の論拠や導入承認の根拠にはまだならない。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html": {
+      "zh": "考虑给人形机器人配外罩或服装的厂商要注意，据二手报道这只是一份基本合意书，具体研究课题仍在协商，计划 2027 年 1 月才开始共同研究，目前没有可据以定规格的成果。",
+      "en": "Humanoid builders thinking about garments for their robots should note this is only an MOU per a secondary report: research topics are still being negotiated and joint work aims to start in January 2027, so there is nothing to specify against yet.",
+      "ja": "ヒューマノイドに衣服を着せる設計を検討する企業にとって、これは二次報道によれば基本合意書の段階にすぎない。研究テーマは協議中で共同研究の開始は 2027 年 1 月を目指すとされ、仕様に反映できる成果はまだない。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html": {
+      "zh": "这是 MONOist 当日新文章的汇总导读，页面摘录只有一句介绍，没有关于中国人形机器人的任何具体内容；在据此调整对标或采购判断之前，应先读原文章。",
+      "en": "This is MONOist's digest of the day's new articles, and the excerpt on the page is a one-line introduction with no substance on Chinese humanoids; read the underlying article before it informs any benchmarking or sourcing call.",
+      "ja": "MONOist の当日新着記事のまとめで、ページの抜粋は一行の紹介文にとどまり、中国のヒューマノイドについての中身は示されていない。比較検討や調達の判断に使う前に、元の記事を読むべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
