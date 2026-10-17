@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-17
+### 本日のレーダー · 2026-10-18
 
-`生成時刻: 2026-10-16 23:40 UTC` ｜ `対象期間: 論文 2026-10-13 → 2026-10-17 · ブログ・報道 2026-09-17 → 2026-10-17 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-17 23:40 UTC` ｜ `対象期間: 論文 2026-10-14 → 2026-10-18 · ブログ・報道 2026-09-18 → 2026-10-18 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation](https://arxiv.org/abs/2610.21792)**<br><sub>データエンジン · arXiv 2610.21792 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models](https://arxiv.org/abs/2610.21985)**<br>`50.8%`&nbsp; `65.5%`&nbsp; `326 ms`<br><sub>基盤モデル · arXiv 2610.21985 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos](https://arxiv.org/abs/2610.20904)**<br>`74%`&nbsp; `65%`&nbsp; `47.2%`<br><sub>データエンジン · arXiv 2610.20904 · 2026‑10‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models](https://arxiv.org/abs/2610.22146)**<br><sub>シミュレーションと評価 · arXiv 2610.22146 · 2026‑10‑15</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: When Two Robots Become One](https://spectrum.ieee.org/video-friday-reconfigurable-robots)**<br><sub>シミュレーションと評価 · IEEE Spectrum Robotics · 2026‑10‑16</sub> |
-| 06<br>🔵&nbsp;`R` | **[Vision-Conditioned Variational Bayesian Last Layer Dynamics Models](http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models)**<br><sub>安全・権限・コンプライアンス · Toyota Research Institute · 2026‑10‑15</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究](https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑16</sub> |
-| 08<br>🟡&nbsp;`M` | **[ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？](https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑16</sub> |
+| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>シミュレーションと評価 · arXiv 2610.22340 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>シミュレーションと評価 · arXiv 2610.21389 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>安全・権限・コンプライアンス · arXiv 2610.21374 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>学習と自己改善 · arXiv 2610.21755 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.22184 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.22198 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>データエンジン · arXiv 2610.19330 · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑17</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — `AI 下書き` 模倣学習のために専用の遠隔操作系を用意しようとしているチームは、人間の動画 1 本で代替するこの試みを追う価値がある。実機・閉ループ実験ありとされるが数値はページになく、収集コストの削減幅はまだ判断できない。
-2. **VeriVLA** — `AI 下書き` フロー型 VLA で行動チャンクの品質がノイズシードに左右されるなら、複数サンプルを検証して選ぶ手がある。ただし著者報告の平均完了スコア 50.8% から 65.5% への改善にはサンプリング等で 326 ms の追加がかかり、制御周期の予算に収まるかが先決だ。
-3. **EgoJEPA** — `AI 下書き` 一人称視点の人間動画をリターゲティングで巧緻操作に移しているチームには、比較すべき代替案だ。著者の自己申告では平均成功率 74%（リターゲティング側は 65%）、機体横断の実時間コストは 743.2 時間から 392.7 時間へ 47.2% 減。
-4. **FastVLA** — `AI 下書き` 毎ステップの高解像度・多視点画像で VLA 推論が閉ループ運用の律速になっているなら、タスク条件付きのトークン圧縮を試す余地がある。コードか重みの公開も示されているが、高速化の数値はページになく、自前のハードウェアで測る必要がある。
-5. **Video Friday** — `AI 下書き` 二次的な動画まとめで、ページにあるのはワイヤでつながった 2 台が新しいロボットになるという軽い導入文だけだ。数値も一次研究への言及もなく、再構成可能ロボットの原典を探す手がかり程度に扱うべきだろう。
-6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — `AI 下書き` 路面摩擦のような環境の影響を先読みすべき俊敏な制御では、ダイナミクスモデルを視覚で条件付けるこの方向性に注目したい。ただし数値も実機結果もページになく、安全性の論拠や導入承認の根拠にはまだならない。
-7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — `AI 下書き` ヒューマノイドに衣服を着せる設計を検討する企業にとって、これは二次報道によれば基本合意書の段階にすぎない。研究テーマは協議中で共同研究の開始は 2027 年 1 月を目指すとされ、仕様に反映できる成果はまだない。
-8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — `AI 下書き` MONOist の当日新着記事のまとめで、ページの抜粋は一行の紹介文にとどまり、中国のヒューマノイドについての中身は示されていない。比較検討や調達の判断に使う前に、元の記事を読むべきだ。
+1. **Dexterity from Supervised Play** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Fast-VLA** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **From Optical Flow to Safety** — 査読前のプレプリント。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+4. **DeciCAD** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+5. **Whole-Body Dexterity** — 査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。
+6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
+7. **NavAble** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+8. **The rise of the machines is canceled** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-17.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-18.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

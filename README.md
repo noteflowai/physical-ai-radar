@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-17
+### 今日雷达 · 2026-10-18
 
-`生成时间: 2026-10-16 23:40 UTC` ｜ `统计窗口: 论文 2026-10-13 → 2026-10-17 · 博客与报道 2026-09-17 → 2026-10-17 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-17 23:40 UTC` ｜ `统计窗口: 论文 2026-10-14 → 2026-10-18 · 博客与报道 2026-09-18 → 2026-10-18 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation](https://arxiv.org/abs/2610.21792)**<br><sub>数据引擎 · arXiv 2610.21792 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models](https://arxiv.org/abs/2610.21985)**<br>`50.8%`&nbsp; `65.5%`&nbsp; `326 ms`<br><sub>基座模型 · arXiv 2610.21985 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos](https://arxiv.org/abs/2610.20904)**<br>`74%`&nbsp; `65%`&nbsp; `47.2%`<br><sub>数据引擎 · arXiv 2610.20904 · 2026‑10‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models](https://arxiv.org/abs/2610.22146)**<br><sub>仿真与评测 · arXiv 2610.22146 · 2026‑10‑15</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: When Two Robots Become One](https://spectrum.ieee.org/video-friday-reconfigurable-robots)**<br><sub>仿真与评测 · IEEE Spectrum Robotics · 2026‑10‑16</sub> |
-| 06<br>🔵&nbsp;`R` | **[Vision-Conditioned Variational Bayesian Last Layer Dynamics Models](http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models)**<br><sub>安全、权限与合规 · Toyota Research Institute · 2026‑10‑15</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究](https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑16</sub> |
-| 08<br>🟡&nbsp;`M` | **[ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？](https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑16</sub> |
+| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>仿真与评测 · arXiv 2610.22340 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>仿真与评测 · arXiv 2610.21389 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>安全、权限与合规 · arXiv 2610.21374 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>训练与自我改进 · arXiv 2610.21755 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>本体与供应链 · arXiv 2610.22184 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>安全、权限与合规 · arXiv 2610.22198 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>数据引擎 · arXiv 2610.19330 · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑17</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — `AI 起草` 正在为模仿学习预算额外遥操作系统的团队可以留意这条思路：用单段人类视频替代费力的遥操作采集；页面标注有真机和闭环实验，但没有任何数字，省下多少采集成本仍无从判断。
-2. **VeriVLA** — `AI 起草` 流式 VLA 的动作块质量随噪声种子波动，若你也遇到，可考虑多采样再校验：作者自报平均完成分从 50.8% 提到 65.5%，代价是采样等环节多出 326 ms，需先核对控制预算能否容纳。
-3. **EgoJEPA** — `AI 起草` 靠重定向把第一人称人类视频迁到灵巧操作上的团队，值得拿这条替代路线做对比：作者自报平均成功率 74%，重定向基线为 65%，跨本体耗时降低 47.2%，从 743.2 小时降到 392.7 小时；仍是预印本自报。
-4. **FastVLA** — `AI 起草` 如果每个时间步的高分辨率多视角图像让 VLA 推理拖慢了闭环部署，可以试按任务压缩视觉 token，页面也标注了开放代码或权重；但页面没有给出加速数字，效果需在自家硬件上实测。
-5. **Video Friday** — `AI 起草` 这是二手视频合集，页面只有一句俏皮的引子，说用线相连的两台机器人可以组合成一台新机器人；没有数字也没有指向原始研究，只能当作去找可重构机器人原始工作的线索。
-6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — `AI 起草` 做敏捷控制、需要预判摩擦等环境影响的团队，可以关注用视觉条件化动力学模型这条路线；但页面既无数字也无真机结果，还不足以作为安全论证或上线审批的依据。
-7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — `AI 起草` 考虑给人形机器人配外罩或服装的厂商要注意，据二手报道这只是一份基本合意书，具体研究课题仍在协商，计划 2027 年 1 月才开始共同研究，目前没有可据以定规格的成果。
-8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — `AI 起草` 这是 MONOist 当日新文章的汇总导读，页面摘录只有一句介绍，没有关于中国人形机器人的任何具体内容；在据此调整对标或采购判断之前，应先读原文章。
+1. **Dexterity from Supervised Play** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+2. **Fast-VLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **From Optical Flow to Safety** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+4. **DeciCAD** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+5. **Whole-Body Dexterity** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
+6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
+7. **NavAble** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。
+8. **The rise of the machines is canceled** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-17.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-18.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

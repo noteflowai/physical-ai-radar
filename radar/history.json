@@ -495,6 +495,25 @@
       ],
       "failed": [],
       "fallback": []
+    },
+    {
+      "date": "2026-10-18",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.22340",
+        "https://arxiv.org/abs/2610.21389",
+        "https://arxiv.org/abs/2610.21374",
+        "https://arxiv.org/abs/2610.21755",
+        "https://arxiv.org/abs/2610.22184",
+        "https://arxiv.org/abs/2610.22198",
+        "https://arxiv.org/abs/2610.19330",
+        "https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": []
     }
   ]
 }

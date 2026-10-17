@@ -1,161 +1,174 @@
 {
-  "date": "2026-10-17",
-  "generated": "2026-10-16 23:40 UTC",
-  "window": "papers 2026-10-13 → 2026-10-17 · posts 2026-09-17 → 2026-10-17 (UTC)",
+  "date": "2026-10-18",
+  "generated": "2026-10-17 23:40 UTC",
+  "window": "papers 2026-10-14 → 2026-10-18 · posts 2026-09-18 → 2026-10-18 (UTC)",
   "window_detail": {
-    "day": "2026-10-17",
-    "papers_from": "2026-10-13",
-    "posts_from": "2026-09-17",
+    "day": "2026-10-18",
+    "papers_from": "2026-10-14",
+    "posts_from": "2026-09-18",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.21792",
-      "title": "Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation",
-      "url": "https://arxiv.org/abs/2610.21792",
-      "publisher": "arXiv 2610.21792",
+      "id": "arxiv:2610.22340",
+      "title": "Dexterity from Supervised Play",
+      "url": "https://arxiv.org/abs/2610.22340",
+      "publisher": "arXiv 2610.22340",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-15",
-      "lane": "data",
-      "score": 3.955,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Imitation learning enables robots to perform complex tasks by leveraging human-collected demonstrations. However, most existing approaches require labor-intensive data collection with additional teleoperation systems, which hinders scalability. Human videos represent a natural source of data that implicitly contain knowledge of manipulation behaviors. However, transferring them to robots remains challenging due to the visual domain gap and the absence of explicit action labels. In this work, we introduce TDV, a trajectory-based framework that leverages data generation to enable generalizable manipulation. TDV focuses on task-relevant objects by leveraging plug-and-play 6D pose estimation techniques to extract object trajectories from human videos, thereby mitigating the impact of irrelevant backgrounds and varying viewpoints. As a modality-agnostic intermediate representation, trajectories are inherently independent of the visual domains and different embodiments, enabling efficient data generation. Our method outperforms previous approaches on RLBench simulation tasks, achieving near 100\\% success rates across seven tasks. In real-world experiments, TDV enables cross-embodiment generalization manipulation from one-shot human demonstrations by leveraging efficient trajectory generation techniques."
-    },
-    {
-      "id": "arxiv:2610.21985",
-      "title": "VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models",
-      "url": "https://arxiv.org/abs/2610.21985",
-      "publisher": "arXiv 2610.21985",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "foundation",
-      "score": 3.65,
+      "lane": "simeval",
+      "score": 3.19,
       "numbers": [
-        "50.8%",
-        "65.5%",
-        "326 ms",
-        "66.4%"
+        "69.6%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot",
-        "latency"
+        "closed_loop"
       ],
-      "summary": "Flow-based Vision-Language-Action (VLA) policies are inherently stochastic: different noise seeds can produce action chunks of varying quality from the same observation. At test time, however, the policy typically commits to a single sample without an explicit estimate of its quality. In fine-grained manipulation, executing a suboptimal action can irreversibly disrupt task progress and lead to failure. To exploit policy stochasticity, we introduce a training-free two-axis trigger that uses two initial samples to measure within-chunk temporal variation and cross-sample variance, detecting the critical states. Once triggered, a JEPA-based latent world model ranks candidate action chunks by predicting action-conditioned future latent states and the corresponding changes in task progress. By operating in latent space, the verifier avoids pixel reconstruction and enables efficient and more accurate ranking. Across three real-world tasks, $\\textit{i.e.,}$ pen insertion, pipetting, and apple placement), our method raises the average completion score from 50.8% to 65.5%, while adding 326 ms for sampling and verification per triggered decision on a single RTX 4090. Consistent gains are also observed in simulation, where the average success rate rises from 66.4% to 73.6% in the clean setting of RoboTwin 2.0, from 62.8% to 69.6% in its randomized setting, and from 96.9% to 97.6% on LIBERO."
+      "summary": "How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through behavior cloning, then deploys it autonomously to collect hours of interaction data to train a world model. During inference, the same play policy then guides model-predictive control (MPC) by proposing candidate action sequences for evaluation under the learned world model. To accelerate inference, we also introduce a method for distilling a closed-loop, goal-conditioned policy through self-play within the learned world model. We evaluate this framework on underactuated pushing and any-to-any in-hand pose reorientation with a multifingered hand, in simulation and real world. In real world experiment, our method outperforms hindsight behavior cloning by 69.6% in success rate and achieves comparable success to reinforcement learning with 490 times less interaction data. These results demonstrate that supervised play can autonomously collect interaction data, guide model-based planning, and enable policy learning without any task-specific demonstrations or sim-to-real transfer."
     },
     {
-      "id": "arxiv:2610.20904",
-      "title": "EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos",
-      "url": "https://arxiv.org/abs/2610.20904",
-      "publisher": "arXiv 2610.20904",
+      "id": "arxiv:2610.21389",
+      "title": "Fast-VLA: You Only Think Once for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2610.21389",
+      "publisher": "arXiv 2610.21389",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "simeval",
+      "score": 3.19,
+      "numbers": [
+        "92.46%",
+        "92.40%",
+        "95.95%",
+        "79.11%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "summary": "Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk. Yet task understanding changes far more slowly than the robot state. We introduce Fast-VLA, which invokes a frozen 4B VLM once per episode to contextualize the instruction and initial views as fixed, multi-layer key-value task memory. During execution, a lightweight online actor fuses learned time- and arm-indexed queries with current visual and proprioceptive feedback to form action queries. These queries retrieve task context from the fixed memory and predict action chunks without re-running the foundation model. Fast-VLA achieves 92.46% and 92.40% success on RoboTwin 2.0 Clean and Randomized, and 95.95% and 79.11% on LIBERO and LIBERO-Plus evaluation. Against three continually conditioned baselines on the same hardware, it reduces RoboTwin amortized policy inference time by 10.9-17.1x and requires 1.22 GiB of post-prefill online resident memory. Task-memory swaps further show that the actor relies on episode-matched task memory. These results show that task context can be established once while closed-loop control remains responsive throughout execution. Project page: https://garfield-kh.github.io/FastVLA"
+    },
+    {
+      "id": "arxiv:2610.21374",
+      "title": "From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion",
+      "url": "https://arxiv.org/abs/2610.21374",
+      "publisher": "arXiv 2610.21374",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "safety",
+      "score": 3.175,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable. This letter introduces a visual safety-certification paradigm that uses scale-free, depth-normalized relative motion encoded by monocular optical flow as the representation for collision-risk certification, without reconstructing obstacle position, velocity, geometry, or a metric world model. Unlike conventional optical-flow-based navigation approaches that rely on image motion to shape avoidance behavior, the proposed framework directly encodes collision-cone geometry and safety constraints in this relative-motion representation. An online Concurrent Learning observer estimates the normalized relative velocity and provides a computable estimation-error bound. This uncertainty is propagated into the collision cone through angular inflation and a monocular robot-footprint margin, yielding a Robust Vision-Based Collision Cone Control Barrier Function (RV-C$^3$BF). An optimal-decay CBF quadratic program minimally modifies the nominal control input to enforce the resulting robust safety constraint under the stated assumptions. Extensive simulation and real-world experiments on a TurtleBot3 in cluttered environments with static and dynamic obstacles demonstrate collision avoidance using only monocular vision and onboard proprioception, with the estimation-error bound containing the measured error in $98.3\\%$ of simulation samples and the robot achieving collision-free navigation in $93$ of $100$ real-world trials."
+    },
+    {
+      "id": "arxiv:2610.21755",
+      "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
+      "url": "https://arxiv.org/abs/2610.21755",
+      "publisher": "arXiv 2610.21755",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "training",
+      "score": 3.05,
+      "numbers": [
+        "88%",
+        "66.5%",
+        "73.5%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "summary": "Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness. We investigate how this operating space shapes agent behavior and policy learning in computer-aided design (CAD), a professional domain characterized by persistent state, geometric constraints, and long-horizon procedures. We instantiate this perspective in DeciCAD, a domain-native harness that exposes semantic CAD actions, decision-oriented observations, environment feedback, and persistent state transitions. Building on this harness, we develop a learning pipeline that extracts causal decision supervision from interaction trajectories and improves the policy through supervised fine-tuning (SFT) and geometry-grounded online reinforcement learning (RL). Across four CAD benchmarks, DeciCAD achieves the best F1 and intersection over union (IoU) while reducing model-output tokens by 45--88% relative to a general-purpose coding harness. Under matched supervision, its SFT policy improves F1 from 0.6883 to 0.7437 and outperforms the coding policy; subsequent online RL further raises geometry availability from 66.5% to 73.5% and F1 to 0.7880. These results demonstrate that the decision space induced by a harness materially affects both agent execution and policy learning in CAD."
+    },
+    {
+      "id": "arxiv:2610.22184",
+      "title": "Whole-Body Dexterity",
+      "url": "https://arxiv.org/abs/2610.22184",
+      "publisher": "arXiv 2610.22184",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "hardware",
+      "score": 2.88,
+      "numbers": [
+        "90%",
+        "18%",
+        "4%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans' ability to engage the entire body by bracing and sliding bulky objects against the arms and torso. We introduce Whole-Body Dexterity (WBD), a general framework that uses the robot's body and appendages as contact surfaces to grasp and manipulate objects. Our sim-to-real pipeline first generates a dataset of feasible whole-body grasps, then trains reinforcement-learning experts on a general any-to-any repositioning objective by sampling initial and goal grasps from the dataset, and distills these experts into a single policy that uses proprioception and object geometry. We show that the distilled policy transfers zero-shot to a real Unitree G1, where it repositions a basketball and a cardboard box to regions around the torso and completes a long-horizon task that stows a box under one arm, carries it from a shelf to a table, and places it. The controller operates interactively, steered by coarse motion references from a human teleoperator. Across real-world whole-body manipulation tasks, the distilled controller completes 90% of trials, compared with 18% for direct retargeting and 4% for a generalist whole-body controller."
+    },
+    {
+      "id": "arxiv:2610.22198",
+      "title": "Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions",
+      "url": "https://arxiv.org/abs/2610.22198",
+      "publisher": "arXiv 2610.22198",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "safety",
+      "score": 2.705,
+      "numbers": [
+        "77.5%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Safe multi-agent coordination typically assumes what real-world, deployed, resource-constrained robots cannot provide: continuous, perfect state sharing. Robust control strategies must be complemented with robust communication strategies to deliver resilient deployments. In this work, we propose a unified control/communication strategy that provides safe control to guarantee inter-agent safety under intermittent communication and demonstrate its effectiveness in a pursuit-evasion scenario. Each agent computes the reachable set of neighboring agents based on the last state information received, then solves for a safe control input based on control barrier functions to ensure agents avoid collision. We prove that inter-agent collision avoidance is guaranteed provided communication staleness remains bounded. As the reachable set inflates between state transmissions, each agent reasons about when to preemptively transmit its state information to neighboring agents based on novel metrics characterizing uncertainty risk and kinematic risk. We implement and simulate a variety of pursuit-evasion scenarios and show that preemptive communication reduces messages by 77.5% compared to periodic and event-triggered baselines with zero collisions."
+    },
+    {
+      "id": "arxiv:2610.19330",
+      "title": "NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation",
+      "url": "https://arxiv.org/abs/2610.19330",
+      "publisher": "arXiv 2610.19330",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-14",
       "lane": "data",
-      "score": 3.52,
+      "score": 2.652,
       "numbers": [
-        "74%",
-        "65%",
-        "47.2%",
-        "392.7 hours"
+        "80%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Egocentric human videos offer a scalable alternative to costly robot demonstra- tions, yet transferring their manipulation priors to robot control remains chal- lenging. The commonly adopted retargeting-based approaches convert human wrist and finger poses into embodiment-specific action commands through hand- crafted geometric mappings. However, such mappings require meticulous recal- ibration across different embodiments and risk propagating hand-tracking errors into downstream robot control pipelines. To this end, we propose EgoJEPA, a three-stage framework that learns embodiment-agnostic representations from ego- centric human videos without rule-based human-to-robot retargeting: 1) Human- action pre-training learns effect-aware latent actions through JEPA-style visual prediction conditioned on hand-motion differences; 2) Latent-action-based world modeling jointly predicts future visual dynamics and latent actions, which decou- ples human prior pre-training from robot-specific control parameterizations; 3) Embodiment-specific tuning adapts the pretrained model to diverse robots through lightweight action adapters. Experiments on five real-world manipulation tasks across three robot embodiments demonstrate the effectiveness and efficiency of EgoJEPA. It achieves a 74% average success rate under the out-of-domain evalu- ation, compared with 65% for the retargeting baseline, while reducing cumulative cross-embodiment wall-clock cost by 47.2%, from 743.2 to 392.7 hours."
-    },
-    {
-      "id": "arxiv:2610.22146",
-      "title": "FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2610.22146",
-      "publisher": "arXiv 2610.22146",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "simeval",
-      "score": 3.355,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
         "real_robot",
-        "open_release",
-        "latency"
+        "open_release"
       ],
-      "summary": "Vision-Language-Action (VLA) models present a promising paradigm for general-purpose robot manipulation, but closed-loop deployment is often limited by inference efficiency: at each timestep, high-resolution, often multi-view images are encoded into hundreds of visual tokens that dominate transformer computation and latency. Token compression via attention is a natural solution but is challenging for VLA control because (1) decision-critical tokens are determined by the task, not generic visual saliency, and (2) the token budget varies substantially across steps, so static metrics and budgets waste computation or discard control-critical tokens. We introduce FastVLA, a training-free, task-aware, and temporally adaptive visual token compression framework. At each step, FastVLA scores token importance via task-to-vision attention and adaptively sets the compression rate from the importance-distribution uniformity, measured by an inverse-Simpson metric with online sliding-window calibration. We evaluate FastVLA on OpenVLA, OpenVLA-OFT, and CogACT across LIBERO and SIMPLER, and on a physical Franka Research 3 robot. In simulation, it reduces LLM-backbone FLOPs by 35-59\\% and action latency by 9-32\\% (a 1.09$\\times$-1.46$\\times$ speedup) while maintaining task success, achieving a comparable or better efficiency-performance trade-off than existing plug-and-play token compression/pruning/reuse baselines. On the real robot, it cuts end-to-end latency by 20\\% (1.25$\\times$ speedup) at comparable success. Code is available at https://github.com/jiuyixu25/FastVLA."
+      "summary": "Reliable recognition of accessibility-critical objects (e.g., audible pedestrian signals, door-activation buttons, and handrails) is essential for assistive navigation technologies that support safe, independent mobility for blind and low-vision (BLV) users. Yet these categories are underrepresented in existing large-scale vision datasets, and the few datasets that include them suffer from limited class coverage, inconsistent annotations, and poor diversity. We introduce NavAble, a large-scale dataset spanning 11 accessibility-critical object classes, combining 41K curated open-source images with 8K newly collected, densely annotated real-world images. To extend scale and diversity, we develop a synthetic data generation pipeline that renders high-fidelity 3D assets across 37 environments under diverse styles and viewpoints, yielding 452K frames with rich ground-truth annotations from 565 assets. The pipeline minimizes manual effort by combining automated web image crawling, VLM-based filtering, SAM 3D-based asset generation, and convenient camera trajectory configuration, enabling large-scale data generation at a diversity unattainable through manual collection. Experiments show that fine-tuning existing segmentation models on the NavAble Dataset achieves reliable accessibility-object segmentation (>80% mIoU on our held-out test set). We also demonstrate the effectiveness of synthetic data augmentation, which yields up to +3.5 mIoU over real-world-only fine-tuning. Beyond benchmark evaluation, validation on egocentric data from two mobility-assistive robots demonstrates improved perception reliability in real-world navigation scenarios. Together, NavAble establishes a scalable foundation for BLV navigation perception, directly addressing the data scarcity and embodiment gaps. The dataset and pipeline are publicly available at https://huggingface.co/datasets/NavAble/NeurIPS_2026_BLV."
     },
     {
-      "id": "ieee-spectrum-robotics:b8f4f36ff32f",
-      "title": "Video Friday: When Two Robots Become One",
-      "url": "https://spectrum.ieee.org/video-friday-reconfigurable-robots",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
+      "id": "the-robot-report:507a01c72df1",
+      "title": "The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies",
+      "url": "https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-16",
-      "lane": "simeval",
-      "score": 1.955,
-      "numbers": [],
-      "signals": [],
-      "summary": "When one robot loves another robot very much, and they’re connected by a wire, they can get together and make a brand new robot! SFW. [ JSK Lab ] What happens when Microducks meet? They start to sing together. Each Microduck syncs with its neighbors over Bluetooth, then they compose a song on the fly, in harmony and in perfect time. There’s no score and no conductor. Two, three, or four ducks are enough for a choir to break out. If Pollen isn’t selling Microducks in four packs for this exact reason, WHAT ARE THEY EVEN DOING!? [ Pollen ] In an internal test, Google DeepMind robotics researchers instructed Gemini 4 Argon to watch a video of a human playing cornhole. Using its video understanding and advanced reasoning capabilities, Gemini 4 built a virtual simulation in MuJoCo and accurately calculated the physics and whole-body control required for Apptronik’s Apollo 2 humanoid to sink seven consecutive shots in the real world. This Video-to-Sim-to-Real pipeline compresses weeks of manual modeling into a few hours, transforming ordinary videos into an infinite training ground for physical AI. [ Google DeepMind ] As of Oct. 11, 2026, NASA’s Perseverance rover has driven 28.10 miles (45.22 kilometers), becoming the new off-world record-holder for total distance driven by any vehicle on the surface of another world. The previous record of 28.06 miles (45.16 kilometers) was held by NASA’s Opportunity rover. Perseverance reached that mark on the 2,006th Martian day, or sol, of its mission, covering in five and a half years a distance that took Opportunity almost 15. [ JPL ] Let’s not argue about whether these are robots …"
-    },
-    {
-      "id": "tri:46ade5329db4",
-      "title": "Vision-Conditioned Variational Bayesian Last Layer Dynamics Models",
-      "url": "http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "safety",
-      "score": 1.235,
-      "numbers": [],
-      "signals": [],
-      "summary": "Agile control of robotic systems often requires anticipating how the environment affects system behavior. For example, a driver must perceive the road ahead to anticipate available friction and plan actions accordingly. Achieving such proactive adaptation within autonomous frameworks remains a challenge, particularly under rapidly changing conditions. Traditional modeling approaches often struggle to capture abrupt variations in system behavior, while adaptive methods are inherently reactive and may adapt too late to ensure safety. We propose a vision-conditioned variational Bayesian last-layer dynamics model that leverages visual context to anticipate changes in the environment. The model first learns nominal vehicle dynamics and is then fine-tuned with feature-wise affine transformations of latent features, enabling context-aware dynamics prediction. The resulting model is integrated into an optimal controller for vehicle racing. We validate our method on a Lexus LC500 racing through water puddles. With vision-conditioning, the system completed all 12 attempted laps under varying conditions. In contrast, all baselines without visual context consistently lost control, demonstrating the importance of proactive dynamics adaptation in high-performance applications. Image Jan 16, 2026 Human Interactive Driving Read More 1 Minute Read"
-    },
-    {
-      "id": "monoist:9243b433d2d6",
-      "title": "ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html",
-      "publisher": "MONOist (ITmedia)",
-      "source_id": "monoist",
-      "evidence": "M",
-      "published": "2026-10-16",
+      "published": "2026-10-17",
       "lane": "hardware",
-      "score": 1.032,
+      "score": 1.182,
       "numbers": [],
       "signals": [],
-      "summary": "ZOZO NEXTとAVITAが、ヒューマノイドに特化した衣服に関する共同研究に向けた基本合意書（MOU）を締結した。今後は、両社で研究テーマの詳細について協議を進め、2027年1月の共同研究開始を目指す。"
-    },
-    {
-      "id": "monoist:0b4e42cf0acf",
-      "title": "ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html",
-      "publisher": "MONOist (ITmedia)",
-      "source_id": "monoist",
-      "evidence": "M",
-      "published": "2026-10-16",
-      "lane": "hardware",
-      "score": 1.032,
-      "numbers": [],
-      "signals": [],
-      "summary": "2026年10月16日に公開されたMONOistの新着記事をピックアップしてお届けします。"
+      "summary": "Humans play a key role in developing humanoid robots and training AI models, so we can maintain control, writes a columnist."
     }
   ],
   "lane_counts": {
-    "foundation": 7,
+    "foundation": 5,
     "data": 9,
-    "training": 3,
+    "training": 4,
     "simeval": 14,
     "edge": 4,
-    "safety": 3,
+    "safety": 4,
     "systems": 1,
     "hardware": 9
   },
@@ -165,17 +178,18 @@
     "M": 15
   },
   "fetch": {
-    "items": 528,
+    "items": 410,
     "attempted": 11,
-    "answered": 11,
-    "failed": [],
+    "answered": 10,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "per_source": {
-      "arxiv": 95,
+      "arxiv": 77,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

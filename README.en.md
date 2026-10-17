@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-17
+### Today's radar · 2026-10-18
 
-`Generated: 2026-10-16 23:40 UTC` ｜ `Window: papers 2026-10-13 → 2026-10-17 · posts 2026-09-17 → 2026-10-17 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-17 23:40 UTC` ｜ `Window: papers 2026-10-14 → 2026-10-18 · posts 2026-09-18 → 2026-10-18 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Trajectory-based Diffusion from One-shot Human Video for Generalizable Manipulation](https://arxiv.org/abs/2610.21792)**<br><sub>Data engine · arXiv 2610.21792 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[VeriVLA: Adaptive Test-Time Verification for Flow-Based VLAs with Latent World Models](https://arxiv.org/abs/2610.21985)**<br>`50.8%`&nbsp; `65.5%`&nbsp; `326 ms`<br><sub>Foundation models · arXiv 2610.21985 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[EgoJEPA: Beyond Retargeting for Dexterous Manipulation from Egocentric Videos](https://arxiv.org/abs/2610.20904)**<br>`74%`&nbsp; `65%`&nbsp; `47.2%`<br><sub>Data engine · arXiv 2610.20904 · 2026‑10‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models](https://arxiv.org/abs/2610.22146)**<br><sub>Simulation & evaluation · arXiv 2610.22146 · 2026‑10‑15</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: When Two Robots Become One](https://spectrum.ieee.org/video-friday-reconfigurable-robots)**<br><sub>Simulation & evaluation · IEEE Spectrum Robotics · 2026‑10‑16</sub> |
-| 06<br>🔵&nbsp;`R` | **[Vision-Conditioned Variational Bayesian Last Layer Dynamics Models](http://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models)**<br><sub>Safety, permissions & compliance · Toyota Research Institute · 2026‑10‑15</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究](https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑16</sub> |
-| 08<br>🟡&nbsp;`M` | **[ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？](https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑16</sub> |
+| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>Simulation & evaluation · arXiv 2610.22340 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>Simulation & evaluation · arXiv 2610.21389 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>Safety, permissions & compliance · arXiv 2610.21374 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>Training & self-improvement · arXiv 2610.21755 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>Embodiment & supply chain · arXiv 2610.22184 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>Safety, permissions & compliance · arXiv 2610.22198 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>Data engine · arXiv 2610.19330 · 2026‑10‑14</sub> |
+| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑17</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Trajectory-based Diffusion from One-shot Human Video for Generalizable Mani…** — `AI draft` Teams budgeting a separate teleoperation setup for imitation data can track this attempt to learn from a single human video instead; the page flags real-robot and closed-loop experiments but quotes no figures, so the collection saving is still unquantified.
-2. **VeriVLA** — `AI draft` If your flow-based VLA's action-chunk quality swings with the noise seed, sampling and verifying candidates is an option, but the self-reported lift in average completion score from 50.8% to 65.5% costs an added 326 ms, so check your control budget first.
-3. **EgoJEPA** — `AI draft` Teams retargeting egocentric human video for dexterous manipulation have a self-reported alternative to benchmark against: 74% average success versus 65% for the retargeting baseline, and cross-embodiment wall-clock cost cut by 47.2%, from 743.2 to 392.7 hours.
-4. **FastVLA** — `AI draft` When high-resolution, multi-view images at every timestep make VLA inference the bottleneck for closed-loop deployment, task-conditioned token compression is worth a trial, with code or weights flagged as open; the page gives no speed-up figure, so measure it yourself.
-5. **Video Friday** — `AI draft` This secondary video roundup offers only a playful teaser about two wire-connected robots combining into a new one, with no figures or primary study on the page; use it as a pointer to the original reconfigurable-robot work, not as design evidence.
-6. **Vision-Conditioned Variational Bayesian Last Layer Dynamics Models** — `AI draft` For agile controllers that must anticipate environmental effects such as available friction, conditioning the dynamics model on vision is the direction to watch; with no figures or real-robot results on the page, it is not yet a basis for a safety case.
-7. **ヒューマノイドにも衣服を、ZOZO NEXTがフィジカルAIスタートアップと共同研究** — `AI draft` Humanoid builders thinking about garments for their robots should note this is only an MOU per a secondary report: research topics are still being negotiated and joint work aims to start in January 2027, so there is nothing to specify against yet.
-8. **ヒューマノイド開発、中国の強さと課題／2026年度グッドデザイン大賞は？** — `AI draft` This is MONOist's digest of the day's new articles, and the excerpt on the page is a one-line introduction with no substance on Chinese humanoids; read the underlying article before it informs any benchmarking or sourcing call.
+1. **Dexterity from Supervised Play** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+2. **Fast-VLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **From Optical Flow to Safety** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
+4. **DeciCAD** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+5. **Whole-Body Dexterity** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
+6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
+7. **NavAble** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
+8. **The rise of the machines is canceled** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-17.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-18.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
