@@ -59,7 +59,7 @@
 <a href="#p4" class="blip" style="--lane:#34d399;--delay:1.40s"><circle cx="94.6" cy="-0.0" r="11" class="halo"/><circle cx="94.6" cy="-0.0" r="5"/><title>DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents</title></a>
 <a href="#p5" class="blip" style="--lane:#22d3ee;--delay:1.75s"><circle cx="-70.0" cy="-58.8" r="11" class="halo"/><circle cx="-70.0" cy="-58.8" r="5"/><title>Whole-Body Dexterity</title></a>
 <a href="#p6" class="blip" style="--lane:#facc15;--delay:2.10s"><circle cx="-67.5" cy="56.7" r="11" class="halo"/><circle cx="-67.5" cy="56.7" r="5"/><title>Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions</title></a>
-<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="61.7" cy="-61.7" r="11" class="halo"/><circle cx="61.7" cy="-61.7" r="5"/><title>NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation</title></a>
-<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-38.5" cy="-45.8" r="11" class="halo"/><circle cx="-38.5" cy="-45.8" r="5"/><title>The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies</title></a>
+<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="61.6" cy="-61.6" r="11" class="halo"/><circle cx="61.6" cy="-61.6" r="5"/><title>NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-38.4" cy="-45.8" r="11" class="halo"/><circle cx="-38.4" cy="-45.8" r="5"/><title>The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies</title></a>
 <circle class="core" r="3"/></svg>
 </svg>

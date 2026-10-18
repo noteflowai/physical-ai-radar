@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-18",
+  "generated": "2026-10-18 13:58 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.22340": {
+      "zh": "若几分钟的人类玩耍示范就能让机器人自行采集接触丰富的灵巧操作经验，数据采集的人力投入会大幅后移；但相对 hindsight behavior cloning 的 69.6% 成功率优势仍是作者自报，需等独立复现。",
+      "en": "If minutes of human play are enough for a robot to go on collecting its own contact-rich dexterous experience, data collection shifts from people to the robot; the 69.6% success-rate margin over hindsight behavior cloning is still self-reported.",
+      "ja": "数分の人間の遊び操作から、ロボット自身が接触の多い巧緻操作の経験を集め続けられるなら、データ収集の主役は人から機体へ移る。ただし hindsight behavior cloning に対する成功率 69.6% の差は著者の自己申告にとどまる。"
+    },
+    "https://arxiv.org/abs/2610.21389": {
+      "zh": "对把数十亿参数 VLA 放进反馈回路的团队，它主张每个动作分块不必重算任务上下文；页面可见的证据只是 RoboTwin 上 92.46% 与 92.40% 等基准成功率，属作者自报，页面未展示真机结果。",
+      "en": "Teams running a multi-billion-parameter VLA inside the feedback loop should note the claim that task context need not be recomputed every action chunk; the visible evidence is self-reported benchmark success, such as 92.46% and 92.40% on RoboTwin.",
+      "ja": "数十億パラメータの VLA をフィードバックループ内で回すチームには、アクションチャンクごとにタスク文脈を再計算しなくてよいという主張が参考になる。ただし示されているのは RoboTwin での 92.46%・92.40% など自己申告のベンチマーク成功率のみ。"
+    },
+    "https://arxiv.org/abs/2610.21374": {
+      "zh": "单目视觉导航拿不到显式障碍物状态，这篇给出了一条走向安全认证的候选路径；页面标注了真机实验，但没有任何量化数据，目前只能当作预印本方向，不能当作送审依据。",
+      "en": "Monocular navigation stacks that cannot observe obstacle states directly get a candidate route to a safety certificate; real-robot experiments are flagged but the page shows no figures, so treat it as a preprint lead, not an approval argument.",
+      "ja": "障害物の状態を直接観測できない単眼ナビゲーションにとって、安全証明への候補となる道筋を示す。実機実験の記載はあるが数値は示されておらず、現時点では審査の根拠ではなくプレプリント段階の方向性として扱うべき。"
+    },
+    "https://arxiv.org/abs/2610.21755": {
+      "zh": "研究对象是做 CAD 的 LLM agent 而非机器人，相关性是间接的：它把 agent harness 视为动作空间的定义者，自报输出 token 最多减少 88%、几何可用率从 66.5% 升至 73.5%，设计工具型 agent 接口时可参考。",
+      "en": "This is about LLM agents for CAD, not robots, so relevance is indirect: it treats the agent harness as what defines the action space, and self-reports output tokens cut by up to 88% and geometry availability raised from 66.5% to 73.5%.",
+      "ja": "対象はロボットではなく CAD 向け LLM エージェントで、関連は間接的。エージェント・ハーネスが行動空間を規定するとの立場で、出力トークン最大 88% 削減、ジオメトリ可用率 66.5% から 73.5% への改善を自己申告している。"
+    },
+    "https://arxiv.org/abs/2610.22184": {
+      "zh": "人形灵巧操作若仍停留在末端执行器和简单抓取，搬大件时值得考虑用手臂与躯干支撑、滑动物体；作者自报蒸馏控制器完成 90% 的试验，直接重定向为 18%、通用模型为 4%。",
+      "en": "Humanoid teams still limited to end-effector grasps should weigh bracing and sliding bulky objects against arms and torso: the authors report their distilled controller completing 90% of trials, against 18% for direct retargeting and 4% for a generalist.",
+      "ja": "エンドエフェクタと単純な把持にとどまるヒューマノイドでも、大きな物体は腕と胴体で支え滑らせる方向が検討に値する。著者報告では蒸留コントローラが試行の 90% を完遂し、直接リターゲティングは 18%、汎用モデルは 4%。"
+    },
+    "https://arxiv.org/abs/2610.22198": {
+      "zh": "对通信受限的多机系统，它挑战了安全协同必须连续、完美共享状态的前提；作者自报消息量比周期性通信减少 77.5%，评估时要核对的是通信减少后安全约束是否仍然成立。",
+      "en": "For resource-constrained robot teams, it challenges the assumption that safe coordination needs continuous, perfect state sharing; the authors report 77.5% fewer messages than periodic communication, and whether safety holds under that cut is what to verify.",
+      "ja": "資源制約のある複数ロボットに対し、安全な協調には連続的で完全な状態共有が必要という前提を問い直す。周期通信比でメッセージ 77.5% 削減と著者は報告しており、削減下でも安全性が保たれるかが確認点。"
+    },
+    "https://arxiv.org/abs/2610.19330": {
+      "zh": "做视障辅助导航的团队多了一份开放数据，覆盖有声行人信号、开门按钮、扶手等关键物体；但 >80% mIoU 是在作者自己的数据上（“on our”），上线前应在自家路线上重测分割效果。",
+      "en": "Assistive-navigation builders gain open data covering objects such as audible pedestrian signals, door-activation buttons and handrails; the >80% mIoU is measured on the authors' own set, so re-test segmentation on your own routes before relying on it.",
+      "ja": "視覚障害者向けナビゲーションの開発者には、音響式歩行者信号、ドア開閉ボタン、手すりなどを含む公開データが加わる。ただし 80% 超の mIoU は著者自身のデータでの値であり、導入前に自分たちの経路で分割精度を再確認すべき。"
+    },
+    "https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies": {
+      "zh": "这是一篇专栏观点而非报道：它认为人类深度参与人形机器人开发与 AI 训练，因此控制权仍在人手中；文中没有数据，可用于和相关方沟通时的叙事参考，不足以支撑工程或采购决策。",
+      "en": "An opinion column rather than reporting: it argues that human involvement in building humanoids and training their AI keeps people in control, but gives no figures, so it helps with stakeholder framing, not engineering or procurement decisions.",
+      "ja": "報道ではなくコラムの意見記事。人間がヒューマノイド開発と AI の学習に深く関わるため制御は保てると論じるが、数値はなく、関係者への説明の参考にはなっても、技術や調達の判断材料にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

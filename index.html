@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22340" rel="noopener" target="_blank">Dexterity from Supervised Play</a></h3>
 <p class="figure"><strong>69.6%</strong><span class="context">“hindsight behavior cloning by 69.6% in success rate”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若几分钟的人类玩耍示范就能让机器人自行采集接触丰富的灵巧操作经验，数据采集的人力投入会大幅后移；但相对 hindsight behavior cloning 的 69.6% 成功率优势仍是作者自报，需等独立复现。</p>
 <p class="excerpt">How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21389" rel="noopener" target="_blank">Fast-VLA: You Only Think Once for Robot Manipulation</a></h3>
 <p class="figure"><strong>92.46%</strong><span class="context">“Fast-VLA achieves 92.46% and 92.40% success”</span></p><p class="chips"><span class="chip">92.40%</span><span class="chip">95.95%</span><span class="chip">79.11%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 对把数十亿参数 VLA 放进反馈回路的团队，它主张每个动作分块不必重算任务上下文；页面可见的证据只是 RoboTwin 上 92.46% 与 92.40% 等基准成功率，属作者自报，页面未展示真机结果。</p>
 <p class="excerpt">Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21374" rel="noopener" target="_blank">From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 单目视觉导航拿不到显式障碍物状态，这篇给出了一条走向安全认证的候选路径；页面标注了真机实验，但没有任何量化数据，目前只能当作预印本方向，不能当作送审依据。</p>
 <p class="excerpt">Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21755" rel="noopener" target="_blank">DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents</a></h3>
 <p class="figure"><strong>88%</strong><span class="context">“reducing model-output tokens by 45--88% relative to a”</span></p><p class="chips"><span class="chip">66.5%</span><span class="chip">73.5%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 研究对象是做 CAD 的 LLM agent 而非机器人，相关性是间接的：它把 agent harness 视为动作空间的定义者，自报输出 token 最多减少 88%、几何可用率从 66.5% 升至 73.5%，设计工具型 agent 接口时可参考。</p>
 <p class="excerpt">Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22184" rel="noopener" target="_blank">Whole-Body Dexterity</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“the distilled controller completes 90% of trials”</span></p><p class="chips"><span class="chip">18%</span><span class="chip">4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 人形灵巧操作若仍停留在末端执行器和简单抓取，搬大件时值得考虑用手臂与躯干支撑、滑动物体；作者自报蒸馏控制器完成 90% 的试验，直接重定向为 18%、通用模型为 4%。</p>
 <p class="excerpt">Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans&#x27; ability to engage the entire body by bracing and sliding bulky objects against the arms and torso.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22198" rel="noopener" target="_blank">Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions</a></h3>
 <p class="figure"><strong>77.5%</strong><span class="context">“communication reduces messages by 77.5% compared to periodic”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 对通信受限的多机系统，它挑战了安全协同必须连续、完美共享状态的前提；作者自报消息量比周期性通信减少 77.5%，评估时要核对的是通信减少后安全约束是否仍然成立。</p>
 <p class="excerpt">Safe multi-agent coordination typically assumes what real-world, deployed, resource-constrained robots cannot provide: continuous, perfect state sharing.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.19330" rel="noopener" target="_blank">NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation</a></h3>
 <p class="figure"><strong>80%</strong><span class="context">“reliable accessibility-object segmentation (&gt; 80% mIoU on our”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 做视障辅助导航的团队多了一份开放数据，覆盖有声行人信号、开门按钮、扶手等关键物体；但 &gt;80% mIoU 是在作者自己的数据上（“on our”），上线前应在自家路线上重测分割效果。</p>
 <p class="excerpt">Reliable recognition of accessibility-critical objects (e.g., audible pedestrian signals, door-activation buttons, and handrails) is essential for assistive navigation technologies that support safe, independent mobility for blind and…</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/" rel="noopener" target="_blank">The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是一篇专栏观点而非报道：它认为人类深度参与人形机器人开发与 AI 训练，因此控制权仍在人手中；文中没有数据，可用于和相关方沟通时的叙事参考，不足以支撑工程或采购决策。</p>
 <p class="excerpt">Humans play a key role in developing humanoid robots and training AI models, so we can maintain control, writes a columnist.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-17</span>
