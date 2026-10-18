@@ -33,7 +33,7 @@ try:
     from .feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from .feature_outcomes import deferral_details, outcome_exit
     from .feature_governance import bind_decision, load_roadmap, next_version, validate_decision
-    from .feature_recovery import check_original_effects
+    from .feature_recovery import check_original_effects, close_original
     from .feature_quarantine import before_new_task, terminal_quarantine
     from .feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from .improve_repos import model_json, snapshot, verify_public_browser
@@ -54,7 +54,7 @@ except ImportError:
     from feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from feature_outcomes import deferral_details, outcome_exit
     from feature_governance import bind_decision, load_roadmap, next_version, validate_decision
-    from feature_recovery import check_original_effects
+    from feature_recovery import check_original_effects, close_original
     from feature_quarantine import before_new_task, terminal_quarantine
     from feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from improve_repos import model_json, snapshot, verify_public_browser
@@ -783,7 +783,16 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             *, plan_only: bool = False) -> dict:
     config, repo = {**PROJECTS[name]}, "noteflowai/" + name
     # Before any new ID, source checkout, model admission or receipt mutation.
-    check_original_effects(service_state, repo)
+    recovery = check_original_effects(service_state, repo)
+    if recovery and recovery.get("state") == "close-original":
+        if plan_only:
+            raise ValueError("External closure requires the original execution lease")
+        return close_original(service_state, repo, recovery)
+    if recovery:
+        for closed in recovery.get("closed_original_effects", []):
+            terminal = closed.get("terminal", {})
+            if terminal.get("status") == "externally-finalized" and terminal.get("completed_on") == day:
+                return terminal
     task_dir = service_state / "tasks" / name
     task_dir.mkdir(parents=True, exist_ok=True)
     active = task_dir / "active.json"
@@ -1334,7 +1343,7 @@ def main() -> int:
         for name in selected:
             receipt = state / name / "result.json"
             old = read_json(receipt, {})
-            if old.get("status") in {"published", "deferred", "no-change"}:
+            if old.get("status") in {"published", "deferred", "no-change", "externally-finalized"}:
                 results.append(old)
                 continue
             if args.worker:
@@ -1373,7 +1382,7 @@ def main() -> int:
                                      receipt.parent / "worker.log", 2100)
                 result = read_json(receipt, {"repo": "noteflowai/" + name,
                                             "status": "retry-needed", "at": stamp()})
-                if code != 0 and result.get("status") not in {"published", "deferred", "no-change"}:
+                if code != 0 and result.get("status") not in {"published", "deferred", "no-change", "externally-finalized"}:
                     result.update(status="retry-needed", worker_exit_code=code)
             write_json(receipt, result)
             results.append(result)
