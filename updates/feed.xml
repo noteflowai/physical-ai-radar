@@ -5,6 +5,17 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>test: EA-02 regression corpus that pins how the diff gate handles missing evidence</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/</guid>
+      <description>Commit b0de9ac adds tests/test_feature_cb4fe5a9ab91.py, a synthetic regression corpus for EA-02. Every case id carries a synthetic label. Each case loads its inputs with load_results, runs diff and checks the gate outcome through evidence.diff_passed and the render_markdown headings. Control and added-check cases pass. Removed checks, fewer Inspect epochs at an unchanged pass rate, a JUnit pass-to-skipped change with no other difference, and incomplete baseline or current runs all fail the gate. Malformed records, duplicate IDs and non-comparable runs (different task or format) raise ValueError. An invariant test checks that no lost-evidence case passes.
+
+The corpus exposed one defect, fixed in src/evalarc/results_diff.py. Before the fix, a repeated Inspect sample ID loaded as extra attempts and could pass the gate when any copy had a null, boolean, string or other non-integer epoch, or when integer and missing epochs were mixed. Those logs now raise ValueError with the message duplicate sample '&lt;id&gt;' without a valid epoch (got ...). Legacy behavior is unchanged: if every copy of an ID omits the epoch key, the copies still load as attempts, and a single sample with no epoch still loads.
+
+The controller ran the checks. I did not run them. Before the fix, the controller's acceptance run of the new test file exited 1 with 8 failed and 20 passed. All 8 failures were in the duplicate-epoch cases. On candidate b0de9ac, every controller check exited 0: the new test file, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs. docs/ci-gate.md and docs/ci-gate.zh-CN.md gain a Regression corpus section.</description>
+      <pubDate>Sun, 18 Oct 2026 13:30:39 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: reject Inspect samples without a usable id instead of inventing case None</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.10/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.17.10/</guid>

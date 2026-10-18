@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>test: EA-02 regression corpus that pins how the diff gate handles missing evidence · NoteFlowAI</title><meta name="description" content="Commit b0de9ac adds tests/test_feature_cb4fe5a9ab91.py, a synthetic regression corpus for EA-02. Every case id carries a synthetic label. Each case loads its inputs with load_results, runs diff and checks the gate outcome through evidence.diff_passed"><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/"><meta property="og:type" content="article"><meta property="og:title" content="test: EA-02 regression corpus that pins how the diff gate handles missing evidence"><meta property="og:description" content="Commit b0de9ac adds tests/test_feature_cb4fe5a9ab91.py, a synthetic regression corpus for EA-02. Every case id carries a synthetic label. Each case loads its inputs with load_results, runs diff and checks the gate outcome through evidence.diff_passed"><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/evalarc · 0.20.1 · 2026-10-18</p><h1>test: EA-02 regression corpus that pins how the diff gate handles missing evidence</h1><p>Commit b0de9ac adds tests/test_feature_cb4fe5a9ab91.py, a synthetic regression corpus for EA-02. Every case id carries a synthetic label. Each case loads its inputs with load_results, runs diff and checks the gate outcome through evidence.diff_passed and the render_markdown headings. Control and added-check cases pass. Removed checks, fewer Inspect epochs at an unchanged pass rate, a JUnit pass-to-skipped change with no other difference, and incomplete baseline or current runs all fail the gate. Malformed records, duplicate IDs and non-comparable runs (different task or format) raise ValueError. An invariant test checks that no lost-evidence case passes.
+
+The corpus exposed one defect, fixed in src/evalarc/results_diff.py. Before the fix, a repeated Inspect sample ID loaded as extra attempts and could pass the gate when any copy had a null, boolean, string or other non-integer epoch, or when integer and missing epochs were mixed. Those logs now raise ValueError with the message duplicate sample &#x27;&lt;id&gt;&#x27; without a valid epoch (got ...). Legacy behavior is unchanged: if every copy of an ID omits the epoch key, the copies still load as attempts, and a single sample with no epoch still loads.
+
+The controller ran the checks. I did not run them. Before the fix, the controller&#x27;s acceptance run of the new test file exited 1 with 8 failed and 20 passed. All 8 failures were in the duplicate-epoch cases. On candidate b0de9ac, every controller check exited 0: the new test file, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs. docs/ci-gate.md and docs/ci-gate.zh-CN.md gain a Regression corpus section.</p><h2>Use it</h2><pre>Prerequisites: a checkout of commit b0de9ac, with evalarc installed in the active Python environment, run from the repository root.
+
+Run the corpus (the controller ran this and it exited 0):
+
+python -m pytest -q tests/test_feature_cb4fe5a9ab91.py
+
+Optional manual check. It is SYNTHETIC and UNVERIFIED: neither the controller nor I executed this snippet. The script builds its own input from the bundled example log. It keeps one sample with its integer epoch and adds a copy without an epoch, which is the integer-then-missing case that the corpus test pins.
+
+python - &lt;&lt;&#x27;EOF&#x27;
+import copy, json, pathlib
+from evalarc.results_diff import load_results
+source = pathlib.Path(&quot;examples/results-diff/inspect/baseline.json&quot;)
+doc = json.loads(source.read_text())
+first = copy.deepcopy(doc[&quot;samples&quot;][0])
+first[&quot;epoch&quot;] = 1
+second = copy.deepcopy(first)
+del second[&quot;epoch&quot;]
+doc[&quot;samples&quot;] = [first, second]  # SYNTHETIC duplicate
+path = pathlib.Path(&quot;synthetic-copies.json&quot;)
+path.write_text(json.dumps(doc))
+try:
+    load_results(path, &quot;inspect&quot;)
+    print(&quot;loaded&quot;)
+except ValueError as error:
+    print(&quot;rejected:&quot;, error)
+finally:
+    path.unlink()
+EOF
+
+Based on the corpus test, the expected result is a rejection whose message ends in without a valid epoch (got missing). This snippet itself has not been confirmed. In the existing diff CLI, unusable input exits 2, a gate failure exits 1 and a pass exits 0. The Regression corpus section of docs/ci-gate.md maps each category to its outcome.</pre><h2>Scope</h2><p>All corpus fixtures are synthetic. They pin EvalArc&#x27;s own classification rules and say nothing about real Inspect, promptfoo or JUnit exports (EA-01), reviewer timing (EA-03), false-alarm rates or broad accuracy. Passing tests do not show that every malformed real-world log is caught.
+
+Known gaps:
+- Inspect copies of one sample ID that all omit the epoch key still load as separate attempts, so EvalArc cannot detect duplicated or lost coverage in those logs.
+- A promptfoo duplicate whose testIdx was edited to a distinct value still loads as a separate attempt.
+
+Kind names, schema evalarc.results-diff.v1, CLI flags and exit codes are unchanged. This feature changes no UI. The controller ran scripts/check_site.cjs, which exited 0. Its log shows the existing showcase/browser regression checks at 1440, 390 and 320 px widths, plus offline variants. Those checks cover existing pages, not this change. I reviewed no screenshots.
+
+The controller executed all checks. I ran no commands. The manual usage snippet was not executed by anyone. This text relies on the check receipts, the failure log and the prior review of the fix diff. I did not re-read the fix source or the rendered docs table.</p><h2>Upgrade and rollback</h2><p>No data, schema or configuration migration is needed. Behavior changes only for Inspect logs that repeat a sample ID where a copy has a null, boolean, string or other non-integer epoch, or where integer and missing epochs are mixed. Those logs now raise ValueError, and the diff CLI treats them as unusable input (exit 2). Before, the copies counted as extra attempts and could pass the gate.
+
+These logs load as before:
+- logs with unique sample IDs
+- logs whose repeated IDs each carry distinct integer epochs
+- logs whose repeated copies all omit the epoch key
+
+If a CI job starts exiting 2 with this message, regenerate the log or rerun the evaluation so that each repeated sample has its own integer epoch. Do not edit epochs by hand to force a pass.
+
+To roll back, revert commit b0de9ac. That restores the earlier permissive loading. Existing reports and saved results are not affected.</p><p class="links"><a href="https://github.com/noteflowai/evalarc/releases/tag/v0.20.1">Release and downloads</a><a href="https://github.com/noteflowai/evalarc/pull/86">Implementation and checks</a></p><p class="meta">Source commit: <code>036122152ebf12e1c52bf4a705e2ef363e0c6252</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
