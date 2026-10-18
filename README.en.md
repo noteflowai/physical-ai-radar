@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Dexterity from Supervised Play** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-2. **Fast-VLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **From Optical Flow to Safety** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
-4. **DeciCAD** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-5. **Whole-Body Dexterity** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
-6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
-7. **NavAble** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
-8. **The rise of the machines is canceled** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Dexterity from Supervised Play** — `AI draft` If minutes of human play are enough for a robot to go on collecting its own contact-rich dexterous experience, data collection shifts from people to the robot; the 69.6% success-rate margin over hindsight behavior cloning is still self-reported.
+2. **Fast-VLA** — `AI draft` Teams running a multi-billion-parameter VLA inside the feedback loop should note the claim that task context need not be recomputed every action chunk; the visible evidence is self-reported benchmark success, such as 92.46% and 92.40% on RoboTwin.
+3. **From Optical Flow to Safety** — `AI draft` Monocular navigation stacks that cannot observe obstacle states directly get a candidate route to a safety certificate; real-robot experiments are flagged but the page shows no figures, so treat it as a preprint lead, not an approval argument.
+4. **DeciCAD** — `AI draft` This is about LLM agents for CAD, not robots, so relevance is indirect: it treats the agent harness as what defines the action space, and self-reports output tokens cut by up to 88% and geometry availability raised from 66.5% to 73.5%.
+5. **Whole-Body Dexterity** — `AI draft` Humanoid teams still limited to end-effector grasps should weigh bracing and sliding bulky objects against arms and torso: the authors report their distilled controller completing 90% of trials, against 18% for direct retargeting and 4% for a generalist.
+6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — `AI draft` For resource-constrained robot teams, it challenges the assumption that safe coordination needs continuous, perfect state sharing; the authors report 77.5% fewer messages than periodic communication, and whether safety holds under that cut is what to verify.
+7. **NavAble** — `AI draft` Assistive-navigation builders gain open data covering objects such as audible pedestrian signals, door-activation buttons and handrails; the >80% mIoU is measured on the authors' own set, so re-test segmentation on your own routes before relying on it.
+8. **The rise of the machines is canceled** — `AI draft` An opinion column rather than reporting: it argues that human involvement in building humanoids and training their AI keeps people in control, but gives no figures, so it helps with stakeholder framing, not engineering or procurement decisions.
 
 </details>
 

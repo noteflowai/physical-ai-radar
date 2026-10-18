@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22340" rel="noopener" target="_blank">Dexterity from Supervised Play</a></h3>
 <p class="figure"><strong>69.6%</strong><span class="context">“hindsight behavior cloning by 69.6% in success rate”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 数分の人間の遊び操作から、ロボット自身が接触の多い巧緻操作の経験を集め続けられるなら、データ収集の主役は人から機体へ移る。ただし hindsight behavior cloning に対する成功率 69.6% の差は著者の自己申告にとどまる。</p>
 <p class="excerpt">How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21389" rel="noopener" target="_blank">Fast-VLA: You Only Think Once for Robot Manipulation</a></h3>
 <p class="figure"><strong>92.46%</strong><span class="context">“Fast-VLA achieves 92.46% and 92.40% success”</span></p><p class="chips"><span class="chip">92.40%</span><span class="chip">95.95%</span><span class="chip">79.11%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 数十億パラメータの VLA をフィードバックループ内で回すチームには、アクションチャンクごとにタスク文脈を再計算しなくてよいという主張が参考になる。ただし示されているのは RoboTwin での 92.46%・92.40% など自己申告のベンチマーク成功率のみ。</p>
 <p class="excerpt">Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21374" rel="noopener" target="_blank">From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 障害物の状態を直接観測できない単眼ナビゲーションにとって、安全証明への候補となる道筋を示す。実機実験の記載はあるが数値は示されておらず、現時点では審査の根拠ではなくプレプリント段階の方向性として扱うべき。</p>
 <p class="excerpt">Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21755" rel="noopener" target="_blank">DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents</a></h3>
 <p class="figure"><strong>88%</strong><span class="context">“reducing model-output tokens by 45--88% relative to a”</span></p><p class="chips"><span class="chip">66.5%</span><span class="chip">73.5%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 対象はロボットではなく CAD 向け LLM エージェントで、関連は間接的。エージェント・ハーネスが行動空間を規定するとの立場で、出力トークン最大 88% 削減、ジオメトリ可用率 66.5% から 73.5% への改善を自己申告している。</p>
 <p class="excerpt">Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22184" rel="noopener" target="_blank">Whole-Body Dexterity</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“the distilled controller completes 90% of trials”</span></p><p class="chips"><span class="chip">18%</span><span class="chip">4%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> エンドエフェクタと単純な把持にとどまるヒューマノイドでも、大きな物体は腕と胴体で支え滑らせる方向が検討に値する。著者報告では蒸留コントローラが試行の 90% を完遂し、直接リターゲティングは 18%、汎用モデルは 4%。</p>
 <p class="excerpt">Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans&#x27; ability to engage the entire body by bracing and sliding bulky objects against the arms and torso.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22198" rel="noopener" target="_blank">Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions</a></h3>
 <p class="figure"><strong>77.5%</strong><span class="context">“communication reduces messages by 77.5% compared to periodic”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 資源制約のある複数ロボットに対し、安全な協調には連続的で完全な状態共有が必要という前提を問い直す。周期通信比でメッセージ 77.5% 削減と著者は報告しており、削減下でも安全性が保たれるかが確認点。</p>
 <p class="excerpt">Safe multi-agent coordination typically assumes what real-world, deployed, resource-constrained robots cannot provide: continuous, perfect state sharing.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.19330" rel="noopener" target="_blank">NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation</a></h3>
 <p class="figure"><strong>80%</strong><span class="context">“reliable accessibility-object segmentation (&gt; 80% mIoU on our”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 視覚障害者向けナビゲーションの開発者には、音響式歩行者信号、ドア開閉ボタン、手すりなどを含む公開データが加わる。ただし 80% 超の mIoU は著者自身のデータでの値であり、導入前に自分たちの経路で分割精度を再確認すべき。</p>
 <p class="excerpt">Reliable recognition of accessibility-critical objects (e.g., audible pedestrian signals, door-activation buttons, and handrails) is essential for assistive navigation technologies that support safe, independent mobility for blind and…</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/" rel="noopener" target="_blank">The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 報道ではなくコラムの意見記事。人間がヒューマノイド開発と AI の学習に深く関わるため制御は保てると論じるが、数値はなく、関係者への説明の参考にはなっても、技術や調達の判断材料にはならない。</p>
 <p class="excerpt">Humans play a key role in developing humanoid robots and training AI models, so we can maintain control, writes a columnist.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-17</span>

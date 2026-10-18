@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Dexterity from Supervised Play** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-2. **Fast-VLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-3. **From Optical Flow to Safety** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-4. **DeciCAD** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
-5. **Whole-Body Dexterity** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
-6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
-7. **NavAble** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。
-8. **The rise of the machines is canceled** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **Dexterity from Supervised Play** — `AI 起草` 若几分钟的人类玩耍示范就能让机器人自行采集接触丰富的灵巧操作经验，数据采集的人力投入会大幅后移；但相对 hindsight behavior cloning 的 69.6% 成功率优势仍是作者自报，需等独立复现。
+2. **Fast-VLA** — `AI 起草` 对把数十亿参数 VLA 放进反馈回路的团队，它主张每个动作分块不必重算任务上下文；页面可见的证据只是 RoboTwin 上 92.46% 与 92.40% 等基准成功率，属作者自报，页面未展示真机结果。
+3. **From Optical Flow to Safety** — `AI 起草` 单目视觉导航拿不到显式障碍物状态，这篇给出了一条走向安全认证的候选路径；页面标注了真机实验，但没有任何量化数据，目前只能当作预印本方向，不能当作送审依据。
+4. **DeciCAD** — `AI 起草` 研究对象是做 CAD 的 LLM agent 而非机器人，相关性是间接的：它把 agent harness 视为动作空间的定义者，自报输出 token 最多减少 88%、几何可用率从 66.5% 升至 73.5%，设计工具型 agent 接口时可参考。
+5. **Whole-Body Dexterity** — `AI 起草` 人形灵巧操作若仍停留在末端执行器和简单抓取，搬大件时值得考虑用手臂与躯干支撑、滑动物体；作者自报蒸馏控制器完成 90% 的试验，直接重定向为 18%、通用模型为 4%。
+6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — `AI 起草` 对通信受限的多机系统，它挑战了安全协同必须连续、完美共享状态的前提；作者自报消息量比周期性通信减少 77.5%，评估时要核对的是通信减少后安全约束是否仍然成立。
+7. **NavAble** — `AI 起草` 做视障辅助导航的团队多了一份开放数据，覆盖有声行人信号、开门按钮、扶手等关键物体；但 >80% mIoU 是在作者自己的数据上（“on our”），上线前应在自家路线上重测分割效果。
+8. **The rise of the machines is canceled** — `AI 起草` 这是一篇专栏观点而非报道：它认为人类深度参与人形机器人开发与 AI 训练，因此控制权仍在人手中；文中没有数据，可用于和相关方沟通时的叙事参考，不足以支撑工程或采购决策。
 
 </details>
 
