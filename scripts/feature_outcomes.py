@@ -7,6 +7,7 @@ TERMINAL_BATCH = {"complete", "complete-with-deferrals"}
 
 def outcome_exit(results: list[dict], *, plan_only: bool = False) -> int:
     successes = {"published", "planned", "no-change"} if plan_only else {"published", "no-change"}
+    successes.add("externally-finalized")  # Transaction closure; no delivery acceptance credit.
     statuses = {item.get("status") for item in results}
     if statuses - successes - {"deferred"}:
         return 1
