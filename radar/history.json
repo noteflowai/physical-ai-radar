@@ -514,6 +514,23 @@
         "deepmind"
       ],
       "fallback": []
+    },
+    {
+      "date": "2026-10-19",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.22178",
+        "https://arxiv.org/abs/2610.21434",
+        "https://arxiv.org/abs/2610.21353",
+        "https://arxiv.org/abs/2610.22323",
+        "https://arxiv.org/abs/2610.21429",
+        "https://arxiv.org/abs/2610.21453",
+        "https://arxiv.org/abs/2610.21922",
+        "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots"
+      ],
+      "failed": [],
+      "fallback": []
     }
   ]
 }

@@ -13,6 +13,314 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22178",
+      "url": "https://arxiv.org/abs/2610.22178",
+      "title": "REKI: Registering Knowledge in VLAs",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22178 · 2026-10-15<br><b>Signals</b>: real-robot experiments · open code or weights</p>\n<blockquote>We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.22178 · 2026-10-15\nSignals: real-robot experiments · open code or weights\n\nWe introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.22178"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.22178",
+        "url": "https://arxiv.org/abs/2610.22178",
+        "title": "REKI: Registering Knowledge in VLAs",
+        "publisher": "arXiv 2610.22178",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21434",
+      "url": "https://arxiv.org/abs/2610.21434",
+      "title": "Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21434 · 2026-10-15<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.21434 · 2026-10-15\nSignals: closed-loop success reported · real-robot experiments\n\nVision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.21434"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.21434",
+        "url": "https://arxiv.org/abs/2610.21434",
+        "title": "Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution",
+        "publisher": "arXiv 2610.21434",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21353",
+      "url": "https://arxiv.org/abs/2610.21353",
+      "title": "A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21353 · 2026-10-15<br><b>Key numbers</b>: 0.16% · 1.87% · 2.5 ms<br><b>Signals</b>: quantitative results · latency or control-rate numbers</p>\n<blockquote>Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.21353 · 2026-10-15\nKey numbers: 0.16% · 1.87% · 2.5 ms\nSignals: quantitative results · latency or control-rate numbers\n\nAccurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.21353"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.21353",
+        "url": "https://arxiv.org/abs/2610.21353",
+        "title": "A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation",
+        "publisher": "arXiv 2610.21353",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [
+          "0.16%",
+          "1.87%",
+          "2.5 ms"
+        ],
+        "signals": [
+          "numbers",
+          "latency"
+        ],
+        "excerpt": "Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22323",
+      "url": "https://arxiv.org/abs/2610.22323",
+      "title": "Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22323 · 2026-10-15<br><b>Key numbers</b>: 49.88% · 61.0% · 81.5%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.22323 · 2026-10-15\nKey numbers: 49.88% · 61.0% · 81.5%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLong-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.22323"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.22323",
+        "url": "https://arxiv.org/abs/2610.22323",
+        "title": "Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation",
+        "publisher": "arXiv 2610.22323",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "systems",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [
+          "49.88%",
+          "61.0%",
+          "81.5%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21429",
+      "url": "https://arxiv.org/abs/2610.21429",
+      "title": "MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21429 · 2026-10-15<br><b>Key numbers</b>: 2.60%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.21429 · 2026-10-15\nKey numbers: 2.60%\nSignals: quantitative results · closed-loop success reported\n\nSound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.21429"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.21429",
+        "url": "https://arxiv.org/abs/2610.21429",
+        "title": "MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes",
+        "publisher": "arXiv 2610.21429",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [
+          "2.60%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop"
+        ],
+        "excerpt": "Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21453",
+      "url": "https://arxiv.org/abs/2610.21453",
+      "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21453 · 2026-10-15<br><b>Key numbers</b>: 52.6% · 6.1% · 13% · 80%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [R]\nSource: arXiv 2610.21453 · 2026-10-15\nKey numbers: 52.6% · 6.1% · 13% · 80%\nSignals: quantitative results · real-robot experiments\n\nWhile generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.21453"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.21453",
+        "url": "https://arxiv.org/abs/2610.21453",
+        "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
+        "publisher": "arXiv 2610.21453",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "safety",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [
+          "52.6%",
+          "6.1%",
+          "13%",
+          "80%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21922",
+      "url": "https://arxiv.org/abs/2610.21922",
+      "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21922 · 2026-10-15<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.21922 · 2026-10-15\nSignals: real-robot experiments\n\nMany vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.21922"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "arxiv:2610.21922",
+        "url": "https://arxiv.org/abs/2610.21922",
+        "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
+        "publisher": "arXiv 2610.21922",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-15",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:871c9c8bb40b",
+      "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
+      "title": "How to choose a BLDC motor for robotic arms and mobile robots",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-18</p>\n<blockquote>Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-18\n\nSeveral factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
+      "summary": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.",
+      "date_published": "2026-10-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-19",
+        "id": "the-robot-report:871c9c8bb40b",
+        "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
+        "title": "How to choose a BLDC motor for robotic arms and mobile robots",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-10-18",
+        "radar_published": "2026-10-18T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22340",
       "url": "https://arxiv.org/abs/2610.22340",
       "title": "Dexterity from Supervised Play",
@@ -3540,315 +3848,6 @@
           "open_release"
         ],
         "excerpt": "Online reinforcement learning (RL) enables robot policies to improve through physical interaction, but the assistance they require changes as their competence evolves."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03476",
-      "url": "https://arxiv.org/abs/2610.03476",
-      "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03476 · 2026-10-02<br><b>Key numbers</b>: 7.50% · 27.50% · 32.5% · 57.5%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.03476 · 2026-10-02\nKey numbers: 7.50% · 27.50% · 32.5% · 57.5%\nSignals: quantitative results · real-robot experiments\n\nLong-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control.",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.03476"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "arxiv:2610.03476",
-        "url": "https://arxiv.org/abs/2610.03476",
-        "title": "MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipulation",
-        "publisher": "arXiv 2610.03476",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-10-02",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [
-          "7.50%",
-          "27.50%",
-          "32.5%",
-          "57.5%"
-        ],
-        "signals": [
-          "numbers",
-          "real_robot"
-        ],
-        "excerpt": "Long-horizon mobile manipulation presents significant challenges due to compounding execution errors and capacity interference between locomotion and arm control."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03607",
-      "url": "https://arxiv.org/abs/2610.03607",
-      "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03607 · 2026-10-02<br><b>Key numbers</b>: 99.20% · 93.80% · 57.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.03607 · 2026-10-02\nKey numbers: 99.20% · 93.80% · 57.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLearning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale.",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.03607"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "arxiv:2610.03607",
-        "url": "https://arxiv.org/abs/2610.03607",
-        "title": "World Action Learning via Interaction-Centric Spectral Latent Guidance",
-        "publisher": "arXiv 2610.03607",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-02",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [
-          "99.20%",
-          "93.80%",
-          "57.7%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Learning general-purpose robot policies requires large-scale real-world interaction data, yet collecting robot demonstrations remains expensive and difficult to scale."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.02784",
-      "url": "https://arxiv.org/abs/2610.02784",
-      "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.02784 · 2026-10-02<br><b>Key numbers</b>: 50 demonstrations · 77.5% · 45.2% · 66.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.02784 · 2026-10-02\nKey numbers: 50 demonstrations · 77.5% · 45.2% · 66.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nTactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging.",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.02784"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "arxiv:2610.02784",
-        "url": "https://arxiv.org/abs/2610.02784",
-        "title": "SimpleTouch: Can Vision-Language-Action Models Master Contact-Rich Manipulation Without Tactile Policy Pretraining?",
-        "publisher": "arXiv 2610.02784",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "foundation",
-        "published": "2026-10-02",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [
-          "50 demonstrations",
-          "77.5%",
-          "45.2%",
-          "66.7%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Tactile sensing provides essential contact information for robotic manipulation, yet incorporating it into pretrained vision-language-action (VLA) models remains challenging."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.03283",
-      "url": "https://arxiv.org/abs/2610.03283",
-      "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.03283 · 2026-10-02<br><b>Key numbers</b>: 67% · 86% · 30 fps · 0.83 W<br><b>Signals</b>: quantitative results · latency or control-rate numbers</p>\n<blockquote>The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.03283 · 2026-10-02\nKey numbers: 67% · 86% · 30 fps · 0.83 W\nSignals: quantitative results · latency or control-rate numbers\n\nThe ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing.",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.03283"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "arxiv:2610.03283",
-        "url": "https://arxiv.org/abs/2610.03283",
-        "title": "HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs",
-        "publisher": "arXiv 2610.03283",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-10-02",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [
-          "67%",
-          "86%",
-          "30 fps",
-          "0.83 W"
-        ],
-        "signals": [
-          "numbers",
-          "latency"
-        ],
-        "excerpt": "The ability of a device to localize itself within its surroundings is a fundamental prerequisite for spatial computing."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:077068b67d2b",
-      "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
-      "title": "FCC robot restrictions could accelerate shift to local AI",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-05</p>\n<blockquote>Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-05\n\nCompanies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "the-robot-report:077068b67d2b",
-        "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
-        "title": "FCC robot restrictions could accelerate shift to local AI",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "safety",
-        "published": "2026-10-05",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Companies deploying physical AI today need to decide which AI workloads belong on the robot, what can remain in the cloud, and whether the underlying technology stack can meet rising expectations for security, safety, and supply-chain…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:monoist:7aaa16ae267f",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
-      "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: MONOist (ITmedia) · 2026-10-05</p>\n<blockquote>川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html\">Full radar for 2026-10-06</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: MONOist (ITmedia) · 2026-10-05\n\n川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。\n\nFull radar for 2026-10-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-06.en.html",
-      "summary": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。",
-      "date_published": "2026-10-05T23:40:00Z",
-      "authors": [
-        {
-          "name": "MONOist (ITmedia)"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-06",
-        "id": "monoist:7aaa16ae267f",
-        "url": "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html",
-        "title": "川崎重工とNVIDIAが目指す「次世代デジタルシップヤード構想」とは何か",
-        "publisher": "MONOist (ITmedia)",
-        "source_id": "monoist",
-        "evidence": "M",
-        "lane": "simeval",
-        "published": "2026-10-05",
-        "radar_published": "2026-10-05T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "川崎重工は、NVIDIAのフィジカルAIとデジタルツイン技術を活用し、「次世代デジタルシップヤード」の実現を目指すプロジェクトを開始した。海外で進むデジタルシップヤード構想と比べて、川崎重工とNVIDIAの取り組みにはどのような違いがあるのだろうのか。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.01351",
-      "url": "https://arxiv.org/abs/2610.01351",
-      "title": "Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.01351 · 2026-10-01<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Vision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-05.en.html\">Full radar for 2026-10-05</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.01351 · 2026-10-01\nSignals: closed-loop success reported\n\nVision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks.\n\nFull radar for 2026-10-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-05.en.html",
-      "summary": "Vision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks.",
-      "date_published": "2026-10-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.01351"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-05",
-        "id": "arxiv:2610.01351",
-        "url": "https://arxiv.org/abs/2610.01351",
-        "title": "Is Success All You Need? Investigating the Impact of Input Perturbations on VLA Behaviour in Tabletop Manipulation Tasks",
-        "publisher": "arXiv 2610.01351",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-04T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop"
-        ],
-        "excerpt": "Vision-Language-Action (VLA) models have achieved high task success rates on robot manipulation task benchmarks."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.01083",
-      "url": "https://arxiv.org/abs/2610.01083",
-      "title": "WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.01083 · 2026-10-01<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Vision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-05.en.html\">Full radar for 2026-10-05</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.01083 · 2026-10-01\nSignals: closed-loop success reported\n\nVision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the…\n\nFull radar for 2026-10-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-05.en.html",
-      "summary": "Vision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the…",
-      "date_published": "2026-10-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.01083"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-05",
-        "id": "arxiv:2610.01083",
-        "url": "https://arxiv.org/abs/2610.01083",
-        "title": "WBAG: A Whole-Body and Attached-Geometry Safety Framework for Vision-Language-Action Manipulation",
-        "publisher": "arXiv 2610.01083",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-01",
-        "radar_published": "2026-10-04T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop"
-        ],
-        "excerpt": "Vision-language-action (VLA) policies have demonstrated impressive capabilities in generalizable robotic manipulation, but their deployment in the real world remains challenging due to potential collisions involving different parts of the…"
       }
     }
   ]

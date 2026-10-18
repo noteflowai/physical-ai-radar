@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-18
+### 今日雷达 · 2026-10-19
 
-`生成时间: 2026-10-17 23:40 UTC` ｜ `统计窗口: 论文 2026-10-14 → 2026-10-18 · 博客与报道 2026-09-18 → 2026-10-18 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-18 23:40 UTC` ｜ `统计窗口: 论文 2026-10-15 → 2026-10-19 · 博客与报道 2026-09-19 → 2026-10-19 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>仿真与评测 · arXiv 2610.22340 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>仿真与评测 · arXiv 2610.21389 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>安全、权限与合规 · arXiv 2610.21374 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>训练与自我改进 · arXiv 2610.21755 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>本体与供应链 · arXiv 2610.22184 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>安全、权限与合规 · arXiv 2610.22198 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>数据引擎 · arXiv 2610.19330 · 2026‑10‑14</sub> |
-| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑17</sub> |
+| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>仿真与评测 · arXiv 2610.22178 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>仿真与评测 · arXiv 2610.21434 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>边缘与实时性 · arXiv 2610.21353 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>系统与编排 · arXiv 2610.22323 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>数据引擎 · arXiv 2610.21429 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>安全、权限与合规 · arXiv 2610.21453 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>基座模型 · arXiv 2610.21922 · 2026‑10‑15</sub> |
+| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑18</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Dexterity from Supervised Play** — `AI 起草` 若几分钟的人类玩耍示范就能让机器人自行采集接触丰富的灵巧操作经验，数据采集的人力投入会大幅后移；但相对 hindsight behavior cloning 的 69.6% 成功率优势仍是作者自报，需等独立复现。
-2. **Fast-VLA** — `AI 起草` 对把数十亿参数 VLA 放进反馈回路的团队，它主张每个动作分块不必重算任务上下文；页面可见的证据只是 RoboTwin 上 92.46% 与 92.40% 等基准成功率，属作者自报，页面未展示真机结果。
-3. **From Optical Flow to Safety** — `AI 起草` 单目视觉导航拿不到显式障碍物状态，这篇给出了一条走向安全认证的候选路径；页面标注了真机实验，但没有任何量化数据，目前只能当作预印本方向，不能当作送审依据。
-4. **DeciCAD** — `AI 起草` 研究对象是做 CAD 的 LLM agent 而非机器人，相关性是间接的：它把 agent harness 视为动作空间的定义者，自报输出 token 最多减少 88%、几何可用率从 66.5% 升至 73.5%，设计工具型 agent 接口时可参考。
-5. **Whole-Body Dexterity** — `AI 起草` 人形灵巧操作若仍停留在末端执行器和简单抓取，搬大件时值得考虑用手臂与躯干支撑、滑动物体；作者自报蒸馏控制器完成 90% 的试验，直接重定向为 18%、通用模型为 4%。
-6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — `AI 起草` 对通信受限的多机系统，它挑战了安全协同必须连续、完美共享状态的前提；作者自报消息量比周期性通信减少 77.5%，评估时要核对的是通信减少后安全约束是否仍然成立。
-7. **NavAble** — `AI 起草` 做视障辅助导航的团队多了一份开放数据，覆盖有声行人信号、开门按钮、扶手等关键物体；但 >80% mIoU 是在作者自己的数据上（“on our”），上线前应在自家路线上重测分割效果。
-8. **The rise of the machines is canceled** — `AI 起草` 这是一篇专栏观点而非报道：它认为人类深度参与人形机器人开发与 AI 训练，因此控制权仍在人手中；文中没有数据，可用于和相关方沟通时的叙事参考，不足以支撑工程或采购决策。
+1. **REKI** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **Mem4Act** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+5. **MuSTMM** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
+6. **CarryOn** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
+7. **TS-WAM** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **How to choose a BLDC motor for robotic arms and mobile robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-18.zh.md)** · [每周汇总 ›](radar/weekly/2026-W42.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-19.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

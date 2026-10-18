@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-18
+### Today's radar · 2026-10-19
 
-`Generated: 2026-10-17 23:40 UTC` ｜ `Window: papers 2026-10-14 → 2026-10-18 · posts 2026-09-18 → 2026-10-18 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-18 23:40 UTC` ｜ `Window: papers 2026-10-15 → 2026-10-19 · posts 2026-09-19 → 2026-10-19 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>Simulation & evaluation · arXiv 2610.22340 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>Simulation & evaluation · arXiv 2610.21389 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>Safety, permissions & compliance · arXiv 2610.21374 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>Training & self-improvement · arXiv 2610.21755 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>Embodiment & supply chain · arXiv 2610.22184 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>Safety, permissions & compliance · arXiv 2610.22198 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>Data engine · arXiv 2610.19330 · 2026‑10‑14</sub> |
-| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑17</sub> |
+| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>Simulation & evaluation · arXiv 2610.22178 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>Simulation & evaluation · arXiv 2610.21434 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>Edge & real-time · arXiv 2610.21353 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>Systems & orchestration · arXiv 2610.22323 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>Data engine · arXiv 2610.21429 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>Safety, permissions & compliance · arXiv 2610.21453 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>Foundation models · arXiv 2610.21922 · 2026‑10‑15</sub> |
+| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑18</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Dexterity from Supervised Play** — `AI draft` If minutes of human play are enough for a robot to go on collecting its own contact-rich dexterous experience, data collection shifts from people to the robot; the 69.6% success-rate margin over hindsight behavior cloning is still self-reported.
-2. **Fast-VLA** — `AI draft` Teams running a multi-billion-parameter VLA inside the feedback loop should note the claim that task context need not be recomputed every action chunk; the visible evidence is self-reported benchmark success, such as 92.46% and 92.40% on RoboTwin.
-3. **From Optical Flow to Safety** — `AI draft` Monocular navigation stacks that cannot observe obstacle states directly get a candidate route to a safety certificate; real-robot experiments are flagged but the page shows no figures, so treat it as a preprint lead, not an approval argument.
-4. **DeciCAD** — `AI draft` This is about LLM agents for CAD, not robots, so relevance is indirect: it treats the agent harness as what defines the action space, and self-reports output tokens cut by up to 88% and geometry availability raised from 66.5% to 73.5%.
-5. **Whole-Body Dexterity** — `AI draft` Humanoid teams still limited to end-effector grasps should weigh bracing and sliding bulky objects against arms and torso: the authors report their distilled controller completing 90% of trials, against 18% for direct retargeting and 4% for a generalist.
-6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — `AI draft` For resource-constrained robot teams, it challenges the assumption that safe coordination needs continuous, perfect state sharing; the authors report 77.5% fewer messages than periodic communication, and whether safety holds under that cut is what to verify.
-7. **NavAble** — `AI draft` Assistive-navigation builders gain open data covering objects such as audible pedestrian signals, door-activation buttons and handrails; the >80% mIoU is measured on the authors' own set, so re-test segmentation on your own routes before relying on it.
-8. **The rise of the machines is canceled** — `AI draft` An opinion column rather than reporting: it argues that human involvement in building humanoids and training their AI keeps people in control, but gives no figures, so it helps with stakeholder framing, not engineering or procurement decisions.
+1. **REKI** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **Mem4Act** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+5. **MuSTMM** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
+6. **CarryOn** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
+7. **TS-WAM** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **How to choose a BLDC motor for robotic arms and mobile robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-18.en.md)** · [Weekly roundup ›](radar/weekly/2026-W42.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-19.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

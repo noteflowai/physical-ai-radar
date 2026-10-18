@@ -1,195 +1,190 @@
 {
-  "date": "2026-10-18",
-  "generated": "2026-10-17 23:40 UTC",
-  "window": "papers 2026-10-14 → 2026-10-18 · posts 2026-09-18 → 2026-10-18 (UTC)",
+  "date": "2026-10-19",
+  "generated": "2026-10-18 23:40 UTC",
+  "window": "papers 2026-10-15 → 2026-10-19 · posts 2026-09-19 → 2026-10-19 (UTC)",
   "window_detail": {
-    "day": "2026-10-18",
-    "papers_from": "2026-10-14",
-    "posts_from": "2026-09-18",
+    "day": "2026-10-19",
+    "papers_from": "2026-10-15",
+    "posts_from": "2026-09-19",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.22340",
-      "title": "Dexterity from Supervised Play",
-      "url": "https://arxiv.org/abs/2610.22340",
-      "publisher": "arXiv 2610.22340",
+      "id": "arxiv:2610.22178",
+      "title": "REKI: Registering Knowledge in VLAs",
+      "url": "https://arxiv.org/abs/2610.22178",
+      "publisher": "arXiv 2610.22178",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-15",
       "lane": "simeval",
-      "score": 3.19,
-      "numbers": [
-        "69.6%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "summary": "How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through behavior cloning, then deploys it autonomously to collect hours of interaction data to train a world model. During inference, the same play policy then guides model-predictive control (MPC) by proposing candidate action sequences for evaluation under the learned world model. To accelerate inference, we also introduce a method for distilling a closed-loop, goal-conditioned policy through self-play within the learned world model. We evaluate this framework on underactuated pushing and any-to-any in-hand pose reorientation with a multifingered hand, in simulation and real world. In real world experiment, our method outperforms hindsight behavior cloning by 69.6% in success rate and achieves comparable success to reinforcement learning with 490 times less interaction data. These results demonstrate that supervised play can autonomously collect interaction data, guide model-based planning, and enable policy learning without any task-specific demonstrations or sim-to-real transfer."
-    },
-    {
-      "id": "arxiv:2610.21389",
-      "title": "Fast-VLA: You Only Think Once for Robot Manipulation",
-      "url": "https://arxiv.org/abs/2610.21389",
-      "publisher": "arXiv 2610.21389",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "simeval",
-      "score": 3.19,
-      "numbers": [
-        "92.46%",
-        "92.40%",
-        "95.95%",
-        "79.11%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "summary": "Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk. Yet task understanding changes far more slowly than the robot state. We introduce Fast-VLA, which invokes a frozen 4B VLM once per episode to contextualize the instruction and initial views as fixed, multi-layer key-value task memory. During execution, a lightweight online actor fuses learned time- and arm-indexed queries with current visual and proprioceptive feedback to form action queries. These queries retrieve task context from the fixed memory and predict action chunks without re-running the foundation model. Fast-VLA achieves 92.46% and 92.40% success on RoboTwin 2.0 Clean and Randomized, and 95.95% and 79.11% on LIBERO and LIBERO-Plus evaluation. Against three continually conditioned baselines on the same hardware, it reduces RoboTwin amortized policy inference time by 10.9-17.1x and requires 1.22 GiB of post-prefill online resident memory. Task-memory swaps further show that the actor relies on episode-matched task memory. These results show that task context can be established once while closed-loop control remains responsive throughout execution. Project page: https://garfield-kh.github.io/FastVLA"
-    },
-    {
-      "id": "arxiv:2610.21374",
-      "title": "From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion",
-      "url": "https://arxiv.org/abs/2610.21374",
-      "publisher": "arXiv 2610.21374",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "safety",
-      "score": 3.175,
+      "score": 2.79,
       "numbers": [],
       "signals": [
-        "real_robot"
+        "real_robot",
+        "open_release"
       ],
-      "summary": "Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable. This letter introduces a visual safety-certification paradigm that uses scale-free, depth-normalized relative motion encoded by monocular optical flow as the representation for collision-risk certification, without reconstructing obstacle position, velocity, geometry, or a metric world model. Unlike conventional optical-flow-based navigation approaches that rely on image motion to shape avoidance behavior, the proposed framework directly encodes collision-cone geometry and safety constraints in this relative-motion representation. An online Concurrent Learning observer estimates the normalized relative velocity and provides a computable estimation-error bound. This uncertainty is propagated into the collision cone through angular inflation and a monocular robot-footprint margin, yielding a Robust Vision-Based Collision Cone Control Barrier Function (RV-C$^3$BF). An optimal-decay CBF quadratic program minimally modifies the nominal control input to enforce the resulting robust safety constraint under the stated assumptions. Extensive simulation and real-world experiments on a TurtleBot3 in cluttered environments with static and dynamic obstacles demonstrate collision avoidance using only monocular vision and onboard proprioception, with the estimation-error bound containing the measured error in $98.3\\%$ of simulation samples and the robot achieving collision-free navigation in $93$ of $100$ real-world trials."
+      "summary": "We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed only by models about twice its size. REKI consists of a vision-language model (VLM) followed by a flow-matching action expert, and is pretrained on a curated mixture of public robot, egocentric human and vision-language data. Additionally, we endow it with a memory that gives the policy access to its recent past at negligible cost: a few register tokens in the action expert summarise the output of the VLM at each frame and persist in the expert's cache. This memory improves success in simulation and on real robots, and makes oscillations between poses about four times rarer. REKI uses a simple model design and training paradigm, and is optimised to be efficient at training and inference. We release the full code across data curation, training, inference and evaluation, deployment, and all pretrained and finetuned model weights: https://github.com/kyutai-labs/reki."
     },
     {
-      "id": "arxiv:2610.21755",
-      "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
-      "url": "https://arxiv.org/abs/2610.21755",
-      "publisher": "arXiv 2610.21755",
+      "id": "arxiv:2610.21434",
+      "title": "Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution",
+      "url": "https://arxiv.org/abs/2610.21434",
+      "publisher": "arXiv 2610.21434",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-15",
-      "lane": "training",
-      "score": 3.05,
+      "lane": "simeval",
+      "score": 2.655,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success. Existing adaptive methods make this decision using generation stability or prediction agreement, yet these signals do not establish whether executing a candidate prefix preserves the ability to complete the task. We introduce a policy-aligned predictive verifier (PAV) that anticipates the consequences of candidate action prefixes and evaluates their compatibility with successful continuation before execution. Rather than using future prediction to generate actions, our method evaluates existing proposals in the VLA's internal task-conditioned representation space. To learn local judgments from terminal task outcomes, we combine trajectory-level survival supervision with a localization prior that preserves useful behavior within failed rollouts. The resulting validity scores guide execution-horizon selection. Evaluations with pi_0 and pi_0.5 across LIBERO, RoboTwin 2.0, and real-world manipulation show improved success-query trade-offs. These findings point toward a different role for future prediction in robotics, using it to assess how far to trust a policy's proposed actions rather than to generate new ones."
+    },
+    {
+      "id": "arxiv:2610.21353",
+      "title": "A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation",
+      "url": "https://arxiv.org/abs/2610.21353",
+      "publisher": "arXiv 2610.21353",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "edge",
+      "score": 2.307,
       "numbers": [
-        "88%",
-        "66.5%",
-        "73.5%"
+        "0.16%",
+        "1.87%",
+        "2.5 ms"
+      ],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "summary": "Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare. However, achieving accurate positioning remains challenging, especially in GPS-degraded environments. Pedestrian Dead Reckoning (PDR), which estimates position based on inertial sensor data, offers a promising alternative but typically demands substantial effort in algorithm design and system integration. This complexity often leads to prolonged development timelines and elevated costs. To address these challenges, we present the PDR Sensor (PDRS), a plug-and-play, black-box PDR module optimized for seamless integration into wearable and IoT platforms. PDRS integrates a microprocessor and an inertial measurement unit (IMU) within a compact, low-power module. It executes real-time sensor fusion onboard, providing position updates via standard interfaces (I2C, SPI, UART). Experimental evaluations demonstrate its high robustness, achieving a step detection error of just 0.16% over 1250 steps and a traveled distance error of 1.87% under diverse conditions. The system further exhibits low latency (2.5 ms) and modest power consumption (52.35 mA). Unlike conventional studies, the PDRS leverages a holistic co-design of hardware and software to enhance performance and integration aspects, simplifying adoption without requiring deep expertise. By lowering technical barriers, PDRS enables developers and researchers to prioritize innovation in IoT and wearable technologies, accelerating prototyping, reducing development time, and advancing industry progress. Future work aims to enhance accuracy, reduce power usage and module size, and integrate AI-driven techniques to better mitigate drift."
+    },
+    {
+      "id": "arxiv:2610.22323",
+      "title": "Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2610.22323",
+      "publisher": "arXiv 2610.22323",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "systems",
+      "score": 2.15,
+      "numbers": [
+        "49.88%",
+        "61.0%",
+        "81.5%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions. Existing approaches typically preserve raw historical observations, compressed visual tokens, or language summaries, but these representations either expose the action policy to increasingly long histories or risk discarding task-relevant temporal, semantic, and perceptual information. We introduce Mem4Act, a framework for learning effective latent memory as a fixed-size representation explicitly optimized for long-horizon robotic control. Mem4Act addresses three coupled challenges: how to efficiently cover long histories, what information memory should retain, and how to ensure the policy actually relies on memory. To this end, it organizes history via multi-granularity temporal aggregation, preserves complementary semantic and perceptual information through question-answering supervision and key-frame DINO feature reconstruction, and employs memory-first two-stage training to encourage greater use of memory by the action policy. The resulting memory captures both high-level task state and fine-grained perceptual evidence while providing a bounded interface to the action policy. Across RoboMME, RMBench, and four real-world manipulation tasks, Mem4Act achieves state-of-the-art performance on memory-dependent control, with success rates of 49.88%, 61.0%, and 81.5%, respectively. Extensive ablations further demonstrate the importance of temporal aggregation, complementary memory supervision, and memory-first training."
+    },
+    {
+      "id": "arxiv:2610.21429",
+      "title": "MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes",
+      "url": "https://arxiv.org/abs/2610.21429",
+      "publisher": "arXiv 2610.21429",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "data",
+      "score": 2.135,
+      "numbers": [
+        "2.60%"
       ],
       "signals": [
         "numbers",
         "closed_loop"
       ],
-      "summary": "Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness. We investigate how this operating space shapes agent behavior and policy learning in computer-aided design (CAD), a professional domain characterized by persistent state, geometric constraints, and long-horizon procedures. We instantiate this perspective in DeciCAD, a domain-native harness that exposes semantic CAD actions, decision-oriented observations, environment feedback, and persistent state transitions. Building on this harness, we develop a learning pipeline that extracts causal decision supervision from interaction trajectories and improves the policy through supervised fine-tuning (SFT) and geometry-grounded online reinforcement learning (RL). Across four CAD benchmarks, DeciCAD achieves the best F1 and intersection over union (IoU) while reducing model-output tokens by 45--88% relative to a general-purpose coding harness. Under matched supervision, its SFT policy improves F1 from 0.6883 to 0.7437 and outperforms the coding policy; subsequent online RL further raises geometry availability from 66.5% to 73.5% and F1 to 0.7880. These results demonstrate that the decision space induced by a harness materially affects both agent execution and policy learning in CAD."
+      "summary": "Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions. Existing STMM evaluations primarily vary object layouts within limited architectural structures, leaving challenges to unseen scenes insufficiently explored. We introduce Multi-scene Sound-Triggered Mobile Manipulation (MuSTMM), a dataset that combines spatial audio rendering and physical interaction across 31 scenes with diverse architectures and object layouts. MuSTMM contains 14.36 million precomputed binaural Room Impulse Responses (RIRs) and a scene-disjoint split for evaluating single-event and multi-event settings in unseen scenes. We further augment the Navigation Policy Model with explicit spatial memory that complements acoustic cues with observed geometry. Specifically, we accumulate pose-aligned depth observations in a shared coordinate frame and project this memory into an egocentric Bird's-Eye View (BEV) occupancy map. Fusing map features with sound context produces a goal descriptor that provides both target-location and scene-structure priors, guiding navigation to the target region required for subsequent physical interaction. This policy achieves a 2.60% success rate boost over existing methods, while component ablations further support the effectiveness of spatial memory. MuSTMM and the navigation policy provide a testbed for the new challenge of studying sound-triggered mobile manipulation in unseen scenes. The code and dataset will be released upon acceptance."
     },
     {
-      "id": "arxiv:2610.22184",
-      "title": "Whole-Body Dexterity",
-      "url": "https://arxiv.org/abs/2610.22184",
-      "publisher": "arXiv 2610.22184",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "hardware",
-      "score": 2.88,
-      "numbers": [
-        "90%",
-        "18%",
-        "4%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans' ability to engage the entire body by bracing and sliding bulky objects against the arms and torso. We introduce Whole-Body Dexterity (WBD), a general framework that uses the robot's body and appendages as contact surfaces to grasp and manipulate objects. Our sim-to-real pipeline first generates a dataset of feasible whole-body grasps, then trains reinforcement-learning experts on a general any-to-any repositioning objective by sampling initial and goal grasps from the dataset, and distills these experts into a single policy that uses proprioception and object geometry. We show that the distilled policy transfers zero-shot to a real Unitree G1, where it repositions a basketball and a cardboard box to regions around the torso and completes a long-horizon task that stows a box under one arm, carries it from a shelf to a table, and places it. The controller operates interactively, steered by coarse motion references from a human teleoperator. Across real-world whole-body manipulation tasks, the distilled controller completes 90% of trials, compared with 18% for direct retargeting and 4% for a generalist whole-body controller."
-    },
-    {
-      "id": "arxiv:2610.22198",
-      "title": "Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions",
-      "url": "https://arxiv.org/abs/2610.22198",
-      "publisher": "arXiv 2610.22198",
+      "id": "arxiv:2610.21453",
+      "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
+      "url": "https://arxiv.org/abs/2610.21453",
+      "publisher": "arXiv 2610.21453",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-15",
       "lane": "safety",
-      "score": 2.705,
+      "score": 2.07,
       "numbers": [
-        "77.5%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "Safe multi-agent coordination typically assumes what real-world, deployed, resource-constrained robots cannot provide: continuous, perfect state sharing. Robust control strategies must be complemented with robust communication strategies to deliver resilient deployments. In this work, we propose a unified control/communication strategy that provides safe control to guarantee inter-agent safety under intermittent communication and demonstrate its effectiveness in a pursuit-evasion scenario. Each agent computes the reachable set of neighboring agents based on the last state information received, then solves for a safe control input based on control barrier functions to ensure agents avoid collision. We prove that inter-agent collision avoidance is guaranteed provided communication staleness remains bounded. As the reachable set inflates between state transmissions, each agent reasons about when to preemptively transmit its state information to neighboring agents based on novel metrics characterizing uncertainty risk and kinematic risk. We implement and simulate a variety of pursuit-evasion scenarios and show that preemptive communication reduces messages by 77.5% compared to periodic and event-triggered baselines with zero collisions."
-    },
-    {
-      "id": "arxiv:2610.19330",
-      "title": "NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation",
-      "url": "https://arxiv.org/abs/2610.19330",
-      "publisher": "arXiv 2610.19330",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-14",
-      "lane": "data",
-      "score": 2.652,
-      "numbers": [
+        "52.6%",
+        "6.1%",
+        "13%",
         "80%"
       ],
       "signals": [
         "numbers",
-        "real_robot",
-        "open_release"
+        "real_robot"
       ],
-      "summary": "Reliable recognition of accessibility-critical objects (e.g., audible pedestrian signals, door-activation buttons, and handrails) is essential for assistive navigation technologies that support safe, independent mobility for blind and low-vision (BLV) users. Yet these categories are underrepresented in existing large-scale vision datasets, and the few datasets that include them suffer from limited class coverage, inconsistent annotations, and poor diversity. We introduce NavAble, a large-scale dataset spanning 11 accessibility-critical object classes, combining 41K curated open-source images with 8K newly collected, densely annotated real-world images. To extend scale and diversity, we develop a synthetic data generation pipeline that renders high-fidelity 3D assets across 37 environments under diverse styles and viewpoints, yielding 452K frames with rich ground-truth annotations from 565 assets. The pipeline minimizes manual effort by combining automated web image crawling, VLM-based filtering, SAM 3D-based asset generation, and convenient camera trajectory configuration, enabling large-scale data generation at a diversity unattainable through manual collection. Experiments show that fine-tuning existing segmentation models on the NavAble Dataset achieves reliable accessibility-object segmentation (>80% mIoU on our held-out test set). We also demonstrate the effectiveness of synthetic data augmentation, which yields up to +3.5 mIoU over real-world-only fine-tuning. Beyond benchmark evaluation, validation on egocentric data from two mobility-assistive robots demonstrates improved perception reliability in real-world navigation scenarios. Together, NavAble establishes a scalable foundation for BLV navigation perception, directly addressing the data scarcity and embodiment gaps. The dataset and pipeline are publicly available at https://huggingface.co/datasets/NavAble/NeurIPS_2026_BLV."
+      "summary": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution. First, executing an instruction like \"make me a sandwich\" requires grounding subtask decomposition in persistent user preferences rather than relying on a single generic solution. Second, reliable deployment demands explainable safety assurance that proactively prevents hazards and gracefully recovers from occasional physical failures. To address these gaps, we present CarryOn, a dual-loop harness designed to augment a frozen VLA policy. The planning loop maintains persistent user-level and scene-level context that is continually grounded against new observations and revised through interaction, enabling personalized task selection and execution grounding across conversations and changing scenes. The execution loop actively supervises policy rollouts, shielding actions from predicted hazardous contact. When execution fails, the system invokes reusable control-based recovery skills that restore task progress and are refined through reflection on earlier failures. On a real robot and in simulation, CarryOn dispatches preference-consistent subtasks across users and scenes, reduces the violation rate of an already safety-finetuned VLA from 52.6% to 6.1%, and increases recovery success from 13% to 80% when refined skills are reused."
     },
     {
-      "id": "the-robot-report:507a01c72df1",
-      "title": "The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies",
-      "url": "https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/",
+      "id": "arxiv:2610.21922",
+      "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
+      "url": "https://arxiv.org/abs/2610.21922",
+      "publisher": "arXiv 2610.21922",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-15",
+      "lane": "foundation",
+      "score": 2.05,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states. These limitations hinder learning from action-free videos and can encourage overfitting to demonstration conditions, weakening generalization and robustness. We present TS-WAM, a lightweight Teacher-Student World-Action Model that addresses these challenges through self-supervised temporal learning and explicit future prediction. Its vlm-jepa framework learns from heterogeneous data, including robot demonstrations and action-free human videos, using an EMA target branch without requiring a separately trained external teacher. By coupling vlm-jepa with delta-lwm, TS-WAM learns to predict latent actions from the current observation and instruction and uses them to predict future visual features that guide action generation at inference. A unified end-to-end training architecture jointly optimizes temporal representation learning, visual dynamics, and robot control without a separate latent-action or world-model pretraining stage. The EMA target branch is removed at inference, keeping the deployed policy lightweight. Experiments on LIBERO, LIBERO-Plus, and SimplerEnv, together with real-world manipulation experiments on Franka Research 3 and RevoTron, demonstrate that TS-WAM achieves strong manipulation performance, generalization, and robustness."
+    },
+    {
+      "id": "the-robot-report:871c9c8bb40b",
+      "title": "How to choose a BLDC motor for robotic arms and mobile robots",
+      "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-17",
-      "lane": "hardware",
-      "score": 1.182,
+      "published": "2026-10-18",
+      "lane": "safety",
+      "score": 1.235,
       "numbers": [],
       "signals": [],
-      "summary": "Humans play a key role in developing humanoid robots and training AI models, so we can maintain control, writes a columnist."
+      "summary": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor."
     }
   ],
   "lane_counts": {
     "foundation": 5,
     "data": 9,
-    "training": 4,
+    "training": 3,
     "simeval": 14,
-    "edge": 4,
-    "safety": 4,
-    "systems": 1,
+    "edge": 3,
+    "safety": 5,
+    "systems": 2,
     "hardware": 9
   },
   "evidence_mix": {
     "O": 3,
-    "R": 32,
-    "M": 15
+    "R": 31,
+    "M": 16
   },
   "fetch": {
-    "items": 410,
+    "items": 476,
     "attempted": 11,
-    "answered": 10,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 11,
+    "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 77,
+      "arxiv": 43,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-18
+### 本日のレーダー · 2026-10-19
 
-`生成時刻: 2026-10-17 23:40 UTC` ｜ `対象期間: 論文 2026-10-14 → 2026-10-18 · ブログ・報道 2026-09-18 → 2026-10-18 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-18 23:40 UTC` ｜ `対象期間: 論文 2026-10-15 → 2026-10-19 · ブログ・報道 2026-09-19 → 2026-10-19 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Dexterity from Supervised Play](https://arxiv.org/abs/2610.22340)**<br>`69.6%`<br><sub>シミュレーションと評価 · arXiv 2610.22340 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Fast-VLA: You Only Think Once for Robot Manipulation](https://arxiv.org/abs/2610.21389)**<br>`92.46%`&nbsp; `92.40%`&nbsp; `95.95%`<br><sub>シミュレーションと評価 · arXiv 2610.21389 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion](https://arxiv.org/abs/2610.21374)**<br><sub>安全・権限・コンプライアンス · arXiv 2610.21374 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents](https://arxiv.org/abs/2610.21755)**<br>`88%`&nbsp; `66.5%`&nbsp; `73.5%`<br><sub>学習と自己改善 · arXiv 2610.21755 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[Whole-Body Dexterity](https://arxiv.org/abs/2610.22184)**<br>`90%`&nbsp; `18%`&nbsp; `4%`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.22184 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-Based Control Barrier Functions](https://arxiv.org/abs/2610.22198)**<br>`77.5%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.22198 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation](https://arxiv.org/abs/2610.19330)**<br>`80%`<br><sub>データエンジン · arXiv 2610.19330 · 2026‑10‑14</sub> |
-| 08<br>🟡&nbsp;`M` | **[The rise of the machines is canceled: Why humanoids with AI are helpers, not enemies](https://www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑17</sub> |
+| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>シミュレーションと評価 · arXiv 2610.22178 · 2026‑10‑15</sub> |
+| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>シミュレーションと評価 · arXiv 2610.21434 · 2026‑10‑15</sub> |
+| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>エッジとリアルタイム · arXiv 2610.21353 · 2026‑10‑15</sub> |
+| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>システムとオーケストレーション · arXiv 2610.22323 · 2026‑10‑15</sub> |
+| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>データエンジン · arXiv 2610.21429 · 2026‑10‑15</sub> |
+| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.21453 · 2026‑10‑15</sub> |
+| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>基盤モデル · arXiv 2610.21922 · 2026‑10‑15</sub> |
+| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑18</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Dexterity from Supervised Play** — `AI 下書き` 数分の人間の遊び操作から、ロボット自身が接触の多い巧緻操作の経験を集め続けられるなら、データ収集の主役は人から機体へ移る。ただし hindsight behavior cloning に対する成功率 69.6% の差は著者の自己申告にとどまる。
-2. **Fast-VLA** — `AI 下書き` 数十億パラメータの VLA をフィードバックループ内で回すチームには、アクションチャンクごとにタスク文脈を再計算しなくてよいという主張が参考になる。ただし示されているのは RoboTwin での 92.46%・92.40% など自己申告のベンチマーク成功率のみ。
-3. **From Optical Flow to Safety** — `AI 下書き` 障害物の状態を直接観測できない単眼ナビゲーションにとって、安全証明への候補となる道筋を示す。実機実験の記載はあるが数値は示されておらず、現時点では審査の根拠ではなくプレプリント段階の方向性として扱うべき。
-4. **DeciCAD** — `AI 下書き` 対象はロボットではなく CAD 向け LLM エージェントで、関連は間接的。エージェント・ハーネスが行動空間を規定するとの立場で、出力トークン最大 88% 削減、ジオメトリ可用率 66.5% から 73.5% への改善を自己申告している。
-5. **Whole-Body Dexterity** — `AI 下書き` エンドエフェクタと単純な把持にとどまるヒューマノイドでも、大きな物体は腕と胴体で支え滑らせる方向が検討に値する。著者報告では蒸留コントローラが試行の 90% を完遂し、直接リターゲティングは 18%、汎用モデルは 4%。
-6. **Robust Multi-Agent Pursuit with Preemptive Communication via Reachability-B…** — `AI 下書き` 資源制約のある複数ロボットに対し、安全な協調には連続的で完全な状態共有が必要という前提を問い直す。周期通信比でメッセージ 77.5% 削減と著者は報告しており、削減下でも安全性が保たれるかが確認点。
-7. **NavAble** — `AI 下書き` 視覚障害者向けナビゲーションの開発者には、音響式歩行者信号、ドア開閉ボタン、手すりなどを含む公開データが加わる。ただし 80% 超の mIoU は著者自身のデータでの値であり、導入前に自分たちの経路で分割精度を再確認すべき。
-8. **The rise of the machines is canceled** — `AI 下書き` 報道ではなくコラムの意見記事。人間がヒューマノイド開発と AI の学習に深く関わるため制御は保てると論じるが、数値はなく、関係者への説明の参考にはなっても、技術や調達の判断材料にはならない。
+1. **REKI** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **Mem4Act** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **MuSTMM** — 査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **CarryOn** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
+7. **TS-WAM** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **How to choose a BLDC motor for robotic arms and mobile robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-18.ja.md)** · [週間まとめ ›](radar/weekly/2026-W42.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-19.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
