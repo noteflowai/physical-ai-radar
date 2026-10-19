@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>wp ai-chat-bedrock usage reports failed requests by cause</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.0/</guid>
+      <description>In its default per-day mode, wp ai-chat-bedrock usage [--days=N] now prints a 'Failed requests' line. It counts chat requests that still failed after any fallback model, grouped by cause, over the same window as the latency line: min(30, N) days, labelled '1 day' or 'N days'. Example: 'Failed requests (7 days): 3 after any fallback model: throttled 2, access denied 1.' Causes appear in the plugin's fixed FAILURE_CATEGORIES order. The printed labels are throttled, access denied, rejected, unavailable, network and other, and the validation category prints as 'rejected' (for example 'rejected 2'). Categories with zero failures are left out. The counts come from AI_Chat_Bedrock_Usage::failure_totals(), which reads the stored data the dashboard uses. A private failure_line() helper next to first_token_line() formats them. Stored counters that are non-numeric, negative or in an unknown category are ignored. The line comes after the day table, Total and Prompt cache lines and directly before the Time to first text line, which stays last. When the window has no valid failures, the line is left out, the same way the Prompt cache line is, and the command still succeeds. --by-model output does not change. The plugin version is 1.74.0. Controller-run checks on commit 457bedd: the acceptance test tests/test_feature_2d89f9484181.php failed on the base commit with 8 assertion failures and passed on the candidate. bin/prerelease.sh passed, with 72 PHP suites run (including the unchanged tests/cli.php, tests/usage.php and tests/test_feature_fe5052185c45.php), phpcs clean and versions consistent. tests/tooling.php passed, and bin/build-package.py built the 1.74.0 package (136 files). I did not run any of these checks myself.</description>
+      <pubDate>Mon, 19 Oct 2026 18:44:44 +0000</pubDate>
+    </item>
+    <item>
       <title>test: EA-02 regression corpus that pins how the diff gate handles missing evidence</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.20.1/</guid>
