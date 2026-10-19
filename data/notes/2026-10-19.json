@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-19",
+  "generated": "2026-10-19 13:46 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.22178": {
+      "zh": "选型受算力约束的团队可以把这个只用公开数据预训练的 2.4B VLA 列入候选；但“性能与规模的新帕累托前沿”是作者在 LIBERO-Plus、RoboTwin、RoboCasa365 基准上的自报结论，页面未给出真机数字。",
+      "en": "Teams choosing a VLA under a compute budget can shortlist a 2.4B model pretrained only on public data; the size-versus-performance frontier is the authors' own claim on LIBERO-Plus, RoboTwin and RoboCasa365, with no real-robot figures shown.",
+      "ja": "計算資源に制約のある VLA 選定では、公開データのみで事前学習した 2.4B モデルが候補になる。ただし性能と規模のパレート最前線は LIBERO-Plus・RoboTwin・RoboCasa365 上での著者の自己申告で、実機の数値は示されていない。"
+    },
+    "https://arxiv.org/abs/2610.21434": {
+      "zh": "若你的 VLA 每个动作分块都按固定长度执行，这篇主张执行多少步本身决定任务成败，值得重新审视该超参；页面标注了闭环与真机实验，但没有给出任何数字，收益大小暂无法评估。",
+      "en": "If your VLA executes every action chunk to a fixed length, this preprint argues that choice decides task success and is worth adapting; the page flags closed-loop and real-robot experiments but shows no figures, so the gain cannot yet be sized.",
+      "ja": "アクションチャンクを固定長で実行している VLA 運用者にとって、実行量の決め方自体が成否を左右するという主張は見直しの契機になる。閉ループ・実機実験の表示はあるが数値は示されておらず、効果の大きさはまだ判断できない。"
+    },
+    "https://arxiv.org/abs/2610.21353": {
+      "zh": "需要即插即用定位模块的人可关注其自报的 2.5 ms 延迟和多种条件下 1.87% 的行进距离误差；但场景是可穿戴导航，页面未展示机器人或闭环结果，能否用于机器人定位仍待验证。",
+      "en": "Anyone needing drop-in localization can note the self-reported 2.5 ms latency and 1.87% traveled-distance error under diverse conditions; the setting is wearable navigation, and the page shows no robot or closed-loop result.",
+      "ja": "後付けで組み込める測位を探す場合、自己申告の遅延 2.5 ms と多様な条件下での移動距離誤差 1.87% は目安になる。ただし対象はウェアラブル向けナビゲーションで、ロボットや閉ループでの結果はページに示されていない。"
+    },
+    "https://arxiv.org/abs/2610.22323": {
+      "zh": "做长程操作的团队要决定是否给策略加入对过往观测的记忆；作者报告了 49.88%、81.5% 等成功率并标注含真机与闭环实验，但页面未说明各数字对应的设置与基线，引用前需回原文核对。",
+      "en": "Teams building long-horizon manipulation must decide whether policies need memory of past observations; the authors report success rates such as 49.88% and 81.5% with real-robot and closed-loop signals, but the page does not say which settings those figures cover.",
+      "ja": "長期マニピュレーションでは方策に過去の観測の記憶を持たせるかが設計判断になる。著者は 49.88%、81.5% などの成功率を実機・閉ループ実験とともに報告しているが、各数値がどの条件のものかはページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2610.21429": {
+      "zh": "考虑让移动操作机器人由声音事件触发导航与交互的团队，可参考这一任务设定；但作者自报的成功率提升只有 2.60%，且页面未展示真机结果，暂不足以支撑加装音频链路的决定。",
+      "en": "For mobile manipulators that should react to sound events by navigating to the associated object and acting, this frames the task; the self-reported gain is a 2.60% success-rate boost with no real-robot result shown, too thin to justify adding an audio pipeline yet.",
+      "ja": "音のイベントを起点に物体まで移動して操作する移動マニピュレータを検討するなら、課題設定の参考になる。ただし自己申告の成功率向上は 2.60% にとどまり、実機結果も示されていないため、音声系の追加を決める根拠としてはまだ弱い。"
+    },
+    "https://arxiv.org/abs/2610.21453": {
+      "zh": "部署通用 VLA 做助理任务时，可考虑在外层加一套机制而非只靠安全微调：作者称已安全微调的 VLA 某项比率从 52.6% 降到 6.1%，恢复成功率从 13% 升到 80%，均为预印本自报。",
+      "en": "Deployers of generalist VLAs for assistance may wrap the model rather than rely on safety finetuning alone: the authors report a rate on an already safety-finetuned VLA falling from 52.6% to 6.1% and recovery success rising from 13% to 80%, both self-reported.",
+      "ja": "汎用 VLA を支援用途に導入するなら、安全ファインチューニングだけに頼らず外側に仕組みを足す選択肢がある。著者は安全ファインチューニング済み VLA のある比率が 52.6% から 6.1% へ低下し、回復成功率が 13% から 80% へ上昇したと自己申告しているが、前者が何の比率かはページに示されていない。"
+    },
+    "https://arxiv.org/abs/2610.21922": {
+      "zh": "如果带动作标注的机器人示范是你的数据瓶颈，这类把未来视觉状态预测与动作耦合的思路值得跟踪；页面只标注了真机实验，没有任何数字或闭环结果，目前只能视为方向信号。",
+      "en": "If action-labeled robot demonstrations are your data bottleneck, coupling action with explicit prediction of future visual states is a direction to track; the page flags real-robot experiments but gives no figures or closed-loop result, so treat it as a signal only.",
+      "ja": "行動ラベル付きデモがデータ面の制約になっているなら、将来の視覚状態の予測と行動を結びつける方向は追う価値がある。ただし実機実験の表示のみで数値も閉ループ結果もなく、現時点では方向性の示唆にとどまる。"
+    },
+    "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots": {
+      "zh": "为机械臂或移动底盘选无刷直流电机时，可把文中列出的传感器、安全与平台类型等因素当作检查清单；这是二手媒体文章且不含数字，具体参数仍以电机厂商规格书为准。",
+      "en": "When specifying a BLDC motor for an arm or mobile base, the factors it lists, from sensors to safety to platform type, work as a checklist; it is a secondary trade piece with no figures, so take actual ratings from vendor datasheets.",
+      "ja": "アームや移動台車向けにブラシレス DC モーターを選ぶ際、センサーから安全性、プラットフォームの種類までの要素はチェックリストとして使える。数値のない二次的な業界記事なので、具体的な定格はメーカーの仕様書で確認したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

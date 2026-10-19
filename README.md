@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **REKI** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-4. **Mem4Act** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
-5. **MuSTMM** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
-6. **CarryOn** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
-7. **TS-WAM** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-8. **How to choose a BLDC motor for robotic arms and mobile robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+1. **REKI** — `AI 起草` 选型受算力约束的团队可以把这个只用公开数据预训练的 2.4B VLA 列入候选；但“性能与规模的新帕累托前沿”是作者在 LIBERO-Plus、RoboTwin、RoboCasa365 基准上的自报结论，页面未给出真机数字。
+2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — `AI 起草` 若你的 VLA 每个动作分块都按固定长度执行，这篇主张执行多少步本身决定任务成败，值得重新审视该超参；页面标注了闭环与真机实验，但没有给出任何数字，收益大小暂无法评估。
+3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — `AI 起草` 需要即插即用定位模块的人可关注其自报的 2.5 ms 延迟和多种条件下 1.87% 的行进距离误差；但场景是可穿戴导航，页面未展示机器人或闭环结果，能否用于机器人定位仍待验证。
+4. **Mem4Act** — `AI 起草` 做长程操作的团队要决定是否给策略加入对过往观测的记忆；作者报告了 49.88%、81.5% 等成功率并标注含真机与闭环实验，但页面未说明各数字对应的设置与基线，引用前需回原文核对。
+5. **MuSTMM** — `AI 起草` 考虑让移动操作机器人由声音事件触发导航与交互的团队，可参考这一任务设定；但作者自报的成功率提升只有 2.60%，且页面未展示真机结果，暂不足以支撑加装音频链路的决定。
+6. **CarryOn** — `AI 起草` 部署通用 VLA 做助理任务时，可考虑在外层加一套机制而非只靠安全微调：作者称已安全微调的 VLA 某项比率从 52.6% 降到 6.1%，恢复成功率从 13% 升到 80%，均为预印本自报。
+7. **TS-WAM** — `AI 起草` 如果带动作标注的机器人示范是你的数据瓶颈，这类把未来视觉状态预测与动作耦合的思路值得跟踪；页面只标注了真机实验，没有任何数字或闭环结果，目前只能视为方向信号。
+8. **How to choose a BLDC motor for robotic arms and mobile robots** — `AI 起草` 为机械臂或移动底盘选无刷直流电机时，可把文中列出的传感器、安全与平台类型等因素当作检查清单；这是二手媒体文章且不含数字，具体参数仍以电机厂商规格书为准。
 
 </details>
 

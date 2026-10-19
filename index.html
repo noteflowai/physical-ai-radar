@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22178" rel="noopener" target="_blank">REKI: Registering Knowledge in VLAs</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 选型受算力约束的团队可以把这个只用公开数据预训练的 2.4B VLA 列入候选；但“性能与规模的新帕累托前沿”是作者在 LIBERO-Plus、RoboTwin、RoboCasa365 基准上的自报结论，页面未给出真机数字。</p>
 <p class="excerpt">We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…</p>
 <ul class="signals"><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21434" rel="noopener" target="_blank">Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你的 VLA 每个动作分块都按固定长度执行，这篇主张执行多少步本身决定任务成败，值得重新审视该超参；页面标注了闭环与真机实验，但没有给出任何数字，收益大小暂无法评估。</p>
 <p class="excerpt">Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21353" rel="noopener" target="_blank">A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation</a></h3>
 <p class="figure"><strong>0.16%</strong><span class="context">“detection error of just 0.16% over 1250 steps”</span></p><p class="chips"><span class="chip">1.87%</span><span class="chip">2.5 ms</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 需要即插即用定位模块的人可关注其自报的 2.5 ms 延迟和多种条件下 1.87% 的行进距离误差；但场景是可穿戴导航，页面未展示机器人或闭环结果，能否用于机器人定位仍待验证。</p>
 <p class="excerpt">Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare.</p>
 <ul class="signals"><li>含量化指标</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22323" rel="noopener" target="_blank">Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation</a></h3>
 <p class="figure"><strong>49.88%</strong><span class="context">“with success rates of 49.88%”</span></p><p class="chips"><span class="chip">61.0%</span><span class="chip">81.5%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 做长程操作的团队要决定是否给策略加入对过往观测的记忆；作者报告了 49.88%、81.5% 等成功率并标注含真机与闭环实验，但页面未说明各数字对应的设置与基线，引用前需回原文核对。</p>
 <p class="excerpt">Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21429" rel="noopener" target="_blank">MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes</a></h3>
 <p class="figure"><strong>2.60%</strong><span class="context">“This policy achieves a 2.60% success rate boost”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 考虑让移动操作机器人由声音事件触发导航与交互的团队，可参考这一任务设定；但作者自报的成功率提升只有 2.60%，且页面未展示真机结果，暂不足以支撑加装音频链路的决定。</p>
 <p class="excerpt">Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21453" rel="noopener" target="_blank">CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance</a></h3>
 <p class="figure"><strong>52.6%</strong><span class="context">“already safety-finetuned VLA from 52.6% to 6.1%”</span></p><p class="chips"><span class="chip">6.1%</span><span class="chip">13%</span><span class="chip">80%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 部署通用 VLA 做助理任务时，可考虑在外层加一套机制而非只靠安全微调：作者称已安全微调的 VLA 某项比率从 52.6% 降到 6.1%，恢复成功率从 13% 升到 80%，均为预印本自报。</p>
 <p class="excerpt">While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -192,7 +192,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21922" rel="noopener" target="_blank">TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果带动作标注的机器人示范是你的数据瓶颈，这类把未来视觉状态预测与动作耦合的思路值得跟踪；页面只标注了真机实验，没有任何数字或闭环结果，目前只能视为方向信号。</p>
 <p class="excerpt">Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -207,7 +207,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/" rel="noopener" target="_blank">How to choose a BLDC motor for robotic arms and mobile robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 为机械臂或移动底盘选无刷直流电机时，可把文中列出的传感器、安全与平台类型等因素当作检查清单；这是二手媒体文章且不含数字，具体参数仍以电机厂商规格书为准。</p>
 <p class="excerpt">Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-18</span>

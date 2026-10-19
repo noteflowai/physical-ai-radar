@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22178" rel="noopener" target="_blank">REKI: Registering Knowledge in VLAs</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams choosing a VLA under a compute budget can shortlist a 2.4B model pretrained only on public data; the size-versus-performance frontier is the authors&#x27; own claim on LIBERO-Plus, RoboTwin and RoboCasa365, with no real-robot figures shown.</p>
 <p class="excerpt">We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed…</p>
 <ul class="signals"><li>real-robot experiments</li><li>open code or weights</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21434" rel="noopener" target="_blank">Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If your VLA executes every action chunk to a fixed length, this preprint argues that choice decides task success and is worth adapting; the page flags closed-loop and real-robot experiments but shows no figures, so the gain cannot yet be sized.</p>
 <p class="excerpt">Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21353" rel="noopener" target="_blank">A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation</a></h3>
 <p class="figure"><strong>0.16%</strong><span class="context">“detection error of just 0.16% over 1250 steps”</span></p><p class="chips"><span class="chip">1.87%</span><span class="chip">2.5 ms</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Anyone needing drop-in localization can note the self-reported 2.5 ms latency and 1.87% traveled-distance error under diverse conditions; the setting is wearable navigation, and the page shows no robot or closed-loop result.</p>
 <p class="excerpt">Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare.</p>
 <ul class="signals"><li>quantitative results</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22323" rel="noopener" target="_blank">Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation</a></h3>
 <p class="figure"><strong>49.88%</strong><span class="context">“with success rates of 49.88%”</span></p><p class="chips"><span class="chip">61.0%</span><span class="chip">81.5%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> Teams building long-horizon manipulation must decide whether policies need memory of past observations; the authors report success rates such as 49.88% and 81.5% with real-robot and closed-loop signals, but the page does not say which settings those figures cover.</p>
 <p class="excerpt">Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21429" rel="noopener" target="_blank">MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes</a></h3>
 <p class="figure"><strong>2.60%</strong><span class="context">“This policy achieves a 2.60% success rate boost”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> For mobile manipulators that should react to sound events by navigating to the associated object and acting, this frames the task; the self-reported gain is a 2.60% success-rate boost with no real-robot result shown, too thin to justify adding an audio pipeline yet.</p>
 <p class="excerpt">Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21453" rel="noopener" target="_blank">CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance</a></h3>
 <p class="figure"><strong>52.6%</strong><span class="context">“already safety-finetuned VLA from 52.6% to 6.1%”</span></p><p class="chips"><span class="chip">6.1%</span><span class="chip">13%</span><span class="chip">80%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> Deployers of generalist VLAs for assistance may wrap the model rather than rely on safety finetuning alone: the authors report a rate on an already safety-finetuned VLA falling from 52.6% to 6.1% and recovery success rising from 13% to 80%, both self-reported.</p>
 <p class="excerpt">While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li></ul>
 <footer>
@@ -192,7 +192,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.21922" rel="noopener" target="_blank">TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If action-labeled robot demonstrations are your data bottleneck, coupling action with explicit prediction of future visual states is a direction to track; the page flags real-robot experiments but gives no figures or closed-loop result, so treat it as a signal only.</p>
 <p class="excerpt">Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -207,7 +207,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/" rel="noopener" target="_blank">How to choose a BLDC motor for robotic arms and mobile robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> When specifying a BLDC motor for an arm or mobile base, the factors it lists, from sensors to safety to platform type, work as a checklist; it is a secondary trade piece with no figures, so take actual ratings from vendor datasheets.</p>
 <p class="excerpt">Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-18</span>
