@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-19
+### 本日のレーダー · 2026-10-20
 
-`生成時刻: 2026-10-18 23:40 UTC` ｜ `対象期間: 論文 2026-10-15 → 2026-10-19 · ブログ・報道 2026-09-19 → 2026-10-19 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-19 23:40 UTC` ｜ `対象期間: 論文 2026-10-16 → 2026-10-20 · ブログ・報道 2026-09-20 → 2026-10-20 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>シミュレーションと評価 · arXiv 2610.22178 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>シミュレーションと評価 · arXiv 2610.21434 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>エッジとリアルタイム · arXiv 2610.21353 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>システムとオーケストレーション · arXiv 2610.22323 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>データエンジン · arXiv 2610.21429 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>安全・権限・コンプライアンス · arXiv 2610.21453 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>基盤モデル · arXiv 2610.21922 · 2026‑10‑15</sub> |
-| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation](https://arxiv.org/abs/2610.22812)**<br><sub>システムとオーケストレーション · arXiv 2610.22812 · 2026‑10‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence](https://arxiv.org/abs/2610.23334)**<br>`94.21%`&nbsp; `95.56%`&nbsp; `2B parameters`<br><sub>システムとオーケストレーション · arXiv 2610.23334 · 2026‑10‑16</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors](https://arxiv.org/abs/2610.22852)**<br>`37%`&nbsp; `97%`<br><sub>学習と自己改善 · arXiv 2610.22852 · 2026‑10‑16</sub> |
+| 04<br>🔵&nbsp;`R` | **[Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts](https://arxiv.org/abs/2610.23849)**<br>`73%`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.23849 · 2026‑10‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[The Robot I Didn’t Expect to Build](https://spectrum.ieee.org/agility-robotics-digit-5-redesign)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑19</sub> |
+| 06<br>🟡&nbsp;`M` | **[Daimon Robotics building the infrastructure layer for tactile intelligence](https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/)**<br><sub>シミュレーションと評価 · The Robot Report · 2026‑10‑19</sub> |
+| 07<br>🟡&nbsp;`M` | **[复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 \| 世界模型50人](https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑19</sub> |
+| 08<br>🟡&nbsp;`M` | **[Kodama raises $7M to bring robotics to forestry](https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/)**<br><sub>データエンジン · The Robot Report · 2026‑10‑19</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **REKI** — `AI 下書き` 計算資源に制約のある VLA 選定では、公開データのみで事前学習した 2.4B モデルが候補になる。ただし性能と規模のパレート最前線は LIBERO-Plus・RoboTwin・RoboCasa365 上での著者の自己申告で、実機の数値は示されていない。
-2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — `AI 下書き` アクションチャンクを固定長で実行している VLA 運用者にとって、実行量の決め方自体が成否を左右するという主張は見直しの契機になる。閉ループ・実機実験の表示はあるが数値は示されておらず、効果の大きさはまだ判断できない。
-3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — `AI 下書き` 後付けで組み込める測位を探す場合、自己申告の遅延 2.5 ms と多様な条件下での移動距離誤差 1.87% は目安になる。ただし対象はウェアラブル向けナビゲーションで、ロボットや閉ループでの結果はページに示されていない。
-4. **Mem4Act** — `AI 下書き` 長期マニピュレーションでは方策に過去の観測の記憶を持たせるかが設計判断になる。著者は 49.88%、81.5% などの成功率を実機・閉ループ実験とともに報告しているが、各数値がどの条件のものかはページから読み取れない。
-5. **MuSTMM** — `AI 下書き` 音のイベントを起点に物体まで移動して操作する移動マニピュレータを検討するなら、課題設定の参考になる。ただし自己申告の成功率向上は 2.60% にとどまり、実機結果も示されていないため、音声系の追加を決める根拠としてはまだ弱い。
-6. **CarryOn** — `AI 下書き` 汎用 VLA を支援用途に導入するなら、安全ファインチューニングだけに頼らず外側に仕組みを足す選択肢がある。著者は安全ファインチューニング済み VLA のある比率が 52.6% から 6.1% へ低下し、回復成功率が 13% から 80% へ上昇したと自己申告しているが、前者が何の比率かはページに示されていない。
-7. **TS-WAM** — `AI 下書き` 行動ラベル付きデモがデータ面の制約になっているなら、将来の視覚状態の予測と行動を結びつける方向は追う価値がある。ただし実機実験の表示のみで数値も閉ループ結果もなく、現時点では方向性の示唆にとどまる。
-8. **How to choose a BLDC motor for robotic arms and mobile robots** — `AI 下書き` アームや移動台車向けにブラシレス DC モーターを選ぶ際、センサーから安全性、プラットフォームの種類までの要素はチェックリストとして使える。数値のない二次的な業界記事なので、具体的な定格はメーカーの仕様書で確認したい。
+1. **PASS-VLN** — 査読前のプレプリント。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+2. **LAW** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+4. **Blind Precise Assembly** — 査読前のプレプリント。本文に実機での結果の記載なし。価格、供給状況、量産出荷の主体に注目。
+5. **The Robot I Didn’t Expect to Build** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Kodama raises $7M to bring robotics to forestry** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-19.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-20.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

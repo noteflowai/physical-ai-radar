@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-19
+### 今日雷达 · 2026-10-20
 
-`生成时间: 2026-10-18 23:40 UTC` ｜ `统计窗口: 论文 2026-10-15 → 2026-10-19 · 博客与报道 2026-09-19 → 2026-10-19 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-19 23:40 UTC` ｜ `统计窗口: 论文 2026-10-16 → 2026-10-20 · 博客与报道 2026-09-20 → 2026-10-20 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>仿真与评测 · arXiv 2610.22178 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>仿真与评测 · arXiv 2610.21434 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>边缘与实时性 · arXiv 2610.21353 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>系统与编排 · arXiv 2610.22323 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>数据引擎 · arXiv 2610.21429 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>安全、权限与合规 · arXiv 2610.21453 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>基座模型 · arXiv 2610.21922 · 2026‑10‑15</sub> |
-| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation](https://arxiv.org/abs/2610.22812)**<br><sub>系统与编排 · arXiv 2610.22812 · 2026‑10‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence](https://arxiv.org/abs/2610.23334)**<br>`94.21%`&nbsp; `95.56%`&nbsp; `2B parameters`<br><sub>系统与编排 · arXiv 2610.23334 · 2026‑10‑16</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors](https://arxiv.org/abs/2610.22852)**<br>`37%`&nbsp; `97%`<br><sub>训练与自我改进 · arXiv 2610.22852 · 2026‑10‑16</sub> |
+| 04<br>🔵&nbsp;`R` | **[Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts](https://arxiv.org/abs/2610.23849)**<br>`73%`<br><sub>本体与供应链 · arXiv 2610.23849 · 2026‑10‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[The Robot I Didn’t Expect to Build](https://spectrum.ieee.org/agility-robotics-digit-5-redesign)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑19</sub> |
+| 06<br>🟡&nbsp;`M` | **[Daimon Robotics building the infrastructure layer for tactile intelligence](https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/)**<br><sub>仿真与评测 · The Robot Report · 2026‑10‑19</sub> |
+| 07<br>🟡&nbsp;`M` | **[复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 \| 世界模型50人](https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑19</sub> |
+| 08<br>🟡&nbsp;`M` | **[Kodama raises $7M to bring robotics to forestry](https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/)**<br><sub>数据引擎 · The Robot Report · 2026‑10‑19</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **REKI** — `AI 起草` 选型受算力约束的团队可以把这个只用公开数据预训练的 2.4B VLA 列入候选；但“性能与规模的新帕累托前沿”是作者在 LIBERO-Plus、RoboTwin、RoboCasa365 基准上的自报结论，页面未给出真机数字。
-2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — `AI 起草` 若你的 VLA 每个动作分块都按固定长度执行，这篇主张执行多少步本身决定任务成败，值得重新审视该超参；页面标注了闭环与真机实验，但没有给出任何数字，收益大小暂无法评估。
-3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — `AI 起草` 需要即插即用定位模块的人可关注其自报的 2.5 ms 延迟和多种条件下 1.87% 的行进距离误差；但场景是可穿戴导航，页面未展示机器人或闭环结果，能否用于机器人定位仍待验证。
-4. **Mem4Act** — `AI 起草` 做长程操作的团队要决定是否给策略加入对过往观测的记忆；作者报告了 49.88%、81.5% 等成功率并标注含真机与闭环实验，但页面未说明各数字对应的设置与基线，引用前需回原文核对。
-5. **MuSTMM** — `AI 起草` 考虑让移动操作机器人由声音事件触发导航与交互的团队，可参考这一任务设定；但作者自报的成功率提升只有 2.60%，且页面未展示真机结果，暂不足以支撑加装音频链路的决定。
-6. **CarryOn** — `AI 起草` 部署通用 VLA 做助理任务时，可考虑在外层加一套机制而非只靠安全微调：作者称已安全微调的 VLA 某项比率从 52.6% 降到 6.1%，恢复成功率从 13% 升到 80%，均为预印本自报。
-7. **TS-WAM** — `AI 起草` 如果带动作标注的机器人示范是你的数据瓶颈，这类把未来视觉状态预测与动作耦合的思路值得跟踪；页面只标注了真机实验，没有任何数字或闭环结果，目前只能视为方向信号。
-8. **How to choose a BLDC motor for robotic arms and mobile robots** — `AI 起草` 为机械臂或移动底盘选无刷直流电机时，可把文中列出的传感器、安全与平台类型等因素当作检查清单；这是二手媒体文章且不含数字，具体参数仍以电机厂商规格书为准。
+1. **PASS-VLN** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+2. **LAW** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
+3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+4. **Blind Precise Assembly** — 预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。
+5. **The Robot I Didn’t Expect to Build** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **Kodama raises $7M to bring robotics to forestry** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-19.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-20.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

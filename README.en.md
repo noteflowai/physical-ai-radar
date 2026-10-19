@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-19
+### Today's radar · 2026-10-20
 
-`Generated: 2026-10-18 23:40 UTC` ｜ `Window: papers 2026-10-15 → 2026-10-19 · posts 2026-09-19 → 2026-10-19 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-19 23:40 UTC` ｜ `Window: papers 2026-10-16 → 2026-10-20 · posts 2026-09-20 → 2026-10-20 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[REKI: Registering Knowledge in VLAs](https://arxiv.org/abs/2610.22178)**<br><sub>Simulation & evaluation · arXiv 2610.22178 · 2026‑10‑15</sub> |
-| 02<br>🔵&nbsp;`R` | **[Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution](https://arxiv.org/abs/2610.21434)**<br><sub>Simulation & evaluation · arXiv 2610.21434 · 2026‑10‑15</sub> |
-| 03<br>🔵&nbsp;`R` | **[A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation](https://arxiv.org/abs/2610.21353)**<br>`0.16%`&nbsp; `1.87%`&nbsp; `2.5 ms`<br><sub>Edge & real-time · arXiv 2610.21353 · 2026‑10‑15</sub> |
-| 04<br>🔵&nbsp;`R` | **[Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.22323)**<br>`49.88%`&nbsp; `61.0%`&nbsp; `81.5%`<br><sub>Systems & orchestration · arXiv 2610.22323 · 2026‑10‑15</sub> |
-| 05<br>🔵&nbsp;`R` | **[MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes](https://arxiv.org/abs/2610.21429)**<br>`2.60%`<br><sub>Data engine · arXiv 2610.21429 · 2026‑10‑15</sub> |
-| 06<br>🔵&nbsp;`R` | **[CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance](https://arxiv.org/abs/2610.21453)**<br>`52.6%`&nbsp; `6.1%`&nbsp; `13%`<br><sub>Safety, permissions & compliance · arXiv 2610.21453 · 2026‑10‑15</sub> |
-| 07<br>🔵&nbsp;`R` | **[TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control](https://arxiv.org/abs/2610.21922)**<br><sub>Foundation models · arXiv 2610.21922 · 2026‑10‑15</sub> |
-| 08<br>🟡&nbsp;`M` | **[How to choose a BLDC motor for robotic arms and mobile robots](https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation](https://arxiv.org/abs/2610.22812)**<br><sub>Systems & orchestration · arXiv 2610.22812 · 2026‑10‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence](https://arxiv.org/abs/2610.23334)**<br>`94.21%`&nbsp; `95.56%`&nbsp; `2B parameters`<br><sub>Systems & orchestration · arXiv 2610.23334 · 2026‑10‑16</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors](https://arxiv.org/abs/2610.22852)**<br>`37%`&nbsp; `97%`<br><sub>Training & self-improvement · arXiv 2610.22852 · 2026‑10‑16</sub> |
+| 04<br>🔵&nbsp;`R` | **[Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts](https://arxiv.org/abs/2610.23849)**<br>`73%`<br><sub>Embodiment & supply chain · arXiv 2610.23849 · 2026‑10‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[The Robot I Didn’t Expect to Build](https://spectrum.ieee.org/agility-robotics-digit-5-redesign)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑19</sub> |
+| 06<br>🟡&nbsp;`M` | **[Daimon Robotics building the infrastructure layer for tactile intelligence](https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/)**<br><sub>Simulation & evaluation · The Robot Report · 2026‑10‑19</sub> |
+| 07<br>🟡&nbsp;`M` | **[复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 \| 世界模型50人](https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑19</sub> |
+| 08<br>🟡&nbsp;`M` | **[Kodama raises $7M to bring robotics to forestry](https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/)**<br><sub>Data engine · The Robot Report · 2026‑10‑19</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **REKI** — `AI draft` Teams choosing a VLA under a compute budget can shortlist a 2.4B model pretrained only on public data; the size-versus-performance frontier is the authors' own claim on LIBERO-Plus, RoboTwin and RoboCasa365, with no real-robot figures shown.
-2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — `AI draft` If your VLA executes every action chunk to a fixed length, this preprint argues that choice decides task success and is worth adapting; the page flags closed-loop and real-robot experiments but shows no figures, so the gain cannot yet be sized.
-3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — `AI draft` Anyone needing drop-in localization can note the self-reported 2.5 ms latency and 1.87% traveled-distance error under diverse conditions; the setting is wearable navigation, and the page shows no robot or closed-loop result.
-4. **Mem4Act** — `AI draft` Teams building long-horizon manipulation must decide whether policies need memory of past observations; the authors report success rates such as 49.88% and 81.5% with real-robot and closed-loop signals, but the page does not say which settings those figures cover.
-5. **MuSTMM** — `AI draft` For mobile manipulators that should react to sound events by navigating to the associated object and acting, this frames the task; the self-reported gain is a 2.60% success-rate boost with no real-robot result shown, too thin to justify adding an audio pipeline yet.
-6. **CarryOn** — `AI draft` Deployers of generalist VLAs for assistance may wrap the model rather than rely on safety finetuning alone: the authors report a rate on an already safety-finetuned VLA falling from 52.6% to 6.1% and recovery success rising from 13% to 80%, both self-reported.
-7. **TS-WAM** — `AI draft` If action-labeled robot demonstrations are your data bottleneck, coupling action with explicit prediction of future visual states is a direction to track; the page flags real-robot experiments but gives no figures or closed-loop result, so treat it as a signal only.
-8. **How to choose a BLDC motor for robotic arms and mobile robots** — `AI draft` When specifying a BLDC motor for an arm or mobile base, the factors it lists, from sensors to safety to platform type, work as a checklist; it is a secondary trade piece with no figures, so take actual ratings from vendor datasheets.
+1. **PASS-VLN** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+2. **LAW** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
+3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+4. **Blind Precise Assembly** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch price, availability and who is shipping it in volume.
+5. **The Robot I Didn’t Expect to Build** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Kodama raises $7M to bring robotics to forestry** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-19.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-20.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

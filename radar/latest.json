@@ -1,186 +1,177 @@
 {
-  "date": "2026-10-19",
-  "generated": "2026-10-18 23:40 UTC",
-  "window": "papers 2026-10-15 → 2026-10-19 · posts 2026-09-19 → 2026-10-19 (UTC)",
+  "date": "2026-10-20",
+  "generated": "2026-10-19 23:40 UTC",
+  "window": "papers 2026-10-16 → 2026-10-20 · posts 2026-09-20 → 2026-10-20 (UTC)",
   "window_detail": {
-    "day": "2026-10-19",
-    "papers_from": "2026-10-15",
-    "posts_from": "2026-09-19",
+    "day": "2026-10-20",
+    "papers_from": "2026-10-16",
+    "posts_from": "2026-09-20",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.22178",
-      "title": "REKI: Registering Knowledge in VLAs",
-      "url": "https://arxiv.org/abs/2610.22178",
-      "publisher": "arXiv 2610.22178",
+      "id": "arxiv:2610.22812",
+      "title": "PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation",
+      "url": "https://arxiv.org/abs/2610.22812",
+      "publisher": "arXiv 2610.22812",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "simeval",
-      "score": 2.79,
+      "published": "2026-10-16",
+      "lane": "systems",
+      "score": 3.25,
       "numbers": [],
       "signals": [
-        "real_robot",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Reliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them. However, existing VLN benchmarks typically assume executable instructions and focus on long-horizon tasks. This leaves body-dependent local execution, including passability and collision-free execution, largely unexamined. Evaluating these factors within long-horizon tasks would entangle local physical execution with task planning and long-term spatial memory, making navigation failures difficult to attribute. We therefore focus on grounding local navigation commands in executable motion under environmental and robot body constraints. We present PASS-VLN, a passability-aware local-command VLN benchmark and model. The benchmark holds the scene, instruction, start pose, and reference route fixed while varying robot body width, requiring target completion when the instructed passage is feasible and stopping before blockage otherwise. Our model encodes body width through obstacle inflation in a depth-derived local bird's-eye view, fuses geometry with visual and linguistic context, and predicts discrete latent action codes for continuous closed-loop execution. Experiments show that PASS-VLN improves collision-free success by approximately 12 percentage points over a strong VLN model fine-tuned on our benchmark, while adapting reach-versus-stop behavior to body constraints and generalizing to unseen body widths. When integrated with a high-level planner, PASS-VLN achieves higher success with fewer local commands, while real-world deployment further demonstrates its effectiveness as a low-level executor. The benchmark and model will be released."
+    },
+    {
+      "id": "arxiv:2610.23334",
+      "title": "LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence",
+      "url": "https://arxiv.org/abs/2610.23334",
+      "publisher": "arXiv 2610.23334",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-16",
+      "lane": "systems",
+      "score": 3.05,
+      "numbers": [
+        "94.21%",
+        "95.56%",
+        "2B parameters",
+        "65%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
         "open_release"
       ],
-      "summary": "We introduce REKI, a 2.4B vision-language-action model (VLA) pretrained exclusively on public data that sets a new Pareto frontier between performance and model size: on LIBERO-Plus, RoboTwin Clean2Rand and RoboCasa365, it is outperformed only by models about twice its size. REKI consists of a vision-language model (VLM) followed by a flow-matching action expert, and is pretrained on a curated mixture of public robot, egocentric human and vision-language data. Additionally, we endow it with a memory that gives the policy access to its recent past at negligible cost: a few register tokens in the action expert summarise the output of the VLM at each frame and persist in the expert's cache. This memory improves success in simulation and on real robots, and makes oscillations between poses about four times rarer. REKI uses a simple model design and training paradigm, and is optimised to be efficient at training and inference. We release the full code across data curation, training, inference and evaluation, deployment, and all pretrained and finetuned model weights: https://github.com/kyutai-labs/reki."
+      "summary": "World-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection. We present LAW, a closed-loop VLM--WAM framework that unifies language reasoning, action generation, and world modeling through semantic subtask progress. Within the LAW agent, a hybrid-expert vision-language model plans the remaining subtasks, estimates the values of and fuses actions proposed by a world-action model, and asynchronously assesses execution status to support continued execution and subtask transitions. Within the world-action model, Mixture-of-Transformer Experts integrates modality-specific and shared computation for joint video--action modeling. Dual-stream hierarchical visual memory maintains temporal context for both models, while subtask-local value learning aligns action evaluation with semantic objectives and preserves supervision from successful prefixes of failed trajectories. LAW achieves 94.21% average success across 50 RoboTwin tasks. Replacing the WAM backbone with OpenWAM-$alpha$ further raises the average success rate to 95.56%, establishing a new open-source state of the art on RoboTwin. Despite having only 2B parameters, our VLM also outperforms variants using Embodied-R1.5 and GPT-5.5 High. On three long-horizon real-robot tasks, LAW achieves 65% average success, compared with 28.33% for $pi_{0.5}$ and 25% for Fast-WAM."
     },
     {
-      "id": "arxiv:2610.21434",
-      "title": "Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execution",
-      "url": "https://arxiv.org/abs/2610.21434",
-      "publisher": "arXiv 2610.21434",
+      "id": "arxiv:2610.22852",
+      "title": "Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors",
+      "url": "https://arxiv.org/abs/2610.22852",
+      "publisher": "arXiv 2610.22852",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "simeval",
-      "score": 2.655,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Vision-language-action (VLA) policies generate action sequences that reduce repeated inference, but deciding how much of each sequence to execute is critical to task success. Existing adaptive methods make this decision using generation stability or prediction agreement, yet these signals do not establish whether executing a candidate prefix preserves the ability to complete the task. We introduce a policy-aligned predictive verifier (PAV) that anticipates the consequences of candidate action prefixes and evaluates their compatibility with successful continuation before execution. Rather than using future prediction to generate actions, our method evaluates existing proposals in the VLA's internal task-conditioned representation space. To learn local judgments from terminal task outcomes, we combine trajectory-level survival supervision with a localization prior that preserves useful behavior within failed rollouts. The resulting validity scores guide execution-horizon selection. Evaluations with pi_0 and pi_0.5 across LIBERO, RoboTwin 2.0, and real-world manipulation show improved success-query trade-offs. These findings point toward a different role for future prediction in robotics, using it to assess how far to trust a policy's proposed actions rather than to generate new ones."
-    },
-    {
-      "id": "arxiv:2610.21353",
-      "title": "A Black-Box Positioning Solution for Effortless Integration in Wearable Navigation",
-      "url": "https://arxiv.org/abs/2610.21353",
-      "publisher": "arXiv 2610.21353",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "edge",
-      "score": 2.307,
+      "published": "2026-10-16",
+      "lane": "training",
+      "score": 3.05,
       "numbers": [
-        "0.16%",
-        "1.87%",
-        "2.5 ms"
+        "37%",
+        "97%"
       ],
       "signals": [
         "numbers",
+        "closed_loop",
+        "real_robot",
         "latency"
       ],
-      "summary": "Accurate localization is critical for a wide range of applications, including navigation, augmented reality, safety management, and healthcare. However, achieving accurate positioning remains challenging, especially in GPS-degraded environments. Pedestrian Dead Reckoning (PDR), which estimates position based on inertial sensor data, offers a promising alternative but typically demands substantial effort in algorithm design and system integration. This complexity often leads to prolonged development timelines and elevated costs. To address these challenges, we present the PDR Sensor (PDRS), a plug-and-play, black-box PDR module optimized for seamless integration into wearable and IoT platforms. PDRS integrates a microprocessor and an inertial measurement unit (IMU) within a compact, low-power module. It executes real-time sensor fusion onboard, providing position updates via standard interfaces (I2C, SPI, UART). Experimental evaluations demonstrate its high robustness, achieving a step detection error of just 0.16% over 1250 steps and a traveled distance error of 1.87% under diverse conditions. The system further exhibits low latency (2.5 ms) and modest power consumption (52.35 mA). Unlike conventional studies, the PDRS leverages a holistic co-design of hardware and software to enhance performance and integration aspects, simplifying adoption without requiring deep expertise. By lowering technical barriers, PDRS enables developers and researchers to prioritize innovation in IoT and wearable technologies, accelerating prototyping, reducing development time, and advancing industry progress. Future work aims to enhance accuracy, reduce power usage and module size, and integrate AI-driven techniques to better mitigate drift."
+      "summary": "Generalist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult. Reinforcement learning (RL) can improve these policies, yet its effectiveness is constrained by the cost of online interaction. Existing methods adapt frozen flow-matching policies by treating noise space as a continuous action space. We show that this behaviorally unstructured space makes exploration inefficient, often preventing these methods from extracting meaningful learning signals on challenging tasks. We introduce AnchorQ, which enables coarse-to-fine policy improvement through a structured, refinable latent action representation. At each decision step, AnchorQ uses flow reversal to map reference behaviors to state-conditioned latent anchors, samples local particles around those anchors, and applies value-guided sampling to explore promising refinements. Our analysis shows that anchors reduce identification complexity at the cost of support bias; particle refinement trades this bias against action-class complexity; and critic accuracy determines the reliability of KL-regularized, value-guided selection. Across simulated and real-world manipulation tasks, AnchorQ outperforms state-of-the-art post-training baselines in sample efficiency, delivering a 37% improvement in real-world success rate and 97% higher simulated task throughput under the same interaction budget. Additional visualizations are available on our website https://anchorq-rl.com/."
     },
     {
-      "id": "arxiv:2610.22323",
-      "title": "Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2610.22323",
-      "publisher": "arXiv 2610.22323",
+      "id": "arxiv:2610.23849",
+      "title": "Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts",
+      "url": "https://arxiv.org/abs/2610.23849",
+      "publisher": "arXiv 2610.23849",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "systems",
-      "score": 2.15,
+      "published": "2026-10-16",
+      "lane": "hardware",
+      "score": 2.812,
       "numbers": [
-        "49.88%",
-        "61.0%",
-        "81.5%"
+        "73%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot"
+        "open_release"
       ],
-      "summary": "Long-horizon robotic manipulation fundamentally requires memory: agents must retain task-relevant information from past observations and interactions and use it to guide future actions. Existing approaches typically preserve raw historical observations, compressed visual tokens, or language summaries, but these representations either expose the action policy to increasingly long histories or risk discarding task-relevant temporal, semantic, and perceptual information. We introduce Mem4Act, a framework for learning effective latent memory as a fixed-size representation explicitly optimized for long-horizon robotic control. Mem4Act addresses three coupled challenges: how to efficiently cover long histories, what information memory should retain, and how to ensure the policy actually relies on memory. To this end, it organizes history via multi-granularity temporal aggregation, preserves complementary semantic and perceptual information through question-answering supervision and key-frame DINO feature reconstruction, and employs memory-first two-stage training to encourage greater use of memory by the action policy. The resulting memory captures both high-level task state and fine-grained perceptual evidence while providing a bounded interface to the action policy. Across RoboMME, RMBench, and four real-world manipulation tasks, Mem4Act achieves state-of-the-art performance on memory-dependent control, with success rates of 49.88%, 61.0%, and 81.5%, respectively. Extensive ablations further demonstrate the importance of temporal aggregation, complementary memory supervision, and memory-first training."
+      "summary": "Every robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful. Is joint sensing also enough for precise, contact-rich assembly, where the robot must find a millimeter-scale opening, mesh gear teeth, or catch a thread through light contact? We study this question by training blind assembly policies that observe only a short history of joint positions, velocities, and their own actions, without visual, force, torque, or tactile sensing. The poses of both the fixture and the part are unknown to the policy, and the grasp is randomized substantially. The policy must therefore assemble the parts through contact, sensed exclusively through its own proprioception. Trained with reinforcement learning entirely in simulation over randomized parts, grasps, and contacts, such policies learn peg insertion, gear meshing, and nut threading. The peg insertion policy transfers zero-shot to the real world and inserts pegs of different shapes and sizes in 73% of trials. Controlled comparisons with matched visual policies in simulation show that blind policies generalize far better to unseen part shapes and sizes, though they can be slower. Training such policies needs thousands of different assemblies, each simulated with its clearance intact, so we also release an open-source generator that builds them procedurally from exact convex pieces for MuJoCo; it is more accurate and faster than convex decomposition or MuJoCo's signed-distance collision. Videos and interactive simulations are at https://younghyopark.me/blind-proprioceptive-assembly/."
     },
     {
-      "id": "arxiv:2610.21429",
-      "title": "MuSTMM: Learning Sound-Triggered Mobile Manipulation across Multiple Scenes",
-      "url": "https://arxiv.org/abs/2610.21429",
-      "publisher": "arXiv 2610.21429",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "data",
-      "score": 2.135,
-      "numbers": [
-        "2.60%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "summary": "Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions. Existing STMM evaluations primarily vary object layouts within limited architectural structures, leaving challenges to unseen scenes insufficiently explored. We introduce Multi-scene Sound-Triggered Mobile Manipulation (MuSTMM), a dataset that combines spatial audio rendering and physical interaction across 31 scenes with diverse architectures and object layouts. MuSTMM contains 14.36 million precomputed binaural Room Impulse Responses (RIRs) and a scene-disjoint split for evaluating single-event and multi-event settings in unseen scenes. We further augment the Navigation Policy Model with explicit spatial memory that complements acoustic cues with observed geometry. Specifically, we accumulate pose-aligned depth observations in a shared coordinate frame and project this memory into an egocentric Bird's-Eye View (BEV) occupancy map. Fusing map features with sound context produces a goal descriptor that provides both target-location and scene-structure priors, guiding navigation to the target region required for subsequent physical interaction. This policy achieves a 2.60% success rate boost over existing methods, while component ablations further support the effectiveness of spatial memory. MuSTMM and the navigation policy provide a testbed for the new challenge of studying sound-triggered mobile manipulation in unseen scenes. The code and dataset will be released upon acceptance."
-    },
-    {
-      "id": "arxiv:2610.21453",
-      "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
-      "url": "https://arxiv.org/abs/2610.21453",
-      "publisher": "arXiv 2610.21453",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "safety",
-      "score": 2.07,
-      "numbers": [
-        "52.6%",
-        "6.1%",
-        "13%",
-        "80%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution. First, executing an instruction like \"make me a sandwich\" requires grounding subtask decomposition in persistent user preferences rather than relying on a single generic solution. Second, reliable deployment demands explainable safety assurance that proactively prevents hazards and gracefully recovers from occasional physical failures. To address these gaps, we present CarryOn, a dual-loop harness designed to augment a frozen VLA policy. The planning loop maintains persistent user-level and scene-level context that is continually grounded against new observations and revised through interaction, enabling personalized task selection and execution grounding across conversations and changing scenes. The execution loop actively supervises policy rollouts, shielding actions from predicted hazardous contact. When execution fails, the system invokes reusable control-based recovery skills that restore task progress and are refined through reflection on earlier failures. On a real robot and in simulation, CarryOn dispatches preference-consistent subtasks across users and scenes, reduces the violation rate of an already safety-finetuned VLA from 52.6% to 6.1%, and increases recovery success from 13% to 80% when refined skills are reused."
-    },
-    {
-      "id": "arxiv:2610.21922",
-      "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
-      "url": "https://arxiv.org/abs/2610.21922",
-      "publisher": "arXiv 2610.21922",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-15",
-      "lane": "foundation",
-      "score": 2.05,
+      "id": "ieee-spectrum-robotics:b657bbd1f782",
+      "title": "The Robot I Didn’t Expect to Build",
+      "url": "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-10-19",
+      "lane": "hardware",
+      "score": 1.797,
       "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "summary": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states. These limitations hinder learning from action-free videos and can encourage overfitting to demonstration conditions, weakening generalization and robustness. We present TS-WAM, a lightweight Teacher-Student World-Action Model that addresses these challenges through self-supervised temporal learning and explicit future prediction. Its vlm-jepa framework learns from heterogeneous data, including robot demonstrations and action-free human videos, using an EMA target branch without requiring a separately trained external teacher. By coupling vlm-jepa with delta-lwm, TS-WAM learns to predict latent actions from the current observation and instruction and uses them to predict future visual features that guide action generation at inference. A unified end-to-end training architecture jointly optimizes temporal representation learning, visual dynamics, and robot control without a separate latent-action or world-model pretraining stage. The EMA target branch is removed at inference, keeping the deployed policy lightweight. Experiments on LIBERO, LIBERO-Plus, and SimplerEnv, together with real-world manipulation experiments on Franka Research 3 and RevoTron, demonstrate that TS-WAM achieves strong manipulation performance, generalization, and robustness."
+      "signals": [],
+      "summary": "Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 . It’s designed to be the first humanoid robot that can safely and economically do useful work at scale, allowing us to bring tens of thousands of humanoid workers into the real world. Engineered to lift 23-kilogram bins onto high shelves and with a battery that can run for 90 minutes on a 9-minute charge, Digit 5’s goal is to handle heavy warehouse tasks shift after shift, filling the need for labor in jobs that are too physically stressful or too dull for humans to want to do. Digit 5 is what Agility has been working toward for over a decade. But the robot is heavy and bulky, lacking the graceful natural motion of its predecessors, and it’s farther than I thought possible from the robot I dreamed of building when I started this company. To deliver a useful commercial product, Agility has taken a path that is very different from what I first imagined. From ATRIAS to Digit My dream has always been to build robots that combine locomotion and manipulation to move through the world and interact with it as people do. I seek a mastery of motion, achieved through devices designed to navigate the constraints of physics with elegance. When I started the Dynamic Robotics Laboratory at Oregon State in 2008, we began with a theory derived from decades of work in biomechanics: that a simple “spring-mass” model (a body supported by legs that act like springs) should be able to reproduce every known walking and running gait found in animals. We put theory into practice by building the bipedal robot ATRIAS —short for “Assume The Robot Is A Sphere,” a joke among physicists about reducing a complex system to its simplest possible form. ATRIAS looked like a large microwave on stilts because it was only intended to demonstrate the physics of human walking and running. This was the first glimmer of achieving my dream; even though ATRIAS wasn’t designed to …"
     },
     {
-      "id": "the-robot-report:871c9c8bb40b",
-      "title": "How to choose a BLDC motor for robotic arms and mobile robots",
-      "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
+      "id": "the-robot-report:370aa7b1678f",
+      "title": "Daimon Robotics building the infrastructure layer for tactile intelligence",
+      "url": "https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-18",
-      "lane": "safety",
-      "score": 1.235,
+      "published": "2026-10-19",
+      "lane": "simeval",
+      "score": 1.635,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "summary": "The company is connecting tactile sensing, real-world data collection, simulation, and AI models to help robots perform physical tasks more reliably."
+    },
+    {
+      "id": "leiphone:ded410a44da4",
+      "title": "复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人",
+      "url": "https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-19",
+      "lane": "foundation",
+      "score": 1.45,
       "numbers": [],
       "signals": [],
-      "summary": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor."
+      "summary": "严骏驰一通电话，贾萧松五年几次转向。2021年年底，贾萧松直博上海交通大学没多久，在宿舍里接到一个电话。 电话是贾萧松的博导严骏驰打来的，问他接下来读博想研究什么？ 贾萧松的回答是继续做自动驾驶轨迹预测。 两年前，贾萧松在交大致远学院读大三，参加了加州大学伯克利分校的一个暑研项目，在控制理论学者富塚城义（Masayoshi Tomizuka）团队做研究，从车辆交互与轨迹预测入门自动驾驶领域。贾萧松想继续做老本行的打算，本无可厚非。 2019年，贾萧松到UC Berkeley访学 但严骏驰建议贾萧松换一条路，理由是预测夹在感知与决策之间，上下游都受限制，不如做端到端。 彼时的贾萧松也意识到了轨迹预测研究的尴尬之处，能改进的空间很有限，更多的是小修小补。于是，他在严骏驰和上海人工智能实验室OpenDriveLab创始人李弘扬的指导下，开始研究端到端自动驾驶。 三年后，贾萧松和合作者们研究的Think2Drive在ECCV上一经发表，就引人瞩目。 当时，强化学习在复杂驾驶环境中往往需要极其昂贵的交互成本。Think2Drive让模型在低维潜在空间里模拟交互，大幅降低了策略训练成本。他们在一张NVIDIA A6000 GPU上，用三天左右的时间，就训练出能够完成CARLA Leaderboard 2.0复杂驾驶任务的策略。 此后，贾萧松又转向闭环评测、交互式生成仿真领域。 …"
+    },
+    {
+      "id": "the-robot-report:aec5005a6c0b",
+      "title": "Kodama raises $7M to bring robotics to forestry",
+      "url": "https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-19",
+      "lane": "data",
+      "score": 1.218,
+      "numbers": [],
+      "signals": [],
+      "summary": "Kodama is working on automating forestry and logging equipment, starting with teleoperation and collecting valuable data on the way."
     }
   ],
   "lane_counts": {
     "foundation": 5,
     "data": 9,
-    "training": 3,
-    "simeval": 14,
-    "edge": 3,
+    "training": 2,
+    "simeval": 13,
+    "edge": 2,
     "safety": 5,
-    "systems": 2,
-    "hardware": 9
+    "systems": 4,
+    "hardware": 10
   },
   "evidence_mix": {
-    "O": 3,
-    "R": 31,
+    "O": 2,
+    "R": 32,
     "M": 16
   },
   "fetch": {
-    "items": 476,
+    "items": 471,
     "attempted": 11,
     "answered": 11,
     "failed": [],
     "fallback": [],
     "per_source": {
-      "arxiv": 43,
+      "arxiv": 38,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
