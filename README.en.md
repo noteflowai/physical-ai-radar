@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **REKI** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **Mem4Act** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-5. **MuSTMM** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
-6. **CarryOn** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch what it changes for certification and deployment approval.
-7. **TS-WAM** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **How to choose a BLDC motor for robotic arms and mobile robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+1. **REKI** — `AI draft` Teams choosing a VLA under a compute budget can shortlist a 2.4B model pretrained only on public data; the size-versus-performance frontier is the authors' own claim on LIBERO-Plus, RoboTwin and RoboCasa365, with no real-robot figures shown.
+2. **Policy-Aligned Predictive Verification for Adaptive VLA Action-Chunk Execut…** — `AI draft` If your VLA executes every action chunk to a fixed length, this preprint argues that choice decides task success and is worth adapting; the page flags closed-loop and real-robot experiments but shows no figures, so the gain cannot yet be sized.
+3. **A Black-Box Positioning Solution for Effortless Integration in Wearable Nav…** — `AI draft` Anyone needing drop-in localization can note the self-reported 2.5 ms latency and 1.87% traveled-distance error under diverse conditions; the setting is wearable navigation, and the page shows no robot or closed-loop result.
+4. **Mem4Act** — `AI draft` Teams building long-horizon manipulation must decide whether policies need memory of past observations; the authors report success rates such as 49.88% and 81.5% with real-robot and closed-loop signals, but the page does not say which settings those figures cover.
+5. **MuSTMM** — `AI draft` For mobile manipulators that should react to sound events by navigating to the associated object and acting, this frames the task; the self-reported gain is a 2.60% success-rate boost with no real-robot result shown, too thin to justify adding an audio pipeline yet.
+6. **CarryOn** — `AI draft` Deployers of generalist VLAs for assistance may wrap the model rather than rely on safety finetuning alone: the authors report a rate on an already safety-finetuned VLA falling from 52.6% to 6.1% and recovery success rising from 13% to 80%, both self-reported.
+7. **TS-WAM** — `AI draft` If action-labeled robot demonstrations are your data bottleneck, coupling action with explicit prediction of future visual states is a direction to track; the page flags real-robot experiments but gives no figures or closed-loop result, so treat it as a signal only.
+8. **How to choose a BLDC motor for robotic arms and mobile robots** — `AI draft` When specifying a BLDC motor for an arm or mobile base, the factors it lists, from sensors to safety to platform type, work as a checklist; it is a secondary trade piece with no figures, so take actual ratings from vendor datasheets.
 
 </details>
 
