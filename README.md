@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **PASS-VLN** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
-2. **LAW** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
-3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-4. **Blind Precise Assembly** — 预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。
-5. **The Robot I Didn’t Expect to Build** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-8. **Kodama raises $7M to bring robotics to forestry** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+1. **PASS-VLN** — `AI 起草` 做语言导航的团队应把“机器人能否、如何在物理上执行指令”列为与理解指令同级的验收项；页面标出了真机与闭环实验，但没有给出任何数字，目前只能当作作者自报的方向参考。
+2. **LAW** — `AI 起草` 评估长程操作方案时，可以把在世界动作模型上叠加语言推理来规划子任务、判断进度的 2B 模型列入候选；但 94.21% 与 65% 只是作者自报的平均成功率，页面没有说明其中哪项来自真机。
+3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — `AI 起草` 已经部署通用策略、卡在可靠性与吞吐上的团队，可以考虑用 RL 后训练来补最后一段；作者自报真机成功率提升 37%、仿真指标高 97%，在独立复现前不宜直接写进排期。
+4. **Blind Precise Assembly** — `AI 起草` 装配单元在加相机之前，值得先试只靠关节本体感知完成插孔的方案；作者称对不同形状与尺寸的零件在 73% 的试验中成功，代码或权重已公开，可以在自己的零件上先复测再决定。
+5. **The Robot I Didn’t Expect to Build** — `AI 起草` 正在评估 Digit 的采购方可以把这篇当作背景材料：作者是 Agility 联合创始人，讲的是自家刚发布的 Digit 5，页面没有任何数字，规格与交付承诺仍需以官方资料为准。
+6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — `AI 起草` Daimon 把触觉传感、真实数据采集、仿真和模型连成一体，评估这类供应商时要看整条数据链而不只是传感器本身；这是二手报道且没有数字，可靠性提升尚无依据。
+7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — `AI 起草` 页面摘录只讲了贾萧松读博以来的几次转向，没有呈现他的具体论据，因此暂不足以影响基座模型的选型或投入方向；想引用其观点，请先读原文。
+8. **Kodama raises $7M to bring robotics to forestry** — `AI 起草` 做林业与伐木设备自动化的团队可以参考这条路线：先从遥操作做起，边作业边积累数据；这是二手报道，页面没有说明数据规模或能否复用。
 
 </details>
 
