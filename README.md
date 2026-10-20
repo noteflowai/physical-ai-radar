@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-20
+### 今日雷达 · 2026-10-21
 
-`生成时间: 2026-10-19 23:40 UTC` ｜ `统计窗口: 论文 2026-10-16 → 2026-10-20 · 博客与报道 2026-09-20 → 2026-10-20 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-20 23:40 UTC` ｜ `统计窗口: 论文 2026-10-17 → 2026-10-21 · 博客与报道 2026-09-21 → 2026-10-21 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation](https://arxiv.org/abs/2610.22812)**<br><sub>系统与编排 · arXiv 2610.22812 · 2026‑10‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence](https://arxiv.org/abs/2610.23334)**<br>`94.21%`&nbsp; `95.56%`&nbsp; `2B parameters`<br><sub>系统与编排 · arXiv 2610.23334 · 2026‑10‑16</sub> |
-| 03<br>🔵&nbsp;`R` | **[Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors](https://arxiv.org/abs/2610.22852)**<br>`37%`&nbsp; `97%`<br><sub>训练与自我改进 · arXiv 2610.22852 · 2026‑10‑16</sub> |
-| 04<br>🔵&nbsp;`R` | **[Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts](https://arxiv.org/abs/2610.23849)**<br>`73%`<br><sub>本体与供应链 · arXiv 2610.23849 · 2026‑10‑16</sub> |
-| 05<br>🟡&nbsp;`M` | **[The Robot I Didn’t Expect to Build](https://spectrum.ieee.org/agility-robotics-digit-5-redesign)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑19</sub> |
-| 06<br>🟡&nbsp;`M` | **[Daimon Robotics building the infrastructure layer for tactile intelligence](https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/)**<br><sub>仿真与评测 · The Robot Report · 2026‑10‑19</sub> |
-| 07<br>🟡&nbsp;`M` | **[复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 \| 世界模型50人](https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑19</sub> |
-| 08<br>🟡&nbsp;`M` | **[Kodama raises $7M to bring robotics to forestry](https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/)**<br><sub>数据引擎 · The Robot Report · 2026‑10‑19</sub> |
+| 01<br>🔵&nbsp;`R` | **[DiPLO: Self-distilled Diffusion Planning for Loco-manipulation](https://arxiv.org/abs/2610.24847)**<br>`99%`&nbsp; `45%`<br><sub>训练与自我改进 · arXiv 2610.24847 · 2026‑10‑17</sub> |
+| 02<br>🔵&nbsp;`R` | **[AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark](https://arxiv.org/abs/2610.25534)**<br>`1.9 hours`&nbsp; `17.9 hours`<br><sub>仿真与评测 · arXiv 2610.25534 · 2026‑10‑18</sub> |
+| 03<br>🔵&nbsp;`R` | **[AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight](https://arxiv.org/abs/2610.25407)**<br>`76.56%`<br><sub>边缘与实时性 · arXiv 2610.25407 · 2026‑10‑18</sub> |
+| 04<br>🔵&nbsp;`R` | **[ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation](https://arxiv.org/abs/2610.26545)**<br>`64.27%`&nbsp; `64.44%`&nbsp; `21.77%`<br><sub>边缘与实时性 · arXiv 2610.26545 · 2026‑10‑19</sub> |
+| 05<br>🔵&nbsp;`R` | **[Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.24675)**<br>`42.0%`&nbsp; `11.6%`&nbsp; `3.5%`<br><sub>仿真与评测 · arXiv 2610.24675 · 2026‑10‑17</sub> |
+| 06<br>🔵&nbsp;`R` | **[ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning](https://arxiv.org/abs/2610.25691)**<br><sub>数据引擎 · arXiv 2610.25691 · 2026‑10‑19</sub> |
+| 07<br>🔵&nbsp;`R` | **[PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models](https://arxiv.org/abs/2610.25961)**<br><sub>基座模型 · arXiv 2610.25961 · 2026‑10‑19</sub> |
+| 08<br>🟡&nbsp;`M` | **[启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」](https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html)**<br><sub>训练与自我改进 · 雷峰网 Leiphone · 2026‑10‑20</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **PASS-VLN** — `AI 起草` 做语言导航的团队应把“机器人能否、如何在物理上执行指令”列为与理解指令同级的验收项；页面标出了真机与闭环实验，但没有给出任何数字，目前只能当作作者自报的方向参考。
-2. **LAW** — `AI 起草` 评估长程操作方案时，可以把在世界动作模型上叠加语言推理来规划子任务、判断进度的 2B 模型列入候选；但 94.21% 与 65% 只是作者自报的平均成功率，页面没有说明其中哪项来自真机。
-3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — `AI 起草` 已经部署通用策略、卡在可靠性与吞吐上的团队，可以考虑用 RL 后训练来补最后一段；作者自报真机成功率提升 37%、仿真指标高 97%，在独立复现前不宜直接写进排期。
-4. **Blind Precise Assembly** — `AI 起草` 装配单元在加相机之前，值得先试只靠关节本体感知完成插孔的方案；作者称对不同形状与尺寸的零件在 73% 的试验中成功，代码或权重已公开，可以在自己的零件上先复测再决定。
-5. **The Robot I Didn’t Expect to Build** — `AI 起草` 正在评估 Digit 的采购方可以把这篇当作背景材料：作者是 Agility 联合创始人，讲的是自家刚发布的 Digit 5，页面没有任何数字，规格与交付承诺仍需以官方资料为准。
-6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — `AI 起草` Daimon 把触觉传感、真实数据采集、仿真和模型连成一体，评估这类供应商时要看整条数据链而不只是传感器本身；这是二手报道且没有数字，可靠性提升尚无依据。
-7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — `AI 起草` 页面摘录只讲了贾萧松读博以来的几次转向，没有呈现他的具体论据，因此暂不足以影响基座模型的选型或投入方向；想引用其观点，请先读原文。
-8. **Kodama raises $7M to bring robotics to forestry** — `AI 起草` 做林业与伐木设备自动化的团队可以参考这条路线：先从遥操作做起，边作业边积累数据；这是二手报道，页面没有说明数据规模或能否复用。
+1. **DiPLO** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+2. **AQUAACT** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **AeroDASH** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **ReInsVLN** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+6. **ReDOA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+7. **PaceVLA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-20.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-21.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

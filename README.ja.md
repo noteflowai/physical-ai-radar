@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-20
+### 本日のレーダー · 2026-10-21
 
-`生成時刻: 2026-10-19 23:40 UTC` ｜ `対象期間: 論文 2026-10-16 → 2026-10-20 · ブログ・報道 2026-09-20 → 2026-10-20 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-20 23:40 UTC` ｜ `対象期間: 論文 2026-10-17 → 2026-10-21 · ブログ・報道 2026-09-21 → 2026-10-21 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation](https://arxiv.org/abs/2610.22812)**<br><sub>システムとオーケストレーション · arXiv 2610.22812 · 2026‑10‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence](https://arxiv.org/abs/2610.23334)**<br>`94.21%`&nbsp; `95.56%`&nbsp; `2B parameters`<br><sub>システムとオーケストレーション · arXiv 2610.23334 · 2026‑10‑16</sub> |
-| 03<br>🔵&nbsp;`R` | **[Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors](https://arxiv.org/abs/2610.22852)**<br>`37%`&nbsp; `97%`<br><sub>学習と自己改善 · arXiv 2610.22852 · 2026‑10‑16</sub> |
-| 04<br>🔵&nbsp;`R` | **[Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts](https://arxiv.org/abs/2610.23849)**<br>`73%`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.23849 · 2026‑10‑16</sub> |
-| 05<br>🟡&nbsp;`M` | **[The Robot I Didn’t Expect to Build](https://spectrum.ieee.org/agility-robotics-digit-5-redesign)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑19</sub> |
-| 06<br>🟡&nbsp;`M` | **[Daimon Robotics building the infrastructure layer for tactile intelligence](https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/)**<br><sub>シミュレーションと評価 · The Robot Report · 2026‑10‑19</sub> |
-| 07<br>🟡&nbsp;`M` | **[复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 \| 世界模型50人](https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑19</sub> |
-| 08<br>🟡&nbsp;`M` | **[Kodama raises $7M to bring robotics to forestry](https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/)**<br><sub>データエンジン · The Robot Report · 2026‑10‑19</sub> |
+| 01<br>🔵&nbsp;`R` | **[DiPLO: Self-distilled Diffusion Planning for Loco-manipulation](https://arxiv.org/abs/2610.24847)**<br>`99%`&nbsp; `45%`<br><sub>学習と自己改善 · arXiv 2610.24847 · 2026‑10‑17</sub> |
+| 02<br>🔵&nbsp;`R` | **[AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark](https://arxiv.org/abs/2610.25534)**<br>`1.9 hours`&nbsp; `17.9 hours`<br><sub>シミュレーションと評価 · arXiv 2610.25534 · 2026‑10‑18</sub> |
+| 03<br>🔵&nbsp;`R` | **[AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight](https://arxiv.org/abs/2610.25407)**<br>`76.56%`<br><sub>エッジとリアルタイム · arXiv 2610.25407 · 2026‑10‑18</sub> |
+| 04<br>🔵&nbsp;`R` | **[ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation](https://arxiv.org/abs/2610.26545)**<br>`64.27%`&nbsp; `64.44%`&nbsp; `21.77%`<br><sub>エッジとリアルタイム · arXiv 2610.26545 · 2026‑10‑19</sub> |
+| 05<br>🔵&nbsp;`R` | **[Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.24675)**<br>`42.0%`&nbsp; `11.6%`&nbsp; `3.5%`<br><sub>シミュレーションと評価 · arXiv 2610.24675 · 2026‑10‑17</sub> |
+| 06<br>🔵&nbsp;`R` | **[ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning](https://arxiv.org/abs/2610.25691)**<br><sub>データエンジン · arXiv 2610.25691 · 2026‑10‑19</sub> |
+| 07<br>🔵&nbsp;`R` | **[PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models](https://arxiv.org/abs/2610.25961)**<br><sub>基盤モデル · arXiv 2610.25961 · 2026‑10‑19</sub> |
+| 08<br>🟡&nbsp;`M` | **[启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」](https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html)**<br><sub>学習と自己改善 · 雷峰网 Leiphone · 2026‑10‑20</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **PASS-VLN** — `AI 下書き` 言語指示ナビゲーションでは、指示の理解だけでなく機体が物理的に実行できるか、どう実行するかを評価項目に加えるべきだ。実機・閉ループ実験の記載はあるが数値は示されておらず、現時点では著者の自己申告として扱う。
-2. **LAW** — `AI 下書き` 長期マニピュレーションでは、世界行動モデルにサブタスク計画と進捗評価の言語推論を加えた 2B モデルが候補になる。ただし平均成功率 94.21% と 65% は著者の自己申告で、いずれかが実機での値かはページから読み取れない。
-3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — `AI 下書き` 汎用方策が配備水準の信頼性とスループットに届かないチームには、RL による事後学習が選択肢になる。実環境の成功率 37% 向上、シミュレーション指標 97% 増はいずれも著者報告で、計画に組み込む前に独立した再現が必要だ。
-4. **Blind Precise Assembly** — `AI 下書き` 挿入工程にカメラを足す前に、関節の固有感覚だけで済むか試す価値がある。著者は形状・サイズの異なる部品で試行の 73% に成功したと報告し、コードか重みを公開しているので、自社部品で再試験してから判断したい。
-5. **The Robot I Didn’t Expect to Build** — `AI 下書き` Digit を検討中の購入側には背景資料にとどまる。筆者は Agility の共同創業者で、発表されたばかりの自社製品 Digit 5 について書いており、数値はない。仕様や納期は公式資料で確認する必要がある。
-6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — `AI 下書き` Daimon は触覚センシングを実データ収集、シミュレーション、モデルとつなげており、評価はセンサー単体ではなくデータ経路全体で行うべきだ。二次報道で数値はなく、信頼性向上の主張には裏付けがない。
-7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — `AI 下書き` 掲載された抜粋は賈蕭松氏の経歴上の方向転換だけで、主張の中身は示されていない。基盤モデルの選定や投資判断を動かす材料にはまだならず、見解を引用するなら原文を先に読むべきだ。
-8. **Kodama raises $7M to bring robotics to forestry** — `AI 下書き` 林業・伐採機械の自動化では、まず遠隔操作から始め、作業しながらデータを集める進め方が参考になる。二次報道であり、データ量や再利用性については何も示されていない。
+1. **DiPLO** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+2. **AQUAACT** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **AeroDASH** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **ReInsVLN** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **ReDOA** — 査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+7. **PaceVLA** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-20.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-21.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
