@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **PASS-VLN** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-2. **LAW** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-4. **Blind Precise Assembly** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch price, availability and who is shipping it in volume.
-5. **The Robot I Didn’t Expect to Build** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Kodama raises $7M to bring robotics to forestry** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+1. **PASS-VLN** — `AI draft` Navigation teams should test whether the robot can physically carry out an instruction, not only whether it understood it; the page flags real-robot and closed-loop experiments but shows no figures, so treat this as an author-reported direction for now.
+2. **LAW** — `AI draft` For long-horizon manipulation, a 2B model that adds language reasoning for subtask planning and progress checks to a world-action model is worth shortlisting, but the 94.21% and 65% averages are self-reported and the page does not say any come from a real robot.
+3. **Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Rev…** — `AI draft` Teams whose generalist policy stalls short of deployment-level reliability and throughput can weigh RL post-training as the fix; the authors report a 37% real-world success gain and 97% higher on a simulated metric, which needs independent replication before it enters a plan.
+4. **Blind Precise Assembly** — `AI draft` Before adding vision to an insertion cell, it is worth trying joint-sensing alone; the authors report success across part shapes and sizes in 73% of trials and release code or weights, so re-test on your own parts before deciding.
+5. **The Robot I Didn’t Expect to Build** — `AI draft` Buyers evaluating Digit can read this as background only: it is Agility's cofounder writing about the company's just-launched Digit 5, the page carries no figures, and specs or delivery commitments still need the official source.
+6. **Daimon Robotics building the infrastructure layer for tactile intelligence** — `AI draft` Daimon is tying tactile sensing to real-world data collection, simulation and models, so evaluating it means judging that whole pipeline rather than the sensor alone; this is a secondary report with no figures behind the reliability claim.
+7. **复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人** — `AI draft` The excerpt shown covers only Jia Xiaosong's career turns and none of his actual argument, so it should not yet shift foundation-model choices or spending; read the original piece before citing his view.
+8. **Kodama raises $7M to bring robotics to forestry** — `AI draft` Teams automating forestry and logging equipment can note the route of starting with teleoperation and collecting data along the way; this is a secondary report and says nothing about how much data or whether it transfers.
 
 </details>
 

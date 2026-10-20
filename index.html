@@ -98,7 +98,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22812" rel="noopener" target="_blank">PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 做语言导航的团队应把“机器人能否、如何在物理上执行指令”列为与理解指令同级的验收项；页面标出了真机与闭环实验，但没有给出任何数字，目前只能当作作者自报的方向参考。</p>
 <p class="excerpt">Reliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.23334" rel="noopener" target="_blank">LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence</a></h3>
 <p class="figure"><strong>94.21%</strong><span class="context">“LAW achieves 94.21% average success across”</span></p><p class="chips"><span class="chip">95.56%</span><span class="chip">2B parameters</span><span class="chip">65%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估长程操作方案时，可以把在世界动作模型上叠加语言推理来规划子任务、判断进度的 2B 模型列入候选；但 94.21% 与 65% 只是作者自报的平均成功率，页面没有说明其中哪项来自真机。</p>
 <p class="excerpt">World-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.22852" rel="noopener" target="_blank">Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors</a></h3>
 <p class="figure"><strong>37%</strong><span class="context">“delivering a 37% improvement in real-world”</span></p><p class="chips"><span class="chip">97%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 已经部署通用策略、卡在可靠性与吞吐上的团队，可以考虑用 RL 后训练来补最后一段；作者自报真机成功率提升 37%、仿真指标高 97%，在独立复现前不宜直接写进排期。</p>
 <p class="excerpt">Generalist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.23849" rel="noopener" target="_blank">Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts</a></h3>
 <p class="figure"><strong>73%</strong><span class="context">“shapes and sizes in 73% of trials”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 装配单元在加相机之前，值得先试只靠关节本体感知完成插孔的方案；作者称对不同形状与尺寸的零件在 73% 的试验中成功，代码或权重已公开，可以在自己的零件上先复测再决定。</p>
 <p class="excerpt">Every robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful.</p>
 <ul class="signals"><li>含量化指标</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/agility-robotics-digit-5-redesign" rel="noopener" target="_blank">The Robot I Didn’t Expect to Build</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 正在评估 Digit 的采购方可以把这篇当作背景材料：作者是 Agility 联合创始人，讲的是自家刚发布的 Digit 5，页面没有任何数字，规格与交付承诺仍需以官方资料为准。</p>
 <p class="excerpt">Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 .</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-10-19</span>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/" rel="noopener" target="_blank">Daimon Robotics building the infrastructure layer for tactile intelligence</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> Daimon 把触觉传感、真实数据采集、仿真和模型连成一体，评估这类供应商时要看整条数据链而不只是传感器本身；这是二手报道且没有数字，可靠性提升尚无依据。</p>
 <p class="excerpt">The company is connecting tactile sensing, real-world data collection, simulation, and AI models to help robots perform physical tasks more reliably.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/academic/omK9nE62h3kHaQg5.html" rel="noopener" target="_blank">复旦贾萧松：VLA、WAM新架构层出不穷，但真正的瓶颈不在模型架构 | 世界模型50人</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 页面摘录只讲了贾萧松读博以来的几次转向，没有呈现他的具体论据，因此暂不足以影响基座模型的选型或投入方向；想引用其观点，请先读原文。</p>
 <p class="excerpt">严骏驰一通电话，贾萧松五年几次转向。2021年年底，贾萧松直博上海交通大学没多久，在宿舍里接到一个电话。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-19</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/" rel="noopener" target="_blank">Kodama raises $7M to bring robotics to forestry</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 做林业与伐木设备自动化的团队可以参考这条路线：先从遥操作做起，边作业边积累数据；这是二手报道，页面没有说明数据规模或能否复用。</p>
 <p class="excerpt">Kodama is working on automating forestry and logging equipment, starting with teleoperation and collecting valuable data on the way.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-19</span>

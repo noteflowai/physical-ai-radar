@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-20",
+  "generated": "2026-10-20 14:07 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.22812": {
+      "zh": "做语言导航的团队应把“机器人能否、如何在物理上执行指令”列为与理解指令同级的验收项；页面标出了真机与闭环实验，但没有给出任何数字，目前只能当作作者自报的方向参考。",
+      "en": "Navigation teams should test whether the robot can physically carry out an instruction, not only whether it understood it; the page flags real-robot and closed-loop experiments but shows no figures, so treat this as an author-reported direction for now.",
+      "ja": "言語指示ナビゲーションでは、指示の理解だけでなく機体が物理的に実行できるか、どう実行するかを評価項目に加えるべきだ。実機・閉ループ実験の記載はあるが数値は示されておらず、現時点では著者の自己申告として扱う。"
+    },
+    "https://arxiv.org/abs/2610.23334": {
+      "zh": "评估长程操作方案时，可以把在世界动作模型上叠加语言推理来规划子任务、判断进度的 2B 模型列入候选；但 94.21% 与 65% 只是作者自报的平均成功率，页面没有说明其中哪项来自真机。",
+      "en": "For long-horizon manipulation, a 2B model that adds language reasoning for subtask planning and progress checks to a world-action model is worth shortlisting, but the 94.21% and 65% averages are self-reported and the page does not say any come from a real robot.",
+      "ja": "長期マニピュレーションでは、世界行動モデルにサブタスク計画と進捗評価の言語推論を加えた 2B モデルが候補になる。ただし平均成功率 94.21% と 65% は著者の自己申告で、いずれかが実機での値かはページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2610.22852": {
+      "zh": "已经部署通用策略、卡在可靠性与吞吐上的团队，可以考虑用 RL 后训练来补最后一段；作者自报真机成功率提升 37%、仿真指标高 97%，在独立复现前不宜直接写进排期。",
+      "en": "Teams whose generalist policy stalls short of deployment-level reliability and throughput can weigh RL post-training as the fix; the authors report a 37% real-world success gain and 97% higher on a simulated metric, which needs independent replication before it enters a plan.",
+      "ja": "汎用方策が配備水準の信頼性とスループットに届かないチームには、RL による事後学習が選択肢になる。実環境の成功率 37% 向上、シミュレーション指標 97% 増はいずれも著者報告で、計画に組み込む前に独立した再現が必要だ。"
+    },
+    "https://arxiv.org/abs/2610.23849": {
+      "zh": "装配单元在加相机之前，值得先试只靠关节本体感知完成插孔的方案；作者称对不同形状与尺寸的零件在 73% 的试验中成功，代码或权重已公开，可以在自己的零件上先复测再决定。",
+      "en": "Before adding vision to an insertion cell, it is worth trying joint-sensing alone; the authors report success across part shapes and sizes in 73% of trials and release code or weights, so re-test on your own parts before deciding.",
+      "ja": "挿入工程にカメラを足す前に、関節の固有感覚だけで済むか試す価値がある。著者は形状・サイズの異なる部品で試行の 73% に成功したと報告し、コードか重みを公開しているので、自社部品で再試験してから判断したい。"
+    },
+    "https://spectrum.ieee.org/agility-robotics-digit-5-redesign": {
+      "zh": "正在评估 Digit 的采购方可以把这篇当作背景材料：作者是 Agility 联合创始人，讲的是自家刚发布的 Digit 5，页面没有任何数字，规格与交付承诺仍需以官方资料为准。",
+      "en": "Buyers evaluating Digit can read this as background only: it is Agility's cofounder writing about the company's just-launched Digit 5, the page carries no figures, and specs or delivery commitments still need the official source.",
+      "ja": "Digit を検討中の購入側には背景資料にとどまる。筆者は Agility の共同創業者で、発表されたばかりの自社製品 Digit 5 について書いており、数値はない。仕様や納期は公式資料で確認する必要がある。"
+    },
+    "https://www.therobotreport.com/daimon-robotics-building-the-infrastructure-layer-for-tactile-intelligence/": {
+      "zh": "Daimon 把触觉传感、真实数据采集、仿真和模型连成一体，评估这类供应商时要看整条数据链而不只是传感器本身；这是二手报道且没有数字，可靠性提升尚无依据。",
+      "en": "Daimon is tying tactile sensing to real-world data collection, simulation and models, so evaluating it means judging that whole pipeline rather than the sensor alone; this is a secondary report with no figures behind the reliability claim.",
+      "ja": "Daimon は触覚センシングを実データ収集、シミュレーション、モデルとつなげており、評価はセンサー単体ではなくデータ経路全体で行うべきだ。二次報道で数値はなく、信頼性向上の主張には裏付けがない。"
+    },
+    "https://www.leiphone.com/category/academic/omk9ne62h3khaqg5.html": {
+      "zh": "页面摘录只讲了贾萧松读博以来的几次转向，没有呈现他的具体论据，因此暂不足以影响基座模型的选型或投入方向；想引用其观点，请先读原文。",
+      "en": "The excerpt shown covers only Jia Xiaosong's career turns and none of his actual argument, so it should not yet shift foundation-model choices or spending; read the original piece before citing his view.",
+      "ja": "掲載された抜粋は賈蕭松氏の経歴上の方向転換だけで、主張の中身は示されていない。基盤モデルの選定や投資判断を動かす材料にはまだならず、見解を引用するなら原文を先に読むべきだ。"
+    },
+    "https://www.therobotreport.com/kodama-raises-7m-bring-robotics-forestry/": {
+      "zh": "做林业与伐木设备自动化的团队可以参考这条路线：先从遥操作做起，边作业边积累数据；这是二手报道，页面没有说明数据规模或能否复用。",
+      "en": "Teams automating forestry and logging equipment can note the route of starting with teleoperation and collecting data along the way; this is a secondary report and says nothing about how much data or whether it transfers.",
+      "ja": "林業・伐採機械の自動化では、まず遠隔操作から始め、作業しながらデータを集める進め方が参考になる。二次報道であり、データ量や再利用性については何も示されていない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
