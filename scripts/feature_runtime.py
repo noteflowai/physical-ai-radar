@@ -1,10 +1,12 @@
 """Run candidate code without host credentials, network or Docker socket access."""
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import signal
 import subprocess
@@ -19,6 +21,17 @@ except ImportError:
 
 BASE_IMAGE = "noteflowai/feature-tools:20260927"
 GPU_IMAGE = "poc/base-infer@sha256:f447c10e987803ab1ce25ac69221022b35f055a33f4de4d18a564691aee5af6e"
+# Feature images are built per repository and base commit and were never removed (about 3.6 GB
+# every one to two days). Images built here carry these labels; retention only ever looks at
+# labelled images of the same repository, never at unlabelled ones, feature-tools or other images.
+LABEL_REPO, LABEL_KEY, LABEL_CREATED = ("noteflow.feature.repo", "noteflow.feature.key",
+                                        "noteflow.feature.created")
+KEEP_IMAGES = 2
+# A worker resolves its image once and runs it in several stages (`docker run --rm`, so no
+# container references it in between); an image younger than this is never removed, so a
+# concurrent build for the same repository cannot pull it from under a running task.
+RETENTION_GRACE = timedelta(hours=24)
+FEATURE_TAG = re.compile(r"^noteflowai/feature-([0-9a-f]{20}):latest$")
 
 
 def archive(root: Path, commit: str, destination: Path) -> None:
@@ -32,7 +45,7 @@ def archive(root: Path, commit: str, destination: Path) -> None:
         raise ValueError("The feature execution snapshot cannot contain symlinks")
 
 
-def image_for(root: Path, base: str, config: dict, state: Path) -> str:
+def image_for(root: Path, base: str, config: dict, state: Path, repo: str | None = None) -> str:
     policy = Path(__file__).with_name("feature-runtime.Dockerfile").read_bytes()
     identity = f"{os.getuid()}:{os.getgid()}"
     key = hashlib.sha256(policy + base.encode() + identity.encode()
@@ -57,10 +70,93 @@ def image_for(root: Path, base: str, config: dict, state: Path) -> str:
                        f"/workspace /opt/browsers /home/worker /opt/feature-data "
                        f"/opt/feature-cache /opt/feature-state\nUSER {identity}\n")
         (context / "Dockerfile").write_text(dockerfile)
+        labels = {LABEL_KEY: key, LABEL_CREATED: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                  **({LABEL_REPO: repo} if repo else {})}
         with (state / "dependencies-build.log").open("a") as log:
-            subprocess.run(["docker", "build", "-t", tag, str(context)],
+            subprocess.run(["docker", "build", "-t", tag,
+                            *[a for k, v in labels.items() for a in ("--label", f"{k}={v}")], str(context)],
                            stdout=log, stderr=subprocess.STDOUT, check=True, timeout=1800)
-    return command(["docker", "image", "inspect", tag, "--format", "{{.Id}}"]).strip()
+    image = command(["docker", "image", "inspect", tag, "--format", "{{.Id}}"]).strip()
+    if repo:
+        prune_feature_images(repo, image, state)
+    return image
+
+
+def prune_feature_images(repo: str, current: str, state: Path, *, run=subprocess.run,
+                         now=lambda: datetime.now(timezone.utc)) -> list[str]:
+    """Keep the newest KEEP_IMAGES labelled feature images of one repository; remove older ones.
+
+    Only images whose labels name exactly this repository, whose only tag is a feature tag of
+    their own key, that no container (running or stopped) uses and that are older than
+    RETENTION_GRACE are removed, by ID and without --force (Docker refuses images still in use).
+    Never raises: a failure is logged to image-retention.log and the run continues. Build cache
+    is not pruned here: Docker accepts `builder prune --filter label=...` but ignores the label
+    (moby daemon/internal/builder-next/builder.go), so it would prune every user's cache.
+    """
+    log_path = state / "image-retention.log"
+
+    def log(message: str) -> None:
+        try:
+            with log_path.open("a") as stream:
+                stream.write(f"{now().strftime('%Y-%m-%dT%H:%M:%SZ')} {message}\n")
+        except OSError:
+            pass
+
+    def docker(*args: str):
+        return run(["docker", *args], capture_output=True, text=True, timeout=120, stdin=subprocess.DEVNULL)
+
+    removed: list[str] = []
+    try:
+        listed = docker("image", "ls", "-q", "--no-trunc", "--filter", f"label={LABEL_REPO}={repo}")
+        if listed.returncode:
+            log(f"list failed for {repo}: {listed.stderr.strip()[:200]}")
+            return removed
+        ids = sorted(set(listed.stdout.split()))
+        if not ids:
+            return removed
+        inspected = docker("image", "inspect", *ids)
+        if inspected.returncode:
+            log(f"inspect failed for {repo}: {inspected.stderr.strip()[:200]}")
+            return removed
+        images = []
+        for image in json.loads(inspected.stdout):
+            labels = (image.get("Config") or {}).get("Labels") or {}
+            tags = image.get("RepoTags") or []
+            key = labels.get(LABEL_KEY, "")
+            try:
+                created = datetime.strptime(labels.get(LABEL_CREATED, ""), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            except ValueError:
+                continue  # not one of ours: never touched
+            if labels.get(LABEL_REPO) != repo or tags != [f"noteflowai/feature-{key}:latest"] \
+                    or not FEATURE_TAG.fullmatch(tags[0]):
+                continue
+            images.append((created, image["Id"], tags[0]))
+        containers = docker("container", "ls", "-a", "-q", "--no-trunc")
+        if containers.returncode:
+            log(f"container list failed: {containers.stderr.strip()[:200]}; nothing removed")
+            return removed
+        used = set()
+        if containers.stdout.split():
+            refs = docker("container", "inspect", "--format", "{{.Image}}", *containers.stdout.split())
+            if refs.returncode:
+                log(f"container inspect failed: {refs.stderr.strip()[:200]}; nothing removed")
+                return removed
+            used = set(refs.stdout.split())
+        images.sort(reverse=True)
+        kept = [i for i in images if i[1] == current][:1]
+        kept += [i for i in images if i[1] != current][:max(0, KEEP_IMAGES - len(kept))]
+        for created, image_id, tag in images:
+            if (created, image_id, tag) in kept or image_id in used or now() - created < RETENTION_GRACE:
+                continue
+            result = docker("image", "rm", image_id)
+            if result.returncode:
+                log(f"keep {tag} {image_id[:19]}: rm failed: {result.stderr.strip()[:200]}")
+            else:
+                removed.append(image_id)
+                log(f"removed {tag} {image_id[:19]} (created {created:%Y-%m-%dT%H:%M:%SZ}, repo {repo})")
+    except Exception as error:  # retention must never fail a feature run
+        log(f"retention skipped for {repo}: {type(error).__name__}: {str(error)[:200]}")
+    return removed
 
 
 # This script is controller-owned and is mounted read-only into the container.
