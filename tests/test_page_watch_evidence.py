@@ -85,6 +85,14 @@ class RealRunEvidenceTests(unittest.TestCase):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         self.repo = _copy_repository(Path(tmp.name) / "repo")
+        # Hermetic history: the copied checkout may already carry later days (the production
+        # clone records today's run before publish_daily runs this suite), which would make
+        # runs[-1] someone else's run. Start from the committed schema with no runs.
+        history = self.repo / "radar" / "history.json"
+        if history.is_file():
+            data = json.loads(history.read_text())
+            data["runs"] = []
+            history.write_text(json.dumps(data))
         self.state = Path(tmp.name) / "state"
         self.evidence = self.state / "page-watch"
 
