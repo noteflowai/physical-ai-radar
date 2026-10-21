@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.24847" rel="noopener" target="_blank">DiPLO: Self-distilled Diffusion Planning for Loco-manipulation</a></h3>
 <p class="figure"><strong>99%</strong><span class="context">“enabling 99% task success in”</span></p><p class="chips"><span class="chip">45%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> デモが少なく、強化学習をゼロから回すのも難しい人型ロコマニピュレーションでは、既存の事前学習済みプランナーの事後学習を先に試す価値がある。著者報告では事前学習の 45% に対し 99% だが、どのタスクの数値かはページから読めない。</p>
 <p class="excerpt">Humanoid loco-manipulation is particularly challenging because it requires coordinating locomotion, balance, and object interaction, making it difficult to learn from limited demonstrations or from scratch through Reinforcement Learning…</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25534" rel="noopener" target="_blank">AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark</a></h3>
 <p class="figure"><strong>1.9 hours</strong><span class="context">“It comprises 1.9 hours of real-world and”</span></p><p class="chips"><span class="chip">17.9 hours</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 水中点検のチームにとって学習制御を比べる共通の土台になるが、実環境 1.9 hours に対しシミュレーション 17.9 hours と大半が模擬データである。閉ループの成績は実際の水中での挙動と照合してから採用したい。</p>
 <p class="excerpt">Underwater robots support a growing range of work, from inspecting offshore structures and pipelines to surveying reefs and accompanying divers.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25407" rel="noopener" target="_blank">AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight</a></h3>
 <p class="figure"><strong>76.56%</strong><span class="context">“a success rate of 76.56%”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> UAV に VLA を載せるなら、機上推論の遅延で予測軌道と実際の機体運動がずれる前提で制御系を組む必要がある。著者報告の成功率は 76.56% だが、ページには実機飛行の結果が示されていない。</p>
 <p class="excerpt">Onboard inference latency creates a mismatch between the trajectories predicted by vision-language-action (VLA) policies and the ongoing motion of unmanned aerial vehicles (UAVs).</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.26545" rel="noopener" target="_blank">ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation</a></h3>
 <p class="figure"><strong>64.27%</strong><span class="context">“reaching 64.27% and 64.44%”</span></p><p class="chips"><span class="chip">64.44%</span><span class="chip">21.77%</span><span class="chip">32.25%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 観測履歴を積み増すだけのナビゲーションは冗長になり、保持した情報も活かされにくい。再学習の前に既存の履歴の参照の仕方を見直す選択肢を示す学習不要の手法で、著者報告は 64.27% と 64.44% だが、指標名はページにない。</p>
 <p class="excerpt">Vision-and-language navigation (VLN) relies on retaining and using relevant observations. Yet growing histories introduce redundancy, and retained information may remain underused.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -163,7 +163,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.24675" rel="noopener" target="_blank">Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation</a></h3>
 <p class="figure"><strong>42.0%</strong><span class="context">“FIBER achieves 42.0% mean success”</span></p><p class="chips"><span class="chip">11.6%</span><span class="chip">3.5%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人型ロボットで上位の計画と下位制御のつなぎ方を選ぶなら、平均成功率 42.0% 対運動学的計画 3.5% という著者報告は行動に揃えた潜在表現を支持する。ただし 42.0% は実運用には遠く、測定条件もページからは分からない。</p>
 <p class="excerpt">Learning a single perceptive policy for diverse humanoid loco-manipulation requires unifying high-level task decisions without losing the state-dependent physical responses that make each interaction succeed.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25691" rel="noopener" target="_blank">ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> マニピュレーションのデータ収集予算を組むチームには、収集コストと実環境への適応性のトレードオフへの一つの試みとして参考になる。実機・閉ループ実験の記載はあるが数値がなく、削減効果は見積もれない。</p>
 <p class="excerpt">Data-driven learning for general-purpose robotic manipulation presents a fundamental trade-off between data-collection cost and adaptability to real-world environments.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -193,7 +193,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25961" rel="noopener" target="_blank">PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 実行速度が VLA 方策の実運用を阻んでいるなら、行動の時間的な刻み方に手を入れるこのプレプリントは検討対象になる。実機・閉ループ実験の記載はあるものの数値はなく、高速化を言える段階ではない。</p>
 <p class="excerpt">Fast and reliable manipulation is crucial for practical robot deployment. Although Vision-Language-Action (VLA) models have recently shown remarkable progress as generalist robot policies, their execution often remains temporally…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -208,7 +208,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html" rel="noopener" target="_blank">启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 事後学習が実機の稼働時間に縛られているチームは注視したい方向だが、二次報道でページに数値もない。実機工程をどこまで省けるのかは、一次情報で確かめてから計画に入れるべきだ。</p>
 <p class="excerpt">继无本体之后，具身后训练范式有了新进展。最近，具身行业讨论“无本体进行后训练的可能性”的热度很高。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-20</span>
