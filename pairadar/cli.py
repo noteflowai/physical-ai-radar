@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import os
 import random
@@ -26,7 +27,7 @@ from .config import (
     now_iso,
 )
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
-from .fetch import _resolve_page_watch, baseline_items, fetch_all, page_watch_settings
+from .fetch import baseline_items, fetch_all
 from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
 from .render import chart_title, inject_readme, update_index, write_daily, write_latest
 from .site import write_site
@@ -38,6 +39,41 @@ PAGE_STATE_PATH = ROOT / "radar" / "page-watch.json"
 # The lane and evidence charts count the picks of this many days, today included.
 # The feed store they are read from keeps at most 100 entries, so a week always fits.
 CHART_DAYS = 7
+
+
+def load_page_state(path: Path = PAGE_STATE_PATH) -> dict[str, Any]:
+    """The page_watch baseline, or {} when there is none or it cannot be read.
+
+    The baseline only saves re-announcing old posts; a damaged one (a torn write, a bad
+    merge) is rebuilt on this run, as on a first look, instead of failing the radar.
+    """
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    except (OSError, ValueError) as exc:
+        print(f"[radar] page_watch baseline {path.name} unreadable ({type(exc).__name__}); rebuilding it")
+        return {}
+    if not isinstance(payload, dict):
+        print(f"[radar] page_watch baseline {path.name} is not an object; rebuilding it")
+        return {}
+    return payload
+
+
+def save_page_state(path: Path, payload: dict[str, Any]) -> None:
+    """Write the baseline atomically: a temporary file in the same directory, then replace."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.chmod(temporary, 0o644)  # a public, committed file, like the rest of radar/
+        os.replace(temporary, path)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(temporary)
+        raise
 
 
 def load_history(path: Path = HISTORY_PATH) -> list[dict[str, Any]]:
@@ -117,7 +153,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     history = [entry for entry in load_history() if entry["date"] != day]
     earlier = [entry for entry in load_store(ROOT/"radar"/FEED_JSON) if entry["date"] != day]
     told = [entry["title"] for entry in within(earlier, day, repeat_days) if entry["evidence"] != "R"]
-    page_state = load_json(PAGE_STATE_PATH) if PAGE_STATE_PATH.exists() else {}
+    page_state = load_page_state()
     report = fetch_all(config, offline=offline, reference=reference, page_state=page_state)
     live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
@@ -148,6 +184,10 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "fallback": sorted(report.fallback),
         # A channel whose local service was down (page_watch without Firecrawl).
         "unavailable": sorted(report.unavailable),
+        # page_watch pages not read, kept out of `failed`: pairadar.health reports them
+        # as page_watch_failing, never as struggling, so source repair never picks one.
+        "page_failed": sorted(report.page_watch.get("failed", [])),
+        "page_robots_skipped": sorted(report.page_watch.get("robots_skipped", [])),
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 
@@ -170,8 +210,9 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
         "notes": load_notes(day),
-        # Only a round that read pages replaces the baseline; offline or with Firecrawl
-        # down it comes back unchanged and the file is left alone.
+        # Only a round that changed the baseline (a digest, a link, a line, what was
+        # offered) rewrites it; offline, with Firecrawl down or with every page as it
+        # was, the file is left alone, so it does not change every day.
         "page_state": (report.page_state if report.page_state.get("sources")
                        and report.page_state.get("sources") != page_state.get("sources") else None),
     }
@@ -278,7 +319,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     save_history(ctx["history"], keep_urls_days=ctx["repeat_days"],
                  path=root/"radar"/"history.json")
     if ctx.get("page_state"):
-        dump_json(root/"radar"/"page-watch.json", ctx["page_state"])
+        save_page_state(root/"radar"/"page-watch.json", ctx["page_state"])
 
     print(
         f"[radar] {day}: {len(ctx['picked'])} picked from {ctx['live_count']} live items, "
@@ -307,44 +348,71 @@ def page_watch_evidence_dir() -> Path:
     return Path(base) / "page-watch"
 
 
-def write_page_watch_evidence(config: Config, fetch: dict[str, Any], day: str,
-                              directory: Path | None = None) -> Path | None:
+def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) -> str:
+    """The evidence `status` for one run, from FetchReport.to_dict()["page_watch"] only.
+
+    - "error": the radar run itself raised;
+    - "firecrawl-unavailable": the local Firecrawl did not answer, or stopped answering
+      part way (the channel stopped, so not every page was looked at);
+    - "skipped": page_watch disabled, or no entry reached;
+    - "all-failed": pages were attempted but none could be read (every page failed or
+      was disallowed by robots.txt);
+    - "ok": at least one watched page was read.
+
+    Only "ok" is success for the freshness objective (noteflow-auto radar-page-watch);
+    every other value is a non-success outcome.
+    """
+    block = page_watch if isinstance(page_watch, dict) else {}
+    if error:
+        return "error"
+    if block.get("unavailable"):
+        return "firecrawl-unavailable"
+    if not block.get("enabled") or not block.get("attempted"):
+        return "skipped"
+    if not block.get("checked"):
+        return "all-failed"
+    return "ok"
+
+
+def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
+                              directory: Path | None = None, error: bool = False) -> Path | None:
     """One record per run day for the freshness objective, written atomically.
 
     Contract (noteflow-auto config/delivery-freshness.json, objective radar-page-watch):
-    schema/channel fixed, `status` is exactly "ok" only when Firecrawl answered and at least one
-    watched page was actually checked; "error" when pages were attempted but none could be checked
-    (403s, layout changes, robots, a broken run), "firecrawl-unavailable" or "skipped" otherwise;
-    `finished_at` ISO-8601 with an offset. Counts only, never page text or URLs beyond source ids.
+    `schema` "pairadar-page-watch-v1", `channel` "page_watch", `status` from
+    `page_watch_status` (exactly "ok" only when at least one watched page was read;
+    "all-failed", "firecrawl-unavailable", "skipped" and "error" are non-success),
+    `finished_at` ISO-8601 with an offset. It also carries `sources_checked` (a count),
+    `sources_failed` and `sources_robots_skipped` (source ids). Never page text.
+
+    Read only from the explicit `page_watch` block that fetch_page_watch produced, never
+    from the report's overall counts. The evidence is observational: any exception in
+    here is logged and swallowed, so it can never fail the radar.
     """
-    settings = page_watch_settings(config)
-    attempted = [s for s in fetch.get("attempted", []) if s in {e["id"] for e in _resolve_page_watch(config.sources)}]
-    failed = sorted(set(attempted) & set(fetch.get("failed", [])))
-    checked = len(attempted) - len(failed)
-    if fetch.get("error"):
-        status = "error"
-    elif "page_watch" in fetch.get("unavailable", []):
-        status = "firecrawl-unavailable"
-    elif not settings["enabled"] or not attempted:
-        status = "skipped"
-    elif checked <= 0:
-        status = "error"  # Firecrawl answered but no watched page could be checked: never "ok"
-    else:
-        status = "ok"
-    record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch", "status": status,
-              "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
-              "sources_checked": checked, "sources_failed": failed}
-    target_dir = directory or page_watch_evidence_dir()
     try:
+        block = (fetch or {}).get("page_watch") if isinstance(fetch, dict) else None
+        block = block if isinstance(block, dict) else {}
+        record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch",
+                  "status": page_watch_status(block, error=error),
+                  "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
+                  "sources_checked": len(block.get("checked") or []),
+                  "sources_failed": sorted(block.get("failed") or []),
+                  "sources_robots_skipped": sorted(block.get("robots_skipped") or [])}
+        target_dir = directory or page_watch_evidence_dir()
         target_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         target = target_dir / f"{day}.json"
         fd, temporary = tempfile.mkstemp(dir=target_dir, prefix=f".{day}.", suffix=".tmp")
-        with os.fdopen(fd, "w", encoding="utf-8") as handle:
-            json.dump(record, handle, ensure_ascii=False, indent=1)
-        os.replace(temporary, target)
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as handle:
+                json.dump(record, handle, ensure_ascii=False, indent=1)
+            os.replace(temporary, target)
+        except BaseException:
+            with contextlib.suppress(OSError):
+                os.unlink(temporary)
+            raise
         return target
-    except OSError as exc:  # evidence is observational; it must never fail the radar
-        print(f"[radar] page_watch evidence not written: {type(exc).__name__}")
+    except Exception as exc:  # noqa: BLE001 -- evidence is observational; never fail the radar
+        print(f"[radar] page_watch evidence not written: {type(exc).__name__}: {exc}")
         return None
 
 
@@ -372,13 +440,10 @@ def main(argv: list[str] | None = None) -> int:
                   write_readme=not args.no_readme, out=args.out)
     except BaseException:
         if reporting:
-            try:
-                write_page_watch_evidence(load_config(), {"error": True}, day)
-            except Exception:  # noqa: BLE001 -- the run's own exception is the one that matters
-                pass
+            write_page_watch_evidence(None, day, error=True)
         raise
     if reporting:
-        write_page_watch_evidence(load_config(), ctx["fetch"], ctx.get("day") or day)
+        write_page_watch_evidence(ctx.get("fetch"), ctx.get("date") or day)
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")
         return 2

@@ -12,6 +12,7 @@ import json
 import os
 import socket
 import sys
+import tempfile
 import threading
 import unittest
 from datetime import date
@@ -24,6 +25,7 @@ sys.path.insert(0, str(ROOT))
 
 from pairadar import cli, fetch, health  # noqa: E402
 from pairadar.config import Config, load_config  # noqa: E402
+from pairadar.distill import prefilter  # noqa: E402
 
 DAY = date(2026, 10, 21)
 
@@ -100,7 +102,7 @@ class FakeFirecrawl:
                     self.send_header("Location", "http://169.254.169.254/latest/meta-data/")
                     self.end_headers()
                     return
-                payload = json.dumps(reply).encode()
+                payload = reply if isinstance(reply, bytes) else json.dumps(reply).encode()
                 self.send_response(status)
                 self.send_header("Content-Type", "application/json")
                 self.send_header("Content-Length", str(len(payload)))
@@ -253,33 +255,42 @@ class ChangeTest(unittest.TestCase):
         self.assertEqual((item.title, item.evidence, item.source_id, item.topical),
                          ("Introducing Helix 3", "O", "figure", True))
         links = result.state["sources"]["figure"]["links"]
-        self.assertEqual(links, ["https://www.figure.ai/news/helix-3", "https://www.figure.ai/news/series-d"])
-        self.assertEqual(result.attempted, ["figure"])
+        self.assertEqual([link["url"] for link in links],
+                         ["https://www.figure.ai/news/helix-3", "https://www.figure.ai/news/series-d"])
+        self.assertTrue(all(link["first_seen"] == DAY.isoformat() and link["seeded"] for link in links))
+        self.assertEqual((result.attempted, result.checked), (["figure"], ["figure"]))
 
-    def test_changed_listing_yields_only_new_first_party_links(self) -> None:
+    def test_changed_listing_yields_new_first_party_links_first(self) -> None:
         with FakeFirecrawl() as fake:
             self.serve_listing(fake, LISTING_V1)
             first, _ = watch(self.raw, fake.url)
             self.serve_listing(fake, LISTING_V2, change="changed")
             second, _ = watch(self.raw, fake.url, first.state)
-        self.assertEqual([i.url for i in second.items], ["https://www.figure.ai/news/f04-second-customer"])
+        # The new link first (never offered); the dated helix-3 is still inside the age
+        # window and offered again (the repeat guard downstream drops it once published);
+        # the undated series-d from the first look and off-site links never are.
+        self.assertEqual([i.url for i in second.items], ["https://www.figure.ai/news/f04-second-customer",
+                                                         "https://www.figure.ai/news/helix-3"])
         item = second.items[0]
         self.assertEqual(item.published, DAY.isoformat(), "undated new link: first seen today")
         self.assertNotIn("<script>", item.title)
         self.assertTrue(item.summary.startswith("A short teaser about the deployment."), item.summary)
         self.assertLessEqual(len(item.summary), fetch.MAX_SUMMARY_CHARS + 2)
 
-    def test_same_and_removed_give_nothing(self) -> None:
+    def test_unchanged_empty_same_and_removed_give_nothing_new(self) -> None:
+        undated = "[Figure raises Series D](/news/series-d)\n[Another old post](/news/old)\n"
         with FakeFirecrawl() as fake:
-            self.serve_listing(fake, LISTING_V1)
+            self.serve_listing(fake, undated)
             first, _ = watch(self.raw, fake.url)
-            # Unchanged content, whatever Firecrawl calls it: nothing new.
             again, _ = watch(self.raw, fake.url, first.state)
-            self.serve_listing(fake, LISTING_V2, change="same")
+            fake.serve("https://www.figure.ai/news", {"success": True, "data": {
+                "markdown": "", "metadata": {"statusCode": 200},
+                "changeTracking": {"changeStatus": "same"}}})
             same, _ = watch(self.raw, fake.url, first.state)
             fake.serve("https://www.figure.ai/news", page("gone", status=404, change="removed"))
             removed, _ = watch(self.raw, fake.url, first.state)
-        self.assertEqual((again.items, same.items, removed.items), ([], [], []))
+        self.assertEqual((first.items, again.items, same.items, removed.items), ([], [], [], []))
+        self.assertEqual(again.state, first.state, "an unchanged page leaves the baseline as it was")
         self.assertEqual(removed.failed, ["figure"])
         self.assertEqual(removed.state["sources"]["figure"], first.state["sources"]["figure"])
 
@@ -324,7 +335,7 @@ class RobotsTest(unittest.TestCase):
             fake.serve("https://www.iso.org/standard/1.html", page("ISO page"))
             result, out = watch(raw, fake.url)
         self.assertEqual(fake.scraped(), ["https://www.iso.org/standard/1.html"])
-        self.assertEqual(result.failed, ["figure"])
+        self.assertEqual((result.robots_skipped, result.failed, result.checked), (["figure"], [], ["watch-iso-1"]))
         self.assertIn("robots.txt disallows", out)
 
     def test_an_unreadable_robots_file_disallows(self) -> None:
@@ -335,7 +346,7 @@ class RobotsTest(unittest.TestCase):
                        {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": 503}}})
             fake.serve("https://www.figure.ai/news", page(LISTING_V1))
             result, _ = watch(raw, fake.url)
-        self.assertEqual((fake.scraped(), result.items, result.failed), ([], [], ["figure"]))
+        self.assertEqual((fake.scraped(), result.items, result.robots_skipped), ([], [], ["figure"]))
 
 
 def closed_port() -> int:
@@ -389,6 +400,211 @@ class UnavailableTest(unittest.TestCase):
         self.assertEqual(ctx["history"][-1]["unavailable"], ["page_watch"])
         self.assertEqual(ctx["fetch"]["unavailable"], ["page_watch"])
         self.assertIsNone(ctx["page_state"], "a round that read no page keeps the baseline file")
+
+
+def three_sources() -> dict:
+    """figure, then 1x, then the ISO page: a middle entry to fail."""
+    raw = sources()
+    raw["page_watch"].insert(1, {"id": "1x", "url": "https://www.1x.tech/discover", "mode": "listing",
+                                 "link_prefix": "/discover/", "hosts": ["1x.tech"], "evidence": "O",
+                                 "weight": 1.0, "publisher": "1X", "topical": True})
+    return raw
+
+
+SITE_ERROR = {"success": False, "code": "SCRAPE_SITE_ERROR",
+              "error": 'The URL failed to load in the browser with error code "ERR_CONNECTION_RESET".'}
+
+
+class ServiceOrPageTest(unittest.TestCase):
+    """R154-02: a site failing inside Firecrawl is that page's failure, not the service."""
+
+    def serve_all(self, fake: FakeFirecrawl) -> None:
+        for origin in ("https://www.figure.ai", "https://www.1x.tech", "https://www.iso.org"):
+            fake.serve(origin + "/robots.txt", ROBOTS_OPEN)
+        fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+        fake.serve("https://www.1x.tech/discover", page("[NEO update](/discover/neo) Oct 19, 2026"))
+        fake.serve("https://www.iso.org/standard/1.html", page("# ISO 1\nStage: 30.20"))
+
+    def test_a_500_with_a_firecrawl_error_code_fails_only_that_page(self) -> None:
+        for code, reply in ((500, SITE_ERROR), (500, {**SITE_ERROR, "code": "SCRAPE_SSL_ERROR"}),
+                            (500, {**SITE_ERROR, "code": "SCRAPE_ALL_ENGINES_FAILED"}),
+                            (408, {"success": False, "code": "SCRAPE_TIMEOUT", "error": "timed out"})):
+            with self.subTest(code=code, firecrawl=reply["code"]), FakeFirecrawl() as fake:
+                self.serve_all(fake)
+                fake.serve("https://www.1x.tech/discover", reply, status=code)
+                result, out = watch(three_sources(), fake.url)
+                self.assertFalse(result.unavailable, out)
+                self.assertEqual(result.attempted, ["figure", "1x", "watch-iso-1"])
+                self.assertEqual((result.checked, result.failed), (["figure", "watch-iso-1"], ["1x"]))
+                self.assertEqual(fake.scraped(), ["https://www.figure.ai/news", "https://www.1x.tech/discover",
+                                                  "https://www.iso.org/standard/1.html"])
+
+    def test_what_still_means_the_service_is_down(self) -> None:
+        cases = {"UNKNOWN_ERROR": (500, {"success": False, "code": "UNKNOWN_ERROR", "error": "x"}),
+                 "no code": (500, {"success": False, "error": "x"}),
+                 "not JSON": (500, b"<html>Internal Server Error</html>"),
+                 "503 with a code": (503, SITE_ERROR), "502": (502, SITE_ERROR), "504": (504, SITE_ERROR)}
+        for name, (code, reply) in cases.items():
+            with self.subTest(name), FakeFirecrawl() as fake:
+                self.serve_all(fake)
+                fake.serve("https://www.1x.tech/discover", reply, status=code)
+                result, _ = watch(three_sources(), fake.url)
+                self.assertTrue(result.unavailable)
+                self.assertEqual((result.attempted, result.checked, result.failed), (["figure"], ["figure"], []))
+                self.assertNotIn("https://www.iso.org/standard/1.html", fake.scraped(), "the channel stopped")
+
+    def test_consecutive_5xx_page_failures_stop_the_channel(self) -> None:
+        self.assertEqual(fetch.MAX_CONSECUTIVE_5XX, 3)
+        raw = three_sources()
+        raw["page_watch"].append({**raw["page_watch"][0], "id": "figure-2", "url": "https://www.figure.ai/blog",
+                                  "link_prefix": "/blog/"})
+        with FakeFirecrawl() as fake:
+            self.serve_all(fake)
+            for url in ("https://www.figure.ai/news", "https://www.1x.tech/discover",
+                        "https://www.iso.org/standard/1.html", "https://www.figure.ai/blog"):
+                fake.serve(url, SITE_ERROR, status=500)
+            result, out = watch(raw, fake.url)
+        self.assertTrue(result.unavailable)
+        self.assertEqual((result.failed, result.checked), (["figure", "1x"], []))
+        self.assertIn("3 consecutive HTTP 5xx", out)
+        self.assertNotIn("https://www.figure.ai/blog", fake.scraped())
+
+    def test_a_page_that_answers_resets_the_count(self) -> None:
+        with FakeFirecrawl() as fake:
+            self.serve_all(fake)
+            fake.serve("https://www.figure.ai/news", SITE_ERROR, status=500)
+            fake.serve("https://www.iso.org/standard/1.html", SITE_ERROR, status=500)
+            result, _ = watch(three_sources(), fake.url)
+        self.assertFalse(result.unavailable)
+        self.assertEqual((result.checked, result.failed), (["1x"], ["figure", "watch-iso-1"]))
+
+
+class BaselineSemanticsTest(unittest.TestCase):
+    """R154-05: recording a link in the baseline never consumes it."""
+
+    def setUp(self) -> None:
+        self.raw = sources()
+        self.raw["page_watch"] = self.raw["page_watch"][:1]
+        self.old = "\n".join(f"[Old post {i}](/news/old-{i}) Jan {i}, 2026" for i in range(1, 4))
+
+    def test_round_three_still_offers_round_two_overflow(self) -> None:
+        new = "\n".join(f"[Figure post {i} humanoid](/news/new-{i}) Oct 1{i}, 2026" for i in range(1, 6))
+        undated = "\n".join(f"[Undated humanoid note {i}](/news/u-{i})" for i in range(1, 3))
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.figure.ai/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.figure.ai/news", page(self.old))
+            first, _ = watch(self.raw, fake.url)
+            fake.serve("https://www.figure.ai/news", page(new + "\n" + self.old + "\n" + undated))
+            second, _ = watch(self.raw, fake.url, first.state)
+            third, _ = watch(self.raw, fake.url, second.state)
+            fourth, _ = watch(self.raw, fake.url, third.state)
+        tail = lambda result: [i.url.rsplit("/", 1)[1] for i in result.items]  # noqa: E731
+        self.assertEqual(first.items, [], "old posts outside the age window are recorded, not offered")
+        self.assertEqual(tail(second), ["new-1", "new-2", "new-3"])
+        # Everything is in the baseline already, and none of it is lost.
+        recorded = [link["url"].rsplit("/", 1)[1] for link in second.state["sources"]["figure"]["links"]]
+        self.assertEqual(len(recorded), 10)
+        self.assertEqual(tail(third), ["new-4", "new-5", "u-1"], "round 2's overflow, offered in round 3")
+        self.assertEqual(tail(fourth), ["u-2", "new-1", "new-2"], "then the least recently offered")
+        undated_item = third.items[2]
+        self.assertEqual(undated_item.published, DAY.isoformat(), "first seen today")
+
+    def test_the_age_window_bounds_what_is_offered(self) -> None:
+        stale = "[Figure post from last year](/news/stale) Oct 1, 2025"
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.figure.ai/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.figure.ai/news", page(self.old))
+            first, _ = watch(self.raw, fake.url)
+            fake.serve("https://www.figure.ai/news", page(stale + "\n" + self.old))
+            second, _ = watch(self.raw, fake.url, first.state)
+        # Newly listed but stating an old date: offered, dated as the page says, and the
+        # prefilter's age gate is what drops it.
+        self.assertEqual([i.published for i in second.items], ["2025-10-01"])
+        old_state = {**first.state, "sources": {"figure": {**first.state["sources"]["figure"],
+                                                           "links": [{"url": "https://www.figure.ai/news/x",
+                                                                      "first_seen": "2026-08-01"}]}}}
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.figure.ai/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.figure.ai/news", page("[An undated humanoid post](/news/x)"))
+            aged, _ = watch(self.raw, fake.url, old_state)
+        self.assertEqual(aged.items, [], "first seen more than max_age_days ago: no longer offered")
+
+    def test_a_changed_page_with_an_old_published_time_survives_the_prefilter(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][1:]
+        before = "# ISO 1 humanoid robot safety\nHigh-risk obligations apply from 2027-12-02."
+        after = before + "\nCouncil adopts its position on the humanoid robot safety postponement."
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.iso.org/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.iso.org/standard/1.html", page(before, publishedTime="2024-07-12T00:00:00Z"))
+            first, _ = watch(raw, fake.url)
+            fake.serve("https://www.iso.org/standard/1.html", page(after, publishedTime="2024-07-12T00:00:00Z"))
+            second, _ = watch(raw, fake.url, first.state)
+            third, _ = watch(raw, fake.url, second.state)
+        self.assertEqual([i.published for i in first.items], ["2024-07-12"], "a first look keeps the page date")
+        self.assertEqual([i.published for i in second.items], [DAY.isoformat()])
+        self.assertIn("Council adopts its position", second.items[0].summary)
+        config = load_config()
+        with contextlib.redirect_stdout(io.StringIO()):
+            kept = prefilter(second.items, config, DAY)
+            dropped = prefilter(first.items, config, DAY)
+        self.assertEqual((len(kept), len(dropped)), (1, 0))
+        self.assertEqual(third.items, [])
+
+    def test_update_stamps_on_a_page_are_not_a_change(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][1:]
+        body = "# ISO 1\nStage: 30.20 Committee draft\n"
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.iso.org/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.iso.org/standard/1.html", page(body + "Last updated: 3 October 2026\n© 2026 ISO"))
+            first, _ = watch(raw, fake.url)
+            fake.serve("https://www.iso.org/standard/1.html", page(body + "Last updated: 20 October 2026\n© 2027 ISO"))
+            stamped, _ = watch(raw, fake.url, first.state)
+            fake.serve("https://www.iso.org/standard/1.html", page(body.replace("30.20", "40.20")))
+            staged, _ = watch(raw, fake.url, first.state)
+        self.assertEqual(stamped.items, [])
+        self.assertEqual(stamped.state, first.state, "an update stamp alone does not rewrite the baseline")
+        self.assertEqual(len(staged.items), 1, "a stage code is a number, and it is the news")
+
+    def test_a_bare_url_baseline_from_before_is_read(self) -> None:
+        state = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {
+            "digest": "x", "since": "2026-10-01", "links": ["https://www.figure.ai/news/series-d"]}}}
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.figure.ai/robots.txt", ROBOTS_OPEN)
+            fake.serve("https://www.figure.ai/news", page("[Figure raises Series D](/news/series-d)"))
+            result, _ = watch(self.raw, fake.url, state)
+        self.assertEqual(result.items, [])
+
+
+class BaselineFileTest(unittest.TestCase):
+    def test_atomic_save_and_corrupt_load(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "radar" / "page-watch.json"
+            self.assertEqual(cli.load_page_state(path), {})
+            cli.save_page_state(path, {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {}})
+            self.assertEqual(json.loads(path.read_text())["schema"], fetch.PAGE_STATE_SCHEMA)
+            self.assertEqual([p.name for p in path.parent.iterdir()], ["page-watch.json"])
+            self.assertEqual(path.stat().st_mode & 0o777, 0o644)
+            for broken in ('{"schema": "x", "sour', "[1, 2]", "\xff\xfe"):
+                path.write_text(broken)
+                with contextlib.redirect_stdout(io.StringIO()) as out:
+                    self.assertEqual(cli.load_page_state(path), {})
+                self.assertIn("rebuilding", out.getvalue())
+            with patch.object(cli.json, "dump", side_effect=RuntimeError("disk")):
+                with self.assertRaises(RuntimeError):
+                    cli.save_page_state(path, {"x": 1})
+            self.assertEqual([p.name for p in path.parent.iterdir()], ["page-watch.json"], "no temp left")
+
+    def test_an_unchanged_round_leaves_the_file_alone(self) -> None:
+        report = fetch.FetchReport(attempted=["figure"])
+        report.page_state = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {"digest": "d"}}}
+        with patch.object(cli, "fetch_all", return_value=report), \
+                patch.object(cli, "load_history", return_value=[]), \
+                patch.object(cli, "load_page_state", return_value=dict(report.page_state)), \
+                contextlib.redirect_stdout(io.StringIO()):
+            ctx = cli.build_context(load_config(), offline=False, limit=8, day="2026-10-21")
+        self.assertIsNone(ctx["page_state"])
 
 
 class TextTest(unittest.TestCase):

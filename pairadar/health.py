@@ -12,6 +12,12 @@ separately and does not count as failing -- readers got the day's papers, and th
 repair job cannot fix an endpoint that refuses this host. A channel whose local service
 did not answer (`unavailable`: page_watch when the loopback Firecrawl is down) is
 counted under `unavailable`, never as failing: it is the machine, not a source.
+A page_watch page that was not read (`page_failed` in the run log: a non-2xx page, a
+site failing inside Firecrawl) is reported under `page_watch_failing`, and one
+disallowed by robots.txt (`page_robots_skipped`) under `page_watch_robots_skipped`;
+neither is ever struggling. The repair job can only repair a declared feed, so a
+page_watch source in `struggling` would wake a model every night for a fix it must
+reject; whether to drop such a page from `page_watch` is a person's call.
 
 Each struggling source also carries `streak_days`, the consecutive runs it has
 failed counted back from the latest one, and `failing_since`, the date of the oldest
@@ -33,11 +39,27 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .config import ROOT, load_json
+from .config import DATA_DIR, ROOT, load_json
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
 WINDOW = 14  # days, today included
 THRESHOLD = 3
+
+
+def page_watch_ids() -> frozenset[str]:
+    """The ids declared under `page_watch` in data/sources.json; empty if unreadable."""
+    try:
+        with (DATA_DIR / "sources.json").open(encoding="utf-8") as handle:
+            entries = json.load(handle).get("page_watch", [])
+        return frozenset(e["id"] for e in entries if isinstance(e, dict) and isinstance(e.get("id"), str))
+    except (OSError, ValueError, AttributeError, TypeError):
+        return frozenset()
+
+
+def _page_failed(entry: dict[str, Any], watched: frozenset[str]) -> list[str]:
+    """page_watch ids not read on this run: `page_failed`, plus any listed under `failed`
+    (a run log written before page_failed existed)."""
+    return sorted({*entry.get("page_failed", []), *(s for s in entry.get("failed", []) if s in watched)})
 
 
 def load_runs(path: Path = HISTORY_PATH) -> list[dict[str, Any]]:
@@ -85,21 +107,56 @@ def unavailable_by_channel(runs: list[dict[str, Any]], reference: date,
     return _count(_in_window(runs, reference, window), "unavailable")
 
 
+def page_watch_failing(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
+                       threshold: int = THRESHOLD,
+                       watched: frozenset[str] | None = None) -> list[dict[str, Any]]:
+    """page_watch sources over the threshold that also were not read on the latest run.
+
+    Same rule as `struggling`, read from `page_failed`; reported for a person, never
+    to the repair job.
+    """
+    watched = page_watch_ids() if watched is None else watched
+    observed = [{**entry, "page_failed": _page_failed(entry, watched)}
+                for entry in _in_window(runs, reference, window)]
+    if not observed:
+        return []
+    latest = set(observed[-1]["page_failed"])
+    counts = _count(observed, "page_failed")
+    entries = []
+    for source, days in sorted(counts.items(), key=lambda pair: (-pair[1], pair[0])):
+        if days < threshold or source not in latest:
+            continue
+        streak_days, since = 0, None
+        for entry in reversed(observed):
+            if source not in entry.get("page_failed", []):
+                break
+            streak_days, since = streak_days + 1, entry["date"]
+        entries.append({"source": source, "failed_days": days, "streak_days": streak_days,
+                        "failing_since": since})
+    return entries
+
+
 def days_observed(runs: list[dict[str, Any]], reference: date, window: int = WINDOW) -> int:
     """Runs inside the window that recorded source health at all."""
     return len(_in_window(runs, reference, window))
 
 
 def struggling(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
-               threshold: int = THRESHOLD) -> list[tuple[str, int]]:
-    """Sources at or over the failure threshold that also failed the latest run, worst first."""
+               threshold: int = THRESHOLD,
+               exclude: frozenset[str] | None = None) -> list[tuple[str, int]]:
+    """Sources at or over the failure threshold that also failed the latest run, worst first.
+
+    page_watch sources (`exclude`, by default the ids in data/sources.json) are never
+    struggling, whatever the run log says: the repair job can only repair a feed.
+    """
+    exclude = page_watch_ids() if exclude is None else exclude
     observed = _in_window(runs, reference, window)
     if not observed:
         return []
     latest = set(observed[-1].get("failed", []))
     counts = _count(observed, "failed")
     ranked = [(source, days) for source, days in counts.items()
-              if days >= threshold and source in latest]
+              if days >= threshold and source in latest and source not in exclude]
     return sorted(ranked, key=lambda pair: (-pair[1], pair[0]))
 
 
@@ -127,7 +184,8 @@ def streak(runs: list[dict[str, Any]], reference: date, window: int,
 def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
            threshold: int = THRESHOLD) -> dict[str, Any]:
     entries = []
-    for source, days in struggling(runs, reference, window, threshold):
+    watched = page_watch_ids()
+    for source, days in struggling(runs, reference, window, threshold, exclude=watched):
         streak_days, failing_since = streak(runs, reference, window, source)
         entries.append({"source": source, "failed_days": days,
                         "streak_days": streak_days, "failing_since": failing_since})
@@ -139,6 +197,8 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "failures": failures_by_source(runs, reference, window),
         "fallbacks": fallbacks_by_source(runs, reference, window),
         "unavailable": unavailable_by_channel(runs, reference, window),
+        "page_watch_failing": page_watch_failing(runs, reference, window, threshold, watched),
+        "page_watch_robots_skipped": _count(_in_window(runs, reference, window), "page_robots_skipped"),
         "struggling": entries,
     }
 

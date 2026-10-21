@@ -426,7 +426,20 @@ FIRECRAWL_ENV = "RADAR_FIRECRAWL_URL"
 DEFAULT_FIRECRAWL = "http://127.0.0.1:3002"
 # The baseline in radar/page-watch.json; distinct from the freshness evidence schema
 # (pairadar-page-watch-v1, written by cli.write_page_watch_evidence) on purpose.
-PAGE_STATE_SCHEMA = "pairadar-page-watch-baseline-1"
+PAGE_STATE_SCHEMA = "pairadar-page-watch-baseline-2"
+# A Firecrawl reply with one of these is the service (or its gateway) being down.
+SERVICE_DOWN_STATUS = frozenset({502, 503, 504})
+# This many page failures in a row answered with a 5xx and the channel is treated as
+# unavailable: a broken service is not tried against every remaining source.
+MAX_CONSECUTIVE_5XX = 3
+# Where firecrawl_post records the HTTP status of a failed-page reply.
+HTTP_STATUS_KEY = "_http_status"
+# Page-mode lines that only say when the page was last touched; a change in them is
+# not news. (Numbers elsewhere -- stage codes, application dates -- are the substance
+# of a standards page and still count.)
+_STAMP_LINE = re.compile(
+    r"^\W*(last\s+)?(updated|modified|reviewed|revised|published)\b|©|\bcopyright\b|"
+    r"^\W*(page\s+)?last\s+(change|update)", re.I)
 # Same tag on every request, so the radar's change history never mixes with anything
 # else that uses the same Firecrawl.
 CHANGE_TAG = "physical-ai-radar"
@@ -601,8 +614,12 @@ def firecrawl_post(endpoint: str, path: str, body: dict[str, Any], timeout: floa
     """POST JSON to the loopback Firecrawl and return its JSON reply.
 
     Raises FirecrawlUnavailable when the service itself is not there or not well:
-    refused, timed out, 5xx, 401, 429, a redirect or a reply that is not JSON. A
-    4xx about the target page is returned like a success; the caller reads it.
+    refused, timed out, 502/503/504, a 5xx that is not JSON or carries no Firecrawl
+    error `code` (or `UNKNOWN_ERROR`), 401, 429, a redirect or a reply that is not
+    JSON. A 4xx about the target page (408 included: Firecrawl's own scrape timeout)
+    and a 5xx with a Firecrawl error code such as SCRAPE_SITE_ERROR are returned as a
+    failed reply carrying the HTTP status under `HTTP_STATUS_KEY`; the caller records
+    that page as failed and goes on.
     """
     base = loopback_endpoint(endpoint)
     if base is None:
@@ -614,7 +631,7 @@ def firecrawl_post(endpoint: str, path: str, body: dict[str, Any], timeout: floa
         with _FIRECRAWL_OPENER.open(request, timeout=timeout) as response:
             payload = response.read(MAX_RESPONSE_BYTES + 1)
     except urllib.error.HTTPError as exc:
-        if exc.code >= 500 or exc.code in (401, 429) or 300 <= exc.code < 400:
+        if exc.code in SERVICE_DOWN_STATUS or exc.code in (401, 429) or 300 <= exc.code < 400:
             raise FirecrawlUnavailable(f"HTTP {exc.code}") from None
         try:
             payload = exc.read(MAX_RESPONSE_BYTES + 1)
@@ -623,10 +640,18 @@ def firecrawl_post(endpoint: str, path: str, body: dict[str, Any], timeout: floa
         try:
             reply = json.loads(payload or b"{}")
         except ValueError:
-            reply = {}
+            reply = None
+        if exc.code >= 500:
+            # Firecrawl answers a target site's own failure (connection reset, TLS, every
+            # engine failed) with 500 and a JSON error code. That is the page failing, not
+            # the service; only a bare 5xx, a non-JSON one or UNKNOWN_ERROR is the service.
+            code = reply.get("code") if isinstance(reply, dict) else None
+            if not isinstance(code, str) or not code or code == "UNKNOWN_ERROR":
+                raise FirecrawlUnavailable(f"HTTP {exc.code}") from None
         reply = reply if isinstance(reply, dict) else {}
-        reply.setdefault("success", False)
+        reply["success"] = False
         reply.setdefault("error", f"HTTP {exc.code}")
+        reply[HTTP_STATUS_KEY] = exc.code
         return reply
     except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError,
             ValueError) as exc:
@@ -647,7 +672,32 @@ def _short(text: Any, limit: int = 160) -> str:
     return clean_text(str(text or ""))[:limit]
 
 
-def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any]) -> bool:
+class _Strikes:
+    """Consecutive Firecrawl replies that were a 5xx page failure.
+
+    One site failing inside Firecrawl is that site's problem; MAX_CONSECUTIVE_5XX in a
+    row is the service's, and the channel stops as unavailable.
+    """
+
+    def __init__(self, limit: int = MAX_CONSECUTIVE_5XX) -> None:
+        self.limit = limit
+        self.count = 0
+
+    def note(self, reply: dict[str, Any], resets: bool = True) -> None:
+        """Count a 5xx failed reply; any other reply ends the run of them, unless it is a
+        robots.txt reply (`resets=False`): a small text file that loads says little
+        about whether the service can still render pages."""
+        status = reply.get(HTTP_STATUS_KEY)
+        if isinstance(status, int) and status >= 500:
+            self.count += 1
+            if self.count >= self.limit:
+                raise FirecrawlUnavailable(f"{self.count} consecutive HTTP 5xx page failures")
+        elif resets:
+            self.count = 0
+
+
+def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
+                   strikes: _Strikes | None = None) -> bool:
     """Whether robots.txt lets the radar read `url`, fetched through the same Firecrawl.
 
     Read as RFC 9309 says: a 4xx robots.txt (or none) allows everything; one that
@@ -660,6 +710,8 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any]) ->
             "url": origin + "/robots.txt", "formats": ["rawHtml"], "onlyMainContent": False,
             "timeout": int(settings["timeout"] * 1000), "proxy": "basic",
         }, settings["timeout"] + 10)
+        if strikes is not None:
+            strikes.note(reply, resets=False)
         data = reply.get("data") if reply.get("success") else None
         status = int(((data or {}).get("metadata") or {}).get("statusCode") or 0)
         parser = urllib.robotparser.RobotFileParser()
@@ -765,10 +817,11 @@ def listing_links(markdown: str, page_url: str, hosts: Iterable[str], prefix: st
 
 
 def _page_lines(markdown: str) -> list[str]:
+    """A page's lines as plain text, without the ones that only stamp an update time."""
     lines = []
     for raw in markdown.splitlines():
         text = _plain(raw)
-        if len(text) >= 3:
+        if len(text) >= 3 and not _STAMP_LINE.search(text):
             lines.append(text)
     return lines
 
@@ -777,18 +830,49 @@ def _line_digest(text: str) -> str:
     return hashlib.sha256(text.lower().encode("utf-8")).hexdigest()[:16]
 
 
+def _within(day: str, reference: date, max_age: int) -> bool:
+    try:
+        age = (reference - date.fromisoformat(day)).days
+    except (TypeError, ValueError):
+        return False
+    return 0 <= age <= max_age
+
+
+def _known_links(previous: dict[str, Any]) -> list[dict[str, Any]]:
+    """The baseline's links as {url, first_seen, seeded?, offered?}, page order first."""
+    known = []
+    for raw in previous.get("links", []) or []:
+        if isinstance(raw, dict) and isinstance(raw.get("url"), str):
+            known.append({key: raw[key] for key in ("url", "first_seen", "seeded", "offered") if key in raw})
+        elif isinstance(raw, str):  # an older baseline listed bare URLs: treat as seen at seeding
+            known.append({"url": raw, "first_seen": str(previous.get("since") or ""), "seeded": True})
+    return known
+
+
 @dataclass
 class PageWatchResult:
     items: list[Item] = field(default_factory=list)
+    # Every entry the run got to, in order; each is then in exactly one of
+    # checked (the page was read), failed (it was not) or robots_skipped.
     attempted: list[str] = field(default_factory=list)
+    checked: list[str] = field(default_factory=list)
     failed: list[str] = field(default_factory=list)
+    robots_skipped: list[str] = field(default_factory=list)
     unavailable: bool = False
+    enabled: bool = False
     state: dict[str, Any] = field(default_factory=dict)
+
+    def summary(self) -> dict[str, Any]:
+        """The explicit page_watch block of FetchReport.to_dict(); the evidence reads only this."""
+        return {"enabled": self.enabled, "attempted": list(self.attempted), "checked": list(self.checked),
+                "failed": list(self.failed), "robots_skipped": list(self.robots_skipped),
+                "unavailable": self.unavailable, "items": len(self.items)}
 
 
 def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str, Any],
-               settings: dict[str, Any], reference: date) -> tuple[list[Item], dict[str, Any] | None, bool]:
-    """Items, new state (None = keep the old one) and whether the source answered usefully."""
+               settings: dict[str, Any], reference: date,
+               max_age: int = 30) -> tuple[list[Item], dict[str, Any] | None, bool]:
+    """Items, new state (None = keep the old one) and whether the page was read."""
     data = reply.get("data") if reply.get("success") else None
     if not isinstance(data, dict):
         print(f"[fetch] page_watch skip {entry['id']}: {_short(reply.get('error'))}")
@@ -803,71 +887,78 @@ def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str,
     if remote == "removed" or not 200 <= status < 300:
         print(f"[fetch] page_watch skip {entry['id']}: page answered {status or 'nothing'}")
         return [], None, False
-    checked = {"checked": reference.isoformat()}
-    if remote == "same":
-        # Firecrawl kept the previous version and says nothing changed: no item.
-        return [], {**previous, **checked}, True
     markdown = str(data.get("markdown") or "")[:MAX_MARKDOWN_CHARS]
-    digest = hashlib.sha256(_WS.sub(" ", markdown).strip().encode("utf-8")).hexdigest()
-    # Firecrawl's change history needs its hosted store (Bigtable and GCS at the pinned
-    # 85a40f9d); self-hosted, it reports every page as new or leaves the field out.
-    # The radar keeps its own baseline, so "new" here means never seen by the radar.
-    if previous.get("digest") == digest:
-        return [], {**previous, **checked}, True
+    if remote == "same" and not markdown.strip():
+        # Firecrawl kept the previous version and sent nothing to read: no item.
+        return [], None, True
+    today = reference.isoformat()
     seeded = "digest" in previous
-    state: dict[str, Any] = {"digest": digest, **checked}
+    since = str(previous.get("since") or today) if seeded else today
     items: list[Item] = []
+
+    def item(item_id: str, title: str, url: str, published: str, summary: str) -> Item:
+        return Item(id=item_id, title=title, url=url, publisher=entry.get("publisher", entry["id"]),
+                    source_id=entry["id"], evidence=entry.get("evidence", "O"), published=published,
+                    summary=summary, topical=bool(entry.get("topical", False)))
+
+    if entry.get("mode", "listing") == "listing":
+        # Firecrawl's change history needs its hosted store (Bigtable and GCS at the pinned
+        # 85a40f9d); self-hosted it reports every page as new, so the radar keeps its own
+        # baseline: every link with the day it was first seen. Links still inside the age
+        # window are offered every run, like feed entries (the repeat guard downstream
+        # keeps a published one from coming back); max_items_per_source limits what is
+        # offered per run, never what is recorded, and the least recently offered go first.
+        digest = hashlib.sha256(_WS.sub(" ", markdown).strip().encode("utf-8")).hexdigest()
+        links = listing_links(markdown, entry["url"], entry.get("hosts", []),
+                              entry.get("link_prefix", "/"), reference)
+        known = {link["url"]: link for link in _known_links(previous)}
+        current: list[dict[str, Any]] = []
+        for link in links:
+            record = dict(known.get(link["url"]) or {"url": link["url"], "first_seen": today})
+            if link["url"] not in known and not seeded:
+                # First sight of a listing: most links on it are old posts. Only one that
+                # states its own date can be news, and the age window decides that.
+                record["seeded"] = True
+            current.append(record)
+        eligible = []
+        for index, (link, record) in enumerate(zip(links, current)):
+            by_date = bool(link["date"]) and _within(link["date"], reference, max_age)
+            by_sight = not record.get("seeded") and _within(str(record.get("first_seen")), reference, max_age)
+            if by_date or by_sight:
+                eligible.append((str(record.get("offered") or ""), index))
+        for _, index in sorted(eligible)[:settings["max_items"]]:
+            link, record = links[index], current[index]
+            record["offered"] = today
+            items.append(item(f"{entry['id']}:{link_digest(link['url'])}", link["title"], link["url"],
+                              # an undated link was published, as far as the radar knows,
+                              # the day it first appeared
+                              link["date"] or str(record.get("first_seen") or today), link["summary"]))
+        on_page = {record["url"] for record in current}
+        merged = current + [record for url, record in known.items() if url not in on_page]
+        state = {"digest": digest, "since": since,
+                 "changed": today if previous.get("digest") != digest else str(previous.get("changed") or today),
+                 "links": merged[:MAX_STATE_LINKS]}
+        return items, (None if state == previous else state), True
+    lines = _page_lines(markdown)
+    digests = list(dict.fromkeys(_line_digest(line) for line in lines))
+    digest = hashlib.sha256("\n".join(digests).encode("utf-8")).hexdigest()
+    if previous.get("digest") == digest:
+        return [], None, True
+    known_lines = set(previous.get("lines", []))
+    added = [line for line in lines if _line_digest(line) not in known_lines]
+    state = {"digest": digest, "since": since, "changed": today, "lines": digests[:MAX_STATE_LINES]}
     published_meta = parse_date(meta.get("publishedTime") or meta.get("modifiedTime")
                                 or meta.get("dcDate") or "")
     if published_meta and date.fromisoformat(published_meta) > reference:
         published_meta = ""
-    if entry.get("mode", "listing") == "listing":
-        links = listing_links(markdown, entry["url"], entry.get("hosts", []),
-                              entry.get("link_prefix", "/"), reference)
-        known = list(previous.get("links", []))
-        seen = set(known)
-        fresh = [link for link in links if link["url"] not in seen]
-        if not seeded:
-            # First sight of a listing: every link on it is "new" to the radar, most of
-            # them old posts. Only a link that states its own date can be news, and the
-            # age filter downstream decides whether it still is.
-            fresh = [link for link in fresh if link["date"]]
-        for link in fresh[:settings["max_items"]]:
-            items.append(Item(
-                id=f"{entry['id']}:{link_digest(link['url'])}",
-                title=link["title"],
-                url=link["url"],
-                publisher=entry.get("publisher", entry["id"]),
-                source_id=entry["id"],
-                evidence=entry.get("evidence", "O"),
-                # A link that appeared since the last look and states no date was
-                # first seen today.
-                published=link["date"] or reference.isoformat(),
-                summary=link["summary"],
-                topical=bool(entry.get("topical", False)),
-            ))
-        current = [link["url"] for link in links]
-        merged = current + [url for url in known if url not in set(current)]
-        state["links"] = merged[:MAX_STATE_LINKS]
-        return items, state, True
-    lines = _page_lines(markdown)
-    known_lines = set(previous.get("lines", []))
-    added = [line for line in lines if _line_digest(line) not in known_lines]
-    state["lines"] = list(dict.fromkeys(_line_digest(line) for line in lines))[:MAX_STATE_LINES]
     if (seeded and added) or (not seeded and published_meta):
         title = entry.get("title") or _plain(str(meta.get("title") or meta.get("ogTitle") or ""))
         excerpt = " · ".join(added if seeded else lines)
-        items.append(Item(
-            id=f"{entry['id']}:{digest[:12]}",
-            title=_cut(title or entry["id"], MAX_TITLE_CHARS),
-            url=entry["url"],
-            publisher=entry.get("publisher", entry["id"]),
-            source_id=entry["id"],
-            evidence=entry.get("evidence", "O"),
-            published=published_meta or reference.isoformat(),
-            summary=_cut(excerpt, MAX_SUMMARY_CHARS),
-            topical=bool(entry.get("topical", False)),
-        ))
+        # A change the radar saw today is dated today: the page's own publishedTime is
+        # when the page was first put up, often years ago, and would age the change out.
+        items.append(item(f"{entry['id']}:{digest[:12]}", _cut(title or entry["id"], MAX_TITLE_CHARS),
+                          entry["url"], today if seeded else published_meta,
+                          _cut(excerpt, MAX_SUMMARY_CHARS)))
     return items, state, True
 
 
@@ -876,17 +967,25 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     """Watch official pages that have no feed, through the loopback Firecrawl only.
 
     For each entry: robots.txt is checked, then `POST {endpoint}/v2/scrape` asks for
-    markdown and changeTracking. A page Firecrawl reports `same` or `removed` gives no
-    item; otherwise the radar compares it with its own baseline in `state`:
+    markdown and changeTracking. A page Firecrawl reports `removed` gives no item;
+    otherwise the radar compares it with its own baseline in `state`:
 
-    - listing: links to first-party posts that were not on the page last time become
-      one item each (newest first, as the page orders them, at most
-      `max_items_per_source`). On the first look only links stating a date count;
+    - listing: every first-party post link is recorded with the day it was first seen.
+      Each run offers, as one item each, the links still inside `filters.max_age_days`
+      -- by the date the link states or, for a link that appeared after the first
+      look, the day it was first seen -- at most `max_items_per_source` per run, least
+      recently offered first, so an overflow is offered on the next run. The repeat
+      guard (`recent_urls`) keeps a published one from being picked again;
     - page: a page with lines it did not have last time becomes one item pointing at
-      the page, the new lines as its excerpt.
+      the page, the new lines as its excerpt, dated the run day. Lines that only stamp
+      an update time ("Last updated …", "©") are ignored.
 
-    When Firecrawl does not answer, the channel stops, `unavailable` is set and the
-    baseline is kept, so nothing reappears as new when it is back.
+    Each attempted entry ends up in exactly one of `checked`, `failed` (the page or
+    Firecrawl's scrape of it failed: non-2xx, success:false, 408, a 5xx with a
+    Firecrawl error code) or `robots_skipped`. The channel stops as `unavailable`, the
+    baseline kept, when Firecrawl itself does not answer (refused, client timeout,
+    502/503/504, a 5xx without an error code or UNKNOWN_ERROR, not JSON) or after
+    MAX_CONSECUTIVE_5XX page failures in a row answered with a 5xx.
     """
     reference = reference or datetime.now(timezone.utc).date()
     previous_state = state if isinstance(state, dict) else {}
@@ -897,6 +996,11 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     entries = _resolve_page_watch(config.sources)
     if not settings["enabled"] or not entries:
         return result
+    result.enabled = True
+    try:
+        max_age = int(config.sources.get("filters", {}).get("max_age_days", 30))
+    except (TypeError, ValueError):
+        max_age = 30
     if loopback_endpoint(settings["endpoint"]) is None:
         print("[fetch] page_watch: refusing a Firecrawl endpoint that is not on a loopback "
               "address (127.0.0.1, localhost, ::1); channel skipped")
@@ -907,16 +1011,17 @@ def fetch_page_watch(config: Config, reference: date | None = None,
         entries = entries[:settings["max_entries"]]
     deadline = time.monotonic() + settings["budget"]
     robots: dict[str, Any] = {}
+    strikes = _Strikes()
     for entry in entries:
         if time.monotonic() >= deadline:
             print(f"[fetch] page_watch: time budget of {settings['budget']:.0f}s spent; "
                   f"{entry['id']} and later entries wait for the next run")
             break
         try:
-            if not _robots_allows(settings, entry["url"], robots):
+            if not _robots_allows(settings, entry["url"], robots, strikes):
                 print(f"[fetch] page_watch skip {entry['id']}: robots.txt disallows {entry['url']}")
                 result.attempted.append(entry["id"])
-                result.failed.append(entry["id"])
+                result.robots_skipped.append(entry["id"])
                 continue
             reply = firecrawl_post(settings["endpoint"], "/v2/scrape", {
                 "url": entry["url"],
@@ -932,22 +1037,24 @@ def fetch_page_watch(config: Config, reference: date | None = None,
                 "blockAds": True,
                 "removeBase64Images": True,
             }, settings["timeout"] + 10)
+            strikes.note(reply)
         except FirecrawlUnavailable as exc:
             print(f"[fetch] page_watch: local Firecrawl unavailable ({exc}); channel skipped")
             result.unavailable = True
             break
         result.attempted.append(entry["id"])
         items, new_state, answered = _watch_one(entry, reply, known.get(entry["id"], {}),
-                                                settings, reference)
-        if not answered:
-            result.failed.append(entry["id"])
+                                                settings, reference, max_age)
+        (result.checked if answered else result.failed).append(entry["id"])
         if new_state is not None:
             result.state["sources"][entry["id"]] = new_state
         result.items.extend(items)
     if result.attempted:
-        print(f"[fetch] page_watch: {len(result.items)} items from "
-              f"{len(result.attempted) - len(result.failed)}/{len(result.attempted)} pages")
+        print(f"[fetch] page_watch: {len(result.items)} items from {len(result.checked)}/"
+              f"{len(result.attempted)} pages ({len(result.failed)} failed, "
+              f"{len(result.robots_skipped)} disallowed by robots.txt)")
     return result
+
 
 def baseline_items(config: Config) -> list[Item]:
     """Curated landmark entries; they ship with the repo and need no network."""
@@ -985,12 +1092,19 @@ class FetchReport:
     # Channels whose local service did not answer (page_watch without Firecrawl): not
     # a source failing, and nothing a source repair could fix.
     unavailable: list[str] = field(default_factory=list)
+    # page_watch entries that were attempted but not read (page failed or robots.txt
+    # disallowed). Kept apart from `failed`: `failed` feeds pairadar.health's
+    # struggling list and the source-repair job, which can only repair a declared feed.
+    page_failed: list[str] = field(default_factory=list)
     # The page_watch baseline after this run, for the caller to keep.
     page_state: dict[str, Any] = field(default_factory=dict)
+    # PageWatchResult.summary(): explicit ids per outcome, for the freshness evidence.
+    page_watch: dict[str, Any] = field(default_factory=lambda: PageWatchResult().summary())
 
     @property
     def answered(self) -> list[str]:
-        return [source for source in self.attempted if source not in self.failed]
+        return [source for source in self.attempted
+                if source not in self.failed and source not in self.page_failed]
 
     def to_dict(self) -> dict[str, Any]:
         counts: dict[str, int] = {}
@@ -1004,6 +1118,7 @@ class FetchReport:
             "fallback": sorted(self.fallback),
             "unavailable": sorted(self.unavailable),
             "per_source": counts,
+            "page_watch": dict(self.page_watch),
         }
 
 
@@ -1031,14 +1146,17 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     watched = fetch_page_watch(config, reference, page_state)
     report.items.extend(watched.items)
     report.attempted.extend(watched.attempted)
-    report.failed.extend(watched.failed)
+    report.page_failed.extend([*watched.failed, *watched.robots_skipped])
     report.page_state = watched.state
+    report.page_watch = watched.summary()
     if watched.unavailable:
         report.unavailable.append("page_watch")
     print(f"[fetch] collected {len(report.items)} raw items from "
           f"{len(report.answered)}/{len(report.attempted)} sources")
     if report.failed:
         print(f"[fetch] no answer from: {', '.join(sorted(report.failed))}")
+    if report.page_failed:
+        print(f"[fetch] page_watch pages not read: {', '.join(sorted(report.page_failed))}")
     if report.fallback:
         print(f"[fetch] served by a fallback: {', '.join(sorted(report.fallback))}")
     if report.unavailable:
