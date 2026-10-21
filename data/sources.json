@@ -140,5 +140,87 @@
       "url": "https://www.consilium.europa.eu/en/policies/artificial-intelligence-act/timeline-artificial-intelligence/",
       "status_note": "High-risk deadlines 2027-12-02 / 2028-08-02 per Digital Omnibus."
     }
+  ],
+  "page_watch_settings": {
+    "enabled": true,
+    "endpoint": "http://127.0.0.1:3002",
+    "timeout_seconds": 60,
+    "budget_seconds": 600,
+    "max_entries": 12,
+    "max_items_per_source": 3,
+    "note": "page_watch is the one exception to the machine-readable-endpoint rule: official sources that publish no feed, read only through a self-hosted Firecrawl on a loopback address. RADAR_FIRECRAWL_URL overrides endpoint, and any host other than 127.0.0.1, localhost or ::1 is refused. When Firecrawl does not answer the channel is skipped and recorded under `unavailable` in radar/history.json; the run carries on. mode listing: links to a first-party path under link_prefix that were not on the page last time become items. mode page: a changed page becomes one item pointing at the page. A standards_watch entry is watched by naming its id in `standards_watch`; its url and title are read from there, never repeated."
+  },
+  "page_watch": [
+    {
+      "id": "figure",
+      "url": "https://www.figure.ai/news",
+      "mode": "listing",
+      "link_prefix": "/news/",
+      "hosts": ["figure.ai"],
+      "evidence": "O",
+      "weight": 1.1,
+      "publisher": "Figure AI News",
+      "topical": true
+    },
+    {
+      "id": "1x",
+      "url": "https://www.1x.tech/discover",
+      "mode": "listing",
+      "link_prefix": "/discover/",
+      "hosts": ["1x.tech"],
+      "evidence": "O",
+      "weight": 1.05,
+      "publisher": "1X Discover",
+      "topical": true
+    },
+    {
+      "id": "physical-intelligence",
+      "url": "https://www.pi.website/blog",
+      "mode": "listing",
+      "link_prefix": "/blog/",
+      "hosts": ["pi.website", "physicalintelligence.company"],
+      "evidence": "O",
+      "weight": 1.15,
+      "publisher": "Physical Intelligence (π) Blog",
+      "topical": true
+    },
+    {
+      "id": "unitree",
+      "url": "https://www.unitree.com/news",
+      "mode": "listing",
+      "link_prefix": "/news",
+      "hosts": ["unitree.com"],
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "Unitree Robotics News",
+      "topical": true
+    },
+    {
+      "id": "watch-iso-25785-1",
+      "standards_watch": "iso-25785-1",
+      "mode": "page",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "ISO",
+      "topical": true
+    },
+    {
+      "id": "watch-eu-machinery-regulation",
+      "standards_watch": "eu-machinery-regulation",
+      "mode": "page",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "EUR-Lex",
+      "topical": true
+    },
+    {
+      "id": "watch-eu-ai-act-timeline",
+      "standards_watch": "eu-ai-act-timeline",
+      "mode": "page",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "Council of the EU",
+      "topical": true
+    }
   ]
 }

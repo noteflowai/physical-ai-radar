@@ -98,7 +98,8 @@ class StreakReportTest(unittest.TestCase):
         self.assertEqual([(e["source"], e["failed_days"]) for e in verdict["struggling"]],
                          health.struggling(FALLBACK_DAY, TODAY))
         self.assertEqual(set(verdict), {"reference", "window_days", "threshold_days",
-                                        "runs_with_health", "failures", "fallbacks", "struggling"})
+                                        "runs_with_health", "failures", "fallbacks", "unavailable",
+                                        "struggling"})
 
     def test_worst_first_ranking_is_kept_with_the_new_fields(self) -> None:
         runs = [_run(day, ["x", "y"] if day >= 25 else ["x"]) for day in (23, 24, 25, 26, 27)]

@@ -29,6 +29,9 @@ from .render import chart_title, inject_readme, update_index, write_daily, write
 from .site import write_site
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
+# The page_watch baseline: per watched page, a digest and the first-party links or
+# line digests seen last time. No page text is kept.
+PAGE_STATE_PATH = ROOT / "radar" / "page-watch.json"
 # The lane and evidence charts count the picks of this many days, today included.
 # The feed store they are read from keeps at most 100 entries, so a week always fits.
 CHART_DAYS = 7
@@ -111,7 +114,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     history = [entry for entry in load_history() if entry["date"] != day]
     earlier = [entry for entry in load_store(ROOT/"radar"/FEED_JSON) if entry["date"] != day]
     told = [entry["title"] for entry in within(earlier, day, repeat_days) if entry["evidence"] != "R"]
-    report = fetch_all(config, offline=offline, reference=reference)
+    page_state = load_json(PAGE_STATE_PATH) if PAGE_STATE_PATH.exists() else {}
+    report = fetch_all(config, offline=offline, reference=reference, page_state=page_state)
     live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
                     per_source=_optional_int(filters.get("per_source")),
@@ -139,6 +143,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         # longer window to spot a source that has quietly stopped answering.
         "failed": sorted(report.failed),
         "fallback": sorted(report.fallback),
+        # A channel whose local service was down (page_watch without Firecrawl).
+        "unavailable": sorted(report.unavailable),
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 
@@ -161,6 +167,10 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
         "notes": load_notes(day),
+        # Only a round that read pages replaces the baseline; offline or with Firecrawl
+        # down it comes back unchanged and the file is left alone.
+        "page_state": (report.page_state if report.page_state.get("sources")
+                       and report.page_state.get("sources") != page_state.get("sources") else None),
     }
 
 
@@ -264,6 +274,8 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     written.append(update_index(config, ctx, ctx["history"], root))
     save_history(ctx["history"], keep_urls_days=ctx["repeat_days"],
                  path=root/"radar"/"history.json")
+    if ctx.get("page_state"):
+        dump_json(root/"radar"/"page-watch.json", ctx["page_state"])
 
     print(
         f"[radar] {day}: {len(ctx['picked'])} picked from {ctx['live_count']} live items, "

@@ -9,7 +9,9 @@ A source that has recovered is not struggling, however many days it missed: the
 repair job used to wake a model every night for a fortnight after arXiv came back.
 A source served by its fallback endpoint (`fallback` in the run log) is reported
 separately and does not count as failing -- readers got the day's papers, and the
-repair job cannot fix an endpoint that refuses this host.
+repair job cannot fix an endpoint that refuses this host. A channel whose local service
+did not answer (`unavailable`: page_watch when the loopback Firecrawl is down) is
+counted under `unavailable`, never as failing: it is the machine, not a source.
 
 Each struggling source also carries `streak_days`, the consecutive runs it has
 failed counted back from the latest one, and `failing_since`, the date of the oldest
@@ -77,6 +79,12 @@ def fallbacks_by_source(runs: list[dict[str, Any]], reference: date,
     return _count(_in_window(runs, reference, window), "fallback")
 
 
+def unavailable_by_channel(runs: list[dict[str, Any]], reference: date,
+                           window: int = WINDOW) -> dict[str, int]:
+    """Count, per channel, the days inside the window its local service was unavailable."""
+    return _count(_in_window(runs, reference, window), "unavailable")
+
+
 def days_observed(runs: list[dict[str, Any]], reference: date, window: int = WINDOW) -> int:
     """Runs inside the window that recorded source health at all."""
     return len(_in_window(runs, reference, window))
@@ -130,6 +138,7 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "runs_with_health": days_observed(runs, reference, window),
         "failures": failures_by_source(runs, reference, window),
         "fallbacks": fallbacks_by_source(runs, reference, window),
+        "unavailable": unavailable_by_channel(runs, reference, window),
         "struggling": entries,
     }
 

@@ -13,11 +13,24 @@ changes, this file changes in the same pull request.
 | Lab research pages | Toyota Research Institute | `R` | a lab's own page for each paper: the same standing as the paper |
 | Trade press | IEEE Spectrum Robotics, The Robot Report; 雷峰网 Leiphone (Chinese), MONOist (Japanese) | `M` | professional reporting, still secondary |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
+| Page watch | Figure, 1X, Physical Intelligence, Unitree and the standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
 
 Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
+- the one exception is `page_watch`: an official source with no feed at all is read as a
+  page, only through a self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other
+  endpoint, including `RADAR_FIRECRAWL_URL`, is refused; redirects and proxies are not
+  followed). robots.txt is checked first, through the same Firecrawl; a robots.txt that
+  cannot be read disallows the page for that run. A listing yields the first-party links
+  under its `link_prefix` that were not on it last time (on the first look, only links
+  that state a date), at most `max_items_per_source`; a single page yields one item
+  pointing at it when it has lines it did not have before. Firecrawl `same`/`removed`
+  yield nothing. Firecrawl's own change history needs its hosted store, so the radar keeps
+  a baseline in `radar/page-watch.json` (digests and link URLs, no page text). When
+  Firecrawl does not answer, the channel is skipped and recorded under `unavailable` in
+  `radar/history.json`; `pairadar.health` reports it separately and never as struggling;
 - every request is timeout-bounded and retried once before the source is given up on. A
   4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;

@@ -83,6 +83,7 @@ def recorded_clock():
 
 def recorded_day(config) -> list[Item]:
     with patch.object(fetch, "http_get", recorded), patch.object(fetch.time, "sleep"), \
+            patch.object(fetch, "firecrawl_post", side_effect=fetch.FirecrawlUnavailable("test")), \
             recorded_clock(), contextlib.redirect_stdout(io.StringIO()):
         report = fetch.fetch_all(config)
     return deduplicate(enrich(prefilter(report.items, config, DAY), config, DAY))
