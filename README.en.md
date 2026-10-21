@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DiPLO** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-2. **AQUAACT** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **AeroDASH** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **ReInsVLN** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-6. **ReDOA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-7. **PaceVLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
+1. **DiPLO** — `AI draft` Humanoid teams stuck between scarce demonstrations and RL from scratch could try post-training an existing pretrained planner first; the authors report 99% task success against 45% for the pretrained one, but the page does not say which task.
+2. **AQUAACT** — `AI draft` Underwater inspection teams gain a shared benchmark for learned control, but its demonstrations are mostly simulated, 1.9 hours real-world against 17.9 hours simulated, so check any closed-loop score against real-water behaviour before relying on it.
+3. **AeroDASH** — `AI draft` Anyone putting a VLA policy onboard a UAV has to budget for inference latency pulling predicted trajectories out of step with the vehicle's motion; the self-reported 76.56% success rate comes with no real-flight result on the page.
+4. **ReInsVLN** — `AI draft` Navigation stacks that keep appending observations pile up redundancy while stored evidence goes unused, and this training-free approach suggests revisiting that store before retraining; the authors report reaching 64.27% and 64.44%, without the metric named on the page.
+5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — `AI draft` For humanoid teams choosing how a high-level planner hands off to control, the reported 42.0% mean success against 3.5% for kinematic planning favours action-aligned latents, yet 42.0% is far from deployable and the page does not say where it was measured.
+6. **ReDOA** — `AI draft` Teams budgeting manipulation data can read this as one attempt at the trade-off between collection cost and real-world adaptability; the page flags real-robot and closed-loop experiments but shows no figures, so any saving is unquantified.
+7. **PaceVLA** — `AI draft` If execution speed is what keeps a VLA policy out of deployment, this preprint works on how its actions are timed during execution; the page flags real-robot and closed-loop experiments but gives no figures, so no speed-up can be claimed yet.
+8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — `AI draft` Teams whose post-training is gated by robot time should follow this direction, but it is a secondary report with no figures on the page, so how far it really removes the physical-robot step must be checked against the primary source.
 
 </details>
 

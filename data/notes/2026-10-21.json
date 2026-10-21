@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-21",
+  "generated": "2026-10-21 14:32 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.24847": {
+      "zh": "人形全身操作团队若卡在示教太少、从零 RL 又学不动之间，可先尝试在已有预训练规划器上做后训练：作者自报任务成功率由预训练的 45% 升至 99%，但页面未说明这组数字来自哪项任务。",
+      "en": "Humanoid teams stuck between scarce demonstrations and RL from scratch could try post-training an existing pretrained planner first; the authors report 99% task success against 45% for the pretrained one, but the page does not say which task.",
+      "ja": "デモが少なく、強化学習をゼロから回すのも難しい人型ロコマニピュレーションでは、既存の事前学習済みプランナーの事後学習を先に試す価値がある。著者報告では事前学習の 45% に対し 99% だが、どのタスクの数値かはページから読めない。"
+    },
+    "https://arxiv.org/abs/2610.25534": {
+      "zh": "水下巡检团队多了一个可共用的学习控制基准，但数据以仿真为主：1.9 hours 真实演示对 17.9 hours 仿真演示，任何闭环得分在采信前都应先对照真实水下表现。",
+      "en": "Underwater inspection teams gain a shared benchmark for learned control, but its demonstrations are mostly simulated, 1.9 hours real-world against 17.9 hours simulated, so check any closed-loop score against real-water behaviour before relying on it.",
+      "ja": "水中点検のチームにとって学習制御を比べる共通の土台になるが、実環境 1.9 hours に対しシミュレーション 17.9 hours と大半が模擬データである。閉ループの成績は実際の水中での挙動と照合してから採用したい。"
+    },
+    "https://arxiv.org/abs/2610.25407": {
+      "zh": "在无人机上部署 VLA 时，机载推理延迟会让预测轨迹与机体实际运动脱节，控制架构需要为此留出补偿；作者自报成功率 76.56%，但页面未显示真机飞行结果，暂不宜当作上机依据。",
+      "en": "Anyone putting a VLA policy onboard a UAV has to budget for inference latency pulling predicted trajectories out of step with the vehicle's motion; the self-reported 76.56% success rate comes with no real-flight result on the page.",
+      "ja": "UAV に VLA を載せるなら、機上推論の遅延で予測軌道と実際の機体運動がずれる前提で制御系を組む必要がある。著者報告の成功率は 76.56% だが、ページには実機飛行の結果が示されていない。"
+    },
+    "https://arxiv.org/abs/2610.26545": {
+      "zh": "导航栈若一味累积观测历史，冗余会上升而已存信息反被闲置；这项免训练方法提示，先改进对已存证据的回看可能比重新训练更划算。作者自报达到 64.27% 与 64.44%，页面未写明对应指标。",
+      "en": "Navigation stacks that keep appending observations pile up redundancy while stored evidence goes unused, and this training-free approach suggests revisiting that store before retraining; the authors report reaching 64.27% and 64.44%, without the metric named on the page.",
+      "ja": "観測履歴を積み増すだけのナビゲーションは冗長になり、保持した情報も活かされにくい。再学習の前に既存の履歴の参照の仕方を見直す選択肢を示す学習不要の手法で、著者報告は 64.27% と 64.44% だが、指標名はページにない。"
+    },
+    "https://arxiv.org/abs/2610.24675": {
+      "zh": "在为人形机器人设计高层规划与底层控制的接口时，作者自报 42.0% 的平均成功率明显高于运动学规划的 3.5%，支持与动作对齐的隐空间；但 42.0% 离可部署仍远，页面也未说明在何种环境下测得。",
+      "en": "For humanoid teams choosing how a high-level planner hands off to control, the reported 42.0% mean success against 3.5% for kinematic planning favours action-aligned latents, yet 42.0% is far from deployable and the page does not say where it was measured.",
+      "ja": "人型ロボットで上位の計画と下位制御のつなぎ方を選ぶなら、平均成功率 42.0% 対運動学的計画 3.5% という著者報告は行動に揃えた潜在表現を支持する。ただし 42.0% は実運用には遠く、測定条件もページからは分からない。"
+    },
+    "https://arxiv.org/abs/2610.25691": {
+      "zh": "为操作策略做数据采集预算的团队，可把它看作在采集成本与真实环境适应性之间取舍的一种尝试；页面标出了真机与闭环实验，但没有任何数字，能省多少成本目前无从判断。",
+      "en": "Teams budgeting manipulation data can read this as one attempt at the trade-off between collection cost and real-world adaptability; the page flags real-robot and closed-loop experiments but shows no figures, so any saving is unquantified.",
+      "ja": "マニピュレーションのデータ収集予算を組むチームには、収集コストと実環境への適応性のトレードオフへの一つの試みとして参考になる。実機・閉ループ実験の記載はあるが数値がなく、削減効果は見積もれない。"
+    },
+    "https://arxiv.org/abs/2610.25961": {
+      "zh": "如果执行速度是 VLA 策略进不了产线的原因，这篇预印本针对的是动作在执行时的时间安排；页面标出了真机与闭环实验但未给出数字，目前还不能据此宣称提速。",
+      "en": "If execution speed is what keeps a VLA policy out of deployment, this preprint works on how its actions are timed during execution; the page flags real-robot and closed-loop experiments but gives no figures, so no speed-up can be claimed yet.",
+      "ja": "実行速度が VLA 方策の実運用を阻んでいるなら、行動の時間的な刻み方に手を入れるこのプレプリントは検討対象になる。実機・閉ループ実験の記載はあるものの数値はなく、高速化を言える段階ではない。"
+    },
+    "https://www.leiphone.com/category/ai/xgcxobsqu8pc44px.html": {
+      "zh": "后训练受限于真机时长的团队值得跟踪这一方向，但这是二手报道，页面没有任何数字，究竟能在多大程度上省掉真机环节，需回到原始来源核实后再纳入计划。",
+      "en": "Teams whose post-training is gated by robot time should follow this direction, but it is a secondary report with no figures on the page, so how far it really removes the physical-robot step must be checked against the primary source.",
+      "ja": "事後学習が実機の稼働時間に縛られているチームは注視したい方向だが、二次報道でページに数値もない。実機工程をどこまで省けるのかは、一次情報で確かめてから計画に入れるべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

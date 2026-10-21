@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.24847" rel="noopener" target="_blank">DiPLO: Self-distilled Diffusion Planning for Loco-manipulation</a></h3>
 <p class="figure"><strong>99%</strong><span class="context">“enabling 99% task success in”</span></p><p class="chips"><span class="chip">45%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Humanoid teams stuck between scarce demonstrations and RL from scratch could try post-training an existing pretrained planner first; the authors report 99% task success against 45% for the pretrained one, but the page does not say which task.</p>
 <p class="excerpt">Humanoid loco-manipulation is particularly challenging because it requires coordinating locomotion, balance, and object interaction, making it difficult to learn from limited demonstrations or from scratch through Reinforcement Learning…</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25534" rel="noopener" target="_blank">AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark</a></h3>
 <p class="figure"><strong>1.9 hours</strong><span class="context">“It comprises 1.9 hours of real-world and”</span></p><p class="chips"><span class="chip">17.9 hours</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Underwater inspection teams gain a shared benchmark for learned control, but its demonstrations are mostly simulated, 1.9 hours real-world against 17.9 hours simulated, so check any closed-loop score against real-water behaviour before relying on it.</p>
 <p class="excerpt">Underwater robots support a growing range of work, from inspecting offshore structures and pipelines to surveying reefs and accompanying divers.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25407" rel="noopener" target="_blank">AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight</a></h3>
 <p class="figure"><strong>76.56%</strong><span class="context">“a success rate of 76.56%”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Anyone putting a VLA policy onboard a UAV has to budget for inference latency pulling predicted trajectories out of step with the vehicle&#x27;s motion; the self-reported 76.56% success rate comes with no real-flight result on the page.</p>
 <p class="excerpt">Onboard inference latency creates a mismatch between the trajectories predicted by vision-language-action (VLA) policies and the ongoing motion of unmanned aerial vehicles (UAVs).</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.26545" rel="noopener" target="_blank">ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation</a></h3>
 <p class="figure"><strong>64.27%</strong><span class="context">“reaching 64.27% and 64.44%”</span></p><p class="chips"><span class="chip">64.44%</span><span class="chip">21.77%</span><span class="chip">32.25%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Navigation stacks that keep appending observations pile up redundancy while stored evidence goes unused, and this training-free approach suggests revisiting that store before retraining; the authors report reaching 64.27% and 64.44%, without the metric named on the page.</p>
 <p class="excerpt">Vision-and-language navigation (VLN) relies on retaining and using relevant observations. Yet growing histories introduce redundancy, and retained information may remain underused.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -163,7 +163,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.24675" rel="noopener" target="_blank">Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation</a></h3>
 <p class="figure"><strong>42.0%</strong><span class="context">“FIBER achieves 42.0% mean success”</span></p><p class="chips"><span class="chip">11.6%</span><span class="chip">3.5%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> For humanoid teams choosing how a high-level planner hands off to control, the reported 42.0% mean success against 3.5% for kinematic planning favours action-aligned latents, yet 42.0% is far from deployable and the page does not say where it was measured.</p>
 <p class="excerpt">Learning a single perceptive policy for diverse humanoid loco-manipulation requires unifying high-level task decisions without losing the state-dependent physical responses that make each interaction succeed.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25691" rel="noopener" target="_blank">ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Teams budgeting manipulation data can read this as one attempt at the trade-off between collection cost and real-world adaptability; the page flags real-robot and closed-loop experiments but shows no figures, so any saving is unquantified.</p>
 <p class="excerpt">Data-driven learning for general-purpose robotic manipulation presents a fundamental trade-off between data-collection cost and adaptability to real-world environments.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -193,7 +193,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.25961" rel="noopener" target="_blank">PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If execution speed is what keeps a VLA policy out of deployment, this preprint works on how its actions are timed during execution; the page flags real-robot and closed-loop experiments but gives no figures, so no speed-up can be claimed yet.</p>
 <p class="excerpt">Fast and reliable manipulation is crucial for practical robot deployment. Although Vision-Language-Action (VLA) models have recently shown remarkable progress as generalist robot policies, their execution often remains temporally…</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -208,7 +208,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html" rel="noopener" target="_blank">启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Teams whose post-training is gated by robot time should follow this direction, but it is a secondary report with no figures on the page, so how far it really removes the physical-robot step must be checked against the primary source.</p>
 <p class="excerpt">继无本体之后，具身后训练范式有了新进展。最近，具身行业讨论“无本体进行后训练的可能性”的热度很高。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-20</span>
