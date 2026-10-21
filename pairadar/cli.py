@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import random
+import tempfile
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -23,7 +26,7 @@ from .config import (
     now_iso,
 )
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
-from .fetch import baseline_items, fetch_all
+from .fetch import _resolve_page_watch, baseline_items, fetch_all, page_watch_settings
 from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
 from .render import chart_title, inject_readme, update_index, write_daily, write_latest
 from .site import write_site
@@ -294,6 +297,51 @@ def degraded(fetch: dict[str, Any], offline: bool) -> bool:
     return not offline and bool(fetch.get("attempted")) and not fetch.get("answered")
 
 
+PAGE_WATCH_EVIDENCE_SCHEMA = "pairadar-page-watch-v1"
+
+
+def page_watch_evidence_dir() -> Path:
+    """Where the delivery-freshness objective `radar-page-watch` (noteflow-auto) reads its evidence."""
+    base = os.environ.get("PAIRADAR_STATE_DIR") or os.path.join(
+        os.environ.get("XDG_STATE_HOME") or os.path.expanduser("~/.local/state"), "pairadar")
+    return Path(base) / "page-watch"
+
+
+def write_page_watch_evidence(config: Config, fetch: dict[str, Any], day: str,
+                              directory: Path | None = None) -> Path | None:
+    """One record per run day for the freshness objective, written atomically.
+
+    Contract (noteflow-auto config/delivery-freshness.json, objective radar-page-watch):
+    schema/channel fixed, `status` is exactly "ok" only when Firecrawl answered and the watched
+    pages were checked; otherwise "firecrawl-unavailable" or "skipped"; `finished_at` ISO-8601 with
+    an offset. Counts only, never page text or URLs beyond the source ids.
+    """
+    settings = page_watch_settings(config)
+    attempted = [s for s in fetch.get("attempted", []) if s in {e["id"] for e in _resolve_page_watch(config.sources)}]
+    if "page_watch" in fetch.get("unavailable", []):
+        status = "firecrawl-unavailable"
+    elif not settings["enabled"] or not attempted:
+        status = "skipped"
+    else:
+        status = "ok"
+    failed = sorted(set(attempted) & set(fetch.get("failed", [])))
+    record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch", "status": status,
+              "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
+              "sources_checked": len(attempted) - len(failed), "sources_failed": failed}
+    target_dir = directory or page_watch_evidence_dir()
+    try:
+        target_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+        target = target_dir / f"{day}.json"
+        fd, temporary = tempfile.mkstemp(dir=target_dir, prefix=f".{day}.", suffix=".tmp")
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(record, handle, ensure_ascii=False, indent=1)
+        os.replace(temporary, target)
+        return target
+    except OSError as exc:  # evidence is observational; it must never fail the radar
+        print(f"[radar] page_watch evidence not written: {type(exc).__name__}")
+        return None
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Generate the Physical AI Radar daily update.")
     parser.add_argument("--offline", action="store_true", help="skip all network sources")
@@ -310,6 +358,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     ctx = run(offline=args.offline, limit=args.limit, day=args.day,
               write_readme=not args.no_readme, out=args.out)
+    if not args.offline and args.out is None:
+        # Only a real production round reports to the freshness objective; offline and --out
+        # runs (tests, previews) never touch the state directory.
+        write_page_watch_evidence(load_config(), ctx["fetch"], ctx.get("day") or args.day
+                                  or datetime.now(timezone.utc).date().isoformat())
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")
         return 2
