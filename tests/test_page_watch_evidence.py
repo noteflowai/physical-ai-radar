@@ -32,6 +32,23 @@ class PageWatchEvidenceTests(unittest.TestCase):
         self.assertEqual(stat.S_IMODE(self.dir.stat().st_mode), 0o700)
         self.assertEqual(list(self.dir.glob(".*.tmp")), [])  # atomic: no temp left behind
 
+    def test_attempted_but_none_checked_is_error_not_ok(self):
+        record, _ = self.write({"attempted": ["arxiv", *self.ids], "failed": list(self.ids), "unavailable": []})
+        self.assertEqual((record["status"], record["sources_checked"]), ("error", 0))
+        one_left = self.write({"attempted": list(self.ids), "failed": list(self.ids[1:]), "unavailable": []})[0]
+        self.assertEqual((one_left["status"], one_left["sources_checked"]), ("ok", 1))
+
+    def test_a_run_that_raises_still_leaves_an_error_record(self):
+        with mock.patch.object(cli, "run", side_effect=RuntimeError("boom")), \
+             mock.patch.object(cli, "write_page_watch_evidence") as evidence:
+            with self.assertRaises(RuntimeError):
+                cli.main(["--no-readme"])
+            with self.assertRaises(RuntimeError):
+                cli.main(["--offline", "--no-readme"])
+        self.assertEqual(evidence.call_count, 1)
+        self.assertEqual(evidence.call_args.args[1], {"error": True})
+        self.assertEqual(self.write({"error": True})[0]["status"], "error")
+
     def test_unavailable_and_skipped_are_never_ok(self):
         self.assertEqual(self.write({"attempted": ["arxiv"], "failed": [], "unavailable": ["page_watch"]})[0]["status"],
                          "firecrawl-unavailable")

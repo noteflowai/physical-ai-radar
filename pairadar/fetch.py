@@ -424,7 +424,9 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
 LOOPBACK_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
 FIRECRAWL_ENV = "RADAR_FIRECRAWL_URL"
 DEFAULT_FIRECRAWL = "http://127.0.0.1:3002"
-PAGE_STATE_SCHEMA = "pairadar-page-watch-1"
+# The baseline in radar/page-watch.json; distinct from the freshness evidence schema
+# (pairadar-page-watch-v1, written by cli.write_page_watch_evidence) on purpose.
+PAGE_STATE_SCHEMA = "pairadar-page-watch-baseline-1"
 # Same tag on every request, so the radar's change history never mixes with anything
 # else that uses the same Firecrawl.
 CHANGE_TAG = "physical-ai-radar"

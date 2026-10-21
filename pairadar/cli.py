@@ -312,22 +312,28 @@ def write_page_watch_evidence(config: Config, fetch: dict[str, Any], day: str,
     """One record per run day for the freshness objective, written atomically.
 
     Contract (noteflow-auto config/delivery-freshness.json, objective radar-page-watch):
-    schema/channel fixed, `status` is exactly "ok" only when Firecrawl answered and the watched
-    pages were checked; otherwise "firecrawl-unavailable" or "skipped"; `finished_at` ISO-8601 with
-    an offset. Counts only, never page text or URLs beyond the source ids.
+    schema/channel fixed, `status` is exactly "ok" only when Firecrawl answered and at least one
+    watched page was actually checked; "error" when pages were attempted but none could be checked
+    (403s, layout changes, robots, a broken run), "firecrawl-unavailable" or "skipped" otherwise;
+    `finished_at` ISO-8601 with an offset. Counts only, never page text or URLs beyond source ids.
     """
     settings = page_watch_settings(config)
     attempted = [s for s in fetch.get("attempted", []) if s in {e["id"] for e in _resolve_page_watch(config.sources)}]
-    if "page_watch" in fetch.get("unavailable", []):
+    failed = sorted(set(attempted) & set(fetch.get("failed", [])))
+    checked = len(attempted) - len(failed)
+    if fetch.get("error"):
+        status = "error"
+    elif "page_watch" in fetch.get("unavailable", []):
         status = "firecrawl-unavailable"
     elif not settings["enabled"] or not attempted:
         status = "skipped"
+    elif checked <= 0:
+        status = "error"  # Firecrawl answered but no watched page could be checked: never "ok"
     else:
         status = "ok"
-    failed = sorted(set(attempted) & set(fetch.get("failed", [])))
     record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch", "status": status,
               "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
-              "sources_checked": len(attempted) - len(failed), "sources_failed": failed}
+              "sources_checked": checked, "sources_failed": failed}
     target_dir = directory or page_watch_evidence_dir()
     try:
         target_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -356,13 +362,23 @@ def main(argv: list[str] | None = None) -> int:
     if args.rerender:
         rerender(day=args.day, out=args.out, write_readme=not args.no_readme)
         return 0
-    ctx = run(offline=args.offline, limit=args.limit, day=args.day,
-              write_readme=not args.no_readme, out=args.out)
-    if not args.offline and args.out is None:
-        # Only a real production round reports to the freshness objective; offline and --out
-        # runs (tests, previews) never touch the state directory.
-        write_page_watch_evidence(load_config(), ctx["fetch"], ctx.get("day") or args.day
-                                  or datetime.now(timezone.utc).date().isoformat())
+    # Only a real production round reports to the freshness objective; offline and --out runs
+    # (tests, previews) never touch the state directory. A run that raises still leaves a record
+    # (status "error"), so the objective flags the failed run instead of waiting 72h for staleness.
+    reporting = not args.offline and args.out is None
+    day = args.day or datetime.now(timezone.utc).date().isoformat()
+    try:
+        ctx = run(offline=args.offline, limit=args.limit, day=args.day,
+                  write_readme=not args.no_readme, out=args.out)
+    except BaseException:
+        if reporting:
+            try:
+                write_page_watch_evidence(load_config(), {"error": True}, day)
+            except Exception:  # noqa: BLE001 -- the run's own exception is the one that matters
+                pass
+        raise
+    if reporting:
+        write_page_watch_evidence(load_config(), ctx["fetch"], ctx.get("day") or day)
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")
         return 2
