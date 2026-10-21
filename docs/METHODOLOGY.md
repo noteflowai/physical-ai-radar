@@ -13,11 +13,51 @@ changes, this file changes in the same pull request.
 | Lab research pages | Toyota Research Institute | `R` | a lab's own page for each paper: the same standing as the paper |
 | Trade press | IEEE Spectrum Robotics, The Robot Report; 雷峰网 Leiphone (Chinese), MONOist (Japanese) | `M` | professional reporting, still secondary |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
+| Page watch | Figure, 1X, Physical Intelligence, Unitree and the standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
 
 Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
+- the one exception is `page_watch`: an official source with no feed at all is read as a
+  page, only through a self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other
+  endpoint, including `RADAR_FIRECRAWL_URL`, is refused; redirects and proxies are not
+  followed). robots.txt is checked first, through the same Firecrawl; a robots.txt that
+  cannot be read disallows the page for that run. Firecrawl's own change history needs
+  its hosted store, so the radar keeps a baseline in `radar/page-watch.json` (digests,
+  link URLs with the day each was first seen and last offered, line digests; no page
+  text). It is written atomically, and only when something in it changed; an unreadable
+  one is rebuilt, as on a first look, instead of failing the run.
+  - A listing records every first-party link under its `link_prefix`. Each run offers
+    the links still inside `filters.max_age_days` -- by the date the link states, or, for
+    a link that appeared after the first look, the day it was first seen --
+    `max_items_per_source` at most, least recently offered first; the rest are offered
+    on the next run. As with feed entries, the repeat guard keeps a published link from
+    being picked again. On the first look only links that state a date are offered.
+  - A single page yields one item pointing at it when it has lines it did not have
+    before, dated the run day (the page's own publishedTime is when the page went up,
+    often years ago). Lines that only stamp an update time ("Last updated …", "©") are
+    ignored; other numbers, such as a stage code or an application date, are the news.
+  - A page that cannot be read (non-2xx, Firecrawl `success: false`, 408, or a 5xx with
+    a Firecrawl error code such as `SCRAPE_SITE_ERROR`) is that page failing: recorded
+    and the next page is tried. Firecrawl itself is unavailable when it refuses, times
+    out, answers 502/503/504, a 5xx that is not JSON or carries no error code or
+    `UNKNOWN_ERROR`, or after three page failures in a row answered with a 5xx; the
+    channel then stops, keeps its baseline and is recorded under `unavailable` in
+    `radar/history.json`. Pages not read go under `page_failed` and those robots.txt
+    disallowed under `page_robots_skipped`, never under `failed`: `pairadar.health`
+    reports them as `page_watch_failing` / `page_watch_robots_skipped` and never as
+    struggling, so the source-repair job (which can only repair a declared feed) never
+    picks one.
+  - A real run (not `--offline`, not `--out`) also writes one freshness record per day
+    to `$PAIRADAR_STATE_DIR/page-watch/<day>.json` (default
+    `~/.local/state/pairadar/page-watch/`), schema `pairadar-page-watch-v1`, channel
+    `page_watch`. `status` is `ok` only when at least one watched page was read;
+    `all-failed` when pages were attempted and none was read; `firecrawl-unavailable`;
+    `skipped` when the channel is disabled or reached no entry; `error` when the run
+    itself raised. Only `ok` counts as success. The record also carries
+    `sources_checked`, `sources_failed`, `sources_robots_skipped` and `finished_at`.
+    Writing it is observational: a failure there is logged and never fails the run;
 - every request is timeout-bounded and retried once before the source is given up on. A
   4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;

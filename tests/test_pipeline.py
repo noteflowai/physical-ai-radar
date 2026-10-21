@@ -546,6 +546,8 @@ class FetchReliabilityTest(unittest.TestCase):
 
     def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
         with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
+                patch.object(fetch_module, "firecrawl_post",
+                             side_effect=fetch_module.FirecrawlUnavailable("ConnectionRefusedError")), \
                 patch.object(fetch_module.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()) as out:
             report = fetch_all(self.config)
@@ -558,6 +560,8 @@ class FetchReliabilityTest(unittest.TestCase):
         self.assertEqual(summary["items"], 0)
         self.assertEqual(summary["answered"], 0)
         self.assertEqual(summary["attempted"], len(expected))
+        # The local page_watch channel being down is not one more failed source.
+        self.assertEqual(summary["unavailable"], ["page_watch"])
 
     def test_degraded_only_fires_on_a_real_outage(self) -> None:
         outage = FetchReport(attempted=["arxiv"], failed=["arxiv"]).to_dict()

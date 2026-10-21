@@ -10,6 +10,9 @@ Edit `data/sources.json`. Requirements:
 - declare an `evidence` tag: `O` first-party official, `R` paper/preprint, `M` media/secondary;
 - declare a `weight` and say why in the PR description;
 - no scrapers, no paywall workarounds, no endpoints that forbid automated access.
+  The one exception is `page_watch`: a first-party official source (`evidence: "O"`) that
+  publishes no feed at all, read only through a local loopback Firecrawl. Show in the PR
+  that the source has no feed; a source with a feed belongs in `feeds`.
 - set `"topical": true` only if every entry the feed publishes is about robots or Physical AI.
   A general company blog stays unmarked; its posts must then name an anchor term
   (`anchors` in `data/taxonomy.json`) to be considered at all.

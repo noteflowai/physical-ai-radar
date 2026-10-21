@@ -237,6 +237,7 @@ docs/        METHODOLOGY.md（方法论、翻译策略与已知局限）
 
 - 排序是**可解释的加权和**，不是学习到的相关性；权重都写在 `data/` 里，可以 fork 后自行调整。agent 可以提议新权重并走一个你读得懂的 PR，但它不能把这个模型换成你读不懂的那种。
 - 源限定为公开的机器可读端点，不抓取正文、不绕过付费墙。这一条是**被强制执行**的,不只是承诺：起草与复核 agent 只声明 `read`、`grep`、`glob` —— 没有 shell、没有联网 —— 它们只能在流水线已抓取并发布的内容上推理，并且有测试守住这一点。
+- 唯一有边界的例外是 `page_watch`：完全没有 feed 的第一方官方来源（Figure、1X、Physical Intelligence、Unitree，以及 `standards_watch` 中的标准页面）按页面读取，而且只经由本机回环地址上自托管的 Firecrawl（`127.0.0.1`、`localhost`、`::1`，其他端点一律拒绝）。遵守 robots.txt；只有新上架的文章或有变化的页面才成为条目，并照常经过相关性门槛、证据标注和限额。本地 Firecrawl 未运行时跳过该通道，记为 `unavailable`；单个页面读不到只记为该页失败（`page_failed`），不进入 source-repair。真实运行每天写一条新鲜度记录（`pairadar-page-watch-v1`），至少读到 1 个页面才是 `ok`，全部失败为 `all-failed`，运行本身出错为 `error`；细节见 METHODOLOGY。arXiv 与各 feed 的读取方式不变。
 
 ## 相关项目
 
