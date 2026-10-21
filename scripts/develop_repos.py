@@ -460,7 +460,7 @@ def validate_feature(root: Path, task: dict, config: dict, state: Path,
         if actual != expected:
             raise ValueError(f"The complete WordPress feature must advance {old} to {expected} "
                              "in the plugin header, constant, stable tag, changelog and upgrade notice")
-    image = image_for(root, task["base"], config, state)
+    image = image_for(root, task["base"], config, state, repo=task.get("repo"))
 
     def checked(snapshot_path, selected_image, commands, label, **options):
         receipt = state / label / "receipt.json"
