@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-21
+### 今日雷达 · 2026-10-22
 
-`生成时间: 2026-10-20 23:40 UTC` ｜ `统计窗口: 论文 2026-10-17 → 2026-10-21 · 博客与报道 2026-09-21 → 2026-10-21 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-22 02:14 UTC` ｜ `统计窗口: 论文 2026-10-18 → 2026-10-22 · 博客与报道 2026-09-22 → 2026-10-22 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DiPLO: Self-distilled Diffusion Planning for Loco-manipulation](https://arxiv.org/abs/2610.24847)**<br>`99%`&nbsp; `45%`<br><sub>训练与自我改进 · arXiv 2610.24847 · 2026‑10‑17</sub> |
-| 02<br>🔵&nbsp;`R` | **[AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark](https://arxiv.org/abs/2610.25534)**<br>`1.9 hours`&nbsp; `17.9 hours`<br><sub>仿真与评测 · arXiv 2610.25534 · 2026‑10‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight](https://arxiv.org/abs/2610.25407)**<br>`76.56%`<br><sub>边缘与实时性 · arXiv 2610.25407 · 2026‑10‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation](https://arxiv.org/abs/2610.26545)**<br>`64.27%`&nbsp; `64.44%`&nbsp; `21.77%`<br><sub>边缘与实时性 · arXiv 2610.26545 · 2026‑10‑19</sub> |
-| 05<br>🔵&nbsp;`R` | **[Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.24675)**<br>`42.0%`&nbsp; `11.6%`&nbsp; `3.5%`<br><sub>仿真与评测 · arXiv 2610.24675 · 2026‑10‑17</sub> |
-| 06<br>🔵&nbsp;`R` | **[ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning](https://arxiv.org/abs/2610.25691)**<br><sub>数据引擎 · arXiv 2610.25691 · 2026‑10‑19</sub> |
-| 07<br>🔵&nbsp;`R` | **[PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models](https://arxiv.org/abs/2610.25961)**<br><sub>基座模型 · arXiv 2610.25961 · 2026‑10‑19</sub> |
-| 08<br>🟡&nbsp;`M` | **[启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」](https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html)**<br><sub>训练与自我改进 · 雷峰网 Leiphone · 2026‑10‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264)**<br><sub>训练与自我改进 · arXiv 2610.29264 · 2026‑10‑21</sub> |
+| 02<br>🔵&nbsp;`R` | **[Physical AI: Concepts, Techniques, and Challenges](https://arxiv.org/abs/2610.27045)**<br><sub>仿真与评测 · arXiv 2610.27045 · 2026‑10‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097)**<br>`3.6%`&nbsp; `4.0%`&nbsp; `9.5%`<br><sub>训练与自我改进 · arXiv 2610.30097 · 2026‑10‑21</sub> |
+| 04<br>🟡&nbsp;`M` | **[SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス](https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html)**<br><sub>仿真与评测 · MONOist (ITmedia) · 2026‑10‑21</sub> |
+| 05<br>🟢&nbsp;`O` | **[Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA](https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/)**<br><sub>基座模型 · NVIDIA Blog · 2026‑10‑21</sub> |
+| 06<br>🟢&nbsp;`O` | **[GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/)**<br><sub>系统与编排 · NVIDIA Blog · 2026‑10‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[A guide to Day 2 of RoboBusiness 2026](https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑21</sub> |
+| 08<br>🟡&nbsp;`M` | **[AGCO to deploy Agility Digit humanoid in Kansas factory](https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑21</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **DiPLO** — `AI 起草` 人形全身操作团队若卡在示教太少、从零 RL 又学不动之间，可先尝试在已有预训练规划器上做后训练：作者自报任务成功率由预训练的 45% 升至 99%，但页面未说明这组数字来自哪项任务。
-2. **AQUAACT** — `AI 起草` 水下巡检团队多了一个可共用的学习控制基准，但数据以仿真为主：1.9 hours 真实演示对 17.9 hours 仿真演示，任何闭环得分在采信前都应先对照真实水下表现。
-3. **AeroDASH** — `AI 起草` 在无人机上部署 VLA 时，机载推理延迟会让预测轨迹与机体实际运动脱节，控制架构需要为此留出补偿；作者自报成功率 76.56%，但页面未显示真机飞行结果，暂不宜当作上机依据。
-4. **ReInsVLN** — `AI 起草` 导航栈若一味累积观测历史，冗余会上升而已存信息反被闲置；这项免训练方法提示，先改进对已存证据的回看可能比重新训练更划算。作者自报达到 64.27% 与 64.44%，页面未写明对应指标。
-5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — `AI 起草` 在为人形机器人设计高层规划与底层控制的接口时，作者自报 42.0% 的平均成功率明显高于运动学规划的 3.5%，支持与动作对齐的隐空间；但 42.0% 离可部署仍远，页面也未说明在何种环境下测得。
-6. **ReDOA** — `AI 起草` 为操作策略做数据采集预算的团队，可把它看作在采集成本与真实环境适应性之间取舍的一种尝试；页面标出了真机与闭环实验，但没有任何数字，能省多少成本目前无从判断。
-7. **PaceVLA** — `AI 起草` 如果执行速度是 VLA 策略进不了产线的原因，这篇预印本针对的是动作在执行时的时间安排；页面标出了真机与闭环实验但未给出数字，目前还不能据此宣称提速。
-8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — `AI 起草` 后训练受限于真机时长的团队值得跟踪这一方向，但这是二手报道，页面没有任何数字，究竟能在多大程度上省掉真机环节，需回到原始来源核实后再纳入计划。
+1. **Training in Deployment** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+2. **Physical AI** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+3. **AtomicRL** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。
+4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+6. **GTC Berlin 2026** — 一手官方发布；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+7. **A guide to Day 2 of RoboBusiness 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-21.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-22.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

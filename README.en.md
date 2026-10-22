@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-21
+### Today's radar · 2026-10-22
 
-`Generated: 2026-10-20 23:40 UTC` ｜ `Window: papers 2026-10-17 → 2026-10-21 · posts 2026-09-21 → 2026-10-21 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-22 02:14 UTC` ｜ `Window: papers 2026-10-18 → 2026-10-22 · posts 2026-09-22 → 2026-10-22 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DiPLO: Self-distilled Diffusion Planning for Loco-manipulation](https://arxiv.org/abs/2610.24847)**<br>`99%`&nbsp; `45%`<br><sub>Training & self-improvement · arXiv 2610.24847 · 2026‑10‑17</sub> |
-| 02<br>🔵&nbsp;`R` | **[AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark](https://arxiv.org/abs/2610.25534)**<br>`1.9 hours`&nbsp; `17.9 hours`<br><sub>Simulation & evaluation · arXiv 2610.25534 · 2026‑10‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight](https://arxiv.org/abs/2610.25407)**<br>`76.56%`<br><sub>Edge & real-time · arXiv 2610.25407 · 2026‑10‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation](https://arxiv.org/abs/2610.26545)**<br>`64.27%`&nbsp; `64.44%`&nbsp; `21.77%`<br><sub>Edge & real-time · arXiv 2610.26545 · 2026‑10‑19</sub> |
-| 05<br>🔵&nbsp;`R` | **[Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.24675)**<br>`42.0%`&nbsp; `11.6%`&nbsp; `3.5%`<br><sub>Simulation & evaluation · arXiv 2610.24675 · 2026‑10‑17</sub> |
-| 06<br>🔵&nbsp;`R` | **[ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning](https://arxiv.org/abs/2610.25691)**<br><sub>Data engine · arXiv 2610.25691 · 2026‑10‑19</sub> |
-| 07<br>🔵&nbsp;`R` | **[PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models](https://arxiv.org/abs/2610.25961)**<br><sub>Foundation models · arXiv 2610.25961 · 2026‑10‑19</sub> |
-| 08<br>🟡&nbsp;`M` | **[启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」](https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html)**<br><sub>Training & self-improvement · 雷峰网 Leiphone · 2026‑10‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264)**<br><sub>Training & self-improvement · arXiv 2610.29264 · 2026‑10‑21</sub> |
+| 02<br>🔵&nbsp;`R` | **[Physical AI: Concepts, Techniques, and Challenges](https://arxiv.org/abs/2610.27045)**<br><sub>Simulation & evaluation · arXiv 2610.27045 · 2026‑10‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097)**<br>`3.6%`&nbsp; `4.0%`&nbsp; `9.5%`<br><sub>Training & self-improvement · arXiv 2610.30097 · 2026‑10‑21</sub> |
+| 04<br>🟡&nbsp;`M` | **[SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス](https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html)**<br><sub>Simulation & evaluation · MONOist (ITmedia) · 2026‑10‑21</sub> |
+| 05<br>🟢&nbsp;`O` | **[Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA](https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/)**<br><sub>Foundation models · NVIDIA Blog · 2026‑10‑21</sub> |
+| 06<br>🟢&nbsp;`O` | **[GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/)**<br><sub>Systems & orchestration · NVIDIA Blog · 2026‑10‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[A guide to Day 2 of RoboBusiness 2026](https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑21</sub> |
+| 08<br>🟡&nbsp;`M` | **[AGCO to deploy Agility Digit humanoid in Kansas factory](https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑21</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DiPLO** — `AI draft` Humanoid teams stuck between scarce demonstrations and RL from scratch could try post-training an existing pretrained planner first; the authors report 99% task success against 45% for the pretrained one, but the page does not say which task.
-2. **AQUAACT** — `AI draft` Underwater inspection teams gain a shared benchmark for learned control, but its demonstrations are mostly simulated, 1.9 hours real-world against 17.9 hours simulated, so check any closed-loop score against real-water behaviour before relying on it.
-3. **AeroDASH** — `AI draft` Anyone putting a VLA policy onboard a UAV has to budget for inference latency pulling predicted trajectories out of step with the vehicle's motion; the self-reported 76.56% success rate comes with no real-flight result on the page.
-4. **ReInsVLN** — `AI draft` Navigation stacks that keep appending observations pile up redundancy while stored evidence goes unused, and this training-free approach suggests revisiting that store before retraining; the authors report reaching 64.27% and 64.44%, without the metric named on the page.
-5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — `AI draft` For humanoid teams choosing how a high-level planner hands off to control, the reported 42.0% mean success against 3.5% for kinematic planning favours action-aligned latents, yet 42.0% is far from deployable and the page does not say where it was measured.
-6. **ReDOA** — `AI draft` Teams budgeting manipulation data can read this as one attempt at the trade-off between collection cost and real-world adaptability; the page flags real-robot and closed-loop experiments but shows no figures, so any saving is unquantified.
-7. **PaceVLA** — `AI draft` If execution speed is what keeps a VLA policy out of deployment, this preprint works on how its actions are timed during execution; the page flags real-robot and closed-loop experiments but gives no figures, so no speed-up can be claimed yet.
-8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — `AI draft` Teams whose post-training is gated by robot time should follow this direction, but it is a secondary report with no figures on the page, so how far it really removes the physical-robot step must be checked against the primary source.
+1. **Training in Deployment** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
+2. **Physical AI** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+3. **AtomicRL** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
+4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **GTC Berlin 2026** — First-party release; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+7. **A guide to Day 2 of RoboBusiness 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-21.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-22.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

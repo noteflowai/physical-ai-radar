@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI Radar · 2026-10-21 · The Physical AI frontier, eight picks a day, every claim tagged">
-<title>Physical AI Radar · 2026-10-21</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-label="Physical AI Radar · 2026-10-22 · The Physical AI frontier, eight picks a day, every claim tagged">
+<title>Physical AI Radar · 2026-10-22</title>
 <style>text{font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif}.mono{font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace}.ring{fill:none;stroke:rgba(52,211,153,.18)}.rim{stroke:rgba(52,211,153,.35)}.spoke{stroke:rgba(148,163,184,.14)}.area{fill:rgba(139,92,246,.24);stroke:#a78bfa;stroke-width:1.5;stroke-linejoin:round}.beam{stroke:rgba(52,211,153,.8);stroke-width:1.5}.label{font-size:17px;font-weight:600}.label .count{fill:#8b98ad;font-weight:400}.core{fill:#34d399}.blip circle{fill:var(--lane)}.blip .halo{opacity:0;transform-box:fill-box;transform-origin:center;animation:blip 3.2s var(--delay) infinite}@keyframes blip{0%{opacity:.55;transform:scale(.4)}60%,100%{opacity:0;transform:scale(1.6)}}.live{animation:live 2.4s infinite}@keyframes live{50%{opacity:.35}}@media (prefers-reduced-motion:reduce){.blip .halo,.live{animation:none}.sweep{display:none}}</style>
 <defs><radialGradient id="glow-a" cx="88%" cy="-10%" r="75%"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".38"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient><radialGradient id="glow-b" cx="0%" cy="100%" r="60%"><stop offset="0" stop-color="#34d399" stop-opacity=".18"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset=".05" stop-color="#ffffff"/><stop offset=".6" stop-color="#c4b5fd"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(148,163,184,.07)"/></pattern><clipPath id="card"><rect width="1280" height="480" rx="24"/></clipPath></defs>
 <g clip-path="url(#card)">
@@ -11,7 +11,7 @@
 <rect x=".5" y=".5" width="1279" height="479" rx="24" fill="none" stroke="rgba(148,163,184,.22)"/>
 <rect x="60" y="56" width="434" height="38" rx="19" fill="rgba(52,211,153,.10)" stroke="rgba(52,211,153,.35)"/>
 <circle class="live" cx="82" cy="75" r="6" fill="#34d399"/>
-<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">Updated daily at 07:40 SGT · 2026-10-21</text>
+<text class="mono" x="98" y="81" font-size="17" font-weight="600" fill="#6ee7b7">Updated daily at 07:40 SGT · 2026-10-22</text>
 <text x="60" y="144" font-size="40" font-weight="800" fill="url(#shine)">The Physical AI frontier,</text>
 <text x="60" y="194" font-size="40" font-weight="800" fill="url(#shine)">eight picks a day, every</text>
 <text x="60" y="244" font-size="40" font-weight="800" fill="url(#shine)">claim tagged</text>
@@ -22,7 +22,7 @@
 <text class="mono" x="75" y="410" font-size="32" font-weight="700" fill="#e6edf3">8</text>
 <rect x="220" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="236" y="370" font-size="15" fill="#8b98ad">items scanned</text>
-<text class="mono" x="236" y="410" font-size="32" font-weight="700" fill="#e6edf3">396</text>
+<text class="mono" x="236" y="410" font-size="32" font-weight="700" fill="#e6edf3">415</text>
 <rect x="381" y="340" width="148" height="88" rx="14" fill="rgba(16,24,43,.85)" stroke="rgba(148,163,184,.18)"/>
 <text x="396" y="370" font-size="15" fill="#8b98ad">sources answered</text>
 <text class="mono" x="396" y="410" font-size="32" font-weight="700" fill="#e6edf3">10/11</text>
@@ -38,28 +38,28 @@
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="-108.0"/>
 <text class="label" x="0.0" y="-124.0" text-anchor="middle" dominant-baseline="auto" fill="#8b5cf6">Foundation models <tspan class="count">6</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="76.4" y2="-76.4"/>
-<text class="label" x="87.7" y="-87.7" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">Data engine <tspan class="count">10</tspan></text>
+<text class="label" x="87.7" y="-87.7" text-anchor="start" dominant-baseline="middle" fill="#38bdf8">Data engine <tspan class="count">8</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="108.0" y2="-0.0"/>
-<text class="label" x="124.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">Training &amp; self-improvement <tspan class="count">4</tspan></text>
+<text class="label" x="124.0" y="-0.0" text-anchor="start" dominant-baseline="middle" fill="#34d399">Training &amp; self-improvement <tspan class="count">6</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="76.4" y2="76.4"/>
 <text class="label" x="87.7" y="87.7" text-anchor="start" dominant-baseline="middle" fill="#fb923c">Simulation &amp; evaluation <tspan class="count">13</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="0.0" y2="108.0"/>
-<text class="label" x="0.0" y="124.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">Edge &amp; real-time <tspan class="count">4</tspan></text>
+<text class="label" x="0.0" y="124.0" text-anchor="middle" dominant-baseline="hanging" fill="#f472b6">Edge &amp; real-time <tspan class="count">3</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-76.4" y2="76.4"/>
 <text class="label" x="-87.7" y="87.7" text-anchor="end" dominant-baseline="middle" fill="#facc15">Safety &amp; compliance <tspan class="count">5</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-108.0" y2="0.0"/>
-<text class="label" x="-124.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">Systems &amp; orchestration <tspan class="count">4</tspan></text>
+<text class="label" x="-124.0" y="0.0" text-anchor="end" dominant-baseline="middle" fill="#a3e635">Systems &amp; orchestration <tspan class="count">5</tspan></text>
 <line class="spoke" x1="0" y1="0" x2="-76.4" y2="-76.4"/>
 <text class="label" x="-87.7" y="-87.7" text-anchor="end" dominant-baseline="middle" fill="#22d3ee">Embodiment &amp; supply chain <tspan class="count">10</tspan></text>
-<polygon class="area" points="0.0,-49.8 58.7,-58.7 33.2,-0.0 76.4,76.4 0.0,33.2 -29.4,29.4 -33.2,0.0 -58.7,-58.7"/>
+<polygon class="area" points="0.0,-49.8 47.0,-47.0 49.8,-0.0 76.4,76.4 0.0,24.9 -29.4,29.4 -41.5,0.0 -58.7,-58.7"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-108 A108,108 0 0,1 69.4,-82.7 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="69.4" y2="-82.7" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
-<a href="#p1" class="blip" style="--lane:#34d399;--delay:0.35s"><circle cx="96.8" cy="-8.5" r="11" class="halo"/><circle cx="96.8" cy="-8.5" r="5"/><title>DiPLO: Self-distilled Diffusion Planning for Loco-manipulation</title></a>
-<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="66.4" cy="55.7" r="11" class="halo"/><circle cx="66.4" cy="55.7" r="5"/><title>AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark</title></a>
-<a href="#p3" class="blip" style="--lane:#f472b6;--delay:1.05s"><circle cx="7.4" cy="84.0" r="11" class="halo"/><circle cx="7.4" cy="84.0" r="5"/><title>AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight</title></a>
-<a href="#p4" class="blip" style="--lane:#f472b6;--delay:1.40s"><circle cx="-7.3" cy="84.0" r="11" class="halo"/><circle cx="-7.3" cy="84.0" r="5"/><title>ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation</title></a>
-<a href="#p5" class="blip" style="--lane:#fb923c;--delay:1.75s"><circle cx="53.2" cy="63.4" r="11" class="halo"/><circle cx="53.2" cy="63.4" r="5"/><title>Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation</title></a>
-<a href="#p6" class="blip" style="--lane:#38bdf8;--delay:2.10s"><circle cx="57.4" cy="-57.4" r="11" class="halo"/><circle cx="57.4" cy="-57.4" r="5"/><title>ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning</title></a>
-<a href="#p7" class="blip" style="--lane:#8b5cf6;--delay:2.45s"><circle cx="0.0" cy="-80.4" r="11" class="halo"/><circle cx="0.0" cy="-80.4" r="5"/><title>PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models</title></a>
-<a href="#p8" class="blip" style="--lane:#34d399;--delay:2.80s"><circle cx="59.7" cy="5.2" r="11" class="halo"/><circle cx="59.7" cy="5.2" r="5"/><title>启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」</title></a>
+<a href="#p1" class="blip" style="--lane:#34d399;--delay:0.35s"><circle cx="96.8" cy="-8.5" r="11" class="halo"/><circle cx="96.8" cy="-8.5" r="5"/><title>Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation</title></a>
+<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="74.2" cy="62.2" r="11" class="halo"/><circle cx="74.2" cy="62.2" r="5"/><title>Physical AI: Concepts, Techniques, and Challenges</title></a>
+<a href="#p3" class="blip" style="--lane:#34d399;--delay:1.05s"><circle cx="92.3" cy="8.1" r="11" class="halo"/><circle cx="92.3" cy="8.1" r="5"/><title>AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation</title></a>
+<a href="#p4" class="blip" style="--lane:#fb923c;--delay:1.40s"><circle cx="42.5" cy="50.6" r="11" class="halo"/><circle cx="42.5" cy="50.6" r="5"/><title>SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス</title></a>
+<a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="0.0" cy="-65.2" r="11" class="halo"/><circle cx="0.0" cy="-65.2" r="5"/><title>Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA</title></a>
+<a href="#p6" class="blip" style="--lane:#a3e635;--delay:2.10s"><circle cx="-65.2" cy="0.0" r="11" class="halo"/><circle cx="-65.2" cy="0.0" r="5"/><title>GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote</title></a>
+<a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-42.8" cy="-35.9" r="11" class="halo"/><circle cx="-42.8" cy="-35.9" r="5"/><title>A guide to Day 2 of RoboBusiness 2026</title></a>
+<a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-35.9" cy="-42.8" r="11" class="halo"/><circle cx="-35.9" cy="-42.8" r="5"/><title>AGCO to deploy Agility Digit humanoid in Kansas factory</title></a>
 <circle class="core" r="3"/></svg>
 </svg>

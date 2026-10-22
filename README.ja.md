@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-21
+### 本日のレーダー · 2026-10-22
 
-`生成時刻: 2026-10-20 23:40 UTC` ｜ `対象期間: 論文 2026-10-17 → 2026-10-21 · ブログ・報道 2026-09-21 → 2026-10-21 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-22 02:14 UTC` ｜ `対象期間: 論文 2026-10-18 → 2026-10-22 · ブログ・報道 2026-09-22 → 2026-10-22 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DiPLO: Self-distilled Diffusion Planning for Loco-manipulation](https://arxiv.org/abs/2610.24847)**<br>`99%`&nbsp; `45%`<br><sub>学習と自己改善 · arXiv 2610.24847 · 2026‑10‑17</sub> |
-| 02<br>🔵&nbsp;`R` | **[AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark](https://arxiv.org/abs/2610.25534)**<br>`1.9 hours`&nbsp; `17.9 hours`<br><sub>シミュレーションと評価 · arXiv 2610.25534 · 2026‑10‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight](https://arxiv.org/abs/2610.25407)**<br>`76.56%`<br><sub>エッジとリアルタイム · arXiv 2610.25407 · 2026‑10‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation](https://arxiv.org/abs/2610.26545)**<br>`64.27%`&nbsp; `64.44%`&nbsp; `21.77%`<br><sub>エッジとリアルタイム · arXiv 2610.26545 · 2026‑10‑19</sub> |
-| 05<br>🔵&nbsp;`R` | **[Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.24675)**<br>`42.0%`&nbsp; `11.6%`&nbsp; `3.5%`<br><sub>シミュレーションと評価 · arXiv 2610.24675 · 2026‑10‑17</sub> |
-| 06<br>🔵&nbsp;`R` | **[ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning](https://arxiv.org/abs/2610.25691)**<br><sub>データエンジン · arXiv 2610.25691 · 2026‑10‑19</sub> |
-| 07<br>🔵&nbsp;`R` | **[PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models](https://arxiv.org/abs/2610.25961)**<br><sub>基盤モデル · arXiv 2610.25961 · 2026‑10‑19</sub> |
-| 08<br>🟡&nbsp;`M` | **[启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」](https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html)**<br><sub>学習と自己改善 · 雷峰网 Leiphone · 2026‑10‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264)**<br><sub>学習と自己改善 · arXiv 2610.29264 · 2026‑10‑21</sub> |
+| 02<br>🔵&nbsp;`R` | **[Physical AI: Concepts, Techniques, and Challenges](https://arxiv.org/abs/2610.27045)**<br><sub>シミュレーションと評価 · arXiv 2610.27045 · 2026‑10‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097)**<br>`3.6%`&nbsp; `4.0%`&nbsp; `9.5%`<br><sub>学習と自己改善 · arXiv 2610.30097 · 2026‑10‑21</sub> |
+| 04<br>🟡&nbsp;`M` | **[SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス](https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html)**<br><sub>シミュレーションと評価 · MONOist (ITmedia) · 2026‑10‑21</sub> |
+| 05<br>🟢&nbsp;`O` | **[Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA](https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/)**<br><sub>基盤モデル · NVIDIA Blog · 2026‑10‑21</sub> |
+| 06<br>🟢&nbsp;`O` | **[GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/)**<br><sub>システムとオーケストレーション · NVIDIA Blog · 2026‑10‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[A guide to Day 2 of RoboBusiness 2026](https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑21</sub> |
+| 08<br>🟡&nbsp;`M` | **[AGCO to deploy Agility Digit humanoid in Kansas factory](https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑21</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **DiPLO** — `AI 下書き` デモが少なく、強化学習をゼロから回すのも難しい人型ロコマニピュレーションでは、既存の事前学習済みプランナーの事後学習を先に試す価値がある。著者報告では事前学習の 45% に対し 99% だが、どのタスクの数値かはページから読めない。
-2. **AQUAACT** — `AI 下書き` 水中点検のチームにとって学習制御を比べる共通の土台になるが、実環境 1.9 hours に対しシミュレーション 17.9 hours と大半が模擬データである。閉ループの成績は実際の水中での挙動と照合してから採用したい。
-3. **AeroDASH** — `AI 下書き` UAV に VLA を載せるなら、機上推論の遅延で予測軌道と実際の機体運動がずれる前提で制御系を組む必要がある。著者報告の成功率は 76.56% だが、ページには実機飛行の結果が示されていない。
-4. **ReInsVLN** — `AI 下書き` 観測履歴を積み増すだけのナビゲーションは冗長になり、保持した情報も活かされにくい。再学習の前に既存の履歴の参照の仕方を見直す選択肢を示す学習不要の手法で、著者報告は 64.27% と 64.44% だが、指標名はページにない。
-5. **Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation** — `AI 下書き` 人型ロボットで上位の計画と下位制御のつなぎ方を選ぶなら、平均成功率 42.0% 対運動学的計画 3.5% という著者報告は行動に揃えた潜在表現を支持する。ただし 42.0% は実運用には遠く、測定条件もページからは分からない。
-6. **ReDOA** — `AI 下書き` マニピュレーションのデータ収集予算を組むチームには、収集コストと実環境への適応性のトレードオフへの一つの試みとして参考になる。実機・閉ループ実験の記載はあるが数値がなく、削減効果は見積もれない。
-7. **PaceVLA** — `AI 下書き` 実行速度が VLA 方策の実運用を阻んでいるなら、行動の時間的な刻み方に手を入れるこのプレプリントは検討対象になる。実機・閉ループ実験の記載はあるものの数値はなく、高速化を言える段階ではない。
-8. **启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」** — `AI 下書き` 事後学習が実機の稼働時間に縛られているチームは注視したい方向だが、二次報道でページに数値もない。実機工程をどこまで省けるのかは、一次情報で確かめてから計画に入れるべきだ。
+1. **Training in Deployment** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
+2. **Physical AI** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **AtomicRL** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — 当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+6. **GTC Berlin 2026** — 当事者による一次発表。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+7. **A guide to Day 2 of RoboBusiness 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-21.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-22.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

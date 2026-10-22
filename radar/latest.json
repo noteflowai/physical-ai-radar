@@ -1,196 +1,170 @@
 {
-  "date": "2026-10-21",
-  "generated": "2026-10-20 23:40 UTC",
-  "window": "papers 2026-10-17 → 2026-10-21 · posts 2026-09-21 → 2026-10-21 (UTC)",
+  "date": "2026-10-22",
+  "generated": "2026-10-22 02:14 UTC",
+  "window": "papers 2026-10-18 → 2026-10-22 · posts 2026-09-22 → 2026-10-22 (UTC)",
   "window_detail": {
-    "day": "2026-10-21",
-    "papers_from": "2026-10-17",
-    "posts_from": "2026-09-21",
+    "day": "2026-10-22",
+    "papers_from": "2026-10-18",
+    "posts_from": "2026-09-22",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.24847",
-      "title": "DiPLO: Self-distilled Diffusion Planning for Loco-manipulation",
-      "url": "https://arxiv.org/abs/2610.24847",
-      "publisher": "arXiv 2610.24847",
+      "id": "arxiv:2610.29264",
+      "title": "Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2610.29264",
+      "publisher": "arXiv 2610.29264",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-17",
+      "published": "2026-10-21",
       "lane": "training",
       "score": 3.9,
-      "numbers": [
-        "99%",
-        "45%"
-      ],
+      "numbers": [],
       "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
+        "real_robot",
+        "open_release"
       ],
-      "summary": "Humanoid loco-manipulation is particularly challenging because it requires coordinating locomotion, balance, and object interaction, making it difficult to learn from limited demonstrations or from scratch through Reinforcement Learning (RL). We introduce DiPLO (self-distilled Diffusion Planning for Loco-manipulation), a framework that combines a self-distilled diffusion planner with a low-level whole-body tracking policy. Our planner is pretrained via supervised learning on motions derived from human-to-humanoid retargeting, while the tracker is trained via RL to execute them. DiPLO centers around two complementary post-training stages. First, we introduce Self-Distillation Diffusion Policy Optimisation (SD:DPO) to remove the planner's dependence on strong task conditioning, which we identify as a crucial ingredient for effective pretraining, as downstream fine-tuning does not recover comparable performance when it is omitted.. We then fine-tune this distilled model with Diffusion-Augmented Proximal Policy Optimization (DA:PPO), a maximum-entropy RL method for diffusion models, to improve task success and align generated plans with the frozen tracker's execution capabilities. Together, these stages enable motion generation through state-history and goal conditioning alone, enabling 99% task success in pick-carry-place tasks, compared to just 45% for the pretrained model. The resulting planner also generates motions for unseen object goals, with further evaluations on kicking and pushing/pulling tasks. Finally, we deploy our pipeline on the hardware, using our DA:PPO planner-tracker on a Unitree G1, achieving repeated successful executions without any real-world fine-tuning."
+      "summary": "Large pretrained robot foundation models provide strong priors for manipulation, yet adapting them to target tasks with offline teleoperated demonstrations often fails to cover the contact-rich, recovery, and precision-critical states encountered during deployment. Existing methods mitigate this issue by augmenting offline demonstrations with human-in-the-loop data or online reinforcement learning. Despite this, offline post-training adapts slowly because it cannot immediately absorb deployment experience, while online RL typically relies on value functions or auxiliary actor-critic models, increasing both training complexity and instability. We present TIDE (Training In DEployment), a human-in-the-loop online post-training system. TIDE introduces a provenance-conditioned supervised learning framework that updates the policy online from human interventions and policy-generated rollouts collected during deployment, without a learned critic, reward model, or action scorer. Across four real-world bimanual manipulation tasks, TIDE improves milestone-normalized task progress and binary full-task completion over the warm-start policy and matched additional offline demonstrations, and performs comparably to the fixed-policy collection baseline while making updated checkpoints available during deployment. Each task-specific online post-training session, from the start of deployment rollouts until the final checkpoint is available, completes in less than one hour while learning and checkpoint handling run asynchronously."
     },
     {
-      "id": "arxiv:2610.25534",
-      "title": "AQUAACT: A Joystick-Level Underwater Teleoperation Dataset and Closed-Loop Benchmark",
-      "url": "https://arxiv.org/abs/2610.25534",
-      "publisher": "arXiv 2610.25534",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-18",
-      "lane": "simeval",
-      "score": 3.205,
-      "numbers": [
-        "1.9 hours",
-        "17.9 hours"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Underwater robots support a growing range of work, from inspecting offshore structures and pipelines to surveying reefs and accompanying divers. Most of these tasks, however, are still flown by hand by a pilot, which raises the question of whether they can be carried out autonomously instead. On land, vision-language-action (VLA) models already let robots carry out tasks autonomously from language instructions, which makes them a natural candidate for taking the pilot's place. Underwater, however, there is little data to train such models. We take inspiration from how these tasks are flown today: the pilot watches the camera image and steers with a joystick, whose commands the flight controller turns into motion. We therefore record the pilots and introduce AQUAACT, to our knowledge the first publicly available language-annotated underwater dataset pairing camera images with human joystick commands. It comprises 1.9 hours of real-world and 17.9 hours of simulated demonstrations, both flown by human pilots, together with the vehicle's inertial measurements. Experiments with AQUAACT show that its simulated demonstrations transfer to real data and greatly reduce the real demonstrations a policy needs. A closed-loop benchmark of seven policies in simulation, from imitation-learning baselines to VLA models, each trained with its default recipe, shows that these tasks remain far from solved: no policy completes more than a fifth of the episodes. Pretraining on land data gives large VLA models no advantage over small policies trained from scratch, a gap that land-trained models have yet to close underwater."
-    },
-    {
-      "id": "arxiv:2610.25407",
-      "title": "AeroDASH: Asynchronous Vision-Language-Action Control for Continuous UAV Flight",
-      "url": "https://arxiv.org/abs/2610.25407",
-      "publisher": "arXiv 2610.25407",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-18",
-      "lane": "edge",
-      "score": 3.057,
-      "numbers": [
-        "76.56%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Onboard inference latency creates a mismatch between the trajectories predicted by vision-language-action (VLA) policies and the ongoing motion of unmanned aerial vehicles (UAVs). We present AeroDASH, an asynchronous VLA framework for continuous language-conditioned flight. A B-spline policy is initialized through supervised fine-tuning on expert demonstrations, providing continuous trajectory references in position and yaw. During execution, trajectory fusion removes the expired prediction prefix and connects the remaining segment to the active reference with derivative continuity while limiting trajectory deformation. To account for deviations induced by asynchronous execution, execution-aware group relative policy optimization (GRPO) further adapts the policy using trajectory-level rewards. On the UAV-Flow test set, AeroDASH achieves a success rate of 76.56%, exceeding OpenVLA-UAV and AeroDASH w/o GRPO by 38.1 and 20.1 percentage points, respectively. Execution experiments show that AeroDASH sustains motion during inference and reduces acceleration, jerk, and speed fluctuations relative to asynchronous tracking of waypoint sequences. We further demonstrate language-conditioned flight with onboard inference and asynchronous trajectory execution. The code will be released upon acceptance."
-    },
-    {
-      "id": "arxiv:2610.26545",
-      "title": "ReInsVLN: Revisiting Historical Evidence for Training-Free Vision-and-Language Navigation",
-      "url": "https://arxiv.org/abs/2610.26545",
-      "publisher": "arXiv 2610.26545",
+      "id": "arxiv:2610.27045",
+      "title": "Physical AI: Concepts, Techniques, and Challenges",
+      "url": "https://arxiv.org/abs/2610.27045",
+      "publisher": "arXiv 2610.27045",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-19",
-      "lane": "edge",
-      "score": 3.055,
-      "numbers": [
-        "64.27%",
-        "64.44%",
-        "21.77%",
-        "32.25%"
-      ],
+      "lane": "simeval",
+      "score": 3.875,
+      "numbers": [],
       "signals": [
-        "numbers",
         "closed_loop",
         "real_robot",
         "latency"
       ],
-      "summary": "Vision-and-language navigation (VLN) relies on retaining and using relevant observations. Yet growing histories introduce redundancy, and retained information may remain underused. We introduce ReInsBench, a diagnostic benchmark that examines history utilization through controlled continuation trials. Its results show that history-review reinstruction can recover navigation failures using the existing task context. Motivated by this finding, we propose ReInsVLN, a training-free framework supporting memory construction and utilization in frozen navigators. Coverage- and Instruction-Aware Compression constructs compact visual context through temporal redundancy reduction, coverage-aware protection, and instruction-guided token selection. Forgetting-Inspired History Reminders guide navigators to revisit retained observations according to a predefined schedule, without additional model calls. On R2R Val-Unseen, ReInsVLN improves success rates by 8.48 and 3.37 percentage points over the native StreamVLN and InternVLA-N1, reaching 64.27% and 64.44%, respectively. Visual compression largely preserves navigation performance while reducing prefill latency and KV cache memory by up to 21.77% and 32.25%, respectively, on matched observation workloads. Real-world trials on humanoid and quadruped robots further support the applicability of ReInsVLN to sequential instruction following and ordinal navigation."
+      "summary": "In recent years, physical artificial intelligence (physical AI) has experienced rapid development, capturing significant attention in academia and industry. However, the field has yet to reach consensus on its definition, technical landscape, and core challenges. To address this gap, this monograph seeks to define physical AI, present its technical landscape, and examine each key technical subfield in depth. In doing so, it establishes a unified framework for Physical AI: artificial systems that perceive, model, and act upon the physical world through continuous feedback under real-world constraints. Further, this monograph distinguishes physical AI from conventional digital AI, embodied AI, cyber-physical systems, and digital twins. It develops the foundations of physical AI across physics, control, cognition, learning, and reasoning. It reviews key methodologies, including multimodal perception, physical data and simulation, world models, embodied foundation models, motor-control systems, multi-agent coordination, and hardware-software co-design. Furthermore, it examines applications spanning robotics, manufacturing, infrastructure, scientific experimentation, and autonomous services. Particular attention is given to sim-to-real transfer, reliability, real-time execution, evaluation, safety, governance, and long-term deployment. By connecting perception, prediction, decision-making, action, and adaptation in a closed loop, this monograph identifies the technical challenges and research directions required to advance from narrow automation toward more generalizable physical AI and, ultimately, physical artificial general intelligence (Physical AGI)."
     },
     {
-      "id": "arxiv:2610.24675",
-      "title": "Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation",
-      "url": "https://arxiv.org/abs/2610.24675",
-      "publisher": "arXiv 2610.24675",
+      "id": "arxiv:2610.30097",
+      "title": "AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2610.30097",
+      "publisher": "arXiv 2610.30097",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-17",
-      "lane": "simeval",
-      "score": 2.955,
+      "published": "2026-10-21",
+      "lane": "training",
+      "score": 3.6,
       "numbers": [
-        "42.0%",
-        "11.6%",
-        "3.5%"
+        "3.6%",
+        "4.0%",
+        "9.5%",
+        "21.3%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
         "real_robot"
       ],
-      "summary": "Learning a single perceptive policy for diverse humanoid loco-manipulation requires unifying high-level task decisions without losing the state-dependent physical responses that make each interaction succeed. This makes the representation between high-level planning and whole-body control critical: kinematic or contact targets provide compact abstractions but do not directly encode interaction-specific control responses, while directly predicting low-level actions requires the planner to model high-frequency closed-loop feedback. We propose FIBER, a framework that uses the executable latent space of a frozen behavioral foundation model (BFM) as a shared planning representation for heterogeneous interaction skills. Our latent policy projection (LPP) maps independently acquired task-specific policies into this representation by identifying latent commands whose induced actions match their local control responses, enabling lower-rate planning while retaining the BFM's high-frequency state feedback. After projection, we aggregate closed-loop latent rollouts from all skills and train a single perceptive flow planner entirely offline. We further introduce AH-BFM, an adaptive-horizon BFM trained with multi-gamma forward-backward (FB) learning to support both precise control and temporally extended whole-body behavior. We evaluate FIBER on box pickup, door opening, and object grasping in simulation and on a real Unitree G1 humanoid. Across 128 diverse variations per task in simulation, FIBER achieves 42.0% mean success, more than tripling projected latent replay (11.6%) and substantially outperforming kinematic planning (3.5%). Real-world experiments further demonstrate sim-to-real transfer, skill chaining, and conditional steering through the same unified planner."
+      "summary": "Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills. Reinforcement learning (RL) offers an effective avenue for further improving VLA policies. However, existing VLA-RL methods typically suffer from delayed and biased credit assignment due to trajectory-level sparse rewards, while imbalanced subtask mastery creates bottlenecks that limit overall performance. To address these challenges, we propose AtomicRL, an RL post-training framework that leverages atomic task structures for reliable credit assignment and adaptive exploration. AtomicRL introduces Semantic-Aware Policy Optimization (SAPO), which uses semantic-aware gating to constrain TD residuals from failed atomic subtasks from propagating across task boundaries, mitigating credit contamination while preserving intra-subtask credit assignment and value bootstrapping. In addition, Bottleneck-Adaptive Target Exploration (BATE) dynamically coordinates task sampling and local exploration incentives based on the mastery of individual atomic subtasks, directing learning toward the remaining bottlenecks. Finally, we develop a Real2Sim2Real pipeline that bridges online RL in simulation with real-world deployment, facilitating practical transfer to physical robots. On LIBERO-LONG, AtomicRL achieves absolute performance gains of 3.6% and 4.0% over PPO across two VLA architectures. On CALVIN ABC-D, it improves full-task performance by up to 9.5% over PPO. Combined with the Real2Sim2Real pipeline, AtomicRL further improves real-world task performance by an average of 21.3%. These results demonstrate that AtomicRL effectively improves the learning efficiency and manipulation performance of VLA policies on long-horizon tasks."
     },
     {
-      "id": "arxiv:2610.25691",
-      "title": "ReDOA: Real-World Distillation via Observation Alignment for Image-Based Manipulation Policy Learning",
-      "url": "https://arxiv.org/abs/2610.25691",
-      "publisher": "arXiv 2610.25691",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-19",
-      "lane": "data",
-      "score": 2.852,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Data-driven learning for general-purpose robotic manipulation presents a fundamental trade-off between data-collection cost and adaptability to real-world environments. Imitation learning (IL) requires costly human demonstrations, whereas simulation-based learning is vulnerable to sim-to-real gaps in dynamics and sensor observations. We propose ReDOA (Real-World Distillation via Observation Alignment), a framework that decouples control learning from perception learning to learn image-based policies in the real world. A state-based teacher policy trained in simulation is executed on a real robot, and its control knowledge is distilled into an image-based student policy using the collected trajectories. Observation Alignment resolves observation mismatches between data collection and deployment. This framework collects successful, efficiently executed trajectories paired with real-world visual observations, without requiring demonstrations from human experts. In real-robot experiments on three non-prehensile manipulation tasks, including bimanual manipulation, our method achieves better overall performance when jointly considering task success and execution efficiency than both IL based on human demonstrations and policy distillation in simulation. https://isri-aist.github.io/redoa-project-page/"
-    },
-    {
-      "id": "arxiv:2610.25961",
-      "title": "PaceVLA: Adaptive Temporal Action Quantization in Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2610.25961",
-      "publisher": "arXiv 2610.25961",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-19",
-      "lane": "foundation",
-      "score": 2.8,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Fast and reliable manipulation is crucial for practical robot deployment. Although Vision-Language-Action (VLA) models have recently shown remarkable progress as generalist robot policies, their execution often remains temporally inefficient. A key source of this inefficiency is that policies learn fine-grained temporal patterns from teleoperated demonstrations, requiring many low-level action steps. Temporal action quantization offers a simple way to accelerate execution by aggregating consecutive low-level actions into temporally coarser actions. However, applying action quantization without considering when fine-grained control is required introduces a speed-accuracy trade-off: accelerated actions may efficiently reduce redundant steps in some phases, while discarding critical motion details in precision-sensitive interactions. To address this, we propose PaceVLA, a unified framework for adaptive temporal execution in VLAs that integrates two coupled components: (1) mode-specific action decoders built on a shared action expert, supporting multiple temporal granularities and prediction horizons, and (2) a quantizability-guided mode selection scheme which decides whether coarse execution is appropriate, and a context-conditioned router that selects an execution mode at each inference step. Experiments across three multi-task simulation benchmarks and six real-world tasks show that PaceVLA improves execution efficiency while maintaining task success rate across multiple embodiments, including long-horizon and dexterous manipulation."
-    },
-    {
-      "id": "leiphone:ecea94da2879",
-      "title": "启元机器人新进展：北大董豪团队推出 HIL-UMI，让后训练摆脱「真机依赖」",
-      "url": "https://www.leiphone.com/category/ai/XgCxObsqu8pc44px.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "monoist:c6032d49828a",
+      "title": "SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-20",
-      "lane": "training",
-      "score": 1.45,
+      "published": "2026-10-21",
+      "lane": "simeval",
+      "score": 1.855,
       "numbers": [],
       "signals": [],
-      "summary": "继无本体之后，具身后训练范式有了新进展。最近，具身行业讨论“无本体进行后训练的可能性”的热度很高。国内外目前还没有团队做出可行方案。 说白了，无论是大模型还是具身机器人，想真正好用，光靠预训练打基础可不行，最终落地全靠“后训练”来调教。启元机器人首席科学家董豪告诉AI科技评论：“预训练提升的是下限，上限还得看后训练。” 当前具身公司追求进厂打工、家庭保洁等真实落地，比的就是成功率，也就是在比拼后训练的实力。 可后训练，难就难在它得跟真实物理世界打交道，过去都得用纯真机数据。 但真机训练成本太高，要大规模铺开，那么多的机器人本体，硬件磨损、场地、人工都是天价。所以，行业内预训练已经开始转向用“无本体”设备采集数据，虽然量上去了，但传统后训练最关键的“纠错”环节却没法搞定。 为了解决这个行业难题，北大和启元机器人董豪团队推出了HIL-UMI。 这个工作，围绕着具身后训练阶段无本体的前提下，围绕着最关键的“纠错”环节展开。 论文地址：https://arxiv.org/pdf/2609.20659 项目主页：https://hil-umi.github.io 01 具身后训练的成本， 为何远超大模型RLHF？ 跟大模型比起来，具身行业的后训练太贵，是很多具身模型无法尝试Scaling的重要原因。 大语言模型能变得这么好用，大家心里都清楚：不光是预训练数据量大，更关键的是后面有RLHF（人类反馈强化学习，可以简单理解为数据标注）和DPO这些“后训练”的功劳。 …"
+      "summary": "アンシス・ジャパンは、年次イベント「Ansys Simulation World 2026 Japan」を開催した。基調講演と特別セッションでは、SynopsysとAnsysの技術統合によって進む半導体からシステム全体までを対象とした設計／解析環境の進化や、AIと物理シミュレーションを組み合わせたエンジニアリングの将来像を紹介。さらに、AIエージェントによる解析業務の効率化、デジタルツインやフィジカルAIへの取り組みなども披露された。"
+    },
+    {
+      "id": "nvidia-blog:0c405e6fd045",
+      "title": "Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA",
+      "url": "https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-10-21",
+      "lane": "foundation",
+      "score": 1.8,
+      "numbers": [],
+      "signals": [],
+      "summary": "To increase productivity, accelerate innovation and create new opportunities for economic growth, Europe’s industrial leaders are tapping NVIDIA CUDA-X and Omniverse libraries, as well as NVIDIA Cosmos and Nemotron open models, across the engineering and manufacturing lifecycle. Bringing those capabilities together on the factory floor, the NVIDIA Factory Operations Blueprint (FOX) is now available in […]"
+    },
+    {
+      "id": "nvidia-blog:d8fecd9b69c9",
+      "title": "GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote",
+      "url": "https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-10-21",
+      "lane": "systems",
+      "score": 1.8,
+      "numbers": [],
+      "signals": [],
+      "summary": "Founded in a tent near the Berlin Wall in 1980, the Tempodrom moved several times before settling near Anhalter Bahnhof in 2001. Its permanent home has since hosted concerts, galas and political events. Today, it hosts a different kind of spectacle. GTC Berlin runs three days, with more than 100 sessions on agentic AI, robotics, […]"
+    },
+    {
+      "id": "the-robot-report:4b586e594e2b",
+      "title": "A guide to Day 2 of RoboBusiness 2026",
+      "url": "https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-21",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "Day 2 of RoboBusiness 2026, the 20th anniversary of the event, will include interesting keynotes around humanoids and social robots."
+    },
+    {
+      "id": "the-robot-report:a9044ca8f5b5",
+      "title": "AGCO to deploy Agility Digit humanoid in Kansas factory",
+      "url": "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-21",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "summary": "The Agility pilot, which is expected to begin in 2027, will begin at an AGCO production facility for agricultural equipment."
     }
   ],
   "lane_counts": {
     "foundation": 6,
-    "data": 10,
-    "training": 4,
+    "data": 8,
+    "training": 6,
     "simeval": 13,
-    "edge": 4,
+    "edge": 3,
     "safety": 5,
-    "systems": 4,
+    "systems": 5,
     "hardware": 10
   },
   "evidence_mix": {
-    "O": 1,
-    "R": 39,
+    "O": 2,
+    "R": 38,
     "M": 16
   },
   "fetch": {
-    "items": 396,
+    "items": 415,
     "attempted": 11,
     "answered": 10,
     "failed": [
       "deepmind"
     ],
     "fallback": [],
+    "unavailable": [
+      "page_watch"
+    ],
     "per_source": {
-      "arxiv": 63,
+      "arxiv": 82,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -200,6 +174,15 @@
       "tri": 10,
       "leiphone": 20,
       "monoist": 30
+    },
+    "page_watch": {
+      "enabled": true,
+      "attempted": [],
+      "checked": [],
+      "failed": [],
+      "robots_skipped": [],
+      "unavailable": true,
+      "items": 0
     }
   },
   "baseline_count": 29,
