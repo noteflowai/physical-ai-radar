@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Training in Deployment** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the gain holds outside the training tasks.
-2. **Physical AI** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-3. **AtomicRL** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
-4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-6. **GTC Berlin 2026** — First-party release; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-7. **A guide to Day 2 of RoboBusiness 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Training in Deployment** — `AI draft` Teams whose offline teleoperated demonstrations leave contact-rich, recovery and precision-critical states uncovered could collect corrections during deployment instead; the page flags real-robot experiments and open code or weights but shows no figures, so the gain is unquantified.
+2. **Physical AI** — `AI draft` Read it as orientation on terms and open problems, not as evidence to cite: the quoted excerpt only says the field has grown fast, and the page carries no figures or findings to build a decision on.
+3. **AtomicRL** — `AI draft` Teams post-training VLAs with PPO for long-horizon manipulation should note the authors' self-reported absolute gains of 3.6% and 4.0% over PPO, up to 9.5%; the page does not name the benchmarks or say what the 21.3% average measures.
+4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — `AI draft` Mainly relevant to teams already running design analysis on Ansys tools: this secondary event report relays a keynote vision of combining AI with physics simulation, not a robot validation result, so treat it as a toolchain direction signal only.
+5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — `AI draft` For European manufacturers choosing a simulation and model stack, this is NVIDIA's own account of customers adopting CUDA-X, Omniverse, Cosmos and Nemotron open models; it gives no figures, so it shows ecosystem direction rather than measured benefit.
+6. **GTC Berlin 2026** — `AI draft` Nothing to act on yet: the quoted excerpt describes the keynote venue's history rather than any announcement, so wait for NVIDIA's individual product posts before changing a roadmap.
+7. **A guide to Day 2 of RoboBusiness 2026** — `AI draft` Useful mainly for attendees planning their day: the page previews keynotes on humanoids and social robots and gives no product, price or deployment detail that would inform a purchasing decision.
+8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — `AI draft` Humanoid buyers should read this as a planned pilot, not a deployment: per this secondary report it is expected to begin in 2027 at an agricultural equipment plant, so there are no operating results to benchmark against yet.
 
 </details>
 

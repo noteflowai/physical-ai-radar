@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Training in Deployment** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-2. **Physical AI** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-3. **AtomicRL** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。
-4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-6. **GTC Berlin 2026** — 一手官方发布；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
-7. **A guide to Day 2 of RoboBusiness 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **Training in Deployment** — `AI 起草` 若用离线遥操作示教微调基座模型后，接触密集、失败恢复和高精度状态仍覆盖不足，可考虑在部署中收集人工介入；页面标出真机实验与开放代码或权重，但没有任何数字，提升幅度尚无从核对。
+2. **Physical AI** — `AI 起草` 适合当作术语与问题地图来读，不宜当作证据引用：页面摘录只说明该领域近年发展迅速，没有给出任何可引用的数字或结论。
+3. **AtomicRL** — `AI 起草` 在长程操作上用 PPO 后训练 VLA 的团队可留意：作者自报相对 PPO 绝对提升 3.6% 和 4.0%，最高 9.5%；页面未说明是哪些基准，21.3% 衡量的也不清楚，尚属预印本自报。
+4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — `AI 起草` 主要与在 Ansys 上做机电设计分析的团队相关：这篇二手报道转述的是年度活动主题演讲中 AI 与物理仿真结合的工程愿景，而非机器人验证结果，只能当作工具链方向的信号。
+5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — `AI 起草` 欧洲制造团队选型仿真与模型栈时可作参考：这是 NVIDIA 自述的客户采用 CUDA-X、Omniverse 与 Cosmos、Nemotron 开放模型的情况，没有任何数字，反映生态走向而非实测收益。
+6. **GTC Berlin 2026** — `AI 起草` 目前没有可据以调整路线图的内容：页面摘录讲的是主题演讲场馆的历史，而非任何发布，应等 NVIDIA 针对具体产品的单独文章再做判断。
+7. **A guide to Day 2 of RoboBusiness 2026** — `AI 起草` 仅对安排参会日程的人有用：页面只预告了人形与社交机器人方向的主题演讲，没有产品、价格或部署信息可供采购决策参考。
+8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — `AI 起草` 评估人形机器人的买家应把它看作计划中的试点而非已部署：据这篇二手报道，试点预计 2027 年才在农机生产工厂启动，眼下没有可对标的运行结果。
 
 </details>
 
