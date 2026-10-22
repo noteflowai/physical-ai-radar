@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-22",
+  "generated": "2026-10-22 13:58 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.29264": {
+      "zh": "若用离线遥操作示教微调基座模型后，接触密集、失败恢复和高精度状态仍覆盖不足，可考虑在部署中收集人工介入；页面标出真机实验与开放代码或权重，但没有任何数字，提升幅度尚无从核对。",
+      "en": "Teams whose offline teleoperated demonstrations leave contact-rich, recovery and precision-critical states uncovered could collect corrections during deployment instead; the page flags real-robot experiments and open code or weights but shows no figures, so the gain is unquantified.",
+      "ja": "オフラインの遠隔操作デモで基盤モデルを適応させても、接触の多い状態や回復・高精度が要る状態を拾いきれないなら、運用中に人の介入を集める選択肢がある。実機実験とコード・重み公開の表示はあるが数値はなく、改善幅は確認できない。"
+    },
+    "https://arxiv.org/abs/2610.27045": {
+      "zh": "适合当作术语与问题地图来读，不宜当作证据引用：页面摘录只说明该领域近年发展迅速，没有给出任何可引用的数字或结论。",
+      "en": "Read it as orientation on terms and open problems, not as evidence to cite: the quoted excerpt only says the field has grown fast, and the page carries no figures or findings to build a decision on.",
+      "ja": "用語や課題の見取り図として読むのはよいが、根拠として引用する対象ではない。抜粋は分野が急速に発展したと述べるだけで、判断材料になる数値や結論はページにない。"
+    },
+    "https://arxiv.org/abs/2610.30097": {
+      "zh": "在长程操作上用 PPO 后训练 VLA 的团队可留意：作者自报相对 PPO 绝对提升 3.6% 和 4.0%，最高 9.5%；页面未说明是哪些基准，21.3% 衡量的也不清楚，尚属预印本自报。",
+      "en": "Teams post-training VLAs with PPO for long-horizon manipulation should note the authors' self-reported absolute gains of 3.6% and 4.0% over PPO, up to 9.5%; the page does not name the benchmarks or say what the 21.3% average measures.",
+      "ja": "長期操作で VLA を PPO により事後学習しているチーム向け。著者自己報告で PPO 比 3.6% と 4.0% の絶対改善、最大 9.5% とあるが、どのベンチマークか、平均 21.3% が何の指標かはページから読み取れない。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html": {
+      "zh": "主要与在 Ansys 上做机电设计分析的团队相关：这篇二手报道转述的是年度活动主题演讲中 AI 与物理仿真结合的工程愿景，而非机器人验证结果，只能当作工具链方向的信号。",
+      "en": "Mainly relevant to teams already running design analysis on Ansys tools: this secondary event report relays a keynote vision of combining AI with physics simulation, not a robot validation result, so treat it as a toolchain direction signal only.",
+      "ja": "Ansys で設計解析を回しているチームにはツールチェーンの方向性を知る材料になる。ただし年次イベント講演の将来像を伝える二次報道で、ロボットでの検証結果ではないため、移行判断の根拠にはしにくい。"
+    },
+    "https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/": {
+      "zh": "欧洲制造团队选型仿真与模型栈时可作参考：这是 NVIDIA 自述的客户采用 CUDA-X、Omniverse 与 Cosmos、Nemotron 开放模型的情况，没有任何数字，反映生态走向而非实测收益。",
+      "en": "For European manufacturers choosing a simulation and model stack, this is NVIDIA's own account of customers adopting CUDA-X, Omniverse, Cosmos and Nemotron open models; it gives no figures, so it shows ecosystem direction rather than measured benefit.",
+      "ja": "欧州の製造業がシミュレーションとモデルの基盤を選ぶ際の参考になるが、CUDA-X、Omniverse、Cosmos・Nemotron オープンモデルの採用は NVIDIA 自身の説明で数値もない。測定された効果ではなく、エコシステムの向きを示すにとどまる。"
+    },
+    "https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/": {
+      "zh": "目前没有可据以调整路线图的内容：页面摘录讲的是主题演讲场馆的历史，而非任何发布，应等 NVIDIA 针对具体产品的单独文章再做判断。",
+      "en": "Nothing to act on yet: the quoted excerpt describes the keynote venue's history rather than any announcement, so wait for NVIDIA's individual product posts before changing a roadmap.",
+      "ja": "現時点でロードマップを動かす材料はない。抜粋は基調講演の会場の歴史を語るだけで発表内容に触れておらず、個別製品の記事を待ってから判断したい。"
+    },
+    "https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/": {
+      "zh": "仅对安排参会日程的人有用：页面只预告了人形与社交机器人方向的主题演讲，没有产品、价格或部署信息可供采购决策参考。",
+      "en": "Useful mainly for attendees planning their day: the page previews keynotes on humanoids and social robots and gives no product, price or deployment detail that would inform a purchasing decision.",
+      "ja": "参加者がセッションを選ぶ程度の用途にとどまる。人型・ソーシャルロボットの基調講演を予告するだけで、調達判断に使える製品・価格・導入の情報はない。"
+    },
+    "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/": {
+      "zh": "评估人形机器人的买家应把它看作计划中的试点而非已部署：据这篇二手报道，试点预计 2027 年才在农机生产工厂启动，眼下没有可对标的运行结果。",
+      "en": "Humanoid buyers should read this as a planned pilot, not a deployment: per this secondary report it is expected to begin in 2027 at an agricultural equipment plant, so there are no operating results to benchmark against yet.",
+      "ja": "人型ロボットを検討する側は、導入済みではなく計画段階の試験と受け止めるべきだ。二次報道によれば試験は農業機械の生産拠点で 2027 年開始の見込みで、比較できる稼働実績はまだない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
