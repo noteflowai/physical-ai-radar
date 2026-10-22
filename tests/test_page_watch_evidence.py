@@ -78,6 +78,31 @@ def _copy_repository(target: Path) -> Path:
     return target
 
 
+class HermeticCopyTests(unittest.TestCase):
+    """The copied checkout's own history and baseline never leak into the evidence tests."""
+
+    def test_setup_clears_later_runs_and_baseline_from_the_copy(self):
+        case = RealRunEvidenceTests("test_firecrawl_unavailable")
+        original = _copy_repository
+
+        def polluted(target):
+            repo = original(target)
+            history = repo / "radar" / "history.json"
+            data = json.loads(history.read_text())
+            data["runs"].append({"day": "2099-01-01", "failed": [], "page_failed": [], "unavailable": []})
+            history.write_text(json.dumps(data))
+            (repo / "radar" / "page-watch.json").write_text('{"schema": 2, "pages": {}}')
+            return repo
+        globals()["_copy_repository"] = polluted
+        try:
+            case.setUp()
+        finally:
+            globals()["_copy_repository"] = original
+        self.addCleanup(case.doCleanups)
+        self.assertEqual(json.loads((case.repo / "radar" / "history.json").read_text())["runs"], [])
+        self.assertEqual(list((case.repo / "radar").glob("*page-watch.json*")), [])
+
+
 class RealRunEvidenceTests(unittest.TestCase):
     """cli.main through the real FetchReport.to_dict(); only the network is mocked."""
 
@@ -93,6 +118,10 @@ class RealRunEvidenceTests(unittest.TestCase):
             data = json.loads(history.read_text())
             data["runs"] = []
             history.write_text(json.dumps(data))
+        # Same for the committed page_watch baseline (05's R155-01): once Firecrawl has run,
+        # radar/page-watch.json is in every checkout, and it is not this test's state.
+        for leftover in (self.repo / "radar").glob("*page-watch.json*"):
+            leftover.unlink()
         self.state = Path(tmp.name) / "state"
         self.evidence = self.state / "page-watch"
 
