@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-22
+### 今日雷达 · 2026-10-23
 
-`生成时间: 2026-10-22 02:14 UTC` ｜ `统计窗口: 论文 2026-10-18 → 2026-10-22 · 博客与报道 2026-09-22 → 2026-10-22 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-22 23:40 UTC` ｜ `统计窗口: 论文 2026-10-19 → 2026-10-23 · 博客与报道 2026-09-23 → 2026-10-23 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264)**<br><sub>训练与自我改进 · arXiv 2610.29264 · 2026‑10‑21</sub> |
-| 02<br>🔵&nbsp;`R` | **[Physical AI: Concepts, Techniques, and Challenges](https://arxiv.org/abs/2610.27045)**<br><sub>仿真与评测 · arXiv 2610.27045 · 2026‑10‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097)**<br>`3.6%`&nbsp; `4.0%`&nbsp; `9.5%`<br><sub>训练与自我改进 · arXiv 2610.30097 · 2026‑10‑21</sub> |
-| 04<br>🟡&nbsp;`M` | **[SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス](https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html)**<br><sub>仿真与评测 · MONOist (ITmedia) · 2026‑10‑21</sub> |
-| 05<br>🟢&nbsp;`O` | **[Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA](https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/)**<br><sub>基座模型 · NVIDIA Blog · 2026‑10‑21</sub> |
-| 06<br>🟢&nbsp;`O` | **[GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/)**<br><sub>系统与编排 · NVIDIA Blog · 2026‑10‑21</sub> |
-| 07<br>🟡&nbsp;`M` | **[A guide to Day 2 of RoboBusiness 2026](https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑21</sub> |
-| 08<br>🟡&nbsp;`M` | **[AGCO to deploy Agility Digit humanoid in Kansas factory](https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑21</sub> |
+| 01<br>🔵&nbsp;`R` | **[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)**<br>`65.3%`&nbsp; `91.7%`<br><sub>仿真与评测 · arXiv 2610.28432 · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning](https://arxiv.org/abs/2610.28613)**<br>`59.1%`&nbsp; `70.8%`<br><sub>仿真与评测 · arXiv 2610.28613 · 2026‑10‑20</sub> |
+| 03<br>🔵&nbsp;`R` | **[SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning](https://arxiv.org/abs/2610.28955)**<br>`76.0%`&nbsp; `26.41 W`<br><sub>训练与自我改进 · arXiv 2610.28955 · 2026‑10‑20</sub> |
+| 04<br>🔵&nbsp;`R` | **[AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics](https://arxiv.org/abs/2610.28589)**<br>`18.1%`&nbsp; `71.0%`&nbsp; `72.1%`<br><sub>训练与自我改进 · arXiv 2610.28589 · 2026‑10‑20</sub> |
+| 05<br>🔵&nbsp;`R` | **[Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles](https://arxiv.org/abs/2610.27732)**<br><sub>安全、权限与合规 · arXiv 2610.27732 · 2026‑10‑20</sub> |
+| 06<br>🟢&nbsp;`O` | **[NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/)**<br><sub>基座模型 · NVIDIA Blog · 2026‑10‑22</sub> |
+| 07<br>🟡&nbsp;`M` | **[ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機](https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑22</sub> |
+| 08<br>🟡&nbsp;`M` | **[ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作](https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html)**<br><sub>数据引擎 · MONOist (ITmedia) · 2026‑10‑22</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Training in Deployment** — `AI 起草` 若用离线遥操作示教微调基座模型后，接触密集、失败恢复和高精度状态仍覆盖不足，可考虑在部署中收集人工介入；页面标出真机实验与开放代码或权重，但没有任何数字，提升幅度尚无从核对。
-2. **Physical AI** — `AI 起草` 适合当作术语与问题地图来读，不宜当作证据引用：页面摘录只说明该领域近年发展迅速，没有给出任何可引用的数字或结论。
-3. **AtomicRL** — `AI 起草` 在长程操作上用 PPO 后训练 VLA 的团队可留意：作者自报相对 PPO 绝对提升 3.6% 和 4.0%，最高 9.5%；页面未说明是哪些基准，21.3% 衡量的也不清楚，尚属预印本自报。
-4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — `AI 起草` 主要与在 Ansys 上做机电设计分析的团队相关：这篇二手报道转述的是年度活动主题演讲中 AI 与物理仿真结合的工程愿景，而非机器人验证结果，只能当作工具链方向的信号。
-5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — `AI 起草` 欧洲制造团队选型仿真与模型栈时可作参考：这是 NVIDIA 自述的客户采用 CUDA-X、Omniverse 与 Cosmos、Nemotron 开放模型的情况，没有任何数字，反映生态走向而非实测收益。
-6. **GTC Berlin 2026** — `AI 起草` 目前没有可据以调整路线图的内容：页面摘录讲的是主题演讲场馆的历史，而非任何发布，应等 NVIDIA 针对具体产品的单独文章再做判断。
-7. **A guide to Day 2 of RoboBusiness 2026** — `AI 起草` 仅对安排参会日程的人有用：页面只预告了人形与社交机器人方向的主题演讲，没有产品、价格或部署信息可供采购决策参考。
-8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — `AI 起草` 评估人形机器人的买家应把它看作计划中的试点而非已部署：据这篇二手报道，试点预计 2027 年才在农机生产工厂启动，眼下没有可对标的运行结果。
+1. **Physical AI for Intralogistics** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Physical Canvas** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **SLoSa** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+4. **AgenticRoboRL** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它对认证和上线审批意味着什么。
+6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-22.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-23.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

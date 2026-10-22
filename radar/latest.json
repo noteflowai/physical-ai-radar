@@ -1,178 +1,197 @@
 {
-  "date": "2026-10-22",
-  "generated": "2026-10-22 02:14 UTC",
-  "window": "papers 2026-10-18 → 2026-10-22 · posts 2026-09-22 → 2026-10-22 (UTC)",
+  "date": "2026-10-23",
+  "generated": "2026-10-22 23:40 UTC",
+  "window": "papers 2026-10-19 → 2026-10-23 · posts 2026-09-23 → 2026-10-23 (UTC)",
   "window_detail": {
-    "day": "2026-10-22",
-    "papers_from": "2026-10-18",
-    "posts_from": "2026-09-22",
+    "day": "2026-10-23",
+    "papers_from": "2026-10-19",
+    "posts_from": "2026-09-23",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.29264",
-      "title": "Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation",
-      "url": "https://arxiv.org/abs/2610.29264",
-      "publisher": "arXiv 2610.29264",
+      "id": "arxiv:2610.28432",
+      "title": "Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots",
+      "url": "https://arxiv.org/abs/2610.28432",
+      "publisher": "arXiv 2610.28432",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-21",
-      "lane": "training",
-      "score": 3.9,
-      "numbers": [],
-      "signals": [
-        "real_robot",
-        "open_release"
-      ],
-      "summary": "Large pretrained robot foundation models provide strong priors for manipulation, yet adapting them to target tasks with offline teleoperated demonstrations often fails to cover the contact-rich, recovery, and precision-critical states encountered during deployment. Existing methods mitigate this issue by augmenting offline demonstrations with human-in-the-loop data or online reinforcement learning. Despite this, offline post-training adapts slowly because it cannot immediately absorb deployment experience, while online RL typically relies on value functions or auxiliary actor-critic models, increasing both training complexity and instability. We present TIDE (Training In DEployment), a human-in-the-loop online post-training system. TIDE introduces a provenance-conditioned supervised learning framework that updates the policy online from human interventions and policy-generated rollouts collected during deployment, without a learned critic, reward model, or action scorer. Across four real-world bimanual manipulation tasks, TIDE improves milestone-normalized task progress and binary full-task completion over the warm-start policy and matched additional offline demonstrations, and performs comparably to the fixed-policy collection baseline while making updated checkpoints available during deployment. Each task-specific online post-training session, from the start of deployment rollouts until the final checkpoint is available, completes in less than one hour while learning and checkpoint handling run asynchronously."
-    },
-    {
-      "id": "arxiv:2610.27045",
-      "title": "Physical AI: Concepts, Techniques, and Challenges",
-      "url": "https://arxiv.org/abs/2610.27045",
-      "publisher": "arXiv 2610.27045",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-19",
+      "published": "2026-10-20",
       "lane": "simeval",
-      "score": 3.875,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "summary": "In recent years, physical artificial intelligence (physical AI) has experienced rapid development, capturing significant attention in academia and industry. However, the field has yet to reach consensus on its definition, technical landscape, and core challenges. To address this gap, this monograph seeks to define physical AI, present its technical landscape, and examine each key technical subfield in depth. In doing so, it establishes a unified framework for Physical AI: artificial systems that perceive, model, and act upon the physical world through continuous feedback under real-world constraints. Further, this monograph distinguishes physical AI from conventional digital AI, embodied AI, cyber-physical systems, and digital twins. It develops the foundations of physical AI across physics, control, cognition, learning, and reasoning. It reviews key methodologies, including multimodal perception, physical data and simulation, world models, embodied foundation models, motor-control systems, multi-agent coordination, and hardware-software co-design. Furthermore, it examines applications spanning robotics, manufacturing, infrastructure, scientific experimentation, and autonomous services. Particular attention is given to sim-to-real transfer, reliability, real-time execution, evaluation, safety, governance, and long-term deployment. By connecting perception, prediction, decision-making, action, and adaptation in a closed loop, this monograph identifies the technical challenges and research directions required to advance from narrow automation toward more generalizable physical AI and, ultimately, physical artificial general intelligence (Physical AGI)."
-    },
-    {
-      "id": "arxiv:2610.30097",
-      "title": "AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2610.30097",
-      "publisher": "arXiv 2610.30097",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-21",
-      "lane": "training",
-      "score": 3.6,
+      "score": 3.59,
       "numbers": [
-        "3.6%",
-        "4.0%",
-        "9.5%",
-        "21.3%"
+        "65.3%",
+        "91.7%"
       ],
       "signals": [
         "numbers",
+        "closed_loop",
         "real_robot"
       ],
-      "summary": "Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills. Reinforcement learning (RL) offers an effective avenue for further improving VLA policies. However, existing VLA-RL methods typically suffer from delayed and biased credit assignment due to trajectory-level sparse rewards, while imbalanced subtask mastery creates bottlenecks that limit overall performance. To address these challenges, we propose AtomicRL, an RL post-training framework that leverages atomic task structures for reliable credit assignment and adaptive exploration. AtomicRL introduces Semantic-Aware Policy Optimization (SAPO), which uses semantic-aware gating to constrain TD residuals from failed atomic subtasks from propagating across task boundaries, mitigating credit contamination while preserving intra-subtask credit assignment and value bootstrapping. In addition, Bottleneck-Adaptive Target Exploration (BATE) dynamically coordinates task sampling and local exploration incentives based on the mastery of individual atomic subtasks, directing learning toward the remaining bottlenecks. Finally, we develop a Real2Sim2Real pipeline that bridges online RL in simulation with real-world deployment, facilitating practical transfer to physical robots. On LIBERO-LONG, AtomicRL achieves absolute performance gains of 3.6% and 4.0% over PPO across two VLA architectures. On CALVIN ABC-D, it improves full-task performance by up to 9.5% over PPO. Combined with the Real2Sim2Real pipeline, AtomicRL further improves real-world task performance by an average of 21.3%. These results demonstrate that AtomicRL effectively improves the learning efficiency and manipulation performance of VLA policies on long-horizon tasks."
+      "summary": "Classical robot navigation stacks are reliable but often require re-engineering for each new robot type and site. Learning-based navigation shifts this effort from hand-tuned parameters to data generation and training, where a policy adapts to each new embodiment or facility by fine-tuning in simulation. Whether policies adapted this way stay reliable on real industrial robots has seen little systematic testing. We study this for NVIDIA's X-Mobility and COMPASS workflow for training learned navigation policies on Idealworks robots. In simulation, we extend the COMPASS benchmark with two embodiments, the differential-drive iw$\\mkern-1.5mu.\\mkern-1.5mu$hub and an omnidirectional Humanoid Mobile Platform (HMP), and with a digital twin of the Idealworks R&D center. For the real world, we fine-tune X-Mobility on data from this digital twin, with and without sim-to-real variants generated by NVIDIA Cosmos, train COMPASS on top of it from scratch in the digital twin, deploy the resulting policies on the iw$\\mkern-1.5mu.\\mkern-1.5mu$hub's onboard Jetson AGX Xavier, and benchmark them in the Idealworks R&D center against COMPASS trained only on NVIDIA's environments and the existing Idealworks navigation stack on task success, efficiency, safety, smoothness and onboard compute. Running every static scenario both in a digital-twin replica and in the real facility measures the sim-to-real gap and how far Cosmos-augmented data closes it. Training in the digital twin with Cosmos sim-to-real augmentation raises the real-world success rate of learned navigation from 65.3% to 91.7% across four scenarios and nearly halves its weighted travel time compared with simulation-only training, bringing it within 8.3 points of the production navigation stack, fully onboard; with an integrated global planner, it also reaches far, occluded goals in every trial."
     },
     {
-      "id": "monoist:c6032d49828a",
-      "title": "SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス",
-      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html",
+      "id": "arxiv:2610.28613",
+      "title": "Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning",
+      "url": "https://arxiv.org/abs/2610.28613",
+      "publisher": "arXiv 2610.28613",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-20",
+      "lane": "simeval",
+      "score": 3.59,
+      "numbers": [
+        "59.1%",
+        "70.8%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Evaluating and post-training robot policies through physical interaction is costly and difficult to scale, motivating action-conditioned world models as interactive simulators. However, visually plausible predictions can misrepresent contact dynamics, providing unreliable feedback for policy evaluation and learning. We introduce PhysCanvas, a state-consistent visuo-tactile world model for contact-rich robot manipulation. PhysCanvas unifies multi-view RGB, tactile images, marker displacement, task state, and actions within a unified vision space. All modalities share a video VAE and pretrained generative backbone, allowing optical touch to reuse visual and temporal priors. Motion images derived through forward kinematics and camera projection provide spatially aligned action conditioning, while an initial RGB anchor and updated reference observations guide sequential generation. Our consistency-aware post-training uses the frozen Scene Reward Model, Modality Reward Model, and State Reward Model to supervise scene preservation, visual-tactile compatibility, and agreement with real task outcomes. The resulting world model supports closed-loop policy rollouts for evaluation and provides imagined interactions and rewards for GRPO policy updates. Across four real-world manipulation tasks, when policies are rolled out in the world model, State Reward Model supervision increases the arithmetic mean of task-wise Pearson correlations between world-model and real-world success rates from 0.602 to 0.885. Policy post-training in the reward-guided world model further increases $π_{0.5}$'s mean real-world success rate from a 59.1% SFT baseline to 70.8%. These results demonstrate the value of unified multimodal modeling and consistency-aware post-training for robot policy evaluation and learning. Project page: https://zebinx.github.io/PhysCanvas_HomePage/."
+    },
+    {
+      "id": "arxiv:2610.28955",
+      "title": "SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning",
+      "url": "https://arxiv.org/abs/2610.28955",
+      "publisher": "arXiv 2610.28955",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-20",
+      "lane": "training",
+      "score": 3.45,
+      "numbers": [
+        "76.0%",
+        "26.41 W"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "summary": "Safe robotic task planning requires planners that can reliably achieve task goals while satisfying safety constraints. Classical planners search over explicit symbolic task representations and can provide formal guarantees with respect to encoded safety constraints, but require rigid input formats. Their computational cost also increases rapidly with the search space. In contrast, large language models (LLMs) offer flexible task interfaces and strong generalization capabilities, but they are large, power-hungry, and pre-trained with little robot-specific safety data and knowledge. Thus, they can be difficult to deploy locally on robotic systems with limited resources. To address these limitations, we present SLoSa, a neuro-symbolic compression and fine-tuning framework for training foundation-model-based robotic task planners with Small size, Low power demand, and Safety awareness. The framework first constructs a safety-aware dataset using classical planners, an advanced teacher LLM, and formal verifiers, followed by two training stages: supervised fine-tuning and reinforcement learning (RL) fine-tuning guided by a verification-based reward machine to enforce safety alignment. We evaluate SLoSa across four Planning Domain Definition Language (PDDL) domains, two household simulation environments, local edge platforms, and a desktop robotic arm. Across the PDDL tasks, verifier-guided post-training raises the success rate of compact 4B-14B planners to 70.5-76.0%, while INT4 deployment on a Jetson Orin requires 17.85-26.41 W of average power. Results in household simulators and on the physical robot further demonstrate the applicability of SLoSa across diverse robotic task settings."
+    },
+    {
+      "id": "arxiv:2610.28589",
+      "title": "AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics",
+      "url": "https://arxiv.org/abs/2610.28589",
+      "publisher": "arXiv 2610.28589",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-20",
+      "lane": "training",
+      "score": 3.3,
+      "numbers": [
+        "18.1%",
+        "71.0%",
+        "72.1%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "open_release"
+      ],
+      "summary": "Agentic robotics systems combine planners with robot harnesses to perform complex manipulation tasks. Recent work improves these systems through better harnesses and external memory, but relies on powerful closed-source models as planners and does not improve the planners' own capabilities. In contrast, coding agents have improved substantially by post-training the model itself. We therefore investigate whether post-training can also improve robot planners. However, applying it across robot harnesses requires accommodating different execution mechanisms, including VLA skill invocation and control-code generation. To this end, we introduce AgenticRoboRL, a framework for post-training robot planners across different harnesses. The training recipe combines supervised fine-tuning with multi-turn reinforcement learning. To accommodate different execution mechanisms, harness-specific adapters connect recorded planner interactions with task outcomes, enabling a common RL training pipeline while keeping execution components fixed. On LIBERO-PRO, AgenticRoboRL raises the success rate of a 9B-parameter planner from 18.1% to 71.0% without external memory, approaching the 72.1% achieved by Codex (GPT-5.5) with external memory. These results demonstrate post-training as an effective approach for improving robot planners. We will release the framework and trained planner checkpoints."
+    },
+    {
+      "id": "arxiv:2610.27732",
+      "title": "Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles",
+      "url": "https://arxiv.org/abs/2610.27732",
+      "publisher": "arXiv 2610.27732",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-20",
+      "lane": "safety",
+      "score": 3.09,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Connected and Autonomous Vehicles (CAVs) face significant challenges in roundabout navigation due to dense traffic interactions and unpredictable agent behaviors, necessitating high levels of adaptability and safety. While the combination of Reinforcement Learning (RL) and Model Predictive Control (MPC) offers a promising approach, existing frameworks suffer from a structural mismatch where pointwise RL decisions fail to align with MPC's trajectory level optimization, and often lack rigorous safety guarantees. This work proposes RLTrajGen-PPMPC-CBF, a hierarchical framework for safe, smooth and comfort roundabout navigation, which regulates the coupling between RL-based planning and MPC-based control. We employ Prescribed Performance Constraints (PPC) to enforce a gradual, stable convergence between reference trajectories and control outputs, ensuring MPC tracking performance remains consistent with intended behavior from RL. Additionally, a Control Barrier Function (CBF) layer provides real-time safety corrections that are fed back into the RL process. Simulation results in the MetaDrive environment demonstrate that our method achieves a 6.25\\% increase in average success rate and a 65.87\\% reduction in Motion Sickness Dose Value (MSDV) compared to the optimal baseline, meanwhile accelerating training convergence."
+    },
+    {
+      "id": "nvidia-blog:381130e24d54",
+      "title": "NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models",
+      "url": "https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-10-22",
+      "lane": "foundation",
+      "score": 2.4,
+      "numbers": [],
+      "signals": [
+        "open_release"
+      ],
+      "summary": "To help developers rapidly build world models, which help physical AI systems understand and simulate the real world, NVIDIA has expanded the Cosmos platform with new training tools, simulation checkpoints and Cosmos Data Factory blueprints. Ranking top five on six different open models leaderboards, the NVIDIA Cosmos platform gives world model builders the frontier open […]"
+    },
+    {
+      "id": "monoist:660dd227445d",
+      "title": "ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html",
       "publisher": "MONOist (ITmedia)",
       "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-21",
-      "lane": "simeval",
-      "score": 1.855,
-      "numbers": [],
-      "signals": [],
-      "summary": "アンシス・ジャパンは、年次イベント「Ansys Simulation World 2026 Japan」を開催した。基調講演と特別セッションでは、SynopsysとAnsysの技術統合によって進む半導体からシステム全体までを対象とした設計／解析環境の進化や、AIと物理シミュレーションを組み合わせたエンジニアリングの将来像を紹介。さらに、AIエージェントによる解析業務の効率化、デジタルツインやフィジカルAIへの取り組みなども披露された。"
-    },
-    {
-      "id": "nvidia-blog:0c405e6fd045",
-      "title": "Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-10-21",
-      "lane": "foundation",
-      "score": 1.8,
-      "numbers": [],
-      "signals": [],
-      "summary": "To increase productivity, accelerate innovation and create new opportunities for economic growth, Europe’s industrial leaders are tapping NVIDIA CUDA-X and Omniverse libraries, as well as NVIDIA Cosmos and Nemotron open models, across the engineering and manufacturing lifecycle. Bringing those capabilities together on the factory floor, the NVIDIA Factory Operations Blueprint (FOX) is now available in […]"
-    },
-    {
-      "id": "nvidia-blog:d8fecd9b69c9",
-      "title": "GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote",
-      "url": "https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-10-21",
-      "lane": "systems",
-      "score": 1.8,
-      "numbers": [],
-      "signals": [],
-      "summary": "Founded in a tent near the Berlin Wall in 1980, the Tempodrom moved several times before settling near Anhalter Bahnhof in 2001. Its permanent home has since hosted concerts, galas and political events. Today, it hosts a different kind of spectacle. GTC Berlin runs three days, with more than 100 sessions on agentic AI, robotics, […]"
-    },
-    {
-      "id": "the-robot-report:4b586e594e2b",
-      "title": "A guide to Day 2 of RoboBusiness 2026",
-      "url": "https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-21",
+      "published": "2026-10-22",
       "lane": "hardware",
-      "score": 1.182,
+      "score": 1.365,
       "numbers": [],
       "signals": [],
-      "summary": "Day 2 of RoboBusiness 2026, the 20th anniversary of the event, will include interesting keynotes around humanoids and social robots."
+      "summary": "テクノダイナミックスは、新たに開発した同軸ローラーカム式精密減速機「アーマードライブ（ARMOURDRIVE） XRシリーズ」の標準モデルを、2027年4月1日に受注を開始すると発表した。「JIMTOF2026」に出展し、2030年度に年間1万台の出荷を目指す。"
     },
     {
-      "id": "the-robot-report:a9044ca8f5b5",
-      "title": "AGCO to deploy Agility Digit humanoid in Kansas factory",
-      "url": "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "monoist:1110fa452c75",
+      "title": "ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-21",
-      "lane": "hardware",
-      "score": 1.182,
+      "published": "2026-10-22",
+      "lane": "data",
+      "score": 1.068,
       "numbers": [],
       "signals": [],
-      "summary": "The Agility pilot, which is expected to begin in 2027, will begin at an AGCO production facility for agricultural equipment."
+      "summary": "本田技術研究所は、「CEATEC 2026」において、遠隔地にいる操作者が意のままに操れる分身ロボット「Honda Avatar Robot」を披露した。2030年までの実用化を視野に入れて開発を進めている技術だ。"
     }
   ],
   "lane_counts": {
     "foundation": 6,
-    "data": 8,
-    "training": 6,
+    "data": 7,
+    "training": 8,
     "simeval": 13,
     "edge": 3,
-    "safety": 5,
-    "systems": 5,
-    "hardware": 10
+    "safety": 6,
+    "systems": 4,
+    "hardware": 9
   },
   "evidence_mix": {
-    "O": 2,
+    "O": 3,
     "R": 38,
-    "M": 16
+    "M": 15
   },
   "fetch": {
-    "items": 415,
+    "items": 492,
     "attempted": 11,
     "answered": 10,
     "failed": [
-      "deepmind"
+      "leiphone"
     ],
     "fallback": [],
     "unavailable": [
       "page_watch"
     ],
     "per_source": {
-      "arxiv": 82,
+      "arxiv": 79,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
       "tri": 10,
-      "leiphone": 20,
       "monoist": 30
     },
     "page_watch": {

@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-22
+### Today's radar · 2026-10-23
 
-`Generated: 2026-10-22 02:14 UTC` ｜ `Window: papers 2026-10-18 → 2026-10-22 · posts 2026-09-22 → 2026-10-22 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-22 23:40 UTC` ｜ `Window: papers 2026-10-19 → 2026-10-23 · posts 2026-09-23 → 2026-10-23 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation](https://arxiv.org/abs/2610.29264)**<br><sub>Training & self-improvement · arXiv 2610.29264 · 2026‑10‑21</sub> |
-| 02<br>🔵&nbsp;`R` | **[Physical AI: Concepts, Techniques, and Challenges](https://arxiv.org/abs/2610.27045)**<br><sub>Simulation & evaluation · arXiv 2610.27045 · 2026‑10‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation](https://arxiv.org/abs/2610.30097)**<br>`3.6%`&nbsp; `4.0%`&nbsp; `9.5%`<br><sub>Training & self-improvement · arXiv 2610.30097 · 2026‑10‑21</sub> |
-| 04<br>🟡&nbsp;`M` | **[SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス](https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html)**<br><sub>Simulation & evaluation · MONOist (ITmedia) · 2026‑10‑21</sub> |
-| 05<br>🟢&nbsp;`O` | **[Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA](https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/)**<br><sub>Foundation models · NVIDIA Blog · 2026‑10‑21</sub> |
-| 06<br>🟢&nbsp;`O` | **[GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/)**<br><sub>Systems & orchestration · NVIDIA Blog · 2026‑10‑21</sub> |
-| 07<br>🟡&nbsp;`M` | **[A guide to Day 2 of RoboBusiness 2026](https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑21</sub> |
-| 08<br>🟡&nbsp;`M` | **[AGCO to deploy Agility Digit humanoid in Kansas factory](https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑21</sub> |
+| 01<br>🔵&nbsp;`R` | **[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)**<br>`65.3%`&nbsp; `91.7%`<br><sub>Simulation & evaluation · arXiv 2610.28432 · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning](https://arxiv.org/abs/2610.28613)**<br>`59.1%`&nbsp; `70.8%`<br><sub>Simulation & evaluation · arXiv 2610.28613 · 2026‑10‑20</sub> |
+| 03<br>🔵&nbsp;`R` | **[SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning](https://arxiv.org/abs/2610.28955)**<br>`76.0%`&nbsp; `26.41 W`<br><sub>Training & self-improvement · arXiv 2610.28955 · 2026‑10‑20</sub> |
+| 04<br>🔵&nbsp;`R` | **[AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics](https://arxiv.org/abs/2610.28589)**<br>`18.1%`&nbsp; `71.0%`&nbsp; `72.1%`<br><sub>Training & self-improvement · arXiv 2610.28589 · 2026‑10‑20</sub> |
+| 05<br>🔵&nbsp;`R` | **[Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles](https://arxiv.org/abs/2610.27732)**<br><sub>Safety, permissions & compliance · arXiv 2610.27732 · 2026‑10‑20</sub> |
+| 06<br>🟢&nbsp;`O` | **[NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/)**<br><sub>Foundation models · NVIDIA Blog · 2026‑10‑22</sub> |
+| 07<br>🟡&nbsp;`M` | **[ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機](https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑22</sub> |
+| 08<br>🟡&nbsp;`M` | **[ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作](https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html)**<br><sub>Data engine · MONOist (ITmedia) · 2026‑10‑22</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Training in Deployment** — `AI draft` Teams whose offline teleoperated demonstrations leave contact-rich, recovery and precision-critical states uncovered could collect corrections during deployment instead; the page flags real-robot experiments and open code or weights but shows no figures, so the gain is unquantified.
-2. **Physical AI** — `AI draft` Read it as orientation on terms and open problems, not as evidence to cite: the quoted excerpt only says the field has grown fast, and the page carries no figures or findings to build a decision on.
-3. **AtomicRL** — `AI draft` Teams post-training VLAs with PPO for long-horizon manipulation should note the authors' self-reported absolute gains of 3.6% and 4.0% over PPO, up to 9.5%; the page does not name the benchmarks or say what the 21.3% average measures.
-4. **SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス** — `AI draft` Mainly relevant to teams already running design analysis on Ansys tools: this secondary event report relays a keynote vision of combining AI with physics simulation, not a robot validation result, so treat it as a toolchain direction signal only.
-5. **Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVI…** — `AI draft` For European manufacturers choosing a simulation and model stack, this is NVIDIA's own account of customers adopting CUDA-X, Omniverse, Cosmos and Nemotron open models; it gives no figures, so it shows ecosystem direction rather than measured benefit.
-6. **GTC Berlin 2026** — `AI draft` Nothing to act on yet: the quoted excerpt describes the keynote venue's history rather than any announcement, so wait for NVIDIA's individual product posts before changing a roadmap.
-7. **A guide to Day 2 of RoboBusiness 2026** — `AI draft` Useful mainly for attendees planning their day: the page previews keynotes on humanoids and social robots and gives no product, price or deployment detail that would inform a purchasing decision.
-8. **AGCO to deploy Agility Digit humanoid in Kansas factory** — `AI draft` Humanoid buyers should read this as a planned pilot, not a deployment: per this secondary report it is expected to begin in 2027 at an agricultural equipment plant, so there are no operating results to benchmark against yet.
+1. **Physical AI for Intralogistics** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **Physical Canvas** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **SLoSa** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+4. **AgenticRoboRL** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch what it changes for certification and deployment approval.
+6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-22.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-23.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
