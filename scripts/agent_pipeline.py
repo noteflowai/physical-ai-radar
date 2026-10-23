@@ -308,15 +308,30 @@ def finish_commit(repo: str, commit: str, workflows: list[str],
     return receipt
 
 
+IDENTITY_KEYS = ("feature", "feature_id")
+
+
+def feature_identity(item: dict) -> dict:
+    """The feature identity a saved receipt already carries (empty for legacy and non-feature receipts)."""
+    return {key: item[key] for key in IDENTITY_KEYS if key in item}
+
+
 def finish(repo: str, pr: int, head: str, workflows: list[str],
-           urls: list[str], output: Path) -> dict:
-    """A successful receipt means PR checks, merge, main deployment, and readback."""
+           urls: list[str], output: Path, identity: dict | None = None) -> dict:
+    """A successful receipt means PR checks, merge, main deployment, and readback.
+
+    ``identity`` ({"feature", "feature_id"}) is written into the FIRST pending record and every record
+    after it, so an interruption anywhere after that write leaves a receipt that names its task. Without
+    it (resume of a legacy receipt, improvement and update publishers) the records are as before."""
+    identity = dict(identity or {})
+    if set(identity) - set(IDENTITY_KEYS) or (identity and set(identity) != set(IDENTITY_KEYS)):
+        raise ValueError("A feature identity names exactly feature and feature_id")
     package_release = (repo == "noteflowai/ai-chat-for-amazon-bedrock"
                        and workflows == ["Quality gate"] and not urls)
     if not workflows or (not urls and not package_release):
         raise ValueError("A publication requires named deployment gates and public readback URLs")
     pending = {"repo": repo, "pr": pr, "head": head, "workflow_names": workflows,
-               "urls": urls, "status": "pending"}
+               "urls": urls, "status": "pending", **identity}
     output.parent.mkdir(parents=True, exist_ok=True)
     write_json(output, pending)
     try:
@@ -339,7 +354,7 @@ def finish(repo: str, pr: int, head: str, workflows: list[str],
         raise
     receipt = {"repo": repo, "pr": pr, "head": head, "merge_commit": commit,
                "url": record["url"], "workflows": runs, "public_readback": pages,
-               "status": "source-verified" if package_release else "published"}
+               "status": "source-verified" if package_release else "published", **identity}
     write_json(output, receipt)
     return receipt
 
@@ -434,7 +449,7 @@ def main() -> None:
                     continue
                 if "pr" in item:
                     finish(item["repo"], item["pr"], item["head"], item["workflow_names"],
-                           item["urls"], file)
+                           item["urls"], file, feature_identity(item))
                 else:
                     finish_commit(item["repo"], item["commit"], item["workflow_names"],
                                   item["urls"], file)
