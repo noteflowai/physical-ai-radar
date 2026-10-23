@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-23",
+  "generated": "2026-10-23 14:31 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.28432": {
+      "zh": "若每换一种机器人或一个场地就得重新改造经典导航栈，这篇值得一看：作者自报学习式导航在四个场景中从 65.3% 提升到 91.7%；页面标出真机实验，但没有说明这组数字出自仿真还是真机。",
+      "en": "For intralogistics teams re-engineering a classical navigation stack for every new robot type and site, the authors self-report learned navigation going from 65.3% to 91.7% across four scenarios; the page flags real-robot runs but does not say which setting those figures come from.",
+      "ja": "機種や現場が変わるたびに従来型ナビゲーションを作り直している物流現場には検討材料になる。著者の自己報告では学習型ナビが4シナリオで65.3%から91.7%へ向上したが、実機実験の表示はあるものの、この数値が実機かシミュレーションかはページから判別できない。"
+    },
+    "https://arxiv.org/abs/2610.28613": {
+      "zh": "如果靠实物交互来评测和后训练策略已经成了瓶颈，可以考虑以动作条件世界模型充当交互式仿真器；作者称成功率从 59.1% 的 SFT 基线升到 70.8%，属预印本自报，页面也未说明该数字是否在真机上测得。",
+      "en": "Where physical rollouts are the bottleneck for evaluating and post-training policies, an action-conditioned world model used as an interactive simulator becomes worth trialling; the preprint reports success rising from a 59.1% SFT baseline to 70.8%, without the page tying that figure to hardware.",
+      "ja": "実機での評価や事後学習がコストの壁になっているなら、行動条件付き世界モデルを対話型シミュレータとして使う手が候補に入る。成功率はSFTベースラインの59.1%から70.8%へとの自己報告だが、この値が実機で測られたものかはページに示されていない。"
+    },
+    "https://arxiv.org/abs/2610.28955": {
+      "zh": "想在满足安全约束的前提下把任务规划放到机载端，可参考这组自报数据：Jetson Orin 平均功耗 17.85-26.41 W，4B-14B 紧凑规划器达到 70.5-76.0%，但页面没有说明这一区间对应哪项指标。",
+      "en": "If you want safety-constrained task planning on board rather than in the cloud, the authors report 17.85-26.41 W average power on a Jetson Orin and compact 4B-14B planners reaching 70.5-76.0%, though the page leaves unclear which metric that range measures.",
+      "ja": "安全制約を満たすタスク計画を機上で回したいなら目安になる。著者はJetson Orinで平均17.85-26.41 W、4B-14Bの小型プランナーで70.5-76.0%と報告するが、この幅がどの指標なのかはページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2610.28589": {
+      "zh": "依赖闭源大模型做规划器、配合机器人 harness 完成操作任务的团队，多了一个可能的开放替代：作者称 9B 规划器在不用外部记忆时从 18.1% 提升到 71.0%，接近 Codex 的 72.1%，但页面未提及真机结果。",
+      "en": "Teams relying on closed-source models as planners inside robot harnesses get a possible open alternative: a 9B planner reportedly climbs from 18.1% to 71.0% without external memory, near Codex's 72.1%, but the page shows no real-robot results.",
+      "ja": "ロボットハーネスと組むプランナーをクローズドなモデルに頼っている場合、公開系の代替候補になりうる。9Bプランナーが外部メモリなしで18.1%から71.0%、Codexの72.1%に迫るとの自己報告だが、実機での結果はページにない。"
+    },
+    "https://arxiv.org/abs/2610.27732": {
+      "zh": "主要可作为密集、难以预测的车流中安全强化学习的设计参考；页面标出闭环与延迟或控制频率相关内容，但没有给出任何数字，目前还不足以写进认证或上线审批材料。",
+      "en": "Useful mainly as a safe-RL design reference for vehicles in dense, unpredictable traffic; the page flags closed-loop and latency or control-rate content but quotes no figures, so there is nothing yet to carry into a certification or approval case.",
+      "ja": "交通が密で相手の挙動が読めない状況での安全な強化学習の設計例として参照する程度にとどまる。閉ループや遅延・制御周期に関する記述の表示はあるが数値の引用はなく、認証や導入承認の資料に使える段階ではない。"
+    },
+    "https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models": {
+      "zh": "自建世界模型的团队可以评估新的训练工具、仿真检查点和 Cosmos Data Factory 能否替代部分自研管线；这是标注了开放发布的一手官方公告，但页面没有任何数字可供比较。",
+      "en": "Teams building their own world models can weigh whether the new training tools, simulation checkpoints and Cosmos Data Factory replace parts of an in-house pipeline; it is a first-party announcement flagged as an open release, with no figures on the page to compare against.",
+      "ja": "世界モデルを自前で構築しているチームは、新しい学習ツールやシミュレーション用チェックポイント、Cosmos Data Factoryで社内パイプラインの一部を置き換えられるかを見極めたい。公開リリースの表示がある一次発表だが、比較できる数値はページにない。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html": {
+      "zh": "选型人形机器人关节减速机时，可把 ARMOURDRIVE XR 标准型 2027年4月1日开始接单记入排期；这是二手报道，2030年度年出货1万台只是目标，性能说法仍需对照厂商自己的规格资料。",
+      "en": "Anyone choosing reducers for humanoid joints can pencil in order intake for the standard ARMOURDRIVE XR model from 2027-04-01, per this secondary report; the FY2030 annual shipment volume is only a target, and performance claims need the maker's own specification.",
+      "ja": "ヒューマノイド関節の減速機を選定するなら、ARMOURDRIVE XR標準モデルの受注開始2027年4月1日を日程に織り込める。ただし二次報道であり、2030年度の年間1万台出荷は目標にすぎず、性能面はメーカー自身の仕様で確かめる必要がある。"
+    },
+    "https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html": {
+      "zh": "更适合当作 AI 辅助遥操作的时间表信号，而不是数据来源：据二手报道，本田技术研究所在 CEATEC 2026 展示了分身机器人，着眼于 2030 年前实用化，页面没有涉及任何采集数据的细节。",
+      "en": "Read it as a timeline signal for AI-assisted teleoperation rather than a data source: per this secondary report, Honda R&D showed its avatar robot at CEATEC 2026 with practical use in view by 2030, and the page says nothing about recorded data.",
+      "ja": "データ源というより、AI支援による遠隔操作の実用化時期を測る材料として読むのが妥当。二次報道によれば本田技術研究所はCEATEC 2026で分身ロボットを披露し2030年までの実用化を視野に入れるが、収集データについての記述はページにない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
