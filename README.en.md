@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Physical AI for Intralogistics** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **Physical Canvas** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **SLoSa** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-4. **AgenticRoboRL** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch what it changes for certification and deployment approval.
-6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+1. **Physical AI for Intralogistics** — `AI draft` For intralogistics teams re-engineering a classical navigation stack for every new robot type and site, the authors self-report learned navigation going from 65.3% to 91.7% across four scenarios; the page flags real-robot runs but does not say which setting those figures come from.
+2. **Physical Canvas** — `AI draft` Where physical rollouts are the bottleneck for evaluating and post-training policies, an action-conditioned world model used as an interactive simulator becomes worth trialling; the preprint reports success rising from a 59.1% SFT baseline to 70.8%, without the page tying that figure to hardware.
+3. **SLoSa** — `AI draft` If you want safety-constrained task planning on board rather than in the cloud, the authors report 17.85-26.41 W average power on a Jetson Orin and compact 4B-14B planners reaching 70.5-76.0%, though the page leaves unclear which metric that range measures.
+4. **AgenticRoboRL** — `AI draft` Teams relying on closed-source models as planners inside robot harnesses get a possible open alternative: a 9B planner reportedly climbs from 18.1% to 71.0% without external memory, near Codex's 72.1%, but the page shows no real-robot results.
+5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — `AI draft` Useful mainly as a safe-RL design reference for vehicles in dense, unpredictable traffic; the page flags closed-loop and latency or control-rate content but quotes no figures, so there is nothing yet to carry into a certification or approval case.
+6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — `AI draft` Teams building their own world models can weigh whether the new training tools, simulation checkpoints and Cosmos Data Factory replace parts of an in-house pipeline; it is a first-party announcement flagged as an open release, with no figures on the page to compare against.
+7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — `AI draft` Anyone choosing reducers for humanoid joints can pencil in order intake for the standard ARMOURDRIVE XR model from 2027-04-01, per this secondary report; the FY2030 annual shipment volume is only a target, and performance claims need the maker's own specification.
+8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — `AI draft` Read it as a timeline signal for AI-assisted teleoperation rather than a data source: per this secondary report, Honda R&D showed its avatar robot at CEATEC 2026 with practical use in view by 2030, and the page says nothing about recorded data.
 
 </details>
 
