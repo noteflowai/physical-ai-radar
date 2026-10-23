@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-23
+### Today's radar · 2026-10-24
 
-`Generated: 2026-10-22 23:40 UTC` ｜ `Window: papers 2026-10-19 → 2026-10-23 · posts 2026-09-23 → 2026-10-23 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-23 23:40 UTC` ｜ `Window: papers 2026-10-20 → 2026-10-24 · posts 2026-09-24 → 2026-10-24 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)**<br>`65.3%`&nbsp; `91.7%`<br><sub>Simulation & evaluation · arXiv 2610.28432 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning](https://arxiv.org/abs/2610.28613)**<br>`59.1%`&nbsp; `70.8%`<br><sub>Simulation & evaluation · arXiv 2610.28613 · 2026‑10‑20</sub> |
-| 03<br>🔵&nbsp;`R` | **[SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning](https://arxiv.org/abs/2610.28955)**<br>`76.0%`&nbsp; `26.41 W`<br><sub>Training & self-improvement · arXiv 2610.28955 · 2026‑10‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics](https://arxiv.org/abs/2610.28589)**<br>`18.1%`&nbsp; `71.0%`&nbsp; `72.1%`<br><sub>Training & self-improvement · arXiv 2610.28589 · 2026‑10‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles](https://arxiv.org/abs/2610.27732)**<br><sub>Safety, permissions & compliance · arXiv 2610.27732 · 2026‑10‑20</sub> |
-| 06<br>🟢&nbsp;`O` | **[NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/)**<br><sub>Foundation models · NVIDIA Blog · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機](https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html)**<br><sub>Embodiment & supply chain · MONOist (ITmedia) · 2026‑10‑22</sub> |
-| 08<br>🟡&nbsp;`M` | **[ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作](https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html)**<br><sub>Data engine · MONOist (ITmedia) · 2026‑10‑22</sub> |
+| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>Simulation & evaluation · arXiv 2610.28259 · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>Data engine · arXiv 2610.30319 · 2026‑10‑21</sub> |
+| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>Simulation & evaluation · arXiv 2610.29702 · 2026‑10‑21</sub> |
+| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>Edge & real-time · arXiv 2610.29142 · 2026‑10‑21</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
+| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>Data engine · The Robot Report · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑23</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Physical AI for Intralogistics** — `AI draft` For intralogistics teams re-engineering a classical navigation stack for every new robot type and site, the authors self-report learned navigation going from 65.3% to 91.7% across four scenarios; the page flags real-robot runs but does not say which setting those figures come from.
-2. **Physical Canvas** — `AI draft` Where physical rollouts are the bottleneck for evaluating and post-training policies, an action-conditioned world model used as an interactive simulator becomes worth trialling; the preprint reports success rising from a 59.1% SFT baseline to 70.8%, without the page tying that figure to hardware.
-3. **SLoSa** — `AI draft` If you want safety-constrained task planning on board rather than in the cloud, the authors report 17.85-26.41 W average power on a Jetson Orin and compact 4B-14B planners reaching 70.5-76.0%, though the page leaves unclear which metric that range measures.
-4. **AgenticRoboRL** — `AI draft` Teams relying on closed-source models as planners inside robot harnesses get a possible open alternative: a 9B planner reportedly climbs from 18.1% to 71.0% without external memory, near Codex's 72.1%, but the page shows no real-robot results.
-5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — `AI draft` Useful mainly as a safe-RL design reference for vehicles in dense, unpredictable traffic; the page flags closed-loop and latency or control-rate content but quotes no figures, so there is nothing yet to carry into a certification or approval case.
-6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — `AI draft` Teams building their own world models can weigh whether the new training tools, simulation checkpoints and Cosmos Data Factory replace parts of an in-house pipeline; it is a first-party announcement flagged as an open release, with no figures on the page to compare against.
-7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — `AI draft` Anyone choosing reducers for humanoid joints can pencil in order intake for the standard ARMOURDRIVE XR model from 2027-04-01, per this secondary report; the FY2030 annual shipment volume is only a target, and performance claims need the maker's own specification.
-8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — `AI draft` Read it as a timeline signal for AI-assisted teleoperation rather than a data source: per this secondary report, Honda R&D showed its avatar robot at CEATEC 2026 with practical use in view by 2030, and the page says nothing about recorded data.
+1. **Large Multimodal Models for Direct Robot Control** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **TerraTransfer++** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **CausGround** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
+6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+7. **Generative Bionics to launch Physical AI Data Factory in Italy** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-23.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-24.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

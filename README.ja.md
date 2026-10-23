@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-23
+### 本日のレーダー · 2026-10-24
 
-`生成時刻: 2026-10-22 23:40 UTC` ｜ `対象期間: 論文 2026-10-19 → 2026-10-23 · ブログ・報道 2026-09-23 → 2026-10-23 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-23 23:40 UTC` ｜ `対象期間: 論文 2026-10-20 → 2026-10-24 · ブログ・報道 2026-09-24 → 2026-10-24 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)**<br>`65.3%`&nbsp; `91.7%`<br><sub>シミュレーションと評価 · arXiv 2610.28432 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning](https://arxiv.org/abs/2610.28613)**<br>`59.1%`&nbsp; `70.8%`<br><sub>シミュレーションと評価 · arXiv 2610.28613 · 2026‑10‑20</sub> |
-| 03<br>🔵&nbsp;`R` | **[SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning](https://arxiv.org/abs/2610.28955)**<br>`76.0%`&nbsp; `26.41 W`<br><sub>学習と自己改善 · arXiv 2610.28955 · 2026‑10‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics](https://arxiv.org/abs/2610.28589)**<br>`18.1%`&nbsp; `71.0%`&nbsp; `72.1%`<br><sub>学習と自己改善 · arXiv 2610.28589 · 2026‑10‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles](https://arxiv.org/abs/2610.27732)**<br><sub>安全・権限・コンプライアンス · arXiv 2610.27732 · 2026‑10‑20</sub> |
-| 06<br>🟢&nbsp;`O` | **[NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/)**<br><sub>基盤モデル · NVIDIA Blog · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機](https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html)**<br><sub>ハードウェアとサプライチェーン · MONOist (ITmedia) · 2026‑10‑22</sub> |
-| 08<br>🟡&nbsp;`M` | **[ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作](https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html)**<br><sub>データエンジン · MONOist (ITmedia) · 2026‑10‑22</sub> |
+| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>シミュレーションと評価 · arXiv 2610.28259 · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>データエンジン · arXiv 2610.30319 · 2026‑10‑21</sub> |
+| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>シミュレーションと評価 · arXiv 2610.29702 · 2026‑10‑21</sub> |
+| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>エッジとリアルタイム · arXiv 2610.29142 · 2026‑10‑21</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
+| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>データエンジン · The Robot Report · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑23</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Physical AI for Intralogistics** — `AI 下書き` 機種や現場が変わるたびに従来型ナビゲーションを作り直している物流現場には検討材料になる。著者の自己報告では学習型ナビが4シナリオで65.3%から91.7%へ向上したが、実機実験の表示はあるものの、この数値が実機かシミュレーションかはページから判別できない。
-2. **Physical Canvas** — `AI 下書き` 実機での評価や事後学習がコストの壁になっているなら、行動条件付き世界モデルを対話型シミュレータとして使う手が候補に入る。成功率はSFTベースラインの59.1%から70.8%へとの自己報告だが、この値が実機で測られたものかはページに示されていない。
-3. **SLoSa** — `AI 下書き` 安全制約を満たすタスク計画を機上で回したいなら目安になる。著者はJetson Orinで平均17.85-26.41 W、4B-14Bの小型プランナーで70.5-76.0%と報告するが、この幅がどの指標なのかはページから読み取れない。
-4. **AgenticRoboRL** — `AI 下書き` ロボットハーネスと組むプランナーをクローズドなモデルに頼っている場合、公開系の代替候補になりうる。9Bプランナーが外部メモリなしで18.1%から71.0%、Codexの72.1%に迫るとの自己報告だが、実機での結果はページにない。
-5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — `AI 下書き` 交通が密で相手の挙動が読めない状況での安全な強化学習の設計例として参照する程度にとどまる。閉ループや遅延・制御周期に関する記述の表示はあるが数値の引用はなく、認証や導入承認の資料に使える段階ではない。
-6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — `AI 下書き` 世界モデルを自前で構築しているチームは、新しい学習ツールやシミュレーション用チェックポイント、Cosmos Data Factoryで社内パイプラインの一部を置き換えられるかを見極めたい。公開リリースの表示がある一次発表だが、比較できる数値はページにない。
-7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — `AI 下書き` ヒューマノイド関節の減速機を選定するなら、ARMOURDRIVE XR標準モデルの受注開始2027年4月1日を日程に織り込める。ただし二次報道であり、2030年度の年間1万台出荷は目標にすぎず、性能面はメーカー自身の仕様で確かめる必要がある。
-8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — `AI 下書き` データ源というより、AI支援による遠隔操作の実用化時期を測る材料として読むのが妥当。二次報道によれば本田技術研究所はCEATEC 2026で分身ロボットを披露し2030年までの実用化を視野に入れるが、収集データについての記述はページにない。
+1. **Large Multimodal Models for Direct Robot Control** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **TerraTransfer++** — 査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **CausGround** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+7. **Generative Bionics to launch Physical AI Data Factory in Italy** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-23.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-24.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

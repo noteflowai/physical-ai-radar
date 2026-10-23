@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-23
+### 今日雷达 · 2026-10-24
 
-`生成时间: 2026-10-22 23:40 UTC` ｜ `统计窗口: 论文 2026-10-19 → 2026-10-23 · 博客与报道 2026-09-23 → 2026-10-23 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-23 23:40 UTC` ｜ `统计窗口: 论文 2026-10-20 → 2026-10-24 · 博客与报道 2026-09-24 → 2026-10-24 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots](https://arxiv.org/abs/2610.28432)**<br>`65.3%`&nbsp; `91.7%`<br><sub>仿真与评测 · arXiv 2610.28432 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[Physical Canvas: A Vision Tactile World Model For Robot Policy Evaluation And Learning](https://arxiv.org/abs/2610.28613)**<br>`59.1%`&nbsp; `70.8%`<br><sub>仿真与评测 · arXiv 2610.28613 · 2026‑10‑20</sub> |
-| 03<br>🔵&nbsp;`R` | **[SLoSa: Small, Low-Power, and Safe Foundation Models for Robotic Task Planning](https://arxiv.org/abs/2610.28955)**<br>`76.0%`&nbsp; `26.41 W`<br><sub>训练与自我改进 · arXiv 2610.28955 · 2026‑10‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[AgenticRoboRL: Bringing Coding-Agent Post-Training to Agentic Robotics](https://arxiv.org/abs/2610.28589)**<br>`18.1%`&nbsp; `71.0%`&nbsp; `72.1%`<br><sub>训练与自我改进 · arXiv 2610.28589 · 2026‑10‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Navigation of Autonomous Vehicles](https://arxiv.org/abs/2610.27732)**<br><sub>安全、权限与合规 · arXiv 2610.27732 · 2026‑10‑20</sub> |
-| 06<br>🟢&nbsp;`O` | **[NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/)**<br><sub>基座模型 · NVIDIA Blog · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機](https://monoist.itmedia.co.jp/mn/articles/2610/23/news029.html)**<br><sub>本体与供应链 · MONOist (ITmedia) · 2026‑10‑22</sub> |
-| 08<br>🟡&nbsp;`M` | **[ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作](https://monoist.itmedia.co.jp/mn/articles/2610/23/news045.html)**<br><sub>数据引擎 · MONOist (ITmedia) · 2026‑10‑22</sub> |
+| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>仿真与评测 · arXiv 2610.28259 · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>数据引擎 · arXiv 2610.30319 · 2026‑10‑21</sub> |
+| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>仿真与评测 · arXiv 2610.29702 · 2026‑10‑21</sub> |
+| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>边缘与实时性 · arXiv 2610.29142 · 2026‑10‑21</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
+| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>数据引擎 · The Robot Report · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑23</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Physical AI for Intralogistics** — `AI 起草` 若每换一种机器人或一个场地就得重新改造经典导航栈，这篇值得一看：作者自报学习式导航在四个场景中从 65.3% 提升到 91.7%；页面标出真机实验，但没有说明这组数字出自仿真还是真机。
-2. **Physical Canvas** — `AI 起草` 如果靠实物交互来评测和后训练策略已经成了瓶颈，可以考虑以动作条件世界模型充当交互式仿真器；作者称成功率从 59.1% 的 SFT 基线升到 70.8%，属预印本自报，页面也未说明该数字是否在真机上测得。
-3. **SLoSa** — `AI 起草` 想在满足安全约束的前提下把任务规划放到机载端，可参考这组自报数据：Jetson Orin 平均功耗 17.85-26.41 W，4B-14B 紧凑规划器达到 70.5-76.0%，但页面没有说明这一区间对应哪项指标。
-4. **AgenticRoboRL** — `AI 起草` 依赖闭源大模型做规划器、配合机器人 harness 完成操作任务的团队，多了一个可能的开放替代：作者称 9B 规划器在不用外部记忆时从 18.1% 提升到 71.0%，接近 Codex 的 72.1%，但页面未提及真机结果。
-5. **Prescribed Performance Guided Safe Reinforcement Learning for Roundabout Na…** — `AI 起草` 主要可作为密集、难以预测的车流中安全强化学习的设计参考；页面标出闭环与延迟或控制频率相关内容，但没有给出任何数字，目前还不足以写进认证或上线审批材料。
-6. **NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models** — `AI 起草` 自建世界模型的团队可以评估新的训练工具、仿真检查点和 Cosmos Data Factory 能否替代部分自研管线；这是标注了开放发布的一手官方公告，但页面没有任何数字可供比较。
-7. **ヒューマノイドがより繊細に、バックラッシゼロの同軸ローラーカム式精密減速機** — `AI 起草` 选型人形机器人关节减速机时，可把 ARMOURDRIVE XR 标准型 2027年4月1日开始接单记入排期；这是二手报道，2030年度年出货1万台只是目标，性能说法仍需对照厂商自己的规格资料。
-8. **ホンダの多指ハンドは力強く器用、AI支援で分身ロボットを意のままに遠隔操作** — `AI 起草` 更适合当作 AI 辅助遥操作的时间表信号，而不是数据来源：据二手报道，本田技术研究所在 CEATEC 2026 展示了分身机器人，着眼于 2030 年前实用化，页面没有涉及任何采集数据的细节。
+1. **Large Multimodal Models for Direct Robot Control** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **TerraTransfer++** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **CausGround** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Video Friday** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+7. **Generative Bionics to launch Physical AI Data Factory in Italy** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-23.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-24.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
