@@ -12,11 +12,65 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import time
 import urllib.request
 
 class PublicationAbandoned(RuntimeError):
     """A closed or externally changed proposal must not be silently adopted."""
+
+
+class PublicationWaitError(TimeoutError):
+    """A bounded publication wait ended without proof; the receipt says exactly why.
+
+    code: merge-commit-workflow-missing (a required workflow never had a run for
+    this commit), workflow-running-timeout (every required workflow had a run, not
+    all finished), manifest-not-updated (workflows passed, public provenance still
+    names another commit).
+    """
+
+    def __init__(self, code: str, commit: str, waited: float, last_observed, message: str):
+        super().__init__(f"{code}: {message}")
+        self.code, self.commit = code, commit
+        self.waited_seconds, self.last_observed = round(waited, 1), last_observed
+
+    def receipt(self) -> dict:
+        return {"error_code": self.code, "merge_commit": self.commit,
+                "waited_seconds": self.waited_seconds, "last_observed": self.last_observed}
+
+
+# The enclosing worker sets NOTEFLOW_WORKER_DEADLINE (absolute epoch seconds). Every
+# wait below stops RECEIPT_RESERVE seconds before it, so this process, not the outer
+# kill, writes the receipt. Without the variable the historical defaults apply.
+WORKER_DEADLINE_ENV = "NOTEFLOW_WORKER_DEADLINE"
+RECEIPT_RESERVE_ENV = "NOTEFLOW_RECEIPT_RESERVE_SECONDS"
+DEFAULT_RECEIPT_RESERVE = 120
+MIN_RECEIPT_RESERVE = 30
+PROGRESS_EVERY = 60
+
+
+def receipt_reserve() -> int:
+    raw = os.environ.get(RECEIPT_RESERVE_ENV, "")
+    reserve = int(raw) if raw.strip() else DEFAULT_RECEIPT_RESERVE
+    if reserve < MIN_RECEIPT_RESERVE:
+        raise ValueError(f"{RECEIPT_RESERVE_ENV} must be at least {MIN_RECEIPT_RESERVE}")
+    return reserve
+
+
+def wait_budget(seconds: float) -> float:
+    """Seconds a wait may use: its own limit, capped at the worker's remaining budget.
+
+    Never negative; a wait with no budget still observes once, then reports.
+    """
+    raw = os.environ.get(WORKER_DEADLINE_ENV, "")
+    if not raw.strip():
+        return seconds
+    remaining = float(raw) - time.time() - receipt_reserve()
+    return max(0.0, min(seconds, remaining))
+
+
+def progress(message: str) -> None:
+    print("publication-wait: " + message, file=sys.stderr, flush=True)
 
 
 REQUIRED_PR_CHECKS = {
@@ -136,7 +190,7 @@ def checks_state(checks: list[dict]) -> str:
 
 
 def wait_pr(repo: str, pr: int, head: str, seconds: int = 1800) -> dict:
-    deadline = time.monotonic() + seconds
+    deadline = time.monotonic() + wait_budget(seconds)
     while time.monotonic() < deadline:
         record = json.loads(gh(
             repo, "pr", "view", str(pr), "--json",
@@ -165,10 +219,18 @@ def wait_pr(repo: str, pr: int, head: str, seconds: int = 1800) -> dict:
     raise TimeoutError("CI has not passed on the expected commit")
 
 
+def observed(relevant: list, workflows: list[str]) -> dict:
+    return {name: (None if run is None else {"run": run["databaseId"], "status": run["status"],
+                                              "conclusion": run["conclusion"]})
+            for name, run in zip(workflows, relevant)}
+
+
 def wait_publication(repo: str, commit: str, workflows: list[str],
                      seconds: int = 2400) -> list[dict]:
-    deadline = time.monotonic() + seconds
-    while time.monotonic() < deadline:
+    budget = wait_budget(seconds)
+    started = time.monotonic()
+    deadline, next_progress, last = started + budget, started, {}
+    while True:
         runs = json.loads(gh(
             repo, "run", "list", "--branch", "main", "--commit", commit,
             "--limit", "60", "--json",
@@ -179,14 +241,29 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
             if run["headSha"] == commit:
                 latest.setdefault(run["workflowName"], run)
         relevant = [latest.get(name) for name in workflows]
+        last = observed(relevant, workflows)
         if any(r and r["status"] == "completed" and r["conclusion"] != "success"
                for r in relevant):
             raise RuntimeError("A required main/deployment workflow failed")
         if all(r and r["status"] == "completed" and r["conclusion"] == "success"
                for r in relevant):
             return relevant
-        time.sleep(20)
-    raise TimeoutError("Publication did not complete on the merged commit")
+        now = time.monotonic()
+        if now >= next_progress:
+            states = " ".join(f"{name}={'missing' if v is None else v['status']}"
+                              for name, v in last.items())
+            progress(f"commit={commit} waited={now - started:.0f}s/{budget:.0f}s {states}")
+            next_progress = now + PROGRESS_EVERY
+        if now >= deadline:
+            break
+        time.sleep(min(20, max(0.0, deadline - now)))
+    waited = time.monotonic() - started
+    missing = [name for name, value in last.items() if value is None]
+    if missing:
+        raise PublicationWaitError("merge-commit-workflow-missing", commit, waited, last,
+                                   f"no run of {', '.join(missing)} appeared for {commit}")
+    raise PublicationWaitError("workflow-running-timeout", commit, waited, last,
+                               f"required workflows did not finish on {commit}")
 
 
 def public_bytes(url: str) -> bytes:
@@ -274,17 +351,22 @@ def verify_deployment(repo: str, commit: str, workflows: list[str], urls: list[s
             time.sleep(20)
     pages = []
     for url in urls:
-        deadline = time.monotonic() + 180
+        started = time.monotonic()
+        deadline = started + wait_budget(180)
         while True:
             try:
                 page = read_public(url)
                 page["commit_proof"] = public_commit(repo, commit, url)
                 pages.append(page)
                 break
-            except (ValueError, OSError):
-                if time.monotonic() >= deadline:
-                    raise
-                time.sleep(10)
+            except (ValueError, OSError) as error:
+                now = time.monotonic()
+                if now >= deadline:
+                    raise PublicationWaitError(
+                        "manifest-not-updated", commit, now - started,
+                        {"url": url, "error": str(error)[:300], "workflows": observed(runs, workflows)},
+                        f"{url} does not show {commit}") from error
+                time.sleep(min(10, max(0.0, deadline - now)))
     return runs, pages
 
 
@@ -300,7 +382,8 @@ def finish_commit(repo: str, commit: str, workflows: list[str],
     try:
         runs, pages = verify_deployment(repo, commit, workflows, urls)
     except Exception as error:
-        write_json(output, {**pending, "status": "retry-needed", "error": str(error)})
+        detail = error.receipt() if isinstance(error, PublicationWaitError) else {}
+        write_json(output, {**pending, "status": "retry-needed", "error": str(error), **detail})
         raise
     receipt = {**pending, "status": "published", "workflows": runs,
                "public_readback": pages}
@@ -335,7 +418,8 @@ def finish(repo: str, pr: int, head: str, workflows: list[str],
         runs, pages = verify_deployment(repo, commit, workflows, urls)
     except Exception as error:
         status = "abandoned" if isinstance(error, PublicationAbandoned) else "retry-needed"
-        write_json(output, {**pending, "status": status, "error": str(error)})
+        detail = error.receipt() if isinstance(error, PublicationWaitError) else {}
+        write_json(output, {**pending, "status": status, "error": str(error), **detail})
         raise
     receipt = {"repo": repo, "pr": pr, "head": head, "merge_commit": commit,
                "url": record["url"], "workflows": runs, "public_readback": pages,
