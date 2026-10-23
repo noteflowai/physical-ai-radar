@@ -571,15 +571,20 @@ def publish(root: Path, task: dict, config: dict, state: Path) -> dict:
         if newer:
             result = {**newer, "status": "published", "url": pr["url"],
                       "merge_commit": pr["mergeCommit"]["oid"]}
+    identity = {"feature": task["plan"], "feature_id": task["id"]}
     if result is None:
+        # The identity goes into the first pending record, not only after finish() returns: an
+        # interruption while PR checks, merge or deployment are awaited leaves a receipt naming its task.
         result = finish(task["repo"], task["pr"], task["head"], config["workflows"],
-                        config["urls"], state / "publication.json")
+                        config["urls"], state / "publication.json", identity)
     if config["urls"] and task["repo"] != "noteflowai/physical-ai-radar":
         # Existing controller runs public browser interactions; it installs only
         # Playwright dependencies from the reviewed/merged product.
         result["browser_readback"] = verify_public_browser(root, config, state)
-    result["feature"] = task["plan"]
-    result["feature_id"] = task["id"]
+    for key, value in identity.items():
+        if key in result and result[key] != value:
+            raise RuntimeError(f"Publication receipt names a different {key}; reconcile before recording")
+        result[key] = value
     result["checks"] = task["checks"]
     result["delivery"] = task.get("delivery", {})
     result["changed"] = task["changed"]
