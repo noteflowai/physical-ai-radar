@@ -323,10 +323,73 @@ class Budget(unittest.TestCase):
 
     def test_the_call_floor_ends_before_the_worker_deadline(self):
         self.assertLess(ap.MIN_CALL_SECONDS, ap.MIN_RECEIPT_RESERVE)
+        self.assertEqual(ap.RECEIPT_MARGIN, ap.MIN_RECEIPT_RESERVE - ap.MIN_CALL_SECONDS)
+        self.assertGreaterEqual(ap.RECEIPT_MARGIN, 20)
         self.worker(ap.MIN_RECEIPT_RESERVE)                # nothing left after the reserve
         os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MIN_RECEIPT_RESERVE)
         self.assertEqual(ap.call_timeout(120), ap.MIN_CALL_SECONDS)
         self.assertEqual(ap.call_timeout(5), 5)           # never longer than the call's own limit
+        self.clock.now = 4                                 # 4 s past the edge: only 6 s left
+        self.assertEqual(ap.call_timeout(120), ap.MIN_CALL_SECONDS - 4)
+        self.clock.now = ap.MIN_CALL_SECONDS               # at the hard edge: nothing starts
+        with self.assertRaises(subprocess.TimeoutExpired):
+            ap.call_timeout(120)
+
+    def test_chained_slow_calls_past_the_edge_share_one_floor(self):
+        # 05 N160-01: robot-reel reads 2 URLs x 3 calls after the workflows; every call is
+        # slow but succeeds. At the smallest reserve the receipt must still be written.
+        os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MIN_RECEIPT_RESERVE)
+        self.worker(ap.MIN_RECEIPT_RESERVE)                # the wait budget is already spent
+        urls = ["https://noteflowai.github.io/robot-reel/", "https://glayguo-robot-reel.hf.space/"]
+        started = []
+
+        class Response:
+            status, headers = 200, {"Content-Type": "text/plain"}
+
+            def read(self, limit):
+                return b"same bytes"
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc):
+                return False
+
+        def urlopen(request, timeout=None):
+            started.append(self.clock.now)
+            self.clock.now += timeout * 0.99               # slow, but inside its timeout
+            return Response()
+
+        merged = {"headRefOid": "h", "baseRefName": "main", "state": "MERGED",
+                  "statusCheckRollup": [], "mergeCommit": {"oid": COMMIT}, "url": "https://pr/1"}
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "publication.json"
+            with patch.object(ap.urllib.request, "urlopen", urlopen), \
+                 patch.object(ap, "wait_pr", return_value=merged), \
+                 patch.object(ap, "wait_publication", return_value=[]):
+                try:
+                    ap.finish("noteflowai/robot-reel", 1, "h", ["CI"], urls, output)
+                except ap.PublicationWaitError:
+                    pass
+            saved = json.loads(output.read_text())
+        self.assertLessEqual(self.clock.now, ap.MIN_CALL_SECONDS)   # all calls together
+        self.assertTrue(all(t < ap.MIN_CALL_SECONDS for t in started))
+        self.assertLess(self.clock.now, ap.MIN_RECEIPT_RESERVE)      # the receipt still has time
+        self.assertIn(saved["status"], {"published", "retry-needed"})
+
+    def test_chained_calls_with_the_default_reserve_leave_the_margin(self):
+        # Default reserve 120: floored calls may continue past the edge, never into the
+        # last RECEIPT_MARGIN seconds before the outer kill.
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE)            # at the edge
+        done = 0
+        for _ in range(40):                                # far more calls than any repo makes
+            try:
+                self.clock.now += ap.call_timeout(120)     # each uses its whole timeout
+                done += 1
+            except subprocess.TimeoutExpired:
+                break
+        self.assertLessEqual(self.clock.now, ap.DEFAULT_RECEIPT_RESERVE - ap.RECEIPT_MARGIN)
+        self.assertEqual(done, (ap.DEFAULT_RECEIPT_RESERVE - ap.RECEIPT_MARGIN) // ap.MIN_CALL_SECONDS)
 
     # --- wait_pr and readback are capped (05 R159-02) ---------------------------
 

@@ -49,9 +49,12 @@ DEFAULT_RECEIPT_RESERVE = 120
 MIN_RECEIPT_RESERVE = 30
 MAX_RECEIPT_RESERVE = 1200
 # Floor of one capped external call: enough for gh start-up and one API round trip, so a
-# wait with no budget left still observes once (05 N159-r1-01). Below MIN_RECEIPT_RESERVE,
-# so even a call started at the edge ends well before the worker deadline.
+# wait with no budget left still observes once (05 N159-r1-01).
 MIN_CALL_SECONDS = 10.0
+# However many floored calls follow each other past (deadline - reserve), all of them end
+# by (deadline - RECEIPT_MARGIN) and none starts after it (05 N160-01), so the receipt
+# always has at least this long before the outer kill, whatever the reserve.
+RECEIPT_MARGIN = MIN_RECEIPT_RESERVE - MIN_CALL_SECONDS
 PROGRESS_EVERY = 60
 
 
@@ -77,15 +80,22 @@ def wait_budget(seconds: float) -> float:
 
 def call_timeout(default: float) -> float:
     """Timeout for ONE external call (gh, public readback): its default, capped so it
-    ends by the worker deadline minus the receipt reserve (05 R159-01). At least
-    MIN_CALL_SECONDS, so the last observation can complete; that floor is shorter than
-    the smallest reserve, so the call still ends before the outer kill.
+    ends by the worker deadline minus the receipt reserve (05 R159-01). Past that edge
+    a call still gets up to MIN_CALL_SECONDS (N159-r1-01), but no call ends after
+    (deadline - RECEIPT_MARGIN), however many follow (N160-01). A call that would start
+    after that point is not started: it raises TimeoutExpired, which every wait already
+    treats as a timed-out observation.
     resume/finish run outside a worker read the same variable from their environment.
     """
     raw = os.environ.get(WORKER_DEADLINE_ENV, "")
     if not raw.strip():
         return default
-    return max(min(MIN_CALL_SECONDS, default), min(default, float(raw) - time.time() - receipt_reserve()))
+    deadline = float(raw)
+    remaining = deadline - time.time() - receipt_reserve()
+    hard = deadline - time.time() - RECEIPT_MARGIN
+    if hard <= 0:
+        raise subprocess.TimeoutExpired("worker-deadline", 0)
+    return min(default, max(remaining, MIN_CALL_SECONDS), hard)
 
 
 def progress(message: str) -> None:
