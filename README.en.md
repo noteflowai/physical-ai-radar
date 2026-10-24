@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Large Multimodal Models for Direct Robot Control** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **TerraTransfer++** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **CausGround** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
-6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-7. **Generative Bionics to launch Physical AI Data Factory in Italy** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Large Multimodal Models for Direct Robot Control** — `AI draft` Teams tempted to drive a robot straight from a general-purpose multimodal model should read this as a capability probe: the excerpt itself says their embodied abilities remain poorly understood, and although real-robot and closed-loop runs are flagged, the page quotes no figures to choose on.
+2. **TerraTransfer++** — `AI draft` The visible excerpt only sets up the end-to-end driving context and the page gives no figures, so before treating this as a reason to cut demonstration collection, read the preprint to see what its flagged real-robot and closed-loop runs actually measured.
+3. **CausGround** — `AI draft` If an MLLM planner keeps proposing actions it cannot execute, modelling when actions are executable and how they change the world is worth a trial; the authors self-report 24.9% to 53.3% average success on benchmarks including VirtualHome and 43.0% to 57.0% closed-loop on RoboCasa, without the page tying either to hardware.
+4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — `AI draft` Where a cascaded mapping, planning and low-level control stack is costing compute and latency, this end-to-end coordination approach belongs on the shortlist; the authors report 98% and 95% success, but the page names neither the task nor the hardware behind them and quotes no latency figure.
+5. **Video Friday** — `AI draft` For legged-platform teams, ETH Zurich's quadruped solving a giant cube with only its feet hints that the feet can double as manipulators; it is a video roundup, and the page does not tie the 20 kg lifting figure to that quadruped.
+6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — `AI draft` Buyers with connected robots or automation in the procurement pipeline should check whether their systems fall under the FCC's recent restriction on certain connected systems before signing; this is only a webinar notice and the page does not say which systems are covered, so go to the FCC text.
+7. **Generative Bionics to launch Physical AI Data Factory in Italy** — `AI draft` Teams that need humanoid training data generated inside Europe may gain a regional source, but this is a reported launch plan with no volume, access terms or target embodiments on the page, so it is not yet something to build a data plan around.
+8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — `AI draft` The only robotics content in this news digest is a one-line headline that Unitree has released a new humanoid, with no model, specs or price; anyone weighing humanoid platforms should wait for Unitree's own announcement rather than cite this.
 
 </details>
 
