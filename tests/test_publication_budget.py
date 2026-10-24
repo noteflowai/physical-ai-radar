@@ -247,8 +247,10 @@ class Budget(unittest.TestCase):
             saved = json.loads(output.read_text())
         self.assertEqual(raised.exception.code, "public-readback-unreachable")
         self.assertEqual((saved["status"], saved["error_code"]), ("retry-needed", "public-readback-unreachable"))
-        # Reported by the deadline minus the reserve (plus the 1 s floor), never after it.
-        self.assertLessEqual(self.clock.now, 2)
+        # Reported by the deadline minus the reserve plus at most one floored call, which
+        # still leaves most of the reserve for the receipt.
+        self.assertLessEqual(self.clock.now, 1 + ap.MIN_CALL_SECONDS)
+        self.assertLess(self.clock.now, ap.DEFAULT_RECEIPT_RESERVE + 1 - 20)
 
     def test_a_hanging_public_page_cannot_outlive_the_worker(self):
         self.worker(ap.DEFAULT_RECEIPT_RESERVE + 1)
@@ -263,7 +265,7 @@ class Budget(unittest.TestCase):
             for p in calls:
                 p.stop()
         self.assertEqual(raised.exception.code, "public-readback-unreachable")
-        self.assertLessEqual(self.clock.now, 2)
+        self.assertLessEqual(self.clock.now, 1 + ap.MIN_CALL_SECONDS)
 
     def test_a_hanging_run_list_at_the_edge_still_reports_in_time(self):
         self.worker(ap.DEFAULT_RECEIPT_RESERVE + 50)
@@ -299,7 +301,32 @@ class Budget(unittest.TestCase):
             for p in calls:
                 p.stop()
         self.assertEqual(raised.exception.code, "github-unreachable")
-        self.assertLessEqual(self.clock.now, 1)
+        self.assertLessEqual(self.clock.now, ap.MIN_CALL_SECONDS)
+
+    def test_with_no_budget_left_a_normal_gh_reply_is_still_observed(self):
+        # 05 N159-r1-01: gh start-up plus one API round trip takes seconds; the last
+        # observation must not be cut to 1 s and misreported as github-unreachable.
+        self.worker(60)                                   # budget exhausted
+        seen = []
+
+        def run(args, timeout=None, **kwargs):
+            seen.append(timeout)
+            if timeout < 5:
+                self.clock.now += timeout
+                raise subprocess.TimeoutExpired(args, timeout)
+            self.clock.now += 5                           # a slow but normal gh call
+            return subprocess.CompletedProcess(args, 0, stdout=runs(("CI", "completed", "success")), stderr="")
+
+        with patch.object(ap.subprocess, "run", run), patch.object(ap, "progress"):
+            self.assertEqual(ap.wait_publication("o/r", COMMIT, ["CI"])[0]["conclusion"], "success")
+        self.assertEqual(seen, [ap.MIN_CALL_SECONDS])
+
+    def test_the_call_floor_ends_before_the_worker_deadline(self):
+        self.assertLess(ap.MIN_CALL_SECONDS, ap.MIN_RECEIPT_RESERVE)
+        self.worker(ap.MIN_RECEIPT_RESERVE)                # nothing left after the reserve
+        os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MIN_RECEIPT_RESERVE)
+        self.assertEqual(ap.call_timeout(120), ap.MIN_CALL_SECONDS)
+        self.assertEqual(ap.call_timeout(5), 5)           # never longer than the call's own limit
 
     # --- wait_pr and readback are capped (05 R159-02) ---------------------------
 

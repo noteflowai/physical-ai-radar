@@ -48,6 +48,10 @@ RECEIPT_RESERVE_ENV = "NOTEFLOW_RECEIPT_RESERVE_SECONDS"
 DEFAULT_RECEIPT_RESERVE = 120
 MIN_RECEIPT_RESERVE = 30
 MAX_RECEIPT_RESERVE = 1200
+# Floor of one capped external call: enough for gh start-up and one API round trip, so a
+# wait with no budget left still observes once (05 N159-r1-01). Below MIN_RECEIPT_RESERVE,
+# so even a call started at the edge ends well before the worker deadline.
+MIN_CALL_SECONDS = 10.0
 PROGRESS_EVERY = 60
 
 
@@ -73,14 +77,15 @@ def wait_budget(seconds: float) -> float:
 
 def call_timeout(default: float) -> float:
     """Timeout for ONE external call (gh, public readback): its default, capped so it
-    ends by the worker deadline minus the receipt reserve (05 R159-01). At least 1 s:
-    a call started at the edge fails fast instead of outliving the worker.
+    ends by the worker deadline minus the receipt reserve (05 R159-01). At least
+    MIN_CALL_SECONDS, so the last observation can complete; that floor is shorter than
+    the smallest reserve, so the call still ends before the outer kill.
     resume/finish run outside a worker read the same variable from their environment.
     """
     raw = os.environ.get(WORKER_DEADLINE_ENV, "")
     if not raw.strip():
         return default
-    return max(1.0, min(default, float(raw) - time.time() - receipt_reserve()))
+    return max(min(MIN_CALL_SECONDS, default), min(default, float(raw) - time.time() - receipt_reserve()))
 
 
 def progress(message: str) -> None:
