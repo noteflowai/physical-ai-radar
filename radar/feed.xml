@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-10-23T23:40:00Z</updated>
+  <updated>2026-10-24T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31518</id>
+    <title>SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.31518" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.31518</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.31518 · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 12.33%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
+&lt;blockquote&gt;Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31474</id>
+    <title>Skeleton-Grounded Latent Action Model for Robot World Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.31474" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.31474</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.31474 · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 19.5% · 11.1%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31670</id>
+    <title>Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.31670" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.31670</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.31670 · 2026-10-22&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported&lt;/p&gt;
+&lt;blockquote&gt;Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31371</id>
+    <title>Probabilistic Energy Modeling Unifies Versatile Swarm Control</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.31371" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.31371</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.31371 · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 10 ms&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31166</id>
+    <title>Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.31166" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.31166</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.31166 · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 29.1% · 72.6% · 36.7% · 88.3%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30955</id>
+    <title>A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2610.30955" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2610.30955</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.30955 · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 4 Hz&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:231615289514</id>
+    <title>NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations</title>
+    <link rel="alternate" href="https://blogs.nvidia.com/blog/european-retail-open-models-robotics/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>NVIDIA Blog</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="O" label="[O]" />
+    <summary type="text">European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-10-22&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 90%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results&lt;/p&gt;
+&lt;blockquote&gt;European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:50dc673c9de4</id>
+    <title>Eka Robotics raises $150M to scale its vision-force-action model for robots</title>
+    <link rel="alternate" href="https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html" />
+    <published>2026-10-24T23:40:00Z</published>
+    <updated>2026-10-24T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
+    <category term="M" label="[M]" />
+    <summary type="text">Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-10-24&lt;/p&gt;
+&lt;blockquote&gt;Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html"&gt;Full radar for 2026-10-25&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.28259</id>
     <title>Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning</title>
@@ -1574,141 +1710,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.11480 · 2026-10-08&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 100 tasks · 77.0% · 90.0% · 73.8%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
 &lt;blockquote&gt;Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12440</id>
-    <title>Generative Neural Retargeting for Human-to-Robot Dexterous Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12440" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12440</name>
-    </author>
-    <category term="data" label="Data engine (collection / curation / scaling)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Human demonstrations are a scalable data source for learning dexterous manipulation, but the embodiment gap prevents human motion from being executed directly on robots.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12440 · 2026-10-08&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported&lt;/p&gt;
-&lt;blockquote&gt;Human demonstrations are a scalable data source for learning dexterous manipulation, but the embodiment gap prevents human motion from being executed directly on robots.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12407</id>
-    <title>LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12407" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12407</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="R" label="[R]" />
-    <summary type="text">World action models (WAMs) predict actions and future observations, typically from a reconstruction-based representation that carries noisy, redundant information which can complicate downstream predictions.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12407 · 2026-10-08&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported&lt;/p&gt;
-&lt;blockquote&gt;World action models (WAMs) predict actions and future observations, typically from a reconstruction-based representation that carries noisy, redundant information which can complicate downstream predictions.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12457</id>
-    <title>SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12457" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12457</name>
-    </author>
-    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Frontier multimodal foundation models (e.g., GPT-6 Astra) have recently shown strong potential for direct robotic control, yet their performance on fine manipulation remains limited.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12457 · 2026-10-08&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 26.7% · 66.7% · 0% · 100%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
-&lt;blockquote&gt;Frontier multimodal foundation models (e.g., GPT-6 Astra) have recently shown strong potential for direct robotic control, yet their performance on fine manipulation remains limited.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12249</id>
-    <title>Real-Time Motion Planning with Dynamic Hazards: Classical vs. Learning-Based Methods</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12249" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12249</name>
-    </author>
-    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
-    <category term="R" label="[R]" />
-    <summary type="text">We study real-time motion planning in dynamic hazard fields through a controlled comparison between classical planning and learning-based methods.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12249 · 2026-10-08&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;We study real-time motion planning in dynamic hazard fields through a controlled comparison between classical planning and learning-based methods.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.11809</id>
-    <title>WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.11809" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.11809</name>
-    </author>
-    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Robust navigation in cluttered environments remains a fundamental challenge for quadrotors, particularly when strong wind disturbances arise, which perturb vehicle dynamics, limit control authority, and substantially increase collision…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.11809 · 2026-10-08&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;Robust navigation in cluttered environments remains a fundamental challenge for quadrotors, particularly when strong wind disturbances arise, which perturb vehicle dynamics, limit control authority, and substantially increase collision…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12467</id>
-    <title>CSF: Contextual Safety Filtering for Motion Generators</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12467" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html" />
-    <published>2026-10-11T23:40:00Z</published>
-    <updated>2026-10-11T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12467</name>
-    </author>
-    <category term="safety" label="Safety, permissions &amp; compliance" />
-    <category term="R" label="[R]" />
-    <summary type="text">Text-conditioned motion generators produce trackable whole-body motion, but they have no notion of scene-dependent safety: the same action may target an object or a person.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Safety, permissions &amp;amp; compliance&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12467 · 2026-10-08&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 90% · 100%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
-&lt;blockquote&gt;Text-conditioned motion generators produce trackable whole-body motion, but they have no notion of scene-dependent safety: the same action may target an object or a person.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html"&gt;Full radar for 2026-10-12&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12185</id>
-    <title>RESETTLE: Robotic Recovery through Disagreement-Triggered Retrieval and Efficient Corrective Control</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.12185" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html" />
-    <published>2026-10-10T23:40:00Z</published>
-    <updated>2026-10-10T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.12185</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Reliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.12185 · 2026-10-08&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 8.70% · 6.28% · 6.83% · 74.04%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;Reliable robotic manipulation requires timely intervention to correct emerging deviations and restore progress after execution errors.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html"&gt;Full radar for 2026-10-11&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.11283</id>
-    <title>Being-M0.7: A Latent World-Action Model for Humanoid Robots</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.11283" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html" />
-    <published>2026-10-10T23:40:00Z</published>
-    <updated>2026-10-10T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.11283</name>
-    </author>
-    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Humanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.11283 · 2026-10-08&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 10,000 hours&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
-&lt;blockquote&gt;Humanoid loco-manipulation requires coordinated locomotion and manipulation informed by future scene evolution and whole-body motion, yet learning these capabilities is constrained by scarce robot demonstrations.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-11.en.html"&gt;Full radar for 2026-10-11&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

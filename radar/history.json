@@ -41,10 +41,6 @@
       "date": "2026-09-24",
       "count": 2,
       "lanes": 2,
-      "urls": [
-        "https://blogs.nvidia.com/blog/ai-day-singapore",
-        "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp"
-      ],
       "failed": [
         "arxiv",
         "deepmind"
@@ -591,6 +587,30 @@
         "https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers",
         "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy",
         "https://www.leiphone.com/category/zaobao/3jq4bj4e3zjhjvbp.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": []
+    },
+    {
+      "date": "2026-10-25",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.31518",
+        "https://arxiv.org/abs/2610.31474",
+        "https://arxiv.org/abs/2610.31670",
+        "https://arxiv.org/abs/2610.31371",
+        "https://arxiv.org/abs/2610.31166",
+        "https://arxiv.org/abs/2610.30955",
+        "https://blogs.nvidia.com/blog/european-retail-open-models-robotics",
+        "https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots"
       ],
       "failed": [
         "deepmind"

@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-24
+### 本日のレーダー · 2026-10-25
 
-`生成時刻: 2026-10-23 23:40 UTC` ｜ `対象期間: 論文 2026-10-20 → 2026-10-24 · ブログ・報道 2026-09-24 → 2026-10-24 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-24 23:40 UTC` ｜ `対象期間: 論文 2026-10-21 → 2026-10-25 · ブログ・報道 2026-09-25 → 2026-10-25 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>シミュレーションと評価 · arXiv 2610.28259 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>データエンジン · arXiv 2610.30319 · 2026‑10‑21</sub> |
-| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>シミュレーションと評価 · arXiv 2610.29702 · 2026‑10‑21</sub> |
-| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>エッジとリアルタイム · arXiv 2610.29142 · 2026‑10‑21</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
-| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>データエンジン · The Robot Report · 2026‑10‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets](https://arxiv.org/abs/2610.31518)**<br>`12.33%`<br><sub>システムとオーケストレーション · arXiv 2610.31518 · 2026‑10‑22</sub> |
+| 02<br>🔵&nbsp;`R` | **[Skeleton-Grounded Latent Action Model for Robot World Models](https://arxiv.org/abs/2610.31474)**<br>`19.5%`&nbsp; `11.1%`<br><sub>シミュレーションと評価 · arXiv 2610.31474 · 2026‑10‑22</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success](https://arxiv.org/abs/2610.31670)**<br><sub>基盤モデル · arXiv 2610.31670 · 2026‑10‑22</sub> |
+| 04<br>🔵&nbsp;`R` | **[Probabilistic Energy Modeling Unifies Versatile Swarm Control](https://arxiv.org/abs/2610.31371)**<br>`10 ms`<br><sub>エッジとリアルタイム · arXiv 2610.31371 · 2026‑10‑22</sub> |
+| 05<br>🔵&nbsp;`R` | **[Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.31166)**<br>`29.1%`&nbsp; `72.6%`&nbsp; `36.7%`<br><sub>基盤モデル · arXiv 2610.31166 · 2026‑10‑22</sub> |
+| 06<br>🔵&nbsp;`R` | **[A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation](https://arxiv.org/abs/2610.30955)**<br>`4 Hz`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.30955 · 2026‑10‑22</sub> |
+| 07<br>🟢&nbsp;`O` | **[NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations](https://blogs.nvidia.com/blog/european-retail-open-models-robotics/)**<br>`90%`<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑22</sub> |
+| 08<br>🟡&nbsp;`M` | **[Eka Robotics raises $150M to scale its vision-force-action model for robots](https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/)**<br><sub>学習と自己改善 · The Robot Report · 2026‑10‑24</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Large Multimodal Models for Direct Robot Control** — `AI 下書き` 汎用マルチモーダルモデルをそのままロボット制御に使おうとしているチームにとっては能力の当たりを付ける材料にとどまる。抜粋自体が身体性能力はよく分かっていないと認めており、実機・閉ループ実験の表示はあるが、判断に使える数値はページに出ていない。
-2. **TerraTransfer++** — `AI 下書き` ページで読めるのはエンドツーエンド自動運転の背景説明だけで数値はない。デモ収集を減らす根拠にする前に、実機・閉ループ実験として表示されている部分が何を測ったのか、プレプリント本文で確かめる必要がある。
-3. **CausGround** — `AI 下書き` MLLMプランナーが実行不能な行動を出しがちなら、行動の実行可能条件と世界への影響を明示的に扱う設計を試す価値がある。著者の自己報告ではVirtualHome等の平均成功率が24.9%から53.3%、RoboCasaの閉ループ計画が43.0%から57.0%だが、実機での値かはページに示されていない。
-4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — `AI 下書き` マッピング・計画・低レベル制御を段階的につないだ構成が計算負荷と遅延のもとになっているなら、このエンドツーエンドの協調手法は候補に入る。著者は98%と95%の成功率を報告するが、対象タスクとハードウェアも遅延の具体値もページには出ていない。
-5. **Video Friday** — `AI 下書き` 脚式プラットフォームを扱うチームには、ETH Zurichの四脚ロボットが足だけで巨大キューブを自律的に解いた事例は、脚を操作に兼用できる可能性を示す。ただし動画まとめの二次情報で、20 kgの持ち上げの数値がこの四脚のものかはページから読み取れない。
-6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — `AI 下書き` 通信機能付きのロボットや自動化設備を調達中なら、発注前にFCCによる一部コネクテッドシステムへの最近の制限に該当しないか確認すべきだ。ウェビナー告知にすぎず対象範囲はページに書かれていないため、FCCの原文に当たること。
-7. **Generative Bionics to launch Physical AI Data Factory in Italy** — `AI 下書き` 人型ロボットの学習データを欧州域内で確保したいチームには地域の供給源が一つ増えるかもしれない。ただし報道ベースの開設計画で、データ量・利用条件・対象機体はページにないため、まだデータ調達計画に組み込める段階ではない。
-8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — `AI 下書き` この朝刊ダイジェストでロボット関連は「宇樹が新型人型ロボットを発表」という見出し一行だけで、型番・仕様・価格はない。人型機体の選定を検討するなら、これを引用せずUnitree自身の発表を確認すべきだ。
+1. **SCOPE** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+2. **Skeleton-Grounded Latent Action Model for Robot World Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Sensorimotor Alignment** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Memory before Goal** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — 査読前のプレプリント。本文に実機での結果の記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — 当事者による一次発表。本文に定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-24.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-25.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-24
+### 今日雷达 · 2026-10-25
 
-`生成时间: 2026-10-23 23:40 UTC` ｜ `统计窗口: 论文 2026-10-20 → 2026-10-24 · 博客与报道 2026-09-24 → 2026-10-24 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-24 23:40 UTC` ｜ `统计窗口: 论文 2026-10-21 → 2026-10-25 · 博客与报道 2026-09-25 → 2026-10-25 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>仿真与评测 · arXiv 2610.28259 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>数据引擎 · arXiv 2610.30319 · 2026‑10‑21</sub> |
-| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>仿真与评测 · arXiv 2610.29702 · 2026‑10‑21</sub> |
-| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>边缘与实时性 · arXiv 2610.29142 · 2026‑10‑21</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
-| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>数据引擎 · The Robot Report · 2026‑10‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets](https://arxiv.org/abs/2610.31518)**<br>`12.33%`<br><sub>系统与编排 · arXiv 2610.31518 · 2026‑10‑22</sub> |
+| 02<br>🔵&nbsp;`R` | **[Skeleton-Grounded Latent Action Model for Robot World Models](https://arxiv.org/abs/2610.31474)**<br>`19.5%`&nbsp; `11.1%`<br><sub>仿真与评测 · arXiv 2610.31474 · 2026‑10‑22</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success](https://arxiv.org/abs/2610.31670)**<br><sub>基座模型 · arXiv 2610.31670 · 2026‑10‑22</sub> |
+| 04<br>🔵&nbsp;`R` | **[Probabilistic Energy Modeling Unifies Versatile Swarm Control](https://arxiv.org/abs/2610.31371)**<br>`10 ms`<br><sub>边缘与实时性 · arXiv 2610.31371 · 2026‑10‑22</sub> |
+| 05<br>🔵&nbsp;`R` | **[Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.31166)**<br>`29.1%`&nbsp; `72.6%`&nbsp; `36.7%`<br><sub>基座模型 · arXiv 2610.31166 · 2026‑10‑22</sub> |
+| 06<br>🔵&nbsp;`R` | **[A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation](https://arxiv.org/abs/2610.30955)**<br>`4 Hz`<br><sub>本体与供应链 · arXiv 2610.30955 · 2026‑10‑22</sub> |
+| 07<br>🟢&nbsp;`O` | **[NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations](https://blogs.nvidia.com/blog/european-retail-open-models-robotics/)**<br>`90%`<br><sub>仿真与评测 · NVIDIA Blog · 2026‑10‑22</sub> |
+| 08<br>🟡&nbsp;`M` | **[Eka Robotics raises $150M to scale its vision-force-action model for robots](https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/)**<br><sub>训练与自我改进 · The Robot Report · 2026‑10‑24</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Large Multimodal Models for Direct Robot Control** — `AI 起草` 想直接拿通用多模态模型当机器人控制器的团队，可把它当作能力摸底来读：摘录本身承认这类模型的具身能力仍不清楚，页面虽标出真机与闭环实验，却没有给出任何数字，暂不足以支撑选型。
-2. **TerraTransfer++** — `AI 起草` 可见摘录只交代了端到端自动驾驶的背景，页面没有任何数字；在据此考虑削减示范数据采集之前，应先读原文确认真机与闭环实验具体测了什么，这仍是作者自报的预印本。
-3. **CausGround** — `AI 起草` 若 MLLM 规划器常在动作是否可执行上出错，显式建模可执行时机与动作后果值得试：作者自报 VirtualHome 等平均成功率由 24.9% 升至 53.3%、RoboCasa 闭环规划由 43.0% 升至 57.0%，但页面未说明这些数字是否出自真机。
-4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — `AI 起草` 如果级联的建图、规划与底层控制正在拖累计算和延迟，这种端到端协调方案值得列入备选；作者自报 98% 与 95% 的成功率，但页面未说明对应任务与硬件，也没有引出具体延迟数字。
-5. **Video Friday** — `AI 起草` 做足式平台的团队可留意：ETH Zurich 的四足机器人只用脚就自主完成了巨型魔方，说明足端本身可能兼作操作器；这是视频合集转述，20 kg 的搬运数字在页面上也未与该四足对应。
-6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — `AI 起草` 采购联网机器人或自动化设备的团队，在下单前应核实所选系统是否落入 FCC 近期对部分联网系统的限制；这只是一场研讨会预告，页面没说明哪些系统受影响，请以 FCC 原文为准。
-7. **Generative Bionics to launch Physical AI Data Factory in Italy** — `AI 起草` 需要在欧洲境内获取人形机器人训练数据的团队，可能多出一个本地来源；但这是转述的上线计划，页面没有数据规模、开放方式或适用本体的信息，还不能写进数据采购方案。
-8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — `AI 起草` 这期早报与机器人相关的只有“宇树发新人形机器人”一行标题，没有型号、规格或价格；评估人形本体选型的团队应以宇树自己的发布为准，不要据此转述。
+1. **SCOPE** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
+2. **Skeleton-Grounded Latent Action Model for Robot World Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Sensorimotor Alignment** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Memory before Goal** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
+6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。
+7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — 一手官方发布；原文给出了量化数据。关注仿真结果对真机表现的预测有多准。
+8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-24.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-25.zh.md)** · [每周汇总 ›](radar/weekly/2026-W43.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

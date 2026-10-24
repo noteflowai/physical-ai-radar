@@ -1,170 +1,182 @@
 {
-  "date": "2026-10-24",
-  "generated": "2026-10-23 23:40 UTC",
-  "window": "papers 2026-10-20 → 2026-10-24 · posts 2026-09-24 → 2026-10-24 (UTC)",
+  "date": "2026-10-25",
+  "generated": "2026-10-24 23:40 UTC",
+  "window": "papers 2026-10-21 → 2026-10-25 · posts 2026-09-25 → 2026-10-25 (UTC)",
   "window_detail": {
-    "day": "2026-10-24",
-    "papers_from": "2026-10-20",
-    "posts_from": "2026-09-24",
+    "day": "2026-10-25",
+    "papers_from": "2026-10-21",
+    "posts_from": "2026-09-25",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.28259",
-      "title": "Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning",
-      "url": "https://arxiv.org/abs/2610.28259",
-      "publisher": "arXiv 2610.28259",
+      "id": "arxiv:2610.31518",
+      "title": "SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets",
+      "url": "https://arxiv.org/abs/2610.31518",
+      "publisher": "arXiv 2610.31518",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-20",
-      "lane": "simeval",
-      "score": 3.24,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "summary": "Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood. This paper systematically evaluate GPT-6 Astra for closed-loop robotic manipulation using a lightweight agent execution framework. We first probe three fundamental embodied capabilities-depth perception, embodied in-context learning, and tactile understanding-and demonstrate that the model can exploit depth information, acquire simple manipulation strategies from contextual demonstrations, and use tactile feedback to correct its actions. We then evaluate GPT-6 Astra across five established manipulation benchmarks along six capability dimensions. Despite competitive performance on several benchmarks-26.92\\% success on RoboDojo and 76.0\\% on RoboTwin 2.0-our analysis reveals a pronounced gap between semantic reasoning and physical execution, particularly in consequence-aware action planning, precision, and complex motion coordination. To further examine these limitations, we introduce LIBERO-GeoMotion, a new benchmark of geometry-constrained tasks that require precise pose alignment, coordinated translation and rotation, and anticipation of physical action consequences. GPT-6 Astra achieves only 11.1\\% zero-shot success, exposing the difficulty of translating spatial understanding into physically feasible motion. Real-world experiments corroborate these findings: zero-shot execution is feasible for simple tasks, yet persistent deficits remain in motion feasibility, precise control, and physical safety, while substantial inference latency further hinders practical deployment. Overall, our results characterize the emerging embodied capabilities of general-purpose multimodal models and delineate the key challenges toward safe, efficient, and reliable robotic manipulation."
-    },
-    {
-      "id": "arxiv:2610.30319",
-      "title": "TerraTransfer++: Demonstration-Free End-to-End Planner",
-      "url": "https://arxiv.org/abs/2610.30319",
-      "publisher": "arXiv 2610.30319",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-21",
-      "lane": "data",
-      "score": 3.22,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments. Its standard training recipe, however, is expensive across all existing paradigms: imitation learning requires fleet-scale driving logs whose behavior distribution only thinly covers the safety-critical tail; closed-loop reinforcement learning in a photorealistic simulator, while offering diverse behaviors, is bottlenecked by sample-efficiency, per-step cost of rendering, and a forward pass through a large vision backbone. Self-play in vectorized simulators changes the economics: at millions of rollout steps per second, one can obtain a state distribution with natural diversity in collisions, near-misses, and recoveries that no driving log contains, and a highly reactive policy emerges from a basic driving-quality reward. Our approach exploits this asymmetry. We pretrain a single policy by self-play, distill its rollouts into a flow-matching trajectory teacher that also plans, and train lightweight adapters on a frozen pretrained vision backbone to reproduce the latent space of either teacher through the action KL divergence, a batch-relational low-rank structural loss, and, for the planner, a trajectory-matching loss. Every target traces back to the self-play policy, so alignment never supervises against a logged trajectory: a paired dataset of (image, scene-state) frames suffices, with no need for the curated expert demonstrations that imitation pretraining is built on. From this one self-play teacher we obtain two end-to-end students: a closed-loop policy that outperforms every published imitation-based end-to-end method on the photorealistic 3D Gaussian splatting closed-loop benchmark HUGSim, and a planner that reaches 59.4 EPDMS on NAVSIM navhard, above every published method including DriveZero-Scale (57.1), and 95.5 PDMS on navtest, without human demonstrations."
-    },
-    {
-      "id": "arxiv:2610.29702",
-      "title": "CausGround: Causal Interaction Grounding for Adaptive Embodied Planning",
-      "url": "https://arxiv.org/abs/2610.29702",
-      "publisher": "arXiv 2610.29702",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-21",
-      "lane": "simeval",
-      "score": 3.205,
+      "published": "2026-10-22",
+      "lane": "systems",
+      "score": 3.05,
       "numbers": [
-        "24.9%",
-        "53.3%",
-        "43.0%",
-        "57.0%"
+        "12.33%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "summary": "Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments. While Large Language Models (LLMs) introduce a new paradigm for TAMP by leveraging extensive common sense, their inherent reasoning limitations hinder direct application, and fine-tuning strategies to enhance these capabilities are currently bottlenecked by the scarcity of high-quality datasets. Existing automated generation methods often suffer from homogeneity, limiting model generalization, and unsolvability, where hallucinated scene graphs create physical mismatches with task goals. To address these issues, we propose Scene-graph Construction Optimized by Plan Error-correction (SCOPE), an automated framework designed to generate diverse and executable TAMP datasets. SCOPE incorporates multi-level diversity metrics to maximize the information entropy of scenarios. Crucially, it introduces a Plan Feedback Error-correction pipeline that utilizes planner execution failures as feedback signals to retroactively rectify logical inconsistencies in scene graphs, ensuring physical feasibility. Experimental results demonstrate that SCOPE exhibits greater robustness to erroneous scene graphs and generates higher-quality data. When utilized for LLM fine-tuning, SCOPE-generated data yield a downstream TAMP model that achieves an absolute 12.33% gain in success rate over its counterpart fine-tuned with data generated by DELTA, a state-of-the-art PDDL-based planner."
+    },
+    {
+      "id": "arxiv:2610.31474",
+      "title": "Skeleton-Grounded Latent Action Model for Robot World Models",
+      "url": "https://arxiv.org/abs/2610.31474",
+      "publisher": "arXiv 2610.31474",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
+      "lane": "simeval",
+      "score": 2.82,
+      "numbers": [
+        "19.5%",
+        "11.1%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "summary": "Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world. These preconditions and effects are environment-dependent and often not captured by MLLMs, making adaptation challenging. Yet existing approaches either require costly environment-specific training or rely on unstructured interaction experience that is difficult to reuse. Therefore, we introduce CausGround, a non-parametric causal interaction grounding framework that distills interaction experience into reusable action-centered causal knowledge. CausGround identifies action preconditions and effects and organizes them in a factorized world-state representation capturing object attributes and inter-object relations. At planning time, task-relevant causal dependencies are grounded in current observations to support backward reasoning over preconditions and forward reasoning over effects for action selection and multi-step planning. We evaluate CausGround on simulated high-level planning, interaction reasoning, and real-world robot manipulation. On adapted VirtualHome and RoboCasa benchmarks, CausGround improves vision-based high-level planning across MLLM backbones, increasing average task success from 24.9% to 53.3% on VirtualHome and closed-loop planning success from 43.0% to 57.0% on RoboCasa. On SWITCH, average interaction reasoning accuracy increases from 25.8% to 31.9%, indicating improved action selection, recovery, and verification. Moreover, real-world experiments show that CausGround reasons backward from MLLM-interpreted goals to derive executable high-level action sequences for sequential manipulation. These results demonstrate that reusable action preconditions and effects support long-horizon embodied planning across diverse environments without parameter updates."
+      "summary": "Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions. However, reconstruction-driven latent actions mix robot motion with object responses and other scene changes, complicating their correspondence with robot controls. We propose SkeLAM, a skeleton-guided latent action model for controllable robot world modeling. SkeLAM decomposes latent actions into a kinematic component grounded by robot skeleton supervision and a residual component retaining complementary visual dynamics. Cross-modal swap reconstruction encourages RGB-derived and skeleton-derived kinematic representations to be interchangeable during video reconstruction. The world model incorporates both components through separate conditioning pathways, while branch dropout reduces its dependence on future-derived residual information. A lightweight adapter maps robot actions to the kinematic space, and subsequent world-model fine-tuning adapts generation to these predicted conditions. At inference, the model generates future observations from the current observation and robot actions. On DROID, SkeLAM reduces end-effector ADE by 19.5% and LPIPS by 11.1% compared with DreamDojo. Motion probing supports kinematic specialization, while qualitative results demonstrate zero-shot human-to-robot motion transfer in generated rollouts. Policy evaluation shows agreement between predicted success rates and those measured in real robot executions."
     },
     {
-      "id": "arxiv:2610.29142",
-      "title": "State-Dependent Objective Coordination for End-to-End Balance and Navigation",
-      "url": "https://arxiv.org/abs/2610.29142",
-      "publisher": "arXiv 2610.29142",
+      "id": "arxiv:2610.31670",
+      "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
+      "url": "https://arxiv.org/abs/2610.31670",
+      "publisher": "arXiv 2610.31670",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-21",
+      "published": "2026-10-22",
+      "lane": "foundation",
+      "score": 2.75,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "summary": "Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability. The Platonic Representation Hypothesis (PRH) suggests that as representations improve, different modalities such as vision and language converge toward a shared statistical model of reality. We ask whether motion trajectories form another such modality: as embodied models become more capable, should their sensory representations converge toward the structure of physical motion? To examine this, we propose Sensorimotor Alignment ($S^2$), a training-free offline metric that measures how well a model's sensory representation aligns with the geometry of physical motion. We find that $S^2$ correlates positively with downstream robot task success across embodied model families, making it a low-cost offline proxy for prioritizing models before closed-loop evaluation. $S^2$ can also identify promising vision-language model (VLM) backbones even before costly fine-tuning into vision-language-action models (VLAs). Beyond this correlation, $S^2$ offers representation-level explanations for phenomena observed in VLAs and world action models (WAMs). With $S^2$, we extend PRH to embodied models and make sensorimotor alignment empirically measurable, offering insight into why an embodied model succeeds beyond its closed-loop success rate."
+    },
+    {
+      "id": "arxiv:2610.31371",
+      "title": "Probabilistic Energy Modeling Unifies Versatile Swarm Control",
+      "url": "https://arxiv.org/abs/2610.31371",
+      "publisher": "arXiv 2610.31371",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
       "lane": "edge",
-      "score": 3.055,
+      "score": 2.655,
       "numbers": [
-        "98%",
-        "95%"
+        "10 ms"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot",
         "latency"
       ],
-      "summary": "Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency. End-to-end reinforcement learning offers a compact unified policy that maps onboard observations directly to control actions. However, on inherently unstable platforms such as two-wheeled inverted-pendulum robots, navigation progress and obstacle avoidance can conflict with attitude stabilization in a strongly state-dependent manner. We propose a lightweight state-dependent objective coordination method for integrated navigation and control. A pitch-conditioned scalarization coefficient $β(s)\\in[0,1]$ adjusts the relative contributions of balance stabilization and navigation objectives during training, without extra control hierarchies or auxiliary attitude-stabilization controllers, such as proportional-integral-derivative (PID) or linear-quadratic regulator (LQR) controllers. To support zero-shot deployment, simulation training models execution delay, action hold, asynchronous and noisy observations, and dynamics uncertainty. Gradient analysis reveals persistent directional interference and state-dependent variation in the objectives' relative scales. Comparisons with alternative reward-weighting, constraint, training, and control-structure strategies show that PPO+$β(s)$, where PPO denotes proximal policy optimization, achieves 98% and 95% success rates with small attitude excursions on the fixed obstacle map and the randomly generated high-obstacle-density map, respectively. Zero-shot hardware experiments further demonstrate bounded attitude behavior and consistent obstacle avoidance using only onboard observations. Training and evaluation code will be made publicly available upon acceptance."
+      "summary": "Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change. Here we show that probabilistic energy modeling provides a unifying representation for versatile swarm control, in which diverse missions emerge from compositions of shared interaction principles rather than task-specific control formulations. By exploiting the correspondence between Gibbs random field energy minimization and structured reward maximization, we encode fundamental swarm behaviors as reusable energy terms within a unified probabilistic objective. Decentralized policies trained within this representation are composed into a single controller through lightweight policy gating, without retraining. An interpretable action-attention mechanism captures non-uniform local interactions, while dimensionless normalization supports transfer across swarm scales and platforms. Demonstrated on aerial swarms, the unified policy generalizes zero-shot across six mission classes, 10-100 agents, two hardware platforms, and indoor cluttered and GPS-denied woodland environments. Large-scale simulations achieve 0.96-1.00 task success rates with 1-10 ms per-agent inference latency, while physical deployments confirm zero-shot transfer to real platforms and unstructured environments. These results establish probabilistic energy modeling as a scalable and transferable framework for decentralized swarm control."
     },
     {
-      "id": "ieee-spectrum-robotics:f900d559464d",
-      "title": "Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself",
-      "url": "https://spectrum.ieee.org/video-friday-rubiks-cube-robot",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-10-23",
-      "lane": "hardware",
-      "score": 1.797,
+      "id": "arxiv:2610.31166",
+      "title": "Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.31166",
+      "publisher": "arXiv 2610.31166",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
+      "lane": "foundation",
+      "score": 2.6,
       "numbers": [
-        "20 kg"
+        "29.1%",
+        "72.6%",
+        "36.7%",
+        "88.3%"
       ],
-      "signals": [],
-      "summary": "A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing cart, or pass a box tossed during truck unloading. These everyday actions require anticipating a moving target and reflexively responding with the whole body within about a second. Such visual reactive whole-body control remains challenging for humanoids. We present Reflex, a three-stage framework that learns these capabilities stage by stage while connecting them through a compact representation of object dynamics. [ Reflex ] Thanks, Weikai! I have long advocated for exactly this in the context of robotic laundry folding , or more broadly, other robot recognition and manipulation tasks. Why not make it easy when we can make it easy? [ ACM SIGCHI ] We first wrote about Parallel Systems in 2022 . Nice to see them still rolling. [ Parallel Systems ] I’ll be honest with you: The end of this video is freaking me out a little bit for some reason. This video showcases the whole-body loco-manipulation capabilities of KAIST Humanoid v0.9, developed at the DRCD Lab in collaboration with RAILAB, which developed the robot’s arms. Using onboard visual feedback, the humanoid demonstrates pushing objects weighing up to 35 kilograms and lifting objects up to 20 kg to arrange the letters “KAIST.” [ KAIST DRCD Lab ] When you don’t spend any money on sensors for your robots, you can afford much bigger wheels. [ RaiLab Kaist ] Those robots with wires have gotten somewhat weirder. [ JSK Robotics …"
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "summary": "Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present. We present WholeBodyMem, an object-guided perceptual memory that keeps the pre-history of object events seen before the robot acts on its goal. SAM3 tracks the task objects, and their events causally select key frames within an adaptive budget, which the action expert reads by cross-attention together with object tokens encoding appearance, geometry and time. We also contribute HuMeGo, a humanoid memory benchmark with six simulated and six real-world Unitree G1 tasks. Keeping the right frames rather than more frames, WholeBodyMem surpasses memoryless and uniform-memory baselines, raising its base policy's success from 29.1% to 72.6% in simulation and from 36.7% to 88.3% on the real robot, while also improving the standard SIMPLE tasks (70.2% to 86.9%)."
     },
     {
-      "id": "the-robot-report:a9794f5b7d46",
-      "title": "Webinar to discuss how the FCC robotics ruling affects automation buyers",
-      "url": "https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-23",
-      "lane": "safety",
-      "score": 1.235,
-      "numbers": [],
-      "signals": [],
-      "summary": "Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems."
-    },
-    {
-      "id": "the-robot-report:a64234db4de4",
-      "title": "Generative Bionics to launch Physical AI Data Factory in Italy",
-      "url": "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-23",
-      "lane": "data",
-      "score": 1.218,
-      "numbers": [],
-      "signals": [],
-      "summary": "Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent."
-    },
-    {
-      "id": "leiphone:b7f139331a76",
-      "title": "72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台",
-      "url": "https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-23",
+      "id": "arxiv:2610.30955",
+      "title": "A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation",
+      "url": "https://arxiv.org/abs/2610.30955",
+      "publisher": "arXiv 2610.30955",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
       "lane": "hardware",
-      "score": 1.083,
+      "score": 2.515,
+      "numbers": [
+        "4 Hz"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "summary": "Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces. Achieving both properties simultaneously remains challenging. This paper presents the completed iAssistADL platform, a 3-DoF assistive device for future tremor and ataxia compensation during activities of daily living. The system employs a transparency-oriented mechanical architecture with all actuators located at the base, resulting in low moving mass, decoupled kinematics, and high mechanical transparency. To compensate for friction-induced transparency limitations along the vertical axis, a hybrid control strategy is proposed that combines open-loop force rendering in the horizontal plane with closed-loop force control in the vertical direction. The platform is experimentally evaluated through transparency measurements and static and dynamic force-rendering experiments at representative configurations. Results demonstrate resistive torques below 0.1 Nm in the horizontal plane, end-effector forces of up to approximately 10 N throughout the workspace, and accurate horizontal force rendering up to 4 Hz. While the vertical axis remains limited by friction-induced dynamics at higher frequencies, the proposed system successfully combines high transparency with controlled force generation, establishing a promising hardware platform for future tremor and ataxia compensation."
+    },
+    {
+      "id": "nvidia-blog:231615289514",
+      "title": "NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations",
+      "url": "https://blogs.nvidia.com/blog/european-retail-open-models-robotics/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-10-22",
+      "lane": "simeval",
+      "score": 1.835,
+      "numbers": [
+        "90%"
+      ],
+      "signals": [
+        "numbers"
+      ],
+      "summary": "European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a digital twin. Frontier Results With Open Models Retail leaders and technology companies across Europe are using NVIDIA-accelerated open […]"
+    },
+    {
+      "id": "the-robot-report:50dc673c9de4",
+      "title": "Eka Robotics raises $150M to scale its vision-force-action model for robots",
+      "url": "https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-24",
+      "lane": "training",
+      "score": 1.2,
       "numbers": [],
       "signals": [],
-      "summary": "要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！能徒手抬汽车，还会勇斗歹徒 6.离职Kimi后，17岁天才少年陈广宇被曝加入美国AI初创公司 7.高通拟11月启动全球裁员！ 8.马斯克证实：SpaceX、特斯拉将合并 今日头条 iPhone Duo开启全球限购，每位顾客仅可购买2台 10月21日消息，随着苹果首款折叠手机iPhone Duo预订需求强劲，苹果为抑制黄牛囤货，已在美国、中国、新加坡、日本、英国及西班牙等地的网上商店实施限购，将每名顾客的预订数量限制为两部。根据香港苹果App Store最新显示，新订单预计要到2027年1月23日才交付。 综合媒体报道，目前消费者透过苹果官网或Apple Store应用程序尝试购买超过两部后，系统会提示，“每位顾客最多可购买两部 iPhone Duo，请在结账前调整订单中的iPhone Duo总数量”。 Reddit的iPhone Duo讨论区有用户表示，10月16日开放预订初期，部分顾客仍能订购超过两部。至于苹果如何防止炒家利用多个账户及不同信用卡绕过限制，亦未有明确资料。对此，有网友调侃，“我可以转让我的名额”。（星岛记事） 国内资讯 72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 …"
+      "summary": "Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale."
     }
   ],
   "lane_counts": {
-    "foundation": 5,
-    "data": 7,
+    "foundation": 7,
+    "data": 6,
     "training": 8,
     "simeval": 13,
-    "edge": 4,
-    "safety": 6,
-    "systems": 4,
-    "hardware": 9
+    "edge": 5,
+    "safety": 4,
+    "systems": 5,
+    "hardware": 8
   },
   "evidence_mix": {
-    "O": 3,
-    "R": 37,
+    "O": 4,
+    "R": 36,
     "M": 16
   },
   "fetch": {
-    "items": 409,
+    "items": 391,
     "attempted": 11,
     "answered": 10,
     "failed": [
@@ -175,7 +187,7 @@
       "page_watch"
     ],
     "per_source": {
-      "arxiv": 76,
+      "arxiv": 58,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

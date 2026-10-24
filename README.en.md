@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-24
+### Today's radar · 2026-10-25
 
-`Generated: 2026-10-23 23:40 UTC` ｜ `Window: papers 2026-10-20 → 2026-10-24 · posts 2026-09-24 → 2026-10-24 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-24 23:40 UTC` ｜ `Window: papers 2026-10-21 → 2026-10-25 · posts 2026-09-25 → 2026-10-25 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning](https://arxiv.org/abs/2610.28259)**<br><sub>Simulation & evaluation · arXiv 2610.28259 · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[TerraTransfer++: Demonstration-Free End-to-End Planner](https://arxiv.org/abs/2610.30319)**<br><sub>Data engine · arXiv 2610.30319 · 2026‑10‑21</sub> |
-| 03<br>🔵&nbsp;`R` | **[CausGround: Causal Interaction Grounding for Adaptive Embodied Planning](https://arxiv.org/abs/2610.29702)**<br>`24.9%`&nbsp; `53.3%`&nbsp; `43.0%`<br><sub>Simulation & evaluation · arXiv 2610.29702 · 2026‑10‑21</sub> |
-| 04<br>🔵&nbsp;`R` | **[State-Dependent Objective Coordination for End-to-End Balance and Navigation](https://arxiv.org/abs/2610.29142)**<br>`98%`&nbsp; `95%`<br><sub>Edge & real-time · arXiv 2610.29142 · 2026‑10‑21</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself](https://spectrum.ieee.org/video-friday-rubiks-cube-robot)**<br>`20 kg`<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑23</sub> |
-| 06<br>🟡&nbsp;`M` | **[Webinar to discuss how the FCC robotics ruling affects automation buyers](https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[Generative Bionics to launch Physical AI Data Factory in Italy](https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/)**<br><sub>Data engine · The Robot Report · 2026‑10‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台](https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets](https://arxiv.org/abs/2610.31518)**<br>`12.33%`<br><sub>Systems & orchestration · arXiv 2610.31518 · 2026‑10‑22</sub> |
+| 02<br>🔵&nbsp;`R` | **[Skeleton-Grounded Latent Action Model for Robot World Models](https://arxiv.org/abs/2610.31474)**<br>`19.5%`&nbsp; `11.1%`<br><sub>Simulation & evaluation · arXiv 2610.31474 · 2026‑10‑22</sub> |
+| 03<br>🔵&nbsp;`R` | **[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success](https://arxiv.org/abs/2610.31670)**<br><sub>Foundation models · arXiv 2610.31670 · 2026‑10‑22</sub> |
+| 04<br>🔵&nbsp;`R` | **[Probabilistic Energy Modeling Unifies Versatile Swarm Control](https://arxiv.org/abs/2610.31371)**<br>`10 ms`<br><sub>Edge & real-time · arXiv 2610.31371 · 2026‑10‑22</sub> |
+| 05<br>🔵&nbsp;`R` | **[Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.31166)**<br>`29.1%`&nbsp; `72.6%`&nbsp; `36.7%`<br><sub>Foundation models · arXiv 2610.31166 · 2026‑10‑22</sub> |
+| 06<br>🔵&nbsp;`R` | **[A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation](https://arxiv.org/abs/2610.30955)**<br>`4 Hz`<br><sub>Embodiment & supply chain · arXiv 2610.30955 · 2026‑10‑22</sub> |
+| 07<br>🟢&nbsp;`O` | **[NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations](https://blogs.nvidia.com/blog/european-retail-open-models-robotics/)**<br>`90%`<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑10‑22</sub> |
+| 08<br>🟡&nbsp;`M` | **[Eka Robotics raises $150M to scale its vision-force-action model for robots](https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/)**<br><sub>Training & self-improvement · The Robot Report · 2026‑10‑24</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Large Multimodal Models for Direct Robot Control** — `AI draft` Teams tempted to drive a robot straight from a general-purpose multimodal model should read this as a capability probe: the excerpt itself says their embodied abilities remain poorly understood, and although real-robot and closed-loop runs are flagged, the page quotes no figures to choose on.
-2. **TerraTransfer++** — `AI draft` The visible excerpt only sets up the end-to-end driving context and the page gives no figures, so before treating this as a reason to cut demonstration collection, read the preprint to see what its flagged real-robot and closed-loop runs actually measured.
-3. **CausGround** — `AI draft` If an MLLM planner keeps proposing actions it cannot execute, modelling when actions are executable and how they change the world is worth a trial; the authors self-report 24.9% to 53.3% average success on benchmarks including VirtualHome and 43.0% to 57.0% closed-loop on RoboCasa, without the page tying either to hardware.
-4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — `AI draft` Where a cascaded mapping, planning and low-level control stack is costing compute and latency, this end-to-end coordination approach belongs on the shortlist; the authors report 98% and 95% success, but the page names neither the task nor the hardware behind them and quotes no latency figure.
-5. **Video Friday** — `AI draft` For legged-platform teams, ETH Zurich's quadruped solving a giant cube with only its feet hints that the feet can double as manipulators; it is a video roundup, and the page does not tie the 20 kg lifting figure to that quadruped.
-6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — `AI draft` Buyers with connected robots or automation in the procurement pipeline should check whether their systems fall under the FCC's recent restriction on certain connected systems before signing; this is only a webinar notice and the page does not say which systems are covered, so go to the FCC text.
-7. **Generative Bionics to launch Physical AI Data Factory in Italy** — `AI draft` Teams that need humanoid training data generated inside Europe may gain a regional source, but this is a reported launch plan with no volume, access terms or target embodiments on the page, so it is not yet something to build a data plan around.
-8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — `AI draft` The only robotics content in this news digest is a one-line headline that Unitree has released a new humanoid, with no model, specs or price; anyone weighing humanoid platforms should wait for Unitree's own announcement rather than cite this.
+1. **SCOPE** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
+2. **Skeleton-Grounded Latent Action Model for Robot World Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **Sensorimotor Alignment** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Memory before Goal** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch price, availability and who is shipping it in volume.
+7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — First-party release; the text gives figures. Watch how well the simulated result predicts real-robot performance.
+8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-24.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-25.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
