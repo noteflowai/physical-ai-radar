@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Large Multimodal Models for Direct Robot Control** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-2. **TerraTransfer++** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-3. **CausGround** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-5. **Video Friday** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
-6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-7. **Generative Bionics to launch Physical AI Data Factory in Italy** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **Large Multimodal Models for Direct Robot Control** — `AI 起草` 想直接拿通用多模态模型当机器人控制器的团队，可把它当作能力摸底来读：摘录本身承认这类模型的具身能力仍不清楚，页面虽标出真机与闭环实验，却没有给出任何数字，暂不足以支撑选型。
+2. **TerraTransfer++** — `AI 起草` 可见摘录只交代了端到端自动驾驶的背景，页面没有任何数字；在据此考虑削减示范数据采集之前，应先读原文确认真机与闭环实验具体测了什么，这仍是作者自报的预印本。
+3. **CausGround** — `AI 起草` 若 MLLM 规划器常在动作是否可执行上出错，显式建模可执行时机与动作后果值得试：作者自报 VirtualHome 等平均成功率由 24.9% 升至 53.3%、RoboCasa 闭环规划由 43.0% 升至 57.0%，但页面未说明这些数字是否出自真机。
+4. **State-Dependent Objective Coordination for End-to-End Balance and Navigation** — `AI 起草` 如果级联的建图、规划与底层控制正在拖累计算和延迟，这种端到端协调方案值得列入备选；作者自报 98% 与 95% 的成功率，但页面未说明对应任务与硬件，也没有引出具体延迟数字。
+5. **Video Friday** — `AI 起草` 做足式平台的团队可留意：ETH Zurich 的四足机器人只用脚就自主完成了巨型魔方，说明足端本身可能兼作操作器；这是视频合集转述，20 kg 的搬运数字在页面上也未与该四足对应。
+6. **Webinar to discuss how the FCC robotics ruling affects automation buyers** — `AI 起草` 采购联网机器人或自动化设备的团队，在下单前应核实所选系统是否落入 FCC 近期对部分联网系统的限制；这只是一场研讨会预告，页面没说明哪些系统受影响，请以 FCC 原文为准。
+7. **Generative Bionics to launch Physical AI Data Factory in Italy** — `AI 起草` 需要在欧洲境内获取人形机器人训练数据的团队，可能多出一个本地来源；但这是转述的上线计划，页面没有数据规模、开放方式或适用本体的信息，还不能写进数据采购方案。
+8. **72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其…** — `AI 起草` 这期早报与机器人相关的只有“宇树发新人形机器人”一行标题，没有型号、规格或价格；评估人形本体选型的团队应以宇树自己的发布为准，不要据此转述。
 
 </details>
 
