@@ -1,0 +1,57 @@
+{
+  "schema": "pairadar-editorial-style-1",
+  "note": "Deterministic style rules for deep reads and index lines (docs/editorial-style.md). Phrases are matched case-insensitively as substrings after whitespace normalisation; keep entries specific enough that a legitimate sentence does not contain them by accident.",
+  "deep_parts": {
+    "zh": ["结论", "新在哪里", "边界", "我们的判断"],
+    "en": ["Bottom line", "What is new", "Limits", "Our take"],
+    "ja": ["結論", "新しい点", "限界", "私たちの判断"]
+  },
+  "banned": {
+    "zh": [
+      "值得注意的是", "值得一提的是", "总的来说", "总而言之", "综上所述", "不难看出", "众所周知",
+      "赋能", "革命性", "颠覆性", "里程碑式", "划时代", "重磅", "炸裂", "开启新篇章", "新纪元",
+      "未来可期", "令人振奋", "令人瞩目", "引发广泛关注", "具有重要意义", "具有广阔前景", "有望彻底改变",
+      "可见摘录只交代了", "摘录只交代", "页面没有任何数字", "页面没有给出", "页面未", "应先读原文确认",
+      "先读原文", "回原文确认", "这仍是作者自报的预印本", "作为能力摸底来读"
+    ],
+    "en": [
+      "it is worth noting", "it's worth noting", "notably,", "in conclusion", "to sum up", "all in all",
+      "delve", "game-changer", "game changer", "groundbreaking", "revolutionary", "paradigm shift",
+      "unlock the potential", "unlocks the potential", "pave the way", "paves the way", "a testament to",
+      "in today's fast-paced", "ever-evolving", "cutting-edge", "seamlessly", "robust and scalable",
+      "the visible excerpt", "the page gives no", "the page does not give", "read the paper first",
+      "check the original before", "still a self-reported preprint"
+    ],
+    "ja": [
+      "注目すべきは", "特筆すべきは", "まとめると", "総じて", "結論として", "言うまでもなく",
+      "革命的", "画期的な", "ゲームチェンジャー", "パラダイムシフト", "新時代", "大きな可能性を秘め",
+      "見える抜粋", "抜粋だけでは", "ページには数字", "まず原文を確認", "原文を読んでから"
+    ]
+  },
+  "emoji_ranges": [[127744, 129791], [9728, 10175], [65024, 65039], [129792, 130047]],
+  "number_units": {
+    "all": ["%", "pp", "percentage points", "points", "pts", "x", "×", "ms", "s", "Hz", "kHz", "fps", "W", "kg", "g", "N", "Nm", "mm", "cm", "m", "km", "GB", "MB", "B", "M", "K"],
+    "zh": ["个百分点", "倍", "秒", "毫秒", "条", "个", "次", "小时", "分钟", "台", "名", "篇", "项", "组", "张"],
+    "ja": ["ポイント", "倍", "秒", "ミリ秒", "件", "個", "回", "時間", "分", "台", "人", "本", "種類"]
+  },
+  "baseline_markers": {
+    "en": [" vs", " versus", "compared with", "compared to", " than ", "over the", "baseline", " from ", "relative to", "against"],
+    "zh": ["相比", "对比", "比", "较", "基线", "从", "高于", "低于", "超过"],
+    "ja": ["比べ", "比較", "ベースライン", "から", "より", "上回", "下回"]
+  },
+  "locators": "(?:Table|Tab\\.|Fig\\.|Figure|Sec\\.|Section|§|p\\.|page|表|图|圖|図|第\\s*\\d+\\s*页|ページ)\\s*[IVX0-9]",
+  "limits": {
+    "min_chars": {"zh": 30, "en": 80, "ja": 40}
+  },
+  "index": {
+    "max_words_en": 40,
+    "max_chars_cjk": 80
+  },
+  "thresholds": {
+    "max_banned_hits": 0,
+    "min_triples_per_deep": 1,
+    "max_template_rate": 0.15,
+    "min_sentence_length_cv": 0.25,
+    "max_rewrites": 2
+  }
+}
