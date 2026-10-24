@@ -26,7 +26,8 @@ class PublicationWaitError(TimeoutError):
     code: merge-commit-workflow-missing (a required workflow never had a run for
     this commit), workflow-running-timeout (every required workflow had a run, not
     all finished), manifest-not-updated (workflows passed, public provenance still
-    names another commit).
+    names another commit), public-readback-unreachable (workflows passed, the public
+    URL could not be read), github-unreachable (no run list could be read at all).
     """
 
     def __init__(self, code: str, commit: str, waited: float, last_observed, message: str):
@@ -46,14 +47,15 @@ WORKER_DEADLINE_ENV = "NOTEFLOW_WORKER_DEADLINE"
 RECEIPT_RESERVE_ENV = "NOTEFLOW_RECEIPT_RESERVE_SECONDS"
 DEFAULT_RECEIPT_RESERVE = 120
 MIN_RECEIPT_RESERVE = 30
+MAX_RECEIPT_RESERVE = 1200
 PROGRESS_EVERY = 60
 
 
 def receipt_reserve() -> int:
     raw = os.environ.get(RECEIPT_RESERVE_ENV, "")
     reserve = int(raw) if raw.strip() else DEFAULT_RECEIPT_RESERVE
-    if reserve < MIN_RECEIPT_RESERVE:
-        raise ValueError(f"{RECEIPT_RESERVE_ENV} must be at least {MIN_RECEIPT_RESERVE}")
+    if not MIN_RECEIPT_RESERVE <= reserve <= MAX_RECEIPT_RESERVE:
+        raise ValueError(f"{RECEIPT_RESERVE_ENV} must be {MIN_RECEIPT_RESERVE}-{MAX_RECEIPT_RESERVE}")
     return reserve
 
 
@@ -67,6 +69,18 @@ def wait_budget(seconds: float) -> float:
         return seconds
     remaining = float(raw) - time.time() - receipt_reserve()
     return max(0.0, min(seconds, remaining))
+
+
+def call_timeout(default: float) -> float:
+    """Timeout for ONE external call (gh, public readback): its default, capped so it
+    ends by the worker deadline minus the receipt reserve (05 R159-01). At least 1 s:
+    a call started at the edge fails fast instead of outliving the worker.
+    resume/finish run outside a worker read the same variable from their environment.
+    """
+    raw = os.environ.get(WORKER_DEADLINE_ENV, "")
+    if not raw.strip():
+        return default
+    return max(1.0, min(default, float(raw) - time.time() - receipt_reserve()))
 
 
 def progress(message: str) -> None:
@@ -164,7 +178,7 @@ def gh(repo: str, *args: str, timeout: int = 120) -> str:
     except ImportError:
         from security_gate import require_safe_github_text
     require_safe_github_text(args)
-    return command(["gh", *args, "--repo", repo], timeout=timeout)
+    return command(["gh", *args, "--repo", repo], timeout=call_timeout(timeout))
 
 
 def checks_state(checks: list[dict]) -> str:
@@ -191,11 +205,16 @@ def checks_state(checks: list[dict]) -> str:
 
 def wait_pr(repo: str, pr: int, head: str, seconds: int = 1800) -> dict:
     deadline = time.monotonic() + wait_budget(seconds)
-    while time.monotonic() < deadline:
-        record = json.loads(gh(
-            repo, "pr", "view", str(pr), "--json",
-            "headRefOid,baseRefName,isCrossRepository,state,statusCheckRollup,mergeCommit,url",
-        ))
+    while True:
+        try:
+            record = json.loads(gh(
+                repo, "pr", "view", str(pr), "--json",
+                "headRefOid,baseRefName,isCrossRepository,state,statusCheckRollup,mergeCommit,url",
+            ))
+        except subprocess.TimeoutExpired:
+            if time.monotonic() >= deadline:
+                break
+            raise
         if record["headRefOid"] != head:
             raise PublicationAbandoned("PR head changed; the checked commit cannot be substituted")
         if record["baseRefName"] != "main":
@@ -215,7 +234,10 @@ def wait_pr(repo: str, pr: int, head: str, seconds: int = 1800) -> dict:
             return record
         if state == "fail":
             raise RuntimeError("CI failed or was cancelled on " + head)
-        time.sleep(20)
+        now = time.monotonic()
+        if now >= deadline:
+            break
+        time.sleep(min(20, deadline - now))
     raise TimeoutError("CI has not passed on the expected commit")
 
 
@@ -231,11 +253,16 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
     started = time.monotonic()
     deadline, next_progress, last = started + budget, started, {}
     while True:
-        runs = json.loads(gh(
-            repo, "run", "list", "--branch", "main", "--commit", commit,
-            "--limit", "60", "--json",
-            "databaseId,headSha,status,conclusion,workflowName,url",
-        ))
+        try:
+            runs = json.loads(gh(
+                repo, "run", "list", "--branch", "main", "--commit", commit,
+                "--limit", "60", "--json",
+                "databaseId,headSha,status,conclusion,workflowName,url",
+            ))
+        except subprocess.TimeoutExpired:
+            if time.monotonic() >= deadline:
+                break       # the last observation stands; report it below
+            raise
         latest = {}
         for run in sorted(runs, key=lambda x: x["databaseId"], reverse=True):
             if run["headSha"] == commit:
@@ -258,6 +285,9 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
             break
         time.sleep(min(20, max(0.0, deadline - now)))
     waited = time.monotonic() - started
+    if not last:   # every gh call timed out at the edge: nothing was observed
+        raise PublicationWaitError("github-unreachable", commit, waited, {},
+                                   f"run list for {commit} could not be read before the deadline")
     missing = [name for name, value in last.items() if value is None]
     if missing:
         raise PublicationWaitError("merge-commit-workflow-missing", commit, waited, last,
@@ -270,7 +300,7 @@ def public_bytes(url: str) -> bytes:
     request = urllib.request.Request(url, headers={
         "User-Agent": "NoteFlowAI-Maintainer/1.0", "Cache-Control": "no-cache",
     })
-    with urllib.request.urlopen(request, timeout=45) as response:
+    with urllib.request.urlopen(request, timeout=call_timeout(45)) as response:
         body = response.read(8_000_001)
         if len(body) > 8_000_000 or response.status != 200:
             raise ValueError("Unexpected public response")
@@ -319,7 +349,8 @@ def public_commit(repo: str, commit: str, url: str) -> dict:
         return {"commit": commit, "path": "docs/index.html",
                 "homepage_sha256": hashlib.sha256(actual).hexdigest()}
     if repo == "noteflowai/physical-ai-radar":
-        build = json.loads(command(["gh", "api", f"repos/{repo}/pages/builds/latest"]))
+        build = json.loads(command(["gh", "api", f"repos/{repo}/pages/builds/latest"],
+                                   timeout=call_timeout(120)))
         if build.get("commit") != commit or build.get("status") != "built":
             raise ValueError("The Pages build does not identify the checked Radar commit")
         expected = public_bytes(f"https://raw.githubusercontent.com/{repo}/{commit}/radar/latest.json")
@@ -359,11 +390,15 @@ def verify_deployment(repo: str, commit: str, workflows: list[str], urls: list[s
                 page["commit_proof"] = public_commit(repo, commit, url)
                 pages.append(page)
                 break
-            except (ValueError, OSError) as error:
+            except (ValueError, OSError, subprocess.TimeoutExpired) as error:
                 now = time.monotonic()
                 if now >= deadline:
+                    # A provenance mismatch is a stale publication; anything else means the
+                    # public side could not be read at all (05 N159-02).
+                    code = "manifest-not-updated" if isinstance(error, ValueError) \
+                        else "public-readback-unreachable"
                     raise PublicationWaitError(
-                        "manifest-not-updated", commit, now - started,
+                        code, commit, now - started,
                         {"url": url, "error": str(error)[:300], "workflows": observed(runs, workflows)},
                         f"{url} does not show {commit}") from error
                 time.sleep(min(10, max(0.0, deadline - now)))
@@ -406,7 +441,7 @@ def finish(repo: str, pr: int, head: str, workflows: list[str],
         record = wait_pr(repo, pr, head)
         if record["state"] != "MERGED":
             gh(repo, "pr", "merge", str(pr), "--merge", "--match-head-commit", head)
-            deadline = time.monotonic() + 120
+            deadline = time.monotonic() + wait_budget(120)
             while True:
                 record = json.loads(gh(repo, "pr", "view", str(pr), "--json", "mergeCommit,url"))
                 if record.get("mergeCommit"):

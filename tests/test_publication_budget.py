@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -160,9 +161,183 @@ class Budget(unittest.TestCase):
                          ("retry-needed", COMMIT, "workflow-running-timeout"))
 
     def test_the_controller_gives_its_worker_the_deadline(self):
+        seen = {}
+
+        def executor(argv, cwd, env, log, timeout):
+            seen.update(env=env, timeout=timeout, log=log)
+            return 0
+
+        class Lock:
+            def fileno(self):
+                return 9
+
+        self.assertEqual(develop_repos.run_worker(["w"], Lock(), Path("worker.log"), executor), 0)
+        deadline = float(seen["env"][ap.WORKER_DEADLINE_ENV])
+        self.assertLess(abs(deadline - (self.clock.time() + develop_repos.WORKER_SECONDS)), 1)
+        self.assertEqual(seen["timeout"], develop_repos.WORKER_SECONDS)
+        self.assertEqual((seen["env"]["FEATURE_LOCK_HELD"], seen["env"]["FEATURE_LOCK_FD"]), ("1", "9"))
+        # The daily controller starts workers only through run_worker.
         source = Path(develop_repos.__file__).read_text()
-        self.assertIn("WORKER_DEADLINE_ENV: f\"{time.time() + WORKER_SECONDS:.3f}\"", source)
-        self.assertIn('receipt.parent / "worker.log", WORKER_SECONDS)', source)
+        self.assertEqual(source.count("execute_stage)("), 1)
+        self.assertEqual(source.count("execute_stage("), 0)
+        self.assertIn('run_worker(argv, lock, receipt.parent / "worker.log")', source)
+
+    def test_the_receipt_reserve_has_an_upper_bound(self):
+        self.worker()
+        os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MAX_RECEIPT_RESERVE + 1)
+        with self.assertRaises(ValueError):
+            ap.wait_budget(60)
+        self.assertLess(ap.MAX_RECEIPT_RESERVE, develop_repos.WORKER_SECONDS)
+
+    # --- every external call ends by the deadline (05 R159-01) -----------------
+
+    def slow_calls(self, answer_url=None):
+        """subprocess.run / urlopen that use their full timeout, then time out."""
+        clock = self.clock
+
+        def run(args, timeout=None, **kwargs):
+            clock.now += timeout
+            raise subprocess.TimeoutExpired(args, timeout)
+
+        class Response:
+            status, headers = 200, {"Content-Type": "application/json"}
+
+            def __init__(self, body):
+                self.body = body
+
+            def read(self, limit):
+                return self.body
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc):
+                return False
+
+        def urlopen(request, timeout=None):
+            if answer_url and request.full_url == answer_url:
+                return Response(b"{}")
+            clock.now += timeout
+            raise TimeoutError("timed out")
+
+        return [patch.object(ap.subprocess, "run", run),
+                patch.object(ap.urllib.request, "urlopen", urlopen)]
+
+    def test_a_slow_readback_call_cannot_outlive_the_worker(self):
+        # Workflows passed with 1 s of wait budget left; Pages API then hangs.
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE + 1)
+        url = "https://noteflowai.github.io/physical-ai-radar/"
+        merged = {"headRefOid": "h", "baseRefName": "main", "state": "MERGED",
+                  "statusCheckRollup": [], "mergeCommit": {"oid": COMMIT}, "url": "https://pr/1"}
+        success = [{"databaseId": 7, "status": "completed", "conclusion": "success",
+                    "workflowName": "pages"}]
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "publication.json"
+            calls = self.slow_calls(answer_url=url)
+            for p in calls:
+                p.start()
+            try:
+                with patch.object(ap, "wait_pr", return_value=merged), \
+                     patch.object(ap, "wait_publication", return_value=success):
+                    with self.assertRaises(ap.PublicationWaitError) as raised:
+                        ap.finish("noteflowai/physical-ai-radar", 1, "h", ["pages"], [url], output)
+            finally:
+                for p in calls:
+                    p.stop()
+            saved = json.loads(output.read_text())
+        self.assertEqual(raised.exception.code, "public-readback-unreachable")
+        self.assertEqual((saved["status"], saved["error_code"]), ("retry-needed", "public-readback-unreachable"))
+        # Reported by the deadline minus the reserve (plus the 1 s floor), never after it.
+        self.assertLessEqual(self.clock.now, 2)
+
+    def test_a_hanging_public_page_cannot_outlive_the_worker(self):
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE + 1)
+        calls = self.slow_calls()
+        for p in calls:
+            p.start()
+        try:
+            with patch.object(ap, "wait_publication", return_value=[]):
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    ap.verify_deployment("noteflowai/evalarc", COMMIT, ["CI"], ["https://x/"])
+        finally:
+            for p in calls:
+                p.stop()
+        self.assertEqual(raised.exception.code, "public-readback-unreachable")
+        self.assertLessEqual(self.clock.now, 2)
+
+    def test_a_hanging_run_list_at_the_edge_still_reports_in_time(self):
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE + 50)
+        replies = iter([runs(("CI", "in_progress", None))])
+        real_run = ap.subprocess.run
+
+        def run(args, timeout=None, **kwargs):
+            try:
+                body = next(replies)
+            except StopIteration:
+                self.clock.now += timeout
+                raise subprocess.TimeoutExpired(args, timeout)
+            return subprocess.CompletedProcess(args, 0, stdout=body, stderr="")
+
+        with patch.object(ap.subprocess, "run", run), patch.object(ap, "progress"):
+            with self.assertRaises(ap.PublicationWaitError) as raised:
+                ap.wait_publication("o/r", COMMIT, ["CI"])
+        self.assertIs(ap.subprocess.run, real_run)
+        self.assertEqual(raised.exception.code, "workflow-running-timeout")
+        self.assertEqual(raised.exception.last_observed["CI"]["status"], "in_progress")
+        self.assertLessEqual(self.clock.now, 51)
+
+    def test_no_readable_run_list_at_all_is_github_unreachable(self):
+        self.worker(60)                                   # no budget: one capped observation
+        calls = self.slow_calls()
+        for p in calls:
+            p.start()
+        try:
+            with patch.object(ap, "progress"):
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    ap.wait_publication("o/r", COMMIT, ["CI"])
+        finally:
+            for p in calls:
+                p.stop()
+        self.assertEqual(raised.exception.code, "github-unreachable")
+        self.assertLessEqual(self.clock.now, 1)
+
+    # --- wait_pr and readback are capped (05 R159-02) ---------------------------
+
+    def test_wait_pr_ends_inside_the_worker_budget_and_the_receipt_is_written(self):
+        self.worker(400)
+        pending = json.dumps({"headRefOid": "h", "baseRefName": "main", "isCrossRepository": False,
+                              "state": "OPEN", "mergeCommit": None, "url": "u",
+                              "statusCheckRollup": [{"name": "CI", "status": "IN_PROGRESS",
+                                                     "conclusion": ""}]})
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "publication.json"
+            with patch.object(ap, "gh", return_value=pending):
+                with self.assertRaises(TimeoutError):
+                    ap.finish("o/r", 5, "h", ["CI"], ["https://x"], output)
+            saved = json.loads(output.read_text())
+        self.assertEqual(saved["status"], "retry-needed")
+        self.assertIn("CI has not passed", saved["error"])
+        self.assertLessEqual(self.clock.now, 400 - ap.DEFAULT_RECEIPT_RESERVE)
+
+    def test_wait_pr_with_no_budget_still_observes_once(self):
+        self.worker(60)
+        passed = json.dumps({"headRefOid": "h", "baseRefName": "main", "isCrossRepository": False,
+                             "state": "MERGED", "mergeCommit": {"oid": COMMIT}, "url": "u",
+                             "statusCheckRollup": [{"name": "CI", "status": "COMPLETED",
+                                                    "conclusion": "SUCCESS"}]})
+        with patch.object(ap, "gh", return_value=passed) as gh:
+            self.assertEqual(ap.wait_pr("o/r", 5, "h")["state"], "MERGED")
+        self.assertEqual(gh.call_count, 1)
+
+    def test_readback_is_capped_by_the_remaining_worker_budget(self):
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE + 30)       # 30 s left, below the 180 s default
+        with patch.object(ap, "wait_publication", return_value=[]), \
+             patch.object(ap, "read_public", return_value={}), \
+             patch.object(ap, "public_commit", side_effect=ValueError("old provenance")):
+            with self.assertRaises(ap.PublicationWaitError) as raised:
+                ap.verify_deployment("noteflowai/evalarc", COMMIT, ["CI"], ["https://x/manifest.json"])
+        self.assertEqual(raised.exception.code, "manifest-not-updated")
+        self.assertLessEqual(self.clock.now, 30)
 
 
 if __name__ == "__main__":

@@ -66,6 +66,18 @@ except ImportError:
 WORKER_SECONDS = 2100
 
 
+def run_worker(argv: list[str], lock, log: Path, executor=None) -> int:
+    """Run one bounded feature worker with its absolute deadline in the environment.
+
+    The worker's own waits stop before that deadline and write receipts
+    (agent_pipeline.wait_budget / call_timeout); the outer kill is only a backstop.
+    """
+    env = {**os.environ, "FEATURE_LOCK_HELD": "1", "FEATURE_LOCK_FD": str(lock.fileno()),
+           WORKER_DEADLINE_ENV: f"{time.time() + WORKER_SECONDS:.3f}"}
+    return (executor or execute_stage)(argv, Path(__file__).resolve().parents[1], env, log,
+                                       WORKER_SECONDS)
+
+
 def stamp() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -1380,13 +1392,7 @@ def main() -> int:
                         "--date", day, "--repo", name, "--worker"]
                 if args.plan_only:
                     argv.append("--plan-only")
-                # The worker's own waits stop before this deadline and write receipts
-                # (agent_pipeline.wait_budget); the outer kill is only a backstop.
-                code = execute_stage(argv, Path(__file__).resolve().parents[1],
-                                     {**os.environ, "FEATURE_LOCK_HELD": "1",
-                                      "FEATURE_LOCK_FD": str(lock.fileno()),
-                                      WORKER_DEADLINE_ENV: f"{time.time() + WORKER_SECONDS:.3f}"},
-                                     receipt.parent / "worker.log", WORKER_SECONDS)
+                code = run_worker(argv, lock, receipt.parent / "worker.log")
                 result = read_json(receipt, {"repo": "noteflowai/" + name,
                                             "status": "retry-needed", "at": stamp()})
                 if code != 0 and result.get("status") not in {"published", "deferred", "no-change", "externally-finalized"}:
