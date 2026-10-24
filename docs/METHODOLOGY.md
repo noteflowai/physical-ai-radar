@@ -9,9 +9,11 @@ changes, this file changes in the same pull request.
 | --- | --- | --- | --- |
 | arXiv API | `https://export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
 | arXiv category feeds | `https://rss.arxiv.org/rss/<category>`, read only when the API returns nothing | `R` | the same papers, announced listings instead of search |
-| Official vendor blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face | `O` | first-party statements about their own products |
-| Lab research pages | Toyota Research Institute | `R` | a lab's own page for each paper: the same standing as the paper |
-| Trade press | IEEE Spectrum Robotics, The Robot Report; 雷峰网 Leiphone (Chinese), MONOist (Japanese) | `M` | professional reporting, still secondary |
+| Official vendor and lab blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face, OpenAI News, Google Research, MIT News (Robotics) | `O` | first-party statements about their own products and work |
+| Official open-source releases | GitHub release feeds of LeRobot, Isaac Lab, MuJoCo (newest release only) | `O` | the project's own release notes |
+| Lab research pages and journals | Toyota Research Institute, BAIR blog, Nature Machine Intelligence | `R` | a lab's own page or a journal's listing of a paper: the same standing as the paper |
+| Trade and mainstream press | IEEE Spectrum Robotics, The Robot Report, TechCrunch Robotics, Robohub, Import AI; 雷峰网 Leiphone and 量子位 QbitAI (Chinese), MONOist (Japanese) | `M` | professional reporting and analysis, still secondary |
+| Attention signals | Hugging Face Daily Papers API, Hacker News (Algolia search API), GitHub REST (stars) | — | ranking only (section 3); never an item and never evidence |
 | Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
 | Page watch | Figure, 1X, Physical Intelligence, Unitree and the standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
 
@@ -80,7 +82,23 @@ Rules:
 - a feed description longer than 2000 characters is cut at a word boundary. Some feeds
   carry the full article, and a full article matches every lane;
 - adding a source requires a weight and an evidence tag in `data/sources.json`. A source
-  whose every entry is about robots is also marked `"topical": true` (see section 2).
+  whose every entry is about robots is also marked `"topical": true` (see section 2). A
+  general source (OpenAI, Google Research, TechCrunch, 量子位…) names its own `keywords`
+  instead, and only entries naming one of them are read, before the per-feed cap: the
+  taxonomy anchors are looser than a feed of 1,300 posts allows ("cosmos", the NVIDIA world
+  model, let an Azure Cosmos DB post through). `max_entries` lowers the cap for one feed,
+  and `title_prefix` names the project in front of a bare release title ("3.17.0");
+- RSS 1.0 (RDF) feeds are read as well as Atom and RSS 2.0; Nature's journal feeds are
+  RSS 1.0, and their "Journal, Published online: date; doi:…" opening is dropped;
+- robots.txt is read once per host per run, before any feed or attention API on that host.
+  A URL it disallows for `physical-ai-radar` or `*` is not requested, and the feed is
+  recorded under `robots_skipped` in `radar/history.json`, never under `failed` (the
+  Science Robotics eTOC lives under a disallowed `/action/` and is therefore not a source).
+  A robots.txt that does not answer allows the request. Two requests to one host are at
+  least one second apart, and every request carries the `physical-ai-radar/1.0` User-Agent.
+  Only titles, links, dates and a cut excerpt are stored; no article body is reproduced;
+- the attention APIs (section 3) that do not answer are recorded under `signal_failed` and
+  reported by `pairadar.health` as `signals_unavailable`, never as struggling.
 
 ## 2. Classification
 
@@ -161,6 +179,51 @@ that appear in half the pool (NVIDIA, Google, robot, AI…) do not count, so two
 Isaac Sim posts or two Video Friday issues stay apart. The higher-ranked telling keeps the
 slot, and a story told on an earlier day inside the repeat window is not told again.
 Papers are exempt on both sides: two preprints with similar titles are two papers.
+
+### Heat (attention)
+
+`pairadar.heat` measures how much attention an item is getting, for ranking only:
+
+```
+heat  = (0.40 × cross + 0.25 × hf + 0.20 × hn + 0.15 × stars) / 1.00      # each 0..1
+score += 0.8 × heat
+```
+
+- `cross`: independent sources telling one event. Items are one event when their links
+  normalise to the same URL or, for anything but a paper, when their titles tell the same
+  story (the rule above). The count is distinct sources, capped at 4: one source scores 0,
+  two 1/3, four or more 1. One outlet posting twice is not two sources.
+- `hf`: Hugging Face Daily Papers upvotes for the arXiv paper, `hn`: points of a recent
+  Hacker News story linking the item or titled as the same story, `stars`: stars per day
+  gained by a tracked repository (its release feed, or a link into it), against the count
+  kept in `radar/heat-state.json` from an earlier day. Each is capped (100 upvotes, 300
+  points, 200 stars a day) and log-scaled to 0..1, so one viral item cannot outweigh the
+  rest of the score.
+
+Heat never changes an item's evidence class: a story every robotics site retold is still
+`[M]`, and a paper with many upvotes is still a self-reported `[R]`. An item with two or
+more sources, or heat of at least 0.3, carries the `trending` signal. All weights and caps
+are in `data/sources.json` `heat`.
+
+### Press releases
+
+An announcement in press-release form — "announces", wire-service copy, a stock ticker —
+carries the `press_release` signal and loses 0.4 of score. Its evidence class is unchanged:
+an official source announcing its own product is still a first-party statement. Papers and
+curated baseline entries are never matched.
+
+### Highlights quota
+
+The shortlist is the page's highlights. `filters.highlights` adds three rules on top of the
+caps above:
+
+- arXiv takes at most half of the limit (4 of 8). Unlike the soft caps this holds in the
+  fill pass too: a day with nothing else that qualifies publishes a shorter list, not an
+  arXiv-only one;
+- one slot is reserved for the best qualifying official (`[O]`) item, and one for the best
+  qualifying non-arXiv item marked `trending`. A reservation passes every gate above (topic,
+  lane keyword, repeat guard, same-story, lane cap); one that nothing can fill stays empty,
+  and the run log records it under `quota.unmet` in `radar/history.json`.
 
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar

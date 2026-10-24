@@ -158,6 +158,8 @@ class Item:
     score: float = 0.0
     numbers: list[str] = field(default_factory=list)
     signals: list[str] = field(default_factory=list)
+    # Ranking only (pairadar.heat): never changes `evidence`. 0..1.
+    heat: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -172,6 +174,7 @@ class Item:
             "score": round(self.score, 3),
             "numbers": self.numbers,
             "signals": self.signals,
+            "heat": round(self.heat, 3),
             # The rendered page quotes an excerpt of this, so a snapshot without it
             # cannot reproduce the page it describes.
             "summary": self.summary,
@@ -189,6 +192,7 @@ class Item:
             score=float(payload.get("score", 0.0)),
             numbers=list(payload.get("numbers", [])),
             signals=list(payload.get("signals", [])),
+            heat=float(payload.get("heat", 0.0)),
         )
 
 

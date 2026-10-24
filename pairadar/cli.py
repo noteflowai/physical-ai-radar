@@ -11,7 +11,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-from . import charts
+from . import charts, heat
 from .banner import write_banners
 from .config import (
     ASSETS_DIR,
@@ -155,10 +155,18 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     told = [entry["title"] for entry in within(earlier, day, repeat_days) if entry["evidence"] != "R"]
     page_state = load_page_state()
     report = fetch_all(config, offline=offline, reference=reference, page_state=page_state)
-    live = deduplicate(enrich(prefilter(report.items, config, reference), config, reference))
+    signals = report.signals or heat.Signals()
+    heat_state = heat.next_state(heat.load_state(), signals.stars, day)
+    live = deduplicate(heat.apply(enrich(prefilter(report.items, config, reference), config, reference),
+                                  config, signals, heat_state))
+    highlights = filters.get("highlights", {})
+    share = highlights.get("max_arxiv_share")
+    quota: dict[str, Any] = {}
     picked = select(live, limit=limit, seen=recent_urls(history, reference, repeat_days),
                     per_source=_optional_int(filters.get("per_source")),
-                    per_evidence=_optional_int(filters.get("per_evidence")), told=told)
+                    per_evidence=_optional_int(filters.get("per_evidence")), told=told,
+                    max_arxiv=int(limit * float(share)) if share is not None else None,
+                    reserve=list(highlights.get("reserve", [])), report=quota)
 
     baseline_all = enrich(baseline_items(config), config, reference)
     curated = {
@@ -188,6 +196,12 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         # as page_watch_failing, never as struggling, so source repair never picks one.
         "page_failed": sorted(report.page_watch.get("failed", [])),
         "page_robots_skipped": sorted(report.page_watch.get("robots_skipped", [])),
+        # Feeds whose robots.txt disallows them, and attention APIs that did not answer:
+        # reported by pairadar.health, never as struggling (source repair fixes feeds).
+        "robots_skipped": sorted(report.robots_skipped),
+        "signal_failed": sorted(signals.failed),
+        # The highlights quota: what was reserved, what could not be filled.
+        "quota": quota,
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 
@@ -213,6 +227,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         # Only a round that changed the baseline (a digest, a link, a line, what was
         # offered) rewrites it; offline, with Firecrawl down or with every page as it
         # was, the file is left alone, so it does not change every day.
+        # Written only when a star count changed (offline, or every API down: untouched).
+        "heat_state": heat_state if heat_state.get("stars") != heat.load_state().get("stars") else None,
         "page_state": (report.page_state if report.page_state.get("sources")
                        and report.page_state.get("sources") != page_state.get("sources") else None),
     }
@@ -320,6 +336,8 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
                  path=root/"radar"/"history.json")
     if ctx.get("page_state"):
         save_page_state(root/"radar"/"page-watch.json", ctx["page_state"])
+    if ctx.get("heat_state"):
+        heat.save_state(root/"radar"/"heat-state.json", ctx["heat_state"])
 
     print(
         f"[radar] {day}: {len(ctx['picked'])} picked from {ctx['live_count']} live items, "

@@ -29,7 +29,9 @@
         "real_robot": "含真机实验",
         "open_release": "有开放代码或权重",
         "latency": "含延迟或控制频率",
-        "numbers": "含量化指标"
+        "numbers": "含量化指标",
+        "trending": "多源热点",
+        "press_release": "新闻稿"
       },
       "llm_draft": "AI 起草",
       "llm_notice": "本页逐条分析由 {agent} 起草（{model}），经确定性检查与 agent 复核后自动合并，**未经人工复核**；标题与数字未经改写。",
@@ -115,7 +117,9 @@
         "real_robot": "real-robot experiments",
         "open_release": "open code or weights",
         "latency": "latency or control-rate numbers",
-        "numbers": "quantitative results"
+        "numbers": "quantitative results",
+        "trending": "trending",
+        "press_release": "press release"
       },
       "llm_draft": "AI draft",
       "llm_notice": "Per-item analysis on this page was drafted by {agent} ({model}) and merged automatically after deterministic checks and an agent review, **without human review**; titles and numbers are untouched.",
@@ -201,7 +205,9 @@
         "real_robot": "実機実験あり",
         "open_release": "コードまたは重み公開",
         "latency": "遅延・制御周期の数値あり",
-        "numbers": "定量結果あり"
+        "numbers": "定量結果あり",
+        "trending": "注目度高",
+        "press_release": "プレスリリース"
       },
       "llm_draft": "AI 下書き",
       "llm_notice": "本ページの項目別分析は {agent}（{model}）が下書きし、決定的な検査とエージェント査読を経て自動的に取り込まれました。**人間の確認は経ていません**。タイトルと数値は改変していません。",

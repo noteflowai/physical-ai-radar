@@ -21,6 +21,21 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- More professional and mainstream sources, attention ("heat") and a highlights quota.
+  Twelve feeds join after a read-only check (200, parses, robots.txt allows): OpenAI News,
+  Google Research, MIT News Robotics, BAIR, Nature Machine Intelligence (RSS 1.0, now
+  parsed), TechCrunch Robotics, Robohub, Import AI, 量子位, and the LeRobot, Isaac Lab and
+  MuJoCo GitHub release feeds. General feeds keep only entries naming their own
+  `keywords`. Science Robotics is not added: its feed path is disallowed by robots.txt.
+  `pairadar.heat` scores cross-source coverage, Hugging Face Daily Papers upvotes, Hacker
+  News points and GitHub star velocity, each capped and scaled, for ranking only; it never
+  changes an evidence class. Items covered by two or more sources are labelled `trending`,
+  press releases `press_release` and ranked lower. The shortlist now holds at most four
+  arXiv papers of eight and reserves a slot for an official item and one for a trending
+  one when any qualifies. robots.txt is honoured for every feed and API, requests to one
+  host are spaced a second apart; robots skips and unanswered APIs are logged and reported
+  by `pairadar.health`, never as struggling. docs/METHODOLOGY.md sections 1–3.
+
 - The README's picks table has two columns instead of four: the rank and its
   evidence dot, then the title with up to three figures and a small line for the
   lane, source and date. On a phone the four columns left each title about 110px

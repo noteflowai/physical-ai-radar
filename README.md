@@ -178,8 +178,8 @@ flowchart LR
 
 ```
 scripts/publish_daily.sh（维护者机器上的 cron，07:40 Asia/Singapore / 08:40 JST）
-  └─ fetch    arXiv API（六组 cs.RO 查询，API 不可用时改读分类 RSS）+ 官方与媒体 Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
-  └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分 → 每主线、每来源、每证据等级限额筛选
+  └─ fetch    arXiv API（六组 cs.RO 查询，API 不可用时改读分类 RSS）+ 官方、期刊与媒体 Atom/RSS（AWS / NVIDIA / DeepMind / HF / OpenAI / Google Research / MIT / BAIR / TRI / Nature MI / IEEE / The Robot Report / TechCrunch / Robohub / Import AI / 雷峰网 / 量子位 / MONOist）+ LeRobot、Isaac Lab、MuJoCo 发布 + 热度信号（HF Daily Papers / HN / GitHub stars，只用于排序）
+  └─ distill  相关性门槛 → 归类到八条主线 → 抽取量化指标 → 可解释打分（含热度与新闻稿降权）→ 每主线、每来源、每证据等级限额 + 重点栏配额（arXiv ≤ 一半，保留官方与热点各一席）
   └─ charts   手写 SVG：主线分布 / 每日节奏 / 证据构成 / README 横幅
   └─ render   生成三语日报 + 注入三份 README + 更新归档索引与 latest.json
   └─ feeds    radar/feed.json（JSON Feed 1.1）+ 每种语言一份 Atom + 本周汇总（radar/weekly/）
