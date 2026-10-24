@@ -247,8 +247,10 @@ class Budget(unittest.TestCase):
             saved = json.loads(output.read_text())
         self.assertEqual(raised.exception.code, "public-readback-unreachable")
         self.assertEqual((saved["status"], saved["error_code"]), ("retry-needed", "public-readback-unreachable"))
-        # Reported by the deadline minus the reserve (plus the 1 s floor), never after it.
-        self.assertLessEqual(self.clock.now, 2)
+        # Reported by the deadline minus the reserve plus at most one floored call, which
+        # still leaves most of the reserve for the receipt.
+        self.assertLessEqual(self.clock.now, 1 + ap.MIN_CALL_SECONDS)
+        self.assertLess(self.clock.now, ap.DEFAULT_RECEIPT_RESERVE + 1 - 20)
 
     def test_a_hanging_public_page_cannot_outlive_the_worker(self):
         self.worker(ap.DEFAULT_RECEIPT_RESERVE + 1)
@@ -263,7 +265,7 @@ class Budget(unittest.TestCase):
             for p in calls:
                 p.stop()
         self.assertEqual(raised.exception.code, "public-readback-unreachable")
-        self.assertLessEqual(self.clock.now, 2)
+        self.assertLessEqual(self.clock.now, 1 + ap.MIN_CALL_SECONDS)
 
     def test_a_hanging_run_list_at_the_edge_still_reports_in_time(self):
         self.worker(ap.DEFAULT_RECEIPT_RESERVE + 50)
@@ -299,7 +301,95 @@ class Budget(unittest.TestCase):
             for p in calls:
                 p.stop()
         self.assertEqual(raised.exception.code, "github-unreachable")
-        self.assertLessEqual(self.clock.now, 1)
+        self.assertLessEqual(self.clock.now, ap.MIN_CALL_SECONDS)
+
+    def test_with_no_budget_left_a_normal_gh_reply_is_still_observed(self):
+        # 05 N159-r1-01: gh start-up plus one API round trip takes seconds; the last
+        # observation must not be cut to 1 s and misreported as github-unreachable.
+        self.worker(60)                                   # budget exhausted
+        seen = []
+
+        def run(args, timeout=None, **kwargs):
+            seen.append(timeout)
+            if timeout < 5:
+                self.clock.now += timeout
+                raise subprocess.TimeoutExpired(args, timeout)
+            self.clock.now += 5                           # a slow but normal gh call
+            return subprocess.CompletedProcess(args, 0, stdout=runs(("CI", "completed", "success")), stderr="")
+
+        with patch.object(ap.subprocess, "run", run), patch.object(ap, "progress"):
+            self.assertEqual(ap.wait_publication("o/r", COMMIT, ["CI"])[0]["conclusion"], "success")
+        self.assertEqual(seen, [ap.MIN_CALL_SECONDS])
+
+    def test_the_call_floor_ends_before_the_worker_deadline(self):
+        self.assertLess(ap.MIN_CALL_SECONDS, ap.MIN_RECEIPT_RESERVE)
+        self.assertEqual(ap.RECEIPT_MARGIN, ap.MIN_RECEIPT_RESERVE - ap.MIN_CALL_SECONDS)
+        self.assertGreaterEqual(ap.RECEIPT_MARGIN, 20)
+        self.worker(ap.MIN_RECEIPT_RESERVE)                # nothing left after the reserve
+        os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MIN_RECEIPT_RESERVE)
+        self.assertEqual(ap.call_timeout(120), ap.MIN_CALL_SECONDS)
+        self.assertEqual(ap.call_timeout(5), 5)           # never longer than the call's own limit
+        self.clock.now = 4                                 # 4 s past the edge: only 6 s left
+        self.assertEqual(ap.call_timeout(120), ap.MIN_CALL_SECONDS - 4)
+        self.clock.now = ap.MIN_CALL_SECONDS               # at the hard edge: nothing starts
+        with self.assertRaises(subprocess.TimeoutExpired):
+            ap.call_timeout(120)
+
+    def test_chained_slow_calls_past_the_edge_share_one_floor(self):
+        # 05 N160-01: robot-reel reads 2 URLs x 3 calls after the workflows; every call is
+        # slow but succeeds. At the smallest reserve the receipt must still be written.
+        os.environ[ap.RECEIPT_RESERVE_ENV] = str(ap.MIN_RECEIPT_RESERVE)
+        self.worker(ap.MIN_RECEIPT_RESERVE)                # the wait budget is already spent
+        urls = ["https://noteflowai.github.io/robot-reel/", "https://glayguo-robot-reel.hf.space/"]
+        started = []
+
+        class Response:
+            status, headers = 200, {"Content-Type": "text/plain"}
+
+            def read(self, limit):
+                return b"same bytes"
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc):
+                return False
+
+        def urlopen(request, timeout=None):
+            started.append(self.clock.now)
+            self.clock.now += timeout * 0.99               # slow, but inside its timeout
+            return Response()
+
+        merged = {"headRefOid": "h", "baseRefName": "main", "state": "MERGED",
+                  "statusCheckRollup": [], "mergeCommit": {"oid": COMMIT}, "url": "https://pr/1"}
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "publication.json"
+            with patch.object(ap.urllib.request, "urlopen", urlopen), \
+                 patch.object(ap, "wait_pr", return_value=merged), \
+                 patch.object(ap, "wait_publication", return_value=[]):
+                try:
+                    ap.finish("noteflowai/robot-reel", 1, "h", ["CI"], urls, output)
+                except ap.PublicationWaitError:
+                    pass
+            saved = json.loads(output.read_text())
+        self.assertLessEqual(self.clock.now, ap.MIN_CALL_SECONDS)   # all calls together
+        self.assertTrue(all(t < ap.MIN_CALL_SECONDS for t in started))
+        self.assertLess(self.clock.now, ap.MIN_RECEIPT_RESERVE)      # the receipt still has time
+        self.assertIn(saved["status"], {"published", "retry-needed"})
+
+    def test_chained_calls_with_the_default_reserve_leave_the_margin(self):
+        # Default reserve 120: floored calls may continue past the edge, never into the
+        # last RECEIPT_MARGIN seconds before the outer kill.
+        self.worker(ap.DEFAULT_RECEIPT_RESERVE)            # at the edge
+        done = 0
+        for _ in range(40):                                # far more calls than any repo makes
+            try:
+                self.clock.now += ap.call_timeout(120)     # each uses its whole timeout
+                done += 1
+            except subprocess.TimeoutExpired:
+                break
+        self.assertLessEqual(self.clock.now, ap.DEFAULT_RECEIPT_RESERVE - ap.RECEIPT_MARGIN)
+        self.assertEqual(done, (ap.DEFAULT_RECEIPT_RESERVE - ap.RECEIPT_MARGIN) // ap.MIN_CALL_SECONDS)
 
     # --- wait_pr and readback are capped (05 R159-02) ---------------------------
 
