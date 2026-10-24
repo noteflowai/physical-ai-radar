@@ -19,7 +19,7 @@ import time
 from zoneinfo import ZoneInfo
 
 try:
-    from .agent_pipeline import command, finish, gh, reconcile_superseded, write_json
+    from .agent_pipeline import command, finish, gh, reconcile_superseded, write_json, WORKER_DEADLINE_ENV
     from .feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from .feature_runtime import GPU_IMAGE, archive, execute, image_for
     from .feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
@@ -40,7 +40,7 @@ try:
     from .job_schedule import run_day
     from .nightly_batch import execute as execute_stage
 except ImportError:
-    from agent_pipeline import command, finish, gh, reconcile_superseded, write_json
+    from agent_pipeline import command, finish, gh, reconcile_superseded, write_json, WORKER_DEADLINE_ENV
     from feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
     from feature_runtime import GPU_IMAGE, archive, execute, image_for
     from feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
@@ -60,6 +60,22 @@ except ImportError:
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
     from nightly_batch import execute as execute_stage
+
+
+# Wall-clock limit of one feature worker; publication waits must end before it.
+WORKER_SECONDS = 2100
+
+
+def run_worker(argv: list[str], lock, log: Path, executor=None) -> int:
+    """Run one bounded feature worker with its absolute deadline in the environment.
+
+    The worker's own waits stop before that deadline and write receipts
+    (agent_pipeline.wait_budget / call_timeout); the outer kill is only a backstop.
+    """
+    env = {**os.environ, "FEATURE_LOCK_HELD": "1", "FEATURE_LOCK_FD": str(lock.fileno()),
+           WORKER_DEADLINE_ENV: f"{time.time() + WORKER_SECONDS:.3f}"}
+    return (executor or execute_stage)(argv, Path(__file__).resolve().parents[1], env, log,
+                                       WORKER_SECONDS)
 
 
 def stamp() -> str:
@@ -1381,10 +1397,7 @@ def main() -> int:
                         "--date", day, "--repo", name, "--worker"]
                 if args.plan_only:
                     argv.append("--plan-only")
-                code = execute_stage(argv, Path(__file__).resolve().parents[1],
-                                     {**os.environ, "FEATURE_LOCK_HELD": "1",
-                                      "FEATURE_LOCK_FD": str(lock.fileno())},
-                                     receipt.parent / "worker.log", 2100)
+                code = run_worker(argv, lock, receipt.parent / "worker.log")
                 result = read_json(receipt, {"repo": "noteflowai/" + name,
                                             "status": "retry-needed", "at": stamp()})
                 if code != 0 and result.get("status") not in {"published", "deferred", "no-change", "externally-finalized"}:
