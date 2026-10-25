@@ -89,6 +89,16 @@ def _count(runs: list[dict[str, Any]], key: str) -> dict[str, int]:
     return counts
 
 
+def _reasons(runs: list[dict[str, Any]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for entry in runs:
+        reasons = entry.get("robots_reasons")
+        for source, reason in (reasons.items() if isinstance(reasons, dict) else []):
+            key = f"{source}:{reason}"
+            counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 def failures_by_source(runs: list[dict[str, Any]], reference: date,
                        window: int = WINDOW) -> dict[str, int]:
     """Count, per source, the days inside the window on which it did not answer."""
@@ -202,6 +212,9 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         # A feed whose robots.txt disallows it, and an attention API (pairadar.heat) that
         # did not answer: counted here, never struggling -- the repair job fixes feeds.
         "robots_skipped": _count(_in_window(runs, reference, window), "robots_skipped"),
+        # Why, per source and reason ("deepmind:unreachable": days): a host whose robots.txt
+        # stopped answering shows up here, not under struggling.
+        "robots_reasons": _reasons(_in_window(runs, reference, window)),
         "signals_unavailable": _count(_in_window(runs, reference, window), "signal_failed"),
         "struggling": entries,
     }

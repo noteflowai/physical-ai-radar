@@ -68,7 +68,13 @@ OFF_TOPIC = (
 
 
 def recorded(url: str, *args, **kwargs) -> bytes | None:
-    """Serve the recorded payload for a URL; the arXiv API answers nothing, as it did."""
+    """Serve the recorded payload for a URL; the arXiv API answers nothing, as it did.
+
+    Every host's robots.txt is served empty (no rules), as the recorded feeds allowed:
+    a robots.txt that does not answer now keeps a host from being requested at all.
+    """
+    if url.endswith("/robots.txt"):
+        return b""
     name = RECORDED.get(url)
     return (FIXTURES/name).read_bytes() if name else None
 
