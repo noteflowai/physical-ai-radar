@@ -131,6 +131,16 @@ class HeldItemsKeepTheirLane(unittest.TestCase):
         picked = [entry.id for entry in select(pool, limit=3, per_source=1)]
         self.assertEqual(picked, ["arxiv:a", "blog:s", "blog:t"])
 
+    def test_an_item_held_by_per_evidence_keeps_its_lane_slot_too(self) -> None:
+        # 05's N166-01: production runs per_evidence 4 (cli passes it), and that hold must keep the slot as
+        # per_source's does. b is held by per_evidence (one R already taken); x2, a lower-ranked O post in b's
+        # lane, must not take the lane before the fill pass brings b back.
+        pool = [item("arxiv:a", "arxiv", "R", "la", 9.0), item("tri:b", "tri", "R", "lx", 8.9),
+                item("blog:x1", "bx", "M", "lx", 2.0), item("nv:x2", "nv", "O", "lx", 1.9),
+                item("blog:z", "bz", "M", "lz", 1.5)]
+        picked = [entry.id for entry in select(pool, limit=4, per_evidence=1)]
+        self.assertEqual(picked, ["arxiv:a", "tri:b", "blog:x1", "blog:z"])
+
     def test_no_caps_means_no_change(self) -> None:
         # Without per_source and per_evidence nothing is held, so the list is rank order under the lane cap.
         pool = ranked([*picks_1022(), aw0()])
