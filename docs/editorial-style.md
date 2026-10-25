@@ -107,6 +107,15 @@ colours, fixed grid and margins, 2x resolution, "Source: <paper>, Table N" in th
 and alt text. The numbers for each chart come from the same table rows the deep read
 cites (`fulltext.Document.tables`).
 
+Contract (06 r1, agreed with 03): this repository only produces and validates the
+chart's data (`figure.json`: paper, table label, metric and unit, direction, rows as
+printed, highlighted method and main baseline); the three-language images are rendered
+in the WordPress content pipeline, which already carries the fonts and imaging library,
+so this repository stays standard-library only. Under each chart the page shows 06's
+`{lang}.data.html`: the same rows as a visible table with a clickable source line. The
+alt text is one sentence stating the chart's conclusion, at most 140 characters, and it
+must agree with the deep read's Bottom line. Media items get no data chart.
+
 ## Pilot
 
 `scripts/editorial_pilot.py` builds the evidence packet for a day (picks, full text,
