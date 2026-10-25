@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31518" rel="noopener" target="_blank">SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets</a></h3>
 <p class="figure"><strong>12.33%</strong><span class="context">“that achieves an absolute 12.33% gain in success”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 長期タスク向けのTAMPプランナーを作るチームには、著者自己報告で成功率が絶対値12.33%改善という材料になる。ただし比較対象も実機結果もページには示されておらず、プランナーを変える前にデータ側の手掛かりとして再現を。</p>
 <p class="excerpt">Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31474" rel="noopener" target="_blank">Skeleton-Grounded Latent Action Model for Robot World Models</a></h3>
 <p class="figure"><strong>19.5%</strong><span class="context">“reduces end-effector ADE by 19.5% and LPIPS by”</span></p><p class="chips"><span class="chip">11.1%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 潜在行動で動画から世界モデルのダイナミクスを学ぶチームなら、DreamDojo比でエンドエフェクタADEを19.5%、LPIPSを11.1%削減という報告はシミュレータ部品として試す根拠になる。ただし予測誤差の指標でありタスク成功率ではない。</p>
 <p class="excerpt">Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31670" rel="noopener" target="_blank">Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> チェックポイント選定に閉ループのロールアウト予算を費やしているチームは、将来オフラインの代理指標で先に絞り込めるかもしれない。ただしページにあるのは動機だけで、代理指標と成功率の一致度を示す数値はなく、当面はロールアウトで判断すべき。</p>
 <p class="excerpt">Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31371" rel="noopener" target="_blank">Probabilistic Energy Modeling Unifies Versatile Swarm Control</a></h3>
 <p class="figure"><strong>10 ms</strong><span class="context">“success rates with 1-10 ms per-agent inference latency”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ミッションが変わるたびに制御器の再設計・再調整・再学習が必要なスウォーム開発では、エージェントあたり1-10 msの推論遅延で成功率を報告するこのプレプリントは参考になる。ただし実行ハードウェアも実機結果もページにはなく、自前の計算資源で遅延を確かめる必要がある。</p>
 <p class="excerpt">Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31166" rel="noopener" target="_blank">Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation</a></h3>
 <p class="figure"><strong>29.1%</strong><span class="context">“base policy&#x27;s success from 29.1% to 72.6% in”</span></p><p class="chips"><span class="chip">72.6%</span><span class="chip">36.7%</span><span class="chip">88.3%</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 現在の画面しか見ない全身VLAで人型を動かすチームは、物体が隠れたり視界から外れたりする場面で目標前の記憶を試す価値がある。プレプリントの自己報告では基本方策の成功率がシミュレーションで29.1%から72.6%、実機で36.7%から88.3%へ向上した。</p>
 <p class="excerpt">Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.30955" rel="noopener" target="_blank">A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation</a></h3>
 <p class="figure"><strong>4 Hz</strong><span class="context">“force rendering up to 4 Hz”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 機械的な透明性と矯正的な相互作用力の両立が求められる支援機器や接触型ハードウェアの設計では参考事例になる。ただしページに出ている数値は最大4 Hzの力レンダリングのみで、設計を借りる前にその帯域が自分のタスクに足りるかを確認したい。</p>
 <p class="excerpt">Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/european-retail-open-models-robotics/" rel="noopener" target="_blank">NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“cutting inference costs by 90% to to a”</span></p>
-<p class="why">当事者による一次発表。本文に定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 小売・倉庫の運用者はNVIDIA自身の事例紹介として読むべきだ。推論コスト90%削減は商取引プラットフォームの話でロボットではなく、フルフィルメントセンターの事例は複数ロボット群の協調をシミュレーションしたもので、稼働中ロボットの指標は示されていない。</p>
 <p class="excerpt">European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a…</p>
 <ul class="signals"><li>定量結果あり</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/" rel="noopener" target="_blank">Eka Robotics raises $150M to scale its vision-force-action model for robots</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 力覚を方策の入力に加えるか検討しているチームには方向性のシグナルになる。大規模な強化学習で視覚・力・行動モデルを鍛える取り組みに資金が付いたが、二次的な資金調達報道であり、評価の根拠となる結果はページに示されていない。</p>
 <p class="excerpt">Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-24</span>

@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **SCOPE** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-2. **Skeleton-Grounded Latent Action Model for Robot World Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **Sensorimotor Alignment** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Memory before Goal** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch price, availability and who is shipping it in volume.
-7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — First-party release; the text gives figures. Watch how well the simulated result predicts real-robot performance.
-8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
+1. **SCOPE** — `AI draft` Teams building long-horizon task-and-motion planners get a self-reported absolute 12.33% success gain to weigh, but the page shows neither the baseline nor real-robot results, so reproduce it as a dataset-side lead before touching a planner.
+2. **Skeleton-Grounded Latent Action Model for Robot World Models** — `AI draft` For teams learning world-model dynamics from video through latent actions, the reported 19.5% end-effector ADE and 11.1% LPIPS reductions against DreamDojo measure prediction quality, not task success, which justifies a trial as a simulator component rather than a policy swap.
+3. **Sensorimotor Alignment** — `AI draft` Teams burning closed-loop rollout budget on checkpoint selection may one day screen with a cheap offline proxy first, but the page gives only the motivation and no figures on how well the proxy tracks rollout success, so rollouts stay the gate for now.
+4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — `AI draft` Swarm teams that redesign, retune or retrain controllers whenever the mission changes get a preprint reporting success at 1-10 ms per-agent inference latency; the page names no hardware and shows no real-robot results, so budget that latency on your own compute first.
+5. **Memory before Goal** — `AI draft` Humanoid teams whose whole-body VLA sees only the present frame should test pre-goal memory where objects get hidden or leave view: the preprint self-reports base-policy success rising from 29.1% to 72.6% in simulation and 36.7% to 88.3% on the real robot.
+6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — `AI draft` Designers of assistive or physical-interaction hardware that must stay mechanically transparent while applying corrective forces get a preprint reference point, but the only quoted figure is force rendering up to 4 Hz, so check that bandwidth against your task before borrowing the design.
+7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — `AI draft` Retail and warehouse operators should read this as NVIDIA's own case list: the 90% inference-cost cut belongs to a commerce platform, not a robot, and the fulfillment-center case is mixed-fleet collaboration in simulation, and the page quotes no deployed-robot metric.
+8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — `AI draft` Teams weighing force as a policy input can take this as a direction signal: money is backing vision-force-action models trained with reinforcement learning at scale, but this is a secondary funding report and the page quotes no results to evaluate.
 
 </details>
 

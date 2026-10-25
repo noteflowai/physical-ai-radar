@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31518" rel="noopener" target="_blank">SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets</a></h3>
 <p class="figure"><strong>12.33%</strong><span class="context">“that achieves an absolute 12.33% gain in success”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 做长程任务与运动规划（TAMP）的团队可以留意这条：作者自报成功率绝对提升 12.33%，但页面没有交代对比基线，也没有真机结果，更适合作为数据侧的线索先复现，再决定是否调整规划器。</p>
 <p class="excerpt">Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31474" rel="noopener" target="_blank">Skeleton-Grounded Latent Action Model for Robot World Models</a></h3>
 <p class="figure"><strong>19.5%</strong><span class="context">“reduces end-effector ADE by 19.5% and LPIPS by”</span></p><p class="chips"><span class="chip">11.1%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 用潜在动作从视频学习世界模型动力学的团队，可把它当作仿真组件来试：这份预印本作者自报相对 DreamDojo，末端执行器 ADE 降 19.5%、LPIPS 降 11.1%，但这些是预测误差指标而非任务成功率，不足以直接替换策略。</p>
 <p class="excerpt">Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31670" rel="noopener" target="_blank">Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在 checkpoint 筛选上烧闭环 rollout 预算的团队，未来或许能先用离线代理指标过一遍；但页面只讲了动机，没有给出代理指标与闭环成功率吻合程度的任何数字，目前仍应以 rollout 为准。</p>
 <p class="excerpt">Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability.</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31371" rel="noopener" target="_blank">Probabilistic Energy Modeling Unifies Versatile Swarm Control</a></h3>
 <p class="figure"><strong>10 ms</strong><span class="context">“success rates with 1-10 ms per-agent inference latency”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 每换一个任务就要重新设计、调参或重训控制器的集群团队，可以关注这份预印本给出的 1-10 ms 单体推理延迟；但页面未提及真机结果，也没说明运行硬件，上线前须在自己的算力上核算这一延迟。</p>
 <p class="excerpt">Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31166" rel="noopener" target="_blank">Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation</a></h3>
 <p class="figure"><strong>29.1%</strong><span class="context">“base policy&#x27;s success from 29.1% to 72.6% in”</span></p><p class="chips"><span class="chip">72.6%</span><span class="chip">36.7%</span><span class="chip">88.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 全身 VLA 只看当前画面的人形团队，值得在物体被遮挡或移出视野的场景里试加目标前记忆：作者自报基础策略成功率在仿真中由 29.1% 升至 72.6%，真机上由 36.7% 升至 88.3%。</p>
 <p class="excerpt">Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.30955" rel="noopener" target="_blank">A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation</a></h3>
 <p class="figure"><strong>4 Hz</strong><span class="context">“force rendering up to 4 Hz”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 设计既要机械透明、又要输出纠正性交互力的辅助或人机接触硬件时，这是一个预印本参考点；页面唯一的数字是最高 4 Hz 的力渲染，借鉴结构前先核对这一带宽是否覆盖你的任务。</p>
 <p class="excerpt">Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/european-retail-open-models-robotics/" rel="noopener" target="_blank">NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“cutting inference costs by 90% to to a”</span></p>
-<p class="why">一手官方发布；原文给出了量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 零售与仓储运营方读这篇时要分清口径：90% 的推理成本下降属于一个电商平台而非机器人，履约中心那条是在仿真里协同多支机器人车队，页面没有给出任何已部署机器人的运行指标。</p>
 <p class="excerpt">European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a…</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/" rel="noopener" target="_blank">Eka Robotics raises $150M to scale its vision-force-action model for robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 在考虑把力觉作为策略输入的团队，可以把这条当作方向信号：有资金押注用大规模强化学习训练视觉-力-动作模型；但这是二手融资报道，页面没有引用任何结果，暂无可据以评测的内容。</p>
 <p class="excerpt">Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-24</span>

@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-25",
+  "generated": "2026-10-25 13:50 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.31518": {
+      "zh": "做长程任务与运动规划（TAMP）的团队可以留意这条：作者自报成功率绝对提升 12.33%，但页面没有交代对比基线，也没有真机结果，更适合作为数据侧的线索先复现，再决定是否调整规划器。",
+      "en": "Teams building long-horizon task-and-motion planners get a self-reported absolute 12.33% success gain to weigh, but the page shows neither the baseline nor real-robot results, so reproduce it as a dataset-side lead before touching a planner.",
+      "ja": "長期タスク向けのTAMPプランナーを作るチームには、著者自己報告で成功率が絶対値12.33%改善という材料になる。ただし比較対象も実機結果もページには示されておらず、プランナーを変える前にデータ側の手掛かりとして再現を。"
+    },
+    "https://arxiv.org/abs/2610.31474": {
+      "zh": "用潜在动作从视频学习世界模型动力学的团队，可把它当作仿真组件来试：这份预印本作者自报相对 DreamDojo，末端执行器 ADE 降 19.5%、LPIPS 降 11.1%，但这些是预测误差指标而非任务成功率，不足以直接替换策略。",
+      "en": "For teams learning world-model dynamics from video through latent actions, the reported 19.5% end-effector ADE and 11.1% LPIPS reductions against DreamDojo measure prediction quality, not task success, which justifies a trial as a simulator component rather than a policy swap.",
+      "ja": "潜在行動で動画から世界モデルのダイナミクスを学ぶチームなら、DreamDojo比でエンドエフェクタADEを19.5%、LPIPSを11.1%削減という報告はシミュレータ部品として試す根拠になる。ただし予測誤差の指標でありタスク成功率ではない。"
+    },
+    "https://arxiv.org/abs/2610.31670": {
+      "zh": "在 checkpoint 筛选上烧闭环 rollout 预算的团队，未来或许能先用离线代理指标过一遍；但页面只讲了动机，没有给出代理指标与闭环成功率吻合程度的任何数字，目前仍应以 rollout 为准。",
+      "en": "Teams burning closed-loop rollout budget on checkpoint selection may one day screen with a cheap offline proxy first, but the page gives only the motivation and no figures on how well the proxy tracks rollout success, so rollouts stay the gate for now.",
+      "ja": "チェックポイント選定に閉ループのロールアウト予算を費やしているチームは、将来オフラインの代理指標で先に絞り込めるかもしれない。ただしページにあるのは動機だけで、代理指標と成功率の一致度を示す数値はなく、当面はロールアウトで判断すべき。"
+    },
+    "https://arxiv.org/abs/2610.31371": {
+      "zh": "每换一个任务就要重新设计、调参或重训控制器的集群团队，可以关注这份预印本给出的 1-10 ms 单体推理延迟；但页面未提及真机结果，也没说明运行硬件，上线前须在自己的算力上核算这一延迟。",
+      "en": "Swarm teams that redesign, retune or retrain controllers whenever the mission changes get a preprint reporting success at 1-10 ms per-agent inference latency; the page names no hardware and shows no real-robot results, so budget that latency on your own compute first.",
+      "ja": "ミッションが変わるたびに制御器の再設計・再調整・再学習が必要なスウォーム開発では、エージェントあたり1-10 msの推論遅延で成功率を報告するこのプレプリントは参考になる。ただし実行ハードウェアも実機結果もページにはなく、自前の計算資源で遅延を確かめる必要がある。"
+    },
+    "https://arxiv.org/abs/2610.31166": {
+      "zh": "全身 VLA 只看当前画面的人形团队，值得在物体被遮挡或移出视野的场景里试加目标前记忆：作者自报基础策略成功率在仿真中由 29.1% 升至 72.6%，真机上由 36.7% 升至 88.3%。",
+      "en": "Humanoid teams whose whole-body VLA sees only the present frame should test pre-goal memory where objects get hidden or leave view: the preprint self-reports base-policy success rising from 29.1% to 72.6% in simulation and 36.7% to 88.3% on the real robot.",
+      "ja": "現在の画面しか見ない全身VLAで人型を動かすチームは、物体が隠れたり視界から外れたりする場面で目標前の記憶を試す価値がある。プレプリントの自己報告では基本方策の成功率がシミュレーションで29.1%から72.6%、実機で36.7%から88.3%へ向上した。"
+    },
+    "https://arxiv.org/abs/2610.30955": {
+      "zh": "设计既要机械透明、又要输出纠正性交互力的辅助或人机接触硬件时，这是一个预印本参考点；页面唯一的数字是最高 4 Hz 的力渲染，借鉴结构前先核对这一带宽是否覆盖你的任务。",
+      "en": "Designers of assistive or physical-interaction hardware that must stay mechanically transparent while applying corrective forces get a preprint reference point, but the only quoted figure is force rendering up to 4 Hz, so check that bandwidth against your task before borrowing the design.",
+      "ja": "機械的な透明性と矯正的な相互作用力の両立が求められる支援機器や接触型ハードウェアの設計では参考事例になる。ただしページに出ている数値は最大4 Hzの力レンダリングのみで、設計を借りる前にその帯域が自分のタスクに足りるかを確認したい。"
+    },
+    "https://blogs.nvidia.com/blog/european-retail-open-models-robotics": {
+      "zh": "零售与仓储运营方读这篇时要分清口径：90% 的推理成本下降属于一个电商平台而非机器人，履约中心那条是在仿真里协同多支机器人车队，页面没有给出任何已部署机器人的运行指标。",
+      "en": "Retail and warehouse operators should read this as NVIDIA's own case list: the 90% inference-cost cut belongs to a commerce platform, not a robot, and the fulfillment-center case is mixed-fleet collaboration in simulation, and the page quotes no deployed-robot metric.",
+      "ja": "小売・倉庫の運用者はNVIDIA自身の事例紹介として読むべきだ。推論コスト90%削減は商取引プラットフォームの話でロボットではなく、フルフィルメントセンターの事例は複数ロボット群の協調をシミュレーションしたもので、稼働中ロボットの指標は示されていない。"
+    },
+    "https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots": {
+      "zh": "在考虑把力觉作为策略输入的团队，可以把这条当作方向信号：有资金押注用大规模强化学习训练视觉-力-动作模型；但这是二手融资报道，页面没有引用任何结果，暂无可据以评测的内容。",
+      "en": "Teams weighing force as a policy input can take this as a direction signal: money is backing vision-force-action models trained with reinforcement learning at scale, but this is a secondary funding report and the page quotes no results to evaluate.",
+      "ja": "力覚を方策の入力に加えるか検討しているチームには方向性のシグナルになる。大規模な強化学習で視覚・力・行動モデルを鍛える取り組みに資金が付いたが、二次的な資金調達報道であり、評価の根拠となる結果はページに示されていない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
