@@ -94,7 +94,11 @@ Rules:
   A URL it disallows for `physical-ai-radar` or `*` is not requested, and the feed is
   recorded under `robots_skipped` in `radar/history.json`, never under `failed` (the
   Science Robotics eTOC lives under a disallowed `/action/` and is therefore not a source).
-  A robots.txt that does not answer allows the request. Two requests to one host are at
+  As RFC 9309 section 2.3.1 says: a robots.txt answering 401 or 403 disallows the whole
+  host (`robots_skipped`); any other 4xx (404, 410) means there are no rules; a 5xx, a 429
+  after its retry, or no HTTP answer at all leaves the host unreachable, and nothing on it
+  is requested that run -- a feed there is a source that did not answer (`failed`), an
+  attention API is `signal_failed`. Two requests to one host are at
   least one second apart, and every request carries the `physical-ai-radar/1.0` User-Agent.
   Only titles, links, dates and a cut excerpt are stored; no article body is reproduced;
 - the attention APIs (section 3) that do not answer are recorded under `signal_failed` and

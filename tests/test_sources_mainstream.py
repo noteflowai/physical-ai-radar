@@ -171,16 +171,49 @@ class PoliteFetchingTest(unittest.TestCase):
         self.assertNotIn("https://j.example/action/showFeed?x=1", requested)
         self.assertEqual([entry.source_id for entry in items], ["ok"])
 
-    def test_an_unreadable_robots_txt_allows_and_is_read_once_per_host(self) -> None:
-        calls = []
-        cache = fetch.RobotsCache(getter=lambda url: calls.append(url))
+    def test_robots_outcomes_follow_rfc_9309_and_are_read_once_per_host(self) -> None:
+        # 4xx: no rules (allow); 401/403: disallow; 5xx, 429 or no answer: unreachable.
+        cases = {404: fetch.ALLOW, 410: fetch.ALLOW, 401: fetch.DISALLOW, 403: fetch.DISALLOW,
+                 429: fetch.UNREACHABLE, 500: fetch.UNREACHABLE, 503: fetch.UNREACHABLE, None: fetch.UNREACHABLE}
+        for status, expected in cases.items():
+            calls = []
+            cache = fetch.RobotsCache(getter=lambda url, s=status: calls.append(url) or (s, None))
+            with mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(cache.verdict("https://a.example/feed"), expected, status)
+                self.assertEqual(cache.verdict("https://a.example/other"), expected, status)
+            self.assertEqual(calls, ["https://a.example/robots.txt"], status)
+            self.assertEqual(cache.allows("https://a.example/feed"), expected == fetch.ALLOW)
+
+    def test_the_default_getter_reports_the_http_status(self) -> None:
+        import urllib.error
+
+        def refuse(request, timeout=None):
+            raise urllib.error.HTTPError(request.full_url, 403, "Forbidden", {}, None)
+
+        def offline(request, timeout=None):
+            raise urllib.error.URLError("unreachable")
         with mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
-            self.assertTrue(cache.allows("https://a.example/feed"))
-            self.assertTrue(cache.allows("https://a.example/other"))
-        self.assertEqual(calls, ["https://a.example/robots.txt"])
+            with mock.patch.object(fetch.urllib.request, "urlopen", refuse):
+                self.assertEqual(fetch._robots_get("https://a.example/robots.txt"), (403, None))
+            with mock.patch.object(fetch.urllib.request, "urlopen", offline):
+                self.assertEqual(fetch._robots_get("https://a.example/robots.txt"), (None, None))
+
+    def test_a_feed_on_an_unreachable_host_is_failed_and_not_requested(self) -> None:
+        requested = []
+
+        def get(url, *a, **k):
+            requested.append(url)
+            return None                                           # robots.txt does not answer
+        config = config_with(feeds=[{"id": "down", "url": "https://down.example/feed", "evidence": "M"}])
+        skipped: list[str] = []
+        with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()):
+            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(), skipped=skipped)
+        self.assertEqual((items, failed, skipped), ([], ["down"], []))
+        self.assertEqual(requested, ["https://down.example/robots.txt"])
 
     def test_our_agent_token_is_matched(self) -> None:
-        cache = fetch.RobotsCache(getter=lambda url: b"User-agent: physical-ai-radar\nDisallow: /\n")
+        cache = fetch.RobotsCache(getter=lambda url: (200, b"User-agent: physical-ai-radar\nDisallow: /\n"))
         with mock.patch.object(fetch.time, "sleep"):
             self.assertFalse(cache.allows("https://a.example/feed"))
 
@@ -297,12 +330,18 @@ class HeatTest(unittest.TestCase):
         self.assertTrue(hn[0]["numericFilters"][0].startswith("created_at_i>"))
 
     def test_signals_respect_robots(self) -> None:
-        cache = fetch.RobotsCache(getter=lambda url: b"User-agent: *\nDisallow: /api/\n")
+        cache = fetch.RobotsCache(getter=lambda url: (200, b"User-agent: *\nDisallow: /api/\n"))
         with mock.patch.object(fetch.time, "sleep"):
             signals = heat.fetch_signals(config_with(heat={**CONFIG.sources["heat"], "hn_queries": [],
                                                             "github_repos": []}),
                                          DAY, robots=cache, getter=lambda url: self.fail("requested " + url))
         self.assertEqual((signals.robots_skipped, signals.failed), (["hf_daily_papers"], []))
+        down = fetch.RobotsCache(getter=lambda url: (503, None))
+        with mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+            signals = heat.fetch_signals(config_with(heat={**CONFIG.sources["heat"], "hn_queries": [],
+                                                            "github_repos": []}),
+                                         DAY, robots=down, getter=lambda url: self.fail("requested " + url))
+        self.assertEqual((signals.robots_skipped, signals.failed), ([], ["hf_daily_papers"]))
 
 
 class PressReleaseTest(unittest.TestCase):
@@ -387,6 +426,13 @@ class QuotaTest(unittest.TestCase):
                         told=["Tesla Optimus production line"])    # an earlier day told this story
         self.assertNotIn(hot, picked)
         self.assertEqual(report["unmet"], ["hot"])
+
+    def test_an_unknown_reservation_is_ignored_and_reported(self) -> None:
+        papers, media, official, hot = self.pool()
+        report: dict = {}
+        picked = select(papers + [official], limit=8, max_arxiv=4, reserve=["oficial", "official"], report=report)
+        self.assertIn(official, picked)
+        self.assertEqual(report["unmet"], ["unknown:oficial"])
 
     def test_the_configured_quota_is_half_of_the_daily_limit(self) -> None:
         highlights = CONFIG.sources["filters"]["highlights"]

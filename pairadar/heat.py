@@ -88,8 +88,12 @@ def _json(url: str, name: str, signals: Signals, robots: fetch.RobotsCache | Non
           getter: Callable[[str], bytes | None]) -> Any:
     """One request; None (recorded) when robots.txt disallows it or it does not answer."""
     signals.attempted.append(name)
-    if robots is not None and not robots.allows(url):
+    verdict = robots.verdict(url) if robots is not None else fetch.ALLOW
+    if verdict == fetch.DISALLOW:
         signals.robots_skipped.append(name)
+        return None
+    if verdict == fetch.UNREACHABLE:
+        signals.failed.append(name)
         return None
     fetch.polite(url)
     payload = getter(url)
