@@ -99,8 +99,9 @@ class PilotTest(unittest.TestCase):
         self.addCleanup(lambda: __import__("shutil").rmtree(keys.parent, ignore_errors=True))
         return day, base, path, keys
 
-    def run_blind(self, day, notes, keys):
-        return pilot.cmd_blind(type("A", (), {"date": day, "out": self.out, "notes": notes, "keys": keys})())
+    def run_blind(self, day, notes, keys, pair_dir=None):
+        return pilot.cmd_blind(type("A", (), {"date": day, "out": self.out, "notes": notes, "keys": keys,
+                                              "pair_dir": pair_dir})())
 
     def test_blind_pair_is_one_neutral_template_with_only_the_body_differing(self):
         day, base, notes, keys = self.blind_fixture()
@@ -149,6 +150,21 @@ class PilotTest(unittest.TestCase):
         day, base, notes, _ = self.blind_fixture()
         with self.assertRaises(SystemExit):
             self.run_blind(day, notes, base / "keys")
+
+    def test_blind_pair_can_go_to_a_directory_holding_nothing_else(self):
+        day, base, notes, keys = self.blind_fixture()
+        pair = Path(tempfile.mkdtemp()) / "reviewers"
+        self.addCleanup(lambda: __import__("shutil").rmtree(pair.parent, ignore_errors=True))
+        pair.mkdir()
+        (pair / "keep.txt").write_text("not ours")
+        self.run_blind(day, notes, keys, pair)
+        self.assertEqual(sorted(p.name for p in pair.iterdir()),
+                         sorted(["keep.txt"] + [f"{s}.{lang}.md" for s in "AB" for lang in pilot.LANGS]))
+        self.assertFalse((base / "blind").exists())
+        with self.assertRaises(SystemExit):
+            self.run_blind(day, notes, pair / "keys", pair)               # key below the reviewers' directory
+        with self.assertRaises(SystemExit):
+            self.run_blind(day, notes, keys, pilot.ROOT / "scratch")      # reviewers' directory inside the repo
 
 
 if __name__ == "__main__":

@@ -239,14 +239,19 @@ def cmd_blind(args) -> int:
         new_is_a = secrets.randbelow(2) == 0
         key[lang] = {"A": "new" if new_is_a else "old", "B": "old" if new_is_a else "new"}
         pairs[lang] = (new_text, old_text) if new_is_a else (old_text, new_text)
-    blind = base / "blind"
-    for name in list(blind.glob("*")) if blind.is_dir() else []:
-        name.unlink()
+    blind = (args.pair_dir or base / "blind").resolve()
+    if blind == ROOT or ROOT in blind.parents:
+        raise SystemExit("the reviewers' directory must be outside the repository")
+    if keys == blind or blind in keys.parents:
+        raise SystemExit("the key directory must not be under the reviewers' directory")
+    private_dir(blind)
+    for stale in blind.glob("[AB].*.md"):   # only our own earlier pair; never anything else in a given directory
+        stale.unlink()
     for lang, (a, b) in pairs.items():
         write_private(blind / f"A.{lang}.md", a)
         write_private(blind / f"B.{lang}.md", b)
     stamp = int(time.time())   # one mtime for every file in the pair: nothing to tell them apart by
-    for path in blind.glob("*"):
+    for path in blind.glob("[AB].*.md"):
         os.utime(path, (stamp, stamp))
     os.utime(blind, (stamp, stamp))
     write_private(private_dir(keys) / f"{args.date}.json", json.dumps(key, indent=1))
@@ -270,6 +275,9 @@ def main(argv: list[str] | None = None) -> int:
             command.add_argument("--keys", type=Path, default=None,
                                  help="private key directory, never under --out "
                                       "(default ~/.local/state/pairadar/pilot-keys)")
+            command.add_argument("--pair-dir", type=Path, default=None,
+                                 help="where the reviewers' A/B files go (default DIR/D/blind); use a directory "
+                                      "that holds nothing else, so reviewers cannot wander into drafts or the brief")
     args = parser.parse_args(argv)
     return {"packet": cmd_packet, "check": cmd_check, "blind": cmd_blind}[args.command](args)
 
