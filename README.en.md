@@ -60,37 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-25
+### Today's radar · 2026-10-26
 
-`Generated: 2026-10-24 23:40 UTC` ｜ `Window: papers 2026-10-21 → 2026-10-25 · posts 2026-09-25 → 2026-10-25 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-25 23:40 UTC` ｜ `Window: papers 2026-10-22 → 2026-10-26 · posts 2026-09-26 → 2026-10-26 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets](https://arxiv.org/abs/2610.31518)**<br>`12.33%`<br><sub>Systems & orchestration · arXiv 2610.31518 · 2026‑10‑22</sub> |
-| 02<br>🔵&nbsp;`R` | **[Skeleton-Grounded Latent Action Model for Robot World Models](https://arxiv.org/abs/2610.31474)**<br>`19.5%`&nbsp; `11.1%`<br><sub>Simulation & evaluation · arXiv 2610.31474 · 2026‑10‑22</sub> |
-| 03<br>🔵&nbsp;`R` | **[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success](https://arxiv.org/abs/2610.31670)**<br><sub>Foundation models · arXiv 2610.31670 · 2026‑10‑22</sub> |
-| 04<br>🔵&nbsp;`R` | **[Probabilistic Energy Modeling Unifies Versatile Swarm Control](https://arxiv.org/abs/2610.31371)**<br>`10 ms`<br><sub>Edge & real-time · arXiv 2610.31371 · 2026‑10‑22</sub> |
-| 05<br>🔵&nbsp;`R` | **[Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.31166)**<br>`29.1%`&nbsp; `72.6%`&nbsp; `36.7%`<br><sub>Foundation models · arXiv 2610.31166 · 2026‑10‑22</sub> |
-| 06<br>🔵&nbsp;`R` | **[A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation](https://arxiv.org/abs/2610.30955)**<br>`4 Hz`<br><sub>Embodiment & supply chain · arXiv 2610.30955 · 2026‑10‑22</sub> |
-| 07<br>🟢&nbsp;`O` | **[NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations](https://blogs.nvidia.com/blog/european-retail-open-models-robotics/)**<br>`90%`<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑10‑22</sub> |
-| 08<br>🟡&nbsp;`M` | **[Eka Robotics raises $150M to scale its vision-force-action model for robots](https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/)**<br><sub>Training & self-improvement · The Robot Report · 2026‑10‑24</sub> |
+| 01<br>🟢&nbsp;`O` | **[Isaac Lab v3.0.0](https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0)**<br><sub>Simulation & evaluation · Isaac Lab releases (GitHub) · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents](https://arxiv.org/abs/2610.30587)**<br>`82.6%`<br><sub>Simulation & evaluation · arXiv 2610.30587 · 2026‑10‑22</sub> |
+| 03<br>🔵&nbsp;`R` | **[TEAR: Task-Evidence Authority Routing for Robotic Manipulation](https://arxiv.org/abs/2610.30819)**<br>`27.4%`&nbsp; `40%`<br><sub>Data engine · arXiv 2610.30819 · 2026‑10‑22</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning Robot Behavior Priors from Non-Robotic Synthetic Data](https://arxiv.org/abs/2610.31275)**<br><sub>Data engine · arXiv 2610.31275 · 2026‑10‑22</sub> |
+| 05<br>🔵&nbsp;`R` | **[Point-Level Refinable Semantic Mapping for Spatial Understanding](https://arxiv.org/abs/2610.31476)**<br>`3.46%`&nbsp; `2.55%`&nbsp; `82.4%`<br><sub>Systems & orchestration · arXiv 2610.31476 · 2026‑10‑22</sub> |
+| 06<br>🟢&nbsp;`O` | **[Powered by muscle cells, a paper-thin robot swims through watery maze](https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑09‑29</sub> |
+| 07<br>🟡&nbsp;`M` | **[Tesla starts Optimus robot production in California as profit falls 43%](https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/)**<br>`43%`<br><sub>Embodiment & supply chain · TechCrunch (Robotics) · 2026‑10‑21</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **SCOPE** — `AI draft` Teams building long-horizon task-and-motion planners get a self-reported absolute 12.33% success gain to weigh, but the page shows neither the baseline nor real-robot results, so reproduce it as a dataset-side lead before touching a planner.
-2. **Skeleton-Grounded Latent Action Model for Robot World Models** — `AI draft` For teams learning world-model dynamics from video through latent actions, the reported 19.5% end-effector ADE and 11.1% LPIPS reductions against DreamDojo measure prediction quality, not task success, which justifies a trial as a simulator component rather than a policy swap.
-3. **Sensorimotor Alignment** — `AI draft` Teams burning closed-loop rollout budget on checkpoint selection may one day screen with a cheap offline proxy first, but the page gives only the motivation and no figures on how well the proxy tracks rollout success, so rollouts stay the gate for now.
-4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — `AI draft` Swarm teams that redesign, retune or retrain controllers whenever the mission changes get a preprint reporting success at 1-10 ms per-agent inference latency; the page names no hardware and shows no real-robot results, so budget that latency on your own compute first.
-5. **Memory before Goal** — `AI draft` Humanoid teams whose whole-body VLA sees only the present frame should test pre-goal memory where objects get hidden or leave view: the preprint self-reports base-policy success rising from 29.1% to 72.6% in simulation and 36.7% to 88.3% on the real robot.
-6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — `AI draft` Designers of assistive or physical-interaction hardware that must stay mechanically transparent while applying corrective forces get a preprint reference point, but the only quoted figure is force rendering up to 4 Hz, so check that bandwidth against your task before borrowing the design.
-7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — `AI draft` Retail and warehouse operators should read this as NVIDIA's own case list: the 90% inference-cost cut belongs to a commerce platform, not a robot, and the fulfillment-center case is mixed-fleet collaboration in simulation, and the page quotes no deployed-robot metric.
-8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — `AI draft` Teams weighing force as a policy input can take this as a direction signal: money is backing vision-force-action models trained with reinforcement learning at scale, but this is a secondary funding report and the page quotes no results to evaluate.
+1. **Isaac Lab v3.0.0** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **Know When to Escalate** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **TEAR** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
+5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
+6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Tesla starts Optimus robot production in California as profit falls 43%** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-25.en.md)** · [Weekly roundup ›](radar/weekly/2026-W43.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-26.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

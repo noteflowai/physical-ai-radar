@@ -50,16 +50,6 @@
       "date": "2026-09-25",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2609.26792",
-        "https://arxiv.org/abs/2609.25376",
-        "https://arxiv.org/abs/2609.26520",
-        "https://developer.nvidia.com/blog/accelerating-a-ros-2-node-with-an-ai-agent-and-nvidia-isaac-ros",
-        "https://www.therobotreport.com/isaac-ros-5-0-brings-ai-agents-robotics-development-says-nvidia",
-        "https://aws.amazon.com/blogs/physical-ai/bringing-a-frontier-world-model-to-the-convenience-store-inside-telexistences-dreamzero-experiment-on-aws",
-        "https://www.therobotreport.com/anybotics-opens-the-door-for-inspections-with-anymal-robots",
-        "https://www.therobotreport.com/epson-introduces-ax6-cobot-compact-design-no-code-programming"
-      ],
       "failed": []
     },
     {
@@ -621,6 +611,41 @@
       ],
       "page_failed": [],
       "page_robots_skipped": []
+    },
+    {
+      "date": "2026-10-26",
+      "count": 7,
+      "lanes": 4,
+      "urls": [
+        "https://github.com/isaac-sim/isaaclab/releases/tag/v3.0.0",
+        "https://arxiv.org/abs/2610.30587",
+        "https://arxiv.org/abs/2610.30819",
+        "https://arxiv.org/abs/2610.31275",
+        "https://arxiv.org/abs/2610.31476",
+        "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
+        "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "github-isaaclab:76f7d37c0882",
+          "hot": "mit-news-robotics:5c1fbd9ca24d"
+        },
+        "unmet": []
+      }
     }
   ]
 }

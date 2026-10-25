@@ -13,6 +13,275 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:github-isaaclab:76f7d37c0882",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0",
+      "title": "Isaac Lab v3.0.0",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: Isaac Lab releases (GitHub) · 2026-10-20<br><b>Signals</b>: open code or weights</p>\n<blockquote>Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: Isaac Lab releases (GitHub) · 2026-10-20\nSignals: open code or weights\n\nIsaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "Isaac Lab releases (GitHub)"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "github-isaaclab:76f7d37c0882",
+        "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0",
+        "title": "Isaac Lab v3.0.0",
+        "publisher": "Isaac Lab releases (GitHub)",
+        "source_id": "github-isaaclab",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-10-20",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "open_release"
+        ],
+        "excerpt": "Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30587",
+      "url": "https://arxiv.org/abs/2610.30587",
+      "title": "Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.30587 · 2026-10-22<br><b>Key numbers</b>: 82.6%<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.30587 · 2026-10-22\nKey numbers: 82.6%\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nRecent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.30587"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "arxiv:2610.30587",
+        "url": "https://arxiv.org/abs/2610.30587",
+        "title": "Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents",
+        "publisher": "arXiv 2610.30587",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-22",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [
+          "82.6%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "latency"
+        ],
+        "excerpt": "Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30819",
+      "url": "https://arxiv.org/abs/2610.30819",
+      "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.30819 · 2026-10-22<br><b>Key numbers</b>: 27.4% · 40%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.30819 · 2026-10-22\nKey numbers: 27.4% · 40%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nReliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.30819"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "arxiv:2610.30819",
+        "url": "https://arxiv.org/abs/2610.30819",
+        "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
+        "publisher": "arXiv 2610.30819",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-22",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [
+          "27.4%",
+          "40%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31275",
+      "url": "https://arxiv.org/abs/2610.31275",
+      "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.31275 · 2026-10-22<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.31275 · 2026-10-22\nSignals: real-robot experiments\n\nReal robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.31275"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "arxiv:2610.31275",
+        "url": "https://arxiv.org/abs/2610.31275",
+        "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
+        "publisher": "arXiv 2610.31275",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-22",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31476",
+      "url": "https://arxiv.org/abs/2610.31476",
+      "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.31476 · 2026-10-22<br><b>Key numbers</b>: 3.46% · 2.55% · 82.4% · 76.7%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.31476 · 2026-10-22\nKey numbers: 3.46% · 2.55% · 82.4% · 76.7%\nSignals: quantitative results · closed-loop success reported\n\nOpen-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.31476"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "arxiv:2610.31476",
+        "url": "https://arxiv.org/abs/2610.31476",
+        "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
+        "publisher": "arXiv 2610.31476",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "systems",
+        "published": "2026-10-22",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [
+          "3.46%",
+          "2.55%",
+          "82.4%",
+          "76.7%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop"
+        ],
+        "excerpt": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:mit-news-robotics:5c1fbd9ca24d",
+      "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
+      "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [O]<br><b>Source</b>: MIT News (Robotics) · 2026-09-29<br><b>Signals</b>: trending</p>\n<blockquote>MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [O]\nSource: MIT News (Robotics) · 2026-09-29\nSignals: trending\n\nMIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "MIT News (Robotics)"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "mit-news-robotics:5c1fbd9ca24d",
+        "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
+        "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
+        "publisher": "MIT News (Robotics)",
+        "source_id": "mit-news-robotics",
+        "evidence": "O",
+        "lane": "hardware",
+        "published": "2026-09-29",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "trending"
+        ],
+        "excerpt": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:techcrunch-robotics:6ec4c467ad3b",
+      "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
+      "title": "Tesla starts Optimus robot production in California as profit falls 43%",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: TechCrunch (Robotics) · 2026-10-21<br><b>Key numbers</b>: 43%<br><b>Signals</b>: quantitative results</p>\n<blockquote>Tesla&#x27;s revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: TechCrunch (Robotics) · 2026-10-21\nKey numbers: 43%\nSignals: quantitative results\n\nTesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
+      "summary": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.",
+      "date_published": "2026-10-25T23:40:00Z",
+      "authors": [
+        {
+          "name": "TechCrunch (Robotics)"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-26",
+        "id": "techcrunch-robotics:6ec4c467ad3b",
+        "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
+        "title": "Tesla starts Optimus robot production in California as profit falls 43%",
+        "publisher": "TechCrunch (Robotics)",
+        "source_id": "techcrunch-robotics",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-21",
+        "radar_published": "2026-10-25T23:40:00Z",
+        "numbers": [
+          "43%"
+        ],
+        "signals": [
+          "numbers"
+        ],
+        "excerpt": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31518",
       "url": "https://arxiv.org/abs/2610.31518",
       "title": "SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets",
@@ -3565,263 +3834,6 @@
           "open_release"
         ],
         "excerpt": "Existing real-world reinforcement learning methods improve robot policies by combining human corrections with autonomous rollouts."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:a07068e67300",
-      "url": "https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/",
-      "title": "3D Gaussian Splatting in practice: Industry use cases",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: AWS Physical AI Blog · 2026-10-06</p>\n<blockquote>Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html\">Full radar for 2026-10-13</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: AWS Physical AI Blog · 2026-10-06\n\nGaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real…\n\nFull radar for 2026-10-13: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html",
-      "summary": "Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real…",
-      "date_published": "2026-10-12T23:40:00Z",
-      "authors": [
-        {
-          "name": "AWS Physical AI Blog"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-13",
-        "id": "aws-physical-ai:a07068e67300",
-        "url": "https://aws.amazon.com/blogs/physical-ai/3d-gaussian-splatting-in-practice-industry-use-cases/",
-        "title": "3D Gaussian Splatting in practice: Industry use cases",
-        "publisher": "AWS Physical AI Blog",
-        "source_id": "aws-physical-ai",
-        "evidence": "O",
-        "lane": "simeval",
-        "published": "2026-10-06",
-        "radar_published": "2026-10-12T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Gaussian Splatting is dramatically lowering the cost and complexity of photorealistic 3D, making once impractical use cases like near real time capture, robotics, and simulation viable across media, construction, manufacturing, and real…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:fb73046bfc9e",
-      "url": "https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/",
-      "title": "Closing the reality gap: Why real-time execution has become the new competitive advantage",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-12<br><b>Signals</b>: latency or control-rate numbers</p>\n<blockquote>Daifuku&#x27;s Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html\">Full radar for 2026-10-13</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [M]\nSource: The Robot Report · 2026-10-12\nSignals: latency or control-rate numbers\n\nDaifuku's Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization.\n\nFull radar for 2026-10-13: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html",
-      "summary": "Daifuku's Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization.",
-      "date_published": "2026-10-12T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-13",
-        "id": "the-robot-report:fb73046bfc9e",
-        "url": "https://www.therobotreport.com/closing-reality-gap-why-real-time-execution-has-become-new-competitive-advantage/",
-        "title": "Closing the reality gap: Why real-time execution has become the new competitive advantage",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "edge",
-        "published": "2026-10-12",
-        "radar_published": "2026-10-12T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "latency"
-        ],
-        "excerpt": "Daifuku's Cecile Dick-Calmes said success is no longer measured solely by automation density or equipment utilization."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:9c414b247031",
-      "url": "https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html",
-      "title": "费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-12</p>\n<blockquote>刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html\">Full radar for 2026-10-13</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-12\n\n刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。\n\nFull radar for 2026-10-13: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html",
-      "summary": "刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。",
-      "date_published": "2026-10-12T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-13",
-        "id": "leiphone:9c414b247031",
-        "url": "https://www.leiphone.com/category/transportation/Y6GLcnioywVn3u7K.html",
-        "title": "费莫一刘念邱：智驾无图的经验，也能迁移到机器人 | 物理AI 50人",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-12",
-        "radar_published": "2026-10-12T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "刘念邱很难被归进典型的具身创业者模板里。 他不是从机器人实验室出来的学者，也不是过去两年才进入 Physical AI 的连续创业者。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:28b795de6185",
-      "url": "https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html",
-      "title": "产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-12</p>\n<blockquote>实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html\">Full radar for 2026-10-13</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-12\n\n实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。\n\nFull radar for 2026-10-13: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html",
-      "summary": "实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。",
-      "date_published": "2026-10-12T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-13",
-        "id": "leiphone:28b795de6185",
-        "url": "https://www.leiphone.com/category/industrynews/ZFAMCctM7KUw5gr3.html",
-        "title": "产业出题，科技答题：2026 IEIC国际具身智能技能大赛，用真实岗位任务考核机器人落地能力",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "data",
-        "published": "2026-10-12",
-        "radar_published": "2026-10-12T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "实景比拼赋能科创，助力人形机器人技术规模化落地！ 编辑丨李希 为深入贯彻落实工业和信息化部、国务院国资委《 2026年度人形机器人与具身智能实景实训专项行动》部署，加快推动我国机器人与具身智能技术创新突破与规模化落地，国际具身智能技能大赛检阅赛将于2026年10月23日至25日在上海举行。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:9be94d2c68ce",
-      "url": "https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html",
-      "title": "百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-12</p>\n<blockquote>10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html\">Full radar for 2026-10-13</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-12\n\n10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。\n\nFull radar for 2026-10-13: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-13.en.html",
-      "summary": "10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。",
-      "date_published": "2026-10-12T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-13",
-        "id": "leiphone:9be94d2c68ce",
-        "url": "https://www.leiphone.com/category/industrynews/ukm5yjK3oT5X29yV.html",
-        "title": "百度世界2026将于11月12日在北京举办，主题为「下一幕，智能组织」",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "training",
-        "published": "2026-10-12",
-        "radar_published": "2026-10-12T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "10月12日，百度官方宣布，百度世界2026将于11月12日在北京·国家会议中心二期举办。目前，大会官网已开启售票通道（https://baiduworld2026.events.net.cn/tickets）。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.12368",
-      "url": "https://arxiv.org/abs/2610.12368",
-      "title": "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.12368 · 2026-10-08<br><b>Key numbers</b>: 17.56% · 16.2% · 43.3% · 83.3%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Direct visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html\">Full radar for 2026-10-12</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.12368 · 2026-10-08\nKey numbers: 17.56% · 16.2% · 43.3% · 83.3%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nDirect visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences.\n\nFull radar for 2026-10-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html",
-      "summary": "Direct visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences.",
-      "date_published": "2026-10-11T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.12368"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-12",
-        "id": "arxiv:2610.12368",
-        "url": "https://arxiv.org/abs/2610.12368",
-        "title": "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild",
-        "publisher": "arXiv 2610.12368",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-08",
-        "radar_published": "2026-10-11T23:40:00Z",
-        "numbers": [
-          "17.56%",
-          "16.2%",
-          "43.3%",
-          "83.3%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Direct visual navigation policies generate trajectories efficiently but do not explicitly evaluate their future consequences."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.11480",
-      "url": "https://arxiv.org/abs/2610.11480",
-      "title": "RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.11480 · 2026-10-08<br><b>Key numbers</b>: 100 tasks · 77.0% · 90.0% · 73.8%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html\">Full radar for 2026-10-12</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.11480 · 2026-10-08\nKey numbers: 100 tasks · 77.0% · 90.0% · 73.8%\nSignals: quantitative results · closed-loop success reported\n\nEmbodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state.\n\nFull radar for 2026-10-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-12.en.html",
-      "summary": "Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state.",
-      "date_published": "2026-10-11T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.11480"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-12",
-        "id": "arxiv:2610.11480",
-        "url": "https://arxiv.org/abs/2610.11480",
-        "title": "RoboAware: Learning to Coordinate Embodied Skills from Counterfactual Outcomes",
-        "publisher": "arXiv 2610.11480",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-08",
-        "radar_published": "2026-10-11T23:40:00Z",
-        "numbers": [
-          "100 tasks",
-          "77.0%",
-          "90.0%",
-          "73.8%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "Embodied coding agents can combine modular robot skills with frozen end-to-end policies, yet effective composition requires anticipating which policy family will succeed in the current physical state."
       }
     }
   ]

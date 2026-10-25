@@ -1,0 +1,21 @@
+{
+  "schema": "pairadar-heat-1",
+  "stars": {
+    "google-deepmind/mujoco": {
+      "count": 15876,
+      "date": "2026-10-26"
+    },
+    "huggingface/lerobot": {
+      "count": 28464,
+      "date": "2026-10-26"
+    },
+    "isaac-sim/isaaclab": {
+      "count": 8468,
+      "date": "2026-10-26"
+    },
+    "physical-intelligence/openpi": {
+      "count": 14390,
+      "date": "2026-10-26"
+    }
+  }
+}

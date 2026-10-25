@@ -1,184 +1,170 @@
 {
-  "date": "2026-10-25",
-  "generated": "2026-10-24 23:40 UTC",
-  "window": "papers 2026-10-21 → 2026-10-25 · posts 2026-09-25 → 2026-10-25 (UTC)",
+  "date": "2026-10-26",
+  "generated": "2026-10-25 23:40 UTC",
+  "window": "papers 2026-10-22 → 2026-10-26 · posts 2026-09-26 → 2026-10-26 (UTC)",
   "window_detail": {
-    "day": "2026-10-25",
-    "papers_from": "2026-10-21",
-    "posts_from": "2026-09-25",
+    "day": "2026-10-26",
+    "papers_from": "2026-10-22",
+    "posts_from": "2026-09-26",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.31518",
-      "title": "SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets",
-      "url": "https://arxiv.org/abs/2610.31518",
-      "publisher": "arXiv 2610.31518",
+      "id": "github-isaaclab:76f7d37c0882",
+      "title": "Isaac Lab v3.0.0",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0",
+      "publisher": "Isaac Lab releases (GitHub)",
+      "source_id": "github-isaaclab",
+      "evidence": "O",
+      "published": "2026-10-20",
+      "lane": "simeval",
+      "score": 3.41,
+      "numbers": [],
+      "signals": [
+        "open_release"
+      ],
+      "heat": 0.0,
+      "summary": "Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x. Isaac Lab 3.0 establishes the foundation for the next generation of robot learning in Isaac Lab: one task API across multiple physics, rendering, and visualization backends; kit-less execution with Newton and OV library backends; Warp-native data paths; and unified workflows from installation through training, evaluation, and deployment. Newton is a Warp-native physics backend with multiple solver paths, including MuJoCo-Warp, VBD, and MPM. It lets Isaac Lab support rigid bodies, deformables, and particles without tying tasks to one physics engine. OV Libraries provide OVPhysX for PhysX and OVRTX for RTX rendering as standalone libraries. Isaac Sim remains the complete path when a workflow needs the full PhysX/RTX stack, ROS bridge, XR, livestreaming, or Kit tooling, but now fully optional. MicroDuck rendering VBD cable insertion MPM liquid pouring One task API; install and run only the capabilities you need. This release targets Isaac Sim 6.2, Python 3.12, PyTorch 2.11 with CUDA 13.0, NVIDIA Warp 1.17, Newton 1.6.1, and RSL-RL 5.5.1. Try Isaac Lab 3.0 Install uv , clone the official release, and launch a Newton workflow: git clone --branch v3.0.0 --depth 1 https://github.com/isaac-sim/IsaacLab.git cd IsaacLab uv run isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole \\ --viz newton_gl \\ physics=newton_mjwarp For standalone PhysX and RTX rendering, install the OV libraries: uv run --extra ov isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole-Camera \\ --viz newton_gl \\ physics=ovphysx \\ renderer=ovrtx \\ presets=rgb For the complete Isaac Sim experience, including Isaac Sim PhysX, Isaac Sim RTX, ROS bridge, XR, livestreaming, and Kit tooling: uv run --extra isaacsim isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole \\ --viz kit \\ physics=isaacsim_physx See the …"
+    },
+    {
+      "id": "arxiv:2610.30587",
+      "title": "Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents",
+      "url": "https://arxiv.org/abs/2610.30587",
+      "publisher": "arXiv 2610.30587",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
+      "lane": "simeval",
+      "score": 2.37,
+      "numbers": [
+        "82.6%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction. However, embodied agents require fast, closed-loop decisions as they continuously perceive and act on a changing environment. Deploying strong cloud agents leaves the platform idle for seconds between consecutive actions, while lightweight local models respond quickly but are more vulnerable to errors. Existing hierarchical architectures typically assign models fixed roles, whereas conventional model routers make stateless per-request decisions. We present CARE, a critic-guided adaptive execution framework that dynamically determines when to escalate control from a local executor to a stronger cloud model. A lightweight critic model monitors execution reliability and triggers escalation when local execution becomes unreliable; once escalated, control persists until the agent recovers, avoiding step-wise switching. To support such control transfer, a shared handoff memory maintains execution context and task-level progress across executors, enabling the model to intervene without restarting from scratch. Across diverse embodied benchmarks, CARE improves task success by 6.3-18.3 percentage points over the strongest evaluated collaboration baseline. CARE further approaches or exceeds Cloud-only success while reducing median time-between-action latency by 28.8-82.6%."
+    },
+    {
+      "id": "arxiv:2610.30819",
+      "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2610.30819",
+      "publisher": "arXiv 2610.30819",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
+      "lane": "data",
+      "score": 2.167,
+      "numbers": [
+        "27.4%",
+        "40%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold authority. Human teleoperation adapts readily to contact-rich and semantically ambiguous situations but depends on a stable communication link. Local autonomy is executed without continuous human intervention, but may fail under semantic ambiguity, long-horizon drift, and unforeseen contingencies. These two control sources exhibit complementary reliability profiles. We formulate this complementarity as a control authority routing problem and present Task-Evidence Authority Routing for Robotic Manipulation (TEAR), an edge-deployable framework that allocates authority between human teleoperation and local autonomy. TEAR arbitrates on the robot side using network-state evidence, which governs the usability of teleoperation, and task-semantic evidence, which reflects whether autonomous execution remains consistent with the current task. A lightweight temporal arbitrator observes both forms of evidence together with robot state and current authority to time authority transfers. Across simulated and real-world trials under dynamic network conditions, TEAR achieves task success rates close to pure teleoperation while limiting teleoperation to 19.8-27.4% of control steps and improves success by 30-40% over autonomy-only execution in our settings. These results demonstrate the potential of complementary authority routing to sustain successful manipulation with substantially reduced dependence on continuous human control."
+    },
+    {
+      "id": "arxiv:2610.31275",
+      "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
+      "url": "https://arxiv.org/abs/2610.31275",
+      "publisher": "arXiv 2610.31275",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-22",
+      "lane": "data",
+      "score": 2.102,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer. In this paper, we investigate the degree to which such models can acquire necessary structure using data from systems without embodiment. To this end, we test if inexpensive, procedurally generated synthetic data can yield useful priors before a model observes any real-world behavior. We study this through robot action prediction, a natural pretraining objective and a direct test of whether structure learned from arbitrary synthetic tasks transfers to embodied settings. We introduce three data generation pipelines that model mathematical abstractions of robotic control, and use them as pretraining priors for a Transformer. We demonstrate that a model trained purely on this non-robotic data attains non-trivial zero-shot prediction performance on unseen physical robot tasks via an in-context learning mechanism, and that our specialized control priors notably improve upon generic causal priors. We also compare against a compute-matched baseline trained on real robot data, and find that it outperforms our model but only on the datasets it was trained on. These findings suggest that procedurally generated, mathematical abstractions can yield useful robotic priors, offering a potential complement to expensive embodied data collection."
+    },
+    {
+      "id": "arxiv:2610.31476",
+      "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
+      "url": "https://arxiv.org/abs/2610.31476",
+      "publisher": "arXiv 2610.31476",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-22",
       "lane": "systems",
-      "score": 3.05,
+      "score": 2.1,
       "numbers": [
-        "12.33%"
+        "3.46%",
+        "2.55%",
+        "82.4%",
+        "76.7%"
       ],
       "signals": [
         "numbers",
         "closed_loop"
       ],
-      "summary": "Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments. While Large Language Models (LLMs) introduce a new paradigm for TAMP by leveraging extensive common sense, their inherent reasoning limitations hinder direct application, and fine-tuning strategies to enhance these capabilities are currently bottlenecked by the scarcity of high-quality datasets. Existing automated generation methods often suffer from homogeneity, limiting model generalization, and unsolvability, where hallucinated scene graphs create physical mismatches with task goals. To address these issues, we propose Scene-graph Construction Optimized by Plan Error-correction (SCOPE), an automated framework designed to generate diverse and executable TAMP datasets. SCOPE incorporates multi-level diversity metrics to maximize the information entropy of scenarios. Crucially, it introduces a Plan Feedback Error-correction pipeline that utilizes planner execution failures as feedback signals to retroactively rectify logical inconsistencies in scene graphs, ensuring physical feasibility. Experimental results demonstrate that SCOPE exhibits greater robustness to erroneous scene graphs and generates higher-quality data. When utilized for LLM fine-tuning, SCOPE-generated data yield a downstream TAMP model that achieves an absolute 12.33% gain in success rate over its counterpart fine-tuned with data generated by DELTA, a state-of-the-art PDDL-based planner."
+      "heat": 0.0,
+      "summary": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time. However, existing object-centric semantic maps are primarily designed for static environments and rely on an append-only point integration strategy, where newly observed points are accumulated but previously integrated points are rarely reevaluated. Consequently, perception errors accumulate over time, and outdated points persist after objects move or disappear. Although recent dynamic mapping methods update object-level representations in changing scenes, they do not explicitly revise noisy or obsolete points within each object. We propose an online refinable semantic mapping framework that continuously refines object representations through probabilistic point-level confidence updating. Each object point maintains a confidence score that is updated online using multi-view temporal evidence: consistent observations reinforce reliable points, while inconsistent segmentation masks, depth measurements, and visibility cues suppress spurious and outdated points. Combined with object tracking and re-identification to preserve instance identities under motion and relocation, our framework enables object-centric semantic maps to be continuously refined rather than monotonically accumulated. Experiments demonstrate improved mapping accuracy over the previous method by 3.46% on Replica and 2.55% on ScanNet, show robustness in dynamic environments and under perception noise, and provide an effective spatial memory for object navigation and embodied question-answering with success rates of 82.4% and 76.7%."
     },
     {
-      "id": "arxiv:2610.31474",
-      "title": "Skeleton-Grounded Latent Action Model for Robot World Models",
-      "url": "https://arxiv.org/abs/2610.31474",
-      "publisher": "arXiv 2610.31474",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "simeval",
-      "score": 2.82,
-      "numbers": [
-        "19.5%",
-        "11.1%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "summary": "Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions. However, reconstruction-driven latent actions mix robot motion with object responses and other scene changes, complicating their correspondence with robot controls. We propose SkeLAM, a skeleton-guided latent action model for controllable robot world modeling. SkeLAM decomposes latent actions into a kinematic component grounded by robot skeleton supervision and a residual component retaining complementary visual dynamics. Cross-modal swap reconstruction encourages RGB-derived and skeleton-derived kinematic representations to be interchangeable during video reconstruction. The world model incorporates both components through separate conditioning pathways, while branch dropout reduces its dependence on future-derived residual information. A lightweight adapter maps robot actions to the kinematic space, and subsequent world-model fine-tuning adapts generation to these predicted conditions. At inference, the model generates future observations from the current observation and robot actions. On DROID, SkeLAM reduces end-effector ADE by 19.5% and LPIPS by 11.1% compared with DreamDojo. Motion probing supports kinematic specialization, while qualitative results demonstrate zero-shot human-to-robot motion transfer in generated rollouts. Policy evaluation shows agreement between predicted success rates and those measured in real robot executions."
-    },
-    {
-      "id": "arxiv:2610.31670",
-      "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
-      "url": "https://arxiv.org/abs/2610.31670",
-      "publisher": "arXiv 2610.31670",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "foundation",
-      "score": 2.75,
+      "id": "mit-news-robotics:5c1fbd9ca24d",
+      "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
+      "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
+      "publisher": "MIT News (Robotics)",
+      "source_id": "mit-news-robotics",
+      "evidence": "O",
+      "published": "2026-09-29",
+      "lane": "hardware",
+      "score": 0.989,
       "numbers": [],
       "signals": [
-        "closed_loop"
+        "trending"
       ],
-      "summary": "Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability. The Platonic Representation Hypothesis (PRH) suggests that as representations improve, different modalities such as vision and language converge toward a shared statistical model of reality. We ask whether motion trajectories form another such modality: as embodied models become more capable, should their sensory representations converge toward the structure of physical motion? To examine this, we propose Sensorimotor Alignment ($S^2$), a training-free offline metric that measures how well a model's sensory representation aligns with the geometry of physical motion. We find that $S^2$ correlates positively with downstream robot task success across embodied model families, making it a low-cost offline proxy for prioritizing models before closed-loop evaluation. $S^2$ can also identify promising vision-language model (VLM) backbones even before costly fine-tuning into vision-language-action models (VLAs). Beyond this correlation, $S^2$ offers representation-level explanations for phenomena observed in VLAs and world action models (WAMs). With $S^2$, we extend PRH to embodied models and make sensorimotor alignment empirically measurable, offering insight into why an embodied model succeeds beyond its closed-loop success rate."
+      "heat": 0.133,
+      "summary": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots."
     },
     {
-      "id": "arxiv:2610.31371",
-      "title": "Probabilistic Energy Modeling Unifies Versatile Swarm Control",
-      "url": "https://arxiv.org/abs/2610.31371",
-      "publisher": "arXiv 2610.31371",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "edge",
-      "score": 2.655,
-      "numbers": [
-        "10 ms"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change. Here we show that probabilistic energy modeling provides a unifying representation for versatile swarm control, in which diverse missions emerge from compositions of shared interaction principles rather than task-specific control formulations. By exploiting the correspondence between Gibbs random field energy minimization and structured reward maximization, we encode fundamental swarm behaviors as reusable energy terms within a unified probabilistic objective. Decentralized policies trained within this representation are composed into a single controller through lightweight policy gating, without retraining. An interpretable action-attention mechanism captures non-uniform local interactions, while dimensionless normalization supports transfer across swarm scales and platforms. Demonstrated on aerial swarms, the unified policy generalizes zero-shot across six mission classes, 10-100 agents, two hardware platforms, and indoor cluttered and GPS-denied woodland environments. Large-scale simulations achieve 0.96-1.00 task success rates with 1-10 ms per-agent inference latency, while physical deployments confirm zero-shot transfer to real platforms and unstructured environments. These results establish probabilistic energy modeling as a scalable and transferable framework for decentralized swarm control."
-    },
-    {
-      "id": "arxiv:2610.31166",
-      "title": "Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation",
-      "url": "https://arxiv.org/abs/2610.31166",
-      "publisher": "arXiv 2610.31166",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "foundation",
-      "score": 2.6,
-      "numbers": [
-        "29.1%",
-        "72.6%",
-        "36.7%",
-        "88.3%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot"
-      ],
-      "summary": "Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present. We present WholeBodyMem, an object-guided perceptual memory that keeps the pre-history of object events seen before the robot acts on its goal. SAM3 tracks the task objects, and their events causally select key frames within an adaptive budget, which the action expert reads by cross-attention together with object tokens encoding appearance, geometry and time. We also contribute HuMeGo, a humanoid memory benchmark with six simulated and six real-world Unitree G1 tasks. Keeping the right frames rather than more frames, WholeBodyMem surpasses memoryless and uniform-memory baselines, raising its base policy's success from 29.1% to 72.6% in simulation and from 36.7% to 88.3% on the real robot, while also improving the standard SIMPLE tasks (70.2% to 86.9%)."
-    },
-    {
-      "id": "arxiv:2610.30955",
-      "title": "A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation",
-      "url": "https://arxiv.org/abs/2610.30955",
-      "publisher": "arXiv 2610.30955",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
+      "id": "techcrunch-robotics:6ec4c467ad3b",
+      "title": "Tesla starts Optimus robot production in California as profit falls 43%",
+      "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
+      "publisher": "TechCrunch (Robotics)",
+      "source_id": "techcrunch-robotics",
+      "evidence": "M",
+      "published": "2026-10-21",
       "lane": "hardware",
-      "score": 2.515,
+      "score": 0.932,
       "numbers": [
-        "4 Hz"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "summary": "Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces. Achieving both properties simultaneously remains challenging. This paper presents the completed iAssistADL platform, a 3-DoF assistive device for future tremor and ataxia compensation during activities of daily living. The system employs a transparency-oriented mechanical architecture with all actuators located at the base, resulting in low moving mass, decoupled kinematics, and high mechanical transparency. To compensate for friction-induced transparency limitations along the vertical axis, a hybrid control strategy is proposed that combines open-loop force rendering in the horizontal plane with closed-loop force control in the vertical direction. The platform is experimentally evaluated through transparency measurements and static and dynamic force-rendering experiments at representative configurations. Results demonstrate resistive torques below 0.1 Nm in the horizontal plane, end-effector forces of up to approximately 10 N throughout the workspace, and accurate horizontal force rendering up to 4 Hz. While the vertical axis remains limited by friction-induced dynamics at higher frequencies, the proposed system successfully combines high transparency with controlled force generation, establishing a promising hardware platform for future tremor and ataxia compensation."
-    },
-    {
-      "id": "nvidia-blog:231615289514",
-      "title": "NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations",
-      "url": "https://blogs.nvidia.com/blog/european-retail-open-models-robotics/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-10-22",
-      "lane": "simeval",
-      "score": 1.835,
-      "numbers": [
-        "90%"
+        "43%"
       ],
       "signals": [
         "numbers"
       ],
-      "summary": "European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a digital twin. Frontier Results With Open Models Retail leaders and technology companies across Europe are using NVIDIA-accelerated open […]"
-    },
-    {
-      "id": "the-robot-report:50dc673c9de4",
-      "title": "Eka Robotics raises $150M to scale its vision-force-action model for robots",
-      "url": "https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-24",
-      "lane": "training",
-      "score": 1.2,
-      "numbers": [],
-      "signals": [],
-      "summary": "Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale."
+      "heat": 0.0,
+      "summary": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving."
     }
   ],
   "lane_counts": {
-    "foundation": 7,
-    "data": 6,
+    "foundation": 6,
+    "data": 7,
     "training": 8,
     "simeval": 13,
-    "edge": 5,
-    "safety": 4,
+    "edge": 4,
+    "safety": 2,
     "systems": 5,
-    "hardware": 8
+    "hardware": 10
   },
   "evidence_mix": {
-    "O": 4,
-    "R": 36,
+    "O": 6,
+    "R": 33,
     "M": 16
   },
   "fetch": {
-    "items": 391,
-    "attempted": 11,
-    "answered": 10,
+    "items": 534,
+    "attempted": 23,
+    "answered": 22,
     "failed": [
       "deepmind"
     ],
@@ -186,8 +172,30 @@
     "unavailable": [
       "page_watch"
     ],
+    "robots_skipped": [],
+    "robots_reasons": {},
+    "signals": {
+      "attempted": [
+        "github:google-deepmind/mujoco",
+        "github:huggingface/lerobot",
+        "github:isaac-sim/isaaclab",
+        "github:physical-intelligence/openpi",
+        "hf_daily_papers",
+        "hn:embodied ai",
+        "hn:humanoid",
+        "hn:physical ai",
+        "hn:robot",
+        "hn:robotics"
+      ],
+      "failed": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "hf_papers": 50,
+      "hn_stories": 18,
+      "repos": 4
+    },
     "per_source": {
-      "arxiv": 58,
+      "arxiv": 33,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -196,7 +204,17 @@
       "the-robot-report": 15,
       "tri": 10,
       "leiphone": 20,
-      "monoist": 30
+      "monoist": 30,
+      "openai": 19,
+      "bair": 6,
+      "mit-news-robotics": 50,
+      "nature-machine-intelligence": 1,
+      "techcrunch-robotics": 11,
+      "robohub": 75,
+      "qbitai": 3,
+      "github-lerobot": 1,
+      "github-isaaclab": 1,
+      "github-mujoco": 1
     },
     "page_watch": {
       "enabled": true,

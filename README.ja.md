@@ -60,37 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-25
+### 本日のレーダー · 2026-10-26
 
-`生成時刻: 2026-10-24 23:40 UTC` ｜ `対象期間: 論文 2026-10-21 → 2026-10-25 · ブログ・報道 2026-09-25 → 2026-10-25 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-25 23:40 UTC` ｜ `対象期間: 論文 2026-10-22 → 2026-10-26 · ブログ・報道 2026-09-26 → 2026-10-26 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets](https://arxiv.org/abs/2610.31518)**<br>`12.33%`<br><sub>システムとオーケストレーション · arXiv 2610.31518 · 2026‑10‑22</sub> |
-| 02<br>🔵&nbsp;`R` | **[Skeleton-Grounded Latent Action Model for Robot World Models](https://arxiv.org/abs/2610.31474)**<br>`19.5%`&nbsp; `11.1%`<br><sub>シミュレーションと評価 · arXiv 2610.31474 · 2026‑10‑22</sub> |
-| 03<br>🔵&nbsp;`R` | **[Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success](https://arxiv.org/abs/2610.31670)**<br><sub>基盤モデル · arXiv 2610.31670 · 2026‑10‑22</sub> |
-| 04<br>🔵&nbsp;`R` | **[Probabilistic Energy Modeling Unifies Versatile Swarm Control](https://arxiv.org/abs/2610.31371)**<br>`10 ms`<br><sub>エッジとリアルタイム · arXiv 2610.31371 · 2026‑10‑22</sub> |
-| 05<br>🔵&nbsp;`R` | **[Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation](https://arxiv.org/abs/2610.31166)**<br>`29.1%`&nbsp; `72.6%`&nbsp; `36.7%`<br><sub>基盤モデル · arXiv 2610.31166 · 2026‑10‑22</sub> |
-| 06<br>🔵&nbsp;`R` | **[A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation](https://arxiv.org/abs/2610.30955)**<br>`4 Hz`<br><sub>ハードウェアとサプライチェーン · arXiv 2610.30955 · 2026‑10‑22</sub> |
-| 07<br>🟢&nbsp;`O` | **[NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations](https://blogs.nvidia.com/blog/european-retail-open-models-robotics/)**<br>`90%`<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑10‑22</sub> |
-| 08<br>🟡&nbsp;`M` | **[Eka Robotics raises $150M to scale its vision-force-action model for robots](https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/)**<br><sub>学習と自己改善 · The Robot Report · 2026‑10‑24</sub> |
+| 01<br>🟢&nbsp;`O` | **[Isaac Lab v3.0.0](https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0)**<br><sub>シミュレーションと評価 · Isaac Lab releases (GitHub) · 2026‑10‑20</sub> |
+| 02<br>🔵&nbsp;`R` | **[Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents](https://arxiv.org/abs/2610.30587)**<br>`82.6%`<br><sub>シミュレーションと評価 · arXiv 2610.30587 · 2026‑10‑22</sub> |
+| 03<br>🔵&nbsp;`R` | **[TEAR: Task-Evidence Authority Routing for Robotic Manipulation](https://arxiv.org/abs/2610.30819)**<br>`27.4%`&nbsp; `40%`<br><sub>データエンジン · arXiv 2610.30819 · 2026‑10‑22</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning Robot Behavior Priors from Non-Robotic Synthetic Data](https://arxiv.org/abs/2610.31275)**<br><sub>データエンジン · arXiv 2610.31275 · 2026‑10‑22</sub> |
+| 05<br>🔵&nbsp;`R` | **[Point-Level Refinable Semantic Mapping for Spatial Understanding](https://arxiv.org/abs/2610.31476)**<br>`3.46%`&nbsp; `2.55%`&nbsp; `82.4%`<br><sub>システムとオーケストレーション · arXiv 2610.31476 · 2026‑10‑22</sub> |
+| 06<br>🟢&nbsp;`O` | **[Powered by muscle cells, a paper-thin robot swims through watery maze](https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929)**<br><sub>ハードウェアとサプライチェーン · MIT News (Robotics) · 2026‑09‑29</sub> |
+| 07<br>🟡&nbsp;`M` | **[Tesla starts Optimus robot production in California as profit falls 43%](https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/)**<br>`43%`<br><sub>ハードウェアとサプライチェーン · TechCrunch (Robotics) · 2026‑10‑21</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **SCOPE** — `AI 下書き` 長期タスク向けのTAMPプランナーを作るチームには、著者自己報告で成功率が絶対値12.33%改善という材料になる。ただし比較対象も実機結果もページには示されておらず、プランナーを変える前にデータ側の手掛かりとして再現を。
-2. **Skeleton-Grounded Latent Action Model for Robot World Models** — `AI 下書き` 潜在行動で動画から世界モデルのダイナミクスを学ぶチームなら、DreamDojo比でエンドエフェクタADEを19.5%、LPIPSを11.1%削減という報告はシミュレータ部品として試す根拠になる。ただし予測誤差の指標でありタスク成功率ではない。
-3. **Sensorimotor Alignment** — `AI 下書き` チェックポイント選定に閉ループのロールアウト予算を費やしているチームは、将来オフラインの代理指標で先に絞り込めるかもしれない。ただしページにあるのは動機だけで、代理指標と成功率の一致度を示す数値はなく、当面はロールアウトで判断すべき。
-4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — `AI 下書き` ミッションが変わるたびに制御器の再設計・再調整・再学習が必要なスウォーム開発では、エージェントあたり1-10 msの推論遅延で成功率を報告するこのプレプリントは参考になる。ただし実行ハードウェアも実機結果もページにはなく、自前の計算資源で遅延を確かめる必要がある。
-5. **Memory before Goal** — `AI 下書き` 現在の画面しか見ない全身VLAで人型を動かすチームは、物体が隠れたり視界から外れたりする場面で目標前の記憶を試す価値がある。プレプリントの自己報告では基本方策の成功率がシミュレーションで29.1%から72.6%、実機で36.7%から88.3%へ向上した。
-6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — `AI 下書き` 機械的な透明性と矯正的な相互作用力の両立が求められる支援機器や接触型ハードウェアの設計では参考事例になる。ただしページに出ている数値は最大4 Hzの力レンダリングのみで、設計を借りる前にその帯域が自分のタスクに足りるかを確認したい。
-7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — `AI 下書き` 小売・倉庫の運用者はNVIDIA自身の事例紹介として読むべきだ。推論コスト90%削減は商取引プラットフォームの話でロボットではなく、フルフィルメントセンターの事例は複数ロボット群の協調をシミュレーションしたもので、稼働中ロボットの指標は示されていない。
-8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — `AI 下書き` 力覚を方策の入力に加えるか検討しているチームには方向性のシグナルになる。大規模な強化学習で視覚・力・行動モデルを鍛える取り組みに資金が付いたが、二次的な資金調達報道であり、評価の根拠となる結果はページに示されていない。
+1. **Isaac Lab v3.0.0** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Know When to Escalate** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **TEAR** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — 当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Tesla starts Optimus robot production in California as profit falls 43%** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-25.ja.md)** · [週間まとめ ›](radar/weekly/2026-W43.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-26.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
