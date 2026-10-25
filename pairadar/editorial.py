@@ -39,6 +39,7 @@ _CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
 # A sentence ends at ., !, ? (followed by space or end) or at the CJK stops. Decimal
 # points and "e.g." do not end one: a terminal period must be followed by whitespace.
 _SENTENCE_END = re.compile(r"(?<=[。！？])|(?<=[.!?])(?=\s)")
+_ABBREVIATION = re.compile(r"(?:\b(?:Sec|Secs|Fig|Figs|Tab|App|Eq|Eqs|No|vs|al|e\.g|i\.e|cf|approx|p|pp|ca)\.)$", re.I)
 
 
 def load_style(path: Path = STYLE_PATH) -> dict:
@@ -53,8 +54,17 @@ def normalise(text: str) -> str:
 
 
 def sentences(text: str) -> list[str]:
-    parts = (part.strip() for part in _SENTENCE_END.split(normalise(text)))
-    return [part for part in parts if part]
+    parts = [part.strip() for part in _SENTENCE_END.split(normalise(text))]
+    merged: list[str] = []
+    for part in parts:
+        if not part:
+            continue
+        # "Sec. 3.2", "Fig. 4", "et al. 2025": an abbreviation's period does not end a sentence.
+        if merged and _ABBREVIATION.search(merged[-1]):
+            merged[-1] = f"{merged[-1]} {part}"
+        else:
+            merged.append(part)
+    return merged
 
 
 def text_length(sentence: str, lang: str) -> int:
@@ -134,14 +144,19 @@ def _unit_pattern(lang: str, style: dict) -> re.Pattern:
 
 
 def triples(text: str, lang: str, style: dict) -> list[str]:
-    """Sentences that carry a number with a unit, a baseline and a source locator."""
+    """Sentences that carry a measured number, a baseline and a source locator.
+
+    A measured number is a number with a unit ("72.6%", "41.15 px") or a named statistic
+    ("r = +0.681", "ρ = 0.53", "LPIPS 0.13" is not enough, "LPIPS = 0.13" is)."""
     units = _unit_pattern(lang, style)
-    locator = re.compile(style["locators"], re.I)
+    statistic = re.compile(style["statistics"])
+    locator = re.compile(style["locators"])   # case-sensitive on purpose: "page is" is not a locator
     markers = [m.casefold() for m in style["baseline_markers"][lang] + style["baseline_markers"]["en"]]
     found = []
     for sentence in sentences(text):
         folded = " " + sentence.casefold() + " "
-        if units.search(sentence) and locator.search(sentence) and any(m in folded for m in markers):
+        measured = units.search(sentence) or statistic.search(sentence)
+        if measured and locator.search(sentence) and any(m in folded for m in markers):
             found.append(sentence)
     return found
 
@@ -217,6 +232,14 @@ def check_deep(deep: Deep, lang: str, style: dict) -> list[str]:
     return findings
 
 
+def index_sentence(line: str) -> str:
+    """The sentence of an index line, without its leading title ("<title>: sentence")."""
+    for separator in ("：", ": "):
+        if separator in line:
+            return line.split(separator, 1)[1].strip()
+    return line
+
+
 def check_index(line: str, lang: str, style: dict) -> list[str]:
     findings = []
     hits = banned_hits(line, lang, style)
@@ -224,10 +247,11 @@ def check_index(line: str, lang: str, style: dict) -> list[str]:
         findings.append(f"stock phrase(s): {', '.join(hits)}")
     if has_emoji(line, style):
         findings.append("emoji")
+    sentence = index_sentence(line)
     if lang == "en":
-        if len(line.split()) > style["index"]["max_words_en"]:
+        if len(sentence.split()) > style["index"]["max_words_en"]:
             findings.append("index line too long")
-    elif len(line.replace(" ", "")) > style["index"]["max_chars_cjk"]:
+    elif len(sentence.replace(" ", "")) > style["index"]["max_chars_cjk"]:
         findings.append("index line too long")
     return findings
 

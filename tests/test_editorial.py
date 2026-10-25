@@ -108,9 +108,35 @@ class CheckerTest(unittest.TestCase):
                       editorial.check(ja.replace("参考になる。", "画期的な成果だ。"), "ja", STYLE,
                                       deep_count=1, index_count=1)["deep"][0]["findings"])
 
+    def test_locators_need_a_numbered_target(self):
+        locator = __import__("re").compile(STYLE["locators"])
+        for good in ("Table 2", "TABLE II", "Fig. 4", "Sec. IV-C", "Sec. 3.2", "App. B.5", "表 II", "图 4", "図 3",
+                     "第 3.2 节", "第 V-E 节", "第 4 节"):
+            self.assertTrue(locator.search(good), good)
+        for bad in ("the page is", "Figure out", "a table of results", "section heading", "第一次"):
+            self.assertFalse(locator.search(bad), bad)
+
+    def test_named_statistics_count_as_measured_numbers(self):
+        """Pilot day 1: a correlation has no unit but is a measurement with a baseline and a locator."""
+        sentence = "S2 correlates with success at r = +0.681, compared with r = -0.154 for VQA scores (Sec. 3.2)."
+        self.assertEqual(editorial.triples(sentence, "en", STYLE), [sentence])
+        self.assertEqual(editorial.triples("Correlation is 0.681 compared with 0.154 (Sec. 3.2).", "en", STYLE), [])
+        zh = "S² 与成功率的相关系数 r = +0.681，相比 VQA 分数的 r = -0.154（第 3.2 节）。"
+        self.assertEqual(len(editorial.triples(zh, "zh", STYLE)), 1)
+        self.assertEqual(len(editorial.triples("Spearman ρ = 0.53 against 0.21 for the baseline (App. C).",
+                                               "en", STYLE)), 1)
+
+    def test_index_length_counts_the_sentence_not_the_title(self):
+        title = "A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation"
+        self.assertEqual(editorial.check_index(f"{title}：台架测试中力反馈带宽达 4 Hz。", "zh", STYLE), [])
+        self.assertEqual(editorial.check_index(f"{title}: " + "word " * 41, "en", STYLE), ["index line too long"])
+        self.assertEqual(editorial.check_index("无标题" * 30, "zh", STYLE), ["index line too long"])
+
     def test_decimal_points_do_not_split_sentences(self):
         self.assertEqual(editorial.sentences("Up from 29.1% to 72.6% in sim. Then 88.3% on G1."),
                          ["Up from 29.1% to 72.6% in sim.", "Then 88.3% on G1."])
+        self.assertEqual(editorial.sentences("See Sec. 3.2 and Fig. 4 (Smith et al. 2025). Next one."),
+                         ["See Sec. 3.2 and Fig. 4 (Smith et al. 2025).", "Next one."])
         # NFKC: full-width stops become their ASCII forms before splitting.
         self.assertEqual(editorial.sentences("成功率从 36.7% 提到 88.3%。另一句！"), ["成功率从 36.7% 提到 88.3%。", "另一句!"])
 

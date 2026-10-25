@@ -63,12 +63,16 @@ class PilotTest(unittest.TestCase):
         self.assertEqual(stat.S_IMODE(path.parent.stat().st_mode), 0o700)
 
     def test_old_page_metrics_use_the_why_lines(self):
-        page = ("### 1. A\n- **Why it matters** `AI draft`: The visible excerpt gives no figures, read the paper first.\n"
-                "### 2. B\n- **Why it matters** `AI draft`: The visible excerpt gives no figures, read the paper first.\n")
+        page = ("# Day\n## Today's picks\n"
+                "### 1. A\n- **Why it matters** `AI draft`: The visible excerpt gives no figures, read the paper first.\n"
+                "### 2. B\n- **Why it matters** `AI draft`: The visible excerpt gives no figures, read the paper first.\n"
+                "## Frontier baseline (curated)\n### 1. C\n- **Why it matters**: A hand-written baseline note.\n")
         metrics = pilot.old_metrics(page, "en", pilot.editorial.load_style())
-        self.assertEqual(metrics["items"], 2)
+        self.assertEqual(metrics["items"], 2)                  # the curated baseline is not compared
         self.assertGreaterEqual(metrics["banned_total"], 2)
         self.assertEqual(metrics["template_rate"], 1.0)
+        ja = "# 日\n## 本日の注目\n### 1. A\n- **重要な理由**: 査読前のプレプリント。\n"
+        self.assertEqual(pilot.old_metrics(ja, "ja", pilot.editorial.load_style())["items"], 1)
 
     def test_blind_pair_hides_which_is_new(self):
         day = "2026-10-25"

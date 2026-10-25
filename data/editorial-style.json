@@ -39,7 +39,8 @@
     "zh": ["相比", "对比", "比", "较", "基线", "从", "高于", "低于", "超过"],
     "ja": ["比べ", "比較", "ベースライン", "から", "より", "上回", "下回"]
   },
-  "locators": "(?:Table|Tab\\.|Fig\\.|Figure|Sec\\.|Section|§|p\\.|page|表|图|圖|図|第\\s*\\d+\\s*页|ページ)\\s*[IVX0-9]",
+  "locators": "(?:(?:[Tt]able|TABLE|Tab\\.|[Ff]ig\\.|[Ff]igure|FIGURE|[Ss]ec\\.|[Ss]ection|§|[Aa]pp\\.|[Aa]ppendix|p\\.|pp\\.|[Pp]age|表|图|圖|図|付録|附录)\\s*(?:\\d|[IVX]+\\b|[IVX]+-[A-Z]|[A-H]\\.?\\d)|(?:[Aa]pp\\.|[Aa]ppendix|付録|附录)\\s*[A-H]\\b|第\\s*[0-9IVX.\\-A-Z]+\\s*[节页章節])",
+  "statistics": "(?:\\b(?:r|R2|R²|p|AUC|F1|IoU|ADE|FDE|LPIPS|SSIM|PSNR|mAP|BLEU|Spearman|Pearson)|ρ)\\s*[=≈:]\\s*[+\\-−]?\\d",
   "limits": {
     "min_chars": {"zh": 30, "en": 80, "ja": 40}
   },

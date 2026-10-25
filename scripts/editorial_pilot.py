@@ -35,7 +35,7 @@ from pairadar import editorial, fulltext  # noqa: E402
 
 LANGS = editorial.LANGS
 DEEP, INDEX = 3, 5
-_WHY = {"zh": "为什么重要", "en": "Why it matters", "ja": "なぜ重要か"}
+_WHY = {"zh": "为什么重要", "en": "Why it matters", "ja": "重要な理由"}
 
 
 def private_dir(path: Path) -> Path:
@@ -123,8 +123,15 @@ def cmd_packet(args) -> int:
 
 
 def old_metrics(page: str, lang: str, style: dict) -> dict:
+    """The applicable checks on the published page's "why it matters" lines, today's picks only.
+
+    The curated frontier-baseline section that follows the picks is written by hand and
+    is not part of the comparison."""
     marker = f"**{_WHY[lang]}**"
-    lines = [line.split(":", 1)[-1].split("：", 1)[-1].strip() for line in page.splitlines() if marker in line]
+    sections = re.split(r"(?m)^## ", page)
+    picks_section = sections[1] if len(sections) > 1 else page
+    lines = [line.split(":", 1)[-1].split("：", 1)[-1].strip() for line in picks_section.splitlines()
+             if marker in line]
     rate, _ = editorial.template_rate(lines, lang)
     banned = sum(len(editorial.banned_hits(line, lang, style)) for line in lines)
     return {"items": len(lines), "banned_total": banned, "template_rate": round(rate, 3),
