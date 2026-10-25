@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31518" rel="noopener" target="_blank">SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets</a></h3>
 <p class="figure"><strong>12.33%</strong><span class="context">“that achieves an absolute 12.33% gain in success”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> Teams building long-horizon task-and-motion planners get a self-reported absolute 12.33% success gain to weigh, but the page shows neither the baseline nor real-robot results, so reproduce it as a dataset-side lead before touching a planner.</p>
 <p class="excerpt">Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31474" rel="noopener" target="_blank">Skeleton-Grounded Latent Action Model for Robot World Models</a></h3>
 <p class="figure"><strong>19.5%</strong><span class="context">“reduces end-effector ADE by 19.5% and LPIPS by”</span></p><p class="chips"><span class="chip">11.1%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> For teams learning world-model dynamics from video through latent actions, the reported 19.5% end-effector ADE and 11.1% LPIPS reductions against DreamDojo measure prediction quality, not task success, which justifies a trial as a simulator component rather than a policy swap.</p>
 <p class="excerpt">Robot world models simulate how environments evolve in response to robot actions. Latent action models enable learning dynamics from videos by encoding visual transitions as proxy actions.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31670" rel="noopener" target="_blank">Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Teams burning closed-loop rollout budget on checkpoint selection may one day screen with a cheap offline proxy first, but the page gives only the motivation and no figures on how well the proxy tracks rollout success, so rollouts stay the gate for now.</p>
 <p class="excerpt">Robotic foundation models are typically evaluated through costly closed-loop rollouts, which motivates cheap offline proxies for model capability.</p>
 <ul class="signals"><li>closed-loop success reported</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31371" rel="noopener" target="_blank">Probabilistic Energy Modeling Unifies Versatile Swarm Control</a></h3>
 <p class="figure"><strong>10 ms</strong><span class="context">“success rates with 1-10 ms per-agent inference latency”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Swarm teams that redesign, retune or retrain controllers whenever the mission changes get a preprint reporting success at 1-10 ms per-agent inference latency; the page names no hardware and shows no real-robot results, so budget that latency on your own compute first.</p>
 <p class="excerpt">Robotic swarms must coordinate across diverse missions, yet existing controllers often require redesign, retuning, or retraining when objectives change.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.31166" rel="noopener" target="_blank">Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation</a></h3>
 <p class="figure"><strong>29.1%</strong><span class="context">“base policy&#x27;s success from 29.1% to 72.6% in”</span></p><p class="chips"><span class="chip">72.6%</span><span class="chip">36.7%</span><span class="chip">88.3%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Humanoid teams whose whole-body VLA sees only the present frame should test pre-goal memory where objects get hidden or leave view: the preprint self-reports base-policy success rising from 29.1% to 72.6% in simulation and 36.7% to 88.3% on the real robot.</p>
 <p class="excerpt">Humanoid loco-manipulation in dynamic scenes is non-Markovian: cues vanish as objects change or are hidden, or leave the view as the robot turns and walks, yet whole-body vision-language-action (VLA) policies see only the present.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li></ul>
 <footer>
@@ -178,7 +178,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.30955" rel="noopener" target="_blank">A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compensation: Design and Experimental Validation</a></h3>
 <p class="figure"><strong>4 Hz</strong><span class="context">“force rendering up to 4 Hz”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Designers of assistive or physical-interaction hardware that must stay mechanically transparent while applying corrective forces get a preprint reference point, but the only quoted figure is force rendering up to 4 Hz, so check that bandwidth against your task before borrowing the design.</p>
 <p class="excerpt">Assistive devices for patients with neurodegenerative movement disorders must combine high mechanical transparency with the ability to generate corrective interaction forces.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -194,7 +194,7 @@
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/european-retail-open-models-robotics/" rel="noopener" target="_blank">NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“cutting inference costs by 90% to to a”</span></p>
-<p class="why">First-party release; the text gives figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Retail and warehouse operators should read this as NVIDIA&#x27;s own case list: the 90% inference-cost cut belongs to a commerce platform, not a robot, and the fulfillment-center case is mixed-fleet collaboration in simulation, and the page quotes no deployed-robot metric.</p>
 <p class="excerpt">European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a…</p>
 <ul class="signals"><li>quantitative results</li></ul>
 <footer>
@@ -209,7 +209,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots/" rel="noopener" target="_blank">Eka Robotics raises $150M to scale its vision-force-action model for robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Teams weighing force as a policy input can take this as a direction signal: money is backing vision-force-action models trained with reinforcement learning at scale, but this is a secondary funding report and the page quotes no results to evaluate.</p>
 <p class="excerpt">Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-24</span>

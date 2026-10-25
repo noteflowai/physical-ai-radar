@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **SCOPE** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
-2. **Skeleton-Grounded Latent Action Model for Robot World Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **Sensorimotor Alignment** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-5. **Memory before Goal** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
-6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注价格、供货以及谁在批量交付。
-7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — 一手官方发布；原文给出了量化数据。关注仿真结果对真机表现的预测有多准。
-8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
+1. **SCOPE** — `AI 起草` 做长程任务与运动规划（TAMP）的团队可以留意这条：作者自报成功率绝对提升 12.33%，但页面没有交代对比基线，也没有真机结果，更适合作为数据侧的线索先复现，再决定是否调整规划器。
+2. **Skeleton-Grounded Latent Action Model for Robot World Models** — `AI 起草` 用潜在动作从视频学习世界模型动力学的团队，可把它当作仿真组件来试：这份预印本作者自报相对 DreamDojo，末端执行器 ADE 降 19.5%、LPIPS 降 11.1%，但这些是预测误差指标而非任务成功率，不足以直接替换策略。
+3. **Sensorimotor Alignment** — `AI 起草` 在 checkpoint 筛选上烧闭环 rollout 预算的团队，未来或许能先用离线代理指标过一遍；但页面只讲了动机，没有给出代理指标与闭环成功率吻合程度的任何数字，目前仍应以 rollout 为准。
+4. **Probabilistic Energy Modeling Unifies Versatile Swarm Control** — `AI 起草` 每换一个任务就要重新设计、调参或重训控制器的集群团队，可以关注这份预印本给出的 1-10 ms 单体推理延迟；但页面未提及真机结果，也没说明运行硬件，上线前须在自己的算力上核算这一延迟。
+5. **Memory before Goal** — `AI 起草` 全身 VLA 只看当前画面的人形团队，值得在物体被遮挡或移出视野的场景里试加目标前记忆：作者自报基础策略成功率在仿真中由 29.1% 升至 72.6%，真机上由 36.7% 升至 88.3%。
+6. **A Transparent 3-DoF Assistive Device for Upper-Limb Tremor and Ataxia Compe…** — `AI 起草` 设计既要机械透明、又要输出纠正性交互力的辅助或人机接触硬件时，这是一个预印本参考点；页面唯一的数字是最高 4 Hz 的力渲染，借鉴结构前先核对这一带宽是否覆盖你的任务。
+7. **NVIDIA Transforms European Retail, From Digital Discovery to Physical Opera…** — `AI 起草` 零售与仓储运营方读这篇时要分清口径：90% 的推理成本下降属于一个电商平台而非机器人，履约中心那条是在仿真里协同多支机器人车队，页面没有给出任何已部署机器人的运行指标。
+8. **Eka Robotics raises $150M to scale its vision-force-action model for robots** — `AI 起草` 在考虑把力觉作为策略输入的团队，可以把这条当作方向信号：有资金押注用大规模强化学习训练视觉-力-动作模型；但这是二手融资报道，页面没有引用任何结果，暂无可据以评测的内容。
 
 </details>
 
