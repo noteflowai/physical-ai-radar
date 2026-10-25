@@ -423,7 +423,9 @@ def select(
     `[R]`; the official and media items that did qualify were simply outranked.
     These two caps are soft: they reserve room, they do not leave it empty. Once the
     capped pass is done, any free slots are filled from what the caps held back, in
-    rank order, still under the lane cap and every gate above.
+    rank order, still under the lane cap and every gate above. The best item the caps
+    hold back in a lane keeps one slot of that lane for the rest of the capped pass, so
+    a lower-ranked item cannot take it meanwhile; the fill pass does not keep it.
 
     `seen` holds normalised URLs already published on earlier days. The arXiv
     window looks back three days and feeds keep entries for thirty, so without it
@@ -497,16 +499,26 @@ def select(
             reserved[kind] = already
 
     for capped in (True, False):
+        # Lane room held for the best item the soft caps pushed to the fill pass, one per lane and in the
+        # capped pass only. Without it a lower-ranked item took the lane while a better one waited: on
+        # 2026-10-22 AW-0 (2.90, foundation) was held back by per_source, two NVIDIA posts (2.60, 1.80) filled
+        # foundation, and AW-0 was then dropped for a full lane. One slot per lane, not one per held item: on
+        # the recorded 2026-09-25 day two held papers would otherwise take both safety slots and hand the page
+        # back to arXiv, which is what per_source is there to prevent. The fill pass ignores this: a held item
+        # that still cannot be taken there (max_arxiv, say) leaves its slot to the next item.
+        deferred: set[str] = set()
         for index, item in enumerate(eligible):
             if len(picked) >= limit:
                 break
-            if index in picked or lane_counts.get(item.lane, 0) >= per_lane:
+            held = 1 if capped and item.lane in deferred else 0
+            if index in picked or lane_counts.get(item.lane, 0) + held >= per_lane:
                 continue
             if retold(index) or arxiv_full(item):
                 continue
-            if capped and per_source is not None and source_counts.get(item.source_id, 0) >= per_source:
-                continue
-            if capped and per_evidence is not None and evidence_counts.get(item.evidence, 0) >= per_evidence:
+            if capped and ((per_source is not None and source_counts.get(item.source_id, 0) >= per_source)
+                           or (per_evidence is not None
+                               and evidence_counts.get(item.evidence, 0) >= per_evidence)):
+                deferred.add(item.lane)
                 continue
             take(index, item)
     if report is not None:
