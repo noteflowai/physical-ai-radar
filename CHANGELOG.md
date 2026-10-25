@@ -42,6 +42,8 @@ radar content itself is dated, not versioned.
   one when any qualifies. robots.txt is honoured for every feed and API, requests to one
   host are spaced a second apart; robots skips and unanswered APIs are logged and reported
   by `pairadar.health`, never as struggling. docs/METHODOLOGY.md sections 1–3.
+- A misspelt `filters.highlights.reserve` entry is ignored and reported as
+  `unknown:<name>` in the run log (`quota.unmet`) instead of stopping the run.
 
 - The README's picks table has two columns instead of four: the rank and its
   evidence dot, then the title with up to three figures and a small line for the

@@ -230,7 +230,8 @@ caps above:
 - one slot is reserved for the best qualifying official (`[O]`) item, and one for the best
   qualifying non-arXiv item marked `trending`. A reservation passes every gate above (topic,
   lane keyword, repeat guard, same-story, lane cap); one that nothing can fill stays empty,
-  and the run log records it under `quota.unmet` in `radar/history.json`.
+  and the run log records it under `quota.unmet` in `radar/history.json`. A name other than
+  `official` or `hot` is ignored and recorded there as `unknown:<name>`.
 
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
