@@ -440,8 +440,7 @@ def select(
     holds in the fill pass too: a day with nothing else that qualifies has a shorter
     list, not an arXiv-only one. `reserve` names slots taken first, before the rank
     passes, by the best eligible item of that kind: "official" (evidence `O`) and
-    "hot" (a non-arXiv item marked `trending`); any other name is ignored and reported
-    as `unknown:<name>`. A reservation obeys every gate and
+    "hot" (a non-arXiv item marked `trending`). A reservation obeys every gate and
     cap above; when no item can fill it, it stays empty and `report` says so.
     """
     published = {url_key(url) for url in seen}
@@ -477,10 +476,6 @@ def select(
     }
     reserved: dict[str, str | None] = {}
     for kind in reserve:
-        if kind not in kinds:
-            # A misspelt `filters.highlights.reserve` entry must not stop the nightly run.
-            reserved[f"unknown:{kind}"] = None
-            continue
         reserved[kind] = None
         if len(picked) >= limit:
             continue

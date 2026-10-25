@@ -77,10 +77,12 @@ class Signals:
     attempted: list[str] = field(default_factory=list)
     failed: list[str] = field(default_factory=list)
     robots_skipped: list[str] = field(default_factory=list)
+    robots_reasons: dict[str, str] = field(default_factory=dict)
 
     def summary(self) -> dict[str, Any]:
         return {"attempted": sorted(self.attempted), "failed": sorted(self.failed),
-                "robots_skipped": sorted(self.robots_skipped), "hf_papers": len(self.upvotes),
+                "robots_skipped": sorted(self.robots_skipped),
+                "robots_reasons": dict(sorted(self.robots_reasons.items())), "hf_papers": len(self.upvotes),
                 "hn_stories": len(self.stories), "repos": len(self.stars)}
 
 
@@ -89,11 +91,9 @@ def _json(url: str, name: str, signals: Signals, robots: fetch.RobotsCache | Non
     """One request; None (recorded) when robots.txt disallows it or it does not answer."""
     signals.attempted.append(name)
     verdict = robots.verdict(url) if robots is not None else fetch.ALLOW
-    if verdict == fetch.DISALLOW:
+    if verdict != fetch.ALLOW:
         signals.robots_skipped.append(name)
-        return None
-    if verdict == fetch.UNREACHABLE:
-        signals.failed.append(name)
+        signals.robots_reasons[name] = verdict
         return None
     fetch.polite(url)
     payload = getter(url)

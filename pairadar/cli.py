@@ -199,6 +199,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         # Feeds whose robots.txt disallows them, and attention APIs that did not answer:
         # reported by pairadar.health, never as struggling (source repair fixes feeds).
         "robots_skipped": sorted(report.robots_skipped),
+        "robots_reasons": {**{f"signal:{name}": reason for name, reason in sorted(signals.robots_reasons.items())},
+                           **dict(sorted(report.robots_reasons.items()))},
         "signal_failed": sorted(signals.failed),
         # The highlights quota: what was reserved, what could not be filled.
         "quota": quota,

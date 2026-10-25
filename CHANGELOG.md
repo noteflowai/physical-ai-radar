@@ -21,11 +21,12 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
-- robots.txt is read as RFC 9309 asks: 401/403 disallow the host, other 4xx mean no
-  rules, and a 5xx, a 429 after its retry or no answer at all leave the host unrequested
-  for the run (the feed is recorded as not answering). Before, any robots.txt that could
-  not be read allowed everything. A misspelt `filters.highlights.reserve` entry is ignored
-  and reported as `unknown:<name>` in the run log instead of stopping the run.
+- robots.txt is read as RFC 9309 asks: 401/403 refuse the host (`forbidden`), other 4xx
+  mean no rules, and a 5xx, a 429 after its retry or no answer at all leave the host
+  `unreachable` and unrequested for the run. Refused feeds and attention APIs are
+  `robots_skipped` with a reason in the run log and in `pairadar.health`
+  (`robots_reasons`), never `failed`. Before, any robots.txt that could not be read
+  allowed everything.
 
 - More professional and mainstream sources, attention ("heat") and a highlights quota.
   Twelve feeds join after a read-only check (200, parses, robots.txt allows): OpenAI News,

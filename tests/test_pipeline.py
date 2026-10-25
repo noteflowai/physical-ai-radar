@@ -553,13 +553,18 @@ class FetchReliabilityTest(unittest.TestCase):
             report = fetch_all(self.config)
         # Captured: a simulated total outage in the log would read as a real one.
         self.assertIn("no answer from", out.getvalue())
-        expected = {"arxiv", *(feed["id"] for feed in self.config.sources["feeds"])}
-        self.assertEqual(set(report.failed), expected)
+        # With no network every robots.txt is unreachable too: the feeds are refused before
+        # any request and recorded with that reason (01, 2026-10-25), never as failed.
+        feeds = {feed["id"] for feed in self.config.sources["feeds"]}
+        self.assertEqual(set(report.failed), {"arxiv"})
+        self.assertEqual(set(report.robots_skipped), feeds)
+        self.assertEqual(set(report.robots_reasons.values()), {"unreachable"})
         self.assertEqual(report.answered, [])
         summary = report.to_dict()
         self.assertEqual(summary["items"], 0)
         self.assertEqual(summary["answered"], 0)
-        self.assertEqual(summary["attempted"], len(expected))
+        self.assertEqual(summary["attempted"], 1)
+        self.assertTrue(degraded(summary, offline=False))
         # The local page_watch channel being down is not one more failed source.
         self.assertEqual(summary["unavailable"], ["page_watch"])
 

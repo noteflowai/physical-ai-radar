@@ -173,7 +173,7 @@ class PoliteFetchingTest(unittest.TestCase):
 
     def test_robots_outcomes_follow_rfc_9309_and_are_read_once_per_host(self) -> None:
         # 4xx: no rules (allow); 401/403: disallow; 5xx, 429 or no answer: unreachable.
-        cases = {404: fetch.ALLOW, 410: fetch.ALLOW, 401: fetch.DISALLOW, 403: fetch.DISALLOW,
+        cases = {404: fetch.ALLOW, 410: fetch.ALLOW, 401: fetch.FORBIDDEN, 403: fetch.FORBIDDEN,
                  429: fetch.UNREACHABLE, 500: fetch.UNREACHABLE, 503: fetch.UNREACHABLE, None: fetch.UNREACHABLE}
         for status, expected in cases.items():
             calls = []
@@ -198,7 +198,7 @@ class PoliteFetchingTest(unittest.TestCase):
             with mock.patch.object(fetch.urllib.request, "urlopen", offline):
                 self.assertEqual(fetch._robots_get("https://a.example/robots.txt"), (None, None))
 
-    def test_a_feed_on_an_unreachable_host_is_failed_and_not_requested(self) -> None:
+    def test_a_feed_on_an_unreachable_host_is_skipped_with_its_reason_and_not_requested(self) -> None:
         requested = []
 
         def get(url, *a, **k):
@@ -206,11 +206,32 @@ class PoliteFetchingTest(unittest.TestCase):
             return None                                           # robots.txt does not answer
         config = config_with(feeds=[{"id": "down", "url": "https://down.example/feed", "evidence": "M"}])
         skipped: list[str] = []
+        reasons: dict[str, str] = {}
         with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()):
-            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(), skipped=skipped)
-        self.assertEqual((items, failed, skipped), ([], ["down"], []))
+            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(), skipped=skipped, reasons=reasons)
+        # 01's acceptance 4: refused, not requested, robots_skipped with a reason, never failed.
+        self.assertEqual((items, failed, skipped, reasons), ([], [], ["down"], {"down": "unreachable"}))
         self.assertEqual(requested, ["https://down.example/robots.txt"])
+
+    def test_every_refusal_reason_reaches_the_run_log_and_health_but_never_struggling(self) -> None:
+        statuses = {"https://a.example": (403, None), "https://b.example": (503, None),
+                    "https://c.example": (200, b"User-agent: *\nDisallow: /\n")}
+        cache = fetch.RobotsCache(getter=lambda url: statuses[url.rsplit("/", 1)[0]])
+        config = config_with(feeds=[{"id": i, "url": f"https://{h}.example/feed", "evidence": "M"}
+                                    for i, h in (("fa", "a"), ("fb", "b"), ("fc", "c"))])
+        skipped: list[str] = []
+        reasons: dict[str, str] = {}
+        with mock.patch.object(fetch, "http_get", lambda url, *a, **k: self.fail("requested " + url)), \
+                mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+            items, failed = fetch.fetch_feeds(config, robots=cache, skipped=skipped, reasons=reasons)
+        self.assertEqual((items, failed, sorted(skipped)), ([], [], ["fa", "fb", "fc"]))
+        self.assertEqual(reasons, {"fa": "forbidden", "fb": "unreachable", "fc": "disallowed"})
+        runs = [{"date": f"2026-10-{day}", "failed": [], "robots_skipped": sorted(skipped),
+                 "robots_reasons": reasons} for day in (22, 23, 24)]
+        verdict = health.report(runs, DAY)
+        self.assertEqual(verdict["robots_reasons"], {"fa:forbidden": 3, "fb:unreachable": 3, "fc:disallowed": 3})
+        self.assertEqual((verdict["struggling"], verdict["failures"]), ([], {}))
 
     def test_our_agent_token_is_matched(self) -> None:
         cache = fetch.RobotsCache(getter=lambda url: (200, b"User-agent: physical-ai-radar\nDisallow: /\n"))
@@ -341,7 +362,8 @@ class HeatTest(unittest.TestCase):
             signals = heat.fetch_signals(config_with(heat={**CONFIG.sources["heat"], "hn_queries": [],
                                                             "github_repos": []}),
                                          DAY, robots=down, getter=lambda url: self.fail("requested " + url))
-        self.assertEqual((signals.robots_skipped, signals.failed), ([], ["hf_daily_papers"]))
+        self.assertEqual((signals.robots_skipped, signals.failed), (["hf_daily_papers"], []))
+        self.assertEqual(signals.robots_reasons, {"hf_daily_papers": "unreachable"})
 
 
 class PressReleaseTest(unittest.TestCase):
@@ -427,13 +449,6 @@ class QuotaTest(unittest.TestCase):
         self.assertNotIn(hot, picked)
         self.assertEqual(report["unmet"], ["hot"])
 
-    def test_an_unknown_reservation_is_ignored_and_reported(self) -> None:
-        papers, media, official, hot = self.pool()
-        report: dict = {}
-        picked = select(papers + [official], limit=8, max_arxiv=4, reserve=["oficial", "official"], report=report)
-        self.assertIn(official, picked)
-        self.assertEqual(report["unmet"], ["unknown:oficial"])
-
     def test_the_configured_quota_is_half_of_the_daily_limit(self) -> None:
         highlights = CONFIG.sources["filters"]["highlights"]
         self.assertEqual(int(8 * highlights["max_arxiv_share"]), 4)
@@ -442,14 +457,17 @@ class QuotaTest(unittest.TestCase):
 
 class RunLogTest(unittest.TestCase):
     def test_the_run_log_records_quota_robots_and_signals_and_health_counts_them(self) -> None:
-        report = fetch.FetchReport(robots_skipped=["journal"],
-                                   signals=heat.Signals(failed=["hf_daily_papers"], attempted=["hf_daily_papers"]))
+        report = fetch.FetchReport(robots_skipped=["journal"], robots_reasons={"journal": "forbidden"},
+                                   signals=heat.Signals(failed=["hf_daily_papers"], attempted=["hf_daily_papers", "hn:robot"],
+                                                        robots_skipped=["hn:robot"],
+                                                        robots_reasons={"hn:robot": "unreachable"}))
         with mock.patch.object(cli, "fetch_all", return_value=report), \
                 mock.patch.object(cli, "load_history", return_value=[]), \
                 mock.patch.object(heat, "load_state", return_value={"schema": heat.STATE_SCHEMA, "stars": {}}):
             ctx = cli.build_context(CONFIG, offline=False, limit=8, day="2026-10-24")
         entry = ctx["history"][-1]
         self.assertEqual((entry["robots_skipped"], entry["signal_failed"]), (["journal"], ["hf_daily_papers"]))
+        self.assertEqual(entry["robots_reasons"], {"journal": "forbidden", "signal:hn:robot": "unreachable"})
         self.assertEqual(entry["quota"]["max_arxiv"], 4)
         self.assertEqual(entry["quota"]["unmet"], ["hot", "official"])
         self.assertIsNone(ctx["heat_state"])                     # nothing read: the file is left alone

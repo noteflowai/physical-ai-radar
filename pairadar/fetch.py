@@ -414,7 +414,7 @@ def polite(url: str) -> None:
     _LAST_REQUEST[host] = time.monotonic()
 
 
-ALLOW, DISALLOW, UNREACHABLE = "allow", "disallow", "unreachable"
+ALLOW, DISALLOW, FORBIDDEN, UNREACHABLE = "allow", "disallowed", "forbidden", "unreachable"
 
 
 def _robots_get(url: str) -> tuple[int | None, bytes | None]:
@@ -429,12 +429,14 @@ class RobotsCache:
     The outcome follows RFC 9309 section 2.3.1 (and Python's RobotFileParser):
     - 2xx: the rules decide; one that names this agent or `*` and disallows the URL
       keeps it from being requested (the Science Robotics eTOC is under `/action/`);
-    - 401 or 403: everything on the host is disallowed;
+    - 401 or 403: everything on the host is `forbidden`;
     - any other 4xx (404, 410...): there are no rules, everything is allowed;
-    - 5xx, 429 after its retry, or no HTTP answer at all: the host is unreachable and
-      nothing on it is requested this run.
-    `verdict()` says which; a feed whose host is unreachable is a source that did not
-    answer (`failed`), one that is disallowed is `robots_skipped`.
+    - 5xx, 429 after its retry, no HTTP answer at all, or anything else that cannot be
+      classified: the host is `unreachable` and nothing on it is requested this run.
+    `verdict()` returns `allow` or the reason a URL is refused (`disallowed` by a rule,
+    `forbidden`, `unreachable`). Every refused feed is `robots_skipped` with its reason,
+    never `failed`: the source-repair job cannot fix a robots.txt (01's decision,
+    2026-10-25); `pairadar.health` reports the reasons on their own.
     `getter(url) -> (status, body)` is injectable for tests.
     """
 
@@ -453,8 +455,8 @@ class RobotsCache:
                 parser.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
                 self.hosts[origin] = parser
             elif status in (401, 403):
-                print(f"[fetch] robots.txt for {origin} answered {status}: host disallowed")
-                self.hosts[origin] = DISALLOW
+                print(f"[fetch] robots.txt for {origin} answered {status}: host forbidden")
+                self.hosts[origin] = FORBIDDEN
             elif status is not None and 400 <= status < 500 and status != 429:
                 self.hosts[origin] = ALLOW
             else:
@@ -477,13 +479,13 @@ def _on_topic(title: str, summary: str, feed: dict[str, Any], config: Config) ->
 
 
 def fetch_feeds(config: Config, robots: RobotsCache | None = None,
-                skipped: list[str] | None = None) -> tuple[list[Item], list[str]]:
+                skipped: list[str] | None = None,
+                reasons: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer.
 
-    `robots`, when given, is consulted first; a feed it disallows is not requested and
-    goes to `skipped`, never to `failed` (source repair cannot fix a robots rule). A
-    feed whose host's robots.txt is unreachable is not requested either, and is a
-    source that did not answer: `failed`.
+    `robots`, when given, is consulted first; a feed it refuses (disallowed, forbidden,
+    or a host whose robots.txt is unreachable) is not requested and goes to `skipped`
+    with its reason in `reasons`, never to `failed`.
     A feed with `keywords` keeps only entries naming one of them, before the per-feed
     cap: OpenAI's feed carries 1,300 posts, nearly none about robots, and the cap would
     otherwise fill with them. The taxonomy anchors are too loose there -- "cosmos" (an
@@ -499,13 +501,12 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
         limit = CJK_SUMMARY_CHARS if feed.get("lang") in ("zh", "ja") else MAX_SUMMARY_CHARS
         if robots is not None:
             verdict = robots.verdict(feed["url"])
-            if verdict == UNREACHABLE:
-                failed.append(feed["id"])
-                continue
-            if verdict == DISALLOW:
-                print(f"[fetch] robots.txt disallows {feed['id']}: skipped")
+            if verdict != ALLOW:
+                print(f"[fetch] robots.txt ({verdict}) refuses {feed['id']}: skipped")
                 if skipped is not None:
                     skipped.append(feed["id"])
+                if reasons is not None:
+                    reasons[feed["id"]] = verdict
                 continue
             polite(feed["url"])
         payload = http_get(feed["url"])
@@ -1226,8 +1227,10 @@ class FetchReport:
     # disallowed). Kept apart from `failed`: `failed` feeds pairadar.health's
     # struggling list and the source-repair job, which can only repair a declared feed.
     page_failed: list[str] = field(default_factory=list)
-    # Feeds whose robots.txt disallowed the feed URL: not requested, not failing.
+    # Feeds robots.txt refused (not requested, not failing), and why: disallowed,
+    # forbidden (401/403) or unreachable (5xx, 429, no answer).
     robots_skipped: list[str] = field(default_factory=list)
+    robots_reasons: dict[str, str] = field(default_factory=dict)
     # pairadar.heat.Signals from the public attention APIs (None offline).
     signals: Any = None
     # The page_watch baseline after this run, for the caller to keep.
@@ -1252,6 +1255,7 @@ class FetchReport:
             "fallback": sorted(self.fallback),
             "unavailable": sorted(self.unavailable),
             "robots_skipped": sorted(self.robots_skipped),
+            "robots_reasons": dict(sorted(self.robots_reasons.items())),
             "signals": self.signals.summary() if self.signals is not None else None,
             "per_source": counts,
             "page_watch": dict(self.page_watch),
@@ -1276,7 +1280,8 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         report.items.extend(arxiv_items)
         if not answered:
             report.failed.append("arxiv")
-    feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped)
+    feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
+                                     reasons=report.robots_reasons)
     report.attempted.extend(feed["id"] for feed in config.sources.get("feeds", [])
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
@@ -1302,7 +1307,8 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     if report.unavailable:
         print(f"[fetch] channel unavailable: {', '.join(sorted(report.unavailable))}")
     if report.robots_skipped:
-        print(f"[fetch] robots.txt disallows: {', '.join(sorted(report.robots_skipped))}")
+        print("[fetch] robots.txt refuses: " + ", ".join(f"{source} ({report.robots_reasons.get(source, '?')})"
+                                                     for source in sorted(report.robots_skipped)))
     if report.signals.failed:
         print(f"[fetch] attention signals not read: {', '.join(sorted(report.signals.failed))}")
     return report
