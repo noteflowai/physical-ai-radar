@@ -388,6 +388,13 @@ class QuotaTest(unittest.TestCase):
         self.assertNotIn(hot, picked)
         self.assertEqual(report["unmet"], ["hot"])
 
+    def test_an_unknown_reservation_is_ignored_and_reported(self) -> None:
+        papers, media, official, hot = self.pool()
+        report: dict = {}
+        picked = select(papers + [official], limit=8, max_arxiv=4, reserve=["oficial", "official"], report=report)
+        self.assertIn(official, picked)
+        self.assertEqual(report["unmet"], ["unknown:oficial"])
+
     def test_the_configured_quota_is_half_of_the_daily_limit(self) -> None:
         highlights = CONFIG.sources["filters"]["highlights"]
         self.assertEqual(int(8 * highlights["max_arxiv_share"]), 4)
