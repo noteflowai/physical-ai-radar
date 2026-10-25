@@ -29,6 +29,12 @@ The deep reads and index lines replace only the "Today's picks" section. The fro
 baseline, the lane table, the cadence text and the standards list stay on the page as
 they are.
 
+The keyword signals of the current page ("closed-loop success reported", "real-robot
+experiments", "no figures") are not carried into deep reads or index lines unless the
+full text confirms them: in the pilot both reviewers found them wrong for two of three
+papers (open-loop video prediction tagged closed-loop; a paper full of correlations
+described as having no figures).
+
 Each language is written on its own, not translated (METHODOLOGY §5), and every label
 on the page is localised: the source line reads "Source / 来源 / 出典", the full-text
 note "full text, arXiv HTML / 全文（arXiv HTML）/ 全文（arXiv HTML）".
@@ -53,7 +59,9 @@ find them:
    what every paper in the area does.
 3. **Limits.** Where the result holds and where it has not been tested: simulation or
    real robot, how many tasks/trials/embodiments, whether the evaluation flatters the
-   method, whether code, data or weights are released.
+   method, whether code, data or weights are released. Lead with the one limit that
+   most changes how far the result can be trusted; keep the rest to the two or three
+   that matter, not an inventory of every caveat.
 4. **Our take.** A judgement with a reason. It may disagree with the authors, prefer an
    ablation over the headline number, or say the result is not yet decision-relevant.
    A concern the paper does not test is worded as a concern ("may", "could", "we would
