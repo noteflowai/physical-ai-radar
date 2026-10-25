@@ -22,9 +22,16 @@ says whether they believe it.
   the code repository when they exist. The abstract alone is never enough.
 - **Five index lines** for the rest: one sentence each, at most 40 English words (80
   Chinese/Japanese characters), saying what the item is and the one fact that decides
-  whether to open it.
+  whether to open it. Each line keeps the reader's way to the source and its grade:
+  `- [R] [Title](url): sentence.` (evidence tag first, then the linked title).
 
-Each language is written on its own, not translated (METHODOLOGY §5).
+The deep reads and index lines replace only the "Today's picks" section. The frontier
+baseline, the lane table, the cadence text and the standards list stay on the page as
+they are.
+
+Each language is written on its own, not translated (METHODOLOGY §5), and every label
+on the page is localised: the source line reads "Source / 来源 / 出典", the full-text
+note "full text, arXiv HTML / 全文（arXiv HTML）/ 全文（arXiv HTML）".
 
 ## A deep read
 
@@ -49,6 +56,8 @@ find them:
    method, whether code, data or weights are released.
 4. **Our take.** A judgement with a reason. It may disagree with the authors, prefer an
    ablation over the headline number, or say the result is not yet decision-relevant.
+   A concern the paper does not test is worded as a concern ("may", "could", "we would
+   check"), never as a finding.
 
 ### Numbers
 
@@ -85,7 +94,7 @@ day:
 | Limits | at least 80 English / 30 Chinese / 40 Japanese characters |
 | Rhythm | coefficient of variation of sentence length ≥ 0.25 (items with three or more sentences) |
 | Template rate | at most 15% of the day's sentences may reuse the wording of another item (4-word / 6-character shingles, digits folded) |
-| Counts and form | 3 deep reads, 5 index lines, index lines within length, no emoji |
+| Counts and form | 3 deep reads, 5 index lines, index lines within length, each index line starting with its evidence tag and carrying a link, no emoji |
 
 A failing draft returns to its writer with the findings, at most twice. An item that
 still fails is demoted to an index line; a day never ships a failing deep read.

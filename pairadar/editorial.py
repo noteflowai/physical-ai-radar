@@ -247,7 +247,13 @@ def check_index(line: str, lang: str, style: dict) -> list[str]:
         findings.append(f"stock phrase(s): {', '.join(hits)}")
     if has_emoji(line, style):
         findings.append("emoji")
-    sentence = index_sentence(line)
+    # 05 (pilot day 1): an index line must still let the reader open the source and see its evidence grade.
+    if not re.search(r"\[[^\]]+\]\(https?://[^)\s]+\)", line):
+        findings.append("index line has no link to its source")
+    if not re.match(r"^`?\[(?:O|R|M)\]`?\s", line):
+        findings.append("index line does not start with its evidence tag [O]/[R]/[M]")
+    after_link = re.search(r"\]\(https?://[^)\s]+\)[:：]?\s*", line)
+    sentence = line[after_link.end():] if after_link else index_sentence(line)
     if lang == "en":
         if len(sentence.split()) > style["index"]["max_words_en"]:
             findings.append("index line too long")
