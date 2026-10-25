@@ -42,6 +42,8 @@ BOILERPLATE = (
     re.compile(r"^\s*Video Friday is your weekly selection\b.*?Enjoy today[’']s videos!\s*", re.S),
     re.compile(r"^.{0,400}?\S+…\s+(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), \d{2}/\d{2}/\d{4} - \d{2}:\d{2}\s*", re.S),
     re.compile(r"\s*作者\s*[：:丨|]\s*\S+\s+编辑\s*[：:丨|]\s*\S+(?: \S(?=\s))?\s*"),
+    # Nature journal feeds open every description with the journal, the date and the DOI.
+    re.compile(r"^\s*Nature [A-Za-z ]{2,40}, Published online: [^;]{1,40}; doi:\S+\s*"),
 )
 
 EVIDENCE_BONUS = {"O": 0.6, "R": 0.35, "M": 0.1}
@@ -235,6 +237,37 @@ def prefilter(items: Iterable[Item], config: Config, reference: date) -> list[It
     return kept
 
 
+# Press-release wording: a vendor's own announcement retold, not reporting. Matched on
+# the title and the first part of the excerpt, where wire copy states it.
+DEFAULT_PRESS_PATTERNS = (
+    r"\bannounc(?:e|es|ed|ing)\b", r"\bpress release\b", r"\b(?:pr newswire|business wire|globe newswire)\b",
+    r"\((?:nasdaq|nyse|tse|hkex|otcqx)\s*:\s*[a-z.]+\)", r"宣布", r"発表した",
+)
+
+
+@lru_cache(maxsize=None)
+def _press_res(patterns: tuple[str, ...]) -> tuple[re.Pattern[str], ...]:
+    return tuple(re.compile(pattern, re.I) for pattern in patterns)
+
+
+def press_release(item: Item, config: Config) -> bool:
+    """True for an announcement in press-release form (`filters.press_release`).
+
+    A paper is never one. An official source announcing its own product is still a
+    first-party statement: it is labelled and ranked lower, its evidence unchanged.
+    """
+    if item.evidence == "R":
+        return False
+    rules = config.sources.get("filters", {}).get("press_release", {})
+    patterns = tuple(rules.get("patterns", DEFAULT_PRESS_PATTERNS))
+    head = f"{item.title}. {item.summary[:300]}"
+    return any(pattern.search(head) for pattern in _press_res(patterns))
+
+
+def press_penalty(config: Config) -> float:
+    return float(config.sources.get("filters", {}).get("press_release", {}).get("penalty", 0.4))
+
+
 def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]:
     """Classify, score and annotate items in place; returns a ranked copy."""
     enriched: list[Item] = []
@@ -259,6 +292,9 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
             + recency_bonus(item.published, reference)
             + (source_weight(config, item.source_id) - 1.0)
         )
+        if not item.lane_locked and press_release(item, config):
+            item.signals.append("press_release")
+            item.score -= press_penalty(config)
         enriched.append(item)
     enriched.sort(key=lambda entry: (-entry.score, entry.published, entry.title))
     return enriched
@@ -375,6 +411,9 @@ def select(
     per_source: int | None = None,
     per_evidence: int | None = None,
     told: Iterable[str] = (),
+    max_arxiv: int | None = None,
+    reserve: Iterable[str] = (),
+    report: dict[str, Any] | None = None,
 ) -> list[Item]:
     """Pick the daily shortlist, capping each lane so one topic cannot dominate.
 
@@ -396,6 +435,13 @@ def select(
     next day and both took a slot, with different URLs. A post is skipped when its
     title tells the same story as an earlier day's post or a higher-ranked post today.
     Papers are exempt on both sides: two papers with similar titles are separate work.
+
+    `max_arxiv` is a hard cap on arXiv picks (the highlights quota: at most half). It
+    holds in the fill pass too: a day with nothing else that qualifies has a shorter
+    list, not an arXiv-only one. `reserve` names slots taken first, before the rank
+    passes, by the best eligible item of that kind: "official" (evidence `O`) and
+    "hot" (a non-arXiv item marked `trending`). A reservation obeys every gate and
+    cap above; when no item can fill it, it stays empty and `report` says so.
     """
     published = {url_key(url) for url in seen}
     earlier = [story_terms(title) for title in told]
@@ -420,19 +466,48 @@ def select(
         told_before = earlier + [stories[other] for other in picked if eligible[other].evidence != "R"]
         return any(same_story(stories[index], other) for other in told_before)
 
+    def arxiv_full(item: Item) -> bool:
+        return (max_arxiv is not None and item.source_id == "arxiv"
+                and source_counts.get("arxiv", 0) >= max_arxiv)
+
+    kinds = {
+        "official": lambda item: item.evidence == "O",
+        "hot": lambda item: "trending" in item.signals and item.source_id != "arxiv",
+    }
+    reserved: dict[str, str | None] = {}
+    for kind in reserve:
+        reserved[kind] = None
+        if len(picked) >= limit:
+            continue
+        for index, item in enumerate(eligible):
+            if index in picked or not kinds[kind](item):
+                continue
+            if lane_counts.get(item.lane, 0) >= per_lane or retold(index) or arxiv_full(item):
+                continue
+            take(index, item)
+            reserved[kind] = item.id
+            break
+        else:
+            already = next((eligible[i].id for i in picked if kinds[kind](eligible[i])), None)
+            reserved[kind] = already
+
     for capped in (True, False):
         for index, item in enumerate(eligible):
             if len(picked) >= limit:
                 break
             if index in picked or lane_counts.get(item.lane, 0) >= per_lane:
                 continue
-            if retold(index):
+            if retold(index) or arxiv_full(item):
                 continue
             if capped and per_source is not None and source_counts.get(item.source_id, 0) >= per_source:
                 continue
             if capped and per_evidence is not None and evidence_counts.get(item.evidence, 0) >= per_evidence:
                 continue
             take(index, item)
+    if report is not None:
+        report.update(arxiv=source_counts.get("arxiv", 0), max_arxiv=max_arxiv,
+                      reserved={kind: reserved[kind] for kind in reserved},
+                      unmet=sorted(kind for kind, value in reserved.items() if value is None))
     return [eligible[index] for index in sorted(picked)]
 
 

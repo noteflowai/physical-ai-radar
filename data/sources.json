@@ -16,7 +16,27 @@
     "max_entries_per_feed": 100,
     "per_source": 3,
     "per_evidence": 4,
-    "caps_note": "per_source and per_evidence reserve room on the shortlist for other feeds and evidence classes; slots they leave empty are filled afterwards from what they held back, in rank order"
+    "caps_note": "per_source and per_evidence reserve room on the shortlist for other feeds and evidence classes; slots they leave empty are filled afterwards from what they held back, in rank order",
+    "press_release": {
+      "penalty": 0.4,
+      "note": "an announcement in press-release form (wire copy, 'announces', a ticker) is labelled press_release and ranked this much lower; its evidence class is unchanged. Papers and curated baseline entries are never matched.",
+      "patterns": [
+        "\\bannounc(?:e|es|ed|ing)\\b",
+        "\\bpress release\\b",
+        "\\b(?:pr newswire|business wire|globe newswire)\\b",
+        "\\((?:nasdaq|nyse|tse|hkex|otcqx)\\s*:\\s*[a-z.]+\\)",
+        "宣布",
+        "発表した"
+      ]
+    },
+    "highlights": {
+      "max_arxiv_share": 0.5,
+      "reserve": [
+        "official",
+        "hot"
+      ],
+      "note": "the shortlist is the page's highlights: arXiv takes at most this share of --limit (a hard cap, in the fill pass too); 'official' reserves a slot for the best qualifying O item and 'hot' for the best qualifying non-arXiv item marked trending. A reservation passes every other gate; one that nothing can fill stays empty and the run log says so (history quota.unmet)."
+    }
   },
   "arxiv": {
     "enabled": true,
@@ -119,8 +139,149 @@
       "weight": 0.8,
       "publisher": "MONOist (ITmedia)",
       "lang": "ja"
+    },
+    {
+      "id": "openai",
+      "url": "https://openai.com/news/rss.xml",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "OpenAI News",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "google-research",
+      "url": "https://research.google/blog/rss/",
+      "evidence": "O",
+      "weight": 1.05,
+      "publisher": "Google Research Blog",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "bair",
+      "url": "https://bair.berkeley.edu/blog/feed.xml",
+      "evidence": "R",
+      "weight": 1.0,
+      "publisher": "Berkeley AI Research (BAIR) Blog",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "mit-news-robotics",
+      "url": "https://news.mit.edu/topic/mitrobotics-rss.xml",
+      "evidence": "O",
+      "weight": 0.95,
+      "publisher": "MIT News (Robotics)",
+      "topical": true
+    },
+    {
+      "id": "nature-machine-intelligence",
+      "url": "https://www.nature.com/natmachintell.rss",
+      "evidence": "R",
+      "weight": 1.1,
+      "publisher": "Nature Machine Intelligence",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "techcrunch-robotics",
+      "url": "https://techcrunch.com/category/robotics/feed/",
+      "evidence": "M",
+      "weight": 0.95,
+      "publisher": "TechCrunch (Robotics)",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "robohub",
+      "url": "https://robohub.org/feed/",
+      "evidence": "M",
+      "weight": 0.85,
+      "publisher": "Robohub",
+      "topical": true
+    },
+    {
+      "id": "qbitai",
+      "url": "https://www.qbitai.com/feed",
+      "evidence": "M",
+      "weight": 0.85,
+      "publisher": "量子位 QbitAI",
+      "lang": "zh",
+      "keywords": ["机器人", "具身", "人形", "自动驾驶", "世界模型", "灵巧手", "机械臂", "物理AI", "四足"]
+    },
+    {
+      "id": "import-ai",
+      "url": "https://jack-clark.net/feed/",
+      "evidence": "M",
+      "weight": 0.8,
+      "publisher": "Import AI (Jack Clark)",
+      "keywords": ["robot", "robotic", "robotics", "humanoid", "embodied", "embodiment", "manipulation", "locomotion", "dexterous", "quadruped", "physical ai", "physical world", "autonomous driving", "self-driving", "autonomous vehicle", "sim-to-real", "vision-language-action", "world model", "teleoperation", "drone"]
+    },
+    {
+      "id": "github-lerobot",
+      "url": "https://github.com/huggingface/lerobot/releases.atom",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "LeRobot releases (GitHub)",
+      "topical": true,
+      "max_entries": 1,
+      "title_prefix": "LeRobot",
+      "repo": "huggingface/lerobot"
+    },
+    {
+      "id": "github-isaaclab",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases.atom",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "Isaac Lab releases (GitHub)",
+      "topical": true,
+      "max_entries": 1,
+      "title_prefix": "Isaac Lab",
+      "repo": "isaac-sim/isaaclab"
+    },
+    {
+      "id": "github-mujoco",
+      "url": "https://github.com/google-deepmind/mujoco/releases.atom",
+      "evidence": "O",
+      "weight": 1.0,
+      "publisher": "MuJoCo releases (GitHub)",
+      "topical": true,
+      "max_entries": 1,
+      "title_prefix": "MuJoCo",
+      "repo": "google-deepmind/mujoco"
     }
   ],
+  "feeds_note": "Added 2026-10-25 after a read-only check (the feed answers 200 and parses; robots.txt allows the URL for physical-ai-radar). keywords keeps only entries naming one of the feed's terms, before max_entries_per_feed (the taxonomy anchors are too loose for a general source: 'cosmos' let an Azure Cosmos DB post through); max_entries 1 keeps a release feed to its newest release; title_prefix names the project in front of a bare release title; repo ties a release feed to its GitHub star count (heat). Not added: Science Robotics eTOC (robots.txt disallows /action/ for every agent), Physical-Intelligence/openpi releases (none, and no tags; its stars still count in heat), 36Kr and 机器之心 (HTML, no feed), robotstart.info and the Agility blog (404), The Robot Report sub-category feeds (403; the main feed is in use), Boston Dynamics, Meta AI and Anthropic (no feed: page_watch candidates once Firecrawl is back, never a browser), X and Reddit (no automation outside their APIs).",
+  "heat": {
+    "enabled": true,
+    "note": "pairadar.heat: attention, for ranking only, never evidence. cross = independent sources telling one story (same normalised URL, or for non-papers the same story title); hf = Hugging Face Daily Papers upvotes; hn = Hacker News points (Algolia, recent stories); stars = stars per day gained by a tracked repository (radar/heat-state.json keeps the previous count). Each is capped and log-scaled to 0..1 and averaged with components; the score gains weight x heat. trending marks an item with two or more sources or heat >= trending.",
+    "weight": 0.8,
+    "trending": 0.3,
+    "components": {
+      "cross": 0.4,
+      "hf": 0.25,
+      "hn": 0.2,
+      "stars": 0.15
+    },
+    "caps": {
+      "sources": 4,
+      "hf_upvotes": 100,
+      "hn_points": 300,
+      "stars_per_day": 200
+    },
+    "hf_daily_papers": "https://huggingface.co/api/daily_papers",
+    "hn_search": "https://hn.algolia.com/api/v1/search",
+    "hn_queries": [
+      "robot",
+      "robotics",
+      "humanoid",
+      "embodied ai",
+      "physical ai"
+    ],
+    "hn_days": 3,
+    "github_repos": [
+      "huggingface/lerobot",
+      "isaac-sim/IsaacLab",
+      "google-deepmind/mujoco",
+      "Physical-Intelligence/openpi"
+    ]
+  },
   "standards_watch": [
     {
       "id": "iso-25785-1",

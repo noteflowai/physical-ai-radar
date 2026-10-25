@@ -42,6 +42,15 @@ from .config import Config, Item
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
 ATOM = "{http://www.w3.org/2005/Atom}"
+# RSS 1.0 (RDF): Nature's journal feeds. Items are siblings of the channel, in their own
+# namespace, dated by Dublin Core.
+RSS1 = "{http://purl.org/rss/1.0/}"
+DC = "{http://purl.org/dc/elements/1.1/}"
+CONTENT = "{http://purl.org/rss/1.0/modules/content/}"
+# The product token robots.txt rules are matched against (the start of USER_AGENT).
+ROBOTS_TOKEN = "physical-ai-radar"
+# Two requests to one host are at least this far apart (GitHub serves three release feeds).
+HOST_SPACING = 1.0
 ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 TIMEOUT = 25
 # arXiv asks API callers to leave about three seconds between requests; six
@@ -345,7 +354,18 @@ def link_digest(link: str) -> str:
 
 
 def _feed_entries(root: ET.Element) -> Iterable[tuple[str, str, str, str]]:
-    """Yield (title, url, summary, date) for Atom or RSS 2.0 documents."""
+    """Yield (title, url, summary, date) for Atom, RSS 2.0 or RSS 1.0 (RDF) documents."""
+    rdf_items = root.findall(f"{RSS1}item")
+    if rdf_items:
+        for item in rdf_items:
+            summary = item.findtext(f"{RSS1}description") or item.findtext(f"{CONTENT}encoded") or ""
+            yield (
+                clean_text(item.findtext(f"{RSS1}title") or item.findtext(f"{DC}title")),
+                clean_text(item.findtext(f"{RSS1}link")),
+                clean_text(summary),
+                parse_date(item.findtext(f"{DC}date")),
+            )
+        return
     entries = root.findall(f"{ATOM}entry")
     if entries:
         for entry in entries:
@@ -374,13 +394,82 @@ def _feed_entries(root: ET.Element) -> Iterable[tuple[str, str, str, str]]:
         )
 
 
-def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
-    """Read every configured feed, collecting the ids of those that did not answer."""
+_LAST_REQUEST: dict[str, float] = {}
+
+
+def polite(url: str) -> None:
+    """Leave HOST_SPACING seconds between two requests to the same host."""
+    host = urllib.parse.urlsplit(url).netloc.lower()
+    wait = _LAST_REQUEST.get(host, -HOST_SPACING) + HOST_SPACING - time.monotonic()
+    if wait > 0:
+        time.sleep(wait)
+    _LAST_REQUEST[host] = time.monotonic()
+
+
+class RobotsCache:
+    """robots.txt, read once per host per run, for every feed and signal endpoint.
+
+    A rule that names this agent or `*` and disallows the URL keeps it from being
+    requested (the Science Robotics eTOC lives under a disallowed `/action/`). A
+    robots.txt that does not answer -- 404 means "no rules", a network error is
+    logged -- allows the request: the feeds were declared after a manual check, and
+    one flaky host must not silence a source that publishes a feed for readers.
+    """
+
+    def __init__(self, getter=None):
+        self.getter = getter or (lambda url: http_get(url, retries=1))
+        self.parsers: dict[str, urllib.robotparser.RobotFileParser | None] = {}
+
+    def allows(self, url: str) -> bool:
+        parts = urllib.parse.urlsplit(url)
+        origin = f"{parts.scheme}://{parts.netloc}".lower()
+        if origin not in self.parsers:
+            polite(origin)
+            body = self.getter(origin + "/robots.txt")
+            if body is None:
+                print(f"[fetch] robots.txt not read for {origin}: allowed")
+                self.parsers[origin] = None
+            else:
+                parser = urllib.robotparser.RobotFileParser()
+                parser.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
+                self.parsers[origin] = parser
+        parser = self.parsers[origin]
+        return parser is None or parser.can_fetch(ROBOTS_TOKEN, url)
+
+
+def _on_topic(title: str, summary: str, feed: dict[str, Any], config: Config) -> bool:
+    """The feed's own `keywords`, else (with `require_anchor`) the taxonomy anchors."""
+    from .distill import count_terms  # distill imports this module
+    terms = feed.get("keywords") or config.taxonomy.get("anchors", [])
+    return count_terms(f"{title}. {summary}", terms) > 0
+
+
+def fetch_feeds(config: Config, robots: RobotsCache | None = None,
+                skipped: list[str] | None = None) -> tuple[list[Item], list[str]]:
+    """Read every configured feed, collecting the ids of those that did not answer.
+
+    `robots`, when given, is consulted first; a feed it disallows is not requested and
+    goes to `skipped`, never to `failed` (source repair cannot fix a robots rule).
+    A feed with `keywords` keeps only entries naming one of them, before the per-feed
+    cap: OpenAI's feed carries 1,300 posts, nearly none about robots, and the cap would
+    otherwise fill with them. The taxonomy anchors are too loose there -- "cosmos" (an
+    NVIDIA world model) let an Azure Cosmos DB post through -- so a general source names
+    its own list; `require_anchor` alone uses the anchors. `max_entries` lowers the cap
+    for one feed (a release feed: the newest release only). `title_prefix` names the
+    project in front of a bare release title ("3.17.0" -> "MuJoCo 3.17.0").
+    """
     items: list[Item] = []
     failed: list[str] = []
     cap = int(config.sources.get("filters", {}).get("max_entries_per_feed", 100))
     for feed in config.sources.get("feeds", []):
         limit = CJK_SUMMARY_CHARS if feed.get("lang") in ("zh", "ja") else MAX_SUMMARY_CHARS
+        if robots is not None:
+            if not robots.allows(feed["url"]):
+                print(f"[fetch] robots.txt disallows {feed['id']}: skipped")
+                if skipped is not None:
+                    skipped.append(feed["id"])
+                continue
+            polite(feed["url"])
         payload = http_get(feed["url"])
         if not payload:
             failed.append(feed["id"])
@@ -394,11 +483,14 @@ def fetch_feeds(config: Config) -> tuple[list[Item], list[str]]:
         # Some feeds carry their whole archive -- the Hugging Face blog ships every
         # post it has ever published, about 870 of them. Only the newest can pass the
         # age filter anyway, and counting the rest made the fetch report misleading.
-        entries = sorted(
-            (entry for entry in _feed_entries(root) if entry[0] and entry[1]),
-            key=lambda entry: entry[3], reverse=True,
-        )[:cap]
+        entries = [entry for entry in _feed_entries(root) if entry[0] and entry[1]]
+        if feed.get("keywords") or feed.get("require_anchor"):
+            entries = [entry for entry in entries if _on_topic(entry[0], entry[2], feed, config)]
+        entries = sorted(entries, key=lambda entry: entry[3], reverse=True)[:min(cap, int(feed.get("max_entries", cap)))]
+        prefix = str(feed.get("title_prefix", "")).strip()
         for title, link, summary, published in entries:
+            if prefix and not title.lower().startswith(prefix.lower()):
+                title = f"{prefix} {title}"
             if len(summary) > limit:
                 cut = summary[:limit]
                 head = cut.rsplit(" ", 1)[0]
@@ -1096,6 +1188,10 @@ class FetchReport:
     # disallowed). Kept apart from `failed`: `failed` feeds pairadar.health's
     # struggling list and the source-repair job, which can only repair a declared feed.
     page_failed: list[str] = field(default_factory=list)
+    # Feeds whose robots.txt disallowed the feed URL: not requested, not failing.
+    robots_skipped: list[str] = field(default_factory=list)
+    # pairadar.heat.Signals from the public attention APIs (None offline).
+    signals: Any = None
     # The page_watch baseline after this run, for the caller to keep.
     page_state: dict[str, Any] = field(default_factory=dict)
     # PageWatchResult.summary(): explicit ids per outcome, for the freshness evidence.
@@ -1117,6 +1213,8 @@ class FetchReport:
             "failed": sorted(self.failed),
             "fallback": sorted(self.fallback),
             "unavailable": sorted(self.unavailable),
+            "robots_skipped": sorted(self.robots_skipped),
+            "signals": self.signals.summary() if self.signals is not None else None,
             "per_source": counts,
             "page_watch": dict(self.page_watch),
         }
@@ -1133,14 +1231,16 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         print("[fetch] offline mode: skipping network sources")
         return FetchReport()
     report = FetchReport()
+    robots = RobotsCache()
     if config.sources.get("arxiv", {}).get("enabled", False):
         report.attempted.append("arxiv")
         arxiv_items, answered = fetch_arxiv(config, reference, report)
         report.items.extend(arxiv_items)
         if not answered:
             report.failed.append("arxiv")
-    feed_items, failed = fetch_feeds(config)
-    report.attempted.extend(feed["id"] for feed in config.sources.get("feeds", []))
+    feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped)
+    report.attempted.extend(feed["id"] for feed in config.sources.get("feeds", [])
+                            if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
     report.failed.extend(failed)
     watched = fetch_page_watch(config, reference, page_state)
@@ -1151,6 +1251,8 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     report.page_watch = watched.summary()
     if watched.unavailable:
         report.unavailable.append("page_watch")
+    from . import heat  # heat builds on distill, which imports this module
+    report.signals = heat.fetch_signals(config, reference or datetime.now(timezone.utc).date(), robots)
     print(f"[fetch] collected {len(report.items)} raw items from "
           f"{len(report.answered)}/{len(report.attempted)} sources")
     if report.failed:
@@ -1161,6 +1263,10 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         print(f"[fetch] served by a fallback: {', '.join(sorted(report.fallback))}")
     if report.unavailable:
         print(f"[fetch] channel unavailable: {', '.join(sorted(report.unavailable))}")
+    if report.robots_skipped:
+        print(f"[fetch] robots.txt disallows: {', '.join(sorted(report.robots_skipped))}")
+    if report.signals.failed:
+        print(f"[fetch] attention signals not read: {', '.join(sorted(report.signals.failed))}")
     return report
 
 

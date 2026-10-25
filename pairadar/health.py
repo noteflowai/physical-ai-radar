@@ -199,6 +199,10 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "unavailable": unavailable_by_channel(runs, reference, window),
         "page_watch_failing": page_watch_failing(runs, reference, window, threshold, watched),
         "page_watch_robots_skipped": _count(_in_window(runs, reference, window), "page_robots_skipped"),
+        # A feed whose robots.txt disallows it, and an attention API (pairadar.heat) that
+        # did not answer: counted here, never struggling -- the repair job fixes feeds.
+        "robots_skipped": _count(_in_window(runs, reference, window), "robots_skipped"),
+        "signals_unavailable": _count(_in_window(runs, reference, window), "signal_failed"),
         "struggling": entries,
     }
 
