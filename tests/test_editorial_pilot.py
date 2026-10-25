@@ -74,28 +74,81 @@ class PilotTest(unittest.TestCase):
         ja = "# 日\n## 本日の注目\n### 1. A\n- **重要な理由**: 査読前のプレプリント。\n"
         self.assertEqual(pilot.old_metrics(ja, "ja", pilot.editorial.load_style())["items"], 1)
 
-    def test_blind_pair_hides_which_is_new(self):
+    def blind_fixture(self, author_kind="llm-draft", notes_day="2026-10-25"):
+        """Three deep reads per language and a model-notes file for the same three URLs."""
         day = "2026-10-25"
         base = pilot.day_dir(self.out, day)
+        urls = [f"https://arxiv.org/abs/0000.0000{n}" for n in (1, 2, 3)]
+        source = {"zh": "来源：", "en": "Source: ", "ja": "出典："}
+        tail = {"zh": " · 全文（arXiv HTML）", "en": " · full text (arXiv HTML)", "ja": " · 全文（arXiv HTML）"}
+        heading = {"zh": "深读", "en": "Deep reads", "ja": "深掘り"}
         for lang in pilot.LANGS:
-            pilot.write_private(base / f"new.{lang}.md", f"NEW {lang}")
-        original_root = pilot.ROOT
-        fake_root = Path(tempfile.mkdtemp())
-        self.addCleanup(lambda: __import__("shutil").rmtree(fake_root, ignore_errors=True))
-        for lang in pilot.LANGS:
-            (fake_root / "radar" / "daily").mkdir(parents=True, exist_ok=True)
-            (fake_root / "radar" / "daily" / f"{day}.{lang}.md").write_text(f"OLD {lang}")
-        pilot.ROOT = fake_root
-        try:
-            pilot.cmd_blind(type("A", (), {"date": day, "out": self.out})())
-        finally:
-            pilot.ROOT = original_root
-        key = json.loads((base / "blind-key.json").read_text())
+            text = f"# Physical AI Radar · {day} (deep-read pilot)\n\n## {heading[lang]}\n\n"
+            for n, url in enumerate(urls, 1):
+                text += (f"### {n}. Paper {n}\n\n{source[lang]}[arXiv 0000.0000{n}]({url}){tail[lang]}\n\n"
+                         f"**Bottom line** NEW-{lang}-{n} body.\n\n**Limits** more.\n\n")
+            text += "## Also today\n\n- [R] [X](https://example.org/x): one.\n"
+            pilot.write_private(base / f"new.{lang}.md", text)
+        notes = {"schema": "pairadar-notes-1", "date": notes_day, "author": {"kind": author_kind},
+                 "notes": {url: {lang: f"OLD-{lang}-{n} note." for lang in pilot.LANGS}
+                           for n, url in enumerate(urls, 1)}}
+        path = Path(tempfile.mkdtemp()) / "notes.json"
+        self.addCleanup(lambda: __import__("shutil").rmtree(path.parent, ignore_errors=True))
+        path.write_text(json.dumps(notes), encoding="utf-8")
+        keys = Path(tempfile.mkdtemp()) / "keys"
+        self.addCleanup(lambda: __import__("shutil").rmtree(keys.parent, ignore_errors=True))
+        return day, base, path, keys
+
+    def run_blind(self, day, notes, keys):
+        return pilot.cmd_blind(type("A", (), {"date": day, "out": self.out, "notes": notes, "keys": keys})())
+
+    def test_blind_pair_is_one_neutral_template_with_only_the_body_differing(self):
+        day, base, notes, keys = self.blind_fixture()
+        self.run_blind(day, notes, keys)
+        key = json.loads((keys / f"{day}.json").read_text())
+        names = sorted(p.name for p in (base / "blind").iterdir())
+        self.assertEqual(names, sorted(f"{side}.{lang}.md" for side in "AB" for lang in pilot.LANGS))
+        stamps = {p.stat().st_mtime_ns for p in (base / "blind").iterdir()}
+        self.assertEqual(len(stamps), 1)                                  # no mtime to tell A from B
         for lang in pilot.LANGS:
             a = (base / "blind" / f"A.{lang}.md").read_text()
-            self.assertEqual(a.split()[0].lower(), key[lang]["A"])
+            b = (base / "blind" / f"B.{lang}.md").read_text()
             self.assertEqual({key[lang]["A"], key[lang]["B"]}, {"new", "old"})
-        self.assertEqual(stat.S_IMODE((base / "blind-key.json").stat().st_mode), 0o600)
+            new, old = (a, b) if key[lang]["A"] == "new" else (b, a)
+            self.assertIn(f"NEW-{lang}-1 body.", new)
+            self.assertIn(f"OLD-{lang}-1 note.", old)
+            self.assertNotIn("NEW-", old)
+            self.assertNotIn("OLD-", new)
+            for text in (a, b):
+                self.assertNotIn("pilot", text)                           # no version marker
+                self.assertNotIn("Also today", text)                      # no index, only the three items
+            def skeleton(text):                                           # everything but the body paragraphs
+                return [line for line in text.splitlines() if line.startswith(("#", "Source", "来源", "出典"))]
+            self.assertEqual(skeleton(a), skeleton(b))
+            self.assertEqual(len(skeleton(a)), 7)                         # header + 3 x (title + source)
+        self.assertEqual(stat.S_IMODE((keys / f"{day}.json").stat().st_mode), 0o600)
+        self.assertEqual(stat.S_IMODE(keys.stat().st_mode), 0o700)
+        self.assertFalse((base / "blind-key.json").exists())              # nothing identifying beside the pair
+
+    def test_blind_refuses_a_day_without_model_drafted_notes(self):
+        day, base, notes, keys = self.blind_fixture()
+        with self.assertRaises(SystemExit):
+            self.run_blind(day, notes.parent / "absent.json", keys)       # the nightly has not run yet
+        for author_kind, notes_day in (("rules", day), ("llm-draft", "2026-10-24")):
+            bad = self.blind_fixture(author_kind, notes_day)
+            with self.subTest(author_kind=author_kind, notes_day=notes_day), self.assertRaises(SystemExit):
+                self.run_blind(bad[0], bad[2], bad[3])
+        data = json.loads(notes.read_text())
+        del data["notes"]["https://arxiv.org/abs/0000.00002"]
+        notes.write_text(json.dumps(data))
+        with self.assertRaises(SystemExit):                               # one item has no note: not a fair pair
+            self.run_blind(day, notes, keys)
+        self.assertFalse((base / "blind").exists())
+
+    def test_blind_key_must_not_sit_beside_the_pair(self):
+        day, base, notes, _ = self.blind_fixture()
+        with self.assertRaises(SystemExit):
+            self.run_blind(day, notes, base / "keys")
 
 
 if __name__ == "__main__":

@@ -12,9 +12,12 @@ packet  reads the day's picks from radar/latest.json, chooses three deep-read ca
 check   runs pairadar.editorial on DIR/D/new.<lang>.md (the writer's draft) and measures
         the published page radar/daily/D.<lang>.md with the checks that apply to it
         (stock phrases, template rate of the "why it matters" lines); DIR/D/check.json.
-blind   copies the published page and the draft as A/B (random, per language) into
-        DIR/D/blind/ and keeps the key in DIR/D/blind-key.json (0600) for the reviewers'
-        organiser only.
+blind   renders the day's three deep reads twice into ONE neutral template (date header, then title,
+        source line and body per item; no pilot marker, no lane/signal fields, no index): the
+        writer's labelled paragraphs against the model-drafted notes of data/notes/D.json for
+        the same items. Random A/B per language into DIR/D/blind/, one common mtime, key in
+        ~/.local/state/pairadar/pilot-keys/D.json (0600, directory 0700), never next to the pair.
+        Refuses a day without a model-drafted notes file (they arrive with that day's nightly).
 
 DIR must be outside this repository; files are written 0600 in 0700 directories.
 """
@@ -27,6 +30,7 @@ from pathlib import Path
 import re
 import secrets
 import sys
+import time
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -158,20 +162,95 @@ def cmd_check(args) -> int:
     return 0 if summary and all(v["passed"] for v in summary.values()) else 1
 
 
+def load_model_notes(path: Path, day: str) -> dict:
+    """The day's model-drafted "why it matters" notes, keyed by item URL.
+
+    Refuses anything but a model draft for that day: a pilot day without it would compare the new
+    text against the rule-based fallback template (pilot day 1: reviewers called that baseline too low)."""
+    if not path.is_file():
+        raise SystemExit(f"no notes file {path}: the model-drafted notes arrive with the day's nightly run; "
+                         "compare after it, not before")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("schema") != "pairadar-notes-1" or data.get("date") != day:
+        raise SystemExit(f"{path} is not a pairadar-notes-1 document for {day}")
+    if (data.get("author") or {}).get("kind") != "llm-draft":
+        raise SystemExit(f"{path} is not a model draft (author.kind != llm-draft)")
+    return data.get("notes") or {}
+
+
+_SOURCE = {"zh": "来源", "en": "Source", "ja": "出典"}
+_SOURCE_LINE = re.compile(r"^(?:Source: |来源：|出典：)\[([^\]]+)\]\((https?://[^)\s]+)\)")
+
+
+def deep_blocks(draft: str) -> list[dict]:
+    """The writer's deep reads: title, link text, URL and body paragraphs of each ### block."""
+    section = re.split(r"(?m)^## ", draft)[1:2]
+    blocks = []
+    for chunk in re.split(r"(?m)^### ", section[0])[1:] if section else []:
+        head, _, rest = chunk.partition("\n")
+        source = next((m for line in rest.splitlines() if (m := _SOURCE_LINE.match(line))), None)
+        if not source:
+            raise SystemExit(f"deep read without a source line: {head[:60]}")
+        body = "\n".join(line for line in rest.splitlines() if not _SOURCE_LINE.match(line)).strip()
+        blocks.append({"title": re.sub(r"^\d+\.\s*", "", head.strip()), "label": source.group(1),
+                       "url": source.group(2), "body": body})
+    return blocks
+
+
+def neutral_page(day: str, lang: str, blocks: list[dict], bodies: list[str]) -> str:
+    """One neutral template for both sides: date header, then title, source line and body per item."""
+    sep = ": " if lang == "en" else "："
+    parts = [f"# Physical AI Radar · {day}", ""]
+    for n, (block, body) in enumerate(zip(blocks, bodies), 1):
+        parts += [f"## {n}. {block['title']}", "",
+                  f"{_SOURCE[lang]}{sep}[{block['label']}]({block['url']})", "", body, ""]
+    return "\n".join(parts)
+
+
 def cmd_blind(args) -> int:
+    """A/B pair of the day's deep-read items in one neutral template (pilot days 2-3).
+
+    Both sides carry the same date header, titles and source lines; only the body differs:
+    the writer's four labelled paragraphs against the model-drafted note the live page would
+    carry. No pilot marker, lane/signal fields, navigation or statistics. Both files get the
+    same mtime, are named A/B only, and the key goes outside DIR (reviewers read DIR)."""
     base = day_dir(args.out, args.date)
+    keys = (args.keys or Path.home() / ".local" / "state" / "pairadar" / "pilot-keys").resolve()
+    if keys == base.resolve() or base.resolve() in keys.parents:
+        raise SystemExit("the key directory must not be under the reviewers' directory")
+    notes = load_model_notes(args.notes or ROOT / "data" / "notes" / f"{args.date}.json", args.date)
     key = {}
+    pairs = {}
     for lang in LANGS:
-        draft, page = base / f"new.{lang}.md", ROOT / "radar" / "daily" / f"{args.date}.{lang}.md"
-        if not (draft.is_file() and page.is_file()):
-            raise SystemExit(f"missing draft or page for {lang}")
+        draft = base / f"new.{lang}.md"
+        if not draft.is_file():
+            raise SystemExit(f"missing draft for {lang}: {draft}")
+        blocks = deep_blocks(draft.read_text(encoding="utf-8"))
+        if len(blocks) != DEEP:
+            raise SystemExit(f"{lang}: expected {DEEP} deep reads, found {len(blocks)}")
+        old_bodies = []
+        for block in blocks:
+            note = (notes.get(block["url"]) or {}).get(lang)
+            if not note:
+                raise SystemExit(f"no model-drafted note for {block['url']} ({lang}) in the notes file")
+            old_bodies.append(note.strip())
+        new_text = neutral_page(args.date, lang, blocks, [block["body"] for block in blocks])
+        old_text = neutral_page(args.date, lang, blocks, old_bodies)
         new_is_a = secrets.randbelow(2) == 0
         key[lang] = {"A": "new" if new_is_a else "old", "B": "old" if new_is_a else "new"}
-        a, b = (draft, page) if new_is_a else (page, draft)
-        write_private(base / "blind" / f"A.{lang}.md", a.read_text(encoding="utf-8"))
-        write_private(base / "blind" / f"B.{lang}.md", b.read_text(encoding="utf-8"))
-    write_private(base / "blind-key.json", json.dumps(key, indent=1))
-    print(str(base / "blind"))
+        pairs[lang] = (new_text, old_text) if new_is_a else (old_text, new_text)
+    blind = base / "blind"
+    for name in list(blind.glob("*")) if blind.is_dir() else []:
+        name.unlink()
+    for lang, (a, b) in pairs.items():
+        write_private(blind / f"A.{lang}.md", a)
+        write_private(blind / f"B.{lang}.md", b)
+    stamp = int(time.time())   # one mtime for every file in the pair: nothing to tell them apart by
+    for path in blind.glob("*"):
+        os.utime(path, (stamp, stamp))
+    os.utime(blind, (stamp, stamp))
+    write_private(private_dir(keys) / f"{args.date}.json", json.dumps(key, indent=1))
+    print(str(blind))
     return 0
 
 
@@ -185,6 +264,12 @@ def main(argv: list[str] | None = None) -> int:
         if name == "packet":
             command.add_argument("--deep", nargs="*", default=[], help="arXiv ids to deep-read, in order")
             command.add_argument("--latest", type=Path, default=ROOT / "radar" / "latest.json")
+        if name == "blind":
+            command.add_argument("--notes", type=Path, default=None,
+                                 help="the day's model-drafted notes (default data/notes/D.json)")
+            command.add_argument("--keys", type=Path, default=None,
+                                 help="private key directory, never under --out "
+                                      "(default ~/.local/state/pairadar/pilot-keys)")
     args = parser.parse_args(argv)
     return {"packet": cmd_packet, "check": cmd_check, "blind": cmd_blind}[args.command](args)
 
