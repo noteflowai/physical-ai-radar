@@ -60,35 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-26
+### Today's radar · 2026-10-27
 
-`Generated: 2026-10-25 23:40 UTC` ｜ `Window: papers 2026-10-22 → 2026-10-26 · posts 2026-09-26 → 2026-10-26 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-26 23:40 UTC` ｜ `Window: papers 2026-10-23 → 2026-10-27 · posts 2026-09-27 → 2026-10-27 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🟢&nbsp;`O` | **[Isaac Lab v3.0.0](https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0)**<br><sub>Simulation & evaluation · Isaac Lab releases (GitHub) · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents](https://arxiv.org/abs/2610.30587)**<br>`82.6%`<br><sub>Simulation & evaluation · arXiv 2610.30587 · 2026‑10‑22</sub> |
-| 03<br>🔵&nbsp;`R` | **[TEAR: Task-Evidence Authority Routing for Robotic Manipulation](https://arxiv.org/abs/2610.30819)**<br>`27.4%`&nbsp; `40%`<br><sub>Data engine · arXiv 2610.30819 · 2026‑10‑22</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning Robot Behavior Priors from Non-Robotic Synthetic Data](https://arxiv.org/abs/2610.31275)**<br><sub>Data engine · arXiv 2610.31275 · 2026‑10‑22</sub> |
-| 05<br>🔵&nbsp;`R` | **[Point-Level Refinable Semantic Mapping for Spatial Understanding](https://arxiv.org/abs/2610.31476)**<br>`3.46%`&nbsp; `2.55%`&nbsp; `82.4%`<br><sub>Systems & orchestration · arXiv 2610.31476 · 2026‑10‑22</sub> |
-| 06<br>🟢&nbsp;`O` | **[Powered by muscle cells, a paper-thin robot swims through watery maze](https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑09‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[Tesla starts Optimus robot production in California as profit falls 43%](https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/)**<br>`43%`<br><sub>Embodiment & supply chain · TechCrunch (Robotics) · 2026‑10‑21</sub> |
+| 01<br>🔵&nbsp;`R` | **[DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection](https://arxiv.org/abs/2610.32969)**<br>`4 tasks`&nbsp; `2,500 demonstrations`&nbsp; `11%`<br><sub>Data engine · arXiv 2610.32969 · 2026‑10‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning](https://arxiv.org/abs/2610.32093)**<br>`62%`&nbsp; `40%`&nbsp; `78%`<br><sub>Data engine · arXiv 2610.32093 · 2026‑10‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies](https://arxiv.org/abs/2610.32102)**<br><sub>Edge & real-time · arXiv 2610.32102 · 2026‑10‑23</sub> |
+| 04<br>🔵&nbsp;`R` | **[Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion](https://arxiv.org/abs/2610.32143)**<br>`1.2%`<br><sub>Training & self-improvement · arXiv 2610.32143 · 2026‑10‑23</sub> |
+| 05<br>🟢&nbsp;`O` | **[Isaac Lab Interactive browser demos](https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos)**<br><sub>Simulation & evaluation · Isaac Lab releases (GitHub) · 2026‑10‑26</sub> |
+| 06<br>🟢&nbsp;`O` | **[MuJoCo 3.17.0](https://github.com/google-deepmind/mujoco/releases/tag/3.17.0)**<br><sub>Simulation & evaluation · MuJoCo releases (GitHub) · 2026‑10‑22</sub> |
+| 07<br>🟡&nbsp;`M` | **[OMRON to acquire OnLogic to address edge AI applications](https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/)**<br><sub>Edge & real-time · The Robot Report · 2026‑10‑26</sub> |
+| 08<br>🟡&nbsp;`M` | **[Agility and GXO Logistics plan expanded deployment of Digit humanoid](https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑26</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Isaac Lab v3.0.0** — `AI draft` Teams still on Isaac Lab 2.x should schedule a migration, since the project now names 3.0 the recommended baseline for new projects and 2.x upgrades; the release page shows no performance figures, so rerun your own tasks before switching.
-2. **Know When to Escalate** — `AI draft` If you split an embodied agent between cloud and onboard compute, this preprint self-reports a 28.8-82.6% shift in median time-between-action latency plus closed-loop results, but no real-robot runs on the page, so treat it as a design lead rather than deployment evidence.
-3. **TEAR** — `AI draft` For field deployments backed by remote operators, the authors self-report teleoperation on only 19.8-27.4% of control steps and 30-40% higher success than autonomy-only, with real-robot experiments, which bears directly on how much operator time to budget per robot.
-4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — `AI draft` Before expanding a real-robot data collection budget, note this preprint questioning the common view of real robot data as the bottleneck; it reports real-robot experiments, but the page gives no figures or closed-loop results, so it cannot yet justify cutting collection.
-5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — `AI draft` Teams using open-vocabulary 3D semantic maps as long-horizon spatial memory get self-reported margins of 3.46% on Replica and 2.55% on ScanNet and success rates of 82.4% and 76.7%, though the page names neither the metrics nor the tasks and shows no real-robot results.
-6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — `AI draft` MIT frames this as a design route for small, efficient biohybrid robots, worth tracking for small-robot research, but the page offers no figures, pricing or availability, so product and sourcing plans have nothing to act on yet.
-7. **Tesla starts Optimus robot production in California as profit falls 43%** — `AI draft` Humanoid suppliers and rivals can read this as Tesla pressing on with Optimus while revenue stays flat, expenses climb and profit falls 43%, but it is secondary reporting with no unit volumes on the page, so confirm against Tesla's own disclosures before planning around it.
+1. **DexPort** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+2. **DiscoDemo** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+5. **Isaac Lab Interactive browser demos** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **MuJoCo 3.17.0** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **OMRON to acquire OnLogic to address edge AI applications** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-26.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

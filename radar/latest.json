@@ -1,173 +1,182 @@
 {
-  "date": "2026-10-26",
-  "generated": "2026-10-25 23:40 UTC",
-  "window": "papers 2026-10-22 → 2026-10-26 · posts 2026-09-26 → 2026-10-26 (UTC)",
+  "date": "2026-10-27",
+  "generated": "2026-10-26 23:40 UTC",
+  "window": "papers 2026-10-23 → 2026-10-27 · posts 2026-09-27 → 2026-10-27 (UTC)",
   "window_detail": {
-    "day": "2026-10-26",
-    "papers_from": "2026-10-22",
-    "posts_from": "2026-09-26",
+    "day": "2026-10-27",
+    "papers_from": "2026-10-23",
+    "posts_from": "2026-09-27",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "github-isaaclab:76f7d37c0882",
-      "title": "Isaac Lab v3.0.0",
-      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0",
-      "publisher": "Isaac Lab releases (GitHub)",
-      "source_id": "github-isaaclab",
-      "evidence": "O",
-      "published": "2026-10-20",
-      "lane": "simeval",
-      "score": 3.41,
-      "numbers": [],
-      "signals": [
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x. Isaac Lab 3.0 establishes the foundation for the next generation of robot learning in Isaac Lab: one task API across multiple physics, rendering, and visualization backends; kit-less execution with Newton and OV library backends; Warp-native data paths; and unified workflows from installation through training, evaluation, and deployment. Newton is a Warp-native physics backend with multiple solver paths, including MuJoCo-Warp, VBD, and MPM. It lets Isaac Lab support rigid bodies, deformables, and particles without tying tasks to one physics engine. OV Libraries provide OVPhysX for PhysX and OVRTX for RTX rendering as standalone libraries. Isaac Sim remains the complete path when a workflow needs the full PhysX/RTX stack, ROS bridge, XR, livestreaming, or Kit tooling, but now fully optional. MicroDuck rendering VBD cable insertion MPM liquid pouring One task API; install and run only the capabilities you need. This release targets Isaac Sim 6.2, Python 3.12, PyTorch 2.11 with CUDA 13.0, NVIDIA Warp 1.17, Newton 1.6.1, and RSL-RL 5.5.1. Try Isaac Lab 3.0 Install uv , clone the official release, and launch a Newton workflow: git clone --branch v3.0.0 --depth 1 https://github.com/isaac-sim/IsaacLab.git cd IsaacLab uv run isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole \\ --viz newton_gl \\ physics=newton_mjwarp For standalone PhysX and RTX rendering, install the OV libraries: uv run --extra ov isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole-Camera \\ --viz newton_gl \\ physics=ovphysx \\ renderer=ovrtx \\ presets=rgb For the complete Isaac Sim experience, including Isaac Sim PhysX, Isaac Sim RTX, ROS bridge, XR, livestreaming, and Kit tooling: uv run --extra isaacsim isaaclab train \\ --rl_library rsl_rl \\ --task Isaac-Cartpole \\ --viz kit \\ physics=isaacsim_physx See the …"
-    },
-    {
-      "id": "arxiv:2610.30587",
-      "title": "Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents",
-      "url": "https://arxiv.org/abs/2610.30587",
-      "publisher": "arXiv 2610.30587",
+      "id": "arxiv:2610.32969",
+      "title": "DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection",
+      "url": "https://arxiv.org/abs/2610.32969",
+      "publisher": "arXiv 2610.32969",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "simeval",
-      "score": 2.37,
+      "published": "2026-10-23",
+      "lane": "data",
+      "score": 3.27,
       "numbers": [
-        "82.6%"
+        "4 tasks",
+        "2,500 demonstrations",
+        "11%",
+        "64%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Collecting high-quality demonstrations remains a central bottleneck for learning dexterous manipulation. Teleoperation records executable robot actions, but it requires a complete robot setup and places the burden of coordinating many finger joints on the operator. Human demonstrations are easier to collect, but their motions must be estimated and retargeted to the robot, and they do not directly provide robot actions. In this paper, we introduce DexPort, a portable data-collection interface for high-DoF robot hands. It uses the same hand hardware for collection and deployment, avoiding a hand embodiment gap, and records both commanded joint targets and measured joint states. Our key observation is that a small set of skills can support a wide range of dexterous tasks. During collection, the operator moves the hand-held interface to specify the robot wrist motion and selects or adjusts skills that coordinate the finger motion. This removes the need to control each joint independently while retaining behaviors such as precise grasping and in-hand manipulation. We collect demonstrations across several real-world tasks and in unstructured environments without a robot arm. We then use behavior cloning to train visuomotor policies directly on the recorded wrist motions and hand commands, without skill labels. We evaluate across 4 tasks: pick-and-place with diverse objects, screwing with in-hand tool use, drawer stowage which requires simultaneous grasp and pulling, and a bimanual scanning task. We collect over 2,500 demonstrations with our portable device, in both laboratory and in-the-wild settings. Across our tasks, we see an improvement from 11% to 64% when using recorded robot commands instead of states, and an improvement from 36% to 78% for task success when using in-the-wild data."
+    },
+    {
+      "id": "arxiv:2610.32093",
+      "title": "DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning",
+      "url": "https://arxiv.org/abs/2610.32093",
+      "publisher": "arXiv 2610.32093",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-23",
+      "lane": "data",
+      "score": 3.27,
+      "numbers": [
+        "62%",
+        "40%",
+        "78%",
+        "39%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Behavior cloning for robotic manipulation is highly sensitive to the coverage of its training data, yet collecting diverse successful demonstrations remains costly. We study reinforcement learning (RL) not as a deployable controller, but as a data generator for downstream visuomotor imitation learning. Our key premise is that multiple successful solution modes cover a broader range of successful trajectories than repeatedly collecting a single narrow solution. We introduce DiscoDemo, which trains a privileged latent-conditioned RL generator with a parallel reverse curriculum and a success-gated diversity objective to discover diverse solutions while preserving task success. The trained generator produces multiple successful closed-loop behaviors, which are safety-filtered and exported as a static dataset for downstream imitation learning. Across four manipulation tasks, DiscoDemo produces broader successful-state coverage and improves downstream visuomotor policies in both simulation and the real world. Averaged across tasks, downstream success increases to 62% from 40% for the strongest baseline in simulation, and to 78% from 39% on the real robot, respectively. These results suggest that successful solution diversity improves imitation learning for a pretrained flow-matching VLA and remains complementary to corrective data collection. Project page: https://davian-robotics.github.io/DiscoDemo"
+    },
+    {
+      "id": "arxiv:2610.32102",
+      "title": "Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies",
+      "url": "https://arxiv.org/abs/2610.32102",
+      "publisher": "arXiv 2610.32102",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-23",
+      "lane": "edge",
+      "score": 2.907,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction. However, embodied agents require fast, closed-loop decisions as they continuously perceive and act on a changing environment. Deploying strong cloud agents leaves the platform idle for seconds between consecutive actions, while lightweight local models respond quickly but are more vulnerable to errors. Existing hierarchical architectures typically assign models fixed roles, whereas conventional model routers make stateless per-request decisions. We present CARE, a critic-guided adaptive execution framework that dynamically determines when to escalate control from a local executor to a stronger cloud model. A lightweight critic model monitors execution reliability and triggers escalation when local execution becomes unreliable; once escalated, control persists until the agent recovers, avoiding step-wise switching. To support such control transfer, a shared handoff memory maintains execution context and task-level progress across executors, enabling the model to intervene without restarting from scratch. Across diverse embodied benchmarks, CARE improves task success by 6.3-18.3 percentage points over the strongest evaluated collaboration baseline. CARE further approaches or exceeds Cloud-only success while reducing median time-between-action latency by 28.8-82.6%."
+      "summary": "Flow-matching Vision-Language-Action (VLA) models generate expressive continuous trajectories for robotic manipulation, yet balancing real-time responsiveness with execution stability remains a persistent challenge. Standard deployment workflows typically treat numerical solver depth and execution horizon as decoupled choices. The horizon amortizes inference latency, while solver depth is kept high to preserve integration fidelity. In this paper, we reveal a fundamental compute-execution coupling in flow-matching VLAs governed by a systematic sign reversal. While coarse numerical integration degrades precision under rapid replanning, it markedly improves task performance under extended open-loop commitment. Geometrically, numerical truncation contracts lateral action dispersion around an invariant trajectory centroid, serving as an implicit regularizer that suppresses compounding open-loop drift. Across LIBERO, RoboTwin 2.0, and real-world Franka manipulation on representative VLA backbones including $π_0$, $π_{0.5}$, and GR00T, exploiting this joint coupling consistently achieves superior task success while drastically lowering inference latency, entirely training-free and without architectural modifications. These findings establish numerical sampling depth as an operational variance regulator, shifting its role from a static precision budget to an active deployment knob in robot learning. Project page: https://jiabingyang01.github.io/Horizon-Depth-VLA/"
     },
     {
-      "id": "arxiv:2610.30819",
-      "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2610.30819",
-      "publisher": "arXiv 2610.30819",
+      "id": "arxiv:2610.32143",
+      "title": "Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion",
+      "url": "https://arxiv.org/abs/2610.32143",
+      "publisher": "arXiv 2610.32143",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "data",
-      "score": 2.167,
+      "published": "2026-10-23",
+      "lane": "training",
+      "score": 2.8,
       "numbers": [
-        "27.4%",
-        "40%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold authority. Human teleoperation adapts readily to contact-rich and semantically ambiguous situations but depends on a stable communication link. Local autonomy is executed without continuous human intervention, but may fail under semantic ambiguity, long-horizon drift, and unforeseen contingencies. These two control sources exhibit complementary reliability profiles. We formulate this complementarity as a control authority routing problem and present Task-Evidence Authority Routing for Robotic Manipulation (TEAR), an edge-deployable framework that allocates authority between human teleoperation and local autonomy. TEAR arbitrates on the robot side using network-state evidence, which governs the usability of teleoperation, and task-semantic evidence, which reflects whether autonomous execution remains consistent with the current task. A lightweight temporal arbitrator observes both forms of evidence together with robot state and current authority to time authority transfers. Across simulated and real-world trials under dynamic network conditions, TEAR achieves task success rates close to pure teleoperation while limiting teleoperation to 19.8-27.4% of control steps and improves success by 30-40% over autonomy-only execution in our settings. These results demonstrate the potential of complementary authority routing to sustain successful manipulation with substantially reduced dependence on continuous human control."
-    },
-    {
-      "id": "arxiv:2610.31275",
-      "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
-      "url": "https://arxiv.org/abs/2610.31275",
-      "publisher": "arXiv 2610.31275",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "data",
-      "score": 2.102,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer. In this paper, we investigate the degree to which such models can acquire necessary structure using data from systems without embodiment. To this end, we test if inexpensive, procedurally generated synthetic data can yield useful priors before a model observes any real-world behavior. We study this through robot action prediction, a natural pretraining objective and a direct test of whether structure learned from arbitrary synthetic tasks transfers to embodied settings. We introduce three data generation pipelines that model mathematical abstractions of robotic control, and use them as pretraining priors for a Transformer. We demonstrate that a model trained purely on this non-robotic data attains non-trivial zero-shot prediction performance on unseen physical robot tasks via an in-context learning mechanism, and that our specialized control priors notably improve upon generic causal priors. We also compare against a compute-matched baseline trained on real robot data, and find that it outperforms our model but only on the datasets it was trained on. These findings suggest that procedurally generated, mathematical abstractions can yield useful robotic priors, offering a potential complement to expensive embodied data collection."
-    },
-    {
-      "id": "arxiv:2610.31476",
-      "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
-      "url": "https://arxiv.org/abs/2610.31476",
-      "publisher": "arXiv 2610.31476",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-22",
-      "lane": "systems",
-      "score": 2.1,
-      "numbers": [
-        "3.46%",
-        "2.55%",
-        "82.4%",
-        "76.7%"
+        "1.2%"
       ],
       "signals": [
         "numbers",
         "closed_loop"
       ],
       "heat": 0.0,
-      "summary": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time. However, existing object-centric semantic maps are primarily designed for static environments and rely on an append-only point integration strategy, where newly observed points are accumulated but previously integrated points are rarely reevaluated. Consequently, perception errors accumulate over time, and outdated points persist after objects move or disappear. Although recent dynamic mapping methods update object-level representations in changing scenes, they do not explicitly revise noisy or obsolete points within each object. We propose an online refinable semantic mapping framework that continuously refines object representations through probabilistic point-level confidence updating. Each object point maintains a confidence score that is updated online using multi-view temporal evidence: consistent observations reinforce reliable points, while inconsistent segmentation masks, depth measurements, and visibility cues suppress spurious and outdated points. Combined with object tracking and re-identification to preserve instance identities under motion and relocation, our framework enables object-centric semantic maps to be continuously refined rather than monotonically accumulated. Experiments demonstrate improved mapping accuracy over the previous method by 3.46% on Replica and 2.55% on ScanNet, show robustness in dynamic environments and under perception noise, and provide an effective spatial memory for object navigation and embodied question-answering with success rates of 82.4% and 76.7%."
+      "summary": "Robot-assisted dressing is particularly challenging due to narrow openings and articulated body parts. Even small errors in the relative pose between the body part and garment opening can cause snagging, missed insertion, or incomplete dressing. To address these challenges, we formulate dressing as a geometry-aware insertion problem that represents task-relevant spatial relationships between the body part and object opening, rather than relying on the full deformable-object state. Based on this formulation, we propose a Reinforcement Learning (RL) framework combining a staged curriculum, which progressively guides the policy from coarse alignment to insertion and final placement, with a finger-wise insertion soft gate that provides continuous feedback on individual finger insertion progress and helps suppress premature insertion. We evaluate the framework on rigid and deformable bracelet dressing tasks through component ablations, systematic variations in the initial hand pose, and closed-loop execution of the learned policies on a real robotic system. On the post-training deformable evaluation, the full method reaches 84.7 +- 1.2% success. The insertion gate accounts for the largest gain, and adding the curriculum on top of that gate reaches the top score. On a mannequin hand the same full policy succeeds on 15/20 real-robot trials."
     },
     {
-      "id": "mit-news-robotics:5c1fbd9ca24d",
-      "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
-      "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
-      "publisher": "MIT News (Robotics)",
-      "source_id": "mit-news-robotics",
+      "id": "github-isaaclab:a8ec1b50c3ed",
+      "title": "Isaac Lab Interactive browser demos",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos",
+      "publisher": "Isaac Lab releases (GitHub)",
+      "source_id": "github-isaaclab",
       "evidence": "O",
-      "published": "2026-09-29",
-      "lane": "hardware",
-      "score": 0.989,
+      "published": "2026-10-26",
+      "lane": "simeval",
+      "score": 2.616,
       "numbers": [],
-      "signals": [
-        "trending"
-      ],
-      "heat": 0.133,
-      "summary": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots."
+      "signals": [],
+      "heat": 0.077,
+      "summary": "Prebuilt Newton WebAssembly simulations, their browser viewer, and exporter source for Isaac Lab documentation. The documentation stages one reviewed, commit-named archive and verifies its SHA-256. This release is the permanent bundle container; updates add assets here without creating a new numbered release. Existing assets remain available for reproducible builds. Documentation update PR #8559 · Review the gallery Preview a bundle Download the archive selected by .github/actions/_lib/stage-browser-demos.sh , extract it, and enter its top-level directory. Then run: python -m http.server 8000 --directory site Open http://localhost:8000/interactive/ . The archive includes exporters/ , scene and rebuild instructions, licenses, and tools/publish.py . Running the demos needs only a browser. Rebuilding physics requires the pinned internal Newton Web compiler and Emscripten. Publish an update Reuse the interactive-releases publishing branch. Commit the reviewed site, create a commit-named archive and checksum, and upload both to this same release. Update the archive URL and SHA-256 together in the docs PR. Keep earlier assets and compatibility directories. The current publishing branch is available in the contributor fork . Creating it in the official repository requires an administrator under the repository's branch-creation rule. Runtime bundles are hosted in this official release and served by Isaac Lab documentation."
     },
     {
-      "id": "techcrunch-robotics:6ec4c467ad3b",
-      "title": "Tesla starts Optimus robot production in California as profit falls 43%",
-      "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
-      "publisher": "TechCrunch (Robotics)",
-      "source_id": "techcrunch-robotics",
+      "id": "github-mujoco:ec15ed8c3880",
+      "title": "MuJoCo 3.17.0",
+      "url": "https://github.com/google-deepmind/mujoco/releases/tag/3.17.0",
+      "publisher": "MuJoCo releases (GitHub)",
+      "source_id": "github-mujoco",
+      "evidence": "O",
+      "published": "2026-10-22",
+      "lane": "simeval",
+      "score": 2.085,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.1,
+      "summary": "Version 3.17.0 (October 22, 2026) Significant new features c00ed8153 Added a batch API in mujoco/mjbatch.h (in Python as mujoco.batch ): many simulations of one model stepped on a thread pool of its own, each held as its integration state and loaded into an mjData for each call, so memory scales with threads and results are bit-identical to a plain loop at any thread count. It supports per-simulation model and option fields or models of the caller's, observations of the state after a step, recorded trajectories, persistent simulations (required for sleep), and arbitrary per-simulation functions. Follows the design of mjbatch by @kevinzakka . Engine Flex improvements: 94483e166 Added bending elasticity for 1D flexes, using a twist-free isotropic discrete elastic rod model. The cross-section is selected with the new section attribute: a circle of the flex radius, or a box with half-sizes sectionsize that uses the stiffness of its weak axis. It is enabled by a positive young modulus, requires a straight reference configuration (curved initial poses can be set with qpos or keyframes), is compatible with edge equality constraints, and is integrated implicitly by the discrete integrator. Previously young was ignored for 1D flexes: existing models that set it now bend, and fail to compile if the cross-section is degenerate (zero radius with the default circle section), if a vertex joins a zero-length edge, or if the rod is not straight. 36d0df9a5 , 897e3fcb1 Interpolated flexes ( trilinear or quadratic dofs ) now support self-collision , excluding elements in the same or neighboring cells. 39dd10f2d The default arena memory for flex models is now much smaller, sized from the flex mesh topology instead of nv^2 . If the Newton solver runs out of arena memory it falls back to CG with a warning. mj_setConst now computes only quantities derived from other fields of mjModel , while the compiler alone resolves spec-level conventions: 55c1b585a , d6d41f324 The damping of position …"
+    },
+    {
+      "id": "the-robot-report:9126dd125602",
+      "title": "OMRON to acquire OnLogic to address edge AI applications",
+      "url": "https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-21",
-      "lane": "hardware",
-      "score": 0.932,
-      "numbers": [
-        "43%"
-      ],
-      "signals": [
-        "numbers"
-      ],
+      "published": "2026-10-26",
+      "lane": "edge",
+      "score": 1.252,
+      "numbers": [],
+      "signals": [],
       "heat": 0.0,
-      "summary": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving."
+      "summary": "OMRON will add industrial computing from OnLogic to its industrial automation expertise to serve data- and AI-intensive applications."
+    },
+    {
+      "id": "the-robot-report:24600ed8f1e7",
+      "title": "Agility and GXO Logistics plan expanded deployment of Digit humanoid",
+      "url": "https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-26",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "GXO Logistics, which has tested humanoid robots from multiple companies, will deploy Agility's Digit at two more sites."
     }
   ],
   "lane_counts": {
-    "foundation": 6,
-    "data": 7,
+    "foundation": 5,
+    "data": 8,
     "training": 8,
-    "simeval": 13,
-    "edge": 4,
+    "simeval": 14,
+    "edge": 6,
     "safety": 2,
-    "systems": 5,
-    "hardware": 10
+    "systems": 3,
+    "hardware": 9
   },
   "evidence_mix": {
-    "O": 6,
+    "O": 8,
     "R": 33,
-    "M": 16
+    "M": 14
   },
   "fetch": {
-    "items": 534,
+    "items": 632,
     "attempted": 23,
-    "answered": 22,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 23,
+    "failed": [],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -191,7 +200,7 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 18,
+      "hn_stories": 11,
       "repos": 4
     },
     "per_source": {
@@ -199,6 +208,7 @@
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -211,7 +221,7 @@
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 11,
       "robohub": 75,
-      "qbitai": 3,
+      "qbitai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

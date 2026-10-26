@@ -56,16 +56,6 @@
       "date": "2026-09-26",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2609.28952",
-        "https://arxiv.org/abs/2609.29648",
-        "https://arxiv.org/abs/2609.30247",
-        "https://arxiv.org/abs/2609.29194",
-        "https://spectrum.ieee.org/video-friday-goose-household-robots",
-        "https://www.tri.global/research/difference-aware-retrieval-policies-imitation-learning",
-        "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots",
-        "https://www.therobotreport.com/qualcomm-acquires-picknik-robotics-keep-moveit-open-source"
-      ],
       "failed": [],
       "fallback": [
         "arxiv"
@@ -645,6 +635,42 @@
           "hot": "mit-news-robotics:5c1fbd9ca24d"
         },
         "unmet": []
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.32969",
+        "https://arxiv.org/abs/2610.32093",
+        "https://arxiv.org/abs/2610.32102",
+        "https://arxiv.org/abs/2610.32143",
+        "https://github.com/isaac-sim/isaaclab/releases/tag/interactive-demos",
+        "https://github.com/google-deepmind/mujoco/releases/tag/3.17.0",
+        "https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications",
+        "https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "github-isaaclab:a8ec1b50c3ed",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
       }
     }
   ]

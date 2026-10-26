@@ -62,35 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-26
+### 今日雷达 · 2026-10-27
 
-`生成时间: 2026-10-25 23:40 UTC` ｜ `统计窗口: 论文 2026-10-22 → 2026-10-26 · 博客与报道 2026-09-26 → 2026-10-26 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-26 23:40 UTC` ｜ `统计窗口: 论文 2026-10-23 → 2026-10-27 · 博客与报道 2026-09-27 → 2026-10-27 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🟢&nbsp;`O` | **[Isaac Lab v3.0.0](https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0)**<br><sub>仿真与评测 · Isaac Lab releases (GitHub) · 2026‑10‑20</sub> |
-| 02<br>🔵&nbsp;`R` | **[Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents](https://arxiv.org/abs/2610.30587)**<br>`82.6%`<br><sub>仿真与评测 · arXiv 2610.30587 · 2026‑10‑22</sub> |
-| 03<br>🔵&nbsp;`R` | **[TEAR: Task-Evidence Authority Routing for Robotic Manipulation](https://arxiv.org/abs/2610.30819)**<br>`27.4%`&nbsp; `40%`<br><sub>数据引擎 · arXiv 2610.30819 · 2026‑10‑22</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning Robot Behavior Priors from Non-Robotic Synthetic Data](https://arxiv.org/abs/2610.31275)**<br><sub>数据引擎 · arXiv 2610.31275 · 2026‑10‑22</sub> |
-| 05<br>🔵&nbsp;`R` | **[Point-Level Refinable Semantic Mapping for Spatial Understanding](https://arxiv.org/abs/2610.31476)**<br>`3.46%`&nbsp; `2.55%`&nbsp; `82.4%`<br><sub>系统与编排 · arXiv 2610.31476 · 2026‑10‑22</sub> |
-| 06<br>🟢&nbsp;`O` | **[Powered by muscle cells, a paper-thin robot swims through watery maze](https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929)**<br><sub>本体与供应链 · MIT News (Robotics) · 2026‑09‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[Tesla starts Optimus robot production in California as profit falls 43%](https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/)**<br>`43%`<br><sub>本体与供应链 · TechCrunch (Robotics) · 2026‑10‑21</sub> |
+| 01<br>🔵&nbsp;`R` | **[DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection](https://arxiv.org/abs/2610.32969)**<br>`4 tasks`&nbsp; `2,500 demonstrations`&nbsp; `11%`<br><sub>数据引擎 · arXiv 2610.32969 · 2026‑10‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning](https://arxiv.org/abs/2610.32093)**<br>`62%`&nbsp; `40%`&nbsp; `78%`<br><sub>数据引擎 · arXiv 2610.32093 · 2026‑10‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies](https://arxiv.org/abs/2610.32102)**<br><sub>边缘与实时性 · arXiv 2610.32102 · 2026‑10‑23</sub> |
+| 04<br>🔵&nbsp;`R` | **[Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion](https://arxiv.org/abs/2610.32143)**<br>`1.2%`<br><sub>训练与自我改进 · arXiv 2610.32143 · 2026‑10‑23</sub> |
+| 05<br>🟢&nbsp;`O` | **[Isaac Lab Interactive browser demos](https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos)**<br><sub>仿真与评测 · Isaac Lab releases (GitHub) · 2026‑10‑26</sub> |
+| 06<br>🟢&nbsp;`O` | **[MuJoCo 3.17.0](https://github.com/google-deepmind/mujoco/releases/tag/3.17.0)**<br><sub>仿真与评测 · MuJoCo releases (GitHub) · 2026‑10‑22</sub> |
+| 07<br>🟡&nbsp;`M` | **[OMRON to acquire OnLogic to address edge AI applications](https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑10‑26</sub> |
+| 08<br>🟡&nbsp;`M` | **[Agility and GXO Logistics plan expanded deployment of Digit humanoid](https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑26</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Isaac Lab v3.0.0** — `AI 起草` 仍在 Isaac Lab 2.x 上的团队该排迁移计划了：官方把 3.0 定为正式发布，并推荐它作为新项目和从 2.x 迁移的基线；页面没有给出性能数据，升级前先在自己的任务上回归一遍。
-2. **Know When to Escalate** — `AI 起草` 在云端与本地之间分配算力的具身智能体团队可以参考：作者自报中位动作间隔延迟变化幅度为 28.8-82.6%，并报告了闭环结果，但页面没有真机结果，先当作切分策略的设计线索而非部署依据。
-3. **TEAR** — `AI 起草` 做现场部署、靠遥操作兜底的团队值得细看：作者自报遥操作只占 19.8-27.4% 的控制步，成功率比纯自主执行高 30-40%，且有真机实验；这直接关系到每台机器人要配多少人工接管预算。
-4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — `AI 起草` 如果你正准备扩大真机数据采集预算，可以先关注这条：它质疑“真机数据是瓶颈”这一常见看法，并有真机实验，但页面没有给出任何数字或闭环结果，目前还不足以据此削减采集投入。
-5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — `AI 起草` 以开放词汇 3D 语义地图作长程空间记忆的团队可以留意：作者自报在 Replica 和 ScanNet 上分别领先前作 3.46% 和 2.55%，成功率为 82.4% 和 76.7%，但页面未说明对应的指标与任务，也没有真机结果。
-6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — `AI 起草` 这是 MIT 给出的小型高效“生物混合”机器人设计路线，适合相关研究团队跟踪；页面没有任何量化数据、价格或供货信息，做产品选型的团队暂时无需据此调整计划。
-7. **Tesla starts Optimus robot production in California as profit falls 43%** — `AI 起草` 人形机器人供应链和竞品团队可据此判断 Optimus 的投入力度：这篇二手报道称特斯拉在利润下滑 43%、营收持平、费用大涨时仍加码 Optimus，但页面没有产量数字，引用前请核对特斯拉的一手披露。
+1. **DexPort** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+2. **DiscoDemo** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+5. **Isaac Lab Interactive browser demos** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **MuJoCo 3.17.0** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **OMRON to acquire OnLogic to address edge AI applications** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-26.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-27.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
