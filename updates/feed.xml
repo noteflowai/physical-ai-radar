@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>explain each blocking finding in the diff summary</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.0/</guid>
+      <description>When a diff has at least one blocking change (regressed, less_reliable, unassessed, less_covered or removed), render_markdown now adds a '#### Why the gate failed' section right after the existing changes table. This Markdown goes to summary.md and to the --markdown destination, such as $GITHUB_STEP_SUMMARY or a PR comment body. The section first states the threshold that was applied, using the existing value formatting, so 1.0 prints as 1: 'Numeric scores pass at threshold 1; categorical verdicts use the source tool's pass mark.' A table follows with one row per blocking finding, in the existing sort order and capped by the existing row limit. Each row gives the kind, with ' (within noise)' when the row is within sampling noise, then a combined Case / check cell, the Baseline and Current fractions, and the Failing attempt. For regressed, less_reliable and unassessed rows, the Failing attempt is the first current attempt that did not pass, shown with its value and evidence and leaving out any part that is absent. Removed checks show 'not recorded in the current run' plus their baseline attempt. Less_covered checks show both assessed counts. Missing or malformed detail reads 'no attempt detail recorded'. Untrusted text is escaped into a single cell and cut to 120 characters with an ellipsis. When there are more rows than the limit, a line gives the remaining count and points to diff.json. A provenance line with each input's file name and the first 12 hex characters of its sha256 appears only when both runs record them. Summaries with no blocking change are unchanged, and so are diff.json, index.html, exit codes and the gate logic.</description>
+      <pubDate>Mon, 26 Oct 2026 18:34:53 +0000</pubDate>
+    </item>
+    <item>
       <title>wp ai-chat-bedrock usage reports failed requests by cause</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.0/</guid>
