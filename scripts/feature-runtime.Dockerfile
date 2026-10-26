@@ -14,6 +14,28 @@ RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
  && npm install -g pnpm@12.3.4 \
  && pip install --no-cache-dir pytest==8.4.2 ruff==0.15.6 build==1.4.0 \
  && useradd --uid 1000 --create-home worker
+# Fixed-PATH launchers use these names; retain the pinned upstream interpreters.
+# Validate both names before creating either, and never replace an existing entry.
+RUN set -eu; \
+ for name in python3 node; do \
+   source="/usr/local/bin/$name"; destination="/usr/bin/$name"; \
+   if [ -e "$destination" ] || [ -L "$destination" ]; then \
+     echo "Interpreter alias already exists: $destination" >&2; exit 1; \
+   fi; \
+   target="$(readlink -f "$source")"; \
+   test "$(dirname "$target")" = /usr/local/bin; \
+   test -f "$target"; test -x "$target"; \
+   test "$(stat -c %u "$source")" = 0; \
+   for path in / /usr /usr/bin /usr/local /usr/local/bin "$target"; do \
+     test "$(stat -c %u "$path")" = 0; \
+     mode="$(stat -c %a "$path")"; test "$((0$mode & 022))" = 0; \
+   done; \
+ done; \
+ for name in python3 node; do \
+   ln -sT "/usr/local/bin/$name" "/usr/bin/$name"; \
+   test "$(readlink -f "/usr/bin/$name")" = "$(readlink -f "/usr/local/bin/$name")"; \
+   test "$(stat -c %u "/usr/bin/$name")" = 0; \
+ done
 ENV CI=1 PIP_NO_INPUT=1 PLAYWRIGHT_BROWSERS_PATH=/opt/browsers \
  PYTHONDONTWRITEBYTECODE=1 MUJOCO_GL=egl \
  XDG_DATA_HOME=/opt/feature-data XDG_CACHE_HOME=/opt/feature-cache \
