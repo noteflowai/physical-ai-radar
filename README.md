@@ -80,13 +80,13 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **Isaac Lab v3.0.0** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Know When to Escalate** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-3. **TEAR** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
-6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Tesla starts Optimus robot production in California as profit falls 43%** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+1. **Isaac Lab v3.0.0** — `AI 起草` 仍在 Isaac Lab 2.x 上的团队该排迁移计划了：官方把 3.0 定为正式发布，并推荐它作为新项目和从 2.x 迁移的基线；页面没有给出性能数据，升级前先在自己的任务上回归一遍。
+2. **Know When to Escalate** — `AI 起草` 在云端与本地之间分配算力的具身智能体团队可以参考：作者自报中位动作间隔延迟变化幅度为 28.8-82.6%，并报告了闭环结果，但页面没有真机结果，先当作切分策略的设计线索而非部署依据。
+3. **TEAR** — `AI 起草` 做现场部署、靠遥操作兜底的团队值得细看：作者自报遥操作只占 19.8-27.4% 的控制步，成功率比纯自主执行高 30-40%，且有真机实验；这直接关系到每台机器人要配多少人工接管预算。
+4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — `AI 起草` 如果你正准备扩大真机数据采集预算，可以先关注这条：它质疑“真机数据是瓶颈”这一常见看法，并有真机实验，但页面没有给出任何数字或闭环结果，目前还不足以据此削减采集投入。
+5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — `AI 起草` 以开放词汇 3D 语义地图作长程空间记忆的团队可以留意：作者自报在 Replica 和 ScanNet 上分别领先前作 3.46% 和 2.55%，成功率为 82.4% 和 76.7%，但页面未说明对应的指标与任务，也没有真机结果。
+6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — `AI 起草` 这是 MIT 给出的小型高效“生物混合”机器人设计路线，适合相关研究团队跟踪；页面没有任何量化数据、价格或供货信息，做产品选型的团队暂时无需据此调整计划。
+7. **Tesla starts Optimus robot production in California as profit falls 43%** — `AI 起草` 人形机器人供应链和竞品团队可据此判断 Optimus 的投入力度：这篇二手报道称特斯拉在利润下滑 43%、营收持平、费用大涨时仍加码 Optimus，但页面没有产量数字，引用前请核对特斯拉的一手披露。
 
 </details>
 

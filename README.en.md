@@ -78,13 +78,13 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **Isaac Lab v3.0.0** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **Know When to Escalate** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **TEAR** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
-5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Tesla starts Optimus robot production in California as profit falls 43%** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
+1. **Isaac Lab v3.0.0** — `AI draft` Teams still on Isaac Lab 2.x should schedule a migration, since the project now names 3.0 the recommended baseline for new projects and 2.x upgrades; the release page shows no performance figures, so rerun your own tasks before switching.
+2. **Know When to Escalate** — `AI draft` If you split an embodied agent between cloud and onboard compute, this preprint self-reports a 28.8-82.6% shift in median time-between-action latency plus closed-loop results, but no real-robot runs on the page, so treat it as a design lead rather than deployment evidence.
+3. **TEAR** — `AI draft` For field deployments backed by remote operators, the authors self-report teleoperation on only 19.8-27.4% of control steps and 30-40% higher success than autonomy-only, with real-robot experiments, which bears directly on how much operator time to budget per robot.
+4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — `AI draft` Before expanding a real-robot data collection budget, note this preprint questioning the common view of real robot data as the bottleneck; it reports real-robot experiments, but the page gives no figures or closed-loop results, so it cannot yet justify cutting collection.
+5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — `AI draft` Teams using open-vocabulary 3D semantic maps as long-horizon spatial memory get self-reported margins of 3.46% on Replica and 2.55% on ScanNet and success rates of 82.4% and 76.7%, though the page names neither the metrics nor the tasks and shows no real-robot results.
+6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — `AI draft` MIT frames this as a design route for small, efficient biohybrid robots, worth tracking for small-robot research, but the page offers no figures, pricing or availability, so product and sourcing plans have nothing to act on yet.
+7. **Tesla starts Optimus robot production in California as profit falls 43%** — `AI draft` Humanoid suppliers and rivals can read this as Tesla pressing on with Optimus while revenue stays flat, expenses climb and profit falls 43%, but it is secondary reporting with no unit volumes on the page, so confirm against Tesla's own disclosures before planning around it.
 
 </details>
 

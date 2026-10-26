@@ -78,13 +78,13 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **Isaac Lab v3.0.0** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **Know When to Escalate** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **TEAR** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
-4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
-6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — 当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-7. **Tesla starts Optimus robot production in California as profit falls 43%** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+1. **Isaac Lab v3.0.0** — `AI 下書き` Isaac Lab 2.x を使い続けているチームは移行計画を立てる時期だ。公式が 3.0 を新規プロジェクトと 2.x からの移行の推奨ベースラインと位置づけた。ページに性能値はないため、切り替え前に自前タスクで再検証を。
+2. **Know When to Escalate** — `AI 下書き` クラウドとローカルで推論を分担するエージェント設計の参考になる。著者自己報告で行動間レイテンシ中央値に 28.8-82.6% の変化、閉ループ結果もあるが、ページ上に実機結果はなく、配備判断の根拠ではなく設計上の手掛かりにとどまる。
+3. **TEAR** — `AI 下書き` 遠隔操作を保険にした現場配備では、オペレータ工数の見積もりに直結する。著者自己報告で遠隔操作は制御ステップの 19.8-27.4% にとどまり、自律のみより成功率が 30-40% 向上、実機実験もある。
+4. **Learning Robot Behavior Priors from Non-Robotic Synthetic Data** — `AI 下書き` 実機データ収集の予算拡大を検討中なら注視したい。「実機データがボトルネック」という通念に疑問を投げかけ実機実験もあるが、ページには数値も閉ループ結果もなく、現時点で収集を減らす根拠にはならない。
+5. **Point-Level Refinable Semantic Mapping for Spatial Understanding** — `AI 下書き` 開放語彙の 3D セマンティックマップを長期タスクの空間記憶に使うチーム向け。著者自己報告で Replica で 3.46%、ScanNet で 2.55% 先行し成功率は 82.4% と 76.7%。ただし指標とタスクの内容は不明で、実機結果もない。
+6. **Powered by muscle cells, a paper-thin robot swims through watery maze** — `AI 下書き` 小型で効率的な「バイオハイブリッド」ロボットの設計手法として MIT が示したもので、小型ロボットの研究には追う価値がある。ただし数値も価格も供給情報もなく、製品選定や調達計画に反映できる段階ではない。
+7. **Tesla starts Optimus robot production in California as profit falls 43%** — `AI 下書き` 人型ロボットのサプライヤーや競合にとって、売上横ばい・費用急増・利益 43% 減の中でもテスラが Optimus に注力している材料になる。ただし二次報道で生産台数の記載はなく、計画に織り込む前にテスラの一次開示で確認を。
 
 </details>
 

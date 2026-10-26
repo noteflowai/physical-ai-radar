@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-26",
+  "generated": "2026-10-26 13:52 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://github.com/isaac-sim/isaaclab/releases/tag/v3.0.0": {
+      "zh": "仍在 Isaac Lab 2.x 上的团队该排迁移计划了：官方把 3.0 定为正式发布，并推荐它作为新项目和从 2.x 迁移的基线；页面没有给出性能数据，升级前先在自己的任务上回归一遍。",
+      "en": "Teams still on Isaac Lab 2.x should schedule a migration, since the project now names 3.0 the recommended baseline for new projects and 2.x upgrades; the release page shows no performance figures, so rerun your own tasks before switching.",
+      "ja": "Isaac Lab 2.x を使い続けているチームは移行計画を立てる時期だ。公式が 3.0 を新規プロジェクトと 2.x からの移行の推奨ベースラインと位置づけた。ページに性能値はないため、切り替え前に自前タスクで再検証を。"
+    },
+    "https://arxiv.org/abs/2610.30587": {
+      "zh": "在云端与本地之间分配算力的具身智能体团队可以参考：作者自报中位动作间隔延迟变化幅度为 28.8-82.6%，并报告了闭环结果，但页面没有真机结果，先当作切分策略的设计线索而非部署依据。",
+      "en": "If you split an embodied agent between cloud and onboard compute, this preprint self-reports a 28.8-82.6% shift in median time-between-action latency plus closed-loop results, but no real-robot runs on the page, so treat it as a design lead rather than deployment evidence.",
+      "ja": "クラウドとローカルで推論を分担するエージェント設計の参考になる。著者自己報告で行動間レイテンシ中央値に 28.8-82.6% の変化、閉ループ結果もあるが、ページ上に実機結果はなく、配備判断の根拠ではなく設計上の手掛かりにとどまる。"
+    },
+    "https://arxiv.org/abs/2610.30819": {
+      "zh": "做现场部署、靠遥操作兜底的团队值得细看：作者自报遥操作只占 19.8-27.4% 的控制步，成功率比纯自主执行高 30-40%，且有真机实验；这直接关系到每台机器人要配多少人工接管预算。",
+      "en": "For field deployments backed by remote operators, the authors self-report teleoperation on only 19.8-27.4% of control steps and 30-40% higher success than autonomy-only, with real-robot experiments, which bears directly on how much operator time to budget per robot.",
+      "ja": "遠隔操作を保険にした現場配備では、オペレータ工数の見積もりに直結する。著者自己報告で遠隔操作は制御ステップの 19.8-27.4% にとどまり、自律のみより成功率が 30-40% 向上、実機実験もある。"
+    },
+    "https://arxiv.org/abs/2610.31275": {
+      "zh": "如果你正准备扩大真机数据采集预算，可以先关注这条：它质疑“真机数据是瓶颈”这一常见看法，并有真机实验，但页面没有给出任何数字或闭环结果，目前还不足以据此削减采集投入。",
+      "en": "Before expanding a real-robot data collection budget, note this preprint questioning the common view of real robot data as the bottleneck; it reports real-robot experiments, but the page gives no figures or closed-loop results, so it cannot yet justify cutting collection.",
+      "ja": "実機データ収集の予算拡大を検討中なら注視したい。「実機データがボトルネック」という通念に疑問を投げかけ実機実験もあるが、ページには数値も閉ループ結果もなく、現時点で収集を減らす根拠にはならない。"
+    },
+    "https://arxiv.org/abs/2610.31476": {
+      "zh": "以开放词汇 3D 语义地图作长程空间记忆的团队可以留意：作者自报在 Replica 和 ScanNet 上分别领先前作 3.46% 和 2.55%，成功率为 82.4% 和 76.7%，但页面未说明对应的指标与任务，也没有真机结果。",
+      "en": "Teams using open-vocabulary 3D semantic maps as long-horizon spatial memory get self-reported margins of 3.46% on Replica and 2.55% on ScanNet and success rates of 82.4% and 76.7%, though the page names neither the metrics nor the tasks and shows no real-robot results.",
+      "ja": "開放語彙の 3D セマンティックマップを長期タスクの空間記憶に使うチーム向け。著者自己報告で Replica で 3.46%、ScanNet で 2.55% 先行し成功率は 82.4% と 76.7%。ただし指標とタスクの内容は不明で、実機結果もない。"
+    },
+    "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929": {
+      "zh": "这是 MIT 给出的小型高效“生物混合”机器人设计路线，适合相关研究团队跟踪；页面没有任何量化数据、价格或供货信息，做产品选型的团队暂时无需据此调整计划。",
+      "en": "MIT frames this as a design route for small, efficient biohybrid robots, worth tracking for small-robot research, but the page offers no figures, pricing or availability, so product and sourcing plans have nothing to act on yet.",
+      "ja": "小型で効率的な「バイオハイブリッド」ロボットの設計手法として MIT が示したもので、小型ロボットの研究には追う価値がある。ただし数値も価格も供給情報もなく、製品選定や調達計画に反映できる段階ではない。"
+    },
+    "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/": {
+      "zh": "人形机器人供应链和竞品团队可据此判断 Optimus 的投入力度：这篇二手报道称特斯拉在利润下滑 43%、营收持平、费用大涨时仍加码 Optimus，但页面没有产量数字，引用前请核对特斯拉的一手披露。",
+      "en": "Humanoid suppliers and rivals can read this as Tesla pressing on with Optimus while revenue stays flat, expenses climb and profit falls 43%, but it is secondary reporting with no unit volumes on the page, so confirm against Tesla's own disclosures before planning around it.",
+      "ja": "人型ロボットのサプライヤーや競合にとって、売上横ばい・費用急増・利益 43% 減の中でもテスラが Optimus に注力している材料になる。ただし二次報道で生産台数の記載はなく、計画に織り込む前にテスラの一次開示で確認を。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
