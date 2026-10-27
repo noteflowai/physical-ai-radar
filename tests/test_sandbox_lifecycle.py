@@ -176,6 +176,13 @@ class LifecycleTests(unittest.TestCase):
         with self.assertRaises(runtime.CleanupUnconfirmed):
             runtime.require_resolved_execution(self.state, "execution")
 
+    def test_missing_marker_with_execution_history_is_not_replayed(self):
+        output = self.state / "execution"
+        output.mkdir()
+        (output / ("execution-" + "e" * 32 + ".json")).write_text('{}')
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            runtime.require_resolved_execution(self.state, "execution")
+
     def test_legacy_receipt_and_corrupt_marker_are_not_reused(self):
         output = self.state / "execution"
         output.mkdir()

@@ -254,6 +254,8 @@ def require_resolved_execution(state: Path, label: str) -> None:
     except FileNotFoundError:
         if (output / "receipt.json").exists():
             raise CleanupUnconfirmed("Legacy receipt requires reconciliation before reuse")
+        if output.is_dir() and any(output.glob("execution-*.json")):
+            raise CleanupUnconfirmed("Original execution history requires reconciliation")
         return
     record = _read_record(marker)
     if (record.get("state") != "cleanup-confirmed"
