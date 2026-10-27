@@ -21,7 +21,7 @@ from zoneinfo import ZoneInfo
 try:
     from .agent_pipeline import command, finish, gh, reconcile_superseded, write_json, WORKER_DEADLINE_ENV
     from .feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
-    from .feature_runtime import GPU_IMAGE, archive, execute, image_for
+    from .feature_runtime import GPU_IMAGE, archive, execute, image_for, require_resolved_execution
     from .feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from .feature_versions import prepare as prepare_release
     from .feature_release import publish as publish_distribution
@@ -42,7 +42,7 @@ try:
 except ImportError:
     from agent_pipeline import command, finish, gh, reconcile_superseded, write_json, WORKER_DEADLINE_ENV
     from feature_policy import AUTHOR_SYSTEM, PROJECTS, SYSTEM, acceptance_command, allowed, matches, readable
-    from feature_runtime import GPU_IMAGE, archive, execute, image_for
+    from feature_runtime import GPU_IMAGE, archive, execute, image_for, require_resolved_execution
     from feature_wordpress import SLUG, package_files, publish as publish_wordpress, version as wordpress_version
     from feature_versions import prepare as prepare_release
     from feature_release import publish as publish_distribution
@@ -479,6 +479,7 @@ def validate_feature(root: Path, task: dict, config: dict, state: Path,
     image = image_for(root, task["base"], config, state, repo=task.get("repo"))
 
     def checked(snapshot_path, selected_image, commands, label, **options):
+        require_resolved_execution(state, label)
         receipt = state / label / "receipt.json"
         prior = read_json(receipt, {})
         reusable = prior.get("exit_code") == 0

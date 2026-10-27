@@ -15,9 +15,12 @@ class CpuCheckSandboxTests(unittest.TestCase):
 
         def invoke(argv, **kwargs):
             commands.append(argv)
-            return subprocess.CompletedProcess(argv, 0)
+            stdout = "a" * 64 + "\n" if argv[:2] == ["docker", "create"] else ""
+            return subprocess.CompletedProcess(argv, 0, stdout, "")
 
         with tempfile.TemporaryDirectory() as temporary, patch.object(
+                feature_runtime, "_docker_authority", return_value=(["docker"], {}, {})), patch.object(
+                feature_runtime, "_check_authority"), patch.object(
                 feature_runtime.subprocess, "run", side_effect=invoke):
             root = Path(temporary)
             snapshot = root / "source"
@@ -25,7 +28,7 @@ class CpuCheckSandboxTests(unittest.TestCase):
             result = feature_runtime.execute(snapshot, "sha256:" + "a" * 64,
                                              [["python3", "-V"]], root / "state",
                                              "probe", **options)
-        return next(argv for argv in commands if argv[:2] == ["docker", "run"]), result
+        return next(argv for argv in commands if argv[:2] == ["docker", "create"]), result
 
     def test_opt_in_cpu_check_has_bounded_tmpfs_and_read_only_root(self):
         argv, result = self.run_sandbox(workspace_bytes=128 * 1024**2, cpus=1,
