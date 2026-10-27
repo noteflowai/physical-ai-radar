@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **DexPort** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
-2. **DiscoDemo** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — 査読前のプレプリント。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
-5. **Isaac Lab Interactive browser demos** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-6. **MuJoCo 3.17.0** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-7. **OMRON to acquire OnLogic to address edge AI applications** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **DexPort** — `AI 下書き` 巧緻ハンドのデータ収集がロボット一式を要する遠隔操作環境に縛られているなら、携帯型の手持ちインタフェースを試す価値がある。著者は 2,500 件超のデモ、4 タスクでの評価、11% から 64% への改善を自己報告しているが、査読前の数字だ。
+2. **DiscoDemo** — `AI 下書き` 行動クローニング用のデモを追加収集する前に、まずカバレッジを点検すべきだ。著者は下流の成功率が 40% から 62%、実機側とみられる条件で 39% から 78% に上がったと自己報告しているが、査読前の単一の結果にとどまる。
+3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI 下書き` フローマッチング型 VLA の運用で応答性と実行安定性のトレードオフに悩むチームには、実行ホライズンとサンプリング深さを一体で調整すべきという示唆がある。実機・閉ループ・遅延のシグナルはあるが、ページに具体的な数値はなく、設定変更の根拠にはまだ弱い。
+4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI 下書き` 狭い開口部への挿入を伴う着衣支援に取り組むチームには、形状を考慮した RL が候補になる。ただし自己報告の成功率 84.7 ± 1.2% に対し、ページ上に実機結果は示されておらず、導入根拠ではなく手法候補として扱うべきだ。
+5. **Isaac Lab Interactive browser demos** — `AI 下書き` ドキュメントやレビューでシミュレーションをそのまま見せたいチームの参考になる。事前ビルド済みの Newton WebAssembly シミュレーション、ブラウザビューア、エクスポータのソースが公開された。性能値はなく、再利用の要はエクスポータのソースだ。
+6. **MuJoCo 3.17.0** — `AI 下書き` 同一モデルの多数のシミュレーションを自前のラッパーで並列実行しているなら、専用スレッドプールで進める新しいバッチ API（mujoco.batch）への置き換えを検討したい。リリースノートに高速化の数値はないため、切り替え前にスループットを自前で測るべきだ。
+7. **OMRON to acquire OnLogic to address edge AI applications** — `AI 下書き` エッジ AI に OnLogic の産業用コンピュータを採用しているなら、OMRON による買収計画が製品ロードマップと供給に与える影響を注視したい。二次報道のみのため、条件は両社の一次発表で確認を。
+8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI 下書き` 物流向けヒューマノイドのベンダー選定では参考になる。複数社の機体を試した GXO が、Digit をさらに 2 拠点へ展開する計画だ。ただし二次報道であり、台数や作業性能の数値は示されていない。
 
 </details>
 

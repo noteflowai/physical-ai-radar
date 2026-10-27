@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DexPort** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-2. **DiscoDemo** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-5. **Isaac Lab Interactive browser demos** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **MuJoCo 3.17.0** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **OMRON to acquire OnLogic to address edge AI applications** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **DexPort** — `AI draft` If full-robot teleoperation rigs are what limits your dexterous-hand data, this portable hand-held interface is worth a trial: the authors self-report over 2,500 demonstrations, 4 evaluation tasks and an improvement from 11% to 64%, all unreviewed.
+2. **DiscoDemo** — `AI draft` Before paying for more behavior-cloning demos, audit their coverage: the authors self-report downstream success rising from 40% to 62%, and from 39% to 78% in what the quote ties to the real setup, though it is one unreviewed preprint.
+3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI draft` For teams trading real-time responsiveness against execution stability in flow-matching VLA deployments, this preprint argues for tuning execution horizon and sampling depth jointly; the page flags real-robot, closed-loop and latency results but shows no figures yet.
+4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI draft` Assistive-dressing teams facing narrow-opening insertion can shortlist geometry-aware RL, but the self-reported 84.7 +- 1.2% success comes without real-robot results on the page, so treat it as a method candidate, not deployment evidence.
+5. **Isaac Lab Interactive browser demos** — `AI draft` Teams that want simulations viewable straight from their docs or reviews get a reference here: prebuilt Newton WebAssembly simulations, a browser viewer and the exporter source; no performance figures are given, and the exporter is the reusable part.
+6. **MuJoCo 3.17.0** — `AI draft` If you maintain your own wrapper to step many copies of one MuJoCo model in parallel, evaluate the new batch API (mujoco.batch), which runs them on its own thread pool; the notes give no speed-up figures, so benchmark throughput before switching.
+7. **OMRON to acquire OnLogic to address edge AI applications** — `AI draft` If OnLogic industrial computers sit in your edge-AI bill of materials, watch how this planned OMRON acquisition affects roadmap and supply; this is secondary reporting, so confirm deal terms in the companies' own announcements.
+8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI draft` For anyone choosing a warehouse humanoid vendor, a logistics operator that tested several makers plans Digit at two more sites; that is a selection signal, but it is secondary reporting with no fleet size or task performance given.
 
 </details>
 

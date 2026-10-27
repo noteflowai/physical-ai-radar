@@ -78,7 +78,7 @@
 <a href="#p4" class="blip" style="--lane:#34d399;--delay:1.40s"><circle cx="135.5" cy="-0.0" r="11" class="halo"/><circle cx="135.5" cy="-0.0" r="5"/><title>Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion</title></a>
 <a href="#p5" class="blip" style="--lane:#fb923c;--delay:1.75s"><circle cx="99.9" cy="83.8" r="11" class="halo"/><circle cx="99.9" cy="83.8" r="5"/><title>Isaac Lab Interactive browser demos</title></a>
 <a href="#p6" class="blip" style="--lane:#fb923c;--delay:2.10s"><circle cx="74.3" cy="88.6" r="11" class="halo"/><circle cx="74.3" cy="88.6" r="5"/><title>MuJoCo 3.17.0</title></a>
-<a href="#p7" class="blip" style="--lane:#f472b6;--delay:2.45s"><circle cx="-8.1" cy="92.2" r="11" class="halo"/><circle cx="-8.1" cy="92.2" r="5"/><title>OMRON to acquire OnLogic to address edge AI applications</title></a>
+<a href="#p7" class="blip" style="--lane:#f472b6;--delay:2.45s"><circle cx="-8.1" cy="92.1" r="11" class="halo"/><circle cx="-8.1" cy="92.1" r="5"/><title>OMRON to acquire OnLogic to address edge AI applications</title></a>
 <a href="#p8" class="blip" style="--lane:#22d3ee;--delay:2.80s"><circle cx="-64.0" cy="-64.0" r="11" class="halo"/><circle cx="-64.0" cy="-64.0" r="5"/><title>Agility and GXO Logistics plan expanded deployment of Digit humanoid</title></a>
 <circle class="core" r="3"/></svg>
 <ul class="lane-legend"><li style="--lane:#8b5cf6">基座模型（VLA / WAM） <b>5</b></li><li style="--lane:#38bdf8">数据引擎（采集 / 清洗 / scaling） <b>8</b></li><li style="--lane:#34d399">训练与自我改进（RL / 后训练） <b>8</b></li><li style="--lane:#fb923c">仿真与评测（sim2real / 闭环） <b>14</b></li><li style="--lane:#f472b6">边缘与实时性（端侧推理 / 控制频率） <b>6</b></li><li style="--lane:#facc15">安全、权限与合规 <b>2</b></li><li style="--lane:#a3e635">系统与编排（长程 / 多策略） <b>3</b></li><li style="--lane:#22d3ee">本体与供应链（硬件 / 成本） <b>9</b></li></ul>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.32969" rel="noopener" target="_blank">DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection</a></h3>
 <p class="figure"><strong>4 tasks</strong><span class="context">“We evaluate across 4 tasks”</span></p><p class="chips"><span class="chip">2,500 demonstrations</span><span class="chip">11%</span><span class="chip">64%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 灵巧手数据采集若受限于整套机器人遥操作环境，可评估这类便携手持接口：作者自报用它采集了 2,500 多条演示、在 4 个任务上评测，并给出从 11% 到 64% 的提升，但属预印本自报。</p>
 <p class="excerpt">Collecting high-quality demonstrations remains a central bottleneck for learning dexterous manipulation. Teleoperation records executable robot actions, but it requires a complete robot setup and places the burden of coordinating many…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.32093" rel="noopener" target="_blank">DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning</a></h3>
 <p class="figure"><strong>62%</strong><span class="context">“downstream success increases to 62% from 40% for”</span></p><p class="chips"><span class="chip">40%</span><span class="chip">78%</span><span class="chip">39%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 行为克隆团队在追加采集前应先检查演示覆盖度：作者自报下游成功率从 40% 升至 62%，另一组从 39% 升至 78%（摘录指向真机场景），但仍是未经评审的单一来源结果。</p>
 <p class="excerpt">Behavior cloning for robotic manipulation is highly sensitive to the coverage of its training data, yet collecting diverse successful demonstrations remains costly.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.32102" rel="noopener" target="_blank">Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 部署流匹配 VLA 时，若在实时响应与执行稳定性之间反复权衡，这篇预印本提示执行时域与采样深度应联合调参；页面标注了真机、闭环和延迟信号，但没有给出具体数字，先别据此改控制配置。</p>
 <p class="excerpt">Flow-matching Vision-Language-Action (VLA) models generate expressive continuous trajectories for robotic manipulation, yet balancing real-time responsiveness with execution stability remains a persistent challenge.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.32143" rel="noopener" target="_blank">Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion</a></h3>
 <p class="figure"><strong>1.2%</strong><span class="context">“method reaches 84.7 +- 1.2% success”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 做辅助穿衣等窄开口插入任务的团队可关注几何感知 RL：作者自报成功率 84.7 ± 1.2%，但页面未展示真机结果，目前只能作为方法候选，而非部署依据。</p>
 <p class="excerpt">Robot-assisted dressing is particularly challenging due to narrow openings and articulated body parts. Even small errors in the relative pose between the body part and garment opening can cause snagging, missed insertion, or incomplete…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos" rel="noopener" target="_blank">Isaac Lab Interactive browser demos</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 想在文档或评审中直接展示仿真的团队可以参考：官方提供了预构建的 Newton WebAssembly 仿真、浏览器查看器及导出器源码；页面没有性能数据，导出器源码才是复用的关键。</p>
 <p class="excerpt">Prebuilt Newton WebAssembly simulations, their browser viewer, and exporter source for Isaac Lab documentation.</p>
 <footer>
 <span class="source">Isaac Lab releases (GitHub) · 2026-10-26</span>
@@ -175,7 +175,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://github.com/google-deepmind/mujoco/releases/tag/3.17.0" rel="noopener" target="_blank">MuJoCo 3.17.0</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 自己封装多进程来并行跑同一模型多份仿真的团队，可以评估改用新的批量 API（mujoco.batch），它在独立线程池上推进各仿真；发布说明未给出加速数据，切换前先自测吞吐。</p>
 <p class="excerpt">Version 3.17.0 (October 22, 2026) Significant new features c00ed8153 Added a batch API in mujoco/mjbatch.h (in Python as mujoco.batch ): many simulations of one model stepped on a thread pool of its own, each held as its integration state…</p>
 <footer>
 <span class="source">MuJoCo releases (GitHub) · 2026-10-22</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/" rel="noopener" target="_blank">OMRON to acquire OnLogic to address edge AI applications</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 采购 OnLogic 工业计算机做边缘 AI 的团队应留意这笔计划中的收购对产品路线与供货的影响；目前只有二手报道，交易细节请以双方原始公告为准。</p>
 <p class="excerpt">OMRON will add industrial computing from OnLogic to its industrial automation expertise to serve data- and AI-intensive applications.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-26</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/" rel="noopener" target="_blank">Agility and GXO Logistics plan expanded deployment of Digit humanoid</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估物流人形机器人供应商时，这是一个参考信号：测试过多家人形产品的 GXO 计划在另外两个站点部署 Digit；但属二手报道，且没有给出规模或作业表现数据。</p>
 <p class="excerpt">GXO Logistics, which has tested humanoid robots from multiple companies, will deploy Agility&#x27;s Digit at two more sites.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-26</span>
