@@ -59,6 +59,7 @@ class LifecycleTests(unittest.TestCase):
             self.assertEqual(argv[-1], self.identifier)
             record = json.loads((self.state / "execution/lifecycle.json").read_text())
             self.assertEqual(record["container_id"], self.identifier)
+            kwargs["stdout"].write("execution " + self.identifier + "\n")
             if self.start_signal:
                 os.kill(os.getpid(), signal.SIGTERM)
             if self.timeout:
@@ -94,7 +95,7 @@ class LifecycleTests(unittest.TestCase):
         runtime.require_resolved_execution(self.state, "execution")
 
     def test_cleanup_errors_and_unreadable_authority_do_not_write_terminal_or_allow_replay(self):
-        for mode in ("rm", "readback", "present", "authority", "post-readback-authority"):
+        for mode in ("rm", "readback", "present", "authority", "post-rm-authority", "post-readback-authority"):
             with self.subTest(mode=mode):
                 self.setUp()
                 self.timeout = True
@@ -102,8 +103,9 @@ class LifecycleTests(unittest.TestCase):
                 if mode == "readback": self.list_code = 1
                 if mode == "present": self.list_stdout = self.identifier + "\n"
                 if mode == "authority": self.fail_authority_on = 3
+                if mode == "post-rm-authority": self.fail_authority_on = 4
                 if mode == "post-readback-authority": self.fail_authority_on = 5
-                with self.assertRaises((runtime.CleanupUnconfirmed, subprocess.SubprocessError)):
+                with self.assertRaises(runtime.CleanupUnconfirmed):
                     self.execute()
                 self.assertFalse((self.state / "execution/receipt.json").exists())
                 record = json.loads((self.state / "execution/lifecycle.json").read_text())
@@ -131,13 +133,68 @@ class LifecycleTests(unittest.TestCase):
 
     def test_unconfirmed_create_keeps_original_name_and_forbids_replay(self):
         self.create_failure = True
-        with self.assertRaises(runtime.CleanupUnconfirmed): self.execute()
+        with self.assertRaises(runtime.CleanupUnconfirmed) as caught: self.execute()
+        self.assertIsInstance(caught.exception.__cause__, subprocess.TimeoutExpired)
         record = json.loads((self.state / "execution/lifecycle.json").read_text())
         self.assertEqual(record["state"], "cleanup-unconfirmed")
         self.assertIsNone(record["container_id"])
         self.assertEqual(record["container_name"], "ai-feature-" + record["execution_id"])
         self.assertEqual([c[1] for c in self.calls], ["create"])
         with self.assertRaises(runtime.CleanupUnconfirmed): self.execute()
+
+    def test_precreate_authority_failure_blocks_replay_without_docker(self):
+        self.fail_authority_on = 1
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            self.execute()
+        self.assertFalse(self.calls)
+        self.assertFalse((self.state / "execution/receipt.json").exists())
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            runtime.require_resolved_execution(self.state, "execution")
+
+    def test_cleanup_transport_errors_preserve_cause_and_block_replay(self):
+        for action in ("rm", "container"):
+            for error in (OSError("transport failed"), subprocess.TimeoutExpired(action, 1)):
+                with self.subTest(action=action, error=type(error).__name__):
+                    self.setUp()
+                    original_run = self.docker_run
+
+                    def fail_cleanup(argv, **kwargs):
+                        if argv[1] == action:
+                            self.calls.append(argv)
+                            raise error
+                        return original_run(argv, **kwargs)
+
+                    with patch.object(self, "docker_run", side_effect=fail_cleanup):
+                        with self.assertRaises(runtime.CleanupUnconfirmed) as caught:
+                            self.execute()
+                    self.assertIs(caught.exception.__cause__, error)
+                    self.assertFalse((self.state / "execution/receipt.json").exists())
+                    record = json.loads((self.state / "execution/lifecycle.json").read_text())
+                    self.assertEqual(record["state"], "cleanup-unconfirmed")
+                    self.assertEqual(record["container_id"], self.identifier)
+                    with self.assertRaises(runtime.CleanupUnconfirmed):
+                        runtime.require_resolved_execution(self.state, "execution")
+
+    def test_cleanup_storage_failure_leaves_started_identity_and_no_receipt(self):
+        original_write = runtime._durable_json
+        error = OSError("storage unavailable")
+
+        def fail_cleanup_write(path, record, **kwargs):
+            if record.get("state") in ("cleanup-confirmed", "cleanup-unconfirmed"):
+                raise error
+            return original_write(path, record, **kwargs)
+
+        with patch.object(runtime, "_durable_json", side_effect=fail_cleanup_write):
+            with self.assertRaises(runtime.CleanupUnconfirmed) as caught:
+                self.execute()
+        self.assertIs(caught.exception.__cause__, error)
+        self.assertEqual([call[1] for call in self.calls], ["create", "start", "rm", "container"])
+        record = json.loads((self.state / "execution/lifecycle.json").read_text())
+        self.assertEqual(record["state"], "started")
+        self.assertEqual(record["container_id"], self.identifier)
+        self.assertFalse((self.state / "execution/receipt.json").exists())
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            runtime.require_resolved_execution(self.state, "execution")
 
     def test_invalid_create_identity_never_targets_cleanup(self):
         self.created_id = "bad"
@@ -163,6 +220,74 @@ class LifecycleTests(unittest.TestCase):
         receipt = json.loads((output / "receipt.json").read_text())
         receipt["cleanup"]["execution_id"] = "f" * 32
         (output / "receipt.json").write_text(json.dumps(receipt))
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            runtime.require_resolved_execution(self.state, "execution")
+
+    def test_each_execution_log_is_bound_to_its_own_identity(self):
+        first = self.execute()
+        first_log = Path(first["log"])
+        first_bytes = first_log.read_bytes()
+        self.identifier = "f" * 64
+        self.created_id = self.identifier
+        second = self.execute()
+        self.assertNotEqual(first["cleanup"]["execution_id"], second["cleanup"]["execution_id"])
+        self.assertNotEqual(first["log"], second["log"])
+        self.assertEqual(first_log.read_bytes(), first_bytes)
+        self.assertEqual(Path(second["log"]).name, "output-" + second["cleanup"]["execution_id"] + ".log")
+        self.assertNotEqual(first["log_sha256"], second["log_sha256"])
+
+    def test_prestart_authority_failure_never_becomes_execution_timeout(self):
+        for prior in ("none", "legacy-log", "receipt"):
+            for error in (subprocess.TimeoutExpired("authority", 10), OSError("authority failed")):
+                with self.subTest(prior=prior, error=type(error).__name__):
+                    self.setUp()
+                    output = self.state / "execution"
+                    old_receipt = None
+                    if prior == "receipt":
+                        first = self.execute()
+                        old_receipt = (output / "receipt.json").read_bytes()
+                        old_log = Path(first["log"]).read_bytes()
+                    elif prior == "legacy-log":
+                        output.mkdir()
+                        (output / "output.log").write_text("old log")
+                    self.calls.clear()
+                    self.authority_calls = 0
+                    self.identifier = "f" * 64
+                    self.created_id = self.identifier
+                    def fail_before_start(*args):
+                        self.authority_calls += 1
+                        if self.authority_calls == 2:
+                            raise error
+                    with patch.object(self, "check_authority", side_effect=fail_before_start):
+                        with self.assertRaises(type(error)):
+                            self.execute()
+                    self.assertEqual([call[1] for call in self.calls], ["create", "rm", "container"])
+                    self.assertEqual((output / "receipt.json").read_bytes() if prior == "receipt" else None, old_receipt)
+                    if prior == "receipt":
+                        self.assertEqual(Path(first["log"]).read_bytes(), old_log)
+                    else:
+                        self.assertFalse((output / "receipt.json").exists())
+                        if prior == "legacy-log":
+                            self.assertEqual((output / "output.log").read_text(), "old log")
+                    with self.assertRaises(runtime.CleanupUnconfirmed):
+                        runtime.require_resolved_execution(self.state, "execution")
+
+    def test_prestart_failure_with_unconfirmed_cleanup_preserves_original_identity(self):
+        self.rm_code = 1
+
+        def fail_before_start(*args):
+            self.authority_calls += 1
+            if self.authority_calls == 2:
+                raise subprocess.TimeoutExpired("authority", 10)
+
+        with patch.object(self, "check_authority", side_effect=fail_before_start):
+            with self.assertRaises(runtime.CleanupUnconfirmed):
+                self.execute()
+        self.assertEqual([call[1] for call in self.calls], ["create", "rm"])
+        record = json.loads((self.state / "execution/lifecycle.json").read_text())
+        self.assertEqual(record["state"], "cleanup-unconfirmed")
+        self.assertEqual(record["container_id"], self.identifier)
+        self.assertFalse((self.state / "execution/receipt.json").exists())
         with self.assertRaises(runtime.CleanupUnconfirmed):
             runtime.require_resolved_execution(self.state, "execution")
 
@@ -194,6 +319,26 @@ class LifecycleTests(unittest.TestCase):
         (output / ("execution-" + "e" * 32 + ".json")).write_text('{}')
         with self.assertRaises(runtime.CleanupUnconfirmed):
             runtime.require_resolved_execution(self.state, "execution")
+
+    def test_unreadable_history_fails_closed_for_reader_and_execute(self):
+        output = self.state / "execution"
+        output.mkdir()
+        (output / ("execution-" + "e" * 32 + ".json")).write_text('{}')
+        for error in (PermissionError("denied"), OSError("I/O error"), FileNotFoundError("raced")):
+            with self.subTest(error=type(error).__name__):
+                with patch.object(runtime.os, "scandir", side_effect=error):
+                    with self.assertRaises(runtime.CleanupUnconfirmed) as caught:
+                        runtime.require_resolved_execution(self.state, "execution")
+                    self.assertIs(caught.exception.__cause__, error)
+                    with patch.object(runtime.subprocess, "run") as docker:
+                        with self.assertRaises(runtime.CleanupUnconfirmed):
+                            runtime.execute(self.snapshot, self.image, [["true"]], self.state, "execution")
+                        docker.assert_not_called()
+
+    def test_missing_history_directory_and_empty_directory_are_clear(self):
+        runtime.require_resolved_execution(self.state, "execution")
+        (self.state / "execution").mkdir()
+        runtime.require_resolved_execution(self.state, "execution")
 
     def test_legacy_receipt_and_corrupt_marker_are_not_reused(self):
         output = self.state / "execution"

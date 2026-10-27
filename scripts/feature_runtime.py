@@ -252,10 +252,22 @@ def require_resolved_execution(state: Path, label: str) -> None:
     try:
         marker.lstat()
     except FileNotFoundError:
-        if (output / "receipt.json").exists():
-            raise CleanupUnconfirmed("Legacy receipt requires reconciliation before reuse")
-        if output.is_dir() and any(output.glob("execution-*.json")):
-            raise CleanupUnconfirmed("Original execution history requires reconciliation")
+        try:
+            with os.scandir(output) as entries:
+                for entry in entries:
+                    if (entry.name in ("receipt.json", "lifecycle.json")
+                            or (entry.name.startswith("execution-") and entry.name.endswith(".json"))):
+                        raise CleanupUnconfirmed("Original execution history requires reconciliation")
+        except FileNotFoundError as exc:
+            try:
+                output.lstat()
+            except FileNotFoundError:
+                return
+            except OSError as stat_error:
+                raise CleanupUnconfirmed("Original execution history is unavailable") from stat_error
+            raise CleanupUnconfirmed("Original execution history changed during inspection") from exc
+        except OSError as exc:
+            raise CleanupUnconfirmed("Original execution history is unavailable") from exc
         return
     record = _read_record(marker)
     if (record.get("state") != "cleanup-confirmed"
@@ -427,8 +439,11 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
 
             try:
                 _check_authority(docker, docker_env, authority)
-                created = subprocess.run(argv, env=docker_env, stdin=subprocess.DEVNULL, capture_output=True,
-                                         text=True, timeout=30, check=True)
+                try:
+                    created = subprocess.run(argv, env=docker_env, stdin=subprocess.DEVNULL, capture_output=True,
+                                             text=True, timeout=30, check=True)
+                except (OSError, subprocess.SubprocessError) as exc:
+                    raise CleanupUnconfirmed("Container creation was not confirmed") from exc
                 created_id = created.stdout.strip()
                 if not re.fullmatch(r"[a-f0-9]{64}", created_id):
                     raise CleanupUnconfirmed("Container create returned an invalid identity")
@@ -437,15 +452,15 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
                 _durable_json(history, identity)
                 _durable_json(output / "lifecycle.json", identity)
                 _check_authority(docker, docker_env, authority)
-                with (output / "output.log").open("w") as log:
-                    process = subprocess.run([*docker, "start", "--attach", container_id], env=docker_env,
-                                             stdin=subprocess.DEVNULL, stdout=log,
-                                             stderr=subprocess.STDOUT, timeout=timeout)
-                code = process.returncode
-            except subprocess.TimeoutExpired:
-                if container_id is None:
-                    raise CleanupUnconfirmed("Container creation did not complete")
-                code = 124
+                log_path = output / ("output-" + run_id + ".log")
+                with log_path.open("x") as log:
+                    try:
+                        process = subprocess.run([*docker, "start", "--attach", container_id], env=docker_env,
+                                                 stdin=subprocess.DEVNULL, stdout=log,
+                                                 stderr=subprocess.STDOUT, timeout=timeout)
+                        code = process.returncode
+                    except subprocess.TimeoutExpired:
+                        code = 124
             except Interrupted as exc:
                 interrupted_signal = exc.signum
             finally:
@@ -472,9 +487,11 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
                                         readback_returncode=listed.returncode, readback_ids=[])
                         _durable_json(history, identity)
                         _durable_json(output / "lifecycle.json", identity)
-                except Exception:
+                except Exception as exc:
                     mark_unconfirmed()
-                    raise
+                    if isinstance(exc, CleanupUnconfirmed):
+                        raise
+                    raise CleanupUnconfirmed("Original container cleanup could not be confirmed") from exc
                 finally:
                     for sig, handler in previous.items():
                         signal.signal(sig, handler)
@@ -482,14 +499,14 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
                 raise SystemExit(128 + interrupted_signal)
             if code is None:
                 raise CleanupUnconfirmed("Original Docker execution has no terminal result")
-        log_bytes = (output / "output.log").read_bytes()
+        log_bytes = log_path.read_bytes()
         steps_file = artifacts / "commands.json"
         steps = []
         if steps_file.is_file() and not steps_file.is_symlink() and steps_file.stat().st_size < 100000:
             steps = json.loads(steps_file.read_text())
         record = {"exit_code": code, "commands": commands, "image": image,
                   "executed_commands": steps, "gpu": gpu, "seconds": round(time.monotonic() - started, 2),
-                  "log": str(output / "output.log"), "log_sha256": hashlib.sha256(log_bytes).hexdigest(),
+                  "log": str(log_path), "log_sha256": hashlib.sha256(log_bytes).hexdigest(),
                   "cleanup": {"state": "confirmed", "execution_id": run_id, "container_id": container_id}}
         _durable_json(output / "receipt.json", record)
         return record
