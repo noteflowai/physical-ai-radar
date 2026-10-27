@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **DexPort** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-2. **DiscoDemo** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
-5. **Isaac Lab Interactive browser demos** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **MuJoCo 3.17.0** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **OMRON to acquire OnLogic to address edge AI applications** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **DexPort** — `AI 起草` 灵巧手数据采集若受限于整套机器人遥操作环境，可评估这类便携手持接口：作者自报用它采集了 2,500 多条演示、在 4 个任务上评测，并给出从 11% 到 64% 的提升，但属预印本自报。
+2. **DiscoDemo** — `AI 起草` 行为克隆团队在追加采集前应先检查演示覆盖度：作者自报下游成功率从 40% 升至 62%，另一组从 39% 升至 78%（摘录指向真机场景），但仍是未经评审的单一来源结果。
+3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI 起草` 部署流匹配 VLA 时，若在实时响应与执行稳定性之间反复权衡，这篇预印本提示执行时域与采样深度应联合调参；页面标注了真机、闭环和延迟信号，但没有给出具体数字，先别据此改控制配置。
+4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI 起草` 做辅助穿衣等窄开口插入任务的团队可关注几何感知 RL：作者自报成功率 84.7 ± 1.2%，但页面未展示真机结果，目前只能作为方法候选，而非部署依据。
+5. **Isaac Lab Interactive browser demos** — `AI 起草` 想在文档或评审中直接展示仿真的团队可以参考：官方提供了预构建的 Newton WebAssembly 仿真、浏览器查看器及导出器源码；页面没有性能数据，导出器源码才是复用的关键。
+6. **MuJoCo 3.17.0** — `AI 起草` 自己封装多进程来并行跑同一模型多份仿真的团队，可以评估改用新的批量 API（mujoco.batch），它在独立线程池上推进各仿真；发布说明未给出加速数据，切换前先自测吞吐。
+7. **OMRON to acquire OnLogic to address edge AI applications** — `AI 起草` 采购 OnLogic 工业计算机做边缘 AI 的团队应留意这笔计划中的收购对产品路线与供货的影响；目前只有二手报道，交易细节请以双方原始公告为准。
+8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI 起草` 评估物流人形机器人供应商时，这是一个参考信号：测试过多家人形产品的 GXO 计划在另外两个站点部署 Digit；但属二手报道，且没有给出规模或作业表现数据。
 
 </details>
 
