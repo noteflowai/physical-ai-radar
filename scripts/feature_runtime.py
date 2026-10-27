@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import fcntl
 import hashlib
 import json
 import os
@@ -9,6 +10,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
+import stat
 import subprocess
 import tempfile
 import time
@@ -205,6 +207,120 @@ for name in spec.get("generated",[]):
 '''
 
 
+class CleanupUnconfirmed(RuntimeError):
+    """Original Docker effect cannot be proven absent; reconciliation is required."""
+
+
+def _durable_json(path: Path, value: dict, *, exclusive: bool = False) -> None:
+    """Persist an atomic record and its directory entry before a Docker effect."""
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, prefix=".lifecycle-", delete=False) as stream:
+            temporary = Path(stream.name)
+            os.fchmod(stream.fileno(), 0o600)
+            json.dump(value, stream, sort_keys=True)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        if exclusive:
+            os.link(temporary, path, follow_symlinks=False)
+        else:
+            os.replace(temporary, path)
+        descriptor = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def _read_record(path: Path) -> dict:
+    if path.is_symlink() or not path.is_file() or path.stat().st_size > 16384:
+        raise CleanupUnconfirmed("Original lifecycle record is unavailable")
+    value = json.loads(path.read_bytes())
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        raise CleanupUnconfirmed("Original lifecycle record is invalid")
+    return value
+
+
+def require_resolved_execution(state: Path, label: str) -> None:
+    """Never bypass an unfinished Docker effect by reusing an older receipt."""
+    output = state / label
+    marker = output / "lifecycle.json"
+    try:
+        marker.lstat()
+    except FileNotFoundError:
+        if (output / "receipt.json").exists():
+            raise CleanupUnconfirmed("Legacy receipt requires reconciliation before reuse")
+        return
+    record = _read_record(marker)
+    if (record.get("state") != "cleanup-confirmed"
+            or not isinstance(record.get("execution_id"), str)
+            or not re.fullmatch(r"[a-f0-9]{32}", record["execution_id"])
+            or not isinstance(record.get("container_id"), str)
+            or not re.fullmatch(r"[a-f0-9]{64}", record["container_id"])
+            or record.get("removal_returncode") != 0 or record.get("readback_returncode") != 0
+            or record.get("readback_ids") != []):
+        raise CleanupUnconfirmed("Original container requires reconciliation")
+    # A previous receipt cannot stand in for a later execution that died after
+    # cleanup but before its own result was durably written.
+    receipt_path = output / "receipt.json"
+    if (receipt_path.is_symlink() or not receipt_path.is_file()
+            or receipt_path.stat().st_size > 100_000):
+        raise CleanupUnconfirmed("Original execution receipt requires reconciliation")
+    receipt = json.loads(receipt_path.read_bytes())
+    cleanup = receipt.get("cleanup") if isinstance(receipt, dict) else None
+    if (not isinstance(cleanup, dict) or cleanup.get("state") != "confirmed"
+            or cleanup.get("execution_id") != record["execution_id"]
+            or cleanup.get("container_id") != record["container_id"]):
+        raise CleanupUnconfirmed("Receipt and original execution identity differ")
+
+
+def _docker_authority() -> tuple[list[str], dict, dict]:
+    """Freeze the local Docker socket; remote authorities require a separate design."""
+    env = os.environ.copy()
+    context = env.get("DOCKER_CONTEXT")
+    host = env.get("DOCKER_HOST") if not context else None
+    if not host:
+        if not context:
+            result = subprocess.run(["docker", "context", "show"], env=env, capture_output=True,
+                                    text=True, timeout=10, stdin=subprocess.DEVNULL, check=True)
+            context = result.stdout.strip()
+        result = subprocess.run(["docker", "context", "inspect", context, "--format",
+                                 "{{.Endpoints.docker.Host}}"], env=env, capture_output=True,
+                                text=True, timeout=10, stdin=subprocess.DEVNULL, check=True)
+        host = result.stdout.strip()
+    if not isinstance(host, str) or not host.startswith("unix:///"):
+        raise CleanupUnconfirmed("A local Unix Docker authority is required")
+    socket = Path(host[len("unix://"):]).resolve(strict=True)
+    socket_info = socket.stat()
+    if not stat.S_ISSOCK(socket_info.st_mode):
+        raise CleanupUnconfirmed("Docker endpoint is not a socket")
+    env.pop("DOCKER_HOST", None)
+    env.pop("DOCKER_CONTEXT", None)
+    docker = ["docker", "--host", f"unix://{socket}"]
+    result = subprocess.run([*docker, "info", "--format", "{{.ID}}"], env=env, capture_output=True,
+                            text=True, timeout=10, stdin=subprocess.DEVNULL, check=True)
+    daemon = result.stdout.strip()
+    if not re.fullmatch(r"[A-Za-z0-9:._-]{1,128}", daemon):
+        raise CleanupUnconfirmed("Docker daemon identity unavailable")
+    return docker, env, {"daemon_id": daemon, "socket": str(socket),
+                         "socket_device": socket_info.st_dev, "socket_inode": socket_info.st_ino}
+
+
+def _check_authority(docker: list[str], env: dict, authority: dict) -> None:
+    current = Path(authority["socket"]).stat()
+    if (not stat.S_ISSOCK(current.st_mode) or current.st_dev != authority["socket_device"]
+            or current.st_ino != authority["socket_inode"]):
+        raise CleanupUnconfirmed("Docker socket identity changed")
+    result = subprocess.run([*docker, "info", "--format", "{{.ID}}"], env=env, capture_output=True,
+                            text=True, timeout=10, stdin=subprocess.DEVNULL, check=True)
+    if result.stdout.strip() != authority["daemon_id"]:
+        raise CleanupUnconfirmed("Docker daemon identity changed")
+
+
 def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
             label: str, *, gpu: bool = False, generated: list[str] | None = None,
             timeout: int = 1200, workspace_bytes: int | None = None,
@@ -220,78 +336,158 @@ def execute(snapshot: Path, image: str, commands: list[list[str]], state: Path,
     if (type(workspace_executable) is not bool
             or workspace_executable and (gpu or workspace_bytes is None)):
         raise ValueError("Executable workspaces require bounded CPU isolation")
+    if not isinstance(label, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,100}", label):
+        raise ValueError("A bounded execution label is required")
     state.mkdir(parents=True, exist_ok=True)
     output = state / label
     output.mkdir(exist_ok=True)
-    artifacts = output / "artifacts"
-    if artifacts.exists():
-        shutil.rmtree(artifacts)
-    artifacts.mkdir()
-    container = "ai-feature-" + uuid.uuid4().hex
-    started = time.monotonic()
-    with tempfile.TemporaryDirectory(prefix="feature-spec-") as tmp:
-        config = Path(tmp)
-        config.chmod(0o755)
-        (config / "harness.py").write_text(HARNESS)
-        write_json(config / "spec.json", {"commands": commands, "gpu": gpu,
-                                        "generated": generated or []})
-        for p in config.iterdir():
-            p.chmod(0o644)
-        # Reap orphaned children from candidate tools (including Git maintenance).
-        # A Python PID 1 otherwise accumulates zombies until the PID limit is hit.
-        argv = ["docker", "run", "--init", "--rm", "--name", container, "--network", "none",
-                "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
-                "--pids-limit", "512", "--memory", str(memory_bytes) if memory_bytes else "24g",
-                "--cpus", str(min(os.cpu_count() or 1, cpus)),
-                "--user", f"{os.getuid()}:{os.getgid()}",
-                "--mount", f"type=bind,src={snapshot},dst=/candidate,readonly",
-                "--mount", f"type=bind,src={config / 'harness.py'},dst=/harness.py,readonly",
-                "--mount", f"type=bind,src={config / 'spec.json'},dst=/spec.json,readonly",
-                "--mount", f"type=bind,src={artifacts},dst=/results",
-                "--env", "PYTHONUNBUFFERED=1",
-                "--entrypoint", "python"]
-        if gpu:
-            argv += ["--gpus", "device=0", "--tmpfs",
-                     f"/workspace:uid={os.getuid()},gid={os.getgid()},size=4g"]
-        elif workspace_bytes is not None:
-            argv += ["--read-only", "--log-driver", "none",
-                     "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}"
-                     + (",exec" if workspace_executable else ""),
-                     "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728",
-                     "--env", "XDG_STATE_HOME=/tmp/feature-state",
-                     "--env", "XDG_DATA_HOME=/tmp/feature-data",
-                     "--env", "XDG_CACHE_HOME=/tmp/feature-cache"]
-        argv += [image, "/harness.py"]
-        def cleanup():
-            subprocess.run(["docker", "rm", "-f", container], stdout=subprocess.DEVNULL,
-                           stderr=subprocess.DEVNULL, timeout=30)
+    if state.is_symlink() or output.is_symlink():
+        raise ValueError("Original execution directory required")
+    with (output / ".lifecycle.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        require_resolved_execution(state, label)
+        control = state / "started.json"
+        bound = None
+        if control.exists() or control.is_symlink():
+            bound = _read_record(control)
+            if (not re.fullmatch(r"[a-f0-9]{64}", bound.get("check_id", ""))
+                    or state.name != bound["check_id"]
+                    or not re.fullmatch(r"[a-f0-9]{40}", bound.get("provider_commit", ""))
+                    or bound.get("image") != image):
+                raise CleanupUnconfirmed("Original check/provider identity differs")
+        docker, docker_env, authority = _docker_authority()
+        run_id = uuid.uuid4().hex
+        container = "ai-feature-" + run_id
+        identity = {"schema_version": 1, "state": "started", "execution_id": run_id,
+                    "container_name": container, "container_id": None,
+                    "check_id": bound.get("check_id") if bound else None,
+                    "provider_commit": bound.get("provider_commit") if bound else None,
+                    "provider_code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                    "authority": authority, "image": image,
+                    "commands_sha256": hashlib.sha256(json.dumps(commands, sort_keys=True).encode()).hexdigest(),
+                    "snapshot": str(snapshot.resolve()), "label": label}
+        history = output / ("execution-" + run_id + ".json")
+        _durable_json(history, identity, exclusive=True)
+        _durable_json(output / "lifecycle.json", identity)
+        artifacts = output / "artifacts"
+        if artifacts.exists():
+            shutil.rmtree(artifacts)
+        artifacts.mkdir()
+        started = time.monotonic()
+        with tempfile.TemporaryDirectory(prefix="feature-spec-") as tmp:
+            config = Path(tmp)
+            config.chmod(0o755)
+            (config / "harness.py").write_text(HARNESS)
+            write_json(config / "spec.json", {"commands": commands, "gpu": gpu,
+                                            "generated": generated or []})
+            for p in config.iterdir():
+                p.chmod(0o644)
+            argv = [*docker, "create", "--init", "--name", container, "--network", "none",
+                    "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
+                    "--pids-limit", "512", "--memory", str(memory_bytes) if memory_bytes else "24g",
+                    "--cpus", str(min(os.cpu_count() or 1, cpus)),
+                    "--user", f"{os.getuid()}:{os.getgid()}",
+                    "--mount", f"type=bind,src={snapshot},dst=/candidate,readonly",
+                    "--mount", f"type=bind,src={config / 'harness.py'},dst=/harness.py,readonly",
+                    "--mount", f"type=bind,src={config / 'spec.json'},dst=/spec.json,readonly",
+                    "--mount", f"type=bind,src={artifacts},dst=/results",
+                    "--env", "PYTHONUNBUFFERED=1", "--entrypoint", "python"]
+            if gpu:
+                argv += ["--gpus", "device=0", "--tmpfs",
+                         f"/workspace:uid={os.getuid()},gid={os.getgid()},size=4g"]
+            elif workspace_bytes is not None:
+                argv += ["--read-only", "--log-driver", "none",
+                         "--tmpfs", f"/workspace:uid={os.getuid()},gid={os.getgid()},size={workspace_bytes}"
+                         + (",exec" if workspace_executable else ""),
+                         "--tmpfs", f"/tmp:uid={os.getuid()},gid={os.getgid()},size=134217728",
+                         "--env", "XDG_STATE_HOME=/tmp/feature-state",
+                         "--env", "XDG_DATA_HOME=/tmp/feature-data",
+                         "--env", "XDG_CACHE_HOME=/tmp/feature-cache"]
+            argv += [image, "/harness.py"]
+            class Interrupted(Exception):
+                def __init__(self, signum): self.signum = signum
+            def interrupted(signum, _frame):
+                raise Interrupted(signum)
+            previous = {sig: signal.signal(sig, interrupted) for sig in (signal.SIGTERM, signal.SIGINT)}
+            container_id = None
+            interrupted_signal = None
+            code = None
 
-        def interrupted(signum, _frame):
-            cleanup()
-            raise SystemExit(128 + signum)
+            def mark_unconfirmed():
+                # Best effort only: a storage failure must leave the original started
+                # record in place and must never turn an uncertain cleanup into success.
+                uncertain = {**identity, "state": "cleanup-unconfirmed"}
+                try:
+                    _durable_json(history, uncertain)
+                    _durable_json(output / "lifecycle.json", uncertain)
+                except OSError:
+                    pass
 
-        previous = {sig: signal.signal(sig, interrupted)
-                    for sig in (signal.SIGTERM, signal.SIGINT)}
-        try:
-            with (output / "output.log").open("w") as log:
-                process = subprocess.run(argv, stdin=subprocess.DEVNULL, stdout=log,
-                                         stderr=subprocess.STDOUT, timeout=timeout)
-            code = process.returncode
-        except subprocess.TimeoutExpired:
-            code = 124
-        finally:
-            cleanup()
-            for sig, handler in previous.items():
-                signal.signal(sig, handler)
-    log_bytes = (output / "output.log").read_bytes()
-    steps_file = artifacts / "commands.json"
-    steps = []
-    if steps_file.is_file() and not steps_file.is_symlink() and steps_file.stat().st_size < 100000:
-        steps = json.loads(steps_file.read_text())
-    record = {"exit_code": code, "commands": commands, "image": image,
-              "executed_commands": steps,
-              "gpu": gpu, "seconds": round(time.monotonic() - started, 2),
-              "log": str(output / "output.log"),
-              "log_sha256": hashlib.sha256(log_bytes).hexdigest()}
-    write_json(output / "receipt.json", record)
-    return record
+            try:
+                _check_authority(docker, docker_env, authority)
+                created = subprocess.run(argv, env=docker_env, stdin=subprocess.DEVNULL, capture_output=True,
+                                         text=True, timeout=30, check=True)
+                created_id = created.stdout.strip()
+                if not re.fullmatch(r"[a-f0-9]{64}", created_id):
+                    raise CleanupUnconfirmed("Container create returned an invalid identity")
+                container_id = created_id
+                identity["container_id"] = container_id
+                _durable_json(history, identity)
+                _durable_json(output / "lifecycle.json", identity)
+                _check_authority(docker, docker_env, authority)
+                with (output / "output.log").open("w") as log:
+                    process = subprocess.run([*docker, "start", "--attach", container_id], env=docker_env,
+                                             stdin=subprocess.DEVNULL, stdout=log,
+                                             stderr=subprocess.STDOUT, timeout=timeout)
+                code = process.returncode
+            except subprocess.TimeoutExpired:
+                if container_id is None:
+                    raise CleanupUnconfirmed("Container creation did not complete")
+                code = 124
+            except Interrupted as exc:
+                interrupted_signal = exc.signum
+            finally:
+                # Ignore duplicate signals only during bounded cleanup; retain original handlers afterward.
+                for sig in previous:
+                    signal.signal(sig, signal.SIG_IGN)
+                try:
+                    if container_id is None:
+                        mark_unconfirmed()
+                    else:
+                        _check_authority(docker, docker_env, authority)
+                        removed = subprocess.run([*docker, "rm", "-f", container_id], env=docker_env,
+                            stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=30)
+                        if removed.returncode != 0:
+                            raise CleanupUnconfirmed("Exact container removal was not confirmed")
+                        _check_authority(docker, docker_env, authority)
+                        listed = subprocess.run([*docker, "container", "ls", "-a", "-q", "--no-trunc",
+                            "--filter", f"id={container_id}"], env=docker_env, stdin=subprocess.DEVNULL,
+                            capture_output=True, text=True, timeout=10, check=True)
+                        _check_authority(docker, docker_env, authority)
+                        if listed.stdout.strip():
+                            raise CleanupUnconfirmed("Exact container remains present")
+                        identity.update(state="cleanup-confirmed", removal_returncode=removed.returncode,
+                                        readback_returncode=listed.returncode, readback_ids=[])
+                        _durable_json(history, identity)
+                        _durable_json(output / "lifecycle.json", identity)
+                except Exception:
+                    mark_unconfirmed()
+                    raise
+                finally:
+                    for sig, handler in previous.items():
+                        signal.signal(sig, handler)
+            if interrupted_signal is not None:
+                raise SystemExit(128 + interrupted_signal)
+            if code is None:
+                raise CleanupUnconfirmed("Original Docker execution has no terminal result")
+        log_bytes = (output / "output.log").read_bytes()
+        steps_file = artifacts / "commands.json"
+        steps = []
+        if steps_file.is_file() and not steps_file.is_symlink() and steps_file.stat().st_size < 100000:
+            steps = json.loads(steps_file.read_text())
+        record = {"exit_code": code, "commands": commands, "image": image,
+                  "executed_commands": steps, "gpu": gpu, "seconds": round(time.monotonic() - started, 2),
+                  "log": str(output / "output.log"), "log_sha256": hashlib.sha256(log_bytes).hexdigest(),
+                  "cleanup": {"state": "confirmed", "execution_id": run_id, "container_id": container_id}}
+        _durable_json(output / "receipt.json", record)
+        return record
