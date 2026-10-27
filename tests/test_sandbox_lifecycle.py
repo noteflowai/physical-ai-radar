@@ -71,9 +71,9 @@ class LifecycleTests(unittest.TestCase):
                 os.kill(os.getpid(), signal.SIGINT)
             return subprocess.CompletedProcess(argv, self.rm_code, "", "injected" if self.rm_code else "")
         if action == "container":
-            if self.list_code:
+            if self.list_code and kwargs.get("check"):
                 raise subprocess.CalledProcessError(self.list_code, argv)
-            return subprocess.CompletedProcess(argv, 0, self.list_stdout, "")
+            return subprocess.CompletedProcess(argv, self.list_code, self.list_stdout, "")
         raise AssertionError(argv)
 
     def execute(self):
@@ -94,7 +94,7 @@ class LifecycleTests(unittest.TestCase):
         runtime.require_resolved_execution(self.state, "execution")
 
     def test_cleanup_errors_and_unreadable_authority_do_not_write_terminal_or_allow_replay(self):
-        for mode in ("rm", "readback", "present", "authority"):
+        for mode in ("rm", "readback", "present", "authority", "post-readback-authority"):
             with self.subTest(mode=mode):
                 self.setUp()
                 self.timeout = True
@@ -102,6 +102,7 @@ class LifecycleTests(unittest.TestCase):
                 if mode == "readback": self.list_code = 1
                 if mode == "present": self.list_stdout = self.identifier + "\n"
                 if mode == "authority": self.fail_authority_on = 3
+                if mode == "post-readback-authority": self.fail_authority_on = 5
                 with self.assertRaises((runtime.CleanupUnconfirmed, subprocess.SubprocessError)):
                     self.execute()
                 self.assertFalse((self.state / "execution/receipt.json").exists())
@@ -110,12 +111,23 @@ class LifecycleTests(unittest.TestCase):
                 self.assertEqual(record["container_id"], self.identifier)
                 if mode == "authority":
                     self.assertNotIn("rm", [call[1] for call in self.calls])
+                if mode == "post-readback-authority":
+                    self.assertEqual([call[1] for call in self.calls], ["create", "start", "rm", "container"])
+                    self.assertEqual(self.authority_calls, 5)
                 with self.assertRaises(runtime.CleanupUnconfirmed):
                     runtime.require_resolved_execution(self.state, "execution")
                 before = len(self.calls)
                 with self.assertRaises(runtime.CleanupUnconfirmed):
                     self.execute()
                 self.assertEqual(len(self.calls), before)
+
+    def test_bound_image_mismatch_is_rejected_before_docker(self):
+        (self.state / "started.json").write_text(json.dumps({"schema_version": 1,
+            "check_id": self.check_id, "provider_commit": self.provider, "image": "sha256:" + "e" * 64}))
+        with self.assertRaises(runtime.CleanupUnconfirmed):
+            self.execute()
+        self.assertFalse(self.calls)
+        self.assertFalse((self.state / "execution/receipt.json").exists())
 
     def test_unconfirmed_create_keeps_original_name_and_forbids_replay(self):
         self.create_failure = True
