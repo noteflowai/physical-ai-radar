@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-27
+### 本日のレーダー · 2026-10-28
 
-`生成時刻: 2026-10-26 23:40 UTC` ｜ `対象期間: 論文 2026-10-23 → 2026-10-27 · ブログ・報道 2026-09-27 → 2026-10-27 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-27 23:40 UTC` ｜ `対象期間: 論文 2026-10-24 → 2026-10-28 · ブログ・報道 2026-09-28 → 2026-10-28 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection](https://arxiv.org/abs/2610.32969)**<br>`4 tasks`&nbsp; `2,500 demonstrations`&nbsp; `11%`<br><sub>データエンジン · arXiv 2610.32969 · 2026‑10‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning](https://arxiv.org/abs/2610.32093)**<br>`62%`&nbsp; `40%`&nbsp; `78%`<br><sub>データエンジン · arXiv 2610.32093 · 2026‑10‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies](https://arxiv.org/abs/2610.32102)**<br><sub>エッジとリアルタイム · arXiv 2610.32102 · 2026‑10‑23</sub> |
-| 04<br>🔵&nbsp;`R` | **[Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion](https://arxiv.org/abs/2610.32143)**<br>`1.2%`<br><sub>学習と自己改善 · arXiv 2610.32143 · 2026‑10‑23</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab Interactive browser demos](https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos)**<br><sub>シミュレーションと評価 · Isaac Lab releases (GitHub) · 2026‑10‑26</sub> |
-| 06<br>🟢&nbsp;`O` | **[MuJoCo 3.17.0](https://github.com/google-deepmind/mujoco/releases/tag/3.17.0)**<br><sub>シミュレーションと評価 · MuJoCo releases (GitHub) · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[OMRON to acquire OnLogic to address edge AI applications](https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑10‑26</sub> |
-| 08<br>🟡&nbsp;`M` | **[Agility and GXO Logistics plan expanded deployment of Digit humanoid](https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](https://arxiv.org/abs/2610.34356)**<br>`98.8%`&nbsp; `84.7%`&nbsp; `51.9%`<br><sub>基盤モデル · arXiv 2610.34356 · 2026‑10‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning](https://arxiv.org/abs/2610.34519)**<br>`4.4x`&nbsp; `48%`&nbsp; `7%`<br><sub>エッジとリアルタイム · arXiv 2610.34519 · 2026‑10‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[WorldFailBench: Do World Models Understand Policy Failures?](https://arxiv.org/abs/2610.33565)**<br><sub>シミュレーションと評価 · arXiv 2610.33565 · 2026‑10‑24</sub> |
+| 04<br>🔵&nbsp;`R` | **[ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation](https://arxiv.org/abs/2610.34370)**<br>`77%`&nbsp; `37.1%`<br><sub>システムとオーケストレーション · arXiv 2610.34370 · 2026‑10‑25</sub> |
+| 05<br>🟢&nbsp;`O` | **[Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)**<br><sub>エッジとリアルタイム · Google DeepMind · 2026‑10‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres](https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑10‑27</sub> |
+| 07<br>🟢&nbsp;`O` | **[Using AI Agents to Teach Robots Like Microduck to Walk in Simulation](https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/)**<br><sub>シミュレーションと評価 · NVIDIA Technical Blog (Robotics) · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线](https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑27</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **DexPort** — `AI 下書き` 巧緻ハンドのデータ収集がロボット一式を要する遠隔操作環境に縛られているなら、携帯型の手持ちインタフェースを試す価値がある。著者は 2,500 件超のデモ、4 タスクでの評価、11% から 64% への改善を自己報告しているが、査読前の数字だ。
-2. **DiscoDemo** — `AI 下書き` 行動クローニング用のデモを追加収集する前に、まずカバレッジを点検すべきだ。著者は下流の成功率が 40% から 62%、実機側とみられる条件で 39% から 78% に上がったと自己報告しているが、査読前の単一の結果にとどまる。
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI 下書き` フローマッチング型 VLA の運用で応答性と実行安定性のトレードオフに悩むチームには、実行ホライズンとサンプリング深さを一体で調整すべきという示唆がある。実機・閉ループ・遅延のシグナルはあるが、ページに具体的な数値はなく、設定変更の根拠にはまだ弱い。
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI 下書き` 狭い開口部への挿入を伴う着衣支援に取り組むチームには、形状を考慮した RL が候補になる。ただし自己報告の成功率 84.7 ± 1.2% に対し、ページ上に実機結果は示されておらず、導入根拠ではなく手法候補として扱うべきだ。
-5. **Isaac Lab Interactive browser demos** — `AI 下書き` ドキュメントやレビューでシミュレーションをそのまま見せたいチームの参考になる。事前ビルド済みの Newton WebAssembly シミュレーション、ブラウザビューア、エクスポータのソースが公開された。性能値はなく、再利用の要はエクスポータのソースだ。
-6. **MuJoCo 3.17.0** — `AI 下書き` 同一モデルの多数のシミュレーションを自前のラッパーで並列実行しているなら、専用スレッドプールで進める新しいバッチ API（mujoco.batch）への置き換えを検討したい。リリースノートに高速化の数値はないため、切り替え前にスループットを自前で測るべきだ。
-7. **OMRON to acquire OnLogic to address edge AI applications** — `AI 下書き` エッジ AI に OnLogic の産業用コンピュータを採用しているなら、OMRON による買収計画が製品ロードマップと供給に与える影響を注視したい。二次報道のみのため、条件は両社の一次発表で確認を。
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI 下書き` 物流向けヒューマノイドのベンダー選定では参考になる。複数社の機体を試した GXO が、Digit をさらに 2 拠点へ展開する計画だ。ただし二次報道であり、台数や作業性能の数値は示されていない。
+1. **RynnVLA-Latent** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+2. **TRIAGE** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **WorldFailBench** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **ThinkLocoManip** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **Genie 4** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-27.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-28.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

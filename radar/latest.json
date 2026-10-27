@@ -1,179 +1,181 @@
 {
-  "date": "2026-10-27",
-  "generated": "2026-10-26 23:40 UTC",
-  "window": "papers 2026-10-23 → 2026-10-27 · posts 2026-09-27 → 2026-10-27 (UTC)",
+  "date": "2026-10-28",
+  "generated": "2026-10-27 23:40 UTC",
+  "window": "papers 2026-10-24 → 2026-10-28 · posts 2026-09-28 → 2026-10-28 (UTC)",
   "window_detail": {
-    "day": "2026-10-27",
-    "papers_from": "2026-10-23",
-    "posts_from": "2026-09-27",
+    "day": "2026-10-28",
+    "papers_from": "2026-10-24",
+    "posts_from": "2026-09-28",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.32969",
-      "title": "DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection",
-      "url": "https://arxiv.org/abs/2610.32969",
-      "publisher": "arXiv 2610.32969",
+      "id": "arxiv:2610.34356",
+      "title": "RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions",
+      "url": "https://arxiv.org/abs/2610.34356",
+      "publisher": "arXiv 2610.34356",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-23",
-      "lane": "data",
-      "score": 3.27,
+      "published": "2026-10-25",
+      "lane": "foundation",
+      "score": 4.25,
       "numbers": [
-        "4 tasks",
-        "2,500 demonstrations",
-        "11%",
-        "64%"
+        "98.8%",
+        "84.7%",
+        "51.9%",
+        "88.6%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "heat": 0.0,
-      "summary": "Collecting high-quality demonstrations remains a central bottleneck for learning dexterous manipulation. Teleoperation records executable robot actions, but it requires a complete robot setup and places the burden of coordinating many finger joints on the operator. Human demonstrations are easier to collect, but their motions must be estimated and retargeted to the robot, and they do not directly provide robot actions. In this paper, we introduce DexPort, a portable data-collection interface for high-DoF robot hands. It uses the same hand hardware for collection and deployment, avoiding a hand embodiment gap, and records both commanded joint targets and measured joint states. Our key observation is that a small set of skills can support a wide range of dexterous tasks. During collection, the operator moves the hand-held interface to specify the robot wrist motion and selects or adjusts skills that coordinate the finger motion. This removes the need to control each joint independently while retaining behaviors such as precise grasping and in-hand manipulation. We collect demonstrations across several real-world tasks and in unstructured environments without a robot arm. We then use behavior cloning to train visuomotor policies directly on the recorded wrist motions and hand commands, without skill labels. We evaluate across 4 tasks: pick-and-place with diverse objects, screwing with in-hand tool use, drawer stowage which requires simultaneous grasp and pulling, and a bimanual scanning task. We collect over 2,500 demonstrations with our portable device, in both laboratory and in-the-wild settings. Across our tasks, we see an improvement from 11% to 64% when using recorded robot commands instead of states, and an improvement from 36% to 78% for task success when using in-the-wild data."
+      "heat": 0.125,
+      "summary": "Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments. We present RynnVLA-Latent, a framework that turns heterogeneous interaction videos into scalable supervision for robot policy pretraining. At its core, RynnLAM learns continuous, 3D-grounded latent actions from visual transitions without requiring native robot controls. By combining residual future-feature prediction, camera-compensated 3D-flow supervision, and camera-motion decoupling, RynnLAM encourages representations that capture control-relevant motion rather than appearance changes alone. We apply RynnLAM to 30.1K hours of human, robot, and simulation videos, producing 745.52M latent-action descriptors. RynnVLA-Latent then learns to predict latent-action chunks from visual observations and language through flow matching, before adapting its pretrained backbone and action expert to embodiment-specific robot actions. The resulting 4B policy achieves 98.8% success on LIBERO, 84.7% on LIBERO-Plus without benchmark-specific adaptation, 51.9% average success across five VLABench tracks, and 88.6% average success on the RoboTwin 2.0 bimanual benchmark. It also achieves the highest observed success rates among the compared methods on six real-world manipulation tasks across dexterous-hand and mobile-gripper platforms. Together with representation ablations and data-scaling results, these findings demonstrate the potential of latent-action supervision for scaling robot policy learning beyond native action-labeled data."
     },
     {
-      "id": "arxiv:2610.32093",
-      "title": "DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning",
-      "url": "https://arxiv.org/abs/2610.32093",
-      "publisher": "arXiv 2610.32093",
+      "id": "arxiv:2610.34519",
+      "title": "TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning",
+      "url": "https://arxiv.org/abs/2610.34519",
+      "publisher": "arXiv 2610.34519",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-23",
-      "lane": "data",
-      "score": 3.27,
-      "numbers": [
-        "62%",
-        "40%",
-        "78%",
-        "39%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Behavior cloning for robotic manipulation is highly sensitive to the coverage of its training data, yet collecting diverse successful demonstrations remains costly. We study reinforcement learning (RL) not as a deployable controller, but as a data generator for downstream visuomotor imitation learning. Our key premise is that multiple successful solution modes cover a broader range of successful trajectories than repeatedly collecting a single narrow solution. We introduce DiscoDemo, which trains a privileged latent-conditioned RL generator with a parallel reverse curriculum and a success-gated diversity objective to discover diverse solutions while preserving task success. The trained generator produces multiple successful closed-loop behaviors, which are safety-filtered and exported as a static dataset for downstream imitation learning. Across four manipulation tasks, DiscoDemo produces broader successful-state coverage and improves downstream visuomotor policies in both simulation and the real world. Averaged across tasks, downstream success increases to 62% from 40% for the strongest baseline in simulation, and to 78% from 39% on the real robot, respectively. These results suggest that successful solution diversity improves imitation learning for a pretrained flow-matching VLA and remains complementary to corrective data collection. Project page: https://davian-robotics.github.io/DiscoDemo"
-    },
-    {
-      "id": "arxiv:2610.32102",
-      "title": "Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies",
-      "url": "https://arxiv.org/abs/2610.32102",
-      "publisher": "arXiv 2610.32102",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-23",
+      "published": "2026-10-25",
       "lane": "edge",
-      "score": 2.907,
-      "numbers": [],
+      "score": 3.862,
+      "numbers": [
+        "4.4x",
+        "48%",
+        "7%"
+      ],
       "signals": [
+        "numbers",
         "closed_loop",
-        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Flow-matching Vision-Language-Action (VLA) models generate expressive continuous trajectories for robotic manipulation, yet balancing real-time responsiveness with execution stability remains a persistent challenge. Standard deployment workflows typically treat numerical solver depth and execution horizon as decoupled choices. The horizon amortizes inference latency, while solver depth is kept high to preserve integration fidelity. In this paper, we reveal a fundamental compute-execution coupling in flow-matching VLAs governed by a systematic sign reversal. While coarse numerical integration degrades precision under rapid replanning, it markedly improves task performance under extended open-loop commitment. Geometrically, numerical truncation contracts lateral action dispersion around an invariant trajectory centroid, serving as an implicit regularizer that suppresses compounding open-loop drift. Across LIBERO, RoboTwin 2.0, and real-world Franka manipulation on representative VLA backbones including $π_0$, $π_{0.5}$, and GR00T, exploiting this joint coupling consistently achieves superior task success while drastically lowering inference latency, entirely training-free and without architectural modifications. These findings establish numerical sampling depth as an operational variance regulator, shifting its role from a static precision budget to an active deployment knob in robot learning. Project page: https://jiabingyang01.github.io/Horizon-Depth-VLA/"
+      "summary": "Vision-language-action (VLA) models are increasingly used for robot manipulation because they map camera images and a language instruction directly to actions. Robots that cannot be tethered to a workstation, such as mobile manipulators and humanoids, must run them on onboard embedded boards, where the prefill latency of the language backbone grows with the hundreds of visual tokens processed at every control step. To meet real-time limits, training-free accelerators recompute only a subset of the visual tokens and skip the rest, either by pruning them or by reusing their cached key-value (KV) states. The two options save nearly the same computation, yet existing methods apply only one of them to every skipped token. Through a token-level diagnostic, we show that which option keeps the action closer to full recomputation depends on the token's drift, the change in its shallow-layer value since its cache was computed. On both backbones tested, reusing tokens below a drift threshold was no worse than pruning them, whereas beyond it, reuse yields up to 4.4x the action error of pruning; the same diagnostic calibrates this threshold per backbone. Building on this finding, we propose TRIAGE, which deems a cache valid when its drift is below this threshold and it is not too old. TRIAGE recomputes a fixed budget of tokens, prioritizing important tokens with invalid caches, reuses every other token with a valid cache, and prunes the rest; prune-only and reuse-only methods are the two extremes of this partition. Because the budget fixes the number of recomputed tokens, it directly sets the prefill latency. On LIBERO and SimplerEnv, TRIAGE stays within 3 pp of full recomputation in average success rate while cutting prefill latency on a Jetson AGX Orin by up to 48%, and with only 7% of visual tokens recomputed, it beats the strongest baseline by 24.4 pp on LIBERO-Object."
     },
     {
-      "id": "arxiv:2610.32143",
-      "title": "Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion",
-      "url": "https://arxiv.org/abs/2610.32143",
-      "publisher": "arXiv 2610.32143",
+      "id": "arxiv:2610.33565",
+      "title": "WorldFailBench: Do World Models Understand Policy Failures?",
+      "url": "https://arxiv.org/abs/2610.33565",
+      "publisher": "arXiv 2610.33565",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-23",
-      "lane": "training",
-      "score": 2.8,
+      "published": "2026-10-24",
+      "lane": "simeval",
+      "score": 3.81,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Robot policy evaluation informs deployment decisions and policy improvement, but physical testing and simulator preparation require substantial effort. World models offer a complementary route through closed-loop interaction in generated environments. Recent benchmarks have demonstrated their potential as policy evaluators through outcome-based evaluation (i.e., assessing task success or failure). However, such evaluation does not establish whether world models faithfully simulate how policies fail. Misrepresenting failures can lead to incorrect diagnoses of policy weaknesses and make policies appear ready for deployment even when small scene changes cause them to fail. We therefore ask: do world models faithfully simulate how and at which stages policies fail, and under what conditions they transition from success to failure? To answer this question, we introduce WorldFailBench with three evaluation tasks. Failure reason tests whether models reproduce the observable errors policies make. Failure stage assesses whether failures concentrate at the same stages of full-task execution. Failure boundary examines whether models reproduce the conditions under which policies transition from success to failure under controlled scene changes in simulation. The benchmark covers manipulation tasks in the LIBERO and RoboTwin simulation environments and real-world manipulation tasks performed by the G1 humanoid robot. Experiments across seven world models reveal substantial gaps in their understanding of policy failures, providing guidance for developing more reliable world models for policy evaluation."
+    },
+    {
+      "id": "arxiv:2610.34370",
+      "title": "ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.34370",
+      "publisher": "arXiv 2610.34370",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-25",
+      "lane": "systems",
+      "score": 3.45,
       "numbers": [
-        "1.2%"
+        "77%",
+        "37.1%"
       ],
       "signals": [
         "numbers",
-        "closed_loop"
+        "closed_loop",
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Robot-assisted dressing is particularly challenging due to narrow openings and articulated body parts. Even small errors in the relative pose between the body part and garment opening can cause snagging, missed insertion, or incomplete dressing. To address these challenges, we formulate dressing as a geometry-aware insertion problem that represents task-relevant spatial relationships between the body part and object opening, rather than relying on the full deformable-object state. Based on this formulation, we propose a Reinforcement Learning (RL) framework combining a staged curriculum, which progressively guides the policy from coarse alignment to insertion and final placement, with a finger-wise insertion soft gate that provides continuous feedback on individual finger insertion progress and helps suppress premature insertion. We evaluate the framework on rigid and deformable bracelet dressing tasks through component ablations, systematic variations in the initial hand pose, and closed-loop execution of the learned policies on a real robotic system. On the post-training deformable evaluation, the full method reaches 84.7 +- 1.2% success. The insertion gate accounts for the largest gain, and adding the curriculum on top of that gate reaches the top score. On a mannequin hand the same full policy succeeds on 15/20 real-robot trials."
+      "summary": "In this paper, we propose ThinkLocoManip, an agentic harness for legged loco-manipulation designed to tackle complex, long-horizon tasks in large-scale environments. Existing approaches typically follow either direct action generation or a plan-then-act paradigm, both of which can struggle with the generalization and error-recovery capabilities required for extended task execution. In contrast, ThinkLocoManip adopts an interleaved reasoning-and-acting paradigm, allowing the agent to continuously reason about its current state, execute actions, observe their outcomes, and adapt its strategy accordingly. Building on this paradigm, our agentic harness orchestrates a suite of specialized tools for perception, navigation, manipulation, and locomotion, enabling flexible composition of heterogeneous capabilities. Unlike existing robotic agentic harnesses, ThinkLocoManip explicitly incorporates locomotion as a tool domain for agent reasoning and execution. We further design a set of skills that explicitly account for both tool usage within each functional domain and coordination across domains, supporting effective execution of complex behaviors over long horizons. To tackle task failure during long-horizon interactions, we develop keyframe thinking mechanism to preserve critical execution context and support efficient error recovery. Extensive real-world experiments demonstrate that ThinkLocoManip substantially outperforms representative methods based on both direct action generation and plan-then-act paradigms across challenging long-horizon legged loco-manipulation tasks. Notably, ThinkLocoManip achieves a success rate of 77%, more than twice that of the strongest plan-then-act baseline (37.1%). Our experiments further validate the effectiveness of interleaved reasoning and acting, tool orchestration, and coordinated skill execution."
     },
     {
-      "id": "github-isaaclab:a8ec1b50c3ed",
-      "title": "Isaac Lab Interactive browser demos",
-      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos",
-      "publisher": "Isaac Lab releases (GitHub)",
-      "source_id": "github-isaaclab",
+      "id": "deepmind:d17d13a0006a",
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "publisher": "Google DeepMind",
+      "source_id": "deepmind",
       "evidence": "O",
-      "published": "2026-10-26",
-      "lane": "simeval",
-      "score": 2.616,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.077,
-      "summary": "Prebuilt Newton WebAssembly simulations, their browser viewer, and exporter source for Isaac Lab documentation. The documentation stages one reviewed, commit-named archive and verifies its SHA-256. This release is the permanent bundle container; updates add assets here without creating a new numbered release. Existing assets remain available for reproducible builds. Documentation update PR #8559 · Review the gallery Preview a bundle Download the archive selected by .github/actions/_lib/stage-browser-demos.sh , extract it, and enter its top-level directory. Then run: python -m http.server 8000 --directory site Open http://localhost:8000/interactive/ . The archive includes exporters/ , scene and rebuild instructions, licenses, and tools/publish.py . Running the demos needs only a browser. Rebuilding physics requires the pinned internal Newton Web compiler and Emscripten. Publish an update Reuse the interactive-releases publishing branch. Commit the reviewed site, create a commit-named archive and checksum, and upload both to this same release. Update the archive URL and SHA-256 together in the docs PR. Keep earlier assets and compatibility directories. The current publishing branch is available in the contributor fork . Creating it in the official repository requires an administrator under the repository's branch-creation rule. Runtime bundles are hosted in this official release and served by Isaac Lab documentation."
-    },
-    {
-      "id": "github-mujoco:ec15ed8c3880",
-      "title": "MuJoCo 3.17.0",
-      "url": "https://github.com/google-deepmind/mujoco/releases/tag/3.17.0",
-      "publisher": "MuJoCo releases (GitHub)",
-      "source_id": "github-mujoco",
-      "evidence": "O",
-      "published": "2026-10-22",
-      "lane": "simeval",
-      "score": 2.085,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.1,
-      "summary": "Version 3.17.0 (October 22, 2026) Significant new features c00ed8153 Added a batch API in mujoco/mjbatch.h (in Python as mujoco.batch ): many simulations of one model stepped on a thread pool of its own, each held as its integration state and loaded into an mjData for each call, so memory scales with threads and results are bit-identical to a plain loop at any thread count. It supports per-simulation model and option fields or models of the caller's, observations of the state after a step, recorded trajectories, persistent simulations (required for sleep), and arbitrary per-simulation functions. Follows the design of mjbatch by @kevinzakka . Engine Flex improvements: 94483e166 Added bending elasticity for 1D flexes, using a twist-free isotropic discrete elastic rod model. The cross-section is selected with the new section attribute: a circle of the flex radius, or a box with half-sizes sectionsize that uses the stiffness of its weak axis. It is enabled by a positive young modulus, requires a straight reference configuration (curved initial poses can be set with qpos or keyframes), is compatible with edge equality constraints, and is integrated implicitly by the discrete integrator. Previously young was ignored for 1D flexes: existing models that set it now bend, and fail to compile if the cross-section is degenerate (zero radius with the default circle section), if a vertex joins a zero-length edge, or if the rod is not straight. 36d0df9a5 , 897e3fcb1 Interpolated flexes ( trilinear or quadratic dofs ) now support self-collision , excluding elements in the same or neighboring cells. 39dd10f2d The default arena memory for flex models is now much smaller, sized from the flex mesh topology instead of nv^2 . If the Newton solver runs out of arena memory it falls back to CG with a warning. mj_setConst now computes only quantities derived from other fields of mjModel , while the compiler alone resolves spec-level conventions: 55c1b585a , d6d41f324 The damping of position …"
-    },
-    {
-      "id": "the-robot-report:9126dd125602",
-      "title": "OMRON to acquire OnLogic to address edge AI applications",
-      "url": "https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-26",
+      "published": "2026-10-27",
       "lane": "edge",
-      "score": 1.252,
+      "score": 2.202,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "latency"
+      ],
       "heat": 0.0,
-      "summary": "OMRON will add industrial computing from OnLogic to its industrial automation expertise to serve data- and AI-intensive applications."
+      "summary": "Genie 4: our new world model unlocking unprecedented realism in real-time simulation."
     },
     {
-      "id": "the-robot-report:24600ed8f1e7",
-      "title": "Agility and GXO Logistics plan expanded deployment of Digit humanoid",
-      "url": "https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/",
+      "id": "the-robot-report:3694685d692e",
+      "title": "ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres",
+      "url": "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-26",
-      "lane": "hardware",
-      "score": 1.182,
+      "published": "2026-10-27",
+      "lane": "safety",
+      "score": 1.62,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "GXO Logistics, which has tested humanoid robots from multiple companies, will deploy Agility's Digit at two more sites."
+      "summary": "ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries."
+    },
+    {
+      "id": "nvidia-developer-robotics:2bc7933d0c2c",
+      "title": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation",
+      "url": "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-10-23",
+      "lane": "simeval",
+      "score": 1.435,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Teaching a robot to navigate an obstacle course requires more than a walking policy. It must perceive its surroundings, maintain balance, and adjust its actions..."
+    },
+    {
+      "id": "leiphone:72366383d1f7",
+      "title": "源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线",
+      "url": "https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-27",
+      "lane": "foundation",
+      "score": 1.1,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "从底层芯片、神经形态计算，到机器人自主部署、极端环境物理智能和地表物理环境建模，人工智能前沿技术正沿着多条不同路径推进产业应用落地。如何让实验室里的原创成果跨越工程验证与商业化之间的距离，成为科研创新走向产业实践的重要课题。 10月26日，北京智源人工智能研究院发布的“源创计划”首期路演在中关村国际技术交易中心举办。临界核科技、灵枢启智、张量场科技、苍穹极智、潜向量科技五个项目集中亮相，分别聚焦3D自选通V-RRAM芯片、神经形态具身智能、哈密顿世界模型、极端环境的可靠物理智能、地表物理环境统一世界模型等方向。活动还设置了项目与基金洽谈环节，推动创业团队与投资机构交流对接。 从“源头创新”到“产业验证”，源创计划要打通的不只是资金 活动现场，智源研究院副院长杨洋介绍了“源创计划”的定位与支持机制。作为主要面向智源学者群体的原创技术创业孵化计划，源创计划聚焦人工智能领域的原创科研课题，遵循“源头创新、快速决策、小步试行、全流程合规转化”的原则，整合技术、人才、资本与产业资源，为科研团队从实验室走向产业提供支持。计划不仅关注资金对接，更着力构建连接原创科研、创业团队与产业市场的协同机制，推动科研成果从技术发现走向工程验证与商业化应用。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 5,
-    "data": 8,
-    "training": 8,
+    "foundation": 6,
+    "data": 7,
+    "training": 6,
     "simeval": 14,
     "edge": 6,
-    "safety": 2,
-    "systems": 3,
+    "safety": 3,
+    "systems": 4,
     "hardware": 9
   },
   "evidence_mix": {
-    "O": 8,
-    "R": 33,
-    "M": 14
+    "O": 10,
+    "R": 30,
+    "M": 15
   },
   "fetch": {
-    "items": 632,
+    "items": 665,
     "attempted": 23,
     "answered": 23,
     "failed": [],
@@ -200,11 +202,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 11,
+      "hn_stories": 15,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 33,
+      "arxiv": 66,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

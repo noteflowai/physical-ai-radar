@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-27
+### 今日雷达 · 2026-10-28
 
-`生成时间: 2026-10-26 23:40 UTC` ｜ `统计窗口: 论文 2026-10-23 → 2026-10-27 · 博客与报道 2026-09-27 → 2026-10-27 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-27 23:40 UTC` ｜ `统计窗口: 论文 2026-10-24 → 2026-10-28 · 博客与报道 2026-09-28 → 2026-10-28 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection](https://arxiv.org/abs/2610.32969)**<br>`4 tasks`&nbsp; `2,500 demonstrations`&nbsp; `11%`<br><sub>数据引擎 · arXiv 2610.32969 · 2026‑10‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning](https://arxiv.org/abs/2610.32093)**<br>`62%`&nbsp; `40%`&nbsp; `78%`<br><sub>数据引擎 · arXiv 2610.32093 · 2026‑10‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies](https://arxiv.org/abs/2610.32102)**<br><sub>边缘与实时性 · arXiv 2610.32102 · 2026‑10‑23</sub> |
-| 04<br>🔵&nbsp;`R` | **[Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion](https://arxiv.org/abs/2610.32143)**<br>`1.2%`<br><sub>训练与自我改进 · arXiv 2610.32143 · 2026‑10‑23</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab Interactive browser demos](https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos)**<br><sub>仿真与评测 · Isaac Lab releases (GitHub) · 2026‑10‑26</sub> |
-| 06<br>🟢&nbsp;`O` | **[MuJoCo 3.17.0](https://github.com/google-deepmind/mujoco/releases/tag/3.17.0)**<br><sub>仿真与评测 · MuJoCo releases (GitHub) · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[OMRON to acquire OnLogic to address edge AI applications](https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑10‑26</sub> |
-| 08<br>🟡&nbsp;`M` | **[Agility and GXO Logistics plan expanded deployment of Digit humanoid](https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](https://arxiv.org/abs/2610.34356)**<br>`98.8%`&nbsp; `84.7%`&nbsp; `51.9%`<br><sub>基座模型 · arXiv 2610.34356 · 2026‑10‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning](https://arxiv.org/abs/2610.34519)**<br>`4.4x`&nbsp; `48%`&nbsp; `7%`<br><sub>边缘与实时性 · arXiv 2610.34519 · 2026‑10‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[WorldFailBench: Do World Models Understand Policy Failures?](https://arxiv.org/abs/2610.33565)**<br><sub>仿真与评测 · arXiv 2610.33565 · 2026‑10‑24</sub> |
+| 04<br>🔵&nbsp;`R` | **[ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation](https://arxiv.org/abs/2610.34370)**<br>`77%`&nbsp; `37.1%`<br><sub>系统与编排 · arXiv 2610.34370 · 2026‑10‑25</sub> |
+| 05<br>🟢&nbsp;`O` | **[Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)**<br><sub>边缘与实时性 · Google DeepMind · 2026‑10‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres](https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑27</sub> |
+| 07<br>🟢&nbsp;`O` | **[Using AI Agents to Teach Robots Like Microduck to Walk in Simulation](https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/)**<br><sub>仿真与评测 · NVIDIA Technical Blog (Robotics) · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线](https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑27</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **DexPort** — `AI 起草` 灵巧手数据采集若受限于整套机器人遥操作环境，可评估这类便携手持接口：作者自报用它采集了 2,500 多条演示、在 4 个任务上评测，并给出从 11% 到 64% 的提升，但属预印本自报。
-2. **DiscoDemo** — `AI 起草` 行为克隆团队在追加采集前应先检查演示覆盖度：作者自报下游成功率从 40% 升至 62%，另一组从 39% 升至 78%（摘录指向真机场景），但仍是未经评审的单一来源结果。
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI 起草` 部署流匹配 VLA 时，若在实时响应与执行稳定性之间反复权衡，这篇预印本提示执行时域与采样深度应联合调参；页面标注了真机、闭环和延迟信号，但没有给出具体数字，先别据此改控制配置。
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI 起草` 做辅助穿衣等窄开口插入任务的团队可关注几何感知 RL：作者自报成功率 84.7 ± 1.2%，但页面未展示真机结果，目前只能作为方法候选，而非部署依据。
-5. **Isaac Lab Interactive browser demos** — `AI 起草` 想在文档或评审中直接展示仿真的团队可以参考：官方提供了预构建的 Newton WebAssembly 仿真、浏览器查看器及导出器源码；页面没有性能数据，导出器源码才是复用的关键。
-6. **MuJoCo 3.17.0** — `AI 起草` 自己封装多进程来并行跑同一模型多份仿真的团队，可以评估改用新的批量 API（mujoco.batch），它在独立线程池上推进各仿真；发布说明未给出加速数据，切换前先自测吞吐。
-7. **OMRON to acquire OnLogic to address edge AI applications** — `AI 起草` 采购 OnLogic 工业计算机做边缘 AI 的团队应留意这笔计划中的收购对产品路线与供货的影响；目前只有二手报道，交易细节请以双方原始公告为准。
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI 起草` 评估物流人形机器人供应商时，这是一个参考信号：测试过多家人形产品的 GXO 计划在另外两个站点部署 Digit；但属二手报道，且没有给出规模或作业表现数据。
+1. **RynnVLA-Latent** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **TRIAGE** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+3. **WorldFailBench** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+4. **ThinkLocoManip** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+5. **Genie 4** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-27.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-28.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

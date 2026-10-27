@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-27
+### Today's radar · 2026-10-28
 
-`Generated: 2026-10-26 23:40 UTC` ｜ `Window: papers 2026-10-23 → 2026-10-27 · posts 2026-09-27 → 2026-10-27 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-27 23:40 UTC` ｜ `Window: papers 2026-10-24 → 2026-10-28 · posts 2026-09-28 → 2026-10-28 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection](https://arxiv.org/abs/2610.32969)**<br>`4 tasks`&nbsp; `2,500 demonstrations`&nbsp; `11%`<br><sub>Data engine · arXiv 2610.32969 · 2026‑10‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning](https://arxiv.org/abs/2610.32093)**<br>`62%`&nbsp; `40%`&nbsp; `78%`<br><sub>Data engine · arXiv 2610.32093 · 2026‑10‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies](https://arxiv.org/abs/2610.32102)**<br><sub>Edge & real-time · arXiv 2610.32102 · 2026‑10‑23</sub> |
-| 04<br>🔵&nbsp;`R` | **[Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion](https://arxiv.org/abs/2610.32143)**<br>`1.2%`<br><sub>Training & self-improvement · arXiv 2610.32143 · 2026‑10‑23</sub> |
-| 05<br>🟢&nbsp;`O` | **[Isaac Lab Interactive browser demos](https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos)**<br><sub>Simulation & evaluation · Isaac Lab releases (GitHub) · 2026‑10‑26</sub> |
-| 06<br>🟢&nbsp;`O` | **[MuJoCo 3.17.0](https://github.com/google-deepmind/mujoco/releases/tag/3.17.0)**<br><sub>Simulation & evaluation · MuJoCo releases (GitHub) · 2026‑10‑22</sub> |
-| 07<br>🟡&nbsp;`M` | **[OMRON to acquire OnLogic to address edge AI applications](https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/)**<br><sub>Edge & real-time · The Robot Report · 2026‑10‑26</sub> |
-| 08<br>🟡&nbsp;`M` | **[Agility and GXO Logistics plan expanded deployment of Digit humanoid](https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](https://arxiv.org/abs/2610.34356)**<br>`98.8%`&nbsp; `84.7%`&nbsp; `51.9%`<br><sub>Foundation models · arXiv 2610.34356 · 2026‑10‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning](https://arxiv.org/abs/2610.34519)**<br>`4.4x`&nbsp; `48%`&nbsp; `7%`<br><sub>Edge & real-time · arXiv 2610.34519 · 2026‑10‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[WorldFailBench: Do World Models Understand Policy Failures?](https://arxiv.org/abs/2610.33565)**<br><sub>Simulation & evaluation · arXiv 2610.33565 · 2026‑10‑24</sub> |
+| 04<br>🔵&nbsp;`R` | **[ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation](https://arxiv.org/abs/2610.34370)**<br>`77%`&nbsp; `37.1%`<br><sub>Systems & orchestration · arXiv 2610.34370 · 2026‑10‑25</sub> |
+| 05<br>🟢&nbsp;`O` | **[Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)**<br><sub>Edge & real-time · Google DeepMind · 2026‑10‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres](https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑27</sub> |
+| 07<br>🟢&nbsp;`O` | **[Using AI Agents to Teach Robots Like Microduck to Walk in Simulation](https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/)**<br><sub>Simulation & evaluation · NVIDIA Technical Blog (Robotics) · 2026‑10‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线](https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑27</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **DexPort** — `AI draft` If full-robot teleoperation rigs are what limits your dexterous-hand data, this portable hand-held interface is worth a trial: the authors self-report over 2,500 demonstrations, 4 evaluation tasks and an improvement from 11% to 64%, all unreviewed.
-2. **DiscoDemo** — `AI draft` Before paying for more behavior-cloning demos, audit their coverage: the authors self-report downstream success rising from 40% to 62%, and from 39% to 78% in what the quote ties to the real setup, though it is one unreviewed preprint.
-3. **Coupling Execution Horizon and Sampling Depth in Flow-Matching VLA Policies** — `AI draft` For teams trading real-time responsiveness against execution stability in flow-matching VLA deployments, this preprint argues for tuning execution horizon and sampling depth jointly; the page flags real-robot, closed-loop and latency results but shows no figures yet.
-4. **Geometry-Aware Reinforcement Learning for Close-Fitting Wearable Insertion** — `AI draft` Assistive-dressing teams facing narrow-opening insertion can shortlist geometry-aware RL, but the self-reported 84.7 +- 1.2% success comes without real-robot results on the page, so treat it as a method candidate, not deployment evidence.
-5. **Isaac Lab Interactive browser demos** — `AI draft` Teams that want simulations viewable straight from their docs or reviews get a reference here: prebuilt Newton WebAssembly simulations, a browser viewer and the exporter source; no performance figures are given, and the exporter is the reusable part.
-6. **MuJoCo 3.17.0** — `AI draft` If you maintain your own wrapper to step many copies of one MuJoCo model in parallel, evaluate the new batch API (mujoco.batch), which runs them on its own thread pool; the notes give no speed-up figures, so benchmark throughput before switching.
-7. **OMRON to acquire OnLogic to address edge AI applications** — `AI draft` If OnLogic industrial computers sit in your edge-AI bill of materials, watch how this planned OMRON acquisition affects roadmap and supply; this is secondary reporting, so confirm deal terms in the companies' own announcements.
-8. **Agility and GXO Logistics plan expanded deployment of Digit humanoid** — `AI draft` For anyone choosing a warehouse humanoid vendor, a logistics operator that tested several makers plans Digit at two more sites; that is a selection signal, but it is secondary reporting with no fleet size or task performance given.
+1. **RynnVLA-Latent** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **TRIAGE** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **WorldFailBench** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+4. **ThinkLocoManip** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+5. **Genie 4** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-28.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

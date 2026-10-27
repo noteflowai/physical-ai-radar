@@ -65,16 +65,6 @@
       "date": "2026-09-27",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2609.28838",
-        "https://arxiv.org/abs/2609.29029",
-        "https://arxiv.org/abs/2609.29382",
-        "https://arxiv.org/abs/2609.29000",
-        "https://www.tri.global/research/anchordream-repurposing-video-diffusion-embodiment-aware-robot-data-synthesis",
-        "https://arxiv.org/abs/2609.29092",
-        "https://www.leiphone.com/category/ai/k1xgdu6w3n7xggkb.html",
-        "https://www.leiphone.com/category/ai/c5xfhiwwhqsfngrs.html"
-      ],
       "failed": [],
       "fallback": [
         "arxiv"
@@ -666,6 +656,42 @@
         "max_arxiv": 4,
         "reserved": {
           "official": "github-isaaclab:a8ec1b50c3ed",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.34356",
+        "https://arxiv.org/abs/2610.34519",
+        "https://arxiv.org/abs/2610.33565",
+        "https://arxiv.org/abs/2610.34370",
+        "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation",
+        "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres",
+        "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation",
+        "https://www.leiphone.com/category/ai/80i0hbkavstskbtm.html"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "deepmind:d17d13a0006a",
           "hot": null
         },
         "unmet": [
