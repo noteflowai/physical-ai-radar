@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RynnVLA-Latent** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **TRIAGE** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-3. **WorldFailBench** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-4. **ThinkLocoManip** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-5. **Genie 4** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **RynnVLA-Latent** — `AI draft` If scaling a VLA is blocked by scarce action-labeled demos and incompatible control spaces across robots, track this latent-action route: the authors self-report a 4B policy at 98.8% on LIBERO and 84.7% on LIBERO-Plus, unreviewed benchmark scores.
+2. **TRIAGE** — `AI draft` Before speeding up a VLA by reuse alone, measure action error: the authors report reuse yields up to 4.4x the action error, and cite results with only 7% of visual tokens and up to 48% on Orin; no real-robot result is shown.
+3. **WorldFailBench** — `AI draft` If you hope world-model rollouts can stand in for costly physical tests and simulator setup in policy evaluation, this benchmark asks whether they recognise failures; the page shows no figures, so the answer is not yet visible.
+4. **ThinkLocoManip** — `AI draft` Teams running long-horizon legged loco-manipulation in large environments should weigh an agentic harness against plan-then-act pipelines: the authors self-report 77% success versus 37.1% for the strongest such baseline, an unreviewed single comparison.
+5. **Genie 4** — `AI draft` If you would use a world model as a real-time simulator for training or testing, this is a first-party claim of unprecedented realism in real-time simulation, but the page gives no figures, so latency and fidelity stay unverified.
+6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — `AI draft` Oil, gas and chemical operators weighing legged inspection robots for explosive atmospheres now have a reported delivering option, but the excerpt names no specific standard, so confirm certifications with the vendor; this is secondary reporting.
+7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — `AI draft` Teams training locomotion in simulation can borrow NVIDIA's agent-driven workflow for obstacle courses that need perception, balance and action adjustment, but the page shows no figures or real-robot result, so treat it as a workflow to try.
+8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — `AI draft` This is a lab-to-industry roadshow signal, not a technical result: robot autonomous deployment and extreme-environment physical intelligence are among the five projects, useful for scouting partner teams but not for changing a model choice; secondary reporting.
 
 </details>
 

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34356" rel="noopener" target="_blank">RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions</a></h3>
 <p class="figure"><strong>98.8%</strong><span class="context">“resulting 4B policy achieves 98.8% success on LIBERO”</span></p><p class="chips"><span class="chip">84.7%</span><span class="chip">51.9%</span><span class="chip">88.6%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 行動ラベル付きデモの不足や機体ごとに異なる制御空間が VLA 拡張の壁なら、この潜在行動の手法は追う価値がある。著者は 4B 方策で LIBERO 98.8%、LIBERO-Plus 84.7% と自己報告するが、査読前のベンチマーク値で、実機の主張は原文で確認したい。</p>
 <p class="excerpt">Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34519" rel="noopener" target="_blank">TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning</a></h3>
 <p class="figure"><strong>4.4x</strong><span class="context">“reuse yields up to 4.4x the action error”</span></p><p class="chips"><span class="chip">48%</span><span class="chip">7%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 計算の再利用だけで VLA を高速化するなら、まず行動誤差を測るべきだ。著者は再利用で行動誤差が最大 4.4x になると報告し、視覚トークン 7% のみ・Orin で最大 48% という結果も示すが、実機の結果は本文に見えない自己報告だ。</p>
 <p class="excerpt">Vision-language-action (VLA) models are increasingly used for robot manipulation because they map camera images and a language instruction directly to actions.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.33565" rel="noopener" target="_blank">WorldFailBench: Do World Models Understand Policy Failures?</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 方策評価で実機テストやシミュレータ準備の手間を世界モデルで肩代わりさせたいなら、このベンチマークはそのモデルが失敗を見抜けるかを問う。ただし本文に定量データはなく、答えはまだ読み取れない。</p>
 <p class="excerpt">Robot policy evaluation informs deployment decisions and policy improvement, but physical testing and simulator preparation require substantial effort.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34370" rel="noopener" target="_blank">ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“a success rate of 77%”</span></p><p class="chips"><span class="chip">37.1%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 広い環境で長期の脚式ロコマニピュレーションを扱うなら、計画してから実行する構成とエージェント型ハーネスを比較検討したい。著者は成功率 77%、最強の同型ベースラインは 37.1% と自己報告するが、査読前の単独比較だ。</p>
 <p class="excerpt">In this paper, we propose ThinkLocoManip, an agentic harness for legged loco-manipulation designed to tackle complex, long-horizon tasks in large-scale environments.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" rel="noopener" target="_blank">Genie 4: A new generation of world simulation</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 世界モデルをリアルタイムのシミュレータとして学習や試験に使う構想があるなら注目の一次発表だが、本文はリアルタイムシミュレーションでの前例のないリアルさをうたうだけで数値がなく、遅延と忠実度は未検証だ。</p>
 <p class="excerpt">Genie 4: our new world model unlocking unprecedented realism in real-time simulation.</p>
 <ul class="signals"><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/" rel="noopener" target="_blank">ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 石油・ガス・化学の現場で爆発性雰囲気向けの脚式点検ロボットを検討しているなら、納入開始の報道は選択肢が現実になった合図だ。ただし抜粋は具体的な規格名を挙げておらず二次報道なので、認証はメーカーに確認したい。</p>
 <p class="excerpt">ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-27</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/" rel="noopener" target="_blank">Using AI Agents to Teach Robots Like Microduck to Walk in Simulation</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ロボットが周囲を知覚し、バランスを保ち、行動を調整する必要がある障害物コースの歩行をシミュレーションで学習させるなら、AI エージェントを使う NVIDIA のワークフローは参考になるが、本文に数値も実機の結果もなく、検証済みの手法ではなく試す価値のある手順として扱いたい。</p>
 <p class="excerpt">Teaching a robot to navigate an obstacle course requires more than a walking policy. It must perceive its surroundings, maintain balance, and adjust its actions...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-10-23</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html" rel="noopener" target="_blank">源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 技術成果ではなく、研究室の成果を産業へ移す動きを示すロードショーの報道だ。5 件にはロボットの自律展開や極限環境の物理知能が含まれ、協業先探しには使えるがモデル選定を変える材料ではなく、二次報道でもある。</p>
 <p class="excerpt">从底层芯片、神经形态计算，到机器人自主部署、极端环境物理智能和地表物理环境建模，人工智能前沿技术正沿着多条不同路径推进产业应用落地。如何让实验室里的原创成果跨越工程验证与商业化之间的距离，成为科研创新走向产业实践的重要课题。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-27</span>

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34356" rel="noopener" target="_blank">RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions</a></h3>
 <p class="figure"><strong>98.8%</strong><span class="context">“resulting 4B policy achieves 98.8% success on LIBERO”</span></p><p class="chips"><span class="chip">84.7%</span><span class="chip">51.9%</span><span class="chip">88.6%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 若扩展 VLA 卡在动作标注演示稀缺、各本体控制空间不兼容上，可跟踪这条潜在动作路线：作者自报 4B 策略在 LIBERO 上达 98.8%、LIBERO-Plus 上 84.7%，但都是未经评审的基准分数，真机结论需看原文。</p>
 <p class="excerpt">Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34519" rel="noopener" target="_blank">TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning</a></h3>
 <p class="figure"><strong>4.4x</strong><span class="context">“reuse yields up to 4.4x the action error”</span></p><p class="chips"><span class="chip">48%</span><span class="chip">7%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 打算只靠计算复用给 VLA 提速的团队要先盯动作误差：作者自报复用可使动作误差高达 4.4x，并给出仅用 7% 视觉 token 与 Orin 上最多 48% 的结果；页面未见真机结果，属预印本自报。</p>
 <p class="excerpt">Vision-language-action (VLA) models are increasingly used for robot manipulation because they map camera images and a language instruction directly to actions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.33565" rel="noopener" target="_blank">WorldFailBench: Do World Models Understand Policy Failures?</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 想用世界模型替代部分实机测试和仿真器搭建来做策略评测，这个基准正是检验模型能否识别策略失败的工具；页面没有给出量化数据，结论暂时还看不到。</p>
 <p class="excerpt">Robot policy evaluation informs deployment decisions and policy improvement, but physical testing and simulator preparation require substantial effort.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34370" rel="noopener" target="_blank">ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“a success rate of 77%”</span></p><p class="chips"><span class="chip">37.1%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 在大场景中做足式移动操作长程任务的团队，可把 agentic harness 与先规划后执行的管线对比评估：作者自报成功率 77%，最强此类基线为 37.1%，但这是未经评审的单篇对比。</p>
 <p class="excerpt">In this paper, we propose ThinkLocoManip, an agentic harness for legged loco-manipulation designed to tackle complex, long-horizon tasks in large-scale environments.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" rel="noopener" target="_blank">Genie 4: A new generation of world simulation</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 考虑把世界模型当作实时仿真器用于训练或测试的团队，可以关注这次一手发布，但页面只称实时仿真中前所未有的真实感、没有给出数字，延迟和保真度都有待核实。</p>
 <p class="excerpt">Genie 4: our new world model unlocking unprecedented realism in real-time simulation.</p>
 <ul class="signals"><li>含延迟或控制频率</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/" rel="noopener" target="_blank">ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 油气和化工现场若在评估爆炸性环境下的足式巡检机器人，这条报道说明已有产品开始交付；但摘录未写明具体符合哪些安全标准，采购前应向厂商核实认证，且这是二手报道。</p>
 <p class="excerpt">ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-27</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/" rel="noopener" target="_blank">Using AI Agents to Teach Robots Like Microduck to Walk in Simulation</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 在仿真中训练越障步态的团队，可参考 NVIDIA 借助 AI agent 的仿真训练工作流，这类任务要求机器人感知环境、保持平衡并调整动作；但页面没有给出数字或真机结果，宜当作待试的工作流而非已验证方法。</p>
 <p class="excerpt">Teaching a robot to navigate an obstacle course requires more than a walking policy. It must perceive its surroundings, maintain balance, and adjust its actions...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-10-23</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html" rel="noopener" target="_blank">源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是实验室成果走向产业的路演信号，而非技术结果：五个项目里包括机器人自主部署和极端环境物理智能，适合用来物色合作团队，不足以改变模型选型，且为二手报道。</p>
 <p class="excerpt">从底层芯片、神经形态计算，到机器人自主部署、极端环境物理智能和地表物理环境建模，人工智能前沿技术正沿着多条不同路径推进产业应用落地。如何让实验室里的原创成果跨越工程验证与商业化之间的距离，成为科研创新走向产业实践的重要课题。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-27</span>

@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34356" rel="noopener" target="_blank">RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions</a></h3>
 <p class="figure"><strong>98.8%</strong><span class="context">“resulting 4B policy achieves 98.8% success on LIBERO”</span></p><p class="chips"><span class="chip">84.7%</span><span class="chip">51.9%</span><span class="chip">88.6%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If scaling a VLA is blocked by scarce action-labeled demos and incompatible control spaces across robots, track this latent-action route: the authors self-report a 4B policy at 98.8% on LIBERO and 84.7% on LIBERO-Plus, unreviewed benchmark scores.</p>
 <p class="excerpt">Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34519" rel="noopener" target="_blank">TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning</a></h3>
 <p class="figure"><strong>4.4x</strong><span class="context">“reuse yields up to 4.4x the action error”</span></p><p class="chips"><span class="chip">48%</span><span class="chip">7%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Before speeding up a VLA by reuse alone, measure action error: the authors report reuse yields up to 4.4x the action error, and cite results with only 7% of visual tokens and up to 48% on Orin; no real-robot result is shown.</p>
 <p class="excerpt">Vision-language-action (VLA) models are increasingly used for robot manipulation because they map camera images and a language instruction directly to actions.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.33565" rel="noopener" target="_blank">WorldFailBench: Do World Models Understand Policy Failures?</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If you hope world-model rollouts can stand in for costly physical tests and simulator setup in policy evaluation, this benchmark asks whether they recognise failures; the page shows no figures, so the answer is not yet visible.</p>
 <p class="excerpt">Robot policy evaluation informs deployment decisions and policy improvement, but physical testing and simulator preparation require substantial effort.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.34370" rel="noopener" target="_blank">ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“a success rate of 77%”</span></p><p class="chips"><span class="chip">37.1%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> Teams running long-horizon legged loco-manipulation in large environments should weigh an agentic harness against plan-then-act pipelines: the authors self-report 77% success versus 37.1% for the strongest such baseline, an unreviewed single comparison.</p>
 <p class="excerpt">In this paper, we propose ThinkLocoManip, an agentic harness for legged loco-manipulation designed to tackle complex, long-horizon tasks in large-scale environments.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" rel="noopener" target="_blank">Genie 4: A new generation of world simulation</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> If you would use a world model as a real-time simulator for training or testing, this is a first-party claim of unprecedented realism in real-time simulation, but the page gives no figures, so latency and fidelity stay unverified.</p>
 <p class="excerpt">Genie 4: our new world model unlocking unprecedented realism in real-time simulation.</p>
 <ul class="signals"><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/" rel="noopener" target="_blank">ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> Oil, gas and chemical operators weighing legged inspection robots for explosive atmospheres now have a reported delivering option, but the excerpt names no specific standard, so confirm certifications with the vendor; this is secondary reporting.</p>
 <p class="excerpt">ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries.</p>
 <footer>
 <span class="source">The Robot Report · 2026-10-27</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/" rel="noopener" target="_blank">Using AI Agents to Teach Robots Like Microduck to Walk in Simulation</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams training locomotion in simulation can borrow NVIDIA&#x27;s agent-driven workflow for obstacle courses that need perception, balance and action adjustment, but the page shows no figures or real-robot result, so treat it as a workflow to try.</p>
 <p class="excerpt">Teaching a robot to navigate an obstacle course requires more than a walking policy. It must perceive its surroundings, maintain balance, and adjust its actions...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-10-23</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html" rel="noopener" target="_blank">源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> This is a lab-to-industry roadshow signal, not a technical result: robot autonomous deployment and extreme-environment physical intelligence are among the five projects, useful for scouting partner teams but not for changing a model choice; secondary reporting.</p>
 <p class="excerpt">从底层芯片、神经形态计算，到机器人自主部署、极端环境物理智能和地表物理环境建模，人工智能前沿技术正沿着多条不同路径推进产业应用落地。如何让实验室里的原创成果跨越工程验证与商业化之间的距离，成为科研创新走向产业实践的重要课题。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-27</span>
