@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-28
+### 今日雷达 · 2026-10-29
 
-`生成时间: 2026-10-27 23:40 UTC` ｜ `统计窗口: 论文 2026-10-24 → 2026-10-28 · 博客与报道 2026-09-28 → 2026-10-28 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-28 23:40 UTC` ｜ `统计窗口: 论文 2026-10-25 → 2026-10-29 · 博客与报道 2026-09-29 → 2026-10-29 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](https://arxiv.org/abs/2610.34356)**<br>`98.8%`&nbsp; `84.7%`&nbsp; `51.9%`<br><sub>基座模型 · arXiv 2610.34356 · 2026‑10‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning](https://arxiv.org/abs/2610.34519)**<br>`4.4x`&nbsp; `48%`&nbsp; `7%`<br><sub>边缘与实时性 · arXiv 2610.34519 · 2026‑10‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[WorldFailBench: Do World Models Understand Policy Failures?](https://arxiv.org/abs/2610.33565)**<br><sub>仿真与评测 · arXiv 2610.33565 · 2026‑10‑24</sub> |
-| 04<br>🔵&nbsp;`R` | **[ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation](https://arxiv.org/abs/2610.34370)**<br>`77%`&nbsp; `37.1%`<br><sub>系统与编排 · arXiv 2610.34370 · 2026‑10‑25</sub> |
-| 05<br>🟢&nbsp;`O` | **[Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)**<br><sub>边缘与实时性 · Google DeepMind · 2026‑10‑27</sub> |
-| 06<br>🟡&nbsp;`M` | **[ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres](https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑10‑27</sub> |
-| 07<br>🟢&nbsp;`O` | **[Using AI Agents to Teach Robots Like Microduck to Walk in Simulation](https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/)**<br><sub>仿真与评测 · NVIDIA Technical Blog (Robotics) · 2026‑10‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线](https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑27</sub> |
+| 01<br>🔵&nbsp;`R` | **[Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation](https://arxiv.org/abs/2610.37543)**<br>`400x`&nbsp; `83%`&nbsp; `70%`<br><sub>边缘与实时性 · arXiv 2610.37543 · 2026‑10‑27</sub> |
+| 02<br>🔵&nbsp;`R` | **[RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions](https://arxiv.org/abs/2610.36791)**<br><sub>数据引擎 · arXiv 2610.36791 · 2026‑10‑27</sub> |
+| 03<br>🔵&nbsp;`R` | **[PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations](https://arxiv.org/abs/2610.37381)**<br>`99.3%`&nbsp; `89.9%`&nbsp; `93.6%`<br><sub>仿真与评测 · arXiv 2610.37381 · 2026‑10‑27</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning](https://arxiv.org/abs/2610.37378)**<br>`52.8%`&nbsp; `23.7%`<br><sub>训练与自我改进 · arXiv 2610.37378 · 2026‑10‑27</sub> |
+| 05<br>🟢&nbsp;`O` | **[Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS](https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/)**<br><sub>边缘与实时性 · AWS Physical AI Blog · 2026‑10‑28</sub> |
+| 06<br>🟢&nbsp;`O` | **[A soft robot could help doctors diagnose and treat disorders of the small intestine](https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028)**<br><sub>本体与供应链 · MIT News (Robotics) · 2026‑10‑28</sub> |
+| 07<br>🟡&nbsp;`M` | **[WorldOracle Tests Whether World Models Can Reliably Predict Real-World Executions](https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions/)**<br><sub>基座模型 · The Robot Report · 2026‑10‑28</sub> |
+| 08<br>🟡&nbsp;`M` | **[Warp Sciences emerges from stealth, to apply robotics to drug research](https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/)**<br><sub>仿真与评测 · The Robot Report · 2026‑10‑28</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **RynnVLA-Latent** — `AI 起草` 若扩展 VLA 卡在动作标注演示稀缺、各本体控制空间不兼容上，可跟踪这条潜在动作路线：作者自报 4B 策略在 LIBERO 上达 98.8%、LIBERO-Plus 上 84.7%，但都是未经评审的基准分数，真机结论需看原文。
-2. **TRIAGE** — `AI 起草` 打算只靠计算复用给 VLA 提速的团队要先盯动作误差：作者自报复用可使动作误差高达 4.4x，并给出仅用 7% 视觉 token 与 Orin 上最多 48% 的结果；页面未见真机结果，属预印本自报。
-3. **WorldFailBench** — `AI 起草` 想用世界模型替代部分实机测试和仿真器搭建来做策略评测，这个基准正是检验模型能否识别策略失败的工具；页面没有给出量化数据，结论暂时还看不到。
-4. **ThinkLocoManip** — `AI 起草` 在大场景中做足式移动操作长程任务的团队，可把 agentic harness 与先规划后执行的管线对比评估：作者自报成功率 77%，最强此类基线为 37.1%，但这是未经评审的单篇对比。
-5. **Genie 4** — `AI 起草` 考虑把世界模型当作实时仿真器用于训练或测试的团队，可以关注这次一手发布，但页面只称实时仿真中前所未有的真实感、没有给出数字，延迟和保真度都有待核实。
-6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — `AI 起草` 油气和化工现场若在评估爆炸性环境下的足式巡检机器人，这条报道说明已有产品开始交付；但摘录未写明具体符合哪些安全标准，采购前应向厂商核实认证，且这是二手报道。
-7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — `AI 起草` 在仿真中训练越障步态的团队，可参考 NVIDIA 借助 AI agent 的仿真训练工作流，这类任务要求机器人感知环境、保持平衡并调整动作；但页面没有给出数字或真机结果，宜当作待试的工作流而非已验证方法。
-8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — `AI 起草` 这是实验室成果走向产业的路演信号，而非技术结果：五个项目里包括机器人自主部署和极端环境物理智能，适合用来物色合作团队，不足以改变模型选型，且为二手报道。
+1. **Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Au…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+2. **RynnWorld-Latent** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **PDRVLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+4. **VLA-Stem** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+5. **Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+6. **A soft robot could help doctors diagnose and treat disorders of the small i…** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **WorldOracle Tests Whether World Models Can Reliably Predict Real-World Exec…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **Warp Sciences emerges from stealth, to apply robotics to drug research** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-28.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-29.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

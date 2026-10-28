@@ -74,12 +74,6 @@
       "date": "2026-09-28",
       "count": 4,
       "lanes": 3,
-      "urls": [
-        "https://www.tri.global/research/beyond-binary-success-sample-efficient-and-statistically-rigorous-robot-policy-comparison",
-        "https://www.tri.global/research/using-non-expert-data-robustify-imitation-learning-offline-reinforcement-learning",
-        "https://www.tri.global/research/tactic-tactile-and-vision-conditioned-contact-centric-control-whole-arm-manipulation",
-        "https://monoist.itmedia.co.jp/mn/articles/2609/28/news058.html"
-      ],
       "failed": [],
       "fallback": [
         "arxiv"
@@ -692,6 +686,42 @@
         "max_arxiv": 4,
         "reserved": {
           "official": "deepmind:d17d13a0006a",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.37543",
+        "https://arxiv.org/abs/2610.36791",
+        "https://arxiv.org/abs/2610.37381",
+        "https://arxiv.org/abs/2610.37378",
+        "https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws",
+        "https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028",
+        "https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions",
+        "https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "aws-physical-ai:31b1fabb10ed",
           "hot": null
         },
         "unmet": [

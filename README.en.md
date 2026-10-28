@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-28
+### Today's radar · 2026-10-29
 
-`Generated: 2026-10-27 23:40 UTC` ｜ `Window: papers 2026-10-24 → 2026-10-28 · posts 2026-09-28 → 2026-10-28 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-28 23:40 UTC` ｜ `Window: papers 2026-10-25 → 2026-10-29 · posts 2026-09-29 → 2026-10-29 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions](https://arxiv.org/abs/2610.34356)**<br>`98.8%`&nbsp; `84.7%`&nbsp; `51.9%`<br><sub>Foundation models · arXiv 2610.34356 · 2026‑10‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning](https://arxiv.org/abs/2610.34519)**<br>`4.4x`&nbsp; `48%`&nbsp; `7%`<br><sub>Edge & real-time · arXiv 2610.34519 · 2026‑10‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[WorldFailBench: Do World Models Understand Policy Failures?](https://arxiv.org/abs/2610.33565)**<br><sub>Simulation & evaluation · arXiv 2610.33565 · 2026‑10‑24</sub> |
-| 04<br>🔵&nbsp;`R` | **[ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation](https://arxiv.org/abs/2610.34370)**<br>`77%`&nbsp; `37.1%`<br><sub>Systems & orchestration · arXiv 2610.34370 · 2026‑10‑25</sub> |
-| 05<br>🟢&nbsp;`O` | **[Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)**<br><sub>Edge & real-time · Google DeepMind · 2026‑10‑27</sub> |
-| 06<br>🟡&nbsp;`M` | **[ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres](https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑10‑27</sub> |
-| 07<br>🟢&nbsp;`O` | **[Using AI Agents to Teach Robots Like Microduck to Walk in Simulation](https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/)**<br><sub>Simulation & evaluation · NVIDIA Technical Blog (Robotics) · 2026‑10‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线](https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑27</sub> |
+| 01<br>🔵&nbsp;`R` | **[Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation](https://arxiv.org/abs/2610.37543)**<br>`400x`&nbsp; `83%`&nbsp; `70%`<br><sub>Edge & real-time · arXiv 2610.37543 · 2026‑10‑27</sub> |
+| 02<br>🔵&nbsp;`R` | **[RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions](https://arxiv.org/abs/2610.36791)**<br><sub>Data engine · arXiv 2610.36791 · 2026‑10‑27</sub> |
+| 03<br>🔵&nbsp;`R` | **[PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations](https://arxiv.org/abs/2610.37381)**<br>`99.3%`&nbsp; `89.9%`&nbsp; `93.6%`<br><sub>Simulation & evaluation · arXiv 2610.37381 · 2026‑10‑27</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning](https://arxiv.org/abs/2610.37378)**<br>`52.8%`&nbsp; `23.7%`<br><sub>Training & self-improvement · arXiv 2610.37378 · 2026‑10‑27</sub> |
+| 05<br>🟢&nbsp;`O` | **[Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS](https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/)**<br><sub>Edge & real-time · AWS Physical AI Blog · 2026‑10‑28</sub> |
+| 06<br>🟢&nbsp;`O` | **[A soft robot could help doctors diagnose and treat disorders of the small intestine](https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑10‑28</sub> |
+| 07<br>🟡&nbsp;`M` | **[WorldOracle Tests Whether World Models Can Reliably Predict Real-World Executions](https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions/)**<br><sub>Foundation models · The Robot Report · 2026‑10‑28</sub> |
+| 08<br>🟡&nbsp;`M` | **[Warp Sciences emerges from stealth, to apply robotics to drug research](https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/)**<br><sub>Simulation & evaluation · The Robot Report · 2026‑10‑28</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **RynnVLA-Latent** — `AI draft` If scaling a VLA is blocked by scarce action-labeled demos and incompatible control spaces across robots, track this latent-action route: the authors self-report a 4B policy at 98.8% on LIBERO and 84.7% on LIBERO-Plus, unreviewed benchmark scores.
-2. **TRIAGE** — `AI draft` Before speeding up a VLA by reuse alone, measure action error: the authors report reuse yields up to 4.4x the action error, and cite results with only 7% of visual tokens and up to 48% on Orin; no real-robot result is shown.
-3. **WorldFailBench** — `AI draft` If you hope world-model rollouts can stand in for costly physical tests and simulator setup in policy evaluation, this benchmark asks whether they recognise failures; the page shows no figures, so the answer is not yet visible.
-4. **ThinkLocoManip** — `AI draft` Teams running long-horizon legged loco-manipulation in large environments should weigh an agentic harness against plan-then-act pipelines: the authors self-report 77% success versus 37.1% for the strongest such baseline, an unreviewed single comparison.
-5. **Genie 4** — `AI draft` If you would use a world model as a real-time simulator for training or testing, this is a first-party claim of unprecedented realism in real-time simulation, but the page gives no figures, so latency and fidelity stay unverified.
-6. **ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres** — `AI draft` Oil, gas and chemical operators weighing legged inspection robots for explosive atmospheres now have a reported delivering option, but the excerpt names no specific standard, so confirm certifications with the vendor; this is secondary reporting.
-7. **Using AI Agents to Teach Robots Like Microduck to Walk in Simulation** — `AI draft` Teams training locomotion in simulation can borrow NVIDIA's agent-driven workflow for obstacle courses that need perception, balance and action adjustment, but the page shows no figures or real-robot result, so treat it as a workflow to try.
-8. **源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线** — `AI draft` This is a lab-to-industry roadshow signal, not a technical result: robot autonomous deployment and extreme-environment physical intelligence are among the five projects, useful for scouting partner teams but not for changing a model choice; secondary reporting.
+1. **Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Au…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+2. **RynnWorld-Latent** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **PDRVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+4. **VLA-Stem** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+5. **Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **A soft robot could help doctors diagnose and treat disorders of the small i…** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **WorldOracle Tests Whether World Models Can Reliably Predict Real-World Exec…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Warp Sciences emerges from stealth, to apply robotics to drug research** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-28.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-29.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

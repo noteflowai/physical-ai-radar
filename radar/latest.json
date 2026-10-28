@@ -1,181 +1,187 @@
 {
-  "date": "2026-10-28",
-  "generated": "2026-10-27 23:40 UTC",
-  "window": "papers 2026-10-24 → 2026-10-28 · posts 2026-09-28 → 2026-10-28 (UTC)",
+  "date": "2026-10-29",
+  "generated": "2026-10-28 23:40 UTC",
+  "window": "papers 2026-10-25 → 2026-10-29 · posts 2026-09-29 → 2026-10-29 (UTC)",
   "window_detail": {
-    "day": "2026-10-28",
-    "papers_from": "2026-10-24",
-    "posts_from": "2026-09-28",
+    "day": "2026-10-29",
+    "papers_from": "2026-10-25",
+    "posts_from": "2026-09-29",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.34356",
-      "title": "RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions",
-      "url": "https://arxiv.org/abs/2610.34356",
-      "publisher": "arXiv 2610.34356",
+      "id": "arxiv:2610.37543",
+      "title": "Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation",
+      "url": "https://arxiv.org/abs/2610.37543",
+      "publisher": "arXiv 2610.37543",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-25",
-      "lane": "foundation",
-      "score": 4.25,
-      "numbers": [
-        "98.8%",
-        "84.7%",
-        "51.9%",
-        "88.6%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.125,
-      "summary": "Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments. We present RynnVLA-Latent, a framework that turns heterogeneous interaction videos into scalable supervision for robot policy pretraining. At its core, RynnLAM learns continuous, 3D-grounded latent actions from visual transitions without requiring native robot controls. By combining residual future-feature prediction, camera-compensated 3D-flow supervision, and camera-motion decoupling, RynnLAM encourages representations that capture control-relevant motion rather than appearance changes alone. We apply RynnLAM to 30.1K hours of human, robot, and simulation videos, producing 745.52M latent-action descriptors. RynnVLA-Latent then learns to predict latent-action chunks from visual observations and language through flow matching, before adapting its pretrained backbone and action expert to embodiment-specific robot actions. The resulting 4B policy achieves 98.8% success on LIBERO, 84.7% on LIBERO-Plus without benchmark-specific adaptation, 51.9% average success across five VLABench tracks, and 88.6% average success on the RoboTwin 2.0 bimanual benchmark. It also achieves the highest observed success rates among the compared methods on six real-world manipulation tasks across dexterous-hand and mobile-gripper platforms. Together with representation ablations and data-scaling results, these findings demonstrate the potential of latent-action supervision for scaling robot policy learning beyond native action-labeled data."
-    },
-    {
-      "id": "arxiv:2610.34519",
-      "title": "TRIAGE: Efficient Vision-Language-Action Inference Needs Both Reuse and Pruning",
-      "url": "https://arxiv.org/abs/2610.34519",
-      "publisher": "arXiv 2610.34519",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-25",
-      "lane": "edge",
-      "score": 3.862,
-      "numbers": [
-        "4.4x",
-        "48%",
-        "7%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "Vision-language-action (VLA) models are increasingly used for robot manipulation because they map camera images and a language instruction directly to actions. Robots that cannot be tethered to a workstation, such as mobile manipulators and humanoids, must run them on onboard embedded boards, where the prefill latency of the language backbone grows with the hundreds of visual tokens processed at every control step. To meet real-time limits, training-free accelerators recompute only a subset of the visual tokens and skip the rest, either by pruning them or by reusing their cached key-value (KV) states. The two options save nearly the same computation, yet existing methods apply only one of them to every skipped token. Through a token-level diagnostic, we show that which option keeps the action closer to full recomputation depends on the token's drift, the change in its shallow-layer value since its cache was computed. On both backbones tested, reusing tokens below a drift threshold was no worse than pruning them, whereas beyond it, reuse yields up to 4.4x the action error of pruning; the same diagnostic calibrates this threshold per backbone. Building on this finding, we propose TRIAGE, which deems a cache valid when its drift is below this threshold and it is not too old. TRIAGE recomputes a fixed budget of tokens, prioritizing important tokens with invalid caches, reuses every other token with a valid cache, and prunes the rest; prune-only and reuse-only methods are the two extremes of this partition. Because the budget fixes the number of recomputed tokens, it directly sets the prefill latency. On LIBERO and SimplerEnv, TRIAGE stays within 3 pp of full recomputation in average success rate while cutting prefill latency on a Jetson AGX Orin by up to 48%, and with only 7% of visual tokens recomputed, it beats the strongest baseline by 24.4 pp on LIBERO-Object."
-    },
-    {
-      "id": "arxiv:2610.33565",
-      "title": "WorldFailBench: Do World Models Understand Policy Failures?",
-      "url": "https://arxiv.org/abs/2610.33565",
-      "publisher": "arXiv 2610.33565",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-24",
-      "lane": "simeval",
-      "score": 3.81,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Robot policy evaluation informs deployment decisions and policy improvement, but physical testing and simulator preparation require substantial effort. World models offer a complementary route through closed-loop interaction in generated environments. Recent benchmarks have demonstrated their potential as policy evaluators through outcome-based evaluation (i.e., assessing task success or failure). However, such evaluation does not establish whether world models faithfully simulate how policies fail. Misrepresenting failures can lead to incorrect diagnoses of policy weaknesses and make policies appear ready for deployment even when small scene changes cause them to fail. We therefore ask: do world models faithfully simulate how and at which stages policies fail, and under what conditions they transition from success to failure? To answer this question, we introduce WorldFailBench with three evaluation tasks. Failure reason tests whether models reproduce the observable errors policies make. Failure stage assesses whether failures concentrate at the same stages of full-task execution. Failure boundary examines whether models reproduce the conditions under which policies transition from success to failure under controlled scene changes in simulation. The benchmark covers manipulation tasks in the LIBERO and RoboTwin simulation environments and real-world manipulation tasks performed by the G1 humanoid robot. Experiments across seven world models reveal substantial gaps in their understanding of policy failures, providing guidance for developing more reliable world models for policy evaluation."
-    },
-    {
-      "id": "arxiv:2610.34370",
-      "title": "ThinkLocoManip: A Whole-Body Control Agentic Harness for Legged Loco-Manipulation",
-      "url": "https://arxiv.org/abs/2610.34370",
-      "publisher": "arXiv 2610.34370",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-25",
-      "lane": "systems",
-      "score": 3.45,
-      "numbers": [
-        "77%",
-        "37.1%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "In this paper, we propose ThinkLocoManip, an agentic harness for legged loco-manipulation designed to tackle complex, long-horizon tasks in large-scale environments. Existing approaches typically follow either direct action generation or a plan-then-act paradigm, both of which can struggle with the generalization and error-recovery capabilities required for extended task execution. In contrast, ThinkLocoManip adopts an interleaved reasoning-and-acting paradigm, allowing the agent to continuously reason about its current state, execute actions, observe their outcomes, and adapt its strategy accordingly. Building on this paradigm, our agentic harness orchestrates a suite of specialized tools for perception, navigation, manipulation, and locomotion, enabling flexible composition of heterogeneous capabilities. Unlike existing robotic agentic harnesses, ThinkLocoManip explicitly incorporates locomotion as a tool domain for agent reasoning and execution. We further design a set of skills that explicitly account for both tool usage within each functional domain and coordination across domains, supporting effective execution of complex behaviors over long horizons. To tackle task failure during long-horizon interactions, we develop keyframe thinking mechanism to preserve critical execution context and support efficient error recovery. Extensive real-world experiments demonstrate that ThinkLocoManip substantially outperforms representative methods based on both direct action generation and plan-then-act paradigms across challenging long-horizon legged loco-manipulation tasks. Notably, ThinkLocoManip achieves a success rate of 77%, more than twice that of the strongest plan-then-act baseline (37.1%). Our experiments further validate the effectiveness of interleaved reasoning and acting, tool orchestration, and coordinated skill execution."
-    },
-    {
-      "id": "deepmind:d17d13a0006a",
-      "title": "Genie 4: A new generation of world simulation",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "publisher": "Google DeepMind",
-      "source_id": "deepmind",
-      "evidence": "O",
       "published": "2026-10-27",
       "lane": "edge",
-      "score": 2.202,
-      "numbers": [],
+      "score": 4.11,
+      "numbers": [
+        "400x",
+        "83%",
+        "70%",
+        "82%"
+      ],
       "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "open_release",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Genie 4: our new world model unlocking unprecedented realism in real-time simulation."
+      "summary": "Event cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments. However, existing simulators generally render photorealistic images before converting them into events, making large-scale reinforcement learning prohibitively slow. We propose an analytic event simulator that exploits what event cameras fundamentally measure - moving contrast edges - to synthesize event streams directly from scene geometry and ego-motion without visual rendering. Our simulator generates a 64x64 event observation in 17 microseconds on a single GPU - over 400x faster than a state-of-the-art rendering pipeline - enabling end-to-end reinforcement learning for goal-directed obstacle avoidance to converge in under 30 minutes - three orders of magnitude faster than training on rendered events. Policies transfer zero-shot to physically based event simulations (ray-traced Isaac Sim). Our policy reaches 83% success in cluttered courses unseen during training (mid-difficulty, traversability probability approx. 0.57), at 2.4 m/s average goal velocity, and retains 70% in a simulated texture-dense indoor hall. Furthermore, we quantized the policy to a 1.2 MB int8 network running fully onboard a 56-gram Crazyflie equipped with a Prophesee GenX320 event camera and an OpenMV N6 microcontroller board. Without any fine-tuning, external processing, or positioning, the policy achieves an average success rate of 82% (5/5, 5/6, 4/6 flights) across three real-world obstacle courses of increasing difficulty. Code: https://github.com/tudelft/rendering-free-event-nav"
     },
     {
-      "id": "the-robot-report:3694685d692e",
-      "title": "ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres",
-      "url": "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/",
+      "id": "arxiv:2610.36791",
+      "title": "RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions",
+      "url": "https://arxiv.org/abs/2610.36791",
+      "publisher": "arXiv 2610.36791",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-27",
+      "lane": "data",
+      "score": 3.683,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.119,
+      "summary": "Learning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels. We present RynnWorld-Latent, a cross-embodiment video world model that uses the 3D-grounded latent actions introduced by RynnLAM as a shared conditioning interface. This representation enables joint pretraining on human interaction videos, robot demonstrations, and simulation rollouts without requiring a common native action space. Built on a pretrained video transformer, RynnWorld-Latent combines global action tokens with an identity-initialized local pathway that aligns actions with future video latents. We pretrain on 23 datasets comprising approximately 553.5M frames and adapt the model to target robots through post-training. The framework supports two data-generation routes: digital teleoperation uses target robot commands to generate action-video demonstrations, while latent-action synthesis transfers source motion to an edited initial frame and pairs the resulting rollout with retargeted pseudo robot actions. Experiments show improved video prediction metrics on public benchmarks and two real-robot platforms, alongside qualitative action following when different action sequences share the same initial observation. Synthetic mid-training improves policy success rates on LIBERO and LIBERO-Plus, and both generation routes improve real-world policy success rates over real-demonstration-only training in the evaluated settings. These results support universal latent actions as a scalable interface for learning controllable visual dynamics across heterogeneous embodiments."
+    },
+    {
+      "id": "arxiv:2610.37381",
+      "title": "PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations",
+      "url": "https://arxiv.org/abs/2610.37381",
+      "publisher": "arXiv 2610.37381",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-27",
+      "lane": "simeval",
+      "score": 3.59,
+      "numbers": [
+        "99.3%",
+        "89.9%",
+        "93.6%",
+        "81.5%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.25,
+      "summary": "Vision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited. Video world models can capture scene dynamics, yet generating future videos introduces high latency into the control loop. We introduce PDRVLA, whose lightweight Physical Dynamics Module extracts physical tokens from vision--language features to condition action generation without online video generation. The module learns through direct prediction of future RGB, depth, and optical-flow features, with auxiliary supervision through a frozen pretrained video world model. Training relies entirely on publicly available data, expanded through human-to-robot synthesis, subtask annotation, and embodied chain-of-thought (ECoT) annotation. Across four simulation benchmarks, PDRVLA achieves success rates of 99.3% on LIBERO, 89.9% on LIBERO-Plus, 93.6% on RoboTwin~2.0, and 81.5% on SimplerEnv. Ablations show improved future prediction with world-model supervision and evaluate how subtask conditioning, future object-pose supervision, and ECoT training affect action success."
+    },
+    {
+      "id": "arxiv:2610.37378",
+      "title": "VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2610.37378",
+      "publisher": "arXiv 2610.37378",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-27",
+      "lane": "training",
+      "score": 3.45,
+      "numbers": [
+        "52.8%",
+        "23.7%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Vision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control. However, most VLA models target static manipulation in unconstrained environments, overlooking spatial constraints and dynamic obstacles. Fine-tuning VLAs on obstacle-avoidance data is a straightforward solution, but collecting such data is costly, especially for dynamic scenarios, and may degrade their original task capabilities. To address these limitations, we propose VLA-Stem, a lightweight, reinforcement-learning-based safety mechanism for VLA systems. Without fine-tuning the underlying VLA policy, VLA-Stem converts its action chunks into motion references and uses trajectory-level guidance to preserve their spatial intent while allowing flexible motion and timing adjustments. Conditioned on these references, robot proprioception, and local obstacle information, the Stem policy adaptively modifies execution at inference time, preserving the original task intent while enabling responsive adaptation to spatial constraints and dynamic obstacles. For robust and sample-efficient training, we combine teacher-student distillation with curriculum learning. We evaluate VLA-Stem on reference following, static spatial constraints, and dynamic obstacle avoidance. Across six constrained simulation settings, VLA-Stem achieves 52.8% average collision-free task success versus 23.7% for the strongest safety baseline, while preserving base-policy performance in obstacle-free settings; real-world experiments further show consistent collision reductions under static and dynamic obstacles. These results demonstrate that VLA-Stem couples high-level VLA task intent with rapid, reflex-like responses to immediate physical risks, providing a brainstem-inspired mechanism for robust robot execution."
+    },
+    {
+      "id": "aws-physical-ai:31b1fabb10ed",
+      "title": "Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS",
+      "url": "https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-10-28",
+      "lane": "edge",
+      "score": 2.652,
+      "numbers": [],
+      "signals": [
+        "real_robot",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Industrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time operational intelligence. Introduction The next wave of AI is moving beyond the digital realm and into the physical world. Foundation models have […]"
+    },
+    {
+      "id": "mit-news-robotics:36b161bb40a0",
+      "title": "A soft robot could help doctors diagnose and treat disorders of the small intestine",
+      "url": "https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028",
+      "publisher": "MIT News (Robotics)",
+      "source_id": "mit-news-robotics",
+      "evidence": "O",
+      "published": "2026-10-28",
+      "lane": "hardware",
+      "score": 1.682,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "MIT engineers designed a robotic enteroscope that can inch through the hard-to-reach small intestine, making biopsies and drug delivery easier."
+    },
+    {
+      "id": "the-robot-report:0ceea29d223d",
+      "title": "WorldOracle Tests Whether World Models Can Reliably Predict Real-World Executions",
+      "url": "https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-10-27",
-      "lane": "safety",
-      "score": 1.62,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries."
-    },
-    {
-      "id": "nvidia-developer-robotics:2bc7933d0c2c",
-      "title": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation",
-      "url": "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-10-23",
-      "lane": "simeval",
-      "score": 1.435,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Teaching a robot to navigate an obstacle course requires more than a walking policy. It must perceive its surroundings, maintain balance, and adjust its actions..."
-    },
-    {
-      "id": "leiphone:72366383d1f7",
-      "title": "源创计划首期路演：五个AI硬科技项目集中亮相，智源学者加速从实验室走向产业一线",
-      "url": "https://www.leiphone.com/category/ai/80I0hBKAVSTsKbtM.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-27",
+      "published": "2026-10-28",
       "lane": "foundation",
-      "score": 1.1,
+      "score": 1.6,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "In one case showcased by WorldOracle, a robot's grasp missed, yet the world model predicted that the robot had successfully picked up the fruit."
+    },
+    {
+      "id": "the-robot-report:6b07a95dd881",
+      "title": "Warp Sciences emerges from stealth, to apply robotics to drug research",
+      "url": "https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-28",
+      "lane": "simeval",
+      "score": 1.235,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "从底层芯片、神经形态计算，到机器人自主部署、极端环境物理智能和地表物理环境建模，人工智能前沿技术正沿着多条不同路径推进产业应用落地。如何让实验室里的原创成果跨越工程验证与商业化之间的距离，成为科研创新走向产业实践的重要课题。 10月26日，北京智源人工智能研究院发布的“源创计划”首期路演在中关村国际技术交易中心举办。临界核科技、灵枢启智、张量场科技、苍穹极智、潜向量科技五个项目集中亮相，分别聚焦3D自选通V-RRAM芯片、神经形态具身智能、哈密顿世界模型、极端环境的可靠物理智能、地表物理环境统一世界模型等方向。活动还设置了项目与基金洽谈环节，推动创业团队与投资机构交流对接。 从“源头创新”到“产业验证”，源创计划要打通的不只是资金 活动现场，智源研究院副院长杨洋介绍了“源创计划”的定位与支持机制。作为主要面向智源学者群体的原创技术创业孵化计划，源创计划聚焦人工智能领域的原创科研课题，遵循“源头创新、快速决策、小步试行、全流程合规转化”的原则，整合技术、人才、资本与产业资源，为科研团队从实验室走向产业提供支持。计划不仅关注资金对接，更着力构建连接原创科研、创业团队与产业市场的协同机制，推动科研成果从技术发现走向工程验证与商业化应用。 …"
+      "summary": "Warp Sciences has co-founders from OpenAI, Meta, and more, plus funding to build infrastructure for automated drug discovery in the U.S."
     }
   ],
   "lane_counts": {
     "foundation": 6,
-    "data": 7,
-    "training": 6,
+    "data": 8,
+    "training": 5,
     "simeval": 14,
-    "edge": 6,
+    "edge": 8,
     "safety": 3,
-    "systems": 4,
-    "hardware": 9
+    "systems": 3,
+    "hardware": 8
   },
   "evidence_mix": {
     "O": 10,
-    "R": 30,
-    "M": 15
+    "R": 31,
+    "M": 14
   },
   "fetch": {
-    "items": 665,
+    "items": 679,
     "attempted": 23,
     "answered": 23,
     "failed": [],
@@ -202,11 +208,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 15,
+      "hn_stories": 24,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 66,
+      "arxiv": 78,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -223,7 +229,7 @@
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 11,
       "robohub": 75,
-      "qbitai": 1,
+      "qbitai": 3,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1
