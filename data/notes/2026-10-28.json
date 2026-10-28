@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-10-28",
+  "generated": "2026-10-28 13:41 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.34356": {
+      "zh": "若扩展 VLA 卡在动作标注演示稀缺、各本体控制空间不兼容上，可跟踪这条潜在动作路线：作者自报 4B 策略在 LIBERO 上达 98.8%、LIBERO-Plus 上 84.7%，但都是未经评审的基准分数，真机结论需看原文。",
+      "en": "If scaling a VLA is blocked by scarce action-labeled demos and incompatible control spaces across robots, track this latent-action route: the authors self-report a 4B policy at 98.8% on LIBERO and 84.7% on LIBERO-Plus, unreviewed benchmark scores.",
+      "ja": "行動ラベル付きデモの不足や機体ごとに異なる制御空間が VLA 拡張の壁なら、この潜在行動の手法は追う価値がある。著者は 4B 方策で LIBERO 98.8%、LIBERO-Plus 84.7% と自己報告するが、査読前のベンチマーク値で、実機の主張は原文で確認したい。"
+    },
+    "https://arxiv.org/abs/2610.34519": {
+      "zh": "打算只靠计算复用给 VLA 提速的团队要先盯动作误差：作者自报复用可使动作误差高达 4.4x，并给出仅用 7% 视觉 token 与 Orin 上最多 48% 的结果；页面未见真机结果，属预印本自报。",
+      "en": "Before speeding up a VLA by reuse alone, measure action error: the authors report reuse yields up to 4.4x the action error, and cite results with only 7% of visual tokens and up to 48% on Orin; no real-robot result is shown.",
+      "ja": "計算の再利用だけで VLA を高速化するなら、まず行動誤差を測るべきだ。著者は再利用で行動誤差が最大 4.4x になると報告し、視覚トークン 7% のみ・Orin で最大 48% という結果も示すが、実機の結果は本文に見えない自己報告だ。"
+    },
+    "https://arxiv.org/abs/2610.33565": {
+      "zh": "想用世界模型替代部分实机测试和仿真器搭建来做策略评测，这个基准正是检验模型能否识别策略失败的工具；页面没有给出量化数据，结论暂时还看不到。",
+      "en": "If you hope world-model rollouts can stand in for costly physical tests and simulator setup in policy evaluation, this benchmark asks whether they recognise failures; the page shows no figures, so the answer is not yet visible.",
+      "ja": "方策評価で実機テストやシミュレータ準備の手間を世界モデルで肩代わりさせたいなら、このベンチマークはそのモデルが失敗を見抜けるかを問う。ただし本文に定量データはなく、答えはまだ読み取れない。"
+    },
+    "https://arxiv.org/abs/2610.34370": {
+      "zh": "在大场景中做足式移动操作长程任务的团队，可把 agentic harness 与先规划后执行的管线对比评估：作者自报成功率 77%，最强此类基线为 37.1%，但这是未经评审的单篇对比。",
+      "en": "Teams running long-horizon legged loco-manipulation in large environments should weigh an agentic harness against plan-then-act pipelines: the authors self-report 77% success versus 37.1% for the strongest such baseline, an unreviewed single comparison.",
+      "ja": "広い環境で長期の脚式ロコマニピュレーションを扱うなら、計画してから実行する構成とエージェント型ハーネスを比較検討したい。著者は成功率 77%、最強の同型ベースラインは 37.1% と自己報告するが、査読前の単独比較だ。"
+    },
+    "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation": {
+      "zh": "考虑把世界模型当作实时仿真器用于训练或测试的团队，可以关注这次一手发布，但页面只称实时仿真中前所未有的真实感、没有给出数字，延迟和保真度都有待核实。",
+      "en": "If you would use a world model as a real-time simulator for training or testing, this is a first-party claim of unprecedented realism in real-time simulation, but the page gives no figures, so latency and fidelity stay unverified.",
+      "ja": "世界モデルをリアルタイムのシミュレータとして学習や試験に使う構想があるなら注目の一次発表だが、本文はリアルタイムシミュレーションでの前例のないリアルさをうたうだけで数値がなく、遅延と忠実度は未検証だ。"
+    },
+    "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres": {
+      "zh": "油气和化工现场若在评估爆炸性环境下的足式巡检机器人，这条报道说明已有产品开始交付；但摘录未写明具体符合哪些安全标准，采购前应向厂商核实认证，且这是二手报道。",
+      "en": "Oil, gas and chemical operators weighing legged inspection robots for explosive atmospheres now have a reported delivering option, but the excerpt names no specific standard, so confirm certifications with the vendor; this is secondary reporting.",
+      "ja": "石油・ガス・化学の現場で爆発性雰囲気向けの脚式点検ロボットを検討しているなら、納入開始の報道は選択肢が現実になった合図だ。ただし抜粋は具体的な規格名を挙げておらず二次報道なので、認証はメーカーに確認したい。"
+    },
+    "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation": {
+      "zh": "在仿真中训练越障步态的团队，可参考 NVIDIA 借助 AI agent 的仿真训练工作流，这类任务要求机器人感知环境、保持平衡并调整动作；但页面没有给出数字或真机结果，宜当作待试的工作流而非已验证方法。",
+      "en": "Teams training locomotion in simulation can borrow NVIDIA's agent-driven workflow for obstacle courses that need perception, balance and action adjustment, but the page shows no figures or real-robot result, so treat it as a workflow to try.",
+      "ja": "ロボットが周囲を知覚し、バランスを保ち、行動を調整する必要がある障害物コースの歩行をシミュレーションで学習させるなら、AI エージェントを使う NVIDIA のワークフローは参考になるが、本文に数値も実機の結果もなく、検証済みの手法ではなく試す価値のある手順として扱いたい。"
+    },
+    "https://www.leiphone.com/category/ai/80i0hbkavstskbtm.html": {
+      "zh": "这是实验室成果走向产业的路演信号，而非技术结果：五个项目里包括机器人自主部署和极端环境物理智能，适合用来物色合作团队，不足以改变模型选型，且为二手报道。",
+      "en": "This is a lab-to-industry roadshow signal, not a technical result: robot autonomous deployment and extreme-environment physical intelligence are among the five projects, useful for scouting partner teams but not for changing a model choice; secondary reporting.",
+      "ja": "技術成果ではなく、研究室の成果を産業へ移す動きを示すロードショーの報道だ。5 件にはロボットの自律展開や極限環境の物理知能が含まれ、協業先探しには使えるがモデル選定を変える材料ではなく、二次報道でもある。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
