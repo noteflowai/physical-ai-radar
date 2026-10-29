@@ -1,95 +1,28 @@
 {
-  "date": "2026-10-29",
-  "generated": "2026-10-28 23:40 UTC",
-  "window": "papers 2026-10-25 → 2026-10-29 · posts 2026-09-29 → 2026-10-29 (UTC)",
+  "date": "2026-10-30",
+  "generated": "2026-10-29 23:40 UTC",
+  "window": "papers 2026-10-26 → 2026-10-30 · posts 2026-09-30 → 2026-10-30 (UTC)",
   "window_detail": {
-    "day": "2026-10-29",
-    "papers_from": "2026-10-25",
-    "posts_from": "2026-09-29",
+    "day": "2026-10-30",
+    "papers_from": "2026-10-26",
+    "posts_from": "2026-09-30",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.37543",
-      "title": "Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation",
-      "url": "https://arxiv.org/abs/2610.37543",
-      "publisher": "arXiv 2610.37543",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-27",
-      "lane": "edge",
-      "score": 4.11,
-      "numbers": [
-        "400x",
-        "83%",
-        "70%",
-        "82%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "open_release",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "Event cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments. However, existing simulators generally render photorealistic images before converting them into events, making large-scale reinforcement learning prohibitively slow. We propose an analytic event simulator that exploits what event cameras fundamentally measure - moving contrast edges - to synthesize event streams directly from scene geometry and ego-motion without visual rendering. Our simulator generates a 64x64 event observation in 17 microseconds on a single GPU - over 400x faster than a state-of-the-art rendering pipeline - enabling end-to-end reinforcement learning for goal-directed obstacle avoidance to converge in under 30 minutes - three orders of magnitude faster than training on rendered events. Policies transfer zero-shot to physically based event simulations (ray-traced Isaac Sim). Our policy reaches 83% success in cluttered courses unseen during training (mid-difficulty, traversability probability approx. 0.57), at 2.4 m/s average goal velocity, and retains 70% in a simulated texture-dense indoor hall. Furthermore, we quantized the policy to a 1.2 MB int8 network running fully onboard a 56-gram Crazyflie equipped with a Prophesee GenX320 event camera and an OpenMV N6 microcontroller board. Without any fine-tuning, external processing, or positioning, the policy achieves an average success rate of 82% (5/5, 5/6, 4/6 flights) across three real-world obstacle courses of increasing difficulty. Code: https://github.com/tudelft/rendering-free-event-nav"
-    },
-    {
-      "id": "arxiv:2610.36791",
-      "title": "RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions",
-      "url": "https://arxiv.org/abs/2610.36791",
-      "publisher": "arXiv 2610.36791",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-27",
-      "lane": "data",
-      "score": 3.683,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.119,
-      "summary": "Learning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels. We present RynnWorld-Latent, a cross-embodiment video world model that uses the 3D-grounded latent actions introduced by RynnLAM as a shared conditioning interface. This representation enables joint pretraining on human interaction videos, robot demonstrations, and simulation rollouts without requiring a common native action space. Built on a pretrained video transformer, RynnWorld-Latent combines global action tokens with an identity-initialized local pathway that aligns actions with future video latents. We pretrain on 23 datasets comprising approximately 553.5M frames and adapt the model to target robots through post-training. The framework supports two data-generation routes: digital teleoperation uses target robot commands to generate action-video demonstrations, while latent-action synthesis transfers source motion to an edited initial frame and pairs the resulting rollout with retargeted pseudo robot actions. Experiments show improved video prediction metrics on public benchmarks and two real-robot platforms, alongside qualitative action following when different action sequences share the same initial observation. Synthetic mid-training improves policy success rates on LIBERO and LIBERO-Plus, and both generation routes improve real-world policy success rates over real-demonstration-only training in the evaluated settings. These results support universal latent actions as a scalable interface for learning controllable visual dynamics across heterogeneous embodiments."
-    },
-    {
-      "id": "arxiv:2610.37381",
-      "title": "PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations",
-      "url": "https://arxiv.org/abs/2610.37381",
-      "publisher": "arXiv 2610.37381",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-27",
-      "lane": "simeval",
-      "score": 3.59,
-      "numbers": [
-        "99.3%",
-        "89.9%",
-        "93.6%",
-        "81.5%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "heat": 0.25,
-      "summary": "Vision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited. Video world models can capture scene dynamics, yet generating future videos introduces high latency into the control loop. We introduce PDRVLA, whose lightweight Physical Dynamics Module extracts physical tokens from vision--language features to condition action generation without online video generation. The module learns through direct prediction of future RGB, depth, and optical-flow features, with auxiliary supervision through a frozen pretrained video world model. Training relies entirely on publicly available data, expanded through human-to-robot synthesis, subtask annotation, and embodied chain-of-thought (ECoT) annotation. Across four simulation benchmarks, PDRVLA achieves success rates of 99.3% on LIBERO, 89.9% on LIBERO-Plus, 93.6% on RoboTwin~2.0, and 81.5% on SimplerEnv. Ablations show improved future prediction with world-model supervision and evaluate how subtask conditioning, future object-pose supervision, and ECoT training affect action success."
-    },
-    {
-      "id": "arxiv:2610.37378",
-      "title": "VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning",
-      "url": "https://arxiv.org/abs/2610.37378",
-      "publisher": "arXiv 2610.37378",
+      "id": "arxiv:2610.37547",
+      "title": "When, Where, and What to Correct: Human-Guided Adaptive Residual Correction for Robot Policies",
+      "url": "https://arxiv.org/abs/2610.37547",
+      "publisher": "arXiv 2610.37547",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-27",
       "lane": "training",
       "score": 3.45,
       "numbers": [
-        "52.8%",
-        "23.7%"
+        "33.3%",
+        "75.0%",
+        "97.7%"
       ],
       "signals": [
         "numbers",
@@ -97,91 +30,154 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Vision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control. However, most VLA models target static manipulation in unconstrained environments, overlooking spatial constraints and dynamic obstacles. Fine-tuning VLAs on obstacle-avoidance data is a straightforward solution, but collecting such data is costly, especially for dynamic scenarios, and may degrade their original task capabilities. To address these limitations, we propose VLA-Stem, a lightweight, reinforcement-learning-based safety mechanism for VLA systems. Without fine-tuning the underlying VLA policy, VLA-Stem converts its action chunks into motion references and uses trajectory-level guidance to preserve their spatial intent while allowing flexible motion and timing adjustments. Conditioned on these references, robot proprioception, and local obstacle information, the Stem policy adaptively modifies execution at inference time, preserving the original task intent while enabling responsive adaptation to spatial constraints and dynamic obstacles. For robust and sample-efficient training, we combine teacher-student distillation with curriculum learning. We evaluate VLA-Stem on reference following, static spatial constraints, and dynamic obstacle avoidance. Across six constrained simulation settings, VLA-Stem achieves 52.8% average collision-free task success versus 23.7% for the strongest safety baseline, while preserving base-policy performance in obstacle-free settings; real-world experiments further show consistent collision reductions under static and dynamic obstacles. These results demonstrate that VLA-Stem couples high-level VLA task intent with rapid, reflex-like responses to immediate physical risks, providing a brainstem-inspired mechanism for robust robot execution."
+      "summary": "Imitation policies that reliably execute most of a manipulation trajectory can still fail in localized regions requiring last-mile precision. Updating the full policy or exploring residual actions everywhere treats this local failure as a global learning problem. We introduce Adaptive Residual Correction (ARC), a lightweight post-training module that uses reinforcement learning (RL) to learn a residual correction on top of a frozen policy while using sparse human corrections to structure autonomous exploration. Rather than treating human corrections as imitation targets, ARC uses pre-intervention states to determine 'when' residual control should become active and correction geometry to determine 'where' in residual action space autonomous refinement should explore; task reward determines 'what' residual is ultimately executed. Across three precision-manipulation tasks on a real robot, ARC improves average task success from 33.3% to 75.0%. The human corrections define task-dependent 2-3 dimensional subspaces of the seven-joint residual space that retain 96.0-97.7% of squared correction magnitude. Together, these results show that sparse human corrections can localize and constrain autonomous post-training without requiring the observed correction itself to serve as the final action target."
     },
     {
-      "id": "aws-physical-ai:31b1fabb10ed",
-      "title": "Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS",
-      "url": "https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
-      "evidence": "O",
-      "published": "2026-10-28",
+      "id": "arxiv:2610.34717",
+      "title": "VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware",
+      "url": "https://arxiv.org/abs/2610.34717",
+      "publisher": "arXiv 2610.34717",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-26",
       "lane": "edge",
-      "score": 2.652,
-      "numbers": [],
+      "score": 3.21,
+      "numbers": [
+        "15%",
+        "12%",
+        "39%"
+      ],
       "signals": [
-        "real_robot",
+        "numbers",
+        "closed_loop",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Industrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time operational intelligence. Introduction The next wave of AI is moving beyond the digital realm and into the physical world. Foundation models have […]"
+      "summary": "Vision-language-action (VLA) models increasingly run on edge devices aboard robots, where inference latency constrains closed-loop robot control. However, it remains unclear how to design VLA models, their inference software and edge hardware so that robots can run VLA inference in real time. Most VLA models report only task success, while prior studies cover limited action-generation strategies, divide inference into at most three stages, and lack comparisons of inference optimizations on the same models. Therefore, we introduce VLA-HWBench, a benchmark that measures 18 open VLA models on NVIDIA Jetson AGX Thor and AMD Ryzen AI Max+ PRO 395, with a seven-stage inference breakdown. Our study reveals three insights. First, action-generation strategy matters more than model size. It dominates 14 of 19 Jetson configurations, latency varies by $82\\times$ on Jetson and $157\\times$ on AMD, and parameter count explains at most 15% of latency variance. Models that generate long action chunks in a few flow-matching steps keep up with control, whereas token-by-token decoding does not. Second, kernel fusion with 4-bit weights helps most, running $π_{0.5}$ and GR00T N1.7 2.6-2.9$\\times$ faster than PyTorch with torch.compile, but it exists for only these two models and only on the Jetson. Optimization also moves the time to the stages it shortens least, as CPU preprocessing grows from 12% to 39% of the GR00T N1.7 call. Third, after optimization, memory bandwidth limits only the stages that process few tokens on the Jetson, such as the denoising steps, whereas software limits all other stages, from unfused kernels to serial preprocessing on the host CPU. Overall, low-latency edge VLAs should use few action-generation iterations, inference software should extend kernel fusion and low-bit weights to more models and platforms, and edge hardware needs high memory bandwidth and a fast host CPU."
     },
     {
-      "id": "mit-news-robotics:36b161bb40a0",
-      "title": "A soft robot could help doctors diagnose and treat disorders of the small intestine",
-      "url": "https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028",
-      "publisher": "MIT News (Robotics)",
-      "source_id": "mit-news-robotics",
-      "evidence": "O",
-      "published": "2026-10-28",
-      "lane": "hardware",
-      "score": 1.682,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "MIT engineers designed a robotic enteroscope that can inch through the hard-to-reach small intestine, making biopsies and drug delivery easier."
-    },
-    {
-      "id": "the-robot-report:0ceea29d223d",
-      "title": "WorldOracle Tests Whether World Models Can Reliably Predict Real-World Executions",
-      "url": "https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-10-28",
-      "lane": "foundation",
-      "score": 1.6,
-      "numbers": [],
+      "id": "arxiv:2610.37215",
+      "title": "Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution",
+      "url": "https://arxiv.org/abs/2610.37215",
+      "publisher": "arXiv 2610.37215",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-27",
+      "lane": "simeval",
+      "score": 3.205,
+      "numbers": [
+        "12%",
+        "40%"
+      ],
       "signals": [
+        "numbers",
+        "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "In one case showcased by WorldOracle, a robot's grasp missed, yet the world model predicted that the robot had successfully picked up the fruit."
+      "summary": "Vision-Language-Action (VLA) policies demonstrate remarkable semantic generalization, yet remain highly vulnerable to out-of-distribution (OOD) visual shifts during execution. While existing test-time methods attempt to suppress spurious visual cues, they fundamentally overlook the rich, uncorrupted kinematic priors embedded in the policy's own training experience. We introduce Retrieve to Act (R2A), a test-time scaling framework that formulates OOD robustness purely as a geometric motion primitive retrieval problem. R2A bypasses fragile visual features by structuring successful training demonstrations into an offline spatiotemporal motion primitive graph. During inference, a query-dependent Graph Neural Network dynamically localizes the robot's ongoing execution within this graph, retrieving structurally compatible future motion primitives. These retrieved geometric priors are then seamlessly harmonized with the frozen VLA's predicted actions via a learned, dimension-wise gating mechanism, adaptively rectifying erroneous spatial trajectories while preserving the policy's local reactivity. Extensive experiments across three state-of-the-art VLA architectures, GR00T N1.7, $π_{0.5}$, and StableVLA, demonstrate that R2A consistently and significantly enhances robustness against diverse contextual perturbations. R2A achieves absolute success rate improvements of up to +12% in simulation benchmarks (LIBERO-Plus, RoboTwin2.0-Plus) and +40% in real-world deployments, without requiring any finetuning of the base policies. Project page: https://retrieve2act.github.io/r2a/"
     },
     {
-      "id": "the-robot-report:6b07a95dd881",
-      "title": "Warp Sciences emerges from stealth, to apply robotics to drug research",
-      "url": "https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "arxiv:2610.35040",
+      "title": "Context-dependent Runtime Construction of Safe Regions of Attraction from Design-Time Identification for Multi-Candidate Simplex Architectures",
+      "url": "https://arxiv.org/abs/2610.35040",
+      "publisher": "arXiv 2610.35040",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-26",
+      "lane": "safety",
+      "score": 3.14,
+      "numbers": [
+        "0.028 ms",
+        "4.13 ms",
+        "10 %"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Deploying safety-critical cyber-physical systems requires control strategies that reconcile high performance and adaptability with rigorous safety guarantees. Classical control strategies offer stability proofs but are conservative, while advanced optimization- and learning-based controllers achieve high performance but lack formal verification. Runtime Assurance (RTA) architectures bridge this gap by introducing their own (dis-)advantages. Safety filters use online optimization and introduce chattering, while Simplex permissiveness is bounded by the tightness of the certified Region of Attraction (RoA) of its High-Assurance (HA) controller. Targeting this conservatism, we present a two-stage RoA certification procedure leveraging contraction-based stability to establish a target set for Taylor-model-based reachability analysis. We then treat the closed-loop system under HA control as a switched system, enabling: (a) runtime construction of context-dependent safe RoA and (b) safe switching between HA candidates to optimize recovery and maximize the operating envelope of the uncertified High-Performance (HP) controller. We validate this framework on a robotic path-tracking task using a three-stage evaluation: Ordinary Differential Equation (ODE) simulation for theoretical verification, high-fidelity Gazebo simulation under unmodeled dynamics, and experiments on physical hardware. Results show that the Simplex architecture maintains safety under fault injection and successfully shields a behavioral-cloning-trained HP controller. Crucially, the decision module introduces negligible overhead (0.028 ms average, 4.13 ms worst-case), consuming under 10 % of the control period."
+    },
+    {
+      "id": "monoist:b624ebae2966",
+      "title": "ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止",
+      "url": "https://monoist.itmedia.co.jp/mn/articles/2610/30/news047.html",
+      "publisher": "MONOist (ITmedia)",
+      "source_id": "monoist",
       "evidence": "M",
-      "published": "2026-10-28",
+      "published": "2026-10-29",
       "lane": "simeval",
-      "score": 1.235,
+      "score": 1.47,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Warp Sciences has co-founders from OpenAI, Meta, and more, plus funding to build infrastructure for automated drug discovery in the U.S."
+      "summary": "ファナックが「JIMTOF2026」で披露した「フィジカルAI CNC」は、生成AIを活用してトラブル対応や加工調整を自律支援する次世代システムだ。現場で最も懸念される“AIの誤作動”に対しては、事前シミュレーションと人間の最終承認による多重の安全構造を提示した。"
+    },
+    {
+      "id": "leiphone:492abb593818",
+      "title": "拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？",
+      "url": "https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-29",
+      "lane": "foundation",
+      "score": 1.45,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "动态条件注入、因果核验与异步协作的三大技术挑战，暴露出哪些致命的技术死角？刚刚，Google DeepMind 正式发布了新一代世界模型 Genie 4。 除了实时生成可交互环境，这次还有一个有意思的设计：Genie 4 负责生成世界，Gemini 3.8 Flash 负责观察画面、拆解任务，并根据执行情况调整计划。 DeepMind 还展示了 Gemini 4 Argon 与 Genie 4 的组合，让模拟环境中的 Apollo 人形机器人完成跳棋任务。在整个过程中，新的任务指令可以持续加入，并改变后续发生的事件。 这给世界模型带来了新的技术要求。过去，模型主要根据历史画面和用户操作生成后续场景，现在还需要随时接收 Agent 发来的新指令。 当机器人移动一枚棋子后，模型既要保留棋盘已经发生的状态变化，又要理解下一阶段的任务，让后续画面与此前操作保持一致。如果执行失败，Agent 还需要从生成画面中识别异常，调整计划并继续执行。 任务规划、条件生成和状态核验由此进入同一个反馈循环，同时也带来了三个相互关联的问题： 动态语言条件如何约束环境演化，Agent 如何 避免陷入“指鹿为马”的因果幻觉 ，以及运行速度不同的模型 ， 如何 在毫秒级延迟下 保持稳定协作。 01 从条件生成到动态干预 Genie 4 的技术变化，可以从自回归世界生成的基本原理说起。 Genie 3 已经能够以 720p 分辨率、每秒 24 …"
+    },
+    {
+      "id": "the-robot-report:55cd01abe02f",
+      "title": "2026 Robotics Handbook looks at humanoids, AI, and design choices",
+      "url": "https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-29",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "The 2026 Robotics Handbook examines design choices behind dexterous manipulation, humanoid robots, and construction automation."
+    },
+    {
+      "id": "the-robot-report:d5f1609a995d",
+      "title": "AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026",
+      "url": "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-10-29",
+      "lane": "hardware",
+      "score": 1.182,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "AGIBOT unveiled its AHA3 integrated platform, GO-3 Preview, and WITA-Omni 1.0 model, as well as the G2 Max robot and Link-U OS 1.0 framework."
     }
   ],
   "lane_counts": {
     "foundation": 6,
-    "data": 8,
-    "training": 5,
+    "data": 7,
+    "training": 4,
     "simeval": 14,
-    "edge": 8,
+    "edge": 9,
     "safety": 3,
     "systems": 3,
-    "hardware": 8
+    "hardware": 9
   },
   "evidence_mix": {
-    "O": 10,
-    "R": 31,
-    "M": 14
+    "O": 9,
+    "R": 30,
+    "M": 16
   },
   "fetch": {
-    "items": 679,
+    "items": 674,
     "attempted": 23,
     "answered": 23,
     "failed": [],
@@ -208,11 +204,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 24,
+      "hn_stories": 30,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 78,
+      "arxiv": 74,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -226,7 +222,6 @@
       "openai": 19,
       "bair": 6,
       "mit-news-robotics": 50,
-      "nature-machine-intelligence": 1,
       "techcrunch-robotics": 11,
       "robohub": 75,
       "qbitai": 3,

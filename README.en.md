@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-29
+### Today's radar · 2026-10-30
 
-`Generated: 2026-10-28 23:40 UTC` ｜ `Window: papers 2026-10-25 → 2026-10-29 · posts 2026-09-29 → 2026-10-29 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-29 23:40 UTC` ｜ `Window: papers 2026-10-26 → 2026-10-30 · posts 2026-09-30 → 2026-10-30 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation](https://arxiv.org/abs/2610.37543)**<br>`400x`&nbsp; `83%`&nbsp; `70%`<br><sub>Edge & real-time · arXiv 2610.37543 · 2026‑10‑27</sub> |
-| 02<br>🔵&nbsp;`R` | **[RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions](https://arxiv.org/abs/2610.36791)**<br><sub>Data engine · arXiv 2610.36791 · 2026‑10‑27</sub> |
-| 03<br>🔵&nbsp;`R` | **[PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations](https://arxiv.org/abs/2610.37381)**<br>`99.3%`&nbsp; `89.9%`&nbsp; `93.6%`<br><sub>Simulation & evaluation · arXiv 2610.37381 · 2026‑10‑27</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning](https://arxiv.org/abs/2610.37378)**<br>`52.8%`&nbsp; `23.7%`<br><sub>Training & self-improvement · arXiv 2610.37378 · 2026‑10‑27</sub> |
-| 05<br>🟢&nbsp;`O` | **[Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS](https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/)**<br><sub>Edge & real-time · AWS Physical AI Blog · 2026‑10‑28</sub> |
-| 06<br>🟢&nbsp;`O` | **[A soft robot could help doctors diagnose and treat disorders of the small intestine](https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑10‑28</sub> |
-| 07<br>🟡&nbsp;`M` | **[WorldOracle Tests Whether World Models Can Reliably Predict Real-World Executions](https://www.therobotreport.com/worldoracle-tests-whether-world-models-can-reliably-predict-real-world-executions/)**<br><sub>Foundation models · The Robot Report · 2026‑10‑28</sub> |
-| 08<br>🟡&nbsp;`M` | **[Warp Sciences emerges from stealth, to apply robotics to drug research](https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/)**<br><sub>Simulation & evaluation · The Robot Report · 2026‑10‑28</sub> |
+| 01<br>🔵&nbsp;`R` | **[When, Where, and What to Correct: Human-Guided Adaptive Residual Correction for Robot Policies](https://arxiv.org/abs/2610.37547)**<br>`33.3%`&nbsp; `75.0%`&nbsp; `97.7%`<br><sub>Training & self-improvement · arXiv 2610.37547 · 2026‑10‑27</sub> |
+| 02<br>🔵&nbsp;`R` | **[VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware](https://arxiv.org/abs/2610.34717)**<br>`15%`&nbsp; `12%`&nbsp; `39%`<br><sub>Edge & real-time · arXiv 2610.34717 · 2026‑10‑26</sub> |
+| 03<br>🔵&nbsp;`R` | **[Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution](https://arxiv.org/abs/2610.37215)**<br>`12%`&nbsp; `40%`<br><sub>Simulation & evaluation · arXiv 2610.37215 · 2026‑10‑27</sub> |
+| 04<br>🔵&nbsp;`R` | **[Context-dependent Runtime Construction of Safe Regions of Attraction from Design-Time Identification for Multi-Candidate Simplex Architectures](https://arxiv.org/abs/2610.35040)**<br>`0.028 ms`&nbsp; `4.13 ms`&nbsp; `10 %`<br><sub>Safety, permissions & compliance · arXiv 2610.35040 · 2026‑10‑26</sub> |
+| 05<br>🟡&nbsp;`M` | **[ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止](https://monoist.itmedia.co.jp/mn/articles/2610/30/news047.html)**<br><sub>Simulation & evaluation · MONOist (ITmedia) · 2026‑10‑29</sub> |
+| 06<br>🟡&nbsp;`M` | **[拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？](https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑29</sub> |
+| 07<br>🟡&nbsp;`M` | **[2026 Robotics Handbook looks at humanoids, AI, and design choices](https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑29</sub> |
+| 08<br>🟡&nbsp;`M` | **[AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026](https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑10‑29</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Au…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-2. **RynnWorld-Latent** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **PDRVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-4. **VLA-Stem** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-5. **Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **A soft robot could help doctors diagnose and treat disorders of the small i…** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **WorldOracle Tests Whether World Models Can Reliably Predict Real-World Exec…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Warp Sciences emerges from stealth, to apply robotics to drug research** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+1. **When, Where, and What to Correct** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+2. **VLA-HWBench** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **Retrieve to Act** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+4. **Context-dependent Runtime Construction of Safe Regions of Attraction from D…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch what it changes for certification and deployment approval.
+5. **ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+7. **2026 Robotics Handbook looks at humanoids, AI, and design choices** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-29.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-10-30.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

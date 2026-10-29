@@ -83,16 +83,6 @@
       "date": "2026-09-29",
       "count": 8,
       "lanes": 6,
-      "urls": [
-        "https://aws.amazon.com/blogs/physical-ai/nvidia-cosmos-3-on-aws-omnimodal-world-models-for-physical-ai",
-        "https://arxiv.org/abs/2609.30833",
-        "https://www.leiphone.com/category/robot/pd6wmxbcwh6plqu5.html",
-        "https://arxiv.org/abs/2609.30868",
-        "https://arxiv.org/abs/2609.30735",
-        "https://www.leiphone.com/category/industrynews/ubfs2eq8httymmn0.html",
-        "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control",
-        "https://www.tri.global/research/capturing-visual-environment-structure-correlates-control-performance"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -726,6 +716,43 @@
         },
         "unmet": [
           "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.37547",
+        "https://arxiv.org/abs/2610.34717",
+        "https://arxiv.org/abs/2610.37215",
+        "https://arxiv.org/abs/2610.35040",
+        "https://monoist.itmedia.co.jp/mn/articles/2610/30/news047.html",
+        "https://www.leiphone.com/category/yanxishe/f3fpqlhpt7u7ekyu.html",
+        "https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids",
+        "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null
+        },
+        "unmet": [
+          "hot",
+          "official"
         ]
       }
     }
