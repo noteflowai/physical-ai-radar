@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: refuse to compare Inspect runs scored at different numeric pass thresholds</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/</guid>
+      <description>evalarc.results_diff.diff(baseline, current) now refuses to compare two Inspect runs whose numeric scores were judged against different pass thresholds. The Inspect loader turns every finite numeric score that is not a bool into a pass or a fail, using the threshold given to load_results(path, threshold=...). Before this fix, a baseline loaded at 0.8 compared with a current run loaded at 0.5 could report checks as improved, or pass the gate, when behavior had not changed. The report also showed only the current threshold. The new check runs after the existing format and task checks. It is implemented by the helpers _is_numeric_score, _has_numeric_scores and _require_same_numeric_threshold in src/evalarc/results_diff.py. When it fires, diff() raises ValueError('inputs are not comparable: numeric pass threshold 0.8 (baseline) != 0.5 (current); numeric Inspect scores were judged against different pass thresholds. Load both runs with the same threshold.') and returns no partial result. These cases are unchanged: equal thresholds (1 and 1.0 count as equal); Inspect runs with only letter-grade, boolean or missing score values; a baseline dict without a threshold key; and all promptfoo and JUnit comparisons. docs/ci-gate.md documents the rule and how to fix it. Checks the controller ran on candidate eca495b against base 01cd565: the acceptance-before run of tests/test_feature_ab24ecf56e51.py exited 1 (1 failed, 9 passed). The failing test was test_mismatched_numeric_thresholds_are_not_comparable, with DID NOT RAISE ValueError, which shows the test detects the defect. On the candidate commit, these all exited 0: the new test file, the full python -m pytest -q, ruff check ., ruff format --check ., scripts/build_site.py and scripts/check_site.cjs. An earlier controller run had failed ruff format --check on results_diff.py; the final run passes it.</description>
+      <pubDate>Thu, 29 Oct 2026 18:30:27 +0000</pubDate>
+    </item>
+    <item>
       <title>explain each blocking finding in the diff summary</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.0/</guid>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>fix: refuse to compare Inspect runs scored at different numeric pass thresholds · NoteFlowAI</title><meta name="description" content="evalarc.results_diff.diff(baseline, current) now refuses to compare two Inspect runs whose numeric scores were judged against different pass thresholds. The Inspect loader turns every finite numeric score that is not a bool into a pass or a fail, usi"><link rel="canonical" href="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/"><meta property="og:type" content="article"><meta property="og:title" content="fix: refuse to compare Inspect runs scored at different numeric pass thresholds"><meta property="og:description" content="evalarc.results_diff.diff(baseline, current) now refuses to compare two Inspect runs whose numeric scores were judged against different pass thresholds. The Inspect loader turns every finite numeric score that is not a bool into a pass or a fail, usi"><meta property="og:url" content="https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/"><meta property="og:image" content="https://noteflowai.github.io/physical-ai-radar/assets/og.en.png"><link rel="alternate" type="application/rss+xml" title="Verified project releases" href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml"><style>body{font:17px/1.65 system-ui,sans-serif;margin:0;background:#080d18;color:#e8edf6}
+main,nav{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:24px;flex-wrap:wrap}
+a{color:#9ecbff}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}h2{line-height:1.3}
+article{padding:24px 0;border-top:1px solid #314058}p{max-width:80ch}.meta{color:#a8b7cd}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#111d31;border-radius:8px}
+code{overflow-wrap:anywhere}.links{display:flex;gap:22px;flex-wrap:wrap}footer{margin:40px 0}</style></head><body><nav aria-label="Main navigation"><a href="https://noteflowai.github.io/physical-ai-radar/en/">Physical AI Radar</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/">Project updates</a><a href="https://noteflowai.github.io/physical-ai-radar/updates/feed.xml">Subscribe via RSS</a></nav><main><p class="meta">noteflowai/evalarc · 0.22.1 · 2026-10-29</p><h1>fix: refuse to compare Inspect runs scored at different numeric pass thresholds</h1><p>evalarc.results_diff.diff(baseline, current) now refuses to compare two Inspect runs whose numeric scores were judged against different pass thresholds. The Inspect loader turns every finite numeric score that is not a bool into a pass or a fail, using the threshold given to load_results(path, threshold=...). Before this fix, a baseline loaded at 0.8 compared with a current run loaded at 0.5 could report checks as improved, or pass the gate, when behavior had not changed. The report also showed only the current threshold. The new check runs after the existing format and task checks. It is implemented by the helpers _is_numeric_score, _has_numeric_scores and _require_same_numeric_threshold in src/evalarc/results_diff.py. When it fires, diff() raises ValueError(&#x27;inputs are not comparable: numeric pass threshold 0.8 (baseline) != 0.5 (current); numeric Inspect scores were judged against different pass thresholds. Load both runs with the same threshold.&#x27;) and returns no partial result. These cases are unchanged: equal thresholds (1 and 1.0 count as equal); Inspect runs with only letter-grade, boolean or missing score values; a baseline dict without a threshold key; and all promptfoo and JUnit comparisons. docs/ci-gate.md documents the rule and how to fix it. Checks the controller ran on candidate eca495b against base 01cd565: the acceptance-before run of tests/test_feature_ab24ecf56e51.py exited 1 (1 failed, 9 passed). The failing test was test_mismatched_numeric_thresholds_are_not_comparable, with DID NOT RAISE ValueError, which shows the test detects the defect. On the candidate commit, these all exited 0: the new test file, the full python -m pytest -q, ruff check ., ruff format --check ., scripts/build_site.py and scripts/check_site.cjs. An earlier controller run had failed ruff format --check on results_diff.py; the final run passes it.</p><h2>Use it</h2><pre># Prerequisites: run from the EvalArc repository root in the environment used for python -m pytest (evalarc importable).
+# SYNTHETIC example: both files are copies of the bundled example with every per-sample score value set to 0.7. They are not real provider exports.
+python - &lt;&lt;&#x27;PY&#x27;
+import json
+from pathlib import Path
+from evalarc.results_diff import diff, load_results
+
+doc = json.loads(Path(&#x27;examples/results-diff/inspect/baseline.json&#x27;).read_text())
+changed = 0
+def numeric(node):
+    global changed
+    if isinstance(node, dict):
+        scores = node.get(&#x27;scores&#x27;)
+        if isinstance(scores, dict):
+            for score in scores.values():
+                if isinstance(score, dict) and &#x27;value&#x27; in score:
+                    score[&#x27;value&#x27;] = 0.7
+                    changed += 1
+        for child in node.values():
+            numeric(child)
+    elif isinstance(node, list):
+        for child in node:
+            numeric(child)
+numeric(doc)
+if not changed:
+    raise SystemExit(&#x27;no per-sample scores found; use the pattern in tests/test_feature_ab24ecf56e51.py&#x27;)
+for name in (&#x27;synthetic-baseline.json&#x27;, &#x27;synthetic-current.json&#x27;):
+    Path(name).write_text(json.dumps(doc))
+
+try:
+    diff(load_results(Path(&#x27;synthetic-baseline.json&#x27;), threshold=0.8),
+         load_results(Path(&#x27;synthetic-current.json&#x27;), threshold=0.5))
+    print(&#x27;unexpected: no error&#x27;)
+except ValueError as error:
+    print(&#x27;refused:&#x27;, error)
+
+# Fix: load both runs with the same threshold
+result = diff(load_results(Path(&#x27;synthetic-baseline.json&#x27;), threshold=0.8),
+              load_results(Path(&#x27;synthetic-current.json&#x27;), threshold=0.8))
+print(&#x27;gate_passed:&#x27;, result[&#x27;gate_passed&#x27;], &#x27;threshold:&#x27;, result[&#x27;numeric_pass_threshold&#x27;])
+PY
+rm synthetic-baseline.json synthetic-current.json
+
+# Behavioral tests the controller ran:
+python -m pytest -q tests/test_feature_ab24ecf56e51.py</pre><h2>Scope</h2><p>The rule covers only the Inspect format, inside diff(). It applies to Python API callers and to any other code that calls diff(). cli.py was not inspected. It is unverified whether the CLI can load the two files at different thresholds, or whether it reports this ValueError with exit 2 like the task-mismatch error; that remains an inference. A current run dict without a threshold key keeps its existing behavior, because diff() reads current[&#x27;threshold&#x27;] directly. NaN and inf are excluded from the rule to match _inspect_passed, but no test exercises that. The tests use synthetic Inspect logs derived from the bundled example. They prove the rule on those inputs only. They do not prove behavior on real provider exports or any broader accuracy. The usage script was written for this delivery and was not executed by the controller. Its score-rewriting step assumes the example stores per-sample scores as a dict of objects with a value field. If it finds none, it stops with a message instead of guessing. The controller&#x27;s final log excerpt does not include the full-suite pass count, so only exit code 0 is claimed. The browser evidence comes from the existing showcase regression checks (build_site.py plus check_site.cjs at widths 1440, 390 and 320, with keyboard and offline cases), which passed. They are not a visual review of this feature. This change has no UI, and no screenshots were reviewed. No CLI flag, new gate state, schema key or loader change was added.</p><h2>Upgrade and rollback</h2><p>Nothing needs migrating: no data, schema or dependency changed, and existing diff.json files stay valid. These comparisons produce the same results as before: equal thresholds, categorical or boolean Inspect scorers, and all promptfoo and JUnit comparisons. If you compared Inspect runs with numeric scores at different thresholds, diff() now raises an explicit ValueError instead of returning a verdict. To fix it, reload both runs with the same threshold. Because CLI behavior was not verified, check any CI script that wraps the CLI for how it surfaces this error. To roll back, revert commit eca495b03d1bb5222dba20bfbe3df2e569b4eb81. No stored artifacts are affected.</p><p class="links"><a href="https://github.com/noteflowai/evalarc/releases/tag/v0.22.1">Release and downloads</a><a href="https://github.com/noteflowai/evalarc/pull/95">Implementation and checks</a></p><p class="meta">Source commit: <code>5ac4e64f7c05b26f80f221ea015933981e832e2e</code></p><footer>Release notes from NoteFlowAI’s open-source projects.</footer></main></body></html>
