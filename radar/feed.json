@@ -13,6 +13,307 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39385",
+      "url": "https://arxiv.org/abs/2610.39385",
+      "title": "UMI-Live for In-The-Wild Bimanual Robotics Data Collection",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39385 · 2026-10-29<br><b>Key numbers</b>: 40 hours<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.39385 · 2026-10-29\nKey numbers: 40 hours\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights\n\nUniversal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.39385"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "arxiv:2610.39385",
+        "url": "https://arxiv.org/abs/2610.39385",
+        "title": "UMI-Live for In-The-Wild Bimanual Robotics Data Collection",
+        "publisher": "arXiv 2610.39385",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-29",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [
+          "40 hours"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39287",
+      "url": "https://arxiv.org/abs/2610.39287",
+      "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39287 · 2026-10-29<br><b>Key numbers</b>: 10 Hz<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.39287 · 2026-10-29\nKey numbers: 10 Hz\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers\n\nHuman cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.39287"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "arxiv:2610.39287",
+        "url": "https://arxiv.org/abs/2610.39287",
+        "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
+        "publisher": "arXiv 2610.39287",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-10-29",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [
+          "10 Hz"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.38661",
+      "url": "https://arxiv.org/abs/2610.38661",
+      "title": "Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.38661 · 2026-10-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.38661 · 2026-10-28\nSignals: closed-loop success reported · real-robot experiments · open code or weights\n\nPost-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.38661"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "arxiv:2610.38661",
+        "url": "https://arxiv.org/abs/2610.38661",
+        "title": "Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models",
+        "publisher": "arXiv 2610.38661",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-28",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39054",
+      "url": "https://arxiv.org/abs/2610.39054",
+      "title": "Robotic Data Inoculation",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39054 · 2026-10-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.39054 · 2026-10-28\nSignals: closed-loop success reported · real-robot experiments\n\nModern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.39054"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "arxiv:2610.39054",
+        "url": "https://arxiv.org/abs/2610.39054",
+        "title": "Robotic Data Inoculation",
+        "publisher": "arXiv 2610.39054",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-10-28",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:bf12c379974b",
+      "url": "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
+      "title": "Video Friday: Spot Plays to Show Its Whole-Body Manipulation",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-30<br><b>Key numbers</b>: 70 x</p>\n<blockquote>Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-30\nKey numbers: 70 x\n\nSome top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "IEEE Spectrum Robotics"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "ieee-spectrum-robotics:bf12c379974b",
+        "url": "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
+        "title": "Video Friday: Spot Plays to Show Its Whole-Body Manipulation",
+        "publisher": "IEEE Spectrum Robotics",
+        "source_id": "ieee-spectrum-robotics",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-30",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [
+          "70 x"
+        ],
+        "signals": [],
+        "excerpt": "Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:e7b95d0df78d",
+      "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
+      "title": "李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30</p>\n<blockquote>82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\n\n82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "leiphone:e7b95d0df78d",
+        "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
+        "title": "李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-10-30",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:63ad0d7e088b",
+      "url": "https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html",
+      "title": "IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30</p>\n<blockquote>灵巧手的设计逻辑，要由落地需求反推。 作者丨向 欣 编辑丨高景辉 今年 IROS，灵巧操作和触觉的热度比以往更盛，串珠子、插 USB、给帆布袋烫 logo、手内转笔、转球、调酒，各种演示在现场轮番上演。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\n\n灵巧手的设计逻辑，要由落地需求反推。 作者丨向 欣 编辑丨高景辉 今年 IROS，灵巧操作和触觉的热度比以往更盛，串珠子、插 USB、给帆布袋烫 logo、手内转笔、转球、调酒，各种演示在现场轮番上演。\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "灵巧手的设计逻辑，要由落地需求反推。 作者丨向 欣 编辑丨高景辉 今年 IROS，灵巧操作和触觉的热度比以往更盛，串珠子、插 USB、给帆布袋烫 logo、手内转笔、转球、调酒，各种演示在现场轮番上演。",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "leiphone:63ad0d7e088b",
+        "url": "https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html",
+        "title": "IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-10-30",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "灵巧手的设计逻辑，要由落地需求反推。 作者丨向 欣 编辑丨高景辉 今年 IROS，灵巧操作和触觉的热度比以往更盛，串珠子、插 USB、给帆布袋烫 logo、手内转笔、转球、调酒，各种演示在现场轮番上演。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:8181ef2e2df3",
+      "url": "https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html",
+      "title": "宇树最新财报：重金投入研发，上市后的考题变了",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30<br><b>Key numbers</b>: 146.8% · 332.7%<br><b>Signals</b>: quantitative results</p>\n<blockquote>雷峰网 10月28日晚，宇树披露上市后的首份三季报。2026年前三季度，营收已经超过2025全年，公司实现营收18.17亿元，但毛利率明显回落，研发费用率大幅抬升，扣非利润实际下滑。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\nKey numbers: 146.8% · 332.7%\nSignals: quantitative results\n\n雷峰网 10月28日晚，宇树披露上市后的首份三季报。2026年前三季度，营收已经超过2025全年，公司实现营收18.17亿元，但毛利率明显回落，研发费用率大幅抬升，扣非利润实际下滑。\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
+      "summary": "雷峰网 10月28日晚，宇树披露上市后的首份三季报。2026年前三季度，营收已经超过2025全年，公司实现营收18.17亿元，但毛利率明显回落，研发费用率大幅抬升，扣非利润实际下滑。",
+      "date_published": "2026-10-30T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-10-31",
+        "id": "leiphone:8181ef2e2df3",
+        "url": "https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html",
+        "title": "宇树最新财报：重金投入研发，上市后的考题变了",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-10-30",
+        "radar_published": "2026-10-30T23:40:00Z",
+        "numbers": [
+          "146.8%",
+          "332.7%"
+        ],
+        "signals": [
+          "numbers"
+        ],
+        "excerpt": "雷峰网 10月28日晚，宇树披露上市后的首份三季报。2026年前三季度，营收已经超过2025全年，公司实现营收18.17亿元，但毛利率明显回落，研发费用率大幅抬升，扣非利润实际下滑。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.37547",
       "url": "https://arxiv.org/abs/2610.37547",
       "title": "When, Where, and What to Correct: Human-Guided Adaptive Residual Correction for Robot Policies",
@@ -3501,317 +3802,6 @@
           "closed_loop"
         ],
         "excerpt": "Sound-Triggered Mobile Manipulation (STMM) requires robots to respond to sound events by navigating to the associated objects and performing appropriate physical interactions."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21453",
-      "url": "https://arxiv.org/abs/2610.21453",
-      "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21453 · 2026-10-15<br><b>Key numbers</b>: 52.6% · 6.1% · 13% · 80%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [R]\nSource: arXiv 2610.21453 · 2026-10-15\nKey numbers: 52.6% · 6.1% · 13% · 80%\nSignals: quantitative results · real-robot experiments\n\nWhile generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
-      "summary": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution.",
-      "date_published": "2026-10-18T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.21453"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-19",
-        "id": "arxiv:2610.21453",
-        "url": "https://arxiv.org/abs/2610.21453",
-        "title": "CarryOn: A Dual-Loop Harness for Personalized and Reliable Robot Assistance",
-        "publisher": "arXiv 2610.21453",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "safety",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-18T23:40:00Z",
-        "numbers": [
-          "52.6%",
-          "6.1%",
-          "13%",
-          "80%"
-        ],
-        "signals": [
-          "numbers",
-          "real_robot"
-        ],
-        "excerpt": "While generalist vision-language-action (VLA) models have enabled diverse open-world manipulation, real-world robotic assistance requires two critical capabilities they currently lack: personalization and reliable execution."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21922",
-      "url": "https://arxiv.org/abs/2610.21922",
-      "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21922 · 2026-10-15<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.21922 · 2026-10-15\nSignals: real-robot experiments\n\nMany vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
-      "summary": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states.",
-      "date_published": "2026-10-18T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.21922"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-19",
-        "id": "arxiv:2610.21922",
-        "url": "https://arxiv.org/abs/2610.21922",
-        "title": "TS-WAM: Temporal Latent Actions and World-Action Coupling for Vision-Language Robot Control",
-        "publisher": "arXiv 2610.21922",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "foundation",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-18T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Many vision-language-action policies rely on action-labeled robot demonstrations and lack an explicit mechanism for predicting future visual states."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:871c9c8bb40b",
-      "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
-      "title": "How to choose a BLDC motor for robotic arms and mobile robots",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-18</p>\n<blockquote>Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html\">Full radar for 2026-10-19</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-18\n\nSeveral factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.\n\nFull radar for 2026-10-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-19.en.html",
-      "summary": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor.",
-      "date_published": "2026-10-18T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-19",
-        "id": "the-robot-report:871c9c8bb40b",
-        "url": "https://www.therobotreport.com/how-to-choose-bldc-motor-robotic-arms-mobile-robots/",
-        "title": "How to choose a BLDC motor for robotic arms and mobile robots",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "safety",
-        "published": "2026-10-18",
-        "radar_published": "2026-10-18T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Several factors, from sensors to safety and robotic arms or mobile platforms, help determine the selection of a brushless DC or BLDC motor."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22340",
-      "url": "https://arxiv.org/abs/2610.22340",
-      "title": "Dexterity from Supervised Play",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22340 · 2026-10-15<br><b>Key numbers</b>: 69.6%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html\">Full radar for 2026-10-18</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.22340 · 2026-10-15\nKey numbers: 69.6%\nSignals: quantitative results · closed-loop success reported\n\nHow can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…\n\nFull radar for 2026-10-18: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html",
-      "summary": "How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…",
-      "date_published": "2026-10-17T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.22340"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-18",
-        "id": "arxiv:2610.22340",
-        "url": "https://arxiv.org/abs/2610.22340",
-        "title": "Dexterity from Supervised Play",
-        "publisher": "arXiv 2610.22340",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-17T23:40:00Z",
-        "numbers": [
-          "69.6%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21389",
-      "url": "https://arxiv.org/abs/2610.21389",
-      "title": "Fast-VLA: You Only Think Once for Robot Manipulation",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21389 · 2026-10-15<br><b>Key numbers</b>: 92.46% · 92.40% · 95.95% · 79.11%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html\">Full radar for 2026-10-18</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.21389 · 2026-10-15\nKey numbers: 92.46% · 92.40% · 95.95% · 79.11%\nSignals: quantitative results · closed-loop success reported\n\nVision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk.\n\nFull radar for 2026-10-18: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html",
-      "summary": "Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk.",
-      "date_published": "2026-10-17T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.21389"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-18",
-        "id": "arxiv:2610.21389",
-        "url": "https://arxiv.org/abs/2610.21389",
-        "title": "Fast-VLA: You Only Think Once for Robot Manipulation",
-        "publisher": "arXiv 2610.21389",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-17T23:40:00Z",
-        "numbers": [
-          "92.46%",
-          "92.40%",
-          "95.95%",
-          "79.11%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "Vision-language-action (VLA) policies commonly place a multi-billion-parameter model inside the feedback loop, repeatedly recomputing task context whenever they predict a new action chunk."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21374",
-      "url": "https://arxiv.org/abs/2610.21374",
-      "title": "From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21374 · 2026-10-15<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html\">Full radar for 2026-10-18</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [R]\nSource: arXiv 2610.21374 · 2026-10-15\nSignals: real-robot experiments\n\nSafe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable.\n\nFull radar for 2026-10-18: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html",
-      "summary": "Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable.",
-      "date_published": "2026-10-17T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.21374"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-18",
-        "id": "arxiv:2610.21374",
-        "url": "https://arxiv.org/abs/2610.21374",
-        "title": "From Optical Flow to Safety: Visual Safety Certification via Scale-Free Relative Motion",
-        "publisher": "arXiv 2610.21374",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "safety",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-17T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Safe autonomous navigation using monocular vision remains challenging because explicit obstacle states are not directly observable."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.21755",
-      "url": "https://arxiv.org/abs/2610.21755",
-      "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.21755 · 2026-10-15<br><b>Key numbers</b>: 88% · 66.5% · 73.5%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html\">Full radar for 2026-10-18</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.21755 · 2026-10-15\nKey numbers: 88% · 66.5% · 73.5%\nSignals: quantitative results · closed-loop success reported\n\nLarge Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness.\n\nFull radar for 2026-10-18: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html",
-      "summary": "Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness.",
-      "date_published": "2026-10-17T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.21755"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-18",
-        "id": "arxiv:2610.21755",
-        "url": "https://arxiv.org/abs/2610.21755",
-        "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
-        "publisher": "arXiv 2610.21755",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-17T23:40:00Z",
-        "numbers": [
-          "88%",
-          "66.5%",
-          "73.5%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22184",
-      "url": "https://arxiv.org/abs/2610.22184",
-      "title": "Whole-Body Dexterity",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22184 · 2026-10-15<br><b>Key numbers</b>: 90% · 18% · 4%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans&#x27; ability to engage the entire body by bracing and sliding bulky objects against the arms and torso.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html\">Full radar for 2026-10-18</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [R]\nSource: arXiv 2610.22184 · 2026-10-15\nKey numbers: 90% · 18% · 4%\nSignals: quantitative results · real-robot experiments\n\nCurrent humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans' ability to engage the entire body by bracing and sliding bulky objects against the arms and torso.\n\nFull radar for 2026-10-18: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-18.en.html",
-      "summary": "Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans' ability to engage the entire body by bracing and sliding bulky objects against the arms and torso.",
-      "date_published": "2026-10-17T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.22184"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-18",
-        "id": "arxiv:2610.22184",
-        "url": "https://arxiv.org/abs/2610.22184",
-        "title": "Whole-Body Dexterity",
-        "publisher": "arXiv 2610.22184",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "hardware",
-        "published": "2026-10-15",
-        "radar_published": "2026-10-17T23:40:00Z",
-        "numbers": [
-          "90%",
-          "18%",
-          "4%"
-        ],
-        "signals": [
-          "numbers",
-          "real_robot"
-        ],
-        "excerpt": "Current humanoid dexterous manipulation remains largely confined to end-effectors and simple grasps, falling short of humans' ability to engage the entire body by bracing and sliding bulky objects against the arms and torso."
       }
     }
   ]

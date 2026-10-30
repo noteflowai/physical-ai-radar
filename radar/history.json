@@ -92,16 +92,6 @@
       "date": "2026-09-30",
       "count": 8,
       "lanes": 4,
-      "urls": [
-        "https://arxiv.org/abs/2609.35570",
-        "https://arxiv.org/abs/2609.34982",
-        "https://arxiv.org/abs/2609.35575",
-        "https://arxiv.org/abs/2609.35469",
-        "https://arxiv.org/abs/2609.34170",
-        "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026",
-        "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents",
-        "https://www.leiphone.com/category/private/zoj7chgidi7iphvn.html"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -734,6 +724,45 @@
         "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026"
       ],
       "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null
+        },
+        "unmet": [
+          "hot",
+          "official"
+        ]
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2610.39385",
+        "https://arxiv.org/abs/2610.39287",
+        "https://arxiv.org/abs/2610.38661",
+        "https://arxiv.org/abs/2610.39054",
+        "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
+        "https://www.leiphone.com/category/academic/oi5net93wcuwwfr8.html",
+        "https://www.leiphone.com/category/robot/jv4zjumqr2wkon0i.html",
+        "https://www.leiphone.com/category/robot/9ntmjvmwkiyllzaj.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
       "fallback": [],
       "unavailable": [
         "page_watch"

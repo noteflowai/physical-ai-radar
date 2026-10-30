@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-30
+### 今日雷达 · 2026-10-31
 
-`生成时间: 2026-10-29 23:40 UTC` ｜ `统计窗口: 论文 2026-10-26 → 2026-10-30 · 博客与报道 2026-09-30 → 2026-10-30 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-30 23:40 UTC` ｜ `统计窗口: 论文 2026-10-27 → 2026-10-31 · 博客与报道 2026-10-01 → 2026-10-31 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[When, Where, and What to Correct: Human-Guided Adaptive Residual Correction for Robot Policies](https://arxiv.org/abs/2610.37547)**<br>`33.3%`&nbsp; `75.0%`&nbsp; `97.7%`<br><sub>训练与自我改进 · arXiv 2610.37547 · 2026‑10‑27</sub> |
-| 02<br>🔵&nbsp;`R` | **[VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware](https://arxiv.org/abs/2610.34717)**<br>`15%`&nbsp; `12%`&nbsp; `39%`<br><sub>边缘与实时性 · arXiv 2610.34717 · 2026‑10‑26</sub> |
-| 03<br>🔵&nbsp;`R` | **[Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution](https://arxiv.org/abs/2610.37215)**<br>`12%`&nbsp; `40%`<br><sub>仿真与评测 · arXiv 2610.37215 · 2026‑10‑27</sub> |
-| 04<br>🔵&nbsp;`R` | **[Context-dependent Runtime Construction of Safe Regions of Attraction from Design-Time Identification for Multi-Candidate Simplex Architectures](https://arxiv.org/abs/2610.35040)**<br>`0.028 ms`&nbsp; `4.13 ms`&nbsp; `10 %`<br><sub>安全、权限与合规 · arXiv 2610.35040 · 2026‑10‑26</sub> |
-| 05<br>🟡&nbsp;`M` | **[ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止](https://monoist.itmedia.co.jp/mn/articles/2610/30/news047.html)**<br><sub>仿真与评测 · MONOist (ITmedia) · 2026‑10‑29</sub> |
-| 06<br>🟡&nbsp;`M` | **[拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？](https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[2026 Robotics Handbook looks at humanoids, AI, and design choices](https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑29</sub> |
-| 08<br>🟡&nbsp;`M` | **[AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026](https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/)**<br><sub>本体与供应链 · The Robot Report · 2026‑10‑29</sub> |
+| 01<br>🔵&nbsp;`R` | **[UMI-Live for In-The-Wild Bimanual Robotics Data Collection](https://arxiv.org/abs/2610.39385)**<br>`40 hours`<br><sub>数据引擎 · arXiv 2610.39385 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation](https://arxiv.org/abs/2610.39287)**<br>`10 Hz`<br><sub>边缘与实时性 · arXiv 2610.39287 · 2026‑10‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models](https://arxiv.org/abs/2610.38661)**<br><sub>仿真与评测 · arXiv 2610.38661 · 2026‑10‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[Robotic Data Inoculation](https://arxiv.org/abs/2610.39054)**<br><sub>数据引擎 · arXiv 2610.39054 · 2026‑10‑28</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Spot Plays to Show Its Whole-Body Manipulation](https://spectrum.ieee.org/video-friday-whole-body-manipulation)**<br>`70 x`<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑30</sub> |
+| 06<br>🟡&nbsp;`M` | **[李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？](https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 07<br>🟡&nbsp;`M` | **[IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？](https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[宇树最新财报：重金投入研发，上市后的考题变了](https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html)**<br>`146.8%`&nbsp; `332.7%`<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **When, Where, and What to Correct** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-2. **VLA-HWBench** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Retrieve to Act** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Context-dependent Runtime Construction of Safe Regions of Attraction from D…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它对认证和上线审批意味着什么。
-5. **ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-7. **2026 Robotics Handbook looks at humanoids, AI, and design choices** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **UMI-Live for In-The-Wild Bimanual Robotics Data Collection** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+2. **OpenFlyV2** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Quantize by Doing** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+4. **Robotic Data Inoculation** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+5. **Video Friday** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+6. **李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+7. **IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **宇树最新财报：重金投入研发，上市后的考题变了** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-30.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-10-31.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

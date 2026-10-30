@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-10-30
+### 本日のレーダー · 2026-10-31
 
-`生成時刻: 2026-10-29 23:40 UTC` ｜ `対象期間: 論文 2026-10-26 → 2026-10-30 · ブログ・報道 2026-09-30 → 2026-10-30 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-10-30 23:40 UTC` ｜ `対象期間: 論文 2026-10-27 → 2026-10-31 · ブログ・報道 2026-10-01 → 2026-10-31 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[When, Where, and What to Correct: Human-Guided Adaptive Residual Correction for Robot Policies](https://arxiv.org/abs/2610.37547)**<br>`33.3%`&nbsp; `75.0%`&nbsp; `97.7%`<br><sub>学習と自己改善 · arXiv 2610.37547 · 2026‑10‑27</sub> |
-| 02<br>🔵&nbsp;`R` | **[VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware](https://arxiv.org/abs/2610.34717)**<br>`15%`&nbsp; `12%`&nbsp; `39%`<br><sub>エッジとリアルタイム · arXiv 2610.34717 · 2026‑10‑26</sub> |
-| 03<br>🔵&nbsp;`R` | **[Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution](https://arxiv.org/abs/2610.37215)**<br>`12%`&nbsp; `40%`<br><sub>シミュレーションと評価 · arXiv 2610.37215 · 2026‑10‑27</sub> |
-| 04<br>🔵&nbsp;`R` | **[Context-dependent Runtime Construction of Safe Regions of Attraction from Design-Time Identification for Multi-Candidate Simplex Architectures](https://arxiv.org/abs/2610.35040)**<br>`0.028 ms`&nbsp; `4.13 ms`&nbsp; `10 %`<br><sub>安全・権限・コンプライアンス · arXiv 2610.35040 · 2026‑10‑26</sub> |
-| 05<br>🟡&nbsp;`M` | **[ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止](https://monoist.itmedia.co.jp/mn/articles/2610/30/news047.html)**<br><sub>シミュレーションと評価 · MONOist (ITmedia) · 2026‑10‑29</sub> |
-| 06<br>🟡&nbsp;`M` | **[拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？](https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑29</sub> |
-| 07<br>🟡&nbsp;`M` | **[2026 Robotics Handbook looks at humanoids, AI, and design choices](https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑29</sub> |
-| 08<br>🟡&nbsp;`M` | **[AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026](https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑10‑29</sub> |
+| 01<br>🔵&nbsp;`R` | **[UMI-Live for In-The-Wild Bimanual Robotics Data Collection](https://arxiv.org/abs/2610.39385)**<br>`40 hours`<br><sub>データエンジン · arXiv 2610.39385 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation](https://arxiv.org/abs/2610.39287)**<br>`10 Hz`<br><sub>エッジとリアルタイム · arXiv 2610.39287 · 2026‑10‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models](https://arxiv.org/abs/2610.38661)**<br><sub>シミュレーションと評価 · arXiv 2610.38661 · 2026‑10‑28</sub> |
+| 04<br>🔵&nbsp;`R` | **[Robotic Data Inoculation](https://arxiv.org/abs/2610.39054)**<br><sub>データエンジン · arXiv 2610.39054 · 2026‑10‑28</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Spot Plays to Show Its Whole-Body Manipulation](https://spectrum.ieee.org/video-friday-whole-body-manipulation)**<br>`70 x`<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑10‑30</sub> |
+| 06<br>🟡&nbsp;`M` | **[李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？](https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 07<br>🟡&nbsp;`M` | **[IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？](https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[宇树最新财报：重金投入研发，上市后的考题变了](https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html)**<br>`146.8%`&nbsp; `332.7%`<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑10‑30</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **When, Where, and What to Correct** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
-2. **VLA-HWBench** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-3. **Retrieve to Act** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-4. **Context-dependent Runtime Construction of Safe Regions of Attraction from D…** — 査読前のプレプリント。本文に実機での結果の記載なし。認証や導入承認に何が変わるかに注目。
-5. **ファナックがCNCで挑む安全なフィジカルAI デジタルツイン×人の承認で事故防止** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-6. **拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-7. **2026 Robotics Handbook looks at humanoids, AI, and design choices** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-8. **AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **UMI-Live for In-The-Wild Bimanual Robotics Data Collection** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+2. **OpenFlyV2** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Quantize by Doing** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Robotic Data Inoculation** — 査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+6. **李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+7. **IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **宇树最新财报：重金投入研发，上市后的考题变了** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-10-30.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-10-31.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
