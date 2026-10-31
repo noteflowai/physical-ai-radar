@@ -99,16 +99,6 @@
       "date": "2026-10-01",
       "count": 8,
       "lanes": 6,
-      "urls": [
-        "https://arxiv.org/abs/2609.38059",
-        "https://arxiv.org/abs/2609.37560",
-        "https://arxiv.org/abs/2609.36588",
-        "https://arxiv.org/abs/2609.37772",
-        "https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people",
-        "https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html",
-        "https://www.leiphone.com/category/yanxishe/ngx4ckx3mbuwlis3.html"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -759,6 +749,45 @@
         "https://www.leiphone.com/category/academic/oi5net93wcuwwfr8.html",
         "https://www.leiphone.com/category/robot/jv4zjumqr2wkon0i.html",
         "https://www.leiphone.com/category/robot/9ntmjvmwkiyllzaj.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null
+        },
+        "unmet": [
+          "hot",
+          "official"
+        ]
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2610.40349",
+        "https://arxiv.org/abs/2610.38967",
+        "https://arxiv.org/abs/2610.39367",
+        "https://arxiv.org/abs/2610.40002",
+        "https://www.qbitai.com/2026/10/506866.html",
+        "https://www.leiphone.com/category/transportation/pqetznyepe5d1pzd.html",
+        "https://www.leiphone.com/category/robot/enkflg1rrmn9sahj.html",
+        "https://www.leiphone.com/category/robot/srmmves4dwboierm.html"
       ],
       "failed": [
         "deepmind"

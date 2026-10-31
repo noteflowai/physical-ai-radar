@@ -1,181 +1,174 @@
 {
-  "date": "2026-10-31",
-  "generated": "2026-10-30 23:40 UTC",
-  "window": "papers 2026-10-27 → 2026-10-31 · posts 2026-10-01 → 2026-10-31 (UTC)",
+  "date": "2026-11-01",
+  "generated": "2026-10-31 23:40 UTC",
+  "window": "papers 2026-10-28 → 2026-11-01 · posts 2026-10-02 → 2026-11-01 (UTC)",
   "window_detail": {
-    "day": "2026-10-31",
-    "papers_from": "2026-10-27",
-    "posts_from": "2026-10-01",
+    "day": "2026-11-01",
+    "papers_from": "2026-10-28",
+    "posts_from": "2026-10-02",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.39385",
-      "title": "UMI-Live for In-The-Wild Bimanual Robotics Data Collection",
-      "url": "https://arxiv.org/abs/2610.39385",
-      "publisher": "arXiv 2610.39385",
+      "id": "arxiv:2610.40349",
+      "title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
+      "url": "https://arxiv.org/abs/2610.40349",
+      "publisher": "arXiv 2610.40349",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-10-29",
       "lane": "data",
-      "score": 4.505,
+      "score": 3.152,
       "numbers": [
-        "40 hours"
+        "72.5%",
+        "77.5%",
+        "7.0x"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots. Using these demonstrations as training data still requires a consistent hardware setup, calibration, and data processing. We present UMI-Live, a full-stack open-source bimanual UMI system for in-the-wild data collection. We design our custom UMI-Live hardware to integrate camera and LiDAR--inertial sensing, onboard compute, and power, without external tracking equipment or calibration within the collection environment. We implement a simple user interface for recording data while an asynchronous pipeline performs parallel SLAM reconstruction and publishes training-ready datasets. We also release software that supports dual-YAM teleoperation and VLA policy training and inference. We validate UMI-Live data quality by fine-tuning $π_{0.5}$ and MolmoAct2, achieving success rates of 10/10 and 8/10, respectively on a bimanual pick-and-place task. Furthermore, we release 40 hours of UMI-Live data across three tasks, and complete hardware designs, software, and reproduction guides at our $\\href{https://umi-live.github.io/}{\\text{project website}}$."
-    },
-    {
-      "id": "arxiv:2610.39287",
-      "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
-      "url": "https://arxiv.org/abs/2610.39287",
-      "publisher": "arXiv 2610.39287",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-29",
-      "lane": "edge",
-      "score": 3.777,
-      "numbers": [
-        "10 Hz"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
-        "open_release",
-        "latency"
-      ],
-      "heat": 0.087,
-      "summary": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act. Endowing aerial robots with an analogous functional organization remains challenging, as existing systems are often specialized for individual capabilities, dependent on offboard computation, or unable to sustain closed-loop operation on resource-constrained platforms. We present OpenFlyV2, a unified onboard vision-language-action architecture that uses a shared vision-language representation to support semantic understanding, language-grounded perception, spatial reasoning, and continuous aerial control within a single model. A compact action expert converts the shared multimodal context into short-horizon flight waypoints, while motion-aware temporal memory and action priors reduce the computational cost of closed-loop execution. We construct \\dataset{}, a simulation-based dataset comprising approximately 70,000 navigation trajectories and 60,000 vision-language instruction--response pairs. OpenFlyV2 generates action chunks, each comprising 12 waypoints, entirely onboard at 10 Hz using an NVIDIA Jetson Orin NX. It transfers zero-shot from simulation to physical quadrotor flight, achieving a 48\\% navigation success rate across four real-world environments without real-world aerial training data. Extensive results demonstrate that broad vision-language competence and continuous closed-loop flight can coexist within a single model on a resource-constrained aerial platform. Code will be made publicly available at https://github.com/Ideal-ljl/AeroBrain."
-    },
-    {
-      "id": "arxiv:2610.38661",
-      "title": "Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2610.38661",
-      "publisher": "arXiv 2610.38661",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-28",
-      "lane": "simeval",
-      "score": 3.54,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging. Existing work has used sensitivity estimates from calibration data to assign bit widths to different model components. However, using task success directly to guide mixed-precision allocation is underexplored because closed-loop evaluations are costly and the effect of quantizing one component depends on the precision of other components. To this end, we propose \\textbf{QbD-VLA}, a task-guided mixed-precision quantization method that uses task success from short closed-loop evaluations to assign weight and activation bit widths while accounting for interactions between model components. Experiments covering four VLA models and all four LIBERO suites show strong task performance at average precisions of approximately 4 bits for weights and fewer than 6 bits for activations. On SIMPLER, the gain over uniform quantization is small. On a Franka Research 3 robot arm, simulation-selected allocations show no detected success-rate loss on X-VLA but fail on $π_{0.5}$. These findings support using task success to guide mixed-precision VLA quantization, while highlighting the need for real-world evaluation before deployment. Code is available at \\href{https://github.com/jiuyixu25/QbD-VLA}{\\texttt{github.com/jiuyixu25/QbD-VLA}}."
-    },
-    {
-      "id": "arxiv:2610.39054",
-      "title": "Robotic Data Inoculation",
-      "url": "https://arxiv.org/abs/2610.39054",
-      "publisher": "arXiv 2610.39054",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-28",
-      "lane": "data",
-      "score": 3.22,
-      "numbers": [],
-      "signals": [
         "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage. Without good coverage, small errors compound and the policy can quickly go into out-of-distribution states from which it cannot recover. Yet there is no principled way of collecting high-coverage data, and data collection often relies on heuristic instructions to human operators. Purely online reinforcement learning (RL) explores at the cost of safety and sample efficiency, while DAgger-style interventions require the policy to fail by chance before a human can correct it. In this paper, we ask instead whether we can modify how the robot behaves during data collection to collect more useful data. We propose Data Inoculation (DI), a shared-control framework in which a human provide closed-loop teleoperation commands while a residual policy perturbs these commands. The residual policy is trained online, on the growing dataset, with the same reward-maximizing objective later used for policy extraction, so its perturbations steer data collection toward the deviations a policy trained on the data would make. These perturbations expose the robot to a wider range of states, while the human's continuous corrections provide recovery demonstrations, \"inoculating\" the dataset against the learner's future mistakes while the human remains in control. On three challenging real-world robotic tasks, DI consistently improves or matches the success rate of policies trained with both behavioral cloning and offline RL, showing DI as an effective data collection strategy for improving downstream policy performance."
+      "summary": "Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions. We present TouchBridge, a hardware--software co-designed framework for human-to-robot data transformation. A wearable human demonstration interface and a corresponding robot interface establish cross-embodiment correspondence in visual and fingertip tactile sensing. We introduce Tac-Retarget, a tactile-conditioned retargeting method that uses measured contact to align fingertip contact patches and preserve their spatial relations within and across hands. Unlike object-aware or simulation-based transfer pipelines, Tac-Retarget requires no object mesh, object-pose estimate, or physics simulation for retargeting, enabling direct and scalable conversion of human demonstrations into robot-domain training data. Combined with visual synthesis and camera-anchored action conversion, TouchBridge produces robot-domain demonstrations for fine-tuning a pretrained vision-language-action (VLA) model. Across four real-world contact-rich tasks, policies fine-tuned solely on TouchBridge-converted human demonstrations achieve a 72.5% average success rate, compared with 77.5% using an equal number of teleoperated robot demonstrations, while human demonstration collection is 7.0x faster. Under the same policy and training setup, Tac-Retarget outperforms DexPilot and UniDex by 25.0 and 42.5 percentage points, respectively."
     },
     {
-      "id": "ieee-spectrum-robotics:bf12c379974b",
-      "title": "Video Friday: Spot Plays to Show Its Whole-Body Manipulation",
-      "url": "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-10-30",
-      "lane": "hardware",
-      "score": 1.797,
-      "numbers": [
-        "70 x"
+      "id": "arxiv:2610.38967",
+      "title": "Learning Event-based Obstacle Avoidance via Differentiable Simulation",
+      "url": "https://arxiv.org/abs/2610.38967",
+      "publisher": "arXiv 2610.38967",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-28",
+      "lane": "simeval",
+      "score": 2.855,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot",
+        "latency"
       ],
-      "signals": [],
       "heat": 0.0,
-      "summary": "Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time. “Anything that shows up as a blob in a depth image can be taken for the tire, whether a person walking past or a stray object on the floor. In a few runs the robot left the tire and went after something else.” That “something else” seems suspiciously vague, doesn’t it? [ Robotics and AI Institute ] We present a contact-centric learning framework for versatile humanoid mobility in complex and unstructured environments. Our approach bridges motion imitation and reinforcement learning by leveraging human motion data as a training prior while enabling autonomous adaptation to previously unseen terrains. [ ETH Zurich Robotic Systems Lab ] You’ve literally heard me say it a thousand times: The only things that could possibly make Reachy Mini better would be some wheels and a whole bunch of fancy hats. But of course the only way I could possibly recommend the wheels is if Reachy Mini can totally wreck Microduck in a race. [ Pollen Robotics ] Luxonis is launching OAK 4 FFC, a 70 x 53 mm vision computer that lets humanoid and drone builders put up to five cameras wherever the robot needs them. The board runs sync, stereo depth, and AI itself, and calibrates from the scene instead of a checkerboard. [ Luxonis ] Thanks, Carson! Coming soon: Mini Pupper 4! [ MangDang ] HX Friends explores different robotic hand designs powered by DYNAMIXEL, ranging from a single articulated finger and a gripper to three-, four-, and …"
+      "summary": "Reliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion. Event cameras, with sub-millisecond latency, high dynamic range, and negligible motion blur, offer a promising alternative, but leveraging them for closed-loop control remains difficult. Existing approaches either adopt cascaded architectures that first estimate depth and then map it to control commands, introducing error propagation, or achieve end-to-end control through costly offline pretraining before online fine-tuning can even begin. We address these challenges with a CUDA-based event simulator that exploits GPU parallelism to render events efficiently within the training loop, integrated into a differentiable simulation pipeline that enables direct gradient backpropagation through the differentiable physics model, improving sample efficiency. This allows us to train an end-to-end policy that maps event frames directly to control commands, without intermediate depth estimation. We validate our approach through zero-shot real-world deployment on a quadrotor, achieving robust obstacle avoidance in both odometry-assisted and odometry-free settings, including under low-light conditions where conventional cameras typically fail."
     },
     {
-      "id": "leiphone:e7b95d0df78d",
-      "title": "李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？",
-      "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-30",
-      "lane": "foundation",
-      "score": 1.45,
+      "id": "arxiv:2610.39367",
+      "title": "Utility-WAM: Correcting Future-Induced Action Changes",
+      "url": "https://arxiv.org/abs/2610.39367",
+      "publisher": "arXiv 2610.39367",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-29",
+      "lane": "simeval",
+      "score": 2.855,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "real_robot",
+        "open_release",
+        "latency"
+      ],
       "heat": 0.0,
-      "summary": "82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。 这是 AMD 史上第二大收购，仅次于 2022 年以约 500 亿美元拿下赛灵思。 赛灵思是30多年的老牌芯片公司，而 World Labs，仅仅成立两年。 这一消息发出后，圈内人士的第一反应很一致：苏姿丰在对标英伟达的 Cosmos 和机器人平台，买人、买模型洞察力、买一张通往物理AI时代的入场券。 但苏姿丰不是这笔交易里唯一在下注的人。 李飞飞也在下注。而且她押上的，是自己的下一个二十年。 过去二十年，她反复在做同一件事：在每一个技术拐点，先一步定义“什么是值得做的下一件事”。 但前两次，她只负责出题，把答题的活儿交给别人。而这一次，她把自己按在了答题席上。 01 三次“挖坑”，有何不同？ 被誉为“AI 教母”的李飞飞，圈内人对她印象最深的，或许是她最擅长“挖坑”（出题）。过去二十年，她挖的三个最关键的坑：ImageNet、AI 民主化、空间智能。 单独看每一个，都是对 AI 行业走向的一次精准判断。但摆在一起看，她扮演的角色截然不同。 ▎ 第一个“坑”：纯出题，整个深度学习社区答题 2007年前后，李飞飞在普林斯顿做助理教授。计算机视觉领域当时最要命的问题是泛化——算法在实验室里跑得通，出了门就失灵。大多数人选择改进算法，李飞飞选了另一条路：造数据。 …"
+      "summary": "World Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial. We examine what a predicted future actually changes: the action delta $Δa$ between the future-conditioned and future-free execution paths of the same model. Under a shared WAM checkpoint, this delta barely shifts average benchmark success ($+0.8$ points on LIBERO, $-0.8$ on RoboTwin~2.0), while generating visual futures increases inference latency by 1.7--1.9$\\times$. These aggregate metrics conceal a concentrated failure mode that we term \\emph{future-induced negative transfer}: while predictive deltas benefit long-horizon tasks ($+2.4$ points on LIBERO-Long) and remain negligible on most routine manipulations, they induce severe degradation on precision tasks---with \\emph{Press Stapler} and \\emph{Place Can Basket} losing 54.0 and 34.0 points, recurring as top failure modes across independently trained WAM variants. We introduce \\textbf{Utility-WAM} for in-place correction of future-conditioned control. Its primary learning component is a residual adapter that repairs future-induced velocity deltas under a frozen shared WAM by aligning them with ground-truth dynamic guidance and penalizing excess error beyond the future-free baseline. The adapter selectively eliminates the majority of severe task drops (reducing losses to 6.0 and 14.0 points) while preserving long-horizon foresight. To eliminate superfluous video computation, a lightweight pre-generation gate reuses counterfactual action outcomes to selectively bypass video generation on 75.5\\% of RoboTwin queries, cutting latency by 38\\% while improving average success to 93.3\\% on RoboTwin~2.0 and 98.9\\% on LIBERO. On physical bimanual manipulation across three real-world tasks, Utility-WAM succeeds in 53 of 60 trials, compared to 43 for FAST-WAM."
     },
     {
-      "id": "leiphone:63ad0d7e088b",
-      "title": "IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？",
-      "url": "https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-10-30",
-      "lane": "hardware",
-      "score": 1.415,
+      "id": "arxiv:2610.40002",
+      "title": "How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function",
+      "url": "https://arxiv.org/abs/2610.40002",
+      "publisher": "arXiv 2610.40002",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-29",
+      "lane": "training",
+      "score": 2.75,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "closed_loop"
+      ],
       "heat": 0.0,
-      "summary": "灵巧手的设计逻辑，要由落地需求反推。 作者丨向 欣 编辑丨高景辉 今年 IROS，灵巧操作和触觉的热度比以往更盛，串珠子、插 USB、给帆布袋烫 logo、手内转笔、转球、调酒，各种演示在现场轮番上演。 从 ICRA，到 WRC，再到 IROS，我们追踪了今年几乎所有机器人领域的顶会，一个越来越清晰的感受是：对灵巧手而言，完成复杂动作已经越来越不是难事。 展示不再局限于简单的抓取和搬运，变得更强调 复杂接触（contact-rich）、动态调整、长时序操作 以及 可变形物体处理 等接近真实作业的任务。 整体来看，厂商对落地的需求越来越高，心态也更加务实。过去大家追求参数丰富、指标极致，如今 不少参数反而开始回 调，有的是自由度做了减法，有的是传感器配置更加务实。 长期可靠 性、稳定使用、易维护，以及交付后能否真正用起来被放到更优先的位置。 这也是今年我们在源升智能展台看到的一个有意思的变化。 IROS现场，源升智能的高自由度五指灵巧手Apex Hand展示了一组侧重点不同的操作任务：基于强化学习的手内转球、灵巧手把脉、全掌触觉实时感知、持续高负载恒温抓握，以及劈裂木板、钉钉子等高冲击操作。 这些Demo展示了Apex Hand在 复杂接触、动态调整、长时序操作和高冲击场景下 的综合能力，它已经能完成足够复杂的动作，甚至在某些维度上超出了常规抓取搬运的范畴。 但这些能力要如何从展台走向真实作业，并被客户持续用起来？一只面向真实应用的灵巧手，究竟需要具备怎样的综合能力？ …"
+      "summary": "Reasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan. Existing remedies ask whether the reasoning is right. We ask how strongly it should steer. CoC-CFG applies classifier-free guidance between the policy's context and the same context without the reasoning span. One weight per Euler step attenuates or amplifies the reasoning, and w=1 recovers the original policy. We treat the choice of this weight as a Markov decision process whose action values are measured, not bootstrapped. With the expert frozen and the noise fixed, applying a weight for one step and finishing the plan under the current controller returns that weight's value exactly. Q-adaptive guidance fits these values with small critics and improves the controller conservatively. In the Alpasim driving simulator it outperforms every fixed weight and online RL (SAC, GRPO) in open loop, and in closed loop it passes 262 of 300 scenes, against 252 for the original policy. On held-out frames of the Waymo end-to-end driving benchmark, its first three stages outperform every fixed weight, four adaptive-guidance methods, SAC and GRPO. On the hidden test set, a frozen Alpamayo 1.5 with rule-based camera and vehicle conversions and Q-adaptive guidance sets a new state of the art among published methods: 8.135159 rater feedback score, against 8.079 for the best published method."
     },
     {
-      "id": "leiphone:8181ef2e2df3",
-      "title": "宇树最新财报：重金投入研发，上市后的考题变了",
-      "url": "https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "qbitai:b2a08cbfc96d",
+      "title": "世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用",
+      "url": "https://www.qbitai.com/2026/10/506866.html",
+      "publisher": "量子位 QbitAI",
+      "source_id": "qbitai",
       "evidence": "M",
-      "published": "2026-10-30",
+      "published": "2026-10-31",
       "lane": "foundation",
       "score": 1.4,
       "numbers": [
-        "146.8%",
-        "332.7%"
+        "99%"
       ],
       "signals": [
         "numbers"
       ],
       "heat": 0.0,
-      "summary": "雷峰网 10月28日晚，宇树披露上市后的首份三季报。2026年前三季度，营收已经超过2025全年，公司实现营收18.17亿元，但毛利率明显回落，研发费用率大幅抬升，扣非利润实际下滑。 宇树的收入还在加速增长，利润却没有跟上。 不过，表面看，这是一份“增收不增利”的财报。实质上，这是宇树主动用过去两年赚到的硬件红利，去补贴具身大模型和算力投入的战略换挡。短期利润与现金流承压，是换挡的必然代价。 01 从财报看宇树 收入增长，利润承压，研发加码 本次三季报最值得关注的信息，可以归纳为三个核心结论。 结论一：营收仍在高速增长，但已从爆发式增长转向稳定放量，各产品线收入不透明了。 宇树科技2026年前三季度营业收入18.17亿元，同比增长55.7%；第三季度单季营收6.65亿元，同比增长69.9%。前三季度营收已经超过2025年全年的16.99亿元。 这些数据说明公司业务规模仍在快速扩张，收入继续上台阶。但同比增速从2025年的332.7%，回落到前三季度的55.7%。 不过，这属于典型的高基数下的稳态增长，并不是衰退。 把视角拉到更长周期看，2023年宇树科技营收仅1.59亿元，2024年增至3.93亿元（+146.8%），2025年飙升至16.99亿元（+332.7%）。 2024～2025这两年是人形机器人从几乎为零快速放量的渗透红利期。2026年增速回落，是基数抬高后的正常现象，也意味着公司正从“新品红利”进入“规模化运营”阶段。 宇树科技在这次财报中，将营业收入的增长归因为 产品创新与业务拓展 …"
+      "summary": "AI算力利用“九九成”"
+    },
+    {
+      "id": "leiphone:7d4ff45be745",
+      "title": "智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断",
+      "url": "https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-31",
+      "lane": "edge",
+      "score": 1.152,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。 世界模型、强化学习、端侧智能、虚拟仿真、Robotaxi之外，机器人、低空飞行器等不同形态的物理智能开始出现在同一场大会上。这背后，是智能驾驶行业正在面对的一组新问题。 一方面，高阶辅助驾驶已经进入规模化上车阶段，Robotaxi也开始从技术验证走向运营和商业化；另一方面，当AI真正进入汽车、机器人、飞行器等物理设备，如何获得足够的数据、如何训练和验证模型、如何降低开发成本，以及如何保证系统在真实世界中的安全性，正在成为新的技术难题。 当天，包括Momenta、曹操出行、面壁智能等企业，以及高校和科研机构的多位嘉宾，从世界模型、强化学习、端侧大模型、虚拟仿真、车路云和物理AI基础设施等方向给出了自己的判断。 总结这些发言不难发现，智能驾驶正在成为物理AI最早进入现实世界的一块试验场。而从一辆车的自动驾驶，到机器人、低空飞行器以及城市交通系统，不同技术路线正在回答同一个问题：AI如何从数字世界真正进入物理世界，并形成可以规模化运行的产品。 中国工程院院士，清华大学车辆与运载学院教授、智能绿色车辆与交通全国重点实验室主任 李克强 关键词：智能驾驶安全、车路云一体化、单车智能瓶颈 …"
+    },
+    {
+      "id": "leiphone:38e443aa8984",
+      "title": "伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人",
+      "url": "https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-30",
+      "lane": "hardware",
+      "score": 1.115,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。 便宜的低自由度灵巧手多用于表演；操作能力更强的高自由度产品又容易损坏，有的因为贵，买回来供着不敢用，有的用一星期到两三个月就坏了——这是刘欣看到的灵巧手市场的现状。 在他看来，灵巧手行业连目标客户是谁、要解决什么问题、客户愿意为什么买单，都还没有明确答案。行业需要开辟 第三个市场 ：以可接受的成本，将科研级操作能力带入实际应用。 而这样的产品至今仍未出现，目前最顶尖的灵巧手，离人手能力都相差甚远。这就是伯牙的机会。 刘欣在阿里工作近十年，曾任阿里巴巴操作系统事业部技术总监、斑马智行产品负责人，业务涉及手机、汽车、IoT 和机器人。2023 年，他加入蔚来，负责乐道汽车智能化相关产品。 2024 年 8 月，他联合斑马智行联合创始人张斯成，以及哈尔滨工业大学（深圳）、中国科学技术大学的两位教授创办伯牙智能，希望「为人工智能造一双真正能干活的手」。 跨行业的经历，让他习惯把一件事放进更大的坐标系里思考，做灵巧手也是如此。他喜欢从不同领域里寻找灵巧手的产品思路，思考市场的迭代和发展方向，会参照汽车和手机的发展历程，也会从生物进化和人体结构出发，思考五指设计的必要性；旁征博引，各种论据信手拈来。 由此，他形成了一些与行业主流判断不同的看法： 相比硬件，模型可能更早触及能力拐点 …"
+    },
+    {
+      "id": "leiphone:165d4284c061",
+      "title": "让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026",
+      "url": "https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-10-30",
+      "lane": "hardware",
+      "score": 1.115,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "FlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。尤其是在精细操作场景中，当 物体被遮挡、透明、易碎，或需要精确判断接触力与手内姿态 时，仅靠视觉往往难以确认机器人是否真正抓稳了物体、是否发生了滑移，也难以实现可靠的力控与顺从交互。 与图像领域已经形成相对统一的传感器和数据体系相比，触觉研究尚未形成类似的「收敛」。不同实验室往往使用不同类型的触觉传感器，但它们都面临 寿命、柔性、多维信息感知、分辨率、成本与一致性 难以同时兼顾的困境。这使得触觉数据采集、算法研究以及不同系统之间的复现都变得更加困难。 如何 让触觉像视觉一样 ，成为一种可以被更多机器人使用、被大量采集、被算法反复利用的基础感知能力？ 针对这个问题，哥伦比亚大学李昀烛团队提出了开源柔性压阻式触觉传感器平台 FlexiTac 。在本届 IROS 2026 的触觉专题研讨会上，李昀烛系统介绍了这一平台开源一年半后的进展与生态。 FlexiTac 是一套低成本、开源、可扩展的 压阻式柔性触觉传感器 ，团队同时开源了完整 BOM、详细组装说明以及用于读取触觉数据的软件。 FlexiTac 采用 FPC 与力敏薄膜层叠结构，组装仅需 3 分钟，可弯曲、裁剪并包裹于不同几何表面，适配手套、指尖或机器人皮肤等多种形态。 其核心优势在于 成本低、制作简单、高度柔性与可扩展、以及较好的长期稳定性和批次一致性 …"
     }
   ],
   "lane_counts": {
-    "foundation": 8,
-    "data": 7,
+    "foundation": 7,
+    "data": 8,
     "training": 4,
     "simeval": 13,
     "edge": 9,
     "safety": 2,
-    "systems": 3,
-    "hardware": 9
+    "systems": 2,
+    "hardware": 10
   },
   "evidence_mix": {
-    "O": 9,
-    "R": 30,
-    "M": 16
+    "O": 8,
+    "R": 28,
+    "M": 19
   },
   "fetch": {
-    "items": 577,
+    "items": 554,
     "attempted": 23,
     "answered": 22,
     "failed": [
@@ -204,11 +197,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 29,
+      "hn_stories": 24,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 79,
+      "arxiv": 55,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -223,7 +216,7 @@
       "mit-news-robotics": 50,
       "techcrunch-robotics": 10,
       "robohub": 75,
-      "qbitai": 1,
+      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

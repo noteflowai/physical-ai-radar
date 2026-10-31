@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-10-31
+### Today's radar · 2026-11-01
 
-`Generated: 2026-10-30 23:40 UTC` ｜ `Window: papers 2026-10-27 → 2026-10-31 · posts 2026-10-01 → 2026-10-31 · no repeats within 30 days (UTC)`
+`Generated: 2026-10-31 23:40 UTC` ｜ `Window: papers 2026-10-28 → 2026-11-01 · posts 2026-10-02 → 2026-11-01 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[UMI-Live for In-The-Wild Bimanual Robotics Data Collection](https://arxiv.org/abs/2610.39385)**<br>`40 hours`<br><sub>Data engine · arXiv 2610.39385 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation](https://arxiv.org/abs/2610.39287)**<br>`10 Hz`<br><sub>Edge & real-time · arXiv 2610.39287 · 2026‑10‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models](https://arxiv.org/abs/2610.38661)**<br><sub>Simulation & evaluation · arXiv 2610.38661 · 2026‑10‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[Robotic Data Inoculation](https://arxiv.org/abs/2610.39054)**<br><sub>Data engine · arXiv 2610.39054 · 2026‑10‑28</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Spot Plays to Show Its Whole-Body Manipulation](https://spectrum.ieee.org/video-friday-whole-body-manipulation)**<br>`70 x`<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑10‑30</sub> |
-| 06<br>🟡&nbsp;`M` | **[李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？](https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 07<br>🟡&nbsp;`M` | **[IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？](https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[宇树最新财报：重金投入研发，上市后的考题变了](https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html)**<br>`146.8%`&nbsp; `332.7%`<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation](https://arxiv.org/abs/2610.40349)**<br>`72.5%`&nbsp; `77.5%`&nbsp; `7.0x`<br><sub>Data engine · arXiv 2610.40349 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[Learning Event-based Obstacle Avoidance via Differentiable Simulation](https://arxiv.org/abs/2610.38967)**<br><sub>Simulation & evaluation · arXiv 2610.38967 · 2026‑10‑28</sub> |
+| 03<br>🔵&nbsp;`R` | **[Utility-WAM: Correcting Future-Induced Action Changes](https://arxiv.org/abs/2610.39367)**<br><sub>Simulation & evaluation · arXiv 2610.39367 · 2026‑10‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function](https://arxiv.org/abs/2610.40002)**<br><sub>Training & self-improvement · arXiv 2610.40002 · 2026‑10‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用](https://www.qbitai.com/2026/10/506866.html)**<br>`99%`<br><sub>Foundation models · 量子位 QbitAI · 2026‑10‑31</sub> |
+| 06<br>🟡&nbsp;`M` | **[智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断](https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html)**<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑10‑31</sub> |
+| 07<br>🟡&nbsp;`M` | **[伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 \| 物理AI 50人](https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑30</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **UMI-Live for In-The-Wild Bimanual Robotics Data Collection** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-2. **OpenFlyV2** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-3. **Quantize by Doing** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-4. **Robotic Data Inoculation** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
-6. **李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-7. **IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **宇树最新财报：重金投入研发，上市后的考题变了** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **TouchBridge** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+3. **Utility-WAM** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the gain holds outside the training tasks.
+5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-10-31.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-01.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

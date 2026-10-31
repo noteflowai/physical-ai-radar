@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-10-31
+### 今日雷达 · 2026-11-01
 
-`生成时间: 2026-10-30 23:40 UTC` ｜ `统计窗口: 论文 2026-10-27 → 2026-10-31 · 博客与报道 2026-10-01 → 2026-10-31 · 30 天内不重复 (UTC)`
+`生成时间: 2026-10-31 23:40 UTC` ｜ `统计窗口: 论文 2026-10-28 → 2026-11-01 · 博客与报道 2026-10-02 → 2026-11-01 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[UMI-Live for In-The-Wild Bimanual Robotics Data Collection](https://arxiv.org/abs/2610.39385)**<br>`40 hours`<br><sub>数据引擎 · arXiv 2610.39385 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation](https://arxiv.org/abs/2610.39287)**<br>`10 Hz`<br><sub>边缘与实时性 · arXiv 2610.39287 · 2026‑10‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models](https://arxiv.org/abs/2610.38661)**<br><sub>仿真与评测 · arXiv 2610.38661 · 2026‑10‑28</sub> |
-| 04<br>🔵&nbsp;`R` | **[Robotic Data Inoculation](https://arxiv.org/abs/2610.39054)**<br><sub>数据引擎 · arXiv 2610.39054 · 2026‑10‑28</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Spot Plays to Show Its Whole-Body Manipulation](https://spectrum.ieee.org/video-friday-whole-body-manipulation)**<br>`70 x`<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑10‑30</sub> |
-| 06<br>🟡&nbsp;`M` | **[李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？](https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 07<br>🟡&nbsp;`M` | **[IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？](https://www.leiphone.com/category/robot/jv4zJUmQr2wkoN0i.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[宇树最新财报：重金投入研发，上市后的考题变了](https://www.leiphone.com/category/robot/9NTmjVmWkIyllzaj.html)**<br>`146.8%`&nbsp; `332.7%`<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation](https://arxiv.org/abs/2610.40349)**<br>`72.5%`&nbsp; `77.5%`&nbsp; `7.0x`<br><sub>数据引擎 · arXiv 2610.40349 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[Learning Event-based Obstacle Avoidance via Differentiable Simulation](https://arxiv.org/abs/2610.38967)**<br><sub>仿真与评测 · arXiv 2610.38967 · 2026‑10‑28</sub> |
+| 03<br>🔵&nbsp;`R` | **[Utility-WAM: Correcting Future-Induced Action Changes](https://arxiv.org/abs/2610.39367)**<br><sub>仿真与评测 · arXiv 2610.39367 · 2026‑10‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function](https://arxiv.org/abs/2610.40002)**<br><sub>训练与自我改进 · arXiv 2610.40002 · 2026‑10‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用](https://www.qbitai.com/2026/10/506866.html)**<br>`99%`<br><sub>基座模型 · 量子位 QbitAI · 2026‑10‑31</sub> |
+| 06<br>🟡&nbsp;`M` | **[智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断](https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html)**<br><sub>边缘与实时性 · 雷峰网 Leiphone · 2026‑10‑31</sub> |
+| 07<br>🟡&nbsp;`M` | **[伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 \| 物理AI 50人](https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 08<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **UMI-Live for In-The-Wild Bimanual Robotics Data Collection** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-2. **OpenFlyV2** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Quantize by Doing** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Robotic Data Inoculation** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-5. **Video Friday** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
-6. **李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-7. **IROS 2026 观察：从 Demo 到生产力工具，灵巧手还要跨过几道坎？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **宇树最新财报：重金投入研发，上市后的考题变了** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。
+1. **TouchBridge** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Utility-WAM** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注提升在训练任务之外是否依然成立。
+5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。
+6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-10-31.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-01.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
