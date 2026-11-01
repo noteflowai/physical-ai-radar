@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-01",
+  "generated": "2026-11-01 13:53 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2610.40349": {
+      "zh": "做灵巧操作的团队在规划采集预算时可参考：作者自报人类示范采集快 7.0x，平均成功率 72.5%，对照组为 77.5%，但页面截断了对照条件，换数据源前先看清比的是什么。",
+      "en": "For dexterous-manipulation teams setting a collection budget, the authors report human demonstrations collected 7.0x faster at 72.5% average success against a 77.5% comparison whose setup the page cuts off, so check that comparison before shifting data sources.",
+      "ja": "巧緻マニピュレーションのデータ収集予算を組むチームには、人間デモの収集が7.0x速く平均成功率72.5%という著者報告が材料になる。比較側の77.5%は条件がページ上で切れており、データ源を切り替える前に何との比較かを確認したい。"
+    },
+    "https://arxiv.org/abs/2610.38967": {
+      "zh": "为高速四旋翼避障考虑用事件相机替代帧相机的团队可以留意：这份预印本针对运动模糊、动态范围和延迟问题，页面标出闭环与真机实验，但没有任何数字，目前只够作为选型线索。",
+      "en": "Quadrotor teams weighing event cameras against frame cameras for fast flight get a preprint that targets motion blur, dynamic range and latency and flags closed-loop and real-robot experiments, but the page shows no figures, so it is a lead, not a basis for a sensor choice.",
+      "ja": "高速飛行するクアッドロータでフレームカメラからイベントカメラへの移行を検討するなら手掛かりになる。モーションブラー、ダイナミックレンジ、遅延を課題に据え、閉ループと実機の実験が示されているが、ページに数値はなく、センサ選定の根拠にはまだ足りない。"
+    },
+    "https://arxiv.org/abs/2610.39367": {
+      "zh": "准备让策略以生成的视觉未来为条件的团队应先读这篇：作者认为这部分额外上下文既有成本、也不总是有益；页面标出真机实验和开放代码或权重，但没有数字，可先拿代码在自己的任务上验证。",
+      "en": "Before conditioning a policy on generated visual futures, read this preprint's argument that the extra context has a cost and does not always help; the page flags real-robot experiments and open code or weights but no figures, so test the release on your own tasks.",
+      "ja": "生成した視覚的な未来で方策を条件づけるなら、その追加文脈はコストがかかり常に有益とは限らないというこのプレプリントの主張を先に読みたい。実機実験とコードまたは重みの公開は示されているが数値はなく、自分のタスクで検証してから判断を。"
+    },
+    "https://arxiv.org/abs/2610.40002": {
+      "zh": "部署推理型 VLA 的团队不应把看起来合理的推理轨迹当作动作正确的依据，这份预印本正是针对这一点；但页面只标出闭环结果，没有真机结果和数字，更适合用来设计评测，而非直接改策略。",
+      "en": "Teams deploying reasoning VLAs should stop treating a plausible-looking trace as evidence the action is right, which is the failure this preprint targets; the page shows a closed-loop signal but no real-robot results or figures, so use it to shape evaluations first.",
+      "ja": "推論型VLAを運用するチームは、もっともらしい推論トレースを行動が正しい根拠とみなすべきではなく、このプレプリントはまさにその失敗を扱う。閉ループの結果は示されるが実機結果も数値もページになく、まず評価設計の参考として使うのが妥当。"
+    },
+    "https://www.qbitai.com/2026/10/506866.html": {
+      "zh": "评估端侧 NPU 的团队可以把“99% 算力可用”记下来，但这是二手报道，摘录既没说明是哪款芯片，也没说明在什么负载下测得，选型前须回到一手资料核对。",
+      "en": "Anyone sizing an NPU should note the 99% usable-compute claim only as secondary press: the excerpt names neither the chip nor the workload it was measured on, so go to a primary source before it enters a hardware decision.",
+      "ja": "NPUの選定を進めるなら「99%の演算資源が使える」という主張は二次報道として控えておく程度に。抜粋にはどのチップか、どの負荷で測ったかの記載がなく、ハードウェア判断に使う前に一次情報を確認したい。"
+    },
+    "https://www.leiphone.com/category/transportation/pqetznyepe5d1pzd.html": {
+      "zh": "在自动驾驶与机器人之间配置人才或业务的团队可以留意：智能驾驶大会的讨论范围已从智能驾驶延伸到物理AI；但这是二手报道的嘉宾观点，没有数字，只能当作行业动向参考，不能当作技术证据。",
+      "en": "If you allocate people or products between autonomous driving and robotics, this secondary report shows a driving conference widening its agenda to physical AI, but it carries guest opinions without figures, so read it as industry positioning rather than technical evidence.",
+      "ja": "自動運転とロボティクスの間で人員や事業を配分する立場なら、自動運転の会議が議論の範囲をフィジカルAIへ広げたという二次報道は業界の位置取りを知る材料になる。ただし登壇者の見解で数値はなく、技術的根拠にはならない。"
+    },
+    "https://www.leiphone.com/category/robot/enkflg1rrmn9sahj.html": {
+      "zh": "采购或规划灵巧手的团队别把出货量直接等同于真实使用：伯牙智能创始人观察到大部分灵巧手随人形机器人表演后便闲置，这是二手转述的个人判断，可作为评估需求时的提醒。",
+      "en": "Buyers and planners of dexterous hands should not read shipment counts as deployment: a founder's own observation, relayed secondhand, is that most shipped hands sit idle after humanoid demos, which is a caution for demand estimates rather than a measured finding.",
+      "ja": "巧緻ハンドを調達・計画する立場では、出荷数をそのまま実運用と読まないほうがよい。多くがヒューマノイドの実演後に放置されているという創業者本人の観察を二次報道が伝えたもので、測定結果ではなく需要見積もりへの注意喚起として扱いたい。"
+    },
+    "https://www.leiphone.com/category/robot/srmmves4dwboierm.html": {
+      "zh": "想给机器人加触觉的团队可以把这款开源压阻式传感器列入候选，报道称其兼顾柔性、低成本与一致性；但这是二手报道且没有数字，成本和一致性数据需到原论文或开源发布中核实。",
+      "en": "Teams adding touch to a robot can shortlist this open-source piezoresistive sensor, reported to combine flexibility, low cost and consistency, but the secondary report gives no figures, so verify cost and consistency in the paper or release before committing.",
+      "ja": "ロボットに触覚を加えたいチームには、柔軟性・低コスト・一貫性を両立するとされるオープンソースの圧抵抗式センサが候補になる。ただし二次報道で数値はなく、コストと一貫性は論文か公開物で確かめてから採用を決めたい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
