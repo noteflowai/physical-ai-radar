@@ -73,8 +73,8 @@
 <polygon class="area" points="0.0,-88.8 71.8,-71.8 50.8,-0.0 116.7,116.7 0.0,114.2 -17.9,17.9 -25.4,0.0 -89.7,-89.7"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#38bdf8;--delay:0.35s"><circle cx="105.0" cy="-105.0" r="11" class="halo"/><circle cx="105.0" cy="-105.0" r="5"/><title>TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation</title></a>
-<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="107.2" cy="89.9" r="11" class="halo"/><circle cx="107.2" cy="89.9" r="5"/><title>Learning Event-based Obstacle Avoidance via Differentiable Simulation</title></a>
-<a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="89.9" cy="107.2" r="11" class="halo"/><circle cx="89.9" cy="107.2" r="5"/><title>Utility-WAM: Correcting Future-Induced Action Changes</title></a>
+<a href="#p2" class="blip" style="--lane:#fb923c;--delay:0.70s"><circle cx="107.2" cy="90.0" r="11" class="halo"/><circle cx="107.2" cy="90.0" r="5"/><title>Learning Event-based Obstacle Avoidance via Differentiable Simulation</title></a>
+<a href="#p3" class="blip" style="--lane:#fb923c;--delay:1.05s"><circle cx="90.0" cy="107.2" r="11" class="halo"/><circle cx="90.0" cy="107.2" r="5"/><title>Utility-WAM: Correcting Future-Induced Action Changes</title></a>
 <a href="#p4" class="blip" style="--lane:#34d399;--delay:1.40s"><circle cx="136.9" cy="-0.0" r="11" class="halo"/><circle cx="136.9" cy="-0.0" r="5"/><title>How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function</title></a>
 <a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="0.0" cy="-98.1" r="11" class="halo"/><circle cx="0.0" cy="-98.1" r="5"/><title>世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用</title></a>
 <a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="0.0" cy="90.9" r="11" class="halo"/><circle cx="0.0" cy="90.9" r="5"/><title>智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断</title></a>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40349" rel="noopener" target="_blank">TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation</a></h3>
 <p class="figure"><strong>72.5%</strong><span class="context">“human demonstrations achieve a 72.5% average success rate”</span></p><p class="chips"><span class="chip">77.5%</span><span class="chip">7.0x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 做灵巧操作的团队在规划采集预算时可参考：作者自报人类示范采集快 7.0x，平均成功率 72.5%，对照组为 77.5%，但页面截断了对照条件，换数据源前先看清比的是什么。</p>
 <p class="excerpt">Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.38967" rel="noopener" target="_blank">Learning Event-based Obstacle Avoidance via Differentiable Simulation</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 为高速四旋翼避障考虑用事件相机替代帧相机的团队可以留意：这份预印本针对运动模糊、动态范围和延迟问题，页面标出闭环与真机实验，但没有任何数字，目前只够作为选型线索。</p>
 <p class="excerpt">Reliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.39367" rel="noopener" target="_blank">Utility-WAM: Correcting Future-Induced Action Changes</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 准备让策略以生成的视觉未来为条件的团队应先读这篇：作者认为这部分额外上下文既有成本、也不总是有益；页面标出真机实验和开放代码或权重，但没有数字，可先拿代码在自己的任务上验证。</p>
 <p class="excerpt">World Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial.</p>
 <ul class="signals"><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40002" rel="noopener" target="_blank">How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 部署推理型 VLA 的团队不应把看起来合理的推理轨迹当作动作正确的依据，这份预印本正是针对这一点；但页面只标出闭环结果，没有真机结果和数字，更适合用来设计评测，而非直接改策略。</p>
 <p class="excerpt">Reasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan.</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 </header>
 <h3><a href="https://www.qbitai.com/2026/10/506866.html" rel="noopener" target="_blank">世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用</a></h3>
 <p class="figure"><strong>99%</strong><span class="context">“超大核NPU700TOPS，99% 算力可用”</span></p>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估端侧 NPU 的团队可以把“99% 算力可用”记下来，但这是二手报道，摘录既没说明是哪款芯片，也没说明在什么负载下测得，选型前须回到一手资料核对。</p>
 <p class="excerpt">AI算力利用“九九成”</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html" rel="noopener" target="_blank">智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 在自动驾驶与机器人之间配置人才或业务的团队可以留意：智能驾驶大会的讨论范围已从智能驾驶延伸到物理AI；但这是二手报道的嘉宾观点，没有数字，只能当作行业动向参考，不能当作技术证据。</p>
 <p class="excerpt">10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-31</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html" rel="noopener" target="_blank">伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 采购或规划灵巧手的团队别把出货量直接等同于真实使用：伯牙智能创始人观察到大部分灵巧手随人形机器人表演后便闲置，这是二手转述的个人判断，可作为评估需求时的提醒。</p>
 <p class="excerpt">灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-30</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html" rel="noopener" target="_blank">让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 想给机器人加触觉的团队可以把这款开源压阻式传感器列入候选，报道称其兼顾柔性、低成本与一致性；但这是二手报道且没有数字，成本和一致性数据需到原论文或开源发布中核实。</p>
 <p class="excerpt">FlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-10-30</span>

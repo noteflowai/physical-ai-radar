@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **TouchBridge** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-3. **Utility-WAM** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the gain holds outside the training tasks.
-5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether it cuts the data a new task or embodiment needs.
-6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **TouchBridge** — `AI draft` For dexterous-manipulation teams setting a collection budget, the authors report human demonstrations collected 7.0x faster at 72.5% average success against a 77.5% comparison whose setup the page cuts off, so check that comparison before shifting data sources.
+2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — `AI draft` Quadrotor teams weighing event cameras against frame cameras for fast flight get a preprint that targets motion blur, dynamic range and latency and flags closed-loop and real-robot experiments, but the page shows no figures, so it is a lead, not a basis for a sensor choice.
+3. **Utility-WAM** — `AI draft` Before conditioning a policy on generated visual futures, read this preprint's argument that the extra context has a cost and does not always help; the page flags real-robot experiments and open code or weights but no figures, so test the release on your own tasks.
+4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — `AI draft` Teams deploying reasoning VLAs should stop treating a plausible-looking trace as evidence the action is right, which is the failure this preprint targets; the page shows a closed-loop signal but no real-robot results or figures, so use it to shape evaluations first.
+5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — `AI draft` Anyone sizing an NPU should note the 99% usable-compute claim only as secondary press: the excerpt names neither the chip nor the workload it was measured on, so go to a primary source before it enters a hardware decision.
+6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — `AI draft` If you allocate people or products between autonomous driving and robotics, this secondary report shows a driving conference widening its agenda to physical AI, but it carries guest opinions without figures, so read it as industry positioning rather than technical evidence.
+7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — `AI draft` Buyers and planners of dexterous hands should not read shipment counts as deployment: a founder's own observation, relayed secondhand, is that most shipped hands sit idle after humanoid demos, which is a caution for demand estimates rather than a measured finding.
+8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — `AI draft` Teams adding touch to a robot can shortlist this open-source piezoresistive sensor, reported to combine flexibility, low cost and consistency, but the secondary report gives no figures, so verify cost and consistency in the paper or release before committing.
 
 </details>
 
