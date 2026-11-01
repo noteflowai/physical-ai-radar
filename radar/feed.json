@@ -13,6 +13,194 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39327",
+      "url": "https://arxiv.org/abs/2610.39327",
+      "title": "SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39327 · 2026-10-29<br><b>Signals</b>: open code or weights · latency or control-rate numbers</p>\n<blockquote>We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html\">Full radar for 2026-11-02</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.39327 · 2026-10-29\nSignals: open code or weights · latency or control-rate numbers\n\nWe present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.\n\nFull radar for 2026-11-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html",
+      "summary": "We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.",
+      "date_published": "2026-11-01T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.39327"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-02",
+        "id": "arxiv:2610.39327",
+        "url": "https://arxiv.org/abs/2610.39327",
+        "title": "SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU",
+        "publisher": "arXiv 2610.39327",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-29",
+        "radar_published": "2026-11-01T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40430",
+      "url": "https://arxiv.org/abs/2610.40430",
+      "title": "Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.40430 · 2026-10-29<br><b>Key numbers</b>: 85.55%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html\">Full radar for 2026-11-02</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.40430 · 2026-10-29\nKey numbers: 85.55%\nSignals: quantitative results · closed-loop success reported\n\nFine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.\n\nFull radar for 2026-11-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html",
+      "summary": "Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.",
+      "date_published": "2026-11-01T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.40430"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-02",
+        "id": "arxiv:2610.40430",
+        "url": "https://arxiv.org/abs/2610.40430",
+        "title": "Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design",
+        "publisher": "arXiv 2610.40430",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-10-29",
+        "radar_published": "2026-11-01T23:40:00Z",
+        "numbers": [
+          "85.55%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop"
+        ],
+        "excerpt": "Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40016",
+      "url": "https://arxiv.org/abs/2610.40016",
+      "title": "LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.40016 · 2026-10-29<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html\">Full radar for 2026-11-02</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2610.40016 · 2026-10-29\nSignals: closed-loop success reported\n\nAgentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.\n\nFull radar for 2026-11-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html",
+      "summary": "Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.",
+      "date_published": "2026-11-01T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.40016"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-02",
+        "id": "arxiv:2610.40016",
+        "url": "https://arxiv.org/abs/2610.40016",
+        "title": "LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks",
+        "publisher": "arXiv 2610.40016",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-10-29",
+        "radar_published": "2026-11-01T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop"
+        ],
+        "excerpt": "Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39319",
+      "url": "https://arxiv.org/abs/2610.39319",
+      "title": "ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39319 · 2026-10-29<br><b>Key numbers</b>: 12.94% · 15.46% · 32.3%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html\">Full radar for 2026-11-02</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.39319 · 2026-10-29\nKey numbers: 12.94% · 15.46% · 32.3%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLong-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.\n\nFull radar for 2026-11-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html",
+      "summary": "Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.",
+      "date_published": "2026-11-01T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2610.39319"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-02",
+        "id": "arxiv:2610.39319",
+        "url": "https://arxiv.org/abs/2610.39319",
+        "title": "ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning",
+        "publisher": "arXiv 2610.39319",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "systems",
+        "published": "2026-10-29",
+        "radar_published": "2026-11-01T23:40:00Z",
+        "numbers": [
+          "12.94%",
+          "15.46%",
+          "32.3%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:qbitai:77cf6f6f7d48",
+      "url": "https://www.qbitai.com/2026/11/507076.html",
+      "title": "三年前布局，今年爆火丨西湖大学成立新中心",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 量子位 QbitAI · 2026-11-01</p>\n<blockquote>西湖世界模型研究中心成立</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html\">Full radar for 2026-11-02</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 量子位 QbitAI · 2026-11-01\n\n西湖世界模型研究中心成立\n\nFull radar for 2026-11-02: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html",
+      "summary": "西湖世界模型研究中心成立",
+      "date_published": "2026-11-01T23:40:00Z",
+      "authors": [
+        {
+          "name": "量子位 QbitAI"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-02",
+        "id": "qbitai:77cf6f6f7d48",
+        "url": "https://www.qbitai.com/2026/11/507076.html",
+        "title": "三年前布局，今年爆火丨西湖大学成立新中心",
+        "publisher": "量子位 QbitAI",
+        "source_id": "qbitai",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-11-01",
+        "radar_published": "2026-11-01T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "西湖世界模型研究中心成立"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40349",
       "url": "https://arxiv.org/abs/2610.40349",
       "title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
@@ -3601,201 +3789,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "继无本体之后，具身后训练范式有了新进展。最近，具身行业讨论“无本体进行后训练的可能性”的热度很高。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22812",
-      "url": "https://arxiv.org/abs/2610.22812",
-      "title": "PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22812 · 2026-10-16<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Reliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html\">Full radar for 2026-10-20</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.22812 · 2026-10-16\nSignals: closed-loop success reported · real-robot experiments\n\nReliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them.\n\nFull radar for 2026-10-20: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html",
-      "summary": "Reliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them.",
-      "date_published": "2026-10-19T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.22812"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-20",
-        "id": "arxiv:2610.22812",
-        "url": "https://arxiv.org/abs/2610.22812",
-        "title": "PASS-VLN: Passability-Aware Local-Command Vision-and-Language Navigation",
-        "publisher": "arXiv 2610.22812",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-10-16",
-        "radar_published": "2026-10-19T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Reliable vision-and-language navigation (VLN) requires not only understanding instructions but also determining whether and how a robot can physically execute them."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.23334",
-      "url": "https://arxiv.org/abs/2610.23334",
-      "title": "LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.23334 · 2026-10-16<br><b>Key numbers</b>: 94.21% · 95.56% · 2B parameters · 65%<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights</p>\n<blockquote>World-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html\">Full radar for 2026-10-20</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.23334 · 2026-10-16\nKey numbers: 94.21% · 95.56% · 2B parameters · 65%\nSignals: quantitative results · closed-loop success reported · open code or weights\n\nWorld-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection.\n\nFull radar for 2026-10-20: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html",
-      "summary": "World-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection.",
-      "date_published": "2026-10-19T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.23334"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-20",
-        "id": "arxiv:2610.23334",
-        "url": "https://arxiv.org/abs/2610.23334",
-        "title": "LAW: Unifying Language, Action, and World Modeling for Agentic Physical Intelligence",
-        "publisher": "arXiv 2610.23334",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-10-16",
-        "radar_published": "2026-10-19T23:40:00Z",
-        "numbers": [
-          "94.21%",
-          "95.56%",
-          "2B parameters",
-          "65%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "open_release"
-        ],
-        "excerpt": "World-action models jointly predict actions and future world states, but long-horizon manipulation further requires language reasoning to plan subtask objectives, assess execution progress, and guide action selection."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.22852",
-      "url": "https://arxiv.org/abs/2610.22852",
-      "title": "Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.22852 · 2026-10-16<br><b>Key numbers</b>: 37% · 97%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Generalist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html\">Full radar for 2026-10-20</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.22852 · 2026-10-16\nKey numbers: 37% · 97%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nGeneralist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult.\n\nFull radar for 2026-10-20: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html",
-      "summary": "Generalist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult.",
-      "date_published": "2026-10-19T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.22852"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-20",
-        "id": "arxiv:2610.22852",
-        "url": "https://arxiv.org/abs/2610.22852",
-        "title": "Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors",
-        "publisher": "arXiv 2610.22852",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-10-16",
-        "radar_published": "2026-10-19T23:40:00Z",
-        "numbers": [
-          "37%",
-          "97%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Generalist robot policies offer strong behavioral priors, but achieving deployment-level reliability and throughput remains difficult."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.23849",
-      "url": "https://arxiv.org/abs/2610.23849",
-      "title": "Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.23849 · 2026-10-16<br><b>Key numbers</b>: 73%<br><b>Signals</b>: quantitative results · open code or weights</p>\n<blockquote>Every robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html\">Full radar for 2026-10-20</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [R]\nSource: arXiv 2610.23849 · 2026-10-16\nKey numbers: 73%\nSignals: quantitative results · open code or weights\n\nEvery robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful.\n\nFull radar for 2026-10-20: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html",
-      "summary": "Every robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful.",
-      "date_published": "2026-10-19T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.23849"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-20",
-        "id": "arxiv:2610.23849",
-        "url": "https://arxiv.org/abs/2610.23849",
-        "title": "Blind Precise Assembly: Proprioceptive Sim-to-Real Peg-in-Hole for Diverse Parts",
-        "publisher": "arXiv 2610.23849",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "hardware",
-        "published": "2026-10-16",
-        "radar_published": "2026-10-19T23:40:00Z",
-        "numbers": [
-          "73%"
-        ],
-        "signals": [
-          "numbers",
-          "open_release"
-        ],
-        "excerpt": "Every robot already carries high-resolution contact sensors: its own joints. Legged robots and humanoids exploit them to walk, run, and track whole-body motions without vision, but there the contacts are large and forceful."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:b657bbd1f782",
-      "url": "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
-      "title": "The Robot I Didn’t Expect to Build",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-19</p>\n<blockquote>Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 .</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html\">Full radar for 2026-10-20</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-19\n\nAgility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 .\n\nFull radar for 2026-10-20: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-20.en.html",
-      "summary": "Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 .",
-      "date_published": "2026-10-19T23:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-20",
-        "id": "ieee-spectrum-robotics:b657bbd1f782",
-        "url": "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
-        "title": "The Robot I Didn’t Expect to Build",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-19",
-        "radar_published": "2026-10-19T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 ."
       }
     }
   ]

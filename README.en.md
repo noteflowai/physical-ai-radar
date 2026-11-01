@@ -60,37 +60,31 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-01
+### Today's radar · 2026-11-02
 
-`Generated: 2026-10-31 23:40 UTC` ｜ `Window: papers 2026-10-28 → 2026-11-01 · posts 2026-10-02 → 2026-11-01 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-01 23:40 UTC` ｜ `Window: papers 2026-10-29 → 2026-11-02 · posts 2026-10-03 → 2026-11-02 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation](https://arxiv.org/abs/2610.40349)**<br>`72.5%`&nbsp; `77.5%`&nbsp; `7.0x`<br><sub>Data engine · arXiv 2610.40349 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning Event-based Obstacle Avoidance via Differentiable Simulation](https://arxiv.org/abs/2610.38967)**<br><sub>Simulation & evaluation · arXiv 2610.38967 · 2026‑10‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[Utility-WAM: Correcting Future-Induced Action Changes](https://arxiv.org/abs/2610.39367)**<br><sub>Simulation & evaluation · arXiv 2610.39367 · 2026‑10‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function](https://arxiv.org/abs/2610.40002)**<br><sub>Training & self-improvement · arXiv 2610.40002 · 2026‑10‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用](https://www.qbitai.com/2026/10/506866.html)**<br>`99%`<br><sub>Foundation models · 量子位 QbitAI · 2026‑10‑31</sub> |
-| 06<br>🟡&nbsp;`M` | **[智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断](https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html)**<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑10‑31</sub> |
-| 07<br>🟡&nbsp;`M` | **[伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 \| 物理AI 50人](https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU](https://arxiv.org/abs/2610.39327)**<br><sub>Simulation & evaluation · arXiv 2610.39327 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design](https://arxiv.org/abs/2610.40430)**<br>`85.55%`<br><sub>Simulation & evaluation · arXiv 2610.40430 · 2026‑10‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks](https://arxiv.org/abs/2610.40016)**<br><sub>Foundation models · arXiv 2610.40016 · 2026‑10‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning](https://arxiv.org/abs/2610.39319)**<br>`12.94%`&nbsp; `15.46%`&nbsp; `32.3%`<br><sub>Systems & orchestration · arXiv 2610.39319 · 2026‑10‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[三年前布局，今年爆火丨西湖大学成立新中心](https://www.qbitai.com/2026/11/507076.html)**<br><sub>Foundation models · 量子位 QbitAI · 2026‑11‑01</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–05</summary>
 
-1. **TouchBridge** — `AI draft` For dexterous-manipulation teams setting a collection budget, the authors report human demonstrations collected 7.0x faster at 72.5% average success against a 77.5% comparison whose setup the page cuts off, so check that comparison before shifting data sources.
-2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — `AI draft` Quadrotor teams weighing event cameras against frame cameras for fast flight get a preprint that targets motion blur, dynamic range and latency and flags closed-loop and real-robot experiments, but the page shows no figures, so it is a lead, not a basis for a sensor choice.
-3. **Utility-WAM** — `AI draft` Before conditioning a policy on generated visual futures, read this preprint's argument that the extra context has a cost and does not always help; the page flags real-robot experiments and open code or weights but no figures, so test the release on your own tasks.
-4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — `AI draft` Teams deploying reasoning VLAs should stop treating a plausible-looking trace as evidence the action is right, which is the failure this preprint targets; the page shows a closed-loop signal but no real-robot results or figures, so use it to shape evaluations first.
-5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — `AI draft` Anyone sizing an NPU should note the 99% usable-compute claim only as secondary press: the excerpt names neither the chip nor the workload it was measured on, so go to a primary source before it enters a hardware decision.
-6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — `AI draft` If you allocate people or products between autonomous driving and robotics, this secondary report shows a driving conference widening its agenda to physical AI, but it carries guest opinions without figures, so read it as industry positioning rather than technical evidence.
-7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — `AI draft` Buyers and planners of dexterous hands should not read shipment counts as deployment: a founder's own observation, relayed secondhand, is that most shipped hands sit idle after humanoid demos, which is a caution for demand estimates rather than a measured finding.
-8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — `AI draft` Teams adding touch to a robot can shortlist this open-source piezoresistive sensor, reported to combine flexibility, low cost and consistency, but the secondary report gives no figures, so verify cost and consistency in the paper or release before committing.
+1. **SONIC-K1** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **LOGIV** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **ProLoop** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+5. **三年前布局，今年爆火丨西湖大学成立新中心** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-01.en.md)** · [Weekly roundup ›](radar/weekly/2026-W44.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-02.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

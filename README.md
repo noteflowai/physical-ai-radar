@@ -62,37 +62,31 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-01
+### 今日雷达 · 2026-11-02
 
-`生成时间: 2026-10-31 23:40 UTC` ｜ `统计窗口: 论文 2026-10-28 → 2026-11-01 · 博客与报道 2026-10-02 → 2026-11-01 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-01 23:40 UTC` ｜ `统计窗口: 论文 2026-10-29 → 2026-11-02 · 博客与报道 2026-10-03 → 2026-11-02 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation](https://arxiv.org/abs/2610.40349)**<br>`72.5%`&nbsp; `77.5%`&nbsp; `7.0x`<br><sub>数据引擎 · arXiv 2610.40349 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning Event-based Obstacle Avoidance via Differentiable Simulation](https://arxiv.org/abs/2610.38967)**<br><sub>仿真与评测 · arXiv 2610.38967 · 2026‑10‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[Utility-WAM: Correcting Future-Induced Action Changes](https://arxiv.org/abs/2610.39367)**<br><sub>仿真与评测 · arXiv 2610.39367 · 2026‑10‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function](https://arxiv.org/abs/2610.40002)**<br><sub>训练与自我改进 · arXiv 2610.40002 · 2026‑10‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用](https://www.qbitai.com/2026/10/506866.html)**<br>`99%`<br><sub>基座模型 · 量子位 QbitAI · 2026‑10‑31</sub> |
-| 06<br>🟡&nbsp;`M` | **[智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断](https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html)**<br><sub>边缘与实时性 · 雷峰网 Leiphone · 2026‑10‑31</sub> |
-| 07<br>🟡&nbsp;`M` | **[伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 \| 物理AI 50人](https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU](https://arxiv.org/abs/2610.39327)**<br><sub>仿真与评测 · arXiv 2610.39327 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design](https://arxiv.org/abs/2610.40430)**<br>`85.55%`<br><sub>仿真与评测 · arXiv 2610.40430 · 2026‑10‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks](https://arxiv.org/abs/2610.40016)**<br><sub>基座模型 · arXiv 2610.40016 · 2026‑10‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning](https://arxiv.org/abs/2610.39319)**<br>`12.94%`&nbsp; `15.46%`&nbsp; `32.3%`<br><sub>系统与编排 · arXiv 2610.39319 · 2026‑10‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[三年前布局，今年爆火丨西湖大学成立新中心](https://www.qbitai.com/2026/11/507076.html)**<br><sub>基座模型 · 量子位 QbitAI · 2026‑11‑01</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–05</summary>
 
-1. **TouchBridge** — `AI 起草` 做灵巧操作的团队在规划采集预算时可参考：作者自报人类示范采集快 7.0x，平均成功率 72.5%，对照组为 77.5%，但页面截断了对照条件，换数据源前先看清比的是什么。
-2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — `AI 起草` 为高速四旋翼避障考虑用事件相机替代帧相机的团队可以留意：这份预印本针对运动模糊、动态范围和延迟问题，页面标出闭环与真机实验，但没有任何数字，目前只够作为选型线索。
-3. **Utility-WAM** — `AI 起草` 准备让策略以生成的视觉未来为条件的团队应先读这篇：作者认为这部分额外上下文既有成本、也不总是有益；页面标出真机实验和开放代码或权重，但没有数字，可先拿代码在自己的任务上验证。
-4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — `AI 起草` 部署推理型 VLA 的团队不应把看起来合理的推理轨迹当作动作正确的依据，这份预印本正是针对这一点；但页面只标出闭环结果，没有真机结果和数字，更适合用来设计评测，而非直接改策略。
-5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — `AI 起草` 评估端侧 NPU 的团队可以把“99% 算力可用”记下来，但这是二手报道，摘录既没说明是哪款芯片，也没说明在什么负载下测得，选型前须回到一手资料核对。
-6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — `AI 起草` 在自动驾驶与机器人之间配置人才或业务的团队可以留意：智能驾驶大会的讨论范围已从智能驾驶延伸到物理AI；但这是二手报道的嘉宾观点，没有数字，只能当作行业动向参考，不能当作技术证据。
-7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — `AI 起草` 采购或规划灵巧手的团队别把出货量直接等同于真实使用：伯牙智能创始人观察到大部分灵巧手随人形机器人表演后便闲置，这是二手转述的个人判断，可作为评估需求时的提醒。
-8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — `AI 起草` 想给机器人加触觉的团队可以把这款开源压阻式传感器列入候选，报道称其兼顾柔性、低成本与一致性；但这是二手报道且没有数字，成本和一致性数据需到原论文或开源发布中核实。
+1. **SONIC-K1** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **LOGIV** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **ProLoop** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+5. **三年前布局，今年爆火丨西湖大学成立新中心** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-01.zh.md)** · [每周汇总 ›](radar/weekly/2026-W44.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-02.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

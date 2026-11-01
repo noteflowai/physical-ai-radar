@@ -60,37 +60,31 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-01
+### 本日のレーダー · 2026-11-02
 
-`生成時刻: 2026-10-31 23:40 UTC` ｜ `対象期間: 論文 2026-10-28 → 2026-11-01 · ブログ・報道 2026-10-02 → 2026-11-01 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-01 23:40 UTC` ｜ `対象期間: 論文 2026-10-29 → 2026-11-02 · ブログ・報道 2026-10-03 → 2026-11-02 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation](https://arxiv.org/abs/2610.40349)**<br>`72.5%`&nbsp; `77.5%`&nbsp; `7.0x`<br><sub>データエンジン · arXiv 2610.40349 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning Event-based Obstacle Avoidance via Differentiable Simulation](https://arxiv.org/abs/2610.38967)**<br><sub>シミュレーションと評価 · arXiv 2610.38967 · 2026‑10‑28</sub> |
-| 03<br>🔵&nbsp;`R` | **[Utility-WAM: Correcting Future-Induced Action Changes](https://arxiv.org/abs/2610.39367)**<br><sub>シミュレーションと評価 · arXiv 2610.39367 · 2026‑10‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function](https://arxiv.org/abs/2610.40002)**<br><sub>学習と自己改善 · arXiv 2610.40002 · 2026‑10‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用](https://www.qbitai.com/2026/10/506866.html)**<br>`99%`<br><sub>基盤モデル · 量子位 QbitAI · 2026‑10‑31</sub> |
-| 06<br>🟡&nbsp;`M` | **[智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断](https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html)**<br><sub>エッジとリアルタイム · 雷峰网 Leiphone · 2026‑10‑31</sub> |
-| 07<br>🟡&nbsp;`M` | **[伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 \| 物理AI 50人](https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑30</sub> |
-| 08<br>🟡&nbsp;`M` | **[让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 \| IROS 2026](https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑10‑30</sub> |
+| 01<br>🔵&nbsp;`R` | **[SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU](https://arxiv.org/abs/2610.39327)**<br><sub>シミュレーションと評価 · arXiv 2610.39327 · 2026‑10‑29</sub> |
+| 02<br>🔵&nbsp;`R` | **[Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design](https://arxiv.org/abs/2610.40430)**<br>`85.55%`<br><sub>シミュレーションと評価 · arXiv 2610.40430 · 2026‑10‑29</sub> |
+| 03<br>🔵&nbsp;`R` | **[LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks](https://arxiv.org/abs/2610.40016)**<br><sub>基盤モデル · arXiv 2610.40016 · 2026‑10‑29</sub> |
+| 04<br>🔵&nbsp;`R` | **[ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning](https://arxiv.org/abs/2610.39319)**<br>`12.94%`&nbsp; `15.46%`&nbsp; `32.3%`<br><sub>システムとオーケストレーション · arXiv 2610.39319 · 2026‑10‑29</sub> |
+| 05<br>🟡&nbsp;`M` | **[三年前布局，今年爆火丨西湖大学成立新中心](https://www.qbitai.com/2026/11/507076.html)**<br><sub>基盤モデル · 量子位 QbitAI · 2026‑11‑01</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–05</summary>
 
-1. **TouchBridge** — `AI 下書き` 巧緻マニピュレーションのデータ収集予算を組むチームには、人間デモの収集が7.0x速く平均成功率72.5%という著者報告が材料になる。比較側の77.5%は条件がページ上で切れており、データ源を切り替える前に何との比較かを確認したい。
-2. **Learning Event-based Obstacle Avoidance via Differentiable Simulation** — `AI 下書き` 高速飛行するクアッドロータでフレームカメラからイベントカメラへの移行を検討するなら手掛かりになる。モーションブラー、ダイナミックレンジ、遅延を課題に据え、閉ループと実機の実験が示されているが、ページに数値はなく、センサ選定の根拠にはまだ足りない。
-3. **Utility-WAM** — `AI 下書き` 生成した視覚的な未来で方策を条件づけるなら、その追加文脈はコストがかかり常に有益とは限らないというこのプレプリントの主張を先に読みたい。実機実験とコードまたは重みの公開は示されているが数値はなく、自分のタスクで検証してから判断を。
-4. **How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measure…** — `AI 下書き` 推論型VLAを運用するチームは、もっともらしい推論トレースを行動が正しい根拠とみなすべきではなく、このプレプリントはまさにその失敗を扱う。閉ループの結果は示されるが実機結果も数値もページになく、まず評価設計の参考として使うのが妥当。
-5. **世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用** — `AI 下書き` NPUの選定を進めるなら「99%の演算資源が使える」という主張は二次報道として控えておく程度に。抜粋にはどのチップか、どの負荷で測ったかの記載がなく、ハードウェア判断に使う前に一次情報を確認したい。
-6. **智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断** — `AI 下書き` 自動運転とロボティクスの間で人員や事業を配分する立場なら、自動運転の会議が議論の範囲をフィジカルAIへ広げたという二次報道は業界の位置取りを知る材料になる。ただし登壇者の見解で数値はなく、技術的根拠にはならない。
-7. **伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人** — `AI 下書き` 巧緻ハンドを調達・計画する立場では、出荷数をそのまま実運用と読まないほうがよい。多くがヒューマノイドの実演後に放置されているという創業者本人の観察を二次報道が伝えたもので、測定結果ではなく需要見積もりへの注意喚起として扱いたい。
-8. **让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026** — `AI 下書き` ロボットに触覚を加えたいチームには、柔軟性・低コスト・一貫性を両立するとされるオープンソースの圧抵抗式センサが候補になる。ただし二次報道で数値はなく、コストと一貫性は論文か公開物で確かめてから採用を決めたい。
+1. **SONIC-K1** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **LOGIV** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **ProLoop** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **三年前布局，今年爆火丨西湖大学成立新中心** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-01.ja.md)** · [週間まとめ ›](radar/weekly/2026-W44.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-02.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
