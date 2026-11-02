@@ -95,7 +95,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.39327" rel="noopener" target="_blank">SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Booster K1 を使うチームは、全身トラッカーを自前で学習する前に SONIC から移植されたこの公開重みを試す価値がある。ただし著者自己報告のプレプリントで、ページには追従精度や実機の数値がなく、導入前に自機での検証が要る。</p>
 <p class="excerpt">We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.</p>
 <ul class="signals"><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40430" rel="noopener" target="_blank">Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design</a></h3>
 <p class="figure"><strong>85.55%</strong><span class="context">“official Overall score of 85.55%”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 精密マニピュレーション方策を調整するチームには、デモ拡張と実行側の設計で公式 Overall スコア 85.55% という著者報告が参考になる。ただしページにはベンチマーク名も実機結果もなく、配備時の見込みではなく順位表の数字として扱うべきだ。</p>
 <p class="excerpt">Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -126,7 +126,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40016" rel="noopener" target="_blank">LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 長期タスクの実行系を作るなら、後続ステップに必要な物理条件が保たれているかを実行中に確かめ、崩れたら局所的に修復するという考え方は検討に値する。ページに数値も実機結果もなく、現時点では設計上のヒントにとどまる。</p>
 <p class="excerpt">Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -142,7 +142,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.39319" rel="noopener" target="_blank">ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning</a></h3>
 <p class="figure"><strong>12.94%</strong><span class="context">“improves success rate by 12.94% overall and by”</span></p><p class="chips"><span class="chip">15.46%</span><span class="chip">32.3%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> LLM プランナーがサブゴールの進捗を対話履歴から暗黙に推定している場合、構造化された状態関係で明示的に追う方式を検討したい。著者報告では成功率が全体で 12.94%、Hard タスクで 15.46% 向上し、環境とのやり取りは 32.3% 減ったが、比較対象はページに示されていない。</p>
 <p class="excerpt">Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -157,7 +157,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/507076.html" rel="noopener" target="_blank">三年前布局，今年爆火丨西湖大学成立新中心</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 西湖大学が世界モデル研究センターを設立したという二次報道で、ページにはモデルやデータ、成果はまだ見えない。世界モデルを追うチームにとっては名前を押さえておく段階で、技術選定を左右する材料ではない。</p>
 <p class="excerpt">西湖世界模型研究中心成立</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-01</span>
