@@ -9,8 +9,9 @@ Design rules:
 One bounded exception, `page_watch` (`fetch_page_watch`): an official, first-party
 source that publishes no feed at all (Figure, 1X, Physical Intelligence, Unitree, and
 the pages in `standards_watch`) may be read as a page, and only through a self-hosted
-Firecrawl listening on a loopback address (127.0.0.1, localhost or ::1). This module
-never requests those pages itself, never follows a redirect off the loopback service,
+Firecrawl listening on a loopback address (127.0.0.1, localhost or ::1), or, for an
+entry that says `"fetcher": "static"`, through `pairadar.static_fetch` (see there and
+docs/METHODOLOGY.md). The Firecrawl path never requests those pages itself, never follows a redirect off the loopback service,
 ignores proxy settings for it, and refuses any other endpoint. Media and research
 sources, arXiv and every feed above are unchanged: if a source has a feed, the feed is
 what is read. robots.txt is honoured for every watched page. What a page says is
@@ -39,6 +40,7 @@ from email.utils import parsedate_to_datetime
 from typing import Any, Iterable
 
 from .config import Config, Item
+from . import static_extract, static_fetch
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -575,6 +577,16 @@ _STAMP_LINE = re.compile(
 # else that uses the same Firecrawl.
 CHANGE_TAG = "physical-ai-radar"
 PAGE_MODES = ("listing", "page")
+# Per source: "firecrawl" (the default, through the loopback service) or "static" (pairadar.static_fetch). An
+# entry that names anything else is invalid and left out; it never falls back to the other fetcher.
+PAGE_FETCHERS = ("firecrawl", "static")
+# What fetch_page_watch builds when a run has a static source; tests replace it with a fetcher that has fakes.
+STATIC_FETCHER_FACTORY = static_fetch.StaticFetcher
+# The extractor identity a static source's baseline carries. A baseline made by another extractor is re-seeded
+# on the first successful read (see _watch_one), never silently compared across extractors.
+STATIC_EXTRACTOR = "static-1"
+# Static robots.txt: only these agent tokens are matched.
+STATIC_ROBOTS_AGENTS = (ROBOTS_TOKEN,)
 # Firecrawl's own robots check is a per-team flag, not a request option, so the radar
 # checks robots.txt itself; these are the agents the request goes out as.
 ROBOTS_AGENTS = ("physical-ai-radar", "FirecrawlAgent")
@@ -706,6 +718,8 @@ def page_watch_problems(sources: dict[str, Any]) -> list[str]:
         mode = entry.get("mode", "listing")
         if mode not in PAGE_MODES:
             problems.append(f"{where}: mode must be one of {', '.join(PAGE_MODES)}")
+        if entry.get("fetcher", "firecrawl") not in PAGE_FETCHERS:
+            problems.append(f"{where}: fetcher must be one of {', '.join(PAGE_FETCHERS)}")
         if "url" in entry and "standards_watch" in entry:
             problems.append(f"{where}: give url or standards_watch, not both")
         if "standards_watch" in entry:
@@ -992,18 +1006,40 @@ class PageWatchResult:
     unavailable: bool = False
     enabled: bool = False
     state: dict[str, Any] = field(default_factory=dict)
+    # Per source, only when a run has a static source: every planned entry with its fetcher, its outcome
+    # (checked, failed, blocked, robots, not-attempted) and a fixed reason code. Never a URL or server text.
+    planned: list[str] = field(default_factory=list)
+    sources: dict[str, dict[str, str]] = field(default_factory=dict)
+    static_checked: list[str] = field(default_factory=list)
+
+    def note(self, source: str, fetcher: str, outcome: str, reason: str = "", detail: str = "") -> None:
+        self.sources[source] = {"fetcher": fetcher, "outcome": outcome, "reason": reason}
+        if detail:
+            self.sources[source]["detail"] = detail
 
     def summary(self) -> dict[str, Any]:
         """The explicit page_watch block of FetchReport.to_dict(); the evidence reads only this."""
-        return {"enabled": self.enabled, "attempted": list(self.attempted), "checked": list(self.checked),
-                "failed": list(self.failed), "robots_skipped": list(self.robots_skipped),
-                "unavailable": self.unavailable, "items": len(self.items)}
+        block = {"enabled": self.enabled, "attempted": list(self.attempted), "checked": list(self.checked),
+                 "failed": list(self.failed), "robots_skipped": list(self.robots_skipped),
+                 "unavailable": self.unavailable, "items": len(self.items)}
+        if self.planned:
+            block.update({"planned": list(self.planned), "sources": {k: dict(v) for k, v in self.sources.items()},
+                          "static_checked": list(self.static_checked)})
+        return block
 
 
 def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str, Any],
                settings: dict[str, Any], reference: date,
-               max_age: int = 30) -> tuple[list[Item], dict[str, Any] | None, bool]:
-    """Items, new state (None = keep the old one) and whether the page was read."""
+               max_age: int = 30, extractor: str | None = None) -> tuple[list[Item], dict[str, Any] | None, bool]:
+    """Items, new state (None = keep the old one) and whether the page was read.
+
+    `extractor` names the extractor a static read used (None: Firecrawl). A baseline made by a different one is not
+    compared with the new text: the first successful read re-seeds it. Re-seeding keeps every link already known,
+    treats links first seen now as old unless they state their own date, and records where the old baseline came from
+    (`migrated_from`: extractor, old digest, day). A failed read never reaches here with content, so it never changes
+    a baseline. What a re-seed cannot do: report a real change that happened between the last old read and the first
+    new one.
+    """
     data = reply.get("data") if reply.get("success") else None
     if not isinstance(data, dict):
         print(f"[fetch] page_watch skip {entry['id']}: {_short(reply.get('error'))}")
@@ -1023,8 +1059,18 @@ def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str,
         # Firecrawl kept the previous version and sent nothing to read: no item.
         return [], None, True
     today = reference.isoformat()
-    seeded = "digest" in previous
-    since = str(previous.get("since") or today) if seeded else today
+    had_baseline = "digest" in previous
+    # A baseline made by another extractor is re-seeded, not compared: a Firecrawl baseline read statically, or a static
+    # one read again through Firecrawl after a rollback. A baseline with no extractor key is a Firecrawl baseline.
+    was = str(previous.get("extractor", "firecrawl"))
+    reseed = had_baseline and was != (extractor or "firecrawl")
+    seeded = had_baseline and not reseed
+    since = str(previous.get("since") or today) if had_baseline else today
+    tags: dict[str, Any] = {"extractor": extractor} if extractor else {}
+    if reseed:
+        tags["migrated_from"] = {"extractor": was, "digest": str(previous.get("digest")), "on": today}
+    elif isinstance(previous.get("migrated_from"), dict):
+        tags["migrated_from"] = previous["migrated_from"]
     items: list[Item] = []
 
     def item(item_id: str, title: str, url: str, published: str, summary: str) -> Item:
@@ -1068,16 +1114,16 @@ def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str,
         merged = current + [record for url, record in known.items() if url not in on_page]
         state = {"digest": digest, "since": since,
                  "changed": today if previous.get("digest") != digest else str(previous.get("changed") or today),
-                 "links": merged[:MAX_STATE_LINKS]}
+                 "links": merged[:MAX_STATE_LINKS], **tags}
         return items, (None if state == previous else state), True
     lines = _page_lines(markdown)
     digests = list(dict.fromkeys(_line_digest(line) for line in lines))
     digest = hashlib.sha256("\n".join(digests).encode("utf-8")).hexdigest()
-    if previous.get("digest") == digest:
+    if previous.get("digest") == digest and not reseed:
         return [], None, True
     known_lines = set(previous.get("lines", []))
     added = [line for line in lines if _line_digest(line) not in known_lines]
-    state = {"digest": digest, "since": since, "changed": today, "lines": digests[:MAX_STATE_LINES]}
+    state = {"digest": digest, "since": since, "changed": today, "lines": digests[:MAX_STATE_LINES], **tags}
     published_meta = parse_date(meta.get("publishedTime") or meta.get("modifiedTime")
                                 or meta.get("dcDate") or "")
     if published_meta and date.fromisoformat(published_meta) > reference:
@@ -1091,6 +1137,95 @@ def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str,
                           entry["url"], today if seeded else published_meta,
                           _cut(excerpt, MAX_SUMMARY_CHARS)))
     return items, state, True
+
+
+def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[str, Any],
+                   budget: static_fetch.Budget) -> tuple[str, str]:
+    """("allowed" | "disallowed" | "unreadable", reason) for a static source, read through the same fetcher.
+
+    Only a 200 text/plain robots.txt is read as rules. A 404 or 410 means there is none and allows everything.
+    Anything else -- 401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a truncated or oversized file, a
+    refused address, a timeout -- is "unreadable", and an unreadable robots.txt allows nothing this run. A result
+    that is a fact about the origin is cached per run; one that is only this source running out of budget is not.
+    """
+    origin = static_fetch.parse_url(url).origin
+    cached = cache.get(origin)
+    if cached is None:
+        parser = urllib.robotparser.RobotFileParser()
+        try:
+            page = fetcher.get(origin + "/robots.txt", budget, kinds=static_fetch.TEXT_TYPES,
+                               max_bytes=static_fetch.MAX_ROBOTS_BYTES, accept="text/plain")
+        except static_fetch.StaticFetchError as exc:
+            if exc.reason in ("http-404", "http-410"):
+                parser.parse([])
+                cached = ("rules", parser)
+            elif exc.reason in ("budget", "request-limit", "timeout"):
+                return "unreadable", exc.reason
+            else:
+                cached = ("unreadable", exc.reason)
+        else:
+            parser.parse(static_fetch.decode(page)[:MAX_ROBOTS_CHARS].splitlines())
+            cached = ("rules", parser)
+        cache[origin] = cached
+    if cached[0] == "unreadable":
+        return "unreadable", cached[1]
+    allowed = all(cached[1].can_fetch(agent, url) for agent in STATIC_ROBOTS_AGENTS)
+    return ("allowed", "") if allowed else ("disallowed", "robots-disallowed")
+
+
+def _watch_static(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, robots: dict[str, Any],
+                  previous: dict[str, Any], settings: dict[str, Any], reference: date, max_age: int,
+                  limit: float, result: PageWatchResult) -> None:
+    """One static source: robots.txt, the page, the content checks, then the usual comparison with the baseline.
+
+    Anything that is not a complete, accepted 200 with readable content leaves the baseline untouched and records one
+    fixed reason code (never a URL, a status text or a server message). `limit` is the run's monotonic deadline.
+    """
+    source = entry["id"]
+    budget = fetcher.budget(static_fetch.SOURCE_SECONDS, limit=limit)
+    result.attempted.append(source)
+
+    def refuse(outcome: str, reason: str, bucket: list[str], detail: str = "") -> None:
+        bucket.append(source)
+        result.note(source, "static", outcome, reason, detail)
+        print(f"[fetch] page_watch skip {source}: {reason}" + (f" ({detail})" if detail else ""))
+
+    try:
+        verdict, why = _static_robots(fetcher, entry["url"], robots, budget)
+        if verdict == "disallowed":
+            refuse("robots", why, result.robots_skipped)
+            return
+        if verdict == "unreadable":
+            # `why` is the fixed code of the fetch that failed (http-403, dns-failed, ...); a source that only ran out of
+            # its own allowance reports that instead
+            if why in ("budget", "request-limit", "timeout"):
+                refuse("unavailable", why, result.failed)
+            else:
+                refuse("unavailable", "robots-unreadable", result.failed, why)
+            return
+        page = fetcher.get(entry["url"], budget)
+    except static_fetch.StaticFetchError as exc:
+        refuse("blocked" if exc.blocked else "unavailable", exc.reason, result.failed)
+        return
+    mode = entry.get("mode", "listing")
+    raw_html = static_fetch.decode(page)
+    markdown, title = static_extract.html_to_markdown(raw_html, mode)
+    problem = static_extract.page_problem(raw_html, markdown, title, mode)
+    if not problem and mode == "listing" and not listing_links(
+            markdown, entry["url"], entry.get("hosts", []), entry.get("link_prefix", "/"), reference):
+        problem = "no-links"
+    if problem:
+        refuse("unavailable", problem, result.failed)
+        return
+    reply = {"success": True, "data": {"markdown": markdown, "metadata": {"statusCode": 200, "title": title}}}
+    items, new_state, _answered = _watch_one(entry, reply, previous, settings, reference, max_age,
+                                             extractor=STATIC_EXTRACTOR)       # a 200 with content is always "read"
+    result.checked.append(source)
+    result.static_checked.append(source)
+    result.note(source, "static", "checked")
+    if new_state is not None:
+        result.state["sources"][source] = new_state
+    result.items.extend(items)
 
 
 def fetch_page_watch(config: Config, reference: date | None = None,
@@ -1132,27 +1267,48 @@ def fetch_page_watch(config: Config, reference: date | None = None,
         max_age = int(config.sources.get("filters", {}).get("max_age_days", 30))
     except (TypeError, ValueError):
         max_age = 30
+    static_run = any(entry.get("fetcher") == "static" for entry in entries)
+    firecrawl_down = False
     if loopback_endpoint(settings["endpoint"]) is None:
+        # An endpoint that is not loopback stops every Firecrawl source. Static sources do not use it and go on.
         print("[fetch] page_watch: refusing a Firecrawl endpoint that is not on a loopback "
               "address (127.0.0.1, localhost, ::1); channel skipped")
         result.unavailable = True
-        return result
+        firecrawl_down = True
+        if not static_run:
+            return result
     if len(entries) > settings["max_entries"]:
         print(f"[fetch] page_watch: watching the first {settings['max_entries']} of {len(entries)} entries")
         entries = entries[:settings["max_entries"]]
+    if static_run:
+        result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
     robots: dict[str, Any] = {}
+    static_robots: dict[str, Any] = {}
+    fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
-    for entry in entries:
+    for index, entry in enumerate(entries):
         if time.monotonic() >= deadline:
             print(f"[fetch] page_watch: time budget of {settings['budget']:.0f}s spent; "
                   f"{entry['id']} and later entries wait for the next run")
+            for rest in entries[index:]:
+                result.note(rest["id"], rest.get("fetcher", "firecrawl"), "not-attempted", "budget")
             break
+        if entry.get("fetcher") == "static":
+            if fetcher is None:
+                fetcher = STATIC_FETCHER_FACTORY()
+            _watch_static(entry, fetcher, static_robots, known.get(entry["id"], {}), settings, reference,
+                          max_age, deadline, result)
+            continue
+        if firecrawl_down:
+            result.note(entry["id"], "firecrawl", "not-attempted", "firecrawl-unavailable")
+            continue
         try:
             if not _robots_allows(settings, entry["url"], robots, strikes):
                 print(f"[fetch] page_watch skip {entry['id']}: robots.txt disallows {entry['url']}")
                 result.attempted.append(entry["id"])
                 result.robots_skipped.append(entry["id"])
+                result.note(entry["id"], "firecrawl", "robots", "robots-disallowed")
                 continue
             reply = firecrawl_post(settings["endpoint"], "/v2/scrape", {
                 "url": entry["url"],
@@ -1172,11 +1328,14 @@ def fetch_page_watch(config: Config, reference: date | None = None,
         except FirecrawlUnavailable as exc:
             print(f"[fetch] page_watch: local Firecrawl unavailable ({exc}); channel skipped")
             result.unavailable = True
-            break
+            firecrawl_down = True        # later Firecrawl sources are not tried; static sources of the run still go on
+            result.note(entry["id"], "firecrawl", "not-attempted", "firecrawl-unavailable")
+            continue
         result.attempted.append(entry["id"])
         items, new_state, answered = _watch_one(entry, reply, known.get(entry["id"], {}),
                                                 settings, reference, max_age)
         (result.checked if answered else result.failed).append(entry["id"])
+        result.note(entry["id"], "firecrawl", "checked" if answered else "unavailable", "" if answered else "page-failed")
         if new_state is not None:
             result.state["sources"][entry["id"]] = new_state
         result.items.extend(items)

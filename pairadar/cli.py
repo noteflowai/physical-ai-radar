@@ -385,7 +385,8 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
     block = page_watch if isinstance(page_watch, dict) else {}
     if error:
         return "error"
-    if block.get("unavailable"):
+    # The Firecrawl channel being down is only the whole story when no static source was read in the same run.
+    if block.get("unavailable") and not block.get("static_checked"):
         return "firecrawl-unavailable"
     if not block.get("enabled") or not block.get("attempted"):
         return "skipped"
@@ -418,6 +419,24 @@ def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
                   "sources_checked": len(block.get("checked") or []),
                   "sources_failed": sorted(block.get("failed") or []),
                   "sources_robots_skipped": sorted(block.get("robots_skipped") or [])}
+        # Per source, only in a run that had a static source: what each planned source did and why, as fixed codes.
+        # A global "ok" is a floor (one page read); this shows how many of the planned sources that was.
+        planned = block.get("planned")
+        if isinstance(planned, list) and planned:
+            sources = block.get("sources") if isinstance(block.get("sources"), dict) else {}
+            per_source = {}
+            for source in planned:
+                note = sources.get(source) if isinstance(sources.get(source), dict) else {}
+                per_source[str(source)] = {key: str(note.get(key, "")) for key in ("fetcher", "outcome", "reason")}
+                if note.get("detail"):
+                    per_source[str(source)]["detail"] = str(note["detail"])
+                if not per_source[str(source)]["outcome"]:
+                    per_source[str(source)].update(outcome="not-attempted", reason="not-reached")
+            record["sources_planned"] = len(planned)
+            record["sources"] = per_source
+            for outcome in ("blocked", "unavailable", "not-attempted"):
+                record[f"sources_{outcome.replace('-', '_')}"] = sorted(
+                    source for source, note in per_source.items() if note["outcome"] == outcome)
         target_dir = directory or page_watch_evidence_dir()
         target_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         target = target_dir / f"{day}.json"

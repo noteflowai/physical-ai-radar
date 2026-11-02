@@ -60,6 +60,48 @@ Rules:
     itself raised. Only `ok` counts as success. The record also carries
     `sources_checked`, `sources_failed`, `sources_robots_skipped` and `finished_at`.
     Writing it is observational: a failure there is logged and never fails the run;
+  - **Static sources** (`"fetcher": "static"` on a `page_watch` entry; the default and the only
+    value any shipped entry has is `firecrawl`; an unknown value makes the entry invalid, it never
+    falls back). `pairadar/static_fetch.py` does one `GET` of a public `https://<domain>/…` URL on
+    port 443 and nothing else: URL parsed strictly (no user information, IP literal, odd port,
+    control character or fragment); the name is resolved for IPv4 only and EVERY answer must be a
+    public address (an answer with any other, or IPv6 in any form, is refused whole, before a
+    connection); the connection goes to an approved address and its peer is checked to be that
+    address; TLS uses the original name for SNI and certificate verification; no proxy, cookie,
+    credential, redirect or content-encoding; only a complete `200` of an accepted type
+    (`text/html`/`application/xhtml+xml`, `text/plain` for robots.txt) within 2 MB is content. The
+    whole request (name resolution, connect, handshake, headers, body) runs under one monotonic
+    deadline, 30 s per source and never past the run's `budget_seconds`; a name lookup that does
+    not return is abandoned at the deadline (at most two such lookups may be alive). Per source:
+    at most 4 requests, 2 s between requests to one host. robots.txt is read through the same
+    fetcher: a `200 text/plain` is the rules, `404`/`410` means there are none, and anything else
+    (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a timeout, a refused address)
+    disallows the page for the run.
+  - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
+    bot-management marker on a page with little text), a login or consent page, an empty
+    JavaScript shell, a page-mode source with almost no text and a listing with no link under its
+    `link_prefix` are `unavailable` and leave the baseline unchanged. These checks are heuristics; a
+    disguised `200` they cannot recognise is a residual risk of this fetcher.
+  - Every static source ends a run as `checked`, `unavailable`, `blocked` (our policy refused:
+    address, redirect, content type or encoding, size, allowance), `robots` or `not-attempted`
+    (`budget`, `firecrawl-unavailable`), with one fixed reason code from `static_fetch`, never a URL,
+    status text or server message. The run log carries only the source id and the code. The
+    freshness record gains `sources_planned`, `sources` (per source: fetcher, outcome, reason),
+    `sources_blocked`, `sources_unavailable` and `sources_not_attempted`, and only in a run that has
+    a static source. `status` stays `ok` when one page was read, which is a floor; read
+    `sources_checked` against `sources_planned`. A Firecrawl channel that is down no longer hides
+    static sources read in the same run.
+  - **Baseline migration.** A baseline records the extractor that made it (`"extractor":
+    "static-1"`; a Firecrawl baseline has no key). The first successful read by a different
+    extractor re-seeds the baseline instead of comparing text across extractors: every link already
+    known keeps its first-seen day, a link first seen now counts as old unless it states its own
+    date inside the window, a page re-seeds its line digests and reports nothing, and the old
+    baseline is recorded as `migrated_from` (extractor, old digest, day). A real change made between
+    the last old read and the first new one is not reported. Going back to Firecrawl re-seeds in the
+    same way. A failed read never changes a baseline.
+  - Where the radar runs, `scripts/radar-run` resets the clone to `origin/main`, so a merge is
+    live. This change is inert on merge: no shipped entry has `"fetcher": "static"`. A source is
+    switched by a later change to `data/sources.json` that adds the key to that entry.
 - every request is timeout-bounded and retried once before the source is given up on. A
   4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;
