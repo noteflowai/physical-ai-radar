@@ -602,7 +602,11 @@ class StaticWatchTests(TlsTestCase):
         observations = result.observations + [{"id": "x", "body": "SECRET-BODY", "reason": "y" * 500, "bytes": True}]
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp) / "observe"
-            path = cli.write_page_watch_observation(observations, "2026-10-21", directory)
+            previous_umask = os.umask(0o022)                    # the mode must come from the code, not from the caller's umask
+            try:
+                path = cli.write_page_watch_observation(observations, "2026-10-21", directory)
+            finally:
+                os.umask(previous_umask)
             text = path.read_text(encoding="utf-8")
             self.assertEqual(oct(path.stat().st_mode & 0o777), "0o600")
             self.assertEqual(oct(directory.stat().st_mode & 0o777), "0o700")
