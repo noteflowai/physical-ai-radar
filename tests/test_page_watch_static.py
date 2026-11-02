@@ -286,7 +286,7 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual((result.attempted, result.checked, result.failed), ([], [], []))
                 self.assertEqual(self.server.accepted, 0)
 
-    def test_without_a_fetcher_key_a_source_is_firecrawl_and_the_repository_ships_none_static(self):
+    def test_without_a_fetcher_key_a_source_is_firecrawl(self):
         entry = {k: v for k, v in LISTING.items() if k != "fetcher"}
         self.assertEqual(fetch.page_watch_problems(sources(entry)), [])
         with FakeFirecrawl() as fc:
@@ -296,9 +296,23 @@ class StaticWatchTests(TlsTestCase):
             self.assertEqual(result.checked, ["figure"])
             self.assertTrue(fc.requests)
         self.assertEqual(self.server.accepted, 0)
+
+    # Turning a source static, or the whole channel live, is an approval of its own. Editing this list is how a change to
+    # data/sources.json shows up in review: the test fails until the approved set here is changed on purpose.
+    APPROVED_STATIC = ["physical-intelligence", "unitree"]
+
+    def test_the_repository_ships_exactly_the_approved_static_sources_in_observe_mode(self):
         shipped = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
-        self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], [])
-        self.assertEqual(fetch.page_watch_problems(shipped), [])
+        self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], self.APPROVED_STATIC)
+        self.assertEqual(fetch.page_watch_problems(shipped), [])                     # each carries the sanity settings static needs
+        self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "observe")   # written out, not left to the default
+        config = Config(sources=shipped, taxonomy={}, glossary={}, baseline={})
+        self.assertEqual(fetch.page_watch_settings(config)["static_mode"], "observe")
+        for entry in shipped["page_watch"]:
+            if entry.get("fetcher") == "static":
+                parsed = static_fetch.parse_url(entry["url"])                             # inside the supported-path policy
+                self.assertEqual(parsed.target, "/" + entry["url"].split("/", 3)[3])
+                self.assertTrue(entry["link_prefix"].startswith("/"))
 
     def test_the_run_budget_leaves_later_sources_marked_not_attempted(self):
         self.server.serve("/news", Reply(200, V1))

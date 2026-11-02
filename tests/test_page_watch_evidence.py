@@ -155,7 +155,7 @@ class RealRunEvidenceTests(unittest.TestCase):
                          "a round that read no page writes no baseline")
 
     def test_all_pages_failing_is_all_failed_and_never_struggling(self):
-        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources)]
+        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources) if e.get("fetcher", "firecrawl") == "firecrawl"]
         for day in ("2026-10-19", "2026-10-20", DAY):
             self.assertExit0(self.main("all-failed", day))
         record = self.record()
