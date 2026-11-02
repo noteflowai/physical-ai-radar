@@ -96,10 +96,12 @@ Rules:
     by some stacks) are refused, so decoding once, twice or never reads the same path (`%2570rivate` is
     refused, not read as `private` after two decodings). A `;` in the path is refused too (some servers
     strip path parameters), and so is a path whose decoded form has a `.` or `..` segment or an empty
-    segment anywhere but last. That is a supported-path policy, not a model of any server: whatever a
-    server decodes or resolves, the path robots.txt was judged against is the path it gets, at the
-    price that a source URL cannot contain an escaped space, slash, plus sign or percent sign, or a
-    non-ASCII character.
+    segment anywhere but last. That is a supported-path policy, not a model of any server, and it
+    does not prove that every server maps a path the same way. It covers percent-decoding once, twice
+    or never, dot segments, empty segments and path parameters, so those readings agree with the path
+    robots.txt was judged against. It does not cover, for example, a case-insensitive file system or a
+    trailing dot or space that a server strips. The price is that a source URL cannot contain an
+    escaped space, slash, plus sign or percent sign, or a non-ASCII character.
     A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
     Shift_JIS, EUC, GBK, Big5 and KOI8 families); any other charset is `content-type`.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
