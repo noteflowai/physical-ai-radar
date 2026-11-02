@@ -479,6 +479,27 @@ class StaticWatchTests(TlsTestCase):
         self.assertEqual(result.sources["figure"]["detail"], "robots-unsupported")
         self.assertNotIn("/news", self.server.paths())
 
+    def test_encoded_special_characters_in_a_rule_match_the_literal_ones_end_to_end(self):
+        # 01, R-D-4b12-01: both rules were wrongly allowed; the page must not be requested and the baseline stays
+        disallowed = ("disallowed", "robots-disallowed")
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /foo%2A\n", "/foo*"), disallowed)
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /foo%24\n", "/foo$"), disallowed)
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /private\n", "/private"), disallowed)
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /a%2Ab\n", "/axb"), ("allowed", ""))     # an encoded * is no wildcard
+        base_state = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {"digest": "d", "since": "2026-09-01",
+                                                                                   "changed": "2026-10-01", "links": [],
+                                                                                   "extractor": "static-1"}}}
+        for rule, path in (("/foo%2A", "/foo*"), ("/foo%24", "/foo$"), ("/private", "/private")):
+            with self.subTest(rule):
+                self.server.requests.clear()
+                self.server.serve("/robots.txt", Reply(200, f"User-agent: *\nDisallow: {rule}\n", ctype="text/plain"))
+                self.server.serve(path, Reply(200, V1))
+                entry = dict(LISTING, url=f"https://{HOST}{path}", link_prefix=path + "/")
+                result = self.watch(sources(entry), copy.deepcopy(base_state))
+                self.assertEqual(self.server.paths(), ["/robots.txt"])
+                self.assertEqual((result.robots_skipped, result.checked), (["figure"], []))
+                self.assertEqual(result.state["sources"], base_state["sources"])
+
     def test_robots_is_judged_per_url_and_cached_per_origin(self):
         self.server.serve("/robots.txt", Reply(200, "User-agent: *\nDisallow: /private\n", ctype="text/plain"))
         fetcher = self.fetcher()

@@ -9,7 +9,9 @@ lets `/private` through, and it reads only the first group that names an agent. 
   (`Sitemap`, `Crawl-delay`, ...) are ignored and do not end a group.
 - rules: `Allow` and `Disallow` paths with `*` (any run of characters) and a final `$` (end of the path). An empty
   `Disallow:` or `Allow:` is no rule. The path matched is the request path plus `?query`, after percent-encoding is
-  normalised (unreserved characters decoded, the rest upper-cased, non-ASCII as UTF-8 octets).
+  normalised (unreserved characters decoded, the rest upper-cased, non-ASCII as UTF-8 octets, a stray `%` as `%25`).
+  `*` and a final `$` are syntax only in the rule; an encoded `%2A` or `%24` in a rule is data and equals a literal `*`
+  or `$` in the URL (RFC 9309 Figure 6), and never acts as a wildcard.
 - decision: the matching rule with the most octets wins; on a tie `Allow` wins; no matching rule allows.
 
 What it will not guess: a file that cannot be read completely (invalid UTF-8, more than MAX_RULES rules, a rule longer
@@ -32,15 +34,25 @@ class RobotsUnsupported(Exception):
     """The file cannot be judged completely; nothing may be inferred from it."""
 
 
-def _normalise_once(path: str) -> str:
+def normalise(path: str) -> str:
+    """Percent-encoding in one canonical form: an escape of an unreserved character is decoded, any other escape is
+    upper-cased, non-ASCII characters become UTF-8 octets, and a `%` that does not start a two-digit escape is literal
+    data and becomes `%25`. Nothing else changes, so `*`, `$`, `/` and `?` stay as written.
+
+    Because a stray `%` is escaped at once, decoding a character can never complete an escape that was not one before
+    (`%4%31` is the data `%`, `4`, `1`, not the letter `A`), and `normalise(normalise(x)) == normalise(x)`."""
     out: list[str] = []
     i = 0
     while i < len(path):
         ch = path[i]
-        if ch == "%" and i + 2 < len(path) and path[i + 1] in _HEX and path[i + 2] in _HEX:
-            decoded = chr(int(path[i + 1:i + 3], 16))
-            out.append(decoded if decoded in _UNRESERVED else "%" + path[i + 1:i + 3].upper())
-            i += 3
+        if ch == "%":
+            if i + 2 < len(path) and path[i + 1] in _HEX and path[i + 2] in _HEX:
+                decoded = chr(int(path[i + 1:i + 3], 16))
+                out.append(decoded if decoded in _UNRESERVED else "%" + path[i + 1:i + 3].upper())
+                i += 3
+            else:
+                out.append("%25")
+                i += 1
         elif ord(ch) > 127:
             out.append("".join(f"%{byte:02X}" for byte in ch.encode("utf-8")))
             i += 1
@@ -50,27 +62,33 @@ def _normalise_once(path: str) -> str:
     return "".join(out)
 
 
-def normalise(path: str) -> str:
-    """Percent-encoding in one canonical form: unreserved characters decoded, other escapes upper-cased, non-ASCII
-    characters as UTF-8 octets. `*` and `$` pass through unchanged (an encoded `%2A` stays a literal asterisk).
-
-    Decoding a character can complete an escape that was not one before (`%4%61` becomes `%4a`), so the pass is repeated
-    until nothing changes; every change shortens the text, so this ends, and `normalise(normalise(x)) == normalise(x)`."""
-    previous = None
-    while path != previous:
-        previous, path = path, _normalise_once(path)
-    return path
+_ESCAPE = re.compile(r"%([0-9A-F]{2})")
 
 
-def _match(pattern: str, target: str) -> bool:
-    """Whether `pattern` (with `*` and a final `$`) matches the start of `target`. Leftmost search of each literal
-    part, so the cost is bounded by len(target) * number of parts."""
+def _unit(byte: int) -> str:
+    """One private-use character per escaped octet. Normalised text is pure ASCII, so nothing collides, and a search
+    over the result can never start in the middle of an escape (`A` must not be found inside `%2A`)."""
+    return chr(0xE000 + byte)
+
+
+def _data(text: str) -> str:
+    """A normalised string as DATA for comparison, every escaped octet one character. In a rule, `*` and a final `$`
+    are syntax, and an encoded `%2A` or `%24` is data; in a URL, a literal `*` or `$` is data too (RFC 9309, Figure 6).
+    So in the data form both are the same octet, and a rule split on its syntax characters compares equal to the URL
+    however either side wrote them. Call it on the literal parts of a rule, never on the rule before it is split."""
+    return _ESCAPE.sub(lambda match: _unit(int(match.group(1), 16)), text.replace("*", "%2A").replace("$", "%24"))
+
+
+def _match(pattern: str, data: str) -> bool:
+    """Whether `pattern` (a normalised rule with `*` and a final `$` as syntax) matches the start of `data` (the URL's
+    path in data form). Leftmost search of each literal part, so the cost is bounded by len(data) * number of parts."""
     anchored = pattern.endswith("$")
     if anchored:
         pattern = pattern[:-1]
-    parts = pattern.split("*")
+    parts = [_data(part) for part in pattern.split("*")]
+    target = data
     if len(parts) == 1:
-        return target == pattern if anchored else target.startswith(pattern)
+        return target == parts[0] if anchored else target.startswith(parts[0])
     if not target.startswith(parts[0]):
         return False
     position = len(parts[0])
@@ -93,7 +111,7 @@ class Rules:
 
     def allowed(self, url: str) -> bool:
         parts = urllib.parse.urlsplit(url)
-        target = normalise((parts.path or "/") + (("?" + parts.query) if parts.query else ""))
+        target = _data(normalise((parts.path or "/") + (("?" + parts.query) if parts.query else "")))
         best_length, best_allow = -1, True
         for is_allow, pattern in self.rules:
             if _match(pattern, target):

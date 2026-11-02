@@ -77,6 +77,45 @@ class RuleTests(unittest.TestCase):
         self.assertFalse(allowed("User-agent: *\nDisallow: /a%2Ab\n", "/a%2ab"))
         self.assertFalse(allowed("User-agent: *\nDisallow: /100%\n", "/100%"))                  # a stray percent sign is literal
 
+    def test_encoded_special_characters_are_data_not_syntax(self):
+        """RFC 9309 Figure 6: `%2A` and `%24` in a rule are the characters `*` and `$` in the URL (01's R-D-4b12-01)."""
+        for rule, path, expected in (
+                ("/foo%2A", "/foo*", False), ("/foo%2a", "/foo*", False), ("/foo%24", "/foo$", False),
+                ("/path/file-with-a-%2A.html", "/path/file-with-a-*.html", False), ("/path/foo-%24", "/path/foo-$", False),
+                ("/foo%2A", "/foo%2A", False), ("/foo%24", "/foo%24", False), ("/foo%2A", "/foo%2a", False),
+                ("/foo%2A", "/fooX", True),                          # an encoded asterisk matches an asterisk, not anything
+                ("/foo%2A", "/foo", True), ("/a%2Ab", "/axb", True), ("/a%2Ab", "/a*b", False), ("/a%24b", "/axb", True),
+                ("/a*b", "/axb", False), ("/a*b", "/a%2Ab", False), ("/a*b", "/a*b", False),           # a literal wildcard matches both forms
+                ("/a$b", "/a$b", False), ("/a$b", "/ab", True),                                       # `$` inside a rule is data
+                ("/a%24", "/a", True), ("/foo%24$", "/foo$", False), ("/foo%24$", "/foo$x", True),    # `$` ends the rule; `%24` is data
+                ("/foo*%2A", "/fooabc*", False), ("/foo*%2A", "/fooabc", True)):
+            with self.subTest(rule=rule, path=path):
+                self.assertEqual(allowed(f"User-agent: *\nDisallow: {rule}\n", path), expected)
+        # with Allow, the same equivalence decides the longer rule
+        self.assertTrue(allowed("User-agent: *\nDisallow: /\nAllow: /foo%2A\n", "/foo*"))
+        self.assertFalse(allowed("User-agent: *\nDisallow: /\nAllow: /foo%2A\n", "/foox"))
+
+    def test_a_search_never_starts_in_the_middle_of_an_escape(self):
+        # the letter B is inside the escape %2B, but the URL contains the octet "+", not the letter
+        self.assertTrue(allowed("User-agent: *\nDisallow: /*B\n", "/%2B"))
+        self.assertTrue(allowed("User-agent: *\nDisallow: /*2B\n", "/%2B"))
+        self.assertTrue(allowed("User-agent: *\nDisallow: /x*A\n", "/x%2A"))
+        self.assertFalse(allowed("User-agent: *\nDisallow: /*%2B\n", "/%2B"))
+        self.assertFalse(allowed("User-agent: *\nDisallow: /*B\n", "/%42"))                      # %42 is the letter B
+        self.assertFalse(allowed("User-agent: *\nDisallow: /a*%2B$\n", "/ab%2b"))
+
+    def test_a_stray_percent_sign_is_data_and_never_becomes_an_escape(self):
+        self.assertEqual(rr.normalise("%4%31"), "%2541")                    # the data `%`, `4`, `1`; not the letter A
+        self.assertEqual(rr.normalise(rr.normalise("%4%31")), "%2541")
+        self.assertEqual(rr.normalise("%"), "%25")
+        self.assertEqual(rr.normalise("%zz"), "%25zz")
+        self.assertEqual(rr.normalise("%4"), "%254")
+        self.assertEqual(rr.normalise("%25"), "%25")
+        self.assertFalse(allowed("User-agent: *\nDisallow: /%4%31\n", "/%4%31"))       # the same data on both sides
+        self.assertTrue(allowed("User-agent: *\nDisallow: /%4%31\n", "/A"))             # not a spelling of A
+        self.assertTrue(allowed("User-agent: *\nDisallow: /A\n", "/%4%31"))
+        self.assertFalse(allowed("User-agent: *\nDisallow: /%41\n", "/A"))              # a real escape of a letter is the letter
+
     def test_which_group_applies(self):
         # our token beats `*`
         self.assertTrue(allowed("User-agent: *\nDisallow: /\n\nUser-agent: physical-ai-radar\nAllow: /\n", "/x"))

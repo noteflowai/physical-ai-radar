@@ -126,6 +126,31 @@ class RobotsProperties(unittest.TestCase):
                 self.assertFalse(rr.Rules(rules + [(False, exact)]).allowed("https://good.test" + target))
                 self.assertTrue(rr.Rules(rules + [(True, exact)]).allowed("https://good.test" + target))
 
+    def test_special_characters_and_their_escapes_agree_with_the_restated_rule(self):
+        """One Disallow rule, rule and URL built from tokens that can be spelled as a character or as an escape."""
+        rng = random.Random(SEED + 9)
+        rule_tokens = ["a", "b", "A", "/", "x", "*", "%2A", "%2a", "%24", "%41", "%61", "$"]
+        target_tokens = ["a", "b", "A", "/", "x", "*", "$", "%2A", "%2a", "%24", "%41", "%61"]
+
+        def data(token: str) -> str:
+            return {"%2A": "*", "%2a": "*", "%24": "$", "%41": "A", "%61": "a"}.get(token, token)
+
+        def restated(rule: list[str], target: list[str]) -> bool:
+            """Syntax: a literal `*` is a wildcard, a literal `$` last is the end; everything else, escaped or not, is data."""
+            anchored = bool(rule) and rule[-1] == "$"
+            body = rule[:-1] if anchored else rule
+            regex = "".join(".*" if t == "*" else re.escape(data(t)) for t in body) + (r"\Z" if anchored else "")
+            return re.match(regex, "".join(data(t) for t in target), re.S) is not None
+
+        refused = 0
+        for _ in range(3000):
+            rule = ["/"] + [rng.choice(rule_tokens) for _ in range(rng.randint(0, 6))]
+            target = ["/"] + [rng.choice(target_tokens) for _ in range(rng.randint(0, 6))]
+            got = not rr.Rules([(False, rr.normalise("".join(rule)))]).allowed("https://good.test" + "".join(target))
+            self.assertEqual(got, restated(rule, target), (rule, target))
+            refused += got
+        self.assertGreater(refused, 150)                                                       # both outcomes really occur
+
     def test_percent_encoding_is_one_form(self):
         rng = random.Random(SEED + 4)
         pieces = ["a", "b", "/", "~", "-", "%41", "%61", "%7E", "%2F", "%2A", "%C3%A9", "é", "%", "%4", "%zz", "*", "?q"]
