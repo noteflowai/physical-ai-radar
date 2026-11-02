@@ -233,6 +233,64 @@ def page(lines: list[str], links: int) -> tuple[str, int]:
     return f"<html><head><title>T</title></head><body><main>{body}</main></body></html>", len(markdown)
 
 
+class UrlProperties(unittest.TestCase):
+    """The invariant behind the path checks: a URL parse_url accepts is judged by robots.txt exactly as every server
+    resolution of it would be. The server models are mine and are not claims about any real server."""
+
+    @staticmethod
+    def resolve(path: str) -> str:
+        out: list[str] = []
+        segments = path.split("/")
+        for index, segment in enumerate(segments[1:], start=1):
+            if segment == ".":
+                continue
+            if segment == "..":
+                if out:
+                    out.pop()
+                continue
+            out.append(segment)
+        return "/" + "/".join(out)
+
+    def test_an_accepted_url_means_the_same_to_robots_as_any_server_resolution_of_it(self):
+        import posixpath  # noqa: F401  (documented: resolve() is the same rule as posixpath.normpath minus collapsing a trailing slash)
+        import urllib.parse
+        from pairadar import static_fetch as sf
+        rng = random.Random(SEED + 11)
+        tokens = ["a", "b", "/", "/", ".", "..", "%2F", "%2f", "%2e", "%2E", "%5C", "%5c", "%252F", "%252e", "%25", "%2525", "\\"]
+        rule_sets = [rr.parse("User-agent: *\nAllow: /a\nDisallow: /b\n", TOKEN), rr.parse("User-agent: *\nDisallow: /a/b\n", TOKEN),
+                     rr.parse("User-agent: *\nDisallow: /\nAllow: /a\n", TOKEN), rr.parse("User-agent: *\nAllow: /\nDisallow: /b/a\n", TOKEN)]
+
+        def models(raw: str):
+            once = urllib.parse.unquote(raw)
+            twice = urllib.parse.unquote(once)
+            thrice = urllib.parse.unquote(twice)
+            yield raw
+            for decoded in (once, twice, thrice):
+                yield decoded
+                yield decoded.replace("\\", "/")
+
+        accepted = rejected = 0
+        for _ in range(6000):
+            path = "/" + "".join(rng.choice(tokens) for _ in range(rng.randint(0, 7)))
+            try:
+                sf.parse_url("https://good.test" + path)
+            except sf.StaticFetchError:
+                rejected += 1
+                continue
+            accepted += 1
+            for rules in rule_sets:
+                want = rules.allowed("https://good.test" + path)
+                for model in models(path):
+                    seen = self.resolve(model).replace("%", "%25") if "%" in model and not re.search(r"%[0-9A-Fa-f]{2}", model) else self.resolve(model)
+                    try:
+                        got = rules.allowed("https://good.test" + seen)
+                    except rr.RobotsUnsupported:
+                        continue                                    # a decoded form that is not valid percent-encoding is not comparable
+                    self.assertEqual(got, want, (path, model, seen))
+        self.assertGreater(accepted, 300)
+        self.assertGreater(rejected, 300)
+
+
 class NothingIsCutSilently(unittest.TestCase):
     def test_text_is_whole_or_refused_never_in_between(self):
         rng = random.Random(SEED + 6)

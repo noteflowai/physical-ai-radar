@@ -910,6 +910,24 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "url-invalid"})
                 self.assertEqual(self.server.requests, [])                                  # not even robots.txt was requested
 
+    def test_encoded_separators_hide_nothing_from_robots_end_to_end(self):
+        """01's R-D-b7b7-01: the page must not be requested for any spelling that a server could resolve to /private."""
+        self.server.serve("/robots.txt", Reply(200, "User-agent: *\nAllow: /public\nDisallow: /private\n", ctype="text/plain"))
+        self.server.serve("/public", Reply(200, V1))
+        for path in ("/public%2F..%2Fprivate", "/public%2f..%2fprivate", "/public%2F%2e%2e%2Fprivate", "/public%2F%2E%2E%2Fprivate",
+                     "/public/..%2Fprivate", "/public%2F../private", "/public%5C..%5Cprivate", "/public%5c..%5cprivate",
+                     "/public%252F..%252Fprivate", "/public%252f..%252fprivate", "/public%25252F..%25252Fprivate",
+                     "/%252e%252e/private", "/public/%2e%2e/private", "/public/%2E%2e/private", "/public/./../private"):
+            with self.subTest(path):
+                self.server.requests.clear()
+                result = self.watch(sources(dict(LISTING, url=f"https://{HOST}{path}", link_prefix="/public/")))
+                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "url-invalid"})
+                self.assertEqual(self.server.requests, [])                           # not even robots.txt
+        # an ordinary path on the same rules is judged and fetched as before
+        self.server.requests.clear()
+        result = self.watch(sources(dict(LISTING, url=f"https://{HOST}/public", link_prefix="/public/")))
+        self.assertEqual(self.server.paths(), ["/robots.txt", "/public"])
+
     def test_a_robots_rule_with_an_invalid_percent_sign_means_no_page_request(self):
         for rule in ("/%4%31", "/100%", "/%zz"):
             with self.subTest(rule):

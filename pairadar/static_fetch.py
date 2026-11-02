@@ -48,6 +48,7 @@ MAX_REQUESTS_PER_SOURCE = 4
 MAX_ADDRESSES = 8
 MAX_CONNECT_TRIES = 3
 MAX_STUCK_RESOLVERS = 2
+MAX_DECODE_ROUNDS = 5
 READ_CHUNK = 16_384
 HTML_TYPES = frozenset({"text/html", "application/xhtml+xml"})
 TEXT_TYPES = frozenset({"text/plain"})
@@ -95,8 +96,9 @@ def parse_url(url: object) -> ParsedUrl:
     Refused: anything that is not a short ASCII string without whitespace, control characters or backslashes; user
     information; a fragment; an explicit port other than 443; IP literals in any notation (dotted, decimal, hex, IPv6
     brackets); a host with fewer than two labels or a numeric top-level label; a malformed label; a `%` that does not
-    start a two-digit escape (in the path or the query); a `.` or `..` path segment (also as `%2e`) and an empty segment
-    anywhere but last.
+    start a two-digit escape (in the path or the query); and a path that, decoded until it stops changing (at most
+    MAX_DECODE_ROUNDS rounds), has a backslash, a different number of `/` than as written (an encoded separator at any
+    depth of encoding), a `.` or `..` segment, or an empty segment anywhere but last.
     """
     if not isinstance(url, str) or not url or len(url) > MAX_URL_CHARS or not url.isascii():
         raise StaticFetchError("url-invalid")
@@ -112,11 +114,25 @@ def parse_url(url: object) -> ParsedUrl:
         raise StaticFetchError("url-invalid")
     if re.search(r"%(?![0-9A-Fa-f]{2})", url):
         raise StaticFetchError("url-invalid")        # a % that starts no escape: the URI is invalid, and we do not guess what a server makes of it
-    segments = (parts.path or "/").split("/")[1:]
+    path = parts.path or "/"
+    # The path robots.txt is judged against must be the path any server resolves. A server may percent-decode before it
+    # resolves dot segments, and some decode more than once, so the supported-path policy is: decode the path until it stops
+    # changing (at most MAX_DECODE_ROUNDS), and refuse it when that fully decoded form has a backslash, a different number
+    # of `/` than the path as written (an encoded separator, at any depth of encoding), a `.` or `..` segment, or an empty
+    # segment anywhere but last. We do not assume what a particular server does.
+    decoded = path
+    for _ in range(MAX_DECODE_ROUNDS):
+        following = urllib.parse.unquote(decoded)
+        if following == decoded:
+            break
+        decoded = following
+    else:
+        raise StaticFetchError("url-invalid")        # still changing after that many rounds of decoding
+    if "\\" in decoded or decoded.count("/") != path.count("/"):
+        raise StaticFetchError("url-invalid")
+    segments = decoded.split("/")[1:]
     for index, segment in enumerate(segments):
-        # a dot segment (also spelled %2e) or an empty one in the middle would let the path the server resolves differ from
-        # the path robots.txt is judged against
-        if re.sub(r"%2[eE]", ".", segment) in (".", "..") or (segment == "" and index != len(segments) - 1):
+        if segment in (".", "..") or (segment == "" and index != len(segments) - 1):
             raise StaticFetchError("url-invalid")
     if port not in (None, 443) or (netloc.count(":") and not netloc.endswith(":443")):
         raise StaticFetchError("url-invalid")

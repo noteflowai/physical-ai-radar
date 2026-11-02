@@ -44,11 +44,23 @@ class UrlTests(unittest.TestCase):
                     "https://good.test/%G1", "https://good.test/%1G", "https://good.test/100%",
                     "https://good.test/a/../private", "https://good.test/a/./b", "https://good.test/..", "https://good.test/.",
                     "https://good.test/a/..", "https://good.test/%2e%2e/x", "https://good.test/%2E./x", "https://good.test/.%2e/x",
-                    "https://good.test/a/%2e/b", "https://good.test//private", "https://good.test/a//b", "https://good.test///"):
+                    "https://good.test/a/%2e/b", "https://good.test//private", "https://good.test/a//b", "https://good.test///",
+                    # 01's R-D-b7b7-01: an encoded separator hides a dot segment from the check; no server's behaviour is assumed
+                    "https://good.test/public%2F..%2Fprivate", "https://good.test/public%2f..%2fprivate", "https://good.test/public%2F%2e%2e%2Fprivate",
+                    "https://good.test/public%2f%2E%2E%2fprivate", "https://good.test/public/..%2Fprivate", "https://good.test/public%2F../private",
+                    "https://good.test/public%5C..%5Cprivate", "https://good.test/public%5c..%5cprivate", "https://good.test/public%5C",
+                    "https://good.test/a%2Fb", "https://good.test/a%2fb", "https://good.test/%2F", "https://good.test/a%2F",
+                    "https://good.test/public%252F..%252Fprivate", "https://good.test/public%252f..%252fprivate",
+                    "https://good.test/%252e%252e/x", "https://good.test/%252E%252E/x", "https://good.test/public%255C..%255Cprivate",
+                    "https://good.test/public%25252F..%25252Fprivate", "https://good.test/a%25252Fb", "https://good.test/%25%32%65%25%32%65/x",
+                    "https://good.test/a%252Fb", "https://good.test/" + "%25" * 5 + "2F",
+                    "https://good.test/a\\b"):
             with self.subTest(url):
                 self.assertEqual(reason(lambda: parse_url(url)), "url-invalid")
-        for url, target in (("https://good.test/%25", "/%25"), ("https://good.test/100%25", "/100%25"), ("https://good.test/%41%2f",
-                                                                                                          "/%41%2f"),
+        for url, target in (("https://good.test/%25", "/%25"), ("https://good.test/100%25", "/100%25"), ("https://good.test/%41%2e",
+                                                                                                          "/%41%2e"),
+                            ("https://good.test/caf%C3%A9", "/caf%C3%A9"), ("https://good.test/a%20b", "/a%20b"),
+                            ("https://good.test/a%2Bb", "/a%2Bb"), ("https://good.test/a%2525", "/a%2525"),
                             ("https://good.test/a?q=%7E", "/a?q=%7E"), ("https://good.test/news/", "/news/"),
                             ("https://good.test/a.b/c..d/.hidden", "/a.b/c..d/.hidden"), ("https://good.test/a...b", "/a...b"),
                             ("https://good.test/...", "/..."), ("https://good.test", "/"), ("https://good.test/", "/"),

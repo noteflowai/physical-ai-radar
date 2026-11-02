@@ -90,9 +90,13 @@ Rules:
     not UTF-8 cannot be judged completely and is unreadable, not guessed at. `404`/`410` means there
     are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a
     timeout, a refused address) disallows the page for the run. A source URL with such a `%` (in the
-    path or the query), with a `.` or `..` segment (also as `%2e`) or with an empty segment anywhere
-    but last is `url-invalid`, so the path the server resolves is the path robots.txt was judged
-    against. A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
+    path or the query) is `url-invalid`. So is a path that, decoded until it stops changing (at most
+    5 rounds), has a backslash, a different number of `/` than as written (an encoded separator such
+    as `%2F` or `%5C`, at any depth of encoding, so `%252F` counts), a `.` or `..` segment, or an empty
+    segment anywhere but last. That is a supported-path policy, not a model of any server: whatever
+    a server decodes or resolves, the path robots.txt was judged against is the path it gets, at the
+    price that a path that really contains an encoded slash cannot be a source URL.
+    A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
     Shift_JIS, EUC, GBK, Big5 and KOI8 families); any other charset is `content-type`.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
     bot-management marker on a page with little text), a login or consent page, an empty
