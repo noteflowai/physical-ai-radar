@@ -60,31 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-02
+### Today's radar · 2026-11-03
 
-`Generated: 2026-11-01 23:40 UTC` ｜ `Window: papers 2026-10-29 → 2026-11-02 · posts 2026-10-03 → 2026-11-02 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-02 23:40 UTC` ｜ `Window: papers 2026-10-30 → 2026-11-03 · posts 2026-10-04 → 2026-11-03 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU](https://arxiv.org/abs/2610.39327)**<br><sub>Simulation & evaluation · arXiv 2610.39327 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design](https://arxiv.org/abs/2610.40430)**<br>`85.55%`<br><sub>Simulation & evaluation · arXiv 2610.40430 · 2026‑10‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks](https://arxiv.org/abs/2610.40016)**<br><sub>Foundation models · arXiv 2610.40016 · 2026‑10‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning](https://arxiv.org/abs/2610.39319)**<br>`12.94%`&nbsp; `15.46%`&nbsp; `32.3%`<br><sub>Systems & orchestration · arXiv 2610.39319 · 2026‑10‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[三年前布局，今年爆火丨西湖大学成立新中心](https://www.qbitai.com/2026/11/507076.html)**<br><sub>Foundation models · 量子位 QbitAI · 2026‑11‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks](https://arxiv.org/abs/2610.41857)**<br>`89%`&nbsp; `98%`&nbsp; `75.8%`<br><sub>Simulation & evaluation · arXiv 2610.41857 · 2026‑10‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices](https://arxiv.org/abs/2610.41625)**<br>`32.9 Hz`&nbsp; `50 tasks`&nbsp; `30.35 ms`<br><sub>Edge & real-time · arXiv 2610.41625 · 2026‑10‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space](https://arxiv.org/abs/2610.42021)**<br>`80.5%`<br><sub>Data engine · arXiv 2610.42021 · 2026‑10‑30</sub> |
+| 04<br>🔵&nbsp;`R` | **[Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos](https://arxiv.org/abs/2610.41877)**<br>`10,000 hours`&nbsp; `1%`&nbsp; `100%`<br><sub>Data engine · arXiv 2610.41877 · 2026‑10‑30</sub> |
+| 05<br>🟡&nbsp;`M` | **[破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖](https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html)**<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 06<br>🟡&nbsp;`M` | **[阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业](https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html)**<br><sub>Systems & orchestration · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”](https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资](https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑02</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–05</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **SONIC-K1** — `AI draft` Teams with a Booster K1 can try these open weights adapted from SONIC before training a whole-body tracker themselves, but this self-reported preprint page shows no tracking or real-robot figures, so validate on your own hardware first.
-2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — `AI draft` Teams tuning fine-grained manipulation policies get a self-reported 85.55% official Overall score from data and execution-side changes, but the page names no benchmark and shows no real-robot result, so read it as a leaderboard figure, not a deployment estimate.
-3. **LOGIV** — `AI draft` For long-horizon executors, the idea worth testing is checking during execution that the physical conditions later steps need still hold and repairing locally when they break; the page gives no figures or real-robot results, so treat it as a design lead.
-4. **ProLoop** — `AI draft` Teams whose LLM planners infer subgoal progress from interaction history can weigh tracking it through structured state relations: the authors report success up 12.94% overall and 15.46% on Hard tasks with 32.3% fewer environment interactions, against a baseline the page does not name.
-5. **三年前布局，今年爆火丨西湖大学成立新中心** — `AI draft` This is a secondary report that Westlake University has set up a world-model research centre; the page shows no models, data or results yet, so for teams following world models it is a name to watch, not something to plan around.
+1. **When the Simulator Fails, Not the Policy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+2. **RTPolicy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **Nexus-VLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **Movens-Zero** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
+5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-02.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-03.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

@@ -1,83 +1,73 @@
 {
-  "date": "2026-11-02",
-  "generated": "2026-11-01 23:40 UTC",
-  "window": "papers 2026-10-29 → 2026-11-02 · posts 2026-10-03 → 2026-11-02 (UTC)",
+  "date": "2026-11-03",
+  "generated": "2026-11-02 23:40 UTC",
+  "window": "papers 2026-10-30 → 2026-11-03 · posts 2026-10-04 → 2026-11-03 (UTC)",
   "window_detail": {
-    "day": "2026-11-02",
-    "papers_from": "2026-10-29",
-    "posts_from": "2026-10-03",
+    "day": "2026-11-03",
+    "papers_from": "2026-10-30",
+    "posts_from": "2026-10-04",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.39327",
-      "title": "SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU",
-      "url": "https://arxiv.org/abs/2610.39327",
-      "publisher": "arXiv 2610.39327",
+      "id": "arxiv:2610.41857",
+      "title": "When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks",
+      "url": "https://arxiv.org/abs/2610.41857",
+      "publisher": "arXiv 2610.41857",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-29",
+      "published": "2026-10-30",
       "lane": "simeval",
-      "score": 2.59,
-      "numbers": [],
-      "signals": [
-        "open_release",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot. The policy is trained from scratch on a single shared GPU with a small fraction of the compute reported for SONIC. In MuJoCo simulation, it tracks nearly all held-out motion clips and performs well on external benchmarks under SONIC's success criterion. On the real K1, it tracks upper-body and slow motions, while stepping and turning remain less reliable, and simulation experiments show a sensitivity to action latency. These results show broad motion-tracking capability on a modest training budget and point to quantitative hardware evaluation as the main next step. Code, policy weights and evaluation tools are publicly available."
-    },
-    {
-      "id": "arxiv:2610.40430",
-      "title": "Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design",
-      "url": "https://arxiv.org/abs/2610.40430",
-      "publisher": "arXiv 2610.40430",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-29",
-      "lane": "simeval",
-      "score": 2.555,
+      "score": 3.71,
       "numbers": [
-        "85.55%"
+        "89%",
+        "98%",
+        "75.8%",
+        "98.5%"
       ],
       "signals": [
         "numbers",
         "closed_loop"
       ],
       "heat": 0.0,
-      "summary": "Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control. We present Demonstration Expansion and Execution Design (DEED), a framework for adapting a pretrained vision-language-action policy to the five MetaFine tasks through structured demonstration expansion and execution design. DEED generates demonstrations for different instructions from the same initial scene and renders each physical trajectory under different camera positions and lighting conditions while preserving its original states and action targets. A hierarchical sampling strategy balances instructions, trajectories, and visual conditions during supervised adaptation. At deployment, DEED converts predicted action chunks into robot commands using inverse kinematics, gripper mappings selected for each task, and closed-loop replanning. DEED achieves an official Overall score of 85.55%. Fixed-policy evaluations show that performance varies with execution horizon, denoising budget, and gripper mapping."
+      "summary": "Simulation benchmarks score robot policies by success rate, and every failed episode counts against the policy. Many of these failures are the simulator's fault, not the policy's; we find the cause and fix it. Testing a vision language action model and a world action model in simulation, we find that the policy often places the object and the simulator then ejects it, and that the benchmark's own scripted demonstrations fail the same way. We present SimuGuard, an auditing plugin for LIBERO, RoboTwin, RoboCasa and RoboDojo. It leaves the evaluation unchanged. At every physics step, it records the state and flags an object that starts moving at a contact faster than the robot's contact or gravity account for. It replays a recorded episode bit for bit, and it reruns the episode with one simulation parameter changed. With it we trace these episodes on RoboTwin to the collision detection of the physics engine: for geometry one to two centimeters apart, the engine reports a penetration of about two centimeters, and the solver throws the object out at several meters per second. The cause is one constant: the distance algorithm discards triangles below a fixed area threshold, which valid triangles fall below at the centimeter scale. With that constant changed and nothing else, episodes with an artifact fall from 12 in 100 to none, and the success rate on five container tasks rises from 89% to 98%. Success rates in simulation thus count failures that the simulator causes. Benchmarks on PhysX 5.3.1 or earlier should rerun in a repaired engine. Where the engine cannot change, they should report the success rate together with the range it spans when every flagged episode fails or passes: 75.8% to 98.5% around a reported 83.1% for LingBot-VA."
     },
     {
-      "id": "arxiv:2610.40016",
-      "title": "LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks",
-      "url": "https://arxiv.org/abs/2610.40016",
-      "publisher": "arXiv 2610.40016",
+      "id": "arxiv:2610.41625",
+      "title": "RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices",
+      "url": "https://arxiv.org/abs/2610.41625",
+      "publisher": "arXiv 2610.41625",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-29",
-      "lane": "foundation",
-      "score": 2.5,
-      "numbers": [],
+      "published": "2026-10-30",
+      "lane": "edge",
+      "score": 3.21,
+      "numbers": [
+        "32.9 Hz",
+        "50 tasks",
+        "30.35 ms",
+        "149.72 ms"
+      ],
       "signals": [
-        "closed_loop"
+        "numbers",
+        "closed_loop",
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid. A completed action does not ensure that its effects will persist: a later disturbance can invalidate support that the remaining plan still assumes. We present LOGIV, a graph engineering framework for agentic robot execution that uses an explicit task graph to connect symbolic planning, observation-based verification, and embodied action. LOGIV compiles a validated plan into condition-support and resource-ordering edges, checks their physical validity during execution, and uses dependency tracing to determine what must be restored after a failure. Repair is constrained by retained unfinished actions, and the combined continuation is symbolically validated before execution resumes. The framework operates above existing Vision-Language-Action (VLA) and World Action Model (WAM) policies without adding trainable components. Across 20 dual-arm tasks from RoboTwin~V2 and BiCoord with three execution backbones, LOGIV improves mean task success without injected disturbances by 10.67 and 15.33 percentage points, respectively. Under predefined perturbations, it achieves higher task completion and condition restoration than three adapted recovery baselines for every backbone on both benchmarks. On three real-robot tasks, successful trials increase from 12/30 to 17/30. These results support explicit, continuously checked task dependencies as a practical interface for reliable agentic robot execution."
+      "summary": "Low inference latency is critical for closed-loop robotic manipulation, especially under asynchronous inference, where action chunks must be updated promptly to correct accumulated deviations. However, existing visuomotor policies rely on computationally expensive visual backbones, resulting in high inference latency and deployment overhead. In this paper, we propose RTPolicy, a multi-view visuomotor policy that attains accurate manipulation with high inference efficiency. Its core design combines view-aware feature fusion with visual compression to aggregate complementary information across camera views into a compact token representation. The representation conditions a flow-matching action generator with the robot state and flow time, reducing the cost of action generation. Extensive experiments demonstrate that this design reduces the computational cost of visual representation and action generation while preserving visual information required for manipulation. On the RoboTwin~2.0 single-task clean evaluation across 50 tasks, RTPolicy attains a mean success rate of 52.26\\%, outperforming the strongest leaderboard baseline $π_0$ (46.4\\%). We further evaluate RTPolicy under asynchronous streaming inference on a real bimanual platform, where RTPolicy attains a mean success rate of 72.0\\% and sustains real-time inference at 30.35 ms (32.9 Hz) on the RDK S600 and 149.72 ms (6.7 Hz) on the RDK S100, both in INT16. Project Page: https://d-robotics-ai-lab.github.io/RTPolicy.project."
     },
     {
-      "id": "arxiv:2610.39319",
-      "title": "ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning",
-      "url": "https://arxiv.org/abs/2610.39319",
-      "publisher": "arXiv 2610.39319",
+      "id": "arxiv:2610.42021",
+      "title": "Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space",
+      "url": "https://arxiv.org/abs/2610.42021",
+      "publisher": "arXiv 2610.42021",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-29",
-      "lane": "systems",
-      "score": 2.5,
+      "published": "2026-10-30",
+      "lane": "data",
+      "score": 2.902,
       "numbers": [
-        "12.94%",
-        "15.46%",
-        "32.3%"
+        "80.5%"
       ],
       "signals": [
         "numbers",
@@ -85,41 +75,112 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories. Inaccurate estimates can misguide execution and allow local errors to propagate. To address this, we propose ProLoop, a Progress-Aware Closed-Loop framework that derives explicit subgoal progress from structured relations between desired and execution states. A learned State-Relation Monitor assesses these relations, which are then aggregated into subgoal progress as ongoing, deviated, or completed. The resulting progress guides execution adaptation, enabling reliable progress-aware control throughout execution. Experiments on AgentBoard ALFWorld and a real-world robotic platform show that ProLoop improves success rate by 12.94% overall and by 15.46% on Hard tasks, while reducing environment interactions by 32.3%."
+      "summary": "Large-scale egocentric human videos provide rich and scalable manipulation experience for robot policy learning, yet substantial embodiment gaps in visual appearance, kinematic structure, and action spaces hinder effective knowledge transfer. Existing methods often decouple cross-embodiment knowledge alignment from robot policy learning, making it difficult for human manipulation knowledge to directly and fully contribute to robot action learning. To address this issue, we propose Nexus-VLA, a hybrid policy learning framework that enables cross-embodiment knowledge transfer through end-to-end human-robot joint training, allowing human manipulation experience to directly contribute to robot policy learning. We first introduce a hierarchical cross-embodiment semantic alignment paradigm that progressively establishes shared manipulation semantics from task intent to fine-grained interactions, enabling more complete use of the manipulation knowledge contained in human videos. Building on this hierarchy, we design a shared manipulation latent representation that jointly encodes multi-level shared knowledge into an internal representation directly used for continuous action generation, improving policy learning efficiency while effectively leveraging human knowledge. Across RoboCasa-GR1, OOD settings, and real-world robot experiments, Nexus-VLA achieves an 80.5% task success rate on RoboCasa-GR1 and demonstrates strong advantages in human-data utilization, learning efficiency, and cross-scenario generalization."
     },
     {
-      "id": "qbitai:77cf6f6f7d48",
-      "title": "三年前布局，今年爆火丨西湖大学成立新中心",
-      "url": "https://www.qbitai.com/2026/11/507076.html",
-      "publisher": "量子位 QbitAI",
-      "source_id": "qbitai",
+      "id": "arxiv:2610.41877",
+      "title": "Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos",
+      "url": "https://arxiv.org/abs/2610.41877",
+      "publisher": "arXiv 2610.41877",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-10-30",
+      "lane": "data",
+      "score": 2.702,
+      "numbers": [
+        "10,000 hours",
+        "1%",
+        "100%",
+        "911M parameters"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Scaling humanoid motion foundation models is constrained by the scarcity of diverse, robot-executable data and by the difficulty of jointly learning from heterogeneous multimodal inputs while supporting real-time closed-loop control. We present Movens-5M, constructed from raw Internet videos through clip generation, quality filtering, semantic annotation, motion recovery, and physical refinement with humanoid retargeting and execution verification. It contains 15 million human-motion sequences and 5 million physically executable humanoid-motion sequences spanning over 10,000 hours, aligned with text, RGB video, speech, and music. Building on this data, we introduce Movens-Zero, a scalable understanding-generation-execution architecture that supports joint learning across modalities and real-time closed-loop execution. Task-mixed flow-matching training jointly optimizes a single action expert across seven generation tasks, enabling direct motion generation from text, speech, music, and video. Multimodal Real-Time Chunking connects overlapping chunks under continuously updated instructions and robot states for continuous closed-loop execution. We further introduce Movens-Intent, a four-track benchmark with 8,192 expert-verified condition-motion pairs across text, speech, music, and video. Experiments show consistent gains across all four modalities when scaling execution-verified data from 1% to 100% and action-expert capacity from 64M to 911M parameters, while demonstrating that data quality and cross-modal supervision improve generation and execution."
+    },
+    {
+      "id": "leiphone:b0200ec08135",
+      "title": "破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖",
+      "url": "https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-01",
-      "lane": "foundation",
+      "published": "2026-11-02",
+      "lane": "edge",
+      "score": 1.152,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "11月2日，2026年世界互联网大会乌镇峰会开幕。支付宝AHA（Agent Hub Access）智能体多端互联方案获“新耀”场景奖。该奖项重点考察数智技术落地实效与复制推广价值，是峰会在产业应用侧的重要认可。 本批20个获奖方案覆盖金融、制造、城市治理、具身智能等多领域。AHA作为支付宝首创的多智能体跨端互联解决方案，着力破解智能体生态孤岛，支持跨品牌、跨终端智能体协同办事，各主体边界互不干涉。在智能体加速落地的当下，是智能体从单点智能走向协同智能的关键一步。 打通履约链路 构建跨端智能体协议底座 当前各类智能体多为独立体系，可单独完成交互任务，但缺少标准化协同通路，跨品牌、跨终端难以联动配合，复杂业务流程难以串联。 AHA 以支付宝 App 作为账号与能力锚点，依托 A2A、MCP、A2UI开源协议搭建三层互联协议体系，打通不同品牌、终端智能体之间的调用通路，将支付宝政务、出行、医疗、生活服务等能力输出至手机、车机、智能眼镜、大模型 App 等终端，通过分域授权、数据隔离与端侧加密等技术，保障各主体边界独立互不干涉，兼顾开放互联与隐私安全。 AHA互联支撑多终端智能体协同 落地千余服务场景 AHA 互联方案于今年 8 月正式对外发布。产品层面，依托AHA，车机、手机上的智能体可调用支付宝智能体阿宝的能力协同办事：对车载语音说“买张电影票”，车机智能体通过 AHA …"
+    },
+    {
+      "id": "leiphone:b17be9f044b9",
+      "title": "阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业",
+      "url": "https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-02",
+      "lane": "systems",
       "score": 1.1,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "西湖世界模型研究中心成立"
+      "summary": "11月2日，2026世界互联网大会颁奖典礼在浙江乌镇举行，全球共20项成果入选，涵盖量子计算、芯片、具身智能及AI应用等领域。凭借在智能体Harness上的技术突破和领先的全球市场份额，阿里智能体平台Qoder荣获领先科技奖，是国内唯一获得该奖项的通用Agent产品。 Qoder产品线总裁丁宇在现场领奖 世界互联网大会领先科技奖是面向科技和互联网领域的国际性科技奖项，旨在奖励全球年度最具领先性的互联网科技成果。今年，大会共征集来自43个国家和地区的430多项科技成果，经国内外权威专家严格评选，最终仅20项成果入选。 目前，AI编程是全球大模型应用落地最快的领域之一，也是全球顶尖模型创业公司和科技公司竞争的核心战场。依托于阿里巴巴多年在大模型、云计算与大规模工程实践上的积累，Qoder实现了模型、Agent运行框架与产品的联合设计，让智能体做到真正理解工程、自主编写工具、循环探索推进、完成研发任务，有效提升任务执行的效率。 Qoder还在不断拓展用户的使用场景。自2025年8月面向全球发布以来，Qoder产品家族已覆盖桌面版、AI 原生IDE、命令行工具CLI、JetBrains插件、数字员工产品QoderWake、云端Cloud Agents等产品，可满足不同用户习惯和应用场景的需求。用户不仅可以在电脑桌面端使用Qoder提效，也可以在手机上查看进度、审批操作、追加指令。企业级用户可以通过SDK ，把智能体嵌入到的产品中，从而快速实现智能化，还可以在云端运行长程任务，提供24小时不间断的主动工作、主动服务。 …"
+    },
+    {
+      "id": "leiphone:92ae69ea6d89",
+      "title": "阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”",
+      "url": "https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-02",
+      "lane": "hardware",
+      "score": 1.083,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "11月2日，阿里云正式发布面向专业机构投资者的AI投研工作台Qovest。用户用一句话提出研究需求，Qovest就会自动查数据、收集资料、深度分析、生成报告，并按设定的频率持续跟踪研究对象。与一次性问答不同，Qovest可以把每次的研究结果沉淀到投研空间，让一项研究能接着往下做，不必每次从零开始。近期，Qovest将推出企业版，服务金融机构及企业的投研团队。 专业投资者对Agent的要求，远比日常聊天要高：数据要实时和准确，输出结果要有明确出处，研究结论必须专业可靠。为此，Qovest团队采购权威金融数据库、将其部署在阿里云上，自研面向金融场景的Agent工程框架（Harness），打通从数据调用到分析输出的完整流程，让交付结果更加准确和专业。在开源金融评测集FinFirst与IRAB的内部横向评测中，Qovest的回答质量、响应速度、成本都领先于参与评测的主流产品。 “我们希望把投研过程中耗时较多、重复性较强的工作交给AI，把时间还给真正需要专业判断的地方。” Qovest产品负责人表示。 Qovest首页提供了多个投研案例范本，用户可以自选标的作为研究对象，设置定时任务，接入自己的操盘笔记，获得可视化的深度研究结果。比如，用户可以让Qovest拆解人形机器人产业链中各环节的单机价值与国产化水平，得到一份可交互的产业链图谱；也可以让Qovest测算数据中心电力设施的投资规模，只要调整任何一个前提假设，Qovest就会自动重新计算。 …"
+    },
+    {
+      "id": "leiphone:36b372ceab93",
+      "title": "产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资",
+      "url": "https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-02",
+      "lane": "foundation",
+      "score": 1.05,
+      "numbers": [],
+      "signals": [
+        "press_release"
+      ],
+      "heat": 0.0,
+      "summary": "具身智能的资本筛选标准，正在从\"讲得动人\"转向\"兑现得动\"。AI 科技评论获悉，11 月 2 日，RoboScience 机器科学完成 A2 轮融资。 据悉，本轮由琥珀资本、鸿瑞达投资、上海半导体产投 联合领投，360 战投、爽资本、国联民生资本、金鼎资本及多家上市公司平台跟投，融资金额达到了数亿 元。 这意味着，这家 2025 年 3 月才正式开始运营的具身公司， 先后已完成五轮融资。 据 AI 科技评论了解，近期具身行业融资市场并不乐观。过去一年，这个赛道的融资叙事换了好几轮：最早讲世界模型就能拿到钱；后来光讲技术不够了，得讲落地，讲进工厂的 ROI ；再后来，得有\"具身 RSI \"（递归自我改进）的想象空间。 故事通胀的背后，是大多数团队的底子撑不起叙事的升级，每次风口转向，就得重新攒一套说辞。资本也随之变得挑剔，同样的 BP，去年能融到，今年连会都约不上。（雷峰网） 但 RoboScience 机器科学的节奏完全不同，逆势不断受到资本青睐，也因此成为具身领域里一个值得研究的样本公司。 回看机器科学过去五轮融资的时间点，几乎每一轮前后，都有可验证的产品技术落地：ICRA 最佳论文、仿真平台 RoboMirage、通用具身大模型 Visics、与腾讯云共创的云端具身智能服务 EaaS、首款轮式仿人形通用机器人 REX G1 以及真实的项目落地。 某种意义上，这意味着，具身市场的融资，不该是技术跟着融资的故事走，反过来，融资应该跟着技术的兑现走。 在 AI …"
     }
   ],
   "lane_counts": {
-    "foundation": 9,
+    "foundation": 10,
     "data": 6,
-    "training": 4,
-    "simeval": 13,
+    "training": 3,
+    "simeval": 12,
     "edge": 9,
     "safety": 2,
-    "systems": 2,
+    "systems": 3,
     "hardware": 8
   },
   "evidence_mix": {
-    "O": 6,
+    "O": 4,
     "R": 28,
-    "M": 19
+    "M": 21
   },
   "fetch": {
-    "items": 641,
+    "items": 627,
     "attempted": 23,
     "answered": 23,
     "failed": [],
@@ -146,11 +207,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 20,
+      "hn_stories": 16,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 39,
+      "arxiv": 26,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -166,7 +227,7 @@
       "mit-news-robotics": 50,
       "techcrunch-robotics": 10,
       "robohub": 75,
-      "qbitai": 5,
+      "qbitai": 4,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

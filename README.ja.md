@@ -60,31 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-02
+### 本日のレーダー · 2026-11-03
 
-`生成時刻: 2026-11-01 23:40 UTC` ｜ `対象期間: 論文 2026-10-29 → 2026-11-02 · ブログ・報道 2026-10-03 → 2026-11-02 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-02 23:40 UTC` ｜ `対象期間: 論文 2026-10-30 → 2026-11-03 · ブログ・報道 2026-10-04 → 2026-11-03 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU](https://arxiv.org/abs/2610.39327)**<br><sub>シミュレーションと評価 · arXiv 2610.39327 · 2026‑10‑29</sub> |
-| 02<br>🔵&nbsp;`R` | **[Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design](https://arxiv.org/abs/2610.40430)**<br>`85.55%`<br><sub>シミュレーションと評価 · arXiv 2610.40430 · 2026‑10‑29</sub> |
-| 03<br>🔵&nbsp;`R` | **[LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks](https://arxiv.org/abs/2610.40016)**<br><sub>基盤モデル · arXiv 2610.40016 · 2026‑10‑29</sub> |
-| 04<br>🔵&nbsp;`R` | **[ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning](https://arxiv.org/abs/2610.39319)**<br>`12.94%`&nbsp; `15.46%`&nbsp; `32.3%`<br><sub>システムとオーケストレーション · arXiv 2610.39319 · 2026‑10‑29</sub> |
-| 05<br>🟡&nbsp;`M` | **[三年前布局，今年爆火丨西湖大学成立新中心](https://www.qbitai.com/2026/11/507076.html)**<br><sub>基盤モデル · 量子位 QbitAI · 2026‑11‑01</sub> |
+| 01<br>🔵&nbsp;`R` | **[When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks](https://arxiv.org/abs/2610.41857)**<br>`89%`&nbsp; `98%`&nbsp; `75.8%`<br><sub>シミュレーションと評価 · arXiv 2610.41857 · 2026‑10‑30</sub> |
+| 02<br>🔵&nbsp;`R` | **[RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices](https://arxiv.org/abs/2610.41625)**<br>`32.9 Hz`&nbsp; `50 tasks`&nbsp; `30.35 ms`<br><sub>エッジとリアルタイム · arXiv 2610.41625 · 2026‑10‑30</sub> |
+| 03<br>🔵&nbsp;`R` | **[Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space](https://arxiv.org/abs/2610.42021)**<br>`80.5%`<br><sub>データエンジン · arXiv 2610.42021 · 2026‑10‑30</sub> |
+| 04<br>🔵&nbsp;`R` | **[Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos](https://arxiv.org/abs/2610.41877)**<br>`10,000 hours`&nbsp; `1%`&nbsp; `100%`<br><sub>データエンジン · arXiv 2610.41877 · 2026‑10‑30</sub> |
+| 05<br>🟡&nbsp;`M` | **[破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖](https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html)**<br><sub>エッジとリアルタイム · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 06<br>🟡&nbsp;`M` | **[阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业](https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html)**<br><sub>システムとオーケストレーション · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 07<br>🟡&nbsp;`M` | **[阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”](https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资](https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑02</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–05</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **SONIC-K1** — `AI 下書き` Booster K1 を使うチームは、全身トラッカーを自前で学習する前に SONIC から移植されたこの公開重みを試す価値がある。ただし著者自己報告のプレプリントで、ページには追従精度や実機の数値がなく、導入前に自機での検証が要る。
-2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — `AI 下書き` 精密マニピュレーション方策を調整するチームには、デモ拡張と実行側の設計で公式 Overall スコア 85.55% という著者報告が参考になる。ただしページにはベンチマーク名も実機結果もなく、配備時の見込みではなく順位表の数字として扱うべきだ。
-3. **LOGIV** — `AI 下書き` 長期タスクの実行系を作るなら、後続ステップに必要な物理条件が保たれているかを実行中に確かめ、崩れたら局所的に修復するという考え方は検討に値する。ページに数値も実機結果もなく、現時点では設計上のヒントにとどまる。
-4. **ProLoop** — `AI 下書き` LLM プランナーがサブゴールの進捗を対話履歴から暗黙に推定している場合、構造化された状態関係で明示的に追う方式を検討したい。著者報告では成功率が全体で 12.94%、Hard タスクで 15.46% 向上し、環境とのやり取りは 32.3% 減ったが、比較対象はページに示されていない。
-5. **三年前布局，今年爆火丨西湖大学成立新中心** — `AI 下書き` 西湖大学が世界モデル研究センターを設立したという二次報道で、ページにはモデルやデータ、成果はまだ見えない。世界モデルを追うチームにとっては名前を押さえておく段階で、技術選定を左右する材料ではない。
+1. **When the Simulator Fails, Not the Policy** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **RTPolicy** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Nexus-VLA** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **Movens-Zero** — 査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-02.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-03.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
