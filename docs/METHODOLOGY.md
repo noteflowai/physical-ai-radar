@@ -80,13 +80,20 @@ Rules:
     bytes, or it is `too-large` and unreadable) by `pairadar/robots_rules.py`, which follows RFC 9309
     for the product token `physical-ai-radar`: groups naming it are merged (else the `*` groups),
     the longest matching `Allow`/`Disallow` wins, a tie goes to `Allow`, `*` and a final `$` are
-    wildcards, the matched path includes the query and percent-encoding is compared in one form.
+    wildcards, the matched path includes the query, and percent-encoding is compared in one form: `*`
+    and a final `$` are syntax in a rule, an encoded `%2A` or `%24` is data and equals the literal
+    character in the URL (never a wildcard), and the priority counts the same octets the match does, so
+    two spellings of one rule have one priority.
     (`urllib.robotparser`, which the Firecrawl path still uses, takes the first match in file order and
     would let `Allow: /` before `Disallow: /private` through.) A file with more than 5000 rules, a rule
-    longer than 2000 characters, or bytes that are not UTF-8 cannot be judged completely and is
-    unreadable, not guessed at. `404`/`410` means there are no rules, and anything else (401, 403, 429,
-    5xx, a challenge, a redirect, an HTML page, a timeout, a refused address) disallows the page for the
-    run.
+    longer than 2000 characters, a rule with a `%` that starts no two-digit escape, or bytes that are
+    not UTF-8 cannot be judged completely and is unreadable, not guessed at. `404`/`410` means there
+    are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a
+    timeout, a refused address) disallows the page for the run. A source URL with such a `%` (in the
+    path or the query), with a `.` or `..` segment (also as `%2e`) or with an empty segment anywhere
+    but last is `url-invalid`, so the path the server resolves is the path robots.txt was judged
+    against. A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
+    Shift_JIS, EUC, GBK, Big5 and KOI8 families); any other charset is `content-type`.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
     bot-management marker on a page with little text), a login or consent page, an empty
     JavaScript shell, a page-mode source with almost no text and a listing with no link under its
@@ -134,7 +141,11 @@ Rules:
     `sources_planned`, `sources` (per source: fetcher, outcome, reason, optional detail),
     `sources_blocked`, `sources_unavailable`, `sources_not_attempted`, `sources_observed`,
     `degraded` (a planned source was not read) and `sources_escalated`, and only in a run that has a
-    static source. A source that is blocked or unavailable in the last 3 daily records (read from
+    static source. These per-source results are private: they are written only to the freshness
+    record and the observation file under the state directory. The `page_watch` block of
+    `FetchReport.to_dict()`, which becomes the committed, public `radar/latest.json`, keeps its old
+    shape (ids per outcome and nothing per source), and in observe mode a static source adds nothing
+    to it. A source that is blocked or unavailable in the last 3 daily records (read from
     the earlier `page-watch/<day>.json` files; no extra state) is listed in `sources_escalated` and
     printed as `ESCALATE`. `status` stays `ok` when one page was read, which is a floor; read
     `sources_checked` against `sources_planned`. A Firecrawl channel that is down no longer hides

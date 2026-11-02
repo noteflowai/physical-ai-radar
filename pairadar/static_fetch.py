@@ -94,7 +94,9 @@ def parse_url(url: object) -> ParsedUrl:
 
     Refused: anything that is not a short ASCII string without whitespace, control characters or backslashes; user
     information; a fragment; an explicit port other than 443; IP literals in any notation (dotted, decimal, hex, IPv6
-    brackets); a host with fewer than two labels or a numeric top-level label; a malformed label.
+    brackets); a host with fewer than two labels or a numeric top-level label; a malformed label; a `%` that does not
+    start a two-digit escape (in the path or the query); a `.` or `..` path segment (also as `%2e`) and an empty segment
+    anywhere but last.
     """
     if not isinstance(url, str) or not url or len(url) > MAX_URL_CHARS or not url.isascii():
         raise StaticFetchError("url-invalid")
@@ -108,6 +110,14 @@ def parse_url(url: object) -> ParsedUrl:
     netloc = parts.netloc
     if parts.scheme != "https" or "@" in netloc or "[" in netloc or parts.fragment or "#" in url:
         raise StaticFetchError("url-invalid")
+    if re.search(r"%(?![0-9A-Fa-f]{2})", url):
+        raise StaticFetchError("url-invalid")        # a % that starts no escape: the URI is invalid, and we do not guess what a server makes of it
+    segments = (parts.path or "/").split("/")[1:]
+    for index, segment in enumerate(segments):
+        # a dot segment (also spelled %2e) or an empty one in the middle would let the path the server resolves differ from
+        # the path robots.txt is judged against
+        if re.sub(r"%2[eE]", ".", segment) in (".", "..") or (segment == "" and index != len(segments) - 1):
+            raise StaticFetchError("url-invalid")
     if port not in (None, 443) or (netloc.count(":") and not netloc.endswith(":443")):
         raise StaticFetchError("url-invalid")
     host = (parts.hostname or "").lower()
@@ -396,6 +406,10 @@ class StaticFetcher:
         ctype = ctype.strip().lower()
         if ctype not in kinds:
             raise StaticFetchError("content-type")
+        declared = re.search(r"charset\s*=\s*\"?([A-Za-z0-9_.:-]+)", params)
+        charset = declared.group(1).lower() if declared else ""
+        if charset and charset not in ALLOWED_CHARSETS:
+            raise StaticFetchError("content-type")
         if (response.getheader("Content-Encoding") or "identity").strip().lower() not in ("", "identity"):
             raise StaticFetchError("content-encoding")
         length_header = response.getheader("Content-Length")
@@ -427,8 +441,16 @@ class StaticFetcher:
             chunks.append(piece)
         if length is not None and total != length:
             raise StaticFetchError("budget" if budget.remaining() <= 0 else "truncated")
-        match = re.search(r"charset\s*=\s*\"?([A-Za-z0-9_.:-]+)", params)
-        return Page(200, ctype, b"".join(chunks), match.group(1).lower() if match else "")
+        return Page(200, ctype, b"".join(chunks), charset)
+
+
+# The text encodings a page may declare. Python knows many more (utf-7, unicode_escape, punycode, ...), and some of those
+# rewrite their bytes into markup; a page that names any other charset is refused, not decoded.
+ALLOWED_CHARSETS = frozenset(
+    ["utf-8", "utf8", "us-ascii", "ascii", "latin1", "latin-1", "iso-8859-1", "shift_jis", "shift-jis", "sjis", "x-sjis",
+     "euc-jp", "euc-kr", "gbk", "gb2312", "gb18030", "big5", "koi8-r", "koi8-u"]
+    + [f"iso-8859-{n}" for n in (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16)]
+    + [f"windows-125{n}" for n in range(9)] + [f"cp125{n}" for n in range(9)])
 
 
 def decode(page: Page) -> str:

@@ -40,7 +40,7 @@ _GATE_TITLE = re.compile(
     r"^\W*(just a moment|attention required|access denied|forbidden|403\b|429\b|robot or human|are you a (robot|human)|"
     r"verify you are (a )?human|security check|checking (your|the) browser|please wait|pardon our interruption|"
     r"request (blocked|denied|rejected)|one more step|human verification|sign in|log in|login|"
-    r"before you continue|cookie (consent|settings)|consent)", re.I)
+    r"before you continue|cookie (consent|settings)|consent)\b", re.I)
 # markers that name a bot-management product; only decisive on a page with little visible text
 _GATE_MARKERS = ("cf-chl-", "cdn-cgi/challenge-platform", "challenge-form", "awswaf", "aws-waf", "_incapsula_",
                  "px-captcha", "captcha-delivery.com", "perimeterx", "datadome", "akamai bot manager")

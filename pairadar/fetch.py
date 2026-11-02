@@ -1036,14 +1036,20 @@ class PageWatchResult:
             self.sources[source]["detail"] = detail
 
     def summary(self) -> dict[str, Any]:
-        """The explicit page_watch block of FetchReport.to_dict(); the evidence reads only this."""
-        block = {"enabled": self.enabled, "attempted": list(self.attempted), "checked": list(self.checked),
-                 "failed": list(self.failed), "robots_skipped": list(self.robots_skipped),
-                 "unavailable": self.unavailable, "items": len(self.items)}
-        if self.planned:
-            block.update({"planned": list(self.planned), "sources": {k: dict(v) for k, v in self.sources.items()},
-                          "static_checked": list(self.static_checked)})
-        return block
+        """The explicit page_watch block of FetchReport.to_dict(), which goes into the published radar/latest.json: the
+        ids per outcome and nothing per source (no reason, no detail, no static source's result). The freshness evidence
+        adds `detail()` to it."""
+        return {"enabled": self.enabled, "attempted": list(self.attempted), "checked": list(self.checked),
+                "failed": list(self.failed), "robots_skipped": list(self.robots_skipped),
+                "unavailable": self.unavailable, "items": len(self.items)}
+
+    def detail(self) -> dict[str, Any]:
+        """What the private freshness evidence adds, only in a run that has a static source: every planned source with its
+        fetcher, outcome and fixed reason code, and the static sources that were read live. Never published."""
+        if not self.planned:
+            return {}
+        return {"planned": list(self.planned), "sources": {k: dict(v) for k, v in self.sources.items()},
+                "static_checked": list(self.static_checked)}
 
 
 def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str, Any],
@@ -1189,7 +1195,10 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
         cache[origin] = cached
     if cached[0] == "unreadable":
         return "unreadable", cached[1]
-    return ("allowed", "") if cached[1].allowed(url) else ("disallowed", "robots-disallowed")
+    try:
+        return ("allowed", "") if cached[1].allowed(url) else ("disallowed", "robots-disallowed")
+    except robots_rules.RobotsUnsupported:
+        return "unreadable", "robots-unsupported"        # a URL the matcher cannot judge is not allowed
 
 
 LINK_DROP_BASE = 6          # a listing needs at least this many links on record before a sudden drop is judged
@@ -1486,6 +1495,8 @@ class FetchReport:
     # What each static source showed this run (see PageWatchResult.observations). Not part of to_dict(): that goes
     # into the published radar/latest.json; the CLI writes this to the state directory instead.
     page_watch_observations: list[dict[str, Any]] = field(default_factory=list)
+    # PageWatchResult.detail(): per-source outcomes for the private freshness evidence; likewise never in to_dict().
+    page_watch_detail: dict[str, Any] = field(default_factory=dict)
 
     @property
     def answered(self) -> list[str]:
@@ -1542,6 +1553,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     report.page_state = watched.state
     report.page_watch = watched.summary()
     report.page_watch_observations = watched.observations
+    report.page_watch_detail = watched.detail()
     if watched.unavailable:
         report.unavailable.append("page_watch")
     from . import heat  # heat builds on distill, which imports this module

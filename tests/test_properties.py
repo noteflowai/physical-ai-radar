@@ -151,9 +151,39 @@ class RobotsProperties(unittest.TestCase):
             refused += got
         self.assertGreater(refused, 150)                                                       # both outcomes really occur
 
+    def test_priority_counts_the_same_octets_whatever_the_spelling(self):
+        """An Allow and a Disallow, each spelled with characters or escapes: the winner is the longer one in octets."""
+        rng = random.Random(SEED + 10)
+        tokens = ["a", "b", "A", "/", "x", "*", "%2A", "%24", "%41", "%61", "$"]
+
+        def data(token: str) -> str:
+            return {"%2A": "*", "%24": "$", "%41": "A", "%61": "a"}.get(token, token)
+
+        def matches(rule: list[str], target: list[str]) -> bool:
+            anchored = rule[-1] == "$" and len(rule) > 1
+            body = rule[:-1] if anchored else rule
+            regex = "".join(".*" if t == "*" else re.escape(data(t)) for t in body) + (r"\Z" if anchored else "")
+            return re.match(regex, "".join(data(t) for t in target), re.S) is not None
+
+        decided = {True: 0, False: 0}
+        for _ in range(4000):
+            allow = ["/"] + [rng.choice(tokens) for _ in range(rng.randint(0, 5))]
+            disallow = ["/"] + [rng.choice(tokens) for _ in range(rng.randint(0, 5))]
+            target = ["/"] + [rng.choice(tokens[:5] + ["$", "%24"]) for _ in range(rng.randint(0, 6))]
+            best, want = -1, True
+            for is_allow, rule in ((True, allow), (False, disallow)):
+                if matches(rule, target) and (len(rule) > best or (len(rule) == best and is_allow)):
+                    best, want = len(rule), is_allow            # one token is one octet; a wildcard and an end anchor count as one
+            rules = rr.Rules([(True, rr.normalise("".join(allow))), (False, rr.normalise("".join(disallow)))])
+            self.assertEqual(rules.allowed("https://good.test" + "".join(target)), want, (allow, disallow, target))
+            if best >= 0:
+                decided[want] += 1
+        self.assertGreater(decided[True], 200)
+        self.assertGreater(decided[False], 200)
+
     def test_percent_encoding_is_one_form(self):
         rng = random.Random(SEED + 4)
-        pieces = ["a", "b", "/", "~", "-", "%41", "%61", "%7E", "%2F", "%2A", "%C3%A9", "é", "%", "%4", "%zz", "*", "?q"]
+        pieces = ["a", "b", "/", "~", "-", "%41", "%61", "%7E", "%2F", "%2A", "%C3%A9", "é", "*", "?q", "%25"]
         for _ in range(800):
             parts = [rng.choice(pieces) for _ in range(rng.randint(1, 7))]
             once = rr.normalise("".join(parts))
@@ -161,6 +191,17 @@ class RobotsProperties(unittest.TestCase):
             lowered = rr.normalise("".join(re.sub(r"%[0-9A-F]{2}", lambda m: m.group(0).lower(), p) for p in parts))
             self.assertEqual(lowered, once)                                              # the case of an escape never matters
             self.assertTrue(once.isascii())
+        # whatever else is put into the text, a % that starts no escape is refused: nothing is ever "completed" by decoding
+        stray = ["%", "%4", "%zz", "%G1", "%-"]
+        for _ in range(800):
+            parts = [rng.choice(pieces + stray) for _ in range(rng.randint(1, 7))]
+            text = "".join(parts)
+            invalid = re.search(r"%(?![0-9A-Fa-f]{2})", text) is not None
+            if invalid:
+                with self.assertRaises(rr.RobotsUnsupported):
+                    rr.normalise(text)
+            else:
+                rr.normalise(text)
 
     def test_a_file_is_either_judged_whole_or_refused(self):
         rng = random.Random(SEED + 5)

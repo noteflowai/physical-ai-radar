@@ -205,6 +205,18 @@ class PageProblemTests(unittest.TestCase):
         self.assertEqual(se.page_problem(LISTING, lmd, ltitle, "listing", expect_text="Helix 3"), "")
         self.assertEqual(se.page_problem(LISTING, lmd, ltitle, "listing", expect_text="Nothing like this"), "marker-missing")
 
+    def test_a_gate_title_needs_a_word_boundary(self):
+        """R-PW-06: a real page whose title merely starts with the letters of a gate title is not a gate."""
+        body = "".join(f"<p>Paragraph {i} about the regulation applies to machinery placed on the market.</p>" for i in range(8))
+        for title, gate in (("Consent", True), ("Consent required", True), ("Login", True), ("Sign in to continue", True),
+                            ("Cookie consent", True), ("Consensus on humanoid safety", False), ("Loginova launches a robot", False),
+                            ("Consenting adults: a policy note", False), ("Signing in rural areas", False),
+                            ("Forbidden planet review", True), ("Forbiddenly named", False), ("403 Forbidden", True)):
+            html = f"<html><head><title>{title}</title></head><body><main>{body}</main></body></html>"
+            markdown, parsed = se.html_to_markdown(html, "page")
+            with self.subTest(title):
+                self.assertEqual(se.page_problem(html, markdown, parsed, "page") == "challenge", gate)
+
     def test_a_long_page_that_mentions_a_captcha_product_is_not_called_a_challenge(self):
         body = "".join(f"<p>Paragraph {i} about interface design and security reviews for robots in factories.</p>" for i in range(60))
         html = f"<html><head><title>Security guide</title></head><body><main>{body}<p>We use datadome.</p></main></body></html>"

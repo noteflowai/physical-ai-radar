@@ -226,6 +226,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
         "page_watch_observations": report.page_watch_observations,
+        "page_watch_detail": report.page_watch_detail,
         "notes": load_notes(day),
         # Only a round that changed the baseline (a digest, a link, a line, what was
         # offered) rewrites it; offline, with Firecrawl down or with every page as it
@@ -397,7 +398,8 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
 
 
 def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
-                              directory: Path | None = None, error: bool = False) -> Path | None:
+                              directory: Path | None = None, error: bool = False,
+                              detail: dict[str, Any] | None = None) -> Path | None:
     """One record per run day for the freshness objective, written atomically.
 
     Contract (noteflow-auto config/delivery-freshness.json, objective radar-page-watch):
@@ -414,6 +416,8 @@ def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
     try:
         block = (fetch or {}).get("page_watch") if isinstance(fetch, dict) else None
         block = block if isinstance(block, dict) else {}
+        # the published block (ids per outcome) plus the private per-source detail of a run that had a static source
+        block = {**block, **(detail if isinstance(detail, dict) else {})}
         record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch",
                   "status": page_watch_status(block, error=error),
                   "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
@@ -563,7 +567,7 @@ def main(argv: list[str] | None = None) -> int:
             write_page_watch_evidence(None, day, error=True)
         raise
     if reporting:
-        write_page_watch_evidence(ctx.get("fetch"), ctx.get("date") or day)
+        write_page_watch_evidence(ctx.get("fetch"), ctx.get("date") or day, detail=ctx.get("page_watch_detail"))
         write_page_watch_observation(ctx.get("page_watch_observations"), ctx.get("date") or day)
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")

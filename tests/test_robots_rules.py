@@ -75,7 +75,7 @@ class RuleTests(unittest.TestCase):
         self.assertFalse(allowed("User-agent: *\nDisallow: /a%2Fb\n", "/a%2fb"))
         self.assertTrue(allowed("User-agent: *\nDisallow: /a%2Ab\n", "/axb"))                   # an encoded asterisk is no wildcard
         self.assertFalse(allowed("User-agent: *\nDisallow: /a%2Ab\n", "/a%2ab"))
-        self.assertFalse(allowed("User-agent: *\nDisallow: /100%\n", "/100%"))                  # a stray percent sign is literal
+        self.assertFalse(allowed("User-agent: *\nDisallow: /100%25\n", "/100%25"))              # an escaped percent sign is data
 
     def test_encoded_special_characters_are_data_not_syntax(self):
         """RFC 9309 Figure 6: `%2A` and `%24` in a rule are the characters `*` and `$` in the URL (01's R-D-4b12-01)."""
@@ -104,17 +104,57 @@ class RuleTests(unittest.TestCase):
         self.assertFalse(allowed("User-agent: *\nDisallow: /*B\n", "/%42"))                      # %42 is the letter B
         self.assertFalse(allowed("User-agent: *\nDisallow: /a*%2B$\n", "/ab%2b"))
 
-    def test_a_stray_percent_sign_is_data_and_never_becomes_an_escape(self):
-        self.assertEqual(rr.normalise("%4%31"), "%2541")                    # the data `%`, `4`, `1`; not the letter A
-        self.assertEqual(rr.normalise(rr.normalise("%4%31")), "%2541")
-        self.assertEqual(rr.normalise("%"), "%25")
-        self.assertEqual(rr.normalise("%zz"), "%25zz")
-        self.assertEqual(rr.normalise("%4"), "%254")
+    def test_an_invalid_percent_sign_is_refused_never_interpreted(self):
+        """04 and 01: a % that starts no two-digit escape is invalid; a rule with one makes the file unreadable."""
+        for text in ("%", "%4", "%zz", "%4%31", "/a%", "/a%4", "/%G1", "/%1G", "%-1"):
+            with self.subTest(text):
+                with self.assertRaises(rr.RobotsUnsupported):
+                    rr.normalise(text)
+        for rule in ("/%4%31", "/100%", "/%zz", "/a%4"):
+            for file in (f"User-agent: *\nDisallow: {rule}\nAllow: /A\n", f"User-agent: other\nDisallow: {rule}\nUser-agent: *\nAllow: /\n",
+                         f"User-agent: *\nAllow: {rule}\n"):
+                with self.subTest(file):
+                    with self.assertRaises(rr.RobotsUnsupported):               # also when the rule is in another agent's group
+                        rr.parse(file, TOKEN)
+        # 04's and 01's counterexample no longer cancels the Disallow: the file is unreadable, not "allowed"
+        with self.assertRaises(rr.RobotsUnsupported):
+            rr.parse("User-agent: *\nDisallow: /%4%31\nAllow: /A\n", TOKEN)
+        with self.assertRaises(rr.RobotsUnsupported):
+            allowed("User-agent: *\nDisallow: /x\n", "/%4%31")                    # nor is a URL with one judged
+        # valid escapes are untouched: %25 is a percent sign and is not decoded twice
+        self.assertEqual(rr.normalise("%2541"), "%2541")
         self.assertEqual(rr.normalise("%25"), "%25")
-        self.assertFalse(allowed("User-agent: *\nDisallow: /%4%31\n", "/%4%31"))       # the same data on both sides
-        self.assertTrue(allowed("User-agent: *\nDisallow: /%4%31\n", "/A"))             # not a spelling of A
-        self.assertTrue(allowed("User-agent: *\nDisallow: /A\n", "/%4%31"))
+        self.assertFalse(allowed("User-agent: *\nDisallow: /100%25\n", "/100%25"))
         self.assertFalse(allowed("User-agent: *\nDisallow: /%41\n", "/A"))              # a real escape of a letter is the letter
+
+    def test_two_spellings_of_one_rule_have_one_priority(self):
+        """01's R-D-5fa-01: `%24` and a `$` inside a rule are one octet, so they must count as one in the priority too."""
+        for allow_rule, disallow_rule in (("/a%24b", "/a$bcd"), ("/a%24b", "/a%24bcd"), ("/a$b", "/a%24bcd"), ("/a$b", "/a$bcd")):
+            for url_path in ("/a$bcd", "/a%24bcd"):
+                with self.subTest(allow=allow_rule, disallow=disallow_rule, url=url_path):
+                    both = f"User-agent: *\nAllow: {allow_rule}\nDisallow: {disallow_rule}\n"
+                    swapped = f"User-agent: *\nDisallow: {disallow_rule}\nAllow: {allow_rule}\n"
+                    self.assertFalse(allowed(both, url_path))                        # the longer, more specific Disallow wins
+                    self.assertFalse(allowed(swapped, url_path))
+        # the other way round: the longer rule is the Allow
+        for url_path in ("/a$bcd", "/a%24bcd"):
+            self.assertTrue(allowed("User-agent: *\nDisallow: /a%24b\nAllow: /a$bcd\n", url_path))
+            self.assertTrue(allowed("User-agent: *\nDisallow: /a$b\nAllow: /a%24bcd\n", url_path))
+        # a tie between two spellings of the same rule goes to Allow
+        self.assertTrue(allowed("User-agent: *\nDisallow: /a%24b\nAllow: /a$b\n", "/a$b"))
+        self.assertTrue(allowed("User-agent: *\nAllow: /a%24b\nDisallow: /a$b\n", "/a%24b"))
+
+    def test_specificity_counts_octets_in_the_data_form(self):
+        sp = rr.specificity
+        self.assertEqual(sp("/a"), 2)
+        self.assertEqual(sp("/a%24b"), sp("/a$b"))                  # one octet either way
+        self.assertEqual(sp("/a%2Ab"), 4)                           # an encoded asterisk is one octet, not a wildcard
+        self.assertEqual(sp("/a*b"), 4)                             # the wildcard counts as one
+        self.assertEqual(sp("/a$"), 3)                              # the end anchor counts as one
+        self.assertEqual(sp("/a%24$"), 4)
+        self.assertEqual(sp(rr.normalise("/é")), 3)                 # a multibyte character is its octets: / + 2
+        self.assertEqual(sp(rr.normalise("/%C3%A9")), sp(rr.normalise("/é")))
+        self.assertEqual(sp(rr.normalise("/%61b")), sp("/ab"))      # an escaped letter is the letter
 
     def test_which_group_applies(self):
         # our token beats `*`

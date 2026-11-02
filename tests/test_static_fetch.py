@@ -36,6 +36,26 @@ def reason(call) -> str:
 
 
 class UrlTests(unittest.TestCase):
+    def test_percent_signs_and_dot_segments_must_be_valid(self):
+        """04 and 01: a % that starts no escape, and a path the server would resolve differently from the way robots.txt is
+        judged, are refused before any request."""
+        for url in ("https://good.test/%", "https://good.test/%4", "https://good.test/%zz", "https://good.test/%4%31",
+                    "https://good.test/a%", "https://good.test/a?q=%", "https://good.test/a?q=%4", "https://good.test/a?q=%zz&r=1",
+                    "https://good.test/%G1", "https://good.test/%1G", "https://good.test/100%",
+                    "https://good.test/a/../private", "https://good.test/a/./b", "https://good.test/..", "https://good.test/.",
+                    "https://good.test/a/..", "https://good.test/%2e%2e/x", "https://good.test/%2E./x", "https://good.test/.%2e/x",
+                    "https://good.test/a/%2e/b", "https://good.test//private", "https://good.test/a//b", "https://good.test///"):
+            with self.subTest(url):
+                self.assertEqual(reason(lambda: parse_url(url)), "url-invalid")
+        for url, target in (("https://good.test/%25", "/%25"), ("https://good.test/100%25", "/100%25"), ("https://good.test/%41%2f",
+                                                                                                          "/%41%2f"),
+                            ("https://good.test/a?q=%7E", "/a?q=%7E"), ("https://good.test/news/", "/news/"),
+                            ("https://good.test/a.b/c..d/.hidden", "/a.b/c..d/.hidden"), ("https://good.test/a...b", "/a...b"),
+                            ("https://good.test/...", "/..."), ("https://good.test", "/"), ("https://good.test/", "/"),
+                            ("https://good.test/a/?x=1", "/a/?x=1")):
+            with self.subTest(url):
+                self.assertEqual(parse_url(url).target, target)
+
     def test_accepts_plain_public_https_urls(self):
         for url, host, target in (("https://good.test/news", "good.test", "/news"),
                                   ("https://Good.Test", "good.test", "/"),
@@ -270,9 +290,20 @@ class ConnectionTests(TlsTestCase):
 
     def test_charset_is_honoured_and_never_raises(self):
         self.server.serve("/a", Reply(200, "caf\xe9".encode("latin-1"), ctype="text/html; charset=ISO-8859-1"))
-        self.server.serve("/b", Reply(200, b"\xff\xfe broken", ctype="text/html; charset=nonsense-9"))
+        self.server.serve("/c", Reply(200, "<p>caf\u00e9</p>", ctype="text/html; charset=UTF-8"))
+        self.server.serve("/d", Reply(200, "<p>plain</p>", ctype="text/html"))
         self.assertEqual(static_fetch.decode(self.get(self.fetcher(), "/a")), "caf\xe9")
-        self.assertIn("broken", static_fetch.decode(self.get(self.fetcher(), "/b")))
+        self.assertEqual(static_fetch.decode(self.get(self.fetcher(), "/c")), "<p>caf\u00e9</p>")
+        self.assertEqual(static_fetch.decode(self.get(self.fetcher(), "/d")), "<p>plain</p>")
+        # R-PW-05: Python knows codecs that rewrite bytes into markup; a page may only name a plain text encoding
+        for name in ("utf-7", "unicode_escape", "punycode", "nonsense-9", "rot13", "utf-16", "hex", "idna", "base64"):
+            with self.subTest(name):
+                self.server.serve("/b", Reply(200, b"+ADw-script+AD4- broken", ctype=f"text/html; charset={name}"))
+                self.assertEqual(reason(lambda: self.get(self.fetcher(), "/b")), "content-type")
+        for name in sorted(static_fetch.ALLOWED_CHARSETS):
+            codecs_name = name.replace("x-sjis", "shift_jis")
+            import codecs
+            codecs.lookup(codecs_name)                                                      # every allowed name is a real codec
 
     def test_only_a_complete_200_with_an_accepted_type_is_content(self):
         cases = {

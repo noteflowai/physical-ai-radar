@@ -9,10 +9,12 @@ lets `/private` through, and it reads only the first group that names an agent. 
   (`Sitemap`, `Crawl-delay`, ...) are ignored and do not end a group.
 - rules: `Allow` and `Disallow` paths with `*` (any run of characters) and a final `$` (end of the path). An empty
   `Disallow:` or `Allow:` is no rule. The path matched is the request path plus `?query`, after percent-encoding is
-  normalised (unreserved characters decoded, the rest upper-cased, non-ASCII as UTF-8 octets, a stray `%` as `%25`).
+  normalised (unreserved characters decoded, the rest upper-cased, non-ASCII as UTF-8 octets). A `%` that is not
+  followed by two hex digits is invalid: a rule with one makes the whole file unreadable.
   `*` and a final `$` are syntax only in the rule; an encoded `%2A` or `%24` in a rule is data and equals a literal `*`
   or `$` in the URL (RFC 9309 Figure 6), and never acts as a wildcard.
-- decision: the matching rule with the most octets wins; on a tie `Allow` wins; no matching rule allows.
+- decision: the matching rule with the most octets wins (counted in the same data form as the match); on a tie `Allow`
+  wins; no matching rule allows.
 
 What it will not guess: a file that cannot be read completely (invalid UTF-8, more than MAX_RULES rules, a rule longer
 than MAX_PATTERN) raises RobotsUnsupported, and the caller treats the robots.txt as unreadable, which allows nothing.
@@ -36,23 +38,21 @@ class RobotsUnsupported(Exception):
 
 def normalise(path: str) -> str:
     """Percent-encoding in one canonical form: an escape of an unreserved character is decoded, any other escape is
-    upper-cased, non-ASCII characters become UTF-8 octets, and a `%` that does not start a two-digit escape is literal
-    data and becomes `%25`. Nothing else changes, so `*`, `$`, `/` and `?` stay as written.
-
-    Because a stray `%` is escaped at once, decoding a character can never complete an escape that was not one before
-    (`%4%31` is the data `%`, `4`, `1`, not the letter `A`), and `normalise(normalise(x)) == normalise(x)`."""
+    upper-cased, and non-ASCII characters become UTF-8 octets. Nothing else changes, so `*`, `$`, `/` and `?` stay as
+    written. A `%` that does not start a two-digit escape is not valid percent-encoding and raises RobotsUnsupported:
+    nothing may be inferred from it (a rule with one makes the file unreadable; a URL with one is refused before it gets
+    here). With every `%` an escape, decoding a character can never complete an escape that was not one before, and
+    `normalise(normalise(x)) == normalise(x)`."""
     out: list[str] = []
     i = 0
     while i < len(path):
         ch = path[i]
         if ch == "%":
-            if i + 2 < len(path) and path[i + 1] in _HEX and path[i + 2] in _HEX:
-                decoded = chr(int(path[i + 1:i + 3], 16))
-                out.append(decoded if decoded in _UNRESERVED else "%" + path[i + 1:i + 3].upper())
-                i += 3
-            else:
-                out.append("%25")
-                i += 1
+            if not (i + 2 < len(path) and path[i + 1] in _HEX and path[i + 2] in _HEX):
+                raise RobotsUnsupported("invalid percent-encoding")
+            decoded = chr(int(path[i + 1:i + 3], 16))
+            out.append(decoded if decoded in _UNRESERVED else "%" + path[i + 1:i + 3].upper())
+            i += 3
         elif ord(ch) > 127:
             out.append("".join(f"%{byte:02X}" for byte in ch.encode("utf-8")))
             i += 1
@@ -103,6 +103,15 @@ def _match(pattern: str, data: str) -> bool:
     return target.find(last, position) >= 0
 
 
+def specificity(pattern: str) -> int:
+    """How many octets a normalised rule fixes, counted in the same data form the match uses: every literal octet
+    (an escape counts as one, however it was written, and `%24` equals a `$` inside the rule), each `*` as one and a
+    final `$` as one. Priority and matching therefore cannot disagree about two spellings of one rule."""
+    anchored = pattern.endswith("$")
+    parts = (pattern[:-1] if anchored else pattern).split("*")
+    return sum(len(_data(part)) for part in parts) + (len(parts) - 1) + (1 if anchored else 0)
+
+
 @dataclass
 class Rules:
     """The merged rules that apply to the radar: (is_allow, normalised pattern)."""
@@ -115,7 +124,7 @@ class Rules:
         best_length, best_allow = -1, True
         for is_allow, pattern in self.rules:
             if _match(pattern, target):
-                length = len(pattern)
+                length = specificity(pattern)
                 if length > best_length or (length == best_length and is_allow):
                     best_length, best_allow = length, is_allow
         return best_allow

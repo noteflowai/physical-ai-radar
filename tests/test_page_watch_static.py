@@ -42,6 +42,11 @@ http-410 http-429 http-4xx http-5xx http-other challenge empty-page no-links rob
 firecrawl-unavailable page-failed not-reached""".split()) | {""}
 
 
+def status_of(result) -> str:
+    """The freshness status as the CLI computes it: the published block plus the private per-source detail."""
+    return cli.page_watch_status({**result.summary(), **result.detail()})
+
+
 def listing(*cards) -> str:
     body = "".join(f'<div class="c"><a href="{h}"><h3>{t}</h3></a><p>{x}</p></div>' for h, t, x in cards)
     return f"<html><head><title>News</title></head><body><main><h1>News</h1>{body}</main></body></html>"
@@ -211,7 +216,7 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual((result.checked, result.failed), ([], ["figure"]))
                 self.assertEqual(result.items, [])
                 self.assertEqual(result.state["sources"]["figure"], base.state["sources"]["figure"])    # untouched, not emptied
-                self.assertEqual(cli.page_watch_status(result.summary()), "all-failed")
+                self.assertEqual(status_of(result), "all-failed")
 
     def test_page_mode_with_an_empty_body_is_not_a_page(self):
         self.server.serve("/standard", Reply(200, "<html><head><title>ISO</title></head><body><main><p>Loading</p></main></body></html>"))
@@ -245,15 +250,16 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(result.checked, ["figure"])
                 self.assertEqual(result.sources["unitree"], {"fetcher": "firecrawl", "outcome": "not-attempted",
                                                              "reason": "firecrawl-unavailable"})
-                self.assertEqual(cli.page_watch_status(result.summary()), "ok")        # the floor: one page was read
-                self.assertEqual(result.summary()["planned"], ["unitree", "figure"])
+                self.assertEqual(status_of(result), "ok")        # the floor: one page was read
+                self.assertEqual(result.detail()["planned"], ["unitree", "figure"])
 
     def test_a_run_of_only_firecrawl_sources_is_exactly_what_it_was(self):
         result = self.watch(sources(self.firecrawl_entry()), endpoint="http://127.0.0.1:9")
         self.assertTrue(result.unavailable)
-        self.assertEqual(cli.page_watch_status(result.summary()), "firecrawl-unavailable")
+        self.assertEqual(status_of(result), "firecrawl-unavailable")
         self.assertNotIn("planned", result.summary())
         self.assertNotIn("sources", result.summary())
+        self.assertEqual(result.detail(), {})
         self.assertEqual(self.server.accepted, 0)
 
     def test_firecrawl_and_static_sources_in_one_run(self):
@@ -395,7 +401,7 @@ class StaticWatchTests(TlsTestCase):
         ticks = None
         result = self.watch(sources(*entries), endpoint="http://127.0.0.1:9")
         with tempfile.TemporaryDirectory() as tmp:
-            path = cli.write_page_watch_evidence({"page_watch": result.summary()}, "2026-10-21", Path(tmp))
+            path = cli.write_page_watch_evidence({"page_watch": result.summary()}, "2026-10-21", Path(tmp), detail=result.detail())
             text = path.read_text(encoding="utf-8")
         record = json.loads(text)
         self.assertEqual(record["status"], "ok")
@@ -628,14 +634,14 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual((observation["mode"], observation["outcome"], observation["http_status"], observation["links"],
                                   observation["bytes"], observation["robots"]), ("observe", "checked", 200, 2, len(V1.encode()), "allowed"))
                 self.assertEqual(len(observation["digest"]), 16)
-                self.assertEqual(cli.page_watch_status(result.summary()), "skipped")         # no freshness claim from an observation
+                self.assertEqual(status_of(result), "skipped")         # no freshness claim from an observation
 
     def test_only_the_exact_word_live_makes_a_static_source_count(self):
         self.server.serve("/news", Reply(200, V1))
         result = self.watch(sources(LISTING, static_mode="live"))
         self.assertEqual((result.checked, result.static_checked), (["figure"], ["figure"]))
         self.assertEqual(result.observations[0]["mode"], "live")
-        self.assertEqual(cli.page_watch_status(result.summary()), "ok")
+        self.assertEqual(status_of(result), "ok")
 
     def test_observing_records_what_went_wrong_and_fails_nothing(self):
         challenge = "<html><head><title>Just a moment...</title></head><body><script src='/cdn-cgi/challenge-platform/x.js'></script></body></html>"
@@ -654,7 +660,7 @@ class StaticWatchTests(TlsTestCase):
     def test_observing_while_firecrawl_is_down_is_still_a_firecrawl_outage(self):
         self.server.serve("/news", Reply(200, V1))
         result = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="observe"), endpoint="http://127.0.0.1:9")
-        self.assertEqual(cli.page_watch_status(result.summary()), "firecrawl-unavailable")
+        self.assertEqual(status_of(result), "firecrawl-unavailable")
         self.assertEqual(result.sources["figure"]["outcome"], "observed")
 
     def test_a_redirect_is_not_followed_and_only_the_target_name_is_kept(self):
@@ -779,7 +785,7 @@ class StaticWatchTests(TlsTestCase):
         self.server.serve("/news", Reply(500, "boom"))
         result = self.watch(sources(LISTING))
         self.assertFalse(result.unavailable)
-        self.assertEqual(cli.page_watch_status(result.summary()), "all-failed")
+        self.assertEqual(status_of(result), "all-failed")
 
     def test_page_text_cannot_forge_a_link_in_a_run(self):
         page = ("<html><head><title>News</title></head><body><main><h1>News</h1>"
@@ -838,11 +844,13 @@ class StaticWatchTests(TlsTestCase):
         self.server.serve("/standard", Reply(500, "no"))
         with tempfile.TemporaryDirectory() as tmp:
             live = self.watch(sources(LISTING, PAGE))
-            record = json.loads(cli.write_page_watch_evidence({"page_watch": live.summary()}, "2026-10-21", Path(tmp)).read_text())
+            record = json.loads(cli.write_page_watch_evidence({"page_watch": live.summary()}, "2026-10-21", Path(tmp),
+                                                              detail=live.detail()).read_text())
             self.assertTrue(record["degraded"])
             self.assertEqual(record["status"], "ok")
             observed = self.watch(sources(LISTING, static_mode="observe"))
-            record = json.loads(cli.write_page_watch_evidence({"page_watch": observed.summary()}, "2026-10-22", Path(tmp)).read_text())
+            record = json.loads(cli.write_page_watch_evidence({"page_watch": observed.summary()}, "2026-10-22", Path(tmp),
+                                                              detail=observed.detail()).read_text())
         self.assertEqual(record["sources_observed"], ["figure"])
         self.assertEqual((record["status"], record["sources_checked"], record["degraded"]), ("skipped", 0, True))
 
@@ -873,15 +881,45 @@ class StaticWatchTests(TlsTestCase):
     def test_fetch_all_carries_the_observations_but_not_into_the_published_report(self):
         import inspect
         from pairadar import heat
-        watched = fetch.PageWatchResult()
-        watched.observations.append({"id": "figure", "digest": "d" * 16})
-        config = Config(sources={"feeds": [], "page_watch": []}, taxonomy={}, glossary={}, baseline={})
-        with patch.object(fetch, "fetch_page_watch", lambda *a, **k: watched), patch.object(heat, "fetch_signals", lambda *a, **k: heat.Signals()), \
-                contextlib.redirect_stdout(io.StringIO()):
-            report = fetch.fetch_all(config, offline=False, reference=DAY, page_state={})
-        self.assertEqual(report.page_watch_observations, watched.observations)
-        self.assertNotIn("digest", json.dumps(report.to_dict()))
+        self.server.serve("/news", Reply(403, "no"))
+        self.server.serve("/standard", Reply(200, article()))
+        for mode in ("observe", "live"):
+            with self.subTest(mode):
+                watched = self.watch(sources(LISTING, PAGE, static_mode=mode))
+                config = Config(sources={"feeds": [], "page_watch": []}, taxonomy={}, glossary={}, baseline={})
+                with patch.object(fetch, "fetch_page_watch", lambda *a, **k: watched), \
+                        patch.object(heat, "fetch_signals", lambda *a, **k: heat.Signals()), contextlib.redirect_stdout(io.StringIO()):
+                    report = fetch.fetch_all(config, offline=False, reference=DAY, page_state={})
+                published = json.dumps(report.to_dict())
+                for private in ("digest", "observation", "planned", "static_checked", "detail", "sources\": {", "http-403", "observed",
+                                "blocked", "robots-unreadable", "static"):
+                    self.assertNotIn(private, published, private)               # radar/latest.json carries none of the per-source result
+                self.assertEqual(sorted(report.to_dict()["page_watch"]),
+                                 ["attempted", "checked", "enabled", "failed", "items", "robots_skipped", "unavailable"])
+                self.assertEqual(report.page_watch_observations, watched.observations)       # the private channels have it
+                self.assertEqual(report.page_watch_detail, watched.detail())
+                self.assertEqual(report.page_watch_detail["sources"]["figure"]["reason"], "http-403")
         self.assertIn("report.page_watch_observations", inspect.getsource(cli.build_context))     # the CLI hands them on
+        self.assertIn("report.page_watch_detail", inspect.getsource(cli.build_context))
+
+    def test_a_url_the_fetcher_would_not_resolve_as_robots_judged_it_is_refused_before_any_request(self):
+        for url in (f"https://{HOST}/news/../private", f"https://{HOST}//news", f"https://{HOST}/%2e%2e/news", f"https://{HOST}/news/%4%31"):
+            with self.subTest(url):
+                self.server.requests.clear()
+                result = self.watch(sources(dict(LISTING, url=url)))
+                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "url-invalid"})
+                self.assertEqual(self.server.requests, [])                                  # not even robots.txt was requested
+
+    def test_a_robots_rule_with_an_invalid_percent_sign_means_no_page_request(self):
+        for rule in ("/%4%31", "/100%", "/%zz"):
+            with self.subTest(rule):
+                self.server.requests.clear()
+                self.server.serve("/robots.txt", Reply(200, f"User-agent: *\nDisallow: {rule}\nAllow: /\n", ctype="text/plain"))
+                self.server.serve("/news", Reply(200, V1))
+                result = self.watch(sources(LISTING))
+                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "unavailable", "reason": "robots-unreadable",
+                                                            "detail": "robots-unsupported"})
+                self.assertEqual(self.server.paths(), ["/robots.txt"])
 
     def test_the_run_log_has_ids_and_codes_not_urls_or_server_text(self):
         self.server.serve("/news", Reply(500, "SECRET-SERVER-TEXT with https://internal.example/path?token=abc"))
