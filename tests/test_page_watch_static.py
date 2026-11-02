@@ -31,9 +31,11 @@ from test_page_watch import FakeFirecrawl, ROBOTS_OPEN, page as firecrawl_page  
 DAY = date(2026, 10, 21)
 ROBOTS_OK = Reply(200, "User-agent: *\nAllow: /\n", ctype="text/plain")
 LISTING = {"id": "figure", "url": f"https://{HOST}/news", "mode": "listing", "link_prefix": "/news/", "hosts": [HOST],
-           "evidence": "O", "weight": 1.1, "publisher": "Figure AI News", "topical": True, "fetcher": "static"}
+           "evidence": "O", "weight": 1.1, "publisher": "Figure AI News", "topical": True, "fetcher": "static",
+           "min_links": 1}
 PAGE = {"id": "watch-iso", "url": "https://alt.good.test/standard", "mode": "page", "evidence": "O", "weight": 1.0,
-        "publisher": "ISO", "topical": True, "fetcher": "static"}
+        "publisher": "ISO", "topical": True, "fetcher": "static", "expect_text": "regulation applies",
+        "min_text_chars": 300}
 REASONS = set("""url-invalid address-blocked redirect content-type content-encoding too-large unframed request-limit dns-failed
 dns-no-ipv4 resolver-stuck connect-failed peer-mismatch tls-failed timeout budget truncated protocol-error http-403 http-404
 http-410 http-429 http-4xx http-5xx http-other challenge empty-page no-links robots-unreadable robots-disallowed
@@ -62,7 +64,8 @@ def article(*extra: str) -> str:
 def sources(*entries: dict, **settings) -> dict:
     return {"filters": {"max_age_days": 30},
             "page_watch_settings": {"enabled": True, "endpoint": "http://127.0.0.1:9", "timeout_seconds": 5,
-                                    "budget_seconds": 120, "max_entries": 12, "max_items_per_source": 3, **settings},
+                                    "budget_seconds": 120, "max_entries": 12, "max_items_per_source": 3,
+                                    "static_mode": "live", **settings},
             "page_watch": [copy.deepcopy(entry) for entry in entries]}
 
 
@@ -203,7 +206,8 @@ class StaticWatchTests(TlsTestCase):
             with self.subTest(name):
                 self.server.serve("/news", reply)
                 result = self.watch(sources(LISTING), copy.deepcopy(base.state))
-                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": outcome, "reason": why})
+                note = {key: value for key, value in result.sources["figure"].items() if key != "detail"}
+                self.assertEqual(note, {"fetcher": "static", "outcome": outcome, "reason": why})
                 self.assertEqual((result.checked, result.failed), ([], ["figure"]))
                 self.assertEqual(result.items, [])
                 self.assertEqual(result.state["sources"]["figure"], base.state["sources"]["figure"])    # untouched, not emptied
@@ -405,6 +409,280 @@ class StaticWatchTests(TlsTestCase):
             self.assertIn(note["reason"], REASONS)
         for leak in ("SECRET-SERVER-TEXT", "https://", HOST, "Helix", "127.0.0.1"):
             self.assertNotIn(leak, text)
+
+    # --- observe first ---------------------------------------------------------------------------------
+    def test_observe_is_the_default_and_the_run_takes_nothing_from_it(self):
+        for mode in (None, "observe", "LIVE", "Live", "live ", "banana", True, 1, ""):
+            with self.subTest(mode=mode):
+                self.server.requests.clear()
+                self.server.serve("/news", Reply(200, V1))
+                raw = sources(LISTING)
+                if mode is None:
+                    del raw["page_watch_settings"]["static_mode"]
+                else:
+                    raw["page_watch_settings"]["static_mode"] = mode
+                prior = copy.deepcopy(self.firecrawl_baseline())
+                result = self.watch(raw, copy.deepcopy(prior))
+                self.assertEqual(self.server.paths(), ["/robots.txt", "/news"])           # it did look, under every rule
+                self.assertEqual((result.attempted, result.checked, result.failed, result.robots_skipped, result.static_checked),
+                                 ([], [], [], [], []))
+                self.assertEqual(result.items, [])
+                self.assertEqual(result.state["sources"], prior["sources"])                  # the baseline is not touched
+                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "observed", "reason": ""})
+                observation, = result.observations
+                self.assertEqual((observation["mode"], observation["outcome"], observation["http_status"], observation["links"],
+                                  observation["bytes"], observation["robots"]), ("observe", "checked", 200, 2, len(V1.encode()), "allowed"))
+                self.assertEqual(len(observation["digest"]), 16)
+                self.assertEqual(cli.page_watch_status(result.summary()), "skipped")         # no freshness claim from an observation
+
+    def test_only_the_exact_word_live_makes_a_static_source_count(self):
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING, static_mode="live"))
+        self.assertEqual((result.checked, result.static_checked), (["figure"], ["figure"]))
+        self.assertEqual(result.observations[0]["mode"], "live")
+        self.assertEqual(cli.page_watch_status(result.summary()), "ok")
+
+    def test_observing_records_what_went_wrong_and_fails_nothing(self):
+        challenge = "<html><head><title>Just a moment...</title></head><body><script src='/cdn-cgi/challenge-platform/x.js'></script></body></html>"
+        cases = {"challenge": (Reply(200, challenge), "challenge", ""), "403": (Reply(403, "no"), "http-403", ""),
+                 "redirect": (Reply(302, "", headers={"Location": "https://other.example/x?y=1"}), "redirect", "other.example")}
+        for name, (reply, reason, detail) in cases.items():
+            with self.subTest(name):
+                self.server.serve("/news", reply)
+                result = self.watch(sources(LISTING, static_mode="observe"))
+                self.assertEqual((result.failed, result.robots_skipped, result.checked), ([], [], []))
+                self.assertFalse(result.unavailable)
+                observation, = result.observations
+                self.assertEqual((observation["reason"], observation["detail"]), (reason, detail))
+                self.assertNotEqual(observation["outcome"], "checked")
+
+    def test_observing_while_firecrawl_is_down_is_still_a_firecrawl_outage(self):
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="observe"), endpoint="http://127.0.0.1:9")
+        self.assertEqual(cli.page_watch_status(result.summary()), "firecrawl-unavailable")
+        self.assertEqual(result.sources["figure"]["outcome"], "observed")
+
+    def test_a_redirect_is_not_followed_and_only_the_target_name_is_kept(self):
+        self.server.serve("/news", Reply(302, "", headers={"Location": "https://other.example/secret/path?token=abc"}))
+        result = self.watch(sources(LISTING))
+        self.assertEqual(self.server.paths(), ["/robots.txt", "/news"])                    # nothing was requested after the 302
+        self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "redirect",
+                                                    "detail": "other.example"})
+        self.assertIn("redirect (other.example)", self.out)
+        for leak in ("secret", "token", "abc"):
+            self.assertNotIn(leak, self.out)
+            self.assertNotIn(leak, json.dumps(result.summary()))
+
+    # --- the source's own sanity settings -------------------------------------------------------------------
+    def test_a_page_must_carry_its_marker_and_enough_text(self):
+        self.server.serve("/standard", Reply(200, article()))
+        base = self.watch(sources(PAGE))
+        self.assertEqual(base.checked, ["watch-iso"])
+        for name, entry, why in (("marker", dict(PAGE, expect_text="Directive 2006/42"), "marker-missing"),
+                                 ("text", dict(PAGE, min_text_chars=5000), "empty-page")):
+            with self.subTest(name):
+                result = self.watch(sources(entry), copy.deepcopy(base.state))
+                self.assertEqual(result.sources["watch-iso"]["reason"], why)
+                self.assertEqual(result.state["sources"], base.state["sources"])
+                self.assertEqual(result.items, [])
+
+    def test_a_listing_must_reach_its_minimum_number_of_links(self):
+        self.server.serve("/news", Reply(200, V1))                                          # two links
+        result = self.watch(sources(dict(LISTING, min_links=3)))
+        self.assertEqual((result.sources["figure"]["reason"], result.checked), ("no-links", []))
+        self.assertEqual(self.watch(sources(dict(LISTING, min_links=2))).checked, ["figure"])
+
+    def test_a_listing_that_loses_most_of_its_links_is_not_read_until_someone_decides(self):
+        cards = [(f"/news/post-{i}", f"A post number {i} with a title", "Oct 01, 2026 · text.") for i in range(10)]
+        self.server.serve("/news", Reply(200, listing(*cards)))
+        first = self.watch(sources(LISTING))
+        self.assertEqual(first.state["sources"]["figure"]["link_count"], 10)
+        self.server.serve("/news", Reply(200, listing(*cards[:4])))
+        for name, entry, expected in (("dropped", LISTING, "link-drop"), ("reviewed", dict(LISTING, allow_link_drop=True), "")):
+            with self.subTest(name):
+                result = self.watch(sources(entry), copy.deepcopy(first.state))
+                if expected:
+                    self.assertEqual((result.sources["figure"]["reason"], result.checked), ("link-drop", []))
+                    self.assertEqual(result.state["sources"], first.state["sources"])      # the baseline stays as it was
+                else:
+                    self.assertEqual(result.checked, ["figure"])
+                    self.assertEqual(result.state["sources"]["figure"]["link_count"], 4)
+        # exactly half is not a drop; and a baseline another extractor made has no count to compare with
+        self.server.serve("/news", Reply(200, listing(*cards[:5])))
+        self.assertEqual(self.watch(sources(LISTING), copy.deepcopy(first.state)).checked, ["figure"])
+        old = self.firecrawl_baseline()
+        old["sources"]["figure"]["link_count"] = 50
+        self.assertEqual(self.watch(sources(LISTING), old).checked, ["figure"])
+        # a short list on record is not judged: 5 on record, 2 now
+        small = copy.deepcopy(first.state)
+        small["sources"]["figure"]["link_count"] = 5
+        self.server.serve("/news", Reply(200, listing(*cards[:2])))
+        self.assertEqual(self.watch(sources(LISTING), small).checked, ["figure"])
+
+    def test_the_first_read_records_the_link_count(self):
+        self.server.serve("/news", Reply(200, V1))
+        self.assertEqual(self.watch(sources(LISTING)).state["sources"]["figure"]["link_count"], 2)
+
+    def test_static_entries_must_say_what_a_real_page_looks_like(self):
+        self.assertEqual(fetch.page_watch_problems(sources(LISTING, PAGE)), [])
+        bad = {
+            "listing without min_links": dict(LISTING, min_links=None),
+            "min_links 0": dict(LISTING, min_links=0), "min_links 1001": dict(LISTING, min_links=1001),
+            "min_links true": dict(LISTING, min_links=True), "min_links text": dict(LISTING, min_links="2"),
+            "page without marker": dict(PAGE, expect_text=None), "short marker": dict(PAGE, expect_text="ab"),
+            "long marker": dict(PAGE, expect_text="x" * 201), "marker number": dict(PAGE, expect_text=12345),
+            "page without min text": dict(PAGE, min_text_chars=None), "min text 99": dict(PAGE, min_text_chars=99),
+            "min text huge": dict(PAGE, min_text_chars=100_001), "min text bool": dict(PAGE, min_text_chars=True),
+            "allow_link_drop text": dict(LISTING, allow_link_drop="yes"),
+        }
+        for name, entry in bad.items():
+            with self.subTest(name):
+                self.assertTrue(fetch.page_watch_problems(sources(entry)), name)
+                with FakeFirecrawl() as fc:
+                    result = self.watch(sources(entry), endpoint=fc.url)
+                self.assertEqual((result.attempted, result.observations), ([], []))        # an invalid entry is not run
+        plain = {k: v for k, v in LISTING.items() if k not in ("fetcher", "min_links")}
+        self.assertEqual(fetch.page_watch_problems(sources(plain)), [])                     # Firecrawl entries need none of it
+
+    # --- one source cannot take the run down -----------------------------------------------------------------
+    def test_an_unexpected_error_is_that_sources_internal_error(self):
+        self.server.serve("/news", Reply(200, V1))
+        self.server.serve("/standard", Reply(200, article()))
+        real = fetch._watch_one
+
+        def sometimes(entry, *args, **kwargs):
+            if entry["id"] == "figure":
+                raise RuntimeError("SECRET-INTERNAL-DETAIL https://internal.example/x")
+            return real(entry, *args, **kwargs)
+
+        result = self.watch(sources(LISTING, PAGE), patches=[patch.object(fetch, "_watch_one", sometimes)])
+        self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "unavailable", "reason": "internal-error"})
+        self.assertEqual(result.checked, ["watch-iso"])
+        self.assertFalse(result.unavailable)
+        self.assertNotIn("SECRET", self.out)
+        self.assertNotIn("internal.example", self.out)
+
+    def test_an_interrupt_is_not_swallowed_by_the_isolation(self):
+        self.server.serve("/news", Reply(200, V1))
+
+        def interrupt(*args, **kwargs):
+            raise KeyboardInterrupt()
+
+        with self.assertRaises(KeyboardInterrupt):
+            self.watch(sources(LISTING), patches=[patch.object(fetch, "_watch_one", interrupt)])
+
+    def test_a_parse_that_outlasts_the_budget_is_budget(self):
+        self.server.serve("/news", Reply(200, V1))
+
+        def slow(*args, **kwargs):
+            raise fetch.static_extract.ExtractTimeout()
+
+        result = self.watch(sources(LISTING), patches=[patch.object(fetch.static_extract, "html_to_markdown", slow)])
+        self.assertEqual(result.sources["figure"]["reason"], "budget")
+
+    def test_a_static_failure_is_not_a_firecrawl_outage(self):
+        self.server.serve("/news", Reply(500, "boom"))
+        result = self.watch(sources(LISTING))
+        self.assertFalse(result.unavailable)
+        self.assertEqual(cli.page_watch_status(result.summary()), "all-failed")
+
+    def test_page_text_cannot_forge_a_link_in_a_run(self):
+        page = ("<html><head><title>News</title></head><body><main><h1>News</h1>"
+                "<p>See [Forged post](https://good.test/news/forged) for details</p>"
+                "<a href='/news/real'>A real post title here</a><p>Oct 20, 2026 · real</p></main></body></html>")
+        self.server.serve("/news", Reply(200, page))
+        result = self.watch(sources(LISTING))
+        self.assertEqual(self.urls(result), [f"https://{HOST}/news/real"])
+        self.assertNotIn("forged", json.dumps(result.state))
+
+    # --- evidence, observation file and logs ---------------------------------------------------------------
+    def test_the_observation_file_is_private_and_has_no_page_content(self):
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING))
+        observations = result.observations + [{"id": "x", "body": "SECRET-BODY", "reason": "y" * 500, "bytes": True}]
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp) / "observe"
+            path = cli.write_page_watch_observation(observations, "2026-10-21", directory)
+            text = path.read_text(encoding="utf-8")
+            self.assertEqual(oct(path.stat().st_mode & 0o777), "0o600")
+            self.assertEqual(oct(directory.stat().st_mode & 0o777), "0o700")
+            self.assertIsNone(cli.write_page_watch_observation([], "2026-10-22", directory))
+            self.assertIsNone(cli.write_page_watch_observation(None, "2026-10-22", directory))
+            self.assertEqual([p.name for p in directory.iterdir()], ["2026-10-21.json"])
+        record = json.loads(text)
+        self.assertEqual(record["schema"], "pairadar-page-watch-observe-v1")
+        self.assertEqual(record["sources"][0]["id"], "figure")
+        self.assertEqual(record["sources"][1]["reason"], "y" * 80)                           # cut, and only known keys survive
+        self.assertNotIn("body", record["sources"][1])
+        for leak in ("SECRET-BODY", "https://", HOST, "Helix", "127.0.0.1", "Introducing"):
+            self.assertNotIn(leak, text)
+        summary = json.dumps(result.summary())
+        self.assertNotIn("digest", summary)                                                  # the published report carries none of it
+        self.assertNotIn("observation", summary)
+
+    def test_the_observation_reaches_the_state_directory_through_main(self):
+        ctx = {"date": "2026-10-21", "fetch": {"page_watch": {"enabled": True, "attempted": [], "checked": [], "failed": [],
+                                                               "robots_skipped": [], "unavailable": False, "items": 0}},
+               "page_watch_observations": [{"id": "figure", "mode": "observe", "outcome": "checked", "reason": "", "detail": "",
+                                            "robots": "allowed", "http_status": 200, "bytes": 5, "links": 2, "text_chars": 40,
+                                            "digest": "0123456789abcdef"}]}
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"PAIRADAR_STATE_DIR": tmp}), \
+                patch.object(cli, "run", lambda **kwargs: ctx), patch.object(cli, "degraded", lambda *a: False), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(cli.main(["--date", "2026-10-21"]), 0)
+            self.assertTrue((Path(tmp) / "page-watch" / "2026-10-21.json").exists())
+            observed = json.loads((Path(tmp) / "page-watch-observe" / "2026-10-21.json").read_text(encoding="utf-8"))
+        self.assertEqual(observed["sources"][0]["digest"], "0123456789abcdef")
+
+    def test_evidence_says_when_a_run_is_degraded_and_what_was_only_observed(self):
+        self.server.serve("/news", Reply(200, V1))
+        self.server.serve("/standard", Reply(500, "no"))
+        with tempfile.TemporaryDirectory() as tmp:
+            live = self.watch(sources(LISTING, PAGE))
+            record = json.loads(cli.write_page_watch_evidence({"page_watch": live.summary()}, "2026-10-21", Path(tmp)).read_text())
+            self.assertTrue(record["degraded"])
+            self.assertEqual(record["status"], "ok")
+            observed = self.watch(sources(LISTING, static_mode="observe"))
+            record = json.loads(cli.write_page_watch_evidence({"page_watch": observed.summary()}, "2026-10-22", Path(tmp)).read_text())
+        self.assertEqual(record["sources_observed"], ["figure"])
+        self.assertEqual((record["status"], record["sources_checked"], record["degraded"]), ("skipped", 0, True))
+
+    def test_a_source_blocked_or_unavailable_three_records_in_a_row_is_escalated(self):
+        def block(figure, iso):
+            sources_ = {"figure": {"fetcher": "static", "outcome": figure, "reason": "http-403" if figure != "checked" else ""},
+                        "watch-iso": {"fetcher": "static", "outcome": iso, "reason": "challenge" if iso != "checked" else ""}}
+            return {"page_watch": {"enabled": True, "attempted": [], "checked": [], "failed": [], "robots_skipped": [],
+                                   "unavailable": False, "items": 0, "planned": ["figure", "watch-iso"], "sources": sources_,
+                                   "static_checked": []}}
+
+        def day(directory, name, figure, iso):
+            return json.loads(cli.write_page_watch_evidence(block(figure, iso), name, directory).read_text())
+
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            self.assertEqual(day(directory, "2026-10-19", "unavailable", "checked")["sources_escalated"], [])
+            self.assertEqual(day(directory, "2026-10-20", "blocked", "unavailable")["sources_escalated"], [])
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                third = day(directory, "2026-10-21", "unavailable", "unavailable")
+            self.assertEqual(third["sources_escalated"], ["figure"])            # iso was fine on the 19th
+            self.assertIn("ESCALATE: figure", out.getvalue())
+            (directory / "2026-10-20.json").write_text("not json")            # an unreadable record ends the run of failures
+            self.assertEqual(day(directory, "2026-10-22", "unavailable", "unavailable")["sources_escalated"], [])
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(day(Path(tmp), "2026-10-21", "unavailable", "unavailable")["sources_escalated"], [])      # no history
+
+    def test_fetch_all_carries_the_observations_but_not_into_the_published_report(self):
+        import inspect
+        from pairadar import heat
+        watched = fetch.PageWatchResult()
+        watched.observations.append({"id": "figure", "digest": "d" * 16})
+        config = Config(sources={"feeds": [], "page_watch": []}, taxonomy={}, glossary={}, baseline={})
+        with patch.object(fetch, "fetch_page_watch", lambda *a, **k: watched), patch.object(heat, "fetch_signals", lambda *a, **k: heat.Signals()), \
+                contextlib.redirect_stdout(io.StringIO()):
+            report = fetch.fetch_all(config, offline=False, reference=DAY, page_state={})
+        self.assertEqual(report.page_watch_observations, watched.observations)
+        self.assertNotIn("digest", json.dumps(report.to_dict()))
+        self.assertIn("report.page_watch_observations", inspect.getsource(cli.build_context))     # the CLI hands them on
 
     def test_the_run_log_has_ids_and_codes_not_urls_or_server_text(self):
         self.server.serve("/news", Reply(500, "SECRET-SERVER-TEXT with https://internal.example/path?token=abc"))

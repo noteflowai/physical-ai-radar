@@ -69,7 +69,9 @@ Rules:
     connection); the connection goes to an approved address and its peer is checked to be that
     address; TLS uses the original name for SNI and certificate verification; no proxy, cookie,
     credential, redirect or content-encoding; only a complete `200` of an accepted type
-    (`text/html`/`application/xhtml+xml`, `text/plain` for robots.txt) within 2 MB is content. The
+    (`text/html`/`application/xhtml+xml`, `text/plain` for robots.txt) within 2 MB, behind a
+    status line and headers of at most 16 KB, is content; TLS 1.2 or newer with ALPN `http/1.1`
+    only. The size limit counts bytes actually read, including chunked bodies. The
     whole request (name resolution, connect, handshake, headers, body) runs under one monotonic
     deadline, 30 s per source and never past the run's `budget_seconds`; a name lookup that does
     not return is abandoned at the deadline (at most two such lookups may be alive). Per source:
@@ -82,15 +84,44 @@ Rules:
     JavaScript shell, a page-mode source with almost no text and a listing with no link under its
     `link_prefix` are `unavailable` and leave the baseline unchanged. These checks are heuristics; a
     disguised `200` they cannot recognise is a residual risk of this fetcher.
-  - Every static source ends a run as `checked`, `unavailable`, `blocked` (our policy refused:
-    address, redirect, content type or encoding, size, allowance), `robots` or `not-attempted`
-    (`budget`, `firecrawl-unavailable`), with one fixed reason code from `static_fetch`, never a URL,
-    status text or server message. The run log carries only the source id and the code. The
-    freshness record gains `sources_planned`, `sources` (per source: fetcher, outcome, reason),
-    `sources_blocked`, `sources_unavailable` and `sources_not_attempted`, and only in a run that has
-    a static source. `status` stays `ok` when one page was read, which is a floor; read
+  - **Every static entry says what a real page of it looks like**, or it is invalid and not run:
+    a listing needs `min_links` (1 to 1000); a page needs `expect_text` (3 to 200 characters that
+    must appear in its visible text, case-insensitive) and `min_text_chars` (100 to 100000). A
+    listing that has fewer links than `min_links` is `no-links`, a page without its marker is
+    `marker-missing`. A listing whose link count falls below half of the count on record (the
+    record keeps `link_count`, and only when at least 6 were on record) is `link-drop` and is not
+    read: a damaged page is more likely than a purge. The way out is a reviewed `allow_link_drop:
+    true` on that entry (or a fresh baseline for it). These settings show that a page is not an
+    obvious wrong page; they do not show that it is the right or a complete one.
+  - **Observe first.** `page_watch_settings.static_mode` is `observe` unless it is exactly
+    `"live"`; any other value, or none, is `observe`. In `observe` a static source is fetched and
+    judged under every rule above, and the run takes nothing from it: no baseline change, no item,
+    no entry in `attempted`, `checked` or `failed`, so no freshness claim (an observe-only run's
+    status stays `skipped`, or `firecrawl-unavailable` when Firecrawl is down). What each source
+    showed is written to `$PAIRADAR_STATE_DIR/page-watch-observe/<day>.json` (default
+    `~/.local/state/pairadar/page-watch-observe/`, mode 0600), outside the repository because the
+    radar commits what it writes there: per source the outcome, the fixed reason code, the HTTP
+    status, byte count, link count, visible-text length, a short digest of the extracted text and
+    the robots verdict; no page text, URL or query. Going live is the one-word change
+    `"static_mode": "live"`, made after someone has read that file.
+  - A redirect is never followed. It is `blocked: redirect`, and only the target's domain name
+    is kept as `detail` (`relative` for the same host, `invalid` for an IP literal or anything
+    that is not a plain name), never its path, query or port.
+  - Every static source ends a run as `checked`, `observed`, `unavailable`, `blocked` (our policy
+    refused: address, redirect, content type or encoding, size, header block, allowance), `robots`
+    or `not-attempted` (`budget`, `firecrawl-unavailable`), with one fixed reason code from
+    `static_fetch` (`robots-unreadable` also carries the code of the fetch that failed as `detail`),
+    never a URL, status text or server message. An unexpected error in one source is that source's
+    `internal-error`; the run goes on within its budget, and KeyboardInterrupt and SystemExit pass
+    through. The run log carries only the source id and the code. The freshness record gains
+    `sources_planned`, `sources` (per source: fetcher, outcome, reason, optional detail),
+    `sources_blocked`, `sources_unavailable`, `sources_not_attempted`, `sources_observed`,
+    `degraded` (a planned source was not read) and `sources_escalated`, and only in a run that has a
+    static source. A source that is blocked or unavailable in the last 3 daily records (read from
+    the earlier `page-watch/<day>.json` files; no extra state) is listed in `sources_escalated` and
+    printed as `ESCALATE`. `status` stays `ok` when one page was read, which is a floor; read
     `sources_checked` against `sources_planned`. A Firecrawl channel that is down no longer hides
-    static sources read in the same run.
+    static sources read live in the same run.
   - **Baseline migration.** A baseline records the extractor that made it (`"extractor":
     "static-1"`; a Firecrawl baseline has no key). The first successful read by a different
     extractor re-seeds the baseline instead of comparing text across extractors: every link already
@@ -101,7 +132,13 @@ Rules:
     same way. A failed read never changes a baseline.
   - Where the radar runs, `scripts/radar-run` resets the clone to `origin/main`, so a merge is
     live. This change is inert on merge: no shipped entry has `"fetcher": "static"`. A source is
-    switched by a later change to `data/sources.json` that adds the key to that entry.
+    switched by a later change to `data/sources.json` that adds the key to that entry, and it is
+    observed only until `static_mode` is changed to `"live"` in a further reviewed change. Entry
+    points that fetch (network mode of `python3 -m pairadar`): `scripts/publish_daily.sh`, run at
+    07:40 host time (Asia/Singapore, `scripts/cron.sg`) and as the `publish` stage of the 21:30
+    nightly batch and its 02:30 `--previous-day` resume (`nightly_plan.py`, `nightly_batch.py`);
+    `draft_daily_notes.sh` uses `--offline` and `--rerender`, `repair_sources.sh` only reads
+    history. Any of these may carry the first observation after the enabling change merges.
 - every request is timeout-bounded and retried once before the source is given up on. A
   4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;

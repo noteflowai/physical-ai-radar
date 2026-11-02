@@ -672,6 +672,8 @@ def page_watch_settings(config: Config) -> dict[str, Any]:
         "budget": bounded("budget_seconds", 600, 10, 1800),
         "max_entries": int(bounded("max_entries", 12, 1, 50)),
         "max_items": int(bounded("max_items_per_source", 3, 1, 10)),
+        # Static sources are only OBSERVED unless the settings say "live": any other value, or none, is observe.
+        "static_mode": "live" if raw.get("static_mode") == "live" else "observe",
     }
 
 
@@ -732,7 +734,23 @@ def page_watch_problems(sources: dict[str, Any]) -> list[str]:
         hosts = entry.get("hosts", [])
         if not isinstance(hosts, list) or not all(isinstance(host, str) and "." in host for host in hosts):
             problems.append(f"{where}: hosts must be a list of domain names")
+        if entry.get("fetcher") == "static":
+            # A static source says what a real page of it looks like; without that a wrong page could pass as the page.
+            if mode == "listing" and not _int_in(entry.get("min_links"), 1, 1000):
+                problems.append(f"{where}: a static listing needs min_links, a whole number from 1 to 1000")
+            if mode == "page":
+                marker = entry.get("expect_text")
+                if not isinstance(marker, str) or not 3 <= len(marker.strip()) <= 200:
+                    problems.append(f"{where}: a static page needs expect_text, a string of 3 to 200 characters")
+                if not _int_in(entry.get("min_text_chars"), 100, 100_000):
+                    problems.append(f"{where}: a static page needs min_text_chars, a whole number from 100 to 100000")
+            if "allow_link_drop" in entry and not isinstance(entry["allow_link_drop"], bool):
+                problems.append(f"{where}: allow_link_drop must be true or false")
     return problems
+
+
+def _int_in(value: Any, low: int, high: int) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and low <= value <= high
 
 
 def _resolve_page_watch(sources: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1011,6 +1029,8 @@ class PageWatchResult:
     planned: list[str] = field(default_factory=list)
     sources: dict[str, dict[str, str]] = field(default_factory=dict)
     static_checked: list[str] = field(default_factory=list)
+    # One record per static source of the run (what was seen, never content); written by the CLI outside the repository.
+    observations: list[dict[str, Any]] = field(default_factory=list)
 
     def note(self, source: str, fetcher: str, outcome: str, reason: str = "", detail: str = "") -> None:
         self.sources[source] = {"fetcher": fetcher, "outcome": outcome, "reason": reason}
@@ -1173,59 +1193,114 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
     return ("allowed", "") if allowed else ("disallowed", "robots-disallowed")
 
 
-def _watch_static(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, robots: dict[str, Any],
-                  previous: dict[str, Any], settings: dict[str, Any], reference: date, max_age: int,
-                  limit: float, result: PageWatchResult) -> None:
-    """One static source: robots.txt, the page, the content checks, then the usual comparison with the baseline.
+LINK_DROP_BASE = 6          # a listing needs at least this many links on record before a sudden drop is judged
 
-    Anything that is not a complete, accepted 200 with readable content leaves the baseline untouched and records one
-    fixed reason code (never a URL, a status text or a server message). `limit` is the run's monotonic deadline.
+
+def _static_read(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, robots: dict[str, Any],
+                 previous: dict[str, Any], settings: dict[str, Any], reference: date, max_age: int,
+                 limit: float) -> dict[str, Any]:
+    """Everything one static source does, with no effect on the run: robots.txt, the page, the content checks and the
+    comparison with the baseline. Returns what happened; the caller records it.
+
+    `outcome` is checked, blocked, unavailable or robots, with one fixed `reason` code (never a URL, a status text or a
+    server message). A page that is not a complete accepted 200 with readable content is never `checked`.
     """
-    source = entry["id"]
+    out: dict[str, Any] = {"outcome": "unavailable", "reason": "", "detail": "", "robots": "", "status": None,
+                           "bytes": None, "links": None, "text_chars": None, "digest": "", "items": [], "state": None}
     budget = fetcher.budget(static_fetch.SOURCE_SECONDS, limit=limit)
-    result.attempted.append(source)
-
-    def refuse(outcome: str, reason: str, bucket: list[str], detail: str = "") -> None:
-        bucket.append(source)
-        result.note(source, "static", outcome, reason, detail)
-        print(f"[fetch] page_watch skip {source}: {reason}" + (f" ({detail})" if detail else ""))
-
     try:
         verdict, why = _static_robots(fetcher, entry["url"], robots, budget)
+        out["robots"] = verdict
         if verdict == "disallowed":
-            refuse("robots", why, result.robots_skipped)
-            return
+            out.update(outcome="robots", reason=why)
+            return out
         if verdict == "unreadable":
             # `why` is the fixed code of the fetch that failed (http-403, dns-failed, ...); a source that only ran out of
             # its own allowance reports that instead
             if why in ("budget", "request-limit", "timeout"):
-                refuse("unavailable", why, result.failed)
+                out["reason"] = why
             else:
-                refuse("unavailable", "robots-unreadable", result.failed, why)
-            return
+                out.update(reason="robots-unreadable", detail=why)
+            return out
         page = fetcher.get(entry["url"], budget)
     except static_fetch.StaticFetchError as exc:
-        refuse("blocked" if exc.blocked else "unavailable", exc.reason, result.failed)
-        return
+        out.update(outcome="blocked" if exc.blocked else "unavailable", reason=exc.reason, detail=exc.detail,
+                   status=exc.status)
+        return out
+    out.update(status=200, bytes=len(page.body))
     mode = entry.get("mode", "listing")
     raw_html = static_fetch.decode(page)
-    markdown, title = static_extract.html_to_markdown(raw_html, mode)
-    problem = static_extract.page_problem(raw_html, markdown, title, mode)
-    if not problem and mode == "listing" and not listing_links(
-            markdown, entry["url"], entry.get("hosts", []), entry.get("link_prefix", "/"), reference):
-        problem = "no-links"
+    try:
+        markdown, title = static_extract.html_to_markdown(raw_html, mode, budget.deadline, budget.clock)
+    except static_extract.ExtractTimeout:
+        out["reason"] = "budget"
+        return out
+    out.update(text_chars=len(static_extract.visible_text(markdown)),
+               digest=hashlib.sha256(markdown.encode("utf-8")).hexdigest()[:16])
+    problem = static_extract.page_problem(raw_html, markdown, title, mode, min_text=entry.get("min_text_chars"),
+                                          expect_text=entry.get("expect_text"))
+    links: list[dict[str, str]] = []
+    if mode == "listing":
+        links = listing_links(markdown, entry["url"], entry.get("hosts", []), entry.get("link_prefix", "/"), reference)
+        out["links"] = len(links)
+        if not problem and len(links) < int(entry.get("min_links", 1)):
+            problem = "no-links"
+        before = previous.get("link_count") if previous.get("extractor") == STATIC_EXTRACTOR else None
+        if (not problem and isinstance(before, int) and before >= LINK_DROP_BASE and len(links) * 2 < before
+                and entry.get("allow_link_drop") is not True):
+            # A listing that lost more than half of its links is more likely a damaged or partial page than a purge.
+            # The way out is a reviewed `allow_link_drop: true` on the entry, or a fresh baseline for the source.
+            problem = "link-drop"
     if problem:
-        refuse("unavailable", problem, result.failed)
-        return
+        out["reason"] = problem
+        return out
     reply = {"success": True, "data": {"markdown": markdown, "metadata": {"statusCode": 200, "title": title}}}
     items, new_state, _answered = _watch_one(entry, reply, previous, settings, reference, max_age,
                                              extractor=STATIC_EXTRACTOR)       # a 200 with content is always "read"
-    result.checked.append(source)
-    result.static_checked.append(source)
-    result.note(source, "static", "checked")
-    if new_state is not None:
-        result.state["sources"][source] = new_state
-    result.items.extend(items)
+    if mode == "listing" and (new_state or previous).get("link_count") != len(links):
+        new_state = {**(new_state or previous), "link_count": len(links)}
+    out.update(outcome="checked", items=items, state=new_state)
+    return out
+
+
+def _watch_static(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, robots: dict[str, Any],
+                  previous: dict[str, Any], settings: dict[str, Any], reference: date, max_age: int,
+                  limit: float, result: PageWatchResult) -> None:
+    """Run one static source and record it. An unexpected error in it is that source's `internal-error`, not the run's.
+
+    In "observe" mode (the default) the source is fetched and judged under every rule, but the run takes nothing from
+    it: no baseline change, no item, no entry in attempted, checked or failed (so no freshness claim). What happened is
+    kept in `result.observations`, which the CLI writes outside the repository, and in `result.sources`.
+    """
+    source = entry["id"]
+    live = settings.get("static_mode") == "live"
+    try:
+        out = _static_read(entry, fetcher, robots, previous, settings, reference, max_age, limit)
+    except Exception:  # noqa: BLE001 -- containment: only this source is lost; KeyboardInterrupt and SystemExit pass
+        out = {"outcome": "unavailable", "reason": "internal-error", "detail": "", "robots": "", "status": None,
+               "bytes": None, "links": None, "text_chars": None, "digest": "", "items": [], "state": None}
+    outcome, reason, detail = out["outcome"], out["reason"], out["detail"]
+    result.observations.append({"id": source, "mode": "live" if live else "observe", "outcome": outcome,
+                                "reason": reason, "detail": detail, "robots": out["robots"],
+                                "http_status": out["status"], "bytes": out["bytes"], "links": out["links"],
+                                "text_chars": out["text_chars"], "digest": out["digest"]})
+    if not live:
+        result.note(source, "static", "observed" if outcome == "checked" else outcome, reason, detail)
+        print(f"[fetch] page_watch observe {source}: " + ("read" if outcome == "checked" else reason)
+              + (f" ({detail})" if detail and outcome != "checked" else ""))
+        return
+    result.attempted.append(source)
+    if outcome == "checked":
+        result.checked.append(source)
+        result.static_checked.append(source)
+        result.note(source, "static", "checked")
+        if out["state"] is not None:
+            result.state["sources"][source] = out["state"]
+        result.items.extend(out["items"])
+        return
+    (result.robots_skipped if outcome == "robots" else result.failed).append(source)
+    result.note(source, "static", outcome, reason, detail)
+    print(f"[fetch] page_watch skip {source}: {reason}" + (f" ({detail})" if detail else ""))
 
 
 def fetch_page_watch(config: Config, reference: date | None = None,
@@ -1396,6 +1471,9 @@ class FetchReport:
     page_state: dict[str, Any] = field(default_factory=dict)
     # PageWatchResult.summary(): explicit ids per outcome, for the freshness evidence.
     page_watch: dict[str, Any] = field(default_factory=lambda: PageWatchResult().summary())
+    # What each static source showed this run (see PageWatchResult.observations). Not part of to_dict(): that goes
+    # into the published radar/latest.json; the CLI writes this to the state directory instead.
+    page_watch_observations: list[dict[str, Any]] = field(default_factory=list)
 
     @property
     def answered(self) -> list[str]:
@@ -1451,6 +1529,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     report.page_failed.extend([*watched.failed, *watched.robots_skipped])
     report.page_state = watched.state
     report.page_watch = watched.summary()
+    report.page_watch_observations = watched.observations
     if watched.unavailable:
         report.unavailable.append("page_watch")
     from . import heat  # heat builds on distill, which imports this module

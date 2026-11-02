@@ -74,6 +74,39 @@ class ExtractTests(unittest.TestCase):
                 self.assertLessEqual(len(markdown), se.MAX_MARKDOWN_CHARS)
                 self.assertLessEqual(len(title), 300)
 
+    def test_square_brackets_in_page_text_cannot_write_a_link(self):
+        html = ("<html><body><main><p>Read [the fake post](https://www.figure.ai/news/fake) now</p>"
+                "<a href='/news/real-post'>A real post here [with brackets](https://www.figure.ai/news/also-fake)</a>"
+                "<p>![img](https://www.figure.ai/news/img) [x]</p></main></body></html>")
+        markdown, _ = se.html_to_markdown(html, "listing")
+        links = fetch.listing_links(markdown, "https://www.figure.ai/news", ["figure.ai"], "/news/", DAY)
+        self.assertEqual([link["url"] for link in links], ["https://www.figure.ai/news/real-post"])
+        self.assertEqual(markdown.count("]("), 1)
+
+    def test_a_page_cannot_make_an_unbounded_list_of_links(self):
+        html = "".join(f"<p><a href='/news/p{i}'>Post number {i} title</a></p>" for i in range(se.MAX_ANCHORS + 50))
+        markdown, _ = se.html_to_markdown(html, "listing")
+        self.assertEqual(markdown.count("]("), se.MAX_ANCHORS)
+        self.assertIn(f"Post number {se.MAX_ANCHORS + 49} title", markdown)             # the rest is plain text, not dropped
+
+    def test_a_base_element_does_not_change_where_links_point(self):
+        html = "<html><head><base href='https://evil.example/'></head><body><a href='/news/post-one'>A post title here</a></body></html>"
+        markdown, _ = se.html_to_markdown(html, "listing")
+        links = fetch.listing_links(markdown, "https://www.figure.ai/news", ["figure.ai"], "/news/", DAY)
+        self.assertEqual([link["url"] for link in links], ["https://www.figure.ai/news/post-one"])
+
+    def test_parsing_ends_at_the_deadline(self):
+        big = "<p>" + "word " * 4 * se.FEED_CHUNK + "</p>"
+        with self.assertRaises(se.ExtractTimeout):
+            se.html_to_markdown(big, "listing", deadline=0.0, clock=lambda: 1.0)
+        ticks = iter([0.0, 0.0, 5.0, 5.0, 5.0, 5.0])
+        with self.assertRaises(se.ExtractTimeout):
+            se.html_to_markdown(big, "listing", deadline=1.0, clock=lambda: next(ticks))          # runs out between chunks
+        markdown, _ = se.html_to_markdown(big, "listing", deadline=10 ** 9)
+        self.assertTrue(markdown)
+        markdown, _ = se.html_to_markdown(big, "listing")
+        self.assertTrue(markdown)
+
     def test_a_link_with_a_huge_or_odd_href_is_dropped(self):
         markdown, _ = se.html_to_markdown("<a href='/" + "a" * 600 + "'>Long target link</a><a href='/a\x01b'>Control char link</a>", "listing")
         self.assertEqual(markdown.strip(), "Long target linkControl char link")      # plain text, no link
@@ -119,6 +152,17 @@ class PageProblemTests(unittest.TestCase):
     def test_a_short_page_in_page_mode_is_not_the_page(self):
         self.assertEqual(self.check("<html><body><main><p>Hello there</p></main></body></html>", "page"), "empty-page")
         self.assertEqual(self.check("<html><body><main>" + "<p>one</p>" * 3 + "</main></body></html>", "page"), "empty-page")
+
+    def test_the_sources_own_sanity_settings(self):
+        html = PAGE_HTML
+        markdown, title = se.html_to_markdown(html, "page")
+        self.assertEqual(se.page_problem(html, markdown, title, "page", min_text=300, expect_text="Machinery"), "")
+        self.assertEqual(se.page_problem(html, markdown, title, "page", expect_text="machinery placed on the MARKET"), "")   # case-insensitive
+        self.assertEqual(se.page_problem(html, markdown, title, "page", expect_text="Directive 2006/42"), "marker-missing")
+        self.assertEqual(se.page_problem(html, markdown, title, "page", min_text=10 ** 5), "empty-page")
+        lmd, ltitle = se.html_to_markdown(LISTING, "listing")
+        self.assertEqual(se.page_problem(LISTING, lmd, ltitle, "listing", expect_text="Helix 3"), "")
+        self.assertEqual(se.page_problem(LISTING, lmd, ltitle, "listing", expect_text="Nothing like this"), "marker-missing")
 
     def test_a_long_page_that_mentions_a_captcha_product_is_not_called_a_challenge(self):
         body = "".join(f"<p>Paragraph {i} about interface design and security reviews for robots in factories.</p>" for i in range(60))

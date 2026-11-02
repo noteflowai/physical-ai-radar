@@ -225,6 +225,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
         "chart_days": CHART_DAYS,
         "repeat_days": repeat_days,
         "fetch": report.to_dict(),
+        "page_watch_observations": report.page_watch_observations,
         "notes": load_notes(day),
         # Only a round that changed the baseline (a digest, a link, a line, what was
         # offered) rewrites it; offline, with Firecrawl down or with every page as it
@@ -434,24 +435,104 @@ def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
                     per_source[str(source)].update(outcome="not-attempted", reason="not-reached")
             record["sources_planned"] = len(planned)
             record["sources"] = per_source
-            for outcome in ("blocked", "unavailable", "not-attempted"):
+            for outcome in ("blocked", "unavailable", "not-attempted", "observed"):
                 record[f"sources_{outcome.replace('-', '_')}"] = sorted(
                     source for source, note in per_source.items() if note["outcome"] == outcome)
+            # a run in which any planned source was not read (observed ones are not a read) is degraded, whatever `status` says
+            record["degraded"] = any(note["outcome"] != "checked" for note in per_source.values())
         target_dir = directory or page_watch_evidence_dir()
-        target_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
-        target = target_dir / f"{day}.json"
-        fd, temporary = tempfile.mkstemp(dir=target_dir, prefix=f".{day}.", suffix=".tmp")
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as handle:
-                json.dump(record, handle, ensure_ascii=False, indent=1)
-            os.replace(temporary, target)
-        except BaseException:
-            with contextlib.suppress(OSError):
-                os.unlink(temporary)
-            raise
-        return target
+        if record.get("sources"):
+            stuck = _stuck_sources(record["sources"], day, target_dir)
+            record["sources_escalated"] = stuck
+            if stuck:
+                print(f"[radar] page_watch ESCALATE: {', '.join(stuck)} blocked or unavailable in "
+                      f"{ESCALATE_AFTER} consecutive records; the owner must look at the source or its entry")
+        return _write_private_json(target_dir, f"{day}.json", record)
     except Exception as exc:  # noqa: BLE001 -- evidence is observational; never fail the radar
         print(f"[radar] page_watch evidence not written: {type(exc).__name__}: {exc}")
+        return None
+
+
+# A source that is blocked or unavailable in this many consecutive daily records is escalated in the record.
+ESCALATE_AFTER = 3
+
+
+def _stuck_sources(per_source: dict[str, dict[str, str]], day: str, directory: Path) -> list[str]:
+    """Sources whose outcome was blocked or unavailable today and in each of the previous ESCALATE_AFTER - 1 records.
+
+    Read from the earlier daily evidence files; no extra state is kept. A missing or unreadable earlier record ends the
+    run of consecutive failures (it cannot be counted).
+    """
+    bad = ("blocked", "unavailable")
+    today = {source for source, note in per_source.items() if note.get("outcome") in bad}
+    if not today or ESCALATE_AFTER < 2:
+        return []
+    earlier = sorted(path for path in directory.glob("????-??-??.json") if path.stem < day)[-(ESCALATE_AFTER - 1):]
+    if len(earlier) < ESCALATE_AFTER - 1:
+        return []
+    for path in earlier:
+        try:
+            sources = json.loads(path.read_text(encoding="utf-8")).get("sources", {})
+        except (OSError, ValueError, AttributeError):
+            return []
+        if not isinstance(sources, dict):
+            return []
+        today = {source for source in today
+                 if isinstance(sources.get(source), dict) and sources[source].get("outcome") in bad}
+    return sorted(today)
+
+
+def _write_private_json(directory: Path, name: str, record: dict[str, Any]) -> Path:
+    """Write `record` atomically into `directory` (created 0700) as `name`, mode 0600."""
+    directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+    target = directory / name
+    fd, temporary = tempfile.mkstemp(dir=directory, prefix=f".{name}.", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(record, handle, ensure_ascii=False, indent=1)
+        os.replace(temporary, target)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(temporary)
+        raise
+    return target
+
+
+PAGE_WATCH_OBSERVE_SCHEMA = "pairadar-page-watch-observe-v1"
+_OBSERVE_KEYS = ("id", "mode", "outcome", "reason", "detail", "robots", "http_status", "bytes", "links", "text_chars",
+                 "digest")
+
+
+def page_watch_observe_dir() -> Path:
+    base = os.environ.get("PAIRADAR_STATE_DIR") or os.path.join(
+        os.environ.get("XDG_STATE_HOME") or os.path.expanduser("~/.local/state"), "pairadar")
+    return Path(base) / "page-watch-observe"
+
+
+def write_page_watch_observation(observations: list[dict[str, Any]] | None, day: str,
+                                 directory: Path | None = None) -> Path | None:
+    """What each static source showed this run, outside the repository (the radar commits what it writes there).
+
+    Per source: id, mode, outcome, fixed reason code, the validated detail (a redirect's target domain name), the robots
+    verdict, HTTP status, byte count, link count, visible-text length and a short digest of the extracted text. No page
+    text, URL or query string. Observational: a failure here is logged and never fails the radar.
+    """
+    if not observations:
+        return None
+    try:
+        rows = []
+        for observation in observations:
+            row = {}
+            for key in _OBSERVE_KEYS:
+                value = observation.get(key) if isinstance(observation, dict) else None
+                row[key] = value if isinstance(value, (int, type(None))) and not isinstance(value, bool) \
+                    else str(value)[:80] if value is not None else None
+            rows.append(row)
+        record = {"schema": PAGE_WATCH_OBSERVE_SCHEMA, "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
+                  "sources": rows}
+        return _write_private_json(directory or page_watch_observe_dir(), f"{day}.json", record)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[radar] page_watch observation not written: {type(exc).__name__}")
         return None
 
 
@@ -483,6 +564,7 @@ def main(argv: list[str] | None = None) -> int:
         raise
     if reporting:
         write_page_watch_evidence(ctx.get("fetch"), ctx.get("date") or day)
+        write_page_watch_observation(ctx.get("page_watch_observations"), ctx.get("date") or day)
     if degraded(ctx["fetch"], args.offline):
         print("[radar] every source failed: refusing to publish this as a quiet day")
         return 2

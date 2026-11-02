@@ -12,10 +12,10 @@ never a partial body, a status page or an error text.
 
 Reason codes, by who refused:
 - blocked (our policy refused, nothing wrong with the server): url-invalid, address-blocked, redirect, content-type,
-  content-encoding, too-large, unframed, request-limit
+  content-encoding, too-large, headers-too-large, unframed, request-limit
 - unavailable (could not obtain the page): dns-failed, dns-no-ipv4, resolver-stuck, connect-failed, peer-mismatch,
   tls-failed, timeout, budget, truncated, protocol-error, http-403, http-404, http-410, http-429, http-4xx, http-5xx,
-  http-other, challenge, empty-page, no-links, robots-unreadable
+  http-other, challenge, empty-page, marker-missing, no-links, link-drop, robots-unreadable, internal-error
 
 What this does not prove: that the host's network, routing or NAT cannot reach a forbidden address by another path.
 The unit tests show this module's behaviour; the existing egress guard stays the defence in depth.
@@ -23,6 +23,7 @@ The unit tests show this module's behaviour; the existing egress guard stays the
 from __future__ import annotations
 
 import http.client
+import io
 import ipaddress
 import re
 import socket
@@ -37,6 +38,7 @@ USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-
 MAX_URL_CHARS = 500
 MAX_PAGE_BYTES = 2_000_000
 MAX_ROBOTS_BYTES = 512_000
+MAX_HEADER_BYTES = 16_384
 CONNECT_SECONDS = 10.0
 SOURCE_SECONDS = 30.0
 MIN_HOST_INTERVAL = 2.0
@@ -49,15 +51,21 @@ HTML_TYPES = frozenset({"text/html", "application/xhtml+xml"})
 TEXT_TYPES = frozenset({"text/plain"})
 
 BLOCKED = frozenset({"url-invalid", "address-blocked", "redirect", "content-type", "content-encoding", "too-large",
-                     "unframed", "request-limit"})
+                     "headers-too-large", "unframed", "request-limit"})
 
 
 class StaticFetchError(Exception):
-    """A request that produced no content. `reason` is one fixed code; the message never carries a URL or server text."""
+    """A request that produced no content. `reason` is one fixed code; the message never carries a URL or server text.
 
-    def __init__(self, reason: str) -> None:
+    `status` is the HTTP status when the server answered one. `detail` is a short value that passed a strict check (for
+    a redirect: the target's domain name, nothing of its path or query) or "".
+    """
+
+    def __init__(self, reason: str, status: int | None = None, detail: str = "") -> None:
         super().__init__(reason)
         self.reason = reason
+        self.status = status
+        self.detail = detail
 
     @property
     def blocked(self) -> bool:
@@ -175,6 +183,56 @@ class Page:
     charset: str
 
 
+def location_host(value: object) -> str:
+    """The domain name a `Location` header points at, for the diagnostic of a redirect that was NOT followed.
+
+    Only a name that passes the same label rules as a request host is returned (at most 80 characters). Nothing of the
+    target's path, query, port or credentials is kept; "relative" means the same host, "invalid" anything else (an IP
+    literal, odd characters, control characters, no usable host).
+    """
+    if not isinstance(value, str) or any(ord(ch) <= 0x20 or ord(ch) == 0x7F for ch in value.strip()):
+        return "invalid"
+    try:
+        host = (urllib.parse.urlsplit(value.strip()).hostname or "").lower()
+    except ValueError:
+        return "invalid"
+    if not host:
+        return "relative" if value.strip().startswith(("/", "?")) else "invalid"
+    labels = host.split(".")
+    if len(host) > 80 or len(labels) < 2 or any(not _LABEL.match(label) for label in labels) or labels[-1].isdigit():
+        return "invalid"
+    return host
+
+
+class _CappedFile:
+    """The response stream with a cap on the status line and header block (a server cannot make us read megabytes of
+    headers); the body is read through unchanged."""
+
+    def __init__(self, fp: io.BufferedIOBase) -> None:
+        self._fp = fp
+        self._used = 0
+        self._in_head = True
+
+    def readline(self, limit: int = -1) -> bytes:
+        line = self._fp.readline(limit)
+        if self._in_head:
+            self._used += len(line)
+            if self._used > MAX_HEADER_BYTES:
+                raise StaticFetchError("headers-too-large")
+            if line in (b"\r\n", b"\n", b""):
+                self._in_head = False
+        return line
+
+    def __getattr__(self, name: str):
+        return getattr(self._fp, name)
+
+
+class _Response(http.client.HTTPResponse):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.fp = _CappedFile(self.fp)
+
+
 # --- the fetcher ----------------------------------------------------------------------------------------
 
 class StaticFetcher:
@@ -188,6 +246,7 @@ class StaticFetcher:
         if context is None:
             context = ssl.create_default_context()
             context.minimum_version = ssl.TLSVersion.TLSv1_2
+            context.set_alpn_protocols(["http/1.1"])
         self._resolver = resolver
         self._context = context
         self._port = port
@@ -299,6 +358,7 @@ class StaticFetcher:
             except (ssl.SSLError, OSError):
                 raise StaticFetchError("budget" if budget.remaining() <= 0 else "tls-failed") from None
             conn = http.client.HTTPSConnection(parsed.host, 443, context=self._context)
+            conn.response_class = _Response
             conn.sock = tls
             try:
                 tls.settimeout(max(budget.remaining(), 0.001))
@@ -326,10 +386,10 @@ class StaticFetcher:
               kinds: frozenset[str], max_bytes: int) -> Page:
         status = response.status
         if 300 <= status < 400:
-            raise StaticFetchError("redirect")
+            raise StaticFetchError("redirect", status, location_host(response.getheader("Location")))
         if status != 200:
             raise StaticFetchError({403: "http-403", 404: "http-404", 410: "http-410", 429: "http-429"}.get(
-                status, "http-4xx" if 400 <= status < 500 else "http-5xx" if 500 <= status < 600 else "http-other"))
+                status, "http-4xx" if 400 <= status < 500 else "http-5xx" if 500 <= status < 600 else "http-other"), status)
         ctype, _, params = (response.getheader("Content-Type") or "").partition(";")
         ctype = ctype.strip().lower()
         if ctype not in kinds:

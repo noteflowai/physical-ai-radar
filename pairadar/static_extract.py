@@ -12,9 +12,14 @@ from __future__ import annotations
 
 import html.parser
 import re
+import time
+from typing import Callable
 
 MAX_MARKDOWN_CHARS = 200_000
 MAX_HREF_CHARS = 500
+# links beyond this many on one page are plain text: a page cannot make us build an unbounded list
+MAX_ANCHORS = 3_000
+FEED_CHUNK = 65_536
 # visible text a page-mode source must have before it counts as the page
 MIN_PAGE_TEXT_CHARS = 300
 MIN_PAGE_LINES = 5
@@ -64,6 +69,7 @@ class _Extractor(html.parser.HTMLParser):
         self._in_title = False
         self._heading = False
         self._size = 0
+        self._anchors = 0
 
     # --- line handling -------------------------------------------------------------------------------
     def _flush(self) -> None:
@@ -98,8 +104,9 @@ class _Extractor(html.parser.HTMLParser):
         if tag in _CHROME:
             self._chrome += 1
         if tag == "a" and not self._href:
-            href = _href(dict(attrs).get("href"))
+            href = _href(dict(attrs).get("href")) if self._anchors < MAX_ANCHORS else ""
             if href:
+                self._anchors += 1
                 self._href = href
                 self._anchor = []
         elif tag == "br":
@@ -138,20 +145,37 @@ class _Extractor(html.parser.HTMLParser):
                 self.title += data
             return
         if not self._skip and data:
-            self._add(data)
+            # square brackets are markdown here: a page must not be able to write a link into the text it gives us
+            self._add(data.replace("[", " ").replace("]", " "))
 
     def close(self) -> None:
         super().close()
         self._flush()
 
 
-def html_to_markdown(text: str, mode: str = "listing") -> tuple[str, str]:
+class ExtractTimeout(Exception):
+    """The page took longer to parse than the source's deadline allows."""
+
+
+def html_to_markdown(text: str, mode: str = "listing", deadline: float | None = None,
+                     clock: Callable[[], float] = time.monotonic) -> tuple[str, str]:
     """(markdown, title). `listing` keeps every line; `page` keeps main/article text when the page has any, else
-    everything outside nav, header, footer, aside and form."""
+    everything outside nav, header, footer, aside and form.
+
+    The text is fed to the parser in chunks; when `deadline` (a time on `clock`) has passed between two chunks this
+    raises ExtractTimeout, so adversarial markup cannot hold a source past its budget.
+    """
     parser = _Extractor()
     try:
-        parser.feed(text)
+        for start in range(0, len(text), FEED_CHUNK):
+            if deadline is not None and clock() >= deadline:
+                raise ExtractTimeout()
+            parser.feed(text[start:start + FEED_CHUNK])
+        if deadline is not None and clock() >= deadline:
+            raise ExtractTimeout()
         parser.close()
+    except ExtractTimeout:
+        raise
     except Exception:  # noqa: BLE001 -- malformed markup is an unreadable page, not a crash
         return "", ""
     lines = parser.lines
@@ -162,22 +186,30 @@ def html_to_markdown(text: str, mode: str = "listing") -> tuple[str, str]:
     return markdown, _WS.sub(" ", parser.title).strip()[:300]
 
 
-def _visible(markdown: str) -> str:
+def visible_text(markdown: str) -> str:
     return re.sub(r"\]\([^)]*\)", "", markdown).replace("[", "")
 
 
-def page_problem(raw_html: str, markdown: str, title: str, mode: str) -> str:
-    """"" when the extracted page may be read, else a fixed reason: `challenge`, `empty-page`."""
+def page_problem(raw_html: str, markdown: str, title: str, mode: str, *, min_text: int | None = None,
+                 expect_text: str | None = None) -> str:
+    """"" when the extracted page may be read, else a fixed reason: `challenge`, `empty-page`, `marker-missing`.
+
+    `min_text` and `expect_text` are the source's own sanity settings: the least visible text a page-mode source
+    must have (default MIN_PAGE_TEXT_CHARS) and a string that must appear in it (case-insensitive). They show that the
+    page is not an obvious wrong page; they do not show that it is the right one or complete.
+    """
     head = raw_html[:200_000].lower()
-    text = _visible(markdown)
+    text = visible_text(markdown)
     if _GATE_TITLE.match(title or "") and len(text) < 2_000:
         return "challenge"
     if any(marker in head for marker in _GATE_MARKERS) and len(text) < 1_500:
         return "challenge"
     if mode == "page":
         lines = [line for line in markdown.splitlines() if len(line.strip()) >= 3]
-        if len(text) < MIN_PAGE_TEXT_CHARS or len(lines) < MIN_PAGE_LINES:
+        if len(text) < (MIN_PAGE_TEXT_CHARS if min_text is None else min_text) or len(lines) < MIN_PAGE_LINES:
             return "empty-page"
     elif not markdown.strip():
         return "empty-page"
+    if expect_text and expect_text.lower() not in text.lower():
+        return "marker-missing"
     return ""

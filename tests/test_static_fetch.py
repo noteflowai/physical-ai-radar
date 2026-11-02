@@ -6,6 +6,7 @@ behaviour of this module; they say nothing about the host's routing or egress ru
 """
 from __future__ import annotations
 
+import ipaddress
 import os
 import socket
 import sys
@@ -50,7 +51,9 @@ class UrlTests(unittest.TestCase):
                "https://good.test:/", "https://127.0.0.1/", "https://8.8.8.8/", "https://[::1]/", "https://[::ffff:8.8.8.8]/",
                "https://2130706433/", "https://0x7f.0.0.1/", "https://0177.0.0.1/", "https://localhost/", "https://intranet/",
                "https://good.test/a b", "https://good.test/a\tb", "https://good.test/a\nb", "https://good.test/a\x00b",
-               "https://good.test/a\\b", "https://good.test/#frag", "https://good_test.com/", "https://-bad.test/",
+               "https://good.test/a\\b", "https://good.test/#frag", "https://good_test.com/", "https://good.test./",
+               "https://good.test.:443/", "https://xn--/", "https://bücher.example/", "https://BÜCHER.example/",
+               "https://-bad.test/",
                "https://bad-.test/", "https://good..test/", "https://münchen.de/", "https://good.test/é",
                "https://" + "a" * 64 + ".test/", "https://good.test/" + "x" * 500, None, 5, b"https://good.test/"]
         for url in bad:
@@ -97,6 +100,137 @@ class AddressTests(unittest.TestCase):
         self.assertTrue(context.check_hostname)
         self.assertGreaterEqual(context.minimum_version, ssl.TLSVersion.TLSv1_2)
         self.assertEqual(static_fetch.StaticFetcher()._port, 443)
+        with patch.object(ssl.SSLContext, "set_alpn_protocols") as alpn:
+            static_fetch.StaticFetcher()
+        alpn.assert_called_once_with(["http/1.1"])                                 # HTTP/1.1 only
+
+    def test_the_static_path_uses_no_proxy_aware_or_cookie_helper(self):
+        import ast
+        tree = ast.parse((ROOT / "pairadar" / "static_fetch.py").read_text(encoding="utf-8"))
+        imported = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                imported.update(alias.name for alias in node.names)
+            elif isinstance(node, ast.ImportFrom):
+                imported.add(node.module or "")
+        for forbidden in ("urllib.request", "requests", "urllib3", "http.cookiejar", "http.server", "socketserver", "subprocess"):
+            self.assertNotIn(forbidden, imported)
+        source = (ROOT / "pairadar" / "static_fetch.py").read_text(encoding="utf-8")
+        for forbidden in ("getproxies", "ProxyHandler", "HTTPS_PROXY", "environ"):
+            self.assertNotIn(forbidden, source)
+
+    def test_every_special_purpose_ipv4_range_is_refused_without_is_global(self):
+        from unittest.mock import PropertyMock
+        samples = ["0.1.2.3", "10.1.1.1", "100.64.1.1", "100.127.255.254", "127.0.0.2", "169.254.1.1", "172.16.5.5",
+                   "172.31.1.1", "192.0.0.5", "192.0.2.5", "192.88.99.5", "192.168.9.9", "198.18.5.5", "198.19.5.5",
+                   "198.51.100.5", "203.0.113.5", "224.1.1.1", "239.9.9.9", "240.1.1.1", "255.255.255.254", "255.255.255.255"]
+        with patch.object(ipaddress.IPv4Address, "is_global", new_callable=PropertyMock, return_value=True):
+            for text in samples:
+                with self.subTest(text):
+                    self.assertFalse(address_allowed(text))
+            self.assertTrue(address_allowed("8.8.8.8"))                           # the flag is really neutralised
+
+    def test_ipv6_forms_that_embed_ipv4_are_refused_whole(self):
+        for text in ("64:ff9b::7f00:1", "64:ff9b::a9fe:a9fe", "64:ff9b:1::1", "64:ff9b:1:ffff::1", "::127.0.0.1", "::7f00:1",
+                     "::ffff:0:7f00:1", "::ffff:7f00:1", "2002:7f00:1::1", "2002:a9fe:a9fe::", "2001:0:4136:e378:8000:63bf:3fff:fdd2",
+                     "2001::1", "fe80::1%eth0", "fe80::1", "ff02::1", "::", "::1", "fc00::1", "fd12:3456::1"):
+            with self.subTest(text):
+                self.assertFalse(address_allowed(text))
+
+class EdgeTests(TlsTestCase):
+    """Header cap, failure details, stuck lookups and allowance; the server is only there for what needs a connection."""
+
+    def get(self, fetcher, path="/news", **kw):
+        return fetcher.get(f"https://{HOST}{path}", fetcher.budget(10), **kw)
+
+    def test_a_response_with_a_huge_header_block_is_refused(self):
+        self.server.serve("/p", Reply(200, PAGE, headers={"X-Pad": "a" * 20000}))
+        self.assertEqual(reason(lambda: self.get(self.fetcher(), "/p")), "headers-too-large")
+        many = {f"X-{i}": "b" * 200 for i in range(90)}                            # many modest headers, still over the cap
+        self.server.serve("/q", Reply(200, PAGE, headers=many))
+        self.assertEqual(reason(lambda: self.get(self.fetcher(), "/q")), "headers-too-large")
+        self.server.serve("/ok", Reply(200, PAGE, headers={f"X-{i}": "c" * 40 for i in range(20)}))
+        self.assertEqual(self.get(self.fetcher(), "/ok").body.decode(), PAGE)
+
+    def test_failures_carry_the_http_status_and_a_redirect_only_its_target_name(self):
+        cases = [("/a", Reply(403, "x"), "http-403", 403, ""),
+                 ("/b", Reply(302, "", headers={"Location": "https://other.example/secret/path?token=abc#f"}), "redirect", 302, "other.example"),
+                 ("/c", Reply(301, "", headers={"Location": "/relative/place?x=1"}), "redirect", 301, "relative"),
+                 ("/d", Reply(302, "", headers={"Location": "http://169.254.169.254/latest/meta-data/"}), "redirect", 302, "invalid"),
+                 ("/e", Reply(302, "", headers={"Location": "https://user:pw@evil.example:8443/x"}), "redirect", 302, "evil.example"),
+                 ("/f", Reply(302, "", headers={}), "redirect", 302, "invalid")]
+        for path, reply, expected, status, detail in cases:
+            with self.subTest(path):
+                self.server.serve(path, reply)
+                with self.assertRaises(StaticFetchError) as caught:
+                    self.get(self.fetcher(), path)
+                self.assertEqual((caught.exception.reason, caught.exception.status, caught.exception.detail), (expected, status, detail))
+                for leak in ("secret", "token", "pw", "8443", "meta-data", "relative"):
+                    if leak != detail:
+                        self.assertNotIn(leak, caught.exception.detail)
+
+    def test_location_host_keeps_only_a_valid_domain_name(self):
+        host = static_fetch.location_host
+        self.assertEqual(host("https://Docs.Example.com/a?b#c"), "docs.example.com")
+        for bad in ("https://127.0.0.1/", "https://[::1]/x", "https://2130706433/", "https://good_test.com/", "https://a/",
+                    "https://" + "a" * 30 + "." + "b" * 60 + ".example/", "javascript:alert(1)", "https://exa mple.com/",
+                    "https://example.com\r\nSet-Cookie: x", "https://x\x00.example/", "", None, 5, "https://-bad.example/"):
+            with self.subTest(bad):
+                self.assertEqual(host(bad), "invalid")
+        self.assertEqual(host("//cdn.example.com/x"), "cdn.example.com")
+        self.assertEqual(host("/x"), "relative")
+        self.assertEqual(host("?x=1"), "relative")
+
+    def test_a_stuck_lookup_is_cleaned_up_when_it_finishes_and_the_fetcher_works_again(self):
+        release = threading.Event()
+        calls = []
+
+        def resolver(host):
+            calls.append(host)
+            if len(calls) <= static_fetch.MAX_STUCK_RESOLVERS:
+                release.wait(30)
+            return ["127.0.0.1"]
+
+        fetcher = self.fetcher(resolver=resolver)
+        self.server.serve("/news", Reply(200, PAGE))
+        for _ in range(static_fetch.MAX_STUCK_RESOLVERS):
+            self.assertEqual(reason(lambda: fetcher.get(f"https://{HOST}/news", fetcher.budget(0.5))), "budget")
+        self.assertEqual(reason(lambda: fetcher.get(f"https://{HOST}/news", fetcher.budget(5))), "resolver-stuck")
+        self.assertEqual(len(calls), static_fetch.MAX_STUCK_RESOLVERS)             # the refused request started no lookup
+        release.set()
+        for thread in list(fetcher._abandoned):
+            thread.join(5)
+        self.assertEqual(self.get(fetcher, "/news").body.decode(), PAGE)             # finished lookups are forgotten
+        self.assertEqual(fetcher._abandoned, [])
+
+    def test_a_process_with_stuck_lookups_still_exits(self):
+        import subprocess
+        code = (
+            "import sys, threading, time\n"
+            f"sys.path.insert(0, {str(ROOT)!r})\n"
+            "from pairadar import static_fetch as s\n"
+            "never = threading.Event()\n"
+            "f = s.StaticFetcher(resolver=lambda h: (never.wait(3600), ['8.8.8.8'])[1], min_interval=0)\n"
+            "for _ in range(4):\n"
+            "    try:\n"
+            "        f.get('https://good.test/', f.budget(0.4))\n"
+            "    except s.StaticFetchError as e:\n"
+            "        print(e.reason)\n"
+        )
+        started = time.monotonic()
+        done = subprocess.run([sys.executable, "-B", "-c", code], capture_output=True, text=True, timeout=30)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(done.stdout.split(), ["budget", "budget", "resolver-stuck", "resolver-stuck"])
+        self.assertLess(time.monotonic() - started, 15)                              # daemon lookups did not hold the interpreter
+
+    def test_the_allowance_and_pacing_count_robots_and_pages_alike(self):
+        self.server.serve("/robots.txt", Reply(200, "User-agent: *\nAllow: /\n", ctype="text/plain"))
+        self.server.serve("/news", Reply(200, PAGE))
+        fetcher = self.fetcher()
+        budget = fetcher.budget(20)
+        fetcher.get(f"https://{HOST}/robots.txt", budget, kinds=static_fetch.TEXT_TYPES)
+        fetcher.get(f"https://{HOST}/news", budget)
+        self.assertEqual(budget.requests_left, static_fetch.MAX_REQUESTS_PER_SOURCE - 2)
 
 
 class ConnectionTests(TlsTestCase):
