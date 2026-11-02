@@ -12,10 +12,12 @@ never a partial body, a status page or an error text.
 
 Reason codes, by who refused:
 - blocked (our policy refused, nothing wrong with the server): url-invalid, address-blocked, redirect, content-type,
-  content-encoding, too-large, headers-too-large, unframed, request-limit
+  content-encoding, too-large, headers-too-large, unframed, request-limit, content-cap (more text or links than can be
+  taken whole), too-many-links and too-many-lines (more than the baseline can record)
 - unavailable (could not obtain the page): dns-failed, dns-no-ipv4, resolver-stuck, connect-failed, peer-mismatch,
   tls-failed, timeout, budget, truncated, protocol-error, http-403, http-404, http-410, http-429, http-4xx, http-5xx,
-  http-other, challenge, empty-page, marker-missing, no-links, link-drop, robots-unreadable, internal-error
+  http-other, challenge, empty-page, marker-missing, no-links, link-drop, robots-unreadable (detail: the code of the
+  failed fetch, or robots-unsupported for a file that cannot be judged completely), internal-error
 
 What this does not prove: that the host's network, routing or NAT cannot reach a forbidden address by another path.
 The unit tests show this module's behaviour; the existing egress guard stays the defence in depth.

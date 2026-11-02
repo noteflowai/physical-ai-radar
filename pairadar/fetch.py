@@ -40,7 +40,7 @@ from email.utils import parsedate_to_datetime
 from typing import Any, Iterable
 
 from .config import Config, Item
-from . import static_extract, static_fetch
+from . import robots_rules, static_extract, static_fetch
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -585,8 +585,6 @@ STATIC_FETCHER_FACTORY = static_fetch.StaticFetcher
 # The extractor identity a static source's baseline carries. A baseline made by another extractor is re-seeded
 # on the first successful read (see _watch_one), never silently compared across extractors.
 STATIC_EXTRACTOR = "static-1"
-# Static robots.txt: only these agent tokens are matched.
-STATIC_ROBOTS_AGENTS = (ROBOTS_TOKEN,)
 # Firecrawl's own robots check is a per-team flag, not a request option, so the radar
 # checks robots.txt itself; these are the agents the request goes out as.
 ROBOTS_AGENTS = ("physical-ai-radar", "FirecrawlAgent")
@@ -1163,34 +1161,35 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
                    budget: static_fetch.Budget) -> tuple[str, str]:
     """("allowed" | "disallowed" | "unreadable", reason) for a static source, read through the same fetcher.
 
-    Only a 200 text/plain robots.txt is read as rules. A 404 or 410 means there is none and allows everything.
-    Anything else -- 401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a truncated or oversized file, a
-    refused address, a timeout -- is "unreadable", and an unreadable robots.txt allows nothing this run. A result
-    that is a fact about the origin is cached per run; one that is only this source running out of budget is not.
+    Only a 200 text/plain robots.txt of valid UTF-8 is read as rules, by `robots_rules` (RFC 9309: groups merged, longest
+    match wins, `*` and `$`), over the WHOLE file; one that cannot be judged completely is unreadable, never cut short. A
+    404 or 410 means there is none and allows everything. Anything else -- 401, 403, 429, 5xx, a challenge, a redirect, an
+    HTML page, a truncated or oversized file, a refused address, a timeout -- is "unreadable", and an unreadable
+    robots.txt allows nothing this run. A result that is a fact about the origin is cached per run; one that is only
+    this source running out of budget is not.
     """
     origin = static_fetch.parse_url(url).origin
     cached = cache.get(origin)
     if cached is None:
-        parser = urllib.robotparser.RobotFileParser()
         try:
             page = fetcher.get(origin + "/robots.txt", budget, kinds=static_fetch.TEXT_TYPES,
                                max_bytes=static_fetch.MAX_ROBOTS_BYTES, accept="text/plain")
         except static_fetch.StaticFetchError as exc:
             if exc.reason in ("http-404", "http-410"):
-                parser.parse([])
-                cached = ("rules", parser)
+                cached = ("rules", robots_rules.Rules())
             elif exc.reason in ("budget", "request-limit", "timeout"):
                 return "unreadable", exc.reason
             else:
                 cached = ("unreadable", exc.reason)
         else:
-            parser.parse(static_fetch.decode(page)[:MAX_ROBOTS_CHARS].splitlines())
-            cached = ("rules", parser)
+            try:
+                cached = ("rules", robots_rules.parse(page.body.decode("utf-8"), ROBOTS_TOKEN))
+            except (UnicodeDecodeError, robots_rules.RobotsUnsupported):
+                cached = ("unreadable", "robots-unsupported")
         cache[origin] = cached
     if cached[0] == "unreadable":
         return "unreadable", cached[1]
-    allowed = all(cached[1].can_fetch(agent, url) for agent in STATIC_ROBOTS_AGENTS)
-    return ("allowed", "") if allowed else ("disallowed", "robots-disallowed")
+    return ("allowed", "") if cached[1].allowed(url) else ("disallowed", "robots-disallowed")
 
 
 LINK_DROP_BASE = 6          # a listing needs at least this many links on record before a sudden drop is judged
@@ -1235,6 +1234,11 @@ def _static_read(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, rob
     except static_extract.ExtractTimeout:
         out["reason"] = "budget"
         return out
+    except static_extract.ExtractTruncated:
+        # more than we can take whole (text over the cap, or a listing with more links than we list): never cut and
+        # judged, and never a baseline
+        out.update(outcome="blocked", reason="content-cap")
+        return out
     out.update(text_chars=len(static_extract.visible_text(markdown)),
                digest=hashlib.sha256(markdown.encode("utf-8")).hexdigest()[:16])
     problem = static_extract.page_problem(raw_html, markdown, title, mode, min_text=entry.get("min_text_chars"),
@@ -1253,6 +1257,14 @@ def _static_read(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, rob
             problem = "link-drop"
     if problem:
         out["reason"] = problem
+        return out
+    # The baseline keeps at most MAX_STATE_LINKS links (or MAX_STATE_LINES line digests). A page with more cannot be
+    # recorded whole, and what is not recorded would be offered as new the next day: it is held instead.
+    if mode == "listing" and len(links) > MAX_STATE_LINKS:
+        out.update(outcome="blocked", reason="too-many-links")
+        return out
+    if mode != "listing" and len(dict.fromkeys(_line_digest(line) for line in _page_lines(markdown))) > MAX_STATE_LINES:
+        out.update(outcome="blocked", reason="too-many-lines")
         return out
     reply = {"success": True, "data": {"markdown": markdown, "metadata": {"statusCode": 200, "title": title}}}
     items, new_state, _answered = _watch_one(entry, reply, previous, settings, reference, max_age,

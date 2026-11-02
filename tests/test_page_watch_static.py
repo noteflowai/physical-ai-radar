@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tests"))
 
-from pairadar import cli, fetch, static_fetch  # noqa: E402
+from pairadar import cli, fetch, robots_rules, static_extract, static_fetch  # noqa: E402
 from pairadar.config import Config  # noqa: E402
 from static_fixture import HOST, Reply, TlsTestCase  # noqa: E402
 from test_page_watch import FakeFirecrawl, ROBOTS_OPEN, page as firecrawl_page  # noqa: E402
@@ -409,6 +409,180 @@ class StaticWatchTests(TlsTestCase):
             self.assertIn(note["reason"], REASONS)
         for leak in ("SECRET-SERVER-TEXT", "https://", HOST, "Helix", "127.0.0.1"):
             self.assertNotIn(leak, text)
+
+    # --- robots.txt rules, through the real _static_robots -------------------------------------------------
+    def verdict(self, body, path="/news", status=200, ctype="text/plain"):
+        self.server.requests.clear()
+        self.server.serve("/robots.txt", Reply(status, body, ctype=ctype))
+        fetcher = self.fetcher()
+        return fetch._static_robots(fetcher, f"https://{HOST}{path}", {}, fetcher.budget(20))
+
+    def test_robots_rules_are_applied_as_the_rfc_says(self):
+        self.assertEqual(self.verdict("User-agent: *\nAllow: /\nDisallow: /private\n", "/private"), ("disallowed", "robots-disallowed"))
+        self.assertEqual(self.verdict("User-agent: *\nAllow: /\nDisallow: /private\n", "/public"), ("allowed", ""))
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /a\nAllow: /a/b\n", "/a/b/c"), ("allowed", ""))
+        self.assertEqual(self.verdict("User-agent: physical-ai-radar\nDisallow: /a\n\nUser-agent: physical-ai-radar\nDisallow: /b\n", "/b"),
+                         ("disallowed", "robots-disallowed"))
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /*.pdf$\n", "/x.pdf"), ("disallowed", "robots-disallowed"))
+
+    def test_the_reviewers_robots_examples_fetch_no_page(self):
+        # 01, R-D-ffc7-01: robotparser allowed all three
+        disallowed = ("disallowed", "robots-disallowed")
+        self.assertEqual(self.verdict("User-agent: *\nAllow: /\nDisallow: /news\n", "/news"), disallowed)
+        self.assertEqual(self.verdict("User-agent: *\nDisallow: /news/*private*\n", "/news/private"), disallowed)
+        padding = "#" + "c" * 500_000 + "\n"
+        body = "User-agent: *\nAllow: /\n" + padding + "Disallow: /news\n"
+        self.assertEqual(len(body.encode()), 500_041)
+        self.assertEqual(self.verdict(body, "/news"), disallowed)
+        # end to end: the page is never requested and the baseline is as it was
+        entry = dict(LISTING, url=f"https://{HOST}/news/private", link_prefix="/news/private/")
+        base_state = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {"digest": "d", "since": "2026-09-01",
+                                                                                   "changed": "2026-10-01", "links": [],
+                                                                                   "extractor": "static-1"}}}
+        for robots in ("User-agent: *\nDisallow: /news/*private*\n", "User-agent: *\nAllow: /\nDisallow: /news/private\n", body):
+            with self.subTest(robots[:30]):
+                self.server.requests.clear()
+                self.server.serve("/robots.txt", Reply(200, robots, ctype="text/plain"))
+                self.server.serve("/news/private", Reply(200, V1))
+                result = self.watch(sources(entry), copy.deepcopy(base_state))
+                self.assertEqual(self.server.paths(), ["/robots.txt"])
+                self.assertEqual((result.robots_skipped, result.checked), (["figure"], []))
+                self.assertEqual(result.state["sources"], base_state["sources"])
+
+    def test_the_last_rule_of_a_long_robots_file_counts(self):
+        # 500028 bytes, under the limit: the Disallow at the very end must not be cut off
+        body = "#" + "c" * 500_000 + "\nUser-agent: *\nDisallow: /\n"
+        self.assertEqual(len(body.encode()), 500_028)
+        self.assertEqual(self.verdict(body), ("disallowed", "robots-disallowed"))
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING, static_mode="live"))
+        self.assertEqual((result.robots_skipped, result.checked), (["figure"], []))
+        self.assertNotIn("/news", self.server.paths())                                   # the page was never requested
+
+    def test_robots_size_limit_is_exact_and_over_it_nothing_is_guessed(self):
+        tail = "\nUser-agent: *\nDisallow: /\n"
+        exact = "#" + "c" * (static_fetch.MAX_ROBOTS_BYTES - len(tail) - 1) + tail
+        self.assertEqual(len(exact.encode()), static_fetch.MAX_ROBOTS_BYTES)
+        self.assertEqual(self.verdict(exact), ("disallowed", "robots-disallowed"))        # exactly the limit is read whole
+        self.assertEqual(self.verdict("#" + exact), ("unreadable", "too-large"))          # one byte more is not read at all
+        self.assertNotIn("/news", self.server.paths())
+
+    def test_a_robots_file_that_cannot_be_judged_completely_is_unreadable(self):
+        many = "User-agent: *\n" + "".join(f"Disallow: /p{i}\n" for i in range(robots_rules.MAX_RULES + 1))
+        for name, body in {"too many rules": many, "invalid utf-8": b"User-agent: *\nDisallow: /\xff\xfe\n",
+                           "latin-1 accent": "User-agent: *\nDisallow: /caf\xe9\n".encode("latin-1"),
+                           "rule too long": "User-agent: *\nDisallow: /" + "a" * robots_rules.MAX_PATTERN + "\n"}.items():
+            with self.subTest(name):
+                self.assertEqual(self.verdict(body), ("unreadable", "robots-unsupported"))
+        result = self.watch(sources(LISTING, static_mode="live"))
+        self.assertEqual(result.sources["figure"]["reason"], "robots-unreadable")
+        self.assertEqual(result.sources["figure"]["detail"], "robots-unsupported")
+        self.assertNotIn("/news", self.server.paths())
+
+    def test_robots_is_judged_per_url_and_cached_per_origin(self):
+        self.server.serve("/robots.txt", Reply(200, "User-agent: *\nDisallow: /private\n", ctype="text/plain"))
+        fetcher = self.fetcher()
+        cache: dict = {}
+        budget = fetcher.budget(20)
+        self.assertEqual(fetch._static_robots(fetcher, f"https://{HOST}/private/x", cache, budget), ("disallowed", "robots-disallowed"))
+        self.assertEqual(fetch._static_robots(fetcher, f"https://{HOST}/news", cache, budget), ("allowed", ""))
+        self.assertEqual(self.server.paths().count("/robots.txt"), 1)
+
+    # --- nothing is cut silently; the baseline must be able to hold what it is given ------------------------
+    def test_content_over_a_cap_is_refused_and_leaves_the_baseline_alone(self):
+        self.server.serve("/news", Reply(200, V1))
+        base = self.watch(sources(LISTING))
+        links = "".join(f"<p><a href='/news/post-{i}'>A post number {i} title here</a></p>" for i in range(6))
+        tail = "<p><a href='/news/latest'>The latest post title here</a></p>"
+        pages = {"text over the cap": f"<html><head><title>News</title></head><body><main>{links}<p>{'x' * 200_100}</p>{tail}</main></body></html>",
+                 "01's example: a link, 201000 characters, a link":
+                     "<html><head><title>News</title></head><body><main><p><a href='/news/first'>The first post title here</a></p>"
+                     f"<p>{'x' * 201_000}</p><p><a href='/news/last'>The last post title here</a></p></main></body></html>",
+                 "links over the cap": "<html><head><title>News</title></head><body><main>"
+                 + "".join(f"<p><a href='/news/p{i}'>Post {i} is here</a></p>" for i in range(static_extract.MAX_ANCHORS + 1))
+                 + "</main></body></html>"}
+        for name, html in pages.items():
+            with self.subTest(name):
+                self.server.serve("/news", Reply(200, html))
+                result = self.watch(sources(LISTING), copy.deepcopy(base.state))
+                self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "content-cap"})
+                self.assertEqual((result.checked, result.items), ([], []))
+                self.assertEqual(result.state["sources"], base.state["sources"])
+                self.assertEqual(result.observations[0]["reason"], "content-cap")
+
+    def test_a_listing_the_baseline_cannot_hold_whole_is_held(self):
+        def page(count, first=0):
+            return listing(*[(f"/news/post-{i}", f"A post number {i} with a title", "") for i in range(first, first + count)])
+
+        limit = fetch.MAX_STATE_LINKS
+        self.server.serve("/news", Reply(200, page(limit + 1)))
+        held = self.watch(sources(LISTING))
+        self.assertEqual(held.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "too-many-links"})
+        self.assertEqual((held.checked, held.items, held.state["sources"]), ([], [], {}))
+        # an existing baseline (another extractor's) is kept as it was
+        old = self.firecrawl_baseline()
+        migrated = self.watch(sources(LISTING), copy.deepcopy(old))
+        self.assertEqual((migrated.sources["figure"]["reason"], migrated.state["sources"]), ("too-many-links", old["sources"]))
+        # exactly the limit is recorded whole, and the next day's identical page is not news
+        self.server.serve("/news", Reply(200, page(limit)))
+        first = self.watch(sources(LISTING))
+        self.assertEqual(first.checked, ["figure"])
+        self.assertEqual(len(first.state["sources"]["figure"]["links"]), limit)
+        second = self.watch(sources(LISTING), copy.deepcopy(first.state))
+        self.assertEqual(second.items, [])
+        # links that left the page are forgotten before any link that is on it
+        known = copy.deepcopy(first.state)
+        self.server.serve("/news", Reply(200, page(limit - 10, first=10)))
+        shifted = self.watch(sources(LISTING), known)
+        recorded = {link["url"] for link in shifted.state["sources"]["figure"]["links"]}
+        self.assertTrue({f"https://{HOST}/news/post-{i}" for i in range(10, limit)} <= recorded)
+        self.assertEqual(self.watch(sources(LISTING), copy.deepcopy(shifted.state)).items, [])
+
+    def test_property_a_source_is_recorded_whole_or_held_never_half(self):
+        limit_links, limit_lines = fetch.MAX_STATE_LINKS, fetch.MAX_STATE_LINES
+        for count in (1, 2, 150, limit_links - 1, limit_links, limit_links + 1, limit_links + 50):
+            with self.subTest(links=count):
+                cards = [(f"/news/post-{i}", f"A post number {i} with a title", "") for i in range(count)]
+                self.server.serve("/news", Reply(200, listing(*cards)))
+                first = self.watch(sources(LISTING))
+                second = self.watch(sources(LISTING), copy.deepcopy(first.state))
+                if count > limit_links:
+                    self.assertEqual((first.checked, first.state["sources"], second.checked), ([], {}, []))
+                else:
+                    recorded = {link["url"] for link in first.state["sources"]["figure"]["links"]}
+                    self.assertEqual(recorded, {f"https://{HOST}/news/post-{i}" for i in range(count)})   # every link, none missing
+                    self.assertEqual(second.items, [])                                                    # nothing is news the next day
+        for count in (1, 2, 1000, limit_lines - 1, limit_lines, limit_lines + 1):
+            with self.subTest(lines=count):
+                lines = "".join(f"<p>Line {i} of the regulation applies to machinery</p>" for i in range(count))
+                self.server.serve("/standard", Reply(200, f"<html><head><title>S</title></head><body><main>{lines}</main></body></html>"))
+                entry = dict(PAGE, min_text_chars=100)
+                if count < 5:
+                    continue
+                first = self.watch(sources(entry))
+                second = self.watch(sources(entry), copy.deepcopy(first.state))
+                if count > limit_lines:
+                    self.assertEqual((first.checked, first.state["sources"], second.checked), ([], {}, []))
+                else:
+                    self.assertEqual(len(first.state["sources"]["watch-iso"]["lines"]), count)
+                    self.assertEqual(second.items, [])
+
+    def test_a_page_the_baseline_cannot_hold_whole_is_held(self):
+        def page(count):
+            lines = "".join(f"<p>Line {i} of the regulation applies to machinery</p>" for i in range(count))
+            return f"<html><head><title>Standard</title></head><body><main>{lines}</main></body></html>"
+
+        limit = fetch.MAX_STATE_LINES
+        self.server.serve("/standard", Reply(200, page(limit + 1)))
+        held = self.watch(sources(PAGE))
+        self.assertEqual(held.sources["watch-iso"], {"fetcher": "static", "outcome": "blocked", "reason": "too-many-lines"})
+        self.assertEqual((held.checked, held.state["sources"]), ([], {}))
+        self.server.serve("/standard", Reply(200, page(limit)))
+        first = self.watch(sources(PAGE))
+        self.assertEqual(first.checked, ["watch-iso"])
+        self.assertEqual(len(first.state["sources"]["watch-iso"]["lines"]), limit)
+        second = self.watch(sources(PAGE), copy.deepcopy(first.state))
+        self.assertEqual(second.items, [])                                                # the same page is no change
 
     # --- observe first ---------------------------------------------------------------------------------
     def test_observe_is_the_default_and_the_run_takes_nothing_from_it(self):

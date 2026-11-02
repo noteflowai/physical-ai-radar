@@ -76,9 +76,17 @@ Rules:
     deadline, 30 s per source and never past the run's `budget_seconds`; a name lookup that does
     not return is abandoned at the deadline (at most two such lookups may be alive). Per source:
     at most 4 requests, 2 s between requests to one host. robots.txt is read through the same
-    fetcher: a `200 text/plain` is the rules, `404`/`410` means there are none, and anything else
-    (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a timeout, a refused address)
-    disallows the page for the run.
+    fetcher: a `200 text/plain` of valid UTF-8 is the rules, read WHOLE (the file is at most 512000
+    bytes, or it is `too-large` and unreadable) by `pairadar/robots_rules.py`, which follows RFC 9309
+    for the product token `physical-ai-radar`: groups naming it are merged (else the `*` groups),
+    the longest matching `Allow`/`Disallow` wins, a tie goes to `Allow`, `*` and a final `$` are
+    wildcards, the matched path includes the query and percent-encoding is compared in one form.
+    (`urllib.robotparser`, which the Firecrawl path still uses, takes the first match in file order and
+    would let `Allow: /` before `Disallow: /private` through.) A file with more than 5000 rules, a rule
+    longer than 2000 characters, or bytes that are not UTF-8 cannot be judged completely and is
+    unreadable, not guessed at. `404`/`410` means there are no rules, and anything else (401, 403, 429,
+    5xx, a challenge, a redirect, an HTML page, a timeout, a refused address) disallows the page for the
+    run.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
     bot-management marker on a page with little text), a login or consent page, an empty
     JavaScript shell, a page-mode source with almost no text and a listing with no link under its
@@ -93,6 +101,15 @@ Rules:
     read: a damaged page is more likely than a purge. The way out is a reviewed `allow_link_drop:
     true` on that entry (or a fresh baseline for it). These settings show that a page is not an
     obvious wrong page; they do not show that it is the right or a complete one.
+  - **Nothing is cut silently, and the baseline must be able to hold what it is given.** The
+    extracted text of a source may not exceed 200000 characters and a listing may not have more than
+    3000 links (a page-mode source keeps the text of its links, so only the text cap applies to it);
+    over either, the source is `blocked: content-cap`, not read from a truncated copy. The baseline
+    records at most 300 links (a listing) or 2000 distinct lines (a page). A listing with more than
+    300 links is `blocked: too-many-links` and a page with more than 2000 distinct lines is
+    `blocked: too-many-lines`, with the baseline unchanged: a page that could only be recorded in
+    part would show its unrecorded part as new the next day. A listing that fits keeps every one of
+    its links; only links that have left the page are forgotten when the record is full.
   - **Observe first.** `page_watch_settings.static_mode` is `observe` unless it is exactly
     `"live"`; any other value, or none, is `observe`. In `observe` a static source is fetched and
     judged under every rule above, and the run takes nothing from it: no baseline change, no item,

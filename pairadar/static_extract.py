@@ -17,7 +17,7 @@ from typing import Callable
 
 MAX_MARKDOWN_CHARS = 200_000
 MAX_HREF_CHARS = 500
-# links beyond this many on one page are plain text: a page cannot make us build an unbounded list
+# a listing with more links than this is refused whole (ExtractTruncated), not cut: its list of links is what it is for
 MAX_ANCHORS = 3_000
 FEED_CHUNK = 65_536
 # visible text a page-mode source must have before it counts as the page
@@ -68,17 +68,16 @@ class _Extractor(html.parser.HTMLParser):
         self._anchor: list[str] = []
         self._in_title = False
         self._heading = False
-        self._size = 0
         self._anchors = 0
+        self.over_anchors = False
 
     # --- line handling -------------------------------------------------------------------------------
     def _flush(self) -> None:
         text = _WS.sub(" ", "".join(self._buf)).strip()
         self._buf = []
-        if text and self._size < MAX_MARKDOWN_CHARS:
+        if text:
             line = ("# " + text) if self._heading else text
             self.lines.append((line, self._main > 0, self._chrome > 0))
-            self._size += len(line) + 1
         self._heading = False
 
     def _add(self, text: str) -> None:
@@ -104,8 +103,10 @@ class _Extractor(html.parser.HTMLParser):
         if tag in _CHROME:
             self._chrome += 1
         if tag == "a" and not self._href:
-            href = _href(dict(attrs).get("href")) if self._anchors < MAX_ANCHORS else ""
-            if href:
+            href = _href(dict(attrs).get("href"))
+            if href and self._anchors >= MAX_ANCHORS:
+                self.over_anchors = True             # this link is kept as plain text only; the caller decides what that means
+            elif href:
                 self._anchors += 1
                 self._href = href
                 self._anchor = []
@@ -157,13 +158,19 @@ class ExtractTimeout(Exception):
     """The page took longer to parse than the source's deadline allows."""
 
 
+class ExtractTruncated(Exception):
+    """The page has more than we can take whole: more text than MAX_MARKDOWN_CHARS, or (listing) more links than MAX_ANCHORS."""
+
+
 def html_to_markdown(text: str, mode: str = "listing", deadline: float | None = None,
                      clock: Callable[[], float] = time.monotonic) -> tuple[str, str]:
     """(markdown, title). `listing` keeps every line; `page` keeps main/article text when the page has any, else
     everything outside nav, header, footer, aside and form.
 
     The text is fed to the parser in chunks; when `deadline` (a time on `clock`) has passed between two chunks this
-    raises ExtractTimeout, so adversarial markup cannot hold a source past its budget.
+    raises ExtractTimeout, so adversarial markup cannot hold a source past its budget. Nothing is cut silently: the
+    selected text over MAX_MARKDOWN_CHARS, or (listing) more than MAX_ANCHORS links, raises ExtractTruncated. The input
+    is at most the fetcher's 2 MB, so the parser's own output is bounded without a cap inside it.
     """
     parser = _Extractor()
     try:
@@ -182,7 +189,12 @@ def html_to_markdown(text: str, mode: str = "listing", deadline: float | None = 
     if mode == "page":
         in_main = [line for line in lines if line[1]]
         lines = in_main or [line for line in lines if not line[2]]
-    markdown = "\n".join(line for line, _, _ in lines)[:MAX_MARKDOWN_CHARS]
+    markdown = "\n".join(line for line, _, _ in lines)
+    # Nothing is cut silently: content the caller cannot take whole is reported, never passed on as the page.
+    if len(markdown) > MAX_MARKDOWN_CHARS:
+        raise ExtractTruncated("text")
+    if mode == "listing" and parser.over_anchors:
+        raise ExtractTruncated("links")      # a page-mode source keeps the text of the links it cannot list
     return markdown, _WS.sub(" ", parser.title).strip()[:300]
 
 

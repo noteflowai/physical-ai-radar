@@ -83,11 +83,52 @@ class ExtractTests(unittest.TestCase):
         self.assertEqual([link["url"] for link in links], ["https://www.figure.ai/news/real-post"])
         self.assertEqual(markdown.count("]("), 1)
 
-    def test_a_page_cannot_make_an_unbounded_list_of_links(self):
-        html = "".join(f"<p><a href='/news/p{i}'>Post number {i} title</a></p>" for i in range(se.MAX_ANCHORS + 50))
-        markdown, _ = se.html_to_markdown(html, "listing")
+    def test_a_listing_with_too_many_links_is_refused_not_cut(self):
+        def page_with(count):
+            return "".join(f"<p><a href='/news/p{i}'>Post number {i} title</a></p>" for i in range(count))
+
+        markdown, _ = se.html_to_markdown(page_with(se.MAX_ANCHORS), "listing")              # exactly the limit is taken whole
         self.assertEqual(markdown.count("]("), se.MAX_ANCHORS)
-        self.assertIn(f"Post number {se.MAX_ANCHORS + 49} title", markdown)             # the rest is plain text, not dropped
+        self.assertIn(f"Post number {se.MAX_ANCHORS - 1} title", markdown)
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(page_with(se.MAX_ANCHORS + 1), "listing")                      # one more is refused whole
+        # a page-mode source keeps the TEXT of every link, so the link cap is not a loss of content there
+        markdown, _ = se.html_to_markdown("<main>" + page_with(se.MAX_ANCHORS + 50) + "</main>", "page")
+        self.assertIn(f"Post number {se.MAX_ANCHORS + 49} title", markdown)
+
+    def test_text_over_the_cap_is_refused_not_cut(self):
+        exact = "<html><body><main><p>" + "a" * se.MAX_MARKDOWN_CHARS + "</p></main></body></html>"
+        markdown, _ = se.html_to_markdown(exact, "page")
+        self.assertEqual(len(markdown), se.MAX_MARKDOWN_CHARS)                               # exactly the cap is whole
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(exact.replace("</p>", "a</p>"), "page")                       # one character more is not
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(exact.replace("</p>", "a</p>"), "listing")
+
+    def test_what_counts_against_the_cap_is_what_the_mode_keeps(self):
+        chrome = "<nav><p>" + "n" * (se.MAX_MARKDOWN_CHARS + 50) + "</p></nav>"
+        small_main = "<main><p>The regulation applies to machinery.</p></main>"
+        markdown, _ = se.html_to_markdown(f"<html><body>{chrome}{small_main}</body></html>", "page")      # only main is kept
+        self.assertEqual(markdown, "The regulation applies to machinery.")
+        with self.assertRaises(se.ExtractTruncated):                                          # a listing keeps every line
+            se.html_to_markdown(f"<html><body>{chrome}{small_main}</body></html>", "listing")
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(f"<html><body><main><p>{'m' * (se.MAX_MARKDOWN_CHARS + 1)}</p></main></body></html>", "page")
+
+    def test_the_reviewers_two_pages_are_refused(self):
+        links = "".join(f"<p><a href='/news/post-{i}'>A post number {i} title here</a></p>" for i in range(6))
+        tail = "<p><a href='/news/latest'>The latest post title here</a></p>"
+        a = f"<html><body><main>{links}<p>{'x' * 200_100}</p>{tail}</main></body></html>"
+        self.assertLess(len(a.encode()), 2_000_000)
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(a, "listing")
+        b = "".join(f"<p><a href='/news/p{i}'>Post {i} is here</a></p>" for i in range(3001))
+        self.assertLess(len(b.encode()), 200_000)
+        with self.assertRaises(se.ExtractTruncated):
+            se.html_to_markdown(f"<html><body><main>{b}</main></body></html>", "listing")
+
+    def test_the_cap_matches_the_one_the_radar_applies_afterwards(self):
+        self.assertEqual(se.MAX_MARKDOWN_CHARS, fetch.MAX_MARKDOWN_CHARS)                    # nothing is cut again downstream
 
     def test_a_base_element_does_not_change_where_links_point(self):
         html = "<html><head><base href='https://evil.example/'></head><body><a href='/news/post-one'>A post title here</a></body></html>"
@@ -96,7 +137,7 @@ class ExtractTests(unittest.TestCase):
         self.assertEqual([link["url"] for link in links], ["https://www.figure.ai/news/post-one"])
 
     def test_parsing_ends_at_the_deadline(self):
-        big = "<p>" + "word " * 4 * se.FEED_CHUNK + "</p>"
+        big = "<p>" + "ab " * 50_000 + "</p>"
         with self.assertRaises(se.ExtractTimeout):
             se.html_to_markdown(big, "listing", deadline=0.0, clock=lambda: 1.0)
         ticks = iter([0.0, 0.0, 5.0, 5.0, 5.0, 5.0])
