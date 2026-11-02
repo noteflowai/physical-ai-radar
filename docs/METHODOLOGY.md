@@ -90,12 +90,15 @@ Rules:
     not UTF-8 cannot be judged completely and is unreadable, not guessed at. `404`/`410` means there
     are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a
     timeout, a refused address) disallows the page for the run. A source URL with such a `%` (in the
-    path or the query) is `url-invalid`. So is a path that, decoded until it stops changing (at most
-    5 rounds), has a backslash, a different number of `/` than as written (an encoded separator such
-    as `%2F` or `%5C`, at any depth of encoding, so `%252F` counts), a `.` or `..` segment, or an empty
-    segment anywhere but last. That is a supported-path policy, not a model of any server: whatever
-    a server decodes or resolves, the path robots.txt was judged against is the path it gets, at the
-    price that a path that really contains an encoded slash cannot be a source URL.
+    path or the query) is `url-invalid`. So is a path or query with any escape other than an unreserved
+    ASCII character (`%41`) or an octet of a multi-byte UTF-8 character: a reserved character
+    (`%2F`, `%5C`, `%3B`, `%3F`), a space, a control character and `%25` are refused, so decoding once,
+    twice or never reads the same path (`%2570rivate` is refused, not read as `private` after two
+    decodings). A `;` in the path is refused too (some servers strip path parameters), and so is a path
+    whose decoded form has a `.` or `..` segment or an empty segment anywhere but last. That is a
+    supported-path policy, not a model of any server: whatever a server decodes or resolves, the path
+    robots.txt was judged against is the path it gets, at the price that a source URL cannot contain an
+    escaped space, slash, plus sign or percent sign.
     A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
     Shift_JIS, EUC, GBK, Big5 and KOI8 families); any other charset is `content-type`.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a

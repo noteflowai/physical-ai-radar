@@ -928,6 +928,19 @@ class StaticWatchTests(TlsTestCase):
         result = self.watch(sources(dict(LISTING, url=f"https://{HOST}/public", link_prefix="/public/")))
         self.assertEqual(self.server.paths(), ["/robots.txt", "/public"])
 
+    def test_decoding_depth_and_path_parameters_cannot_change_the_robots_decision_end_to_end(self):
+        """01's R-D-155c-01 and -02: refused before any request, for each rule shape the review used."""
+        paths = ("/%2570rivate", "/%2570rivate/", "/%2550rivate", "/%252570rivate", "/%25%37%30rivate", "/pr%2569vate",
+                 "/private;v=1", "/private%3Bv=1", "/private%3bv=1", "/private;", "/private/;v=1", "/priv%61te;v=1")
+        for robots in ("User-agent: *\nDisallow: /private\n", "User-agent: *\nDisallow: /private$\n", "User-agent: *\nAllow: /\nDisallow: /priv\n"):
+            self.server.serve("/robots.txt", Reply(200, robots, ctype="text/plain"))
+            for path in paths:
+                with self.subTest(robots=robots.splitlines()[-1], path=path):
+                    self.server.requests.clear()
+                    result = self.watch(sources(dict(LISTING, url=f"https://{HOST}{path}", link_prefix="/p/")))
+                    self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "blocked", "reason": "url-invalid"})
+                    self.assertEqual(self.server.requests, [])
+
     def test_a_robots_rule_with_an_invalid_percent_sign_means_no_page_request(self):
         for rule in ("/%4%31", "/100%", "/%zz"):
             with self.subTest(rule):

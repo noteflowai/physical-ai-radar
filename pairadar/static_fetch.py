@@ -48,7 +48,7 @@ MAX_REQUESTS_PER_SOURCE = 4
 MAX_ADDRESSES = 8
 MAX_CONNECT_TRIES = 3
 MAX_STUCK_RESOLVERS = 2
-MAX_DECODE_ROUNDS = 5
+_UNRESERVED_ASCII = frozenset("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")
 READ_CHUNK = 16_384
 HTML_TYPES = frozenset({"text/html", "application/xhtml+xml"})
 TEXT_TYPES = frozenset({"text/plain"})
@@ -96,9 +96,9 @@ def parse_url(url: object) -> ParsedUrl:
     Refused: anything that is not a short ASCII string without whitespace, control characters or backslashes; user
     information; a fragment; an explicit port other than 443; IP literals in any notation (dotted, decimal, hex, IPv6
     brackets); a host with fewer than two labels or a numeric top-level label; a malformed label; a `%` that does not
-    start a two-digit escape (in the path or the query); and a path that, decoded until it stops changing (at most
-    MAX_DECODE_ROUNDS rounds), has a backslash, a different number of `/` than as written (an encoded separator at any
-    depth of encoding), a `.` or `..` segment, or an empty segment anywhere but last.
+    start a two-digit escape; any escape in the path or query other than an unreserved ASCII character or an octet
+    >= 0x80 (so no `%2F`, `%5C`, `%3B`, `%20`, `%25` or `%2570`: decoding once, twice or never reads the same path); a
+    `;` in the path; and a path whose decoded form has a `.` or `..` segment, or an empty segment anywhere but last.
     """
     if not isinstance(url, str) or not url or len(url) > MAX_URL_CHARS or not url.isascii():
         raise StaticFetchError("url-invalid")
@@ -115,21 +115,21 @@ def parse_url(url: object) -> ParsedUrl:
     if re.search(r"%(?![0-9A-Fa-f]{2})", url):
         raise StaticFetchError("url-invalid")        # a % that starts no escape: the URI is invalid, and we do not guess what a server makes of it
     path = parts.path or "/"
-    # The path robots.txt is judged against must be the path any server resolves. A server may percent-decode before it
-    # resolves dot segments, and some decode more than once, so the supported-path policy is: decode the path until it stops
-    # changing (at most MAX_DECODE_ROUNDS), and refuse it when that fully decoded form has a backslash, a different number
-    # of `/` than the path as written (an encoded separator, at any depth of encoding), a `.` or `..` segment, or an empty
-    # segment anywhere but last. We do not assume what a particular server does.
-    decoded = path
-    for _ in range(MAX_DECODE_ROUNDS):
-        following = urllib.parse.unquote(decoded)
-        if following == decoded:
-            break
-        decoded = following
-    else:
-        raise StaticFetchError("url-invalid")        # still changing after that many rounds of decoding
-    if "\\" in decoded or decoded.count("/") != path.count("/"):
+    # Supported-path policy. The robots decision has to be the same whatever a server or proxy does with the path, and
+    # nothing is assumed about any particular one. So the only escapes a source path or query may contain are those the
+    # robots matcher already treats as identical to what they spell: an unreserved ASCII character (`%41` is `A`) or an
+    # octet of a multi-byte UTF-8 character (>= 0x80). Every other escape -- a reserved character, a space, a control
+    # character, `%25` (which is what makes double decoding possible) -- is refused, so decoding once, twice or never
+    # reads the same path. A `;` in the path is refused too (some servers strip path parameters). A backslash is refused
+    # earlier (any URL with one), an encoded one by the escape rule. What is left is checked on its decoded form for a `.`
+    # or `..` segment and an empty segment anywhere but last.
+    for escaped in re.finditer(r"%([0-9A-Fa-f]{2})", path + "?" + parts.query):
+        octet = int(escaped.group(1), 16)
+        if octet < 0x80 and chr(octet) not in _UNRESERVED_ASCII:
+            raise StaticFetchError("url-invalid")
+    if ";" in path:
         raise StaticFetchError("url-invalid")
+    decoded = urllib.parse.unquote(path)
     segments = decoded.split("/")[1:]
     for index, segment in enumerate(segments):
         if segment in (".", "..") or (segment == "" and index != len(segments) - 1):

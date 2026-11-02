@@ -54,13 +54,24 @@ class UrlTests(unittest.TestCase):
                     "https://good.test/%252e%252e/x", "https://good.test/%252E%252E/x", "https://good.test/public%255C..%255Cprivate",
                     "https://good.test/public%25252F..%25252Fprivate", "https://good.test/a%25252Fb", "https://good.test/%25%32%65%25%32%65/x",
                     "https://good.test/a%252Fb", "https://good.test/" + "%25" * 5 + "2F",
-                    "https://good.test/a\\b"):
+                    "https://good.test/a\\b",
+                    # 01's R-D-155c-01 and -02: an escape that a decode could turn into another spelling of the same path, and
+                    # path parameters; only unreserved characters and non-ASCII octets may be escaped
+                    "https://good.test/%2570rivate", "https://good.test/%2570rivate", "https://good.test/%2550rivate",
+                    "https://good.test/%252570rivate", "https://good.test/%25%37%30rivate", "https://good.test/%2541", "https://good.test/%25",
+                    "https://good.test/100%25", "https://good.test/a%20b", "https://good.test/a%2Bb", "https://good.test/a%2525",
+                    "https://good.test/a%3Fb", "https://good.test/a%23b", "https://good.test/a%2Ab", "https://good.test/a%24",
+                    "https://good.test/a%00b", "https://good.test/a%0Ab", "https://good.test/a%7Fb", "https://good.test/a%22b",
+                    "https://good.test/private;v=1", "https://good.test/private%3Bv=1", "https://good.test/private%3bv=1",
+                    "https://good.test/a;b/c", "https://good.test/a/b;", "https://good.test/;", "https://good.test/a/..;/b",
+                    "https://good.test/a?q=a%20b", "https://good.test/a?q=%2570", "https://good.test/a?q=%2F", "https://good.test/a?q=%25"):
             with self.subTest(url):
                 self.assertEqual(reason(lambda: parse_url(url)), "url-invalid")
-        for url, target in (("https://good.test/%25", "/%25"), ("https://good.test/100%25", "/100%25"), ("https://good.test/%41%2e",
-                                                                                                          "/%41%2e"),
-                            ("https://good.test/caf%C3%A9", "/caf%C3%A9"), ("https://good.test/a%20b", "/a%20b"),
-                            ("https://good.test/a%2Bb", "/a%2Bb"), ("https://good.test/a%2525", "/a%2525"),
+        for url, target in (("https://good.test/%70rivate", "/%70rivate"), ("https://good.test/%41%2e", "/%41%2e"),
+                            ("https://good.test/caf%C3%A9", "/caf%C3%A9"), ("https://good.test/%E3%83%84", "/%E3%83%84"),
+                            ("https://good.test/a%7Eb", "/a%7Eb"), ("https://good.test/a%2db%5F", "/a%2db%5F"),
+                            ("https://good.test/a,b:c+d=e&f@g!h'i(j)k", "/a,b:c+d=e&f@g!h'i(j)k"), ("https://good.test/a$b*c", "/a$b*c"),
+                            ("https://good.test/a?x=1;y=2", "/a?x=1;y=2"),
                             ("https://good.test/a?q=%7E", "/a?q=%7E"), ("https://good.test/news/", "/news/"),
                             ("https://good.test/a.b/c..d/.hidden", "/a.b/c..d/.hidden"), ("https://good.test/a...b", "/a...b"),
                             ("https://good.test/...", "/..."), ("https://good.test", "/"), ("https://good.test/", "/"),
@@ -285,8 +296,8 @@ class ConnectionTests(TlsTestCase):
 
     def test_the_query_is_sent_exactly(self):
         self.server.serve("/news", Reply(200, PAGE))
-        self.get(self.fetcher(), "/news?a=1&b=%20x")
-        self.assertEqual(self.server.paths(), ["/news?a=1&b=%20x"])
+        self.get(self.fetcher(), "/news?a=1&b=%7Ex")
+        self.assertEqual(self.server.paths(), ["/news?a=1&b=%7Ex"])
 
     def test_proxy_settings_in_the_environment_are_ignored(self):
         self.server.serve("/news", Reply(200, PAGE))

@@ -251,6 +251,60 @@ class UrlProperties(unittest.TestCase):
             out.append(segment)
         return "/" + "/".join(out)
 
+    def test_every_spelling_of_a_word_reads_the_same_to_robots_at_every_decoding_depth(self):
+        """01's R-D-155c-01 and -02: `/%2570rivate` is `/private` after two decodings; `/private;v=1` is `/private` to a
+        server that strips path parameters. For every accepted spelling the verdict must not move with the model."""
+        import urllib.parse
+        from pairadar import static_fetch as sf
+        rng = random.Random(SEED + 12)
+        rule_sets = [rr.parse(text, TOKEN) for text in (
+            "User-agent: *\nDisallow: /private\n", "User-agent: *\nDisallow: /private$\n", "User-agent: *\nAllow: /public\nDisallow: /private\n",
+            "User-agent: *\nDisallow: /priv\nAllow: /private\n", "User-agent: *\nDisallow: /*vat\n", "User-agent: *\nDisallow: /p*e$\n",
+            "User-agent: *\nAllow: /\nDisallow: /pr\n")]
+
+        def spelling(letter: str) -> str:
+            code = ord(letter)
+            return rng.choice([letter] * 8 + [f"%{code:02x}", f"%{code:02X}", f"%25{code:02x}"])
+
+        def models(raw: str):
+            decoded = raw
+            for _ in range(4):
+                yield decoded
+                yield re.sub(r";[^/]*", "", decoded)                                # a server that strips path parameters
+                yield decoded.replace("\\", "/")
+                decoded = urllib.parse.unquote(decoded)
+
+        accepted = rejected = moved_without_guard = 0
+        for _ in range(4000):
+            word = rng.choice(["private", "public", "priv", "privates", "pre"])
+            suffix = rng.choice(["", "", "/", "/x", ";v=1", "%3Bv=1", "%3b", ";", "/;x", "%2F"])
+            path = "/" + "".join(spelling(letter) for letter in word) + suffix
+            try:
+                sf.parse_url("https://good.test" + path)
+            except sf.StaticFetchError:
+                rejected += 1
+                # the rejected ones are exactly where some model disagrees with the raw reading for at least one rule set
+                continue
+            accepted += 1
+            for rules in rule_sets:
+                want = rules.allowed("https://good.test" + path)
+                for model in models(path):
+                    try:
+                        got = rules.allowed("https://good.test" + model)
+                    except rr.RobotsUnsupported:
+                        continue
+                    self.assertEqual(got, want, (path, model))
+        self.assertGreater(accepted, 400)
+        self.assertGreater(rejected, 400)
+        # and the guard is not vacuous: without it the models do disagree on spellings it refuses
+        for path in ("/%2570rivate", "/%252570rivate", "/private;v=1", "/private%3Bv=1", "/%2550rivate"):
+            rules = rule_sets[1]
+            with self.assertRaises(sf.StaticFetchError):
+                sf.parse_url("https://good.test" + path)
+            verdicts = {rules.allowed("https://good.test" + model) for model in models(path)}
+            moved_without_guard += len(verdicts) > 1
+        self.assertGreaterEqual(moved_without_guard, 4)
+
     def test_an_accepted_url_means_the_same_to_robots_as_any_server_resolution_of_it(self):
         import posixpath  # noqa: F401  (documented: resolve() is the same rule as posixpath.normpath minus collapsing a trailing slash)
         import urllib.parse
