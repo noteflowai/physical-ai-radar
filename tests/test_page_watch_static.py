@@ -825,6 +825,32 @@ class StaticWatchTests(TlsTestCase):
         self.assertNotIn("digest", summary)                                                  # the published report carries none of it
         self.assertNotIn("observation", summary)
 
+    def test_a_run_with_a_static_source_leaves_per_source_evidence_through_main(self):
+        """04's N-PW-09: cli.main must hand the private detail to the evidence writer; nothing else tests that call."""
+        self.server.serve("/news", Reply(200, V1))
+        self.server.serve("/standard", Reply(500, "no"))
+        watched = self.watch(sources(LISTING, PAGE, static_mode="live"))
+        ctx = {"date": "2026-10-21", "fetch": {"page_watch": watched.summary()}, "page_watch_detail": watched.detail(),
+               "page_watch_observations": watched.observations}
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"PAIRADAR_STATE_DIR": tmp}), \
+                patch.object(cli, "run", lambda **kwargs: ctx), patch.object(cli, "degraded", lambda *a: False), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(cli.main(["--date", "2026-10-21"]), 0)
+            record = json.loads((Path(tmp) / "page-watch" / "2026-10-21.json").read_text(encoding="utf-8"))
+        self.assertEqual(record["status"], "ok")
+        self.assertEqual(record["sources_planned"], 2)
+        self.assertEqual(record["sources"]["figure"], {"fetcher": "static", "outcome": "checked", "reason": ""})
+        self.assertEqual(record["sources"]["watch-iso"], {"fetcher": "static", "outcome": "unavailable", "reason": "http-5xx"})
+        self.assertEqual((record["sources_unavailable"], record["degraded"]), (["watch-iso"], True))
+        # and the same through a stub that records the call, so a regression in the hand-over cannot hide behind the file
+        calls = []
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"PAIRADAR_STATE_DIR": tmp}), \
+                patch.object(cli, "run", lambda **kwargs: ctx), patch.object(cli, "degraded", lambda *a: False), \
+                patch.object(cli, "write_page_watch_evidence", lambda *a, **k: calls.append((a, k))), contextlib.redirect_stdout(io.StringIO()):
+            cli.main(["--date", "2026-10-21"])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][1].get("detail"), watched.detail())
+
     def test_the_observation_reaches_the_state_directory_through_main(self):
         ctx = {"date": "2026-10-21", "fetch": {"page_watch": {"enabled": True, "attempted": [], "checked": [], "failed": [],
                                                                "robots_skipped": [], "unavailable": False, "items": 0}},
