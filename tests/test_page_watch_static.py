@@ -82,7 +82,7 @@ class StaticWatchTests(TlsTestCase):
     def watch(self, raw, state=None, endpoint="http://127.0.0.1:9", factory=None, patches=()):
         stack = contextlib.ExitStack()
         with stack:
-            stack.enter_context(patch.dict(os.environ, {fetch.FIRECRAWL_ENV: endpoint}))
+            stack.enter_context(patch.dict(os.environ, {fetch.FIRECRAWL_ENV: endpoint, "GITHUB_ACTIONS": ""}))   # these tests run on hosted CI too
             stack.enter_context(patch.object(fetch, "STATIC_FETCHER_FACTORY", factory or self.fetcher))
             for item in patches:
                 stack.enter_context(item)
@@ -920,6 +920,23 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "unavailable", "reason": "robots-unreadable",
                                                             "detail": "robots-unsupported"})
                 self.assertEqual(self.server.paths(), ["/robots.txt"])
+
+    def test_static_sources_are_never_fetched_on_a_hosted_runner(self):
+        """The 09:20 fallback (.github/workflows/daily.yml) runs `python -m pairadar` on GitHub's machines."""
+        self.server.serve("/news", Reply(200, V1))
+        for value in ("true", "TRUE", " true "):
+            for mode in ("observe", "live"):
+                with self.subTest(value=value, mode=mode):
+                    self.server.requests.clear()
+                    accepted = self.server.accepted
+                    result = self.watch(sources(LISTING, PAGE, static_mode=mode), patches=[patch.dict(os.environ, {"GITHUB_ACTIONS": value})])
+                    self.assertEqual(self.server.accepted, accepted)                  # not one connection
+                    self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "not-attempted", "reason": "hosted-runner"})
+                    self.assertEqual((result.attempted, result.checked, result.failed, result.observations), ([], [], [], []))
+        for value in ("false", "", "1", "yes"):
+            with self.subTest(value=value):
+                result = self.watch(sources(LISTING), patches=[patch.dict(os.environ, {"GITHUB_ACTIONS": value})])
+                self.assertEqual(result.checked, ["figure"])                              # only the exact "true" excludes it
 
     def test_the_run_log_has_ids_and_codes_not_urls_or_server_text(self):
         self.server.serve("/news", Reply(500, "SECRET-SERVER-TEXT with https://internal.example/path?token=abc"))

@@ -1364,6 +1364,7 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     except (TypeError, ValueError):
         max_age = 30
     static_run = any(entry.get("fetcher") == "static" for entry in entries)
+    hosted_runner = os.environ.get("GITHUB_ACTIONS", "").strip().lower() == "true"
     firecrawl_down = False
     if loopback_endpoint(settings["endpoint"]) is None:
         # An endpoint that is not loopback stops every Firecrawl source. Static sources do not use it and go on.
@@ -1391,6 +1392,11 @@ def fetch_page_watch(config: Config, reference: date | None = None,
                 result.note(rest["id"], rest.get("fetcher", "firecrawl"), "not-attempted", "budget")
             break
         if entry.get("fetcher") == "static":
+            if hosted_runner:
+                # The hosted fallback workflow (.github/workflows/daily.yml) runs this code on GitHub's machines, outside the
+                # host's egress guard and where nothing it writes outside the repository survives: static sources are host-only.
+                result.note(entry["id"], "static", "not-attempted", "hosted-runner")
+                continue
             if fetcher is None:
                 fetcher = STATIC_FETCHER_FACTORY()
             _watch_static(entry, fetcher, static_robots, known.get(entry["id"], {}), settings, reference,

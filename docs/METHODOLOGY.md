@@ -166,7 +166,13 @@ Rules:
     07:40 host time (Asia/Singapore, `scripts/cron.sg`) and as the `publish` stage of the 21:30
     nightly batch and its 02:30 `--previous-day` resume (`nightly_plan.py`, `nightly_batch.py`);
     `draft_daily_notes.sh` uses `--offline` and `--rerender`, `repair_sources.sh` only reads
-    history. Any of these may carry the first observation after the enabling change merges.
+    history. Any of these may carry the first observation after the enabling change merges. The
+    hosted fallback `.github/workflows/daily.yml` (09:20 Asia/Singapore, only when the host missed the
+    day) also runs `python -m pairadar`; there `GITHUB_ACTIONS` is `true` and static sources are not
+    fetched at all (`not-attempted: hosted-runner`): GitHub's machines are outside the host's egress
+    guard, and what a run writes outside the repository does not outlive it. `ci.yml` runs
+    `--offline`. These two lists, read from the repository, are all the callers of `fetch_all`; the
+    installed crontab and the pinned `radar-run` wrapper were not read for this.
 - every request is timeout-bounded and retried once before the source is given up on. A
   4xx refusal is final and is not retried; 429 waits for `Retry-After`, at most 30 seconds;
 - arXiv calls are spaced about three seconds apart, as its API guidance asks;
