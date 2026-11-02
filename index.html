@@ -95,7 +95,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.39327" rel="noopener" target="_blank">SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 手上有 Booster K1 的团队可以先试这套从 SONIC 移植来的开放权重全身跟踪器，省去从头训练；但这是作者自报的预印本，页面上没有跟踪精度或真机数据，上机前要自己验证。</p>
 <p class="excerpt">We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.</p>
 <ul class="signals"><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40430" rel="noopener" target="_blank">Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design</a></h3>
 <p class="figure"><strong>85.55%</strong><span class="context">“official Overall score of 85.55%”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 调精细操作策略的团队可参考：作者自报靠示范数据扩充和执行环节的设计拿到 85.55% 的官方 Overall 分数，但页面没写是哪个基准、也没有真机结果，只能当榜单成绩看，不能当部署预期。</p>
 <p class="excerpt">Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -126,7 +126,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2610.40016" rel="noopener" target="_blank">LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 做长程任务执行的团队值得看它的思路：执行中持续检查后续步骤所需的物理条件是否仍成立，出错时局部修复；页面没有数字和真机结果，目前只能当设计参考。</p>
 <p class="excerpt">Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -142,7 +142,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.39319" rel="noopener" target="_blank">ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning</a></h3>
 <p class="figure"><strong>12.94%</strong><span class="context">“improves success rate by 12.94% overall and by”</span></p><p class="chips"><span class="chip">15.46%</span><span class="chip">32.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 用 LLM 规划、靠交互历史隐式判断子目标进度的团队，可以考虑改用结构化状态关系显式跟踪：作者自报成功率整体提升 12.94%、Hard 任务提升 15.46%，环境交互减少 32.3%，页面未写明对比基线。</p>
 <p class="excerpt">Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -157,7 +157,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/507076.html" rel="noopener" target="_blank">三年前布局，今年爆火丨西湖大学成立新中心</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是一篇关于西湖大学成立世界模型研究中心的二手报道，页面上还看不到模型、数据或结果，关注世界模型的团队记下这个名字即可，暂不足以影响技术选型。</p>
 <p class="excerpt">西湖世界模型研究中心成立</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-01</span>

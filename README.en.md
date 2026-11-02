@@ -76,11 +76,11 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–05</summary>
 
-1. **SONIC-K1** — Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **LOGIV** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **ProLoop** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-5. **三年前布局，今年爆火丨西湖大学成立新中心** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **SONIC-K1** — `AI draft` Teams with a Booster K1 can try these open weights adapted from SONIC before training a whole-body tracker themselves, but this self-reported preprint page shows no tracking or real-robot figures, so validate on your own hardware first.
+2. **Improving Fine-Grained Manipulation through Demonstration Expansion and Exe…** — `AI draft` Teams tuning fine-grained manipulation policies get a self-reported 85.55% official Overall score from data and execution-side changes, but the page names no benchmark and shows no real-robot result, so read it as a leaderboard figure, not a deployment estimate.
+3. **LOGIV** — `AI draft` For long-horizon executors, the idea worth testing is checking during execution that the physical conditions later steps need still hold and repairing locally when they break; the page gives no figures or real-robot results, so treat it as a design lead.
+4. **ProLoop** — `AI draft` Teams whose LLM planners infer subgoal progress from interaction history can weigh tracking it through structured state relations: the authors report success up 12.94% overall and 15.46% on Hard tasks with 32.3% fewer environment interactions, against a baseline the page does not name.
+5. **三年前布局，今年爆火丨西湖大学成立新中心** — `AI draft` This is a secondary report that Westlake University has set up a world-model research centre; the page shows no models, data or results yet, so for teams following world models it is a name to watch, not something to plan around.
 
 </details>
 
