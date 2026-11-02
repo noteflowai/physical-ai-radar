@@ -64,11 +64,14 @@ class UrlTests(unittest.TestCase):
                     "https://good.test/a%00b", "https://good.test/a%0Ab", "https://good.test/a%7Fb", "https://good.test/a%22b",
                     "https://good.test/private;v=1", "https://good.test/private%3Bv=1", "https://good.test/private%3bv=1",
                     "https://good.test/a;b/c", "https://good.test/a/b;", "https://good.test/;", "https://good.test/a/..;/b",
-                    "https://good.test/a?q=a%20b", "https://good.test/a?q=%2570", "https://good.test/a?q=%2F", "https://good.test/a?q=%25"):
+                    "https://good.test/a?q=a%20b", "https://good.test/a?q=%2570", "https://good.test/a?q=%2F", "https://good.test/a?q=%25",
+                    # an overlong or folded form of a separator is an octet >= 0x80 some stacks read as "/": no escaped octet >= 0x80
+                    "https://good.test/public%C0%AF..%C0%AFprivate", "https://good.test/public%c0%af..%c0%afprivate",
+                    "https://good.test/public%EF%BC%8Fprivate", "https://good.test/public%E2%88%95private", "https://good.test/caf%C3%A9",
+                    "https://good.test/%E3%83%84", "https://good.test/a%80", "https://good.test/a%FF", "https://good.test/a?q=%C3%A9"):
             with self.subTest(url):
                 self.assertEqual(reason(lambda: parse_url(url)), "url-invalid")
         for url, target in (("https://good.test/%70rivate", "/%70rivate"), ("https://good.test/%41%2e", "/%41%2e"),
-                            ("https://good.test/caf%C3%A9", "/caf%C3%A9"), ("https://good.test/%E3%83%84", "/%E3%83%84"),
                             ("https://good.test/a%7Eb", "/a%7Eb"), ("https://good.test/a%2db%5F", "/a%2db%5F"),
                             ("https://good.test/a,b:c+d=e&f@g!h'i(j)k", "/a,b:c+d=e&f@g!h'i(j)k"), ("https://good.test/a$b*c", "/a$b*c"),
                             ("https://good.test/a?x=1;y=2", "/a?x=1;y=2"),

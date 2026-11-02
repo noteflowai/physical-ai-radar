@@ -96,8 +96,9 @@ def parse_url(url: object) -> ParsedUrl:
     Refused: anything that is not a short ASCII string without whitespace, control characters or backslashes; user
     information; a fragment; an explicit port other than 443; IP literals in any notation (dotted, decimal, hex, IPv6
     brackets); a host with fewer than two labels or a numeric top-level label; a malformed label; a `%` that does not
-    start a two-digit escape; any escape in the path or query other than an unreserved ASCII character or an octet
-    >= 0x80 (so no `%2F`, `%5C`, `%3B`, `%20`, `%25` or `%2570`: decoding once, twice or never reads the same path); a
+    start a two-digit escape; any escape in the path or query other than an unreserved ASCII character (so no
+    `%2F`, `%5C`, `%3B`, `%20`, `%25`, `%2570` or any octet >= 0x80 such as `%C0%AF`: decoding once, twice or never
+    reads the same path); a
     `;` in the path; and a path whose decoded form has a `.` or `..` segment, or an empty segment anywhere but last.
     """
     if not isinstance(url, str) or not url or len(url) > MAX_URL_CHARS or not url.isascii():
@@ -116,16 +117,17 @@ def parse_url(url: object) -> ParsedUrl:
         raise StaticFetchError("url-invalid")        # a % that starts no escape: the URI is invalid, and we do not guess what a server makes of it
     path = parts.path or "/"
     # Supported-path policy. The robots decision has to be the same whatever a server or proxy does with the path, and
-    # nothing is assumed about any particular one. So the only escapes a source path or query may contain are those the
-    # robots matcher already treats as identical to what they spell: an unreserved ASCII character (`%41` is `A`) or an
-    # octet of a multi-byte UTF-8 character (>= 0x80). Every other escape -- a reserved character, a space, a control
-    # character, `%25` (which is what makes double decoding possible) -- is refused, so decoding once, twice or never
-    # reads the same path. A `;` in the path is refused too (some servers strip path parameters). A backslash is refused
-    # earlier (any URL with one), an encoded one by the escape rule. What is left is checked on its decoded form for a `.`
-    # or `..` segment and an empty segment anywhere but last.
+    # nothing is assumed about any particular one. So the only escape a source path or query may contain is an unreserved
+    # ASCII character spelled as an escape (`%41` is `A`, which the robots matcher already treats as the letter). Every
+    # other escape -- a reserved character, a space, a control character, `%25` (which is what makes double decoding
+    # possible), any octet >= 0x80 (overlong and compatibility-folded forms such as `%C0%AF` or `%EF%BC%8F` are read as
+    # `/` by some stacks) -- is refused, so decoding once, twice or never reads the same path. A `;` in the path is
+    # refused too (some servers strip path parameters). A backslash is refused earlier (any URL with one), an encoded one
+    # by the escape rule. What is left is checked on its decoded form for a `.` or `..` segment and an empty segment
+    # anywhere but last.
     for escaped in re.finditer(r"%([0-9A-Fa-f]{2})", path + "?" + parts.query):
         octet = int(escaped.group(1), 16)
-        if octet < 0x80 and chr(octet) not in _UNRESERVED_ASCII:
+        if octet >= 0x80 or chr(octet) not in _UNRESERVED_ASCII:
             raise StaticFetchError("url-invalid")
     if ";" in path:
         raise StaticFetchError("url-invalid")

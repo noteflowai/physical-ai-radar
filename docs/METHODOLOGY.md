@@ -91,14 +91,15 @@ Rules:
     are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a
     timeout, a refused address) disallows the page for the run. A source URL with such a `%` (in the
     path or the query) is `url-invalid`. So is a path or query with any escape other than an unreserved
-    ASCII character (`%41`) or an octet of a multi-byte UTF-8 character: a reserved character
-    (`%2F`, `%5C`, `%3B`, `%3F`), a space, a control character and `%25` are refused, so decoding once,
-    twice or never reads the same path (`%2570rivate` is refused, not read as `private` after two
-    decodings). A `;` in the path is refused too (some servers strip path parameters), and so is a path
-    whose decoded form has a `.` or `..` segment or an empty segment anywhere but last. That is a
-    supported-path policy, not a model of any server: whatever a server decodes or resolves, the path
-    robots.txt was judged against is the path it gets, at the price that a source URL cannot contain an
-    escaped space, slash, plus sign or percent sign.
+    ASCII character (`%41`): a reserved character (`%2F`, `%5C`, `%3B`, `%3F`), a space, a control
+    character, `%25` and any octet >= 0x80 (overlong and folded forms such as `%C0%AF` are read as `/`
+    by some stacks) are refused, so decoding once, twice or never reads the same path (`%2570rivate` is
+    refused, not read as `private` after two decodings). A `;` in the path is refused too (some servers
+    strip path parameters), and so is a path whose decoded form has a `.` or `..` segment or an empty
+    segment anywhere but last. That is a supported-path policy, not a model of any server: whatever a
+    server decodes or resolves, the path robots.txt was judged against is the path it gets, at the
+    price that a source URL cannot contain an escaped space, slash, plus sign or percent sign, or a
+    non-ASCII character.
     A page may declare only a plain text encoding (utf-8, ascii, the ISO-8859, windows-125x,
     Shift_JIS, EUC, GBK, Big5 and KOI8 families); any other charset is `content-type`.
   - A `200` is still not necessarily the page: a challenge or interstitial (by title, or by a
