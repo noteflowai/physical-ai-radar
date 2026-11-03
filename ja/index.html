@@ -74,7 +74,7 @@
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="105.0" cy="105.0" r="11" class="halo"/><circle cx="105.0" cy="105.0" r="5"/><title>When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks</title></a>
 <a href="#p2" class="blip" style="--lane:#f472b6;--delay:0.70s"><circle cx="11.9" cy="135.8" r="11" class="halo"/><circle cx="11.9" cy="135.8" r="5"/><title>RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices</title></a>
-<a href="#p3" class="blip" style="--lane:#38bdf8;--delay:1.05s"><circle cx="82.8" cy="-98.6" r="11" class="halo"/><circle cx="82.8" cy="-98.6" r="5"/><title>Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space</title></a>
+<a href="#p3" class="blip" style="--lane:#38bdf8;--delay:1.05s"><circle cx="82.7" cy="-98.6" r="11" class="halo"/><circle cx="82.7" cy="-98.6" r="5"/><title>Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space</title></a>
 <a href="#p4" class="blip" style="--lane:#38bdf8;--delay:1.40s"><circle cx="94.9" cy="-79.6" r="11" class="halo"/><circle cx="94.9" cy="-79.6" r="5"/><title>Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos</title></a>
 <a href="#p5" class="blip" style="--lane:#f472b6;--delay:1.75s"><circle cx="-7.5" cy="85.6" r="11" class="halo"/><circle cx="-7.5" cy="85.6" r="5"/><title>破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖</title></a>
 <a href="#p6" class="blip" style="--lane:#a3e635;--delay:2.10s"><circle cx="-84.7" cy="0.0" r="11" class="halo"/><circle cx="-84.7" cy="0.0" r="5"/><title>阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业</title></a>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.41857" rel="noopener" target="_blank">When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks</a></h3>
 <p class="figure"><strong>89%</strong><span class="context">“container tasks rises from 89% to 98%”</span></p><p class="chips"><span class="chip">98%</span><span class="chip">75.8%</span><span class="chip">98.5%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> シミュレーション上の成功率で方策を見限る前に、失敗エピソードが接触シミュレーションの不具合によるものでないか確かめたく、著者自己報告のこのプレプリントは容器系タスクの数値が 89% から 98%、別の箇所で 75.8% から 98.5% に上がったと記すが、何を変えた結果かはページの抜粋から読めない。</p>
 <p class="excerpt">Simulation benchmarks score robot policies by success rate, and every failed episode counts against the policy.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.41625" rel="noopener" target="_blank">RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices</a></h3>
 <p class="figure"><strong>32.9 Hz</strong><span class="context">“Real-Time ( 32.9 Hz ) Multi-View Visuomotor”</span></p><p class="chips"><span class="chip">50 tasks</span><span class="chip">30.35 ms</span><span class="chip">149.72 ms</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> マルチビュー視覚運動方策用のエッジ基板を選ぶ際は、RDK S600 を含むハードウェア間で 30.35 ms（32.9 Hz）と 149.72 ms（6.7 Hz）の差があるというこの自己報告プレプリントの数値が判断材料になるが、50 タスクでの単一タスク評価は示されているものの、ページに実機結果は見えない。</p>
 <p class="excerpt">Low inference latency is critical for closed-loop robotic manipulation, especially under asynchronous inference, where action chunks must be updated promptly to correct accumulated deviations.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.42021" rel="noopener" target="_blank">Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space</a></h3>
 <p class="figure"><strong>80.5%</strong><span class="context">“Nexus-VLA achieves an 80.5% task success rate”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 一人称視点の人間動画を抱えるチームにとって、見た目・運動学的構造・行動空間の差を越えて知識を移す一つの候補になり、実機実験ありとされタスク成功率 80.5% が報告されているが、ページに比較対象はなく、自己報告の手がかりとして扱うべきだ。</p>
 <p class="excerpt">Large-scale egocentric human videos provide rich and scalable manipulation experience for robot policy learning, yet substantial embodiment gaps in visual appearance, kinematic structure, and action spaces hinder effective knowledge…</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2610.41877" rel="noopener" target="_blank">Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos</a></h3>
 <p class="figure"><strong>10,000 hours</strong><span class="context">“humanoid-motion sequences spanning over 10,000 hours”</span></p><p class="chips"><span class="chip">1%</span><span class="chip">100%</span><span class="chip">911M parameters</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ヒューマノイドで実行検証済みデータと行動エキスパートの規模のどちらに投資するか迷うなら、10,000 時間超の動作系列でデータを 1% から 100%、容量を 64M から 911M パラメータまで振ったこのプレプリントが参考になるが、どちらが効いたかも実機結果もページからは読めない。</p>
 <p class="excerpt">Scaling humanoid motion foundation models is constrained by the scarcity of diverse, robot-executable data and by the difficulty of jointly learning from heterogeneous multimodal inputs while supporting real-time closed-loop control.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html" rel="noopener" target="_blank">破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 支付宝の AI エージェント多端末連携方式が受賞したという二次報道で、ロボットやハードウェア、制御周期への言及はページになく、ロボットシステムを作るチームの判断を変える材料にはならない。</p>
 <p class="excerpt">11月2日，2026年世界互联网大会乌镇峰会开幕。支付宝AHA（Agent Hub Access）智能体多端互联方案获“新耀”场景奖。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-02</span>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html" rel="noopener" target="_blank">阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Qoder は汎用エージェント基盤としてエージェント Harness を評価され受賞し、同じ賞は具身知能も対象にしていたが、二次報道のページに技術的な中身はなく、ロボットのオーケストレーションを検討するチームが試せる材料はない。</p>
 <p class="excerpt">11月2日，2026世界互联网大会颁奖典礼在浙江乌镇举行，全球共20项成果入选，涵盖量子计算、芯片、具身智能及AI应用等领域。凭借在智能体Harness上的技术突破和领先的全球市场份额，阿里智能体平台Qoder荣获领先科技奖，是国内唯一获得该奖项的通用Agent产品。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-02</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html" rel="noopener" target="_blank">阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Qovest は機関投資家向けの AI 投資リサーチ基盤で、ロボットの機体とは関係がなく、この二次報道はハードウェアやコスト、供給を判断する材料を何も含まない。</p>
 <p class="excerpt">11月2日，阿里云正式发布面向专业机构投资者的AI投研工作台Qovest。用户用一句话提出研究需求，Qovest就会自动查数据、收集资料、深度分析、生成报告，并按设定的频率持续跟踪研究对象。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-02</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html" rel="noopener" target="_blank">产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> RoboScience の A2 ラウンド完了は具身知能のサプライヤーを追う人には覚えておきたい名前だが、プレスリリース調の二次報道でページに金額も製品やモデルの詳細もなく、技術選定や調達の判断を動かす段階ではない。</p>
 <p class="excerpt">具身智能的资本筛选标准，正在从&quot;讲得动人&quot;转向&quot;兑现得动&quot;。AI 科技评论获悉，11 月 2 日，RoboScience 机器科学完成 A2 轮融资。</p>
 <ul class="signals"><li>プレスリリース</li></ul>
 <footer>
