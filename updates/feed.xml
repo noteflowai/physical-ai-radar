@@ -5,6 +5,26 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>show the per-finding "Why the gate failed" explanation in the diff index.html</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.0/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.0/</guid>
+      <description>When a diff has at least one blocking change, evalarc diff BASELINE CURRENT --output DIR now writes a 'Why the gate failed' section into DIR/index.html. This is the report the CLI prints as 'Report:'. The section comes after the Changed checks table and before the remaining sections.
+
+The section contains:
+- The numeric threshold sentence, worded as in summary.md.
+- A table with the columns Finding, Case / check, Baseline, Current and Failing attempt.
+- A metadata line with each input's file name and a 12-character sha256 prefix.
+
+Table cells:
+- Finding shows the kind, plus '(within noise)' when flagged. It is rendered as a ✗ tone label, so it does not rely on color.
+- Failing attempt shows the first failing current attempt's value and evidence, each clipped to 120 characters.
+- Removed checks show the baseline attempt, labelled 'not recorded in the current run; baseline:'.
+- Rows without detail show 'no attempt detail recorded'.
+
+Every value is HTML-escaped. The HTML table lists every blocking row with no limit. summary.md and index.html are both built from the shared helper _blocking_rows. When nothing blocks, the section is not written. The gate logic, exit codes and the diff.json schema are unchanged.</description>
+      <pubDate>Tue, 03 Nov 2026 13:42:01 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: refuse to compare Inspect runs scored at different numeric pass thresholds</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.22.1/</guid>
