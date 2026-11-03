@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **When the Simulator Fails, Not the Policy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-2. **RTPolicy** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-3. **Nexus-VLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **Movens-Zero** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
-5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **When the Simulator Fails, Not the Policy** — `AI draft` Before dropping a policy over its simulated success rate, check whether its failed episodes are simulator contact faults; this self-reported preprint quotes container-task figures rising from 89% to 98%, and elsewhere 75.8% to 98.5%, but the excerpt does not say what changed.
+2. **RTPolicy** — `AI draft` Teams choosing an edge board for multi-view visuomotor control should note the hardware spread this self-reported preprint gives, 30.35 ms (32.9 Hz) against 149.72 ms (6.7 Hz), with an RDK S600 among those named; the page shows a 50-task single-task evaluation but no real-robot result.
+3. **Nexus-VLA** — `AI draft` Teams holding egocentric human video get a candidate way past the appearance, kinematic and action-space gaps that block transfer; the authors report 80.5% task success and real-robot experiments are flagged, but the page names no baseline, so treat it as a self-reported lead.
+4. **Movens-Zero** — `AI draft` Humanoid teams weighing execution-verified data against a larger action expert will find both axes scaled here, data from 1% to 100% and capacity from 64M to 911M parameters over 10,000 hours of motion, but the page shows neither which paid off nor a real-robot result.
+5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — `AI draft` This secondary report covers an award for Alipay's cross-device agent interconnect scheme; the page says nothing about robots, hardware or control rates, so it changes no decision for teams building robot systems.
+6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — `AI draft` Qoder is a general agent platform honoured for its agent harness at an awards event that also covered embodied AI, but this secondary report gives no technical detail, so robot teams evaluating orchestration have nothing here to test.
+7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — `AI draft` Qovest is an AI research workbench for institutional investors, not robot hardware, so this secondary report offers robot builders nothing on embodiment, cost or supply despite the lane it was filed under.
+8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — `AI draft` RoboScience closing an A2 round is a name for anyone tracking embodied-AI suppliers, but this press-release-style secondary report shows no amount, product or model detail on the page, so it should not shift technical or sourcing decisions yet.
 
 </details>
 
