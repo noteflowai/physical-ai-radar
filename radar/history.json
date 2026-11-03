@@ -122,16 +122,6 @@
       "date": "2026-10-04",
       "count": 8,
       "lanes": 7,
-      "urls": [
-        "https://arxiv.org/abs/2610.01612",
-        "https://arxiv.org/abs/2610.02161",
-        "https://arxiv.org/abs/2610.01856",
-        "https://arxiv.org/abs/2609.39403",
-        "https://arxiv.org/abs/2609.38905",
-        "https://arxiv.org/abs/2609.39611",
-        "https://arxiv.org/abs/2609.39600",
-        "https://arxiv.org/abs/2609.38873"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -863,6 +853,42 @@
           "hot",
           "official"
         ]
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.01390",
+        "https://arxiv.org/abs/2611.01729",
+        "https://arxiv.org/abs/2611.00524",
+        "https://arxiv.org/abs/2611.02600",
+        "https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws",
+        "https://openai.com/index/accelerating-engineering-for-the-physical-world",
+        "https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac",
+        "https://www.leiphone.com/category/industrynews/vvyx6dk55x5rilq4.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "aws-physical-ai:8e5a6ee3818d",
+          "hot": "leiphone:f2d237564097"
+        },
+        "unmet": []
       }
     }
   ]

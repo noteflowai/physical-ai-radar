@@ -1,167 +1,166 @@
 {
-  "date": "2026-11-03",
-  "generated": "2026-11-02 23:40 UTC",
-  "window": "papers 2026-10-30 → 2026-11-03 · posts 2026-10-04 → 2026-11-03 (UTC)",
+  "date": "2026-11-04",
+  "generated": "2026-11-03 23:40 UTC",
+  "window": "papers 2026-10-31 → 2026-11-04 · posts 2026-10-05 → 2026-11-04 (UTC)",
   "window_detail": {
-    "day": "2026-11-03",
-    "papers_from": "2026-10-30",
-    "posts_from": "2026-10-04",
+    "day": "2026-11-04",
+    "papers_from": "2026-10-31",
+    "posts_from": "2026-10-05",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2610.41857",
-      "title": "When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks",
-      "url": "https://arxiv.org/abs/2610.41857",
-      "publisher": "arXiv 2610.41857",
+      "id": "arxiv:2611.01390",
+      "title": "Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency",
+      "url": "https://arxiv.org/abs/2611.01390",
+      "publisher": "arXiv 2611.01390",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-30",
-      "lane": "simeval",
-      "score": 3.71,
+      "published": "2026-11-01",
+      "lane": "foundation",
+      "score": 4.0,
       "numbers": [
-        "89%",
-        "98%",
-        "75.8%",
-        "98.5%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "heat": 0.0,
-      "summary": "Simulation benchmarks score robot policies by success rate, and every failed episode counts against the policy. Many of these failures are the simulator's fault, not the policy's; we find the cause and fix it. Testing a vision language action model and a world action model in simulation, we find that the policy often places the object and the simulator then ejects it, and that the benchmark's own scripted demonstrations fail the same way. We present SimuGuard, an auditing plugin for LIBERO, RoboTwin, RoboCasa and RoboDojo. It leaves the evaluation unchanged. At every physics step, it records the state and flags an object that starts moving at a contact faster than the robot's contact or gravity account for. It replays a recorded episode bit for bit, and it reruns the episode with one simulation parameter changed. With it we trace these episodes on RoboTwin to the collision detection of the physics engine: for geometry one to two centimeters apart, the engine reports a penetration of about two centimeters, and the solver throws the object out at several meters per second. The cause is one constant: the distance algorithm discards triangles below a fixed area threshold, which valid triangles fall below at the centimeter scale. With that constant changed and nothing else, episodes with an artifact fall from 12 in 100 to none, and the success rate on five container tasks rises from 89% to 98%. Success rates in simulation thus count failures that the simulator causes. Benchmarks on PhysX 5.3.1 or earlier should rerun in a repaired engine. Where the engine cannot change, they should report the success rate together with the range it spans when every flagged episode fails or passes: 75.8% to 98.5% around a reported 83.1% for LingBot-VA."
-    },
-    {
-      "id": "arxiv:2610.41625",
-      "title": "RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices",
-      "url": "https://arxiv.org/abs/2610.41625",
-      "publisher": "arXiv 2610.41625",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-10-30",
-      "lane": "edge",
-      "score": 3.21,
-      "numbers": [
-        "32.9 Hz",
-        "50 tasks",
-        "30.35 ms",
-        "149.72 ms"
+        "1x",
+        "33%",
+        "104%",
+        "28%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Low inference latency is critical for closed-loop robotic manipulation, especially under asynchronous inference, where action chunks must be updated promptly to correct accumulated deviations. However, existing visuomotor policies rely on computationally expensive visual backbones, resulting in high inference latency and deployment overhead. In this paper, we propose RTPolicy, a multi-view visuomotor policy that attains accurate manipulation with high inference efficiency. Its core design combines view-aware feature fusion with visual compression to aggregate complementary information across camera views into a compact token representation. The representation conditions a flow-matching action generator with the robot state and flow time, reducing the cost of action generation. Extensive experiments demonstrate that this design reduces the computational cost of visual representation and action generation while preserving visual information required for manipulation. On the RoboTwin~2.0 single-task clean evaluation across 50 tasks, RTPolicy attains a mean success rate of 52.26\\%, outperforming the strongest leaderboard baseline $π_0$ (46.4\\%). We further evaluate RTPolicy under asynchronous streaming inference on a real bimanual platform, where RTPolicy attains a mean success rate of 72.0\\% and sustains real-time inference at 30.35 ms (32.9 Hz) on the RDK S600 and 149.72 ms (6.7 Hz) on the RDK S100, both in INT16. Project Page: https://d-robotics-ai-lab.github.io/RTPolicy.project."
+      "summary": "Vision-language-action (VLA) models predict chunks of future actions, yet deployed robots waste time in two ways that are independent of model capability: they halt while the next chunk is inferred, and they move at the speed of slow, cautious demonstrations. Existing remedies remove one loss each, and stacking them fails, because asynchrony and speed-up each change the correspondence between planned progress and executed motion. We present Path-preserving Time Scaling (PTS), a training-free execution layer for frozen action-chunking policies built on one principle: the robot's motion is a time reparameterization of a reference path, and the path changes only in response to new observations. A path layer decodes every replan deterministically in one step and enters it at the progress consumed during inference. A time layer sums the planned increments, keeps the arm at 1x while the gripper moves, and caps the rate by the actuator's linear range and by chunk feasibility under latency. We show that misaligned entry and stochastic sampling add a bias and a variance to the continuation error, and derive a break-even success rate that states when speeding up pays off. On LIBERO with two frozen VLAs under injected inference latency, PTS raises task throughput over the strongest deployable baseline by 33% for pi0.5 and 104% for SmolVLA while matching or improving the success rate, is best on all six model-suite combinations, and exceeds zero-latency 1x execution. Against asynchronous 1x execution with the same one-step decoder, the time layer alone adds 28% and 38%. On LIBERO-Dynamic it improves on stop-and-wait execution by 38% and is comparable to asynchronous 1x execution."
     },
     {
-      "id": "arxiv:2610.42021",
-      "title": "Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space",
-      "url": "https://arxiv.org/abs/2610.42021",
-      "publisher": "arXiv 2610.42021",
+      "id": "arxiv:2611.01729",
+      "title": "ODE Policy: Robot Learning via Action Dynamics, Not Actions",
+      "url": "https://arxiv.org/abs/2611.01729",
+      "publisher": "arXiv 2611.01729",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-30",
-      "lane": "data",
-      "score": 2.902,
-      "numbers": [
-        "80.5%"
-      ],
+      "published": "2026-11-01",
+      "lane": "foundation",
+      "score": 3.85,
+      "numbers": [],
       "signals": [
-        "numbers",
         "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Large-scale egocentric human videos provide rich and scalable manipulation experience for robot policy learning, yet substantial embodiment gaps in visual appearance, kinematic structure, and action spaces hinder effective knowledge transfer. Existing methods often decouple cross-embodiment knowledge alignment from robot policy learning, making it difficult for human manipulation knowledge to directly and fully contribute to robot action learning. To address this issue, we propose Nexus-VLA, a hybrid policy learning framework that enables cross-embodiment knowledge transfer through end-to-end human-robot joint training, allowing human manipulation experience to directly contribute to robot policy learning. We first introduce a hierarchical cross-embodiment semantic alignment paradigm that progressively establishes shared manipulation semantics from task intent to fine-grained interactions, enabling more complete use of the manipulation knowledge contained in human videos. Building on this hierarchy, we design a shared manipulation latent representation that jointly encodes multi-level shared knowledge into an internal representation directly used for continuous action generation, improving policy learning efficiency while effectively leveraging human knowledge. Across RoboCasa-GR1, OOD settings, and real-world robot experiments, Nexus-VLA achieves an 80.5% task success rate on RoboCasa-GR1 and demonstrates strong advantages in human-data utilization, learning efficiency, and cross-scenario generalization."
+      "summary": "Most robot policies, whether trained by imitation learning (IL) or reinforcement learning (RL), map observations to action values at discrete control steps and leave the continuity of physical motion to be learned implicitly. We propose ODE policy, which learns the dynamics of the action rather than the action itself. A neural ordinary differential equation (ODE) learns the vector field of the action by matching the integrated actions to the targets over short action chunks in IL and single control steps in RL. A lightweight diversity head captures multi-modal behavior by randomizing the direction of the field. At deployment, each action is integrated from the previous one, so the executed trajectory is continuous by construction. We evaluate it as a visuomotor policy, as the action head of vision-language-action (VLA) and world action models (WAMs), and as the actor of model-based RL against 14 baselines on unimanual, bimanual, dexterous, locomotion, and loco-manipulation tasks. In IL, against flow matching, it reaches 5.9$\\times$ the success, 5.4$\\times$ the generalization, and 3.9$\\times$ the mode balance after one epoch, and generates actions 10.8$\\times$ faster. It mostly moves more smoothly than human demonstrations. On 14 real-world tasks across single-arm, dual-arm, dexterous, and humanoid robots, it achieves the highest success rate. In RL, it further speeds up SuperMimic for humanoid motion tracking and smooths its actions. Efficient in learning, data, parameters, and execution, ODE policy offers a promising path to scaling robot learning."
     },
     {
-      "id": "arxiv:2610.41877",
-      "title": "Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos",
-      "url": "https://arxiv.org/abs/2610.41877",
-      "publisher": "arXiv 2610.41877",
+      "id": "arxiv:2611.00524",
+      "title": "Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions",
+      "url": "https://arxiv.org/abs/2611.00524",
+      "publisher": "arXiv 2611.00524",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-10-30",
-      "lane": "data",
-      "score": 2.702,
+      "published": "2026-10-31",
+      "lane": "edge",
+      "score": 3.61,
       "numbers": [
-        "10,000 hours",
-        "1%",
-        "100%",
-        "911M parameters"
+        "70%",
+        "1.4x",
+        "11x",
+        "2.0x"
       ],
       "signals": [
         "numbers",
         "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Scaling humanoid motion foundation models is constrained by the scarcity of diverse, robot-executable data and by the difficulty of jointly learning from heterogeneous multimodal inputs while supporting real-time closed-loop control. We present Movens-5M, constructed from raw Internet videos through clip generation, quality filtering, semantic annotation, motion recovery, and physical refinement with humanoid retargeting and execution verification. It contains 15 million human-motion sequences and 5 million physically executable humanoid-motion sequences spanning over 10,000 hours, aligned with text, RGB video, speech, and music. Building on this data, we introduce Movens-Zero, a scalable understanding-generation-execution architecture that supports joint learning across modalities and real-time closed-loop execution. Task-mixed flow-matching training jointly optimizes a single action expert across seven generation tasks, enabling direct motion generation from text, speech, music, and video. Multimodal Real-Time Chunking connects overlapping chunks under continuously updated instructions and robot states for continuous closed-loop execution. We further introduce Movens-Intent, a four-track benchmark with 8,192 expert-verified condition-motion pairs across text, speech, music, and video. Experiments show consistent gains across all four modalities when scaling execution-verified data from 1% to 100% and action-expert capacity from 64M to 911M parameters, while demonstrating that data quality and cross-modal supervision improve generation and execution."
+      "summary": "Modern robot policies often perform expensive inference to generate action chunks, making serving a latency bottleneck for real-time control and a throughput bottleneck for multi-robot serving. Building on the success of caching in image, video, and audio generation, recent robot-policy advances have reported promising speedups by reusing intermediate denoising states to avoid redundant computation. Surprisingly, we find that such reuse often offers little advantage over simply running fewer denoising steps from fresh noise, without any cache. Moreover, accelerating denoising leaves the expensive policy backbone intact, which can account for 70% of GPU time. We present Reflex, a serving layer that turns past policy executions into a backbone-free path for future decisions. Rather than reusing intermediate computations, Reflex caches complete action chunks to bypass both the backbone and action head. This introduces two challenges: similar observations can demand different actions, and small action deviations (errors) in reuse can compound into execution stalls. Reflex addresses these through two-level cache correction. At the action level, it learns action-aware similarity from past policy decisions, assembles compatible chunks, and applies lightweight residual correction to limit action mismatch. At the execution level, it captures task progress and adaptively refreshes the original policy to limit accumulated errors and balance inference cost. Without modifying the underlying policy, Reflex improves inference latency by 1.4x to 11x and throughput by 2.0x to 2.2x on representative workloads and real robots, while preserving comparable task success."
     },
     {
-      "id": "leiphone:b0200ec08135",
-      "title": "破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖",
-      "url": "https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
+      "id": "arxiv:2611.02600",
+      "title": "W2A: Distilling World Priors into Action Models for Real-Time Robotic Control",
+      "url": "https://arxiv.org/abs/2611.02600",
+      "publisher": "arXiv 2611.02600",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-11-02",
       "lane": "edge",
-      "score": 1.152,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "11月2日，2026年世界互联网大会乌镇峰会开幕。支付宝AHA（Agent Hub Access）智能体多端互联方案获“新耀”场景奖。该奖项重点考察数智技术落地实效与复制推广价值，是峰会在产业应用侧的重要认可。 本批20个获奖方案覆盖金融、制造、城市治理、具身智能等多领域。AHA作为支付宝首创的多智能体跨端互联解决方案，着力破解智能体生态孤岛，支持跨品牌、跨终端智能体协同办事，各主体边界互不干涉。在智能体加速落地的当下，是智能体从单点智能走向协同智能的关键一步。 打通履约链路 构建跨端智能体协议底座 当前各类智能体多为独立体系，可单独完成交互任务，但缺少标准化协同通路，跨品牌、跨终端难以联动配合，复杂业务流程难以串联。 AHA 以支付宝 App 作为账号与能力锚点，依托 A2A、MCP、A2UI开源协议搭建三层互联协议体系，打通不同品牌、终端智能体之间的调用通路，将支付宝政务、出行、医疗、生活服务等能力输出至手机、车机、智能眼镜、大模型 App 等终端，通过分域授权、数据隔离与端侧加密等技术，保障各主体边界独立互不干涉，兼顾开放互联与隐私安全。 AHA互联支撑多终端智能体协同 落地千余服务场景 AHA 互联方案于今年 8 月正式对外发布。产品层面，依托AHA，车机、手机上的智能体可调用支付宝智能体阿宝的能力协同办事：对车载语音说“买张电影票”，车机智能体通过 AHA …"
-    },
-    {
-      "id": "leiphone:b17be9f044b9",
-      "title": "阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业",
-      "url": "https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-02",
-      "lane": "systems",
-      "score": 1.1,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "11月2日，2026世界互联网大会颁奖典礼在浙江乌镇举行，全球共20项成果入选，涵盖量子计算、芯片、具身智能及AI应用等领域。凭借在智能体Harness上的技术突破和领先的全球市场份额，阿里智能体平台Qoder荣获领先科技奖，是国内唯一获得该奖项的通用Agent产品。 Qoder产品线总裁丁宇在现场领奖 世界互联网大会领先科技奖是面向科技和互联网领域的国际性科技奖项，旨在奖励全球年度最具领先性的互联网科技成果。今年，大会共征集来自43个国家和地区的430多项科技成果，经国内外权威专家严格评选，最终仅20项成果入选。 目前，AI编程是全球大模型应用落地最快的领域之一，也是全球顶尖模型创业公司和科技公司竞争的核心战场。依托于阿里巴巴多年在大模型、云计算与大规模工程实践上的积累，Qoder实现了模型、Agent运行框架与产品的联合设计，让智能体做到真正理解工程、自主编写工具、循环探索推进、完成研发任务，有效提升任务执行的效率。 Qoder还在不断拓展用户的使用场景。自2025年8月面向全球发布以来，Qoder产品家族已覆盖桌面版、AI 原生IDE、命令行工具CLI、JetBrains插件、数字员工产品QoderWake、云端Cloud Agents等产品，可满足不同用户习惯和应用场景的需求。用户不仅可以在电脑桌面端使用Qoder提效，也可以在手机上查看进度、审批操作、追加指令。企业级用户可以通过SDK ，把智能体嵌入到的产品中，从而快速实现智能化，还可以在云端运行长程任务，提供24小时不间断的主动工作、主动服务。 …"
-    },
-    {
-      "id": "leiphone:92ae69ea6d89",
-      "title": "阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”",
-      "url": "https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-02",
-      "lane": "hardware",
-      "score": 1.083,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "11月2日，阿里云正式发布面向专业机构投资者的AI投研工作台Qovest。用户用一句话提出研究需求，Qovest就会自动查数据、收集资料、深度分析、生成报告，并按设定的频率持续跟踪研究对象。与一次性问答不同，Qovest可以把每次的研究结果沉淀到投研空间，让一项研究能接着往下做，不必每次从零开始。近期，Qovest将推出企业版，服务金融机构及企业的投研团队。 专业投资者对Agent的要求，远比日常聊天要高：数据要实时和准确，输出结果要有明确出处，研究结论必须专业可靠。为此，Qovest团队采购权威金融数据库、将其部署在阿里云上，自研面向金融场景的Agent工程框架（Harness），打通从数据调用到分析输出的完整流程，让交付结果更加准确和专业。在开源金融评测集FinFirst与IRAB的内部横向评测中，Qovest的回答质量、响应速度、成本都领先于参与评测的主流产品。 “我们希望把投研过程中耗时较多、重复性较强的工作交给AI，把时间还给真正需要专业判断的地方。” Qovest产品负责人表示。 Qovest首页提供了多个投研案例范本，用户可以自选标的作为研究对象，设置定时任务，接入自己的操盘笔记，获得可视化的深度研究结果。比如，用户可以让Qovest拆解人形机器人产业链中各环节的单机价值与国产化水平，得到一份可交互的产业链图谱；也可以让Qovest测算数据中心电力设施的投资规模，只要调整任何一个前提假设，Qovest就会自动重新计算。 …"
-    },
-    {
-      "id": "leiphone:36b372ceab93",
-      "title": "产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资",
-      "url": "https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-02",
-      "lane": "foundation",
-      "score": 1.05,
-      "numbers": [],
+      "score": 3.457,
+      "numbers": [
+        "95.9%",
+        "21x"
+      ],
       "signals": [
-        "press_release"
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "具身智能的资本筛选标准，正在从\"讲得动人\"转向\"兑现得动\"。AI 科技评论获悉，11 月 2 日，RoboScience 机器科学完成 A2 轮融资。 据悉，本轮由琥珀资本、鸿瑞达投资、上海半导体产投 联合领投，360 战投、爽资本、国联民生资本、金鼎资本及多家上市公司平台跟投，融资金额达到了数亿 元。 这意味着，这家 2025 年 3 月才正式开始运营的具身公司， 先后已完成五轮融资。 据 AI 科技评论了解，近期具身行业融资市场并不乐观。过去一年，这个赛道的融资叙事换了好几轮：最早讲世界模型就能拿到钱；后来光讲技术不够了，得讲落地，讲进工厂的 ROI ；再后来，得有\"具身 RSI \"（递归自我改进）的想象空间。 故事通胀的背后，是大多数团队的底子撑不起叙事的升级，每次风口转向，就得重新攒一套说辞。资本也随之变得挑剔，同样的 BP，去年能融到，今年连会都约不上。（雷峰网） 但 RoboScience 机器科学的节奏完全不同，逆势不断受到资本青睐，也因此成为具身领域里一个值得研究的样本公司。 回看机器科学过去五轮融资的时间点，几乎每一轮前后，都有可验证的产品技术落地：ICRA 最佳论文、仿真平台 RoboMirage、通用具身大模型 Visics、与腾讯云共创的云端具身智能服务 EaaS、首款轮式仿人形通用机器人 REX G1 以及真实的项目落地。 某种意义上，这意味着，具身市场的融资，不该是技术跟着融资的故事走，反过来，融资应该跟着技术的兑现走。 在 AI …"
+      "summary": "World Action Models (WAMs) have recently shown great promise in robotic control, benefiting from the future imagination capability of large-scale pretrained video models. However, most existing WAMs require explicitly imagining future states at test time, incurring substantial computational overhead and latency that make them unsuitable for real-time robotic control. In this paper, we propose W2A, a two-stage distillation framework for real-time robotic manipulation that distills intermediate denoising representations from a video diffusion model into an action model during training, while entirely discarding the video model at test time. We hypothesize that although video latent representations are high-dimensional, a compressed low-dimensional subspace is sufficient to provide effective supervision for action generation. This makes it possible to transfer such information effectively into an action model. Extensive experiments in both simulation and real-world settings demonstrate competitive success rates while significantly improving inference efficiency. On LIBERO, W2A achieves a 95.9% average success rate. More importantly, W2A achieves about 21x faster inference than the representative WAM baseline."
+    },
+    {
+      "id": "aws-physical-ai:8e5a6ee3818d",
+      "title": "Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS",
+      "url": "https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-11-03",
+      "lane": "simeval",
+      "score": 2.42,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Physical AI is built in simulation and digital twins before it reaches the real world. Engineers validate a factory layout, inspect a robot work cell, or teleoperate a robot to collect training demonstrations, and these tasks are often best done from inside a 3D scene itself. The challenge is that photorealistic, physics-accurate scenes need workstation-class […]"
+    },
+    {
+      "id": "openai:26c6032e1d26",
+      "title": "Accelerating engineering for the physical world",
+      "url": "https://openai.com/index/accelerating-engineering-for-the-physical-world",
+      "publisher": "OpenAI News",
+      "source_id": "openai",
+      "evidence": "O",
+      "published": "2026-11-03",
+      "lane": "simeval",
+      "score": 1.785,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Discover how ChatGPT and Codex are helping engineers accelerate CAD, PCB design, simulation, and other workflows across the physical world."
+    },
+    {
+      "id": "the-robot-report:c6aaa07507ce",
+      "title": "Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC",
+      "url": "https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-03",
+      "lane": "hardware",
+      "score": 1.515,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Deal is expected to provide approximately $465 million in gross capital as Agility expands deployments of its Digit humanoid with industrial customers."
+    },
+    {
+      "id": "leiphone:f2d237564097",
+      "title": "小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”",
+      "url": "https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-03",
+      "lane": "systems",
+      "score": 1.207,
+      "numbers": [],
+      "signals": [
+        "trending"
+      ],
+      "heat": 0.133,
+      "summary": "11月3日，小米方面披露，小米集团获得2026世界互联网大会“杰出贡献奖”创新突破类奖项，该奖项旨在表彰全球互联网相关领域作出杰出贡献的个人和企业。同时，小米机器人业务“面向规模化落地的通用机器人操作基座模型关键技术”获大会“领先科技奖”，该奖项旨在奖励全球年度最具领先性的互联网科技成果。 峰会期间，小米还对外披露了机器人业务在工业制造和家庭场景的两项最新落地进展。 在工厂场景，小米披露人形机器人在汽车工厂的最新“实习”进展：在中控台侧盖板排序工站中首次挑战8小时作业任务，满足工站全天生产需求，并实现作业过程异常自主纠偏与产线系统级协同，初步完成产线级作业能力验证。 在家庭场景，小米具身基座模型在小米青年公寓正式启动“试运营”，基于Xiaomi-Robotics-1 预训练模型搭建Agent 系统，已在小米青年公寓完成连续超30分钟、覆盖3个房间、包含50+任务的长程任务验证。 中国数实融合50人论坛副秘书长、数字经济智库首席研究员胡麒牧表示，小米机器人实现汽车工厂8小时整班作业、初步完成产线级作业能力验证，是人形机器人赋能智能制造的一次重要探索。“小米的独特之处在于机器人业务生长于真实的制造体系之上，智能制造工厂提供了稀缺的高质量训练数据来源。” …"
     }
   ],
   "lane_counts": {
@@ -170,9 +169,9 @@
     "training": 3,
     "simeval": 12,
     "edge": 9,
-    "safety": 2,
+    "safety": 1,
     "systems": 3,
-    "hardware": 8
+    "hardware": 9
   },
   "evidence_mix": {
     "O": 4,
@@ -180,10 +179,12 @@
     "M": 21
   },
   "fetch": {
-    "items": 627,
+    "items": 562,
     "attempted": 23,
-    "answered": 23,
-    "failed": [],
+    "answered": 22,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -207,27 +208,26 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 16,
+      "hn_stories": 22,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 26,
+      "arxiv": 62,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
       "tri": 10,
       "leiphone": 20,
       "monoist": 30,
-      "openai": 20,
+      "openai": 21,
       "bair": 6,
       "mit-news-robotics": 50,
       "techcrunch-robotics": 10,
       "robohub": 75,
-      "qbitai": 4,
+      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

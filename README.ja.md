@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-03
+### 本日のレーダー · 2026-11-04
 
-`生成時刻: 2026-11-02 23:40 UTC` ｜ `対象期間: 論文 2026-10-30 → 2026-11-03 · ブログ・報道 2026-10-04 → 2026-11-03 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-03 23:40 UTC` ｜ `対象期間: 論文 2026-10-31 → 2026-11-04 · ブログ・報道 2026-10-05 → 2026-11-04 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks](https://arxiv.org/abs/2610.41857)**<br>`89%`&nbsp; `98%`&nbsp; `75.8%`<br><sub>シミュレーションと評価 · arXiv 2610.41857 · 2026‑10‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices](https://arxiv.org/abs/2610.41625)**<br>`32.9 Hz`&nbsp; `50 tasks`&nbsp; `30.35 ms`<br><sub>エッジとリアルタイム · arXiv 2610.41625 · 2026‑10‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space](https://arxiv.org/abs/2610.42021)**<br>`80.5%`<br><sub>データエンジン · arXiv 2610.42021 · 2026‑10‑30</sub> |
-| 04<br>🔵&nbsp;`R` | **[Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos](https://arxiv.org/abs/2610.41877)**<br>`10,000 hours`&nbsp; `1%`&nbsp; `100%`<br><sub>データエンジン · arXiv 2610.41877 · 2026‑10‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖](https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html)**<br><sub>エッジとリアルタイム · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业](https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html)**<br><sub>システムとオーケストレーション · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”](https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资](https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>基盤モデル · arXiv 2611.01390 · 2026‑11‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>基盤モデル · arXiv 2611.01729 · 2026‑11‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>エッジとリアルタイム · arXiv 2611.00524 · 2026‑10‑31</sub> |
+| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>エッジとリアルタイム · arXiv 2611.02600 · 2026‑11‑02</sub> |
+| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑11‑03</sub> |
+| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>シミュレーションと評価 · OpenAI News · 2026‑11‑03</sub> |
+| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑03</sub> |
+| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>システムとオーケストレーション · 雷峰网 Leiphone · 2026‑11‑03</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **When the Simulator Fails, Not the Policy** — `AI 下書き` シミュレーション上の成功率で方策を見限る前に、失敗エピソードが接触シミュレーションの不具合によるものでないか確かめたく、著者自己報告のこのプレプリントは容器系タスクの数値が 89% から 98%、別の箇所で 75.8% から 98.5% に上がったと記すが、何を変えた結果かはページの抜粋から読めない。
-2. **RTPolicy** — `AI 下書き` マルチビュー視覚運動方策用のエッジ基板を選ぶ際は、RDK S600 を含むハードウェア間で 30.35 ms（32.9 Hz）と 149.72 ms（6.7 Hz）の差があるというこの自己報告プレプリントの数値が判断材料になるが、50 タスクでの単一タスク評価は示されているものの、ページに実機結果は見えない。
-3. **Nexus-VLA** — `AI 下書き` 一人称視点の人間動画を抱えるチームにとって、見た目・運動学的構造・行動空間の差を越えて知識を移す一つの候補になり、実機実験ありとされタスク成功率 80.5% が報告されているが、ページに比較対象はなく、自己報告の手がかりとして扱うべきだ。
-4. **Movens-Zero** — `AI 下書き` ヒューマノイドで実行検証済みデータと行動エキスパートの規模のどちらに投資するか迷うなら、10,000 時間超の動作系列でデータを 1% から 100%、容量を 64M から 911M パラメータまで振ったこのプレプリントが参考になるが、どちらが効いたかも実機結果もページからは読めない。
-5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — `AI 下書き` 支付宝の AI エージェント多端末連携方式が受賞したという二次報道で、ロボットやハードウェア、制御周期への言及はページになく、ロボットシステムを作るチームの判断を変える材料にはならない。
-6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — `AI 下書き` Qoder は汎用エージェント基盤としてエージェント Harness を評価され受賞し、同じ賞は具身知能も対象にしていたが、二次報道のページに技術的な中身はなく、ロボットのオーケストレーションを検討するチームが試せる材料はない。
-7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — `AI 下書き` Qovest は機関投資家向けの AI 投資リサーチ基盤で、ロボットの機体とは関係がなく、この二次報道はハードウェアやコスト、供給を判断する材料を何も含まない。
-8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — `AI 下書き` RoboScience の A2 ラウンド完了は具身知能のサプライヤーを追う人には覚えておきたい名前だが、プレスリリース調の二次報道でページに金額も製品やモデルの詳細もなく、技術選定や調達の判断を動かす段階ではない。
+1. **Same Path, Less Time** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+2. **ODE Policy** — 査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+3. **Reflex** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **W2A** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **Accelerating engineering for the physical world** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-03.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-04.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-03
+### Today's radar · 2026-11-04
 
-`Generated: 2026-11-02 23:40 UTC` ｜ `Window: papers 2026-10-30 → 2026-11-03 · posts 2026-10-04 → 2026-11-03 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-03 23:40 UTC` ｜ `Window: papers 2026-10-31 → 2026-11-04 · posts 2026-10-05 → 2026-11-04 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks](https://arxiv.org/abs/2610.41857)**<br>`89%`&nbsp; `98%`&nbsp; `75.8%`<br><sub>Simulation & evaluation · arXiv 2610.41857 · 2026‑10‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices](https://arxiv.org/abs/2610.41625)**<br>`32.9 Hz`&nbsp; `50 tasks`&nbsp; `30.35 ms`<br><sub>Edge & real-time · arXiv 2610.41625 · 2026‑10‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space](https://arxiv.org/abs/2610.42021)**<br>`80.5%`<br><sub>Data engine · arXiv 2610.42021 · 2026‑10‑30</sub> |
-| 04<br>🔵&nbsp;`R` | **[Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos](https://arxiv.org/abs/2610.41877)**<br>`10,000 hours`&nbsp; `1%`&nbsp; `100%`<br><sub>Data engine · arXiv 2610.41877 · 2026‑10‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖](https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html)**<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业](https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html)**<br><sub>Systems & orchestration · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”](https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资](https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>Foundation models · arXiv 2611.01390 · 2026‑11‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>Foundation models · arXiv 2611.01729 · 2026‑11‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>Edge & real-time · arXiv 2611.00524 · 2026‑10‑31</sub> |
+| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>Edge & real-time · arXiv 2611.02600 · 2026‑11‑02</sub> |
+| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑11‑03</sub> |
+| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>Simulation & evaluation · OpenAI News · 2026‑11‑03</sub> |
+| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑03</sub> |
+| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>Systems & orchestration · 雷峰网 Leiphone · 2026‑11‑03</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **When the Simulator Fails, Not the Policy** — `AI draft` Before dropping a policy over its simulated success rate, check whether its failed episodes are simulator contact faults; this self-reported preprint quotes container-task figures rising from 89% to 98%, and elsewhere 75.8% to 98.5%, but the excerpt does not say what changed.
-2. **RTPolicy** — `AI draft` Teams choosing an edge board for multi-view visuomotor control should note the hardware spread this self-reported preprint gives, 30.35 ms (32.9 Hz) against 149.72 ms (6.7 Hz), with an RDK S600 among those named; the page shows a 50-task single-task evaluation but no real-robot result.
-3. **Nexus-VLA** — `AI draft` Teams holding egocentric human video get a candidate way past the appearance, kinematic and action-space gaps that block transfer; the authors report 80.5% task success and real-robot experiments are flagged, but the page names no baseline, so treat it as a self-reported lead.
-4. **Movens-Zero** — `AI draft` Humanoid teams weighing execution-verified data against a larger action expert will find both axes scaled here, data from 1% to 100% and capacity from 64M to 911M parameters over 10,000 hours of motion, but the page shows neither which paid off nor a real-robot result.
-5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — `AI draft` This secondary report covers an award for Alipay's cross-device agent interconnect scheme; the page says nothing about robots, hardware or control rates, so it changes no decision for teams building robot systems.
-6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — `AI draft` Qoder is a general agent platform honoured for its agent harness at an awards event that also covered embodied AI, but this secondary report gives no technical detail, so robot teams evaluating orchestration have nothing here to test.
-7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — `AI draft` Qovest is an AI research workbench for institutional investors, not robot hardware, so this secondary report offers robot builders nothing on embodiment, cost or supply despite the lane it was filed under.
-8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — `AI draft` RoboScience closing an A2 round is a name for anyone tracking embodied-AI suppliers, but this press-release-style secondary report shows no amount, product or model detail on the page, so it should not shift technical or sourcing decisions yet.
+1. **Same Path, Less Time** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+2. **ODE Policy** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+3. **Reflex** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+4. **W2A** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **Accelerating engineering for the physical world** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-03.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-04.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

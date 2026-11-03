@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-03
+### 今日雷达 · 2026-11-04
 
-`生成时间: 2026-11-02 23:40 UTC` ｜ `统计窗口: 论文 2026-10-30 → 2026-11-03 · 博客与报道 2026-10-04 → 2026-11-03 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-03 23:40 UTC` ｜ `统计窗口: 论文 2026-10-31 → 2026-11-04 · 博客与报道 2026-10-05 → 2026-11-04 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks](https://arxiv.org/abs/2610.41857)**<br>`89%`&nbsp; `98%`&nbsp; `75.8%`<br><sub>仿真与评测 · arXiv 2610.41857 · 2026‑10‑30</sub> |
-| 02<br>🔵&nbsp;`R` | **[RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices](https://arxiv.org/abs/2610.41625)**<br>`32.9 Hz`&nbsp; `50 tasks`&nbsp; `30.35 ms`<br><sub>边缘与实时性 · arXiv 2610.41625 · 2026‑10‑30</sub> |
-| 03<br>🔵&nbsp;`R` | **[Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space](https://arxiv.org/abs/2610.42021)**<br>`80.5%`<br><sub>数据引擎 · arXiv 2610.42021 · 2026‑10‑30</sub> |
-| 04<br>🔵&nbsp;`R` | **[Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos](https://arxiv.org/abs/2610.41877)**<br>`10,000 hours`&nbsp; `1%`&nbsp; `100%`<br><sub>数据引擎 · arXiv 2610.41877 · 2026‑10‑30</sub> |
-| 05<br>🟡&nbsp;`M` | **[破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖](https://www.leiphone.com/category/industrynews/oPrDWg9bNg1Dgy4a.html)**<br><sub>边缘与实时性 · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 06<br>🟡&nbsp;`M` | **[阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业](https://www.leiphone.com/category/industrynews/JrXpr0xuLSNA9sOY.html)**<br><sub>系统与编排 · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 07<br>🟡&nbsp;`M` | **[阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”](https://www.leiphone.com/category/industrynews/MFtJXmU8YNMGMig6.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资](https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑02</sub> |
+| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>基座模型 · arXiv 2611.01390 · 2026‑11‑01</sub> |
+| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>基座模型 · arXiv 2611.01729 · 2026‑11‑01</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>边缘与实时性 · arXiv 2611.00524 · 2026‑10‑31</sub> |
+| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>边缘与实时性 · arXiv 2611.02600 · 2026‑11‑02</sub> |
+| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑11‑03</sub> |
+| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>仿真与评测 · OpenAI News · 2026‑11‑03</sub> |
+| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑03</sub> |
+| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>系统与编排 · 雷峰网 Leiphone · 2026‑11‑03</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **When the Simulator Fails, Not the Policy** — `AI 起草` 用仿真基准淘汰策略之前，先查失败回合是不是仿真器接触建模出的问题：这篇作者自报的预印本给出容器类任务的指标从 89% 升到 98%、另一处从 75.8% 升到 98.5%，但页面摘录没说明是什么改动带来的。
-2. **RTPolicy** — `AI 起草` 给多视角视觉运动策略选端侧板卡时，要看这篇自报预印本里不同硬件间的差距：30.35 ms（32.9 Hz）对 149.72 ms（6.7 Hz），提到的平台包括 RDK S600；页面有 50 个任务的单任务评测，但看不到真机结果。
-3. **Nexus-VLA** — `AI 起草` 手里有第一人称人类视频的团队，可以把它当作跨越外观、运动学结构和动作空间差异的一种候选做法：作者自报任务成功率 80.5%，页面标注了真机实验，但没给对比基线，先当线索看。
-4. **Movens-Zero** — `AI 起草` 人形团队在“多做经执行验证的数据”与“加大动作专家模型”之间取舍时可以参考：这篇预印本在超 10,000 小时的动作序列上把前者从 1% 扩到 100%、后者从 64M 扩到 911M 参数，但页面看不到哪条收益更大，也看不到真机结果。
-5. **破解智能体跨端协同办事难题，支付宝AHA方案获世界互联网大会“新耀”场景奖** — `AI 起草` 这是支付宝智能体多端互联方案获奖的二手报道，页面没有涉及机器人、硬件或控制频率，对做机器人系统的团队没有可据以调整的信息。
-6. **阿里Qoder获世界互联网大会领先科技奖，已服务超800万用户、10万家企业** — `AI 起草` Qoder 是通用智能体平台，因“智能体 Harness”获奖，同场奖项虽涵盖具身智能，但这篇二手报道没有技术细节，做机器人编排的团队从中拿不到可验证的东西。
-7. **阿里云发布AI投研工作台Qovest，给专业投资者配一个“AI研究员”** — `AI 起草` Qovest 是面向机构投资者的 AI 投研工具，与机器人本体无关；这篇二手报道对机器人团队的硬件、成本或供应链判断没有参考价值。
-8. **产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2…** — `AI 起草` RoboScience 完成 A2 轮融资，关注具身供应商的人可以记下这个名字；但这是新闻稿式的二手报道，页面看不到金额、产品或模型细节，暂不应影响技术或采购决策。
+1. **Same Path, Less Time** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **ODE Policy** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+3. **Reflex** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+4. **W2A** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Accelerating engineering for the physical world** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-03.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-04.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

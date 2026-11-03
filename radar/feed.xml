@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-11-02T23:40:00Z</updated>
+  <updated>2026-11-03T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,142 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.01390</id>
+    <title>Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.01390" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.01390</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-language-action (VLA) models predict chunks of future actions, yet deployed robots waste time in two ways that are independent of model capability: they halt while the next chunk is inferred, and they move at the speed of slow,…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.01390 · 2026-11-01&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 1x · 33% · 104% · 28%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Vision-language-action (VLA) models predict chunks of future actions, yet deployed robots waste time in two ways that are independent of model capability: they halt while the next chunk is inferred, and they move at the speed of slow,…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.01729</id>
+    <title>ODE Policy: Robot Learning via Action Dynamics, Not Actions</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.01729" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.01729</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Most robot policies, whether trained by imitation learning (IL) or reinforcement learning (RL), map observations to action values at discrete control steps and leave the continuity of physical motion to be learned implicitly.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.01729 · 2026-11-01&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Most robot policies, whether trained by imitation learning (IL) or reinforcement learning (RL), map observations to action values at discrete control steps and leave the continuity of physical motion to be learned implicitly.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.00524</id>
+    <title>Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.00524" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.00524</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Modern robot policies often perform expensive inference to generate action chunks, making serving a latency bottleneck for real-time control and a throughput bottleneck for multi-robot serving.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.00524 · 2026-10-31&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 70% · 1.4x · 11x · 2.0x&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Modern robot policies often perform expensive inference to generate action chunks, making serving a latency bottleneck for real-time control and a throughput bottleneck for multi-robot serving.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.02600</id>
+    <title>W2A: Distilling World Priors into Action Models for Real-Time Robotic Control</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.02600" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.02600</name>
+    </author>
+    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
+    <category term="R" label="[R]" />
+    <summary type="text">World Action Models (WAMs) have recently shown great promise in robotic control, benefiting from the future imagination capability of large-scale pretrained video models.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.02600 · 2026-11-02&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 95.9% · 21x&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;World Action Models (WAMs) have recently shown great promise in robotic control, benefiting from the future imagination capability of large-scale pretrained video models.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:8e5a6ee3818d</id>
+    <title>Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS</title>
+    <link rel="alternate" href="https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>AWS Physical AI Blog</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="O" label="[O]" />
+    <summary type="text">Physical AI is built in simulation and digital twins before it reaches the real world. Engineers validate a factory layout, inspect a robot work cell, or teleoperate a robot to collect training demonstrations, and these tasks are often…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: AWS Physical AI Blog · 2026-11-03&lt;/p&gt;
+&lt;blockquote&gt;Physical AI is built in simulation and digital twins before it reaches the real world. Engineers validate a factory layout, inspect a robot work cell, or teleoperate a robot to collect training demonstrations, and these tasks are often…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:openai:26c6032e1d26</id>
+    <title>Accelerating engineering for the physical world</title>
+    <link rel="alternate" href="https://openai.com/index/accelerating-engineering-for-the-physical-world" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>OpenAI News</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="O" label="[O]" />
+    <summary type="text">Discover how ChatGPT and Codex are helping engineers accelerate CAD, PCB design, simulation, and other workflows across the physical world.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: OpenAI News · 2026-11-03&lt;/p&gt;
+&lt;blockquote&gt;Discover how ChatGPT and Codex are helping engineers accelerate CAD, PCB design, simulation, and other workflows across the physical world.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:c6aaa07507ce</id>
+    <title>Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC</title>
+    <link rel="alternate" href="https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="M" label="[M]" />
+    <summary type="text">Deal is expected to provide approximately $465 million in gross capital as Agility expands deployments of its Digit humanoid with industrial customers.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-11-03&lt;/p&gt;
+&lt;blockquote&gt;Deal is expected to provide approximately $465 million in gross capital as Agility expands deployments of its Digit humanoid with industrial customers.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:f2d237564097</id>
+    <title>小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”</title>
+    <link rel="alternate" href="https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html" />
+    <published>2026-11-03T23:40:00Z</published>
+    <updated>2026-11-03T23:40:00Z</updated>
+    <author>
+      <name>雷峰网 Leiphone</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="M" label="[M]" />
+    <summary type="text">11月3日，小米方面披露，小米集团获得2026世界互联网大会“杰出贡献奖”创新突破类奖项，该奖项旨在表彰全球互联网相关领域作出杰出贡献的个人和企业。同时，小米机器人业务“面向规模化落地的通用机器人操作基座模型关键技术”获大会“领先科技奖”，该奖项旨在奖励全球年度最具领先性的互联网科技成果。</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: 雷峰网 Leiphone · 2026-11-03&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: trending&lt;/p&gt;
+&lt;blockquote&gt;11月3日，小米方面披露，小米集团获得2026世界互联网大会“杰出贡献奖”创新突破类奖项，该奖项旨在表彰全球互联网相关领域作出杰出贡献的个人和企业。同时，小米机器人业务“面向规模化落地的通用机器人操作基座模型关键技术”获大会“领先科技奖”，该奖项旨在奖励全球年度最具领先性的互联网科技成果。&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-04.en.html"&gt;Full radar for 2026-11-04&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.41857</id>
     <title>When the Simulator Fails, Not the Policy: Auditing Contact Artifacts in Simulated Robot Benchmarks</title>
@@ -1574,141 +1710,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: MONOist (ITmedia) · 2026-10-22&lt;/p&gt;
 &lt;blockquote&gt;本田技術研究所は、「CEATEC 2026」において、遠隔地にいる操作者が意のままに操れる分身ロボット「Honda Avatar Robot」を披露した。2030年までの実用化を視野に入れて開発を進めている技術だ。&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-23.en.html"&gt;Full radar for 2026-10-23&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.29264</id>
-    <title>Training in Deployment: Human-in-the-loop Online Post-Training for Robot Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.29264" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>arXiv 2610.29264</name>
-    </author>
-    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Large pretrained robot foundation models provide strong priors for manipulation, yet adapting them to target tasks with offline teleoperated demonstrations often fails to cover the contact-rich, recovery, and precision-critical states…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.29264 · 2026-10-21&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: real-robot experiments · open code or weights&lt;/p&gt;
-&lt;blockquote&gt;Large pretrained robot foundation models provide strong priors for manipulation, yet adapting them to target tasks with offline teleoperated demonstrations often fails to cover the contact-rich, recovery, and precision-critical states…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.27045</id>
-    <title>Physical AI: Concepts, Techniques, and Challenges</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.27045" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>arXiv 2610.27045</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">In recent years, physical artificial intelligence (physical AI) has experienced rapid development, capturing significant attention in academia and industry.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.27045 · 2026-10-19&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;In recent years, physical artificial intelligence (physical AI) has experienced rapid development, capturing significant attention in academia and industry.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30097</id>
-    <title>AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.30097" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>arXiv 2610.30097</name>
-    </author>
-    <category term="training" label="Training &amp; self-improvement (RL / post-training)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Training &amp;amp; self-improvement (RL / post-training)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.30097 · 2026-10-21&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 3.6% · 4.0% · 9.5% · 21.3%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments&lt;/p&gt;
-&lt;blockquote&gt;Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:monoist:c6032d49828a</id>
-    <title>SynopsysとAnsysの技術統合が切り開く、AI時代の新たな設計／解析プロセス</title>
-    <link rel="alternate" href="https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>MONOist (ITmedia)</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="M" label="[M]" />
-    <summary type="text">アンシス・ジャパンは、年次イベント「Ansys Simulation World 2026 Japan」を開催した。基調講演と特別セッションでは、SynopsysとAnsysの技術統合によって進む半導体からシステム全体までを対象とした設計／解析環境の進化や、AIと物理シミュレーションを組み合わせたエンジニアリングの将来像を紹介。</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: MONOist (ITmedia) · 2026-10-21&lt;/p&gt;
-&lt;blockquote&gt;アンシス・ジャパンは、年次イベント「Ansys Simulation World 2026 Japan」を開催した。基調講演と特別セッションでは、SynopsysとAnsysの技術統合によって進む半導体からシステム全体までを対象とした設計／解析環境の進化や、AIと物理シミュレーションを組み合わせたエンジニアリングの将来像を紹介。&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:0c405e6fd045</id>
-    <title>Europe’s Industrial Leaders Reinvent Engineering and Manufacturing With NVIDIA</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="O" label="[O]" />
-    <summary type="text">To increase productivity, accelerate innovation and create new opportunities for economic growth, Europe’s industrial leaders are tapping NVIDIA CUDA-X and Omniverse libraries, as well as NVIDIA Cosmos and Nemotron open models, across the…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-10-21&lt;/p&gt;
-&lt;blockquote&gt;To increase productivity, accelerate innovation and create new opportunities for economic growth, Europe’s industrial leaders are tapping NVIDIA CUDA-X and Omniverse libraries, as well as NVIDIA Cosmos and Nemotron open models, across the…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:d8fecd9b69c9</id>
-    <title>GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang’s Keynote</title>
-    <link rel="alternate" href="https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>NVIDIA Blog</name>
-    </author>
-    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
-    <category term="O" label="[O]" />
-    <summary type="text">Founded in a tent near the Berlin Wall in 1980, the Tempodrom moved several times before settling near Anhalter Bahnhof in 2001.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-10-21&lt;/p&gt;
-&lt;blockquote&gt;Founded in a tent near the Berlin Wall in 1980, the Tempodrom moved several times before settling near Anhalter Bahnhof in 2001.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:4b586e594e2b</id>
-    <title>A guide to Day 2 of RoboBusiness 2026</title>
-    <link rel="alternate" href="https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
-    <category term="M" label="[M]" />
-    <summary type="text">Day 2 of RoboBusiness 2026, the 20th anniversary of the event, will include interesting keynotes around humanoids and social robots.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-10-21&lt;/p&gt;
-&lt;blockquote&gt;Day 2 of RoboBusiness 2026, the 20th anniversary of the event, will include interesting keynotes around humanoids and social robots.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:a9044ca8f5b5</id>
-    <title>AGCO to deploy Agility Digit humanoid in Kansas factory</title>
-    <link rel="alternate" href="https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html" />
-    <published>2026-10-22T02:14:00Z</published>
-    <updated>2026-10-22T02:14:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
-    <category term="M" label="[M]" />
-    <summary type="text">The Agility pilot, which is expected to begin in 2027, will begin at an AGCO production facility for agricultural equipment.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: The Robot Report · 2026-10-21&lt;/p&gt;
-&lt;blockquote&gt;The Agility pilot, which is expected to begin in 2027, will begin at an AGCO production facility for agricultural equipment.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-22.en.html"&gt;Full radar for 2026-10-22&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
