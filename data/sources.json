@@ -350,7 +350,7 @@
     },
     {
       "id": "unitree",
-      "url": "https://www.unitree.com/news",
+      "url": "https://www.unitree.com/news/",
       "mode": "listing",
       "link_prefix": "/news",
       "hosts": ["unitree.com"],
