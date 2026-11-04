@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.01390" rel="noopener" target="_blank">Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency</a></h3>
 <p class="figure"><strong>1x</strong><span class="context">“keeps the arm at 1x while the gripper”</span></p><p class="chips"><span class="chip">33%</span><span class="chip">104%</span><span class="chip">28%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Before retraining a chunked VLA for speed, measure how long the robot halts while the next chunk is inferred; this self-reported preprint beats its strongest deployable baseline by 33% for pi0.5 and 104% for SmolVLA, though the excerpt does not name the metric.</p>
 <p class="excerpt">Vision-language-action (VLA) models predict chunks of future actions, yet deployed robots waste time in two ways that are independent of model capability: they halt while the next chunk is inferred, and they move at the speed of slow,…</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.01729" rel="noopener" target="_blank">ODE Policy: Robot Learning via Action Dynamics, Not Actions</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If your policy emits action values per discrete control step and leaves motion continuity to be learned implicitly, this preprint argues against that design; the page flags real-robot and closed-loop experiments but gives no figures to size the gain.</p>
 <p class="excerpt">Most robot policies, whether trained by imitation learning (IL) or reinforcement learning (RL), map observations to action values at discrete control steps and leave the continuity of physical motion to be learned implicitly.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.00524" rel="noopener" target="_blank">Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions</a></h3>
 <p class="figure"><strong>70%</strong><span class="context">“which can account for 70% of GPU time”</span></p><p class="chips"><span class="chip">1.4x</span><span class="chip">11x</span><span class="chip">2.0x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> When one GPU serves several robots, chunk inference limits both control latency and throughput; this self-reported preprint claims 1.4x to 11x lower latency and 2.0x to 2.2x throughput, but the excerpt does not say where the 11x end applies, so retest on your hardware.</p>
 <p class="excerpt">Modern robot policies often perform expensive inference to generate action chunks, making serving a latency bottleneck for real-time control and a throughput bottleneck for multi-robot serving.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.02600" rel="noopener" target="_blank">W2A: Distilling World Priors into Action Models for Real-Time Robotic Control</a></h3>
 <p class="figure"><strong>95.9%</strong><span class="context">“W2A achieves a 95.9% average success rate”</span></p><p class="chips"><span class="chip">21x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Teams drawn to world action models for the foresight of pretrained video models, but worried about fitting inference into the control loop, have a self-reported option: 95.9% average success and about 21x faster inference, though the excerpt names neither benchmark nor baseline.</p>
 <p class="excerpt">World Action Models (WAMs) have recently shown great promise in robotic control, benefiting from the future imagination capability of large-scale pretrained video models.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/" rel="noopener" target="_blank">Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams that inspect work cells or teleoperate robots in digital twins to collect demonstrations now have a vendor-documented path to stream them to XR headsets from AWS; the post gives no latency figures, so measure before relying on it for teleoperation.</p>
 <p class="excerpt">Physical AI is built in simulation and digital twins before it reaches the real world. Engineers validate a factory layout, inspect a robot work cell, or teleoperate a robot to collect training demonstrations, and these tasks are often…</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-11-03</span>
@@ -175,7 +175,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" rel="noopener" target="_blank">Accelerating engineering for the physical world</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> This targets design work such as CAD, PCB layout and simulation rather than robot control; as a vendor account with no figures, hardware teams should pilot ChatGPT or Codex on one of their own workflows before changing tooling.</p>
 <p class="excerpt">Discover how ChatGPT and Codex are helping engineers accelerate CAD, PCB design, simulation, and other workflows across the physical world.</p>
 <footer>
 <span class="source">OpenAI News · 2026-11-03</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/" rel="noopener" target="_blank">Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Buyers weighing Digit for industrial deployment can read the expected roughly $465 million in gross capital as a sign Agility will keep supporting its fleet, but this is a secondary report of an expected figure, so confirm it at the primary source.</p>
 <p class="excerpt">Deal is expected to provide approximately $465 million in gross capital as Agility expands deployments of its Digit humanoid with industrial customers.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-03</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html" rel="noopener" target="_blank">小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> An award is no basis for choosing a manipulation foundation model: this secondary report names Xiaomi&#x27;s work on a general robot manipulation model aimed at scaled deployment but shows no results, so wait for technical detail or evaluations.</p>
 <p class="excerpt">11月3日，小米方面披露，小米集团获得2026世界互联网大会“杰出贡献奖”创新突破类奖项，该奖项旨在表彰全球互联网相关领域作出杰出贡献的个人和企业。同时，小米机器人业务“面向规模化落地的通用机器人操作基座模型关键技术”获大会“领先科技奖”，该奖项旨在奖励全球年度最具领先性的互联网科技成果。</p>
 <ul class="signals"><li>trending</li></ul>
 <footer>
