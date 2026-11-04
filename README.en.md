@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-04
+### Today's radar · 2026-11-05
 
-`Generated: 2026-11-03 23:40 UTC` ｜ `Window: papers 2026-10-31 → 2026-11-04 · posts 2026-10-05 → 2026-11-04 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-04 23:40 UTC` ｜ `Window: papers 2026-11-01 → 2026-11-05 · posts 2026-10-06 → 2026-11-05 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>Foundation models · arXiv 2611.01390 · 2026‑11‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>Foundation models · arXiv 2611.01729 · 2026‑11‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>Edge & real-time · arXiv 2611.00524 · 2026‑10‑31</sub> |
-| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>Edge & real-time · arXiv 2611.02600 · 2026‑11‑02</sub> |
-| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>Simulation & evaluation · AWS Physical AI Blog · 2026‑11‑03</sub> |
-| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>Simulation & evaluation · OpenAI News · 2026‑11‑03</sub> |
-| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑03</sub> |
-| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>Systems & orchestration · 雷峰网 Leiphone · 2026‑11‑03</sub> |
+| 01<br>🔵&nbsp;`R` | **[LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models](https://arxiv.org/abs/2611.05093)**<br>`180,000 episodes`&nbsp; `3x`&nbsp; `1.58x`<br><sub>Edge & real-time · arXiv 2611.05093 · 2026‑11‑03</sub> |
+| 02<br>🔵&nbsp;`R` | **[Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy](https://arxiv.org/abs/2611.04096)**<br>`112 Hz`&nbsp; `61 Hz`&nbsp; `147 Hz`<br><sub>Edge & real-time · arXiv 2611.04096 · 2026‑11‑03</sub> |
+| 03<br>🔵&nbsp;`R` | **[RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On](https://arxiv.org/abs/2611.05163)**<br>`2%`&nbsp; `60%`<br><sub>Data engine · arXiv 2611.05163 · 2026‑11‑03</sub> |
+| 04<br>🔵&nbsp;`R` | **[Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware](https://arxiv.org/abs/2611.04392)**<br>`21.1%`&nbsp; `52.2%`&nbsp; `95%`<br><sub>Simulation & evaluation · arXiv 2611.04392 · 2026‑11‑03</sub> |
+| 05<br>🟡&nbsp;`M` | **[LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action](https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/)**<br><sub>Foundation models · The Robot Report · 2026‑11‑04</sub> |
+| 06<br>🟡&nbsp;`M` | **[榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌](https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑11‑04</sub> |
+| 07<br>🟡&nbsp;`M` | **[百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年](https://www.qbitai.com/2026/11/507647.html)**<br><sub>Foundation models · 量子位 QbitAI · 2026‑11‑04</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robots in society, business and culture: October 2026](https://robohub.org/robots-in-society-business-and-culture-october-2026/)**<br><sub>Embodiment & supply chain · Robohub · 2026‑11‑04</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Same Path, Less Time** — `AI draft` Before retraining a chunked VLA for speed, measure how long the robot halts while the next chunk is inferred; this self-reported preprint beats its strongest deployable baseline by 33% for pi0.5 and 104% for SmolVLA, though the excerpt does not name the metric.
-2. **ODE Policy** — `AI draft` If your policy emits action values per discrete control step and leaves motion continuity to be learned implicitly, this preprint argues against that design; the page flags real-robot and closed-loop experiments but gives no figures to size the gain.
-3. **Reflex** — `AI draft` When one GPU serves several robots, chunk inference limits both control latency and throughput; this self-reported preprint claims 1.4x to 11x lower latency and 2.0x to 2.2x throughput, but the excerpt does not say where the 11x end applies, so retest on your hardware.
-4. **W2A** — `AI draft` Teams drawn to world action models for the foresight of pretrained video models, but worried about fitting inference into the control loop, have a self-reported option: 95.9% average success and about 21x faster inference, though the excerpt names neither benchmark nor baseline.
-5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — `AI draft` Teams that inspect work cells or teleoperate robots in digital twins to collect demonstrations now have a vendor-documented path to stream them to XR headsets from AWS; the post gives no latency figures, so measure before relying on it for teleoperation.
-6. **Accelerating engineering for the physical world** — `AI draft` This targets design work such as CAD, PCB layout and simulation rather than robot control; as a vendor account with no figures, hardware teams should pilot ChatGPT or Codex on one of their own workflows before changing tooling.
-7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — `AI draft` Buyers weighing Digit for industrial deployment can read the expected roughly $465 million in gross capital as a sign Agility will keep supporting its fleet, but this is a secondary report of an expected figure, so confirm it at the primary source.
-8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — `AI draft` An award is no basis for choosing a manipulation foundation model: this secondary report names Xiaomi's work on a general robot manipulation model aimed at scaled deployment but shows no results, so wait for technical detail or evaluations.
+1. **LoopQ** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+3. **RoboTryOn** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **Aero-VPA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Robots in society, business and culture** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-04.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-05.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

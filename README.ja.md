@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-04
+### 本日のレーダー · 2026-11-05
 
-`生成時刻: 2026-11-03 23:40 UTC` ｜ `対象期間: 論文 2026-10-31 → 2026-11-04 · ブログ・報道 2026-10-05 → 2026-11-04 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-04 23:40 UTC` ｜ `対象期間: 論文 2026-11-01 → 2026-11-05 · ブログ・報道 2026-10-06 → 2026-11-05 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>基盤モデル · arXiv 2611.01390 · 2026‑11‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>基盤モデル · arXiv 2611.01729 · 2026‑11‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>エッジとリアルタイム · arXiv 2611.00524 · 2026‑10‑31</sub> |
-| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>エッジとリアルタイム · arXiv 2611.02600 · 2026‑11‑02</sub> |
-| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>シミュレーションと評価 · AWS Physical AI Blog · 2026‑11‑03</sub> |
-| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>シミュレーションと評価 · OpenAI News · 2026‑11‑03</sub> |
-| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑03</sub> |
-| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>システムとオーケストレーション · 雷峰网 Leiphone · 2026‑11‑03</sub> |
+| 01<br>🔵&nbsp;`R` | **[LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models](https://arxiv.org/abs/2611.05093)**<br>`180,000 episodes`&nbsp; `3x`&nbsp; `1.58x`<br><sub>エッジとリアルタイム · arXiv 2611.05093 · 2026‑11‑03</sub> |
+| 02<br>🔵&nbsp;`R` | **[Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy](https://arxiv.org/abs/2611.04096)**<br>`112 Hz`&nbsp; `61 Hz`&nbsp; `147 Hz`<br><sub>エッジとリアルタイム · arXiv 2611.04096 · 2026‑11‑03</sub> |
+| 03<br>🔵&nbsp;`R` | **[RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On](https://arxiv.org/abs/2611.05163)**<br>`2%`&nbsp; `60%`<br><sub>データエンジン · arXiv 2611.05163 · 2026‑11‑03</sub> |
+| 04<br>🔵&nbsp;`R` | **[Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware](https://arxiv.org/abs/2611.04392)**<br>`21.1%`&nbsp; `52.2%`&nbsp; `95%`<br><sub>シミュレーションと評価 · arXiv 2611.04392 · 2026‑11‑03</sub> |
+| 05<br>🟡&nbsp;`M` | **[LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action](https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/)**<br><sub>基盤モデル · The Robot Report · 2026‑11‑04</sub> |
+| 06<br>🟡&nbsp;`M` | **[榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌](https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑11‑04</sub> |
+| 07<br>🟡&nbsp;`M` | **[百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年](https://www.qbitai.com/2026/11/507647.html)**<br><sub>基盤モデル · 量子位 QbitAI · 2026‑11‑04</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robots in society, business and culture: October 2026](https://robohub.org/robots-in-society-business-and-culture-october-2026/)**<br><sub>ハードウェアとサプライチェーン · Robohub · 2026‑11‑04</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Same Path, Less Time** — `AI 下書き` チャンク出力の VLA を速くしたいなら、再学習の前に次チャンク推論中の停止時間を測るべきで、著者自己報告のこのプレプリントは最強の配備可能ベースラインを pi0.5 で 33%、SmolVLA で 104% 上回るとするが、抜粋からは何の指標かが読めない。
-2. **ODE Policy** — `AI 下書き` 離散的な制御ステップごとに行動値を出し、動きの連続性を暗黙の学習に任せている方策なら、このプレプリントはその設計に異を唱えるが、実機・閉ループ実験の表示はあっても効果の大きさを測る数値はページにない。
-3. **Reflex** — `AI 下書き` 複数台のロボットを GPU で賄う運用では推論が遅延とスループットの両方を縛るため、レイテンシ 1.4x〜11x、スループット 2.0x〜2.2x の改善というこの自己報告プレプリントの数値は有用だが、11x がどの条件か抜粋に記載がなく、自社ハードでの再測定が前提になる。
-4. **W2A** — `AI 下書き` 事前学習済み動画モデル由来の予測能力に惹かれつつ推論速度で世界行動モデルを制御ループに入れられずにいるなら、平均成功率 95.9%、推論約 21x 高速というこの自己報告プレプリントは検討に値するが、ベンチマークも比較対象も抜粋には書かれていない。
-5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — `AI 下書き` デジタルツイン上でワークセルを点検したり遠隔操作でデモを集めたりするチームには、AWS から XR ヘッドセットへ配信するベンダー公式の構成が加わったが、遅延の数値は示されておらず、遠隔操作に使う前に実測が要る。
-6. **Accelerating engineering for the physical world** — `AI 下書き` 対象は CAD、PCB 設計、シミュレーションといった設計業務でありロボット制御そのものではなく、数値のないベンダー自身の説明なので、ハードウェアチームはまず自社の一つのワークフローで試してからツール変更を判断したい。
-7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — `AI 下書き` Digit の産業導入を検討する買い手にとって、見込み約 $465 million の調達はサプライヤー継続性の材料になるが、あくまで見込み額を伝える二次報道なので、契約判断の前に一次情報で確かめたい。
-8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — `AI 下書き` 受賞は基盤モデル選定の根拠にならず、この二次報道は小米の規模化展開向け汎用ロボット操作基盤モデル技術の受賞を伝えるだけで結果は示していないため、評価は技術資料や評価結果の公開を待つべきだ。
+1. **LoopQ** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **RoboTryOn** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **Aero-VPA** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Robots in society, business and culture** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-04.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-05.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

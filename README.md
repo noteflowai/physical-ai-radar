@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-04
+### 今日雷达 · 2026-11-05
 
-`生成时间: 2026-11-03 23:40 UTC` ｜ `统计窗口: 论文 2026-10-31 → 2026-11-04 · 博客与报道 2026-10-05 → 2026-11-04 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-04 23:40 UTC` ｜ `统计窗口: 论文 2026-11-01 → 2026-11-05 · 博客与报道 2026-10-06 → 2026-11-05 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency](https://arxiv.org/abs/2611.01390)**<br>`1x`&nbsp; `33%`&nbsp; `104%`<br><sub>基座模型 · arXiv 2611.01390 · 2026‑11‑01</sub> |
-| 02<br>🔵&nbsp;`R` | **[ODE Policy: Robot Learning via Action Dynamics, Not Actions](https://arxiv.org/abs/2611.01729)**<br><sub>基座模型 · arXiv 2611.01729 · 2026‑11‑01</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions](https://arxiv.org/abs/2611.00524)**<br>`70%`&nbsp; `1.4x`&nbsp; `11x`<br><sub>边缘与实时性 · arXiv 2611.00524 · 2026‑10‑31</sub> |
-| 04<br>🔵&nbsp;`R` | **[W2A: Distilling World Priors into Action Models for Real-Time Robotic Control](https://arxiv.org/abs/2611.02600)**<br>`95.9%`&nbsp; `21x`<br><sub>边缘与实时性 · arXiv 2611.02600 · 2026‑11‑02</sub> |
-| 05<br>🟢&nbsp;`O` | **[Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS](https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/)**<br><sub>仿真与评测 · AWS Physical AI Blog · 2026‑11‑03</sub> |
-| 06<br>🟢&nbsp;`O` | **[Accelerating engineering for the physical world](https://openai.com/index/accelerating-engineering-for-the-physical-world)**<br><sub>仿真与评测 · OpenAI News · 2026‑11‑03</sub> |
-| 07<br>🟡&nbsp;`M` | **[Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC](https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑03</sub> |
-| 08<br>🟡&nbsp;`M` | **[小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”](https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html)**<br><sub>系统与编排 · 雷峰网 Leiphone · 2026‑11‑03</sub> |
+| 01<br>🔵&nbsp;`R` | **[LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models](https://arxiv.org/abs/2611.05093)**<br>`180,000 episodes`&nbsp; `3x`&nbsp; `1.58x`<br><sub>边缘与实时性 · arXiv 2611.05093 · 2026‑11‑03</sub> |
+| 02<br>🔵&nbsp;`R` | **[Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy](https://arxiv.org/abs/2611.04096)**<br>`112 Hz`&nbsp; `61 Hz`&nbsp; `147 Hz`<br><sub>边缘与实时性 · arXiv 2611.04096 · 2026‑11‑03</sub> |
+| 03<br>🔵&nbsp;`R` | **[RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On](https://arxiv.org/abs/2611.05163)**<br>`2%`&nbsp; `60%`<br><sub>数据引擎 · arXiv 2611.05163 · 2026‑11‑03</sub> |
+| 04<br>🔵&nbsp;`R` | **[Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware](https://arxiv.org/abs/2611.04392)**<br>`21.1%`&nbsp; `52.2%`&nbsp; `95%`<br><sub>仿真与评测 · arXiv 2611.04392 · 2026‑11‑03</sub> |
+| 05<br>🟡&nbsp;`M` | **[LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action](https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/)**<br><sub>基座模型 · The Robot Report · 2026‑11‑04</sub> |
+| 06<br>🟡&nbsp;`M` | **[榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌](https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html)**<br><sub>仿真与评测 · 雷峰网 Leiphone · 2026‑11‑04</sub> |
+| 07<br>🟡&nbsp;`M` | **[百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年](https://www.qbitai.com/2026/11/507647.html)**<br><sub>基座模型 · 量子位 QbitAI · 2026‑11‑04</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robots in society, business and culture: October 2026](https://robohub.org/robots-in-society-business-and-culture-october-2026/)**<br><sub>本体与供应链 · Robohub · 2026‑11‑04</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Same Path, Less Time** — `AI 起草` 想给分块输出的 VLA 提速，先别急着重训，先量一量机器人等下一个动作块推理时停了多久：这篇作者自报的预印本称比最强可部署基线高 33%（pi0.5）和 104%（SmolVLA），但摘录没说是哪项指标。
-2. **ODE Policy** — `AI 起草` 如果你的策略按离散控制步输出动作值、把运动连续性留给模型隐式去学，这篇预印本主张不该如此；页面标出了真机与闭环实验，但没有任何数字可用来估计收益大小。
-3. **Reflex** — `AI 起草` 一块 GPU 同时服务多台机器人时，推理既卡实时控制的延迟也卡吞吐；这篇自报预印本给出延迟改善 1.4x 到 11x、吞吐 2.0x 到 2.2x，摘录没说上限出现在哪种条件下，需在自己的硬件上复测。
-4. **W2A** — `AI 起草` 看中世界动作模型借助预训练视频模型的“想象未来”能力、却担心推理太慢进不了控制回路的团队，可以留意这篇自报预印本：平均成功率 95.9%，推理快约 21x，但摘录既没写基准也没写对比对象。
-5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — `AI 起草` 在数字孪生里检查工位、遥操作采集示教数据的团队，多了一个从 AWS 把画面串流到 XR 头显的厂商方案；页面没有给出任何延迟数字，用于遥操作之前要自己实测。
-6. **Accelerating engineering for the physical world** — `AI 起草` 这篇针对的是 CAD、PCB 设计和仿真等工程设计流程，而非机器人控制本身；作为厂商自述且没有数字，硬件团队应先在自己的设计流程上小范围试用再决定是否采用。
-7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — `AI 起草` 评估以 Digit 做工业部署的买方，可把预计约 $465 million 的毛融资视为供应商持续经营的信号，但这是对“预计”数字的二手报道，签约前应核对一手来源。
-8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — `AI 起草` 获奖本身不能作为选型依据：报道只提到小米“面向规模化落地的通用机器人操作基座模型”相关技术获奖，没有给出任何结果，评估前应等它发布技术细节或评测。
+1. **LoopQ** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+3. **RoboTryOn** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+4. **Aero-VPA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **Robots in society, business and culture** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-04.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-05.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
