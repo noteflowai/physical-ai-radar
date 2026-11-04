@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-04",
+  "generated": "2026-11-04 13:44 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.01390": {
+      "zh": "想给分块输出的 VLA 提速，先别急着重训，先量一量机器人等下一个动作块推理时停了多久：这篇作者自报的预印本称比最强可部署基线高 33%（pi0.5）和 104%（SmolVLA），但摘录没说是哪项指标。",
+      "en": "Before retraining a chunked VLA for speed, measure how long the robot halts while the next chunk is inferred; this self-reported preprint beats its strongest deployable baseline by 33% for pi0.5 and 104% for SmolVLA, though the excerpt does not name the metric.",
+      "ja": "チャンク出力の VLA を速くしたいなら、再学習の前に次チャンク推論中の停止時間を測るべきで、著者自己報告のこのプレプリントは最強の配備可能ベースラインを pi0.5 で 33%、SmolVLA で 104% 上回るとするが、抜粋からは何の指標かが読めない。"
+    },
+    "https://arxiv.org/abs/2611.01729": {
+      "zh": "如果你的策略按离散控制步输出动作值、把运动连续性留给模型隐式去学，这篇预印本主张不该如此；页面标出了真机与闭环实验，但没有任何数字可用来估计收益大小。",
+      "en": "If your policy emits action values per discrete control step and leaves motion continuity to be learned implicitly, this preprint argues against that design; the page flags real-robot and closed-loop experiments but gives no figures to size the gain.",
+      "ja": "離散的な制御ステップごとに行動値を出し、動きの連続性を暗黙の学習に任せている方策なら、このプレプリントはその設計に異を唱えるが、実機・閉ループ実験の表示はあっても効果の大きさを測る数値はページにない。"
+    },
+    "https://arxiv.org/abs/2611.00524": {
+      "zh": "一块 GPU 同时服务多台机器人时，推理既卡实时控制的延迟也卡吞吐；这篇自报预印本给出延迟改善 1.4x 到 11x、吞吐 2.0x 到 2.2x，摘录没说上限出现在哪种条件下，需在自己的硬件上复测。",
+      "en": "When one GPU serves several robots, chunk inference limits both control latency and throughput; this self-reported preprint claims 1.4x to 11x lower latency and 2.0x to 2.2x throughput, but the excerpt does not say where the 11x end applies, so retest on your hardware.",
+      "ja": "複数台のロボットを GPU で賄う運用では推論が遅延とスループットの両方を縛るため、レイテンシ 1.4x〜11x、スループット 2.0x〜2.2x の改善というこの自己報告プレプリントの数値は有用だが、11x がどの条件か抜粋に記載がなく、自社ハードでの再測定が前提になる。"
+    },
+    "https://arxiv.org/abs/2611.02600": {
+      "zh": "看中世界动作模型借助预训练视频模型的“想象未来”能力、却担心推理太慢进不了控制回路的团队，可以留意这篇自报预印本：平均成功率 95.9%，推理快约 21x，但摘录既没写基准也没写对比对象。",
+      "en": "Teams drawn to world action models for the foresight of pretrained video models, but worried about fitting inference into the control loop, have a self-reported option: 95.9% average success and about 21x faster inference, though the excerpt names neither benchmark nor baseline.",
+      "ja": "事前学習済み動画モデル由来の予測能力に惹かれつつ推論速度で世界行動モデルを制御ループに入れられずにいるなら、平均成功率 95.9%、推論約 21x 高速というこの自己報告プレプリントは検討に値するが、ベンチマークも比較対象も抜粋には書かれていない。"
+    },
+    "https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws": {
+      "zh": "在数字孪生里检查工位、遥操作采集示教数据的团队，多了一个从 AWS 把画面串流到 XR 头显的厂商方案；页面没有给出任何延迟数字，用于遥操作之前要自己实测。",
+      "en": "Teams that inspect work cells or teleoperate robots in digital twins to collect demonstrations now have a vendor-documented path to stream them to XR headsets from AWS; the post gives no latency figures, so measure before relying on it for teleoperation.",
+      "ja": "デジタルツイン上でワークセルを点検したり遠隔操作でデモを集めたりするチームには、AWS から XR ヘッドセットへ配信するベンダー公式の構成が加わったが、遅延の数値は示されておらず、遠隔操作に使う前に実測が要る。"
+    },
+    "https://openai.com/index/accelerating-engineering-for-the-physical-world": {
+      "zh": "这篇针对的是 CAD、PCB 设计和仿真等工程设计流程，而非机器人控制本身；作为厂商自述且没有数字，硬件团队应先在自己的设计流程上小范围试用再决定是否采用。",
+      "en": "This targets design work such as CAD, PCB layout and simulation rather than robot control; as a vendor account with no figures, hardware teams should pilot ChatGPT or Codex on one of their own workflows before changing tooling.",
+      "ja": "対象は CAD、PCB 設計、シミュレーションといった設計業務でありロボット制御そのものではなく、数値のないベンダー自身の説明なので、ハードウェアチームはまず自社の一つのワークフローで試してからツール変更を判断したい。"
+    },
+    "https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac": {
+      "zh": "评估以 Digit 做工业部署的买方，可把预计约 $465 million 的毛融资视为供应商持续经营的信号，但这是对“预计”数字的二手报道，签约前应核对一手来源。",
+      "en": "Buyers weighing Digit for industrial deployment can read the expected roughly $465 million in gross capital as a sign Agility will keep supporting its fleet, but this is a secondary report of an expected figure, so confirm it at the primary source.",
+      "ja": "Digit の産業導入を検討する買い手にとって、見込み約 $465 million の調達はサプライヤー継続性の材料になるが、あくまで見込み額を伝える二次報道なので、契約判断の前に一次情報で確かめたい。"
+    },
+    "https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html": {
+      "zh": "获奖本身不能作为选型依据：报道只提到小米“面向规模化落地的通用机器人操作基座模型”相关技术获奖，没有给出任何结果，评估前应等它发布技术细节或评测。",
+      "en": "An award is no basis for choosing a manipulation foundation model: this secondary report names Xiaomi's work on a general robot manipulation model aimed at scaled deployment but shows no results, so wait for technical detail or evaluations.",
+      "ja": "受賞は基盤モデル選定の根拠にならず、この二次報道は小米の規模化展開向け汎用ロボット操作基盤モデル技術の受賞を伝えるだけで結果は示していないため、評価は技術資料や評価結果の公開を待つべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

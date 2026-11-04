@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.01390" rel="noopener" target="_blank">Same Path, Less Time: Training-Free Fast Execution of Vision-Language-Action Models under Inference Latency</a></h3>
 <p class="figure"><strong>1x</strong><span class="context">“keeps the arm at 1x while the gripper”</span></p><p class="chips"><span class="chip">33%</span><span class="chip">104%</span><span class="chip">28%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> チャンク出力の VLA を速くしたいなら、再学習の前に次チャンク推論中の停止時間を測るべきで、著者自己報告のこのプレプリントは最強の配備可能ベースラインを pi0.5 で 33%、SmolVLA で 104% 上回るとするが、抜粋からは何の指標かが読めない。</p>
 <p class="excerpt">Vision-language-action (VLA) models predict chunks of future actions, yet deployed robots waste time in two ways that are independent of model capability: they halt while the next chunk is inferred, and they move at the speed of slow,…</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.01729" rel="noopener" target="_blank">ODE Policy: Robot Learning via Action Dynamics, Not Actions</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 離散的な制御ステップごとに行動値を出し、動きの連続性を暗黙の学習に任せている方策なら、このプレプリントはその設計に異を唱えるが、実機・閉ループ実験の表示はあっても効果の大きさを測る数値はページにない。</p>
 <p class="excerpt">Most robot policies, whether trained by imitation learning (IL) or reinforcement learning (RL), map observations to action values at discrete control steps and leave the continuity of physical motion to be learned implicitly.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.00524" rel="noopener" target="_blank">Reflex: Fast Robot Policy Serving by Reusing and Correcting Past Actions</a></h3>
 <p class="figure"><strong>70%</strong><span class="context">“which can account for 70% of GPU time”</span></p><p class="chips"><span class="chip">1.4x</span><span class="chip">11x</span><span class="chip">2.0x</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 複数台のロボットを GPU で賄う運用では推論が遅延とスループットの両方を縛るため、レイテンシ 1.4x〜11x、スループット 2.0x〜2.2x の改善というこの自己報告プレプリントの数値は有用だが、11x がどの条件か抜粋に記載がなく、自社ハードでの再測定が前提になる。</p>
 <p class="excerpt">Modern robot policies often perform expensive inference to generate action chunks, making serving a latency bottleneck for real-time control and a throughput bottleneck for multi-robot serving.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.02600" rel="noopener" target="_blank">W2A: Distilling World Priors into Action Models for Real-Time Robotic Control</a></h3>
 <p class="figure"><strong>95.9%</strong><span class="context">“W2A achieves a 95.9% average success rate”</span></p><p class="chips"><span class="chip">21x</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 事前学習済み動画モデル由来の予測能力に惹かれつつ推論速度で世界行動モデルを制御ループに入れられずにいるなら、平均成功率 95.9%、推論約 21x 高速というこの自己報告プレプリントは検討に値するが、ベンチマークも比較対象も抜粋には書かれていない。</p>
 <p class="excerpt">World Action Models (WAMs) have recently shown great promise in robotic control, benefiting from the future imagination capability of large-scale pretrained video models.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/streaming-physical-ai-digital-twins-and-immersive-experiences-to-xr-headsets-with-nvidia-cloudxr-6-on-aws/" rel="noopener" target="_blank">Streaming Physical AI Digital Twins and Immersive Experiences to XR Headsets with NVIDIA CloudXR 6 on AWS</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> デジタルツイン上でワークセルを点検したり遠隔操作でデモを集めたりするチームには、AWS から XR ヘッドセットへ配信するベンダー公式の構成が加わったが、遅延の数値は示されておらず、遠隔操作に使う前に実測が要る。</p>
 <p class="excerpt">Physical AI is built in simulation and digital twins before it reaches the real world. Engineers validate a factory layout, inspect a robot work cell, or teleoperate a robot to collect training demonstrations, and these tasks are often…</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-11-03</span>
@@ -175,7 +175,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://openai.com/index/accelerating-engineering-for-the-physical-world" rel="noopener" target="_blank">Accelerating engineering for the physical world</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 対象は CAD、PCB 設計、シミュレーションといった設計業務でありロボット制御そのものではなく、数値のないベンダー自身の説明なので、ハードウェアチームはまず自社の一つのワークフローで試してからツール変更を判断したい。</p>
 <p class="excerpt">Discover how ChatGPT and Codex are helping engineers accelerate CAD, PCB design, simulation, and other workflows across the physical world.</p>
 <footer>
 <span class="source">OpenAI News · 2026-11-03</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/agility-robotics-shareholders-approve-25b-humanoid-spac/" rel="noopener" target="_blank">Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid SPAC</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Digit の産業導入を検討する買い手にとって、見込み約 $465 million の調達はサプライヤー継続性の材料になるが、あくまで見込み額を伝える二次報道なので、契約判断の前に一次情報で確かめたい。</p>
 <p class="excerpt">Deal is expected to provide approximately $465 million in gross capital as Agility expands deployments of its Digit humanoid with industrial customers.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-03</span>
@@ -203,7 +203,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/VVyx6DK55x5rIlQ4.html" rel="noopener" target="_blank">小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 受賞は基盤モデル選定の根拠にならず、この二次報道は小米の規模化展開向け汎用ロボット操作基盤モデル技術の受賞を伝えるだけで結果は示していないため、評価は技術資料や評価結果の公開を待つべきだ。</p>
 <p class="excerpt">11月3日，小米方面披露，小米集团获得2026世界互联网大会“杰出贡献奖”创新突破类奖项，该奖项旨在表彰全球互联网相关领域作出杰出贡献的个人和企业。同时，小米机器人业务“面向规模化落地的通用机器人操作基座模型关键技术”获大会“领先科技奖”，该奖项旨在奖励全球年度最具领先性的互联网科技成果。</p>
 <ul class="signals"><li>注目度高</li></ul>
 <footer>

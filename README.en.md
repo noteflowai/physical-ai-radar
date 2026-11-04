@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Same Path, Less Time** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **ODE Policy** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-3. **Reflex** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-4. **W2A** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **Accelerating engineering for the physical world** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+1. **Same Path, Less Time** — `AI draft` Before retraining a chunked VLA for speed, measure how long the robot halts while the next chunk is inferred; this self-reported preprint beats its strongest deployable baseline by 33% for pi0.5 and 104% for SmolVLA, though the excerpt does not name the metric.
+2. **ODE Policy** — `AI draft` If your policy emits action values per discrete control step and leaves motion continuity to be learned implicitly, this preprint argues against that design; the page flags real-robot and closed-loop experiments but gives no figures to size the gain.
+3. **Reflex** — `AI draft` When one GPU serves several robots, chunk inference limits both control latency and throughput; this self-reported preprint claims 1.4x to 11x lower latency and 2.0x to 2.2x throughput, but the excerpt does not say where the 11x end applies, so retest on your hardware.
+4. **W2A** — `AI draft` Teams drawn to world action models for the foresight of pretrained video models, but worried about fitting inference into the control loop, have a self-reported option: 95.9% average success and about 21x faster inference, though the excerpt names neither benchmark nor baseline.
+5. **Streaming Physical AI Digital Twins and Immersive Experiences to XR Headset…** — `AI draft` Teams that inspect work cells or teleoperate robots in digital twins to collect demonstrations now have a vendor-documented path to stream them to XR headsets from AWS; the post gives no latency figures, so measure before relying on it for teleoperation.
+6. **Accelerating engineering for the physical world** — `AI draft` This targets design work such as CAD, PCB layout and simulation rather than robot control; as a vendor account with no figures, hardware teams should pilot ChatGPT or Codex on one of their own workflows before changing tooling.
+7. **Churchill Capital XI shareholders approve $2.5B Agility Robotics humanoid S…** — `AI draft` Buyers weighing Digit for industrial deployment can read the expected roughly $465 million in gross capital as a sign Agility will keep supporting its fleet, but this is a secondary report of an expected figure, so confirm it at the primary source.
+8. **小米斩获乌镇峰会双料大奖：小米集团获“杰出贡献奖”，小米具身基座模型获“领先科技奖”** — `AI draft` An award is no basis for choosing a manipulation foundation model: this secondary report names Xiaomi's work on a general robot manipulation model aimed at scaled deployment but shows no results, so wait for technical detail or evaluations.
 
 </details>
 
