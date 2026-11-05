@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.05093" rel="noopener" target="_blank">LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models</a></h3>
 <p class="figure"><strong>180,000 episodes</strong><span class="context">“VLAs with more than 180,000 episodes of LIBERO and”</span></p><p class="chips"><span class="chip">3x</span><span class="chip">1.58x</span><span class="chip">14%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Do not assume post-training quantization speeds up a VLA on your stack: this self-reported preprint, evaluated closed-loop over more than 180,000 episodes, quotes one setting 1.06-1.58x slower than its 16-bit model and int8 kernel gains of 4-14%.</p>
 <p class="excerpt">Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.04096" rel="noopener" target="_blank">Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy</a></h3>
 <p class="figure"><strong>112 Hz</strong><span class="context">“3D Air3D BRT at 112 Hz”</span></p><p class="chips"><span class="chip">61 Hz</span><span class="chip">147 Hz</span><span class="chip">17.5x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Teams that precompute Hamilton-Jacobi safety sets offline may be able to update them in the loop: this self-reported preprint reports a 3D Air3D BRT at 112 Hz and a 4D pursuit-evasion BRT at 61 Hz, though the page shows no real-robot run.</p>
 <p class="excerpt">Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.05163" rel="noopener" target="_blank">RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On</a></h3>
 <p class="figure"><strong>2%</strong><span class="context">“from 2% to 60%”</span></p><p class="chips"><span class="chip">60%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Before budgeting teleoperation for each new task, note that this preprint flags real-robot experiments and reports a self-measured rise from 2% to 60% with demonstrations synthesized from human videos, though the page names neither the metric nor the baseline.</p>
 <p class="excerpt">Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.04392" rel="noopener" target="_blank">Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware</a></h3>
 <p class="figure"><strong>21.1%</strong><span class="context">“180 paired missions from 21.1% to 52.2% (95%”</span></p><p class="chips"><span class="chip">52.2%</span><span class="chip">95%</span><span class="chip">1.2 x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> On embedded aerial hardware, where autoregressive VLA decoding cost grows with the action horizon, this preprint reports 180 paired missions improving from 21.1% to 52.2% under an exact McNemar test; the page does not say whether any were real flights.</p>
 <p class="excerpt">Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>open code or weights</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/" rel="noopener" target="_blank">LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If you are weighing human-experience data against teleoperation for manipulation, Liber-0&#x27;s claimed pretraining on more than 2.2 million hours of it is a data point, but this secondary report shows no zero-shot results, so wait for LiberAI&#x27;s own evaluation.</p>
 <p class="excerpt">LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-04</span>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html" rel="noopener" target="_blank">榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If Genie 4 is on your shortlist of world models for evaluation, this secondary commentary does not move the decision: its excerpt covers the release and a rising hallucination rate for Gemini 4 Carbon, with no robot-relevant evaluation of Genie 4.</p>
 <p class="excerpt">Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-04</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/507647.html" rel="noopener" target="_blank">百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Autonomous-driving teams choosing a simulator get little here: the excerpt says only that even pedestrians &quot;have their own ideas&quot;, and this secondary report shows no method or data for Baidu&#x27;s world model, so wait for Baidu&#x27;s primary material.</p>
 <p class="excerpt">连路人都有自己的想法</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-04</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://robohub.org/robots-in-society-business-and-culture-october-2026/" rel="noopener" target="_blank">Robots in society, business and culture: October 2026</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Hardware teams tracking actuation should treat the biohybrid robot that pushes off when electrically stimulated as a research lead and cite the Nature Communications paper, not this roundup, which shows no price, availability or performance figures.</p>
 <p class="excerpt">The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026).</p>
 <footer>
 <span class="source">Robohub · 2026-11-04</span>

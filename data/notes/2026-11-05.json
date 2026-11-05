@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-05",
+  "generated": "2026-11-05 14:00 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.05093": {
+      "zh": "别默认训练后量化就能让 VLA 在你的部署栈上变快：这篇作者自报的预印本在超过 180,000 个 episode 上做闭环评测，摘录里有一处比其 16-bit 模型慢 1.06-1.58x，int8 内核的收益也只有 4-14%。",
+      "en": "Do not assume post-training quantization speeds up a VLA on your stack: this self-reported preprint, evaluated closed-loop over more than 180,000 episodes, quotes one setting 1.06-1.58x slower than its 16-bit model and int8 kernel gains of 4-14%.",
+      "ja": "事後学習量子化を入れれば VLA が速くなると決めつけるべきではなく、180,000 を超えるエピソードで閉ループ評価した著者自己報告のこのプレプリントは、16-bit モデルより 1.06-1.58x 遅い条件や 4-14% にとどまる int8 カーネルの利得を示している。"
+    },
+    "https://arxiv.org/abs/2611.04096": {
+      "zh": "因计算量随状态维度指数增长而只能离线预算 HJ 可达集的团队，或许可以改为在控制回路内在线更新：这篇自报预印本给出 3D Air3D BRT 112 Hz、4D 追逃 BRT 61 Hz，但页面没有展示真机运行。",
+      "en": "Teams that precompute Hamilton-Jacobi safety sets offline may be able to update them in the loop: this self-reported preprint reports a 3D Air3D BRT at 112 Hz and a 4D pursuit-evasion BRT at 61 Hz, though the page shows no real-robot run.",
+      "ja": "状態次元に対して計算量が指数的に増えるため HJ 到達可能集合をオフラインで用意してきたチームにとって、3D Air3D の BRT を 112 Hz、4D 追跡回避の BRT を 61 Hz で解いたとするこの自己報告プレプリントは制御ループ内での再計算を検討する材料になるが、ページに実機での実行は示されていない。"
+    },
+    "https://arxiv.org/abs/2611.05163": {
+      "zh": "为每个新任务预留遥操作预算之前，可以看看这篇标有真机实验的预印本：用人类视频合成示教，作者自报从 2% 提升到 60%，但页面没说这是哪项指标、和什么比。",
+      "en": "Before budgeting teleoperation for each new task, note that this preprint flags real-robot experiments and reports a self-measured rise from 2% to 60% with demonstrations synthesized from human videos, though the page names neither the metric nor the baseline.",
+      "ja": "新タスクごとに遠隔操作のデモ収集を見積もる前に、実機実験ありと示されたこのプレプリントが人間動画から合成したデモで 2% から 60% への向上を自己報告している点は押さえたいが、何の指標で何と比べたかはページに書かれていない。"
+    },
+    "https://arxiv.org/abs/2611.04392": {
+      "zh": "在机载嵌入式硬件上，自回归 VLA 的解码开销随动作时域增长；这篇预印本自报在 180 次配对任务中由 21.1% 提升到 52.2%，并做了精确 McNemar 检验，但页面没有说明其中是否有真实飞行。",
+      "en": "On embedded aerial hardware, where autoregressive VLA decoding cost grows with the action horizon, this preprint reports 180 paired missions improving from 21.1% to 52.2% under an exact McNemar test; the page does not say whether any were real flights.",
+      "ja": "組込みの機上ハードウェアでは自己回帰型 VLA のデコードが行動ホライズンに比例して重くなるが、このプレプリントは 180 組の対応ミッションで 21.1% から 52.2% への改善を正確 McNemar 検定付きで自己報告しており、実飛行を含むかはページからは分からない。"
+    },
+    "https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action": {
+      "zh": "在人类经验数据和机器人遥操作数据之间做取舍的团队，可以把 Liber-0 号称用超过 2.2 million hours 人类经验预训练当作一个参照，但这是二手报道，页面没有零样本操作的结果，应等 LiberAI 的一手评测。",
+      "en": "If you are weighing human-experience data against teleoperation for manipulation, Liber-0's claimed pretraining on more than 2.2 million hours of it is a data point, but this secondary report shows no zero-shot results, so wait for LiberAI's own evaluation.",
+      "ja": "操作タスクで人間の経験データと遠隔操作データのどちらに投資するか迷うなら、Liber-0 が 2.2 million hours を超える人間の経験で事前学習したという主張は一つの材料だが、二次報道でゼロショット操作の結果はページになく、LiberAI 自身の評価を待ちたい。"
+    },
+    "https://www.leiphone.com/category/yanxishe/7uvyezbscwcpvhw3.html": {
+      "zh": "如果你在考虑把 Genie 4 这类世界模型用于评测，这篇二手评论帮不上忙：摘录只提到 Genie 4 发布和 Gemini 4 Carbon 幻觉率抬升，没有任何与机器人相关的 Genie 4 评测。",
+      "en": "If Genie 4 is on your shortlist of world models for evaluation, this secondary commentary does not move the decision: its excerpt covers the release and a rising hallucination rate for Gemini 4 Carbon, with no robot-relevant evaluation of Genie 4.",
+      "ja": "評価用の世界モデルとして Genie 4 を候補に入れているなら、この二次的な論評は判断材料にならず、抜粋が伝えるのは Genie 4 の発表と Gemini 4 Carbon の幻覚率上昇だけで、ロボット用途での Genie 4 の評価はない。"
+    },
+    "https://www.qbitai.com/2026/11/507647.html": {
+      "zh": "做自动驾驶仿真选型的团队从这篇里得不到多少：摘录只有一句“连路人都有自己的想法”，作为二手报道也没有给出百度世界模型的方法或数据，应等百度的一手材料。",
+      "en": "Autonomous-driving teams choosing a simulator get little here: the excerpt says only that even pedestrians \"have their own ideas\", and this secondary report shows no method or data for Baidu's world model, so wait for Baidu's primary material.",
+      "ja": "自動運転のシミュレーション基盤を選ぶチームにとって材料は乏しく、抜粋は「通行人にさえ自分の考えがある」という一文だけで、二次報道として百度の世界モデルの手法もデータも示していないため、百度の一次資料を待つべきだ。"
+    },
+    "https://robohub.org/robots-in-society-business-and-culture-october-2026": {
+      "zh": "关注驱动方式的硬件团队，可以把这款受电脉冲刺激即蹬地而起的生物混合机器人当作研究线索，但引用请回到 Nature Communications 原论文而非这篇月度汇总，页面没有价格、供货或性能数据。",
+      "en": "Hardware teams tracking actuation should treat the biohybrid robot that pushes off when electrically stimulated as a research lead and cite the Nature Communications paper, not this roundup, which shows no price, availability or performance figures.",
+      "ja": "駆動方式を追うハードウェアチームは、電気刺激で地面を蹴り出すバイオハイブリッドロボットを研究上の手がかりとして扱い、価格・供給・性能の数値がないこの月次まとめではなく Nature Communications の原論文を引用したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

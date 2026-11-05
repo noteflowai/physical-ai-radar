@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **LoopQ** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-3. **RoboTryOn** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **Aero-VPA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Robots in society, business and culture** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **LoopQ** — `AI draft` Do not assume post-training quantization speeds up a VLA on your stack: this self-reported preprint, evaluated closed-loop over more than 180,000 episodes, quotes one setting 1.06-1.58x slower than its 16-bit model and int8 kernel gains of 4-14%.
+2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — `AI draft` Teams that precompute Hamilton-Jacobi safety sets offline may be able to update them in the loop: this self-reported preprint reports a 3D Air3D BRT at 112 Hz and a 4D pursuit-evasion BRT at 61 Hz, though the page shows no real-robot run.
+3. **RoboTryOn** — `AI draft` Before budgeting teleoperation for each new task, note that this preprint flags real-robot experiments and reports a self-measured rise from 2% to 60% with demonstrations synthesized from human videos, though the page names neither the metric nor the baseline.
+4. **Aero-VPA** — `AI draft` On embedded aerial hardware, where autoregressive VLA decoding cost grows with the action horizon, this preprint reports 180 paired missions improving from 21.1% to 52.2% under an exact McNemar test; the page does not say whether any were real flights.
+5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — `AI draft` If you are weighing human-experience data against teleoperation for manipulation, Liber-0's claimed pretraining on more than 2.2 million hours of it is a data point, but this secondary report shows no zero-shot results, so wait for LiberAI's own evaluation.
+6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — `AI draft` If Genie 4 is on your shortlist of world models for evaluation, this secondary commentary does not move the decision: its excerpt covers the release and a rising hallucination rate for Gemini 4 Carbon, with no robot-relevant evaluation of Genie 4.
+7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — `AI draft` Autonomous-driving teams choosing a simulator get little here: the excerpt says only that even pedestrians "have their own ideas", and this secondary report shows no method or data for Baidu's world model, so wait for Baidu's primary material.
+8. **Robots in society, business and culture** — `AI draft` Hardware teams tracking actuation should treat the biohybrid robot that pushes off when electrically stimulated as a research lead and cite the Nature Communications paper, not this roundup, which shows no price, availability or performance figures.
 
 </details>
 

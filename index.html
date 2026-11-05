@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.05093" rel="noopener" target="_blank">LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models</a></h3>
 <p class="figure"><strong>180,000 episodes</strong><span class="context">“VLAs with more than 180,000 episodes of LIBERO and”</span></p><p class="chips"><span class="chip">3x</span><span class="chip">1.58x</span><span class="chip">14%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 别默认训练后量化就能让 VLA 在你的部署栈上变快：这篇作者自报的预印本在超过 180,000 个 episode 上做闭环评测，摘录里有一处比其 16-bit 模型慢 1.06-1.58x，int8 内核的收益也只有 4-14%。</p>
 <p class="excerpt">Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.04096" rel="noopener" target="_blank">Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy</a></h3>
 <p class="figure"><strong>112 Hz</strong><span class="context">“3D Air3D BRT at 112 Hz”</span></p><p class="chips"><span class="chip">61 Hz</span><span class="chip">147 Hz</span><span class="chip">17.5x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 因计算量随状态维度指数增长而只能离线预算 HJ 可达集的团队，或许可以改为在控制回路内在线更新：这篇自报预印本给出 3D Air3D BRT 112 Hz、4D 追逃 BRT 61 Hz，但页面没有展示真机运行。</p>
 <p class="excerpt">Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.05163" rel="noopener" target="_blank">RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On</a></h3>
 <p class="figure"><strong>2%</strong><span class="context">“from 2% to 60%”</span></p><p class="chips"><span class="chip">60%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 为每个新任务预留遥操作预算之前，可以看看这篇标有真机实验的预印本：用人类视频合成示教，作者自报从 2% 提升到 60%，但页面没说这是哪项指标、和什么比。</p>
 <p class="excerpt">Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.04392" rel="noopener" target="_blank">Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware</a></h3>
 <p class="figure"><strong>21.1%</strong><span class="context">“180 paired missions from 21.1% to 52.2% (95%”</span></p><p class="chips"><span class="chip">52.2%</span><span class="chip">95%</span><span class="chip">1.2 x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 在机载嵌入式硬件上，自回归 VLA 的解码开销随动作时域增长；这篇预印本自报在 180 次配对任务中由 21.1% 提升到 52.2%，并做了精确 McNemar 检验，但页面没有说明其中是否有真实飞行。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/" rel="noopener" target="_blank">LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在人类经验数据和机器人遥操作数据之间做取舍的团队，可以把 Liber-0 号称用超过 2.2 million hours 人类经验预训练当作一个参照，但这是二手报道，页面没有零样本操作的结果，应等 LiberAI 的一手评测。</p>
 <p class="excerpt">LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-04</span>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html" rel="noopener" target="_blank">榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你在考虑把 Genie 4 这类世界模型用于评测，这篇二手评论帮不上忙：摘录只提到 Genie 4 发布和 Gemini 4 Carbon 幻觉率抬升，没有任何与机器人相关的 Genie 4 评测。</p>
 <p class="excerpt">Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-04</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/507647.html" rel="noopener" target="_blank">百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 做自动驾驶仿真选型的团队从这篇里得不到多少：摘录只有一句“连路人都有自己的想法”，作为二手报道也没有给出百度世界模型的方法或数据，应等百度的一手材料。</p>
 <p class="excerpt">连路人都有自己的想法</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-04</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://robohub.org/robots-in-society-business-and-culture-october-2026/" rel="noopener" target="_blank">Robots in society, business and culture: October 2026</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 关注驱动方式的硬件团队，可以把这款受电脉冲刺激即蹬地而起的生物混合机器人当作研究线索，但引用请回到 Nature Communications 原论文而非这篇月度汇总，页面没有价格、供货或性能数据。</p>
 <p class="excerpt">The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026).</p>
 <footer>
 <span class="source">Robohub · 2026-11-04</span>

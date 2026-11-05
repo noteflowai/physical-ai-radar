@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **LoopQ** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-3. **RoboTryOn** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-4. **Aero-VPA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-8. **Robots in society, business and culture** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **LoopQ** — `AI 起草` 别默认训练后量化就能让 VLA 在你的部署栈上变快：这篇作者自报的预印本在超过 180,000 个 episode 上做闭环评测，摘录里有一处比其 16-bit 模型慢 1.06-1.58x，int8 内核的收益也只有 4-14%。
+2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — `AI 起草` 因计算量随状态维度指数增长而只能离线预算 HJ 可达集的团队，或许可以改为在控制回路内在线更新：这篇自报预印本给出 3D Air3D BRT 112 Hz、4D 追逃 BRT 61 Hz，但页面没有展示真机运行。
+3. **RoboTryOn** — `AI 起草` 为每个新任务预留遥操作预算之前，可以看看这篇标有真机实验的预印本：用人类视频合成示教，作者自报从 2% 提升到 60%，但页面没说这是哪项指标、和什么比。
+4. **Aero-VPA** — `AI 起草` 在机载嵌入式硬件上，自回归 VLA 的解码开销随动作时域增长；这篇预印本自报在 180 次配对任务中由 21.1% 提升到 52.2%，并做了精确 McNemar 检验，但页面没有说明其中是否有真实飞行。
+5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — `AI 起草` 在人类经验数据和机器人遥操作数据之间做取舍的团队，可以把 Liber-0 号称用超过 2.2 million hours 人类经验预训练当作一个参照，但这是二手报道，页面没有零样本操作的结果，应等 LiberAI 的一手评测。
+6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — `AI 起草` 如果你在考虑把 Genie 4 这类世界模型用于评测，这篇二手评论帮不上忙：摘录只提到 Genie 4 发布和 Gemini 4 Carbon 幻觉率抬升，没有任何与机器人相关的 Genie 4 评测。
+7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — `AI 起草` 做自动驾驶仿真选型的团队从这篇里得不到多少：摘录只有一句“连路人都有自己的想法”，作为二手报道也没有给出百度世界模型的方法或数据，应等百度的一手材料。
+8. **Robots in society, business and culture** — `AI 起草` 关注驱动方式的硬件团队，可以把这款受电脉冲刺激即蹬地而起的生物混合机器人当作研究线索，但引用请回到 Nature Communications 原论文而非这篇月度汇总，页面没有价格、供货或性能数据。
 
 </details>
 
