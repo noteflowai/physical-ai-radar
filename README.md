@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-05
+### 今日雷达 · 2026-11-06
 
-`生成时间: 2026-11-04 23:40 UTC` ｜ `统计窗口: 论文 2026-11-01 → 2026-11-05 · 博客与报道 2026-10-06 → 2026-11-05 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-05 23:40 UTC` ｜ `统计窗口: 论文 2026-11-02 → 2026-11-06 · 博客与报道 2026-10-07 → 2026-11-06 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models](https://arxiv.org/abs/2611.05093)**<br>`180,000 episodes`&nbsp; `3x`&nbsp; `1.58x`<br><sub>边缘与实时性 · arXiv 2611.05093 · 2026‑11‑03</sub> |
-| 02<br>🔵&nbsp;`R` | **[Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy](https://arxiv.org/abs/2611.04096)**<br>`112 Hz`&nbsp; `61 Hz`&nbsp; `147 Hz`<br><sub>边缘与实时性 · arXiv 2611.04096 · 2026‑11‑03</sub> |
-| 03<br>🔵&nbsp;`R` | **[RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On](https://arxiv.org/abs/2611.05163)**<br>`2%`&nbsp; `60%`<br><sub>数据引擎 · arXiv 2611.05163 · 2026‑11‑03</sub> |
-| 04<br>🔵&nbsp;`R` | **[Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware](https://arxiv.org/abs/2611.04392)**<br>`21.1%`&nbsp; `52.2%`&nbsp; `95%`<br><sub>仿真与评测 · arXiv 2611.04392 · 2026‑11‑03</sub> |
-| 05<br>🟡&nbsp;`M` | **[LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action](https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/)**<br><sub>基座模型 · The Robot Report · 2026‑11‑04</sub> |
-| 06<br>🟡&nbsp;`M` | **[榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌](https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html)**<br><sub>仿真与评测 · 雷峰网 Leiphone · 2026‑11‑04</sub> |
-| 07<br>🟡&nbsp;`M` | **[百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年](https://www.qbitai.com/2026/11/507647.html)**<br><sub>基座模型 · 量子位 QbitAI · 2026‑11‑04</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robots in society, business and culture: October 2026](https://robohub.org/robots-in-society-business-and-culture-october-2026/)**<br><sub>本体与供应链 · Robohub · 2026‑11‑04</sub> |
+| 01<br>🔵&nbsp;`R` | **[Asynchronous Robot Policies](https://arxiv.org/abs/2611.05155)**<br>`18%`&nbsp; `20%`<br><sub>边缘与实时性 · arXiv 2611.05155 · 2026‑11‑03</sub> |
+| 02<br>🔵&nbsp;`R` | **[Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs](https://arxiv.org/abs/2611.06710)**<br><sub>边缘与实时性 · arXiv 2611.06710 · 2026‑11‑04</sub> |
+| 03<br>🔵&nbsp;`R` | **[Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning](https://arxiv.org/abs/2611.05667)**<br>`44.0%`&nbsp; `70.3%`&nbsp; `57.8%`<br><sub>基座模型 · arXiv 2611.05667 · 2026‑11‑03</sub> |
+| 04<br>🔵&nbsp;`R` | **[Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions](https://arxiv.org/abs/2611.04957)**<br>`14%`<br><sub>安全、权限与合规 · arXiv 2611.04957 · 2026‑11‑03</sub> |
+| 05<br>🟢&nbsp;`O` | **[LeRobot Release v0.7.0](https://github.com/huggingface/lerobot/releases/tag/v0.7.0)**<br><sub>数据引擎 · LeRobot releases (GitHub) · 2026‑11‑05</sub> |
+| 06<br>🟢&nbsp;`O` | **[New NVIDIA Cosmos 3 Open Models for Interactive World Simulation](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑05</sub> |
+| 07<br>🟡&nbsp;`M` | **[How did Agility Robotics perform on its first day on the stock market?](https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/)**<br>`2%`<br><sub>本体与供应链 · The Robot Report · 2026‑11‑05</sub> |
+| 08<br>🟡&nbsp;`M` | **[Agility Robotics begins trading on Nasdaq](https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑05</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **LoopQ** — `AI 起草` 别默认训练后量化就能让 VLA 在你的部署栈上变快：这篇作者自报的预印本在超过 180,000 个 episode 上做闭环评测，摘录里有一处比其 16-bit 模型慢 1.06-1.58x，int8 内核的收益也只有 4-14%。
-2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — `AI 起草` 因计算量随状态维度指数增长而只能离线预算 HJ 可达集的团队，或许可以改为在控制回路内在线更新：这篇自报预印本给出 3D Air3D BRT 112 Hz、4D 追逃 BRT 61 Hz，但页面没有展示真机运行。
-3. **RoboTryOn** — `AI 起草` 为每个新任务预留遥操作预算之前，可以看看这篇标有真机实验的预印本：用人类视频合成示教，作者自报从 2% 提升到 60%，但页面没说这是哪项指标、和什么比。
-4. **Aero-VPA** — `AI 起草` 在机载嵌入式硬件上，自回归 VLA 的解码开销随动作时域增长；这篇预印本自报在 180 次配对任务中由 21.1% 提升到 52.2%，并做了精确 McNemar 检验，但页面没有说明其中是否有真实飞行。
-5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — `AI 起草` 在人类经验数据和机器人遥操作数据之间做取舍的团队，可以把 Liber-0 号称用超过 2.2 million hours 人类经验预训练当作一个参照，但这是二手报道，页面没有零样本操作的结果，应等 LiberAI 的一手评测。
-6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — `AI 起草` 如果你在考虑把 Genie 4 这类世界模型用于评测，这篇二手评论帮不上忙：摘录只提到 Genie 4 发布和 Gemini 4 Carbon 幻觉率抬升，没有任何与机器人相关的 Genie 4 评测。
-7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — `AI 起草` 做自动驾驶仿真选型的团队从这篇里得不到多少：摘录只有一句“连路人都有自己的想法”，作为二手报道也没有给出百度世界模型的方法或数据，应等百度的一手材料。
-8. **Robots in society, business and culture** — `AI 起草` 关注驱动方式的硬件团队，可以把这款受电脉冲刺激即蹬地而起的生物混合机器人当作研究线索，但引用请回到 Nature Communications 原论文而非这篇月度汇总，页面没有价格、供货或性能数据。
+1. **Asynchronous Robot Policies** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+2. **Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interaction…** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Correct Robots Before They Make Mistakes** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated…** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
+5. **LeRobot Release v0.7.0** — 一手官方发布；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+6. **New NVIDIA Cosmos 3 Open Models for Interactive World Simulation** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **How did Agility Robotics perform on its first day on the stock market?** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+8. **Agility Robotics begins trading on Nasdaq** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-05.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-06.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

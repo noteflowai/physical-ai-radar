@@ -1,187 +1,187 @@
 {
-  "date": "2026-11-05",
-  "generated": "2026-11-04 23:40 UTC",
-  "window": "papers 2026-11-01 → 2026-11-05 · posts 2026-10-06 → 2026-11-05 (UTC)",
+  "date": "2026-11-06",
+  "generated": "2026-11-05 23:40 UTC",
+  "window": "papers 2026-11-02 → 2026-11-06 · posts 2026-10-07 → 2026-11-06 (UTC)",
   "window_detail": {
-    "day": "2026-11-05",
-    "papers_from": "2026-11-01",
-    "posts_from": "2026-10-06",
+    "day": "2026-11-06",
+    "papers_from": "2026-11-02",
+    "posts_from": "2026-10-07",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.05093",
-      "title": "LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2611.05093",
-      "publisher": "arXiv 2611.05093",
+      "id": "arxiv:2611.05155",
+      "title": "Asynchronous Robot Policies",
+      "url": "https://arxiv.org/abs/2611.05155",
+      "publisher": "arXiv 2611.05155",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-03",
       "lane": "edge",
-      "score": 4.515,
+      "score": 3.86,
       "numbers": [
-        "180,000 episodes",
-        "3x",
-        "1.58x",
-        "14%"
+        "18%",
+        "20%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "open_release",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments. However, when analyzing existing VLA quantization works, we realised that it is hard to reason about the performance of the suggested quantization method compared to existing, similar, or in many cases, simpler PTQ methods. We present LoopQ, a closed-loop benchmark that compares multiple quantization policies on the same checkpoint, layers and engine, varying only the method and the kernels. We evaluate RTN, AWQ, GPTQ, ActQuant and QuantVLA on four VLAs with more than 180,000 episodes of LIBERO and LIBERO-plus, compare against QVLA's reported results on the same layers, and benchmark whether the four public VLA-quantization releases can be reproduced. We benchmark the methods on an NVIDIA H100, an L4, and a Jetson AGX Thor. Our results show that while quantization reliably saves memory, 2-3x for real low-bit models, VLA-specific PTQ methods underperform compared to simpler generic baselines. At 4 bits, RTN, AWQ and GPTQ match or exceed ActQuant and QuantVLA, plain RTN matches the calibrated methods, and plain AWQ matches the success QVLA reports for itself. Standard LIBERO hides the losses that do exist: configurations with no significant LIBERO loss lose 1.5-4.3 points under paired LIBERO-plus perturbations. Speed is a weaker story. At batch 1 on the H100, no quantized pi0.5 or OpenVLA-OFT configuration is faster than its 16-bit model (1.06-1.58x slower on library kernels); only the L4 with int8 kernels gains (4-14%), the Thor is slower on every 4-bit configuration, and the engine alone changes latency by 2.1x. Profiling explains why: pi0.5's quantized backbone is compute-bound, while its memory-bound action expert, 63% of GPU time and 13% of the parameters, stays in 16 bits."
+      "summary": "Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity. Existing Vision-Language-Action (VLA) architectures execute high-level semantic reasoning and action ex- ecution sequentially within the primary control loop, creating a fundamental tension between semantic-reasoning capability and robot agility. To address this, we propose Asynchronous Robot Policy (ARP), an architectural framework that decouples semantic reasoning from low-level action generation using asynchronous processes operating at independent frequencies. In ARP, a high-capacity Vision-Language Model (VLM) asynchronously updates a semantic memory at low fre- quency, while a lightweight Vision-Action Expert, conditioned on this semantic memory, generates robot actions at a much higher control frequency. Such a formulation, enables having a fast perception-action loop without compromising on the semantic capability. To overcome asynchronous memory staleness, ARP trains the vision-action expert on the semantic staleness and execution delay, with temporally mismatched observation across processes. On Franka manipulation tasks, ARP achieves an 18% higher success rate and 20% less time need for execution in quasi-static setups, while 3-5 times baseline performance in dynamic simulation environments. Furthermore, ARP enables operating the VLM at 10 times lower than its nominal frequency with no significant performance loss making it much more efficient than the baseline. These results highlight the architectural advantages of modeling robot policies as asynchronous processes, enabling real-world reactive deployment without sacrificing the scale of foundation models."
     },
     {
-      "id": "arxiv:2611.04096",
-      "title": "Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy",
-      "url": "https://arxiv.org/abs/2611.04096",
-      "publisher": "arXiv 2611.04096",
+      "id": "arxiv:2611.06710",
+      "title": "Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs",
+      "url": "https://arxiv.org/abs/2611.06710",
+      "publisher": "arXiv 2611.06710",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-03",
+      "published": "2026-11-04",
       "lane": "edge",
-      "score": 3.862,
-      "numbers": [
-        "112 Hz",
-        "61 Hz",
-        "147 Hz",
-        "17.5x"
-      ],
+      "score": 3.462,
+      "numbers": [],
       "signals": [
-        "numbers",
-        "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline. As autonomy stacks (ADAS/AV, humanoid robotics, and vision-language-action models) increasingly rely on black-box, probabilistic policies, a deterministic safety layer with formal guarantees is an essential complement. We present a CUDA implementation of the canonical WENO5 + TVD-RK3 + Lax-Friedrichs level-set Hamilton-Jacobi-Isaacs solver for 2D, 3D, and 4D dynamics that is fast enough to run inside a robot's control loop. In 32-bit floating point (FP32) on a single workstation GPU (NVIDIA RTX 4000 Ada), it computes the 3D Air3D BRT at 112 Hz, a 4D pursuit-evasion BRT at 61 Hz, and a 2D wind-affected drifter BRT at 74-147 Hz, 5.9-17.5x faster than the JAX reference hj_reachability at matched precision and 1.7-16x faster than a torch.compile reimplementation of the same scheme. In 64-bit floating point (FP64) it agrees with hj_reachability on eight benchmark cases, reproduces Mitchell's Air3D BRT to within 0.04% of the reference cell count, and runs 2.0-4.6x faster. On an embedded NVIDIA Jetson AGX Thor it computes Air3D at 66 Hz (N=41) and the 2D drifter at 54 Hz, 3.8-8.9x faster than hj_reachability on the same device. As a multi-agent application, an in-kernel label-propagation extension recovers the K-agent capture-basin Voronoi tessellation from a single combined HJ solve, independent of fleet size; it runs at 4.0 ms per tick in a closed-loop wildfire-response simulation of six quadcopters under time-varying, non-uniform wind."
+      "summary": "Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot's real-time requirements for its next action. To reduce the load of VLA computations, researchers have proposed multiple optimization approaches, including quantization and pruning. These optimizations can be combined with other general optimizations such as better kernel compilation or using CUDA graphs instead of the eager mode. However, most of these optimization results are usually reported on a single GPU type, typically for a few VLA models, with no analysis of what the real bottlenecks are for a model on a particular hardware or how these optimizations would generalize beyond the reported results. In this paper, we provide a comprehensive measurement study of seven families of inference optimization methods, from CUDA graphs and compilation to token pruning and quantization, on seven state-of-the-art VLAs evaluated on four GPU families ranging from a datacenter H100 to an embedded Jetson Thor. We analyse how CPU launch overhead, memory bandwidth, and kernel efficiency jointly shape optimization gains, and how applying one method changes the benefit of another. From this analysis, we derive VLA-Triage, guidelines for stacking optimizations under latency budgets. The guidelines identify which stages can provide the required savings and which combinations need testing in the deployed execution mode."
     },
     {
-      "id": "arxiv:2611.05163",
-      "title": "RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On",
-      "url": "https://arxiv.org/abs/2611.05163",
-      "publisher": "arXiv 2611.05163",
+      "id": "arxiv:2611.05667",
+      "title": "Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning",
+      "url": "https://arxiv.org/abs/2611.05667",
+      "publisher": "arXiv 2611.05667",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-03",
-      "lane": "data",
-      "score": 3.59,
+      "lane": "foundation",
+      "score": 3.45,
       "numbers": [
-        "2%",
-        "60%"
+        "44.0%",
+        "70.3%",
+        "57.8%",
+        "76.9%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot"
       ],
-      "heat": 0.087,
-      "summary": "Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations. Egocentric human videos offer a scalable substitute, but overlaying rendered robots on human videos or retargeting human poses into robot actions leaves significant visual or action gaps for high-DoF robot embodiments. To address this limitation, we propose RoboTryOn, which treats human-to-robot translation as virtual try-on: try-on keeps the person and swaps the garment, RoboTryOn keeps the demonstrated motion and swaps the human for the robot. Specifically, RoboTryOn converts a human video into a video of the target robot specified by a reference image, while preserving the original task, objects, and background. To maintain visual consistency, we translate selected keyframes autoregressively and use them to guide video synthesis with motion conditioned on the human hand skeleton. Additionally, we use an inverse dynamics model (IDM) that incorporates depth features to infer action labels from synthesized videos for policy learning. Our experiments across multiple humanoid embodiments show that policies trained with our synthetic data improve the average success rate on novel tasks, including challenging bimanual manipulation, from 2% to 60%, without any real robot demonstration of those tasks. Moreover, training with our synthetic data matches the performance of policies trained solely on teleoperated demonstrations at approximately a third of the collection cost, demonstrating the cost efficiency of our approach."
+      "heat": 0.0,
+      "summary": "This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training. PHIL enables operators to preview policy-predicted future motion and intervene before anticipated undesirable actions. During takeover, PHIL continues querying the policy and displaying its predicted trajectories in the physical workspace through an extended reality (XR) interface. PHIL pairs rejected policy predictions with corrective action chunks subsequently executed from the same physical state over the same horizon, and preference-based post-training encourages the policy to favor these corrections. This paper evaluates PHIL on four real-world manipulation tasks using a diffusion policy and a pretrained vision-language-action policy. With five correction episodes per condition, PHIL increases mean success rates across the evaluated tasks and demonstration budgets from 44.0% to 70.3% for the diffusion policy and from 57.8% to 76.9% for X-VLA, compared with HG-DAgger. Separately, policies trained with proactive corrections show fewer unnecessary recovery behaviors in successful episodes. Project page: https://intuitive-robots.github.io/PHIL-page/."
     },
     {
-      "id": "arxiv:2611.04392",
-      "title": "Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware",
-      "url": "https://arxiv.org/abs/2611.04392",
-      "publisher": "arXiv 2611.04392",
+      "id": "arxiv:2611.04957",
+      "title": "Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions",
+      "url": "https://arxiv.org/abs/2611.04957",
+      "publisher": "arXiv 2611.04957",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-03",
-      "lane": "simeval",
-      "score": 3.44,
+      "lane": "safety",
+      "score": 3.29,
       "numbers": [
-        "21.1%",
-        "52.2%",
-        "95%",
-        "1.2 x"
+        "14%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "open_release"
+        "real_robot",
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of parameters from memory. We present Aero-VPA, a lightweight Vision-Predictor-Action architecture for 3D navigation on edge hardware. A compact RGB-D Vision Transformer and a five-head ensemble predictor, trained without pixel reconstruction, forecast the next latent state; a Conditional Flow Matching solver generates a velocity and yaw-rate chunk in two Euler steps, so each decision takes five sequential network evaluations; and the ensemble dispersion drives an uncertainty fallback. Version 1 specified the architecture, deployment and protocol without results. This version reports the first closed-loop evaluation: PX4 software-in-the-loop simulation of quadrotor missions in procedurally generated forests. Behaviour cloning failed on all 60 missions despite open-loop errors of 0.02-0.04 m/s: the policy copies its last command, a copycat form of causal confusion. DAgger with a privileged, safety-gated supervisor gave the first successes but plateaued at 11.1-21.1% across six checkpoints. A map-free runtime shield with a 15 s depth memory, barrier constraints, a cap on motion outside the 73-degree field of view and backoff along the flown path raised the first DAgger policy's success on 180 paired missions from 21.1% to 52.2% (95% CI [45.0, 59.4]; exact McNemar p = 1.2 x 10^-10) and cut its crashes from 72.2% to 22.2%, while timeouts rose from 2.8% to 23.3%. All six checkpoints gained 30.0-34.4 percentage points, at mean speeds of 1.16-1.36 m/s. The code (https://github.com/ylee-sling/Aero-VPA), the trained policy (72.6 MB, https://huggingface.co/ylee-sling/aero-vpa) and the full benchmark dataset are public."
+      "summary": "Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee. Although Control Barrier Functions (CBFs) can add this guarantee, their optimization problem can become infeasible in practice due to control bounds. Moreover, they often overapproximate vehicle and road geometry, which makes them conservative. This paper proposes the Backup-Horizon CBF (BH-CBF), which evaluates safety along a horizon until all vehicles stop. BH-CBF is recursively feasible under control bounds, and it considers the exact vehicle and road geometry. Based on BH-CBF, we derive a fully decentralized safety filter that only needs a single broadcast of vehicle states and routes per step and stays real-time in dense traffic. We use BH-CBF to safeguard a MARL policy over its life cycle: as a reward during pre-training, as a run-time filter at deployment, and as a filter in the training loop that keeps fine-tuning on unseen maps collision-free. In simulations on real-world maps of a roundabout and an intersection, BH-CBF avoids all collisions of unsafe MARL policies and keeps its safety guarantee at every step. Existing filters either collide, lose the guarantee, or fall back to full braking far more often. In recorded roundabout traffic with 1264 human-driven vehicles over 115 km, our safeguarded policies shorten the median travel time by 14% compared with the human drivers, without any collision."
     },
     {
-      "id": "the-robot-report:c5c6cce9e873",
-      "title": "LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action",
-      "url": "https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/",
+      "id": "github-lerobot:eadab3b7aa3f",
+      "title": "LeRobot Release v0.7.0",
+      "url": "https://github.com/huggingface/lerobot/releases/tag/v0.7.0",
+      "publisher": "LeRobot releases (GitHub)",
+      "source_id": "github-lerobot",
+      "evidence": "O",
+      "published": "2026-11-05",
+      "lane": "data",
+      "score": 2.458,
+      "numbers": [],
+      "signals": [
+        "open_release"
+      ],
+      "heat": 0.091,
+      "summary": "Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -> v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer. A few changes need your attention when upgrading: Installation On Linux, torch and torchvision now come from PyPI as CUDA 13 builds (NVIDIA driver 580.65 or newer); the cu128 index is gone. For older drivers, install torch from a CUDA 12 index first (see the installation guide). macOS needs 14+ (15+ for MPS). Pins moved: transformers 5.22, huggingface-hub>=1.31,<3 , motorbridge 0.5, datasets<6 , Pillow<14 , torchcodec<0.18 . Training Weights & Biases is replaced by Trackio (the training extra installs trackio ): --wandb.* is now --trackio.* , entity / mode have no equivalent, remote jobs with tracking need --trackio.space_id , and checkpoints are no longer uploaded as artifacts by default. FSDP1 is replaced by FSDP2/HSDP ( --parallelism.dp_shard , --parallelism.dp_replicate , --accelerator.* ); mixed precision is set with --accelerator.mixed_precision . FSDP checkpoints saved with lerobot ≤ 0.6.x cannot be resumed (their model.safetensors still loads), and Accelerate YAML/env configuration is rejected unless LEROBOT_ALLOW_ACCELERATE_ENV=1 . --policy.use_peft=true alone now trains LoRA instead of silently fully fine-tuning. Image transforms are batched: GaussianNoise , MotionBlur , GaussianPatchBrightness , RandomShadow , CoarseDropout , GammaCorrection and PlanckianJitter were silent no-ops on uint8 frames and now apply. ImageTransforms takes tensors only; the per-sample classes are deprecated. Inference & rollout lerobot.async_inference and lerobot[async] are removed: use lerobot[remote] , lerobot-policy-server and lerobot-rollout --inference.type=remote . lerobot.rollout.inference moved to lerobot.inference . select_action / predict_action_chunk may return a PolicyOutput ( {\"action\", \"prediction\"} ) instead of a bare tensor; use policy_output_to_transition …"
+    },
+    {
+      "id": "huggingface-blog:e8690f74b67f",
+      "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+      "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
+      "published": "2026-11-05",
+      "lane": "simeval",
+      "score": 1.998,
+      "numbers": [],
+      "signals": [
+        "trending"
+      ],
+      "heat": 0.267,
+      "summary": ""
+    },
+    {
+      "id": "the-robot-report:7afb5baa5458",
+      "title": "How did Agility Robotics perform on its first day on the stock market?",
+      "url": "https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-11-04",
-      "lane": "foundation",
-      "score": 1.2,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation."
-    },
-    {
-      "id": "leiphone:957146e93372",
-      "title": "榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌",
-      "url": "https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-04",
-      "lane": "simeval",
-      "score": 1.135,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。今早，Google 又紧接着推出 Gemini 4 Carbon，直接刷榜\"重回全球第一\"。再加上两周前发布的 Gemini 4 Argon，谷歌正以近乎 “一周一款” 的节奏刷新模型产品线。 这种高频迭代在谷歌历史上前所未有，过去它更习惯“两年磨一剑”的大版本发布节奏，如今却突然切换成“小步快跑”的互联网打法。 这场节奏突变的背后，是谷歌在 技术路线选择、研发模式押注、算力基础突围和内部管理调整 上的全方位转向，也是它在行业节奏失落后的一次集中反击。 01 登顶榜首 vs 4000 亿市值蒸发， 谷歌深陷“跑分幻觉” Gemini 4 Carbon 发布之后，技术圈反应堪称魔幻。 谷歌对外宣布的内容中，最吸睛的标签是 “重回世界第一” 。 在17项基准测试中，它有 15 项拿下了最高成绩，甚至在最新的 Artificial Analysis （AA）智能指数评测中反超 Claude Opus 5.5（58分）和 GPT-6 Astra（57分），夺回世界第一。 图注：Gemini 4 Carbon公开的17项基准测评，勇登第一 但在资本市场，伴随新模型和Q3财报的发布， Alphabet 盘后股价一度大跌约10%，市值蒸发3000至4000亿美元。 如果次日开盘延续这一跌幅，将创下谷歌历史上单日市值损失的最高纪录。 …"
-    },
-    {
-      "id": "qbitai:f46bd8b9888c",
-      "title": "百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年",
-      "url": "https://www.qbitai.com/2026/11/507647.html",
-      "publisher": "量子位 QbitAI",
-      "source_id": "qbitai",
-      "evidence": "M",
-      "published": "2026-11-04",
-      "lane": "foundation",
-      "score": 1.1,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "连路人都有自己的想法"
-    },
-    {
-      "id": "robohub:a47ada694dde",
-      "title": "Robots in society, business and culture: October 2026",
-      "url": "https://robohub.org/robots-in-society-business-and-culture-october-2026/",
-      "publisher": "Robohub",
-      "source_id": "robohub",
-      "evidence": "M",
-      "published": "2026-11-04",
+      "published": "2026-11-05",
       "lane": "hardware",
-      "score": 1.083,
+      "score": 1.922,
+      "numbers": [
+        "2%"
+      ],
+      "signals": [
+        "numbers",
+        "trending"
+      ],
+      "heat": 0.133,
+      "summary": "Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49."
+    },
+    {
+      "id": "the-robot-report:9316a2ac717b",
+      "title": "Agility Robotics begins trading on Nasdaq",
+      "url": "https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-05",
+      "lane": "hardware",
+      "score": 1.847,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026). By Emmet Cole In our monthly series, we showcase a selection of robotics stories from society, business, research and culture, as we track the field’s ongoing journey from specialized industrial machines to an […]"
+      "summary": "Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed."
     }
   ],
   "lane_counts": {
     "foundation": 11,
-    "data": 6,
-    "training": 2,
-    "simeval": 12,
-    "edge": 9,
+    "data": 7,
+    "training": 1,
+    "simeval": 11,
+    "edge": 10,
     "safety": 1,
     "systems": 3,
     "hardware": 9
   },
   "evidence_mix": {
-    "O": 2,
+    "O": 4,
     "R": 28,
-    "M": 23
+    "M": 21
   },
   "fetch": {
-    "items": 574,
+    "items": 576,
     "attempted": 23,
     "answered": 22,
     "failed": [
@@ -214,7 +214,7 @@
       "repos": 4
     },
     "per_source": {
-      "arxiv": 72,
+      "arxiv": 74,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -227,9 +227,9 @@
       "openai": 21,
       "bair": 6,
       "mit-news-robotics": 50,
-      "techcrunch-robotics": 10,
+      "techcrunch-robotics": 11,
       "robohub": 75,
-      "qbitai": 4,
+      "qbitai": 3,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

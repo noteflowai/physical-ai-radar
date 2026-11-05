@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:ja</id>
   <title>Physical AI フロンティア・レーダー</title>
   <subtitle>フィジカルAIの最前線を毎日更新：8つの軸、三言語の要約、追跡可能な根拠。</subtitle>
-  <updated>2026-11-04T23:40:00Z</updated>
+  <updated>2026-11-05T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/ja/" />
   <author>
@@ -11,6 +11,140 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05155</id>
+    <title>Asynchronous Robot Policies</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.05155" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.05155</name>
+    </author>
+    <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.05155 · 2026-11-03&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 18% · 20%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
+&lt;blockquote&gt;Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.06710</id>
+    <title>Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.06710" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.06710</name>
+    </author>
+    <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot's real-time requirements…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.06710 · 2026-11-04&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
+&lt;blockquote&gt;Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot&amp;#x27;s real-time requirements…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05667</id>
+    <title>Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.05667" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.05667</name>
+    </author>
+    <category term="foundation" label="基盤モデル（VLA / WAM）" />
+    <category term="R" label="[R]" />
+    <summary type="text">This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.05667 · 2026-11-03&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 44.0% · 70.3% · 57.8% · 76.9%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり&lt;/p&gt;
+&lt;blockquote&gt;This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.04957</id>
+    <title>Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.04957" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.04957</name>
+    </author>
+    <category term="safety" label="安全・権限・コンプライアンス" />
+    <category term="R" label="[R]" />
+    <summary type="text">Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 安全・権限・コンプライアンス&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.04957 · 2026-11-03&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 14%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
+&lt;blockquote&gt;Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:github-lerobot:eadab3b7aa3f</id>
+    <title>LeRobot Release v0.7.0</title>
+    <link rel="alternate" href="https://github.com/huggingface/lerobot/releases/tag/v0.7.0" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>LeRobot releases (GitHub)</name>
+    </author>
+    <category term="data" label="データエンジン（収集 / 精査 / スケーリング）" />
+    <category term="O" label="[O]" />
+    <summary type="text">Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -&gt; v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: LeRobot releases (GitHub) · 2026-11-05&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: コードまたは重み公開&lt;/p&gt;
+&lt;blockquote&gt;Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -&amp;gt; v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:e8690f74b67f</id>
+    <title>New NVIDIA Cosmos 3 Open Models for Interactive World Simulation</title>
+    <link rel="alternate" href="https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>Hugging Face Blog</name>
+    </author>
+    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
+    <category term="O" label="[O]" />
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Hugging Face Blog · 2026-11-05&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 注目度高&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:7afb5baa5458</id>
+    <title>How did Agility Robotics perform on its first day on the stock market?</title>
+    <link rel="alternate" href="https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
+    <category term="M" label="[M]" />
+    <summary type="text">Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-11-05&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 2%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 注目度高&lt;/p&gt;
+&lt;blockquote&gt;Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:9316a2ac717b</id>
+    <title>Agility Robotics begins trading on Nasdaq</title>
+    <link rel="alternate" href="https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html" />
+    <published>2026-11-05T23:40:00Z</published>
+    <updated>2026-11-05T23:40:00Z</updated>
+    <author>
+      <name>The Robot Report</name>
+    </author>
+    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
+    <category term="M" label="[M]" />
+    <summary type="text">Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-11-05&lt;/p&gt;
+&lt;blockquote&gt;Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.ja.html"&gt;2026-11-06 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05093</id>
     <title>LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models</title>
@@ -1574,141 +1708,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 学習と自己改善（RL / 事後学習）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-10-24&lt;/p&gt;
 &lt;blockquote&gt;Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.ja.html"&gt;2026-10-25 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.28259</id>
-    <title>Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.28259" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.28259</name>
-    </author>
-    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2610.28259 · 2026-10-20&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;blockquote&gt;Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30319</id>
-    <title>TerraTransfer++: Demonstration-Free End-to-End Planner</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.30319" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.30319</name>
-    </author>
-    <category term="data" label="データエンジン（収集 / 精査 / スケーリング）" />
-    <category term="R" label="[R]" />
-    <summary type="text">End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2610.30319 · 2026-10-21&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 閉ループ成功率あり · 実機実験あり&lt;/p&gt;
-&lt;blockquote&gt;End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.29702</id>
-    <title>CausGround: Causal Interaction Grounding for Adaptive Embodied Planning</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.29702" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.29702</name>
-    </author>
-    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2610.29702 · 2026-10-21&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 24.9% · 53.3% · 43.0% · 57.0%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり&lt;/p&gt;
-&lt;blockquote&gt;Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.29142</id>
-    <title>State-Dependent Objective Coordination for End-to-End Balance and Navigation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.29142" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.29142</name>
-    </author>
-    <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2610.29142 · 2026-10-21&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 98% · 95%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;blockquote&gt;Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:f900d559464d</id>
-    <title>Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself</title>
-    <link rel="alternate" href="https://spectrum.ieee.org/video-friday-rubiks-cube-robot" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>IEEE Spectrum Robotics</name>
-    </author>
-    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
-    <category term="M" label="[M]" />
-    <summary type="text">A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: IEEE Spectrum Robotics · 2026-10-23&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 20 kg&lt;/p&gt;
-&lt;blockquote&gt;A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:a9794f5b7d46</id>
-    <title>Webinar to discuss how the FCC robotics ruling affects automation buyers</title>
-    <link rel="alternate" href="https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="safety" label="安全・権限・コンプライアンス" />
-    <category term="M" label="[M]" />
-    <summary type="text">Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 安全・権限・コンプライアンス&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-10-23&lt;/p&gt;
-&lt;blockquote&gt;Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:a64234db4de4</id>
-    <title>Generative Bionics to launch Physical AI Data Factory in Italy</title>
-    <link rel="alternate" href="https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="data" label="データエンジン（収集 / 精査 / スケーリング）" />
-    <category term="M" label="[M]" />
-    <summary type="text">Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: データエンジン（収集 / 精査 / スケーリング）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-10-23&lt;/p&gt;
-&lt;blockquote&gt;Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:b7f139331a76</id>
-    <title>72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台</title>
-    <link rel="alternate" href="https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html" />
-    <published>2026-10-23T23:40:00Z</published>
-    <updated>2026-10-23T23:40:00Z</updated>
-    <author>
-      <name>雷峰网 Leiphone</name>
-    </author>
-    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
-    <category term="M" label="[M]" />
-    <summary type="text">要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: 雷峰网 Leiphone · 2026-10-23&lt;/p&gt;
-&lt;blockquote&gt;要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.ja.html"&gt;2026-10-24 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

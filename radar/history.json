@@ -138,16 +138,6 @@
       "date": "2026-10-06",
       "count": 8,
       "lanes": 6,
-      "urls": [
-        "https://arxiv.org/abs/2610.02832",
-        "https://arxiv.org/abs/2610.03620",
-        "https://arxiv.org/abs/2610.03476",
-        "https://arxiv.org/abs/2610.03607",
-        "https://arxiv.org/abs/2610.02784",
-        "https://arxiv.org/abs/2610.03283",
-        "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/06/news009.html"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -918,6 +908,42 @@
           "hot",
           "official"
         ]
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2611.05155",
+        "https://arxiv.org/abs/2611.06710",
+        "https://arxiv.org/abs/2611.05667",
+        "https://arxiv.org/abs/2611.04957",
+        "https://github.com/huggingface/lerobot/releases/tag/v0.7.0",
+        "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+        "https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market",
+        "https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "github-lerobot:eadab3b7aa3f",
+          "hot": "huggingface-blog:e8690f74b67f"
+        },
+        "unmet": []
       }
     }
   ]

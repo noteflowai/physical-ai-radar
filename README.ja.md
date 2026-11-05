@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-05
+### 本日のレーダー · 2026-11-06
 
-`生成時刻: 2026-11-04 23:40 UTC` ｜ `対象期間: 論文 2026-11-01 → 2026-11-05 · ブログ・報道 2026-10-06 → 2026-11-05 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-05 23:40 UTC` ｜ `対象期間: 論文 2026-11-02 → 2026-11-06 · ブログ・報道 2026-10-07 → 2026-11-06 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models](https://arxiv.org/abs/2611.05093)**<br>`180,000 episodes`&nbsp; `3x`&nbsp; `1.58x`<br><sub>エッジとリアルタイム · arXiv 2611.05093 · 2026‑11‑03</sub> |
-| 02<br>🔵&nbsp;`R` | **[Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy](https://arxiv.org/abs/2611.04096)**<br>`112 Hz`&nbsp; `61 Hz`&nbsp; `147 Hz`<br><sub>エッジとリアルタイム · arXiv 2611.04096 · 2026‑11‑03</sub> |
-| 03<br>🔵&nbsp;`R` | **[RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On](https://arxiv.org/abs/2611.05163)**<br>`2%`&nbsp; `60%`<br><sub>データエンジン · arXiv 2611.05163 · 2026‑11‑03</sub> |
-| 04<br>🔵&nbsp;`R` | **[Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware](https://arxiv.org/abs/2611.04392)**<br>`21.1%`&nbsp; `52.2%`&nbsp; `95%`<br><sub>シミュレーションと評価 · arXiv 2611.04392 · 2026‑11‑03</sub> |
-| 05<br>🟡&nbsp;`M` | **[LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action](https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/)**<br><sub>基盤モデル · The Robot Report · 2026‑11‑04</sub> |
-| 06<br>🟡&nbsp;`M` | **[榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌](https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑11‑04</sub> |
-| 07<br>🟡&nbsp;`M` | **[百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年](https://www.qbitai.com/2026/11/507647.html)**<br><sub>基盤モデル · 量子位 QbitAI · 2026‑11‑04</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robots in society, business and culture: October 2026](https://robohub.org/robots-in-society-business-and-culture-october-2026/)**<br><sub>ハードウェアとサプライチェーン · Robohub · 2026‑11‑04</sub> |
+| 01<br>🔵&nbsp;`R` | **[Asynchronous Robot Policies](https://arxiv.org/abs/2611.05155)**<br>`18%`&nbsp; `20%`<br><sub>エッジとリアルタイム · arXiv 2611.05155 · 2026‑11‑03</sub> |
+| 02<br>🔵&nbsp;`R` | **[Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs](https://arxiv.org/abs/2611.06710)**<br><sub>エッジとリアルタイム · arXiv 2611.06710 · 2026‑11‑04</sub> |
+| 03<br>🔵&nbsp;`R` | **[Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning](https://arxiv.org/abs/2611.05667)**<br>`44.0%`&nbsp; `70.3%`&nbsp; `57.8%`<br><sub>基盤モデル · arXiv 2611.05667 · 2026‑11‑03</sub> |
+| 04<br>🔵&nbsp;`R` | **[Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions](https://arxiv.org/abs/2611.04957)**<br>`14%`<br><sub>安全・権限・コンプライアンス · arXiv 2611.04957 · 2026‑11‑03</sub> |
+| 05<br>🟢&nbsp;`O` | **[LeRobot Release v0.7.0](https://github.com/huggingface/lerobot/releases/tag/v0.7.0)**<br><sub>データエンジン · LeRobot releases (GitHub) · 2026‑11‑05</sub> |
+| 06<br>🟢&nbsp;`O` | **[New NVIDIA Cosmos 3 Open Models for Interactive World Simulation](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑05</sub> |
+| 07<br>🟡&nbsp;`M` | **[How did Agility Robotics perform on its first day on the stock market?](https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/)**<br>`2%`<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑05</sub> |
+| 08<br>🟡&nbsp;`M` | **[Agility Robotics begins trading on Nasdaq](https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑05</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **LoopQ** — `AI 下書き` 事後学習量子化を入れれば VLA が速くなると決めつけるべきではなく、180,000 を超えるエピソードで閉ループ評価した著者自己報告のこのプレプリントは、16-bit モデルより 1.06-1.58x 遅い条件や 4-14% にとどまる int8 カーネルの利得を示している。
-2. **Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-…** — `AI 下書き` 状態次元に対して計算量が指数的に増えるため HJ 到達可能集合をオフラインで用意してきたチームにとって、3D Air3D の BRT を 112 Hz、4D 追跡回避の BRT を 61 Hz で解いたとするこの自己報告プレプリントは制御ループ内での再計算を検討する材料になるが、ページに実機での実行は示されていない。
-3. **RoboTryOn** — `AI 下書き` 新タスクごとに遠隔操作のデモ収集を見積もる前に、実機実験ありと示されたこのプレプリントが人間動画から合成したデモで 2% から 60% への向上を自己報告している点は押さえたいが、何の指標で何と比べたかはページに書かれていない。
-4. **Aero-VPA** — `AI 下書き` 組込みの機上ハードウェアでは自己回帰型 VLA のデコードが行動ホライズンに比例して重くなるが、このプレプリントは 180 組の対応ミッションで 21.1% から 52.2% への改善を正確 McNemar 検定付きで自己報告しており、実飛行を含むかはページからは分からない。
-5. **LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience…** — `AI 下書き` 操作タスクで人間の経験データと遠隔操作データのどちらに投資するか迷うなら、Liber-0 が 2.2 million hours を超える人間の経験で事前学習したという主張は一つの材料だが、二次報道でゼロショット操作の結果はページになく、LiberAI 自身の評価を待ちたい。
-6. **榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌** — `AI 下書き` 評価用の世界モデルとして Genie 4 を候補に入れているなら、この二次的な論評は判断材料にならず、抜粋が伝えるのは Genie 4 の発表と Gemini 4 Carbon の幻覚率上昇だけで、ロボット用途での Genie 4 の評価はない。
-7. **百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年** — `AI 下書き` 自動運転のシミュレーション基盤を選ぶチームにとって材料は乏しく、抜粋は「通行人にさえ自分の考えがある」という一文だけで、二次報道として百度の世界モデルの手法もデータも示していないため、百度の一次資料を待つべきだ。
-8. **Robots in society, business and culture** — `AI 下書き` 駆動方式を追うハードウェアチームは、電気刺激で地面を蹴り出すバイオハイブリッドロボットを研究上の手がかりとして扱い、価格・供給・性能の数値がないこの月次まとめではなく Nature Communications の原論文を引用したい。
+1. **Asynchronous Robot Policies** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+2. **Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interaction…** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Correct Robots Before They Make Mistakes** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+4. **Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated…** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
+5. **LeRobot Release v0.7.0** — 当事者による一次発表。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **New NVIDIA Cosmos 3 Open Models for Interactive World Simulation** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **How did Agility Robotics perform on its first day on the stock market?** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+8. **Agility Robotics begins trading on Nasdaq** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-05.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-06.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -13,6 +13,313 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05155",
+      "url": "https://arxiv.org/abs/2611.05155",
+      "title": "Asynchronous Robot Policies",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.05155 · 2026-11-03<br><b>Key numbers</b>: 18% · 20%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.05155 · 2026-11-03\nKey numbers: 18% · 20%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nScaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.05155"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "arxiv:2611.05155",
+        "url": "https://arxiv.org/abs/2611.05155",
+        "title": "Asynchronous Robot Policies",
+        "publisher": "arXiv 2611.05155",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-11-03",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [
+          "18%",
+          "20%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Scaling vision-language foundation models has significantly advanced generalist robot manipulation, but the increased model scale introduces computational latency that degrades real-time physical reactivity."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.06710",
+      "url": "https://arxiv.org/abs/2611.06710",
+      "title": "Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.06710 · 2026-11-04<br><b>Signals</b>: real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot&#x27;s real-time requirements…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.06710 · 2026-11-04\nSignals: real-robot experiments · latency or control-rate numbers\n\nVision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot's real-time requirements…\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot's real-time requirements…",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.06710"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "arxiv:2611.06710",
+        "url": "https://arxiv.org/abs/2611.06710",
+        "title": "Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs",
+        "publisher": "arXiv 2611.06710",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-11-04",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Vision-language-action (VLA) models map camera observations and language instructions to robot actions. However, their large backbones and repeated action generation can make inference take longer than the robot's real-time requirements…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05667",
+      "url": "https://arxiv.org/abs/2611.05667",
+      "title": "Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.05667 · 2026-11-03<br><b>Key numbers</b>: 44.0% · 70.3% · 57.8% · 76.9%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2611.05667 · 2026-11-03\nKey numbers: 44.0% · 70.3% · 57.8% · 76.9%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nThis paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.05667"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "arxiv:2611.05667",
+        "url": "https://arxiv.org/abs/2611.05667",
+        "title": "Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning",
+        "publisher": "arXiv 2611.05667",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-11-03",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [
+          "44.0%",
+          "70.3%",
+          "57.8%",
+          "76.9%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "This paper presents Proactive Human-in-the-Loop (PHIL), a framework for proactive policy correction and preference-based post-training."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.04957",
+      "url": "https://arxiv.org/abs/2611.04957",
+      "title": "Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.04957 · 2026-11-03<br><b>Key numbers</b>: 14%<br><b>Signals</b>: quantitative results · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [R]\nSource: arXiv 2611.04957 · 2026-11-03\nKey numbers: 14%\nSignals: quantitative results · real-robot experiments · latency or control-rate numbers\n\nMulti-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.04957"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "arxiv:2611.04957",
+        "url": "https://arxiv.org/abs/2611.04957",
+        "title": "Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions",
+        "publisher": "arXiv 2611.04957",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "safety",
+        "published": "2026-11-03",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [
+          "14%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Multi-Agent Reinforcement Learning (MARL) shows promise in coordinating connected and automated vehicles but offers no safety guarantee."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:github-lerobot:eadab3b7aa3f",
+      "url": "https://github.com/huggingface/lerobot/releases/tag/v0.7.0",
+      "title": "LeRobot Release v0.7.0",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [O]<br><b>Source</b>: LeRobot releases (GitHub) · 2026-11-05<br><b>Signals</b>: open code or weights</p>\n<blockquote>Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -&gt; v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [O]\nSource: LeRobot releases (GitHub) · 2026-11-05\nSignals: open code or weights\n\nRelease Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -> v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -> v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "LeRobot releases (GitHub)"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "github-lerobot:eadab3b7aa3f",
+        "url": "https://github.com/huggingface/lerobot/releases/tag/v0.7.0",
+        "title": "LeRobot Release v0.7.0",
+        "publisher": "LeRobot releases (GitHub)",
+        "source_id": "github-lerobot",
+        "evidence": "O",
+        "lane": "data",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "open_release"
+        ],
+        "excerpt": "Release Blog https://huggingface.co/blog/lerobot/lerobot-release-v070 lerobot-070-release.mp4 ⚠️ Breaking changes (v0.6.1 -> v0.7.0) v0.7.0 rebuilds installation, training, inference and the hardware layer."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:e8690f74b67f",
+      "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+      "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-11-05<br><b>Signals</b>: trending</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-11-05\nSignals: trending\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "huggingface-blog:e8690f74b67f",
+        "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+        "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+        "publisher": "Hugging Face Blog",
+        "source_id": "huggingface-blog",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "trending"
+        ],
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:7afb5baa5458",
+      "url": "https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/",
+      "title": "How did Agility Robotics perform on its first day on the stock market?",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-05<br><b>Key numbers</b>: 2%<br><b>Signals</b>: quantitative results · trending</p>\n<blockquote>Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-11-05\nKey numbers: 2%\nSignals: quantitative results · trending\n\nHumanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "the-robot-report:7afb5baa5458",
+        "url": "https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/",
+        "title": "How did Agility Robotics perform on its first day on the stock market?",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [
+          "2%"
+        ],
+        "signals": [
+          "numbers",
+          "trending"
+        ],
+        "excerpt": "Humanoid developer Agility Robotics ended its first day of trading on the Nasdaq just 2% above where it started, at $11.49."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:9316a2ac717b",
+      "url": "https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/",
+      "title": "Agility Robotics begins trading on Nasdaq",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-05</p>\n<blockquote>Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html\">Full radar for 2026-11-06</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-11-05\n\nAgility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed.\n\nFull radar for 2026-11-06: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-06.en.html",
+      "summary": "Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed.",
+      "date_published": "2026-11-05T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-06",
+        "id": "the-robot-report:9316a2ac717b",
+        "url": "https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/",
+        "title": "Agility Robotics begins trading on Nasdaq",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-05T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05093",
       "url": "https://arxiv.org/abs/2611.05093",
       "title": "LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models",
@@ -3500,304 +3807,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "Eka Robotics is building a vision-force-action, or VFA, model to develop an intuition of physics through reinforcement learning at scale."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.28259",
-      "url": "https://arxiv.org/abs/2610.28259",
-      "title": "Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.28259 · 2026-10-20<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.28259 · 2026-10-20\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nRecent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.28259"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "arxiv:2610.28259",
-        "url": "https://arxiv.org/abs/2610.28259",
-        "title": "Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning",
-        "publisher": "arXiv 2610.28259",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-20",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Recent advances in visuospatial understanding and agentic reasoning enable direct robotic manipulation with general-purpose multimodal models, but their embodied capabilities remain poorly understood."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30319",
-      "url": "https://arxiv.org/abs/2610.30319",
-      "title": "TerraTransfer++: Demonstration-Free End-to-End Planner",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.30319 · 2026-10-21<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.30319 · 2026-10-21\nSignals: closed-loop success reported · real-robot experiments\n\nEnd-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.30319"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "arxiv:2610.30319",
-        "url": "https://arxiv.org/abs/2610.30319",
-        "title": "TerraTransfer++: Demonstration-Free End-to-End Planner",
-        "publisher": "arXiv 2610.30319",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-21",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "End-to-end autonomous driving has achieved state-of-the-art performance on benchmarks and real-world deployments."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.29702",
-      "url": "https://arxiv.org/abs/2610.29702",
-      "title": "CausGround: Causal Interaction Grounding for Adaptive Embodied Planning",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.29702 · 2026-10-21<br><b>Key numbers</b>: 24.9% · 53.3% · 43.0% · 57.0%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.29702 · 2026-10-21\nKey numbers: 24.9% · 53.3% · 43.0% · 57.0%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nMultimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.29702"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "arxiv:2610.29702",
-        "url": "https://arxiv.org/abs/2610.29702",
-        "title": "CausGround: Causal Interaction Grounding for Adaptive Embodied Planning",
-        "publisher": "arXiv 2610.29702",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-21",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [
-          "24.9%",
-          "53.3%",
-          "43.0%",
-          "57.0%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Multimodal large language models (MLLMs) show promising reasoning capabilities, but reliable physical interaction requires planning that accounts for when actions are executable and how they change the world."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.29142",
-      "url": "https://arxiv.org/abs/2610.29142",
-      "title": "State-Dependent Objective Coordination for End-to-End Balance and Navigation",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.29142 · 2026-10-21<br><b>Key numbers</b>: 98% · 95%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.29142 · 2026-10-21\nKey numbers: 98% · 95%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nTraditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.29142"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "arxiv:2610.29142",
-        "url": "https://arxiv.org/abs/2610.29142",
-        "title": "State-Dependent Objective Coordination for End-to-End Balance and Navigation",
-        "publisher": "arXiv 2610.29142",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-10-21",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [
-          "98%",
-          "95%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Traditional robotic navigation systems separate mapping, planning, and low-level control through cascaded modules, introducing computational overhead and accumulated latency."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:f900d559464d",
-      "url": "https://spectrum.ieee.org/video-friday-rubiks-cube-robot",
-      "title": "Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-23<br><b>Key numbers</b>: 20 kg</p>\n<blockquote>A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-23\nKey numbers: 20 kg\n\nA quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "ieee-spectrum-robotics:f900d559464d",
-        "url": "https://spectrum.ieee.org/video-friday-rubiks-cube-robot",
-        "title": "Video Friday: Quadruped Robot Solves Giant Rubik’s Cube by Itself",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-23",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [
-          "20 kg"
-        ],
-        "signals": [],
-        "excerpt": "A quadruped robot autonomously solves a giant Rubik’s Cube using only its feet. [ ETH Zurich Robotics Systems Lab ] Humans effortlessly react to the world; they adeptly return a tennis shot, catch a falling cup, step aside from a passing…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:a9794f5b7d46",
-      "url": "https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/",
-      "title": "Webinar to discuss how the FCC robotics ruling affects automation buyers",
-      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-23</p>\n<blockquote>Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-10-23\n\nIndustry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Safety, permissions & compliance",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "the-robot-report:a9794f5b7d46",
-        "url": "https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers/",
-        "title": "Webinar to discuss how the FCC robotics ruling affects automation buyers",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "safety",
-        "published": "2026-10-23",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Industry leaders will discuss what robotics buyers should know about the recent FCC restriction on certain connected systems."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:a64234db4de4",
-      "url": "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/",
-      "title": "Generative Bionics to launch Physical AI Data Factory in Italy",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-23</p>\n<blockquote>Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [M]\nSource: The Robot Report · 2026-10-23\n\nGenerative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent.\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent.",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "the-robot-report:a64234db4de4",
-        "url": "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/",
-        "title": "Generative Bionics to launch Physical AI Data Factory in Italy",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "data",
-        "published": "2026-10-23",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Generative Bionics says it hopes to advance European robotics sovereignty by ensuring that humanoid data is are generated on the continent."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:b7f139331a76",
-      "url": "https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html",
-      "title": "72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-23</p>\n<blockquote>要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html\">Full radar for 2026-10-24</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-23\n\n要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！\n\nFull radar for 2026-10-24: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-24.en.html",
-      "summary": "要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！",
-      "date_published": "2026-10-23T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-24",
-        "id": "leiphone:b7f139331a76",
-        "url": "https://www.leiphone.com/category/zaobao/3jq4Bj4E3zJhjVBp.html",
-        "title": "72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量；雷军：汽车产业没有安全，其他都是零；iPhone Duo全球限购，每人限购2台",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-23",
-        "radar_published": "2026-10-23T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "要闻提示 1.iPhone Duo开启全球限购，每位顾客仅可购买2台 2.72岁董明珠：被学生喊奶奶很不开心，人的价值不用年龄来衡量 3.雷军：汽车产业没有安全，其他都是零 4.星巴克回应消费入座争议：10月22日起全国施行并摆放提示牌 5.宇树发新人形机器人！"
       }
     }
   ]
