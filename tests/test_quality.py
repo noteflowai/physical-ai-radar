@@ -88,16 +88,8 @@ def recorded_clock():
 
 
 def recorded_day(config) -> list[Item]:
-    from pairadar import static_fetch
-
-    class NoStaticSite(static_fetch.StaticFetcher):
-        """The shipped configuration reads two sources with the static fetcher; a recorded day must never reach them."""
-        def get(self, url, budget, **kwargs):
-            raise static_fetch.StaticFetchError("dns-failed")
-
     with patch.object(fetch, "http_get", recorded), patch.object(fetch.time, "sleep"), \
             patch.object(fetch, "firecrawl_post", side_effect=fetch.FirecrawlUnavailable("test")), \
-            patch.object(fetch, "STATIC_FETCHER_FACTORY", NoStaticSite), \
             recorded_clock(), contextlib.redirect_stdout(io.StringIO()):
         report = fetch.fetch_all(config)
     return deduplicate(enrich(prefilter(report.items, config, DAY), config, DAY))
