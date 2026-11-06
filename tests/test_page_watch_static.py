@@ -307,6 +307,19 @@ class StaticWatchTests(TlsTestCase):
         self.assertEqual((result.unavailable, result.firecrawl_answered), (False, False))
         self.assertEqual(status_of(result), "skipped")             # not `ok`, and not labelled an outage either
 
+    def test_a_firecrawl_reply_that_disallows_the_page_still_counts_as_an_answer(self):
+        """04 (11-06), survivor 11: the marker is set because Firecrawl replied, not because the reply allowed the page.
+        A Firecrawl source whose robots.txt disallows it, beside a static page that was read, is `ok` (Firecrawl answered)."""
+        self.server.serve("/news", Reply(200, V1))
+        with FakeFirecrawl() as fc:
+            fc.serve("https://www.unitree.com/robots.txt",
+                     {"success": True, "data": {"rawHtml": "User-agent: *\nDisallow: /news\n", "metadata": {"statusCode": 200}}})
+            result = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=fc.url)
+            self.assertEqual(fc.scraped(), [])                                     # the disallowed page was never scraped
+        self.assertEqual((result.robots_skipped, result.checked, result.static_checked), (["unitree"], ["figure"], ["figure"]))
+        self.assertTrue(result.firecrawl_answered)
+        self.assertEqual(status_of(result), "ok")
+
     def test_missing_answer_evidence_cannot_make_the_freshness_status_ok(self):
         """The consumer reads `status == ok` from the evidence file; a block without an affirmative Firecrawl answer must not
         produce it, however it got that way (a static-only run, or a hand-over that dropped the detail)."""
@@ -369,10 +382,14 @@ class StaticWatchTests(TlsTestCase):
     # Turning a source static, or the whole channel live, is an approval of its own. Editing this list is how a change to
     # data/sources.json shows up in review: the test fails until the approved set here is changed on purpose.
     APPROVED_STATIC = ["physical-intelligence", "unitree"]
+    # The URL is what was approved (unitree's was corrected to the final one the site redirects to, PR 181), so a change to it
+    # shows up in review too, not only a change of the id set.
+    APPROVED_URLS = {"physical-intelligence": "https://www.pi.website/blog", "unitree": "https://www.unitree.com/news/"}
 
     def test_the_repository_ships_exactly_the_approved_static_sources_in_observe_mode(self):
         shipped = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
         self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], self.APPROVED_STATIC)
+        self.assertEqual({e["id"]: e["url"] for e in shipped["page_watch"] if e.get("fetcher") == "static"}, self.APPROVED_URLS)
         self.assertEqual(fetch.page_watch_problems(shipped), [])                     # each carries the sanity settings static needs
         self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "observe")   # written out, not left to the default
         config = Config(sources=shipped, taxonomy={}, glossary={}, baseline={})
