@@ -54,9 +54,11 @@ Rules:
   - A real run (not `--offline`, not `--out`) also writes one freshness record per day
     to `$PAIRADAR_STATE_DIR/page-watch/<day>.json` (default
     `~/.local/state/pairadar/page-watch/`), schema `pairadar-page-watch-v1`, channel
-    `page_watch`. `status` is `ok` only when at least one watched page was read;
+    `page_watch`. `status` is `ok` only when at least one watched page was read and the Firecrawl
+    channel answered;
     `all-failed` when pages were attempted and none was read; `firecrawl-unavailable`;
-    `skipped` when the channel is disabled or reached no entry; `error` when the run
+    `skipped` when the channel is disabled, reached no entry, or gave no Firecrawl answer (see the
+    static-sources notes below); `error` when the run
     itself raised. Only `ok` counts as success. The record also carries
     `sources_checked`, `sources_failed`, `sources_robots_skipped` and `finished_at`.
     Writing it is observational: a failure there is logged and never fails the run;
@@ -157,9 +159,16 @@ Rules:
     shape (ids per outcome and nothing per source), and in observe mode a static source adds nothing
     to it. A source that is blocked or unavailable in the last 3 daily records (read from
     the earlier `page-watch/<day>.json` files; no extra state) is listed in `sources_escalated` and
-    printed as `ESCALATE`. `status` stays `ok` when one page was read, which is a floor; read
-    `sources_checked` against `sources_planned`. A Firecrawl channel that is down no longer hides
-    static sources read live in the same run.
+    printed as `ESCALATE`. `status` is `firecrawl-unavailable` whenever the Firecrawl channel is down,
+    even if a static source was read live in the same run, and it is `ok` only when a page was read
+    AND the Firecrawl channel is known to have answered (`firecrawl_answered` in the private detail, true
+    once Firecrawl replied to a robots.txt or page request of the run; the page itself may have been read
+    by a static fetcher). A run of static sources only, or one in which the run budget ended before the
+    first Firecrawl source was asked, or one whose detail is missing, is `skipped`: Firecrawl gave no
+    answer, which is not an outage and not a success. The freshness objective counts only `ok`, so a
+    static read cannot refresh it. The static read stays in `sources_checked`, `sources_observed`/
+    `static_checked` and the per-source `sources`; `degraded` says a planned source was not read.
+    `ok` is a floor (one page read); read `sources_checked` against `sources_planned`.
   - **Baseline migration.** A baseline records the extractor that made it (`"extractor":
     "static-1"`; a Firecrawl baseline has no key). The first successful read by a different
     extractor re-seeds the baseline instead of comparing text across extractors: every link already
