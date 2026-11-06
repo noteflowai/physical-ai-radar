@@ -278,12 +278,49 @@ class StaticWatchTests(TlsTestCase):
             fc.serve("https://www.unitree.com/news", firecrawl_page(
                 "[Unitree G2 launch](https://www.unitree.com/news/g2)\nOct 20, 2026 · A launch."))
             both = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=fc.url)
-        self.assertEqual((both.unavailable, both.checked), (False, ["unitree", "figure"]))
+        self.assertEqual((both.unavailable, both.checked, both.firecrawl_answered), (False, ["unitree", "figure"], True))
         self.assertEqual(status_of(both), "ok")
-        # No Firecrawl source configured at all: a static read is the floor it always was
+        # No Firecrawl source configured at all: Firecrawl was never asked, so a static read is not an answer (01, R-status-38c7-01)
         only_static = self.watch(sources(LISTING, static_mode="live"))
-        self.assertEqual((only_static.unavailable, only_static.checked), (False, ["figure"]))
-        self.assertEqual(status_of(only_static), "ok")
+        self.assertEqual((only_static.unavailable, only_static.checked, only_static.firecrawl_answered), (False, ["figure"], False))
+        self.assertEqual(status_of(only_static), "skipped")
+        # Firecrawl answering only to say a page failed is still an answer; a static page read beside it makes ok
+        with FakeFirecrawl() as fc:
+            fc.serve("https://www.unitree.com/robots.txt", ROBOTS_OPEN)
+            answered_bad = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=fc.url)
+        self.assertTrue(answered_bad.firecrawl_answered)
+        self.assertEqual(answered_bad.static_checked, ["figure"])
+        self.assertEqual(status_of(answered_bad), "ok")
+
+    def test_a_static_read_before_the_budget_ends_the_firecrawl_source_is_not_an_answer(self):
+        self.server.serve("/news", Reply(200, V1))
+        real, calls = fetch.time.monotonic, [0]
+
+        def clock() -> float:                       # time jumps after the first source: the Firecrawl source is never asked
+            calls[0] += 1
+            return real() + (10 ** 6 if calls[0] > 2 else 0)
+
+        result = self.watch(sources(LISTING, self.firecrawl_entry(), static_mode="live"), endpoint="http://127.0.0.1:9",
+                            patches=[patch.object(fetch.time, "monotonic", clock)])
+        self.assertEqual(result.checked, ["figure"])
+        self.assertEqual(result.sources["unitree"], {"fetcher": "firecrawl", "outcome": "not-attempted", "reason": "budget"})
+        self.assertEqual((result.unavailable, result.firecrawl_answered), (False, False))
+        self.assertEqual(status_of(result), "skipped")             # not `ok`, and not labelled an outage either
+
+    def test_missing_answer_evidence_cannot_make_the_freshness_status_ok(self):
+        """The consumer reads `status == ok` from the evidence file; a block without an affirmative Firecrawl answer must not
+        produce it, however it got that way (a static-only run, or a hand-over that dropped the detail)."""
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING, static_mode="live"))
+        block = {**result.summary(), **result.detail()}
+        for variant in (block, {**block, "firecrawl_answered": False}, {k: v for k, v in block.items() if k != "firecrawl_answered"},
+                        {**block, "firecrawl_answered": "yes"}, {**block, "firecrawl_answered": 1}):
+            self.assertNotEqual(cli.page_watch_status(variant), "ok", variant)
+        with tempfile.TemporaryDirectory() as tmp:
+            for detail in (result.detail(), {}, None):
+                path = cli.write_page_watch_evidence({"page_watch": result.summary()}, "2026-10-21", Path(tmp), detail=detail)
+                self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["status"], "skipped")
+        self.assertEqual(cli.page_watch_status({**block, "firecrawl_answered": True}), "ok")
 
     def test_a_run_of_only_firecrawl_sources_is_exactly_what_it_was(self):
         result = self.watch(sources(self.firecrawl_entry()), endpoint="http://127.0.0.1:9")
@@ -291,7 +328,7 @@ class StaticWatchTests(TlsTestCase):
         self.assertEqual(status_of(result), "firecrawl-unavailable")
         self.assertNotIn("planned", result.summary())
         self.assertNotIn("sources", result.summary())
-        self.assertEqual(result.detail(), {})
+        self.assertEqual(result.detail(), {"firecrawl_answered": False})       # nothing per source in a run without a static one
         self.assertEqual(self.server.accepted, 0)
 
     def test_firecrawl_and_static_sources_in_one_run(self):
@@ -687,7 +724,7 @@ class StaticWatchTests(TlsTestCase):
         result = self.watch(sources(LISTING, static_mode="live"))
         self.assertEqual((result.checked, result.static_checked), (["figure"], ["figure"]))
         self.assertEqual(result.observations[0]["mode"], "live")
-        self.assertEqual(status_of(result), "ok")
+        self.assertEqual(status_of(result), "skipped")                   # a static read alone is not a Firecrawl answer
 
     def test_observing_records_what_went_wrong_and_fails_nothing(self):
         challenge = "<html><head><title>Just a moment...</title></head><body><script src='/cdn-cgi/challenge-platform/x.js'></script></body></html>"
@@ -883,7 +920,7 @@ class StaticWatchTests(TlsTestCase):
                 contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(cli.main(["--date", "2026-10-21"]), 0)
             record = json.loads((Path(tmp) / "page-watch" / "2026-10-21.json").read_text(encoding="utf-8"))
-        self.assertEqual(record["status"], "ok")
+        self.assertEqual(record["status"], "skipped")       # only static sources: Firecrawl was never asked
         self.assertEqual(record["sources_planned"], 2)
         self.assertEqual(record["sources"]["figure"], {"fetcher": "static", "outcome": "checked", "reason": ""})
         self.assertEqual(record["sources"]["watch-iso"], {"fetcher": "static", "outcome": "unavailable", "reason": "http-5xx"})
@@ -919,7 +956,7 @@ class StaticWatchTests(TlsTestCase):
             record = json.loads(cli.write_page_watch_evidence({"page_watch": live.summary()}, "2026-10-21", Path(tmp),
                                                               detail=live.detail()).read_text())
             self.assertTrue(record["degraded"])
-            self.assertEqual(record["status"], "ok")
+            self.assertEqual(record["status"], "skipped")
             observed = self.watch(sources(LISTING, static_mode="observe"))
             record = json.loads(cli.write_page_watch_evidence({"page_watch": observed.summary()}, "2026-10-22", Path(tmp),
                                                               detail=observed.detail()).read_text())
@@ -1066,7 +1103,8 @@ class StaticWatchTests(TlsTestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = cli.write_page_watch_evidence(
                 {"page_watch": {"enabled": True, "attempted": ["a"], "checked": ["a"], "failed": [], "robots_skipped": [],
-                                "unavailable": False, "items": 0}}, "2026-10-21", Path(tmp))
+                                "unavailable": False, "items": 0}}, "2026-10-21", Path(tmp),
+                detail={"firecrawl_answered": True})
             record = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(record["status"], "ok")
         for key in ("sources", "sources_planned", "sources_blocked", "sources_unavailable", "sources_not_attempted"):

@@ -214,9 +214,13 @@ class RealRunEvidenceTests(unittest.TestCase):
 class StatusTests(unittest.TestCase):
     def test_status_table(self):
         block = {"enabled": True, "attempted": ["a", "b"], "checked": [], "failed": ["a"],
-                 "robots_skipped": ["b"], "unavailable": False}
+                 "robots_skipped": ["b"], "unavailable": False, "firecrawl_answered": True}
         self.assertEqual(cli.page_watch_status(block), "all-failed")
         self.assertEqual(cli.page_watch_status({**block, "checked": ["a"]}), "ok")
+        # a page read without an affirmative Firecrawl answer is not ok (ADR 027), whether the sign is false or missing
+        self.assertEqual(cli.page_watch_status({**block, "checked": ["a"], "firecrawl_answered": False}), "skipped")
+        self.assertEqual(cli.page_watch_status({k: v for k, v in block.items() if k != "firecrawl_answered"} | {"checked": ["a"]}),
+                         "skipped")
         self.assertEqual(cli.page_watch_status({**block, "unavailable": True}), "firecrawl-unavailable")
         self.assertEqual(cli.page_watch_status({**block, "enabled": False}), "skipped")
         self.assertEqual(cli.page_watch_status({**block, "attempted": []}), "skipped")
@@ -229,7 +233,7 @@ class StatusTests(unittest.TestCase):
             fetch = {"attempted": 12, "answered": 11, "failed": ["arxiv"], "unavailable": [],
                      "page_watch": {"enabled": True, "attempted": ["figure"], "checked": ["figure"],
                                     "failed": [], "robots_skipped": [], "unavailable": False}}
-            path = cli.write_page_watch_evidence(fetch, DAY, Path(tmp) / "pw")
+            path = cli.write_page_watch_evidence(fetch, DAY, Path(tmp) / "pw", detail={"firecrawl_answered": True})
             record = json.loads(path.read_text())
         self.assertEqual((record["status"], record["sources_checked"], record["sources_failed"]),
                          ("ok", 1, []))

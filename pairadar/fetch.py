@@ -1029,6 +1029,10 @@ class PageWatchResult:
     static_checked: list[str] = field(default_factory=list)
     # One record per static source of the run (what was seen, never content); written by the CLI outside the repository.
     observations: list[dict[str, Any]] = field(default_factory=list)
+    # True once the Firecrawl channel returned a reply to this run (a robots.txt reply or a page reply, whatever it said
+    # about the page). It is the affirmative evidence the freshness status needs; a run in which Firecrawl was never asked
+    # (no Firecrawl source, or the budget ended first) or did not answer leaves it False.
+    firecrawl_answered: bool = False
 
     def note(self, source: str, fetcher: str, outcome: str, reason: str = "", detail: str = "") -> None:
         self.sources[source] = {"fetcher": fetcher, "outcome": outcome, "reason": reason}
@@ -1044,12 +1048,14 @@ class PageWatchResult:
                 "unavailable": self.unavailable, "items": len(self.items)}
 
     def detail(self) -> dict[str, Any]:
-        """What the private freshness evidence adds, only in a run that has a static source: every planned source with its
-        fetcher, outcome and fixed reason code, and the static sources that were read live. Never published."""
-        if not self.planned:
-            return {}
-        return {"planned": list(self.planned), "sources": {k: dict(v) for k, v in self.sources.items()},
-                "static_checked": list(self.static_checked)}
+        """What the private freshness evidence adds. Always `firecrawl_answered`; in a run that has a static source also
+        every planned source with its fetcher, outcome and fixed reason code, and the static sources that were read live.
+        Never published."""
+        out: dict[str, Any] = {"firecrawl_answered": self.firecrawl_answered}
+        if self.planned:
+            out.update(planned=list(self.planned), sources={k: dict(v) for k, v in self.sources.items()},
+                       static_checked=list(self.static_checked))
+        return out
 
 
 def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str, Any],
@@ -1406,7 +1412,9 @@ def fetch_page_watch(config: Config, reference: date | None = None,
             result.note(entry["id"], "firecrawl", "not-attempted", "firecrawl-unavailable")
             continue
         try:
-            if not _robots_allows(settings, entry["url"], robots, strikes):
+            allowed = _robots_allows(settings, entry["url"], robots, strikes)
+            result.firecrawl_answered = True      # _robots_allows returns only after Firecrawl replied (or raises FirecrawlUnavailable)
+            if not allowed:
                 print(f"[fetch] page_watch skip {entry['id']}: robots.txt disallows {entry['url']}")
                 result.attempted.append(entry["id"])
                 result.robots_skipped.append(entry["id"])

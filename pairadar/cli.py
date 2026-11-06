@@ -379,11 +379,14 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
       a static source was read live in the same run: that read is in `static_checked` and the
       per-source evidence, but it is not the Firecrawl channel answering, and the freshness
       objective (ADR 027) is about the Firecrawl channel;
-    - "skipped": page_watch disabled, or no entry reached;
+    - "skipped": page_watch disabled, or no entry reached; also a run that read a page but has no
+      affirmative sign that the Firecrawl channel answered (`firecrawl_answered`, from the private
+      detail): Firecrawl was never asked (only static sources, or the run budget ended first) or the
+      sign is missing. Nothing is said about an outage in that case;
     - "all-failed": pages were attempted but none could be read (every page failed or
       was disallowed by robots.txt);
-    - "ok": at least one watched page was read and the Firecrawl channel did not report
-      itself unavailable.
+    - "ok": at least one watched page was read, the Firecrawl channel answered, and it did not
+      report itself unavailable. The page itself need not have come through Firecrawl.
 
     Only "ok" is success for the freshness objective (noteflow-auto radar-page-watch);
     every other value is a non-success outcome.
@@ -399,6 +402,10 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
         return "skipped"
     if not block.get("checked"):
         return "all-failed"
+    # The objective is about the Firecrawl channel (ADR 027): `ok` needs both a page read and an affirmative sign that
+    # Firecrawl answered. A static read alone does not say so, and a missing or unknown sign is not an answer.
+    if block.get("firecrawl_answered") is not True:
+        return "skipped"
     return "ok"
 
 
