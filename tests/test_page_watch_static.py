@@ -250,8 +250,40 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(result.checked, ["figure"])
                 self.assertEqual(result.sources["unitree"], {"fetcher": "firecrawl", "outcome": "not-attempted",
                                                              "reason": "firecrawl-unavailable"})
-                self.assertEqual(status_of(result), "ok")        # the floor: one page was read
+                self.assertEqual(status_of(result), "firecrawl-unavailable")   # a static read does not make Firecrawl answer
+                self.assertEqual(result.static_checked, ["figure"])           # and it stays visible
                 self.assertEqual(result.detail()["planned"], ["unitree", "figure"])
+
+    def test_the_status_combinations_of_the_freshness_objective(self):
+        """01 and 04 (11-06): the objective counts only `ok`, which needs the Firecrawl channel not to be down. A static
+        source read live must not turn a Firecrawl outage into `ok`; the static read stays in the evidence."""
+        self.server.serve("/news", Reply(200, V1))
+        down = "http://127.0.0.1:9"
+        # Firecrawl down, a static source read live
+        live = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=down)
+        self.assertEqual((live.unavailable, live.static_checked, live.checked), (True, ["figure"], ["figure"]))
+        self.assertEqual(status_of(live), "firecrawl-unavailable")
+        # Firecrawl down, the static source fails as well
+        self.server.serve("/news", Reply(500, "no"))
+        failed = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=down)
+        self.assertEqual((failed.static_checked, failed.checked), ([], []))
+        self.assertEqual(status_of(failed), "firecrawl-unavailable")
+        # Firecrawl down, a static source observed only
+        self.server.serve("/news", Reply(200, V1))
+        observed = self.watch(sources(self.firecrawl_entry(), LISTING), endpoint=down)
+        self.assertEqual(status_of(observed), "firecrawl-unavailable")
+        # Firecrawl answering and a page of it read, with a static source read as well: the contract as it was
+        with FakeFirecrawl() as fc:
+            fc.serve("https://www.unitree.com/robots.txt", ROBOTS_OPEN)
+            fc.serve("https://www.unitree.com/news", firecrawl_page(
+                "[Unitree G2 launch](https://www.unitree.com/news/g2)\nOct 20, 2026 · A launch."))
+            both = self.watch(sources(self.firecrawl_entry(), LISTING, static_mode="live"), endpoint=fc.url)
+        self.assertEqual((both.unavailable, both.checked), (False, ["unitree", "figure"]))
+        self.assertEqual(status_of(both), "ok")
+        # No Firecrawl source configured at all: a static read is the floor it always was
+        only_static = self.watch(sources(LISTING, static_mode="live"))
+        self.assertEqual((only_static.unavailable, only_static.checked), (False, ["figure"]))
+        self.assertEqual(status_of(only_static), "ok")
 
     def test_a_run_of_only_firecrawl_sources_is_exactly_what_it_was(self):
         result = self.watch(sources(self.firecrawl_entry()), endpoint="http://127.0.0.1:9")
@@ -418,7 +450,7 @@ class StaticWatchTests(TlsTestCase):
             path = cli.write_page_watch_evidence({"page_watch": result.summary()}, "2026-10-21", Path(tmp), detail=result.detail())
             text = path.read_text(encoding="utf-8")
         record = json.loads(text)
-        self.assertEqual(record["status"], "ok")
+        self.assertEqual(record["status"], "firecrawl-unavailable")    # Firecrawl is down; the static read below does not change that
         self.assertEqual(record["sources_checked"], 1)
         self.assertEqual(record["sources_planned"], 3)
         self.assertEqual(record["sources_unavailable"], ["watch-iso"])

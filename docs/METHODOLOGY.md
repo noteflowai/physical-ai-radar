@@ -157,9 +157,12 @@ Rules:
     shape (ids per outcome and nothing per source), and in observe mode a static source adds nothing
     to it. A source that is blocked or unavailable in the last 3 daily records (read from
     the earlier `page-watch/<day>.json` files; no extra state) is listed in `sources_escalated` and
-    printed as `ESCALATE`. `status` stays `ok` when one page was read, which is a floor; read
-    `sources_checked` against `sources_planned`. A Firecrawl channel that is down no longer hides
-    static sources read live in the same run.
+    printed as `ESCALATE`. `status` is `firecrawl-unavailable` whenever the Firecrawl channel is down,
+    even if a static source was read live in the same run: the freshness objective counts only `ok`,
+    and `ok` must not be reached by a static read while Firecrawl is out (the static read stays in
+    `sources_checked`, `sources_observed`/`static_checked` and the per-source `sources`; `degraded`
+    says a planned source was not read). A run with Firecrawl answering and one page read is `ok`,
+    which is a floor; read `sources_checked` against `sources_planned`.
   - **Baseline migration.** A baseline records the extractor that made it (`"extractor":
     "static-1"`; a Firecrawl baseline has no key). The first successful read by a different
     extractor re-seeds the baseline instead of comparing text across extractors: every link already

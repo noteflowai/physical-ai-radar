@@ -375,11 +375,15 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
 
     - "error": the radar run itself raised;
     - "firecrawl-unavailable": the local Firecrawl did not answer, or stopped answering
-      part way (the channel stopped, so not every page was looked at);
+      part way (the channel stopped, so not every page was looked at). This holds even when
+      a static source was read live in the same run: that read is in `static_checked` and the
+      per-source evidence, but it is not the Firecrawl channel answering, and the freshness
+      objective (ADR 027) is about the Firecrawl channel;
     - "skipped": page_watch disabled, or no entry reached;
     - "all-failed": pages were attempted but none could be read (every page failed or
       was disallowed by robots.txt);
-    - "ok": at least one watched page was read.
+    - "ok": at least one watched page was read and the Firecrawl channel did not report
+      itself unavailable.
 
     Only "ok" is success for the freshness objective (noteflow-auto radar-page-watch);
     every other value is a non-success outcome.
@@ -387,8 +391,9 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
     block = page_watch if isinstance(page_watch, dict) else {}
     if error:
         return "error"
-    # The Firecrawl channel being down is only the whole story when no static source was read in the same run.
-    if block.get("unavailable") and not block.get("static_checked"):
+    # Firecrawl being down is Firecrawl being down, whatever a static source read in the same run. It used to yield to
+    # `static_checked`, which turned the standing outage into "ok" the day a static source went live.
+    if block.get("unavailable"):
         return "firecrawl-unavailable"
     if not block.get("enabled") or not block.get("attempted"):
         return "skipped"
