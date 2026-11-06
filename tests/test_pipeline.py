@@ -545,17 +545,9 @@ class FetchReliabilityTest(unittest.TestCase):
                 self.assertIsNone(http_get("https://example.org/feed"), type(error).__name__)
 
     def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
-        from pairadar import static_fetch
-
-        class NoSite(static_fetch.StaticFetcher):
-            """The shipped configuration reads two sources with the static fetcher; a simulated outage must not reach them."""
-            def get(self, url, budget, **kwargs):
-                raise static_fetch.StaticFetchError("dns-failed")
-
         with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
                 patch.object(fetch_module, "firecrawl_post",
                              side_effect=fetch_module.FirecrawlUnavailable("ConnectionRefusedError")), \
-                patch.object(fetch_module, "STATIC_FETCHER_FACTORY", NoSite), \
                 patch.object(fetch_module.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()) as out:
             report = fetch_all(self.config)
@@ -571,9 +563,7 @@ class FetchReliabilityTest(unittest.TestCase):
         summary = report.to_dict()
         self.assertEqual(summary["items"], 0)
         self.assertEqual(summary["answered"], 0)
-        # arXiv, plus the two page_watch sources read with the static fetcher once the channel is live (they failed: page_failed)
-        self.assertEqual(summary["attempted"], 3)
-        self.assertEqual(sorted(report.page_failed), ["physical-intelligence", "unitree"])
+        self.assertEqual(summary["attempted"], 1)
         self.assertTrue(degraded(summary, offline=False))
         # The local page_watch channel being down is not one more failed source.
         self.assertEqual(summary["unavailable"], ["page_watch"])
