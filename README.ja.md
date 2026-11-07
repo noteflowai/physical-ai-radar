@@ -60,37 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-06
+### 本日のレーダー · 2026-11-07
 
-`生成時刻: 2026-11-05 23:40 UTC` ｜ `対象期間: 論文 2026-11-02 → 2026-11-06 · ブログ・報道 2026-10-07 → 2026-11-06 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-07 00:13 UTC` ｜ `対象期間: 論文 2026-11-03 → 2026-11-07 · ブログ・報道 2026-10-08 → 2026-11-07 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Asynchronous Robot Policies](https://arxiv.org/abs/2611.05155)**<br>`18%`&nbsp; `20%`<br><sub>エッジとリアルタイム · arXiv 2611.05155 · 2026‑11‑03</sub> |
-| 02<br>🔵&nbsp;`R` | **[Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs](https://arxiv.org/abs/2611.06710)**<br><sub>エッジとリアルタイム · arXiv 2611.06710 · 2026‑11‑04</sub> |
-| 03<br>🔵&nbsp;`R` | **[Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning](https://arxiv.org/abs/2611.05667)**<br>`44.0%`&nbsp; `70.3%`&nbsp; `57.8%`<br><sub>基盤モデル · arXiv 2611.05667 · 2026‑11‑03</sub> |
-| 04<br>🔵&nbsp;`R` | **[Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions](https://arxiv.org/abs/2611.04957)**<br>`14%`<br><sub>安全・権限・コンプライアンス · arXiv 2611.04957 · 2026‑11‑03</sub> |
-| 05<br>🟢&nbsp;`O` | **[LeRobot Release v0.7.0](https://github.com/huggingface/lerobot/releases/tag/v0.7.0)**<br><sub>データエンジン · LeRobot releases (GitHub) · 2026‑11‑05</sub> |
-| 06<br>🟢&nbsp;`O` | **[New NVIDIA Cosmos 3 Open Models for Interactive World Simulation](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑05</sub> |
-| 07<br>🟡&nbsp;`M` | **[How did Agility Robotics perform on its first day on the stock market?](https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/)**<br>`2%`<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑05</sub> |
-| 08<br>🟡&nbsp;`M` | **[Agility Robotics begins trading on Nasdaq](https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects](https://arxiv.org/abs/2611.07261)**<br>`96.4%`&nbsp; `98.0%`&nbsp; `88.8%`<br><sub>シミュレーションと評価 · arXiv 2611.07261 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction](https://arxiv.org/abs/2611.07712)**<br>`6.27 ms`<br><sub>エッジとリアルタイム · arXiv 2611.07712 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing](https://arxiv.org/abs/2611.08425)**<br>`30%`&nbsp; `86%`&nbsp; `21%`<br><sub>基盤モデル · arXiv 2611.08425 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[La-JEPA: Compact Robot Policies with Latent World Modeling](https://arxiv.org/abs/2611.08156)**<br><sub>基盤モデル · arXiv 2611.08156 · 2026‑11‑05</sub> |
+| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.0](https://github.com/google-deepmind/mujoco/releases/tag/4.0.0)**<br><sub>シミュレーションと評価 · MuJoCo releases (GitHub) · 2026‑11‑06</sub> |
+| 06<br>🟡&nbsp;`M` | **[Boston Dynamics built Stretch Gen 2 for reliable, consistent performance](https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑06</sub> |
+| 07<br>🟡&nbsp;`M` | **[Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up](https://spectrum.ieee.org/video-friday-home-cable-robot)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑06</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **Asynchronous Robot Policies** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-2. **Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interaction…** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-3. **Correct Robots Before They Make Mistakes** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
-4. **Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated…** — 査読前のプレプリント。本文に実機での結果、定量データあり。認証や導入承認に何が変わるかに注目。
-5. **LeRobot Release v0.7.0** — 当事者による一次発表。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-6. **New NVIDIA Cosmos 3 Open Models for Interactive World Simulation** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-7. **How did Agility Robotics perform on its first day on the stock market?** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
-8. **Agility Robotics begins trading on Nasdaq** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **AffectiveVLA** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+4. **La-JEPA** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **MuJoCo 4.0.0** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-06.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-07.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -62,37 +62,35 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-06
+### 今日雷达 · 2026-11-07
 
-`生成时间: 2026-11-05 23:40 UTC` ｜ `统计窗口: 论文 2026-11-02 → 2026-11-06 · 博客与报道 2026-10-07 → 2026-11-06 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-07 00:13 UTC` ｜ `统计窗口: 论文 2026-11-03 → 2026-11-07 · 博客与报道 2026-10-08 → 2026-11-07 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Asynchronous Robot Policies](https://arxiv.org/abs/2611.05155)**<br>`18%`&nbsp; `20%`<br><sub>边缘与实时性 · arXiv 2611.05155 · 2026‑11‑03</sub> |
-| 02<br>🔵&nbsp;`R` | **[Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interactions Across GPUs](https://arxiv.org/abs/2611.06710)**<br><sub>边缘与实时性 · arXiv 2611.06710 · 2026‑11‑04</sub> |
-| 03<br>🔵&nbsp;`R` | **[Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning](https://arxiv.org/abs/2611.05667)**<br>`44.0%`&nbsp; `70.3%`&nbsp; `57.8%`<br><sub>基座模型 · arXiv 2611.05667 · 2026‑11‑03</sub> |
-| 04<br>🔵&nbsp;`R` | **[Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions](https://arxiv.org/abs/2611.04957)**<br>`14%`<br><sub>安全、权限与合规 · arXiv 2611.04957 · 2026‑11‑03</sub> |
-| 05<br>🟢&nbsp;`O` | **[LeRobot Release v0.7.0](https://github.com/huggingface/lerobot/releases/tag/v0.7.0)**<br><sub>数据引擎 · LeRobot releases (GitHub) · 2026‑11‑05</sub> |
-| 06<br>🟢&nbsp;`O` | **[New NVIDIA Cosmos 3 Open Models for Interactive World Simulation](https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑05</sub> |
-| 07<br>🟡&nbsp;`M` | **[How did Agility Robotics perform on its first day on the stock market?](https://www.therobotreport.com/how-did-agility-robotics-perform-on-its-first-day-on-the-stock-market/)**<br>`2%`<br><sub>本体与供应链 · The Robot Report · 2026‑11‑05</sub> |
-| 08<br>🟡&nbsp;`M` | **[Agility Robotics begins trading on Nasdaq](https://www.therobotreport.com/agility-robotics-begins-trading-on-nasdaq/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects](https://arxiv.org/abs/2611.07261)**<br>`96.4%`&nbsp; `98.0%`&nbsp; `88.8%`<br><sub>仿真与评测 · arXiv 2611.07261 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction](https://arxiv.org/abs/2611.07712)**<br>`6.27 ms`<br><sub>边缘与实时性 · arXiv 2611.07712 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing](https://arxiv.org/abs/2611.08425)**<br>`30%`&nbsp; `86%`&nbsp; `21%`<br><sub>基座模型 · arXiv 2611.08425 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[La-JEPA: Compact Robot Policies with Latent World Modeling](https://arxiv.org/abs/2611.08156)**<br><sub>基座模型 · arXiv 2611.08156 · 2026‑11‑05</sub> |
+| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.0](https://github.com/google-deepmind/mujoco/releases/tag/4.0.0)**<br><sub>仿真与评测 · MuJoCo releases (GitHub) · 2026‑11‑06</sub> |
+| 06<br>🟡&nbsp;`M` | **[Boston Dynamics built Stretch Gen 2 for reliable, consistent performance](https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑06</sub> |
+| 07<br>🟡&nbsp;`M` | **[Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up](https://spectrum.ieee.org/video-friday-home-cable-robot)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑11‑06</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **Asynchronous Robot Policies** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-2. **Where Is VLA Inference Time Spent? Bottlenecks and Optimization Interaction…** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Correct Robots Before They Make Mistakes** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-4. **Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated…** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注它对认证和上线审批意味着什么。
-5. **LeRobot Release v0.7.0** — 一手官方发布；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-6. **New NVIDIA Cosmos 3 Open Models for Interactive World Simulation** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **How did Agility Robotics perform on its first day on the stock market?** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
-8. **Agility Robotics begins trading on Nasdaq** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **AffectiveVLA** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **La-JEPA** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+5. **MuJoCo 4.0.0** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-06.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-07.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

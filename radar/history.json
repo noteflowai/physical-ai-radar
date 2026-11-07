@@ -147,16 +147,6 @@
       "date": "2026-10-07",
       "count": 8,
       "lanes": 4,
-      "urls": [
-        "https://arxiv.org/abs/2610.08618",
-        "https://arxiv.org/abs/2610.07756",
-        "https://arxiv.org/abs/2610.07696",
-        "https://arxiv.org/abs/2610.07946",
-        "https://arxiv.org/abs/2610.05024",
-        "https://arxiv.org/abs/2610.08444",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/07/news043.html",
-        "https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo"
-      ],
       "failed": [
         "tri"
       ],
@@ -944,6 +934,41 @@
           "hot": "huggingface-blog:e8690f74b67f"
         },
         "unmet": []
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "count": 7,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2611.07261",
+        "https://arxiv.org/abs/2611.07712",
+        "https://arxiv.org/abs/2611.08425",
+        "https://arxiv.org/abs/2611.08156",
+        "https://github.com/google-deepmind/mujoco/releases/tag/4.0.0",
+        "https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance",
+        "https://spectrum.ieee.org/video-friday-home-cable-robot"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "github-mujoco:1516eb0c44e8",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
       }
     }
   ]
