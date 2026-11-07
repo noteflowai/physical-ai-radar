@@ -23,6 +23,7 @@ from pairadar import cli, fetch, health
 
 ROOT = Path(__file__).resolve().parent.parent
 DAY = "2026-10-21"
+STATIC_IDS = ["physical-intelligence", "unitree"]
 
 DRIVER = r'''
 import json, socket, sys, time
@@ -35,7 +36,16 @@ socket.socket.connect = no_network
 socket.create_connection = no_network
 time.sleep = lambda seconds: None
 
-from pairadar import cli, fetch
+from pairadar import cli, fetch, static_fetch
+
+
+class NoSite(static_fetch.StaticFetcher):
+    # the shipped configuration reads two sources with the static fetcher; a scenario must never reach them
+    def get(self, url, budget, **kwargs):
+        raise static_fetch.StaticFetchError("dns-failed")
+
+
+fetch.STATIC_FETCHER_FACTORY = NoSite
 
 FEED = (b'<?xml version="1.0"?><rss><channel><item><title>A humanoid robot learns to walk</title>'
         b'<link>https://deepmind.google/a</link><pubDate>Tue, 20 Oct 2026 10:00:00 GMT</pubDate>'
@@ -125,9 +135,14 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.state = Path(tmp.name) / "state"
         self.evidence = self.state / "page-watch"
 
-    def main(self, scenario, day=DAY):
+    def main(self, scenario, day=DAY, hosted=False):
         env = {**os.environ, "PAIRADAR_STATE_DIR": str(self.state), "PYTHONDONTWRITEBYTECODE": "1"}
         env.pop("RADAR_FIRECRAWL_URL", None)
+        # The hosted runner skips the static sources by design (fetch_page_watch reads GITHUB_ACTIONS): a scenario states which
+        # it is, so its result never depends on where the suite happens to run.
+        env.pop("GITHUB_ACTIONS", None)
+        if hosted:
+            env["GITHUB_ACTIONS"] = "true"
         done = subprocess.run([sys.executable, "-c", DRIVER, scenario, "--no-readme", "--date", day],
                               cwd=self.repo, env=env, capture_output=True, text=True, timeout=300)
         return done
@@ -145,17 +160,25 @@ class RealRunEvidenceTests(unittest.TestCase):
         record = self.record()
         self.assertEqual((record["schema"], record["channel"], record["status"], record["day"]),
                          ("pairadar-page-watch-v1", "page_watch", "firecrawl-unavailable", DAY))
-        self.assertEqual((record["sources_checked"], record["sources_failed"]), (0, []))
+        self.assertEqual((record["sources_checked"], record["sources_failed"]), (0, STATIC_IDS))     # the two live static sources failed too
         self.assertRegex(record["finished_at"], r"\+00:00$")
         self.assertEqual(stat.S_IMODE(self.evidence.stat().st_mode), 0o700)
         self.assertEqual(list(self.evidence.glob(".*.tmp")), [])
         run = json.loads((self.repo / "radar" / "history.json").read_text())["runs"][-1]
-        self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], []))
+        self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], STATIC_IDS))
         self.assertFalse((self.repo / "radar" / "page-watch.json").exists(),
                          "a round that read no page writes no baseline")
 
+    def test_a_hosted_runner_reads_no_static_source_and_the_status_does_not_change(self):
+        done = self.main("unavailable", hosted=True)
+        self.assertExit0(done)
+        record = self.record()
+        self.assertEqual((record["status"], record["sources_checked"], record["sources_failed"]), ("firecrawl-unavailable", 0, []))
+        run = json.loads((self.repo / "radar" / "history.json").read_text())["runs"][-1]
+        self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], []))     # not-attempted is not a failure
+
     def test_all_pages_failing_is_all_failed_and_never_struggling(self):
-        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources) if e.get("fetcher", "firecrawl") == "firecrawl"]
+        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources)]
         for day in ("2026-10-19", "2026-10-20", DAY):
             self.assertExit0(self.main("all-failed", day))
         record = self.record()

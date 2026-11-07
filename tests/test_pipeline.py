@@ -545,9 +545,24 @@ class FetchReliabilityTest(unittest.TestCase):
                 self.assertIsNone(http_get("https://example.org/feed"), type(error).__name__)
 
     def test_total_outage_is_reported_by_the_fetch_report(self) -> None:
+        from pairadar import static_fetch
+
+        # fetch_page_watch skips the static sources on a hosted runner (GITHUB_ACTIONS=true, by design); this test is about
+        # the host, so it must give the same answer wherever it runs.
+        environment = patch.dict(os.environ)
+        environment.start()
+        self.addCleanup(environment.stop)
+        os.environ.pop("GITHUB_ACTIONS", None)
+
+        class NoSite(static_fetch.StaticFetcher):
+            """The shipped configuration reads two sources with the static fetcher; a simulated outage must not reach them."""
+            def get(self, url, budget, **kwargs):
+                raise static_fetch.StaticFetchError("dns-failed")
+
         with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
                 patch.object(fetch_module, "firecrawl_post",
                              side_effect=fetch_module.FirecrawlUnavailable("ConnectionRefusedError")), \
+                patch.object(fetch_module, "STATIC_FETCHER_FACTORY", NoSite), \
                 patch.object(fetch_module.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()) as out:
             report = fetch_all(self.config)
@@ -563,10 +578,35 @@ class FetchReliabilityTest(unittest.TestCase):
         summary = report.to_dict()
         self.assertEqual(summary["items"], 0)
         self.assertEqual(summary["answered"], 0)
-        self.assertEqual(summary["attempted"], 1)
+        # arXiv, plus the two page_watch sources read with the static fetcher once the channel is live (they failed: page_failed)
+        self.assertEqual(summary["attempted"], 3)
+        self.assertEqual(sorted(report.page_failed), ["physical-intelligence", "unitree"])
         self.assertTrue(degraded(summary, offline=False))
         # The local page_watch channel being down is not one more failed source.
         self.assertEqual(summary["unavailable"], ["page_watch"])
+
+    def test_a_hosted_runner_attempts_no_static_source(self) -> None:
+        # The hosted fallback workflow runs this code outside the host's egress guard: static sources are host-only, so with
+        # GITHUB_ACTIONS=true they are recorded as not attempted and no static fetcher is even created.
+        environment = patch.dict(os.environ, {"GITHUB_ACTIONS": "true"})
+        environment.start()
+        self.addCleanup(environment.stop)
+
+        def never():
+            raise AssertionError("a static fetcher was created on a hosted runner")
+
+        with patch.object(fetch_module, "http_get", lambda url, *a, **k: None), \
+                patch.object(fetch_module, "firecrawl_post",
+                             side_effect=fetch_module.FirecrawlUnavailable("ConnectionRefusedError")), \
+                patch.object(fetch_module, "STATIC_FETCHER_FACTORY", never), \
+                patch.object(fetch_module.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()):
+            report = fetch_all(self.config)
+        summary = report.to_dict()
+        self.assertEqual(summary["attempted"], 1)            # arXiv only
+        self.assertEqual(report.page_failed, [])
+        self.assertEqual(summary["unavailable"], ["page_watch"])
+        self.assertTrue(degraded(summary, offline=False))
 
     def test_degraded_only_fires_on_a_real_outage(self) -> None:
         outage = FetchReport(attempted=["arxiv"], failed=["arxiv"]).to_dict()

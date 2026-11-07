@@ -386,14 +386,14 @@ class StaticWatchTests(TlsTestCase):
     # shows up in review too, not only a change of the id set.
     APPROVED_URLS = {"physical-intelligence": "https://www.pi.website/blog", "unitree": "https://www.unitree.com/news/"}
 
-    def test_the_repository_ships_exactly_the_approved_static_sources_in_observe_mode(self):
+    def test_the_repository_ships_exactly_the_approved_static_sources_in_live_mode(self):
         shipped = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
         self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], self.APPROVED_STATIC)
         self.assertEqual({e["id"]: e["url"] for e in shipped["page_watch"] if e.get("fetcher") == "static"}, self.APPROVED_URLS)
         self.assertEqual(fetch.page_watch_problems(shipped), [])                     # each carries the sanity settings static needs
-        self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "observe")   # written out, not left to the default
+        self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "live")      # written out, not left to the default
         config = Config(sources=shipped, taxonomy={}, glossary={}, baseline={})
-        self.assertEqual(fetch.page_watch_settings(config)["static_mode"], "observe")
+        self.assertEqual(fetch.page_watch_settings(config)["static_mode"], "live")
         for entry in shipped["page_watch"]:
             if entry.get("fetcher") == "static":
                 parsed = static_fetch.parse_url(entry["url"])                             # inside the supported-path policy
