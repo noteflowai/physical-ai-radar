@@ -80,13 +80,13 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **AffectiveVLA** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-4. **La-JEPA** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-5. **MuJoCo 4.0.0** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — `AI 起草` 想用 RL 做线缆类柔性物体关键点定位的团队，可以把这篇自报预印本当作起点，但页面引用的 96.4%、98.0%、88.8% 都是仿真成功率，页面虽标注有真机实验，却没有引用真机成功率。
+2. **AffectiveVLA** — `AI 起草` 做握手、碰拳、拥抱等人形机器人社交触碰的团队，可留意作者自报的 p95 推理延迟 6.27 ms：意图推断或许能放进控制回路，但页面没有闭环结果，需在自己的硬件和控制频率下复测。
+3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — `AI 起草` 在分布偏移下部署 VLA、担心意外失败损坏设备或伤人的团队，可以评估在潜在表示上加故障探测器：这篇自报预印本称最多 86% 的运行有效，基线至多 21%，但页面摘录未说明具体衡量的是什么。
+4. **La-JEPA** — `AI 起草` 如果你的部署瓶颈是建立在大型生成式 transformer 上的 VLA 或世界动作模型带来的推理成本，这篇预印本正是针对这一绑定，但页面没有给出量化数据或真机结果，暂时只适合跟踪，不足以支撑换架构。
+5. **MuJoCo 4.0.0** — `AI 起草` 仿真里遇到快速运动的凸几何体在单个时间步内穿过薄障碍物的团队，升级后可以先试新增的 speculative contacts 开关，再决定是否要靠缩小时间步来解决穿透。
+6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — `AI 起草` 评估 Stretch 的物流运营方应把这篇当作对厂商高管说法的二手转述：页面只给出两年半的研发周期，没有可靠性或性能数据，采购前应向 Boston Dynamics 索取实测数据。
+7. **Video Friday** — `AI 起草` 做家用机器人的团队可以把房间尺度的绳驱构型列入备选形态，但页面能看到的只有编辑个人的赞赏，没有任何性能或成本信息，不足以作为选型依据。
 
 </details>
 
