@@ -135,9 +135,14 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.state = Path(tmp.name) / "state"
         self.evidence = self.state / "page-watch"
 
-    def main(self, scenario, day=DAY):
+    def main(self, scenario, day=DAY, hosted=False):
         env = {**os.environ, "PAIRADAR_STATE_DIR": str(self.state), "PYTHONDONTWRITEBYTECODE": "1"}
         env.pop("RADAR_FIRECRAWL_URL", None)
+        # The hosted runner skips the static sources by design (fetch_page_watch reads GITHUB_ACTIONS): a scenario states which
+        # it is, so its result never depends on where the suite happens to run.
+        env.pop("GITHUB_ACTIONS", None)
+        if hosted:
+            env["GITHUB_ACTIONS"] = "true"
         done = subprocess.run([sys.executable, "-c", DRIVER, scenario, "--no-readme", "--date", day],
                               cwd=self.repo, env=env, capture_output=True, text=True, timeout=300)
         return done
@@ -163,6 +168,14 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], STATIC_IDS))
         self.assertFalse((self.repo / "radar" / "page-watch.json").exists(),
                          "a round that read no page writes no baseline")
+
+    def test_a_hosted_runner_reads_no_static_source_and_the_status_does_not_change(self):
+        done = self.main("unavailable", hosted=True)
+        self.assertExit0(done)
+        record = self.record()
+        self.assertEqual((record["status"], record["sources_checked"], record["sources_failed"]), ("firecrawl-unavailable", 0, []))
+        run = json.loads((self.repo / "radar" / "history.json").read_text())["runs"][-1]
+        self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], []))     # not-attempted is not a failure
 
     def test_all_pages_failing_is_all_failed_and_never_struggling(self):
         ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources)]
