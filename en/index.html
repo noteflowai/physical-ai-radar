@@ -98,7 +98,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07261" rel="noopener" target="_blank">An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects</a></h3>
 <p class="figure"><strong>96.4%</strong><span class="context">“simulation success rates of 96.4% for single-point tracking”</span></p><p class="chips"><span class="chip">98.0%</span><span class="chip">88.8%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams weighing RL for keypoint positioning of cables and other deformable linear objects get a self-reported starting point, but the quoted 96.4%, 98.0% and 88.8% are simulation success rates; the page flags real-robot experiments without quoting a real-robot rate.</p>
 <p class="excerpt">Deformable linear object (DLO) manipulation is challenging because high-dimensional configurations, nonlinear contact dynamics, and diverse material and geometric properties produce a broad range of object responses that are both…</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07712" rel="noopener" target="_blank">AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction</a></h3>
 <p class="figure"><strong>6.27 ms</strong><span class="context">“p95 inference latency of 6.27 ms”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> For humanoid teams building handshakes, fist bumps or hugs, the authors&#x27; self-reported p95 inference latency of 6.27 ms suggests intent inference could sit inside the control loop, but the page shows no closed-loop result, so re-measure on your own hardware.</p>
 <p class="excerpt">Social touch interactions, such as handshakes, fist bumps, and hugs, require humanoid robots to infer human intent, generate contact-rich motions, and maintain safe physical contact.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08425" rel="noopener" target="_blank">Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing</a></h3>
 <p class="figure"><strong>30%</strong><span class="context">“rates by up to 30% over the strongest”</span></p><p class="chips"><span class="chip">86%</span><span class="chip">21%</span><span class="chip">44%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Teams deploying VLAs under distribution shift, where unanticipated failures can damage equipment or endanger people, could evaluate a latent-space failure probe: this self-reported preprint claims validity in up to 86% of runs versus at most 21% for baselines, though the quoted snippets leave the exact metric unclear.</p>
 <p class="excerpt">Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08156" rel="noopener" target="_blank">La-JEPA: Compact Robot Policies with Latent World Modeling</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results, closed-loop results or figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If inference cost from VLAs or world-action models built on large generative transformers is what blocks your deployment, this preprint targets exactly that coupling, but the page gives no figures or real-robot results, so track it rather than switch architectures.</p>
 <p class="excerpt">World-action models adapt pretrained video generators, and vision-language-action models build on pretrained vision-language backbones; both tie policy architecture and inference cost to large transformers designed for generation rather…</p>
 <footer>
 <span class="source">arXiv 2611.08156 · 2026-11-05</span>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://github.com/google-deepmind/mujoco/releases/tag/4.0.0" rel="noopener" target="_blank">MuJoCo 4.0.0</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If fast-moving convex geoms in your simulation tunnel through thin obstacles within a single timestep, this first-party release adds a speculative-contacts enable flag worth testing before you fall back on shrinking the timestep.</p>
 <p class="excerpt">Version 4.0.0 (November 6, 2026) Significant new features 89daf8d19 Added the speculative enable flag for speculative contacts to prevent fast-moving convex geoms from tunneling through thin obstacles within a single timestep.</p>
 <footer>
 <span class="source">MuJoCo releases (GitHub) · 2026-11-06</span>
@@ -173,7 +173,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/" rel="noopener" target="_blank">Boston Dynamics built Stretch Gen 2 for reliable, consistent performance</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Logistics operators evaluating Stretch should read this as secondary reporting of a vendor executive&#x27;s account: the page offers a two-and-a-half-year development timeline but no reliability or performance figures, so ask Boston Dynamics for measured data before buying.</p>
 <p class="excerpt">Brian Donnelly, the VP and GM of logistics robotics at Boston Dynamics, said the new version of Stretch has been in the works for two and a half years.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-06</span>
@@ -187,7 +187,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-home-cable-robot" rel="noopener" target="_blank">Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Home-robot builders may want to note the room-scale cable-driven form factor, but the visible evidence is an editor&#x27;s personal enthusiasm with no performance or cost information, which is not enough to base a design choice on.</p>
 <p class="excerpt">This is such a novel and underrated form factor for a household robot. I absolutely love it.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-06</span>

@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-07",
+  "generated": "2026-11-07 13:41 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.07261": {
+      "zh": "想用 RL 做线缆类柔性物体关键点定位的团队，可以把这篇自报预印本当作起点，但页面引用的 96.4%、98.0%、88.8% 都是仿真成功率，页面虽标注有真机实验，却没有引用真机成功率。",
+      "en": "Teams weighing RL for keypoint positioning of cables and other deformable linear objects get a self-reported starting point, but the quoted 96.4%, 98.0% and 88.8% are simulation success rates; the page flags real-robot experiments without quoting a real-robot rate.",
+      "ja": "ケーブルなど線状柔軟物のキーポイント位置決めに RL を検討するチームにとって、この自己報告のプレプリントは出発点になるが、引用された 96.4%、98.0%、88.8% はシミュレーションでの成功率で、実機実験の表示はあってもページに実機の成功率は引用されていない。"
+    },
+    "https://arxiv.org/abs/2611.07712": {
+      "zh": "做握手、碰拳、拥抱等人形机器人社交触碰的团队，可留意作者自报的 p95 推理延迟 6.27 ms：意图推断或许能放进控制回路，但页面没有闭环结果，需在自己的硬件和控制频率下复测。",
+      "en": "For humanoid teams building handshakes, fist bumps or hugs, the authors' self-reported p95 inference latency of 6.27 ms suggests intent inference could sit inside the control loop, but the page shows no closed-loop result, so re-measure on your own hardware.",
+      "ja": "握手やフィストバンプ、ハグといったヒューマノイドの社会的接触を扱うチームにとって、著者自己報告の p95 推論遅延 6.27 ms は意図推定を制御ループ内に置ける可能性を示すが、ページに閉ループの結果はなく、自社ハードウェアでの再測定が前提となる。"
+    },
+    "https://arxiv.org/abs/2611.08425": {
+      "zh": "在分布偏移下部署 VLA、担心意外失败损坏设备或伤人的团队，可以评估在潜在表示上加故障探测器：这篇自报预印本称最多 86% 的运行有效，基线至多 21%，但页面摘录未说明具体衡量的是什么。",
+      "en": "Teams deploying VLAs under distribution shift, where unanticipated failures can damage equipment or endanger people, could evaluate a latent-space failure probe: this self-reported preprint claims validity in up to 86% of runs versus at most 21% for baselines, though the quoted snippets leave the exact metric unclear.",
+      "ja": "分布シフト下で VLA を運用し、想定外の失敗による設備損傷や人への危険を懸念するチームは、潜在表現上の故障予測プローブを検討に値する。ただし「最大 86% の実行で有効、ベースラインは最大 21%」という著者自己報告の数値が何を測ったものかは、引用箇所からは読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.08156": {
+      "zh": "如果你的部署瓶颈是建立在大型生成式 transformer 上的 VLA 或世界动作模型带来的推理成本，这篇预印本正是针对这一绑定，但页面没有给出量化数据或真机结果，暂时只适合跟踪，不足以支撑换架构。",
+      "en": "If inference cost from VLAs or world-action models built on large generative transformers is what blocks your deployment, this preprint targets exactly that coupling, but the page gives no figures or real-robot results, so track it rather than switch architectures.",
+      "ja": "生成向けの大規模 transformer を土台にした VLA や世界行動モデルの推論コストが配備の障害になっているなら、このプレプリントはまさにその結び付きを問題にしているが、ページに定量データも実機結果もないため、現時点では方針転換の根拠ではなく追跡対象にとどまる。"
+    },
+    "https://github.com/google-deepmind/mujoco/releases/tag/4.0.0": {
+      "zh": "仿真里遇到快速运动的凸几何体在单个时间步内穿过薄障碍物的团队，升级后可以先试新增的 speculative contacts 开关，再决定是否要靠缩小时间步来解决穿透。",
+      "en": "If fast-moving convex geoms in your simulation tunnel through thin obstacles within a single timestep, this first-party release adds a speculative-contacts enable flag worth testing before you fall back on shrinking the timestep.",
+      "ja": "高速に動く凸ジオメトリが 1 タイムステップ内に薄い障害物をすり抜ける問題を抱えるシミュレーションでは、この公式リリースで加わった speculative contacts の有効化フラグを、タイムステップを縮める前にまず試す価値がある。"
+    },
+    "https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance": {
+      "zh": "评估 Stretch 的物流运营方应把这篇当作对厂商高管说法的二手转述：页面只给出两年半的研发周期，没有可靠性或性能数据，采购前应向 Boston Dynamics 索取实测数据。",
+      "en": "Logistics operators evaluating Stretch should read this as secondary reporting of a vendor executive's account: the page offers a two-and-a-half-year development timeline but no reliability or performance figures, so ask Boston Dynamics for measured data before buying.",
+      "ja": "Stretch を検討する物流事業者は、これをメーカー幹部の発言を伝える二次報道として読むべきで、ページにあるのは 2 年半という開発期間だけで信頼性や性能の数値はなく、導入判断の前に Boston Dynamics へ実測データを求める必要がある。"
+    },
+    "https://spectrum.ieee.org/video-friday-home-cable-robot": {
+      "zh": "做家用机器人的团队可以把房间尺度的绳驱构型列入备选形态，但页面能看到的只有编辑个人的赞赏，没有任何性能或成本信息，不足以作为选型依据。",
+      "en": "Home-robot builders may want to note the room-scale cable-driven form factor, but the visible evidence is an editor's personal enthusiasm with no performance or cost information, which is not enough to base a design choice on.",
+      "ja": "家庭用ロボットの開発者にとって部屋規模のケーブル駆動という形態は候補として記録しておく価値があるが、ページで確認できるのは編集者個人の好意的な感想だけで、性能やコストの情報はなく、設計判断の根拠にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

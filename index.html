@@ -98,7 +98,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07261" rel="noopener" target="_blank">An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects</a></h3>
 <p class="figure"><strong>96.4%</strong><span class="context">“simulation success rates of 96.4% for single-point tracking”</span></p><p class="chips"><span class="chip">98.0%</span><span class="chip">88.8%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 想用 RL 做线缆类柔性物体关键点定位的团队，可以把这篇自报预印本当作起点，但页面引用的 96.4%、98.0%、88.8% 都是仿真成功率，页面虽标注有真机实验，却没有引用真机成功率。</p>
 <p class="excerpt">Deformable linear object (DLO) manipulation is challenging because high-dimensional configurations, nonlinear contact dynamics, and diverse material and geometric properties produce a broad range of object responses that are both…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07712" rel="noopener" target="_blank">AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction</a></h3>
 <p class="figure"><strong>6.27 ms</strong><span class="context">“p95 inference latency of 6.27 ms”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 做握手、碰拳、拥抱等人形机器人社交触碰的团队，可留意作者自报的 p95 推理延迟 6.27 ms：意图推断或许能放进控制回路，但页面没有闭环结果，需在自己的硬件和控制频率下复测。</p>
 <p class="excerpt">Social touch interactions, such as handshakes, fist bumps, and hugs, require humanoid robots to infer human intent, generate contact-rich motions, and maintain safe physical contact.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08425" rel="noopener" target="_blank">Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing</a></h3>
 <p class="figure"><strong>30%</strong><span class="context">“rates by up to 30% over the strongest”</span></p><p class="chips"><span class="chip">86%</span><span class="chip">21%</span><span class="chip">44%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在分布偏移下部署 VLA、担心意外失败损坏设备或伤人的团队，可以评估在潜在表示上加故障探测器：这篇自报预印本称最多 86% 的运行有效，基线至多 21%，但页面摘录未说明具体衡量的是什么。</p>
 <p class="excerpt">Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08156" rel="noopener" target="_blank">La-JEPA: Compact Robot Policies with Latent World Modeling</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你的部署瓶颈是建立在大型生成式 transformer 上的 VLA 或世界动作模型带来的推理成本，这篇预印本正是针对这一绑定，但页面没有给出量化数据或真机结果，暂时只适合跟踪，不足以支撑换架构。</p>
 <p class="excerpt">World-action models adapt pretrained video generators, and vision-language-action models build on pretrained vision-language backbones; both tie policy architecture and inference cost to large transformers designed for generation rather…</p>
 <footer>
 <span class="source">arXiv 2611.08156 · 2026-11-05</span>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://github.com/google-deepmind/mujoco/releases/tag/4.0.0" rel="noopener" target="_blank">MuJoCo 4.0.0</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 仿真里遇到快速运动的凸几何体在单个时间步内穿过薄障碍物的团队，升级后可以先试新增的 speculative contacts 开关，再决定是否要靠缩小时间步来解决穿透。</p>
 <p class="excerpt">Version 4.0.0 (November 6, 2026) Significant new features 89daf8d19 Added the speculative enable flag for speculative contacts to prevent fast-moving convex geoms from tunneling through thin obstacles within a single timestep.</p>
 <footer>
 <span class="source">MuJoCo releases (GitHub) · 2026-11-06</span>
@@ -173,7 +173,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/" rel="noopener" target="_blank">Boston Dynamics built Stretch Gen 2 for reliable, consistent performance</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估 Stretch 的物流运营方应把这篇当作对厂商高管说法的二手转述：页面只给出两年半的研发周期，没有可靠性或性能数据，采购前应向 Boston Dynamics 索取实测数据。</p>
 <p class="excerpt">Brian Donnelly, the VP and GM of logistics robotics at Boston Dynamics, said the new version of Stretch has been in the works for two and a half years.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-06</span>
@@ -187,7 +187,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-home-cable-robot" rel="noopener" target="_blank">Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 做家用机器人的团队可以把房间尺度的绳驱构型列入备选形态，但页面能看到的只有编辑个人的赞赏，没有任何性能或成本信息，不足以作为选型依据。</p>
 <p class="excerpt">This is such a novel and underrated form factor for a household robot. I absolutely love it.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-06</span>
