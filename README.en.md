@@ -60,35 +60,33 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-07
+### Today's radar · 2026-11-08
 
-`Generated: 2026-11-07 00:13 UTC` ｜ `Window: papers 2026-11-03 → 2026-11-07 · posts 2026-10-08 → 2026-11-07 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-07 23:40 UTC` ｜ `Window: papers 2026-11-04 → 2026-11-08 · posts 2026-10-09 → 2026-11-08 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects](https://arxiv.org/abs/2611.07261)**<br>`96.4%`&nbsp; `98.0%`&nbsp; `88.8%`<br><sub>Simulation & evaluation · arXiv 2611.07261 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction](https://arxiv.org/abs/2611.07712)**<br>`6.27 ms`<br><sub>Edge & real-time · arXiv 2611.07712 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing](https://arxiv.org/abs/2611.08425)**<br>`30%`&nbsp; `86%`&nbsp; `21%`<br><sub>Foundation models · arXiv 2611.08425 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[La-JEPA: Compact Robot Policies with Latent World Modeling](https://arxiv.org/abs/2611.08156)**<br><sub>Foundation models · arXiv 2611.08156 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.0](https://github.com/google-deepmind/mujoco/releases/tag/4.0.0)**<br><sub>Simulation & evaluation · MuJoCo releases (GitHub) · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics built Stretch Gen 2 for reliable, consistent performance](https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑06</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up](https://spectrum.ieee.org/video-friday-home-cable-robot)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>Simulation & evaluation · arXiv 2611.07411 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>Data engine · arXiv 2611.08372 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>Edge & real-time · arXiv 2611.08100 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>Foundation models · arXiv 2611.07513 · 2026‑11‑05</sub> |
+| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>Simulation & evaluation · Hugging Face Blog · 2026‑11‑06</sub> |
+| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑06</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — `AI draft` Teams weighing RL for keypoint positioning of cables and other deformable linear objects get a self-reported starting point, but the quoted 96.4%, 98.0% and 88.8% are simulation success rates; the page flags real-robot experiments without quoting a real-robot rate.
-2. **AffectiveVLA** — `AI draft` For humanoid teams building handshakes, fist bumps or hugs, the authors' self-reported p95 inference latency of 6.27 ms suggests intent inference could sit inside the control loop, but the page shows no closed-loop result, so re-measure on your own hardware.
-3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — `AI draft` Teams deploying VLAs under distribution shift, where unanticipated failures can damage equipment or endanger people, could evaluate a latent-space failure probe: this self-reported preprint claims validity in up to 86% of runs versus at most 21% for baselines, though the quoted snippets leave the exact metric unclear.
-4. **La-JEPA** — `AI draft` If inference cost from VLAs or world-action models built on large generative transformers is what blocks your deployment, this preprint targets exactly that coupling, but the page gives no figures or real-robot results, so track it rather than switch architectures.
-5. **MuJoCo 4.0.0** — `AI draft` If fast-moving convex geoms in your simulation tunnel through thin obstacles within a single timestep, this first-party release adds a speculative-contacts enable flag worth testing before you fall back on shrinking the timestep.
-6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — `AI draft` Logistics operators evaluating Stretch should read this as secondary reporting of a vendor executive's account: the page offers a two-and-a-half-year development timeline but no reliability or performance figures, so ask Boston Dynamics for measured data before buying.
-7. **Video Friday** — `AI draft` Home-robot builders may want to note the room-scale cable-driven form factor, but the visible evidence is an editor's personal enthusiasm with no performance or cost information, which is not enough to base a design choice on.
+1. **Kinematic Hypothesis Context** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **MOMASPLAT** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **Concertina** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+5. **ToyBlocks** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-07.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-08.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

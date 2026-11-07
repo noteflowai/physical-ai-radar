@@ -60,35 +60,33 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-07
+### 本日のレーダー · 2026-11-08
 
-`生成時刻: 2026-11-07 00:13 UTC` ｜ `対象期間: 論文 2026-11-03 → 2026-11-07 · ブログ・報道 2026-10-08 → 2026-11-07 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-07 23:40 UTC` ｜ `対象期間: 論文 2026-11-04 → 2026-11-08 · ブログ・報道 2026-10-09 → 2026-11-08 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects](https://arxiv.org/abs/2611.07261)**<br>`96.4%`&nbsp; `98.0%`&nbsp; `88.8%`<br><sub>シミュレーションと評価 · arXiv 2611.07261 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction](https://arxiv.org/abs/2611.07712)**<br>`6.27 ms`<br><sub>エッジとリアルタイム · arXiv 2611.07712 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing](https://arxiv.org/abs/2611.08425)**<br>`30%`&nbsp; `86%`&nbsp; `21%`<br><sub>基盤モデル · arXiv 2611.08425 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[La-JEPA: Compact Robot Policies with Latent World Modeling](https://arxiv.org/abs/2611.08156)**<br><sub>基盤モデル · arXiv 2611.08156 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.0](https://github.com/google-deepmind/mujoco/releases/tag/4.0.0)**<br><sub>シミュレーションと評価 · MuJoCo releases (GitHub) · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics built Stretch Gen 2 for reliable, consistent performance](https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑06</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up](https://spectrum.ieee.org/video-friday-home-cable-robot)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>シミュレーションと評価 · arXiv 2611.07411 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>データエンジン · arXiv 2611.08372 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>エッジとリアルタイム · arXiv 2611.08100 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>基盤モデル · arXiv 2611.07513 · 2026‑11‑05</sub> |
+| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑06</sub> |
+| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑06</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–06</summary>
 
-1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — `AI 下書き` ケーブルなど線状柔軟物のキーポイント位置決めに RL を検討するチームにとって、この自己報告のプレプリントは出発点になるが、引用された 96.4%、98.0%、88.8% はシミュレーションでの成功率で、実機実験の表示はあってもページに実機の成功率は引用されていない。
-2. **AffectiveVLA** — `AI 下書き` 握手やフィストバンプ、ハグといったヒューマノイドの社会的接触を扱うチームにとって、著者自己報告の p95 推論遅延 6.27 ms は意図推定を制御ループ内に置ける可能性を示すが、ページに閉ループの結果はなく、自社ハードウェアでの再測定が前提となる。
-3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — `AI 下書き` 分布シフト下で VLA を運用し、想定外の失敗による設備損傷や人への危険を懸念するチームは、潜在表現上の故障予測プローブを検討に値する。ただし「最大 86% の実行で有効、ベースラインは最大 21%」という著者自己報告の数値が何を測ったものかは、引用箇所からは読み取れない。
-4. **La-JEPA** — `AI 下書き` 生成向けの大規模 transformer を土台にした VLA や世界行動モデルの推論コストが配備の障害になっているなら、このプレプリントはまさにその結び付きを問題にしているが、ページに定量データも実機結果もないため、現時点では方針転換の根拠ではなく追跡対象にとどまる。
-5. **MuJoCo 4.0.0** — `AI 下書き` 高速に動く凸ジオメトリが 1 タイムステップ内に薄い障害物をすり抜ける問題を抱えるシミュレーションでは、この公式リリースで加わった speculative contacts の有効化フラグを、タイムステップを縮める前にまず試す価値がある。
-6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — `AI 下書き` Stretch を検討する物流事業者は、これをメーカー幹部の発言を伝える二次報道として読むべきで、ページにあるのは 2 年半という開発期間だけで信頼性や性能の数値はなく、導入判断の前に Boston Dynamics へ実測データを求める必要がある。
-7. **Video Friday** — `AI 下書き` 家庭用ロボットの開発者にとって部屋規模のケーブル駆動という形態は候補として記録しておく価値があるが、ページで確認できるのは編集者個人の好意的な感想だけで、性能やコストの情報はなく、設計判断の根拠にはならない。
+1. **Kinematic Hypothesis Context** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **MOMASPLAT** — 査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **Concertina** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **ToyBlocks** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-07.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-08.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

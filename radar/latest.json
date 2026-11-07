@@ -1,28 +1,29 @@
 {
-  "date": "2026-11-07",
-  "generated": "2026-11-07 00:13 UTC",
-  "window": "papers 2026-11-03 → 2026-11-07 · posts 2026-10-08 → 2026-11-07 (UTC)",
+  "date": "2026-11-08",
+  "generated": "2026-11-07 23:40 UTC",
+  "window": "papers 2026-11-04 → 2026-11-08 · posts 2026-10-09 → 2026-11-08 (UTC)",
   "window_detail": {
-    "day": "2026-11-07",
-    "papers_from": "2026-11-03",
-    "posts_from": "2026-10-08",
+    "day": "2026-11-08",
+    "papers_from": "2026-11-04",
+    "posts_from": "2026-10-09",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.07261",
-      "title": "An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects",
-      "url": "https://arxiv.org/abs/2611.07261",
-      "publisher": "arXiv 2611.07261",
+      "id": "arxiv:2611.07411",
+      "title": "Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks",
+      "url": "https://arxiv.org/abs/2611.07411",
+      "publisher": "arXiv 2611.07411",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-05",
       "lane": "simeval",
-      "score": 3.59,
+      "score": 3.205,
       "numbers": [
-        "96.4%",
-        "98.0%",
-        "88.8%"
+        "23.9%",
+        "56%",
+        "23.2%",
+        "22.8%"
       ],
       "signals": [
         "numbers",
@@ -30,136 +31,123 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Deformable linear object (DLO) manipulation is challenging because high-dimensional configurations, nonlinear contact dynamics, and diverse material and geometric properties produce a broad range of object responses that are both difficult to model and data-intensive to learn. This work studies reinforcement learning for planar manipulation of a one-end-grasped DLO, focusing on training efficiency, observation design, robustness, and zero-shot sim-to-real transfer. We compare three Proximal Policy Optimization training stacks and find that the GPU-parallel MuJoCo Playground stack enables faster convergence and more consistent performance than CPU-based alternatives under the same wall-clock budget. Relative keypoint observations and an asymmetric actor-critic formulation further improve learning efficiency. Policies trained with observation noise, delay, domain randomization, and disturbances achieve simulation success rates of 96.4% for single-point tracking, 98.0% for disturbance recovery, and 88.8% for two-point tracking. Using markerless RGB-D keypoint estimation, the policies transfer without real-world fine-tuning, succeeding in 9/10, 10/10, and 8/10 physical trials, respectively."
+      "summary": "Robots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck. Existing video codecs spend bits on content the receiver could predict: the robot's own motion. We introduce the kinematic hypothesis context, a zero-rate conditioning signal that both ends build from joint states, the robot model and the camera calibration. Ego-motion homographies, per-link robot reprojections, an end-effector plane and a background memory warp the previous reconstruction into hypotheses that condition a learned video codec. We prove that history-only and global-pose conditioning with a limited receptive field cannot access this information under large motion, and that coding gains become task gains at the policy's success cliff. On LIBERO, the context saves 23.9% bit rate over a capacity-matched history-conditioned codec and 40-56% over x264, x265 and SVT-AV1, and needs 23.2% fewer bits than DCVC-RT at equal policy action deviation; trained to lower rates, it matches DCVC-RT in PSNR. In closed loop at equal rate, OpenVLA-OFT success nearly doubles from 22.8% to 43.1% at 6 kbps (72.6% with lower-rate training, 23.6 points above DCVC-RT), pi_0.5 success rises from 55.5% to 77.4%, and the gain grows under packet loss. The context transfers across three codec hosts and to real robot data."
     },
     {
-      "id": "arxiv:2611.07712",
-      "title": "AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction",
-      "url": "https://arxiv.org/abs/2611.07712",
-      "publisher": "arXiv 2611.07712",
+      "id": "arxiv:2611.08372",
+      "title": "MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation",
+      "url": "https://arxiv.org/abs/2611.08372",
+      "publisher": "arXiv 2611.08372",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-05",
+      "lane": "data",
+      "score": 2.852,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base pose used during demonstration collection due to navigation uncertainty, localization drift, and environmental constraints. Recent approaches use novel-view synthesis (NVS) to augment demonstrations with unseen viewpoints, but they assume static scenes and therefore fail to re-render the manipulated object during the post-contact interaction phase, leaving the most critical parts of the demonstration unaugmented. We present MOMASPLAT, a novel-view demonstration augmentation framework for mobile manipulation that synthesizes full manipulation trajectories from unseen robot base poses, including dynamic object interactions. Our key insight is that standard MoMa data collection naturally provides the multiview observations needed to reconstruct both the static scene and the manipulated object in 3D. MOMASPLAT combines 3D Gaussian Splatting, feed-forward 3D foundation models, and kinematics-based action retargeting to separately reconstruct the scene and manipulated object, render them from novel viewpoints, and generate geometrically consistent synthetic demonstrations paired with transformed actions. We evaluate MOMASPLAT on five real-world mobile manipulation tasks involving both rigid and articulated objects across three scenes, and validate the fidelity of its synthesized demonstrations against ground truth in simulation. MOMASPLAT substantially improves robustness to unseen base poses, more than doubling the average success rate of the strongest baseline and maintaining non-trivial success at large base displacements where all baselines fail, while reducing the need for largescale real-world data collection."
+    },
+    {
+      "id": "arxiv:2611.08100",
+      "title": "An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers",
+      "url": "https://arxiv.org/abs/2611.08100",
+      "publisher": "arXiv 2611.08100",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-05",
       "lane": "edge",
-      "score": 3.36,
+      "score": 2.807,
       "numbers": [
-        "6.27 ms"
+        "25 ms"
       ],
       "signals": [
         "numbers",
-        "real_robot",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "Social touch interactions, such as handshakes, fist bumps, and hugs, require humanoid robots to infer human intent, generate contact-rich motions, and maintain safe physical contact. We present AffectiveVLA, an intent-gated Vision-Language-Action (VLA) pipeline deployed on a Unitree G1 humanoid with dexterous hands. A lightweight RGB-based model recognizes interaction intent from two onboard cameras and converts it into a language prompt for the VLA policy. Low-confidence predictions suppress motion execution, reducing unintended activations. During physical contact, interaction-specific compliance profiles adjust arm impedance, while an independent voice-triggered mechanism initiates a latched safe-stop procedure. Using VR teleoperation, we collected approximately 1,300 multimodal interaction episodes and fine-tuned four VLA models: GR00T, RLDX-1, Being-H0.5, and UnifoLM-VLA-0. On-robot evaluation identifies GR00T as the best-performing standalone model. Integrating intent recognition increases its macro-F1 score from 0.75 to 0.90, while the intent model achieves a p95 inference latency of 6.27 ms. These results demonstrate that explicit intent gating improves the reliability of VLA-based social interaction without compromising real-time operation."
-    },
-    {
-      "id": "arxiv:2611.08425",
-      "title": "Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing",
-      "url": "https://arxiv.org/abs/2611.08425",
-      "publisher": "arXiv 2611.08425",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-05",
-      "lane": "foundation",
-      "score": 3.2,
-      "numbers": [
-        "30%",
-        "86%",
-        "21%",
-        "44%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
         "open_release",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people. Deploying VLAs in real-world systems therefore requires a runtime monitor that is timely, calibrated, and informative while being efficient enough to run on the edge. Existing methods fail to fulfill these requirements. We present VLA-Tug, a lightweight probe over the latent layers of a VLA backbone that improves early failure detection and bounds the missed-detection and false-alarm rates, with minimal inference overhead. We show that supervising on the pre-failure segment of a trajectory increases early failure detection at matched false-positive rates by up to 30% over the strongest learned baseline. Under shift to unseen tasks, the bounds on missed-detection and false-alarm rates remain valid in up to 86% of runs, versus at most 21% for baselines. Unlike existing methods, VLA-Tug predicts the failure mode to enable corrective actions, raising top-3 accuracy on unseen tasks by up to 44% over a majority baseline. VLA-Tug enables real-time monitoring where the well-timed and informative probe supports lightweight steering that improves task success. We release a dataset of 3,180 annotated manipulation episodes to support future work on latent failure detection in VLAs at https://vla-tug.github.io."
+      "summary": "Vision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources. We present an open-source ROS 2 stack for following directional arrows, reaching a terminal cone and returning autonomously to the start. It connects YOLOv8n detection and geometric direction, range and bearing estimation with RGB-D SLAM, wheel-inertial state estimation, kinematics-aware planning, behavior-tree mission management and STM32 actuation. Standard interfaces separate reusable autonomy from the hardware layer; a proportional path-following plugin supports low-speed rover motion. Public resources include software, configuration, a labeled dataset, trained weights and evaluation logs. On 478 held-out images, the detector achieves mAP@0.5 of 0.720 under the Ultralytics evaluator and outperforms a classical OpenCV baseline under a shared evaluation protocol. The reported perception latency is 25 ms on a Jetson Orin NX. Three missions, one indoor and two outdoor, demonstrate marker-guided navigation and autonomous return without operator motion commands or reported collisions. Field results document integration failures and corrective choices; repeated instrumented trials remain necessary to quantify physical navigation errors and reliability."
     },
     {
-      "id": "arxiv:2611.08156",
-      "title": "La-JEPA: Compact Robot Policies with Latent World Modeling",
-      "url": "https://arxiv.org/abs/2611.08156",
-      "publisher": "arXiv 2611.08156",
+      "id": "arxiv:2611.07513",
+      "title": "Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model",
+      "url": "https://arxiv.org/abs/2611.07513",
+      "publisher": "arXiv 2611.07513",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-05",
       "lane": "foundation",
-      "score": 2.95,
-      "numbers": [],
-      "signals": [],
+      "score": 2.8,
+      "numbers": [
+        "0.21%",
+        "16.5%",
+        "35.1%",
+        "98.15%"
+      ],
+      "signals": [
+        "numbers",
+        "open_release"
+      ],
       "heat": 0.0,
-      "summary": "World-action models adapt pretrained video generators, and vision-language-action models build on pretrained vision-language backbones; both tie policy architecture and inference cost to large transformers designed for generation rather than control. It remains unclear how much these generation-oriented choices affect control. In this work, we introduce Latent Action JEPA (La-JEPA), a compact world-action model whose policy transformer is trained from scratch in the feature space of a pretrained V-JEPA 2.1 encoder. Following Fast-WAM, La-JEPA learns to predict future features jointly with actions during training and generates only actions at inference. Among policies without embodied pretraining, La-JEPA achieves state-of-the-art performance in clean and randomized RoboTwin 2.0 scenes and on LIBERO-Plus with correct instructions, while using far fewer parameters than the strongest competing policies. It runs substantially faster than Fast-WAM at comparable performance and outperforms the closest JEPA-based methods, LeapBot-WA and JEPA-WAM, on LIBERO-Plus and RoboTwin 2.0 without their pretrained policy backbones. On four real-robot tasks, its average success is comparable to pi0.5 and above non-embodied-pretrained baselines. Through a design study of the choices behind La-JEPA, we show that JEPA features outperform video VAE latents, most clearly out of distribution, and that training-time future prediction choices significantly impact the policy even when future prediction is skipped at inference. We correct the LIBERO-Plus instructions, as the officially released evaluator corrupts them for most variants, and re-evaluate several strong open baselines. Without a generative pretrained policy backbone, La-JEPA is better and faster than far larger policies, suggesting that robot foundation models may benefit from architectures designed for control rather than inherited from generation."
+      "summary": "Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable correspondence to physical displacements, or delegating continuous trajectory generation to a separate action expert whose gradients compete with or are blocked from updating the VLM backbone. We argue that manipulation and cognition should instead be embodied in the same model, shifting from a decoupled VLA to an Embodied Vision-Language Model (eVLM). We introduce Concertina, an eVLM that places continuous trajectory representation, blockwise generation, and physical-coordinate supervision directly on the computation and parameter path of a shared diffusion VLM backbone. Each control timestep is encoded as one continuous latent action token in the backbone hidden space, and the shared Transformer reconstructs temporally ordered action blocks via the same corrupt-and-reconstruct operator used for multimodal pretraining. Active action projections account for only 0.21% of parameters in the 4.46B model with zero separate action-generator layers, compared with 16.5%-35.1% dedicated action-expert capacity in representative continuous VLAs. Using our proposed Action Interface Audit, we confirm that cross-time trajectory coupling emerges in the middle and late layers of the shared backbone rather than at the action interfaces. On standard benchmarks, Concertina achieves 98.15% average success on regular LIBERO, 85.9% on the 10,030-task LIBERO-Plus benchmark, and 4.142 average completed chain length on CALVIN ABC-D. Code: https://github.com/lose4578/Concertina Hugging Face: https://huggingface.co/collections/Traly/concertina"
     },
     {
-      "id": "github-mujoco:1516eb0c44e8",
-      "title": "MuJoCo 4.0.0",
-      "url": "https://github.com/google-deepmind/mujoco/releases/tag/4.0.0",
-      "publisher": "MuJoCo releases (GitHub)",
-      "source_id": "github-mujoco",
+      "id": "huggingface-blog:be1ba71e55b7",
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "url": "https://huggingface.co/blog/allenai/toyblocks",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
       "evidence": "O",
       "published": "2026-11-06",
       "lane": "simeval",
-      "score": 1.837,
+      "score": 1.516,
       "numbers": [],
       "signals": [],
-      "heat": 0.065,
-      "summary": "Version 4.0.0 (November 6, 2026) Significant new features 89daf8d19 Added the speculative enable flag for speculative contacts to prevent fast-moving convex geoms from tunneling through thin obstacles within a single timestep. On the right, one step of conservative advancement between two rotating boxes. See model/speculative/ for examples. Added elasto-plasticity, with stateful plastic deformation stored in mjData.plastic ( mjSTATE_PLASTIC ): e140c026f Ideal elasto-plasticity for joint ( springyield ) and tendon ( spatial , fixed ) springs (left). 0c0f63b3f , c39fe6f02 , e3bd72742 , 7cb32488b Continuum elasto-plasticity ( yield ) for 2D and 3D flexes , with separate stretching and bending yield strains for 2D shells, volumetric-deviatoric (von Mises $J_2$ ) stretching and 2D shell bending return mapping (right). See model/plastic/ for examples. abaf8d518 Split the Python distribution into mujoco-core (minimal bindings and C library depending only on numpy ), mujoco-studio (Studio and Filament renderer bindings), and mujoco (default package installing both). When upgrading from a pre-split mujoco installation with pip , uninstall first ( pip uninstall -y mujoco && pip install mujoco ) or run pip install --force-reinstall --no-deps mujoco mujoco-core mujoco-studio after upgrading so pip does not remove files moved to mujoco-core . To switch an existing mujoco installation to core-only, run pip uninstall -y mujoco mujoco-studio && pip install --force-reinstall --no-deps mujoco-core . Note Updated documentation for the split Python packages ( mujoco , mujoco-core , mujoco-studio ) and prebuilt OpenUSD wheels ( mujoco-usd / mujoco[usd] ) landed shortly after the 4.0.0 release ( 39ddbb61a ). Please refer to the latest docs for Python bindings and OpenUSD rather than stable or 4.0.0 . Engine Warning Breaking changes a65050166 Changed the semantics of sidesite : the tendon now goes around the geom the same way as the path from the first endpoint, through the side site, to …"
+      "heat": 0.038,
+      "summary": ""
     },
     {
-      "id": "the-robot-report:1e81754f53eb",
-      "title": "Boston Dynamics built Stretch Gen 2 for reliable, consistent performance",
-      "url": "https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "leiphone:38b10cf37cee",
+      "title": "上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026",
+      "url": "https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
       "evidence": "M",
       "published": "2026-11-06",
-      "lane": "hardware",
-      "score": 1.182,
+      "lane": "foundation",
+      "score": 1.15,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Brian Donnelly, the VP and GM of logistics robotics at Boston Dynamics, said the new version of Stretch has been in the works for two and a half years."
-    },
-    {
-      "id": "ieee-spectrum-robotics:d3518bca05b9",
-      "title": "Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up",
-      "url": "https://spectrum.ieee.org/video-friday-home-cable-robot",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-11-06",
-      "lane": "hardware",
-      "score": 1.132,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "This is such a novel and underrated form factor for a household robot. I absolutely love it. Stringman is all yours for US $795. [ Neufangled Robotics ] As of yesterday, Agility Robotics is publicly trading as AGLT. [ Agility Robotics ] Happy Halloween from Flexiv Robotics! Okay WHAT. [ Flexiv ] Nothing hides from SCUTL. Not even the paranormal. [ Ground Control Robotics ] Thanks, Dan! Happy Halloween from HEBI Robotics! We asked ourselves if you can carve a pumpkin using nothing but a T-Series arm and a drill originally designed to run an auger. The answer is yes, so long as you don’t care too much about accuracy. Basic pathing commands running off a laptop, stability provided by a quick connection to Treadward. Happy Halloween, HEBI fans! [ HEBI ] Something strange has been happening at KIMLAB. Our snacks kept disappearing… and we finally caught the culprit. Meet GG, our new lab friend. GG is a character robot inspired by the Ggeomeoksali from Netflix’s “The East Palace.” GG sneaks around for snacks, eats them, sleeps most of the time, begs everyone for more food, and leans on whoever is nearby. Cute, comforting, and a good friend. But GG is still a gwi-mae… so who knows what else it can do. [ Kinetic Intelligent Machine Lab ] Happy Halloween from Dusty Robotics! [ Dusty ] Finally, a robot with a butt. [ JSK Lab ] Thanks, Shunnosuke! Any drone can crash into a tree once. This drone can crash into a tree MORE than once. [ ETH Zurich ] Lume is a robotic floor lamp that moves around your home, helps with everyday chores, and returns to being a beautiful lamp when it’s done. [ Syncere ] If we’re going to …"
+      "summary": "物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。把这些能力带入工厂、实验室和城市设施，意味着智能系统必须进一步面对物体、空间、力与时间，在持续变化的环境中作出判断，并承担行动的实际后果。 AI 如何从处理数字信息走向可靠地参与物理过程，正是 “ 物 理智能 ” 要回答的问题。 这一步跨越的难度，很难仅用模型参数或推理能力来衡量。机器人拿起一只杯子，既要识别位置和形状，也要判断接触、摩擦与受力；实验设备执行一次操作，既要理解任务，还要满足精度、时延和安全约束。 网页操作失误可以刷新，物理世界中的碰撞、损坏却未必能够撤销。感知是否及时、动作是否可控、失败后能否恢复，都会直接影响系统能否真正投入使用。 在今年 CNCC 首日面向博士生、青年学者的 Tutorial 专题论坛环节中， 上海交通大学计算机学院教授、上海人工智能实验室物理智能中心负责人张伟楠 发表了题为《物理智能及关键技术概述》的演讲。在他看来，基础模型、世界模型、强化学习与高吞吐仿真、虚实迁移，以及硬件成本的下降，正在共同推动物理智能从研究愿景走向可行实践。与此同时，真实交互数据昂贵、环境只能被局部观测、长时程预测误差累积等问题，仍然制约着能力的扩展。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 11,
+    "foundation": 12,
     "data": 5,
-    "training": 1,
+    "training": 0,
     "simeval": 12,
     "edge": 10,
     "safety": 1,
     "systems": 3,
-    "hardware": 9
+    "hardware": 7
   },
   "evidence_mix": {
-    "O": 5,
+    "O": 6,
     "R": 28,
-    "M": 19
+    "M": 16
   },
   "fetch": {
-    "items": 669,
-    "attempted": 23,
-    "answered": 23,
-    "failed": [],
+    "items": 557,
+    "attempted": 25,
+    "answered": 24,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -183,15 +171,14 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 28,
+      "hn_stories": 26,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 68,
+      "arxiv": 57,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -203,15 +190,20 @@
       "mit-news-robotics": 50,
       "techcrunch-robotics": 12,
       "robohub": 75,
-      "qbitai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1
     },
     "page_watch": {
       "enabled": true,
-      "attempted": [],
-      "checked": [],
+      "attempted": [
+        "physical-intelligence",
+        "unitree"
+      ],
+      "checked": [
+        "physical-intelligence",
+        "unitree"
+      ],
       "failed": [],
       "robots_skipped": [],
       "unavailable": true,

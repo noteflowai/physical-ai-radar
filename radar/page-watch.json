@@ -1,0 +1,118 @@
+{
+  "schema": "pairadar-page-watch-baseline-2",
+  "sources": {
+    "physical-intelligence": {
+      "digest": "348843b0e9dfffbb2d67491932a9582404ceecbb613ea34a15e5269dc07aca55",
+      "since": "2026-11-08",
+      "changed": "2026-11-08",
+      "links": [
+        {
+          "url": "https://www.pi.website/blog/api-beta",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/pi07",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/partner",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/olympics",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/pistar06",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/pi05",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/openpi",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.pi.website/blog/pi0",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        }
+      ],
+      "extractor": "static-1",
+      "link_count": 8
+    },
+    "unitree": {
+      "digest": "d51a83a543b34cc55d7198fbda43c9ad348c7d40a2a4fd74dfa4bf059b936ac8",
+      "since": "2026-11-08",
+      "changed": "2026-11-08",
+      "links": [
+        {
+          "url": "https://www.unitree.com/news/38",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/44",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/42",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/40",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/33",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/31",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/29",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/27",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/26",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/25",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        },
+        {
+          "url": "https://www.unitree.com/news/24",
+          "first_seen": "2026-11-08",
+          "seeded": true
+        }
+      ],
+      "extractor": "static-1",
+      "link_count": 11
+    }
+  }
+}

@@ -62,35 +62,33 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-07
+### 今日雷达 · 2026-11-08
 
-`生成时间: 2026-11-07 00:13 UTC` ｜ `统计窗口: 论文 2026-11-03 → 2026-11-07 · 博客与报道 2026-10-08 → 2026-11-07 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-07 23:40 UTC` ｜ `统计窗口: 论文 2026-11-04 → 2026-11-08 · 博客与报道 2026-10-09 → 2026-11-08 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects](https://arxiv.org/abs/2611.07261)**<br>`96.4%`&nbsp; `98.0%`&nbsp; `88.8%`<br><sub>仿真与评测 · arXiv 2611.07261 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[AffectiveVLA: Safe and Intent-Aware VLA Control for Human-Humanoid Social Interaction](https://arxiv.org/abs/2611.07712)**<br>`6.27 ms`<br><sub>边缘与实时性 · arXiv 2611.07712 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing](https://arxiv.org/abs/2611.08425)**<br>`30%`&nbsp; `86%`&nbsp; `21%`<br><sub>基座模型 · arXiv 2611.08425 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[La-JEPA: Compact Robot Policies with Latent World Modeling](https://arxiv.org/abs/2611.08156)**<br><sub>基座模型 · arXiv 2611.08156 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.0](https://github.com/google-deepmind/mujoco/releases/tag/4.0.0)**<br><sub>仿真与评测 · MuJoCo releases (GitHub) · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[Boston Dynamics built Stretch Gen 2 for reliable, consistent performance](https://www.therobotreport.com/boston-dynamics-built-stretch-gen-2-for-reliable-consistent-performance/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑06</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: Room-Scale Cable-Driven Home Robot Tidies Up](https://spectrum.ieee.org/video-friday-home-cable-robot)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>仿真与评测 · arXiv 2611.07411 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>数据引擎 · arXiv 2611.08372 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>边缘与实时性 · arXiv 2611.08100 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>基座模型 · arXiv 2611.07513 · 2026‑11‑05</sub> |
+| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑06</sub> |
+| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑06</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **An Empirical Study of Reinforcement Learning for Keypoint Positioning of De…** — `AI 起草` 想用 RL 做线缆类柔性物体关键点定位的团队，可以把这篇自报预印本当作起点，但页面引用的 96.4%、98.0%、88.8% 都是仿真成功率，页面虽标注有真机实验，却没有引用真机成功率。
-2. **AffectiveVLA** — `AI 起草` 做握手、碰拳、拥抱等人形机器人社交触碰的团队，可留意作者自报的 p95 推理延迟 6.27 ms：意图推断或许能放进控制回路，但页面没有闭环结果，需在自己的硬件和控制频率下复测。
-3. **Failure Prediction and Classification in Vision-Language-Action Models Via…** — `AI 起草` 在分布偏移下部署 VLA、担心意外失败损坏设备或伤人的团队，可以评估在潜在表示上加故障探测器：这篇自报预印本称最多 86% 的运行有效，基线至多 21%，但页面摘录未说明具体衡量的是什么。
-4. **La-JEPA** — `AI 起草` 如果你的部署瓶颈是建立在大型生成式 transformer 上的 VLA 或世界动作模型带来的推理成本，这篇预印本正是针对这一绑定，但页面没有给出量化数据或真机结果，暂时只适合跟踪，不足以支撑换架构。
-5. **MuJoCo 4.0.0** — `AI 起草` 仿真里遇到快速运动的凸几何体在单个时间步内穿过薄障碍物的团队，升级后可以先试新增的 speculative contacts 开关，再决定是否要靠缩小时间步来解决穿透。
-6. **Boston Dynamics built Stretch Gen 2 for reliable, consistent performance** — `AI 起草` 评估 Stretch 的物流运营方应把这篇当作对厂商高管说法的二手转述：页面只给出两年半的研发周期，没有可靠性或性能数据，采购前应向 Boston Dynamics 索取实测数据。
-7. **Video Friday** — `AI 起草` 做家用机器人的团队可以把房间尺度的绳驱构型列入备选形态，但页面能看到的只有编辑个人的赞赏，没有任何性能或成本信息，不足以作为选型依据。
+1. **Kinematic Hypothesis Context** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **MOMASPLAT** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **Concertina** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
+5. **ToyBlocks** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-07.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-08.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

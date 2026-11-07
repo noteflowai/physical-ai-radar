@@ -13,6 +13,236 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07411",
+      "url": "https://arxiv.org/abs/2611.07411",
+      "title": "Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.07411 · 2026-11-05<br><b>Key numbers</b>: 23.9% · 56% · 23.2% · 22.8%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Robots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.07411 · 2026-11-05\nKey numbers: 23.9% · 56% · 23.2% · 22.8%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nRobots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck.\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "Robots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck.",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.07411"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "arxiv:2611.07411",
+        "url": "https://arxiv.org/abs/2611.07411",
+        "title": "Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks",
+        "publisher": "arXiv 2611.07411",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [
+          "23.9%",
+          "56%",
+          "23.2%",
+          "22.8%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Robots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08372",
+      "url": "https://arxiv.org/abs/2611.08372",
+      "title": "MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.08372 · 2026-11-05<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2611.08372 · 2026-11-05\nSignals: closed-loop success reported · real-robot experiments\n\nVisuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base…\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base…",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.08372"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "arxiv:2611.08372",
+        "url": "https://arxiv.org/abs/2611.08372",
+        "title": "MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation",
+        "publisher": "arXiv 2611.08372",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08100",
+      "url": "https://arxiv.org/abs/2611.08100",
+      "title": "An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.08100 · 2026-11-05<br><b>Key numbers</b>: 25 ms<br><b>Signals</b>: quantitative results · open code or weights · latency or control-rate numbers</p>\n<blockquote>Vision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.08100 · 2026-11-05\nKey numbers: 25 ms\nSignals: quantitative results · open code or weights · latency or control-rate numbers\n\nVision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources.\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "Vision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources.",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.08100"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "arxiv:2611.08100",
+        "url": "https://arxiv.org/abs/2611.08100",
+        "title": "An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers",
+        "publisher": "arXiv 2611.08100",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [
+          "25 ms"
+        ],
+        "signals": [
+          "numbers",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Vision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07513",
+      "url": "https://arxiv.org/abs/2611.07513",
+      "title": "Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.07513 · 2026-11-05<br><b>Key numbers</b>: 0.21% · 16.5% · 35.1% · 98.15%<br><b>Signals</b>: quantitative results · open code or weights</p>\n<blockquote>Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2611.07513 · 2026-11-05\nKey numbers: 0.21% · 16.5% · 35.1% · 98.15%\nSignals: quantitative results · open code or weights\n\nMost vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable…\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable…",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.07513"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "arxiv:2611.07513",
+        "url": "https://arxiv.org/abs/2611.07513",
+        "title": "Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model",
+        "publisher": "arXiv 2611.07513",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-11-05",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [
+          "0.21%",
+          "16.5%",
+          "35.1%",
+          "98.15%"
+        ],
+        "signals": [
+          "numbers",
+          "open_release"
+        ],
+        "excerpt": "Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:be1ba71e55b7",
+      "url": "https://huggingface.co/blog/allenai/toyblocks",
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-11-06</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-11-06\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "huggingface-blog:be1ba71e55b7",
+        "url": "https://huggingface.co/blog/allenai/toyblocks",
+        "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+        "publisher": "Hugging Face Blog",
+        "source_id": "huggingface-blog",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-11-06",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:38b10cf37cee",
+      "url": "https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html",
+      "title": "上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-11-06</p>\n<blockquote>物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html\">Full radar for 2026-11-08</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-11-06\n\n物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。\n\nFull radar for 2026-11-08: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.en.html",
+      "summary": "物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。",
+      "date_published": "2026-11-07T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-08",
+        "id": "leiphone:38b10cf37cee",
+        "url": "https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html",
+        "title": "上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-11-06",
+        "radar_published": "2026-11-07T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07261",
       "url": "https://arxiv.org/abs/2611.07261",
       "title": "An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects",
@@ -3567,238 +3797,6 @@
           "latency"
         ],
         "excerpt": "Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30819",
-      "url": "https://arxiv.org/abs/2610.30819",
-      "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.30819 · 2026-10-22<br><b>Key numbers</b>: 27.4% · 40%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.30819 · 2026-10-22\nKey numbers: 27.4% · 40%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nReliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
-      "summary": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…",
-      "date_published": "2026-10-25T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.30819"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-26",
-        "id": "arxiv:2610.30819",
-        "url": "https://arxiv.org/abs/2610.30819",
-        "title": "TEAR: Task-Evidence Authority Routing for Robotic Manipulation",
-        "publisher": "arXiv 2610.30819",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-22",
-        "radar_published": "2026-10-25T23:40:00Z",
-        "numbers": [
-          "27.4%",
-          "40%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Reliable robotic manipulation in field-deployed settings requires more than executing a capable controller. As the execution conditions change, the system must decide, online and on the robot side, which control source should hold…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31275",
-      "url": "https://arxiv.org/abs/2610.31275",
-      "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.31275 · 2026-10-22<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.31275 · 2026-10-22\nSignals: real-robot experiments\n\nReal robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
-      "summary": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer.",
-      "date_published": "2026-10-25T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.31275"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-26",
-        "id": "arxiv:2610.31275",
-        "url": "https://arxiv.org/abs/2610.31275",
-        "title": "Learning Robot Behavior Priors from Non-Robotic Synthetic Data",
-        "publisher": "arXiv 2610.31275",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-22",
-        "radar_published": "2026-10-25T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot"
-        ],
-        "excerpt": "Real robot data, rich across tasks and morphologies, is often treated as the bottleneck for training robot learning models, including embodied foundation models that aim for zero-shot physical transfer."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31476",
-      "url": "https://arxiv.org/abs/2610.31476",
-      "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.31476 · 2026-10-22<br><b>Key numbers</b>: 3.46% · 2.55% · 82.4% · 76.7%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.31476 · 2026-10-22\nKey numbers: 3.46% · 2.55% · 82.4% · 76.7%\nSignals: quantitative results · closed-loop success reported\n\nOpen-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
-      "summary": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time.",
-      "date_published": "2026-10-25T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.31476"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-26",
-        "id": "arxiv:2610.31476",
-        "url": "https://arxiv.org/abs/2610.31476",
-        "title": "Point-Level Refinable Semantic Mapping for Spatial Understanding",
-        "publisher": "arXiv 2610.31476",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-10-22",
-        "radar_published": "2026-10-25T23:40:00Z",
-        "numbers": [
-          "3.46%",
-          "2.55%",
-          "82.4%",
-          "76.7%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "Open-vocabulary 3D semantic maps have emerged as a key spatial memory representation for long-horizon robot autonomy, enabling robots to reason about objects, their spatial relationships, and past observations across time."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:mit-news-robotics:5c1fbd9ca24d",
-      "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
-      "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [O]<br><b>Source</b>: MIT News (Robotics) · 2026-09-29<br><b>Signals</b>: trending</p>\n<blockquote>MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [O]\nSource: MIT News (Robotics) · 2026-09-29\nSignals: trending\n\nMIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
-      "summary": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots.",
-      "date_published": "2026-10-25T23:40:00Z",
-      "authors": [
-        {
-          "name": "MIT News (Robotics)"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-26",
-        "id": "mit-news-robotics:5c1fbd9ca24d",
-        "url": "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
-        "title": "Powered by muscle cells, a paper-thin robot swims through watery maze",
-        "publisher": "MIT News (Robotics)",
-        "source_id": "mit-news-robotics",
-        "evidence": "O",
-        "lane": "hardware",
-        "published": "2026-09-29",
-        "radar_published": "2026-10-25T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "trending"
-        ],
-        "excerpt": "MIT engineers’ new aquabot offers a way to design small, efficient “biohybrid” robots."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:techcrunch-robotics:6ec4c467ad3b",
-      "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
-      "title": "Tesla starts Optimus robot production in California as profit falls 43%",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: TechCrunch (Robotics) · 2026-10-21<br><b>Key numbers</b>: 43%<br><b>Signals</b>: quantitative results</p>\n<blockquote>Tesla&#x27;s revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html\">Full radar for 2026-10-26</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: TechCrunch (Robotics) · 2026-10-21\nKey numbers: 43%\nSignals: quantitative results\n\nTesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.\n\nFull radar for 2026-10-26: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.en.html",
-      "summary": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving.",
-      "date_published": "2026-10-25T23:40:00Z",
-      "authors": [
-        {
-          "name": "TechCrunch (Robotics)"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-26",
-        "id": "techcrunch-robotics:6ec4c467ad3b",
-        "url": "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43/",
-        "title": "Tesla starts Optimus robot production in California as profit falls 43%",
-        "publisher": "TechCrunch (Robotics)",
-        "source_id": "techcrunch-robotics",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-21",
-        "radar_published": "2026-10-25T23:40:00Z",
-        "numbers": [
-          "43%"
-        ],
-        "signals": [
-          "numbers"
-        ],
-        "excerpt": "Tesla's revenue was flat and its expenses skyrocketed as it pressed the accelerator on its Optimus robots, AI, and autonomous driving."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.31518",
-      "url": "https://arxiv.org/abs/2610.31518",
-      "title": "SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets",
-      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.31518 · 2026-10-22<br><b>Key numbers</b>: 12.33%<br><b>Signals</b>: quantitative results · closed-loop success reported</p>\n<blockquote>Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html\">Full radar for 2026-10-25</a></p>",
-      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [R]\nSource: arXiv 2610.31518 · 2026-10-22\nKey numbers: 12.33%\nSignals: quantitative results · closed-loop success reported\n\nTask and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.\n\nFull radar for 2026-10-25: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-25.en.html",
-      "summary": "Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments.",
-      "date_published": "2026-10-24T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.31518"
-        }
-      ],
-      "tags": [
-        "Systems & orchestration (long-horizon / multi-policy)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-25",
-        "id": "arxiv:2610.31518",
-        "url": "https://arxiv.org/abs/2610.31518",
-        "title": "SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Planning Datasets",
-        "publisher": "arXiv 2610.31518",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "systems",
-        "published": "2026-10-22",
-        "radar_published": "2026-10-24T23:40:00Z",
-        "numbers": [
-          "12.33%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop"
-        ],
-        "excerpt": "Task and Motion Planning (TAMP) stands as a fundamental challenge in robotics, essential for enabling autonomous agents to execute complex, long-horizon tasks in diverse environments."
       }
     }
   ]
