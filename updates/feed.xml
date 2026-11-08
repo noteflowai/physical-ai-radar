@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: reject JUnit testcases without a name instead of merging them into one check</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.1/</guid>
+      <description>evalarc diff now rejects JUnit XML that contains a &lt;testcase&gt; whose name attribute is missing, empty or whitespace-only. Before this fix, the JUnit loader (_junit in src/evalarc/results_diff.py) built IDs such as corpus::None or corpus:: for these testcases and merged every unnamed testcase in a suite into one check. A swapped failure ([fail, pass] in the baseline, [pass, fail] in the current run) then tallied 1/2 on both sides, was classified as unchanged, and the gate exited 0. Loading now raises a ValueError that names the suite and the testcase's 0-based position among the suite's direct testcase children. A suite without a name is shown as (unnamed suite). evalarc diff exits 2 through its existing unusable-input path and prints the message on stderr, whichever input contains the unnamed testcase. Named testcases keep their exact IDs, and identical classname::name entries still load as repeated attempts of one check. docs/ci-gate.md and docs/ci-gate.zh-CN.md list this case among the exit-2 causes. Controller results: the controller ran tests/test_feature_5e40b6f9743a.py in a run labeled acceptance-before. That run had 4 failures and 2 passes. The failures show the old behavior: the swapped-failure diff returned 0 and printed 'Unchanged: 1', and the blank-name and unnamed-suite cases did not raise. On candidate commit 5fa8973 the controller ran the acceptance file, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs, and all of them exited 0. I wrote this metadata from those receipts and ran nothing myself.</description>
+      <pubDate>Sun, 08 Nov 2026 13:39:57 +0000</pubDate>
+    </item>
+    <item>
       <title>show the per-finding "Why the gate failed" explanation in the diff index.html</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.0/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.0/</guid>
