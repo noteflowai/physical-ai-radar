@@ -97,7 +97,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07411" rel="noopener" target="_blank">Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks</a></h3>
 <p class="figure"><strong>23.9%</strong><span class="context">“the context saves 23.9% bit rate over”</span></p><p class="chips"><span class="chip">56%</span><span class="chip">23.2%</span><span class="chip">22.8%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> VLA 方策をリモートサーバで動かす構成では、カメラ上りのビットレートを設計変数として扱うべきで、著者は自己報告で 23.9% のビットレート削減と成功率の 22.8% から 43.1% への上昇を示すが、後者の条件はページに書かれていない。</p>
 <p class="excerpt">Robots increasingly run large vision-language-action policies on remote servers, making the camera uplink the bottleneck.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08372" rel="noopener" target="_blank">MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 移動マニピュレーションでは台車の停止位置が毎回ずれ、模倣学習の方策はカメラ視点の変化に弱いため、追加収集の前にデモの視点拡張を検討する根拠になるが、実機・閉ループ実験の表示はあっても数値の引用はなく、効果の大きさは不明。</p>
 <p class="excerpt">Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08100" rel="noopener" target="_blank">An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers</a></h3>
 <p class="figure"><strong>25 ms</strong><span class="context">“reported perception latency is 25 ms on a Jetson”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> センサと計算資源が限られた車輪型ローバーでは、認識・自己位置推定・計画・機体制御までを含むこのオープンなスタックが出発点になるが、自己報告の Jetson 上 25 ms は認識部分の遅延でループ全体の周期ではなく、実機・閉ループの結果も引用されていない。</p>
 <p class="excerpt">Vision-based rover autonomy requires integrating perception, localization, planning and platform-specific control under limited sensing and computing resources.</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07513" rel="noopener" target="_blank">Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model</a></h3>
 <p class="figure"><strong>0.21%</strong><span class="context">“projections account for only 0.21% of parameters in”</span></p><p class="chips"><span class="chip">16.5%</span><span class="chip">35.1%</span><span class="chip">98.15%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 行動のトークン化か外付けの行動エキスパートかで VLA の構成を選ぶ際の材料で、著者は行動射影がパラメータの 0.21% にとどまり専用エキスパートの 16.5%-35.1% より小さく、平均成功率 98.15% と自己報告するが、ベンチマーク名も実機結果もページにはない。</p>
 <p class="excerpt">Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable…</p>
 <ul class="signals"><li>定量結果あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://huggingface.co/blog/allenai/toyblocks" rel="noopener" target="_blank">ToyBlocks: A controlled world for robot learning and evaluation</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Hugging Face ブログでの一次発表だが、ページには抜粋も数値もないため、管理された評価環境を探すチームは原文を読んでから、その結果が自社の実機に通用するかを判断する必要がある。</p>
 <footer>
 <span class="source">Hugging Face Blog · 2026-11-06</span>
 <span class="actions"><button type="button" class="share" data-url="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-08.ja.html" data-text="Physical AI レーダー 2026-11-08：ToyBlocks: A controlled world for robot learning and evaluation" data-done="リンクをコピーしました">共有</button><a class="x" href="https://twitter.com/intent/tweet?text=Physical+AI+%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC+2026-11-08%EF%BC%9AToyBlocks%3A+A+controlled+world+for+robot+learning+and+evaluation&amp;url=https%3A%2F%2Fnoteflowai.github.io%2Fphysical-ai-radar%2Fradar%2Fdaily%2F2026-11-08.ja.html" rel="noopener" target="_blank">X に投稿</a></span>
@@ -172,7 +172,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html" rel="noopener" target="_blank">上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 学会講演の二次報道で、行動の結果を取り消しにくい現実世界で知覚・予測・行動・継続学習のループを閉じることを物理知能の課題と位置づけているが、実験結果ではなく見解なので、問題整理には使えてもモデル選定の根拠にはならない。</p>
 <p class="excerpt">物理智能的核心挑战：让 AI 在充满不确定性、行动后果难以撤销的真实世界中，形成感知、预测、行动与持续学习的完整闭环。 作者丨张 驰 编辑丨马晓宁 大语言模型已经得到了长足的发展，但 AI 的许多能力仍然发生在屏幕之内：理解文字、生成内容、编写代码，以及调用数字工具。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-06</span>

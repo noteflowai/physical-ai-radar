@@ -1,0 +1,48 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-08",
+  "generated": "2026-11-08 13:45 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.07411": {
+      "zh": "把 VLA 策略放在远端服务器上跑的团队，摄像头上行码率应当当作设计参数来定：作者自报该上下文省下 23.9% 码率，成功率从 22.8% 升到 43.1%，但页面没有说明后者对应的工作条件。",
+      "en": "If your VLA policy runs on a remote server, treat camera-uplink bitrate as a design parameter: the authors self-report 23.9% bit-rate savings and success rising from 22.8% to 43.1%, though the page omits the operating point behind the latter.",
+      "ja": "VLA 方策をリモートサーバで動かす構成では、カメラ上りのビットレートを設計変数として扱うべきで、著者は自己報告で 23.9% のビットレート削減と成功率の 22.8% から 43.1% への上昇を示すが、後者の条件はページに書かれていない。"
+    },
+    "https://arxiv.org/abs/2611.08372": {
+      "zh": "移动操作中底盘每次停靠位姿不同，模仿学习策略对相机视角又很敏感，这篇自报预印本提示可先在示教数据上做视角增强再考虑补采；页面标注了真机与闭环实验，但没有引用任何数字，收益大小未知。",
+      "en": "For mobile-manipulation teams whose imitation-learned policies break when the base parks in a new pose, this self-reported preprint argues for augmenting demonstrations before collecting more; real-robot and closed-loop experiments are flagged, but no figures are quoted, so the gain is unknown.",
+      "ja": "移動マニピュレーションでは台車の停止位置が毎回ずれ、模倣学習の方策はカメラ視点の変化に弱いため、追加収集の前にデモの視点拡張を検討する根拠になるが、実機・閉ループ実験の表示はあっても数値の引用はなく、効果の大きさは不明。"
+    },
+    "https://arxiv.org/abs/2611.08100": {
+      "zh": "算力和传感都有限的轮式车平台，可以拿这套开源栈（感知、定位、规划到平台控制）做起点；作者自报 Jetson 上感知延迟 25 ms，但这只是感知环节，不是整条回路的频率，页面也未引用真机或闭环结果。",
+      "en": "Rover builders short on sensing and compute get an open stack spanning perception, localization, planning and platform control; the self-reported 25 ms perception latency on a Jetson covers perception only, not the full loop, and the page cites no real-robot or closed-loop result.",
+      "ja": "センサと計算資源が限られた車輪型ローバーでは、認識・自己位置推定・計画・機体制御までを含むこのオープンなスタックが出発点になるが、自己報告の Jetson 上 25 ms は認識部分の遅延でループ全体の周期ではなく、実機・閉ループの結果も引用されていない。"
+    },
+    "https://arxiv.org/abs/2611.07513": {
+      "zh": "在动作 token 化和外挂动作专家之间做选型的 VLA 团队值得看：作者自报动作投影只占 0.21% 参数（对比专用动作专家的 16.5%-35.1%），平均成功率 98.15%，但页面没写是哪个基准，也未引用真机结果。",
+      "en": "VLA teams choosing between action tokens and a bolted-on action expert should note the authors' claim that action projections take only 0.21% of parameters, versus 16.5%-35.1% for dedicated experts, with 98.15% average success on a benchmark the page does not name.",
+      "ja": "行動のトークン化か外付けの行動エキスパートかで VLA の構成を選ぶ際の材料で、著者は行動射影がパラメータの 0.21% にとどまり専用エキスパートの 16.5%-35.1% より小さく、平均成功率 98.15% と自己報告するが、ベンチマーク名も実機結果もページにはない。"
+    },
+    "https://huggingface.co/blog/allenai/toyblocks": {
+      "zh": "这是 Hugging Face 博客上的一手发布，但页面没有摘录也没有数字，想找可控评测环境的团队应先读原文，再判断它的结果能否迁移到自己的真机上。",
+      "en": "A first-party post on the Hugging Face blog, but the page carries no excerpt and no figures; teams looking for a controlled evaluation setting should read the source before assuming its results carry over to their own robots.",
+      "ja": "Hugging Face ブログでの一次発表だが、ページには抜粋も数値もないため、管理された評価環境を探すチームは原文を読んでから、その結果が自社の実機に通用するかを判断する必要がある。"
+    },
+    "https://www.leiphone.com/category/academic/trs6uqs5ty2mauu4.html": {
+      "zh": "这是对一场会议报告的二手转述，把物理智能的难点概括为在行动后果难以撤销的真实世界里闭合感知、预测、行动与持续学习的回路；它是观点而非实验结果，适合用来梳理问题，不适合作为模型选型依据。",
+      "en": "A secondary account of a conference talk that frames physical intelligence as closing the perception, prediction, action and continual-learning loop where actions are hard to undo; it offers a position rather than results, useful for framing but not for choosing a model.",
+      "ja": "学会講演の二次報道で、行動の結果を取り消しにくい現実世界で知覚・予測・行動・継続学習のループを閉じることを物理知能の課題と位置づけているが、実験結果ではなく見解なので、問題整理には使えてもモデル選定の根拠にはならない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
