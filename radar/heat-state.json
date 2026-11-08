@@ -2,28 +2,28 @@
   "schema": "pairadar-heat-1",
   "stars": {
     "google-deepmind/mujoco": {
-      "count": 16106,
-      "date": "2026-11-08",
-      "prev_count": 16083,
-      "prev_date": "2026-11-07"
+      "count": 16384,
+      "date": "2026-11-09",
+      "prev_count": 16106,
+      "prev_date": "2026-11-08"
     },
     "huggingface/lerobot": {
-      "count": 28736,
-      "date": "2026-11-08",
-      "prev_count": 28723,
-      "prev_date": "2026-11-07"
+      "count": 28758,
+      "date": "2026-11-09",
+      "prev_count": 28736,
+      "prev_date": "2026-11-08"
     },
     "isaac-sim/isaaclab": {
-      "count": 8589,
-      "date": "2026-11-08",
-      "prev_count": 8581,
-      "prev_date": "2026-11-07"
+      "count": 8597,
+      "date": "2026-11-09",
+      "prev_count": 8589,
+      "prev_date": "2026-11-08"
     },
     "physical-intelligence/openpi": {
-      "count": 14570,
-      "date": "2026-11-08",
-      "prev_count": 14564,
-      "prev_date": "2026-11-07"
+      "count": 14577,
+      "date": "2026-11-09",
+      "prev_count": 14570,
+      "prev_date": "2026-11-08"
     }
   }
 }

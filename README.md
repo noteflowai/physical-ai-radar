@@ -62,33 +62,31 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-08
+### 今日雷达 · 2026-11-09
 
-`生成时间: 2026-11-07 23:40 UTC` ｜ `统计窗口: 论文 2026-11-04 → 2026-11-08 · 博客与报道 2026-10-09 → 2026-11-08 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-08 23:40 UTC` ｜ `统计窗口: 论文 2026-11-05 → 2026-11-09 · 博客与报道 2026-10-10 → 2026-11-09 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>仿真与评测 · arXiv 2611.07411 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>数据引擎 · arXiv 2611.08372 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>边缘与实时性 · arXiv 2611.08100 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>基座模型 · arXiv 2611.07513 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](https://arxiv.org/abs/2611.08413)**<br>`85%`&nbsp; `7.8 ms`&nbsp; `3.3x`<br><sub>仿真与评测 · arXiv 2611.08413 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation](https://arxiv.org/abs/2611.08398)**<br>`300%`<br><sub>仿真与评测 · arXiv 2611.08398 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition](https://arxiv.org/abs/2611.07779)**<br>`101 ms`<br><sub>边缘与实时性 · arXiv 2611.07779 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving](https://arxiv.org/abs/2611.07912)**<br>`10%`<br><sub>基座模型 · arXiv 2611.07912 · 2026‑11‑05</sub> |
+| 05<br>🟡&nbsp;`M` | **[浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生](https://www.qbitai.com/2026/11/508236.html)**<br><sub>基座模型 · 量子位 QbitAI · 2026‑11‑07</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–06</summary>
+<details><summary><b>为什么重要</b> · 01–05</summary>
 
-1. **Kinematic Hypothesis Context** — `AI 起草` 把 VLA 策略放在远端服务器上跑的团队，摄像头上行码率应当当作设计参数来定：作者自报该上下文省下 23.9% 码率，成功率从 22.8% 升到 43.1%，但页面没有说明后者对应的工作条件。
-2. **MOMASPLAT** — `AI 起草` 移动操作中底盘每次停靠位姿不同，模仿学习策略对相机视角又很敏感，这篇自报预印本提示可先在示教数据上做视角增强再考虑补采；页面标注了真机与闭环实验，但没有引用任何数字，收益大小未知。
-3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — `AI 起草` 算力和传感都有限的轮式车平台，可以拿这套开源栈（感知、定位、规划到平台控制）做起点；作者自报 Jetson 上感知延迟 25 ms，但这只是感知环节，不是整条回路的频率，页面也未引用真机或闭环结果。
-4. **Concertina** — `AI 起草` 在动作 token 化和外挂动作专家之间做选型的 VLA 团队值得看：作者自报动作投影只占 0.21% 参数（对比专用动作专家的 16.5%-35.1%），平均成功率 98.15%，但页面没写是哪个基准，也未引用真机结果。
-5. **ToyBlocks** — `AI 起草` 这是 Hugging Face 博客上的一手发布，但页面没有摘录也没有数字，想找可控评测环境的团队应先读原文，再判断它的结果能否迁移到自己的真机上。
-6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — `AI 起草` 这是对一场会议报告的二手转述，把物理智能的难点概括为在行动后果难以撤销的真实世界里闭合感知、预测、行动与持续学习的回路；它是观点而非实验结果，适合用来梳理问题，不适合作为模型选型依据。
+1. **T3R** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **GuidedWAM** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
+5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-08.zh.md)** · [每周汇总 ›](radar/weekly/2026-W45.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-09.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

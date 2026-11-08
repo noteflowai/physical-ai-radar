@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:ja</id>
   <title>Physical AI フロンティア・レーダー</title>
   <subtitle>フィジカルAIの最前線を毎日更新：8つの軸、三言語の要約、追跡可能な根拠。</subtitle>
-  <updated>2026-11-07T23:40:00Z</updated>
+  <updated>2026-11-08T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/ja/" />
   <author>
@@ -11,6 +11,91 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08413</id>
+    <title>T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.08413" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html" />
+    <published>2026-11-08T23:40:00Z</published>
+    <updated>2026-11-08T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.08413</name>
+    </author>
+    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.08413 · 2026-11-05&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 85% · 7.8 ms · 3.3x&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 遅延・制御周期の数値あり&lt;/p&gt;
+&lt;blockquote&gt;Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html"&gt;2026-11-09 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08398</id>
+    <title>A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.08398" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html" />
+    <published>2026-11-08T23:40:00Z</published>
+    <updated>2026-11-08T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.08398</name>
+    </author>
+    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.08398 · 2026-11-05&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 300%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり&lt;/p&gt;
+&lt;blockquote&gt;Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html"&gt;2026-11-09 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07779</id>
+    <title>Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.07779" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html" />
+    <published>2026-11-08T23:40:00Z</published>
+    <updated>2026-11-08T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.07779</name>
+    </author>
+    <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
+    <category term="R" label="[R]" />
+    <summary type="text">Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.07779 · 2026-11-05&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 101 ms&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 実機実験あり · 遅延・制御周期の数値あり&lt;/p&gt;
+&lt;blockquote&gt;Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html"&gt;2026-11-09 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07912</id>
+    <title>GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.07912" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html" />
+    <published>2026-11-08T23:40:00Z</published>
+    <updated>2026-11-08T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.07912</name>
+    </author>
+    <category term="foundation" label="基盤モデル（VLA / WAM）" />
+    <category term="R" label="[R]" />
+    <summary type="text">World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2611.07912 · 2026-11-05&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 10%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり&lt;/p&gt;
+&lt;blockquote&gt;World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html"&gt;2026-11-09 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:qbitai:fdeed09ac945</id>
+    <title>浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生</title>
+    <link rel="alternate" href="https://www.qbitai.com/2026/11/508236.html" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html" />
+    <published>2026-11-08T23:40:00Z</published>
+    <updated>2026-11-08T23:40:00Z</updated>
+    <author>
+      <name>量子位 QbitAI</name>
+    </author>
+    <category term="foundation" label="基盤モデル（VLA / WAM）" />
+    <category term="M" label="[M]" />
+    <summary type="text">中国版cosmos再交卷</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: 基盤モデル（VLA / WAM）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: 量子位 QbitAI · 2026-11-07&lt;/p&gt;
+&lt;blockquote&gt;中国版cosmos再交卷&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.ja.html"&gt;2026-11-09 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07411</id>
     <title>Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks</title>
@@ -1621,90 +1706,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Isaac Lab releases (GitHub) · 2026-10-26&lt;/p&gt;
 &lt;blockquote&gt;Prebuilt Newton WebAssembly simulations, their browser viewer, and exporter source for Isaac Lab documentation.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html"&gt;2026-10-27 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:github-mujoco:ec15ed8c3880</id>
-    <title>MuJoCo 3.17.0</title>
-    <link rel="alternate" href="https://github.com/google-deepmind/mujoco/releases/tag/3.17.0" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html" />
-    <published>2026-10-26T23:40:00Z</published>
-    <updated>2026-10-26T23:40:00Z</updated>
-    <author>
-      <name>MuJoCo releases (GitHub)</name>
-    </author>
-    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
-    <category term="O" label="[O]" />
-    <summary type="text">Version 3.17.0 (October 22, 2026) Significant new features c00ed8153 Added a batch API in mujoco/mjbatch.h (in Python as mujoco.batch ): many simulations of one model stepped on a thread pool of its own, each held as its integration state…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: MuJoCo releases (GitHub) · 2026-10-22&lt;/p&gt;
-&lt;blockquote&gt;Version 3.17.0 (October 22, 2026) Significant new features c00ed8153 Added a batch API in mujoco/mjbatch.h (in Python as mujoco.batch ): many simulations of one model stepped on a thread pool of its own, each held as its integration state…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html"&gt;2026-10-27 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:9126dd125602</id>
-    <title>OMRON to acquire OnLogic to address edge AI applications</title>
-    <link rel="alternate" href="https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html" />
-    <published>2026-10-26T23:40:00Z</published>
-    <updated>2026-10-26T23:40:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="edge" label="エッジとリアルタイム（オンデバイス推論 / 制御周期）" />
-    <category term="M" label="[M]" />
-    <summary type="text">OMRON will add industrial computing from OnLogic to its industrial automation expertise to serve data- and AI-intensive applications.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: エッジとリアルタイム（オンデバイス推論 / 制御周期）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-10-26&lt;/p&gt;
-&lt;blockquote&gt;OMRON will add industrial computing from OnLogic to its industrial automation expertise to serve data- and AI-intensive applications.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html"&gt;2026-10-27 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:24600ed8f1e7</id>
-    <title>Agility and GXO Logistics plan expanded deployment of Digit humanoid</title>
-    <link rel="alternate" href="https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid/" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html" />
-    <published>2026-10-26T23:40:00Z</published>
-    <updated>2026-10-26T23:40:00Z</updated>
-    <author>
-      <name>The Robot Report</name>
-    </author>
-    <category term="hardware" label="ハードウェアとサプライチェーン（機体 / コスト）" />
-    <category term="M" label="[M]" />
-    <summary type="text">GXO Logistics, which has tested humanoid robots from multiple companies, will deploy Agility's Digit at two more sites.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: ハードウェアとサプライチェーン（機体 / コスト）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: The Robot Report · 2026-10-26&lt;/p&gt;
-&lt;blockquote&gt;GXO Logistics, which has tested humanoid robots from multiple companies, will deploy Agility&amp;#x27;s Digit at two more sites.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-27.ja.html"&gt;2026-10-27 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:github-isaaclab:76f7d37c0882</id>
-    <title>Isaac Lab v3.0.0</title>
-    <link rel="alternate" href="https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.ja.html" />
-    <published>2026-10-25T23:40:00Z</published>
-    <updated>2026-10-25T23:40:00Z</updated>
-    <author>
-      <name>Isaac Lab releases (GitHub)</name>
-    </author>
-    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
-    <category term="O" label="[O]" />
-    <summary type="text">Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: Isaac Lab releases (GitHub) · 2026-10-20&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: コードまたは重み公開&lt;/p&gt;
-&lt;blockquote&gt;Isaac Lab 3.0 Isaac Lab 3.0 is now generally available. v3.0.0 is the official Isaac Lab 3.0 release and the recommended baseline for new projects and migrations from Isaac Lab 2.x.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.ja.html"&gt;2026-10-26 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.30587</id>
-    <title>Know When to Escalate: Critic-Guided Adaptive Execution for Cloud-Local Embodied Agents</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.30587" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.ja.html" />
-    <published>2026-10-25T23:40:00Z</published>
-    <updated>2026-10-25T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.30587</name>
-    </author>
-    <category term="simeval" label="シミュレーションと評価（sim2real / 閉ループ）" />
-    <category term="R" label="[R]" />
-    <summary type="text">Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;軸&lt;/b&gt;: シミュレーションと評価（sim2real / 閉ループ）&lt;br&gt;&lt;b&gt;根拠&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;出典&lt;/b&gt;: arXiv 2610.30587 · 2026-10-22&lt;br&gt;&lt;b&gt;主要数値&lt;/b&gt;: 82.6%&lt;br&gt;&lt;b&gt;シグナル&lt;/b&gt;: 定量結果あり · 閉ループ成功率あり · 遅延・制御周期の数値あり&lt;/p&gt;
-&lt;blockquote&gt;Recent advances in foundation-model agents have enabled increasingly capable embodied systems for long-horizon planning and interaction.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-26.ja.html"&gt;2026-10-26 のレーダー全文&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -60,33 +60,31 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-08
+### Today's radar · 2026-11-09
 
-`Generated: 2026-11-07 23:40 UTC` ｜ `Window: papers 2026-11-04 → 2026-11-08 · posts 2026-10-09 → 2026-11-08 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-08 23:40 UTC` ｜ `Window: papers 2026-11-05 → 2026-11-09 · posts 2026-10-10 → 2026-11-09 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>Simulation & evaluation · arXiv 2611.07411 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>Data engine · arXiv 2611.08372 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>Edge & real-time · arXiv 2611.08100 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>Foundation models · arXiv 2611.07513 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>Simulation & evaluation · Hugging Face Blog · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](https://arxiv.org/abs/2611.08413)**<br>`85%`&nbsp; `7.8 ms`&nbsp; `3.3x`<br><sub>Simulation & evaluation · arXiv 2611.08413 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation](https://arxiv.org/abs/2611.08398)**<br>`300%`<br><sub>Simulation & evaluation · arXiv 2611.08398 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition](https://arxiv.org/abs/2611.07779)**<br>`101 ms`<br><sub>Edge & real-time · arXiv 2611.07779 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving](https://arxiv.org/abs/2611.07912)**<br>`10%`<br><sub>Foundation models · arXiv 2611.07912 · 2026‑11‑05</sub> |
+| 05<br>🟡&nbsp;`M` | **[浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生](https://www.qbitai.com/2026/11/508236.html)**<br><sub>Foundation models · 量子位 QbitAI · 2026‑11‑07</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–06</summary>
+<details><summary><b>Why it matters</b> · 01–05</summary>
 
-1. **Kinematic Hypothesis Context** — `AI draft` If your VLA policy runs on a remote server, treat camera-uplink bitrate as a design parameter: the authors self-report 23.9% bit-rate savings and success rising from 22.8% to 43.1%, though the page omits the operating point behind the latter.
-2. **MOMASPLAT** — `AI draft` For mobile-manipulation teams whose imitation-learned policies break when the base parks in a new pose, this self-reported preprint argues for augmenting demonstrations before collecting more; real-robot and closed-loop experiments are flagged, but no figures are quoted, so the gain is unknown.
-3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — `AI draft` Rover builders short on sensing and compute get an open stack spanning perception, localization, planning and platform control; the self-reported 25 ms perception latency on a Jetson covers perception only, not the full loop, and the page cites no real-robot or closed-loop result.
-4. **Concertina** — `AI draft` VLA teams choosing between action tokens and a bolted-on action expert should note the authors' claim that action projections take only 0.21% of parameters, versus 16.5%-35.1% for dedicated experts, with 98.15% average success on a benchmark the page does not name.
-5. **ToyBlocks** — `AI draft` A first-party post on the Hugging Face blog, but the page carries no excerpt and no figures; teams looking for a controlled evaluation setting should read the source before assuming its results carry over to their own robots.
-6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — `AI draft` A secondary account of a conference talk that frames physical intelligence as closing the perception, prediction, action and continual-learning loop where actions are hard to undo; it offers a position rather than results, useful for framing but not for choosing a model.
+1. **T3R** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **GuidedWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-08.en.md)** · [Weekly roundup ›](radar/weekly/2026-W45.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-09.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

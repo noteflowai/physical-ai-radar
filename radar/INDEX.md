@@ -6,6 +6,7 @@ Subscribe · 订阅 · 購読: Atom [en](feed.xml) · [zh](feed.zh.xml) · [ja](
 
 | Week | ZH | EN | JA |
 | --- | --- | --- | --- |
+| 2026-W46 | [zh](weekly/2026-W46.zh.md) | [en](weekly/2026-W46.en.md) | [ja](weekly/2026-W46.ja.md) |
 | 2026-W45 | [zh](weekly/2026-W45.zh.md) | [en](weekly/2026-W45.en.md) | [ja](weekly/2026-W45.ja.md) |
 | 2026-W44 | [zh](weekly/2026-W44.zh.md) | [en](weekly/2026-W44.en.md) | [ja](weekly/2026-W44.ja.md) |
 | 2026-W43 | [zh](weekly/2026-W43.zh.md) | [en](weekly/2026-W43.en.md) | [ja](weekly/2026-W43.ja.md) |
@@ -19,6 +20,7 @@ Subscribe · 订阅 · 購読: Atom [en](feed.xml) · [zh](feed.zh.xml) · [ja](
 
 | Date | Items | Lanes touched | ZH | EN | JA |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-09 | 5 | 3 | [zh](daily/2026-11-09.zh.md) | [en](daily/2026-11-09.en.md) | [ja](daily/2026-11-09.ja.md) |
 | 2026-11-08 | 6 | 4 | [zh](daily/2026-11-08.zh.md) | [en](daily/2026-11-08.en.md) | [ja](daily/2026-11-08.ja.md) |
 | 2026-11-07 | 7 | 4 | [zh](daily/2026-11-07.zh.md) | [en](daily/2026-11-07.en.md) | [ja](daily/2026-11-07.ja.md) |
 | 2026-11-06 | 8 | 6 | [zh](daily/2026-11-06.zh.md) | [en](daily/2026-11-06.en.md) | [ja](daily/2026-11-06.ja.md) |

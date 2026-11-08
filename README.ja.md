@@ -60,33 +60,31 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-08
+### 本日のレーダー · 2026-11-09
 
-`生成時刻: 2026-11-07 23:40 UTC` ｜ `対象期間: 論文 2026-11-04 → 2026-11-08 · ブログ・報道 2026-10-09 → 2026-11-08 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-08 23:40 UTC` ｜ `対象期間: 論文 2026-11-05 → 2026-11-09 · ブログ・報道 2026-10-10 → 2026-11-09 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Kinematic Hypothesis Context: Embodiment-Conditioned Learned Video Coding for Bandwidth-Limited Robot Policy Uplinks](https://arxiv.org/abs/2611.07411)**<br>`23.9%`&nbsp; `56%`&nbsp; `23.2%`<br><sub>シミュレーションと評価 · arXiv 2611.07411 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation](https://arxiv.org/abs/2611.08372)**<br><sub>データエンジン · arXiv 2611.08372 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of Wheeled Rovers](https://arxiv.org/abs/2611.08100)**<br>`25 ms`<br><sub>エッジとリアルタイム · arXiv 2611.08100 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model](https://arxiv.org/abs/2611.07513)**<br>`0.21%`&nbsp; `16.5%`&nbsp; `35.1%`<br><sub>基盤モデル · arXiv 2611.07513 · 2026‑11‑05</sub> |
-| 05<br>🟢&nbsp;`O` | **[ToyBlocks: A controlled world for robot learning and evaluation](https://huggingface.co/blog/allenai/toyblocks)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑06</sub> |
-| 06<br>🟡&nbsp;`M` | **[上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ \| CNCC 2026](https://www.leiphone.com/category/academic/TRS6Uqs5TY2MaUU4.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑06</sub> |
+| 01<br>🔵&nbsp;`R` | **[T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](https://arxiv.org/abs/2611.08413)**<br>`85%`&nbsp; `7.8 ms`&nbsp; `3.3x`<br><sub>シミュレーションと評価 · arXiv 2611.08413 · 2026‑11‑05</sub> |
+| 02<br>🔵&nbsp;`R` | **[A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation](https://arxiv.org/abs/2611.08398)**<br>`300%`<br><sub>シミュレーションと評価 · arXiv 2611.08398 · 2026‑11‑05</sub> |
+| 03<br>🔵&nbsp;`R` | **[Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition](https://arxiv.org/abs/2611.07779)**<br>`101 ms`<br><sub>エッジとリアルタイム · arXiv 2611.07779 · 2026‑11‑05</sub> |
+| 04<br>🔵&nbsp;`R` | **[GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving](https://arxiv.org/abs/2611.07912)**<br>`10%`<br><sub>基盤モデル · arXiv 2611.07912 · 2026‑11‑05</sub> |
+| 05<br>🟡&nbsp;`M` | **[浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生](https://www.qbitai.com/2026/11/508236.html)**<br><sub>基盤モデル · 量子位 QbitAI · 2026‑11‑07</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–06</summary>
+<details><summary><b>重要な理由</b> · 01–05</summary>
 
-1. **Kinematic Hypothesis Context** — `AI 下書き` VLA 方策をリモートサーバで動かす構成では、カメラ上りのビットレートを設計変数として扱うべきで、著者は自己報告で 23.9% のビットレート削減と成功率の 22.8% から 43.1% への上昇を示すが、後者の条件はページに書かれていない。
-2. **MOMASPLAT** — `AI 下書き` 移動マニピュレーションでは台車の停止位置が毎回ずれ、模倣学習の方策はカメラ視点の変化に弱いため、追加収集の前にデモの視点拡張を検討する根拠になるが、実機・閉ループ実験の表示はあっても数値の引用はなく、効果の大きさは不明。
-3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — `AI 下書き` センサと計算資源が限られた車輪型ローバーでは、認識・自己位置推定・計画・機体制御までを含むこのオープンなスタックが出発点になるが、自己報告の Jetson 上 25 ms は認識部分の遅延でループ全体の周期ではなく、実機・閉ループの結果も引用されていない。
-4. **Concertina** — `AI 下書き` 行動のトークン化か外付けの行動エキスパートかで VLA の構成を選ぶ際の材料で、著者は行動射影がパラメータの 0.21% にとどまり専用エキスパートの 16.5%-35.1% より小さく、平均成功率 98.15% と自己報告するが、ベンチマーク名も実機結果もページにはない。
-5. **ToyBlocks** — `AI 下書き` Hugging Face ブログでの一次発表だが、ページには抜粋も数値もないため、管理された評価環境を探すチームは原文を読んでから、その結果が自社の実機に通用するかを判断する必要がある。
-6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — `AI 下書き` 学会講演の二次報道で、行動の結果を取り消しにくい現実世界で知覚・予測・行動・継続学習のループを閉じることを物理知能の課題と位置づけているが、実験結果ではなく見解なので、問題整理には使えてもモデル選定の根拠にはならない。
+1. **T3R** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **GuidedWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-08.ja.md)** · [週間まとめ ›](radar/weekly/2026-W45.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-09.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
