@@ -77,12 +77,12 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **Kinematic Hypothesis Context** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **MOMASPLAT** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **Concertina** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-5. **ToyBlocks** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **Kinematic Hypothesis Context** — `AI draft` If your VLA policy runs on a remote server, treat camera-uplink bitrate as a design parameter: the authors self-report 23.9% bit-rate savings and success rising from 22.8% to 43.1%, though the page omits the operating point behind the latter.
+2. **MOMASPLAT** — `AI draft` For mobile-manipulation teams whose imitation-learned policies break when the base parks in a new pose, this self-reported preprint argues for augmenting demonstrations before collecting more; real-robot and closed-loop experiments are flagged, but no figures are quoted, so the gain is unknown.
+3. **An Integrated Open-Source Stack for Vision-Based Autonomous Navigation of W…** — `AI draft` Rover builders short on sensing and compute get an open stack spanning perception, localization, planning and platform control; the self-reported 25 ms perception latency on a Jetson covers perception only, not the full loop, and the page cites no real-robot or closed-loop result.
+4. **Concertina** — `AI draft` VLA teams choosing between action tokens and a bolted-on action expert should note the authors' claim that action projections take only 0.21% of parameters, versus 16.5%-35.1% for dedicated experts, with 98.15% average success on a benchmark the page does not name.
+5. **ToyBlocks** — `AI draft` A first-party post on the Hugging Face blog, but the page carries no excerpt and no figures; teams looking for a controlled evaluation setting should read the source before assuming its results carry over to their own robots.
+6. **上交大张伟楠教授：AI如何走出屏幕，真正改变物理世界？ | CNCC 2026** — `AI draft` A secondary account of a conference talk that frames physical intelligence as closing the perception, prediction, action and continual-learning loop where actions are hard to undo; it offers a position rather than results, useful for framing but not for choosing a model.
 
 </details>
 
