@@ -1,28 +1,69 @@
 {
-  "date": "2026-11-09",
-  "generated": "2026-11-08 23:40 UTC",
-  "window": "papers 2026-11-05 → 2026-11-09 · posts 2026-10-10 → 2026-11-09 (UTC)",
+  "date": "2026-11-10",
+  "generated": "2026-11-09 23:40 UTC",
+  "window": "papers 2026-11-06 → 2026-11-10 · posts 2026-10-11 → 2026-11-10 (UTC)",
   "window_detail": {
-    "day": "2026-11-09",
-    "papers_from": "2026-11-05",
-    "posts_from": "2026-10-10",
+    "day": "2026-11-10",
+    "papers_from": "2026-11-06",
+    "posts_from": "2026-10-11",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.08413",
-      "title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
-      "url": "https://arxiv.org/abs/2611.08413",
-      "publisher": "arXiv 2611.08413",
+      "id": "arxiv:2611.09490",
+      "title": "CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4",
+      "url": "https://arxiv.org/abs/2611.09490",
+      "publisher": "arXiv 2611.09490",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-05",
-      "lane": "simeval",
-      "score": 2.755,
+      "published": "2026-11-06",
+      "lane": "edge",
+      "score": 3.515,
       "numbers": [
-        "85%",
-        "7.8 ms",
-        "3.3x"
+        "95%",
+        "2.57x",
+        "72 ms",
+        "214x"
+      ],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Non-contact fruit sizing from RGB-D imagery reaches sub-centimetre accuracy on workstation hardware, but in-field grading requires the same pipeline to run on a low-power single-board computer, and the cost of that transition is rarely reported. We deploy a curvature-aware cucumber length-measurement pipeline (YOLO26n detection, prompt-based segmentation and a medial arc spline estimator) on an NVIDIA Jetson Orin Nano and a Raspberry Pi 4, and characterize both against an RTX 3050 Ti workstation by replaying 50 identical greenhouse captures of 7 specimens, with specimen-level cluster-bootstrap statistics. Accuracy is preserved: mean absolute error (MAE) is 0.58 cm (95% CI 0.46-0.69) on both the workstation and the Jetson at matched precision, with a paired difference of zero. TensorRT FP16 compilation cuts Jetson detection latency 2.57x, giving two operating points on one board: 72 ms per fruit at 0.84 cm, or 2.74 s at 0.64 cm. Four ablations map the design space. For prompted segmentation backends, measurement accuracy is fixed by the backend and reproduces across platforms to within 0.01 cm, while its cost is fixed by the platform and varies 214x, so the two choices are separable. Whole-graph INT8 quantization of the NMS-free detection head fails structurally, returning no detections, because one output tensor carries both pixel coordinates and confidences; we show that no calibration strategy can avoid this. Excluding the head restores function at 1.37x. Energy per fruit is 42.2 J on the Jetson, and its 7 W mode consumes 73% more than its 15 W mode. The Raspberry Pi with MobileSAM costs 2.5x more per fruit than the Jetson with SAM despite drawing 47% less power, and it runs without thermal throttling under sustained load. The results define an accuracy-throughput-energy envelope with three non-dominated configurations and give rules for selecting among them."
+    },
+    {
+      "id": "arxiv:2611.09888",
+      "title": "Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving",
+      "url": "https://arxiv.org/abs/2611.09888",
+      "publisher": "arXiv 2611.09888",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-06",
+      "lane": "simeval",
+      "score": 3.41,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "Scenario-based simulation is central to evaluating autonomous-driving policies, but a scenario scripted before execution (i.e., with predetermined, fixed actor routes and speeds) may not preserve its intended interaction once the tested ego policy responds in closed loop. Scripted scenarios cannot adapt to unanticipated ego behavior, while learned traffic actors may remain reactive without reliably realizing a particular scenario intent. We introduce a scenario orchestrator that continuously monitors the joint traffic state and adapts non-ego actors through re-timing, re-routing, and role reassignment for creating a specific scenario intent. At each step, the orchestrator solves a constrained optimization problem that preserves the intended interaction while limiting interventions and maintaining traffic feasibility. We further distinguish scenario realization from policy failure, allowing a test to first be judged based on whether the intended interaction occurred and then by how the ego policy responded. Experiments in the CARLA simulator across multiple scenario families and driving policies show that orchestration realizes targeted interactions more reliably than scripted and learned actor-level baselines, particularly under variations in initial conditions and ego behavior. These results support closed-loop scenario orchestration as a tool for controlled and reproducible policy evaluation."
+    },
+    {
+      "id": "arxiv:2611.09124",
+      "title": "Toward the Era of Agentic Embodied Intelligence",
+      "url": "https://arxiv.org/abs/2611.09124",
+      "publisher": "arXiv 2611.09124",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-06",
+      "lane": "foundation",
+      "score": 3.0,
+      "numbers": [
+        "2.21x",
+        "45.40%",
+        "93.98%",
+        "95.05%"
       ],
       "signals": [
         "numbers",
@@ -30,107 +71,112 @@
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while allowing irrelevant background content to distract action prediction under distribution shift. We argue that these issues stem from two complementary forms of redundancy: many visual tokens are spatially irrelevant, while attention over the remaining tokens is often misallocated. Based on this observation, we propose T3R, a Training-Free Two-Stage Token Refinement framework. In the first stage, segmentation-guided token pruning removes irrelevant visual patches to reduce computation and eliminate distracting context. In the second stage, saliency-guided attention biasing reallocates attention toward action-critical visual regions and language instructions within the retained tokens. Together, pruning produces a cleaner candidate set, while attention biasing further emphasizes the most decision-relevant evidence, yielding a better accuracy-efficiency frontier than either stage alone. On LIBERO-Spatial, T3R removes 85% of scene-camera visual tokens while essentially matching the unpruned success rate, and improves success by up to 7 percentage points under out-of-distribution object-placement perturbations. The timing comparison attributes 7.8 ms per inference call to pruning and attention-bias application. As input resolution increases, LLM-forward profiling shows up to a 3.3x speedup over the unpruned baseline. Evaluations across LIBERO, SIMPLER, and RoboTwin with three VLA backbones show the strongest accuracy-efficiency benefits in multi-camera settings. These results demonstrate that training-free token refinement is a practical approach to efficient and robust VLA inference."
+      "summary": "Foundation models increasingly guide robot actions, yet sustained autonomy requires efficient control and failure recovery. We introduce A2-MEAS, an embodied multi-agent framework built around code as a scaling interface. Learned correction codes combine corrective language, spatial evidence, execution history, and action proposals. MetaBrain provides training supervision and runtime guidance. A correction encoder and adapter absorb this knowledge into policy weights during training, while fresh codes adapt behavior with frozen weights at deployment. The action model, A2-WLA, adds motion-aware history and a latent world model to a vision-language-action policy. Surprisingly, this simple design with action pretraining and task specialization reaches 0.5755 Q-score on the 50-task BEHAVIOR 2026 public subset before online correction, 2.21x the 2025 winner's reported 0.2605 across different benchmark editions and training configurations. On all 100 BEHAVIOR 2026 public tasks, A2-MEAS achieves 0.6411 Q-score and 45.40% task success. On RoboTwin 2.0, A2-WLA achieves 93.98% average success, rising to 95.05% with the complete system. Across 12 real-robot tasks in five household settings, A2-WLA achieves 57.92% average success versus 26.67% for pi0.5. In long-horizon pour-over coffee preparation, a history-conditioned adapter raises post-failure completion at two filter-handling steps from 14% to 94% and from 8% to 82%, compared with A2-WLA retries. Our training infrastructure delivers 427.1 samples per second, 4.03x the throughput of a pi0.5 reference implementation on matched hardware. We will release the system, models, training scripts, and infrastructure to support efficient embodied learning."
     },
     {
-      "id": "arxiv:2611.08398",
-      "title": "A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation",
-      "url": "https://arxiv.org/abs/2611.08398",
-      "publisher": "arXiv 2611.08398",
+      "id": "arxiv:2611.08987",
+      "title": "VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models",
+      "url": "https://arxiv.org/abs/2611.08987",
+      "publisher": "arXiv 2611.08987",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-05",
-      "lane": "simeval",
-      "score": 2.555,
+      "published": "2026-11-06",
+      "lane": "foundation",
+      "score": 3.0,
       "numbers": [
-        "300%"
+        "77%"
       ],
       "signals": [
         "numbers",
-        "closed_loop"
-      ],
-      "heat": 0.0,
-      "summary": "Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin. Whilst tactile displays exist to simulate and manipulate all of these cues individually, little progress has been made constructing devices that can control multiple cues simultaneously. This paper presents a tactile display technology that offers both softness and temperature change. A prototype display, based on particle jamming and the thermal transfer of heated and cooled water, is evaluated in terms of its ability to change both stiffness and temperature. Mechanical evaluations demonstrate controllable stiffness increase of 300%, whilst thermal characterisation showed strong surface uniformity and a range of achievable temperatures from 10°C up to 50°C, with closed-loop control maintaining a 0.2°C error from a setpoint. This work advances the design of multimodal tactile displays with applications to perceptual research, medical simulation, and affective haptics."
-    },
-    {
-      "id": "arxiv:2611.07779",
-      "title": "Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition",
-      "url": "https://arxiv.org/abs/2611.07779",
-      "publisher": "arXiv 2611.07779",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-05",
-      "lane": "edge",
-      "score": 2.305,
-      "numbers": [
-        "101 ms"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot",
+        "closed_loop",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Tactile sensing provides information about object properties that can improve robotic grasping and manipulation. However, accurate object recognition during the early stages of grasping remains challenging, particularly under strict real-time constraints. This study presents a flexible, distributed piezoelectric tactile sensing system for early-stage object recognition. The system was experimentally evaluated using six everyday objects and three recognition approaches: feature-based classification using support vector machines (SVMs), raw-signal classification using 1D convolutional neural networks (1D-CNNs) and convolutional recurrent neural networks (C-RNNs), and spatiotemporal heatmap classification using a 2D-CNN. The effects of sensor count and temporal window size on recognition accuracy and real-time feasibility were systematically investigated. Increasing the number of sensing elements improved recognition performance across all approaches. The best-performing method, based on spatiotemporal heatmaps and a 2D-CNN, achieved F1-scores of 0.9796, 0.9846, and 0.9903 using 16, 24, and 32 sensors, respectively. The optimal configuration, comprising 32 sensors and a 100-ms temporal window (50 samples), was deployed on an embedded edge platform, achieving an end-to-end recognition latency of approximately 101 ms from contact onset and an energy consumption of 63.8 microjoules per inference. These results demonstrate the potential of distributed piezoelectric tactile sensing for accurate, energy-efficient, and real-time object recognition during robotic grasping."
+      "summary": "Large vision-language-action (VLA) models generalize well but are difficult to run in real time on a robot, and small VLAs that run there fail more often. Remote inference over beyond-5G and 6G networks lets a robot use a large VLA on a server, but querying the server for every action chunk limits the number of robots per server. We propose VLA handover: the robot runs a small VLA (S-VLA) and switches to a large VLA (L-VLA) on a server only when the S-VLA is likely to fail. We formulate the switching as minimizing the request cost under a required success probability and, since this problem cannot be solved directly, propose a heuristic framework that retrains neither VLA. In simulation with SmolVLA and $π_{0.5}$ on three of the four LIBERO suites, VLA handover raised the success rate by 11-22 percentage points over the S-VLA alone and sent 49-77% fewer requests than server-only control at a 2-4 percentage-point lower success rate, and its completion time grew less with the network latency."
     },
     {
-      "id": "arxiv:2611.07912",
-      "title": "GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving",
-      "url": "https://arxiv.org/abs/2611.07912",
-      "publisher": "arXiv 2611.07912",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-05",
-      "lane": "foundation",
-      "score": 1.95,
-      "numbers": [
-        "10%"
-      ],
+      "id": "nvidia-blog:dc742b2cbd8f",
+      "title": "Korea Advances Physical AI Across Industries With NVIDIA",
+      "url": "https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-11-09",
+      "lane": "simeval",
+      "score": 2.235,
+      "numbers": [],
       "signals": [
-        "numbers"
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training. Conditioning on a new driving objective requires retraining. We study energy guidance as a general mechanism and present GuidedWAM, a model-agnostic framework for injecting driving objectives into frozen WAMs at sampling time. Our framework constructs each objective as differentiable energies on the sampler's intermediate clean-action estimate, which needs only forward access to the frozen model, and is stabilized by sampling-time guidance scheduling, per-energy normalization, and velocity-bounded correction. On the NAVSIM v2 hard-split, guidance improves all three frozen, publicly released WAMs by 1.8 to 3.6 EPDMS, averaged over three sampler seeds, and adds less than 10% to the sampling time per step. These results position energy guidance as a practical post-training control channel for WAMs."
+      "summary": "Tapping into the country’s strengths in manufacturing and engineering, NVIDIA is helping advance Korea’s physical AI ecosystem. The country’s industry leaders are applying accelerated computing, AI and simulation to everything from semiconductor manufacturing to robotics and autonomous vehicles. These efforts are helping bring physical AI from development into real-world production. Samsung Advances Semiconductor Engineering With […]"
     },
     {
-      "id": "qbitai:fdeed09ac945",
-      "title": "浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生",
-      "url": "https://www.qbitai.com/2026/11/508236.html",
-      "publisher": "量子位 QbitAI",
-      "source_id": "qbitai",
-      "evidence": "M",
-      "published": "2026-11-07",
-      "lane": "foundation",
-      "score": 1.15,
+      "id": "nvidia-developer-robotics:29679bac2d0d",
+      "title": "Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5",
+      "url": "https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-11-09",
+      "lane": "hardware",
+      "score": 1.932,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "中国版cosmos再交卷"
+      "summary": "Picture guiding a robot arm by hand while its motors supply just enough torque to support its weight and keep the robot upright. This simple interaction, a..."
+    },
+    {
+      "id": "the-robot-report:61ccb0e32798",
+      "title": "Boston Dynamics adds wheels to Atlas humanoid to test whole-body control",
+      "url": "https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-09",
+      "lane": "hardware",
+      "score": 1.847,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Boston Dynamics combines classical motor control with whole-body reinforcement learning to power dynamic, wheeled locomotion for Atlas."
+    },
+    {
+      "id": "ieee-spectrum-robotics:cf83aea47cbb",
+      "title": "Can Agentic Robotics Solve Robotics’ Data Scaling Problem?",
+      "url": "https://spectrum.ieee.org/agentic-robotics",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-11-09",
+      "lane": "data",
+      "score": 1.566,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.038,
+      "summary": "Robotics companies are investing heavily in the belief that data will solve the most difficult problems in robotics. Once AI systems have ingested enough data from human demonstrations, the thinking goes, robots will be able to perform the vast majority of the manual tasks that humans now do. There are even robotics companies that exist solely to collect training data and sell it to other robotics companies in pursuit of this goal. But whether data will finally bring us general-purpose robots is an open question . Nobody knows how much data would be necessary , what kind of data is important , or whether something else might be missing . And there are other problems with a reliance on massive amounts of data: the resulting AI algorithms are essentially black boxes, which despite their high performance are difficult or impossible for humans to understand. This characteristic is becoming increasingly concerning in commercial deployments, where robots must be flexible, reliable, and safe. At the 2026 Conference on Robot Learning this week, UC Berkeley and NVIDIA are jointly announcing a new approach to using AI to program robots for everyday practical tasks in industrial environments. Called agentic robotics, this technique leverages the latest advances in AI coding tools while in some sense bringing robotics back to its roots—achieving a fundamental understanding of how a robot works, and then writing human-readable code to get it to do useful things, no data (and no humans) required. The Data Problem For decades, robots were programmed with model-based methods, meaning that their behavior was based on a detailed understanding (or model) of the physics and mathematics underlying the robot and its environment. Roboticists would first develop these models, and then write painstakingly detailed code telling their robots how to act. The resulting hand-tuned robotic systems could operate fast and reliably, but this approach has fallen out of favor because it requires both …"
     }
   ],
   "lane_counts": {
-    "foundation": 12,
-    "data": 5,
+    "foundation": 13,
+    "data": 4,
     "training": 0,
-    "simeval": 12,
-    "edge": 11,
+    "simeval": 13,
+    "edge": 10,
     "safety": 1,
-    "systems": 2,
-    "hardware": 7
+    "systems": 1,
+    "hardware": 8
   },
   "evidence_mix": {
-    "O": 6,
+    "O": 8,
     "R": 28,
-    "M": 16
+    "M": 14
   },
   "fetch": {
-    "items": 515,
+    "items": 636,
     "attempted": 25,
-    "answered": 23,
-    "failed": [
-      "deepmind",
-      "leiphone"
-    ],
+    "answered": 25,
+    "failed": [],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -154,25 +200,26 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 24,
+      "hn_stories": 19,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 33,
+      "arxiv": 35,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
       "tri": 10,
+      "leiphone": 20,
       "monoist": 30,
       "openai": 21,
-      "bair": 6,
+      "bair": 7,
       "mit-news-robotics": 50,
       "techcrunch-robotics": 12,
       "robohub": 75,
-      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

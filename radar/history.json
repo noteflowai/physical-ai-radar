@@ -174,16 +174,6 @@
       "date": "2026-10-10",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.09254",
-        "https://arxiv.org/abs/2610.11322",
-        "https://arxiv.org/abs/2610.12026",
-        "https://arxiv.org/abs/2610.12089",
-        "https://spectrum.ieee.org/video-friday-reachy-mini-raps",
-        "https://www.leiphone.com/category/robot/pz34omtbnw9y0lho.html",
-        "https://www.leiphone.com/category/ai/4i8ykksz9v10ih1r.html",
-        "https://www.leiphone.com/category/zaobao/ggmq1ribgxy2gsvl.html"
-      ],
       "failed": [
         "tri"
       ],
@@ -1021,6 +1011,42 @@
         "unmet": [
           "hot",
           "official"
+        ]
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.09490",
+        "https://arxiv.org/abs/2611.09888",
+        "https://arxiv.org/abs/2611.09124",
+        "https://arxiv.org/abs/2611.08987",
+        "https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem",
+        "https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5",
+        "https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control",
+        "https://spectrum.ieee.org/agentic-robotics"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "nvidia-blog:dc742b2cbd8f",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
         ]
       }
     }

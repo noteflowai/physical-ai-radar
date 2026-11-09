@@ -62,31 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-09
+### 今日雷达 · 2026-11-10
 
-`生成时间: 2026-11-08 23:40 UTC` ｜ `统计窗口: 论文 2026-11-05 → 2026-11-09 · 博客与报道 2026-10-10 → 2026-11-09 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-09 23:40 UTC` ｜ `统计窗口: 论文 2026-11-06 → 2026-11-10 · 博客与报道 2026-10-11 → 2026-11-10 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](https://arxiv.org/abs/2611.08413)**<br>`85%`&nbsp; `7.8 ms`&nbsp; `3.3x`<br><sub>仿真与评测 · arXiv 2611.08413 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation](https://arxiv.org/abs/2611.08398)**<br>`300%`<br><sub>仿真与评测 · arXiv 2611.08398 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition](https://arxiv.org/abs/2611.07779)**<br>`101 ms`<br><sub>边缘与实时性 · arXiv 2611.07779 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving](https://arxiv.org/abs/2611.07912)**<br>`10%`<br><sub>基座模型 · arXiv 2611.07912 · 2026‑11‑05</sub> |
-| 05<br>🟡&nbsp;`M` | **[浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生](https://www.qbitai.com/2026/11/508236.html)**<br><sub>基座模型 · 量子位 QbitAI · 2026‑11‑07</sub> |
+| 01<br>🔵&nbsp;`R` | **[CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4](https://arxiv.org/abs/2611.09490)**<br>`95%`&nbsp; `2.57x`&nbsp; `72 ms`<br><sub>边缘与实时性 · arXiv 2611.09490 · 2026‑11‑06</sub> |
+| 02<br>🔵&nbsp;`R` | **[Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving](https://arxiv.org/abs/2611.09888)**<br><sub>仿真与评测 · arXiv 2611.09888 · 2026‑11‑06</sub> |
+| 03<br>🔵&nbsp;`R` | **[Toward the Era of Agentic Embodied Intelligence](https://arxiv.org/abs/2611.09124)**<br>`2.21x`&nbsp; `45.40%`&nbsp; `93.98%`<br><sub>基座模型 · arXiv 2611.09124 · 2026‑11‑06</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models](https://arxiv.org/abs/2611.08987)**<br>`77%`<br><sub>基座模型 · arXiv 2611.08987 · 2026‑11‑06</sub> |
+| 05<br>🟢&nbsp;`O` | **[Korea Advances Physical AI Across Industries With NVIDIA](https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑09</sub> |
+| 06<br>🟢&nbsp;`O` | **[Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/)**<br><sub>本体与供应链 · NVIDIA Technical Blog (Robotics) · 2026‑11‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Boston Dynamics adds wheels to Atlas humanoid to test whole-body control](https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑09</sub> |
+| 08<br>🟡&nbsp;`M` | **[Can Agentic Robotics Solve Robotics’ Data Scaling Problem?](https://spectrum.ieee.org/agentic-robotics)**<br><sub>数据引擎 · IEEE Spectrum Robotics · 2026‑11‑09</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–05</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **T3R** — `AI 起草` 多相机 VLA 推理算力吃紧的团队，可以先试这类免训练的视觉 token 精简，再决定是否重训或加卡；不过“最高 3.3x 加速”是作者自报，页面没写清对比基线，也看不到真机结果。
-2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — `AI 起草` 这是作用于人体皮肤的 VR 触觉接口，不是机器人传感器；作者自报刚度可控提升 300%，若想用于遥操作的触觉反馈，页面上还看不到任何机器人侧的使用证据。
-3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — `AI 起草` 选触觉方案时，可以拿作者自报的“从接触起约 101 ms 完成识别”去对照自家抓取控制器的时序预算；页面有真机实验信号，但看不到识别结果是否反馈进抓取闭环。
-4. **GuidedWAM** — `AI 起草` 自动驾驶世界动作模型的目标在后训练后就固定了，这篇提出推理时用能量引导改目标而不重训；页面唯一的数字是采样开销增加不到 10%，看不到闭环或实车效果，迁移到机器人也未展示。
-5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — `AI 起草` 在昇腾硬件上找世界模型的团队可以把它记为线索，但这是媒体二手转述，页面没有任何数据，引用或评估前要先追到原始论文或代码。
+1. **CucumberVision at the Edge** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Toward the Era of Agentic Embodied Intelligence** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+4. **VLA Handover** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+5. **Korea Advances Physical AI Across Industries With NVIDIA** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-09.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-10.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

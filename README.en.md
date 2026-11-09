@@ -60,31 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-09
+### Today's radar · 2026-11-10
 
-`Generated: 2026-11-08 23:40 UTC` ｜ `Window: papers 2026-11-05 → 2026-11-09 · posts 2026-10-10 → 2026-11-09 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-09 23:40 UTC` ｜ `Window: papers 2026-11-06 → 2026-11-10 · posts 2026-10-11 → 2026-11-10 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models](https://arxiv.org/abs/2611.08413)**<br>`85%`&nbsp; `7.8 ms`&nbsp; `3.3x`<br><sub>Simulation & evaluation · arXiv 2611.08413 · 2026‑11‑05</sub> |
-| 02<br>🔵&nbsp;`R` | **[A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation](https://arxiv.org/abs/2611.08398)**<br>`300%`<br><sub>Simulation & evaluation · arXiv 2611.08398 · 2026‑11‑05</sub> |
-| 03<br>🔵&nbsp;`R` | **[Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition](https://arxiv.org/abs/2611.07779)**<br>`101 ms`<br><sub>Edge & real-time · arXiv 2611.07779 · 2026‑11‑05</sub> |
-| 04<br>🔵&nbsp;`R` | **[GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving](https://arxiv.org/abs/2611.07912)**<br>`10%`<br><sub>Foundation models · arXiv 2611.07912 · 2026‑11‑05</sub> |
-| 05<br>🟡&nbsp;`M` | **[浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生](https://www.qbitai.com/2026/11/508236.html)**<br><sub>Foundation models · 量子位 QbitAI · 2026‑11‑07</sub> |
+| 01<br>🔵&nbsp;`R` | **[CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4](https://arxiv.org/abs/2611.09490)**<br>`95%`&nbsp; `2.57x`&nbsp; `72 ms`<br><sub>Edge & real-time · arXiv 2611.09490 · 2026‑11‑06</sub> |
+| 02<br>🔵&nbsp;`R` | **[Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving](https://arxiv.org/abs/2611.09888)**<br><sub>Simulation & evaluation · arXiv 2611.09888 · 2026‑11‑06</sub> |
+| 03<br>🔵&nbsp;`R` | **[Toward the Era of Agentic Embodied Intelligence](https://arxiv.org/abs/2611.09124)**<br>`2.21x`&nbsp; `45.40%`&nbsp; `93.98%`<br><sub>Foundation models · arXiv 2611.09124 · 2026‑11‑06</sub> |
+| 04<br>🔵&nbsp;`R` | **[VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models](https://arxiv.org/abs/2611.08987)**<br>`77%`<br><sub>Foundation models · arXiv 2611.08987 · 2026‑11‑06</sub> |
+| 05<br>🟢&nbsp;`O` | **[Korea Advances Physical AI Across Industries With NVIDIA](https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑09</sub> |
+| 06<br>🟢&nbsp;`O` | **[Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/)**<br><sub>Embodiment & supply chain · NVIDIA Technical Blog (Robotics) · 2026‑11‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Boston Dynamics adds wheels to Atlas humanoid to test whole-body control](https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑09</sub> |
+| 08<br>🟡&nbsp;`M` | **[Can Agentic Robotics Solve Robotics’ Data Scaling Problem?](https://spectrum.ieee.org/agentic-robotics)**<br><sub>Data engine · IEEE Spectrum Robotics · 2026‑11‑09</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–05</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **T3R** — `AI draft` Teams whose multi-camera VLA inference is compute-bound could try this training-free step before retraining or adding hardware, but the up-to-3.3x speedup is self-reported, its baseline is cut off on the page, and no real-robot result is shown.
-2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — `AI draft` This is a VR haptic device for human skin, not a robot sensor; the self-reported 300% controllable stiffness increase matters to teleoperation feedback designers only if someone shows it in a robot loop, which the page does not.
-3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — `AI draft` When choosing tactile hardware for grasping, compare the self-reported 101 ms from contact onset to recognition against your controller's timing budget; the page flags real-robot experiments but shows no recognition result feeding back into the grasp.
-4. **GuidedWAM** — `AI draft` Driving world action models fix their objectives after post-training; this preprint steers them at sampling time instead of retraining, but the only visible evidence is under 10% added sampling cost, with no closed-loop, on-vehicle or robot result shown.
-5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — `AI draft` Teams that need a world model running on Huawei Ascend hardware can log this as a lead, but it is a secondary press piece with no figures on the page, so trace it to the original paper or code before evaluating it.
+1. **CucumberVision at the Edge** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **Toward the Era of Agentic Embodied Intelligence** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+4. **VLA Handover** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+5. **Korea Advances Physical AI Across Industries With NVIDIA** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-09.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-10.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
