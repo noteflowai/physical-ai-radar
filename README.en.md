@@ -76,11 +76,11 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–05</summary>
 
-1. **T3R** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **GuidedWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **T3R** — `AI draft` Teams whose multi-camera VLA inference is compute-bound could try this training-free step before retraining or adding hardware, but the up-to-3.3x speedup is self-reported, its baseline is cut off on the page, and no real-robot result is shown.
+2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — `AI draft` This is a VR haptic device for human skin, not a robot sensor; the self-reported 300% controllable stiffness increase matters to teleoperation feedback designers only if someone shows it in a robot loop, which the page does not.
+3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — `AI draft` When choosing tactile hardware for grasping, compare the self-reported 101 ms from contact onset to recognition against your controller's timing budget; the page flags real-robot experiments but shows no recognition result feeding back into the grasp.
+4. **GuidedWAM** — `AI draft` Driving world action models fix their objectives after post-training; this preprint steers them at sampling time instead of retraining, but the only visible evidence is under 10% added sampling cost, with no closed-loop, on-vehicle or robot result shown.
+5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — `AI draft` Teams that need a world model running on Huawei Ascend hardware can log this as a lead, but it is a secondary press piece with no figures on the page, so trace it to the original paper or code before evaluating it.
 
 </details>
 

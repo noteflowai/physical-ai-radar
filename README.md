@@ -78,11 +78,11 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–05</summary>
 
-1. **T3R** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-4. **GuidedWAM** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
-5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+1. **T3R** — `AI 起草` 多相机 VLA 推理算力吃紧的团队，可以先试这类免训练的视觉 token 精简，再决定是否重训或加卡；不过“最高 3.3x 加速”是作者自报，页面没写清对比基线，也看不到真机结果。
+2. **A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulat…** — `AI 起草` 这是作用于人体皮肤的 VR 触觉接口，不是机器人传感器；作者自报刚度可控提升 300%，若想用于遥操作的触觉反馈，页面上还看不到任何机器人侧的使用证据。
+3. **Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recogn…** — `AI 起草` 选触觉方案时，可以拿作者自报的“从接触起约 101 ms 完成识别”去对照自家抓取控制器的时序预算；页面有真机实验信号，但看不到识别结果是否反馈进抓取闭环。
+4. **GuidedWAM** — `AI 起草` 自动驾驶世界动作模型的目标在后训练后就固定了，这篇提出推理时用能量引导改目标而不重训；页面唯一的数字是采样开销增加不到 10%，看不到闭环或实车效果，迁移到机器人也未展示。
+5. **浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生** — `AI 起草` 在昇腾硬件上找世界模型的团队可以把它记为线索，但这是媒体二手转述，页面没有任何数据，引用或评估前要先追到原始论文或代码。
 
 </details>
 

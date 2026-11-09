@@ -1,0 +1,43 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-09",
+  "generated": "2026-11-09 13:53 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.08413": {
+      "zh": "多相机 VLA 推理算力吃紧的团队，可以先试这类免训练的视觉 token 精简，再决定是否重训或加卡；不过“最高 3.3x 加速”是作者自报，页面没写清对比基线，也看不到真机结果。",
+      "en": "Teams whose multi-camera VLA inference is compute-bound could try this training-free step before retraining or adding hardware, but the up-to-3.3x speedup is self-reported, its baseline is cut off on the page, and no real-robot result is shown.",
+      "ja": "マルチカメラ VLA の推論コストに悩む構成なら、再学習や計算資源の追加より先に試せる学習不要の手法だが、最大 3.3x の高速化は著者の自己報告で、比較対象はページ上で途切れており、実機結果も見当たらない。"
+    },
+    "https://arxiv.org/abs/2611.08398": {
+      "zh": "这是作用于人体皮肤的 VR 触觉接口，不是机器人传感器；作者自报刚度可控提升 300%，若想用于遥操作的触觉反馈，页面上还看不到任何机器人侧的使用证据。",
+      "en": "This is a VR haptic device for human skin, not a robot sensor; the self-reported 300% controllable stiffness increase matters to teleoperation feedback designers only if someone shows it in a robot loop, which the page does not.",
+      "ja": "これは人の皮膚向けの VR 触覚インタフェースでロボット用センサではなく、著者報告の剛性 300% の可変幅を遠隔操作の触覚提示に使えるかは、ページ上にロボット側の検証がないため未知数だ。"
+    },
+    "https://arxiv.org/abs/2611.07779": {
+      "zh": "选触觉方案时，可以拿作者自报的“从接触起约 101 ms 完成识别”去对照自家抓取控制器的时序预算；页面有真机实验信号，但看不到识别结果是否反馈进抓取闭环。",
+      "en": "When choosing tactile hardware for grasping, compare the self-reported 101 ms from contact onset to recognition against your controller's timing budget; the page flags real-robot experiments but shows no recognition result feeding back into the grasp.",
+      "ja": "把持用の触覚センサを選ぶ際は、著者報告の「接触開始から約 101 ms で認識」を自社の把持制御の時間予算と照らすとよく、実機実験の記載はあるものの、認識結果を把持の閉ループに戻した結果はページにない。"
+    },
+    "https://arxiv.org/abs/2611.07912": {
+      "zh": "自动驾驶世界动作模型的目标在后训练后就固定了，这篇提出推理时用能量引导改目标而不重训；页面唯一的数字是采样开销增加不到 10%，看不到闭环或实车效果，迁移到机器人也未展示。",
+      "en": "Driving world action models fix their objectives after post-training; this preprint steers them at sampling time instead of retraining, but the only visible evidence is under 10% added sampling cost, with no closed-loop, on-vehicle or robot result shown.",
+      "ja": "自動運転の世界行動モデルは事後学習で目的が固定されるが、本稿は再学習せずサンプリング時のエネルギー誘導で目的を変える案で、ページ上の根拠はサンプリングへの追加が 10% 未満という数値だけ、閉ループや実車、ロボットでの結果は示されていない。"
+    },
+    "https://www.qbitai.com/2026/11/508236.html": {
+      "zh": "在昇腾硬件上找世界模型的团队可以把它记为线索，但这是媒体二手转述，页面没有任何数据，引用或评估前要先追到原始论文或代码。",
+      "en": "Teams that need a world model running on Huawei Ascend hardware can log this as a lead, but it is a secondary press piece with no figures on the page, so trace it to the original paper or code before evaluating it.",
+      "ja": "Ascend 上で動く世界モデルを探しているチームには手がかりになるが、二次報道でページに数値は一切なく、評価や引用の前に元の論文やコードまでたどる必要がある。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

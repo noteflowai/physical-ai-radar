@@ -96,7 +96,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08413" rel="noopener" target="_blank">T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</a></h3>
 <p class="figure"><strong>85%</strong><span class="context">“T3R removes 85% of scene-camera visual”</span></p><p class="chips"><span class="chip">7.8 ms</span><span class="chip">3.3x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams whose multi-camera VLA inference is compute-bound could try this training-free step before retraining or adding hardware, but the up-to-3.3x speedup is self-reported, its baseline is cut off on the page, and no real-robot result is shown.</p>
 <p class="excerpt">Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08398" rel="noopener" target="_blank">A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</a></h3>
 <p class="figure"><strong>300%</strong><span class="context">“controllable stiffness increase of 300%”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> This is a VR haptic device for human skin, not a robot sensor; the self-reported 300% controllable stiffness increase matters to teleoperation feedback designers only if someone shows it in a robot loop, which the page does not.</p>
 <p class="excerpt">Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07779" rel="noopener" target="_blank">Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition</a></h3>
 <p class="figure"><strong>101 ms</strong><span class="context">“recognition latency of approximately 101 ms from contact onset”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> When choosing tactile hardware for grasping, compare the self-reported 101 ms from contact onset to recognition against your controller&#x27;s timing budget; the page flags real-robot experiments but shows no recognition result feeding back into the grasp.</p>
 <p class="excerpt">Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07912" rel="noopener" target="_blank">GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving</a></h3>
 <p class="figure"><strong>10%</strong><span class="context">“and adds less than 10% to the sampling”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Driving world action models fix their objectives after post-training; this preprint steers them at sampling time instead of retraining, but the only visible evidence is under 10% added sampling cost, with no closed-loop, on-vehicle or robot result shown.</p>
 <p class="excerpt">World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.</p>
 <ul class="signals"><li>quantitative results</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/508236.html" rel="noopener" target="_blank">浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Teams that need a world model running on Huawei Ascend hardware can log this as a lead, but it is a secondary press piece with no figures on the page, so trace it to the original paper or code before evaluating it.</p>
 <p class="excerpt">中国版cosmos再交卷</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-07</span>

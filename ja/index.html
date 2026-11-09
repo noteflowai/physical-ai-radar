@@ -96,7 +96,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08413" rel="noopener" target="_blank">T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</a></h3>
 <p class="figure"><strong>85%</strong><span class="context">“T3R removes 85% of scene-camera visual”</span></p><p class="chips"><span class="chip">7.8 ms</span><span class="chip">3.3x</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> マルチカメラ VLA の推論コストに悩む構成なら、再学習や計算資源の追加より先に試せる学習不要の手法だが、最大 3.3x の高速化は著者の自己報告で、比較対象はページ上で途切れており、実機結果も見当たらない。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08398" rel="noopener" target="_blank">A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</a></h3>
 <p class="figure"><strong>300%</strong><span class="context">“controllable stiffness increase of 300%”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> これは人の皮膚向けの VR 触覚インタフェースでロボット用センサではなく、著者報告の剛性 300% の可変幅を遠隔操作の触覚提示に使えるかは、ページ上にロボット側の検証がないため未知数だ。</p>
 <p class="excerpt">Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07779" rel="noopener" target="_blank">Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition</a></h3>
 <p class="figure"><strong>101 ms</strong><span class="context">“recognition latency of approximately 101 ms from contact onset”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 把持用の触覚センサを選ぶ際は、著者報告の「接触開始から約 101 ms で認識」を自社の把持制御の時間予算と照らすとよく、実機実験の記載はあるものの、認識結果を把持の閉ループに戻した結果はページにない。</p>
 <p class="excerpt">Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07912" rel="noopener" target="_blank">GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving</a></h3>
 <p class="figure"><strong>10%</strong><span class="context">“and adds less than 10% to the sampling”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 自動運転の世界行動モデルは事後学習で目的が固定されるが、本稿は再学習せずサンプリング時のエネルギー誘導で目的を変える案で、ページ上の根拠はサンプリングへの追加が 10% 未満という数値だけ、閉ループや実車、ロボットでの結果は示されていない。</p>
 <p class="excerpt">World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.</p>
 <ul class="signals"><li>定量結果あり</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/508236.html" rel="noopener" target="_blank">浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Ascend 上で動く世界モデルを探しているチームには手がかりになるが、二次報道でページに数値は一切なく、評価や引用の前に元の論文やコードまでたどる必要がある。</p>
 <p class="excerpt">中国版cosmos再交卷</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-07</span>
