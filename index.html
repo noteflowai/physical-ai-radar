@@ -96,7 +96,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08413" rel="noopener" target="_blank">T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</a></h3>
 <p class="figure"><strong>85%</strong><span class="context">“T3R removes 85% of scene-camera visual”</span></p><p class="chips"><span class="chip">7.8 ms</span><span class="chip">3.3x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 多相机 VLA 推理算力吃紧的团队，可以先试这类免训练的视觉 token 精简，再决定是否重训或加卡；不过“最高 3.3x 加速”是作者自报，页面没写清对比基线，也看不到真机结果。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08398" rel="noopener" target="_blank">A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</a></h3>
 <p class="figure"><strong>300%</strong><span class="context">“controllable stiffness increase of 300%”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是作用于人体皮肤的 VR 触觉接口，不是机器人传感器；作者自报刚度可控提升 300%，若想用于遥操作的触觉反馈，页面上还看不到任何机器人侧的使用证据。</p>
 <p class="excerpt">Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07779" rel="noopener" target="_blank">Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition</a></h3>
 <p class="figure"><strong>101 ms</strong><span class="context">“recognition latency of approximately 101 ms from contact onset”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 选触觉方案时，可以拿作者自报的“从接触起约 101 ms 完成识别”去对照自家抓取控制器的时序预算；页面有真机实验信号，但看不到识别结果是否反馈进抓取闭环。</p>
 <p class="excerpt">Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.07912" rel="noopener" target="_blank">GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving</a></h3>
 <p class="figure"><strong>10%</strong><span class="context">“and adds less than 10% to the sampling”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 自动驾驶世界动作模型的目标在后训练后就固定了，这篇提出推理时用能量引导改目标而不重训；页面唯一的数字是采样开销增加不到 10%，看不到闭环或实车效果，迁移到机器人也未展示。</p>
 <p class="excerpt">World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/508236.html" rel="noopener" target="_blank">浙大00后博士生再交卷！把十几种物理要素装进一个世界模型｜华为昇腾原生</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在昇腾硬件上找世界模型的团队可以把它记为线索，但这是媒体二手转述，页面没有任何数据，引用或评估前要先追到原始论文或代码。</p>
 <p class="excerpt">中国版cosmos再交卷</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-07</span>
