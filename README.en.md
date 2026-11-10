@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **Toward the Era of Agentic Embodied Intelligence** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-4. **VLA Handover** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+1. **CucumberVision at the Edge** — `AI draft` Anyone porting an RGB-D perception pipeline from a workstation to a low-power board should benchmark on that board: the authors report a 2.57x cut in Jetson detection latency and 72 ms per fruit, though the quoted text concerns fruit grading, not robot control.
+2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI draft` Teams evaluating driving policies on pre-scripted scenarios should check whether actors with fixed routes and speeds still create the intended interaction during a run; this preprint targets that gap, and the page shows no figures yet.
+3. **Toward the Era of Agentic Embodied Intelligence** — `AI draft` If failure recovery limits your robot's autonomy, A2-WLA is worth a look: the authors report 93.98% average success, 95.05% with the complete setup, but these are self-reported, and the page names neither the benchmark nor any real-robot run.
+4. **VLA Handover** — `AI draft` Teams splitting control between a small on-robot VLA and a large server VLA could call the server only when failure is predicted; the authors report 49-77% fewer requests, but the comparison is cut off on the page, so check the baseline before sizing bandwidth.
+5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI draft` For teams weighing Korean manufacturing partners, this is NVIDIA's own statement about its ecosystem there; the excerpt names no partner, deployment or figure, so treat it as positioning until named deployments appear.
+6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI draft` Teams that want an arm to be guided by hand while its motors hold up its weight get a first-party Holoscan 5 walkthrough from NVIDIA; the page gives no latency or torque figures, so measure the control-rate cost on your own arm.
+7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI draft` Humanoid teams choosing a control stack should note the reported hybrid: classical motor control combined with whole-body reinforcement learning for a wheeled Atlas; this is secondhand, so confirm it in Boston Dynamics' own material before citing.
+8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI draft` Before committing more budget to data collection, this IEEE Spectrum piece examines the industry's bet that data will solve robotics' hardest problems; it is secondary analysis, and the excerpt carries no figures or named results.
 
 </details>
 

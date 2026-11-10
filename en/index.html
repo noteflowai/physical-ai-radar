@@ -77,7 +77,7 @@
 <a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-11.8" cy="-134.7" r="11" class="halo"/><circle cx="-11.8" cy="-134.7" r="5"/><title>Toward the Era of Agentic Embodied Intelligence</title></a>
 <a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="11.8" cy="-134.7" r="11" class="halo"/><circle cx="11.8" cy="-134.7" r="5"/><title>VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models</title></a>
 <a href="#p5" class="blip" style="--lane:#fb923c;--delay:1.75s"><circle cx="74.2" cy="88.4" r="11" class="halo"/><circle cx="74.2" cy="88.4" r="5"/><title>Korea Advances Physical AI Across Industries With NVIDIA</title></a>
-<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-82.5" cy="-69.2" r="11" class="halo"/><circle cx="-82.5" cy="-69.2" r="5"/><title>Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</title></a>
+<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-82.4" cy="-69.2" r="11" class="halo"/><circle cx="-82.4" cy="-69.2" r="5"/><title>Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</title></a>
 <a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-67.8" cy="-80.8" r="11" class="halo"/><circle cx="-67.8" cy="-80.8" r="5"/><title>Boston Dynamics adds wheels to Atlas humanoid to test whole-body control</title></a>
 <a href="#p8" class="blip" style="--lane:#38bdf8;--delay:2.80s"><circle cx="69.4" cy="-69.4" r="11" class="halo"/><circle cx="69.4" cy="-69.4" r="5"/><title>Can Agentic Robotics Solve Robotics’ Data Scaling Problem?</title></a>
 <circle class="core" r="3"/></svg>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09490" rel="noopener" target="_blank">CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4</a></h3>
 <p class="figure"><strong>95%</strong><span class="context">“is 0.58 cm ( 95% CI 0.46-0.69) on”</span></p><p class="chips"><span class="chip">2.57x</span><span class="chip">72 ms</span><span class="chip">214x</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> Anyone porting an RGB-D perception pipeline from a workstation to a low-power board should benchmark on that board: the authors report a 2.57x cut in Jetson detection latency and 72 ms per fruit, though the quoted text concerns fruit grading, not robot control.</p>
 <p class="excerpt">Non-contact fruit sizing from RGB-D imagery reaches sub-centimetre accuracy on workstation hardware, but in-field grading requires the same pipeline to run on a low-power single-board computer, and the cost of that transition is rarely…</p>
 <ul class="signals"><li>quantitative results</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09888" rel="noopener" target="_blank">Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Teams evaluating driving policies on pre-scripted scenarios should check whether actors with fixed routes and speeds still create the intended interaction during a run; this preprint targets that gap, and the page shows no figures yet.</p>
 <p class="excerpt">Scenario-based simulation is central to evaluating autonomous-driving policies, but a scenario scripted before execution (i.e., with predetermined, fixed actor routes and speeds) may not preserve its intended interaction once the tested…</p>
 <ul class="signals"><li>closed-loop success reported</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09124" rel="noopener" target="_blank">Toward the Era of Agentic Embodied Intelligence</a></h3>
 <p class="figure"><strong>2.21x</strong><span class="context">“2.21x the 2025 winner&#x27;s”</span></p><p class="chips"><span class="chip">45.40%</span><span class="chip">93.98%</span><span class="chip">95.05%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If failure recovery limits your robot&#x27;s autonomy, A2-WLA is worth a look: the authors report 93.98% average success, 95.05% with the complete setup, but these are self-reported, and the page names neither the benchmark nor any real-robot run.</p>
 <p class="excerpt">Foundation models increasingly guide robot actions, yet sustained autonomy requires efficient control and failure recovery.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08987" rel="noopener" target="_blank">VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“S-VLA alone and sent 49-77% fewer requests than”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Teams splitting control between a small on-robot VLA and a large server VLA could call the server only when failure is predicted; the authors report 49-77% fewer requests, but the comparison is cut off on the page, so check the baseline before sizing bandwidth.</p>
 <p class="excerpt">Large vision-language-action (VLA) models generalize well but are difficult to run in real time on a robot, and small VLAs that run there fail more often.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/" rel="noopener" target="_blank">Korea Advances Physical AI Across Industries With NVIDIA</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> For teams weighing Korean manufacturing partners, this is NVIDIA&#x27;s own statement about its ecosystem there; the excerpt names no partner, deployment or figure, so treat it as positioning until named deployments appear.</p>
 <p class="excerpt">Tapping into the country’s strengths in manufacturing and engineering, NVIDIA is helping advance Korea’s physical AI ecosystem.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/" rel="noopener" target="_blank">Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Teams that want an arm to be guided by hand while its motors hold up its weight get a first-party Holoscan 5 walkthrough from NVIDIA; the page gives no latency or torque figures, so measure the control-rate cost on your own arm.</p>
 <p class="excerpt">Picture guiding a robot arm by hand while its motors supply just enough torque to support its weight and keep the robot upright.</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-09</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/" rel="noopener" target="_blank">Boston Dynamics adds wheels to Atlas humanoid to test whole-body control</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Humanoid teams choosing a control stack should note the reported hybrid: classical motor control combined with whole-body reinforcement learning for a wheeled Atlas; this is secondhand, so confirm it in Boston Dynamics&#x27; own material before citing.</p>
 <p class="excerpt">Boston Dynamics combines classical motor control with whole-body reinforcement learning to power dynamic, wheeled locomotion for Atlas.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-09</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/agentic-robotics" rel="noopener" target="_blank">Can Agentic Robotics Solve Robotics’ Data Scaling Problem?</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Before committing more budget to data collection, this IEEE Spectrum piece examines the industry&#x27;s bet that data will solve robotics&#x27; hardest problems; it is secondary analysis, and the excerpt carries no figures or named results.</p>
 <p class="excerpt">Robotics companies are investing heavily in the belief that data will solve the most difficult problems in robotics.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-09</span>

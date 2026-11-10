@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-10",
+  "generated": "2026-11-10 14:09 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.09490": {
+      "zh": "要把 RGB-D 感知流程从工作站搬到低功耗板卡的团队，应在目标板上实测：作者自报 Jetson 检测延迟降低 2.57x、每个果实 72 ms，但引文讲的是分级流程，不是机器人控制回路。",
+      "en": "Anyone porting an RGB-D perception pipeline from a workstation to a low-power board should benchmark on that board: the authors report a 2.57x cut in Jetson detection latency and 72 ms per fruit, though the quoted text concerns fruit grading, not robot control.",
+      "ja": "RGB-D の認識処理をワークステーションから低消費電力ボードへ移すなら、対象ボードでの実測が前提になる。著者は Jetson の検出遅延 2.57x 短縮、果実 1 個あたり 72 ms と報告するが、引用部分は選果処理の話でロボット制御ではない。"
+    },
+    "https://arxiv.org/abs/2611.09888": {
+      "zh": "用脚本化场景评测自动驾驶策略的团队需要警惕：预先固定路线和速度的交通参与者，在测试运行中可能不再产生预期交互；这篇预印本针对的正是这个缺口，页面上没有给出数字。",
+      "en": "Teams evaluating driving policies on pre-scripted scenarios should check whether actors with fixed routes and speeds still create the intended interaction during a run; this preprint targets that gap, and the page shows no figures yet.",
+      "ja": "事前にルートと速度を固定したシナリオで自動運転方策を評価している場合、実行中に意図した相互作用が崩れていないか確認が要る。このプレプリントはその問題を扱うが、ページ上に数値はない。"
+    },
+    "https://arxiv.org/abs/2611.09124": {
+      "zh": "如果失败恢复是你的瓶颈，可以关注 A2-WLA：作者自报平均成功率 93.98%，完整配置下 95.05%；但这是预印本的自报数字，页面没写明基准，也看不到真机结果。",
+      "en": "If failure recovery limits your robot's autonomy, A2-WLA is worth a look: the authors report 93.98% average success, 95.05% with the complete setup, but these are self-reported, and the page names neither the benchmark nor any real-robot run.",
+      "ja": "失敗からの回復が自律運用のボトルネックなら A2-WLA は検討に値する。平均成功率 93.98%、完全構成で 95.05% とされるが著者の自己報告で、ページには評価環境の名前も実機結果も示されていない。"
+    },
+    "https://arxiv.org/abs/2611.08987": {
+      "zh": "在机载小 VLA 和服务器大 VLA 之间分工的团队，可以只在预测到失败时才调用服务器；作者自报请求量减少 49-77%，但对比对象在页面上被截断，规划带宽前先核对基线。",
+      "en": "Teams splitting control between a small on-robot VLA and a large server VLA could call the server only when failure is predicted; the authors report 49-77% fewer requests, but the comparison is cut off on the page, so check the baseline before sizing bandwidth.",
+      "ja": "機体上の小型 VLA とサーバ側の大型 VLA を併用する構成では、失敗が予測された時だけサーバを呼ぶ設計が選択肢になる。著者はリクエスト 49-77% 削減と報告するが、比較対象はページ上で途切れているため、通信帯域を見積もる前に基準を確かめたい。"
+    },
+    "https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/": {
+      "zh": "考虑与韩国制造业伙伴合作的团队可以留意，但这是 NVIDIA 关于自身生态的官方表态；摘录里没有具体伙伴、部署或数字，在出现具名部署之前，宜视为定位声明。",
+      "en": "For teams weighing Korean manufacturing partners, this is NVIDIA's own statement about its ecosystem there; the excerpt names no partner, deployment or figure, so treat it as positioning until named deployments appear.",
+      "ja": "韓国の製造業との連携を検討する側には参考になるが、これは NVIDIA 自身による自社エコシステムの発表で、抜粋には具体的な提携先、導入例、数値がない。名前の出た導入事例が出るまでは方針表明として扱うのが妥当だ。"
+    },
+    "https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/": {
+      "zh": "需要让机械臂支持手动拖动、由电机提供恰好托住自重的扭矩的团队，多了一份 NVIDIA 基于 Holoscan 5 的官方教程；页面没有给出延迟或扭矩数字，控制频率上的开销需要在自己的机械臂上实测。",
+      "en": "Teams that want an arm to be guided by hand while its motors hold up its weight get a first-party Holoscan 5 walkthrough from NVIDIA; the page gives no latency or torque figures, so measure the control-rate cost on your own arm.",
+      "ja": "手でアームを導きながらモータが自重分のトルクだけを出す機能を実装したいチームには、NVIDIA による Holoscan 5 の公式解説が使える。ただし遅延やトルクの数値はページになく、制御周期への負荷は自分のアームで測る必要がある。"
+    },
+    "https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/": {
+      "zh": "正在选控制架构的人形团队值得一看：据报道，Boston Dynamics 把经典电机控制与全身强化学习结合，驱动轮式 Atlas；这是二手报道，引用前请到 Boston Dynamics 的一手材料核对。",
+      "en": "Humanoid teams choosing a control stack should note the reported hybrid: classical motor control combined with whole-body reinforcement learning for a wheeled Atlas; this is secondhand, so confirm it in Boston Dynamics' own material before citing.",
+      "ja": "人型ロボットの制御構成を選ぶチームには、古典的なモータ制御と全身強化学習を組み合わせて車輪付き Atlas を動かすという報道内容が参考になる。二次報道なので、引用前に Boston Dynamics 自身の資料で確認したい。"
+    },
+    "https://spectrum.ieee.org/agentic-robotics": {
+      "zh": "在加大数据采集投入之前，可以读读这篇：IEEE Spectrum 审视的是行业“数据能解决机器人最难问题”的押注；这是二手分析，摘录里没有数字或具名结果。",
+      "en": "Before committing more budget to data collection, this IEEE Spectrum piece examines the industry's bet that data will solve robotics' hardest problems; it is secondary analysis, and the excerpt carries no figures or named results.",
+      "ja": "データ収集への投資を増やす前に読んでおきたい一本で、IEEE Spectrum が「データがロボティクスの難題を解く」という業界の賭けを検証している。二次的な分析記事で、抜粋に数値や具体的な成果は出てこない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
