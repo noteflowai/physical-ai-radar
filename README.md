@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **Toward the Era of Agentic Embodied Intelligence** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-4. **VLA Handover** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+1. **CucumberVision at the Edge** — `AI 起草` 要把 RGB-D 感知流程从工作站搬到低功耗板卡的团队，应在目标板上实测：作者自报 Jetson 检测延迟降低 2.57x、每个果实 72 ms，但引文讲的是分级流程，不是机器人控制回路。
+2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI 起草` 用脚本化场景评测自动驾驶策略的团队需要警惕：预先固定路线和速度的交通参与者，在测试运行中可能不再产生预期交互；这篇预印本针对的正是这个缺口，页面上没有给出数字。
+3. **Toward the Era of Agentic Embodied Intelligence** — `AI 起草` 如果失败恢复是你的瓶颈，可以关注 A2-WLA：作者自报平均成功率 93.98%，完整配置下 95.05%；但这是预印本的自报数字，页面没写明基准，也看不到真机结果。
+4. **VLA Handover** — `AI 起草` 在机载小 VLA 和服务器大 VLA 之间分工的团队，可以只在预测到失败时才调用服务器；作者自报请求量减少 49-77%，但对比对象在页面上被截断，规划带宽前先核对基线。
+5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI 起草` 考虑与韩国制造业伙伴合作的团队可以留意，但这是 NVIDIA 关于自身生态的官方表态；摘录里没有具体伙伴、部署或数字，在出现具名部署之前，宜视为定位声明。
+6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI 起草` 需要让机械臂支持手动拖动、由电机提供恰好托住自重的扭矩的团队，多了一份 NVIDIA 基于 Holoscan 5 的官方教程；页面没有给出延迟或扭矩数字，控制频率上的开销需要在自己的机械臂上实测。
+7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI 起草` 正在选控制架构的人形团队值得一看：据报道，Boston Dynamics 把经典电机控制与全身强化学习结合，驱动轮式 Atlas；这是二手报道，引用前请到 Boston Dynamics 的一手材料核对。
+8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI 起草` 在加大数据采集投入之前，可以读读这篇：IEEE Spectrum 审视的是行业“数据能解决机器人最难问题”的押注；这是二手分析，摘录里没有数字或具名结果。
 
 </details>
 

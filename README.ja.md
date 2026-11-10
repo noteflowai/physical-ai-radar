@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **Toward the Era of Agentic Embodied Intelligence** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-4. **VLA Handover** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — 当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+1. **CucumberVision at the Edge** — `AI 下書き` RGB-D の認識処理をワークステーションから低消費電力ボードへ移すなら、対象ボードでの実測が前提になる。著者は Jetson の検出遅延 2.57x 短縮、果実 1 個あたり 72 ms と報告するが、引用部分は選果処理の話でロボット制御ではない。
+2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI 下書き` 事前にルートと速度を固定したシナリオで自動運転方策を評価している場合、実行中に意図した相互作用が崩れていないか確認が要る。このプレプリントはその問題を扱うが、ページ上に数値はない。
+3. **Toward the Era of Agentic Embodied Intelligence** — `AI 下書き` 失敗からの回復が自律運用のボトルネックなら A2-WLA は検討に値する。平均成功率 93.98%、完全構成で 95.05% とされるが著者の自己報告で、ページには評価環境の名前も実機結果も示されていない。
+4. **VLA Handover** — `AI 下書き` 機体上の小型 VLA とサーバ側の大型 VLA を併用する構成では、失敗が予測された時だけサーバを呼ぶ設計が選択肢になる。著者はリクエスト 49-77% 削減と報告するが、比較対象はページ上で途切れているため、通信帯域を見積もる前に基準を確かめたい。
+5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI 下書き` 韓国の製造業との連携を検討する側には参考になるが、これは NVIDIA 自身による自社エコシステムの発表で、抜粋には具体的な提携先、導入例、数値がない。名前の出た導入事例が出るまでは方針表明として扱うのが妥当だ。
+6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI 下書き` 手でアームを導きながらモータが自重分のトルクだけを出す機能を実装したいチームには、NVIDIA による Holoscan 5 の公式解説が使える。ただし遅延やトルクの数値はページになく、制御周期への負荷は自分のアームで測る必要がある。
+7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI 下書き` 人型ロボットの制御構成を選ぶチームには、古典的なモータ制御と全身強化学習を組み合わせて車輪付き Atlas を動かすという報道内容が参考になる。二次報道なので、引用前に Boston Dynamics 自身の資料で確認したい。
+8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI 下書き` データ収集への投資を増やす前に読んでおきたい一本で、IEEE Spectrum が「データがロボティクスの難題を解く」という業界の賭けを検証している。二次的な分析記事で、抜粋に数値や具体的な成果は出てこない。
 
 </details>
 

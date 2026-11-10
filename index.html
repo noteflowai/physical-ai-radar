@@ -77,7 +77,7 @@
 <a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-11.8" cy="-134.7" r="11" class="halo"/><circle cx="-11.8" cy="-134.7" r="5"/><title>Toward the Era of Agentic Embodied Intelligence</title></a>
 <a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="11.8" cy="-134.7" r="11" class="halo"/><circle cx="11.8" cy="-134.7" r="5"/><title>VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models</title></a>
 <a href="#p5" class="blip" style="--lane:#fb923c;--delay:1.75s"><circle cx="74.2" cy="88.4" r="11" class="halo"/><circle cx="74.2" cy="88.4" r="5"/><title>Korea Advances Physical AI Across Industries With NVIDIA</title></a>
-<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-82.5" cy="-69.2" r="11" class="halo"/><circle cx="-82.5" cy="-69.2" r="5"/><title>Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</title></a>
+<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-82.4" cy="-69.2" r="11" class="halo"/><circle cx="-82.4" cy="-69.2" r="5"/><title>Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</title></a>
 <a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-67.8" cy="-80.8" r="11" class="halo"/><circle cx="-67.8" cy="-80.8" r="5"/><title>Boston Dynamics adds wheels to Atlas humanoid to test whole-body control</title></a>
 <a href="#p8" class="blip" style="--lane:#38bdf8;--delay:2.80s"><circle cx="69.4" cy="-69.4" r="11" class="halo"/><circle cx="69.4" cy="-69.4" r="5"/><title>Can Agentic Robotics Solve Robotics’ Data Scaling Problem?</title></a>
 <circle class="core" r="3"/></svg>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09490" rel="noopener" target="_blank">CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4</a></h3>
 <p class="figure"><strong>95%</strong><span class="context">“is 0.58 cm ( 95% CI 0.46-0.69) on”</span></p><p class="chips"><span class="chip">2.57x</span><span class="chip">72 ms</span><span class="chip">214x</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 要把 RGB-D 感知流程从工作站搬到低功耗板卡的团队，应在目标板上实测：作者自报 Jetson 检测延迟降低 2.57x、每个果实 72 ms，但引文讲的是分级流程，不是机器人控制回路。</p>
 <p class="excerpt">Non-contact fruit sizing from RGB-D imagery reaches sub-centimetre accuracy on workstation hardware, but in-field grading requires the same pipeline to run on a low-power single-board computer, and the cost of that transition is rarely…</p>
 <ul class="signals"><li>含量化指标</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09888" rel="noopener" target="_blank">Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 用脚本化场景评测自动驾驶策略的团队需要警惕：预先固定路线和速度的交通参与者，在测试运行中可能不再产生预期交互；这篇预印本针对的正是这个缺口，页面上没有给出数字。</p>
 <p class="excerpt">Scenario-based simulation is central to evaluating autonomous-driving policies, but a scenario scripted before execution (i.e., with predetermined, fixed actor routes and speeds) may not preserve its intended interaction once the tested…</p>
 <ul class="signals"><li>含闭环成功率</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.09124" rel="noopener" target="_blank">Toward the Era of Agentic Embodied Intelligence</a></h3>
 <p class="figure"><strong>2.21x</strong><span class="context">“2.21x the 2025 winner&#x27;s”</span></p><p class="chips"><span class="chip">45.40%</span><span class="chip">93.98%</span><span class="chip">95.05%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果失败恢复是你的瓶颈，可以关注 A2-WLA：作者自报平均成功率 93.98%，完整配置下 95.05%；但这是预印本的自报数字，页面没写明基准，也看不到真机结果。</p>
 <p class="excerpt">Foundation models increasingly guide robot actions, yet sustained autonomy requires efficient control and failure recovery.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.08987" rel="noopener" target="_blank">VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“S-VLA alone and sent 49-77% fewer requests than”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在机载小 VLA 和服务器大 VLA 之间分工的团队，可以只在预测到失败时才调用服务器；作者自报请求量减少 49-77%，但对比对象在页面上被截断，规划带宽前先核对基线。</p>
 <p class="excerpt">Large vision-language-action (VLA) models generalize well but are difficult to run in real time on a robot, and small VLAs that run there fail more often.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/" rel="noopener" target="_blank">Korea Advances Physical AI Across Industries With NVIDIA</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 考虑与韩国制造业伙伴合作的团队可以留意，但这是 NVIDIA 关于自身生态的官方表态；摘录里没有具体伙伴、部署或数字，在出现具名部署之前，宜视为定位声明。</p>
 <p class="excerpt">Tapping into the country’s strengths in manufacturing and engineering, NVIDIA is helping advance Korea’s physical AI ecosystem.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/" rel="noopener" target="_blank">Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 需要让机械臂支持手动拖动、由电机提供恰好托住自重的扭矩的团队，多了一份 NVIDIA 基于 Holoscan 5 的官方教程；页面没有给出延迟或扭矩数字，控制频率上的开销需要在自己的机械臂上实测。</p>
 <p class="excerpt">Picture guiding a robot arm by hand while its motors supply just enough torque to support its weight and keep the robot upright.</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-09</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/" rel="noopener" target="_blank">Boston Dynamics adds wheels to Atlas humanoid to test whole-body control</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 正在选控制架构的人形团队值得一看：据报道，Boston Dynamics 把经典电机控制与全身强化学习结合，驱动轮式 Atlas；这是二手报道，引用前请到 Boston Dynamics 的一手材料核对。</p>
 <p class="excerpt">Boston Dynamics combines classical motor control with whole-body reinforcement learning to power dynamic, wheeled locomotion for Atlas.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-09</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/agentic-robotics" rel="noopener" target="_blank">Can Agentic Robotics Solve Robotics’ Data Scaling Problem?</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 在加大数据采集投入之前，可以读读这篇：IEEE Spectrum 审视的是行业“数据能解决机器人最难问题”的押注；这是二手分析，摘录里没有数字或具名结果。</p>
 <p class="excerpt">Robotics companies are investing heavily in the belief that data will solve the most difficult problems in robotics.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-09</span>
