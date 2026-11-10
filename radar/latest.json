@@ -1,170 +1,170 @@
 {
-  "date": "2026-11-10",
-  "generated": "2026-11-09 23:40 UTC",
-  "window": "papers 2026-11-06 → 2026-11-10 · posts 2026-10-11 → 2026-11-10 (UTC)",
+  "date": "2026-11-11",
+  "generated": "2026-11-10 23:40 UTC",
+  "window": "papers 2026-11-07 → 2026-11-11 · posts 2026-10-12 → 2026-11-11 (UTC)",
   "window_detail": {
-    "day": "2026-11-10",
-    "papers_from": "2026-11-06",
-    "posts_from": "2026-10-11",
+    "day": "2026-11-11",
+    "papers_from": "2026-11-07",
+    "posts_from": "2026-10-12",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.09490",
-      "title": "CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4",
-      "url": "https://arxiv.org/abs/2611.09490",
-      "publisher": "arXiv 2611.09490",
+      "id": "arxiv:2611.11940",
+      "title": "Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots",
+      "url": "https://arxiv.org/abs/2611.11940",
+      "publisher": "arXiv 2611.11940",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-06",
+      "published": "2026-11-09",
       "lane": "edge",
-      "score": 3.515,
+      "score": 3.862,
       "numbers": [
-        "95%",
-        "2.57x",
-        "72 ms",
-        "214x"
+        "17.62 ms"
       ],
       "signals": [
         "numbers",
+        "closed_loop",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Non-contact fruit sizing from RGB-D imagery reaches sub-centimetre accuracy on workstation hardware, but in-field grading requires the same pipeline to run on a low-power single-board computer, and the cost of that transition is rarely reported. We deploy a curvature-aware cucumber length-measurement pipeline (YOLO26n detection, prompt-based segmentation and a medial arc spline estimator) on an NVIDIA Jetson Orin Nano and a Raspberry Pi 4, and characterize both against an RTX 3050 Ti workstation by replaying 50 identical greenhouse captures of 7 specimens, with specimen-level cluster-bootstrap statistics. Accuracy is preserved: mean absolute error (MAE) is 0.58 cm (95% CI 0.46-0.69) on both the workstation and the Jetson at matched precision, with a paired difference of zero. TensorRT FP16 compilation cuts Jetson detection latency 2.57x, giving two operating points on one board: 72 ms per fruit at 0.84 cm, or 2.74 s at 0.64 cm. Four ablations map the design space. For prompted segmentation backends, measurement accuracy is fixed by the backend and reproduces across platforms to within 0.01 cm, while its cost is fixed by the platform and varies 214x, so the two choices are separable. Whole-graph INT8 quantization of the NMS-free detection head fails structurally, returning no detections, because one output tensor carries both pixel coordinates and confidences; we show that no calibration strategy can avoid this. Excluding the head restores function at 1.37x. Energy per fruit is 42.2 J on the Jetson, and its 7 W mode consumes 73% more than its 15 W mode. The Raspberry Pi with MobileSAM costs 2.5x more per fruit than the Jetson with SAM despite drawing 47% less power, and it runs without thermal throttling under sustained load. The results define an accuracy-throughput-energy envelope with three non-dominated configurations and give rules for selecting among them."
+      "summary": "Underwater leader-follower formation control requires continuous relative-pose estimation despite degraded sensing conditions and limited onboard computation. This paper presents a reliability-adaptive multimodal perception framework for six-degree-of-freedom relative-pose tracking between two moving underwater robots. The framework integrates complementary visual, acoustic-ranging, and hydrodynamic measurements while accounting for their distinct physical characteristics and time-varying reliability. It adaptively weights modality contributions and models temporal dependencies with linear computational complexity, enabling efficient pose estimation on embedded hardware. Extensive experiments were conducted using a custom-built AUV platform, with 648 pool trials spanning two leader vehicle types, three illumination conditions, and nine trajectory patterns. Evaluation yields an average translational error of 3.8 cm and an average orientation error of 2.4°. On an onboard NVIDIA Jetson AGX Orin, the fusion network achieves an inference latency of 17.62 ms, providing a 2.69-fold speedup over the evaluated Transformer-based fusion baseline. Closed-loop experiments further demonstrate stable formation maintenance with a moving leader under onboard computational constraints. A multimodal dataset containing measurements from all 648 trials will be made publicly available."
     },
     {
-      "id": "arxiv:2611.09888",
-      "title": "Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving",
-      "url": "https://arxiv.org/abs/2611.09888",
-      "publisher": "arXiv 2611.09888",
+      "id": "arxiv:2611.12870",
+      "title": "SWAM: Scaling World Action Models with Cross-Modal Alignment",
+      "url": "https://arxiv.org/abs/2611.12870",
+      "publisher": "arXiv 2611.12870",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-06",
-      "lane": "simeval",
-      "score": 3.41,
+      "published": "2026-11-09",
+      "lane": "data",
+      "score": 3.095,
+      "numbers": [
+        "47,000 hours",
+        "88.10%",
+        "61.56%",
+        "40.00%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "open_release"
+      ],
+      "heat": 0.075,
+      "summary": "World action models jointly predict video and actions conditioned on language. Existing studies focus primarily on architectures and training mechanisms, typically treating language-video alignment acquired through video pretraining as an established foundation. However, introducing action learning may impair this alignment. Principled guidance on data and supervision design for maintaining language-video alignment during action learning remains limited. To investigate this, we curate a pool of approximately 47,000 hours of general videos, egocentric videos, UMI demonstrations, and robot demonstrations. Building on this, we systematically study how language-video supervision, language-video-action supervision, and the joint use of these two forms affect WAM performance. In particular, we examine how language annotation quality affects pretrained language-video capabilities, and how action supervision from UMI and robot demonstrations extends these capabilities to language-video-action modeling. To better scale the model, we further conduct detailed studies on joint training recipe and model architecture. Under a fixed training budget, mixing egocentric videos and UMI demonstrations improves control generalization. Model architecture affects how effectively these experiences are used, while scaling pretraining under the selected configuration brings further gains. The resulting recipe, post-trained on RoboTwin Clean demonstrations only, achieves success rates of 88.10% and 61.56% under Easy (Clean-to-Clean) and Hard (Clean-to-Random) conditions, respectively. Our model achieves 40.00% SR across three real-world tasks, compared with 23.33% for the strongest baseline, indicating better generalization under unseen conditions. We release the curated data, training code, and model weights."
+    },
+    {
+      "id": "arxiv:2611.12676",
+      "title": "VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess",
+      "url": "https://arxiv.org/abs/2611.12676",
+      "publisher": "arXiv 2611.12676",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-09",
+      "lane": "data",
+      "score": 3.07,
       "numbers": [],
       "signals": [
-        "closed_loop"
+        "closed_loop",
+        "open_release"
       ],
       "heat": 0.0,
-      "summary": "Scenario-based simulation is central to evaluating autonomous-driving policies, but a scenario scripted before execution (i.e., with predetermined, fixed actor routes and speeds) may not preserve its intended interaction once the tested ego policy responds in closed loop. Scripted scenarios cannot adapt to unanticipated ego behavior, while learned traffic actors may remain reactive without reliably realizing a particular scenario intent. We introduce a scenario orchestrator that continuously monitors the joint traffic state and adapts non-ego actors through re-timing, re-routing, and role reassignment for creating a specific scenario intent. At each step, the orchestrator solves a constrained optimization problem that preserves the intended interaction while limiting interventions and maintaining traffic feasibility. We further distinguish scenario realization from policy failure, allowing a test to first be judged based on whether the intended interaction occurred and then by how the ego policy responded. Experiments in the CARLA simulator across multiple scenario families and driving policies show that orchestration realizes targeted interactions more reliably than scripted and learned actor-level baselines, particularly under variations in initial conditions and ego behavior. These results support closed-loop scenario orchestration as a tool for controlled and reproducible policy evaluation."
+      "summary": "Vision-language-action (VLA) models are trained as general-purpose foundation models for robot learning, and require fine-tuning for each downstream task and robot. This raises practical questions such as how much data and training updates are needed, how checkpoints should be selected, and whether simulation can be leveraged to alleviate the cost of real data collection. We study these questions on a task that requires both precise manipulation and spatial understanding of the scene. In this task, an SO-101 arm moves a chess king between two squares that are given only by their names, such as e4 and a5. We fine-tune $π_{0.5}$ with various dataset sizes and update budgets, using teleoperated demonstrations as well as simulated demonstrations from a randomized scripted expert that imitates the variability of human demonstrations. In simulation, the success rate scales with both data and updates. Importantly, we find that a short learning-rate cool-down adds up to 31 points and is necessary for comparing checkpoints, and that validation loss and action error are unreliable for model selection. On the real arm, we fine-tune on up to 256 teleoperated demonstrations and evaluate ten policies in 25 trials each. Partial results indicate that pretraining on the simulated demonstrations helps substantially, most clearly when real data is scarce. We also present a negative result, in which training on the policy's own rollouts with filtered behavior cloning, RECAP-style advantage conditioning, corrections from an automatic coach, or residual reinforcement learning did not yield a measurable improvement over plain behavior cloning in our setting. We release the simulator, the expert and the real demonstrations."
     },
     {
-      "id": "arxiv:2611.09124",
-      "title": "Toward the Era of Agentic Embodied Intelligence",
-      "url": "https://arxiv.org/abs/2611.09124",
-      "publisher": "arXiv 2611.09124",
+      "id": "arxiv:2611.12136",
+      "title": "LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data",
+      "url": "https://arxiv.org/abs/2611.12136",
+      "publisher": "arXiv 2611.12136",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-06",
-      "lane": "foundation",
-      "score": 3.0,
+      "published": "2026-11-09",
+      "lane": "hardware",
+      "score": 3.047,
       "numbers": [
-        "2.21x",
-        "45.40%",
-        "93.98%",
-        "95.05%"
+        "75.56%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "latency"
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Foundation models increasingly guide robot actions, yet sustained autonomy requires efficient control and failure recovery. We introduce A2-MEAS, an embodied multi-agent framework built around code as a scaling interface. Learned correction codes combine corrective language, spatial evidence, execution history, and action proposals. MetaBrain provides training supervision and runtime guidance. A correction encoder and adapter absorb this knowledge into policy weights during training, while fresh codes adapt behavior with frozen weights at deployment. The action model, A2-WLA, adds motion-aware history and a latent world model to a vision-language-action policy. Surprisingly, this simple design with action pretraining and task specialization reaches 0.5755 Q-score on the 50-task BEHAVIOR 2026 public subset before online correction, 2.21x the 2025 winner's reported 0.2605 across different benchmark editions and training configurations. On all 100 BEHAVIOR 2026 public tasks, A2-MEAS achieves 0.6411 Q-score and 45.40% task success. On RoboTwin 2.0, A2-WLA achieves 93.98% average success, rising to 95.05% with the complete system. Across 12 real-robot tasks in five household settings, A2-WLA achieves 57.92% average success versus 26.67% for pi0.5. In long-horizon pour-over coffee preparation, a history-conditioned adapter raises post-failure completion at two filter-handling steps from 14% to 94% and from 8% to 82%, compared with A2-WLA retries. Our training infrastructure delivers 427.1 samples per second, 4.03x the throughput of a pi0.5 reference implementation on matched hardware. We will release the system, models, training scripts, and infrastructure to support efficient embodied learning."
+      "summary": "We study humanoid navigation across multiple destinations under long-horizon language instructions. This task is challenging because robots must maintain progress across successive goals while continuously producing natural, stable whole-body motion through confined spaces. However, task decomposition in existing methods does not by itself ensure progress throughout execution, while waypoint-based navigation does not guarantee natural, route-faithful whole-body motion. Our key idea is to organize navigation into three complementary roles operating at different time scales: a Brain for task reasoning, a Cerebellum for local motion generation, and a Brainstem for whole-body execution. We realize this idea in LHNav, an asynchronous system that uses progress and arrival feedback to coordinate navigation goals, VLA motion-token prediction, and whole-body control. To train the Cerebellum for natural, route-faithful motion, we develop a physics-grounded data engine that improves physical tracking of motion references along collision-aware routes and pairs the resulting demonstrations with rendered visual observations. Together, these designs allow task planning to proceed alongside continuous movement and extend single-goal navigation to successive destinations with natural, route-faithful whole-body motion. In simulation, our navigation VLA outperforms OmniNav and DualVLN in single-goal success and motion smoothness, with fewer collisions and falls. Using a VLA trained only on single-goal demonstrations, LHNav achieves a 75.56% success rate on long-horizon navigation tasks. Deployment on the Unitree G1 further demonstrates single-goal navigation and zero-shot long-horizon task execution in real-world environments, including layouts with repositioned objects. Project website: https://robbyant-research.github.io/LHNav/."
     },
     {
-      "id": "arxiv:2611.08987",
-      "title": "VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models",
-      "url": "https://arxiv.org/abs/2611.08987",
-      "publisher": "arXiv 2611.08987",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-06",
-      "lane": "foundation",
-      "score": 3.0,
-      "numbers": [
-        "77%"
-      ],
+      "id": "nvidia-developer-robotics:5a1c4dfbb3e2",
+      "title": "Running AV Reasoning Models Within Onboard Compute and Latency Limits",
+      "url": "https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-11-10",
+      "lane": "edge",
+      "score": 2.605,
+      "numbers": [],
       "signals": [
-        "numbers",
-        "closed_loop",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Large vision-language-action (VLA) models generalize well but are difficult to run in real time on a robot, and small VLAs that run there fail more often. Remote inference over beyond-5G and 6G networks lets a robot use a large VLA on a server, but querying the server for every action chunk limits the number of robots per server. We propose VLA handover: the robot runs a small VLA (S-VLA) and switches to a large VLA (L-VLA) on a server only when the S-VLA is likely to fail. We formulate the switching as minimizing the request cost under a required success probability and, since this problem cannot be solved directly, propose a heuristic framework that retrains neither VLA. In simulation with SmolVLA and $π_{0.5}$ on three of the four LIBERO suites, VLA handover raised the success rate by 11-22 percentage points over the S-VLA alone and sent 49-77% fewer requests than server-only control at a 2-4 percentage-point lower success rate, and its completion time grew less with the network latency."
+      "summary": "Autonomous vehicle (AV) developers need reasoning models that can operate within the compute and latency constraints of an onboard system. Larger models provide..."
     },
     {
-      "id": "nvidia-blog:dc742b2cbd8f",
-      "title": "Korea Advances Physical AI Across Industries With NVIDIA",
-      "url": "https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/",
+      "id": "nvidia-blog:97be7dad625b",
+      "title": "Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation",
+      "url": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
       "published": "2026-11-09",
       "lane": "simeval",
-      "score": 2.235,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Tapping into the country’s strengths in manufacturing and engineering, NVIDIA is helping advance Korea’s physical AI ecosystem. The country’s industry leaders are applying accelerated computing, AI and simulation to everything from semiconductor manufacturing to robotics and autonomous vehicles. These efforts are helping bring physical AI from development into real-world production. Samsung Advances Semiconductor Engineering With […]"
-    },
-    {
-      "id": "nvidia-developer-robotics:29679bac2d0d",
-      "title": "Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5",
-      "url": "https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-11-09",
-      "lane": "hardware",
-      "score": 1.932,
+      "score": 1.535,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Picture guiding a robot arm by hand while its motors supply just enough torque to support its weight and keep the robot upright. This simple interaction, a..."
+      "summary": "Simulation, which has long been the proving ground for robots learning to walk, roll and hop, is now helping researchers teach robots tasks that require a finer touch: aligning gears, connecting cables and assembling small components. The shift from locomotion to manipulation is taking center stage at this week’s Conference on Robot Learning (CoRL) in […]"
     },
     {
-      "id": "the-robot-report:61ccb0e32798",
-      "title": "Boston Dynamics adds wheels to Atlas humanoid to test whole-body control",
-      "url": "https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/",
+      "id": "the-robot-report:231c03db38be",
+      "title": "Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor",
+      "url": "https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-10",
+      "lane": "safety",
+      "score": 1.235,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "The partners plan to bring Skydio drones to public safety agencies across the U.S. as Axon expands its Drone as First Responder program."
+    },
+    {
+      "id": "the-robot-report:8122ffda501d",
+      "title": "NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL",
+      "url": "https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
       "published": "2026-11-09",
-      "lane": "hardware",
-      "score": 1.847,
+      "lane": "simeval",
+      "score": 0.935,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Boston Dynamics combines classical motor control with whole-body reinforcement learning to power dynamic, wheeled locomotion for Atlas."
-    },
-    {
-      "id": "ieee-spectrum-robotics:cf83aea47cbb",
-      "title": "Can Agentic Robotics Solve Robotics’ Data Scaling Problem?",
-      "url": "https://spectrum.ieee.org/agentic-robotics",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-11-09",
-      "lane": "data",
-      "score": 1.566,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.038,
-      "summary": "Robotics companies are investing heavily in the belief that data will solve the most difficult problems in robotics. Once AI systems have ingested enough data from human demonstrations, the thinking goes, robots will be able to perform the vast majority of the manual tasks that humans now do. There are even robotics companies that exist solely to collect training data and sell it to other robotics companies in pursuit of this goal. But whether data will finally bring us general-purpose robots is an open question . Nobody knows how much data would be necessary , what kind of data is important , or whether something else might be missing . And there are other problems with a reliance on massive amounts of data: the resulting AI algorithms are essentially black boxes, which despite their high performance are difficult or impossible for humans to understand. This characteristic is becoming increasingly concerning in commercial deployments, where robots must be flexible, reliable, and safe. At the 2026 Conference on Robot Learning this week, UC Berkeley and NVIDIA are jointly announcing a new approach to using AI to program robots for everyday practical tasks in industrial environments. Called agentic robotics, this technique leverages the latest advances in AI coding tools while in some sense bringing robotics back to its roots—achieving a fundamental understanding of how a robot works, and then writing human-readable code to get it to do useful things, no data (and no humans) required. The Data Problem For decades, robots were programmed with model-based methods, meaning that their behavior was based on a detailed understanding (or model) of the physics and mathematics underlying the robot and its environment. Roboticists would first develop these models, and then write painstakingly detailed code telling their robots how to act. The resulting hand-tuned robotic systems could operate fast and reliably, but this approach has fallen out of favor because it requires both …"
+      "summary": "NVIDIA also gave a look at how its partners, like Ambi Robotics, FieldAI, Flexion, Skild AI, RLWRLD, and more, are using these technologies."
     }
   ],
   "lane_counts": {
-    "foundation": 13,
-    "data": 4,
+    "foundation": 11,
+    "data": 6,
     "training": 0,
     "simeval": 13,
     "edge": 10,
-    "safety": 1,
-    "systems": 1,
+    "safety": 2,
+    "systems": 0,
     "hardware": 8
   },
   "evidence_mix": {
@@ -173,10 +173,13 @@
     "M": 14
   },
   "fetch": {
-    "items": 636,
+    "items": 549,
     "attempted": 25,
-    "answered": 25,
-    "failed": [],
+    "answered": 23,
+    "failed": [
+      "deepmind",
+      "leiphone"
+    ],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -200,26 +203,25 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 19,
+      "hn_stories": 23,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 35,
+      "arxiv": 65,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
       "tri": 10,
-      "leiphone": 20,
       "monoist": 30,
       "openai": 21,
       "bair": 7,
       "mit-news-robotics": 50,
-      "techcrunch-robotics": 12,
+      "techcrunch-robotics": 13,
       "robohub": 75,
+      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

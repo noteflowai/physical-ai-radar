@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-10
+### Today's radar · 2026-11-11
 
-`Generated: 2026-11-09 23:40 UTC` ｜ `Window: papers 2026-11-06 → 2026-11-10 · posts 2026-10-11 → 2026-11-10 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-10 23:40 UTC` ｜ `Window: papers 2026-11-07 → 2026-11-11 · posts 2026-10-12 → 2026-11-11 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4](https://arxiv.org/abs/2611.09490)**<br>`95%`&nbsp; `2.57x`&nbsp; `72 ms`<br><sub>Edge & real-time · arXiv 2611.09490 · 2026‑11‑06</sub> |
-| 02<br>🔵&nbsp;`R` | **[Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving](https://arxiv.org/abs/2611.09888)**<br><sub>Simulation & evaluation · arXiv 2611.09888 · 2026‑11‑06</sub> |
-| 03<br>🔵&nbsp;`R` | **[Toward the Era of Agentic Embodied Intelligence](https://arxiv.org/abs/2611.09124)**<br>`2.21x`&nbsp; `45.40%`&nbsp; `93.98%`<br><sub>Foundation models · arXiv 2611.09124 · 2026‑11‑06</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models](https://arxiv.org/abs/2611.08987)**<br>`77%`<br><sub>Foundation models · arXiv 2611.08987 · 2026‑11‑06</sub> |
-| 05<br>🟢&nbsp;`O` | **[Korea Advances Physical AI Across Industries With NVIDIA](https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑09</sub> |
-| 06<br>🟢&nbsp;`O` | **[Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/)**<br><sub>Embodiment & supply chain · NVIDIA Technical Blog (Robotics) · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Boston Dynamics adds wheels to Atlas humanoid to test whole-body control](https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑09</sub> |
-| 08<br>🟡&nbsp;`M` | **[Can Agentic Robotics Solve Robotics’ Data Scaling Problem?](https://spectrum.ieee.org/agentic-robotics)**<br><sub>Data engine · IEEE Spectrum Robotics · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>Edge & real-time · arXiv 2611.11940 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>Data engine · arXiv 2611.12870 · 2026‑11‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>Data engine · arXiv 2611.12676 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>Embodiment & supply chain · arXiv 2611.12136 · 2026‑11‑09</sub> |
+| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>Edge & real-time · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
+| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑11‑10</sub> |
+| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>Simulation & evaluation · The Robot Report · 2026‑11‑09</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — `AI draft` Anyone porting an RGB-D perception pipeline from a workstation to a low-power board should benchmark on that board: the authors report a 2.57x cut in Jetson detection latency and 72 ms per fruit, though the quoted text concerns fruit grading, not robot control.
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI draft` Teams evaluating driving policies on pre-scripted scenarios should check whether actors with fixed routes and speeds still create the intended interaction during a run; this preprint targets that gap, and the page shows no figures yet.
-3. **Toward the Era of Agentic Embodied Intelligence** — `AI draft` If failure recovery limits your robot's autonomy, A2-WLA is worth a look: the authors report 93.98% average success, 95.05% with the complete setup, but these are self-reported, and the page names neither the benchmark nor any real-robot run.
-4. **VLA Handover** — `AI draft` Teams splitting control between a small on-robot VLA and a large server VLA could call the server only when failure is predicted; the authors report 49-77% fewer requests, but the comparison is cut off on the page, so check the baseline before sizing bandwidth.
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI draft` For teams weighing Korean manufacturing partners, this is NVIDIA's own statement about its ecosystem there; the excerpt names no partner, deployment or figure, so treat it as positioning until named deployments appear.
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI draft` Teams that want an arm to be guided by hand while its motors hold up its weight get a first-party Holoscan 5 walkthrough from NVIDIA; the page gives no latency or torque figures, so measure the control-rate cost on your own arm.
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI draft` Humanoid teams choosing a control stack should note the reported hybrid: classical motor control combined with whole-body reinforcement learning for a wheeled Atlas; this is secondhand, so confirm it in Boston Dynamics' own material before citing.
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI draft` Before committing more budget to data collection, this IEEE Spectrum piece examines the industry's bet that data will solve robotics' hardest problems; it is secondary analysis, and the excerpt carries no figures or named results.
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+2. **SWAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **VLA Adaptation with Real and Simulated Data** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **LHNav** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **Practice Makes Precise** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-10.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-11.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

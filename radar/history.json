@@ -183,16 +183,6 @@
       "date": "2026-10-11",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.12185",
-        "https://arxiv.org/abs/2610.11283",
-        "https://arxiv.org/abs/2610.12231",
-        "https://arxiv.org/abs/2610.12386",
-        "https://arxiv.org/abs/2610.12046",
-        "https://arxiv.org/abs/2610.12432",
-        "https://arxiv.org/abs/2610.11416",
-        "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -1043,6 +1033,45 @@
         "max_arxiv": 4,
         "reserved": {
           "official": "nvidia-blog:dc742b2cbd8f",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.11940",
+        "https://arxiv.org/abs/2611.12870",
+        "https://arxiv.org/abs/2611.12676",
+        "https://arxiv.org/abs/2611.12136",
+        "https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits",
+        "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl",
+        "https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor",
+        "https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl"
+      ],
+      "failed": [
+        "deepmind",
+        "leiphone"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "nvidia-developer-robotics:5a1c4dfbb3e2",
           "hot": null
         },
         "unmet": [

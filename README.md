@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-10
+### 今日雷达 · 2026-11-11
 
-`生成时间: 2026-11-09 23:40 UTC` ｜ `统计窗口: 论文 2026-11-06 → 2026-11-10 · 博客与报道 2026-10-11 → 2026-11-10 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-10 23:40 UTC` ｜ `统计窗口: 论文 2026-11-07 → 2026-11-11 · 博客与报道 2026-10-12 → 2026-11-11 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4](https://arxiv.org/abs/2611.09490)**<br>`95%`&nbsp; `2.57x`&nbsp; `72 ms`<br><sub>边缘与实时性 · arXiv 2611.09490 · 2026‑11‑06</sub> |
-| 02<br>🔵&nbsp;`R` | **[Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving](https://arxiv.org/abs/2611.09888)**<br><sub>仿真与评测 · arXiv 2611.09888 · 2026‑11‑06</sub> |
-| 03<br>🔵&nbsp;`R` | **[Toward the Era of Agentic Embodied Intelligence](https://arxiv.org/abs/2611.09124)**<br>`2.21x`&nbsp; `45.40%`&nbsp; `93.98%`<br><sub>基座模型 · arXiv 2611.09124 · 2026‑11‑06</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models](https://arxiv.org/abs/2611.08987)**<br>`77%`<br><sub>基座模型 · arXiv 2611.08987 · 2026‑11‑06</sub> |
-| 05<br>🟢&nbsp;`O` | **[Korea Advances Physical AI Across Industries With NVIDIA](https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑09</sub> |
-| 06<br>🟢&nbsp;`O` | **[Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/)**<br><sub>本体与供应链 · NVIDIA Technical Blog (Robotics) · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Boston Dynamics adds wheels to Atlas humanoid to test whole-body control](https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑09</sub> |
-| 08<br>🟡&nbsp;`M` | **[Can Agentic Robotics Solve Robotics’ Data Scaling Problem?](https://spectrum.ieee.org/agentic-robotics)**<br><sub>数据引擎 · IEEE Spectrum Robotics · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>边缘与实时性 · arXiv 2611.11940 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>数据引擎 · arXiv 2611.12870 · 2026‑11‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>数据引擎 · arXiv 2611.12676 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>本体与供应链 · arXiv 2611.12136 · 2026‑11‑09</sub> |
+| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>边缘与实时性 · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
+| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑11‑10</sub> |
+| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>仿真与评测 · The Robot Report · 2026‑11‑09</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — `AI 起草` 要把 RGB-D 感知流程从工作站搬到低功耗板卡的团队，应在目标板上实测：作者自报 Jetson 检测延迟降低 2.57x、每个果实 72 ms，但引文讲的是分级流程，不是机器人控制回路。
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI 起草` 用脚本化场景评测自动驾驶策略的团队需要警惕：预先固定路线和速度的交通参与者，在测试运行中可能不再产生预期交互；这篇预印本针对的正是这个缺口，页面上没有给出数字。
-3. **Toward the Era of Agentic Embodied Intelligence** — `AI 起草` 如果失败恢复是你的瓶颈，可以关注 A2-WLA：作者自报平均成功率 93.98%，完整配置下 95.05%；但这是预印本的自报数字，页面没写明基准，也看不到真机结果。
-4. **VLA Handover** — `AI 起草` 在机载小 VLA 和服务器大 VLA 之间分工的团队，可以只在预测到失败时才调用服务器；作者自报请求量减少 49-77%，但对比对象在页面上被截断，规划带宽前先核对基线。
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI 起草` 考虑与韩国制造业伙伴合作的团队可以留意，但这是 NVIDIA 关于自身生态的官方表态；摘录里没有具体伙伴、部署或数字，在出现具名部署之前，宜视为定位声明。
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI 起草` 需要让机械臂支持手动拖动、由电机提供恰好托住自重的扭矩的团队，多了一份 NVIDIA 基于 Holoscan 5 的官方教程；页面没有给出延迟或扭矩数字，控制频率上的开销需要在自己的机械臂上实测。
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI 起草` 正在选控制架构的人形团队值得一看：据报道，Boston Dynamics 把经典电机控制与全身强化学习结合，驱动轮式 Atlas；这是二手报道，引用前请到 Boston Dynamics 的一手材料核对。
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI 起草` 在加大数据采集投入之前，可以读读这篇：IEEE Spectrum 审视的是行业“数据能解决机器人最难问题”的押注；这是二手分析，摘录里没有数字或具名结果。
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+2. **SWAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **VLA Adaptation with Real and Simulated Data** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+4. **LHNav** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+6. **Practice Makes Precise** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-10.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-11.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

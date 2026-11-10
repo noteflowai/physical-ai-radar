@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-10
+### 本日のレーダー · 2026-11-11
 
-`生成時刻: 2026-11-09 23:40 UTC` ｜ `対象期間: 論文 2026-11-06 → 2026-11-10 · ブログ・報道 2026-10-11 → 2026-11-10 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-10 23:40 UTC` ｜ `対象期間: 論文 2026-11-07 → 2026-11-11 · ブログ・報道 2026-10-12 → 2026-11-11 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[CucumberVision at the Edge: Accuracy, Throughput, and Energy of RGB-D Cucumber Sizing on Jetson Orin Nano and Raspberry Pi 4](https://arxiv.org/abs/2611.09490)**<br>`95%`&nbsp; `2.57x`&nbsp; `72 ms`<br><sub>エッジとリアルタイム · arXiv 2611.09490 · 2026‑11‑06</sub> |
-| 02<br>🔵&nbsp;`R` | **[Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driving](https://arxiv.org/abs/2611.09888)**<br><sub>シミュレーションと評価 · arXiv 2611.09888 · 2026‑11‑06</sub> |
-| 03<br>🔵&nbsp;`R` | **[Toward the Era of Agentic Embodied Intelligence](https://arxiv.org/abs/2611.09124)**<br>`2.21x`&nbsp; `45.40%`&nbsp; `93.98%`<br><sub>基盤モデル · arXiv 2611.09124 · 2026‑11‑06</sub> |
-| 04<br>🔵&nbsp;`R` | **[VLA Handover: Failure-Prediction-Based Switching from On-Robot to Server VLA Models](https://arxiv.org/abs/2611.08987)**<br>`77%`<br><sub>基盤モデル · arXiv 2611.08987 · 2026‑11‑06</sub> |
-| 05<br>🟢&nbsp;`O` | **[Korea Advances Physical AI Across Industries With NVIDIA](https://blogs.nvidia.com/blog/korea-physical-ai-ecosystem/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑11‑09</sub> |
-| 06<br>🟢&nbsp;`O` | **[Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5](https://developer.nvidia.com/blog/make-a-robot-arm-feel-weightless-with-nvidia-holoscan-5/)**<br><sub>ハードウェアとサプライチェーン · NVIDIA Technical Blog (Robotics) · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Boston Dynamics adds wheels to Atlas humanoid to test whole-body control](https://www.therobotreport.com/boston-dynamics-adds-wheels-to-atlas-humanoid-to-test-whole-body-control/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑09</sub> |
-| 08<br>🟡&nbsp;`M` | **[Can Agentic Robotics Solve Robotics’ Data Scaling Problem?](https://spectrum.ieee.org/agentic-robotics)**<br><sub>データエンジン · IEEE Spectrum Robotics · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>エッジとリアルタイム · arXiv 2611.11940 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>データエンジン · arXiv 2611.12870 · 2026‑11‑09</sub> |
+| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>データエンジン · arXiv 2611.12676 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>ハードウェアとサプライチェーン · arXiv 2611.12136 · 2026‑11‑09</sub> |
+| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>エッジとリアルタイム · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
+| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑11‑09</sub> |
+| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑11‑10</sub> |
+| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>シミュレーションと評価 · The Robot Report · 2026‑11‑09</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **CucumberVision at the Edge** — `AI 下書き` RGB-D の認識処理をワークステーションから低消費電力ボードへ移すなら、対象ボードでの実測が前提になる。著者は Jetson の検出遅延 2.57x 短縮、果実 1 個あたり 72 ms と報告するが、引用部分は選果処理の話でロボット制御ではない。
-2. **Scenario Orchestration for Closed-loop Policy Evaluation of Autonomous Driv…** — `AI 下書き` 事前にルートと速度を固定したシナリオで自動運転方策を評価している場合、実行中に意図した相互作用が崩れていないか確認が要る。このプレプリントはその問題を扱うが、ページ上に数値はない。
-3. **Toward the Era of Agentic Embodied Intelligence** — `AI 下書き` 失敗からの回復が自律運用のボトルネックなら A2-WLA は検討に値する。平均成功率 93.98%、完全構成で 95.05% とされるが著者の自己報告で、ページには評価環境の名前も実機結果も示されていない。
-4. **VLA Handover** — `AI 下書き` 機体上の小型 VLA とサーバ側の大型 VLA を併用する構成では、失敗が予測された時だけサーバを呼ぶ設計が選択肢になる。著者はリクエスト 49-77% 削減と報告するが、比較対象はページ上で途切れているため、通信帯域を見積もる前に基準を確かめたい。
-5. **Korea Advances Physical AI Across Industries With NVIDIA** — `AI 下書き` 韓国の製造業との連携を検討する側には参考になるが、これは NVIDIA 自身による自社エコシステムの発表で、抜粋には具体的な提携先、導入例、数値がない。名前の出た導入事例が出るまでは方針表明として扱うのが妥当だ。
-6. **Make a Robot Arm Feel Weightless with NVIDIA Holoscan 5** — `AI 下書き` 手でアームを導きながらモータが自重分のトルクだけを出す機能を実装したいチームには、NVIDIA による Holoscan 5 の公式解説が使える。ただし遅延やトルクの数値はページになく、制御周期への負荷は自分のアームで測る必要がある。
-7. **Boston Dynamics adds wheels to Atlas humanoid to test whole-body control** — `AI 下書き` 人型ロボットの制御構成を選ぶチームには、古典的なモータ制御と全身強化学習を組み合わせて車輪付き Atlas を動かすという報道内容が参考になる。二次報道なので、引用前に Boston Dynamics 自身の資料で確認したい。
-8. **Can Agentic Robotics Solve Robotics’ Data Scaling Problem?** — `AI 下書き` データ収集への投資を増やす前に読んでおきたい一本で、IEEE Spectrum が「データがロボティクスの難題を解く」という業界の賭けを検証している。二次的な分析記事で、抜粋に数値や具体的な成果は出てこない。
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+2. **SWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **VLA Adaptation with Real and Simulated Data** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **LHNav** — 査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **Practice Makes Precise** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-10.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-11.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
