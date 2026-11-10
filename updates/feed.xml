@@ -5,6 +5,15 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: name the archive and member when an Inspect .eval log has a malformed header.json or sample</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.2/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.2/</guid>
+      <description>When a member of an Inspect .eval archive is malformed, evalarc diff now names the archive and the member in its error. Before this change it printed a bare Python error. If header.json or a samples/*.json member is not valid UTF-8 JSON, stderr reads "evalarc: &lt;archive&gt; member '&lt;name&gt;' is not valid JSON: &lt;decoder message&gt;." The message then gives the recovery step: re-export with inspect log dump LOG.eval &gt; LOG.json, or rerun the evaluation. If header.json parses to an array, string, number or null, stderr reads "evalarc: &lt;archive&gt; member 'header.json' must be a JSON object (got &lt;type&gt;): ..." followed by the same recovery advice. Member names go through the existing _shown_id helper. It quotes the name, escapes control characters and cuts long names at 80 characters. The command still exits 2, writes nothing to stdout and creates no --output folder. With --markdown, a missing Markdown file is not created and an existing one keeps its bytes. Valid archives load as before. docs/ci-gate.md and docs/ci-gate.zh-CN.md describe the new messages.
+
+The controller ran every check on commit b5714bfebc29382934031c7f4c9795a06db3a117. I ran nothing and wrote this text from the controller's receipts and the review findings. Before the fix, the controller ran tests/test_feature_1e31601a8900.py: 15 failed and 2 passed. The failures recorded the old stderr text, for example 'evalarc: Expecting value: line 1 column 1 (char 0)', 'evalarc: list indices must be integers or slices, not str', "'str' / 'int' / 'NoneType' object does not support item assignment" and a bare 'utf-8' codec decode error. None of them named the archive or the member. After the fix, the controller ran that test file, the full pytest suite, ruff check, ruff format --check, python scripts/build_site.py and node scripts/check_site.cjs. All six exited 0.</description>
+      <pubDate>Tue, 10 Nov 2026 18:36:54 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: reject JUnit testcases without a name instead of merging them into one check</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.1/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.1/</guid>
