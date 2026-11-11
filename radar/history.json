@@ -190,16 +190,6 @@
       "date": "2026-10-12",
       "count": 8,
       "lanes": 6,
-      "urls": [
-        "https://arxiv.org/abs/2610.12368",
-        "https://arxiv.org/abs/2610.11480",
-        "https://arxiv.org/abs/2610.12440",
-        "https://arxiv.org/abs/2610.12407",
-        "https://arxiv.org/abs/2610.12457",
-        "https://arxiv.org/abs/2610.12249",
-        "https://arxiv.org/abs/2610.11809",
-        "https://arxiv.org/abs/2610.12467"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1077,6 +1067,42 @@
         "unmet": [
           "hot"
         ]
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2611.13160",
+        "https://arxiv.org/abs/2611.14115",
+        "https://arxiv.org/abs/2611.12087",
+        "https://arxiv.org/abs/2611.14048",
+        "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence",
+        "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on",
+        "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline",
+        "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [
+        "physical-intelligence"
+      ],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "deepmind:a98763b80c84",
+          "hot": "the-robot-report:c65ae6b550d7"
+        },
+        "unmet": []
       }
     }
   ]

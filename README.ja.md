@@ -60,37 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-11
+### 本日のレーダー · 2026-11-12
 
-`生成時刻: 2026-11-10 23:40 UTC` ｜ `対象期間: 論文 2026-11-07 → 2026-11-11 · ブログ・報道 2026-10-12 → 2026-11-11 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-11 23:40 UTC` ｜ `対象期間: 論文 2026-11-08 → 2026-11-12 · ブログ・報道 2026-10-13 → 2026-11-12 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>エッジとリアルタイム · arXiv 2611.11940 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>データエンジン · arXiv 2611.12870 · 2026‑11‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>データエンジン · arXiv 2611.12676 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>ハードウェアとサプライチェーン · arXiv 2611.12136 · 2026‑11‑09</sub> |
-| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>エッジとリアルタイム · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
-| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑11‑10</sub> |
-| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>シミュレーションと評価 · The Robot Report · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>シミュレーションと評価 · arXiv 2611.13160 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>シミュレーションと評価 · arXiv 2611.14115 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>ハードウェアとサプライチェーン · arXiv 2611.12087 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>基盤モデル · arXiv 2611.14048 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>基盤モデル · Google DeepMind · 2026‑11‑09</sub> |
+| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑11‑11</sub> |
+| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>データエンジン · The Robot Report · 2026‑11‑11</sub> |
+| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑11‑10</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI 下書き` 搭載計算資源の限られた水中編隊制御では、相対姿勢推定の推論遅延 17.62 ms という著者自己申告の値が目安になる。ただし測定ハードウェアはページに記載がなく、制御ループの予算を組む前に自機で計測し直すべきだ。
-2. **SWAM** — `AI 下書き` 汎用動画（約 47,000 時間）で世界行動モデルを事前学習するなら、従来は事前学習任せだった言語と動画の対応付けを見直す価値がある。著者報告の成功率 88.10%、61.56% のうち、どれが実機での値かはページから読み取れない。
-3. **VLA Adaptation with Real and Simulated Data** — `AI 下書き` タスクや機体ごとに VLA の微調整が必要な現場にとって、微調整データの出どころを単一タスクで検討した事例研究にあたる。ページに数値はなく、シミュレーションデータが実データをどこまで置き換えられるかはまだ判断できない。
-4. **LHNav** — `AI 下書き` 長い言語指示で人型ロボットを複数の目的地へ順に向かわせるには、目標間で進捗を保つことと安定した動作を出し続けることを両立させる必要がある。75.56% の成功率は著者申告で、評価の場がページに書かれておらず、実機の数値として引用するのは早い。
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI 下書き` 推論モデルを車載で動かせるか検討中の自動運転チームには NVIDIA 自身の解説が参考になる。ただしページに遅延や計算量の数値はなく、自社プラットフォームの予算に収まるかは実測で確かめるしかない。
-6. **Practice Makes Precise** — `AI 下書き` 歯車の位置合わせ、ケーブル接続、小部品の組立を自動化するチームにとって、NVIDIA 自身の説明では細かな作業もシミュレーションで練習させられる。ただし実機への移行結果は示されておらず、実機検証の負担は残る。
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI 下書き` 米国の公共安全機関向けにドローンを売るメーカーにとって、二次報道によれば Axon が拡大する Drone as First Responder プログラムが販路になりつつある。承認手続きへの言及はなく、計画に織り込む前に一次発表を確認したい。
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI 下書き` GR00T や Isaac Lab を使う開発チームはバージョン移行に備える必要があるが、この二次報道が挙げるのは Ambi Robotics や Skild AI など提携先の名前だけで、互換性や移行手順は NVIDIA 自身のリリースノートで確かめるべきだ。
+1. **How Much of Your VLA Is kNN** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **LEASH** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Compass 1** — 査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。
+4. **LaST0.5** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — 当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+6. **Serve Robotics opens robot delivery network for others to build on** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+7. **Memories.ai builds standardized egocentric video pipeline** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-11.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-12.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

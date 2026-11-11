@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-11
+### 今日雷达 · 2026-11-12
 
-`生成时间: 2026-11-10 23:40 UTC` ｜ `统计窗口: 论文 2026-11-07 → 2026-11-11 · 博客与报道 2026-10-12 → 2026-11-11 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-11 23:40 UTC` ｜ `统计窗口: 论文 2026-11-08 → 2026-11-12 · 博客与报道 2026-10-13 → 2026-11-12 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>边缘与实时性 · arXiv 2611.11940 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>数据引擎 · arXiv 2611.12870 · 2026‑11‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>数据引擎 · arXiv 2611.12676 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>本体与供应链 · arXiv 2611.12136 · 2026‑11‑09</sub> |
-| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>边缘与实时性 · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
-| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑11‑10</sub> |
-| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>仿真与评测 · The Robot Report · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>仿真与评测 · arXiv 2611.13160 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>仿真与评测 · arXiv 2611.14115 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>本体与供应链 · arXiv 2611.12087 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>基座模型 · arXiv 2611.14048 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>基座模型 · Google DeepMind · 2026‑11‑09</sub> |
+| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>系统与编排 · The Robot Report · 2026‑11‑11</sub> |
+| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>数据引擎 · The Robot Report · 2026‑11‑11</sub> |
+| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑11‑10</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI 起草` 做水下编队控制、机载算力有限的团队可以参考作者自报的 17.62 ms 相对位姿估计推理延迟，但页面没写在什么硬件上测得，排控制回路预算前应在自己的机载计算机上复测。
-2. **SWAM** — `AI 起草` 用通用视频（约 47,000 小时）预训练世界动作模型的团队，应重新审视以往直接沿用预训练所得的语言-视频对齐；作者自报 88.10% 和 61.56% 成功率，但页面未说明哪些是真机运行。
-3. **VLA Adaptation with Real and Simulated Data** — `AI 起草` 每换一个任务和机器人都要微调 VLA 的团队，可以把这篇预印本当作单一任务上关于微调数据来源的案例；页面没有任何数字，还不能据此判断仿真数据能替代多少真机数据。
-4. **LHNav** — `AI 起草` 要让人形机器人按长指令依次去多个目的地的团队，需要同时解决跨目标保持进度和持续输出稳定动作两件事；作者自报 75.56% 成功率，但页面未写明测试基准，不能直接当作真机数字引用。
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI 起草` 评估推理模型能否装上车的自动驾驶团队，可以看 NVIDIA 这份一手说明，但页面没有给出任何延迟或算力数字，是否放得进自家平台的预算仍需自己实测。
-6. **Practice Makes Precise** — `AI 起草` 正在自动化齿轮对齐、线缆连接或小零件装配的团队，可以按 NVIDIA 的说法把这类精细操作放进仿真训练；但页面没有给出任何迁移到真机的结果，真机验证的成本仍在自己身上。
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI 起草` 向美国公共安全机构销售无人机的厂商，据这篇二手报道，Axon 扩大中的 Drone as First Responder 计划正成为分销渠道；页面没有涉及审批，围绕它做计划前请先核对原始公告。
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI 起草` 基于 GR00T 或 Isaac Lab 开发的团队需要准备版本升级，但这篇二手报道只列出 Ambi Robotics、Skild AI 等合作方名字，兼容性和迁移细节要看 NVIDIA 自己的发布说明。
+1. **How Much of Your VLA Is kNN** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+2. **LEASH** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Compass 1** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
+4. **LaST0.5** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
+5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+6. **Serve Robotics opens robot delivery network for others to build on** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+7. **Memories.ai builds standardized egocentric video pipeline** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-11.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-12.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

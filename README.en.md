@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-11
+### Today's radar · 2026-11-12
 
-`Generated: 2026-11-10 23:40 UTC` ｜ `Window: papers 2026-11-07 → 2026-11-11 · posts 2026-10-12 → 2026-11-11 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-11 23:40 UTC` ｜ `Window: papers 2026-11-08 → 2026-11-12 · posts 2026-10-13 → 2026-11-12 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots](https://arxiv.org/abs/2611.11940)**<br>`17.62 ms`<br><sub>Edge & real-time · arXiv 2611.11940 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870)**<br>`47,000 hours`&nbsp; `88.10%`&nbsp; `61.56%`<br><sub>Data engine · arXiv 2611.12870 · 2026‑11‑09</sub> |
-| 03<br>🔵&nbsp;`R` | **[VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess](https://arxiv.org/abs/2611.12676)**<br><sub>Data engine · arXiv 2611.12676 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data](https://arxiv.org/abs/2611.12136)**<br>`75.56%`<br><sub>Embodiment & supply chain · arXiv 2611.12136 · 2026‑11‑09</sub> |
-| 05<br>🟢&nbsp;`O` | **[Running AV Reasoning Models Within Onboard Compute and Latency Limits](https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/)**<br><sub>Edge & real-time · NVIDIA Technical Blog (Robotics) · 2026‑11‑10</sub> |
-| 06<br>🟢&nbsp;`O` | **[Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation](https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑09</sub> |
-| 07<br>🟡&nbsp;`M` | **[Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor](https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑11‑10</sub> |
-| 08<br>🟡&nbsp;`M` | **[NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL](https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/)**<br><sub>Simulation & evaluation · The Robot Report · 2026‑11‑09</sub> |
+| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>Simulation & evaluation · arXiv 2611.13160 · 2026‑11‑09</sub> |
+| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>Simulation & evaluation · arXiv 2611.14115 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>Embodiment & supply chain · arXiv 2611.12087 · 2026‑11‑09</sub> |
+| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>Foundation models · arXiv 2611.14048 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>Foundation models · Google DeepMind · 2026‑11‑09</sub> |
+| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑11‑11</sub> |
+| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>Data engine · The Robot Report · 2026‑11‑11</sub> |
+| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>Edge & real-time · The Robot Report · 2026‑11‑10</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI draft` Teams running underwater formation control on limited onboard compute get a self-reported 17.62 ms inference latency for relative-pose estimation, but the page does not say what hardware produced it, so time it on your own computer before budgeting the loop.
-2. **SWAM** — `AI draft` Teams pretraining world action models on general video, here about 47,000 hours, should revisit the language-video alignment earlier work simply inherits from pretraining; the self-reported 88.10% and 61.56% success rates do not show which runs were on real robots.
-3. **VLA Adaptation with Real and Simulated Data** — `AI draft` For anyone who must fine-tune a VLA for each new task and robot, this preprint is a single-task case study on where the fine-tuning data comes from; the page shows no figures, so it cannot yet say how much simulated data can stand in for real.
-4. **LHNav** — `AI draft` Humanoid teams chaining several language-specified destinations must keep progress across goals while producing stable motion; the self-reported 75.56% success rate is on a benchmark the page does not name, so do not cite it as a real-robot figure yet.
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI draft` AV teams deciding whether a reasoning model can ship on the vehicle get NVIDIA's first-party guidance, but the page quotes no latency or compute figures, so whether it fits their own platform's budget still has to be measured.
-6. **Practice Makes Precise** — `AI draft` Teams automating gear alignment, cable connection or small-part assembly can, by NVIDIA's own account, consider simulation for such fine-touch training; the page gives no transfer results, so real-robot validation remains their cost.
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI draft` For drone makers selling to U.S. public safety agencies, a secondary report says Axon's expanding Drone as First Responder program is becoming a distribution channel; the page says nothing about approvals, so check the primary announcement before planning around it.
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI draft` Teams building on GR00T or Isaac Lab should expect a version change, but this secondary report quotes only partner names such as Ambi Robotics and Skild AI, so compatibility and migration details need NVIDIA's own release notes.
+1. **How Much of Your VLA Is kNN** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+2. **LEASH** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+3. **Compass 1** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
+4. **LaST0.5** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **Serve Robotics opens robot delivery network for others to build on** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+7. **Memories.ai builds standardized egocentric video pipeline** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-11.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-12.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

@@ -13,6 +13,309 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.13160",
+      "url": "https://arxiv.org/abs/2611.13160",
+      "title": "How Much of Your VLA Is kNN",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.13160 · 2026-11-09<br><b>Key numbers</b>: 95% · 91.7 %<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights</p>\n<blockquote>Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.13160 · 2026-11-09\nKey numbers: 95% · 91.7 %\nSignals: quantitative results · closed-loop success reported · open code or weights\n\nVision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.13160"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "arxiv:2611.13160",
+        "url": "https://arxiv.org/abs/2611.13160",
+        "title": "How Much of Your VLA Is kNN",
+        "publisher": "arXiv 2611.13160",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-09",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [
+          "95%",
+          "91.7 %"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "open_release"
+        ],
+        "excerpt": "Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.14115",
+      "url": "https://arxiv.org/abs/2611.14115",
+      "title": "LEASH: Stay Safe in Agentic Robotics",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.14115 · 2026-11-10<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.14115 · 2026-11-10\nSignals: closed-loop success reported · real-robot experiments\n\nFoundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.14115"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "arxiv:2611.14115",
+        "url": "https://arxiv.org/abs/2611.14115",
+        "title": "LEASH: Stay Safe in Agentic Robotics",
+        "publisher": "arXiv 2611.14115",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-10",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.12087",
+      "url": "https://arxiv.org/abs/2611.12087",
+      "title": "Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.12087 · 2026-11-09<br><b>Key numbers</b>: 500 hours · 2,000 hours · 79.4% · 17.8%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [R]\nSource: arXiv 2611.12087 · 2026-11-09\nKey numbers: 500 hours · 2,000 hours · 79.4% · 17.8%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights\n\nEmbodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.12087"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "arxiv:2611.12087",
+        "url": "https://arxiv.org/abs/2611.12087",
+        "title": "Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos",
+        "publisher": "arXiv 2611.12087",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "hardware",
+        "published": "2026-11-09",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [
+          "500 hours",
+          "2,000 hours",
+          "79.4%",
+          "17.8%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "open_release"
+        ],
+        "excerpt": "Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.14048",
+      "url": "https://arxiv.org/abs/2611.14048",
+      "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.14048 · 2026-11-10<br><b>Key numbers</b>: 99.5%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2611.14048 · 2026-11-10\nKey numbers: 99.5%\nSignals: quantitative results · real-robot experiments\n\nWorld Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.14048"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "arxiv:2611.14048",
+        "url": "https://arxiv.org/abs/2611.14048",
+        "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
+        "publisher": "arXiv 2611.14048",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-11-10",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [
+          "99.5%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:deepmind:a98763b80c84",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [O]<br><b>Source</b>: Google DeepMind · 2026-11-09<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Our most capable vision-language-action model enhances robot dexterity, reliability, and safety</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [O]\nSource: Google DeepMind · 2026-11-09\nSignals: real-robot experiments\n\nOur most capable vision-language-action model enhances robot dexterity, reliability, and safety\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Our most capable vision-language-action model enhances robot dexterity, reliability, and safety",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "Google DeepMind"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "deepmind:a98763b80c84",
+        "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+        "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+        "publisher": "Google DeepMind",
+        "source_id": "deepmind",
+        "evidence": "O",
+        "lane": "foundation",
+        "published": "2026-11-09",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Our most capable vision-language-action model enhances robot dexterity, reliability, and safety"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:c65ae6b550d7",
+      "url": "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/",
+      "title": "Serve Robotics opens robot delivery network for others to build on",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-11<br><b>Signals</b>: trending</p>\n<blockquote>Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [M]\nSource: The Robot Report · 2026-11-11\nSignals: trending\n\nServe Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "the-robot-report:c65ae6b550d7",
+        "url": "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/",
+        "title": "Serve Robotics opens robot delivery network for others to build on",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "systems",
+        "published": "2026-11-11",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "trending"
+        ],
+        "excerpt": "Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:ab9f5a3d1256",
+      "url": "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/",
+      "title": "Memories.ai builds standardized egocentric video pipeline",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-11</p>\n<blockquote>Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [M]\nSource: The Robot Report · 2026-11-11\n\nMemories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "the-robot-report:ab9f5a3d1256",
+        "url": "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/",
+        "title": "Memories.ai builds standardized egocentric video pipeline",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "data",
+        "published": "2026-11-11",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:9e9a5853f7d7",
+      "url": "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/",
+      "title": "Intel and Altera expand collaboration to simplify sensor integration for physical AI",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-10<br><b>Signals</b>: latency or control-rate numbers</p>\n<blockquote>Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html\">Full radar for 2026-11-12</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [M]\nSource: The Robot Report · 2026-11-10\nSignals: latency or control-rate numbers\n\nAltera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics.\n\nFull radar for 2026-11-12: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-12.en.html",
+      "summary": "Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics.",
+      "date_published": "2026-11-11T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-12",
+        "id": "the-robot-report:9e9a5853f7d7",
+        "url": "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/",
+        "title": "Intel and Altera expand collaboration to simplify sensor integration for physical AI",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "edge",
+        "published": "2026-11-10",
+        "radar_published": "2026-11-11T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "latency"
+        ],
+        "excerpt": "Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.11940",
       "url": "https://arxiv.org/abs/2611.11940",
       "title": "Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots",
@@ -3503,311 +3806,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "ファナックが「JIMTOF2026」で披露した「フィジカルAI CNC」は、生成AIを活用してトラブル対応や加工調整を自律支援する次世代システムだ。現場で最も懸念される“AIの誤作動”に対しては、事前シミュレーションと人間の最終承認による多重の安全構造を提示した。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:492abb593818",
-      "url": "https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html",
-      "title": "拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-29</p>\n<blockquote>动态条件注入、因果核验与异步协作的三大技术挑战，暴露出哪些致命的技术死角？刚刚，Google DeepMind 正式发布了新一代世界模型 Genie 4。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html\">Full radar for 2026-10-30</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-29\n\n动态条件注入、因果核验与异步协作的三大技术挑战，暴露出哪些致命的技术死角？刚刚，Google DeepMind 正式发布了新一代世界模型 Genie 4。\n\nFull radar for 2026-10-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html",
-      "summary": "动态条件注入、因果核验与异步协作的三大技术挑战，暴露出哪些致命的技术死角？刚刚，Google DeepMind 正式发布了新一代世界模型 Genie 4。",
-      "date_published": "2026-10-29T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-30",
-        "id": "leiphone:492abb593818",
-        "url": "https://www.leiphone.com/category/yanxishe/F3FpQlhpT7u7ekyU.html",
-        "title": "拉爆游戏引擎？深度拆解 Genie 4，从视频生成到世界控制，Google 要跨越什么？",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "foundation",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-29T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "动态条件注入、因果核验与异步协作的三大技术挑战，暴露出哪些致命的技术死角？刚刚，Google DeepMind 正式发布了新一代世界模型 Genie 4。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:55cd01abe02f",
-      "url": "https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/",
-      "title": "2026 Robotics Handbook looks at humanoids, AI, and design choices",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-29</p>\n<blockquote>The 2026 Robotics Handbook examines design choices behind dexterous manipulation, humanoid robots, and construction automation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html\">Full radar for 2026-10-30</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-10-29\n\nThe 2026 Robotics Handbook examines design choices behind dexterous manipulation, humanoid robots, and construction automation.\n\nFull radar for 2026-10-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html",
-      "summary": "The 2026 Robotics Handbook examines design choices behind dexterous manipulation, humanoid robots, and construction automation.",
-      "date_published": "2026-10-29T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-30",
-        "id": "the-robot-report:55cd01abe02f",
-        "url": "https://www.therobotreport.com/2026-robotics-handbook-looks-at-humanoids/",
-        "title": "2026 Robotics Handbook looks at humanoids, AI, and design choices",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-29T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "The 2026 Robotics Handbook examines design choices behind dexterous manipulation, humanoid robots, and construction automation."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:d5f1609a995d",
-      "url": "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/",
-      "title": "AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-10-29</p>\n<blockquote>AGIBOT unveiled its AHA3 integrated platform, GO-3 Preview, and WITA-Omni 1.0 model, as well as the G2 Max robot and Link-U OS 1.0 framework.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html\">Full radar for 2026-10-30</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: The Robot Report · 2026-10-29\n\nAGIBOT unveiled its AHA3 integrated platform, GO-3 Preview, and WITA-Omni 1.0 model, as well as the G2 Max robot and Link-U OS 1.0 framework.\n\nFull radar for 2026-10-30: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-30.en.html",
-      "summary": "AGIBOT unveiled its AHA3 integrated platform, GO-3 Preview, and WITA-Omni 1.0 model, as well as the G2 Max robot and Link-U OS 1.0 framework.",
-      "date_published": "2026-10-29T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-30",
-        "id": "the-robot-report:d5f1609a995d",
-        "url": "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/",
-        "title": "AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-29T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "AGIBOT unveiled its AHA3 integrated platform, GO-3 Preview, and WITA-Omni 1.0 model, as well as the G2 Max robot and Link-U OS 1.0 framework."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.37543",
-      "url": "https://arxiv.org/abs/2610.37543",
-      "title": "Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.37543 · 2026-10-27<br><b>Key numbers</b>: 400x · 83% · 70% · 82%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Event cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html\">Full radar for 2026-10-29</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.37543 · 2026-10-27\nKey numbers: 400x · 83% · 70% · 82%\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers\n\nEvent cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments.\n\nFull radar for 2026-10-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html",
-      "summary": "Event cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments.",
-      "date_published": "2026-10-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.37543"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-29",
-        "id": "arxiv:2610.37543",
-        "url": "https://arxiv.org/abs/2610.37543",
-        "title": "Rendering-Free Event Frame Simulation for Fast Reinforcement Learning of Autonomous Robot Navigation",
-        "publisher": "arXiv 2610.37543",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-10-27",
-        "radar_published": "2026-10-28T23:40:00Z",
-        "numbers": [
-          "400x",
-          "83%",
-          "70%",
-          "82%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Event cameras offer low latency, high dynamic range, and milliwatt-level power consumption, making them ideal for agile robots such as tiny drones navigating through cluttered environments."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.36791",
-      "url": "https://arxiv.org/abs/2610.36791",
-      "title": "RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.36791 · 2026-10-27<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Learning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html\">Full radar for 2026-10-29</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.36791 · 2026-10-27\nSignals: closed-loop success reported · real-robot experiments\n\nLearning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels.\n\nFull radar for 2026-10-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html",
-      "summary": "Learning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels.",
-      "date_published": "2026-10-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.36791"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-29",
-        "id": "arxiv:2610.36791",
-        "url": "https://arxiv.org/abs/2610.36791",
-        "title": "RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Latent Actions",
-        "publisher": "arXiv 2610.36791",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-27",
-        "radar_published": "2026-10-28T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Learning controllable world dynamics from heterogeneous interaction videos is challenging because robot embodiments use incompatible action spaces, while human videos lack native control labels."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.37381",
-      "url": "https://arxiv.org/abs/2610.37381",
-      "title": "PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.37381 · 2026-10-27<br><b>Key numbers</b>: 99.3% · 89.9% · 93.6% · 81.5%<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Vision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html\">Full radar for 2026-10-29</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.37381 · 2026-10-27\nKey numbers: 99.3% · 89.9% · 93.6% · 81.5%\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nVision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited.\n\nFull radar for 2026-10-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html",
-      "summary": "Vision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited.",
-      "date_published": "2026-10-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.37381"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-29",
-        "id": "arxiv:2610.37381",
-        "url": "https://arxiv.org/abs/2610.37381",
-        "title": "PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations",
-        "publisher": "arXiv 2610.37381",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-27",
-        "radar_published": "2026-10-28T23:40:00Z",
-        "numbers": [
-          "99.3%",
-          "89.9%",
-          "93.6%",
-          "81.5%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "latency"
-        ],
-        "excerpt": "Vision--Language--Action (VLA) models generate robot actions from visual observations and language instructions, but their understanding of physical dynamics remains limited."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.37378",
-      "url": "https://arxiv.org/abs/2610.37378",
-      "title": "VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.37378 · 2026-10-27<br><b>Key numbers</b>: 52.8% · 23.7%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Vision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html\">Full radar for 2026-10-29</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.37378 · 2026-10-27\nKey numbers: 52.8% · 23.7%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nVision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control.\n\nFull radar for 2026-10-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html",
-      "summary": "Vision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control.",
-      "date_published": "2026-10-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.37378"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-29",
-        "id": "arxiv:2610.37378",
-        "url": "https://arxiv.org/abs/2610.37378",
-        "title": "VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinforcement Learning",
-        "publisher": "arXiv 2610.37378",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-10-27",
-        "radar_published": "2026-10-28T23:40:00Z",
-        "numbers": [
-          "52.8%",
-          "23.7%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Vision-Language-Action (VLA) models integrate high-level reasoning with low-level action execution for end-to-end robotic control."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:31b1fabb10ed",
-      "url": "https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/",
-      "title": "Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [O]<br><b>Source</b>: AWS Physical AI Blog · 2026-10-28<br><b>Signals</b>: real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Industrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html\">Full radar for 2026-10-29</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [O]\nSource: AWS Physical AI Blog · 2026-10-28\nSignals: real-robot experiments · latency or control-rate numbers\n\nIndustrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time…\n\nFull radar for 2026-10-29: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-29.en.html",
-      "summary": "Industrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time…",
-      "date_published": "2026-10-28T23:40:00Z",
-      "authors": [
-        {
-          "name": "AWS Physical AI Blog"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[O]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-29",
-        "id": "aws-physical-ai:31b1fabb10ed",
-        "url": "https://aws.amazon.com/blogs/physical-ai/industrial-sensor-data-to-operational-intelligence-with-archetype-ai-on-aws/",
-        "title": "Industrial Sensor Data to Operational Intelligence with Archetype AI on AWS",
-        "publisher": "AWS Physical AI Blog",
-        "source_id": "aws-physical-ai",
-        "evidence": "O",
-        "lane": "edge",
-        "published": "2026-10-28",
-        "radar_published": "2026-10-28T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Industrial environments generate vast amounts of sensor data, but most of it remains underutilized. Deployed on AWS, Archetype AI’s Newton physical world model brings Physical AI to manufacturing, turning raw signals into real-time…"
       }
     }
   ]

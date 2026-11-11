@@ -1,50 +1,69 @@
 {
-  "date": "2026-11-11",
-  "generated": "2026-11-10 23:40 UTC",
-  "window": "papers 2026-11-07 → 2026-11-11 · posts 2026-10-12 → 2026-11-11 (UTC)",
+  "date": "2026-11-12",
+  "generated": "2026-11-11 23:40 UTC",
+  "window": "papers 2026-11-08 → 2026-11-12 · posts 2026-10-13 → 2026-11-12 (UTC)",
   "window_detail": {
-    "day": "2026-11-11",
-    "papers_from": "2026-11-07",
-    "posts_from": "2026-10-12",
+    "day": "2026-11-12",
+    "papers_from": "2026-11-08",
+    "posts_from": "2026-10-13",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.11940",
-      "title": "Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots",
-      "url": "https://arxiv.org/abs/2611.11940",
-      "publisher": "arXiv 2611.11940",
+      "id": "arxiv:2611.13160",
+      "title": "How Much of Your VLA Is kNN",
+      "url": "https://arxiv.org/abs/2611.13160",
+      "publisher": "arXiv 2611.13160",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-09",
-      "lane": "edge",
-      "score": 3.862,
+      "lane": "simeval",
+      "score": 3.44,
       "numbers": [
-        "17.62 ms"
+        "95%",
+        "91.7 %"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "latency"
+        "open_release"
       ],
       "heat": 0.0,
-      "summary": "Underwater leader-follower formation control requires continuous relative-pose estimation despite degraded sensing conditions and limited onboard computation. This paper presents a reliability-adaptive multimodal perception framework for six-degree-of-freedom relative-pose tracking between two moving underwater robots. The framework integrates complementary visual, acoustic-ranging, and hydrodynamic measurements while accounting for their distinct physical characteristics and time-varying reliability. It adaptively weights modality contributions and models temporal dependencies with linear computational complexity, enabling efficient pose estimation on embedded hardware. Extensive experiments were conducted using a custom-built AUV platform, with 648 pool trials spanning two leader vehicle types, three illumination conditions, and nine trajectory patterns. Evaluation yields an average translational error of 3.8 cm and an average orientation error of 2.4°. On an onboard NVIDIA Jetson AGX Orin, the fusion network achieves an inference latency of 17.62 ms, providing a 2.69-fold speedup over the evaluated Transformer-based fusion baseline. Closed-loop experiments further demonstrate stable formation maintenance with a moving leader under onboard computational constraints. A multimodal dataset containing measurements from all 648 trials will be made publicly available."
+      "summary": "Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations. In this work, we show that retrieving nearby demonstrations and reusing their action chunks achieves a success rate of 91.7 % on LIBERO without policy training. Under LIBERO-Plus perturbations, retrieval shows the smallest drop of all evaluated policies. Across nine publicly available VLAs, fine-tuning mostly makes the vision-language backbone a better retrieval key, and the actions of the VLAs remain close to the demonstrations. In addition, we introduce Local Action Consistency (LAC), an offline metric that measures whether nearby observations in representation space are also associated with similar future actions. We show that LAC tracks the success rate of retrieval and can guide the training of a retrieval key. Our evaluation and source code are available at https://github.com/sereact/lerobot_knn."
     },
     {
-      "id": "arxiv:2611.12870",
-      "title": "SWAM: Scaling World Action Models with Cross-Modal Alignment",
-      "url": "https://arxiv.org/abs/2611.12870",
-      "publisher": "arXiv 2611.12870",
+      "id": "arxiv:2611.14115",
+      "title": "LEASH: Stay Safe in Agentic Robotics",
+      "url": "https://arxiv.org/abs/2611.14115",
+      "publisher": "arXiv 2611.14115",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-10",
+      "lane": "simeval",
+      "score": 3.36,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.087,
+      "summary": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence. These advances make agentic robotics a promising path toward artificial general intelligence in robotics. However, we find that using foundation models to control robots poses serious safety risks, and comprehensive safety evaluation is still lacking. We introduce RoboRisk, a comprehensive benchmark for evaluating safety in agentic robotics. Its 92 simulated tasks and 13 physical-robot tasks fall into five categories: Task-level Refusal (T), Plan Repair (P), Execution-time Hazard (E), Injection (I), and Sequential Memory (S). Prior benchmarks cover at most two of these categories, and several evaluate only text outputs. In contrast, RoboRisk covers all five and executes every task in closed loop. We evaluate six state-of-the-art foundation models on RoboRisk: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, Claude Opus 5.5, Gemini 4 Argon, and Grok 4.7. These models generally show high harm rates. We also evaluate two robot-specific APIs: the Dream API and PokeBot's RoboAPI. We further propose the Lease-Enforced Agentic Safety Harness (LEASH), which offers essential safety infrastructure for agentic robotics and can be integrated into nearly any agentic architecture. LEASH leverages a decision model (Jev or OpenAI's Decisions API) to implement task, action, and commit gates, which review the task, each action, and each irreversible operation in their visual context. The planner and all three gates share a common safety policy. Experiments on RoboRisk in simulation and on physical robots show that LEASH effectively reduces harm across all six foundation models. It largely preserves their task completion performance and adds little time and token overhead."
+    },
+    {
+      "id": "arxiv:2611.12087",
+      "title": "Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos",
+      "url": "https://arxiv.org/abs/2611.12087",
+      "publisher": "arXiv 2611.12087",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-09",
-      "lane": "data",
-      "score": 3.095,
+      "lane": "hardware",
+      "score": 2.965,
       "numbers": [
-        "47,000 hours",
-        "88.10%",
-        "61.56%",
-        "40.00%"
+        "500 hours",
+        "2,000 hours",
+        "79.4%",
+        "17.8%"
       ],
       "signals": [
         "numbers",
@@ -52,109 +71,94 @@
         "real_robot",
         "open_release"
       ],
-      "heat": 0.075,
-      "summary": "World action models jointly predict video and actions conditioned on language. Existing studies focus primarily on architectures and training mechanisms, typically treating language-video alignment acquired through video pretraining as an established foundation. However, introducing action learning may impair this alignment. Principled guidance on data and supervision design for maintaining language-video alignment during action learning remains limited. To investigate this, we curate a pool of approximately 47,000 hours of general videos, egocentric videos, UMI demonstrations, and robot demonstrations. Building on this, we systematically study how language-video supervision, language-video-action supervision, and the joint use of these two forms affect WAM performance. In particular, we examine how language annotation quality affects pretrained language-video capabilities, and how action supervision from UMI and robot demonstrations extends these capabilities to language-video-action modeling. To better scale the model, we further conduct detailed studies on joint training recipe and model architecture. Under a fixed training budget, mixing egocentric videos and UMI demonstrations improves control generalization. Model architecture affects how effectively these experiences are used, while scaling pretraining under the selected configuration brings further gains. The resulting recipe, post-trained on RoboTwin Clean demonstrations only, achieves success rates of 88.10% and 61.56% under Easy (Clean-to-Clean) and Hard (Clean-to-Random) conditions, respectively. Our model achieves 40.00% SR across three real-world tasks, compared with 23.33% for the strongest baseline, indicating better generalization under unseen conditions. We release the curated data, training code, and model weights."
-    },
-    {
-      "id": "arxiv:2611.12676",
-      "title": "VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess",
-      "url": "https://arxiv.org/abs/2611.12676",
-      "publisher": "arXiv 2611.12676",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-09",
-      "lane": "data",
-      "score": 3.07,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "open_release"
-      ],
       "heat": 0.0,
-      "summary": "Vision-language-action (VLA) models are trained as general-purpose foundation models for robot learning, and require fine-tuning for each downstream task and robot. This raises practical questions such as how much data and training updates are needed, how checkpoints should be selected, and whether simulation can be leveraged to alleviate the cost of real data collection. We study these questions on a task that requires both precise manipulation and spatial understanding of the scene. In this task, an SO-101 arm moves a chess king between two squares that are given only by their names, such as e4 and a5. We fine-tune $π_{0.5}$ with various dataset sizes and update budgets, using teleoperated demonstrations as well as simulated demonstrations from a randomized scripted expert that imitates the variability of human demonstrations. In simulation, the success rate scales with both data and updates. Importantly, we find that a short learning-rate cool-down adds up to 31 points and is necessary for comparing checkpoints, and that validation loss and action error are unreliable for model selection. On the real arm, we fine-tune on up to 256 teleoperated demonstrations and evaluate ten policies in 25 trials each. Partial results indicate that pretraining on the simulated demonstrations helps substantially, most clearly when real data is scarce. We also present a negative result, in which training on the policy's own rollouts with filtered behavior cloning, RECAP-style advantage conditioning, corrections from an automatic coach, or residual reinforcement learning did not yield a measurable improvement over plain behavior cloning in our setting. We release the simulator, the expert and the real demonstrations."
+      "summary": "Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments. However, existing navigation architectures struggle to sustain both capabilities, remaining effective only over a handful of recent frames. We present Compass 1, the first embodied navigation foundation model to unify language understanding and video generation while enabling memory backtracking through nearly 2mins of visual history. Without altering the underlying architecture, we introduce History Representation, which integrates sparse visual keyframes with an explicit History Representation Map to preserve long-term spatiotemporal context. To effectively leverage this history, we further introduce History Utilization, a structured VQA supervision protocol comprising three categories: task-stage grounding, exploration consistency, and spatiotemporal target retrieval, enabling map-grounded reasoning and stable persistent long-horizon navigation. To fuel this system, we establish a complete annotation pipeline for monocular RGB videos and open-source a massive dataset featuring over 500 hours of high-quality real-world interactions and over 2,000 hours of annotated web videos. Trained mainly on the distribution of 1m height camera, Compass 1 generalizes seamlessly across diverse embodiments and scenarios, ranging from indoor environments to pedestrian-dense streets, spanning wheeled robot at 0.35m, quadruped dog at 0.5m, humanoid at 0.85m, and aerial drone at 1.5m. Compass 1achieves a dominant overall success rate of 79.4% across open-world evaluations, compared to 17.8% for the strongest baseline. It demonstrates exceptional zero-shot execution exceeding 90% on foundational tasks, a 250% boost in exploration, and an unparalleled leap from 0% to 58% in challenging persistent history backtracking."
     },
     {
-      "id": "arxiv:2611.12136",
-      "title": "LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data",
-      "url": "https://arxiv.org/abs/2611.12136",
-      "publisher": "arXiv 2611.12136",
+      "id": "arxiv:2611.14048",
+      "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
+      "url": "https://arxiv.org/abs/2611.14048",
+      "publisher": "arXiv 2611.14048",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-09",
-      "lane": "hardware",
-      "score": 3.047,
+      "published": "2026-11-10",
+      "lane": "foundation",
+      "score": 2.95,
       "numbers": [
-        "75.56%"
+        "99.5%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "We study humanoid navigation across multiple destinations under long-horizon language instructions. This task is challenging because robots must maintain progress across successive goals while continuously producing natural, stable whole-body motion through confined spaces. However, task decomposition in existing methods does not by itself ensure progress throughout execution, while waypoint-based navigation does not guarantee natural, route-faithful whole-body motion. Our key idea is to organize navigation into three complementary roles operating at different time scales: a Brain for task reasoning, a Cerebellum for local motion generation, and a Brainstem for whole-body execution. We realize this idea in LHNav, an asynchronous system that uses progress and arrival feedback to coordinate navigation goals, VLA motion-token prediction, and whole-body control. To train the Cerebellum for natural, route-faithful motion, we develop a physics-grounded data engine that improves physical tracking of motion references along collision-aware routes and pairs the resulting demonstrations with rendered visual observations. Together, these designs allow task planning to proceed alongside continuous movement and extend single-goal navigation to successive destinations with natural, route-faithful whole-body motion. In simulation, our navigation VLA outperforms OmniNav and DualVLN in single-goal success and motion smoothness, with fewer collisions and falls. Using a VLA trained only on single-goal demonstrations, LHNav achieves a 75.56% success rate on long-horizon navigation tasks. Deployment on the Unitree G1 further demonstrates single-goal navigation and zero-shot long-horizon task execution in real-world environments, including layouts with repositioned objects. Project website: https://robbyant-research.github.io/LHNav/."
+      "summary": "World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics. Existing WAMs, encompassing both video-first action prediction and joint video-action modeling, directly transfer global physical representations from world models to action generation. However, global scene representations may underemphasize local robot-object interactions, creating a mismatch between representations optimized for world evolution and those required for manipulation. To bridge this gap, we propose LaST0.5, a novel WAM that introduces an interaction-centric physical representation between world modeling and action generation. Specifically, LaST0.5 learns a compact interaction-centric latent space under the supervision of visual interaction cues between the robot and the environment. This reasoning space is instantiated as a latent expert that bridges the world expert and the action expert within a Mixture-of-Transformers architecture. Furthermore, LaST0.5 performs adaptive world-to-action transfer by jointly predicting future representations and progress values, using progress consistency to adjust action execution and trigger future resampling. Finally, we pretrain LaST0.5 on a large-scale robotic data corpus comprising over 14k hours of data, establishing interaction-centric physical reasoning as a scalable and effective paradigm. LaST0.5 achieves 99.5% on LIBERO, surpasses the previous state of the art on ten evaluated RLBench tasks, and demonstrates robust long-horizon execution and precise dexterous manipulation in real-world experiments."
     },
     {
-      "id": "nvidia-developer-robotics:5a1c4dfbb3e2",
-      "title": "Running AV Reasoning Models Within Onboard Compute and Latency Limits",
-      "url": "https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
+      "id": "deepmind:a98763b80c84",
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "publisher": "Google DeepMind",
+      "source_id": "deepmind",
       "evidence": "O",
+      "published": "2026-11-09",
+      "lane": "foundation",
+      "score": 2.445,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "heat": 0.056,
+      "summary": "Our most capable vision-language-action model enhances robot dexterity, reliability, and safety"
+    },
+    {
+      "id": "the-robot-report:c65ae6b550d7",
+      "title": "Serve Robotics opens robot delivery network for others to build on",
+      "url": "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-11",
+      "lane": "systems",
+      "score": 1.307,
+      "numbers": [],
+      "signals": [
+        "trending"
+      ],
+      "heat": 0.133,
+      "summary": "Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots."
+    },
+    {
+      "id": "the-robot-report:ab9f5a3d1256",
+      "title": "Memories.ai builds standardized egocentric video pipeline",
+      "url": "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-11",
+      "lane": "data",
+      "score": 1.218,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics."
+    },
+    {
+      "id": "the-robot-report:9e9a5853f7d7",
+      "title": "Intel and Altera expand collaboration to simplify sensor integration for physical AI",
+      "url": "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
       "published": "2026-11-10",
       "lane": "edge",
-      "score": 2.605,
+      "score": 1.152,
       "numbers": [],
       "signals": [
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Autonomous vehicle (AV) developers need reasoning models that can operate within the compute and latency constraints of an onboard system. Larger models provide..."
-    },
-    {
-      "id": "nvidia-blog:97be7dad625b",
-      "title": "Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation",
-      "url": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-11-09",
-      "lane": "simeval",
-      "score": 1.535,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Simulation, which has long been the proving ground for robots learning to walk, roll and hop, is now helping researchers teach robots tasks that require a finer touch: aligning gears, connecting cables and assembling small components. The shift from locomotion to manipulation is taking center stage at this week’s Conference on Robot Learning (CoRL) in […]"
-    },
-    {
-      "id": "the-robot-report:231c03db38be",
-      "title": "Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor",
-      "url": "https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-10",
-      "lane": "safety",
-      "score": 1.235,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "The partners plan to bring Skydio drones to public safety agencies across the U.S. as Axon expands its Drone as First Responder program."
-    },
-    {
-      "id": "the-robot-report:8122ffda501d",
-      "title": "NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL",
-      "url": "https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-09",
-      "lane": "simeval",
-      "score": 0.935,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "NVIDIA also gave a look at how its partners, like Ambi Robotics, FieldAI, Flexion, Skild AI, RLWRLD, and more, are using these technologies."
+      "summary": "Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics."
     }
   ],
   "lane_counts": {
@@ -162,24 +166,21 @@
     "data": 6,
     "training": 0,
     "simeval": 13,
-    "edge": 10,
+    "edge": 9,
     "safety": 2,
-    "systems": 0,
+    "systems": 1,
     "hardware": 8
   },
   "evidence_mix": {
-    "O": 8,
+    "O": 9,
     "R": 28,
-    "M": 14
+    "M": 13
   },
   "fetch": {
-    "items": 549,
+    "items": 673,
     "attempted": 25,
-    "answered": 23,
-    "failed": [
-      "deepmind",
-      "leiphone"
-    ],
+    "answered": 24,
+    "failed": [],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -203,25 +204,28 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 23,
+      "hn_stories": 30,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 65,
+      "arxiv": 69,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
       "tri": 10,
+      "leiphone": 20,
       "monoist": 30,
       "openai": 21,
       "bair": 7,
       "mit-news-robotics": 50,
+      "nature-machine-intelligence": 1,
       "techcrunch-robotics": 13,
       "robohub": 75,
-      "qbitai": 2,
+      "qbitai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1
@@ -233,10 +237,11 @@
         "unitree"
       ],
       "checked": [
-        "physical-intelligence",
         "unitree"
       ],
-      "failed": [],
+      "failed": [
+        "physical-intelligence"
+      ],
       "robots_skipped": [],
       "unavailable": true,
       "items": 0
