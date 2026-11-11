@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-2. **SWAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-3. **VLA Adaptation with Real and Simulated Data** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-4. **LHNav** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-6. **Practice Makes Precise** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI 起草` 做水下编队控制、机载算力有限的团队可以参考作者自报的 17.62 ms 相对位姿估计推理延迟，但页面没写在什么硬件上测得，排控制回路预算前应在自己的机载计算机上复测。
+2. **SWAM** — `AI 起草` 用通用视频（约 47,000 小时）预训练世界动作模型的团队，应重新审视以往直接沿用预训练所得的语言-视频对齐；作者自报 88.10% 和 61.56% 成功率，但页面未说明哪些是真机运行。
+3. **VLA Adaptation with Real and Simulated Data** — `AI 起草` 每换一个任务和机器人都要微调 VLA 的团队，可以把这篇预印本当作单一任务上关于微调数据来源的案例；页面没有任何数字，还不能据此判断仿真数据能替代多少真机数据。
+4. **LHNav** — `AI 起草` 要让人形机器人按长指令依次去多个目的地的团队，需要同时解决跨目标保持进度和持续输出稳定动作两件事；作者自报 75.56% 成功率，但页面未写明测试基准，不能直接当作真机数字引用。
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI 起草` 评估推理模型能否装上车的自动驾驶团队，可以看 NVIDIA 这份一手说明，但页面没有给出任何延迟或算力数字，是否放得进自家平台的预算仍需自己实测。
+6. **Practice Makes Precise** — `AI 起草` 正在自动化齿轮对齐、线缆连接或小零件装配的团队，可以按 NVIDIA 的说法把这类精细操作放进仿真训练；但页面没有给出任何迁移到真机的结果，真机验证的成本仍在自己身上。
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI 起草` 向美国公共安全机构销售无人机的厂商，据这篇二手报道，Axon 扩大中的 Drone as First Responder 计划正成为分销渠道；页面没有涉及审批，围绕它做计划前请先核对原始公告。
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI 起草` 基于 GR00T 或 Isaac Lab 开发的团队需要准备版本升级，但这篇二手报道只列出 Ambi Robotics、Skild AI 等合作方名字，兼容性和迁移细节要看 NVIDIA 自己的发布说明。
 
 </details>
 

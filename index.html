@@ -73,7 +73,7 @@
 <polygon class="area" points="0.0,-139.6 53.8,-53.8 6.6,-0.0 116.7,116.7 0.0,126.9 -17.9,17.9 -6.6,0.0 -71.8,-71.8"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#f472b6;--delay:0.35s"><circle cx="12.9" cy="147.9" r="11" class="halo"/><circle cx="12.9" cy="147.9" r="5"/><title>Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots</title></a>
-<a href="#p2" class="blip" style="--lane:#38bdf8;--delay:0.70s"><circle cx="83.9" cy="-99.9" r="11" class="halo"/><circle cx="83.9" cy="-99.9" r="5"/><title>SWAM: Scaling World Action Models with Cross-Modal Alignment</title></a>
+<a href="#p2" class="blip" style="--lane:#38bdf8;--delay:0.70s"><circle cx="83.9" cy="-100.0" r="11" class="halo"/><circle cx="83.9" cy="-100.0" r="5"/><title>SWAM: Scaling World Action Models with Cross-Modal Alignment</title></a>
 <a href="#p3" class="blip" style="--lane:#38bdf8;--delay:1.05s"><circle cx="99.5" cy="-83.5" r="11" class="halo"/><circle cx="99.5" cy="-83.5" r="5"/><title>VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess</title></a>
 <a href="#p4" class="blip" style="--lane:#22d3ee;--delay:1.40s"><circle cx="-91.5" cy="-91.5" r="11" class="halo"/><circle cx="-91.5" cy="-91.5" r="5"/><title>LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data</title></a>
 <a href="#p5" class="blip" style="--lane:#f472b6;--delay:1.75s"><circle cx="-10.4" cy="118.5" r="11" class="halo"/><circle cx="-10.4" cy="118.5" r="5"/><title>Running AV Reasoning Models Within Onboard Compute and Latency Limits</title></a>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.11940" rel="noopener" target="_blank">Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leader-Follower Robots</a></h3>
 <p class="figure"><strong>17.62 ms</strong><span class="context">“an inference latency of 17.62 ms”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 做水下编队控制、机载算力有限的团队可以参考作者自报的 17.62 ms 相对位姿估计推理延迟，但页面没写在什么硬件上测得，排控制回路预算前应在自己的机载计算机上复测。</p>
 <p class="excerpt">Underwater leader-follower formation control requires continuous relative-pose estimation despite degraded sensing conditions and limited onboard computation.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.12870" rel="noopener" target="_blank">SWAM: Scaling World Action Models with Cross-Modal Alignment</a></h3>
 <p class="figure"><strong>47,000 hours</strong><span class="context">“a pool of approximately 47,000 hours of general videos”</span></p><p class="chips"><span class="chip">88.10%</span><span class="chip">61.56%</span><span class="chip">40.00%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 用通用视频（约 47,000 小时）预训练世界动作模型的团队，应重新审视以往直接沿用预训练所得的语言-视频对齐；作者自报 88.10% 和 61.56% 成功率，但页面未说明哪些是真机运行。</p>
 <p class="excerpt">World action models jointly predict video and actions conditioned on language. Existing studies focus primarily on architectures and training mechanisms, typically treating language-video alignment acquired through video pretraining as an…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.12676" rel="noopener" target="_blank">VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 每换一个任务和机器人都要微调 VLA 的团队，可以把这篇预印本当作单一任务上关于微调数据来源的案例；页面没有任何数字，还不能据此判断仿真数据能替代多少真机数据。</p>
 <p class="excerpt">Vision-language-action (VLA) models are trained as general-purpose foundation models for robot learning, and require fine-tuning for each downstream task and robot.</p>
 <ul class="signals"><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.12136" rel="noopener" target="_blank">LHNav: Long-Horizon Humanoid Navigation via Multirate Coordination and Physics-Grounded Action Data</a></h3>
 <p class="figure"><strong>75.56%</strong><span class="context">“LHNav achieves a 75.56% success rate on”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 要让人形机器人按长指令依次去多个目的地的团队，需要同时解决跨目标保持进度和持续输出稳定动作两件事；作者自报 75.56% 成功率，但页面未写明测试基准，不能直接当作真机数字引用。</p>
 <p class="excerpt">We study humanoid navigation across multiple destinations under long-horizon language instructions. This task is challenging because robots must maintain progress across successive goals while continuously producing natural, stable…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits/" rel="noopener" target="_blank">Running AV Reasoning Models Within Onboard Compute and Latency Limits</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估推理模型能否装上车的自动驾驶团队，可以看 NVIDIA 这份一手说明，但页面没有给出任何延迟或算力数字，是否放得进自家平台的预算仍需自己实测。</p>
 <p class="excerpt">Autonomous vehicle (AV) developers need reasoning models that can operate within the compute and latency constraints of an onboard system.</p>
 <ul class="signals"><li>含延迟或控制频率</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/" rel="noopener" target="_blank">Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 正在自动化齿轮对齐、线缆连接或小零件装配的团队，可以按 NVIDIA 的说法把这类精细操作放进仿真训练；但页面没有给出任何迁移到真机的结果，真机验证的成本仍在自己身上。</p>
 <p class="excerpt">Simulation, which has long been the proving ground for robots learning to walk, roll and hop, is now helping researchers teach robots tasks that require a finer touch: aligning gears, connecting cables and assembling small components.</p>
 <footer>
 <span class="source">NVIDIA Blog · 2026-11-09</span>
@@ -190,7 +190,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor/" rel="noopener" target="_blank">Axon invests $1.2B into Skydio and becomes its U.S. public safety distributor</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 向美国公共安全机构销售无人机的厂商，据这篇二手报道，Axon 扩大中的 Drone as First Responder 计划正成为分销渠道；页面没有涉及审批，围绕它做计划前请先核对原始公告。</p>
 <p class="excerpt">The partners plan to bring Skydio drones to public safety agencies across the U.S. as Axon expands its Drone as First Responder program.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-10</span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl/" rel="noopener" target="_blank">NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 基于 GR00T 或 Isaac Lab 开发的团队需要准备版本升级，但这篇二手报道只列出 Ambi Robotics、Skild AI 等合作方名字，兼容性和迁移细节要看 NVIDIA 自己的发布说明。</p>
 <p class="excerpt">NVIDIA also gave a look at how its partners, like Ambi Robotics, FieldAI, Flexion, Skild AI, RLWRLD, and more, are using these technologies.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-09</span>

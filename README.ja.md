@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-2. **SWAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
-3. **VLA Adaptation with Real and Simulated Data** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-4. **LHNav** — 査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-6. **Practice Makes Precise** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI 下書き` 搭載計算資源の限られた水中編隊制御では、相対姿勢推定の推論遅延 17.62 ms という著者自己申告の値が目安になる。ただし測定ハードウェアはページに記載がなく、制御ループの予算を組む前に自機で計測し直すべきだ。
+2. **SWAM** — `AI 下書き` 汎用動画（約 47,000 時間）で世界行動モデルを事前学習するなら、従来は事前学習任せだった言語と動画の対応付けを見直す価値がある。著者報告の成功率 88.10%、61.56% のうち、どれが実機での値かはページから読み取れない。
+3. **VLA Adaptation with Real and Simulated Data** — `AI 下書き` タスクや機体ごとに VLA の微調整が必要な現場にとって、微調整データの出どころを単一タスクで検討した事例研究にあたる。ページに数値はなく、シミュレーションデータが実データをどこまで置き換えられるかはまだ判断できない。
+4. **LHNav** — `AI 下書き` 長い言語指示で人型ロボットを複数の目的地へ順に向かわせるには、目標間で進捗を保つことと安定した動作を出し続けることを両立させる必要がある。75.56% の成功率は著者申告で、評価の場がページに書かれておらず、実機の数値として引用するのは早い。
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI 下書き` 推論モデルを車載で動かせるか検討中の自動運転チームには NVIDIA 自身の解説が参考になる。ただしページに遅延や計算量の数値はなく、自社プラットフォームの予算に収まるかは実測で確かめるしかない。
+6. **Practice Makes Precise** — `AI 下書き` 歯車の位置合わせ、ケーブル接続、小部品の組立を自動化するチームにとって、NVIDIA 自身の説明では細かな作業もシミュレーションで練習させられる。ただし実機への移行結果は示されておらず、実機検証の負担は残る。
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI 下書き` 米国の公共安全機関向けにドローンを売るメーカーにとって、二次報道によれば Axon が拡大する Drone as First Responder プログラムが販路になりつつある。承認手続きへの言及はなく、計画に織り込む前に一次発表を確認したい。
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI 下書き` GR00T や Isaac Lab を使う開発チームはバージョン移行に備える必要があるが、この二次報道が挙げるのは Ambi Robotics や Skild AI など提携先の名前だけで、互換性や移行手順は NVIDIA 自身のリリースノートで確かめるべきだ。
 
 </details>
 

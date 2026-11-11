@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-2. **SWAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **VLA Adaptation with Real and Simulated Data** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **LHNav** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
-5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **Practice Makes Precise** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+1. **Reliability-Adaptive Multimodal Relative Pose Tracking for Underwater Leade…** — `AI draft` Teams running underwater formation control on limited onboard compute get a self-reported 17.62 ms inference latency for relative-pose estimation, but the page does not say what hardware produced it, so time it on your own computer before budgeting the loop.
+2. **SWAM** — `AI draft` Teams pretraining world action models on general video, here about 47,000 hours, should revisit the language-video alignment earlier work simply inherits from pretraining; the self-reported 88.10% and 61.56% success rates do not show which runs were on real robots.
+3. **VLA Adaptation with Real and Simulated Data** — `AI draft` For anyone who must fine-tune a VLA for each new task and robot, this preprint is a single-task case study on where the fine-tuning data comes from; the page shows no figures, so it cannot yet say how much simulated data can stand in for real.
+4. **LHNav** — `AI draft` Humanoid teams chaining several language-specified destinations must keep progress across goals while producing stable motion; the self-reported 75.56% success rate is on a benchmark the page does not name, so do not cite it as a real-robot figure yet.
+5. **Running AV Reasoning Models Within Onboard Compute and Latency Limits** — `AI draft` AV teams deciding whether a reasoning model can ship on the vehicle get NVIDIA's first-party guidance, but the page quotes no latency or compute figures, so whether it fits their own platform's budget still has to be measured.
+6. **Practice Makes Precise** — `AI draft` Teams automating gear alignment, cable connection or small-part assembly can, by NVIDIA's own account, consider simulation for such fine-touch training; the page gives no transfer results, so real-robot validation remains their cost.
+7. **Axon invests $1.2B into Skydio and becomes its U.S. public safety distribut…** — `AI draft` For drone makers selling to U.S. public safety agencies, a secondary report says Axon's expanding Drone as First Responder program is becoming a distribution channel; the page says nothing about approvals, so check the primary announcement before planning around it.
+8. **NVIDIA launches GR00T 2 and Isaac Lab 3.0 at CoRL** — `AI draft` Teams building on GR00T or Isaac Lab should expect a version change, but this secondary report quotes only partner names such as Ambi Robotics and Skild AI, so compatibility and migration details need NVIDIA's own release notes.
 
 </details>
 
