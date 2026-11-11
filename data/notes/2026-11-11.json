@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-11",
+  "generated": "2026-11-11 13:37 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.11940": {
+      "zh": "做水下编队控制、机载算力有限的团队可以参考作者自报的 17.62 ms 相对位姿估计推理延迟，但页面没写在什么硬件上测得，排控制回路预算前应在自己的机载计算机上复测。",
+      "en": "Teams running underwater formation control on limited onboard compute get a self-reported 17.62 ms inference latency for relative-pose estimation, but the page does not say what hardware produced it, so time it on your own computer before budgeting the loop.",
+      "ja": "搭載計算資源の限られた水中編隊制御では、相対姿勢推定の推論遅延 17.62 ms という著者自己申告の値が目安になる。ただし測定ハードウェアはページに記載がなく、制御ループの予算を組む前に自機で計測し直すべきだ。"
+    },
+    "https://arxiv.org/abs/2611.12870": {
+      "zh": "用通用视频（约 47,000 小时）预训练世界动作模型的团队，应重新审视以往直接沿用预训练所得的语言-视频对齐；作者自报 88.10% 和 61.56% 成功率，但页面未说明哪些是真机运行。",
+      "en": "Teams pretraining world action models on general video, here about 47,000 hours, should revisit the language-video alignment earlier work simply inherits from pretraining; the self-reported 88.10% and 61.56% success rates do not show which runs were on real robots.",
+      "ja": "汎用動画（約 47,000 時間）で世界行動モデルを事前学習するなら、従来は事前学習任せだった言語と動画の対応付けを見直す価値がある。著者報告の成功率 88.10%、61.56% のうち、どれが実機での値かはページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.12676": {
+      "zh": "每换一个任务和机器人都要微调 VLA 的团队，可以把这篇预印本当作单一任务上关于微调数据来源的案例；页面没有任何数字，还不能据此判断仿真数据能替代多少真机数据。",
+      "en": "For anyone who must fine-tune a VLA for each new task and robot, this preprint is a single-task case study on where the fine-tuning data comes from; the page shows no figures, so it cannot yet say how much simulated data can stand in for real.",
+      "ja": "タスクや機体ごとに VLA の微調整が必要な現場にとって、微調整データの出どころを単一タスクで検討した事例研究にあたる。ページに数値はなく、シミュレーションデータが実データをどこまで置き換えられるかはまだ判断できない。"
+    },
+    "https://arxiv.org/abs/2611.12136": {
+      "zh": "要让人形机器人按长指令依次去多个目的地的团队，需要同时解决跨目标保持进度和持续输出稳定动作两件事；作者自报 75.56% 成功率，但页面未写明测试基准，不能直接当作真机数字引用。",
+      "en": "Humanoid teams chaining several language-specified destinations must keep progress across goals while producing stable motion; the self-reported 75.56% success rate is on a benchmark the page does not name, so do not cite it as a real-robot figure yet.",
+      "ja": "長い言語指示で人型ロボットを複数の目的地へ順に向かわせるには、目標間で進捗を保つことと安定した動作を出し続けることを両立させる必要がある。75.56% の成功率は著者申告で、評価の場がページに書かれておらず、実機の数値として引用するのは早い。"
+    },
+    "https://developer.nvidia.com/blog/running-av-reasoning-models-within-onboard-compute-and-latency-limits": {
+      "zh": "评估推理模型能否装上车的自动驾驶团队，可以看 NVIDIA 这份一手说明，但页面没有给出任何延迟或算力数字，是否放得进自家平台的预算仍需自己实测。",
+      "en": "AV teams deciding whether a reasoning model can ship on the vehicle get NVIDIA's first-party guidance, but the page quotes no latency or compute figures, so whether it fits their own platform's budget still has to be measured.",
+      "ja": "推論モデルを車載で動かせるか検討中の自動運転チームには NVIDIA 自身の解説が参考になる。ただしページに遅延や計算量の数値はなく、自社プラットフォームの予算に収まるかは実測で確かめるしかない。"
+    },
+    "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl": {
+      "zh": "正在自动化齿轮对齐、线缆连接或小零件装配的团队，可以按 NVIDIA 的说法把这类精细操作放进仿真训练；但页面没有给出任何迁移到真机的结果，真机验证的成本仍在自己身上。",
+      "en": "Teams automating gear alignment, cable connection or small-part assembly can, by NVIDIA's own account, consider simulation for such fine-touch training; the page gives no transfer results, so real-robot validation remains their cost.",
+      "ja": "歯車の位置合わせ、ケーブル接続、小部品の組立を自動化するチームにとって、NVIDIA 自身の説明では細かな作業もシミュレーションで練習させられる。ただし実機への移行結果は示されておらず、実機検証の負担は残る。"
+    },
+    "https://www.therobotreport.com/axon-invests-1-2b-into-skydio-and-becomes-its-u-s-public-safety-distributor": {
+      "zh": "向美国公共安全机构销售无人机的厂商，据这篇二手报道，Axon 扩大中的 Drone as First Responder 计划正成为分销渠道；页面没有涉及审批，围绕它做计划前请先核对原始公告。",
+      "en": "For drone makers selling to U.S. public safety agencies, a secondary report says Axon's expanding Drone as First Responder program is becoming a distribution channel; the page says nothing about approvals, so check the primary announcement before planning around it.",
+      "ja": "米国の公共安全機関向けにドローンを売るメーカーにとって、二次報道によれば Axon が拡大する Drone as First Responder プログラムが販路になりつつある。承認手続きへの言及はなく、計画に織り込む前に一次発表を確認したい。"
+    },
+    "https://www.therobotreport.com/nvidia-launches-gr00t-2-isaac-lab-3-0-corl": {
+      "zh": "基于 GR00T 或 Isaac Lab 开发的团队需要准备版本升级，但这篇二手报道只列出 Ambi Robotics、Skild AI 等合作方名字，兼容性和迁移细节要看 NVIDIA 自己的发布说明。",
+      "en": "Teams building on GR00T or Isaac Lab should expect a version change, but this secondary report quotes only partner names such as Ambi Robotics and Skild AI, so compatibility and migration details need NVIDIA's own release notes.",
+      "ja": "GR00T や Isaac Lab を使う開発チームはバージョン移行に備える必要があるが、この二次報道が挙げるのは Ambi Robotics や Skild AI など提携先の名前だけで、互換性や移行手順は NVIDIA 自身のリリースノートで確かめるべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
