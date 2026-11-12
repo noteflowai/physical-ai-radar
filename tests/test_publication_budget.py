@@ -1,4 +1,5 @@
 """Publication waits end inside the worker budget and leave an explicit receipt."""
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -461,9 +462,18 @@ class Budget(unittest.TestCase):
                "workflowName": "pages-build-deployment", "url": "u", "createdAt": "2026-11-11T23:42:37Z"}
         return {**run, **changes}
 
-    def wait(self, repo, gh, command, workflows=("CI", "pages-build-deployment"), seconds=400):
+    def wait(self, repo, gh, command, workflows=("CI", "pages-build-deployment"), seconds=400, raw=None):
+        """raw: the radar/latest.json of each commit, by sha; by default the parent's differs from the commit's."""
         self.worker(seconds)
-        with patch.object(ap, "gh", gh), patch.object(ap, "command", command), patch.object(ap, "progress"):
+        files = {self.PARENT: b"yesterday", COMMIT: b"today"} if raw is None else raw
+
+        def public_bytes(url):
+            value = files[url.split("/")[-3]]
+            if isinstance(value, Exception):
+                raise value
+            return value
+        with patch.object(ap, "gh", gh), patch.object(ap, "command", command), patch.object(ap, "progress"), \
+                patch.object(ap, "public_bytes", public_bytes):
             return ap.wait_publication(repo, COMMIT, list(workflows))
 
     def test_the_parents_pages_run_is_accepted_for_the_radar_after_the_grace_period(self):
@@ -475,6 +485,55 @@ class Budget(unittest.TestCase):
         api = [call for call in calls if call[0] == "api"]
         self.assertTrue(api)
         self.assertGreaterEqual(min(call[2] for call in api), ap.PAGES_PARENT_AFTER)     # never before a normal run had its time
+        self.assertEqual(result[1]["parent_latest_sha256"], hashlib.sha256(b"yesterday").hexdigest())   # the receipt names the proof
+        self.assertEqual(result[1]["commit_latest_sha256"], hashlib.sha256(b"today").hexdigest())
+
+    def test_nothing_is_decided_before_the_grace_period_even_though_the_parents_run_is_already_there(self):
+        # 04 T1: the parent's successful run exists from t=10 s; at 119 s still nothing, from 120 s it is taken.
+        times = []
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+
+        def watching(args, **kwargs):
+            times.append(self.clock.now)
+            return command(args, **kwargs)
+        self.worker(2400)
+        with patch.object(ap, "gh", gh), patch.object(ap, "command", watching), patch.object(ap, "progress"), \
+                patch.object(ap, "public_bytes", lambda url: {self.PARENT: b"a", COMMIT: b"b"}[url.split("/")[-3]]):
+            ap.wait_publication(self.RADAR, COMMIT, ["CI", "pages-build-deployment"])
+        self.assertTrue(times)
+        self.assertGreaterEqual(times[0], 120)
+        self.assertLess(times[0], 120 + 20 + 1)                # the first poll after the grace, not a minute later
+        self.clock.now = 0
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError):       # a wait that ends before the grace never looks
+            self.wait(self.RADAR, gh, command, seconds=ap.DEFAULT_RECEIPT_RESERVE + 100)
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_the_commits_own_pages_run_still_running_means_no_fallback(self):
+        # 04 T2: the parent's run succeeded, but the commit has a Pages run of its own that has not finished.
+        own = {**self.pages(headSha=COMMIT, databaseId=30), "status": "in_progress", "conclusion": None}
+        gh, command, calls = self.github([self.ci(), own], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError) as raised:
+            self.wait(self.RADAR, gh, command)
+        self.assertEqual(raised.exception.code, "workflow-running-timeout")
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_the_same_latest_json_in_parent_and_commit_never_proves_anything(self):
+        # 01 R198-01 / 04 R2: a commit that did not change the data cannot be told from its parent by the data.
+        gh, command, _ = self.github([self.ci()], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError) as raised:
+            self.wait(self.RADAR, gh, command, raw={self.PARENT: b"same", COMMIT: b"same"})
+        self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+
+    def test_data_that_can_not_be_read_means_no_fallback(self):
+        for name, files in (("parent", {self.PARENT: OSError("unreachable"), COMMIT: b"today"}),
+                            ("commit", {self.PARENT: b"yesterday", COMMIT: ValueError("Unexpected public response")})):
+            with self.subTest(name):
+                self.clock.now = 0
+                gh, command, _ = self.github([self.ci()], [self.pages()])
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    self.wait(self.RADAR, gh, command, raw=files)
+                self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
 
     def test_a_normal_run_for_the_commit_never_looks_at_the_parent(self):
         normal = self.pages(headSha=COMMIT)

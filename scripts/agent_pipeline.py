@@ -266,18 +266,23 @@ def observed(relevant: list, workflows: list[str]) -> dict:
 # PREVIOUS commit as that run's head sha (2026-11-12: commit 70fac6eb, run created 6 s later with
 # head sha 49146063, while the site served 70fac6eb's data). A wait that only accepts a run whose
 # head sha is the commit then never ends. For the Radar only, and only when every other required
-# workflow has already succeeded, the wait accepts that one run on three conditions: it is the
-# commit's single parent, it was created after the commit, and it succeeded. The proof that the
-# commit is what the site serves is not relaxed: public_commit still compares the published data
-# with the commit's own data byte for byte.
+# workflow has already succeeded and the commit has no Pages run of its own, the wait considers
+# the newest completed, successful Pages run filed under the commit's single parent.
+#
+# What proves the commit is deployed is the CONTENT, not the run: (1) the commit's radar/latest.json
+# differs from its parent's, so a site that serves the commit's data cannot be serving the parent's;
+# and (2) public_commit later requires the published radar/latest.json to equal the commit's, byte
+# for byte. The run's creation time is only an auxiliary filter and proves nothing by itself.
 PAGES_WORKFLOW = "pages-build-deployment"
 PAGES_PARENT_REPOS = ("noteflowai/physical-ai-radar",)
 PAGES_PARENT_AFTER = 120        # seconds a normal run gets to appear before the parent's run is considered
 
 
 def parent_pages_run(repo: str, commit: str) -> dict | None:
-    """The completed, successful Pages run GitHub filed under the commit's parent, if it was created
-    after the commit itself; otherwise None. Only a commit with exactly one parent qualifies."""
+    """The completed, successful Pages run GitHub filed under the commit's parent, or None.
+
+    Only a commit with exactly one parent qualifies, and only if its radar/latest.json differs from
+    the parent's (otherwise the data served would not tell the two apart)."""
     from datetime import datetime
     info = json.loads(command(["gh", "api", f"repos/{repo}/commits/{commit}"], timeout=call_timeout(120)))
     parents = info.get("parents") or []
@@ -295,9 +300,15 @@ def parent_pages_run(repo: str, commit: str) -> dict | None:
                          if run.get("workflowName") == PAGES_WORKFLOW and run.get("headSha") == parent
                          and when(run["createdAt"]) >= committed),
                         key=lambda run: run["databaseId"], reverse=True)
-    if candidates and candidates[0]["status"] == "completed" and candidates[0]["conclusion"] == "success":
-        return {**candidates[0], "matched_by": "parent-head-sha"}
-    return None
+    if not (candidates and candidates[0]["status"] == "completed" and candidates[0]["conclusion"] == "success"):
+        return None
+    base = f"https://raw.githubusercontent.com/{repo}/%s/radar/latest.json"
+    before, after = public_bytes(base % parent), public_bytes(base % commit)
+    if before == after:
+        return None
+    return {**candidates[0], "matched_by": "parent-head-sha",
+            "parent_latest_sha256": hashlib.sha256(before).hexdigest(),
+            "commit_latest_sha256": hashlib.sha256(after).hexdigest()}
 
 
 def wait_publication(repo: str, commit: str, workflows: list[str],
@@ -331,7 +342,7 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
             next_parent_check = now + PROGRESS_EVERY
             try:
                 found = parent_pages_run(repo, commit)
-            except (RuntimeError, ValueError, KeyError, TypeError, subprocess.TimeoutExpired):
+            except (RuntimeError, ValueError, KeyError, TypeError, OSError, subprocess.TimeoutExpired):
                 found = None            # not provable: keep waiting, and report the original gap
             if found:
                 relevant[workflows.index(PAGES_WORKFLOW)] = found
