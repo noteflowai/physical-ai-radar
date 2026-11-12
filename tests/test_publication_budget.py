@@ -1,4 +1,5 @@
 """Publication waits end inside the worker budget and leave an explicit receipt."""
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -428,6 +429,228 @@ class Budget(unittest.TestCase):
                 ap.verify_deployment("noteflowai/evalarc", COMMIT, ["CI"], ["https://x/manifest.json"])
         self.assertEqual(raised.exception.code, "manifest-not-updated")
         self.assertLessEqual(self.clock.now, 30)
+
+    # --- GitHub filed the Radar's Pages run under the previous commit (2026-11-12) ---------
+
+    RADAR = "noteflowai/physical-ai-radar"
+    PARENT = "49146063" + "0" * 32
+    COMMITTED = "2026-11-11T23:42:31Z"
+
+    def github(self, commit_runs, all_runs, info=None, api_error=None):
+        """gh run list --commit answers commit_runs, gh run list without it answers all_runs, gh api answers info."""
+        calls = []
+        clock = self.clock
+        default = {"parents": [{"sha": self.PARENT}], "commit": {"committer": {"date": self.COMMITTED}}}
+
+        def gh(repo, *args, **kwargs):
+            calls.append(("gh", args))
+            return json.dumps(commit_runs if "--commit" in args else all_runs)
+
+        def command(args, **kwargs):
+            calls.append(("api", tuple(args), clock.now))
+            if api_error:
+                raise api_error
+            return json.dumps(default if info is None else info)
+        return gh, command, calls
+
+    def ci(self, status="completed", conclusion="success"):
+        return {"databaseId": 20, "headSha": COMMIT, "status": status, "conclusion": conclusion,
+                "workflowName": "CI", "url": "u"}
+
+    def pages(self, **changes):
+        run = {"databaseId": 10, "headSha": self.PARENT, "status": "completed", "conclusion": "success",
+               "workflowName": "pages-build-deployment", "url": "u", "createdAt": "2026-11-11T23:42:37Z"}
+        return {**run, **changes}
+
+    def wait(self, repo, gh, command, workflows=("CI", "pages-build-deployment"), seconds=400, raw=None):
+        """raw: the radar/latest.json of each commit, by sha; by default the parent's differs from the commit's."""
+        self.worker(seconds)
+        files = {self.PARENT: b"yesterday", COMMIT: b"today"} if raw is None else raw
+
+        def public_bytes(url):
+            value = files[url.split("/")[-3]]
+            if isinstance(value, Exception):
+                raise value
+            return value
+        with patch.object(ap, "gh", gh), patch.object(ap, "command", command), patch.object(ap, "progress"), \
+                patch.object(ap, "public_bytes", public_bytes):
+            return ap.wait_publication(repo, COMMIT, list(workflows))
+
+    def test_the_parents_pages_run_is_accepted_for_the_radar_after_the_grace_period(self):
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+        result = self.wait(self.RADAR, gh, command)
+        self.assertEqual([run["workflowName"] for run in result], ["CI", "pages-build-deployment"])
+        self.assertEqual(result[1]["matched_by"], "parent-head-sha")
+        self.assertEqual(result[1]["headSha"], self.PARENT)
+        api = [call for call in calls if call[0] == "api"]
+        self.assertTrue(api)
+        self.assertGreaterEqual(min(call[2] for call in api), ap.PAGES_PARENT_AFTER)     # never before a normal run had its time
+        self.assertEqual(result[1]["parent_latest_sha256"], hashlib.sha256(b"yesterday").hexdigest())   # the receipt names the proof
+        self.assertEqual(result[1]["commit_latest_sha256"], hashlib.sha256(b"today").hexdigest())
+
+    def test_nothing_is_decided_before_the_grace_period_even_though_the_parents_run_is_already_there(self):
+        # 04 T1: the parent's successful run exists from t=10 s; at 119 s still nothing, from 120 s it is taken.
+        times = []
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+
+        def watching(args, **kwargs):
+            times.append(self.clock.now)
+            return command(args, **kwargs)
+        self.worker(2400)
+        with patch.object(ap, "gh", gh), patch.object(ap, "command", watching), patch.object(ap, "progress"), \
+                patch.object(ap, "public_bytes", lambda url: {self.PARENT: b"a", COMMIT: b"b"}[url.split("/")[-3]]):
+            ap.wait_publication(self.RADAR, COMMIT, ["CI", "pages-build-deployment"])
+        self.assertTrue(times)
+        self.assertGreaterEqual(times[0], 120)
+        self.assertLess(times[0], 120 + 20 + 1)                # the first poll after the grace, not a minute later
+        self.clock.now = 0
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError):       # a wait that ends before the grace never looks
+            self.wait(self.RADAR, gh, command, seconds=ap.DEFAULT_RECEIPT_RESERVE + 100)
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_the_commits_own_pages_run_still_running_means_no_fallback(self):
+        # 04 T2: the parent's run succeeded, but the commit has a Pages run of its own that has not finished.
+        own = {**self.pages(headSha=COMMIT, databaseId=30), "status": "in_progress", "conclusion": None}
+        gh, command, calls = self.github([self.ci(), own], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError) as raised:
+            self.wait(self.RADAR, gh, command)
+        self.assertEqual(raised.exception.code, "workflow-running-timeout")
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_the_same_latest_json_in_parent_and_commit_never_proves_anything(self):
+        # 01 R198-01 / 04 R2: a commit that did not change the data cannot be told from its parent by the data.
+        gh, command, _ = self.github([self.ci()], [self.pages()])
+        with self.assertRaises(ap.PublicationWaitError) as raised:
+            self.wait(self.RADAR, gh, command, raw={self.PARENT: b"same", COMMIT: b"same"})
+        self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+
+    def test_data_that_can_not_be_read_means_no_fallback(self):
+        for name, files in (("parent", {self.PARENT: OSError("unreachable"), COMMIT: b"today"}),
+                            ("commit", {self.PARENT: b"yesterday", COMMIT: ValueError("Unexpected public response")})):
+            with self.subTest(name):
+                self.clock.now = 0
+                gh, command, _ = self.github([self.ci()], [self.pages()])
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    self.wait(self.RADAR, gh, command, raw=files)
+                self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+
+    def test_a_normal_run_for_the_commit_never_looks_at_the_parent(self):
+        normal = self.pages(headSha=COMMIT)
+        gh, command, calls = self.github([self.ci(), {**normal, "workflowName": "pages-build-deployment"}], [])
+        result = self.wait(self.RADAR, gh, command)
+        self.assertNotIn("matched_by", result[1])
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_a_run_that_does_not_prove_the_parent_is_never_accepted(self):
+        two_parents = {"parents": [{"sha": self.PARENT}, {"sha": "b" * 40}], "commit": {"committer": {"date": self.COMMITTED}}}
+        odd_parent = {"parents": [{"sha": "not-a-sha"}], "commit": {"committer": {"date": self.COMMITTED}}}
+        no_date = {"parents": [{"sha": self.PARENT}], "commit": {}}
+        cases = {
+            "created before the commit": (self.pages(createdAt="2026-11-11T23:42:30Z"), None),
+            "filed under another commit": (self.pages(headSha="b" * 40), None),
+            "still running": (self.pages(status="in_progress", conclusion=None), None),
+            "failed": (self.pages(conclusion="failure"), None),
+            "another workflow": (self.pages(workflowName="CI"), None),
+            "merge commit": (self.pages(), two_parents),
+            "malformed parent": (self.pages(), odd_parent),
+            "no commit date": (self.pages(), no_date),
+        }
+        for name, (run, info) in cases.items():
+            with self.subTest(name):
+                self.clock.now = 0
+                gh, command, _ = self.github([self.ci()], [run], info)
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    self.wait(self.RADAR, gh, command)
+                self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+                self.assertEqual(raised.exception.last_observed["pages-build-deployment"], None)
+
+    def test_the_newest_parent_run_decides(self):
+        # An older successful run does not stand in for a newer one that failed.
+        gh, command, _ = self.github([self.ci()], [self.pages(databaseId=11, conclusion="failure"), self.pages(databaseId=9)])
+        with self.assertRaises(ap.PublicationWaitError):
+            self.wait(self.RADAR, gh, command)
+
+    def test_another_workflow_not_yet_succeeded_means_no_fallback(self):
+        for name, commit_runs in (("running", [self.ci("in_progress", None)]), ("missing", [])):
+            with self.subTest(name):
+                self.clock.now = 0
+                gh, command, calls = self.github(commit_runs, [self.pages()])
+                with self.assertRaises(ap.PublicationWaitError):
+                    self.wait(self.RADAR, gh, command)
+                self.assertEqual([call for call in calls if call[0] == "api"], [])   # CI had not succeeded: nothing to compare
+        failing_gh, failing_command, _ = self.github([self.ci(conclusion="failure")], [self.pages()])
+        with self.assertRaisesRegex(RuntimeError, "required main/deployment workflow failed"):
+            self.wait(self.RADAR, failing_gh, failing_command)
+
+    def test_only_the_radar_gets_the_fallback(self):
+        for repo in ("noteflowai/evalarc", "noteflowai/robot-reel", "o/r"):
+            with self.subTest(repo):
+                self.clock.now = 0
+                gh, command, calls = self.github([self.ci()], [self.pages()])
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    self.wait(repo, gh, command)
+                self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+                self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_a_workflow_list_without_pages_has_nothing_to_fall_back_on(self):
+        gh, command, calls = self.github([self.ci()], [self.pages()])
+        self.assertEqual(self.wait(self.RADAR, gh, command, workflows=("CI",))[0]["workflowName"], "CI")
+        self.assertEqual([call for call in calls if call[0] == "api"], [])
+
+    def test_a_failing_github_call_during_the_fallback_keeps_the_original_gap(self):
+        for error in (RuntimeError("gh exited 1"), subprocess.TimeoutExpired("gh", 5)):
+            with self.subTest(type(error).__name__):
+                self.clock.now = 0
+                gh, command, _ = self.github([self.ci()], [self.pages()], api_error=error)
+                with self.assertRaises(ap.PublicationWaitError) as raised:
+                    self.wait(self.RADAR, gh, command)
+                self.assertEqual(raised.exception.code, "merge-commit-workflow-missing")
+
+    def test_verify_deployment_tells_the_provenance_check_which_other_commit_the_build_may_carry(self):
+        matched = [self.ci(), {**self.pages(), "matched_by": "parent-head-sha"}]
+        normal = [self.ci(), self.pages(headSha=COMMIT)]
+        for runs, expected in ((matched, [self.PARENT]), (normal, None)):
+            with self.subTest(expected):
+                self.worker(400)
+                with patch.object(ap, "wait_publication", return_value=runs), \
+                     patch.object(ap, "read_public", return_value={}), \
+                     patch.object(ap, "public_commit", return_value={"commit": COMMIT}) as proof:
+                    ap.verify_deployment(self.RADAR, COMMIT, ["CI", "pages-build-deployment"], ["https://x/"])
+                if expected:
+                    proof.assert_called_once_with(self.RADAR, COMMIT, "https://x/", expected)
+                else:
+                    proof.assert_called_once_with(self.RADAR, COMMIT, "https://x/")
+
+    def test_the_provenance_check_accepts_the_parents_build_only_with_the_data_of_the_commit(self):
+        site = "https://noteflowai.github.io/physical-ai-radar/"
+        same = {"https://raw.githubusercontent.com/noteflowai/physical-ai-radar/" + COMMIT + "/radar/latest.json": b"data",
+                site + "radar/latest.json": b"data"}
+        stale = {**same, site + "radar/latest.json": b"yesterday"}
+
+        def answer(files):
+            return lambda url: files[url]
+
+        def build(commit, status="built"):
+            return patch.object(ap, "command", return_value=json.dumps({"commit": commit, "status": status}))
+
+        with build(self.PARENT), patch.object(ap, "public_bytes", answer(same)):
+            with self.assertRaises(ValueError):                                         # the old rule, unchanged
+                ap.public_commit(self.RADAR, COMMIT, site)
+            proof = ap.public_commit(self.RADAR, COMMIT, site, [self.PARENT])
+        self.assertEqual((proof["commit"], proof["pages_build_recorded_commit"]), (COMMIT, self.PARENT))
+        with build(COMMIT), patch.object(ap, "public_bytes", answer(same)):
+            proof = ap.public_commit(self.RADAR, COMMIT, site, [self.PARENT])
+        self.assertNotIn("pages_build_recorded_commit", proof)                          # a normal day looks as before
+        with build(self.PARENT), patch.object(ap, "public_bytes", answer(stale)):
+            with self.assertRaises(ValueError):                                         # the data must still be the commit's
+                ap.public_commit(self.RADAR, COMMIT, site, [self.PARENT])
+        with build("c" * 40), patch.object(ap, "public_bytes", answer(same)):
+            with self.assertRaises(ValueError):                                         # some other commit is not allowed
+                ap.public_commit(self.RADAR, COMMIT, site, [self.PARENT])
+        with build(self.PARENT, status="building"), patch.object(ap, "public_bytes", answer(same)):
+            with self.assertRaises(ValueError):
+                ap.public_commit(self.RADAR, COMMIT, site, [self.PARENT])
 
 
 if __name__ == "__main__":
