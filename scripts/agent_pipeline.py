@@ -262,11 +262,50 @@ def observed(relevant: list, workflows: list[str]) -> dict:
             for name, run in zip(workflows, relevant)}
 
 
+# GitHub starts the Pages run for a push a few seconds after it and, now and then, records the
+# PREVIOUS commit as that run's head sha (2026-11-12: commit 70fac6eb, run created 6 s later with
+# head sha 49146063, while the site served 70fac6eb's data). A wait that only accepts a run whose
+# head sha is the commit then never ends. For the Radar only, and only when every other required
+# workflow has already succeeded, the wait accepts that one run on three conditions: it is the
+# commit's single parent, it was created after the commit, and it succeeded. The proof that the
+# commit is what the site serves is not relaxed: public_commit still compares the published data
+# with the commit's own data byte for byte.
+PAGES_WORKFLOW = "pages-build-deployment"
+PAGES_PARENT_REPOS = ("noteflowai/physical-ai-radar",)
+PAGES_PARENT_AFTER = 120        # seconds a normal run gets to appear before the parent's run is considered
+
+
+def parent_pages_run(repo: str, commit: str) -> dict | None:
+    """The completed, successful Pages run GitHub filed under the commit's parent, if it was created
+    after the commit itself; otherwise None. Only a commit with exactly one parent qualifies."""
+    from datetime import datetime
+    info = json.loads(command(["gh", "api", f"repos/{repo}/commits/{commit}"], timeout=call_timeout(120)))
+    parents = info.get("parents") or []
+    if len(parents) != 1 or not re.fullmatch(r"[0-9a-f]{40}", str(parents[0].get("sha", ""))):
+        return None
+    parent = parents[0]["sha"]
+
+    def when(text: str) -> datetime:
+        return datetime.fromisoformat(str(text).replace("Z", "+00:00"))
+
+    committed = when(info["commit"]["committer"]["date"])
+    runs = json.loads(gh(repo, "run", "list", "--branch", "main", "--limit", "60", "--json",
+                         "databaseId,headSha,status,conclusion,workflowName,url,createdAt"))
+    candidates = sorted((run for run in runs
+                         if run.get("workflowName") == PAGES_WORKFLOW and run.get("headSha") == parent
+                         and when(run["createdAt"]) >= committed),
+                        key=lambda run: run["databaseId"], reverse=True)
+    if candidates and candidates[0]["status"] == "completed" and candidates[0]["conclusion"] == "success":
+        return {**candidates[0], "matched_by": "parent-head-sha"}
+    return None
+
+
 def wait_publication(repo: str, commit: str, workflows: list[str],
                      seconds: int = 2400) -> list[dict]:
     budget = wait_budget(seconds)
     started = time.monotonic()
     deadline, next_progress, last = started + budget, started, {}
+    next_parent_check = started + PAGES_PARENT_AFTER
     while True:
         try:
             runs = json.loads(gh(
@@ -283,6 +322,19 @@ def wait_publication(repo: str, commit: str, workflows: list[str],
             if run["headSha"] == commit:
                 latest.setdefault(run["workflowName"], run)
         relevant = [latest.get(name) for name in workflows]
+        others = [r for name, r in zip(workflows, relevant) if name != PAGES_WORKFLOW]
+        now = time.monotonic()
+        if (repo in PAGES_PARENT_REPOS and PAGES_WORKFLOW in workflows and now >= next_parent_check
+                and relevant[workflows.index(PAGES_WORKFLOW)] is None
+                and others and all(r and r["status"] == "completed" and r["conclusion"] == "success"
+                                   for r in others)):
+            next_parent_check = now + PROGRESS_EVERY
+            try:
+                found = parent_pages_run(repo, commit)
+            except (RuntimeError, ValueError, KeyError, TypeError, subprocess.TimeoutExpired):
+                found = None            # not provable: keep waiting, and report the original gap
+            if found:
+                relevant[workflows.index(PAGES_WORKFLOW)] = found
         last = observed(relevant, workflows)
         if any(r and r["status"] == "completed" and r["conclusion"] != "success"
                for r in relevant):
@@ -331,8 +383,12 @@ def read_public(url: str) -> dict:
             "sha256": hashlib.sha256(body).hexdigest()}
 
 
-def public_commit(repo: str, commit: str, url: str) -> dict:
-    """Bind public content to the checked commit using existing build provenance."""
+def public_commit(repo: str, commit: str, url: str, build_commits: tuple | list = ()) -> dict:
+    """Bind public content to the checked commit using existing build provenance.
+
+    build_commits: other commits the Pages build record may carry for this commit. Only the Radar
+    reads it, and only when the Pages run was matched by its parent's head sha (see
+    parent_pages_run); the published data must still equal the commit's own data."""
     root = url.rstrip("/") + "/"
     if ".hf.space" in url or repo == "noteflowai/evalarc":
         name = "space-manifest.json" if repo.endswith("/robot-reel") else "manifest.json"
@@ -366,14 +422,17 @@ def public_commit(repo: str, commit: str, url: str) -> dict:
     if repo == "noteflowai/physical-ai-radar":
         build = json.loads(command(["gh", "api", f"repos/{repo}/pages/builds/latest"],
                                    timeout=call_timeout(120)))
-        if build.get("commit") != commit or build.get("status") != "built":
+        if build.get("commit") not in {commit, *build_commits} or build.get("status") != "built":
             raise ValueError("The Pages build does not identify the checked Radar commit")
         expected = public_bytes(f"https://raw.githubusercontent.com/{repo}/{commit}/radar/latest.json")
         actual = public_bytes(root + "radar/latest.json")
         if actual != expected:
             raise ValueError("Public Radar data differs from the checked commit")
-        return {"commit": commit, "pages_build": "built",
-                "data_sha256": hashlib.sha256(actual).hexdigest()}
+        proof = {"commit": commit, "pages_build": "built",
+                 "data_sha256": hashlib.sha256(actual).hexdigest()}
+        if build.get("commit") != commit:
+            proof["pages_build_recorded_commit"] = build.get("commit")
+        return proof
     raise ValueError("No publication provenance contract is configured for this repository")
 
 
@@ -396,13 +455,15 @@ def verify_deployment(repo: str, commit: str, workflows: list[str], urls: list[s
                     gh(repo, "run", "rerun", str(run["databaseId"]), "--failed")
             time.sleep(20)
     pages = []
+    build_commits = [run["headSha"] for run in runs if run and run.get("matched_by") == "parent-head-sha"]
     for url in urls:
         started = time.monotonic()
         deadline = started + wait_budget(180)
         while True:
             try:
                 page = read_public(url)
-                page["commit_proof"] = public_commit(repo, commit, url)
+                page["commit_proof"] = (public_commit(repo, commit, url, build_commits) if build_commits
+                                        else public_commit(repo, commit, url))
                 pages.append(page)
                 break
             except (ValueError, OSError, subprocess.TimeoutExpired) as error:
