@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-12",
+  "generated": "2026-11-12 18:39 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.13160": {
+      "zh": "按 LIBERO 成功率挑选 VLA 的团队，不宜把超过 95% 的分数当作泛化证据：这篇预印本质疑其中有多少超出了训练示范本身，页面另报 91.7% 的 LIBERO 成功率，但摘录在说明所用方法前就截断了。",
+      "en": "Teams that pick VLAs by LIBERO success should not read scores above 95% as proof of generalization; this self-reported preprint asks how much of that success goes beyond the training demonstrations, and its 91.7% LIBERO figure is cut off before the page says what produced it.",
+      "ja": "LIBERO の成功率で VLA を選ぶなら、95% 超という数字を汎化の証拠とみなすのは早い。このプレプリントは、その成績のどこまでが学習用デモを超えた汎化なのかを問うている。LIBERO で 91.7% という値も示されているが、何による数字なのかは抜粋が途中で切れていて分からない。"
+    },
+    "https://arxiv.org/abs/2611.14115": {
+      "zh": "正把 GPT、Claude 这类基础模型接入机器人决策的团队值得跟进这篇预印本，但页面只摘到背景句，虽标出含真机与闭环实验，却看不到具体安全机制和任何数据，暂时还不足以改动现有防护设计。",
+      "en": "Anyone wiring GPT- or Claude-class foundation models into robot decisions should track this preprint, but the page quotes only its background sentence and, while it flags real-robot and closed-loop experiments, shows no safety mechanism or figures, so it cannot yet justify changing existing safeguards.",
+      "ja": "GPT や Claude のような基盤モデルをロボットの判断に組み込むチームは追っておきたい論文だ。ただ、ページに引かれているのは背景の一文だけである。実機・閉ループ実験ありとの表示はあるものの、安全機構の中身も数値も見えないので、現行の安全設計を変える根拠にはまだならない。"
+    },
+    "https://arxiv.org/abs/2611.12087": {
+      "zh": "规划导航数据采集的团队可参考这份作者自报的配比：500 多小时真实世界交互加 2,000 多小时带标注的网络素材，开放世界评测总成功率 79.4%，最强对比项为 17.8%；引用前先确认成功的判定标准。",
+      "en": "Navigation teams sizing their data collection get a self-reported mix of over 500 hours of real-world interaction and over 2,000 hours of annotated web material, with 79.4% overall success in open-world evaluations against 17.8% for the strongest comparison; check how success was scored before relying on it.",
+      "ja": "ナビゲーション用のデータ収集量を決める際の参考になる。著者報告では、実環境でのインタラクション 500 時間超と注釈付きウェブ素材 2,000 時間超を組み合わせ、オープンワールド評価の総合成功率は 79.4%、最も強い比較対象は 17.8% だった。成功の判定基準は確認してから使いたい。"
+    },
+    "https://arxiv.org/abs/2611.14048": {
+      "zh": "评估操作用世界动作模型时，别只凭作者自报的 LIBERO 99.5% 下结论：页面标出了真机实验，却没给出任何真机数字，真正该看的是那部分结果。",
+      "en": "Do not choose a world action model for manipulation on its self-reported 99.5% on LIBERO alone; the page flags real-robot experiments but gives no real-robot figure, and those runs are the part worth reading.",
+      "ja": "マニピュレーション向けの世界行動モデルを、著者報告の LIBERO 99.5% だけで選ぶべきではない。ページは実機実験ありとしているが実機の数値は載っておらず、判断材料になるのはむしろそちらの結果だ。"
+    },
+    "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence": {
+      "zh": "DeepMind 称这款最强 VLA 提升了灵巧性、可靠性和安全性，但页面没有任何数字；在比较 VLA 基座的团队，应等到实测成功率或失败率公布后，再考虑把灵巧操作任务迁过去。",
+      "en": "DeepMind's own claim that its most capable VLA improves dexterity, reliability and safety arrives with no figures on the page, so teams comparing VLA bases should wait for measured success or failure rates before moving dexterous work onto it.",
+      "ja": "DeepMind は自社で最も高性能な VLA として巧緻性・信頼性・安全性の向上をうたうが、ページに数値はない。VLA の基盤を比較しているチームは、成功率や失敗率の実測が出るまで巧緻作業の移行は見送るのが妥当だ。"
+    },
+    "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on": {
+      "zh": "要做即时配送的企业，现在可以权衡通过 API 调用 Serve 超过 2,000 台机器人的车队，还是自建车队；不过这是行业媒体转述的 Serve 自身说法，页面没有给出合作条款或服务水平。",
+      "en": "Companies planning on-demand delivery can now weigh calling Serve's fleet of more than 2,000 robots through an API against building their own, though this is trade-press reporting of Serve's own claim and the page gives no terms or service levels.",
+      "ja": "オンデマンド配送を始めたい事業者には、自前で機体をそろえるか、API 経由で Serve の 2,000 台超のフリートを使うかという選択肢が出てきた。ただし業界メディアが Serve 自身の説明を伝えたもので、ページには契約条件もサービス水準も書かれていない。"
+    },
+    "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline": {
+      "zh": "用人类第一人称视频训练的团队，可以考虑把采集和 AI 标注外包给 Memories.ai 而非自建，但这篇二手报道没有给出数据量、质检方式或机器人效果，签约前先要一份标注样本。",
+      "en": "Teams training on human egocentric video could buy collection and AI annotation from Memories.ai instead of building it, but this secondary report shows no volumes, quality checks or robot results, so ask for a labelled sample before committing.",
+      "ja": "人間の一人称視点動画で学習するチームにとって、収集と AI 注釈を内製せず Memories.ai に任せる道が見えてきた。ただしこの二次報道にはデータ量も品質管理もロボットでの効果も出ていないので、契約前に注釈済みサンプルを取り寄せたい。"
+    },
+    "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai": {
+      "zh": "对需要接入多种传感器的机器人团队，这篇二手报道只说明英特尔与 Altera 想简化传感器连接和实时数据处理，页面没有点名产品、接口或延迟，在细节公布前不值得改动现有传感器方案。",
+      "en": "For robot teams connecting many sensors, this secondary report says only that Intel and Altera aim to simplify sensor hookup and real-time data processing; the page names no product, interface or latency, so keep the current sensor stack until specifics appear.",
+      "ja": "多種のセンサーをつなぐロボット開発者向けに、Intel と Altera がセンサー接続とリアルタイム処理を簡単にしようとしている、と伝える二次報道にとどまる。製品名もインターフェースも遅延値も出ていないので、具体策が出るまでは今のセンサー構成を変える理由はない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

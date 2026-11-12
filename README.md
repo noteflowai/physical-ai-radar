@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **How Much of Your VLA Is kNN** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-2. **LEASH** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-3. **Compass 1** — 预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。
-4. **LaST0.5** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
-5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-6. **Serve Robotics opens robot delivery network for others to build on** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
-7. **Memories.ai builds standardized egocentric video pipeline** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+1. **How Much of Your VLA Is kNN** — `AI 起草` 按 LIBERO 成功率挑选 VLA 的团队，不宜把超过 95% 的分数当作泛化证据：这篇预印本质疑其中有多少超出了训练示范本身，页面另报 91.7% 的 LIBERO 成功率，但摘录在说明所用方法前就截断了。
+2. **LEASH** — `AI 起草` 正把 GPT、Claude 这类基础模型接入机器人决策的团队值得跟进这篇预印本，但页面只摘到背景句，虽标出含真机与闭环实验，却看不到具体安全机制和任何数据，暂时还不足以改动现有防护设计。
+3. **Compass 1** — `AI 起草` 规划导航数据采集的团队可参考这份作者自报的配比：500 多小时真实世界交互加 2,000 多小时带标注的网络素材，开放世界评测总成功率 79.4%，最强对比项为 17.8%；引用前先确认成功的判定标准。
+4. **LaST0.5** — `AI 起草` 评估操作用世界动作模型时，别只凭作者自报的 LIBERO 99.5% 下结论：页面标出了真机实验，却没给出任何真机数字，真正该看的是那部分结果。
+5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — `AI 起草` DeepMind 称这款最强 VLA 提升了灵巧性、可靠性和安全性，但页面没有任何数字；在比较 VLA 基座的团队，应等到实测成功率或失败率公布后，再考虑把灵巧操作任务迁过去。
+6. **Serve Robotics opens robot delivery network for others to build on** — `AI 起草` 要做即时配送的企业，现在可以权衡通过 API 调用 Serve 超过 2,000 台机器人的车队，还是自建车队；不过这是行业媒体转述的 Serve 自身说法，页面没有给出合作条款或服务水平。
+7. **Memories.ai builds standardized egocentric video pipeline** — `AI 起草` 用人类第一人称视频训练的团队，可以考虑把采集和 AI 标注外包给 Memories.ai 而非自建，但这篇二手报道没有给出数据量、质检方式或机器人效果，签约前先要一份标注样本。
+8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — `AI 起草` 对需要接入多种传感器的机器人团队，这篇二手报道只说明英特尔与 Altera 想简化传感器连接和实时数据处理，页面没有点名产品、接口或延迟，在细节公布前不值得改动现有传感器方案。
 
 </details>
 

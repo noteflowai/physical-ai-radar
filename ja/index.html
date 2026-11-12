@@ -78,8 +78,8 @@
 <a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="-11.8" cy="-135.1" r="11" class="halo"/><circle cx="-11.8" cy="-135.1" r="5"/><title>LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning</title></a>
 <a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="10.7" cy="-121.8" r="11" class="halo"/><circle cx="10.7" cy="-121.8" r="5"/><title>Gemini Robotics 2.5 accelerates real-world general dexterity</title></a>
 <a href="#p6" class="blip" style="--lane:#a3e635;--delay:2.10s"><circle cx="-92.2" cy="0.0" r="11" class="halo"/><circle cx="-92.2" cy="0.0" r="5"/><title>Serve Robotics opens robot delivery network for others to build on</title></a>
-<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="63.5" cy="-63.5" r="11" class="halo"/><circle cx="63.5" cy="-63.5" r="5"/><title>Memories.ai builds standardized egocentric video pipeline</title></a>
-<a href="#p8" class="blip" style="--lane:#f472b6;--delay:2.80s"><circle cx="0.0" cy="88.2" r="11" class="halo"/><circle cx="0.0" cy="88.2" r="5"/><title>Intel and Altera expand collaboration to simplify sensor integration for physical AI</title></a>
+<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="63.6" cy="-63.6" r="11" class="halo"/><circle cx="63.6" cy="-63.6" r="5"/><title>Memories.ai builds standardized egocentric video pipeline</title></a>
+<a href="#p8" class="blip" style="--lane:#f472b6;--delay:2.80s"><circle cx="0.0" cy="88.1" r="11" class="halo"/><circle cx="0.0" cy="88.1" r="5"/><title>Intel and Altera expand collaboration to simplify sensor integration for physical AI</title></a>
 <circle class="core" r="3"/></svg>
 <ul class="lane-legend"><li style="--lane:#8b5cf6">基盤モデル（VLA / WAM） <b>11</b></li><li style="--lane:#38bdf8">データエンジン <b>6</b></li><li style="--lane:#34d399">学習と自己改善 <b>0</b></li><li style="--lane:#fb923c">シミュレーションと評価 <b>13</b></li><li style="--lane:#f472b6">エッジとリアルタイム <b>9</b></li><li style="--lane:#facc15">安全・権限・コンプライアンス <b>2</b></li><li style="--lane:#a3e635">システムと編成 <b>1</b></li><li style="--lane:#22d3ee">ハードウェアと供給網 <b>8</b></li></ul>
 <figcaption>外周は 8 つの軸 · 面積は直近 7 日の採択数 · 光る点は本日の採択</figcaption>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.13160" rel="noopener" target="_blank">How Much of Your VLA Is kNN</a></h3>
 <p class="figure"><strong>95%</strong><span class="context">“(VLA) models now exceed 95% success on the”</span></p><p class="chips"><span class="chip">91.7 %</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> LIBERO の成功率で VLA を選ぶなら、95% 超という数字を汎化の証拠とみなすのは早い。このプレプリントは、その成績のどこまでが学習用デモを超えた汎化なのかを問うている。LIBERO で 91.7% という値も示されているが、何による数字なのかは抜粋が途中で切れていて分からない。</p>
 <p class="excerpt">Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.14115" rel="noopener" target="_blank">LEASH: Stay Safe in Agentic Robotics</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> GPT や Claude のような基盤モデルをロボットの判断に組み込むチームは追っておきたい論文だ。ただ、ページに引かれているのは背景の一文だけである。実機・閉ループ実験ありとの表示はあるものの、安全機構の中身も数値も見えないので、現行の安全設計を変える根拠にはまだならない。</p>
 <p class="excerpt">Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.12087" rel="noopener" target="_blank">Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos</a></h3>
 <p class="figure"><strong>500 hours</strong><span class="context">“massive dataset featuring over 500 hours of high-quality real-world”</span></p><p class="chips"><span class="chip">2,000 hours</span><span class="chip">79.4%</span><span class="chip">17.8%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データあり。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ナビゲーション用のデータ収集量を決める際の参考になる。著者報告では、実環境でのインタラクション 500 時間超と注釈付きウェブ素材 2,000 時間超を組み合わせ、オープンワールド評価の総合成功率は 79.4%、最も強い比較対象は 17.8% だった。成功の判定基準は確認してから使いたい。</p>
 <p class="excerpt">Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.14048" rel="noopener" target="_blank">LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning</a></h3>
 <p class="figure"><strong>99.5%</strong><span class="context">“LaST0.5 achieves 99.5% on LIBERO”</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> マニピュレーション向けの世界行動モデルを、著者報告の LIBERO 99.5% だけで選ぶべきではない。ページは実機実験ありとしているが実機の数値は載っておらず、判断材料になるのはむしろそちらの結果だ。</p>
 <p class="excerpt">World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" rel="noopener" target="_blank">Gemini Robotics 2.5 accelerates real-world general dexterity</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> DeepMind は自社で最も高性能な VLA として巧緻性・信頼性・安全性の向上をうたうが、ページに数値はない。VLA の基盤を比較しているチームは、成功率や失敗率の実測が出るまで巧緻作業の移行は見送るのが妥当だ。</p>
 <p class="excerpt">Our most capable vision-language-action model enhances robot dexterity, reliability, and safety</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/" rel="noopener" target="_blank">Serve Robotics opens robot delivery network for others to build on</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> オンデマンド配送を始めたい事業者には、自前で機体をそろえるか、API 経由で Serve の 2,000 台超のフリートを使うかという選択肢が出てきた。ただし業界メディアが Serve 自身の説明を伝えたもので、ページには契約条件もサービス水準も書かれていない。</p>
 <p class="excerpt">Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots.</p>
 <ul class="signals"><li>注目度高</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/" rel="noopener" target="_blank">Memories.ai builds standardized egocentric video pipeline</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人間の一人称視点動画で学習するチームにとって、収集と AI 注釈を内製せず Memories.ai に任せる道が見えてきた。ただしこの二次報道にはデータ量も品質管理もロボットでの効果も出ていないので、契約前に注釈済みサンプルを取り寄せたい。</p>
 <p class="excerpt">Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-11</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/" rel="noopener" target="_blank">Intel and Altera expand collaboration to simplify sensor integration for physical AI</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 多種のセンサーをつなぐロボット開発者向けに、Intel と Altera がセンサー接続とリアルタイム処理を簡単にしようとしている、と伝える二次報道にとどまる。製品名もインターフェースも遅延値も出ていないので、具体策が出るまでは今のセンサー構成を変える理由はない。</p>
 <p class="excerpt">Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics.</p>
 <ul class="signals"><li>遅延・制御周期の数値あり</li></ul>
 <footer>
