@@ -78,8 +78,8 @@
 <a href="#p4" class="blip" style="--lane:#8b5cf6;--delay:1.40s"><circle cx="-11.8" cy="-135.1" r="11" class="halo"/><circle cx="-11.8" cy="-135.1" r="5"/><title>LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning</title></a>
 <a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="10.7" cy="-121.8" r="11" class="halo"/><circle cx="10.7" cy="-121.8" r="5"/><title>Gemini Robotics 2.5 accelerates real-world general dexterity</title></a>
 <a href="#p6" class="blip" style="--lane:#a3e635;--delay:2.10s"><circle cx="-92.2" cy="0.0" r="11" class="halo"/><circle cx="-92.2" cy="0.0" r="5"/><title>Serve Robotics opens robot delivery network for others to build on</title></a>
-<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="63.5" cy="-63.5" r="11" class="halo"/><circle cx="63.5" cy="-63.5" r="5"/><title>Memories.ai builds standardized egocentric video pipeline</title></a>
-<a href="#p8" class="blip" style="--lane:#f472b6;--delay:2.80s"><circle cx="0.0" cy="88.2" r="11" class="halo"/><circle cx="0.0" cy="88.2" r="5"/><title>Intel and Altera expand collaboration to simplify sensor integration for physical AI</title></a>
+<a href="#p7" class="blip" style="--lane:#38bdf8;--delay:2.45s"><circle cx="63.6" cy="-63.6" r="11" class="halo"/><circle cx="63.6" cy="-63.6" r="5"/><title>Memories.ai builds standardized egocentric video pipeline</title></a>
+<a href="#p8" class="blip" style="--lane:#f472b6;--delay:2.80s"><circle cx="0.0" cy="88.1" r="11" class="halo"/><circle cx="0.0" cy="88.1" r="5"/><title>Intel and Altera expand collaboration to simplify sensor integration for physical AI</title></a>
 <circle class="core" r="3"/></svg>
 <ul class="lane-legend"><li style="--lane:#8b5cf6">基座模型（VLA / WAM） <b>11</b></li><li style="--lane:#38bdf8">数据引擎（采集 / 清洗 / scaling） <b>6</b></li><li style="--lane:#34d399">训练与自我改进（RL / 后训练） <b>0</b></li><li style="--lane:#fb923c">仿真与评测（sim2real / 闭环） <b>13</b></li><li style="--lane:#f472b6">边缘与实时性（端侧推理 / 控制频率） <b>9</b></li><li style="--lane:#facc15">安全、权限与合规 <b>2</b></li><li style="--lane:#a3e635">系统与编排（长程 / 多策略） <b>1</b></li><li style="--lane:#22d3ee">本体与供应链（硬件 / 成本） <b>8</b></li></ul>
 <figcaption>外圈八条主线 · 面积为近 7 天入选数 · 亮点为今日入选</figcaption>
@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.13160" rel="noopener" target="_blank">How Much of Your VLA Is kNN</a></h3>
 <p class="figure"><strong>95%</strong><span class="context">“(VLA) models now exceed 95% success on the”</span></p><p class="chips"><span class="chip">91.7 %</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 按 LIBERO 成功率挑选 VLA 的团队，不宜把超过 95% 的分数当作泛化证据：这篇预印本质疑其中有多少超出了训练示范本身，页面另报 91.7% 的 LIBERO 成功率，但摘录在说明所用方法前就截断了。</p>
 <p class="excerpt">Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.14115" rel="noopener" target="_blank">LEASH: Stay Safe in Agentic Robotics</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 正把 GPT、Claude 这类基础模型接入机器人决策的团队值得跟进这篇预印本，但页面只摘到背景句，虽标出含真机与闭环实验，却看不到具体安全机制和任何数据，暂时还不足以改动现有防护设计。</p>
 <p class="excerpt">Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.12087" rel="noopener" target="_blank">Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos</a></h3>
 <p class="figure"><strong>500 hours</strong><span class="context">“massive dataset featuring over 500 hours of high-quality real-world”</span></p><p class="chips"><span class="chip">2,000 hours</span><span class="chip">79.4%</span><span class="chip">17.8%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 规划导航数据采集的团队可参考这份作者自报的配比：500 多小时真实世界交互加 2,000 多小时带标注的网络素材，开放世界评测总成功率 79.4%，最强对比项为 17.8%；引用前先确认成功的判定标准。</p>
 <p class="excerpt">Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.14048" rel="noopener" target="_blank">LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning</a></h3>
 <p class="figure"><strong>99.5%</strong><span class="context">“LaST0.5 achieves 99.5% on LIBERO”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 评估操作用世界动作模型时，别只凭作者自报的 LIBERO 99.5% 下结论：页面标出了真机实验，却没给出任何真机数字，真正该看的是那部分结果。</p>
 <p class="excerpt">World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" rel="noopener" target="_blank">Gemini Robotics 2.5 accelerates real-world general dexterity</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> DeepMind 称这款最强 VLA 提升了灵巧性、可靠性和安全性，但页面没有任何数字；在比较 VLA 基座的团队，应等到实测成功率或失败率公布后，再考虑把灵巧操作任务迁过去。</p>
 <p class="excerpt">Our most capable vision-language-action model enhances robot dexterity, reliability, and safety</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/" rel="noopener" target="_blank">Serve Robotics opens robot delivery network for others to build on</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 要做即时配送的企业，现在可以权衡通过 API 调用 Serve 超过 2,000 台机器人的车队，还是自建车队；不过这是行业媒体转述的 Serve 自身说法，页面没有给出合作条款或服务水平。</p>
 <p class="excerpt">Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots.</p>
 <ul class="signals"><li>多源热点</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/" rel="noopener" target="_blank">Memories.ai builds standardized egocentric video pipeline</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 用人类第一人称视频训练的团队，可以考虑把采集和 AI 标注外包给 Memories.ai 而非自建，但这篇二手报道没有给出数据量、质检方式或机器人效果，签约前先要一份标注样本。</p>
 <p class="excerpt">Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics.</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-11</span>
@@ -205,7 +205,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/" rel="noopener" target="_blank">Intel and Altera expand collaboration to simplify sensor integration for physical AI</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 对需要接入多种传感器的机器人团队，这篇二手报道只说明英特尔与 Altera 想简化传感器连接和实时数据处理，页面没有点名产品、接口或延迟，在细节公布前不值得改动现有传感器方案。</p>
 <p class="excerpt">Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics.</p>
 <ul class="signals"><li>含延迟或控制频率</li></ul>
 <footer>

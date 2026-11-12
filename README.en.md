@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **How Much of Your VLA Is kNN** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-2. **LEASH** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-3. **Compass 1** — Preprint, not yet peer-reviewed; the text gives real-robot results and figures. Watch price, availability and who is shipping it in volume.
-4. **LaST0.5** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-6. **Serve Robotics opens robot delivery network for others to build on** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-7. **Memories.ai builds standardized egocentric video pipeline** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+1. **How Much of Your VLA Is kNN** — `AI draft` Teams that pick VLAs by LIBERO success should not read scores above 95% as proof of generalization; this self-reported preprint asks how much of that success goes beyond the training demonstrations, and its 91.7% LIBERO figure is cut off before the page says what produced it.
+2. **LEASH** — `AI draft` Anyone wiring GPT- or Claude-class foundation models into robot decisions should track this preprint, but the page quotes only its background sentence and, while it flags real-robot and closed-loop experiments, shows no safety mechanism or figures, so it cannot yet justify changing existing safeguards.
+3. **Compass 1** — `AI draft` Navigation teams sizing their data collection get a self-reported mix of over 500 hours of real-world interaction and over 2,000 hours of annotated web material, with 79.4% overall success in open-world evaluations against 17.8% for the strongest comparison; check how success was scored before relying on it.
+4. **LaST0.5** — `AI draft` Do not choose a world action model for manipulation on its self-reported 99.5% on LIBERO alone; the page flags real-robot experiments but gives no real-robot figure, and those runs are the part worth reading.
+5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — `AI draft` DeepMind's own claim that its most capable VLA improves dexterity, reliability and safety arrives with no figures on the page, so teams comparing VLA bases should wait for measured success or failure rates before moving dexterous work onto it.
+6. **Serve Robotics opens robot delivery network for others to build on** — `AI draft` Companies planning on-demand delivery can now weigh calling Serve's fleet of more than 2,000 robots through an API against building their own, though this is trade-press reporting of Serve's own claim and the page gives no terms or service levels.
+7. **Memories.ai builds standardized egocentric video pipeline** — `AI draft` Teams training on human egocentric video could buy collection and AI annotation from Memories.ai instead of building it, but this secondary report shows no volumes, quality checks or robot results, so ask for a labelled sample before committing.
+8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — `AI draft` For robot teams connecting many sensors, this secondary report says only that Intel and Altera aim to simplify sensor hookup and real-time data processing; the page names no product, interface or latency, so keep the current sensor stack until specifics appear.
 
 </details>
 
