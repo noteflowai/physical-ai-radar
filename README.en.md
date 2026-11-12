@@ -60,37 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-12
+### Today's radar · 2026-11-13
 
-`Generated: 2026-11-11 23:40 UTC` ｜ `Window: papers 2026-11-08 → 2026-11-12 · posts 2026-10-13 → 2026-11-12 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-12 23:40 UTC` ｜ `Window: papers 2026-11-09 → 2026-11-13 · posts 2026-10-14 → 2026-11-13 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>Simulation & evaluation · arXiv 2611.13160 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>Simulation & evaluation · arXiv 2611.14115 · 2026‑11‑10</sub> |
-| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>Embodiment & supply chain · arXiv 2611.12087 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>Foundation models · arXiv 2611.14048 · 2026‑11‑10</sub> |
-| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>Foundation models · Google DeepMind · 2026‑11‑09</sub> |
-| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>Systems & orchestration · The Robot Report · 2026‑11‑11</sub> |
-| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>Data engine · The Robot Report · 2026‑11‑11</sub> |
-| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>Edge & real-time · The Robot Report · 2026‑11‑10</sub> |
+| 01<br>🔵&nbsp;`R` | **[Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control](https://arxiv.org/abs/2611.14257)**<br><sub>Simulation & evaluation · arXiv 2611.14257 · 2026‑11‑10</sub> |
+| 02<br>🔵&nbsp;`R` | **[One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge](https://arxiv.org/abs/2611.14432)**<br>`100 tasks`&nbsp; `50 tasks`&nbsp; `14 tasks`<br><sub>Foundation models · arXiv 2611.14432 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models](https://arxiv.org/abs/2611.14365)**<br>`68.9%`&nbsp; `39%`&nbsp; `85.0%`<br><sub>Edge & real-time · arXiv 2611.14365 · 2026‑11‑10</sub> |
+| 04<br>🔵&nbsp;`R` | **[Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion](https://arxiv.org/abs/2611.13690)**<br>`95%`&nbsp; `10.11 ms`<br><sub>Edge & real-time · arXiv 2611.13690 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.1](https://github.com/google-deepmind/mujoco/releases/tag/4.0.1)**<br><sub>Simulation & evaluation · MuJoCo releases (GitHub) · 2026‑11‑11</sub> |
+| 06<br>🟡&nbsp;`M` | **[智驾下半场：千里一手卷模型，一手卷量产](https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」](https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑12</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **How Much of Your VLA Is kNN** — `AI draft` Teams that pick VLAs by LIBERO success should not read scores above 95% as proof of generalization; this self-reported preprint asks how much of that success goes beyond the training demonstrations, and its 91.7% LIBERO figure is cut off before the page says what produced it.
-2. **LEASH** — `AI draft` Anyone wiring GPT- or Claude-class foundation models into robot decisions should track this preprint, but the page quotes only its background sentence and, while it flags real-robot and closed-loop experiments, shows no safety mechanism or figures, so it cannot yet justify changing existing safeguards.
-3. **Compass 1** — `AI draft` Navigation teams sizing their data collection get a self-reported mix of over 500 hours of real-world interaction and over 2,000 hours of annotated web material, with 79.4% overall success in open-world evaluations against 17.8% for the strongest comparison; check how success was scored before relying on it.
-4. **LaST0.5** — `AI draft` Do not choose a world action model for manipulation on its self-reported 99.5% on LIBERO alone; the page flags real-robot experiments but gives no real-robot figure, and those runs are the part worth reading.
-5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — `AI draft` DeepMind's own claim that its most capable VLA improves dexterity, reliability and safety arrives with no figures on the page, so teams comparing VLA bases should wait for measured success or failure rates before moving dexterous work onto it.
-6. **Serve Robotics opens robot delivery network for others to build on** — `AI draft` Companies planning on-demand delivery can now weigh calling Serve's fleet of more than 2,000 robots through an API against building their own, though this is trade-press reporting of Serve's own claim and the page gives no terms or service levels.
-7. **Memories.ai builds standardized egocentric video pipeline** — `AI draft` Teams training on human egocentric video could buy collection and AI annotation from Memories.ai instead of building it, but this secondary report shows no volumes, quality checks or robot results, so ask for a labelled sample before committing.
-8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — `AI draft` For robot teams connecting many sensors, this secondary report says only that Intel and Altera aim to simplify sensor hookup and real-time data processing; the page names no product, interface or latency, so keep the current sensor stack until specifics appear.
+1. **Elastic-WAM** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **One Policy for 100 Household Tasks** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+3. **From Video Frames to Robot Meta-Frames** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Contr…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **MuJoCo 4.0.1** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **智驾下半场：千里一手卷模型，一手卷量产** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+7. **CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-12.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-13.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

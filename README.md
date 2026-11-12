@@ -62,37 +62,35 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-12
+### 今日雷达 · 2026-11-13
 
-`生成时间: 2026-11-11 23:40 UTC` ｜ `统计窗口: 论文 2026-11-08 → 2026-11-12 · 博客与报道 2026-10-13 → 2026-11-12 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-12 23:40 UTC` ｜ `统计窗口: 论文 2026-11-09 → 2026-11-13 · 博客与报道 2026-10-14 → 2026-11-13 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>仿真与评测 · arXiv 2611.13160 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>仿真与评测 · arXiv 2611.14115 · 2026‑11‑10</sub> |
-| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>本体与供应链 · arXiv 2611.12087 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>基座模型 · arXiv 2611.14048 · 2026‑11‑10</sub> |
-| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>基座模型 · Google DeepMind · 2026‑11‑09</sub> |
-| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>系统与编排 · The Robot Report · 2026‑11‑11</sub> |
-| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>数据引擎 · The Robot Report · 2026‑11‑11</sub> |
-| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>边缘与实时性 · The Robot Report · 2026‑11‑10</sub> |
+| 01<br>🔵&nbsp;`R` | **[Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control](https://arxiv.org/abs/2611.14257)**<br><sub>仿真与评测 · arXiv 2611.14257 · 2026‑11‑10</sub> |
+| 02<br>🔵&nbsp;`R` | **[One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge](https://arxiv.org/abs/2611.14432)**<br>`100 tasks`&nbsp; `50 tasks`&nbsp; `14 tasks`<br><sub>基座模型 · arXiv 2611.14432 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models](https://arxiv.org/abs/2611.14365)**<br>`68.9%`&nbsp; `39%`&nbsp; `85.0%`<br><sub>边缘与实时性 · arXiv 2611.14365 · 2026‑11‑10</sub> |
+| 04<br>🔵&nbsp;`R` | **[Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion](https://arxiv.org/abs/2611.13690)**<br>`95%`&nbsp; `10.11 ms`<br><sub>边缘与实时性 · arXiv 2611.13690 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.1](https://github.com/google-deepmind/mujoco/releases/tag/4.0.1)**<br><sub>仿真与评测 · MuJoCo releases (GitHub) · 2026‑11‑11</sub> |
+| 06<br>🟡&nbsp;`M` | **[智驾下半场：千里一手卷模型，一手卷量产](https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」](https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑12</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **How Much of Your VLA Is kNN** — `AI 起草` 按 LIBERO 成功率挑选 VLA 的团队，不宜把超过 95% 的分数当作泛化证据：这篇预印本质疑其中有多少超出了训练示范本身，页面另报 91.7% 的 LIBERO 成功率，但摘录在说明所用方法前就截断了。
-2. **LEASH** — `AI 起草` 正把 GPT、Claude 这类基础模型接入机器人决策的团队值得跟进这篇预印本，但页面只摘到背景句，虽标出含真机与闭环实验，却看不到具体安全机制和任何数据，暂时还不足以改动现有防护设计。
-3. **Compass 1** — `AI 起草` 规划导航数据采集的团队可参考这份作者自报的配比：500 多小时真实世界交互加 2,000 多小时带标注的网络素材，开放世界评测总成功率 79.4%，最强对比项为 17.8%；引用前先确认成功的判定标准。
-4. **LaST0.5** — `AI 起草` 评估操作用世界动作模型时，别只凭作者自报的 LIBERO 99.5% 下结论：页面标出了真机实验，却没给出任何真机数字，真正该看的是那部分结果。
-5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — `AI 起草` DeepMind 称这款最强 VLA 提升了灵巧性、可靠性和安全性，但页面没有任何数字；在比较 VLA 基座的团队，应等到实测成功率或失败率公布后，再考虑把灵巧操作任务迁过去。
-6. **Serve Robotics opens robot delivery network for others to build on** — `AI 起草` 要做即时配送的企业，现在可以权衡通过 API 调用 Serve 超过 2,000 台机器人的车队，还是自建车队；不过这是行业媒体转述的 Serve 自身说法，页面没有给出合作条款或服务水平。
-7. **Memories.ai builds standardized egocentric video pipeline** — `AI 起草` 用人类第一人称视频训练的团队，可以考虑把采集和 AI 标注外包给 Memories.ai 而非自建，但这篇二手报道没有给出数据量、质检方式或机器人效果，签约前先要一份标注样本。
-8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — `AI 起草` 对需要接入多种传感器的机器人团队，这篇二手报道只说明英特尔与 Altera 想简化传感器连接和实时数据处理，页面没有点名产品、接口或延迟，在细节公布前不值得改动现有传感器方案。
+1. **Elastic-WAM** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **One Policy for 100 Household Tasks** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+3. **From Video Frames to Robot Meta-Frames** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Contr…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+5. **MuJoCo 4.0.1** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **智驾下半场：千里一手卷模型，一手卷量产** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+7. **CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-12.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-13.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

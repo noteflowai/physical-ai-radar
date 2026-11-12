@@ -60,37 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-12
+### 本日のレーダー · 2026-11-13
 
-`生成時刻: 2026-11-11 23:40 UTC` ｜ `対象期間: 論文 2026-11-08 → 2026-11-12 · ブログ・報道 2026-10-13 → 2026-11-12 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-12 23:40 UTC` ｜ `対象期間: 論文 2026-11-09 → 2026-11-13 · ブログ・報道 2026-10-14 → 2026-11-13 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[How Much of Your VLA Is kNN](https://arxiv.org/abs/2611.13160)**<br>`95%`&nbsp; `91.7 %`<br><sub>シミュレーションと評価 · arXiv 2611.13160 · 2026‑11‑09</sub> |
-| 02<br>🔵&nbsp;`R` | **[LEASH: Stay Safe in Agentic Robotics](https://arxiv.org/abs/2611.14115)**<br><sub>シミュレーションと評価 · arXiv 2611.14115 · 2026‑11‑10</sub> |
-| 03<br>🔵&nbsp;`R` | **[Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos](https://arxiv.org/abs/2611.12087)**<br>`500 hours`&nbsp; `2,000 hours`&nbsp; `79.4%`<br><sub>ハードウェアとサプライチェーン · arXiv 2611.12087 · 2026‑11‑09</sub> |
-| 04<br>🔵&nbsp;`R` | **[LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning](https://arxiv.org/abs/2611.14048)**<br>`99.5%`<br><sub>基盤モデル · arXiv 2611.14048 · 2026‑11‑10</sub> |
-| 05<br>🟢&nbsp;`O` | **[Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)**<br><sub>基盤モデル · Google DeepMind · 2026‑11‑09</sub> |
-| 06<br>🟡&nbsp;`M` | **[Serve Robotics opens robot delivery network for others to build on](https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/)**<br><sub>システムとオーケストレーション · The Robot Report · 2026‑11‑11</sub> |
-| 07<br>🟡&nbsp;`M` | **[Memories.ai builds standardized egocentric video pipeline](https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/)**<br><sub>データエンジン · The Robot Report · 2026‑11‑11</sub> |
-| 08<br>🟡&nbsp;`M` | **[Intel and Altera expand collaboration to simplify sensor integration for physical AI](https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/)**<br><sub>エッジとリアルタイム · The Robot Report · 2026‑11‑10</sub> |
+| 01<br>🔵&nbsp;`R` | **[Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control](https://arxiv.org/abs/2611.14257)**<br><sub>シミュレーションと評価 · arXiv 2611.14257 · 2026‑11‑10</sub> |
+| 02<br>🔵&nbsp;`R` | **[One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge](https://arxiv.org/abs/2611.14432)**<br>`100 tasks`&nbsp; `50 tasks`&nbsp; `14 tasks`<br><sub>基盤モデル · arXiv 2611.14432 · 2026‑11‑10</sub> |
+| 03<br>🔵&nbsp;`R` | **[From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models](https://arxiv.org/abs/2611.14365)**<br>`68.9%`&nbsp; `39%`&nbsp; `85.0%`<br><sub>エッジとリアルタイム · arXiv 2611.14365 · 2026‑11‑10</sub> |
+| 04<br>🔵&nbsp;`R` | **[Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion](https://arxiv.org/abs/2611.13690)**<br>`95%`&nbsp; `10.11 ms`<br><sub>エッジとリアルタイム · arXiv 2611.13690 · 2026‑11‑10</sub> |
+| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.1](https://github.com/google-deepmind/mujoco/releases/tag/4.0.1)**<br><sub>シミュレーションと評価 · MuJoCo releases (GitHub) · 2026‑11‑11</sub> |
+| 06<br>🟡&nbsp;`M` | **[智驾下半场：千里一手卷模型，一手卷量产](https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑12</sub> |
+| 07<br>🟡&nbsp;`M` | **[CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」](https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑12</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **How Much of Your VLA Is kNN** — `AI 下書き` LIBERO の成功率で VLA を選ぶなら、95% 超という数字を汎化の証拠とみなすのは早い。このプレプリントは、その成績のどこまでが学習用デモを超えた汎化なのかを問うている。LIBERO で 91.7% という値も示されているが、何による数字なのかは抜粋が途中で切れていて分からない。
-2. **LEASH** — `AI 下書き` GPT や Claude のような基盤モデルをロボットの判断に組み込むチームは追っておきたい論文だ。ただ、ページに引かれているのは背景の一文だけである。実機・閉ループ実験ありとの表示はあるものの、安全機構の中身も数値も見えないので、現行の安全設計を変える根拠にはまだならない。
-3. **Compass 1** — `AI 下書き` ナビゲーション用のデータ収集量を決める際の参考になる。著者報告では、実環境でのインタラクション 500 時間超と注釈付きウェブ素材 2,000 時間超を組み合わせ、オープンワールド評価の総合成功率は 79.4%、最も強い比較対象は 17.8% だった。成功の判定基準は確認してから使いたい。
-4. **LaST0.5** — `AI 下書き` マニピュレーション向けの世界行動モデルを、著者報告の LIBERO 99.5% だけで選ぶべきではない。ページは実機実験ありとしているが実機の数値は載っておらず、判断材料になるのはむしろそちらの結果だ。
-5. **Gemini Robotics 2.5 accelerates real-world general dexterity** — `AI 下書き` DeepMind は自社で最も高性能な VLA として巧緻性・信頼性・安全性の向上をうたうが、ページに数値はない。VLA の基盤を比較しているチームは、成功率や失敗率の実測が出るまで巧緻作業の移行は見送るのが妥当だ。
-6. **Serve Robotics opens robot delivery network for others to build on** — `AI 下書き` オンデマンド配送を始めたい事業者には、自前で機体をそろえるか、API 経由で Serve の 2,000 台超のフリートを使うかという選択肢が出てきた。ただし業界メディアが Serve 自身の説明を伝えたもので、ページには契約条件もサービス水準も書かれていない。
-7. **Memories.ai builds standardized egocentric video pipeline** — `AI 下書き` 人間の一人称視点動画で学習するチームにとって、収集と AI 注釈を内製せず Memories.ai に任せる道が見えてきた。ただしこの二次報道にはデータ量も品質管理もロボットでの効果も出ていないので、契約前に注釈済みサンプルを取り寄せたい。
-8. **Intel and Altera expand collaboration to simplify sensor integration for ph…** — `AI 下書き` 多種のセンサーをつなぐロボット開発者向けに、Intel と Altera がセンサー接続とリアルタイム処理を簡単にしようとしている、と伝える二次報道にとどまる。製品名もインターフェースも遅延値も出ていないので、具体策が出るまでは今のセンサー構成を変える理由はない。
+1. **Elastic-WAM** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **One Policy for 100 Household Tasks** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+3. **From Video Frames to Robot Meta-Frames** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Contr…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **MuJoCo 4.0.1** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **智驾下半场：千里一手卷模型，一手卷量产** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+7. **CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-12.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-13.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

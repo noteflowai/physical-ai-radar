@@ -1,183 +1,166 @@
 {
-  "date": "2026-11-12",
-  "generated": "2026-11-11 23:40 UTC",
-  "window": "papers 2026-11-08 → 2026-11-12 · posts 2026-10-13 → 2026-11-12 (UTC)",
+  "date": "2026-11-13",
+  "generated": "2026-11-12 23:40 UTC",
+  "window": "papers 2026-11-09 → 2026-11-13 · posts 2026-10-14 → 2026-11-13 (UTC)",
   "window_detail": {
-    "day": "2026-11-12",
-    "papers_from": "2026-11-08",
-    "posts_from": "2026-10-13",
+    "day": "2026-11-13",
+    "papers_from": "2026-11-09",
+    "posts_from": "2026-10-14",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.13160",
-      "title": "How Much of Your VLA Is kNN",
-      "url": "https://arxiv.org/abs/2611.13160",
-      "publisher": "arXiv 2611.13160",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-09",
-      "lane": "simeval",
-      "score": 3.44,
-      "numbers": [
-        "95%",
-        "91.7 %"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Vision-language-action (VLA) models now exceed 95% success on the LIBERO simulation benchmark, yet it remains unclear how much of this performance requires generalization beyond the training demonstrations. In this work, we show that retrieving nearby demonstrations and reusing their action chunks achieves a success rate of 91.7 % on LIBERO without policy training. Under LIBERO-Plus perturbations, retrieval shows the smallest drop of all evaluated policies. Across nine publicly available VLAs, fine-tuning mostly makes the vision-language backbone a better retrieval key, and the actions of the VLAs remain close to the demonstrations. In addition, we introduce Local Action Consistency (LAC), an offline metric that measures whether nearby observations in representation space are also associated with similar future actions. We show that LAC tracks the success rate of retrieval and can guide the training of a retrieval key. Our evaluation and source code are available at https://github.com/sereact/lerobot_knn."
-    },
-    {
-      "id": "arxiv:2611.14115",
-      "title": "LEASH: Stay Safe in Agentic Robotics",
-      "url": "https://arxiv.org/abs/2611.14115",
-      "publisher": "arXiv 2611.14115",
+      "id": "arxiv:2611.14257",
+      "title": "Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control",
+      "url": "https://arxiv.org/abs/2611.14257",
+      "publisher": "arXiv 2611.14257",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-10",
       "lane": "simeval",
-      "score": 3.36,
+      "score": 3.105,
       "numbers": [],
       "signals": [
         "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.087,
-      "summary": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence. These advances make agentic robotics a promising path toward artificial general intelligence in robotics. However, we find that using foundation models to control robots poses serious safety risks, and comprehensive safety evaluation is still lacking. We introduce RoboRisk, a comprehensive benchmark for evaluating safety in agentic robotics. Its 92 simulated tasks and 13 physical-robot tasks fall into five categories: Task-level Refusal (T), Plan Repair (P), Execution-time Hazard (E), Injection (I), and Sequential Memory (S). Prior benchmarks cover at most two of these categories, and several evaluate only text outputs. In contrast, RoboRisk covers all five and executes every task in closed loop. We evaluate six state-of-the-art foundation models on RoboRisk: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, Claude Opus 5.5, Gemini 4 Argon, and Grok 4.7. These models generally show high harm rates. We also evaluate two robot-specific APIs: the Dream API and PokeBot's RoboAPI. We further propose the Lease-Enforced Agentic Safety Harness (LEASH), which offers essential safety infrastructure for agentic robotics and can be integrated into nearly any agentic architecture. LEASH leverages a decision model (Jev or OpenAI's Decisions API) to implement task, action, and commit gates, which review the task, each action, and each irreversible operation in their visual context. The planner and all three gates share a common safety policy. Experiments on RoboRisk in simulation and on physical robots show that LEASH effectively reduces harm across all six foundation models. It largely preserves their task completion performance and adds little time and token overhead."
-    },
-    {
-      "id": "arxiv:2611.12087",
-      "title": "Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos",
-      "url": "https://arxiv.org/abs/2611.12087",
-      "publisher": "arXiv 2611.12087",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-09",
-      "lane": "hardware",
-      "score": 2.965,
-      "numbers": [
-        "500 hours",
-        "2,000 hours",
-        "79.4%",
-        "17.8%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
         "real_robot",
-        "open_release"
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Embodied navigation requires agents to achieve persistent spatial awareness and long-horizon execution stability in open-world environments. However, existing navigation architectures struggle to sustain both capabilities, remaining effective only over a handful of recent frames. We present Compass 1, the first embodied navigation foundation model to unify language understanding and video generation while enabling memory backtracking through nearly 2mins of visual history. Without altering the underlying architecture, we introduce History Representation, which integrates sparse visual keyframes with an explicit History Representation Map to preserve long-term spatiotemporal context. To effectively leverage this history, we further introduce History Utilization, a structured VQA supervision protocol comprising three categories: task-stage grounding, exploration consistency, and spatiotemporal target retrieval, enabling map-grounded reasoning and stable persistent long-horizon navigation. To fuel this system, we establish a complete annotation pipeline for monocular RGB videos and open-source a massive dataset featuring over 500 hours of high-quality real-world interactions and over 2,000 hours of annotated web videos. Trained mainly on the distribution of 1m height camera, Compass 1 generalizes seamlessly across diverse embodiments and scenarios, ranging from indoor environments to pedestrian-dense streets, spanning wheeled robot at 0.35m, quadruped dog at 0.5m, humanoid at 0.85m, and aerial drone at 1.5m. Compass 1achieves a dominant overall success rate of 79.4% across open-world evaluations, compared to 17.8% for the strongest baseline. It demonstrates exceptional zero-shot execution exceeding 90% on foundational tasks, a 250% boost in exploration, and an unparalleled leap from 0% to 58% in challenging persistent history backtracking."
+      "summary": "World-Action Models improve robot control by predicting future visual dynamics, but iterative video denoising incurs substantial inference overhead. Recent approaches reduce this cost through partial future denoising, yet typically rely on fixed refinement budgets. Our empirical observations reveal that preferred refinement depths vary across tasks and states, while different future regions exhibit varying relevance to action generation. Motivated by these findings, we propose Elastic-WAM, which adaptively allocates world refinement computation across temporal denoising time and spatial future space. A unified spatiotemporal refinement demand field governs when to stop world refinement, how far to advance each denoising step, and which regions to refresh. We parameterize this field with a shared temporal basis and spatial amplitudes, and learn it through a three-stage action-grounded supervised procedure. At inference, the learned field guides recurrent sparse world refinement to improve task success while reducing inference overhead. Evaluations across diverse simulation benchmarks and real-world long-horizon manipulation demonstrate state-of-the-art control performance with reduced inference latency."
     },
     {
-      "id": "arxiv:2611.14048",
-      "title": "LaST0.5: A Generalist World Action Model with Interaction-Centric Latent Reasoning",
-      "url": "https://arxiv.org/abs/2611.14048",
-      "publisher": "arXiv 2611.14048",
+      "id": "arxiv:2611.14432",
+      "title": "One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge",
+      "url": "https://arxiv.org/abs/2611.14432",
+      "publisher": "arXiv 2611.14432",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-10",
       "lane": "foundation",
       "score": 2.95,
       "numbers": [
-        "99.5%"
+        "100 tasks",
+        "50 tasks",
+        "14 tasks",
+        "27.3%"
       ],
       "signals": [
         "numbers",
-        "real_robot"
+        "closed_loop",
+        "open_release"
       ],
       "heat": 0.0,
-      "summary": "World Action Models (WAMs) have recently emerged as a promising paradigm for robotic manipulation, endowing policies with strong capabilities for modeling temporal and physical dynamics. Existing WAMs, encompassing both video-first action prediction and joint video-action modeling, directly transfer global physical representations from world models to action generation. However, global scene representations may underemphasize local robot-object interactions, creating a mismatch between representations optimized for world evolution and those required for manipulation. To bridge this gap, we propose LaST0.5, a novel WAM that introduces an interaction-centric physical representation between world modeling and action generation. Specifically, LaST0.5 learns a compact interaction-centric latent space under the supervision of visual interaction cues between the robot and the environment. This reasoning space is instantiated as a latent expert that bridges the world expert and the action expert within a Mixture-of-Transformers architecture. Furthermore, LaST0.5 performs adaptive world-to-action transfer by jointly predicting future representations and progress values, using progress consistency to adjust action execution and trigger future resampling. Finally, we pretrain LaST0.5 on a large-scale robotic data corpus comprising over 14k hours of data, establishing interaction-centric physical reasoning as a scalable and effective paradigm. LaST0.5 achieves 99.5% on LIBERO, surpasses the previous state of the art on ten evaluated RLBench tasks, and demonstrates robust long-horizon execution and precise dexterous manipulation in real-world experiments."
+      "summary": "We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator. We placed 9th on the final leaderboard, the only independent team in the top 10. The core of the solution is a single vision-language-action (VLA) model, one checkpoint for all 100 tasks, built on our 1st-place 2025 solution, which is based on $π_{0.5}$. On the 50 tasks shared with 2025, its Q rises from 0.260 to 0.371; across all 100 tasks it scores 0.392. Our main conclusion from 2025 was that the model was undertrained, so most of the 2026 work went into training the model for longer, optimizing some training parameters, making each training step slightly faster and reducing the gradient noise: a migration from 50 to 100 tasks (semantic stages built from the demonstrations' skill annotations, task and stage embeddings of new tasks warm-started from similar old ones, and a 21-dimensional action space matching the teleoperation controls); variance-reduced multi-sample flow matching with a simple noise-vs-compute model that picks the number of action-expert samples per observation without ablations; and a 200k-step training run, about one pass over the 211M frames of the demonstrations. A cloud evaluation infrastructure keeps a shared record with provenance, episode diagnostics and restorable simulator states, and runs six simulators on one GPU together faster than real time. On top of the learned policy, 14 tasks are routed to a GPT-6 Astra coding agent that controls the robot through observation and motion tools, starting every episode from a frozen copy of its own practice session on training instances. Across these 14 tasks, Astra's mean Q is 0.639, against 0.108 for the learned policy. The public submission included only part of the Astra results and scored 0.446 Q with 27.3% full-task success."
     },
     {
-      "id": "deepmind:a98763b80c84",
-      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
-      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
-      "publisher": "Google DeepMind",
-      "source_id": "deepmind",
-      "evidence": "O",
-      "published": "2026-11-09",
-      "lane": "foundation",
-      "score": 2.445,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.056,
-      "summary": "Our most capable vision-language-action model enhances robot dexterity, reliability, and safety"
-    },
-    {
-      "id": "the-robot-report:c65ae6b550d7",
-      "title": "Serve Robotics opens robot delivery network for others to build on",
-      "url": "https://www.therobotreport.com/serve-robotics-opens-robot-delivery-network-for-others-to-build-on/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-11",
-      "lane": "systems",
-      "score": 1.307,
-      "numbers": [],
-      "signals": [
-        "trending"
-      ],
-      "heat": 0.133,
-      "summary": "Serve Robotics says its on-demand delivery API allows third parties to develop new delivery services on its fleet of more than 2,000 robots."
-    },
-    {
-      "id": "the-robot-report:ab9f5a3d1256",
-      "title": "Memories.ai builds standardized egocentric video pipeline",
-      "url": "https://www.therobotreport.com/memories-ai-builds-standardized-egocentric-video-pipeline/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-11",
-      "lane": "data",
-      "score": 1.218,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Memories.ai provides standardized egocentric video collection and AI-powered annotation to build training data infrastructure for robotics."
-    },
-    {
-      "id": "the-robot-report:9e9a5853f7d7",
-      "title": "Intel and Altera expand collaboration to simplify sensor integration for physical AI",
-      "url": "https://www.therobotreport.com/intel-altera-expand-collaboration-simplify-sensor-integration-physical-ai/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
+      "id": "arxiv:2611.14365",
+      "title": "From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models",
+      "url": "https://arxiv.org/abs/2611.14365",
+      "publisher": "arXiv 2611.14365",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-11-10",
       "lane": "edge",
-      "score": 1.152,
-      "numbers": [],
+      "score": 2.805,
+      "numbers": [
+        "68.9%",
+        "39%",
+        "85.0%"
+      ],
       "signals": [
+        "numbers",
+        "real_robot",
+        "open_release",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Altera and Intel are working to make it easier to connect diverse sensors, turn data into real-time insights, and develop robotics."
+      "summary": "Pretrained video diffusion models (VDMs) offer a powerful foundation for World Action Models (WAMs), which jointly predict robot actions and future observations. Building such models requires injecting low-dimensional robot signals (e.g. proprioception, actions, and values) into a latent space shaped by natural videos, and a key design choice is the interface through which these signals enter: existing schemes treat it as a formatting detail, spending a separate latent frame on each signal or bolting on dedicated encoders and decoders. We argue that signal injection is instead a distribution-alignment problem: how well a representation matches the prior of the pretrained VDMs during denoising. Using the relative reconstruction error of a frozen VDM denoiser as a probe, we find that conventional spatial encodings sit far off this prior, whereas frequency-domain packing yields latents that the denoiser corrects far less. Motivated by this diagnostic result, we propose MetaWAM, which folds all robot signals into a single unified meta-frame: each signal is assigned to a disjoint frequency-domain channel band and lifted to the spatial latent by an inverse DCT, yielding a decodable interface aligned with the pretrained VDM prior without any added module or architectural change. A fixed band layout together with slot-aware routing lets the same meta-frame support policy, world-model, and value prediction over a shared set of robot variables. On RoboCasa, MetaWAM reaches 68.9% success while collapsing the per-signal frames into one and cutting inference latency by 39%, and attains 85.0% success on three real-world Franka tasks. Code and models are available at https://github.com/showlab/MetaWAM"
+    },
+    {
+      "id": "arxiv:2611.13690",
+      "title": "Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion",
+      "url": "https://arxiv.org/abs/2611.13690",
+      "publisher": "arXiv 2611.13690",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-10",
+      "lane": "edge",
+      "score": 2.655,
+      "numbers": [
+        "95%",
+        "10.11 ms"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Reliable state feedback of excavator front-end mechanisms is essential for autonomous excavation, yet retrofitting existing machines with dedicated joint sensors, external cameras, or visual markers can increase deployment and maintenance burdens. This paper proposes a closed-loop autonomous excavation framework for continuous inference of excavator joint states using onboard visual observations and control-related temporal information. The framework encodes structural cues from the current cab-view image, models short-term motion trends from historical joystick commands, and introduces a rolling state buffer for the bucket joint to preserve temporal continuity under severe occlusion. Mechanical joint-range constraints are incorporated into the learning objective to suppress infeasible estimates. The current cab-view image and inferred states are supplied to an Action Chunking with Transformers (ACT)-based control policy for online action generation. Experiments in an AGX Dynamics for Unity simulation environment under diverse operating conditions evaluate joint-state inference and end-to-end task execution. Across 20 autonomous excavation trials, the framework achieved a 95% task-completion rate, with an average joint-state-inference-and-control latency of 10.11 ms per step. The bucket-joint inference achieved a mean absolute error (MAE) of 0.965 degrees. These results demonstrate a sensor-light and computationally efficient joint-state-inference approach that can support closed-loop autonomous excavation with reduced dependence on additional sensing infrastructure."
+    },
+    {
+      "id": "github-mujoco:66f82c32eabf",
+      "title": "MuJoCo 4.0.1",
+      "url": "https://github.com/google-deepmind/mujoco/releases/tag/4.0.1",
+      "publisher": "MuJoCo releases (GitHub)",
+      "source_id": "github-mujoco",
+      "evidence": "O",
+      "published": "2026-11-11",
+      "lane": "simeval",
+      "score": 1.979,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.136,
+      "summary": "Version 4.0.1 (November 11, 2026) Compiler 21a076966 Added mjs_getInStringVec to read entries from an mjStringVec by index. Python bindings a937a4f91 Enabled the MuJoCo Studio Web Viewer ( mujoco-studio --gfx=web and mujoco.studio.launch_web ) on Windows by shipping the precompiled browser client in a platform-independent mujoco-studio-wasm wheel installed automatically by mujoco-studio . Bug fixes 9ae9bad01 Fixed a bug in the sparse Cholesky factorization introduced in 4.0.0, which merged rows with different descendants into one supernode and gave the Newton solver a wrong Hessian factor when the constraint Jacobian is sparse, causing slow convergence, wrong accelerations and divergence ( #3767 ). 144ede984 mj_loadAllPluginLibraries now skips a dynamic library that fails to load with a warning instead of calling mju_error , so one unloadable library in the plugin directory no longer aborts simulate at startup. In the 4.0.0 macOS and Linux archives this happened with the USD decoder plugin, which can only be loaded from a Python process. 409f981ab Fixed issues in single-shot multicontact for cylinder edge collisions ( #3748 , #3752 )."
+    },
+    {
+      "id": "leiphone:7707ba4f83dc",
+      "title": "智驾下半场：千里一手卷模型，一手卷量产",
+      "url": "https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-12",
+      "lane": "foundation",
+      "score": 1.8,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "当所有人拿着同一张地图，拼的是谁走得更远、谁走得更稳。 作者 | 姜 奕 编辑 | 王瑞昊 智驾行业最大的悬念曾经是技术路线的选择：端到端、VLA、世界模型的讨论此起彼伏。2026年，随着黄仁勋提出物理AI概念，行业争论迅速收敛，模型要真正理解物理世界，成为检验智驾的共识。 新一轮的竞争由此拉开序幕：比拼的不再是单点技术突破，而是体系化的落地能力。 千里智驾CEO陈奇在2026年世界互联网大会乌镇峰会上给出了一个鲜明的判断： “大模型决定智能上限，工程体系决定交付能力和效率。” 他进一步指出，“没有大模型能力的公司，智驾能力天花板会很低；而工程效率低的公司，无法保证量产迭代的效率，一定会被市场淘汰。” 模型能力与工程建设，成了智驾选手必须同时跨过的两道门槛。竞争格局加速分化，千里科技要做的，是在模型与工程两条线上同时走到前列。 PART 1 智驾竞赛的逻辑变了 过去几年，智驾模型经历了从模块化规则向端到端的范式转移，行业普遍的做法是在小模型基础上反复修补、叠加规则，以此推动智驾能力的场景覆盖。 短时间内，这套打法确 实提升了模型的模仿能力，但要让一台车在真实世界里应对自如，就意味着它必须 提升模型的智能上限、复杂场景下的推理与泛化能力 ——这对基础模型的要求越来越高，靠修补和规则堆叠已经难以支撑。 长尾场景推理 极限博弈 人类通识理解 行业中，普遍存在两种解决方式：要么自研大模型，这是一场漫长且昂贵的投资，且成效未知；要么沿着既有路线咬牙走下去，但可预见的天花板已经出现。 …"
+    },
+    {
+      "id": "leiphone:8b2c0eaa180c",
+      "title": "CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」",
+      "url": "https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-12",
+      "lane": "hardware",
+      "score": 1.415,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "时间是决定人形机器人量产的关键一环。此时此刻，美国奥斯汀，机器人学习领域的顶会 CoRL 2026 正在如火如荼地举行。清华大学交叉信息研究院助理教授、星海图 CTO 赵行，在这届大会主会场上登台，发表了 Early Career Keynote 演讲（青年成就奖）。 与动辄万人规模的 AI 大会不同，CoRL 是泛具身领域极其严肃专注的顶会，台下坐着的几乎全是这个星球上最懂机器人学习的学者。 Early Career Keynote 须同行提名、不得自荐，专门授予博士毕业十年内、已在机器人学习领域留下实质成果的年轻研究者，被视为该领域对新星研究者最高规格的认可之一，也是每年 CoRL 为主会场定调的重头戏。 今年全球仅有三位学者获此殊荣，而赵行是其中唯一的中国面孔。 站在台上的赵行，一方面串联过往的学术历程，讲述了自己从学术到产业的思考，另一方面，面对近期 GPT-6 Astra 接入机器人引发的行业焦虑，用一套极其严密的“时钟理论”，戳破了当下具身行业里不计时间成本制造出的基准测试幻觉，给了具身行业一个耳目一新的思考角度。 AI 科技评论（雷峰网）在现场全程记录了这场演讲，并结合赵行的学术研究路径，给大家带来这位中国顶尖年轻研究者的观点分享： 01 时间是决定人形机器人 量产的关键一环 今天我想谈“机器人的时间”： 机器人智能应当如何在不同的时间尺度上组织起来。 我从 Waymo 的轮式自动驾驶起步，七年前发表了第一篇 CoRL …"
     }
   ],
   "lane_counts": {
-    "foundation": 11,
-    "data": 6,
+    "foundation": 12,
+    "data": 5,
     "training": 0,
-    "simeval": 13,
+    "simeval": 14,
     "edge": 9,
-    "safety": 2,
+    "safety": 1,
     "systems": 1,
-    "hardware": 8
+    "hardware": 7
   },
   "evidence_mix": {
-    "O": 9,
+    "O": 8,
     "R": 28,
     "M": 13
   },
   "fetch": {
-    "items": 673,
+    "items": 667,
     "attempted": 25,
     "answered": 24,
     "failed": [],
@@ -204,11 +187,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 30,
+      "hn_stories": 29,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 69,
+      "arxiv": 63,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
