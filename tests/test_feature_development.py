@@ -1,4 +1,5 @@
 """Regression coverage for executable daily feature work and durable publication."""
+import hashlib
 import json
 from pathlib import Path
 import tempfile
@@ -7,7 +8,7 @@ from unittest.mock import patch
 
 from scripts.develop_repos import apply, checkpoint, complete, develop, fit_context, generated_for, parse_feature_object, requested_context, require_review, restore, validate_feature, validate_plan
 from scripts.feature_policy import PROJECTS, acceptance_command, allowed, readable
-from scripts.feature_runtime import execute
+from scripts.feature_runtime import CleanupUnconfirmed, execute
 from scripts.agent_pipeline import REQUIRED_PR_CHECKS, finish
 from scripts.feature_wordpress import SLUG, package_files, publish as publish_wordpress, version
 from publication_fixture import isolate_private_recovery
@@ -301,6 +302,44 @@ class FeaturePolicyTests(unittest.TestCase):
                 validate_feature(root, task, self.config, root, root)
             self.assertEqual(execute.call_count, 1)
 
+    def test_unresolved_execution_blocks_matching_success_receipt_reuse(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            state = root / "state"
+            test = ["python", "fixture-test.py"]
+            image = "fixture-image"
+            task = {"plan": {}, "base": "base", "head": "head", "changed": []}
+            config = {"tests": [], "checks": []}
+            for label, code, status in (("acceptance-before", 1, "cleanup-confirmed"),
+                                        ("checks", 0, "started")):
+                output = state / label
+                output.mkdir(parents=True)
+                log = output / "output.log"
+                log.write_text("fixture output")
+                execution_id = "a" * 32
+                container_id = "b" * 64
+                lifecycle = {"state": status, "execution_id": execution_id, "container_id": container_id,
+                             "removal_returncode": 0, "readback_returncode": 0, "readback_ids": []}
+                if label == "checks":
+                    lifecycle.update(execution_id="c" * 32, container_id="d" * 64)
+                receipt = {"exit_code": code, "candidate_commit": "head", "base_commit": "base",
+                           "commands": [test], "image": image, "log": str(log),
+                           "log_sha256": hashlib.sha256(log.read_bytes()).hexdigest(),
+                           "executed_commands": [{"argv": test, "executed": True, "exit_code": code}],
+                           "cleanup": {"state": "confirmed", "execution_id": execution_id,
+                                       "container_id": container_id}}
+                (output / "lifecycle.json").write_text(json.dumps(lifecycle))
+                (output / "receipt.json").write_text(json.dumps(receipt))
+            with patch("scripts.develop_repos.image_for", return_value=image), \
+                 patch("scripts.develop_repos.archive"), \
+                 patch("scripts.develop_repos.acceptance_command", return_value=test), \
+                 patch("scripts.develop_repos.generated_for", return_value=[]), \
+                 patch("scripts.develop_repos.inspect_checks"), \
+                 patch("scripts.develop_repos.execute") as execute_mock:
+                with self.assertRaises(CleanupUnconfirmed):
+                    validate_feature(root, task, config, state, root)
+                execute_mock.assert_not_called()
+
     def test_unpublished_commit_restores_from_bundle_after_clone_loss(self):
         import subprocess
         with tempfile.TemporaryDirectory() as tmp:
@@ -331,21 +370,33 @@ class FeaturePolicyTests(unittest.TestCase):
             self.assertEqual(git("rev-parse", "HEAD", cwd=replacement), head)
             self.assertEqual((replacement / "module.py").read_text(), "value = 2\n")
 
-    @patch("scripts.feature_runtime.subprocess.run")
-    def test_container_timeout_cleans_up_and_retains_failure_receipt(self, run):
+    def test_container_timeout_cleans_up_and_retains_failure_receipt(self):
         import subprocess
-        run.side_effect = [subprocess.TimeoutExpired("docker", 10), None]
-        with tempfile.TemporaryDirectory() as tmp:
+        container_id = "a" * 64
+        calls = []
+        def docker(argv, **kwargs):
+            calls.append(argv)
+            if argv[1] == "create":
+                return subprocess.CompletedProcess(argv, 0, container_id, "")
+            if argv[1] == "start":
+                raise subprocess.TimeoutExpired(argv, 10)
+            return subprocess.CompletedProcess(argv, 0, "", "")
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch("scripts.feature_runtime._docker_authority", return_value=(["docker"], {}, {})), \
+                patch("scripts.feature_runtime._check_authority"), \
+                patch("scripts.feature_runtime.subprocess.run", side_effect=docker):
             root = Path(tmp)
             record = execute(root, "sha256:fixed", [["python", "tests/test_x.py"]],
                              root / "state", "timeout", timeout=10)
             self.assertEqual(record["exit_code"], 124)
-            argv = run.call_args_list[0].args[0]
+            argv = calls[0]
             self.assertIn("--network", argv)
             self.assertEqual(argv[argv.index("--network") + 1], "none")
             self.assertIn("--cap-drop", argv)
             self.assertFalse(any("docker.sock" in a for a in argv))
-            self.assertEqual(run.call_args_list[1].args[0][:3], ["docker", "rm", "-f"])
+            self.assertEqual(calls[2], ["docker", "rm", "-f", container_id])
+            self.assertEqual(record["cleanup"]["state"], "confirmed")
+
 
 
 class WordPressPackageTests(unittest.TestCase):
