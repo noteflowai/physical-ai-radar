@@ -60,35 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-13
+### 本日のレーダー · 2026-11-14
 
-`生成時刻: 2026-11-12 23:40 UTC` ｜ `対象期間: 論文 2026-11-09 → 2026-11-13 · ブログ・報道 2026-10-14 → 2026-11-13 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-13 23:40 UTC` ｜ `対象期間: 論文 2026-11-10 → 2026-11-14 · ブログ・報道 2026-10-15 → 2026-11-14 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control](https://arxiv.org/abs/2611.14257)**<br><sub>シミュレーションと評価 · arXiv 2611.14257 · 2026‑11‑10</sub> |
-| 02<br>🔵&nbsp;`R` | **[One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge](https://arxiv.org/abs/2611.14432)**<br>`100 tasks`&nbsp; `50 tasks`&nbsp; `14 tasks`<br><sub>基盤モデル · arXiv 2611.14432 · 2026‑11‑10</sub> |
-| 03<br>🔵&nbsp;`R` | **[From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models](https://arxiv.org/abs/2611.14365)**<br>`68.9%`&nbsp; `39%`&nbsp; `85.0%`<br><sub>エッジとリアルタイム · arXiv 2611.14365 · 2026‑11‑10</sub> |
-| 04<br>🔵&nbsp;`R` | **[Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion](https://arxiv.org/abs/2611.13690)**<br>`95%`&nbsp; `10.11 ms`<br><sub>エッジとリアルタイム · arXiv 2611.13690 · 2026‑11‑10</sub> |
-| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.1](https://github.com/google-deepmind/mujoco/releases/tag/4.0.1)**<br><sub>シミュレーションと評価 · MuJoCo releases (GitHub) · 2026‑11‑11</sub> |
-| 06<br>🟡&nbsp;`M` | **[智驾下半场：千里一手卷模型，一手卷量产](https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑12</sub> |
-| 07<br>🟡&nbsp;`M` | **[CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」](https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑12</sub> |
+| 01<br>🔵&nbsp;`R` | **[QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping](https://arxiv.org/abs/2611.16205)**<br>`43.3%`&nbsp; `60 ms`&nbsp; `9.94 Hz`<br><sub>エッジとリアルタイム · arXiv 2611.16205 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation](https://arxiv.org/abs/2611.15020)**<br><sub>シミュレーションと評価 · arXiv 2611.15020 · 2026‑11‑11</sub> |
+| 03<br>🔵&nbsp;`R` | **[UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight](https://arxiv.org/abs/2611.17163)**<br>`75.58%`&nbsp; `93.16%`<br><sub>シミュレーションと評価 · arXiv 2611.17163 · 2026‑11‑12</sub> |
+| 04<br>🟢&nbsp;`O` | **[Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA](https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/)**<br><sub>エッジとリアルタイム · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
+| 05<br>🟢&nbsp;`O` | **[Adapt Human Motion for Robots with NVIDIA SOMA Retargeter](https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/)**<br><sub>データエンジン · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
+| 06<br>🟡&nbsp;`M` | **[40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」](https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑13</sub> |
+| 07<br>🟡&nbsp;`M` | **[Video Friday: NASA PROMISEs a New Moon Rover](https://spectrum.ieee.org/video-friday-moon-rover-promise)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑13</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya](https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/)**<br><sub>安全・権限・コンプライアンス · Robohub · 2026‑11‑13</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Elastic-WAM** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **One Policy for 100 Household Tasks** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-3. **From Video Frames to Robot Meta-Frames** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-4. **Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Contr…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-5. **MuJoCo 4.0.1** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-6. **智驾下半场：千里一手卷模型，一手卷量产** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-7. **CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **QVS-LIVO RiskMap** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+2. **Genie Sim Benchmark** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **UAV-Flow++** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — 当事者による一次発表。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+7. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-13.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-14.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

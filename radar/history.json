@@ -206,10 +206,6 @@
       "date": "2026-10-14",
       "count": 2,
       "lanes": 1,
-      "urls": [
-        "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction",
-        "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -1125,6 +1121,44 @@
         "max_arxiv": 4,
         "reserved": {
           "official": "github-mujoco:66f82c32eabf",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://arxiv.org/abs/2611.16205",
+        "https://arxiv.org/abs/2611.15020",
+        "https://arxiv.org/abs/2611.17163",
+        "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla",
+        "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter",
+        "https://www.leiphone.com/category/academic/nhzldlwi6rjvyxil.html",
+        "https://spectrum.ieee.org/video-friday-moon-rover-promise",
+        "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [
+        "physical-intelligence"
+      ],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 3,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "nvidia-developer-robotics:a05643d8281c",
           "hot": null
         },
         "unmet": [

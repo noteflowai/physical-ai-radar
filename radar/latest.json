@@ -1,71 +1,29 @@
 {
-  "date": "2026-11-13",
-  "generated": "2026-11-12 23:40 UTC",
-  "window": "papers 2026-11-09 → 2026-11-13 · posts 2026-10-14 → 2026-11-13 (UTC)",
+  "date": "2026-11-14",
+  "generated": "2026-11-13 23:40 UTC",
+  "window": "papers 2026-11-10 → 2026-11-14 · posts 2026-10-15 → 2026-11-14 (UTC)",
   "window_detail": {
-    "day": "2026-11-13",
-    "papers_from": "2026-11-09",
-    "posts_from": "2026-10-14",
+    "day": "2026-11-14",
+    "papers_from": "2026-11-10",
+    "posts_from": "2026-10-15",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.14257",
-      "title": "Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control",
-      "url": "https://arxiv.org/abs/2611.14257",
-      "publisher": "arXiv 2611.14257",
+      "id": "arxiv:2611.16205",
+      "title": "QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping",
+      "url": "https://arxiv.org/abs/2611.16205",
+      "publisher": "arXiv 2611.16205",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-10",
-      "lane": "simeval",
-      "score": 3.105,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "World-Action Models improve robot control by predicting future visual dynamics, but iterative video denoising incurs substantial inference overhead. Recent approaches reduce this cost through partial future denoising, yet typically rely on fixed refinement budgets. Our empirical observations reveal that preferred refinement depths vary across tasks and states, while different future regions exhibit varying relevance to action generation. Motivated by these findings, we propose Elastic-WAM, which adaptively allocates world refinement computation across temporal denoising time and spatial future space. A unified spatiotemporal refinement demand field governs when to stop world refinement, how far to advance each denoising step, and which regions to refresh. We parameterize this field with a shared temporal basis and spatial amplitudes, and learn it through a three-stage action-grounded supervised procedure. At inference, the learned field guides recurrent sparse world refinement to improve task success while reducing inference overhead. Evaluations across diverse simulation benchmarks and real-world long-horizon manipulation demonstrate state-of-the-art control performance with reduced inference latency."
-    },
-    {
-      "id": "arxiv:2611.14432",
-      "title": "One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge",
-      "url": "https://arxiv.org/abs/2611.14432",
-      "publisher": "arXiv 2611.14432",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-10",
-      "lane": "foundation",
-      "score": 2.95,
-      "numbers": [
-        "100 tasks",
-        "50 tasks",
-        "14 tasks",
-        "27.3%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator. We placed 9th on the final leaderboard, the only independent team in the top 10. The core of the solution is a single vision-language-action (VLA) model, one checkpoint for all 100 tasks, built on our 1st-place 2025 solution, which is based on $π_{0.5}$. On the 50 tasks shared with 2025, its Q rises from 0.260 to 0.371; across all 100 tasks it scores 0.392. Our main conclusion from 2025 was that the model was undertrained, so most of the 2026 work went into training the model for longer, optimizing some training parameters, making each training step slightly faster and reducing the gradient noise: a migration from 50 to 100 tasks (semantic stages built from the demonstrations' skill annotations, task and stage embeddings of new tasks warm-started from similar old ones, and a 21-dimensional action space matching the teleoperation controls); variance-reduced multi-sample flow matching with a simple noise-vs-compute model that picks the number of action-expert samples per observation without ablations; and a 200k-step training run, about one pass over the 211M frames of the demonstrations. A cloud evaluation infrastructure keeps a shared record with provenance, episode diagnostics and restorable simulator states, and runs six simulators on one GPU together faster than real time. On top of the learned policy, 14 tasks are routed to a GPT-6 Astra coding agent that controls the robot through observation and motion tools, starting every episode from a frozen copy of its own practice session on training instances. Across these 14 tasks, Astra's mean Q is 0.639, against 0.108 for the learned policy. The public submission included only part of the Astra results and scored 0.446 Q with 27.3% full-task success."
-    },
-    {
-      "id": "arxiv:2611.14365",
-      "title": "From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models",
-      "url": "https://arxiv.org/abs/2611.14365",
-      "publisher": "arXiv 2611.14365",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-10",
+      "published": "2026-11-12",
       "lane": "edge",
-      "score": 2.805,
+      "score": 4.012,
       "numbers": [
-        "68.9%",
-        "39%",
-        "85.0%"
+        "43.3%",
+        "60 ms",
+        "9.94 Hz",
+        "2.00 Hz"
       ],
       "signals": [
         "numbers",
@@ -74,93 +32,142 @@
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Pretrained video diffusion models (VDMs) offer a powerful foundation for World Action Models (WAMs), which jointly predict robot actions and future observations. Building such models requires injecting low-dimensional robot signals (e.g. proprioception, actions, and values) into a latent space shaped by natural videos, and a key design choice is the interface through which these signals enter: existing schemes treat it as a formatting detail, spending a separate latent frame on each signal or bolting on dedicated encoders and decoders. We argue that signal injection is instead a distribution-alignment problem: how well a representation matches the prior of the pretrained VDMs during denoising. Using the relative reconstruction error of a frozen VDM denoiser as a probe, we find that conventional spatial encodings sit far off this prior, whereas frequency-domain packing yields latents that the denoiser corrects far less. Motivated by this diagnostic result, we propose MetaWAM, which folds all robot signals into a single unified meta-frame: each signal is assigned to a disjoint frequency-domain channel band and lifted to the spatial latent by an inverse DCT, yielding a decodable interface aligned with the pretrained VDM prior without any added module or architectural change. A fixed band layout together with slot-aware routing lets the same meta-frame support policy, world-model, and value prediction over a shared set of robot variables. On RoboCasa, MetaWAM reaches 68.9% success while collapsing the per-signal frames into one and cutting inference latency by 39%, and attains 85.0% success on three real-world Franka tasks. Code and models are available at https://github.com/showlab/MetaWAM"
+      "summary": "Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints. Motivated by this, we propose Quality-aware View Selection Lidar-Vision Odometry Risk Mapping (QVS-LIVO RiskMap), which decouples visual processing for state estimation from that for semantic mapping. The front end evaluates camera observations through read-only pretracking on a shared lidar-inertial posterior, combining observation health with geometric complementarity. Channel health memory and switching hysteresis govern selection of at most one eligible view for direct photometric correction. The posterior is retained when no view is eligible or the correction fails acceptance. The mapping back end integrates semantic observations from all available views in a shared world grid. Vehicle-scale geometry constrains semantic risk corrections, while spatial and temporal evidence supports risk confirmation. The system also produces a local bird's-eye-view (BEV) risk map and a global 2.5D semantic-terrain risk map with obstacle instance voxels. On two field sequences, QVS-LIVO achieved horizontal root mean square errors of 0.910 m and 1.664 m. It reduced error by 43.3% relative to FAST-LIO2 on the degraded long-route sequence. Across 12 controlled camera-fault configurations involving dropout, black frames and 60 ms timestamp shifts, it maintained complete trajectories with errors of 1.54-2.23 m. When deployed onboard an NVIDIA Jetson AGX Orin, the system generates local and global maps at 9.94 Hz and 2.00 Hz, respectively, with a median local mapping latency of 32.4 ms. These runtime results demonstrate the real-time feasibility of selective visual state updates alongside multi-view semantic mapping under challenging off-road conditions. The code and related resources are available at: https://github.com/zihanPan-HIT/QVS-LIVO."
     },
     {
-      "id": "arxiv:2611.13690",
-      "title": "Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion",
-      "url": "https://arxiv.org/abs/2611.13690",
-      "publisher": "arXiv 2611.13690",
+      "id": "arxiv:2611.15020",
+      "title": "Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation",
+      "url": "https://arxiv.org/abs/2611.15020",
+      "publisher": "arXiv 2611.15020",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-10",
-      "lane": "edge",
-      "score": 2.655,
+      "published": "2026-11-11",
+      "lane": "simeval",
+      "score": 3.66,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies. Across 22 robot-task pairs spanning 16 task names, task-specific pi0.5 policies fine-tuned on real-robot data achieve a descriptive Score correlation of 0.9686, MAE 0.0405, RMSE 0.0520, with simulation-real differences from -0.110 to +0.080. G2 crsB experiments assess long-horizon closed-loop position and joint-side torque agreement, while five representative object cases examine identification and cross-engine contact transfer. A separate 32.6503 s teleoperation trajectory, excluded from mechanical identification and servo-gain search, evaluates external position targets through simulated motion-controller command shaping and a calibrated position servo. Across both arms, per-joint position RMSE spans 0.00614-0.03522 rad and current-derived torque RMSE spans 0.73545-4.00099 N m. Native PhysX adaptations recover three recorded interaction tasks, with case-dependent alignment gains. These results support task-specific simulation evaluation through joint assessment of task outcomes and physical-response consistency."
+    },
+    {
+      "id": "arxiv:2611.17163",
+      "title": "UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight",
+      "url": "https://arxiv.org/abs/2611.17163",
+      "publisher": "arXiv 2611.17163",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-12",
+      "lane": "simeval",
+      "score": 3.59,
       "numbers": [
-        "95%",
-        "10.11 ms"
+        "75.58%",
+        "93.16%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "latency"
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Reliable state feedback of excavator front-end mechanisms is essential for autonomous excavation, yet retrofitting existing machines with dedicated joint sensors, external cameras, or visual markers can increase deployment and maintenance burdens. This paper proposes a closed-loop autonomous excavation framework for continuous inference of excavator joint states using onboard visual observations and control-related temporal information. The framework encodes structural cues from the current cab-view image, models short-term motion trends from historical joystick commands, and introduces a rolling state buffer for the bucket joint to preserve temporal continuity under severe occlusion. Mechanical joint-range constraints are incorporated into the learning objective to suppress infeasible estimates. The current cab-view image and inferred states are supplied to an Action Chunking with Transformers (ACT)-based control policy for online action generation. Experiments in an AGX Dynamics for Unity simulation environment under diverse operating conditions evaluate joint-state inference and end-to-end task execution. Across 20 autonomous excavation trials, the framework achieved a 95% task-completion rate, with an average joint-state-inference-and-control latency of 10.11 ms per step. The bucket-joint inference achieved a mean absolute error (MAE) of 0.965 degrees. These results demonstrate a sensor-light and computationally efficient joint-state-inference approach that can support closed-loop autonomous excavation with reduced dependence on additional sensing infrastructure."
+      "summary": "Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored. To address this gap, we formulate Flying-on-a-Word (Flow), a task requiring a UAV to convert concise natural-language instruction, egocentric visual observation, and current state dynamics into continuous flight actions. Flow encompasses both primitive motion commands and complex object-interactive behaviors, assessing motion intent comprehension and spatial context grounding. To enable policy learning and closed-loop evaluation, we introduce UAV-Flow, a comprehensive dataset comprising 30,692 expert-piloted real-world trajectories across eight distinct motion categories, alongside 10,109 simulation trajectories in the UAV-Flow-Sim environment equipped with task-specific completion criteria. Furthermore, we develop FlowVLA, which undergoes imitation pretraining on mixed real-sim demonstrations and online post-training via Tail-Aware GRPO (TGRPO). By leveraging group reward distributions, TGRPO effectively reinforces high-reward action sequences. Evaluated on 273 held-out UAV-Flow-Sim episodes, pretrained FlowVLA achieves a mean success rate of 75.58%, outperforming the strongest baseline by 6.72 percentage points, which TGRPO post-training further elevates to 93.16% with superior sample efficiency. Physical UAV experiments demonstrate robust execution of object-relative commands in both indoor and outdoor real-world scenes. Together, Flow establishes a novel benchmark and learning framework for language-conditioned flight maneuvers."
     },
     {
-      "id": "github-mujoco:66f82c32eabf",
-      "title": "MuJoCo 4.0.1",
-      "url": "https://github.com/google-deepmind/mujoco/releases/tag/4.0.1",
-      "publisher": "MuJoCo releases (GitHub)",
-      "source_id": "github-mujoco",
+      "id": "nvidia-developer-robotics:a05643d8281c",
+      "title": "Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA",
+      "url": "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
       "evidence": "O",
-      "published": "2026-11-11",
-      "lane": "simeval",
-      "score": 1.979,
+      "published": "2026-11-13",
+      "lane": "edge",
+      "score": 2.405,
       "numbers": [],
       "signals": [],
-      "heat": 0.136,
-      "summary": "Version 4.0.1 (November 11, 2026) Compiler 21a076966 Added mjs_getInStringVec to read entries from an mjStringVec by index. Python bindings a937a4f91 Enabled the MuJoCo Studio Web Viewer ( mujoco-studio --gfx=web and mujoco.studio.launch_web ) on Windows by shipping the precompiled browser client in a platform-independent mujoco-studio-wasm wheel installed automatically by mujoco-studio . Bug fixes 9ae9bad01 Fixed a bug in the sparse Cholesky factorization introduced in 4.0.0, which merged rows with different descendants into one supernode and gave the Newton solver a wrong Hessian factor when the constraint Jacobian is sparse, causing slow convergence, wrong accelerations and divergence ( #3767 ). 144ede984 mj_loadAllPluginLibraries now skips a dynamic library that fails to load with a warning instead of calling mju_error , so one unloadable library in the plugin directory no longer aborts simulate at startup. In the 4.0.0 macOS and Linux archives this happened with the USD decoder plugin, which can only be loaded from a Python process. 409f981ab Fixed issues in single-shot multicontact for cylinder edge collisions ( #3748 , #3752 )."
+      "heat": 0.0,
+      "summary": "AI applications at the edge often need to run multiple neural networks within limited compute and power budgets. NVIDIA Deep Learning Accelerator (DLA)..."
     },
     {
-      "id": "leiphone:7707ba4f83dc",
-      "title": "智驾下半场：千里一手卷模型，一手卷量产",
-      "url": "https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html",
+      "id": "nvidia-developer-robotics:647ecc584acf",
+      "title": "Adapt Human Motion for Robots with NVIDIA SOMA Retargeter",
+      "url": "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
+      "evidence": "O",
+      "published": "2026-11-13",
+      "lane": "data",
+      "score": 1.968,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing..."
+    },
+    {
+      "id": "leiphone:b0617c4d1d1d",
+      "title": "40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」",
+      "url": "https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html",
       "publisher": "雷峰网 Leiphone",
       "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-12",
+      "published": "2026-11-13",
       "lane": "foundation",
       "score": 1.8,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "当所有人拿着同一张地图，拼的是谁走得更远、谁走得更稳。 作者 | 姜 奕 编辑 | 王瑞昊 智驾行业最大的悬念曾经是技术路线的选择：端到端、VLA、世界模型的讨论此起彼伏。2026年，随着黄仁勋提出物理AI概念，行业争论迅速收敛，模型要真正理解物理世界，成为检验智驾的共识。 新一轮的竞争由此拉开序幕：比拼的不再是单点技术突破，而是体系化的落地能力。 千里智驾CEO陈奇在2026年世界互联网大会乌镇峰会上给出了一个鲜明的判断： “大模型决定智能上限，工程体系决定交付能力和效率。” 他进一步指出，“没有大模型能力的公司，智驾能力天花板会很低；而工程效率低的公司，无法保证量产迭代的效率，一定会被市场淘汰。” 模型能力与工程建设，成了智驾选手必须同时跨过的两道门槛。竞争格局加速分化，千里科技要做的，是在模型与工程两条线上同时走到前列。 PART 1 智驾竞赛的逻辑变了 过去几年，智驾模型经历了从模块化规则向端到端的范式转移，行业普遍的做法是在小模型基础上反复修补、叠加规则，以此推动智驾能力的场景覆盖。 短时间内，这套打法确 实提升了模型的模仿能力，但要让一台车在真实世界里应对自如，就意味着它必须 提升模型的智能上限、复杂场景下的推理与泛化能力 ——这对基础模型的要求越来越高，靠修补和规则堆叠已经难以支撑。 长尾场景推理 极限博弈 人类通识理解 行业中，普遍存在两种解决方式：要么自研大模型，这是一场漫长且昂贵的投资，且成效未知；要么沿着既有路线咬牙走下去，但可预见的天花板已经出现。 …"
+      "summary": "西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。 海外李飞飞、Yann LeCun 等学术大佬亲自下场，国内极佳视界、逆矩阵、流形空间等创业公司高密度入场。 但最近几个月，入场的力量开始发生变化，下场的不再只是公司，高校和地方政府也开始组织力量，参与这场技术竞争。 今年 7 月，北京大学与逆矩阵科技成立世界模型联合实验室。10 月，由极佳视界牵头的通用世界模型北京市重点实验室揭牌。一个是高校与创业公司联合研发，一个是北京市支持建设的重点科研平台。 如今，西湖大学再落一子，成立世界模型研究中心。西湖大学校长、中国科学院院士施一公亲自揭牌。 与研究中心同时亮相的，还有首版基础模型 Awomo-0.5。这款仅有 40 亿参数的模型，在6项国际公开评测的不同榜单中同时登顶，涉及物理推理、机器人操作和泛化等任务。 更值得关注的是，西湖大学 团队 已经开展了三年世界模型研究，建有自主智能实验室 AutoLab。 有实验室，还有阶段性技术成果， 为什么还要成立一个校级研究中心？先看它想把世界模型做到什么程度。 01 40亿参数“概念世界模型”， 瞄准通用物理智能 西湖大学 团队 发布的首版基础模型 Awomo-0.5，定位是 通用物理世界模型 。它希望让 AI 学习能够跨场景复用的物理规律，理解物体之间的关系，并预测真实世界接下来会发生什么。 这款模型只有 4B（40 亿）参数，采用的是 “概念世界模型”（Concept World Model） 技术路线。 …"
     },
     {
-      "id": "leiphone:8b2c0eaa180c",
-      "title": "CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」",
-      "url": "https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
+      "id": "ieee-spectrum-robotics:0967f4990132",
+      "title": "Video Friday: NASA PROMISEs a New Moon Rover",
+      "url": "https://spectrum.ieee.org/video-friday-moon-rover-promise",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
       "evidence": "M",
-      "published": "2026-11-12",
+      "published": "2026-11-13",
       "lane": "hardware",
-      "score": 1.415,
+      "score": 1.797,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "时间是决定人形机器人量产的关键一环。此时此刻，美国奥斯汀，机器人学习领域的顶会 CoRL 2026 正在如火如荼地举行。清华大学交叉信息研究院助理教授、星海图 CTO 赵行，在这届大会主会场上登台，发表了 Early Career Keynote 演讲（青年成就奖）。 与动辄万人规模的 AI 大会不同，CoRL 是泛具身领域极其严肃专注的顶会，台下坐着的几乎全是这个星球上最懂机器人学习的学者。 Early Career Keynote 须同行提名、不得自荐，专门授予博士毕业十年内、已在机器人学习领域留下实质成果的年轻研究者，被视为该领域对新星研究者最高规格的认可之一，也是每年 CoRL 为主会场定调的重头戏。 今年全球仅有三位学者获此殊荣，而赵行是其中唯一的中国面孔。 站在台上的赵行，一方面串联过往的学术历程，讲述了自己从学术到产业的思考，另一方面，面对近期 GPT-6 Astra 接入机器人引发的行业焦虑，用一套极其严密的“时钟理论”，戳破了当下具身行业里不计时间成本制造出的基准测试幻觉，给了具身行业一个耳目一新的思考角度。 AI 科技评论（雷峰网）在现场全程记录了这场演讲，并结合赵行的学术研究路径，给大家带来这位中国顶尖年轻研究者的观点分享： 01 时间是决定人形机器人 量产的关键一环 今天我想谈“机器人的时间”： 机器人智能应当如何在不同的时间尺度上组织起来。 我从 Waymo 的轮式自动驾驶起步，七年前发表了第一篇 CoRL …"
+      "summary": "NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program. It will be constructed largely from existing hardware—test-bed and flight-spare components—developed for NASA’s ongoing Mars rover missions, Curiosity and Perseverance. [ NASA Jet Propulsion Laboratory ] What happens when you put wheels on a humanoid and let a learned controller drive it? We swapped the feet on our Atlas robot to find out; it let us push our actuators, and our models of them, hard. [ Boston Dynamics ] The Novel Orbital and Moon Manufacturing, Materials and Mass-efficient Design (NOM4D) program has achieved the first ever demonstration of automated in-space assembly. A California Institute of Technology (Caltech) payload operating in orbit built a truss structure from individual components. A relatively simple gantry robot (able to move along three linear axes) connected composite truss members using custom-designed joints while simultaneously deploying a thin reflective mesh; a proof-of-concept for future space-based antennas. [ DARPA ] Well, it looks like Amazon’s idea for using mobile robots as security systems is not as dead as we thought it was back in 2020 . [ Amazon Ring ] There are many excellent applications for robots that have a market size of very close to zero, and this is one of them. [ DEEP Robotics ] I don’t know about you, but my philosophy in life is that more tentacles is always better. [ Paper ] Well I’m impressed. [ UZH Robotics and Perception Group ] How Corvus One drones count boxes and read …"
+    },
+    {
+      "id": "robohub:95c5d88d9da4",
+      "title": "Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya",
+      "url": "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/",
+      "publisher": "Robohub",
+      "source_id": "robohub",
+      "evidence": "M",
+      "published": "2026-11-13",
+      "lane": "safety",
+      "score": 1.535,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments. Daniela Shchegelskaya is an electronics and robotics engineer specialising in autonomous systems, control engineering, and Al-driven robotics for industrial and safety-critical environments. She works on deploying real-world autonomous robots beyond lab conditions, focusing on reliability, connectivity, […]"
     }
   ],
   "lane_counts": {
-    "foundation": 12,
-    "data": 5,
+    "foundation": 11,
+    "data": 6,
     "training": 0,
     "simeval": 14,
-    "edge": 9,
-    "safety": 1,
+    "edge": 10,
+    "safety": 2,
     "systems": 1,
-    "hardware": 7
+    "hardware": 6
   },
   "evidence_mix": {
-    "O": 8,
-    "R": 28,
-    "M": 13
+    "O": 9,
+    "R": 27,
+    "M": 14
   },
   "fetch": {
-    "items": 667,
+    "items": 681,
     "attempted": 25,
     "answered": 24,
     "failed": [],
@@ -187,11 +194,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 29,
+      "hn_stories": 32,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 63,
+      "arxiv": 77,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,

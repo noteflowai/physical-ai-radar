@@ -13,6 +13,299 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16205",
+      "url": "https://arxiv.org/abs/2611.16205",
+      "title": "QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.16205 · 2026-11-12<br><b>Key numbers</b>: 43.3% · 60 ms · 9.94 Hz · 2.00 Hz<br><b>Signals</b>: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.16205 · 2026-11-12\nKey numbers: 43.3% · 60 ms · 9.94 Hz · 2.00 Hz\nSignals: quantitative results · real-robot experiments · open code or weights · latency or control-rate numbers\n\nMulti-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.16205"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "arxiv:2611.16205",
+        "url": "https://arxiv.org/abs/2611.16205",
+        "title": "QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping",
+        "publisher": "arXiv 2611.16205",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "edge",
+        "published": "2026-11-12",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [
+          "43.3%",
+          "60 ms",
+          "9.94 Hz",
+          "2.00 Hz"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "open_release",
+          "latency"
+        ],
+        "excerpt": "Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.15020",
+      "url": "https://arxiv.org/abs/2611.15020",
+      "title": "Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.15020 · 2026-11-11<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.15020 · 2026-11-11\nSignals: closed-loop success reported\n\nWe evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.15020"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "arxiv:2611.15020",
+        "url": "https://arxiv.org/abs/2611.15020",
+        "title": "Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation",
+        "publisher": "arXiv 2611.15020",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-11",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop"
+        ],
+        "excerpt": "We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.17163",
+      "url": "https://arxiv.org/abs/2611.17163",
+      "title": "UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.17163 · 2026-11-12<br><b>Key numbers</b>: 75.58% · 93.16%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.17163 · 2026-11-12\nKey numbers: 75.58% · 93.16%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLanguage-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.17163"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "arxiv:2611.17163",
+        "url": "https://arxiv.org/abs/2611.17163",
+        "title": "UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight",
+        "publisher": "arXiv 2611.17163",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-12",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [
+          "75.58%",
+          "93.16%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-developer-robotics:a05643d8281c",
+      "url": "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/",
+      "title": "Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Technical Blog (Robotics) · 2026-11-13</p>\n<blockquote>AI applications at the edge often need to run multiple neural networks within limited compute and power budgets.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [O]\nSource: NVIDIA Technical Blog (Robotics) · 2026-11-13\n\nAI applications at the edge often need to run multiple neural networks within limited compute and power budgets.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "AI applications at the edge often need to run multiple neural networks within limited compute and power budgets.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "NVIDIA Technical Blog (Robotics)"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "nvidia-developer-robotics:a05643d8281c",
+        "url": "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/",
+        "title": "Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA",
+        "publisher": "NVIDIA Technical Blog (Robotics)",
+        "source_id": "nvidia-developer-robotics",
+        "evidence": "O",
+        "lane": "edge",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "AI applications at the edge often need to run multiple neural networks within limited compute and power budgets."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-developer-robotics:647ecc584acf",
+      "url": "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/",
+      "title": "Adapt Human Motion for Robots with NVIDIA SOMA Retargeter",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [O]<br><b>Source</b>: NVIDIA Technical Blog (Robotics) · 2026-11-13</p>\n<blockquote>Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing...</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [O]\nSource: NVIDIA Technical Blog (Robotics) · 2026-11-13\n\nHuman motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing...\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing...",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "NVIDIA Technical Blog (Robotics)"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "nvidia-developer-robotics:647ecc584acf",
+        "url": "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/",
+        "title": "Adapt Human Motion for Robots with NVIDIA SOMA Retargeter",
+        "publisher": "NVIDIA Technical Blog (Robotics)",
+        "source_id": "nvidia-developer-robotics",
+        "evidence": "O",
+        "lane": "data",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing..."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:b0617c4d1d1d",
+      "url": "https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html",
+      "title": "40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-11-13</p>\n<blockquote>西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-11-13\n\n西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "leiphone:b0617c4d1d1d",
+        "url": "https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html",
+        "title": "40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "foundation",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:0967f4990132",
+      "url": "https://spectrum.ieee.org/video-friday-moon-rover-promise",
+      "title": "Video Friday: NASA PROMISEs a New Moon Rover",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-11-13</p>\n<blockquote>NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-11-13\n\nNASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "IEEE Spectrum Robotics"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "ieee-spectrum-robotics:0967f4990132",
+        "url": "https://spectrum.ieee.org/video-friday-moon-rover-promise",
+        "title": "Video Friday: NASA PROMISEs a New Moon Rover",
+        "publisher": "IEEE Spectrum Robotics",
+        "source_id": "ieee-spectrum-robotics",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:robohub:95c5d88d9da4",
+      "url": "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/",
+      "title": "Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: Robohub · 2026-11-13<br><b>Signals</b>: real-robot experiments</p>\n<blockquote>Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html\">Full radar for 2026-11-14</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: Robohub · 2026-11-13\nSignals: real-robot experiments\n\nClaire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments.\n\nFull radar for 2026-11-14: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-14.en.html",
+      "summary": "Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments.",
+      "date_published": "2026-11-13T23:40:00Z",
+      "authors": [
+        {
+          "name": "Robohub"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-14",
+        "id": "robohub:95c5d88d9da4",
+        "url": "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/",
+        "title": "Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya",
+        "publisher": "Robohub",
+        "source_id": "robohub",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-13T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "real_robot"
+        ],
+        "excerpt": "Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments."
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.14257",
       "url": "https://arxiv.org/abs/2611.14257",
       "title": "Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control",
@@ -3503,302 +3796,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:38e443aa8984",
-      "url": "https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html",
-      "title": "伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30</p>\n<blockquote>灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\n\n灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "leiphone:38e443aa8984",
-        "url": "https://www.leiphone.com/category/robot/EnKFLg1RRmN9SaHJ.html",
-        "title": "伯牙智能刘欣：GPT-6 之后，轮到硬件拖机器人后腿了 | 物理AI 50人",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-30",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "灵巧手去年出货近 2 万只，大部分在「吃灰」 作者丨 向 欣 编辑丨 高景辉 去年，国内灵巧手公开可查的出货量是约两万只。在伯牙智能创始人刘欣的观察里，其中大部分灵巧手的归宿是跟着人形机器人表演几场，然后被搁在角落里， 「表演完就吃灰」 。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:165d4284c061",
-      "url": "https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html",
-      "title": "让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30</p>\n<blockquote>FlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\n\nFlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "FlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "leiphone:165d4284c061",
-        "url": "https://www.leiphone.com/category/robot/sRmmVes4DwBoIeRm.html",
-        "title": "让触觉像视觉一样可规模化，哥大李昀烛团队 FlexiTac 的开源实践 | IROS 2026",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-30",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "FlexiTac压阻式传感器可兼顾柔性、低成本与一致性。机器人的视觉能力正快速增强，但 触觉仍然是具身智能系统中的薄弱环节 。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39385",
-      "url": "https://arxiv.org/abs/2610.39385",
-      "title": "UMI-Live for In-The-Wild Bimanual Robotics Data Collection",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39385 · 2026-10-29<br><b>Key numbers</b>: 40 hours<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.39385 · 2026-10-29\nKey numbers: 40 hours\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights\n\nUniversal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots.",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.39385"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "arxiv:2610.39385",
-        "url": "https://arxiv.org/abs/2610.39385",
-        "title": "UMI-Live for In-The-Wild Bimanual Robotics Data Collection",
-        "publisher": "arXiv 2610.39385",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [
-          "40 hours"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "open_release"
-        ],
-        "excerpt": "Universal Manipulation Interface (UMI) devices allow human experts to demonstrate tasks for robot learning without teleoperating physical robots."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39287",
-      "url": "https://arxiv.org/abs/2610.39287",
-      "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39287 · 2026-10-29<br><b>Key numbers</b>: 10 Hz<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2610.39287 · 2026-10-29\nKey numbers: 10 Hz\nSignals: quantitative results · closed-loop success reported · real-robot experiments · open code or weights · latency or control-rate numbers\n\nHuman cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act.",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.39287"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "arxiv:2610.39287",
-        "url": "https://arxiv.org/abs/2610.39287",
-        "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
-        "publisher": "arXiv 2610.39287",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [
-          "10 Hz"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.38661",
-      "url": "https://arxiv.org/abs/2610.38661",
-      "title": "Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.38661 · 2026-10-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments · open code or weights</p>\n<blockquote>Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.38661 · 2026-10-28\nSignals: closed-loop success reported · real-robot experiments · open code or weights\n\nPost-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging.",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.38661"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "arxiv:2610.38661",
-        "url": "https://arxiv.org/abs/2610.38661",
-        "title": "Quantize by Doing: Task-Guided Mixed-Precision Quantization of Vision-Language-Action Models",
-        "publisher": "arXiv 2610.38661",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-28",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "open_release"
-        ],
-        "excerpt": "Post-training quantization (PTQ) reduces the memory footprint of vision-language-action (VLA) models, but lowering bit widths while maintaining task performance remains challenging."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39054",
-      "url": "https://arxiv.org/abs/2610.39054",
-      "title": "Robotic Data Inoculation",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39054 · 2026-10-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.39054 · 2026-10-28\nSignals: closed-loop success reported · real-robot experiments\n\nModern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage.",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.39054"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "arxiv:2610.39054",
-        "url": "https://arxiv.org/abs/2610.39054",
-        "title": "Robotic Data Inoculation",
-        "publisher": "arXiv 2610.39054",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-28",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Modern robot learning systems feed on high-quality demonstration data, and their performance hinges on coverage."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:bf12c379974b",
-      "url": "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
-      "title": "Video Friday: Spot Plays to Show Its Whole-Body Manipulation",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: IEEE Spectrum Robotics · 2026-10-30<br><b>Key numbers</b>: 70 x</p>\n<blockquote>Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: IEEE Spectrum Robotics · 2026-10-30\nKey numbers: 70 x\n\nSome top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time.",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "IEEE Spectrum Robotics"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "ieee-spectrum-robotics:bf12c379974b",
-        "url": "https://spectrum.ieee.org/video-friday-whole-body-manipulation",
-        "title": "Video Friday: Spot Plays to Show Its Whole-Body Manipulation",
-        "publisher": "IEEE Spectrum Robotics",
-        "source_id": "ieee-spectrum-robotics",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-10-30",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [
-          "70 x"
-        ],
-        "signals": [],
-        "excerpt": "Some top-notch whole-body manipulation here from RAI, although it’s a little hard to tell whether there’s direct torso involvement, which is something that humans do with heavy or awkward stuff all the time."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:e7b95d0df78d",
-      "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
-      "title": "李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-30</p>\n<blockquote>82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html\">Full radar for 2026-10-31</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-30\n\n82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。\n\nFull radar for 2026-10-31: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-10-31.en.html",
-      "summary": "82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。",
-      "date_published": "2026-10-30T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-10-31",
-        "id": "leiphone:e7b95d0df78d",
-        "url": "https://www.leiphone.com/category/academic/oi5NEt93WcuWwFr8.html",
-        "title": "李飞飞挖的三个「坑」：从 ImageNet 到空间智能，这一次她会怎么填？",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "foundation",
-        "published": "2026-10-30",
-        "radar_published": "2026-10-30T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "82 亿美元，已经为整个世界模型赛道提供了价值锚点。82亿美元，全股票收购李飞飞创立的 World Labs。"
       }
     }
   ]

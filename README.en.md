@@ -60,35 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-13
+### Today's radar · 2026-11-14
 
-`Generated: 2026-11-12 23:40 UTC` ｜ `Window: papers 2026-11-09 → 2026-11-13 · posts 2026-10-14 → 2026-11-13 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-13 23:40 UTC` ｜ `Window: papers 2026-11-10 → 2026-11-14 · posts 2026-10-15 → 2026-11-14 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Elastic-WAM: Adaptive Spatiotemporal Imagination for Efficient Robot Control](https://arxiv.org/abs/2611.14257)**<br><sub>Simulation & evaluation · arXiv 2611.14257 · 2026‑11‑10</sub> |
-| 02<br>🔵&nbsp;`R` | **[One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge](https://arxiv.org/abs/2611.14432)**<br>`100 tasks`&nbsp; `50 tasks`&nbsp; `14 tasks`<br><sub>Foundation models · arXiv 2611.14432 · 2026‑11‑10</sub> |
-| 03<br>🔵&nbsp;`R` | **[From Video Frames to Robot Meta-Frames: A Unified Latent Interface for World Action Models](https://arxiv.org/abs/2611.14365)**<br>`68.9%`&nbsp; `39%`&nbsp; `85.0%`<br><sub>Edge & real-time · arXiv 2611.14365 · 2026‑11‑10</sub> |
-| 04<br>🔵&nbsp;`R` | **[Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Control Fusion](https://arxiv.org/abs/2611.13690)**<br>`95%`&nbsp; `10.11 ms`<br><sub>Edge & real-time · arXiv 2611.13690 · 2026‑11‑10</sub> |
-| 05<br>🟢&nbsp;`O` | **[MuJoCo 4.0.1](https://github.com/google-deepmind/mujoco/releases/tag/4.0.1)**<br><sub>Simulation & evaluation · MuJoCo releases (GitHub) · 2026‑11‑11</sub> |
-| 06<br>🟡&nbsp;`M` | **[智驾下半场：千里一手卷模型，一手卷量产](https://www.leiphone.com/category/transportation/15g9g1m5Ij7LVRSe.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑12</sub> |
-| 07<br>🟡&nbsp;`M` | **[CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」](https://www.leiphone.com/category/private/zLDQiemmN9KxgnVW.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑12</sub> |
+| 01<br>🔵&nbsp;`R` | **[QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping](https://arxiv.org/abs/2611.16205)**<br>`43.3%`&nbsp; `60 ms`&nbsp; `9.94 Hz`<br><sub>Edge & real-time · arXiv 2611.16205 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation](https://arxiv.org/abs/2611.15020)**<br><sub>Simulation & evaluation · arXiv 2611.15020 · 2026‑11‑11</sub> |
+| 03<br>🔵&nbsp;`R` | **[UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight](https://arxiv.org/abs/2611.17163)**<br>`75.58%`&nbsp; `93.16%`<br><sub>Simulation & evaluation · arXiv 2611.17163 · 2026‑11‑12</sub> |
+| 04<br>🟢&nbsp;`O` | **[Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA](https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/)**<br><sub>Edge & real-time · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
+| 05<br>🟢&nbsp;`O` | **[Adapt Human Motion for Robots with NVIDIA SOMA Retargeter](https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/)**<br><sub>Data engine · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
+| 06<br>🟡&nbsp;`M` | **[40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」](https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑13</sub> |
+| 07<br>🟡&nbsp;`M` | **[Video Friday: NASA PROMISEs a New Moon Rover](https://spectrum.ieee.org/video-friday-moon-rover-promise)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑11‑13</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya](https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/)**<br><sub>Safety, permissions & compliance · Robohub · 2026‑11‑13</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Elastic-WAM** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **One Policy for 100 Household Tasks** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-3. **From Video Frames to Robot Meta-Frames** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **Joint-State Inference for Autonomous Excavators Using Cab-View Vision-Contr…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **MuJoCo 4.0.1** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **智驾下半场：千里一手卷模型，一手卷量产** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-7. **CoRL 2026 青年最高荣誉唯一华人得主清华赵行：「世界不会等模型」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **QVS-LIVO RiskMap** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+2. **Genie Sim Benchmark** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **UAV-Flow++** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — First-party release; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+7. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-13.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-14.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
