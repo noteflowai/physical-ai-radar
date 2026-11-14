@@ -60,37 +60,33 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-14
+### Today's radar · 2026-11-15
 
-`Generated: 2026-11-13 23:40 UTC` ｜ `Window: papers 2026-11-10 → 2026-11-14 · posts 2026-10-15 → 2026-11-14 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-14 23:40 UTC` ｜ `Window: papers 2026-11-11 → 2026-11-15 · posts 2026-10-16 → 2026-11-15 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping](https://arxiv.org/abs/2611.16205)**<br>`43.3%`&nbsp; `60 ms`&nbsp; `9.94 Hz`<br><sub>Edge & real-time · arXiv 2611.16205 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation](https://arxiv.org/abs/2611.15020)**<br><sub>Simulation & evaluation · arXiv 2611.15020 · 2026‑11‑11</sub> |
-| 03<br>🔵&nbsp;`R` | **[UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight](https://arxiv.org/abs/2611.17163)**<br>`75.58%`&nbsp; `93.16%`<br><sub>Simulation & evaluation · arXiv 2611.17163 · 2026‑11‑12</sub> |
-| 04<br>🟢&nbsp;`O` | **[Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA](https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/)**<br><sub>Edge & real-time · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 05<br>🟢&nbsp;`O` | **[Adapt Human Motion for Robots with NVIDIA SOMA Retargeter](https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/)**<br><sub>Data engine · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」](https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑13</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: NASA PROMISEs a New Moon Rover](https://spectrum.ieee.org/video-friday-moon-rover-promise)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑11‑13</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya](https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/)**<br><sub>Safety, permissions & compliance · Robohub · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>Simulation & evaluation · arXiv 2611.16374 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>Data engine · arXiv 2611.17110 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>Foundation models · arXiv 2611.15937 · 2026‑11‑11</sub> |
+| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>Data engine · arXiv 2611.16439 · 2026‑11‑12</sub> |
+| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>Simulation & evaluation · Hugging Face Blog · 2026‑11‑13</sub> |
+| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑11‑13</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **QVS-LIVO RiskMap** — `AI draft` Off-road teams running multi-camera LIVO may weigh views by reliability instead of fusing them all; this self-reported preprint claims 43.3% lower error than FAST-LIO2 and outputs, including global maps, at 9.94 Hz and 2.00 Hz, but shows no closed-loop driving result.
-2. **Genie Sim Benchmark** — `AI draft` Hold off ranking policies by Genie Sim scores until fidelity numbers appear: the preprint says it validates through paired real-simulation tasks and system-identification studies, yet the page quotes no figure for how closely simulation tracks reality.
-3. **UAV-Flow++** — `AI draft` Drone teams adding language commands should note this preprint targets short-range, object-relative maneuvers rather than route planning, self-reporting a 75.58% mean success rate that post-training lifts to 93.16%, though the page does not say whether those come from simulation or real flights.
-4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — `AI draft` Orin teams fitting several networks into tight compute and power budgets now have a first-party path onto the DLA, but the page quotes no speed or power figures, so measure your own models before reassigning any network to it.
-5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — `AI draft` Humanoid teams building motion data from human demonstrations gain a first-party retargeting tool, but the quoted text only argues why human motion helps, with no figures or supported robots named, so trial it on your own platform before wiring it into a data pipeline.
-6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — `AI draft` This secondary report confirms only that Westlake opened a world-model research centre in a field already crowded with startups; the page shows neither the concept-world-model mechanism nor evaluation details, so check the team's own release before shortlisting it.
-7. **Video Friday** — `AI draft` This secondary report covers a planned NASA mission, a nuclear-powered rover for the Moon's South Pole anchoring the Moon Base Program, not hardware anyone can buy, so read it as a reference for power choices in extreme environments rather than a supply signal.
-8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — `AI draft` Teams preparing robots for safety-critical sites may find practitioner insight in this University of Twente interview on reliable operation, but it is a conversation, not a study, and the page offers no method or result to cite in a safety case.
+1. **ManiLadder** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **SALA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **MOSAIC** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **HALO** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether the speed-up holds on the target hardware at control rate.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-14.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-15.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

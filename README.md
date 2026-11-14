@@ -62,37 +62,33 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-14
+### 今日雷达 · 2026-11-15
 
-`生成时间: 2026-11-13 23:40 UTC` ｜ `统计窗口: 论文 2026-11-10 → 2026-11-14 · 博客与报道 2026-10-15 → 2026-11-14 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-14 23:40 UTC` ｜ `统计窗口: 论文 2026-11-11 → 2026-11-15 · 博客与报道 2026-10-16 → 2026-11-15 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping](https://arxiv.org/abs/2611.16205)**<br>`43.3%`&nbsp; `60 ms`&nbsp; `9.94 Hz`<br><sub>边缘与实时性 · arXiv 2611.16205 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation](https://arxiv.org/abs/2611.15020)**<br><sub>仿真与评测 · arXiv 2611.15020 · 2026‑11‑11</sub> |
-| 03<br>🔵&nbsp;`R` | **[UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight](https://arxiv.org/abs/2611.17163)**<br>`75.58%`&nbsp; `93.16%`<br><sub>仿真与评测 · arXiv 2611.17163 · 2026‑11‑12</sub> |
-| 04<br>🟢&nbsp;`O` | **[Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA](https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/)**<br><sub>边缘与实时性 · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 05<br>🟢&nbsp;`O` | **[Adapt Human Motion for Robots with NVIDIA SOMA Retargeter](https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/)**<br><sub>数据引擎 · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」](https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑13</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: NASA PROMISEs a New Moon Rover](https://spectrum.ieee.org/video-friday-moon-rover-promise)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑11‑13</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya](https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/)**<br><sub>安全、权限与合规 · Robohub · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>仿真与评测 · arXiv 2611.16374 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>数据引擎 · arXiv 2611.17110 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>基座模型 · arXiv 2611.15937 · 2026‑11‑11</sub> |
+| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>数据引擎 · arXiv 2611.16439 · 2026‑11‑12</sub> |
+| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑13</sub> |
+| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>边缘与实时性 · 雷峰网 Leiphone · 2026‑11‑13</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **QVS-LIVO RiskMap** — `AI 起草` 越野场景下做多相机 LIVO 的团队，可以考虑按各相机的可靠性取舍视角，而不是一律融合；这篇预印本自报误差比 FAST-LIO2 低 43.3%，报告的输出频率为 9.94 Hz 和 2.00 Hz（含全局地图），但页面没有闭环行驶结果。
-2. **Genie Sim Benchmark** — `AI 起草` 想用 Genie Sim 给策略排序的团队，先等保真度数据：这篇预印本称用真机与仿真配对任务和系统辨识研究做评估，但页面没有引出任何说明仿真与真机吻合程度的数字。
-3. **UAV-Flow++** — `AI 起草` 给无人机加语言指令的团队可以留意：这篇预印本针对的是近距离、相对目标物的机动而非航线规划，自报平均成功率 75.58%，后训练后升至 93.16%，但页面没说明这些数字来自仿真还是实飞。
-4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — `AI 起草` 在 Jetson AGX Orin 上要在有限算力和功耗内跑多个网络的团队，多了一条官方给出的 DLA 推理路径，但页面没有速度或功耗数据，把网络迁到 DLA 之前要先用自己的模型实测。
-5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — `AI 起草` 用人类示范给人形机器人做动作数据的团队，多了一个 NVIDIA 官方的重定向工具，但摘录只讲人类动作为何有用，没有数据，也没说适配哪些机器人，先在自己的本体上验证再接入数据管线。
-6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — `AI 起草` 这篇二手报道能确认的只是西湖大学新设了世界模型研究中心、这条赛道已不缺创业公司；页面看不到「概念世界模型」的机制和评测细节，列入候选之前应先核对团队自己的发布。
-7. **Video Friday** — `AI 起草` 这篇二手报道讲的是 NASA 计划把一台核动力月球车送往月球南极，作为月球基地计划的奠基任务；它不是可采购的产品，可作极端环境下能源选型的参照，不构成供应链信号。
-8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — `AI 起草` 准备在安全关键场所部署机器人的团队，可以听听这期与特文特大学研究者谈可靠运行的访谈，但它是对谈而非研究，页面没有给出可以写进安全论证的方法或结果。
+1. **ManiLadder** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **SALA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+3. **MOSAIC** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **HALO** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注在目标硬件和实际控制频率下加速是否成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-14.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-15.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

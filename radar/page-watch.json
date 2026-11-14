@@ -113,6 +113,204 @@
       ],
       "extractor": "static-1",
       "link_count": 11
+    },
+    "figure": {
+      "digest": "e1a6e417b95a5fd1550715b4d12fa8b3c943c7be509273129d2924886331b918",
+      "since": "2026-11-15",
+      "changed": "2026-11-15",
+      "links": [
+        {
+          "url": "https://www.figure.ai/news/f-02-decommission",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/introducing-figure-03",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/figure-and-nscale-sign-strategic-partnership",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/introducing-index",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/notice-regarding-unauthorized-attempts-to-sell-figure-stock",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/f-03-at-bmw",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/figure-signs-agreement-with-catalyst-brands",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-02-bedroom-tidy",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/ramping-figure-03-production",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-02-living-room-tidy",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-02",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/production-at-bmw",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/project-go-big",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/figure-announces-strategic-partnership-with-brookfield",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/series-c",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-loads-the-dishwasher",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/helix-learns-to-fold-laundry",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/f-03-battery-development",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/scaling-helix-logistics",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.figure.ai/news/reinforcement-learning-walking",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        }
+      ],
+      "extractor": "static-1",
+      "link_count": 21
+    },
+    "1x": {
+      "digest": "4d15f8fe9b048f698e4123e43daceda6d7d53677f3e6699f5258ede3e439f4d9",
+      "since": "2026-11-15",
+      "changed": "2026-11-15",
+      "links": [
+        {
+          "url": "https://www.1x.tech/discover/category/stories",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/category/product",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/category/company",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/category/research",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/neos-hands",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/bill-nash-cfo",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/tom-sanocki-vp-engineering",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/1X-NVIDIA-Research-Collaboration",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/1x-acquires-kind-humanoid",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/cooking-with-neo-beta-and-nick-digiovanni",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/1x-ceo-bernt-bornich-on-the-venture-europe-podcast",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/1x-humanoid-robot-neo-featured-in-nvidia-gtc-keynote",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/neo-factory",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/1x-world-model-lab",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
+          "url": "https://www.1x.tech/discover/amy-lentz-svp-people",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        }
+      ],
+      "extractor": "static-1",
+      "link_count": 15
     }
   }
 }

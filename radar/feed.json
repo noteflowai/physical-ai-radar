@@ -13,6 +13,235 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16374",
+      "url": "https://arxiv.org/abs/2611.16374",
+      "title": "ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.16374 · 2026-11-12<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.16374 · 2026-11-12\nSignals: closed-loop success reported · real-robot experiments\n\nRecent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning…\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning…",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.16374"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "arxiv:2611.16374",
+        "url": "https://arxiv.org/abs/2611.16374",
+        "title": "ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder",
+        "publisher": "arXiv 2611.16374",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-12",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.17110",
+      "url": "https://arxiv.org/abs/2611.17110",
+      "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.17110 · 2026-11-12<br><b>Signals</b>: closed-loop success reported · real-robot experiments</p>\n<blockquote>Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2611.17110 · 2026-11-12\nSignals: closed-loop success reported · real-robot experiments\n\nEmbodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging…\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging…",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.17110"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "arxiv:2611.17110",
+        "url": "https://arxiv.org/abs/2611.17110",
+        "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
+        "publisher": "arXiv 2611.17110",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-11-12",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.15937",
+      "url": "https://arxiv.org/abs/2611.15937",
+      "title": "MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.15937 · 2026-11-11<br><b>Key numbers</b>: 5.1% · 9.7% · 25.0%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2611.15937 · 2026-11-11\nKey numbers: 5.1% · 9.7% · 25.0%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nVision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be…\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be…",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.15937"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "arxiv:2611.15937",
+        "url": "https://arxiv.org/abs/2611.15937",
+        "title": "MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes",
+        "publisher": "arXiv 2611.15937",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-11-11",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [
+          "5.1%",
+          "9.7%",
+          "25.0%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be…"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16439",
+      "url": "https://arxiv.org/abs/2611.16439",
+      "title": "HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.16439 · 2026-11-12<br><b>Key numbers</b>: 2.9x · 73.3%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2611.16439 · 2026-11-12\nKey numbers: 2.9x · 73.3%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nLearning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces.\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces.",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.16439"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "arxiv:2611.16439",
+        "url": "https://arxiv.org/abs/2611.16439",
+        "title": "HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation",
+        "publisher": "arXiv 2611.16439",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-11-12",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [
+          "2.9x",
+          "73.3%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:huggingface-blog:2427bacb74a9",
+      "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+      "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [O]<br><b>Source</b>: Hugging Face Blog · 2026-11-13</p>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [O]\nSource: Hugging Face Blog · 2026-11-13\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "Hugging Face Blog"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "huggingface-blog:2427bacb74a9",
+        "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+        "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+        "publisher": "Hugging Face Blog",
+        "source_id": "huggingface-blog",
+        "evidence": "O",
+        "lane": "simeval",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:1afdea874395",
+      "url": "https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html",
+      "title": "英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！",
+      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-11-13<br><b>Key numbers</b>: 48.9%<br><b>Signals</b>: quantitative results</p>\n<blockquote>她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html\">Full radar for 2026-11-15</a></p>",
+      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-11-13\nKey numbers: 48.9%\nSignals: quantitative results\n\n她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。\n\nFull radar for 2026-11-15: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.en.html",
+      "summary": "她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。",
+      "date_published": "2026-11-14T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Edge & real-time (on-device inference / control rate)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-15",
+        "id": "leiphone:1afdea874395",
+        "url": "https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html",
+        "title": "英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "edge",
+        "published": "2026-11-13",
+        "radar_published": "2026-11-14T23:40:00Z",
+        "numbers": [
+          "48.9%"
+        ],
+        "signals": [
+          "numbers"
+        ],
+        "excerpt": "她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。"
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16205",
       "url": "https://arxiv.org/abs/2611.16205",
       "title": "QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping",
@@ -3570,232 +3799,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "西湖世界模型研究中心成立"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40349",
-      "url": "https://arxiv.org/abs/2610.40349",
-      "title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.40349 · 2026-10-29<br><b>Key numbers</b>: 72.5% · 77.5% · 7.0x<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2610.40349 · 2026-10-29\nKey numbers: 72.5% · 77.5% · 7.0x\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nHuman demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions.\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions.",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.40349"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "arxiv:2610.40349",
-        "url": "https://arxiv.org/abs/2610.40349",
-        "title": "TouchBridge: Tactile-Conditioned Human-to-Robot Transfer for Dexterous Manipulation",
-        "publisher": "arXiv 2610.40349",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [
-          "72.5%",
-          "77.5%",
-          "7.0x"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Human demonstrations offer an efficient and scalable source of data for dexterous robot manipulation, but differences in sensing and hand morphology complicate the transfer of contact-rich interactions."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.38967",
-      "url": "https://arxiv.org/abs/2610.38967",
-      "title": "Learning Event-based Obstacle Avoidance via Differentiable Simulation",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.38967 · 2026-10-28<br><b>Signals</b>: closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Reliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.38967 · 2026-10-28\nSignals: closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nReliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion.\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "Reliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion.",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.38967"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "arxiv:2610.38967",
-        "url": "https://arxiv.org/abs/2610.38967",
-        "title": "Learning Event-based Obstacle Avoidance via Differentiable Simulation",
-        "publisher": "arXiv 2610.38967",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-28",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop",
-          "real_robot",
-          "latency"
-        ],
-        "excerpt": "Reliable obstacle avoidance is essential for safe quadrotor flight in unknown environments, yet conventional frame-based cameras remain challenged by motion blur, limited dynamic range, and latency under fast motion."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39367",
-      "url": "https://arxiv.org/abs/2610.39367",
-      "title": "Utility-WAM: Correcting Future-Induced Action Changes",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.39367 · 2026-10-29<br><b>Signals</b>: real-robot experiments · open code or weights · latency or control-rate numbers</p>\n<blockquote>World Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2610.39367 · 2026-10-29\nSignals: real-robot experiments · open code or weights · latency or control-rate numbers\n\nWorld Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial.\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "World Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial.",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.39367"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "arxiv:2610.39367",
-        "url": "https://arxiv.org/abs/2610.39367",
-        "title": "Utility-WAM: Correcting Future-Induced Action Changes",
-        "publisher": "arXiv 2610.39367",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "real_robot",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "World Action Models (WAMs) can condition robot actions on generated visual futures, but this additional context is neither cost-free nor uniformly beneficial."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40002",
-      "url": "https://arxiv.org/abs/2610.40002",
-      "title": "How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function",
-      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2610.40002 · 2026-10-29<br><b>Signals</b>: closed-loop success reported</p>\n<blockquote>Reasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2610.40002 · 2026-10-29\nSignals: closed-loop success reported\n\nReasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan.\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "Reasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan.",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2610.40002"
-        }
-      ],
-      "tags": [
-        "Training & self-improvement (RL / post-training)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "arxiv:2610.40002",
-        "url": "https://arxiv.org/abs/2610.40002",
-        "title": "How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function",
-        "publisher": "arXiv 2610.40002",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "training",
-        "published": "2026-10-29",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [
-          "closed_loop"
-        ],
-        "excerpt": "Reasoning vision-language-action (VLA) policies write a reasoning trace and then decode the action from it. A wrong trace yields a wrong action, and even a correct-looking trace can mislead the plan."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:qbitai:b2a08cbfc96d",
-      "url": "https://www.qbitai.com/2026/10/506866.html",
-      "title": "世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 量子位 QbitAI · 2026-10-31<br><b>Key numbers</b>: 99%<br><b>Signals</b>: quantitative results</p>\n<blockquote>AI算力利用“九九成”</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 量子位 QbitAI · 2026-10-31\nKey numbers: 99%\nSignals: quantitative results\n\nAI算力利用“九九成”\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "AI算力利用“九九成”",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "量子位 QbitAI"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "qbitai:b2a08cbfc96d",
-        "url": "https://www.qbitai.com/2026/10/506866.html",
-        "title": "世界模型首次指导设计芯片！超大核NPU700TOPS，99%算力可用",
-        "publisher": "量子位 QbitAI",
-        "source_id": "qbitai",
-        "evidence": "M",
-        "lane": "foundation",
-        "published": "2026-10-31",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [
-          "99%"
-        ],
-        "signals": [
-          "numbers"
-        ],
-        "excerpt": "AI算力利用“九九成”"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:7d4ff45be745",
-      "url": "https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html",
-      "title": "智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-10-31</p>\n<blockquote>10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html\">Full radar for 2026-11-01</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-10-31\n\n10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。\n\nFull radar for 2026-11-01: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-01.en.html",
-      "summary": "10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。",
-      "date_published": "2026-10-31T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-01",
-        "id": "leiphone:7d4ff45be745",
-        "url": "https://www.leiphone.com/category/transportation/pqEtZnYepE5D1PzD.html",
-        "title": "智能驾驶进入物理AI时代？7位行业嘉宾给出最新判断",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "edge",
-        "published": "2026-10-31",
-        "radar_published": "2026-10-31T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "10月26日，第八届智能驾驶大会暨2026环秀湖物理AI产业发展推介会在苏州相城举行。 上一届，车路云一体化、智能驾驶出海和无人驾驶商业化是讨论重点，而到了今年，大会的讨论边界进一步从智能驾驶向物理AI延伸。"
       }
     }
   ]

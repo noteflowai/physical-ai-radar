@@ -1,69 +1,64 @@
 {
-  "date": "2026-11-14",
-  "generated": "2026-11-13 23:40 UTC",
-  "window": "papers 2026-11-10 → 2026-11-14 · posts 2026-10-15 → 2026-11-14 (UTC)",
+  "date": "2026-11-15",
+  "generated": "2026-11-14 23:40 UTC",
+  "window": "papers 2026-11-11 → 2026-11-15 · posts 2026-10-16 → 2026-11-15 (UTC)",
   "window_detail": {
-    "day": "2026-11-14",
-    "papers_from": "2026-11-10",
-    "posts_from": "2026-10-15",
+    "day": "2026-11-15",
+    "papers_from": "2026-11-11",
+    "posts_from": "2026-10-16",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.16205",
-      "title": "QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping",
-      "url": "https://arxiv.org/abs/2611.16205",
-      "publisher": "arXiv 2611.16205",
+      "id": "arxiv:2611.16374",
+      "title": "ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder",
+      "url": "https://arxiv.org/abs/2611.16374",
+      "publisher": "arXiv 2611.16374",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-12",
-      "lane": "edge",
-      "score": 4.012,
-      "numbers": [
-        "43.3%",
-        "60 ms",
-        "9.94 Hz",
-        "2.00 Hz"
-      ],
+      "lane": "simeval",
+      "score": 2.905,
+      "numbers": [],
       "signals": [
-        "numbers",
-        "real_robot",
-        "open_release",
-        "latency"
+        "closed_loop",
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints. Motivated by this, we propose Quality-aware View Selection Lidar-Vision Odometry Risk Mapping (QVS-LIVO RiskMap), which decouples visual processing for state estimation from that for semantic mapping. The front end evaluates camera observations through read-only pretracking on a shared lidar-inertial posterior, combining observation health with geometric complementarity. Channel health memory and switching hysteresis govern selection of at most one eligible view for direct photometric correction. The posterior is retained when no view is eligible or the correction fails acceptance. The mapping back end integrates semantic observations from all available views in a shared world grid. Vehicle-scale geometry constrains semantic risk corrections, while spatial and temporal evidence supports risk confirmation. The system also produces a local bird's-eye-view (BEV) risk map and a global 2.5D semantic-terrain risk map with obstacle instance voxels. On two field sequences, QVS-LIVO achieved horizontal root mean square errors of 0.910 m and 1.664 m. It reduced error by 43.3% relative to FAST-LIO2 on the degraded long-route sequence. Across 12 controlled camera-fault configurations involving dropout, black frames and 60 ms timestamp shifts, it maintained complete trajectories with errors of 1.54-2.23 m. When deployed onboard an NVIDIA Jetson AGX Orin, the system generates local and global maps at 9.94 Hz and 2.00 Hz, respectively, with a median local mapping latency of 32.4 ms. These runtime results demonstrate the real-time feasibility of selective visual state updates alongside multi-view semantic mapping under challenging off-road conditions. The code and related resources are available at: https://github.com/zihanPan-HIT/QVS-LIVO."
+      "summary": "Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning along the axis of task difficulty. We present ManiLadder, a large-scale and organized simulation benchmark for robotic manipulation. ManiLadder contains 112 carefully designed tasks stratified into 4 difficulty levels, with 8 categories in each level, spanning rigid-body and deformable-object manipulation, single-arm and dual-arm settings, and gripper and dexterous-hand end-effectors. To calibrate difficulty, we fix the data amount the same for every task and use a unified flow- matching imitation learning policy under the same training and evaluation protocols, then use its evaluation success rate as an operational empirical difficulty signal. All tasks are iteratively refined until they fall into target difficulty ranges, which are then verified across different random seeds, policies, and agentic learning systems. We further analyze the task properties, compare different policy performances and training settings, analyze task transfer and data scaling behaviors, and conduct real-world experiments showing that the designed tasks preserve their difficulty ordering beyond simulation. ManiLad- der provides a calibrated ladder for measuring, comparing, and advancing robotic manipulation capabilities. More results are available at https://maniladder-benchmark.github.io/."
     },
     {
-      "id": "arxiv:2611.15020",
-      "title": "Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation",
-      "url": "https://arxiv.org/abs/2611.15020",
-      "publisher": "arXiv 2611.15020",
+      "id": "arxiv:2611.17110",
+      "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
+      "url": "https://arxiv.org/abs/2611.17110",
+      "publisher": "arXiv 2611.17110",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-12",
+      "lane": "data",
+      "score": 2.852,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging these videos for policy supervision. Compared with world-action models (WAMs), LAMs can offer greater training efficiency and potentially lower inference costs by avoiding explicit pixel prediction during policy learning and execution. However, most existing LAMs learn latent actions solely through video reconstruction, which can cause their representations to cluster by visual appearance rather than by the underlying actions. As a result, they struggle to align human actions with their robot counterparts. To bridge the gap, we introduce SALA, which emphasizes establishing the semantic correspondence for latent actions. Without requiring paired data, we use the language descriptions of unpaired human and robot clips to estimate semantic similarities and supervise cross-embodiment correspondence. Specifically, we translate these similarities into soft neighborhood structures that guide human latent actions toward semantically related robot latents, while robot action reconstruction grounds the latent space in control. The resulting shared latent action space provides a unified supervision signal for training an embodied foundation model on both human and robot videos. Notably, latent action supervision enables scaling along two axes: (1) pre-training on increasing amounts of general human video consistently reduces robot action prediction error on downstream tasks, and (2) post-training on increasing amounts of task-specific human video substantially improves real-world robot task success rates."
+    },
+    {
+      "id": "arxiv:2611.15937",
+      "title": "MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes",
+      "url": "https://arxiv.org/abs/2611.15937",
+      "publisher": "arXiv 2611.15937",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-11",
-      "lane": "simeval",
-      "score": 3.66,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "heat": 0.0,
-      "summary": "We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies. Across 22 robot-task pairs spanning 16 task names, task-specific pi0.5 policies fine-tuned on real-robot data achieve a descriptive Score correlation of 0.9686, MAE 0.0405, RMSE 0.0520, with simulation-real differences from -0.110 to +0.080. G2 crsB experiments assess long-horizon closed-loop position and joint-side torque agreement, while five representative object cases examine identification and cross-engine contact transfer. A separate 32.6503 s teleoperation trajectory, excluded from mechanical identification and servo-gain search, evaluates external position targets through simulated motion-controller command shaping and a calibrated position servo. Across both arms, per-joint position RMSE spans 0.00614-0.03522 rad and current-derived torque RMSE spans 0.73545-4.00099 N m. Native PhysX adaptations recover three recorded interaction tasks, with case-dependent alignment gains. These results support task-specific simulation evaluation through joint assessment of task outcomes and physical-response consistency."
-    },
-    {
-      "id": "arxiv:2611.17163",
-      "title": "UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight",
-      "url": "https://arxiv.org/abs/2611.17163",
-      "publisher": "arXiv 2611.17163",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-12",
-      "lane": "simeval",
-      "score": 3.59,
+      "lane": "foundation",
+      "score": 2.85,
       "numbers": [
-        "75.58%",
-        "93.16%"
+        "5.1%",
+        "9.7%",
+        "25.0%"
       ],
       "signals": [
         "numbers",
@@ -71,89 +66,68 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored. To address this gap, we formulate Flying-on-a-Word (Flow), a task requiring a UAV to convert concise natural-language instruction, egocentric visual observation, and current state dynamics into continuous flight actions. Flow encompasses both primitive motion commands and complex object-interactive behaviors, assessing motion intent comprehension and spatial context grounding. To enable policy learning and closed-loop evaluation, we introduce UAV-Flow, a comprehensive dataset comprising 30,692 expert-piloted real-world trajectories across eight distinct motion categories, alongside 10,109 simulation trajectories in the UAV-Flow-Sim environment equipped with task-specific completion criteria. Furthermore, we develop FlowVLA, which undergoes imitation pretraining on mixed real-sim demonstrations and online post-training via Tail-Aware GRPO (TGRPO). By leveraging group reward distributions, TGRPO effectively reinforces high-reward action sequences. Evaluated on 273 held-out UAV-Flow-Sim episodes, pretrained FlowVLA achieves a mean success rate of 75.58%, outperforming the strongest baseline by 6.72 percentage points, which TGRPO post-training further elevates to 93.16% with superior sample efficiency. Physical UAV experiments demonstrate robust execution of object-relative commands in both indoor and outdoor real-world scenes. Together, Flow establishes a novel benchmark and learning framework for language-conditioned flight maneuvers."
+      "summary": "Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be inferred implicitly. This limitation is particularly problematic in cluttered environments, where small spatial errors can lead to unintended contacts or collisions. We propose MOSAIC, a modular spatial- and obstacle-aware framework that can be integrated with pretrained VLA policies to improve object-level scene understanding and action generation. Our method augments the VLA backbone with an auxiliary semantic grounding task that predicts role-specific masks for the target object, destination region, and surrounding obstacles. We further combine the target and destination masks with depth estimated from 3D scene reconstruction to construct role-specific geometric tokens that are injected directly into the action expert. In addition, we propose obstacle-aware attention supervision that emphasizes obstacles near the robot body during task execution. The resulting attention features are subsequently injected into later action-expert layers to further guide action generation. Together, these components provide explicit semantic, geometric, and obstacle-aware cues while preserving the underlying pretrained VLA architecture. We evaluate our framework on pretrained VLA model using the RoboPRO benchmark, including visual perturbation tests, and further validate it on real-world manipulation tasks. MOSAIC improves the success rate by 5.1% in cluttered scenes, and by 9.7% under visual perturbations, with gains of up to 25.0% in the most challenging environment. We will release our code and dataset upon acceptance at the following Github page: https://mmahdavian.github.io/MOSAIC/"
     },
     {
-      "id": "nvidia-developer-robotics:a05643d8281c",
-      "title": "Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA",
-      "url": "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-11-13",
-      "lane": "edge",
-      "score": 2.405,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "AI applications at the edge often need to run multiple neural networks within limited compute and power budgets. NVIDIA Deep Learning Accelerator (DLA)..."
-    },
-    {
-      "id": "nvidia-developer-robotics:647ecc584acf",
-      "title": "Adapt Human Motion for Robots with NVIDIA SOMA Retargeter",
-      "url": "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/",
-      "publisher": "NVIDIA Technical Blog (Robotics)",
-      "source_id": "nvidia-developer-robotics",
-      "evidence": "O",
-      "published": "2026-11-13",
+      "id": "arxiv:2611.16439",
+      "title": "HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation",
+      "url": "https://arxiv.org/abs/2611.16439",
+      "publisher": "arXiv 2611.16439",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-12",
       "lane": "data",
-      "score": 1.968,
+      "score": 2.785,
+      "numbers": [
+        "2.9x",
+        "73.3%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces. However, existing interfaces trade off direct robot control, perception and action alignment, and natural operator mobility, making such demonstrations difficult to collect. We introduce HALO, a human-aligned data collection system for whole-body mobile manipulation. The system aligns the operator's perception and action space with the robot while preserving direct physical feedback and natural locomotion. Operators guide the robot end-effectors through kinesthetic teaching and move a low-resistance platform without the deployed mobile base while performing bimanual manipulation. This interface enables more natural whole-body demonstrations, but the close human-robot coupling introduces discrepancies between the demonstration and deployment settings. We address these discrepancies with deployment-aligned demonstration processing, which calibrates and temporally aligns platform motion with the deployed base response and masks and inpaints demonstrator hands in recorded observations. Compared with Mobile ALOHA and VR teleoperation, HALO enables up to 2.9x faster demonstration collection while maintaining comparable or higher success rates. Policies trained with HALO perform precise manipulation tasks, including zip-tie fastening, and achieve a 73.3% success rate on a six-stage long-horizon mobile manipulation task involving repeated coordinated base and arm motion. Project page: https://robbyant-research.github.io/Lingbot-ALOHA/"
+    },
+    {
+      "id": "huggingface-blog:2427bacb74a9",
+      "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+      "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
+      "published": "2026-11-13",
+      "lane": "simeval",
+      "score": 1.485,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing..."
+      "summary": ""
     },
     {
-      "id": "leiphone:b0617c4d1d1d",
-      "title": "40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」",
-      "url": "https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html",
+      "id": "leiphone:1afdea874395",
+      "title": "英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！",
+      "url": "https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html",
       "publisher": "雷峰网 Leiphone",
       "source_id": "leiphone",
       "evidence": "M",
       "published": "2026-11-13",
-      "lane": "foundation",
-      "score": 1.8,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。 海外李飞飞、Yann LeCun 等学术大佬亲自下场，国内极佳视界、逆矩阵、流形空间等创业公司高密度入场。 但最近几个月，入场的力量开始发生变化，下场的不再只是公司，高校和地方政府也开始组织力量，参与这场技术竞争。 今年 7 月，北京大学与逆矩阵科技成立世界模型联合实验室。10 月，由极佳视界牵头的通用世界模型北京市重点实验室揭牌。一个是高校与创业公司联合研发，一个是北京市支持建设的重点科研平台。 如今，西湖大学再落一子，成立世界模型研究中心。西湖大学校长、中国科学院院士施一公亲自揭牌。 与研究中心同时亮相的，还有首版基础模型 Awomo-0.5。这款仅有 40 亿参数的模型，在6项国际公开评测的不同榜单中同时登顶，涉及物理推理、机器人操作和泛化等任务。 更值得关注的是，西湖大学 团队 已经开展了三年世界模型研究，建有自主智能实验室 AutoLab。 有实验室，还有阶段性技术成果， 为什么还要成立一个校级研究中心？先看它想把世界模型做到什么程度。 01 40亿参数“概念世界模型”， 瞄准通用物理智能 西湖大学 团队 发布的首版基础模型 Awomo-0.5，定位是 通用物理世界模型 。它希望让 AI 学习能够跨场景复用的物理规律，理解物体之间的关系，并预测真实世界接下来会发生什么。 这款模型只有 4B（40 亿）参数，采用的是 “概念世界模型”（Concept World Model） 技术路线。 …"
-    },
-    {
-      "id": "ieee-spectrum-robotics:0967f4990132",
-      "title": "Video Friday: NASA PROMISEs a New Moon Rover",
-      "url": "https://spectrum.ieee.org/video-friday-moon-rover-promise",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
-      "evidence": "M",
-      "published": "2026-11-13",
-      "lane": "hardware",
-      "score": 1.797,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program. It will be constructed largely from existing hardware—test-bed and flight-spare components—developed for NASA’s ongoing Mars rover missions, Curiosity and Perseverance. [ NASA Jet Propulsion Laboratory ] What happens when you put wheels on a humanoid and let a learned controller drive it? We swapped the feet on our Atlas robot to find out; it let us push our actuators, and our models of them, hard. [ Boston Dynamics ] The Novel Orbital and Moon Manufacturing, Materials and Mass-efficient Design (NOM4D) program has achieved the first ever demonstration of automated in-space assembly. A California Institute of Technology (Caltech) payload operating in orbit built a truss structure from individual components. A relatively simple gantry robot (able to move along three linear axes) connected composite truss members using custom-designed joints while simultaneously deploying a thin reflective mesh; a proof-of-concept for future space-based antennas. [ DARPA ] Well, it looks like Amazon’s idea for using mobile robots as security systems is not as dead as we thought it was back in 2020 . [ Amazon Ring ] There are many excellent applications for robots that have a market size of very close to zero, and this is one of them. [ DEEP Robotics ] I don’t know about you, but my philosophy in life is that more tentacles is always better. [ Paper ] Well I’m impressed. [ UZH Robotics and Perception Group ] How Corvus One drones count boxes and read …"
-    },
-    {
-      "id": "robohub:95c5d88d9da4",
-      "title": "Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya",
-      "url": "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/",
-      "publisher": "Robohub",
-      "source_id": "robohub",
-      "evidence": "M",
-      "published": "2026-11-13",
-      "lane": "safety",
-      "score": 1.535,
-      "numbers": [],
+      "lane": "edge",
+      "score": 1.152,
+      "numbers": [
+        "48.9%"
+      ],
       "signals": [
-        "real_robot"
+        "numbers"
       ],
       "heat": 0.0,
-      "summary": "Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments. Daniela Shchegelskaya is an electronics and robotics engineer specialising in autonomous systems, control engineering, and Al-driven robotics for industrial and safety-critical environments. She works on deploying real-world autonomous robots beyond lab conditions, focusing on reliability, connectivity, […]"
+      "summary": "她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。 她叫 Alpamayo 2 Edge。 英伟达11月10日刚发布出来的一款端到端自动驾驶模型。VLM 骨干约 2.45B、动作专家约 0.2B，跑在车规级芯片 DRIVE AGX Thor 上。 但“懂端到端”这四个字，还真不是标题党蹭流量。在各路AI疯狂“嘴替”、大模型疯狂自言自语的时代，英伟达力挺的 这姑娘（划掉） 这模型，是真·人间清醒。 Alpamayo 2 Edge希望让汽车里的 AI 不仅能看懂道路，还能理解复杂交通关系、分析潜在风险，并根据场景自主生成驾驶动作。简单来说，就是让 AI 从会看、会理解，进一步走向会开车。 当然，让 AI 在服务器里推理和让它在高速行驶的汽车里推理，完全是两回事。车载算力有限，响应时间也有严格要求，模型既要具备复杂场景下的推理能力，又不能把大量计算资源消耗在冗长的思考过程中。 Alpamayo 2 Edge 围绕这个问题做了一套新的设计：普通端到端模型输入图像直接输出轨迹，中间发生了什么是黑箱。而 Alpamayo 2 Edge 被强制要求生成 Chain-of-Causation（因果链）推理：不光要开车，还要说出为什么这么开。 所以汽车究竟需要怎样“懂端到端”的 AI，才能既想得明白，又开得及时？这套新 VLA 给出了一个颇有意思的技术方案。 01 …"
     }
   ],
   "lane_counts": {
-    "foundation": 11,
-    "data": 6,
+    "foundation": 10,
+    "data": 7,
     "training": 0,
     "simeval": 14,
     "edge": 10,
@@ -167,10 +141,12 @@
     "M": 14
   },
   "fetch": {
-    "items": 681,
-    "attempted": 25,
-    "answered": 24,
-    "failed": [],
+    "items": 564,
+    "attempted": 27,
+    "answered": 25,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -194,15 +170,14 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 32,
+      "hn_stories": 25,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 77,
+      "arxiv": 61,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -215,7 +190,6 @@
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 13,
       "robohub": 75,
-      "qbitai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1
@@ -223,10 +197,14 @@
     "page_watch": {
       "enabled": true,
       "attempted": [
+        "figure",
+        "1x",
         "physical-intelligence",
         "unitree"
       ],
       "checked": [
+        "figure",
+        "1x",
         "unitree"
       ],
       "failed": [

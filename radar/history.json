@@ -213,16 +213,6 @@
       "date": "2026-10-15",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.18568",
-        "https://arxiv.org/abs/2610.18711",
-        "https://arxiv.org/abs/2610.17521",
-        "https://arxiv.org/abs/2610.15556",
-        "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations",
-        "https://www.leiphone.com/category/private/x6dmlw9up0rlyckh.html",
-        "https://www.therobotreport.com/timken-precision-drives-puts-motion-challenge-first-humanoid-robots",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/15/news047.html"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1159,6 +1149,44 @@
         "max_arxiv": 4,
         "reserved": {
           "official": "nvidia-developer-robotics:a05643d8281c",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      }
+    },
+    {
+      "date": "2026-11-15",
+      "count": 6,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2611.16374",
+        "https://arxiv.org/abs/2611.17110",
+        "https://arxiv.org/abs/2611.15937",
+        "https://arxiv.org/abs/2611.16439",
+        "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+        "https://www.leiphone.com/category/ai/1jg5k34dslhssje9.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [
+        "physical-intelligence"
+      ],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "huggingface-blog:2427bacb74a9",
           "hot": null
         },
         "unmet": [

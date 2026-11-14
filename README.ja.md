@@ -60,37 +60,33 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-14
+### 本日のレーダー · 2026-11-15
 
-`生成時刻: 2026-11-13 23:40 UTC` ｜ `対象期間: 論文 2026-11-10 → 2026-11-14 · ブログ・報道 2026-10-15 → 2026-11-14 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-14 23:40 UTC` ｜ `対象期間: 論文 2026-11-11 → 2026-11-15 · ブログ・報道 2026-10-16 → 2026-11-15 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping](https://arxiv.org/abs/2611.16205)**<br>`43.3%`&nbsp; `60 ms`&nbsp; `9.94 Hz`<br><sub>エッジとリアルタイム · arXiv 2611.16205 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation](https://arxiv.org/abs/2611.15020)**<br><sub>シミュレーションと評価 · arXiv 2611.15020 · 2026‑11‑11</sub> |
-| 03<br>🔵&nbsp;`R` | **[UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight](https://arxiv.org/abs/2611.17163)**<br>`75.58%`&nbsp; `93.16%`<br><sub>シミュレーションと評価 · arXiv 2611.17163 · 2026‑11‑12</sub> |
-| 04<br>🟢&nbsp;`O` | **[Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA](https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/)**<br><sub>エッジとリアルタイム · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 05<br>🟢&nbsp;`O` | **[Adapt Human Motion for Robots with NVIDIA SOMA Retargeter](https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/)**<br><sub>データエンジン · NVIDIA Technical Blog (Robotics) · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」](https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑13</sub> |
-| 07<br>🟡&nbsp;`M` | **[Video Friday: NASA PROMISEs a New Moon Rover](https://spectrum.ieee.org/video-friday-moon-rover-promise)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑13</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya](https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/)**<br><sub>安全・権限・コンプライアンス · Robohub · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>シミュレーションと評価 · arXiv 2611.16374 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>データエンジン · arXiv 2611.17110 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>基盤モデル · arXiv 2611.15937 · 2026‑11‑11</sub> |
+| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>データエンジン · arXiv 2611.16439 · 2026‑11‑12</sub> |
+| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑13</sub> |
+| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>エッジとリアルタイム · 雷峰网 Leiphone · 2026‑11‑13</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–06</summary>
 
-1. **QVS-LIVO RiskMap** — `AI 下書き` オフロードで多カメラ LIVO を組むなら、全視点を一律に融合せず信頼度で選ぶ設計を検討する価値がある。著者の自己報告では FAST-LIO2 比で誤差 43.3% 減、グローバルマップを含む出力は 9.94 Hz と 2.00 Hz だが、閉ループ走行の結果はページにない。
-2. **Genie Sim Benchmark** — `AI 下書き` Genie Sim のスコアで方策を比べる前に、忠実度の数字を待ちたい。このプレプリントは実環境とシミュレーションを対にしたタスクとシステム同定で検証したとするが、両者の一致度を示す数値はページに引かれていない。
-3. **UAV-Flow++** — `AI 下書き` ドローンに言語指示を載せるチームには、経路計画ではなく対象物を基準にした手薄な近距離機動を扱う点が要注目だ。著者報告の平均成功率は 75.58%、事後学習で 93.16% に上がるが、シミュレーションか実飛行かはページから読み取れない。
-4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — `AI 下書き` Jetson AGX Orin の限られた計算資源と電力で複数のネットワークを回すチームには、DLA 推論の公式な手順が加わった。ただし速度や電力の数値はページになく、ネットワークを DLA に移す前に自分のモデルで測るべきだ。
-5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — `AI 下書き` 人間のデモからヒューマノイドの動作データを作るチームには NVIDIA 公式のリターゲティング手段が加わる。ただ抜粋は人間の動作が役立つ理由までで、数値も対応機体も示されていないので、自分の機体で試してからデータパイプラインに入れたい。
-6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — `AI 下書き` この二次報道で確かめられるのは、西湖大学が世界モデル研究センターを設けたことと、この分野にスタートアップが既に多いことだけだ。「概念世界モデル」の仕組みや評価の詳細はページになく、候補に挙げる前にチーム自身の発表を確認すべきだ。
-7. **Video Friday** — `AI 下書き` この二次報道が伝えるのは、NASA が原子力駆動のローバーを月の南極に送り、月面基地計画の基礎ミッションとする計画だ。購入できる製品ではないので、極限環境での電源選定の参考にはなっても、サプライチェーンの兆候とは読めない。
-8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — `AI 下書き` 安全が重要な現場にロボットを入れるチームには、トゥエンテ大学の研究者が信頼性の高い運用を語るこの対談が参考になる。ただ研究ではなく対談で、安全性の論証に引ける手法や結果はページに示されていない。
+1. **ManiLadder** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **SALA** — 査読前のプレプリント。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **MOSAIC** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+4. **HALO** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-14.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-15.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
