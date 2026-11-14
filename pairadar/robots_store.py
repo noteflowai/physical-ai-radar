@@ -6,11 +6,11 @@ else:
 
 - a robots.txt that WAS read (a 200, or a 404/410 meaning "none"), for at most 24 hours (RFC 9309, section 2.4: a crawler
   should not use a cached copy for longer). Within that time the file is not asked for again;
-- a 429 together with the wait it asked for (`Retry-After`, whatever it asks for up to 366 days; six hours when it gave none or
-  something unusable). Until then the host is not asked again, and the source stays "unreadable" exactly as it was when it
-  was asked. The 24 hours of the first kind is how long a COPY may be used; it says nothing about how long a host that asked
-  to be left alone must be left alone, so a wait is never shortened to a day. A server that asks for more than 366 days gets
-  366 days of silence, never a shorter wait.
+- a 429 together with the wait it asked for (`Retry-After`; six hours when it gave none or something unusable). Until then the
+  host is not asked again, and the source stays "unreadable" exactly as it was when it was asked. The 24 hours of the first
+  kind is how long a COPY may be used; it says nothing about how long a host that asked to be left alone must be left alone,
+  so a wait is never shortened. A wait longer than 366 days cannot be recorded with an end time and is not cut either: that
+  origin is held INDEFINITELY (`until` is "indefinite"), not asked again until a person edits the file.
 
 What it never does: an answer that could not be read is never replaced by an older one. A cached file is used only while it
 is fresh, before any request, never after a failed one; an expired entry is ignored, not used as a fallback. Nothing here
@@ -39,7 +39,9 @@ SCHEMA = "pairadar-robots-state-v1"
 FILE = "robots-state.json"
 MAX_AGE = timedelta(hours=24)
 DEFAULT_BACKOFF = timedelta(hours=6)
-MAX_BACKOFF = timedelta(days=366)          # the largest wait that can be recorded; the same number as static_fetch.MAX_RETRY_AFTER
+MAX_BACKOFF = timedelta(days=366)          # the longest wait that is recorded with an end time; a longer one is held for good
+INDEFINITE = "indefinite"                  # `until` of a wait too long to record: the host is not asked again until a person
+                                           # edits the file (a Retry-After is never shortened; 01 r3 F3)
 MIN_BACKOFF = timedelta(minutes=1)
 SKEW = timedelta(minutes=5)
 MAX_ORIGINS = 16
@@ -86,9 +88,11 @@ def _validate(entry: object) -> None:
     else:
         if set(entry) != {"kind", "reason", "recorded_at", "until"} or entry["reason"] not in BACKOFF_REASONS:
             raise ValueError("backoff entry")
-        recorded, until = _time(entry["recorded_at"]), _time(entry["until"])
-        if not recorded < until <= recorded + MAX_BACKOFF:
-            raise ValueError("backoff span")
+        recorded = _time(entry["recorded_at"])
+        if entry["until"] != INDEFINITE:
+            until = _time(entry["until"])
+            if not recorded < until <= recorded + MAX_BACKOFF:
+                raise ValueError("backoff span")
 
 
 class RobotsStore:
@@ -161,8 +165,9 @@ class RobotsStore:
         now = self._clock()
         try:
             if entry["kind"] == "backoff":
-                recorded, until = _time(entry["recorded_at"]), _time(entry["until"])
-                if recorded - SKEW <= now < until:
+                recorded = _time(entry["recorded_at"])
+                until = None if entry["until"] == INDEFINITE else _time(entry["until"])
+                if recorded - SKEW <= now and (until is None or now < until):
                     return "backoff", entry["reason"]
                 return None
             fetched = _time(entry["fetched_at"])
@@ -181,15 +186,18 @@ class RobotsStore:
         self._put(origin, entry)
 
     def record_backoff(self, origin: str, reason: str, retry_after: int | None) -> None:
-        """The host asked to be left alone (429): until `Retry-After` (never shortened, up to MAX_BACKOFF), DEFAULT_BACKOFF
-        when it said nothing usable, and at least MIN_BACKOFF."""
+        """The host asked to be left alone (429): until `Retry-After` exactly (never shortened), DEFAULT_BACKOFF when it said
+        nothing usable, and at least MIN_BACKOFF. A wait longer than MAX_BACKOFF cannot be recorded with an end time and is not
+        cut: the origin is held INDEFINITELY, not asked again until a person edits the file (01 r3 F3)."""
         if reason not in BACKOFF_REASONS:
             return
-        wait = DEFAULT_BACKOFF if retry_after is None else timedelta(seconds=retry_after)
-        wait = max(MIN_BACKOFF, min(wait, MAX_BACKOFF))
         now = self._clock().astimezone(timezone.utc)
-        self._put(origin, {"kind": "backoff", "reason": reason, "recorded_at": now.isoformat(),
-                           "until": (now + wait).isoformat()})
+        if retry_after is not None and retry_after > MAX_BACKOFF.total_seconds():
+            until = INDEFINITE
+        else:
+            wait = DEFAULT_BACKOFF if retry_after is None else timedelta(seconds=retry_after)
+            until = (now + max(MIN_BACKOFF, wait)).isoformat()
+        self._put(origin, {"kind": "backoff", "reason": reason, "recorded_at": now.isoformat(), "until": until})
 
     def _put(self, origin: str, entry: dict[str, Any]) -> None:
         if not self.writable or not _ORIGIN.fullmatch(origin):
@@ -232,20 +240,15 @@ class RobotsStore:
 
 
 def _sync_chain(path: Path) -> None:
-    """fsync `path` and every ancestor up to and including the first one this user does not own (or the root): the entries
-    of directories created for the state are held by exactly these."""
-    uid = os.geteuid()
+    """fsync `path` and EVERY ancestor up to the filesystem root. Any one that cannot be opened or synced raises, and the write
+    is reported as not saved. Who owns an ancestor says nothing about whether it holds an entry created here (a shared
+    temporary directory does), so ownership is never used to excuse a failure (01 r3 F4)."""
     while True:
-        owned = os.lstat(path).st_uid == uid
+        descriptor = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
         try:
-            descriptor = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
-            try:
-                os.fsync(descriptor)
-            finally:
-                os.close(descriptor)
-        except PermissionError:
-            if owned:                              # a directory of ours that cannot be synced is a failure; one of
-                raise                              # someone else's (e.g. /home) cannot hold anything created here
-        if not owned or path.parent == path:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+        if path.parent == path:
             return
         path = path.parent

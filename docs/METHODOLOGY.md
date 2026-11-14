@@ -229,7 +229,7 @@ Rules:
   repository (`$PAIRADAR_STATE_DIR/robots-state/robots-state.json`): a robots.txt that was read is not asked
   for again for 24 hours (RFC 9309 section 2.4), and a host that answered 429 (to robots.txt or to a page) is not
   asked again until its `Retry-After` (six hours when it gave none or an unusable one; an HTTP date is rounded
-  up; a wait is never shortened, up to 366 days, and a larger one is 366 days). A robots.txt that could not be read is never
+  up; a wait is never shortened, and one longer than 366 days is held indefinitely, until a person edits the state file). A robots.txt that could not be read is never
   replaced by an older copy, an expired copy is never used, and a file that is not exactly what the radar
   wrote is ignored, which means the host is asked. Night and preview rounds read this file and never write it.
   A URL it disallows for `physical-ai-radar` or `*` is not requested, and the feed is

@@ -52,16 +52,15 @@ def private_dir(parent: Path) -> Path:
 
 
 class RetryAfterTests(unittest.TestCase):
-    def test_a_whole_number_of_seconds_is_read_and_not_shortened_up_to_the_largest_wait_that_can_be_kept(self):
-        most = static_fetch.MAX_RETRY_AFTER
+    def test_a_whole_number_of_seconds_is_read_and_never_shortened(self):
         for value, expected in (("0", 0), ("30", 30), (" 120 ", 120), ("86400", 86400), ("172800", 172800),
-                                (str(most), most), (str(most + 1), most), ("9" * 60, most)):
+                                ("34560000", 34_560_000), ("999999999999", 999_999_999_999), ("9" * 60, int("9" * 60))):
             with self.subTest(value):
                 self.assertEqual(static_fetch.parse_retry_after(value, now=0), expected)
 
-    def test_the_largest_wait_that_is_parsed_is_the_largest_that_is_recorded(self):
-        self.assertEqual(timedelta(seconds=static_fetch.MAX_RETRY_AFTER), robots_store.MAX_BACKOFF)
+    def test_the_longest_wait_that_is_recorded_with_an_end_time_is_366_days(self):
         self.assertEqual(robots_store.MAX_BACKOFF, timedelta(days=366))
+        self.assertFalse(hasattr(static_fetch, "MAX_RETRY_AFTER"))                          # the parser has no ceiling of its own
 
     def test_an_http_date_is_counted_from_now_rounded_up_and_a_past_date_is_nothing(self):
         now = datetime(2026, 11, 14, 0, 0, tzinfo=timezone.utc).timestamp()
@@ -71,6 +70,8 @@ class RetryAfterTests(unittest.TestCase):
         self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 00:05:00 GMT", now=now + 0.4), 300)    # 299.6 s: up
         self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 00:05:00 GMT", now=now - 0.4), 301)    # 300.4 s: up
         self.assertIsNone(static_fetch.parse_retry_after("Fri, 13 Nov 2026 23:00:00 GMT", now=now))
+        far = static_fetch.parse_retry_after("Fri, 31 Dec 9999 23:59:59 GMT", now=now)       # thousands of years: not cut, not None
+        self.assertGreater(far, 200 * 365 * 86400)
 
     def test_anything_else_is_nothing(self):
         for value in (None, "", "   ", "-5", "+5", "1.5", "5s", "soon", "0x10", "١٢٣", "Sat, 31 Nov 2026 00:00:00 GMT",
@@ -129,12 +130,42 @@ class StoreTests(unittest.TestCase):
         self.clock.advance(minutes=2)
         self.assertIsNone(self.store().lookup(ORIGIN))
 
-    def test_a_wait_longer_than_the_largest_that_can_be_kept_is_kept_at_that_largest_never_cut_to_hours(self):
-        self.store().record_backoff(ORIGIN, "http-429", 10 * 365 * 86400)
-        self.clock.advance(days=365, hours=23)
+    def test_a_wait_longer_than_the_longest_that_is_recorded_is_held_for_good_never_cut(self):
+        # 01 r3 F3: 34560000 s is 400 days; it used to become 366 and the host was asked 34 days early
+        for seconds in (34_560_000, 10 * 365 * 86400, 999_999_999_999):
+            with self.subTest(seconds):
+                self.setUp()
+                self.clock.now = T0
+                self.store().record_backoff(ORIGIN, "http-429", seconds)
+                self.assertEqual(json.loads(self.store().path.read_text())["origins"][ORIGIN]["until"], robots_store.INDEFINITE)
+                for delta in (timedelta(days=1), timedelta(days=366), timedelta(days=367), timedelta(days=400, hours=1),
+                              timedelta(days=5000)):
+                    self.clock.now = T0 + delta
+                    self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"), delta)
+
+    def test_a_wait_of_exactly_the_longest_recorded_span_ends_and_one_second_more_is_held_for_good(self):
+        self.store().record_backoff(ORIGIN, "http-429", int(robots_store.MAX_BACKOFF.total_seconds()))
+        self.clock.now = T0 + robots_store.MAX_BACKOFF - timedelta(seconds=1)
         self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))
-        self.clock.advance(days=1)
+        self.clock.now = T0 + robots_store.MAX_BACKOFF
         self.assertIsNone(self.store().lookup(ORIGIN))
+        self.clock.now = T0
+        self.store().record_backoff(ORIGIN, "http-429", int(robots_store.MAX_BACKOFF.total_seconds()) + 1)
+        self.clock.now = T0 + robots_store.MAX_BACKOFF + timedelta(days=1)
+        self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))
+
+    def test_an_indefinite_wait_that_claims_to_start_in_the_future_is_not_used_and_the_marker_is_exact(self):
+        self.clock.now = T0 + timedelta(hours=1)
+        self.store().record_backoff(ORIGIN, "http-429", 10 ** 10)
+        self.clock.now = T0
+        self.assertIsNone(self.store().lookup(ORIGIN))
+        record = json.loads(self.store().path.read_text())
+        for until in ("forever", "Indefinite", "", None, [], 5, True):
+            with self.subTest(until):
+                record["origins"][ORIGIN]["until"] = until
+                self.store().path.write_text(json.dumps(record))
+                self.clock.now = T0 + timedelta(hours=2)
+                self.assertIsNone(robots_store.RobotsStore(self.directory, writable=False, clock=self.clock).lookup(ORIGIN))
 
     def test_only_a_429_is_ever_remembered_as_a_wait(self):
         for reason in ("http-403", "http-5xx", "timeout", "", "http-429 ", None):
@@ -352,6 +383,32 @@ class StoreTests(unittest.TestCase):
         log = self.spy_syncs()
         self.store().record_rules(ORIGIN, ROBOTS_TEXT)                                     # the directories now exist
         for path in (self.directory, self.root / "a" / "b", self.root / "a", self.root):
+            self.assertIn(str(path), log, path)
+
+    def test_an_ancestor_that_cannot_be_synced_means_not_saved_whoever_owns_it(self):
+        # 01 r3 F4: a PermissionError on a directory that is not ours was taken for "nothing of ours in it"; a shared directory
+        # (the temporary one) can hold the entry of a directory made here, so nothing about ownership may excuse it
+        for name in ("a directory of ours", "the shared directory above it"):
+            with self.subTest(name):
+                self.setUp()
+                target = self.root if name == "a directory of ours" else self.root.parent
+                real_fsync = os.fsync
+
+                def fsync(descriptor, target=target, real=real_fsync):
+                    if os.readlink(f"/proc/self/fd/{descriptor}") == str(target):
+                        raise PermissionError(13, "denied")
+                    return real(descriptor)
+                with patch.object(robots_store.os, "fsync", fsync), contextlib.redirect_stdout(io.StringIO()) as out:
+                    store = self.store()
+                    store.record_backoff(ORIGIN, "http-429", 600)
+                self.assertIn("robots state not written", out.getvalue())
+                self.assertIsNone(store.lookup(ORIGIN))                                      # and nothing is claimed in memory
+
+    def test_the_chain_is_synced_up_to_the_filesystem_root_whoever_owns_what(self):
+        log = self.spy_syncs()
+        with patch.object(robots_store.os, "geteuid", return_value=424242):                 # no directory is "ours"
+            self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        for path in (self.directory, self.root, self.root.parent, Path("/")):
             self.assertIn(str(path), log, path)
 
     def test_a_write_that_fails_is_reported_and_changes_nothing_else(self):
@@ -578,6 +635,24 @@ class RunTests(TlsTestCase):
         self.assertEqual(paths, ["/robots.txt", "/news"])
 
     # -- 01 F3: the wait that was asked for is the wait that is kept
+    def test_a_wait_longer_than_a_year_is_never_ended_by_the_clock(self):
+        # 01 r3 F3: Retry-After 34560000 (400 days) used to be recorded as 366 days, so the host was asked 34 days early
+        self.server.serve("/robots.txt", Reply(429, "slow down", ctype="text/plain", headers={"Retry-After": "34560000"}))
+        self.run_once()
+        for delta in (timedelta(days=366, hours=1), timedelta(days=399), timedelta(days=401), timedelta(days=4000)):
+            self.clock.now = T0 + delta
+            self.server.serve("/robots.txt", ROBOTS_OK)                                      # even a host that has recovered
+            _, paths = self.run_once(store=self.store(writable=False))
+            self.assertEqual(paths, [], delta)                                               # is not asked: held until a person decides
+
+    def test_a_page_that_asks_for_more_than_a_year_holds_the_host_too(self):
+        self.page_429(wait="34560000")
+        self.run_once(entries=(LISTING, self.second_source()))
+        self.clock.advance(days=401)
+        self.server.serve("/news", Reply(200, V1))
+        _, paths = self.run_once(store=self.store(writable=False), entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, [])
+
     def test_a_wait_of_two_days_is_two_days(self):
         self.server.serve("/robots.txt", Reply(429, "slow down", ctype="text/plain", headers={"Retry-After": "172800"}))
         self.run_once()

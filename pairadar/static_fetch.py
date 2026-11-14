@@ -59,20 +59,17 @@ BLOCKED = frozenset({"url-invalid", "address-blocked", "redirect", "content-type
                      "headers-too-large", "unframed", "request-limit"})
 
 
-MAX_RETRY_AFTER = 31_622_400            # 366 days; robots_store.MAX_BACKOFF is the same number
-
-
 def parse_retry_after(value: object, now: float | None = None) -> int | None:
     """Seconds a `Retry-After` header asks for: a non-negative whole number, or an HTTP date counted from `now`
     (default: the wall clock) and rounded UP to a whole second, so the wait never ends before the date. Anything else
     (empty, negative, a sign, a fraction, text, a date that cannot be read or lies in the past) is None, and so is a value
-    longer than 64 characters. A value above MAX_RETRY_AFTER (366 days) is MAX_RETRY_AFTER: a host that asks for more than
-    a year is left alone for a year, and never asked again after a shorter wait than it asked for."""
+    longer than 64 characters. The number is NEVER cut: a wait too large to be recorded is the caller's to hold (see
+    robots_store.record_backoff), not this function's to shorten."""
     if not isinstance(value, str) or not value.strip() or len(value) > 64 or not value.isascii():
         return None
     text = value.strip()
     if text.isdigit():
-        return min(int(text), MAX_RETRY_AFTER)
+        return int(text)
     try:
         when = parsedate_to_datetime(text)
     except (TypeError, ValueError, IndexError):
@@ -80,7 +77,7 @@ def parse_retry_after(value: object, now: float | None = None) -> int | None:
     if when is None or when.tzinfo is None:
         return None
     seconds = when.timestamp() - (time.time() if now is None else now)
-    return min(math.ceil(seconds), MAX_RETRY_AFTER) if seconds > 0 else None
+    return math.ceil(seconds) if seconds > 0 else None
 
 
 class StaticFetchError(Exception):
@@ -89,7 +86,7 @@ class StaticFetchError(Exception):
     `status` is the HTTP status when the server answered one. `detail` is a short value that passed a strict check (for
     a redirect: the target's domain name, nothing of its path or query; for address-blocked: `too-many-<n>` with the
     number of addresses the name resolved to, or `not-public`) or "". `retry_after` is the number of seconds a 429 asked
-    the client to wait (from the `Retry-After` header, up to MAX_RETRY_AFTER), or None.
+    the client to wait (from the `Retry-After` header, never cut), or None.
     """
 
     def __init__(self, reason: str, status: int | None = None, detail: str = "", retry_after: int | None = None) -> None:
