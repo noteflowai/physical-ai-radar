@@ -30,6 +30,7 @@ from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefi
 from .fetch import baseline_items, fetch_all
 from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
 from .render import chart_title, inject_readme, update_index, write_daily, write_latest
+from .robots_store import RobotsStore
 from .site import write_site
 
 HISTORY_PATH = ROOT / "radar" / "history.json"
@@ -144,7 +145,7 @@ def rotate_baseline(items: list[Any], day: str, take: int = 6) -> list[Any]:
     return ordered[:take]
 
 
-def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[str, Any]:
+def build_context(config: Config, offline: bool, limit: int, day: str, robots_store: Any = None) -> dict[str, Any]:
     reference = datetime.fromisoformat(day).date()
     generated = now_iso()
     lookback = int(config.sources.get("arxiv", {}).get("lookback_days", 3))
@@ -154,7 +155,7 @@ def build_context(config: Config, offline: bool, limit: int, day: str) -> dict[s
     earlier = [entry for entry in load_store(ROOT/"radar"/FEED_JSON) if entry["date"] != day]
     told = [entry["title"] for entry in within(earlier, day, repeat_days) if entry["evidence"] != "R"]
     page_state = load_page_state()
-    report = fetch_all(config, offline=offline, reference=reference, page_state=page_state)
+    report = fetch_all(config, offline=offline, reference=reference, page_state=page_state, robots_store=robots_store)
     signals = report.signals or heat.Signals()
     heat_state = heat.next_state(heat.load_state(), signals.stars, day)
     live = deduplicate(heat.apply(enrich(prefilter(report.items, config, reference), config, reference),
@@ -312,7 +313,7 @@ def write_charts(config: Config, ctx: dict[str, Any], root: Path) -> None:
 
 
 def run(offline: bool = False, limit: int = 8, day: str | None = None, write_readme: bool = True,
-        out: Path | None = None) -> dict[str, Any]:
+        out: Path | None = None, robots_store: Any = None) -> dict[str, Any]:
     """Generate one day of radar.
 
     `out` redirects every generated file under another directory, so a reader can
@@ -322,7 +323,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     root = Path(out) if out else ROOT
     config = load_config()
     day = day or datetime.now(timezone.utc).date().isoformat()
-    ctx = build_context(config, offline=offline, limit=limit, day=day)
+    ctx = build_context(config, offline=offline, limit=limit, day=day, robots_store=robots_store)
 
     write_charts(config, ctx, root)
     written: list[Path] = write_daily(config, ctx, root) + write_site(config, ctx, root)
@@ -525,6 +526,13 @@ def page_watch_observe_dir() -> Path:
     return Path(base) / "page-watch-observe"
 
 
+def robots_state_dir() -> Path:
+    """Where the robots.txt answers kept between runs live (outside the repository, private)."""
+    base = os.environ.get("PAIRADAR_STATE_DIR") or os.path.join(
+        os.environ.get("XDG_STATE_HOME") or os.path.expanduser("~/.local/state"), "pairadar")
+    return Path(base) / "robots-state"
+
+
 def write_page_watch_observation(observations: list[dict[str, Any]] | None, day: str,
                                  directory: Path | None = None) -> Path | None:
     """What each static source showed this run, outside the repository (the radar commits what it writes there).
@@ -571,9 +579,12 @@ def main(argv: list[str] | None = None) -> int:
     # (status "error"), so the objective flags the failed run instead of waiting 72h for staleness.
     reporting = not args.offline and args.out is None
     day = args.day or datetime.now(timezone.utc).date().isoformat()
+    # The static sources' robots.txt answers are kept between runs (a production round writes them; an --out round only
+    # reads them, as it never writes to the state directory). Offline there is nothing to ask and nothing to keep.
+    store = None if args.offline else RobotsStore(robots_state_dir(), writable=reporting)
     try:
         ctx = run(offline=args.offline, limit=args.limit, day=args.day,
-                  write_readme=not args.no_readme, out=args.out)
+                  write_readme=not args.no_readme, out=args.out, robots_store=store)
     except BaseException:
         if reporting:
             write_page_watch_evidence(None, day, error=True)

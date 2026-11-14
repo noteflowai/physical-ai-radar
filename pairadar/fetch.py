@@ -1169,6 +1169,32 @@ def _watch_one(entry: dict[str, Any], reply: dict[str, Any], previous: dict[str,
     return items, state, True
 
 
+class _StaticRobots(dict):
+    """The per-run robots.txt answers of the static sources, with the optional record kept between runs (robots_store)."""
+
+    def __init__(self, store: Any = None) -> None:
+        super().__init__()
+        self.store = store
+
+
+def _remembered_robots(cache: Any, origin: str) -> tuple[str, Any] | None:
+    """What an earlier run left for this origin, as the same pair `_static_robots` caches; None when there is nothing
+    fresh and usable (then the host is asked). A cached robots.txt that cannot be parsed again is not used."""
+    store = getattr(cache, "store", None)
+    remembered = store.lookup(origin) if store is not None else None
+    if remembered is None:
+        return None
+    if remembered[0] == "backoff":
+        return "unreadable", f"{remembered[1]}:backoff"          # asked recently and told to wait: do not ask again yet
+    body = remembered[1]
+    if body is None:
+        return "rules", robots_rules.Rules()
+    try:
+        return "rules", robots_rules.parse(body, ROBOTS_TOKEN)
+    except (UnicodeDecodeError, robots_rules.RobotsUnsupported):
+        return None
+
+
 def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[str, Any],
                    budget: static_fetch.Budget) -> tuple[str, str]:
     """("allowed" | "disallowed" | "unreadable", reason) for a static source, read through the same fetcher.
@@ -1179,9 +1205,16 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
     HTML page, a truncated or oversized file, a refused address, a timeout -- is "unreadable", and an unreadable
     robots.txt allows nothing this run. A result that is a fact about the origin is cached per run; one that is only
     this source running out of budget is not.
+
+    Between runs (`cache.store`, only in a production round): a robots.txt read in the last 24 hours is not asked for
+    again, and a host that answered 429 is not asked again until its `Retry-After` (six hours when it gave none). An
+    answer that could not be read is never replaced by an older one.
     """
     origin = static_fetch.parse_url(url).origin
     cached = cache.get(origin)
+    store = getattr(cache, "store", None)
+    if cached is None:
+        cached = _remembered_robots(cache, origin)
     if cached is None:
         try:
             page = fetcher.get(origin + "/robots.txt", budget, kinds=static_fetch.TEXT_TYPES,
@@ -1189,13 +1222,21 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
         except static_fetch.StaticFetchError as exc:
             if exc.reason in ("http-404", "http-410"):
                 cached = ("rules", robots_rules.Rules())
+                if store is not None:
+                    store.record_rules(origin, None)
             elif exc.reason in ("budget", "request-limit", "timeout"):
                 return "unreadable", exc.reason
             else:
-                cached = ("unreadable", exc.reason)
+                cached = ("unreadable", f"{exc.reason}:{exc.detail}" if exc.reason == "address-blocked" and exc.detail
+                          else exc.reason)
+                if store is not None and exc.reason == "http-429":
+                    store.record_backoff(origin, "http-429", exc.retry_after)
         else:
             try:
-                cached = ("rules", robots_rules.parse(page.body.decode("utf-8"), ROBOTS_TOKEN))
+                text = page.body.decode("utf-8")
+                cached = ("rules", robots_rules.parse(text, ROBOTS_TOKEN))
+                if store is not None:
+                    store.record_rules(origin, text)
             except (UnicodeDecodeError, robots_rules.RobotsUnsupported):
                 cached = ("unreadable", "robots-unsupported")
         cache[origin] = cached
@@ -1331,7 +1372,7 @@ def _watch_static(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, ro
 
 
 def fetch_page_watch(config: Config, reference: date | None = None,
-                     state: dict[str, Any] | None = None) -> PageWatchResult:
+                     state: dict[str, Any] | None = None, robots_store: Any = None) -> PageWatchResult:
     """Watch official pages that have no feed, through the loopback Firecrawl only.
 
     For each entry: robots.txt is checked, then `POST {endpoint}/v2/scrape` asks for
@@ -1387,7 +1428,7 @@ def fetch_page_watch(config: Config, reference: date | None = None,
         result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
     robots: dict[str, Any] = {}
-    static_robots: dict[str, Any] = {}
+    static_robots = _StaticRobots(robots_store)
     fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
     for index, entry in enumerate(entries):
@@ -1537,11 +1578,12 @@ class FetchReport:
 
 
 def fetch_all(config: Config, offline: bool = False, reference: date | None = None,
-              page_state: dict[str, Any] | None = None) -> FetchReport:
+              page_state: dict[str, Any] | None = None, robots_store: Any = None) -> FetchReport:
     """Collect live items. In offline mode nothing is fetched (used by CI and tests).
 
     `page_state` is the page_watch baseline from the last run; the updated one comes
-    back as `report.page_state`.
+    back as `report.page_state`. `robots_store` (a `robots_store.RobotsStore`, only passed by the CLI) keeps the static
+    sources' robots.txt answers between runs; without it every run asks for them.
     """
     if offline:
         print("[fetch] offline mode: skipping network sources")
@@ -1560,7 +1602,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
     report.failed.extend(failed)
-    watched = fetch_page_watch(config, reference, page_state)
+    watched = fetch_page_watch(config, reference, page_state, robots_store)
     report.items.extend(watched.items)
     report.attempted.extend(watched.attempted)
     report.page_failed.extend([*watched.failed, *watched.robots_skipped])
