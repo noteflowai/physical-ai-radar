@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16205" rel="noopener" target="_blank">QVS-LIVO RiskMap: Health- and Information-Aware View Selection for Multi-Camera LIVO and Off-Road Risk Mapping</a></h3>
 <p class="figure"><strong>43.3%</strong><span class="context">“It reduced error by 43.3% relative to FAST-LIO2”</span></p><p class="chips"><span class="chip">60 ms</span><span class="chip">9.94 Hz</span><span class="chip">2.00 Hz</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> オフロードで多カメラ LIVO を組むなら、全視点を一律に融合せず信頼度で選ぶ設計を検討する価値がある。著者の自己報告では FAST-LIO2 比で誤差 43.3% 減、グローバルマップを含む出力は 9.94 Hz と 2.00 Hz だが、閉ループ走行の結果はページにない。</p>
 <p class="excerpt">Multi-camera observations in off-road environments vary significantly in reliability, posing challenges when complementing degraded geometric constraints.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.15020" rel="noopener" target="_blank">Genie Sim Benchmark: Real-to-Sim Fidelity and Evaluation</a></h3>
-<p class="why">査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Genie Sim のスコアで方策を比べる前に、忠実度の数字を待ちたい。このプレプリントは実環境とシミュレーションを対にしたタスクとシステム同定で検証したとするが、両者の一致度を示す数値はページに引かれていない。</p>
 <p class="excerpt">We evaluate Genie Sim Benchmark through paired real-simulation tasks and complementary system-identification studies.</p>
 <ul class="signals"><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.17163" rel="noopener" target="_blank">UAV-Flow++: A Unified Suite for Benchmarking and Learning Language-Guided UAV Flight</a></h3>
 <p class="figure"><strong>75.58%</strong><span class="context">“mean success rate of 75.58%”</span></p><p class="chips"><span class="chip">93.16%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ドローンに言語指示を載せるチームには、経路計画ではなく対象物を基準にした手薄な近距離機動を扱う点が要注目だ。著者報告の平均成功率は 75.58%、事後学習で 93.16% に上がるが、シミュレーションか実飛行かはページから読み取れない。</p>
 <p class="excerpt">Language-guided UAV navigation has largely focused on long-horizon route planning, leaving short-range, object-relative flight maneuvers underexplored.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla/" rel="noopener" target="_blank">Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Jetson AGX Orin の限られた計算資源と電力で複数のネットワークを回すチームには、DLA 推論の公式な手順が加わった。ただし速度や電力の数値はページになく、ネットワークを DLA に移す前に自分のモデルで測るべきだ。</p>
 <p class="excerpt">AI applications at the edge often need to run multiple neural networks within limited compute and power budgets.</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-13</span>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter/" rel="noopener" target="_blank">Adapt Human Motion for Robots with NVIDIA SOMA Retargeter</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人間のデモからヒューマノイドの動作データを作るチームには NVIDIA 公式のリターゲティング手段が加わる。ただ抜粋は人間の動作が役立つ理由までで、数値も対応機体も示されていないので、自分の機体で試してからデータパイプラインに入れたい。</p>
 <p class="excerpt">Human motion offers roboticists a great starting point for teaching humanoid robots how to move. A human demonstration captures the coordination and timing...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-13</span>
@@ -173,7 +173,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/academic/nhzldlwI6rJVyXIl.html" rel="noopener" target="_blank">40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> この二次報道で確かめられるのは、西湖大学が世界モデル研究センターを設けたことと、この分野にスタートアップが既に多いことだけだ。「概念世界モデル」の仕組みや評価の詳細はページになく、候補に挙げる前にチーム自身の発表を確認すべきだ。</p>
 <p class="excerpt">西湖世界模型研究中心成立，施一公亲自揭牌。世界模型赛道已经不缺创业公司。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-13</span>
@@ -187,7 +187,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-moon-rover-promise" rel="noopener" target="_blank">Video Friday: NASA PROMISEs a New Moon Rover</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> この二次報道が伝えるのは、NASA が原子力駆動のローバーを月の南極に送り、月面基地計画の基礎ミッションとする計画だ。購入できる製品ではないので、極限環境での電源選定の参考にはなっても、サプライチェーンの兆候とは読めない。</p>
 <p class="excerpt">NASA will send a nuclear-powered rover called PROMISE (Polar Rover for Observation, Mapping, and In-Situ Exploration, depicted in the rendering) to the Moon’s South Pole as a foundational mission in the Moon Base Program.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-13</span>
@@ -201,7 +201,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya/" rel="noopener" target="_blank">Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelskaya</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 安全が重要な現場にロボットを入れるチームには、トゥエンテ大学の研究者が信頼性の高い運用を語るこの対談が参考になる。ただ研究ではなく対談で、安全性の論証に引ける手法や結果はページに示されていない。</p>
 <p class="excerpt">Claire chatted to Daniela Shchegelskaya from the University of Twente about getting robots to operate reliably in safety-critical environments.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>

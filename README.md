@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **QVS-LIVO RiskMap** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-2. **Genie Sim Benchmark** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **UAV-Flow++** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — 一手官方发布；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-7. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+1. **QVS-LIVO RiskMap** — `AI 起草` 越野场景下做多相机 LIVO 的团队，可以考虑按各相机的可靠性取舍视角，而不是一律融合；这篇预印本自报误差比 FAST-LIO2 低 43.3%，报告的输出频率为 9.94 Hz 和 2.00 Hz（含全局地图），但页面没有闭环行驶结果。
+2. **Genie Sim Benchmark** — `AI 起草` 想用 Genie Sim 给策略排序的团队，先等保真度数据：这篇预印本称用真机与仿真配对任务和系统辨识研究做评估，但页面没有引出任何说明仿真与真机吻合程度的数字。
+3. **UAV-Flow++** — `AI 起草` 给无人机加语言指令的团队可以留意：这篇预印本针对的是近距离、相对目标物的机动而非航线规划，自报平均成功率 75.58%，后训练后升至 93.16%，但页面没说明这些数字来自仿真还是实飞。
+4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — `AI 起草` 在 Jetson AGX Orin 上要在有限算力和功耗内跑多个网络的团队，多了一条官方给出的 DLA 推理路径，但页面没有速度或功耗数据，把网络迁到 DLA 之前要先用自己的模型实测。
+5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — `AI 起草` 用人类示范给人形机器人做动作数据的团队，多了一个 NVIDIA 官方的重定向工具，但摘录只讲人类动作为何有用，没有数据，也没说适配哪些机器人，先在自己的本体上验证再接入数据管线。
+6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — `AI 起草` 这篇二手报道能确认的只是西湖大学新设了世界模型研究中心、这条赛道已不缺创业公司；页面看不到「概念世界模型」的机制和评测细节，列入候选之前应先核对团队自己的发布。
+7. **Video Friday** — `AI 起草` 这篇二手报道讲的是 NASA 计划把一台核动力月球车送往月球南极，作为月球基地计划的奠基任务；它不是可采购的产品，可作极端环境下能源选型的参照，不构成供应链信号。
+8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — `AI 起草` 准备在安全关键场所部署机器人的团队，可以听听这期与特文特大学研究者谈可靠运行的访谈，但它是对谈而非研究，页面没有给出可以写进安全论证的方法或结果。
 
 </details>
 
