@@ -23,7 +23,7 @@ from pairadar import cli, fetch, health
 
 ROOT = Path(__file__).resolve().parent.parent
 DAY = "2026-10-21"
-STATIC_IDS = ["physical-intelligence", "unitree"]
+STATIC_IDS = ["1x", "figure", "physical-intelligence", "unitree"]
 
 DRIVER = r'''
 import json, socket, sys, time
@@ -53,6 +53,9 @@ FEED = (b'<?xml version="1.0"?><rss><channel><item><title>A humanoid robot learn
 fetch.http_get = lambda url, *args, **kwargs: FEED
 
 LISTING = "[Figure ships F.04](https://www.figure.ai/news/f04)\nOct 20, 2026\n"
+# figure and 1x are read with the static fetcher now, so the scenarios that need a page answered by Firecrawl use a standards page
+STANDARD = "https://www.iso.org/standard/91469.html"
+STANDARD_TEXT = "# ISO 25785-1\nStatus: under development\nStage: committee draft\n"
 
 def page(markdown, status=200):
     return {"success": True, "data": {"markdown": markdown, "metadata": {"statusCode": status}}}
@@ -64,12 +67,12 @@ def firecrawl(endpoint, path, body, timeout):
     if scenario == "raises":
         raise RuntimeError("unexpected failure inside the run")
     if url.endswith("/robots.txt"):
-        if scenario == "one-ok" and "1x.tech" in url:
+        if scenario == "one-ok" and "eur-lex" in url:
             return {"success": True, "data": {"rawHtml": "User-agent: *\nDisallow: /\n",
                                               "metadata": {"statusCode": 200}}}
         return page("", status=404)
-    if scenario in ("one-ok", "writer-raises") and url == "https://www.figure.ai/news":
-        return page(LISTING)
+    if scenario in ("one-ok", "writer-raises") and url == STANDARD:
+        return page(STANDARD_TEXT)
     return {"success": False, "code": "SCRAPE_DNS_RESOLUTION_ERROR", "error": "DNS"}
 
 fetch.firecrawl_post = firecrawl
@@ -202,13 +205,14 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertExit0(done)
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("ok", 1))
-        self.assertEqual(record["sources_robots_skipped"], ["1x"])
-        self.assertNotIn("figure", record["sources_failed"])
-        self.assertNotIn("1x", record["sources_failed"])
+        self.assertEqual(record["sources_robots_skipped"], ["watch-eu-machinery-regulation"])
+        self.assertNotIn("watch-iso-25785-1", record["sources_failed"])
+        self.assertNotIn("watch-eu-machinery-regulation", record["sources_failed"])
         baseline = json.loads((self.repo / "radar" / "page-watch.json").read_text())
         self.assertEqual(baseline["schema"], "pairadar-page-watch-baseline-2")
-        self.assertEqual([link["url"] for link in baseline["sources"]["figure"]["links"]],
-                         ["https://www.figure.ai/news/f04"])
+        state = baseline["sources"]["watch-iso-25785-1"]
+        self.assertTrue(state["digest"] and state["lines"])
+        self.assertNotIn("extractor", state)                                              # read through Firecrawl, not the static fetcher
         self.assertEqual(list((self.repo / "radar").glob(".page-watch.json.*")), [], "atomic write")
 
     def test_a_run_that_raises_leaves_an_error_record(self):
@@ -230,7 +234,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertExit0(done)
         self.assertIn("unreadable", done.stdout)
         baseline = json.loads((self.repo / "radar" / "page-watch.json").read_text())
-        self.assertIn("figure", baseline["sources"])
+        self.assertIn("watch-iso-25785-1", baseline["sources"])
         self.assertEqual(self.record()["status"], "ok")
 
 
