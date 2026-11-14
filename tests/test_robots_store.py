@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tests"))
 
-from pairadar import cli, fetch, robots_store, static_fetch  # noqa: E402
+from pairadar import cli, fetch, robots_rules, robots_store, static_fetch  # noqa: E402
 from pairadar.config import Config  # noqa: E402
 from static_fixture import HOST, Reply, TlsTestCase  # noqa: E402
 from test_page_watch_static import LISTING, ROBOTS_OK, V1, sources  # noqa: E402
@@ -52,16 +52,24 @@ def private_dir(parent: Path) -> Path:
 
 
 class RetryAfterTests(unittest.TestCase):
-    def test_a_whole_number_of_seconds_is_read_and_capped_at_a_day(self):
-        for value, expected in (("0", 0), ("30", 30), (" 120 ", 120), ("86400", 86400), ("999999999", 86400)):
+    def test_a_whole_number_of_seconds_is_read_and_not_shortened_up_to_the_largest_wait_that_can_be_kept(self):
+        most = static_fetch.MAX_RETRY_AFTER
+        for value, expected in (("0", 0), ("30", 30), (" 120 ", 120), ("86400", 86400), ("172800", 172800),
+                                (str(most), most), (str(most + 1), most), ("9" * 60, most)):
             with self.subTest(value):
                 self.assertEqual(static_fetch.parse_retry_after(value, now=0), expected)
 
-    def test_an_http_date_is_counted_from_now_and_a_past_date_is_nothing(self):
+    def test_the_largest_wait_that_is_parsed_is_the_largest_that_is_recorded(self):
+        self.assertEqual(timedelta(seconds=static_fetch.MAX_RETRY_AFTER), robots_store.MAX_BACKOFF)
+        self.assertEqual(robots_store.MAX_BACKOFF, timedelta(days=366))
+
+    def test_an_http_date_is_counted_from_now_rounded_up_and_a_past_date_is_nothing(self):
         now = datetime(2026, 11, 14, 0, 0, tzinfo=timezone.utc).timestamp()
         self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 00:05:00 GMT", now=now), 300)
         self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 12:00:00 GMT", now=now), 12 * 3600)
-        self.assertEqual(static_fetch.parse_retry_after("Mon, 16 Nov 2026 00:00:00 GMT", now=now), 86400)
+        self.assertEqual(static_fetch.parse_retry_after("Mon, 16 Nov 2026 00:00:00 GMT", now=now), 2 * 86400)   # not cut to a day
+        self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 00:05:00 GMT", now=now + 0.4), 300)    # 299.6 s: up
+        self.assertEqual(static_fetch.parse_retry_after("Sat, 14 Nov 2026 00:05:00 GMT", now=now - 0.4), 301)    # 300.4 s: up
         self.assertIsNone(static_fetch.parse_retry_after("Fri, 13 Nov 2026 23:00:00 GMT", now=now))
 
     def test_anything_else_is_nothing(self):
@@ -108,17 +116,24 @@ class StoreTests(unittest.TestCase):
             self.clock.now = T0 + timedelta(hours=hours, minutes=-1 if hours == 5 else 0)
             self.assertEqual(self.store().lookup(ORIGIN), expected, hours)
 
-    def test_the_wait_has_a_floor_and_a_cap(self):
+    def test_the_wait_has_a_floor_and_is_never_shortened_below_what_was_asked(self):
         self.store().record_backoff(ORIGIN, "http-429", 0)
         self.clock.advance(seconds=59)
         self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))          # at least a minute
         self.clock.advance(seconds=2)
         self.assertIsNone(self.store().lookup(ORIGIN))
         self.clock.now = T0
-        self.store().record_backoff(ORIGIN, "http-429", 10 ** 9)
-        self.clock.advance(hours=23, minutes=59)
-        self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))          # at most a day
+        self.store().record_backoff(ORIGIN, "http-429", 172_800)                          # two days asked for: two days kept
+        self.clock.advance(hours=47, minutes=59)
+        self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))
         self.clock.advance(minutes=2)
+        self.assertIsNone(self.store().lookup(ORIGIN))
+
+    def test_a_wait_longer_than_the_largest_that_can_be_kept_is_kept_at_that_largest_never_cut_to_hours(self):
+        self.store().record_backoff(ORIGIN, "http-429", 10 * 365 * 86400)
+        self.clock.advance(days=365, hours=23)
+        self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))
+        self.clock.advance(days=1)
         self.assertIsNone(self.store().lookup(ORIGIN))
 
     def test_only_a_429_is_ever_remembered_as_a_wait(self):
@@ -132,6 +147,16 @@ class StoreTests(unittest.TestCase):
         self.assertIsNone(self.store().lookup(ORIGIN))
         self.clock.now = T0 - timedelta(minutes=4)                                     # within the clock skew allowed
         self.assertEqual(self.store().lookup(ORIGIN), ("rules", ROBOTS_TEXT))
+
+    def test_a_wait_recorded_in_the_future_is_never_used(self):
+        # 04 (M10): the same rule as for a copy of robots.txt; a wait that claims to start later than the clock allows is
+        # not believed, so the host is asked, which is what happens without this module.
+        self.clock.now = T0 + timedelta(hours=1)
+        self.store().record_backoff(ORIGIN, "http-429", 7200)
+        self.clock.now = T0
+        self.assertIsNone(self.store().lookup(ORIGIN))
+        self.clock.now = T0 + timedelta(hours=1) - timedelta(minutes=4)                 # within the clock skew allowed
+        self.assertEqual(self.store().lookup(ORIGIN), ("backoff", "http-429"))
 
     def test_a_read_only_store_remembers_nothing_and_writes_nothing(self):
         store = self.store(writable=False)
@@ -155,14 +180,20 @@ class StoreTests(unittest.TestCase):
 
     def test_an_unusable_file_is_ignored_whole_so_the_host_is_asked(self):
         good = {"kind": "rules", "fetched_at": T0.isoformat(), "body": ROBOTS_TEXT}
+        control = json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: good}})
         cases = {
             "not json": "{broken",
             "an empty file": "",
-            "repeated key": '{"schema": "%s", "schema": "%s", "origins": {}}' % (robots_store.SCHEMA, robots_store.SCHEMA),
+            # each case below holds a good entry for ORIGIN, so only the named defect can make the file unusable
+            "repeated key": '{"schema": "%s", "schema": "%s", "origins": %s}' % (
+                robots_store.SCHEMA, robots_store.SCHEMA, json.dumps({ORIGIN: good})),
             "wrong schema": json.dumps({"schema": "other", "origins": {ORIGIN: good}}),
             "extra top-level key": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: good}, "x": 1}),
             "origins is a list": json.dumps({"schema": robots_store.SCHEMA, "origins": []}),
-            "an origin that is not a host": json.dumps({"schema": robots_store.SCHEMA, "origins": {"http://a.test": good}}),
+            "an origin that is not a host": json.dumps({"schema": robots_store.SCHEMA,
+                                                        "origins": {ORIGIN: good, "http://a.test": good}}),
+            "more origins than the file may hold": json.dumps({"schema": robots_store.SCHEMA, "origins": {
+                ORIGIN: good, **{f"https://h{index}.test": good for index in range(robots_store.MAX_ORIGINS)}}}),
             "an unknown kind": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {**good, "kind": "x"}}}),
             "an extra field in an entry": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {**good, "x": 1}}}),
             "a time without a zone": json.dumps({"schema": robots_store.SCHEMA,
@@ -173,17 +204,21 @@ class StoreTests(unittest.TestCase):
             "a backoff for a reason that is not a 429": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {
                 "kind": "backoff", "reason": "http-403", "recorded_at": T0.isoformat(),
                 "until": (T0 + timedelta(hours=1)).isoformat()}}}),
-            "a backoff longer than a day": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {
+            "a backoff longer than the largest wait": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {
                 "kind": "backoff", "reason": "http-429", "recorded_at": T0.isoformat(),
-                "until": (T0 + timedelta(days=3)).isoformat()}}}),
+                "until": (T0 + robots_store.MAX_BACKOFF + timedelta(seconds=1)).isoformat()}}}),
             "a backoff that ends before it starts": json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {
                 "kind": "backoff", "reason": "http-429", "recorded_at": T0.isoformat(),
                 "until": (T0 - timedelta(hours=1)).isoformat()}}}),
-            "a non-finite number": '{"schema": "%s", "origins": {}, "n": NaN}' % robots_store.SCHEMA,
+            "a non-finite number": '{"schema": "%s", "origins": {%s: %s}, "n": NaN}' % (
+                robots_store.SCHEMA, json.dumps(ORIGIN), json.dumps(good)),
         }
+        private_dir(self.root)
+        self.store().path.write_text(control)
+        self.store().path.chmod(0o600)
+        self.assertEqual(self.store().lookup(ORIGIN), ("rules", ROBOTS_TEXT))               # the control file is accepted
         for name, text in cases.items():
             with self.subTest(name):
-                private_dir(self.root) if not self.directory.exists() else None
                 self.store().path.write_text(text)
                 self.store().path.chmod(0o600)
                 self.assertIsNone(self.store().lookup(ORIGIN))
@@ -213,6 +248,111 @@ class StoreTests(unittest.TestCase):
             self.store().record_rules(ORIGIN, ROBOTS_TEXT)
         self.assertEqual(list(self.directory.iterdir()), [])
         self.assertIn("robots state not written", out.getvalue())
+
+    # -- 01 F1: the directory is checked on reading too, and what is checked is what is used
+    def test_a_directory_that_is_a_link_is_neither_read_nor_written(self):
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        real = self.root / "real-state"
+        self.directory.rename(real)
+        self.directory.symlink_to(real)
+        self.assertIsNone(self.store().lookup(ORIGIN))                                   # 01's counter-example returned the rules
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            self.store().record_backoff(ORIGIN, "http-429", 600)
+        self.assertIn("robots state not written", out.getvalue())
+        self.assertEqual(json.loads((real / robots_store.FILE).read_text())["origins"][ORIGIN]["kind"], "rules")   # untouched
+
+    def test_a_directory_that_is_not_private_is_not_read_even_when_its_file_is(self):
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        self.assertEqual(self.store().lookup(ORIGIN), ("rules", ROBOTS_TEXT))
+        for mode in (0o755, 0o750, 0o701):
+            with self.subTest(oct(mode)):
+                self.directory.chmod(mode)
+                self.assertIsNone(self.store().lookup(ORIGIN))
+        self.directory.chmod(0o700)
+        self.assertEqual(self.store().lookup(ORIGIN), ("rules", ROBOTS_TEXT))
+
+    def test_a_directory_that_is_replaced_while_it_is_read_does_not_redirect_the_read(self):
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        attacker = self.root / "attacker"
+        attacker.mkdir(mode=0o700)
+        (attacker / robots_store.FILE).write_text(json.dumps({"schema": robots_store.SCHEMA, "origins": {ORIGIN: {
+            "kind": "rules", "fetched_at": T0.isoformat(), "body": "User-agent: *\nDisallow: /\n"}}}))
+        (attacker / robots_store.FILE).chmod(0o600)
+        store, original = self.store(), robots_store.RobotsStore._open_directory
+
+        def check_then_swap(instance, **kwargs):
+            descriptor = original(instance, **kwargs)                                    # the directory was just checked
+            os.rename(self.directory, self.root / "moved")
+            os.symlink(attacker, self.directory)
+            return descriptor
+        with patch.object(robots_store.RobotsStore, "_open_directory", check_then_swap):
+            self.assertEqual(store.lookup(ORIGIN), ("rules", ROBOTS_TEXT))               # what the checked directory held
+
+    def test_a_directory_that_is_replaced_during_a_write_does_not_redirect_the_write(self):
+        attacker = self.root / "attacker"
+        attacker.mkdir(mode=0o700)
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        moved = self.root / "moved"
+        real_replace = os.replace
+
+        def swap_then_replace(*args, **kwargs):
+            os.rename(self.directory, moved)                                              # after the directory was checked
+            os.symlink(attacker, self.directory)
+            return real_replace(*args, **kwargs)
+        with patch.object(robots_store.os, "replace", swap_then_replace):
+            self.store().record_backoff(ORIGIN, "http-429", 600)
+        self.assertEqual(list(attacker.iterdir()), [])                                    # nothing went through the new path
+        self.assertEqual(json.loads((moved / robots_store.FILE).read_text())["origins"][ORIGIN]["kind"], "backoff")
+
+    # -- 01 F4: file, directory entry and the chain above it are synced, on every write
+    def spy_syncs(self):
+        real_fsync, real_replace, log = os.fsync, os.replace, []
+
+        def fsync(descriptor):
+            log.append(os.readlink(f"/proc/self/fd/{descriptor}"))
+            return real_fsync(descriptor)
+
+        def replace(*args, **kwargs):
+            log.append("REPLACE")
+            return real_replace(*args, **kwargs)
+        stack = contextlib.ExitStack()
+        stack.enter_context(patch.object(robots_store.os, "fsync", fsync))
+        stack.enter_context(patch.object(robots_store.os, "replace", replace))
+        self.addCleanup(stack.close)
+        return log
+
+    def test_the_file_the_directory_entry_and_every_new_directory_above_are_synced_in_that_order(self):
+        self.directory = self.root / "a" / "b" / "state"
+        log = self.spy_syncs()
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)
+        file_sync = next(i for i, entry in enumerate(log) if entry.startswith(str(self.directory / ".robots-")))
+        replaced = log.index("REPLACE")
+        directory_sync = next(i for i, entry in enumerate(log) if entry == str(self.directory) and i > replaced)
+        chain = [next(i for i, entry in enumerate(log) if entry == str(path) and i > directory_sync)
+                 for path in (self.root / "a" / "b", self.root / "a", self.root)]
+        self.assertLess(file_sync, replaced)
+        self.assertLess(replaced, directory_sync)
+        self.assertEqual(chain, sorted(chain))
+
+    def test_a_chain_that_could_not_be_synced_is_synced_again_by_the_next_write(self):
+        self.directory = self.root / "a" / "b" / "state"
+        real_fsync = os.fsync
+        broken = {"on": True}
+
+        def fsync(descriptor):
+            if broken["on"] and os.readlink(f"/proc/self/fd/{descriptor}") == str(self.root / "a"):
+                raise OSError(5, "I/O error")
+            return real_fsync(descriptor)
+        with patch.object(robots_store.os, "fsync", fsync), contextlib.redirect_stdout(io.StringIO()) as out:
+            store = self.store()
+            store.record_rules(ORIGIN, ROBOTS_TEXT)
+        self.assertIn("robots state not written", out.getvalue())                         # it does not claim the wait was saved
+        self.assertIsNone(store.lookup(ORIGIN))                                            # and it does not use what it did not save
+        broken["on"] = False
+        log = self.spy_syncs()
+        self.store().record_rules(ORIGIN, ROBOTS_TEXT)                                     # the directories now exist
+        for path in (self.directory, self.root / "a" / "b", self.root / "a", self.root):
+            self.assertIn(str(path), log, path)
 
     def test_a_write_that_fails_is_reported_and_changes_nothing_else(self):
         with patch.object(robots_store.os, "replace", side_effect=OSError("disk")), \
@@ -378,6 +518,138 @@ class RunTests(TlsTestCase):
         self.assertIsNone(self.store().lookup(ORIGIN))                                  # larger than any robots.txt we accept
         _, paths = self.run_once()
         self.assertEqual(paths, ["/robots.txt", "/news"])
+
+
+    def test_a_cached_robots_file_that_does_not_parse_is_not_used_and_never_allows_everything(self):
+        # 04 T2: the earlier test used a body over the size limit, which the store itself refuses; these two are accepted
+        # by the store and refused by the parser, which is the branch that must ask the host and never allow everything.
+        for body in ("User-agent: *\nDisallow: /%zz\n", "User-agent: *\nDisallow: /" + "a" * 2500 + "\n"):
+            with self.subTest(body[:28]):
+                with self.assertRaises(robots_rules.RobotsUnsupported):
+                    robots_rules.parse(body, fetch.ROBOTS_TOKEN)
+                self.setUp()
+                self.run_once()
+                record = json.loads(self.store().path.read_text())
+                record["origins"][ORIGIN]["body"] = body
+                self.store().path.write_text(json.dumps(record))
+                self.store().path.chmod(0o600)
+                self.assertEqual(self.store().lookup(ORIGIN), ("rules", body))               # the store accepts it
+                _, paths = self.run_once()
+                self.assertEqual(paths, ["/robots.txt", "/news"])                            # the host is asked
+
+    # -- 01 F2: a page that answers 429 is a host that asked to be left alone
+    def second_source(self):
+        return {**LISTING, "id": "figure-two", "url": f"https://{HOST}/news-two"}
+
+    def page_429(self, wait="3600"):
+        self.server.serve("/news", Reply(429, "slow down", ctype="text/html", headers={"Retry-After": wait}))
+        self.server.serve("/news-two", Reply(200, V1))
+
+    def test_a_page_that_answers_429_stops_the_next_source_of_that_host_and_the_wait_is_kept(self):
+        self.page_429()
+        first, paths = self.run_once(entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, ["/robots.txt", "/news"])                                    # 01's counter-example asked /news-two too
+        self.assertEqual(first.sources["figure"]["reason"], "http-429")
+        self.assertEqual(first.sources["figure-two"], {"fetcher": "static", "outcome": "unavailable",
+                                                       "reason": "robots-unreadable", "detail": "http-429:backoff"})
+        self.clock.advance(minutes=30)
+        second, paths = self.run_once(entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, [])                                                           # the next round respects it
+        self.assertEqual(second.sources["figure"]["detail"], "http-429:backoff")
+        self.clock.advance(minutes=31)
+        self.server.serve("/news", Reply(200, V1))
+        third, paths = self.run_once()
+        self.assertEqual((paths, third.checked), (["/robots.txt", "/news"], ["figure"]))     # after the wait it asks again
+
+    def test_a_round_that_may_not_write_stops_asking_in_that_round_and_keeps_nothing(self):
+        self.page_429()
+        _, paths = self.run_once(store=self.store(writable=False), entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, ["/robots.txt", "/news"])                                    # the second source is not asked
+        self.assertFalse(self.directory.exists())
+        _, paths = self.run_once(store=self.store(writable=False), entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, ["/robots.txt", "/news"])                                    # nothing was kept: asked again
+        self.run_once(entries=(LISTING, self.second_source()))                              # a production round keeps the wait
+        _, paths = self.run_once(store=self.store(writable=False), entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, [])
+
+    def test_without_a_store_a_page_429_still_stops_the_rest_of_the_round_for_that_host(self):
+        self.page_429()
+        _, paths = self.run_once(store=None, entries=(LISTING, self.second_source()))
+        self.assertEqual(paths, ["/robots.txt", "/news"])
+
+    # -- 01 F3: the wait that was asked for is the wait that is kept
+    def test_a_wait_of_two_days_is_two_days(self):
+        self.server.serve("/robots.txt", Reply(429, "slow down", ctype="text/plain", headers={"Retry-After": "172800"}))
+        self.run_once()
+        self.clock.advance(hours=47, minutes=59)
+        self.assertEqual(self.run_once()[1], [])
+        self.clock.advance(minutes=2)
+        self.server.serve("/robots.txt", ROBOTS_OK)
+        self.assertEqual(self.run_once()[1], ["/robots.txt", "/news"])
+
+
+class WiringTests(unittest.TestCase):
+    """04 T1: the command line decides who may write, and the store reaches the fetcher."""
+
+    def call(self, argv):
+        seen = {}
+
+        def fake_run(**kwargs):
+            seen.update(kwargs)
+            return {"fetch": None, "date": "2026-11-14"}
+        with tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR")) as tmp:
+            with patch.dict(os.environ, {"PAIRADAR_STATE_DIR": tmp}), patch.object(cli, "run", fake_run), \
+                    patch.object(cli, "write_page_watch_evidence"), patch.object(cli, "write_page_watch_observation"), \
+                    patch.object(cli, "degraded", return_value=False), contextlib.redirect_stdout(io.StringIO()):
+                code = cli.main(argv)
+            created = (Path(tmp) / "robots-state").exists()
+            expected = Path(os.path.realpath(tmp)) / "robots-state"
+        return seen, code, created, expected
+
+    def test_an_offline_run_has_no_store(self):
+        seen, code, created, _ = self.call(["--offline"])
+        self.assertEqual(code, 0)
+        self.assertIsNone(seen["robots_store"])
+        self.assertFalse(created)
+
+    def test_an_out_run_reads_and_never_writes(self):
+        with tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR")) as out:
+            seen, code, created, expected = self.call(["--out", out])
+        store = seen["robots_store"]
+        self.assertEqual((code, type(store), store.writable), (0, robots_store.RobotsStore, False))
+        self.assertEqual(Path(os.path.realpath(store.directory)), expected)
+        self.assertFalse(created)                                                              # asking for the store creates nothing
+
+    def test_a_production_run_may_write_the_store_in_the_state_directory(self):
+        seen, code, created, expected = self.call([])
+        store = seen["robots_store"]
+        self.assertEqual((code, type(store), store.writable), (0, robots_store.RobotsStore, True))
+        self.assertEqual(Path(os.path.realpath(store.directory)), expected)
+        self.assertFalse(created)
+
+    def test_the_store_given_to_run_reaches_the_fetcher(self):
+        marker = object()
+        seen = {}
+
+        def fake_fetch_all(*args, **kwargs):
+            seen.update(kwargs)
+            raise RuntimeError("stop here")
+        with tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR")) as tmp, \
+                patch.dict(os.environ, {"PAIRADAR_STATE_DIR": tmp}), patch.object(cli, "fetch_all", fake_fetch_all):
+            with self.assertRaises(RuntimeError):
+                cli.build_context(cli.load_config(), offline=False, limit=8, day="2026-11-14", robots_store=marker)
+        self.assertIs(seen["robots_store"], marker)
+
+    def test_run_gives_the_store_to_the_context(self):
+        marker = object()
+        seen = {}
+
+        def fake_build_context(*args, **kwargs):
+            seen.update(kwargs)
+            raise RuntimeError("stop here")
+        with patch.object(cli, "build_context", fake_build_context), self.assertRaises(RuntimeError):
+            cli.run(offline=False, limit=8, day="2026-11-14", write_readme=False, robots_store=marker)
+        self.assertIs(seen["robots_store"], marker)
 
 
 class AddressCountTests(TlsTestCase):

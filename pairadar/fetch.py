@@ -1207,7 +1207,8 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
     this source running out of budget is not.
 
     Between runs (`cache.store`, only in a production round): a robots.txt read in the last 24 hours is not asked for
-    again, and a host that answered 429 is not asked again until its `Retry-After` (six hours when it gave none). An
+    again, and a host that answered 429 (to its robots.txt or to a page) is not asked again until its `Retry-After`
+    (six hours when it gave none; this run stops asking it in every round, the wait is kept by a production round). An
     answer that could not be read is never replaced by an older one.
     """
     origin = static_fetch.parse_url(url).origin
@@ -1251,6 +1252,17 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
 LINK_DROP_BASE = 6          # a listing needs at least this many links on record before a sudden drop is judged
 
 
+def _page_429(robots: dict[str, Any], url: str, exc: static_fetch.StaticFetchError) -> None:
+    """A page (not its robots.txt) answered 429, so the host asked to be left alone. Whatever else this run does with the
+    origin it stops asking: the per-run answer becomes the same "unreadable, told to wait" a remembered 429 gives, in every
+    round (also one that may not write). A production round also keeps the wait it asked for."""
+    origin = static_fetch.parse_url(url).origin
+    robots[origin] = ("unreadable", "http-429:backoff")
+    store = getattr(robots, "store", None)
+    if store is not None:
+        store.record_backoff(origin, "http-429", exc.retry_after)
+
+
 def _static_read(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, robots: dict[str, Any],
                  previous: dict[str, Any], settings: dict[str, Any], reference: date, max_age: int,
                  limit: float) -> dict[str, Any]:
@@ -1279,6 +1291,8 @@ def _static_read(entry: dict[str, Any], fetcher: static_fetch.StaticFetcher, rob
             return out
         page = fetcher.get(entry["url"], budget)
     except static_fetch.StaticFetchError as exc:
+        if exc.reason == "http-429":                  # only the page itself can get here: a robots.txt 429 is judged above
+            _page_429(robots, entry["url"], exc)
         out.update(outcome="blocked" if exc.blocked else "unavailable", reason=exc.reason, detail=exc.detail,
                    status=exc.status)
         return out
