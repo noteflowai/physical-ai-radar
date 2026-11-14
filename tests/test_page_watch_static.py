@@ -229,7 +229,8 @@ class StaticWatchTests(TlsTestCase):
         self.server.serve("/news", Reply(200, V1))
         result = self.watch(sources(LISTING), factory=factory)
         self.assertEqual(result.sources["figure"],
-                         {"fetcher": "static", "outcome": "unavailable", "reason": "robots-unreadable", "detail": "address-blocked"})
+                         {"fetcher": "static", "outcome": "unavailable", "reason": "robots-unreadable",
+                          "detail": "address-blocked:not-public"})
         self.assertEqual(self.server.accepted, 0)
         direct = factory()
         with self.assertRaises(static_fetch.StaticFetchError) as caught:

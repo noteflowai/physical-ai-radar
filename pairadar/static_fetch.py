@@ -27,6 +27,7 @@ from __future__ import annotations
 import http.client
 import io
 import ipaddress
+import math
 import re
 import socket
 import ssl
@@ -34,6 +35,7 @@ import threading
 import time
 import urllib.parse
 from dataclasses import dataclass
+from email.utils import parsedate_to_datetime
 from typing import Callable, Iterable
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
@@ -57,18 +59,42 @@ BLOCKED = frozenset({"url-invalid", "address-blocked", "redirect", "content-type
                      "headers-too-large", "unframed", "request-limit"})
 
 
+def parse_retry_after(value: object, now: float | None = None) -> int | None:
+    """Seconds a `Retry-After` header asks for: a non-negative whole number, or an HTTP date counted from `now`
+    (default: the wall clock) and rounded UP to a whole second, so the wait never ends before the date. Anything else
+    (empty, negative, a sign, a fraction, text, a date that cannot be read or lies in the past) is None, and so is a value
+    longer than 64 characters. The number is NEVER cut: a wait too large to be recorded is the caller's to hold (see
+    robots_store.record_backoff), not this function's to shorten."""
+    if not isinstance(value, str) or not value.strip() or len(value) > 64 or not value.isascii():
+        return None
+    text = value.strip()
+    if text.isdigit():
+        return int(text)
+    try:
+        when = parsedate_to_datetime(text)
+    except (TypeError, ValueError, IndexError):
+        return None
+    if when is None or when.tzinfo is None:
+        return None
+    seconds = when.timestamp() - (time.time() if now is None else now)
+    return math.ceil(seconds) if seconds > 0 else None
+
+
 class StaticFetchError(Exception):
     """A request that produced no content. `reason` is one fixed code; the message never carries a URL or server text.
 
     `status` is the HTTP status when the server answered one. `detail` is a short value that passed a strict check (for
-    a redirect: the target's domain name, nothing of its path or query) or "".
+    a redirect: the target's domain name, nothing of its path or query; for address-blocked: `too-many-<n>` with the
+    number of addresses the name resolved to, or `not-public`) or "". `retry_after` is the number of seconds a 429 asked
+    the client to wait (from the `Retry-After` header, never cut), or None.
     """
 
-    def __init__(self, reason: str, status: int | None = None, detail: str = "") -> None:
+    def __init__(self, reason: str, status: int | None = None, detail: str = "", retry_after: int | None = None) -> None:
         super().__init__(reason)
         self.reason = reason
         self.status = status
         self.detail = detail
+        self.retry_after = retry_after
 
     @property
     def blocked(self) -> bool:
@@ -328,8 +354,10 @@ class StaticFetcher:
         answers = list(dict.fromkeys(box.get("answers", [])))        # type: ignore[arg-type]
         if not answers:
             raise StaticFetchError("dns-no-ipv4")
-        if len(answers) > MAX_ADDRESSES or not all(self._policy(address) for address in answers):
-            raise StaticFetchError("address-blocked")
+        if len(answers) > MAX_ADDRESSES:
+            raise StaticFetchError("address-blocked", detail=f"too-many-{min(len(answers), 99)}")   # the count, to tell a long answer from a bad one
+        if not all(self._policy(address) for address in answers):
+            raise StaticFetchError("address-blocked", detail="not-public")
         return answers
 
     def _connect(self, host: str, addresses: list[str], budget: Budget) -> tuple[socket.socket, str]:
@@ -418,8 +446,10 @@ class StaticFetcher:
         if 300 <= status < 400:
             raise StaticFetchError("redirect", status, location_host(response.getheader("Location")))
         if status != 200:
-            raise StaticFetchError({403: "http-403", 404: "http-404", 410: "http-410", 429: "http-429"}.get(
-                status, "http-4xx" if 400 <= status < 500 else "http-5xx" if 500 <= status < 600 else "http-other"), status)
+            code = {403: "http-403", 404: "http-404", 410: "http-410", 429: "http-429"}.get(
+                status, "http-4xx" if 400 <= status < 500 else "http-5xx" if 500 <= status < 600 else "http-other")
+            raise StaticFetchError(code, status, retry_after=parse_retry_after(response.getheader("Retry-After"))
+                                   if status == 429 else None)
         ctype, _, params = (response.getheader("Content-Type") or "").partition(";")
         ctype = ctype.strip().lower()
         if ctype not in kinds:

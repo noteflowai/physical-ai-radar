@@ -146,7 +146,9 @@ Rules:
   - Every static source ends a run as `checked`, `observed`, `unavailable`, `blocked` (our policy
     refused: address, redirect, content type or encoding, size, header block, allowance), `robots`
     or `not-attempted` (`budget`, `firecrawl-unavailable`), with one fixed reason code from
-    `static_fetch` (`robots-unreadable` also carries the code of the fetch that failed as `detail`),
+    `static_fetch` (`robots-unreadable` also carries the code of the fetch that failed as `detail`;
+    `address-blocked` adds `:too-many-<n>` with the number of addresses the name resolved to, or `:not-public`;
+    a 429 that is still inside the wait it asked for is `http-429:backoff`),
     never a URL, status text or server message. An unexpected error in one source is that source's
     `internal-error`; the run goes on within its budget, and KeyboardInterrupt and SystemExit pass
     through. The run log carries only the source id and the code. The freshness record gains
@@ -223,6 +225,13 @@ Rules:
 - RSS 1.0 (RDF) feeds are read as well as Atom and RSS 2.0; Nature's journal feeds are
   RSS 1.0, and their "Journal, Published online: date; doi:…" opening is dropped;
 - robots.txt is read once per host per run, before any feed or attention API on that host.
+  For the static page sources a production round also keeps what it read in a private file outside the
+  repository (`$PAIRADAR_STATE_DIR/robots-state/robots-state.json`): a robots.txt that was read is not asked
+  for again for 24 hours (RFC 9309 section 2.4), and a host that answered 429 (to robots.txt or to a page) is not
+  asked again until its `Retry-After` (six hours when it gave none or an unusable one; an HTTP date is rounded
+  up; a wait is never shortened, and one longer than 366 days is held indefinitely, until a person edits the state file). A robots.txt that could not be read is never
+  replaced by an older copy, an expired copy is never used, and a file that is not exactly what the radar
+  wrote is ignored, which means the host is asked. Night and preview rounds read this file and never write it.
   A URL it disallows for `physical-ai-radar` or `*` is not requested, and the feed is
   recorded under `robots_skipped` in `radar/history.json`, never under `failed` (the
   Science Robotics eTOC lives under a disallowed `/action/` and is therefore not a source).
