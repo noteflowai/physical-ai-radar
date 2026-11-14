@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-14",
+  "generated": "2026-11-14 13:36 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.16205": {
+      "zh": "越野场景下做多相机 LIVO 的团队，可以考虑按各相机的可靠性取舍视角，而不是一律融合；这篇预印本自报误差比 FAST-LIO2 低 43.3%，报告的输出频率为 9.94 Hz 和 2.00 Hz（含全局地图），但页面没有闭环行驶结果。",
+      "en": "Off-road teams running multi-camera LIVO may weigh views by reliability instead of fusing them all; this self-reported preprint claims 43.3% lower error than FAST-LIO2 and outputs, including global maps, at 9.94 Hz and 2.00 Hz, but shows no closed-loop driving result.",
+      "ja": "オフロードで多カメラ LIVO を組むなら、全視点を一律に融合せず信頼度で選ぶ設計を検討する価値がある。著者の自己報告では FAST-LIO2 比で誤差 43.3% 減、グローバルマップを含む出力は 9.94 Hz と 2.00 Hz だが、閉ループ走行の結果はページにない。"
+    },
+    "https://arxiv.org/abs/2611.15020": {
+      "zh": "想用 Genie Sim 给策略排序的团队，先等保真度数据：这篇预印本称用真机与仿真配对任务和系统辨识研究做评估，但页面没有引出任何说明仿真与真机吻合程度的数字。",
+      "en": "Hold off ranking policies by Genie Sim scores until fidelity numbers appear: the preprint says it validates through paired real-simulation tasks and system-identification studies, yet the page quotes no figure for how closely simulation tracks reality.",
+      "ja": "Genie Sim のスコアで方策を比べる前に、忠実度の数字を待ちたい。このプレプリントは実環境とシミュレーションを対にしたタスクとシステム同定で検証したとするが、両者の一致度を示す数値はページに引かれていない。"
+    },
+    "https://arxiv.org/abs/2611.17163": {
+      "zh": "给无人机加语言指令的团队可以留意：这篇预印本针对的是近距离、相对目标物的机动而非航线规划，自报平均成功率 75.58%，后训练后升至 93.16%，但页面没说明这些数字来自仿真还是实飞。",
+      "en": "Drone teams adding language commands should note this preprint targets short-range, object-relative maneuvers rather than route planning, self-reporting a 75.58% mean success rate that post-training lifts to 93.16%, though the page does not say whether those come from simulation or real flights.",
+      "ja": "ドローンに言語指示を載せるチームには、経路計画ではなく対象物を基準にした手薄な近距離機動を扱う点が要注目だ。著者報告の平均成功率は 75.58%、事後学習で 93.16% に上がるが、シミュレーションか実飛行かはページから読み取れない。"
+    },
+    "https://developer.nvidia.com/blog/run-native-dla-inference-in-python-on-nvidia-jetson-agx-orin-using-cudla": {
+      "zh": "在 Jetson AGX Orin 上要在有限算力和功耗内跑多个网络的团队，多了一条官方给出的 DLA 推理路径，但页面没有速度或功耗数据，把网络迁到 DLA 之前要先用自己的模型实测。",
+      "en": "Orin teams fitting several networks into tight compute and power budgets now have a first-party path onto the DLA, but the page quotes no speed or power figures, so measure your own models before reassigning any network to it.",
+      "ja": "Jetson AGX Orin の限られた計算資源と電力で複数のネットワークを回すチームには、DLA 推論の公式な手順が加わった。ただし速度や電力の数値はページになく、ネットワークを DLA に移す前に自分のモデルで測るべきだ。"
+    },
+    "https://developer.nvidia.com/blog/adapt-human-motion-for-robots-with-nvidia-soma-retargeter": {
+      "zh": "用人类示范给人形机器人做动作数据的团队，多了一个 NVIDIA 官方的重定向工具，但摘录只讲人类动作为何有用，没有数据，也没说适配哪些机器人，先在自己的本体上验证再接入数据管线。",
+      "en": "Humanoid teams building motion data from human demonstrations gain a first-party retargeting tool, but the quoted text only argues why human motion helps, with no figures or supported robots named, so trial it on your own platform before wiring it into a data pipeline.",
+      "ja": "人間のデモからヒューマノイドの動作データを作るチームには NVIDIA 公式のリターゲティング手段が加わる。ただ抜粋は人間の動作が役立つ理由までで、数値も対応機体も示されていないので、自分の機体で試してからデータパイプラインに入れたい。"
+    },
+    "https://www.leiphone.com/category/academic/nhzldlwi6rjvyxil.html": {
+      "zh": "这篇二手报道能确认的只是西湖大学新设了世界模型研究中心、这条赛道已不缺创业公司；页面看不到「概念世界模型」的机制和评测细节，列入候选之前应先核对团队自己的发布。",
+      "en": "This secondary report confirms only that Westlake opened a world-model research centre in a field already crowded with startups; the page shows neither the concept-world-model mechanism nor evaluation details, so check the team's own release before shortlisting it.",
+      "ja": "この二次報道で確かめられるのは、西湖大学が世界モデル研究センターを設けたことと、この分野にスタートアップが既に多いことだけだ。「概念世界モデル」の仕組みや評価の詳細はページになく、候補に挙げる前にチーム自身の発表を確認すべきだ。"
+    },
+    "https://spectrum.ieee.org/video-friday-moon-rover-promise": {
+      "zh": "这篇二手报道讲的是 NASA 计划把一台核动力月球车送往月球南极，作为月球基地计划的奠基任务；它不是可采购的产品，可作极端环境下能源选型的参照，不构成供应链信号。",
+      "en": "This secondary report covers a planned NASA mission, a nuclear-powered rover for the Moon's South Pole anchoring the Moon Base Program, not hardware anyone can buy, so read it as a reference for power choices in extreme environments rather than a supply signal.",
+      "ja": "この二次報道が伝えるのは、NASA が原子力駆動のローバーを月の南極に送り、月面基地計画の基礎ミッションとする計画だ。購入できる製品ではないので、極限環境での電源選定の参考にはなっても、サプライチェーンの兆候とは読めない。"
+    },
+    "https://robohub.org/robot-talk-episode-170-robots-in-the-real-world-with-daniela-shchegelskaya": {
+      "zh": "准备在安全关键场所部署机器人的团队，可以听听这期与特文特大学研究者谈可靠运行的访谈，但它是对谈而非研究，页面没有给出可以写进安全论证的方法或结果。",
+      "en": "Teams preparing robots for safety-critical sites may find practitioner insight in this University of Twente interview on reliable operation, but it is a conversation, not a study, and the page offers no method or result to cite in a safety case.",
+      "ja": "安全が重要な現場にロボットを入れるチームには、トゥエンテ大学の研究者が信頼性の高い運用を語るこの対談が参考になる。ただ研究ではなく対談で、安全性の論証に引ける手法や結果はページに示されていない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

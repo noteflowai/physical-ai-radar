@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **QVS-LIVO RiskMap** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-2. **Genie Sim Benchmark** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **UAV-Flow++** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — First-party release; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-7. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+1. **QVS-LIVO RiskMap** — `AI draft` Off-road teams running multi-camera LIVO may weigh views by reliability instead of fusing them all; this self-reported preprint claims 43.3% lower error than FAST-LIO2 and outputs, including global maps, at 9.94 Hz and 2.00 Hz, but shows no closed-loop driving result.
+2. **Genie Sim Benchmark** — `AI draft` Hold off ranking policies by Genie Sim scores until fidelity numbers appear: the preprint says it validates through paired real-simulation tasks and system-identification studies, yet the page quotes no figure for how closely simulation tracks reality.
+3. **UAV-Flow++** — `AI draft` Drone teams adding language commands should note this preprint targets short-range, object-relative maneuvers rather than route planning, self-reporting a 75.58% mean success rate that post-training lifts to 93.16%, though the page does not say whether those come from simulation or real flights.
+4. **Run Native DLA Inference in Python on NVIDIA Jetson AGX Orin Using cuDLA** — `AI draft` Orin teams fitting several networks into tight compute and power budgets now have a first-party path onto the DLA, but the page quotes no speed or power figures, so measure your own models before reassigning any network to it.
+5. **Adapt Human Motion for Robots with NVIDIA SOMA Retargeter** — `AI draft` Humanoid teams building motion data from human demonstrations gain a first-party retargeting tool, but the quoted text only argues why human motion helps, with no figures or supported robots named, so trial it on your own platform before wiring it into a data pipeline.
+6. **40 亿参数模型拿下 6 个评测第一，西湖大学团队押注「概念世界模型」** — `AI draft` This secondary report confirms only that Westlake opened a world-model research centre in a field already crowded with startups; the page shows neither the concept-world-model mechanism nor evaluation details, so check the team's own release before shortlisting it.
+7. **Video Friday** — `AI draft` This secondary report covers a planned NASA mission, a nuclear-powered rover for the Moon's South Pole anchoring the Moon Base Program, not hardware anyone can buy, so read it as a reference for power choices in extreme environments rather than a supply signal.
+8. **Robot Talk Episode 170 – Robots in the real world, with Daniela Shchegelska…** — `AI draft` Teams preparing robots for safety-critical sites may find practitioner insight in this University of Twente interview on reliable operation, but it is a conversation, not a study, and the page offers no method or result to cite in a safety case.
 
 </details>
 
