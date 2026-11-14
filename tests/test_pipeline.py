@@ -578,9 +578,9 @@ class FetchReliabilityTest(unittest.TestCase):
         summary = report.to_dict()
         self.assertEqual(summary["items"], 0)
         self.assertEqual(summary["answered"], 0)
-        # arXiv, plus the two page_watch sources read with the static fetcher once the channel is live (they failed: page_failed)
-        self.assertEqual(summary["attempted"], 3)
-        self.assertEqual(sorted(report.page_failed), ["physical-intelligence", "unitree"])
+        # arXiv, plus the four page_watch sources read with the static fetcher once the channel is live (they failed: page_failed)
+        self.assertEqual(summary["attempted"], 5)
+        self.assertEqual(sorted(report.page_failed), ["1x", "figure", "physical-intelligence", "unitree"])
         self.assertTrue(degraded(summary, offline=False))
         # The local page_watch channel being down is not one more failed source.
         self.assertEqual(summary["unavailable"], ["page_watch"])
