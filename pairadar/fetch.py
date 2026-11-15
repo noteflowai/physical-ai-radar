@@ -864,13 +864,28 @@ class _Strikes:
             self.count = 0
 
 
+def _robots_status(data: Any) -> int | None:
+    """The HTTP status Firecrawl reports for robots.txt, or None when it cannot be taken at face value.
+
+    Only a JSON integer from 100 to 599 counts. A float (404.5, 404.0), a string, a bool, a missing or out-of-range
+    value is not a status the radar can act on, and truncating it (`int(404.5)` is 404) would turn nonsense into a
+    known "no rules" answer."""
+    metadata = data.get("metadata") if isinstance(data, dict) else None
+    status = metadata.get("statusCode") if isinstance(metadata, dict) else None
+    if isinstance(status, int) and not isinstance(status, bool) and 100 <= status <= 599:
+        return status
+    return None
+
+
 def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
                    strikes: _Strikes | None = None) -> bool:
     """Whether robots.txt lets the radar read `url`, fetched through the same Firecrawl.
 
-    Read as RFC 9309 section 2.3.1 says, and as `RobotsCache` (the feeds) reads it: a 401 or a 403 forbids the
-    whole host, 429 and everything that cannot be told (5xx, no answer, no status) disallow everything for this
-    run; only another 4xx (404, 410...) means there are no rules and allows everything.
+    The project's policy, kept equal to `RobotsCache` (the feeds), and stricter than RFC 9309: section 2.3.1.3 lets a
+    crawler read when robots.txt answers 4xx, and only 2.3.1.4 (unreachable, 5xx) asks for a complete disallow. Here a
+    401, 403 or 429 forbids the page, and so does everything that cannot be told: a 5xx, no answer, no status or one that
+    is not a whole number from 100 to 599, a 2xx without a body. Only another 4xx (404, 410...) means there are no rules,
+    and so does a 2xx whose body is an empty string.
     """
     parsed = urllib.parse.urlsplit(url)
     origin = f"{parsed.scheme}://{parsed.netloc}"
@@ -882,13 +897,16 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
         if strikes is not None:
             strikes.note(reply, resets=False)
         data = reply.get("data") if reply.get("success") else None
-        status = int(((data or {}).get("metadata") or {}).get("statusCode") or 0)
+        if not isinstance(data, dict):
+            data = None
+        status = _robots_status(data)
+        body = data.get("rawHtml") if data is not None else None
         parser = urllib.robotparser.RobotFileParser()
-        if data is not None and 200 <= status < 300:
-            text = str(data.get("rawHtml") or "")[:MAX_ROBOTS_CHARS]
+        if status is not None and 200 <= status < 300 and isinstance(body, str):
+            text = body[:MAX_ROBOTS_CHARS]
             # A site that answers robots.txt with its HTML page has no rules to read.
             parser.parse([] if text.lstrip()[:1] == "<" else text.splitlines())
-        elif data is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
+        elif status is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
             parser.parse([])
         else:
             parser.parse(["User-agent: *", "Disallow: /"])

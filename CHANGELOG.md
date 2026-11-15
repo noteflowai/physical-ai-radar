@@ -29,7 +29,9 @@ radar content itself is dated, not versioned.
   allowed everything.
 - The page path (`page_watch`, through Firecrawl) reads robots.txt the same way: a 401, 403 or
   429 refuses the page for the run (before, any 4xx was read as "no rules"); only another 4xx
-  means no rules. A test compares the two paths for every status.
+  means no rules, and so does an empty 2xx body. A status that is not a whole number from 100 to
+  599, a 2xx with no body, a 5xx and no answer refuse the page too. The policy is stricter than RFC 9309
+  (which lets a crawler read after a 4xx) and is kept equal to the feeds'. A test compares the two paths for every status.
 
 - More professional and mainstream sources, attention ("heat") and a highlights quota.
   Twelve feeds join after a read-only check (200, parses, robots.txt allows): OpenAI News,

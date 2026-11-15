@@ -405,6 +405,52 @@ class RobotsTest(unittest.TestCase):
                 result, _ = watch(raw, fake.url)
                 self.assertEqual((fake.scraped(), result.robots_skipped), ([], ["figure"]))
 
+    def test_a_2xx_robots_reply_without_a_body_refuses_the_page(self) -> None:
+        # 01 F1: a missing body is not an empty robots.txt. Only an actual empty string is "no rules".
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        replies = {"no rawHtml": {"success": True, "data": {"metadata": {"statusCode": 200}}},
+                   "rawHtml null": {"success": True, "data": {"rawHtml": None, "metadata": {"statusCode": 200}}},
+                   "rawHtml a number": {"success": True, "data": {"rawHtml": 5, "metadata": {"statusCode": 200}}},
+                   "rawHtml a list": {"success": True, "data": {"rawHtml": ["User-agent: *"], "metadata": {"statusCode": 204}}},
+                   "data is a list": {"success": True, "data": [{"rawHtml": ""}]}}
+        for name, reply in replies.items():
+            with self.subTest(name), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt", reply)
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.items, result.robots_skipped, result.failed),
+                                 ([], [], ["figure"], []))
+
+    def test_an_empty_2xx_robots_body_is_still_no_rules(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        for status in (200, 204):
+            with self.subTest(status=status), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": status}}})
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.robots_skipped), (["https://www.figure.ai/news"], []))
+
+    def test_a_status_that_is_not_a_whole_http_status_refuses_the_page(self) -> None:
+        # 01 F2: int(404.5) is 404 and used to read as "no robots.txt". Only a JSON integer from 100 to 599 is a status.
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        for value in (404.5, 404.0, 200.0, "404", "200", True, None, 99, 600, -404, 0, [404], {"code": 404}):
+            with self.subTest(status=value), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": value}}})
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.items, result.robots_skipped, result.failed),
+                                 ([], [], ["figure"], []))
+        with FakeFirecrawl() as fake:                                           # metadata that is not an object
+            fake.serve("https://www.figure.ai/robots.txt", {"success": True, "data": {"rawHtml": "", "metadata": "404"}})
+            fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+            result, _ = watch(raw, fake.url)
+            self.assertEqual((fake.scraped(), result.robots_skipped), ([], ["figure"]))
+
     def test_a_robots_file_that_is_not_there_allows_the_page(self) -> None:
         raw = sources()
         raw["page_watch"] = raw["page_watch"][:1]
