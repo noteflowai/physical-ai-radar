@@ -11,7 +11,7 @@ def configured():
     return bool(os.environ.get("NOTEFLOW_FEATURE_QUARANTINE"))
 
 
-def terminal_quarantine(root: Path | None, service_state: Path, task: dict):
+def terminal_quarantine(root: Path | None, service_state: Path, task: dict, *, preserve_index=False):
     entry = os.environ.get("NOTEFLOW_FEATURE_QUARANTINE")
     if not entry:
         return None  # Standalone product compatibility; production sets the pinned entry.
@@ -25,9 +25,12 @@ def terminal_quarantine(root: Path | None, service_state: Path, task: dict):
         os.fstat(fd)
     except (KeyError, ValueError, OSError) as error:
         raise ValueError("Terminal quarantine requires the original inherited lease") from error
+    arguments = [str(path), "--root", str(root), "--service-state", str(service_state),
+                 "--task-id", task["id"], "--repository", task["repo"], "--lock-fd", str(fd)]
+    if preserve_index:
+        arguments.append("--preserve-index")
     response = subprocess.run(
-        [str(path), "--root", str(root), "--service-state", str(service_state),
-         "--task-id", task["id"], "--repository", task["repo"], "--lock-fd", str(fd)],
+        arguments,
         capture_output=True, text=True, timeout=180, pass_fds=(fd,))
     if len(response.stdout.encode()) > 1_000_000:
         raise ValueError("Terminal quarantine response exceeds its bound")
@@ -61,3 +64,33 @@ def before_new_task(root: Path, service_state: Path, repository: str):
     if not (state / "terminal.json").is_file():
         raise ValueError("Dirty clone belongs to nonterminal work; reconcile before checkout")
     terminal_quarantine(root, service_state, {"id": task_id, "repo": repository})
+
+
+def archive_terminal_active(root: Path | None, service_state: Path, task: dict):
+    """Archive the original pointer after its quarantine and day result succeed."""
+    if not configured():
+        (service_state / "tasks" / task["repo"].split("/")[1] / "active.json").unlink(missing_ok=True)
+        return None
+    path = Path(os.environ["NOTEFLOW_FEATURE_QUARANTINE"])
+    if (root is None or not path.is_absolute() or path.resolve() != path
+            or not path.is_file() or path.stat().st_uid != os.getuid()
+            or path.stat().st_mode & 0o022 or not os.access(path, os.X_OK)):
+        raise ValueError("Terminal active archive entrypoint is unavailable")
+    descriptor = os.environ.get("FEATURE_LOCK_FD", "")
+    if not descriptor.isdecimal():
+        raise ValueError("Terminal active archive requires the original inherited lease")
+    fd = int(descriptor)
+    os.fstat(fd)
+    response = subprocess.run(
+        [str(path), "--root", str(root), "--service-state", str(service_state),
+         "--task-id", task["id"], "--repository", task["repo"], "--lock-fd", str(fd),
+         "--archive-active"], capture_output=True, text=True, timeout=180, pass_fds=(fd,))
+    if len(response.stdout.encode()) > 1_000_000:
+        raise ValueError("Terminal active archive response exceeds its bound")
+    value = json.loads(response.stdout)
+    if (response.returncode or not isinstance(value, dict) or value.get("schema_version") != 1
+            or value.get("scope") != "terminal-feature-quarantine"
+            or value.get("repository") != task["repo"] or value.get("task_id") != task["id"]
+            or value.get("state") != "active-archived"):
+        raise ValueError("Terminal active archive held; retain the original task")
+    return value

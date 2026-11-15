@@ -34,7 +34,7 @@ try:
     from .feature_outcomes import deferral_details, outcome_exit
     from .feature_governance import bind_decision, load_roadmap, next_version, validate_decision
     from .feature_recovery import check_original_effects, close_original
-    from .feature_quarantine import before_new_task, terminal_quarantine
+    from .feature_quarantine import before_new_task, terminal_quarantine, archive_terminal_active
     from .feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from .improve_repos import model_json, snapshot, verify_public_browser
     from .job_schedule import run_day
@@ -55,7 +55,7 @@ except ImportError:
     from feature_outcomes import deferral_details, outcome_exit
     from feature_governance import bind_decision, load_roadmap, next_version, validate_decision
     from feature_recovery import check_original_effects, close_original
-    from feature_quarantine import before_new_task, terminal_quarantine
+    from feature_quarantine import before_new_task, terminal_quarantine, archive_terminal_active
     from feature_chunks import add_chunk, draft_for, inspect_draft, manifest, recover_prefix
     from improve_repos import model_json, snapshot, verify_public_browser
     from job_schedule import run_day
@@ -775,12 +775,28 @@ def retire(task: dict, state: Path, active: Path, service_state: Path,
               "publication_state": read_json(state / "publication.json", {})}
     if reason_code:
         result["reason_code"] = reason_code
+    write_json(active, task)
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
-    terminal_quarantine(root, service_state, task)
-    write_json(service_state / day / name / "result.json", result)
-    active.unlink(missing_ok=True)
-    return result
+    return finish_retired(task, state, active, service_state, name, root=root)
+
+
+def finish_retired(task: dict, state: Path, active: Path, service_state: Path,
+                   name: str, *, root: Path | None = None, preserve_index=False) -> dict:
+    """Resume the original terminal tail without rewriting its historical outcome."""
+    terminal = read_json(state / "terminal.json")
+    if (name != task["repo"].split("/")[1]
+            or read_json(active) != task or read_json(state / "retired-task.json") != task
+            or not isinstance(terminal, dict) or terminal.get("repo") != task["repo"]
+            or terminal.get("feature_id") != task["id"]
+            or terminal.get("status") not in {"deferred", "no-change"}
+            or not isinstance(terminal.get("completed_on"), str)
+            or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", terminal["completed_on"])):
+        raise ValueError("Original retired task identity required")
+    terminal_quarantine(root, service_state, task, preserve_index=preserve_index)
+    write_json(service_state / terminal["completed_on"] / name / "result.json", terminal)
+    archive_terminal_active(root, service_state, task)
+    return terminal
 
 
 def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
@@ -792,12 +808,10 @@ def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
                   "reason", "milestone_id", "problem_evidence", "expected_outcome",
                   "follow_up_on", "governance")}}
     write_json(state / "decision.json", decision)
+    write_json(active, task)
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
-    terminal_quarantine(root, service_state, task)
-    write_json(service_state / day / name / "result.json", result)
-    active.unlink(missing_ok=True)
-    return result
+    return finish_retired(task, state, active, service_state, name, root=root)
 
 
 def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: str,
@@ -824,14 +838,21 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         if not terminal and task.get("phase") == "no-change":
             terminal = finish_no_change(task, task["decision"], previous_state, active,
                                         service_state, name, task["decision_on"], root=workspace / name)
-        if terminal:
+            if terminal["completed_on"] == day:
+                return terminal
+            task = None
+        elif terminal:
             # Recover a crash between terminal recording, day allowance and active cleanup.
-            terminal_quarantine(workspace / name, service_state, task)
-            record_allowance(terminal, service_state, name)
-            if terminal.get("distribution", {}).get("status") == "verified":
-                queue_update(terminal, service_state)
-            write_json(service_state / terminal["completed_on"] / name / "result.json", terminal)
-            active.unlink(missing_ok=True)
+            if terminal.get("status") in {"deferred", "no-change"}:
+                terminal = finish_retired(task, previous_state, active, service_state,
+                                          name, root=workspace / name)
+            else:
+                terminal_quarantine(workspace / name, service_state, task)
+                record_allowance(terminal, service_state, name)
+                if terminal.get("distribution", {}).get("status") == "verified":
+                    queue_update(terminal, service_state)
+                write_json(service_state / terminal["completed_on"] / name / "result.json", terminal)
+                active.unlink(missing_ok=True)
             if terminal["completed_on"] == day:
                 return terminal
             task = None

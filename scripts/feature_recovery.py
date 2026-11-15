@@ -5,6 +5,11 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
+
+
+# Only reviewed protocol codes reach logs, never arbitrary subprocess content.
+REFUSAL_REASONS = frozenset({"original-active-and-retired", "unclassified"})
 
 
 def entrypoint():
@@ -40,6 +45,10 @@ def check_original_effects(service_state: Path, repository: str):
     if result.returncode == 20 and value.get("state") == "reconcile":
         raise ValueError("Reconcile the original native effect before creating or reauthoring work")
     if result.returncode != 0 or value.get("state") not in {"clear", "resume-original", "close-original"}:
+        reason = value.get("reason")
+        if not isinstance(reason, str) or reason not in REFUSAL_REASONS:
+            reason = "unclassified"
+        print(f"Original effect recovery is unavailable (reason={reason})", file=sys.stderr)
         raise ValueError("Original effect recovery is unavailable")
     return value
 

@@ -133,10 +133,13 @@ class GovernanceTests(unittest.TestCase):
             with self.assertRaisesRegex(OSError, "interrupted"):
                 self.run_decision()
         self.assertEqual(json.loads(self.active.read_text())["phase"], "no-change")
-        with patch.object(developer, "ask") as ask, patch.object(developer, "queue_update") as queue:
+        with patch.object(developer, "ask") as ask, \
+                patch.object(developer, "queue_update") as queue, \
+                patch.object(developer, "finish_retired", wraps=developer.finish_retired) as finish:
             self.assertEqual(self.run_decision()["status"], "no-change")
             ask.assert_not_called()
             queue.assert_not_called()
+            finish.assert_called_once()
         self.assertFalse(self.active.exists())
 
     def test_crash_after_terminal_recovers_day_receipt_without_allowance_or_announcement(self):

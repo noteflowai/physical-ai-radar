@@ -40,7 +40,14 @@ class QuarantineAdapterTests(unittest.TestCase):
                  'repository': self.task['repo'], 'task_id': task_id, 'state': state}
         self.entry.write_text('#!/usr/bin/env python3\nimport json, os, sys\n'
                               'fd=int(sys.argv[sys.argv.index("--lock-fd")+1]); os.fstat(fd)\n'
-                              f'print({json.dumps(value)!r})\nsys.exit({code})\n')
+                              f'value=json.loads({json.dumps(value)!r})\n'
+                              'if "--archive-active" in sys.argv and value["state"] in ("clean","quarantined"):\n'
+                              ' from pathlib import Path\n'
+                              ' service=Path(sys.argv[sys.argv.index("--service-state")+1])\n'
+                              ' task=service/"tasks"/value["repository"].split("/")[1]/value["task_id"]\n'
+                              ' (task.parent/"active.json").rename(task/"archived-active.json")\n'
+                              ' value["state"]="active-archived"\n'
+                              f'print(json.dumps(value))\nsys.exit({code})\n')
         self.entry.chmod(0o700)
 
     def test_retirement_clears_pointer_only_after_quarantine_without_changing_counts(self):
@@ -50,6 +57,7 @@ class QuarantineAdapterTests(unittest.TestCase):
             self.assertEqual(archive.call_args.args[2]['attempts'], 9)
         self.assertEqual(result['status'], 'deferred')
         self.assertFalse(self.active.exists())
+        self.assertEqual(json.loads((self.state / 'archived-active.json').read_bytes()), self.task)
         self.assertEqual(json.loads((self.state / 'retired-task.json').read_text())['attempts'], 9)
 
     def test_failed_retirement_keeps_pointer_and_original_counter(self):
@@ -62,10 +70,77 @@ class QuarantineAdapterTests(unittest.TestCase):
         self.assertTrue((self.state / 'terminal.json').exists())
         self.assertFalse((self.root / '2026-10-16/evalarc/result.json').exists())
 
+    def test_retirement_persists_latest_task_before_terminal_tail(self):
+        self.task['last_error'] = 'latest in-memory assessment'
+        result = controller.retire(self.task, self.state, self.active, self.root,
+                                   'evalarc', '2026-10-16', 'budget', root=self.root)
+        self.assertEqual(result['status'], 'deferred')
+        self.assertEqual(controller.read_json(self.state / 'archived-active.json'), self.task)
+        self.assertEqual(controller.read_json(self.state / 'retired-task.json'), self.task)
+
+    def test_no_change_persists_latest_task_before_terminal_tail(self):
+        self.task['phase'] = 'planning'
+        decision = {k: 'fixture' for k in ('reason', 'milestone_id', 'problem_evidence',
+                                         'expected_outcome', 'follow_up_on', 'governance')}
+        result = controller.finish_no_change(self.task, decision, self.state, self.active,
+                                            self.root, 'evalarc', '2026-10-16', root=self.root)
+        self.assertEqual(result['status'], 'no-change')
+        self.assertEqual(controller.read_json(self.state / 'archived-active.json'), self.task)
+        self.assertEqual(controller.read_json(self.state / 'retired-task.json'), self.task)
+
+    def test_active_write_failure_precedes_terminal_creation(self):
+        self.task['last_error'] = 'new'
+        original = controller.write_json
+        def fail_active(path, value):
+            if path == self.active:
+                raise OSError('fixture active write')
+            return original(path, value)
+        for method in ('retire', 'no-change'):
+            with self.subTest(method=method), patch.object(controller, 'write_json', side_effect=fail_active):
+                with self.assertRaisesRegex(OSError, 'active write'):
+                    if method == 'retire':
+                        controller.retire(self.task, self.state, self.active, self.root,
+                                          'evalarc', '2026-10-16', 'budget', root=self.root)
+                    else:
+                        decision = {k: 'fixture' for k in ('reason', 'milestone_id', 'problem_evidence',
+                                                         'expected_outcome', 'follow_up_on', 'governance')}
+                        controller.finish_no_change(self.task, decision, self.state, self.active,
+                                                    self.root, 'evalarc', '2026-10-16', root=self.root)
+                self.assertFalse((self.state / 'terminal.json').exists())
+                self.assertFalse((self.state / 'retired-task.json').exists())
+
+    def test_existing_terminal_tail_preserves_history_without_new_work(self):
+        terminal = {'repo': self.task['repo'], 'feature_id': self.task['id'],
+                    'status': 'deferred', 'completed_on': '2026-10-15', 'reason': 'original'}
+        controller.write_json(self.state / 'retired-task.json', self.task)
+        controller.write_json(self.state / 'terminal.json', terminal)
+        before = (self.state / 'terminal.json').read_bytes()
+        with patch.object(controller, 'ask') as author, patch.object(controller, 'checkout') as checkout:
+            result = controller.finish_retired(self.task, self.state, self.active,
+                                               self.root, 'evalarc', root=self.root)
+        self.assertEqual(result, terminal)
+        self.assertEqual((self.state / 'terminal.json').read_bytes(), before)
+        self.assertEqual(json.loads((self.root / '2026-10-15/evalarc/result.json').read_bytes()), terminal)
+        author.assert_not_called()
+        checkout.assert_not_called()
+
+    def test_day_write_failure_retains_active_after_quarantine(self):
+        controller.write_json(self.state / 'retired-task.json', self.task)
+        controller.write_json(self.state / 'terminal.json', {
+            'repo': self.task['repo'], 'feature_id': self.task['id'],
+            'status': 'deferred', 'completed_on': '2026-10-15'})
+        with patch.object(controller, 'write_json', side_effect=OSError('fixture')):
+            with self.assertRaises(OSError):
+                controller.finish_retired(self.task, self.state, self.active,
+                                           self.root, 'evalarc', root=self.root)
+        self.assertTrue(self.active.exists())
+        self.assertFalse((self.state / 'archived-active.json').exists())
+
     def test_old_terminal_hold_precedes_checkout_author_new_task_or_allowance(self):
         terminal = {'repo': self.task['repo'], 'feature_id': 'task', 'status': 'deferred',
                     'completed_on': '2026-10-15'}
         controller.write_json(self.state / 'terminal.json', terminal)
+        controller.write_json(self.state / 'retired-task.json', self.task)
         self.response('hold', 20)
         before = self.active.read_bytes()
         with patch.object(controller, 'checkout') as checkout, \
