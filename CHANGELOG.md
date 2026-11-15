@@ -21,6 +21,11 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
+  switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
+  requested, not asked about in robots.txt and not reported as attempted. The three GitHub
+  release feeds (LeRobot, Isaac Lab, MuJoCo) are switched off: github.com's robots.txt disallows
+  `/*.atom$` for every crawler.
 - robots.txt is read as RFC 9309 asks: 401/403 refuse the host (`forbidden`), other 4xx
   mean no rules, and a 5xx, a 429 after its retry or no answer at all leave the host
   `unreachable` and unrequested for the run. Refused feeds and attention APIs are

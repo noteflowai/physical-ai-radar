@@ -153,6 +153,69 @@ class FeedReadingTest(unittest.TestCase):
         self.assertEqual((failed, [entry.source_id for entry in items]), (["dead"], ["live"]))
 
 
+class DisabledFeedsTest(unittest.TestCase):
+    """A feed switched off in data/sources.json is not read: no robots.txt question, no GET, not "attempted", not "failed"."""
+
+    ON = {"id": "on", "url": "https://on.example/feed", "evidence": "M", "topical": True}
+
+    def off(self, value=False):
+        return {"id": "off", "url": "https://off.example/feed", "evidence": "M", "topical": True, "enabled": value,
+                "disabled_reason": "test"}
+
+    def read(self, feeds, **extra):
+        requested, asked = [], []
+
+        def get(url, *a, **k):
+            requested.append(url)
+            return rss(("A robot", "https://on.example/a", "robot"))
+        cache = fetch.RobotsCache(getter=lambda url: asked.append(url) or (404, None))
+        skipped: list[str] = []
+        with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()):
+            items, failed = fetch.fetch_feeds(config_with(feeds=feeds, **extra), robots=cache, skipped=skipped)
+        return requested, asked, skipped, failed, items
+
+    def test_a_disabled_feed_is_not_requested_and_not_asked_about(self) -> None:
+        requested, asked, skipped, failed, items = self.read([self.off(), self.ON])
+        self.assertEqual(requested, ["https://on.example/feed"])
+        self.assertEqual(asked, ["https://on.example/robots.txt"])
+        self.assertEqual((skipped, failed), ([], []))
+        self.assertEqual([entry.source_id for entry in items], ["on"])
+
+    def test_only_true_or_nothing_switches_a_feed_on(self) -> None:
+        for value in (False, "false", "False", "no", "true", "", 0, 1, None, []):
+            with self.subTest(enabled=value):
+                requested, asked, skipped, failed, _ = self.read([self.off(value)])
+                self.assertEqual((requested, asked, skipped, failed), ([], [], [], []))
+        for feed in (self.ON, {**self.ON, "enabled": True}):
+            requested, _, _, _, _ = self.read([feed])
+            self.assertEqual(requested, ["https://on.example/feed"])
+
+    def test_a_disabled_feed_is_neither_attempted_nor_counted(self) -> None:
+        config = config_with(feeds=[self.off(), self.ON], arxiv={**CONFIG.sources["arxiv"], "enabled": False},
+                             page_watch_settings={**CONFIG.sources["page_watch_settings"], "enabled": False})
+        get = lambda url, *a, **k: (b"User-agent: *\nAllow: /\n" if url.endswith("robots.txt")
+                                    else rss(("A robot", "https://on.example/a", "robot")))
+        with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()):
+            report = fetch.fetch_all(config, reference=DAY)
+        self.assertEqual(report.to_dict()["attempted"], 1)
+        self.assertNotIn("off", report.failed)
+        self.assertEqual(fetch.metadata(config)["feed_count"], 1)
+
+    def test_the_committed_sources_keep_a_reason_for_every_disabled_feed(self) -> None:
+        feeds = CONFIG.sources["feeds"]
+        for feed in feeds:
+            if feed.get("enabled", True) is not True:
+                self.assertTrue(isinstance(feed.get("disabled_reason"), str) and feed["disabled_reason"].strip(), feed["id"])
+        # github.com's robots.txt disallows /*.atom$ for every crawler (RFC 9309, read 2026-11-15): none may be read.
+        for feed in fetch.enabled_feeds(CONFIG.sources):
+            parts = urllib.parse.urlsplit(feed["url"])
+            self.assertFalse(parts.netloc.lower() == "github.com" and parts.path.endswith(".atom"), feed["id"])
+        disabled = {feed["id"] for feed in feeds if feed.get("enabled", True) is not True}
+        self.assertLessEqual({"github-lerobot", "github-isaaclab", "github-mujoco"}, disabled)
+
+
 class PoliteFetchingTest(unittest.TestCase):
     def test_robots_disallow_skips_the_feed_without_failing_it(self) -> None:
         robots = b"User-agent: *\nDisallow: /action/\n"

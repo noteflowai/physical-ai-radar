@@ -10,7 +10,7 @@ changes, this file changes in the same pull request.
 | arXiv API | `https://export.arxiv.org/api/query`, six `cs.RO` queries | `R` | primary author text, but self-reported and often not peer reviewed |
 | arXiv category feeds | `https://rss.arxiv.org/rss/<category>`, read only when the API returns nothing | `R` | the same papers, announced listings instead of search |
 | Official vendor and lab blogs | AWS Physical AI, NVIDIA Technical Blog / NVIDIA Blog, Google DeepMind, Hugging Face, OpenAI News, Google Research, MIT News (Robotics) | `O` | first-party statements about their own products and work |
-| Official open-source releases | GitHub release feeds of LeRobot, Isaac Lab, MuJoCo (newest release only) | `O` | the project's own release notes |
+| Official open-source releases | GitHub release feeds of LeRobot, Isaac Lab, MuJoCo (newest release only). **Switched off since 2026-11-16**: github.com's robots.txt disallows `/*.atom$` for every crawler (RFC 9309), so the feeds are not read until they are replaced by the official API | `O` | the project's own release notes |
 | Lab research pages and journals | Toyota Research Institute, BAIR blog, Nature Machine Intelligence | `R` | a lab's own page or a journal's listing of a paper: the same standing as the paper |
 | Trade and mainstream press | IEEE Spectrum Robotics, The Robot Report, TechCrunch Robotics, Robohub, Import AI; 雷峰网 Leiphone and 量子位 QbitAI (Chinese), MONOist (Japanese) | `M` | professional reporting and analysis, still secondary |
 | Attention signals | Hugging Face Daily Papers API, Hacker News (Algolia search API), GitHub REST (stars) | — | ranking only (section 3); never an item and never evidence |
@@ -210,6 +210,10 @@ Rules:
   the run records `arxiv` under `fallback`: visible in the verdict, but not a failure. The daily run prints the
   verdict and stays green; `--fail-on-struggling` exits 1 for automation that should
   only act when there is something to act on;
+- a feed whose `enabled` is anything but `true` (or absent) is not read: no robots.txt
+  question, no request, not reported as attempted or failed. The entry stays in
+  `data/sources.json` with a `disabled_reason`; a mistyped value ("false") switches the
+  feed off, never on;
 - a feed contributes at most its `filters.max_entries_per_feed` newest entries (default
   100). Some feeds publish their whole archive (the Hugging Face blog serves about 900
   posts); without the cap one source floods the pool;

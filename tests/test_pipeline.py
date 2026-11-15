@@ -570,7 +570,7 @@ class FetchReliabilityTest(unittest.TestCase):
         self.assertIn("no answer from", out.getvalue())
         # With no network every robots.txt is unreachable too: the feeds are refused before
         # any request and recorded with that reason (01, 2026-10-25), never as failed.
-        feeds = {feed["id"] for feed in self.config.sources["feeds"]}
+        feeds = {feed["id"] for feed in fetch_module.enabled_feeds(self.config.sources)}
         self.assertEqual(set(report.failed), {"arxiv"})
         self.assertEqual(set(report.robots_skipped), feeds)
         self.assertEqual(set(report.robots_reasons.values()), {"unreachable"})

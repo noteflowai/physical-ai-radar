@@ -216,6 +216,8 @@
     {
       "id": "github-lerobot",
       "url": "https://github.com/huggingface/lerobot/releases.atom",
+      "enabled": false,
+      "disabled_reason": "github.com robots.txt Disallow: /*.atom$ (RFC 9309); read via API instead",
       "evidence": "O",
       "weight": 1.0,
       "publisher": "LeRobot releases (GitHub)",
@@ -227,6 +229,8 @@
     {
       "id": "github-isaaclab",
       "url": "https://github.com/isaac-sim/IsaacLab/releases.atom",
+      "enabled": false,
+      "disabled_reason": "github.com robots.txt Disallow: /*.atom$ (RFC 9309); read via API instead",
       "evidence": "O",
       "weight": 1.0,
       "publisher": "Isaac Lab releases (GitHub)",
@@ -238,6 +242,8 @@
     {
       "id": "github-mujoco",
       "url": "https://github.com/google-deepmind/mujoco/releases.atom",
+      "enabled": false,
+      "disabled_reason": "github.com robots.txt Disallow: /*.atom$ (RFC 9309); read via API instead",
       "evidence": "O",
       "weight": 1.0,
       "publisher": "MuJoCo releases (GitHub)",
