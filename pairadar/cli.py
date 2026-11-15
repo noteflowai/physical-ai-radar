@@ -168,6 +168,11 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
                     per_evidence=_optional_int(filters.get("per_evidence")), told=told,
                     max_arxiv=int(limit * float(share)) if share is not None else None,
                     reserve=list(highlights.get("reserve", [])), report=quota)
+    # What the shortlist was cut from, by lane, with every lane present (a zero is a count, not a gap). The picks
+    # alone cannot show it: a lane gives at most `per_lane` a day. It belongs to the run log, not to the quota.
+    pool = quota.pop("pool", {})
+    pool_lanes = pool.get("by_lane", {})
+    picked_lanes = dict(lane_distribution(picked, config))
 
     baseline_all = enrich(baseline_items(config), config, reference)
     curated = {
@@ -205,6 +210,11 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
         "signal_failed": sorted(signals.failed),
         # The highlights quota: what was reserved, what could not be filled.
         "quota": quota,
+        # Candidates and picks by lane, every lane present. `live` is everything that was fetched and not filtered
+        # out; `eligible` is what qualified and had not been published; `picked_by_lane` is what was published.
+        "pool": {"live": len(live), "eligible": pool.get("eligible", 0), "per_lane_cap": pool.get("per_lane"),
+                 "by_lane": {lane["id"]: pool_lanes.get(lane["id"], 0) for lane in config.lanes},
+                 "picked_by_lane": {lane["id"]: picked_lanes.get(lane["id"], 0) for lane in config.lanes}},
     })
     cadence = [(entry["date"], entry["count"]) for entry in sorted(history, key=lambda e: e["date"])]
 

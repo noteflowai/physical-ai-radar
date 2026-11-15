@@ -374,6 +374,12 @@ caps above:
   and the run log records it under `quota.unmet` in `radar/history.json`. A name other than
   `official` or `hot` is ignored and recorded there as `unknown:<name>`.
 
+Because a lane gives at most two picks a day, the picks alone say little about how much a lane
+had. Each run therefore also records, under `pool` in `radar/history.json`, how many items
+were fetched and kept (`live`), how many qualified and had not been published (`eligible`), the
+lane cap in force (`per_lane_cap`), the eligible count by lane (`by_lane`) and the published
+count by lane (`picked_by_lane`). Every lane is present in both maps, with `0` where there was
+none. Runs before this field existed have no `pool`; the count is not reconstructed for them.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
 block in each README does the same: directly under the day's heading and window line it
