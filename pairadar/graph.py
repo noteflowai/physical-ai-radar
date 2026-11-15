@@ -54,6 +54,7 @@ ENTRY_KEYS = ("id", "date", "published", "lane", "evidence", "source_id", "publi
 # 2026-09-25 (git: 6c71ba8 had this name under id `safety`, fc1e898 renamed it).
 LANE_ALIASES = {"Safety, authority & compliance": "safety"}
 RULES_DATES = "the date of the commit that changed the rule, not the first run that used it"
+SOURCE_EVIDENCE_NOTE = "each source's evidence class in the configuration at the time of the export, not on the day it failed"
 
 
 class GraphError(Exception):
@@ -295,6 +296,10 @@ def load_rules(path: Path) -> list[dict[str, Any]]:
             or [rule["from"] for rule in rules] != sorted(rule["from"] for rule in rules)):
         raise GraphError(f"{path.name} must be a list of dated rules in date order")
     for rule in rules:
+        # `show`: whether the page draws this change as a line (the editor's call: does it make the two sides measured
+        # differently?). A rule that is not drawn stays in the data and in the count of "smaller changes".
+        if rule.get("show") is not True and rule.get("show") is not False:
+            raise GraphError(f"{path.name}: rule {rule['from']} needs show as true or false")
         for key in ("per_lane", "per_day"):
             # The size in force when the rule took effect: a whole number, or null where it could not be verified.
             if key not in rule or not (rule[key] is None or (isinstance(rule[key], int) and not isinstance(rule[key], bool)
@@ -345,7 +350,20 @@ def lane_time(config: Config, history: list[dict[str, Any]], items: dict[str, An
     pooled = sorted(day for day, run in runs.items() if run.get("pool"))
     return {"schema": SCHEMA, "as_of": as_of, "first_run": first, "pool_since": pooled[0] if pooled else None,
             "per_lane_cap": (runs[pooled[-1]]["pool"].get("per_lane_cap") if pooled else None),
-            "mismatch_days": mismatched, "rules_dates": RULES_DATES, "rules": rules, "days": days}
+            "mismatch_days": mismatched, "rules_dates": RULES_DATES, "rules": rules,
+            "source_evidence": source_evidence(config, days), "source_evidence_note": SOURCE_EVIDENCE_NOTE, "days": days}
+
+
+def source_evidence(config: Config, days: list[dict[str, Any]]) -> dict[str, str]:
+    """The evidence class (O, R or M) of every source that is named in `failed_sources` on any day of the table.
+
+    Taken from the CURRENT configuration (`arxiv`, `feeds`, `page_watch`), not as it was on each day. A source the
+    configuration does not know, or that has no class, is left out: a reader treats an id that is not here as "any class"."""
+    known = {"arxiv": config.sources.get("arxiv", {}).get("evidence")}
+    for entry in [*config.sources.get("feeds", []), *config.sources.get("page_watch", [])]:
+        known[entry.get("id")] = entry.get("evidence")
+    named = sorted({source for day in days for source in day["failed_sources"]})
+    return {source: known[source] for source in named if known.get(source) in EVIDENCE}
 
 
 def contract_problems(doc: dict[str, Any], table: dict[str, Any], config: Config) -> list[str]:
@@ -391,6 +409,11 @@ def contract_problems(doc: dict[str, Any], table: dict[str, Any], config: Config
             problems.append(f"{entry.get('date')}: a pool is neither null nor a count")
     if table.get("mismatch_days") != unknown:
         problems.append("mismatch_days is not exactly the days whose picks are not known")
+    named = {source for entry in days for source in entry.get("failed_sources", [])}
+    evidence = table.get("source_evidence")
+    if (not isinstance(evidence, dict) or not set(evidence) <= named
+            or not all(value in EVIDENCE for value in evidence.values())):
+        problems.append("source_evidence is not a map from sources named in failed_sources to O, R or M")
     gap_days = {gap["date"] for gap in doc.get("backfill", {}).get("gaps", [])} & set(names)
     if not gap_days <= set(unknown):
         problems.append("a backfill gap is on a day whose picks are said to be known")
@@ -441,6 +464,15 @@ def check_history(history: list[dict[str, Any]]) -> None:
             raise GraphError(f"the run log has no usable date or count for run {index} ({shown!r})")
 
 
+def _sync_directory(folder: Path) -> None:
+    """Flush the directory entries of `folder` (the renames) to disk."""
+    descriptor = os.open(folder, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Path]:
     """Replace the pair so that a failure does not normally leave a reader with two generations (01 F2).
 
@@ -458,6 +490,8 @@ def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Pa
     before = items_path.read_bytes() if items_path.exists() else None
     staged: list[Path | None] = []
     try:
+        # Both files are staged BEFORE either is replaced: a staging failure (disk full, quota) then leaves nothing
+        # replaced. Do not move the second staging after the first replacement.
         staged.append(_stage(folder, ITEMS_FILE, items_bytes))
         staged.append(_stage(folder, LANE_TIME_FILE, lane_bytes))
         os.replace(staged[0], items_path)
@@ -478,6 +512,10 @@ def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Pa
                 raise GraphError(f"{LANE_TIME_FILE} could not be written ({error}) and {ITEMS_FILE} could not be put "
                                  f"back ({again}): readers must compare items_sha256") from again
             raise
+        try:
+            _sync_directory(folder)
+        except OSError as error:                  # both renames are done and the pair is consistent; only their durability is unknown
+            print(f"[radar] graph export: the directory was not synced ({error}); the pair is in place")
     finally:
         for path in staged:
             if path is not None:

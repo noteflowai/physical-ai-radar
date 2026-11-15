@@ -242,6 +242,23 @@ class LaneTimeTest(unittest.TestCase):
         doc["items"] = items
         return graph.lane_time(CONFIG, history, doc, rules or [], as_of)
 
+    def test_the_evidence_class_of_every_source_that_failed_is_named_from_the_current_configuration(self) -> None:
+        # 06's weekly table marks a zero only in the evidence classes whose sources failed that week.
+        history = [{"date": "2026-11-10", "count": 0, "failed": ["deepmind", "arxiv"]},
+                   {"date": "2026-11-11", "count": 0, "failed": ["leiphone", "no-such-source"]},
+                   {"date": "2026-11-12", "count": 0}]
+        table = self.table(history, [], "2026-11-12")
+        self.assertEqual(table["source_evidence"], {"arxiv": "R", "deepmind": "O", "leiphone": "M"})
+        self.assertEqual(list(table["source_evidence"]), ["arxiv", "deepmind", "leiphone"])      # sorted, and no unknown id
+        self.assertIn("not on the day it failed", table["source_evidence_note"])
+        self.assertEqual(self.table([{"date": "2026-11-10", "count": 0}], [], "2026-11-10")["source_evidence"], {})
+        # An id with no class in the configuration is left out, not guessed.
+        config = type(CONFIG)(sources={**CONFIG.sources, "feeds": [{"id": "classless", "url": "https://x.example/f"}]},
+                              taxonomy=CONFIG.taxonomy, glossary=CONFIG.glossary, baseline=CONFIG.baseline)
+        odd = graph.lane_time(config, [{"date": "2026-11-10", "count": 0, "failed": ["classless", "arxiv"]}],
+                              graph.empty_items(), [], "2026-11-10")
+        self.assertEqual(odd["source_evidence"], {"arxiv": "R"})
+
     def test_every_day_and_every_lane_is_present_and_zero_is_a_count(self) -> None:
         entries = [graph.item_entry(item, "2026-11-11") for item in sample()]
         history = [{"date": "2026-11-10", "count": 0}, {"date": "2026-11-12", "count": 0, "failed": ["arxiv"],
@@ -306,12 +323,20 @@ class LaneTimeTest(unittest.TestCase):
         self.assertIn("2026-09-25", [rule["from"] for rule in rules])
         self.assertIn("2026-10-25", [rule["from"] for rule in rules])
         self.assertTrue(all(rule["effect_measured"] is False for rule in rules))
+        # 07 decided which changes the page draws as lines (07-radar-rules-show-1116.md): the ones after which the two sides
+        # are not measured with the same ruler. The others stay in the data. One line per date: 09-26 holds two commits.
+        self.assertEqual(sorted({rule["from"] for rule in rules if rule["show"]}),
+                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14", "2026-11-16"])
+        self.assertEqual(sorted({rule["from"] for rule in rules[1:] if not rule["show"]}),
+                         ["2026-09-21", "2026-10-22", "2026-10-26"])
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "rules.json"
-            ok = {"from": "2026-09-19", "per_lane": 2, "per_day": 8}
+            ok = {"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": True}
             bad = [{**ok, "per_day": value} for value in (0, -1, "8", True, 8.0)]
-            bad += [{"from": "2026-09-19", "per_lane": 2}, {"from": "2026-09-19", "per_day": 8}]
+            bad += [{"from": "2026-09-19", "per_lane": 2, "show": True}, {"from": "2026-09-19", "per_day": 8, "show": True}]
             bad += [{**ok, "per_lane": value} for value in (0, "2", False)]
+            bad += [{key: value for key, value in ok.items() if key != "show"}]                  # show is required
+            bad += [{**ok, "show": value} for value in ("true", 1, 0, None, "false")]            # and is a real boolean
             for text in ("{broken", "{}", json.dumps([{"title": "no date"}]),
                          json.dumps([{**ok, "from": "2026-10-01"}, {**ok, "from": "2026-09-01"}])) + tuple(
                              json.dumps([rule]) for rule in bad):
@@ -331,7 +356,7 @@ class PublishTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "data").mkdir()
-        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}]))
         (self.root / "radar" / "daily").mkdir(parents=True)
         (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
         self.ctx = {"date": DAY, "picked": sample()[:2],
@@ -397,6 +422,39 @@ class PublishTest(unittest.TestCase):
         self.assertEqual(table["items_sha256"], hashlib.sha256(paths[0].read_bytes()).hexdigest())
         self.assertEqual(table["items_count"], len(json.loads(paths[0].read_text())["items"]))
         self.assertEqual(list(self.folder.glob(".*")), [])                       # no temporary file is left
+
+    def test_a_failure_while_the_second_file_is_staged_leaves_the_first_untouched(self) -> None:
+        # 04 T1: items.json must not be replaced before lane-time.json has been staged; the second staging fails here.
+        self.run_it()
+        before = self.files()
+        real, seen = os.fsync, {"n": 0}
+
+        def fsync(descriptor):
+            seen["n"] += 1
+            if seen["n"] == 2:                                 # the first staged file is flushed, the second is not
+                raise OSError("disk full")
+            return real(descriptor)
+        with mock.patch.object(graph.os, "fsync", fsync):
+            self.assertEqual(self.run_it(self.later()), [])
+        self.assertEqual(seen["n"], 2)
+        self.assertEqual(self.files(), before)                 # items.json is still the previous bytes, no temporary file
+        self.assertIn("graph export skipped", self.out)
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_the_directory_is_flushed_after_the_two_renames_and_a_failure_to_do_so_is_reported_not_fatal(self) -> None:
+        with mock.patch.object(graph, "_sync_directory", wraps=graph._sync_directory) as spy:
+            self.assertEqual(len(self.run_it()), 2)
+        spy.assert_called_once_with(self.folder)
+        with mock.patch.object(graph, "_sync_directory", side_effect=OSError("io error")):
+            paths = self.run_it(self.later())
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"])      # the pair is in place
+        self.assertIn("the directory was not synced", self.out)
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_the_directory_is_not_flushed_when_nothing_was_replaced(self) -> None:
+        with mock.patch.object(graph, "_sync_directory") as spy, self.replace_failing_on(1):
+            self.assertEqual(self.run_it(), [])
+        spy.assert_not_called()
 
     def test_a_pair_that_fails_the_contract_is_not_published(self) -> None:
         with mock.patch.object(graph, "contract_problems", return_value=["boom"]):
@@ -548,6 +606,10 @@ class ContractTest(unittest.TestCase):
             "as_of that differs": lambda d, t: t.update(as_of="2026-11-11"),
             "a pool that is neither null nor a count": lambda d, t: t["days"][1]["lanes"]["data"].update(pool="3"),
             "picks_known that is not a boolean": lambda d, t: t["days"][1].update(picks_known=None),
+            "source_evidence missing": lambda d, t: t.pop("source_evidence"),
+            "source_evidence that names a source that never failed": lambda d, t: t["source_evidence"].update(deepmind="O"),
+            "source_evidence with a class that is not O, R or M": lambda d, t: (t["days"][1].update(failed_sources=["deepmind"]),
+                                                                               t["source_evidence"].update(deepmind="Z")),
             "a gap on a day said to be known": lambda d, t: (d["backfill"]["gaps"].append({"date": "2026-11-11", "reason": "x"}),
                                                               t.update(items_sha256=hashlib.sha256(graph.render_json(d)).hexdigest())),
         }
@@ -562,7 +624,7 @@ class NightlyTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "data").mkdir()
-        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}]))
         (self.root / "radar" / "daily").mkdir(parents=True)
         (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
         self.ctx = {"date": DAY, "picked": sample()[:2],
@@ -579,7 +641,7 @@ class NightlyTest(unittest.TestCase):
         self.assertEqual((doc["as_of"], doc["first_run"], doc["schema"]), (DAY, "2026-11-11", "radar-graph-1"))
         table = json.loads(paths[1].read_text())
         self.assertEqual((table["as_of"], table["mismatch_days"], len(table["days"])), (DAY, [], 2))
-        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2, "per_day": 8}])
+        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}])
 
     def test_a_second_run_of_the_same_day_changes_nothing(self) -> None:
         first = [path.read_bytes() for path in self.run_it()]
@@ -675,6 +737,8 @@ class CommittedDataTest(unittest.TestCase):
         table["items_count"] = len(doc["items"])
         self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
         self.assertEqual(table["mismatch_days"], ["2026-09-19"])
+        # 06's weekly table: the four sources that failed in the 58 days, by the current configuration.
+        self.assertEqual(table["source_evidence"], {"arxiv": "R", "deepmind": "O", "leiphone": "M", "tri": "R"})
         self.assertTrue(all(cell["picked"] is None for cell in table["days"][0]["lanes"].values()))
         # The links are published as they were: an old plain-http link is not turned into https.
         self.assertTrue(any(entry["url"].startswith("http://") for entry in doc["items"]))
