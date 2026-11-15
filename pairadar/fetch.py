@@ -417,6 +417,7 @@ def polite(url: str) -> None:
 
 
 ALLOW, DISALLOW, FORBIDDEN, UNREACHABLE = "allow", "disallowed", "forbidden", "unreachable"
+UNSUPPORTED_URL = "unsupported-url"     # this URL cannot be judged against any rules (an invalid percent escape in it)
 # The 4xx answers to a robots.txt request that are not "there are no rules": the host is forbidden (401, 403) or
 # asked us to wait (429). `RobotsCache.verdict` (the feeds) spells out the same three; `_robots_allows` (the pages)
 # uses this tuple. A test pins the two paths to the same outcome for every status.
@@ -494,7 +495,11 @@ class RobotsCache:
         rule = self.hosts[origin]
         if isinstance(rule, str):
             return rule
-        return ALLOW if rule.allowed(url) else DISALLOW
+        try:
+            return ALLOW if rule.allowed(url) else DISALLOW
+        except robots_rules.RobotsUnsupported:
+            # A URL the matcher cannot judge (a `%` that is not an escape): this URL is refused, nothing else on the host is
+            return UNSUPPORTED_URL
 
     def allows(self, url: str) -> bool:
         return self.verdict(url) == ALLOW
@@ -921,6 +926,7 @@ class _PageRobots(dict):
         super().__init__()
         self.store = store
         self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
+        self.unsupported: set[str] = set()        # page URLs `robots_rules` could not judge (refused, one by one)
 
 
 def _page_previously_allowed(cache: Any, url: str) -> bool:
@@ -978,7 +984,14 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
         else:
             rules = [refuse_all]
         cache[origin] = rules
-    return all(rule.allowed(url) for rule in cache[origin])
+    try:
+        return all(rule.allowed(url) for rule in cache[origin])
+    except robots_rules.RobotsUnsupported:
+        # A URL the matcher cannot judge (a `%` that is not an escape): this page is refused, the others are read
+        unsupported = getattr(cache, "unsupported", None)
+        if isinstance(unsupported, set):
+            unsupported.add(url)
+        return False
 
 
 def _host_allowed(host: str, allowed: set[str]) -> bool:
@@ -1537,7 +1550,7 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     if static_run:
         result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
-    robots: dict[str, Any] = _PageRobots(robots_store)
+    robots = _PageRobots(robots_store)
     static_robots = _StaticRobots(robots_store)
     fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
@@ -1571,7 +1584,8 @@ def fetch_page_watch(config: Config, reference: date | None = None,
                 result.robots_skipped.append(entry["id"])
                 if _page_previously_allowed(robots, entry["url"]):
                     result.robots_newly_denied.append(entry["id"])
-                result.note(entry["id"], "firecrawl", "robots", "robots-disallowed")
+                result.note(entry["id"], "firecrawl", "robots",
+                            UNSUPPORTED_URL if entry["url"] in robots.unsupported else "robots-disallowed")
                 continue
             reply = firecrawl_post(settings["endpoint"], "/v2/scrape", {
                 "url": entry["url"],

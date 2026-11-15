@@ -36,6 +36,9 @@ radar content itself is dated, not versioned.
   Firecrawl pages that the new reader refuses and `urllib.robotparser` (the reader before) would have allowed, each with
   its reason. Static pages already used `robots_rules`, so they are not in it. The old reader is kept only to compute
   this and decides nothing; remove it once the first runs have been read back.
+- A feed, signal or Firecrawl page whose own URL has a `%` that is not a percent escape cannot be judged against any
+  rules. That one URL is refused (`unsupported-url`, `robots_skipped`, never `failed`) and the rest of the run is read
+  as before; before, the exception ended the whole feed or page loop.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub

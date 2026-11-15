@@ -333,6 +333,76 @@ class PageReaderTests(unittest.TestCase):
         self.assertFalse(fetch._page_previously_allowed({}, "https://www.figure.ai/news"))
 
 
+class UnsupportedUrlTests(unittest.TestCase):
+    """04's N1: a URL with a `%` that is not an escape cannot be judged. That URL is refused (`unsupported-url`); the host's
+    other URLs, the other feeds and the other pages of the same run are read as before."""
+
+    VALID = b"User-agent: *\nDisallow: /private\n"
+
+    def test_the_cache_refuses_that_url_alone_and_does_not_ask_again(self):
+        asked = []
+        cache = fetch.RobotsCache(getter=lambda url: asked.append(url) or (200, self.VALID))
+        with mock.patch.object(fetch.time, "sleep"), silent():
+            got = [cache.verdict(url) for url in ("https://k.example/feed%zz.xml", "https://k.example/feed",
+                                                  "https://k.example/a%", "https://k.example/private/x",
+                                                  "https://k.example/ok%41")]
+        self.assertEqual(got, [fetch.UNSUPPORTED_URL, fetch.ALLOW, fetch.UNSUPPORTED_URL, fetch.DISALLOW, fetch.ALLOW])
+        self.assertEqual(asked, ["https://k.example/robots.txt"])
+
+    def test_one_feed_with_such_a_url_does_not_stop_the_others(self):
+        config = config_with(feeds=[{"id": "bad", "url": "https://k.example/feed%zz.xml", "evidence": "O", "topical": True},
+                                    {"id": "before", "url": "https://j.example/feed", "evidence": "O", "topical": True},
+                                    {"id": "after", "url": "https://k.example/feed", "evidence": "O", "topical": True}])
+        requested = []
+
+        def get(url, *a, **k):
+            requested.append(url)
+            return rss(("A robot", f"{url}/a", "robot"))
+        skipped, reasons, newly = [], {}, {}
+        cache = fetch.RobotsCache(getter=lambda url: (200, self.VALID))
+        with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), silent():
+            items, failed = fetch.fetch_feeds(config, robots=cache, skipped=skipped, reasons=reasons, newly_denied=newly)
+        self.assertEqual((skipped, reasons, failed), (["bad"], {"bad": fetch.UNSUPPORTED_URL}, []))
+        self.assertEqual(sorted({entry.source_id for entry in items}), ["after", "before"])
+        self.assertEqual(requested, ["https://j.example/feed", "https://k.example/feed"])        # the bad URL was never requested
+        self.assertEqual(newly, {"bad": fetch.UNSUPPORTED_URL})                                    # the old reader would have read it
+
+    def test_a_signal_with_such_a_url_is_skipped_and_the_next_is_read(self):
+        cache = fetch.RobotsCache(getter=lambda url: (200, self.VALID))
+        signals = heat.Signals()
+        with mock.patch.object(fetch.time, "sleep"), silent():
+            self.assertIsNone(heat._json("https://api.example/v1/s%zz", "bad", signals, cache, lambda url: b"[]"))
+            self.assertEqual(heat._json("https://api.example/v1/ok", "ok", signals, cache, lambda url: b"[1]"), [1])
+        self.assertEqual((signals.robots_skipped, signals.robots_reasons), (["bad"], {"bad": fetch.UNSUPPORTED_URL}))
+
+    def test_a_page_with_such_a_url_is_refused_and_the_other_page_of_the_run_is_read(self):
+        raw = firecrawl_sources()
+        figure = raw["page_watch"][0]
+        raw["page_watch"] = [{**figure, "id": "figure-bad", "url": "https://www.figure.ai/news%zz"}, figure]
+        with FakeFirecrawl() as fake, mock.patch.dict(os.environ, {fetch.FIRECRAWL_ENV: fake.url}):
+            fake.serve("https://www.figure.ai/robots.txt",
+                       {"success": True, "data": {"rawHtml": "User-agent: *\nAllow: /\n", "metadata": {"statusCode": 200}}})
+            fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+            with silent():
+                result = fetch.fetch_page_watch(Config(sources=raw, taxonomy={}, glossary={}, baseline={}), DAY, None)
+            self.assertEqual(fake.scraped(), ["https://www.figure.ai/news"])
+        self.assertEqual((result.robots_skipped, result.checked, result.failed), (["figure-bad"], ["figure"], []))
+        self.assertEqual(result.sources["figure-bad"]["reason"], fetch.UNSUPPORTED_URL)
+        self.assertEqual(result.sources["figure"]["outcome"], "checked")
+
+    def test_the_page_check_alone_refuses_that_url_and_a_plain_dictionary_cache_still_works(self):
+        for cache in (fetch._PageRobots(), {}):
+            with self.subTest(type(cache).__name__), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "User-agent: *\nAllow: /\n", "metadata": {"statusCode": 200}}})
+                settings = {"endpoint": fake.url, "timeout": 5}
+                self.assertFalse(fetch._robots_allows(settings, "https://www.figure.ai/news%zz", cache))
+                self.assertTrue(fetch._robots_allows(settings, "https://www.figure.ai/news", cache))
+                self.assertEqual(len(fake.requests), 1)                                           # robots.txt, asked once
+                if isinstance(cache, fetch._PageRobots):
+                    self.assertEqual(cache.unsupported, {"https://www.figure.ai/news%zz"})
+
+
 class StaticReaderTests(TlsTestCase):
     def setUp(self) -> None:
         super().setUp()
