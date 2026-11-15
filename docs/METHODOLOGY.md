@@ -397,7 +397,7 @@ reason and is not guessed. The one gap at the time of writing is the first run (
 links were in an older `http`, versioned form from which the item id cannot be recovered. `lane-time.json`
 has, for every day from the first run and every lane, the picks by evidence class, the candidate pool
 (`null` where the run log has none, never `0`), the sources that failed or were unavailable that day, and the
-selection rules in force over time from `data/selection-rules.json` (each rule carries the `per_lane` and `per_day` in force at its commit, read from the code at that commit: 2 and 8 at every rule up to the one that stopped the GitHub atom feeds, and the current code defaults for that one, and the first also `min_score` 0.9; a size that could not be verified is `null`; whether a manual run used another `--limit` is not recorded; `show` says whether the page draws the change as a line, an editorial choice about the changes after which two days are not measured with the same ruler, and the rules that are not drawn stay in the data). A day whose stored picks do not add up to the
+selection rules in force over time from `data/selection-rules.json` (each rule carries the `per_lane` and `per_day` in force at its commit, read from the code at that commit: 2 and 8 at every one of the ten, and the first also `min_score` 0.9; a size that could not be verified is `null`; whether a manual run used another `--limit` is not recorded). A day whose stored picks do not add up to the
 number of items the run published (the day in `backfill.gaps`) has `picks_known: false`, is listed in
 `mismatch_days`, and has `null`, not `0`, in every pick cell, because a zero would read as "nothing was picked". The `from` of a rule is
 the date of the commit that changed it, not the first run that used it (`rules_dates` says so), and each rule says that its effect on the
@@ -412,7 +412,7 @@ use them together (`graph.check_pair`). Both files are written beside their name
 fails the first file is put back, and a failure never stops the run. A run log in which any run has a `count` that is
 missing, null, a bool or not a whole number of at least 0 stops the export, and the previous pair stays. A stored `items.json` whose entries are not what the
 module writes stops the export and is left as it is; a stored day with fewer picks than the run recorded is read again from
-its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`. `source_evidence` gives, for each source named in any day's `failed_sources`, its evidence class (O, R or M) in the configuration at the time of the export, not as it was on the day it failed; a source id that is not in it has no known class, and a reader must treat it as any class.
+its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
 block in each README does the same: directly under the day's heading and window line it
