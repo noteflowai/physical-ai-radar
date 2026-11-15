@@ -775,6 +775,7 @@ def retire(task: dict, state: Path, active: Path, service_state: Path,
               "publication_state": read_json(state / "publication.json", {})}
     if reason_code:
         result["reason_code"] = reason_code
+    write_json(active, task)
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
     return finish_retired(task, state, active, service_state, name, root=root)
@@ -807,6 +808,7 @@ def finish_no_change(task: dict, decision: dict, state: Path, active: Path,
                   "reason", "milestone_id", "problem_evidence", "expected_outcome",
                   "follow_up_on", "governance")}}
     write_json(state / "decision.json", decision)
+    write_json(active, task)
     write_json(state / "retired-task.json", task)
     write_json(state / "terminal.json", result)
     return finish_retired(task, state, active, service_state, name, root=root)
