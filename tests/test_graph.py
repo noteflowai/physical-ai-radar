@@ -362,6 +362,33 @@ class PublishTest(unittest.TestCase):
         return {"date": "2026-11-13", "picked": sample()[:1],
                 "history": [*self.ctx["history"], {"date": "2026-11-13", "count": 1}]}
 
+    def test_a_run_log_whose_count_cannot_be_trusted_stops_the_export_and_keeps_the_previous_pair(self) -> None:
+        # D1 (00's ruling, 01's two counter-examples): `count=True` equals one stored pick and a missing count equals zero,
+        # so without the check both would be exported as if they were fine.
+        self.run_it()
+        before = self.files()
+        day13 = {"date": "2026-11-13", "picked": sample()[:1]}                       # one pick stored for the 13th
+        cases = {
+            "count is True where one pick is stored": [*self.ctx["history"], {"date": "2026-11-13", "count": True}],
+            "count is False where none is stored": [*self.ctx["history"], {"date": "2026-11-13", "count": False}],
+            "count is missing where none is stored": [{"date": "2026-11-10"}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "count is null": [{"date": "2026-11-10", "count": None}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "count is a string": [{"date": "2026-11-10", "count": "0"}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "count is a float": [{"date": "2026-11-10", "count": 0.0}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "count is negative": [{"date": "2026-11-10", "count": -1}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "a run has no usable date": [{"date": "20261110", "count": 0}, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+            "a run is not an object": [None, *self.ctx["history"], {"date": "2026-11-13", "count": 1}],
+        }
+        for name, history in cases.items():
+            with self.subTest(name):
+                self.assertEqual(self.run_it({**day13, "history": history}), [])
+                self.assertIn("no usable date or count", self.out)
+                self.assertEqual(self.files(), before)
+        # Zero is a count, and a run log of whole numbers is exported.
+        paths = self.run_it({**day13, "history": [{"date": "2026-11-10", "count": 0}, *self.ctx["history"],
+                                                  {"date": "2026-11-13", "count": 1}]})
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"])
+
     def test_a_written_pair_is_one_version_and_says_so(self) -> None:
         paths = self.run_it()
         self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"])

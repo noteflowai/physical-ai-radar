@@ -19,8 +19,10 @@ rules in force over time, from `data/selection-rules.json`, so that a chart can 
 measured the same way. The `from` of a rule is the date of its commit, not the first run that used it.
 
 The two files are one version: `lane-time.json` carries `items_sha256`, the SHA-256 of the bytes of `items.json`, and
-the pair is checked (`contract_problems`) and then written so that a failure leaves the previous pair (`publish_pair`).
-A reader can tell two generations apart with `check_pair`.
+the pair is checked (`contract_problems`) and then written by `publish_pair`, which puts the first file back if the
+second cannot be replaced. Between the two renames a reader can still see two generations; one that compares
+`items_sha256` (`check_pair`) can always tell them apart. A run log whose `count` is missing, null, a bool or not a
+whole number stops the export and leaves the previous pair (`check_history`).
 
 Nothing here changes what is picked or published. A problem with these files is reported on stdout
 and the radar run carries on.
@@ -427,8 +429,25 @@ def _stage(folder: Path, name: str, data: bytes) -> Path:
     return Path(temporary)
 
 
+def check_history(history: list[dict[str, Any]]) -> None:
+    """Refuse to export from a run log whose `count` cannot be trusted (00's ruling D1, from 01's two counter-examples).
+
+    Every run must have a date and a `count` that is a whole number of at least 0 and not a bool: `True` would equal
+    one stored pick, and a missing or null count would read as zero. Otherwise the export is skipped as a whole and the
+    previous pair stays where it is. Raises GraphError."""
+    for index, run in enumerate(history):
+        if not isinstance(run, dict) or not _day(run.get("date")) or not _count(run.get("count")):
+            shown = run.get("date") if isinstance(run, dict) else None
+            raise GraphError(f"the run log has no usable date or count for run {index} ({shown!r})")
+
+
 def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Path]:
-    """Replace the pair so that a failure never leaves a reader with two generations (01 F2).
+    """Replace the pair so that a failure does not normally leave a reader with two generations (01 F2).
+
+    A reader is safe from two generations in two cases only: the second replacement fails and the first file is put
+    back (below), or the reader compares `items_sha256` with the bytes of `items.json` (`check_pair`). Between the two
+    renames, or if the process dies there, or if putting the file back fails too, a reader without that check can see
+    the new `items.json` with the old `lane-time.json`.
 
     Both files are first written in full beside their names; only then is each replaced (an atomic rename). If the
     second replacement fails, the first file is put back as it was (or removed, if there was none). Should even that
@@ -470,11 +489,12 @@ def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Pa
 def write_graph(config: Config, ctx: dict[str, Any], root: Path = ROOT, source: Path = ROOT) -> list[Path]:
     """Append the day to `items.json` (filling earlier days from their pages) and rewrite `lane-time.json`.
 
-    Existing files are read from `source`, the result written under `root`. The pair is checked before anything
-    is written, and written so that a failure leaves the previous pair in place. On any problem nothing is
-    published and the reason is printed: these files never stop a run."""
+    Existing files are read from `source`, the result written under `root`. The run log is checked first
+    (`check_history`), then the pair before anything is written; when the second file cannot be replaced the first is
+    put back. On any problem nothing is published and the reason is printed: these files never stop a run."""
     folder_in, folder_out = source / "radar" / "graph", root / "radar" / "graph"
     try:
+        check_history(ctx["history"])
         doc = load_items(folder_in / ITEMS_FILE) or empty_items()
         validate_items(doc, config)
         day = ctx["date"]

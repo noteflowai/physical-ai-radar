@@ -403,7 +403,8 @@ log names no pool for is `null` too); `mismatch_days` is exactly the days with `
 known adds up to its `count`. `lane-time.json` names its items file: `items_sha256` is the SHA-256 of the bytes of
 `items.json` and `items_count` its number of entries, and a reader that finds another hash has two generations and must not
 use them together (`graph.check_pair`). Both files are written beside their names and then renamed; if the second rename
-fails the first file is put back, and a failure never stops the run. A stored `items.json` whose entries are not what the
+fails the first file is put back, and a failure never stops the run. A run log in which any run has a `count` that is
+missing, null, a bool or not a whole number of at least 0 stops the export, and the previous pair stays. A stored `items.json` whose entries are not what the
 module writes stops the export and is left as it is; a stored day with fewer picks than the run recorded is read again from
 its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
