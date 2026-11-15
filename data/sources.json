@@ -299,7 +299,9 @@
       "id": "eu-ai-act-timeline",
       "title": "EU AI Act official timeline (Council of the EU)",
       "url": "https://www.consilium.europa.eu/en/policies/artificial-intelligence-act/timeline-artificial-intelligence/",
-      "status_note": "High-risk deadlines 2027-12-02 / 2028-08-02 per Digital Omnibus."
+      "status_note": "High-risk deadlines 2027-12-02 / 2028-08-02 per Digital Omnibus.",
+      "covered": false,
+      "not_covered_reason": "The robots.txt of the Council of the EU answers 403, and under the radar's rule a 401 or 403 robots.txt means the host is not read, so the radar does not read this page. The note is entered by hand and is not checked by the radar."
     }
   ],
   "page_watch_settings": {
@@ -381,15 +383,6 @@
       "evidence": "O",
       "weight": 1.0,
       "publisher": "EUR-Lex",
-      "topical": true
-    },
-    {
-      "id": "watch-eu-ai-act-timeline",
-      "standards_watch": "eu-ai-act-timeline",
-      "mode": "page",
-      "evidence": "O",
-      "weight": 1.0,
-      "publisher": "Council of the EU",
       "topical": true
     }
   ]

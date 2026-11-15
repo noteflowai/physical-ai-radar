@@ -725,6 +725,9 @@ def page_watch_problems(sources: dict[str, Any]) -> list[str]:
         if "standards_watch" in entry:
             if entry["standards_watch"] not in standards:
                 problems.append(f"{where}: no standards_watch entry {entry['standards_watch']}")
+            elif standards[entry["standards_watch"]].get("covered") is False:
+                problems.append(f"{where}: standards_watch entry {entry['standards_watch']} is marked not covered "
+                                "and must not be read")
         elif not _public_https(str(entry.get("url", ""))):
             problems.append(f"{where}: url must be a public https URL")
         if mode == "listing" and not str(entry.get("link_prefix", "")).startswith("/"):

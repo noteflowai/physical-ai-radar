@@ -218,7 +218,11 @@ def render_daily(config: Config, lang: str, ctx: dict[str, Any]) -> str:
         ]
     )
     for watch in config.sources.get("standards_watch", []):
-        lines.append(f"- [{watch['title']}]({watch['url']}) — {watch['status_note']}")
+        line = f"- [{watch['title']}]({watch['url']}) — {watch['status_note']}"
+        if watch.get("covered") is False:
+            # A page the radar does not read (robots.txt, terms): say so on every page that lists it.
+            line += f" · **{ui['standards_not_covered']}**"
+        lines.append(line)
     lines.extend(
         [
             "",

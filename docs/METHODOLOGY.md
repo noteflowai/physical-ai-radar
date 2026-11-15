@@ -14,8 +14,8 @@ changes, this file changes in the same pull request.
 | Lab research pages and journals | Toyota Research Institute, BAIR blog, Nature Machine Intelligence | `R` | a lab's own page or a journal's listing of a paper: the same standing as the paper |
 | Trade and mainstream press | IEEE Spectrum Robotics, The Robot Report, TechCrunch Robotics, Robohub, Import AI; 雷峰网 Leiphone and 量子位 QbitAI (Chinese), MONOist (Japanese) | `M` | professional reporting and analysis, still secondary |
 | Attention signals | Hugging Face Daily Papers API, Hacker News (Algolia search API), GitHub REST (stars) | — | ranking only (section 3); never an item and never evidence |
-| Standards watch | ISO, EUR-Lex, Council of the EU | `O` | authoritative status and dates |
-| Page watch | Figure, 1X, Physical Intelligence, Unitree and the standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
+| Standards watch | ISO, EUR-Lex; the Council of the EU is listed as a link and marked not covered (its robots.txt answers 403, so the radar does not read it) | `O` | authoritative status and dates; the note of a page that is not covered is entered by hand and not checked |
+| Page watch | Figure, 1X, Physical Intelligence, Unitree and the covered standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
 
 Rules:
 
