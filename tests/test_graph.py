@@ -214,6 +214,19 @@ class LaneTimeTest(unittest.TestCase):
         self.assertEqual([(day["date"], day["ran"], day["count"]) for day in table["days"]],
                          [("2026-11-10", True, 5), ("2026-11-11", False, None), ("2026-11-12", True, 0)])
         self.assertEqual(table["mismatch_days"], ["2026-11-10"])            # the run recorded 5, no entries
+        gap = table["days"][0]
+        self.assertFalse(gap["picks_known"])                                 # the day's picks cannot be placed
+        for cell in gap["lanes"].values():
+            self.assertEqual((cell["O"], cell["R"], cell["M"], cell["picked"]), (None, None, None, None))
+        self.assertTrue(table["days"][1]["picks_known"] and table["days"][2]["picks_known"])
+        self.assertEqual(table["days"][2]["lanes"]["data"]["picked"], 0)    # a day that really had none is a zero
+
+    def test_a_day_that_cannot_be_placed_keeps_its_pool(self) -> None:
+        pool = {"live": 3, "eligible": 2, "per_lane_cap": 2, "by_lane": {lane: 1 for lane in self.LANES},
+                "picked_by_lane": {lane: 0 for lane in self.LANES}}
+        table = self.table([{"date": "2026-11-12", "count": 4, "pool": pool}], [], "2026-11-12")
+        self.assertEqual(table["mismatch_days"], ["2026-11-12"])
+        self.assertTrue(all(cell["pool"] == 1 and cell["picked"] is None for cell in table["days"][0]["lanes"].values()))
 
     def test_the_pool_is_null_before_the_run_log_recorded_one_and_never_zero(self) -> None:
         pool = {"live": 9, "eligible": 4, "per_lane_cap": 2,

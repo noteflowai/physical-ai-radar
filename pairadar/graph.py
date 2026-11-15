@@ -12,9 +12,11 @@ is not guessed: it is listed under `backfill.gaps` with the reason.
 
 `lane-time.json` is derived from `history.json` and `items.json`: for every day from the first run to
 the run being written and every lane, the picks by evidence class, and the size of the candidate pool
-(`null` before the run log recorded one, never zero). It carries the selection rules in force over
-time, from `data/selection-rules.json`, so that a chart can say that two days are not measured the
-same way.
+(`null` before the run log recorded one, never zero). A day whose stored entries do not add up to the number
+of items the run published (a gap in `items.json`) has `picks_known: false`, is listed in `mismatch_days`, and
+has `null` picks in every cell: a zero there would read as "nothing was picked". It carries the selection
+rules in force over time, from `data/selection-rules.json`, so that a chart can say that two days are not
+measured the same way.
 
 Nothing here changes what is picked or published. A problem with these files is reported on stdout
 and the radar run carries on.
@@ -240,9 +242,15 @@ def lane_time(config: Config, history: list[dict[str, Any]], items: dict[str, An
             lanes[lane] = {**{k: counts.get(k, 0) for k in EVIDENCE}, "picked": sum(counts.values()),
                            "pool": pool["by_lane"].get(lane, 0) if "by_lane" in pool else None}
         picked = sum(cell["picked"] for cell in lanes.values())
-        if run and run.get("count") != picked:
+        unreadable = bool(run) and run.get("count") != picked
+        if unreadable:
+            # The run published `count` items and the stored entries do not add up to it: the lane of each is not
+            # known, so no cell may say 0 (that would read as "nothing was picked"). The pool stays: it is the run's.
             mismatched.append(day)
+            lanes = {lane: {**{k: None for k in EVIDENCE}, "picked": None, "pool": cell["pool"]}
+                     for lane, cell in lanes.items()}
         days.append({"date": day, "ran": run is not None, "count": run.get("count") if run else None,
+                     "picks_known": not unreadable,
                      "failed_sources": list((run or {}).get("failed", [])),
                      "unavailable": list((run or {}).get("unavailable", [])),
                      "fallback": list((run or {}).get("fallback", [])), "lanes": lanes})
