@@ -24,8 +24,10 @@ Rules:
 - the one exception is `page_watch`: an official source with no feed at all is read as a
   page, only through a self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other
   endpoint, including `RADAR_FIRECRAWL_URL`, is refused; redirects and proxies are not
-  followed). robots.txt is checked first, through the same Firecrawl; a robots.txt that
-  cannot be read disallows the page for that run. Firecrawl's own change history needs
+  followed). robots.txt is checked first, through the same Firecrawl, and read as the feeds
+  read it (the project's policy, stricter than RFC 9309, which lets a crawler read after a 4xx): a 401, 403 or 429, a 5xx, a
+  reply with no status or one that is not a whole number from 100 to 599, or a 2xx with no body
+  disallows the page for that run; only another 4xx (404, 410) or an empty 2xx body means there are no rules. Firecrawl's own change history needs
   its hosted store, so the radar keeps a baseline in `radar/page-watch.json` (digests,
   link URLs with the day each was first seen and last offered, line digests; no page
   text). It is written atomically, and only when something in it changed; an unreadable
