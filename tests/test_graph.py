@@ -306,12 +306,20 @@ class LaneTimeTest(unittest.TestCase):
         self.assertIn("2026-09-25", [rule["from"] for rule in rules])
         self.assertIn("2026-10-25", [rule["from"] for rule in rules])
         self.assertTrue(all(rule["effect_measured"] is False for rule in rules))
+        # 07 decided which changes the page draws as lines (07-radar-rules-show-1116.md): the ones after which the two sides
+        # are not measured with the same ruler. The others stay in the data. One line per date: 09-26 holds two commits.
+        self.assertEqual(sorted({rule["from"] for rule in rules if rule["show"]}),
+                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14"])
+        self.assertEqual(sorted({rule["from"] for rule in rules[1:] if not rule["show"]}),
+                         ["2026-09-21", "2026-10-22", "2026-10-26"])
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "rules.json"
-            ok = {"from": "2026-09-19", "per_lane": 2, "per_day": 8}
+            ok = {"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": True}
             bad = [{**ok, "per_day": value} for value in (0, -1, "8", True, 8.0)]
-            bad += [{"from": "2026-09-19", "per_lane": 2}, {"from": "2026-09-19", "per_day": 8}]
+            bad += [{"from": "2026-09-19", "per_lane": 2, "show": True}, {"from": "2026-09-19", "per_day": 8, "show": True}]
             bad += [{**ok, "per_lane": value} for value in (0, "2", False)]
+            bad += [{key: value for key, value in ok.items() if key != "show"}]                  # show is required
+            bad += [{**ok, "show": value} for value in ("true", 1, 0, None, "false")]            # and is a real boolean
             for text in ("{broken", "{}", json.dumps([{"title": "no date"}]),
                          json.dumps([{**ok, "from": "2026-10-01"}, {**ok, "from": "2026-09-01"}])) + tuple(
                              json.dumps([rule]) for rule in bad):
@@ -331,7 +339,7 @@ class PublishTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "data").mkdir()
-        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}]))
         (self.root / "radar" / "daily").mkdir(parents=True)
         (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
         self.ctx = {"date": DAY, "picked": sample()[:2],
@@ -562,7 +570,7 @@ class NightlyTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "data").mkdir()
-        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}]))
         (self.root / "radar" / "daily").mkdir(parents=True)
         (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
         self.ctx = {"date": DAY, "picked": sample()[:2],
@@ -579,7 +587,7 @@ class NightlyTest(unittest.TestCase):
         self.assertEqual((doc["as_of"], doc["first_run"], doc["schema"]), (DAY, "2026-11-11", "radar-graph-1"))
         table = json.loads(paths[1].read_text())
         self.assertEqual((table["as_of"], table["mismatch_days"], len(table["days"])), (DAY, [], 2))
-        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2, "per_day": 8}])
+        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}])
 
     def test_a_second_run_of_the_same_day_changes_nothing(self) -> None:
         first = [path.read_bytes() for path in self.run_it()]

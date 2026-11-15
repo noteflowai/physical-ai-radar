@@ -295,6 +295,10 @@ def load_rules(path: Path) -> list[dict[str, Any]]:
             or [rule["from"] for rule in rules] != sorted(rule["from"] for rule in rules)):
         raise GraphError(f"{path.name} must be a list of dated rules in date order")
     for rule in rules:
+        # `show`: whether the page draws this change as a line (the editor's call: does it make the two sides measured
+        # differently?). A rule that is not drawn stays in the data and in the count of "smaller changes".
+        if rule.get("show") is not True and rule.get("show") is not False:
+            raise GraphError(f"{path.name}: rule {rule['from']} needs show as true or false")
         for key in ("per_lane", "per_day"):
             # The size in force when the rule took effect: a whole number, or null where it could not be verified.
             if key not in rule or not (rule[key] is None or (isinstance(rule[key], int) and not isinstance(rule[key], bool)
