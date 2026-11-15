@@ -29,7 +29,6 @@ import json
 import os
 import re
 import time
-import urllib.robotparser
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -432,13 +431,16 @@ def _robots_get(url: str) -> tuple[int | None, bytes | None]:
 class RobotsCache:
     """robots.txt, read once per host per run, for every feed and signal endpoint.
 
-    The outcome follows RFC 9309 section 2.3.1 (and Python's RobotFileParser):
-    - 2xx: the rules decide; one that names this agent or `*` and disallows the URL
-      keeps it from being requested (the Science Robotics eTOC is under `/action/`);
+    The outcome follows RFC 9309 section 2.3.1:
+    - 2xx: the rules decide, read by `robots_rules` (groups merged, `*` and a final `$` in a rule, the longest match
+      wins): a rule that names this agent or `*` and disallows the URL keeps it from being requested (the Science
+      Robotics eTOC is under `/action/`; github.com disallows `/*.atom$`, which `urllib.robotparser` cannot read).
+      A file that cannot be judged completely (not UTF-8, longer than `MAX_ROBOTS_CHARS`, too many or too long rules,
+      an invalid percent-escape in a rule) is not cut or guessed: the host is `unreachable`;
     - 401 or 403: everything on the host is `forbidden`;
     - any other 4xx (404, 410...): there are no rules, everything is allowed;
-    - 5xx, 429 after its retry, no HTTP answer at all, or anything else that cannot be
-      classified: the host is `unreachable` and nothing on it is requested this run.
+    - 5xx, 429 after its retry, no HTTP answer at all, or anything else that cannot be classified: the host is
+      `unreachable` and nothing on it is requested this run.
     `verdict()` returns `allow` or the reason a URL is refused (`disallowed` by a rule,
     `forbidden`, `unreachable`). Every refused feed is `robots_skipped` with its reason,
     never `failed`: the source-repair job cannot fix a robots.txt (01's decision,
@@ -457,9 +459,13 @@ class RobotsCache:
             polite(origin)
             status, body = self.getter(origin + "/robots.txt")
             if status is not None and 200 <= status < 300 and body is not None:
-                parser = urllib.robotparser.RobotFileParser()
-                parser.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
-                self.hosts[origin] = parser
+                try:
+                    if len(body) > MAX_ROBOTS_CHARS:
+                        raise robots_rules.RobotsUnsupported("file too large")
+                    self.hosts[origin] = robots_rules.parse(body.decode("utf-8"), ROBOTS_TOKEN)
+                except (UnicodeDecodeError, robots_rules.RobotsUnsupported) as error:
+                    print(f"[fetch] robots.txt for {origin} cannot be judged completely ({error}): host not requested this run")
+                    self.hosts[origin] = UNREACHABLE
             elif status in (401, 403):
                 print(f"[fetch] robots.txt for {origin} answered {status}: host forbidden")
                 self.hosts[origin] = FORBIDDEN
@@ -471,7 +477,7 @@ class RobotsCache:
         rule = self.hosts[origin]
         if isinstance(rule, str):
             return rule
-        return ALLOW if rule.can_fetch(ROBOTS_TOKEN, url) else DISALLOW
+        return ALLOW if rule.allowed(url) else DISALLOW
 
     def allows(self, url: str) -> bool:
         return self.verdict(url) == ALLOW
@@ -910,18 +916,22 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
             data = None
         status = _robots_status(data)
         body = data.get("rawHtml") if data is not None else None
-        parser = urllib.robotparser.RobotFileParser()
+        refuse_all = robots_rules.Rules([(False, "/")])
         if status is not None and 200 <= status < 300 and isinstance(body, str):
-            text = body[:MAX_ROBOTS_CHARS]
-            # A site that answers robots.txt with its HTML page has no rules to read.
-            parser.parse([] if text.lstrip()[:1] == "<" else text.splitlines())
+            # (A site that answers robots.txt with its HTML page has no line `robots_rules` can read: no rules.)
+            text = body
+            try:
+                if len(text) > MAX_ROBOTS_CHARS:
+                    raise robots_rules.RobotsUnsupported("file too large")
+                rules = [robots_rules.parse(text, agent) for agent in ROBOTS_AGENTS]
+            except robots_rules.RobotsUnsupported:
+                rules = [refuse_all]                 # a file that cannot be judged completely is not cut or guessed
         elif status is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
-            parser.parse([])
+            rules = [robots_rules.Rules()]
         else:
-            parser.parse(["User-agent: *", "Disallow: /"])
-        cache[origin] = parser
-    parser = cache[origin]
-    return all(parser.can_fetch(agent, url) for agent in ROBOTS_AGENTS)
+            rules = [refuse_all]
+        cache[origin] = rules
+    return all(rule.allowed(url) for rule in cache[origin])
 
 
 def _host_allowed(host: str, allowed: set[str]) -> bool:

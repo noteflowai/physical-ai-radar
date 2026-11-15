@@ -21,6 +21,12 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- The feeds (and the attention APIs) and the Firecrawl page path read robots.txt with `pairadar.robots_rules`
+  (RFC 9309: `*` and a final `$` in a rule, the longest match wins, every group that names the radar is merged)
+  instead of `urllib.robotparser`, which has no wildcards and takes the first match. A robots.txt that cannot be judged
+  completely (not UTF-8, over 500,000 bytes, too many or too long rules, an invalid percent escape) now makes the
+  host `unreachable` for the run instead of being cut or read as far as it goes. Feeds a wildcard rule disallows are
+  `robots_skipped` with the reason `disallowed`, never `failed`.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub

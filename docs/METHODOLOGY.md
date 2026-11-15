@@ -88,8 +88,10 @@ Rules:
     and a final `$` are syntax in a rule, an encoded `%2A` or `%24` is data and equals the literal
     character in the URL (never a wildcard), and the priority counts the same octets the match does, so
     two spellings of one rule have one priority.
-    (`urllib.robotparser`, which the Firecrawl path still uses, takes the first match in file order and
-    would let `Allow: /` before `Disallow: /private` through.) A file with more than 5000 rules, a rule
+    (`urllib.robotparser`, which the feeds and the Firecrawl path used before this change, takes the first match in file
+    order, has no `*` or `$`, and would let `Allow: /` before `Disallow: /private` through; github.com's `Disallow: /*.atom$`
+    was invisible to it. Both paths now read robots.txt with this module, and a file that cannot be judged completely makes
+    the host unreachable for the run instead of being cut.) A file with more than 5000 rules, a rule
     longer than 2000 characters, a rule with a `%` that starts no two-digit escape, or bytes that are
     not UTF-8 cannot be judged completely and is unreadable, not guessed at. `404`/`410` means there
     are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a

@@ -216,6 +216,71 @@ class DisabledFeedsTest(unittest.TestCase):
         self.assertLessEqual({"github-lerobot", "github-isaaclab", "github-mujoco"}, disabled)
 
 
+class RobotsRulesTest(unittest.TestCase):
+    """The feeds read robots.txt as RFC 9309 says (`robots_rules`), not with urllib.robotparser, which has no `*` or `$`."""
+
+    def verdicts(self, body: bytes, *urls: str) -> list[str]:
+        cache = fetch.RobotsCache(getter=lambda url: (200, body))
+        with mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+            return [cache.verdict(url) for url in urls]
+
+    def test_github_atom_is_disallowed_by_its_wildcard_rule_and_the_page_is_not(self) -> None:
+        body = (b"User-agent: *\nAllow: /*?tab=achievements&achievement=*\nDisallow: /gist/\nDisallow: /*/*/tree/\n"
+                b"Disallow: /*.atom$\nDisallow: /*/*/tags\n")
+        got = self.verdicts(body, "https://github.com/huggingface/lerobot/releases.atom",
+                            "https://github.com/huggingface/lerobot/releases",
+                            "https://github.com/huggingface/lerobot/releases.atom?page=2",     # `$` anchors the end of the path
+                            "https://github.com/huggingface/lerobot/tags", "https://github.com/gist/x")
+        self.assertEqual(got, [fetch.DISALLOW, fetch.ALLOW, fetch.ALLOW, fetch.DISALLOW, fetch.DISALLOW])
+
+    def test_the_longest_match_wins_and_allow_wins_a_tie_not_the_first_rule(self) -> None:
+        body = b"User-agent: *\nDisallow: /a/\nAllow: /a/b\nDisallow: /t\nAllow: /t\n"
+        self.assertEqual(self.verdicts(body, "https://x.example/a/b", "https://x.example/a/c", "https://x.example/t"),
+                         [fetch.ALLOW, fetch.DISALLOW, fetch.ALLOW])
+
+    def test_the_group_that_names_the_radar_wins_over_star_and_groups_with_the_same_name_are_merged(self) -> None:
+        body = (b"User-agent: *\nDisallow: /\n\nUser-agent: physical-ai-radar\nDisallow: /private\n\n"
+                b"User-agent: Physical-AI-Radar\nDisallow: /second\n")
+        self.assertEqual(self.verdicts(body, "https://x.example/feed", "https://x.example/private/a",
+                                       "https://x.example/second"),
+                         [fetch.ALLOW, fetch.DISALLOW, fetch.DISALLOW])
+        self.assertEqual(self.verdicts(b"User-agent: otherbot\nDisallow: /\n", "https://x.example/feed"), [fetch.ALLOW])
+
+    def test_a_file_that_cannot_be_judged_completely_is_unreachable_and_never_cut(self) -> None:
+        cases = {"an invalid percent escape in a rule": b"User-agent: *\nDisallow: /a%zz\n",
+                 "bytes that are not UTF-8": b"User-agent: *\nDisallow: /\xff\xfe\n",
+                 "a rule longer than the limit": b"User-agent: *\nDisallow: /" + b"a" * 2001 + b"\n",
+                 "too many rules": b"User-agent: *\n" + b"".join(b"Disallow: /p%d\n" % n for n in range(5001)),
+                 "a file larger than the limit": b"# " + b"x" * fetch.MAX_ROBOTS_CHARS + b"\nUser-agent: *\nDisallow: /\n"}
+        for name, body in cases.items():
+            with self.subTest(name):
+                self.assertEqual(self.verdicts(body, "https://x.example/feed"), [fetch.UNREACHABLE])
+
+    def test_an_empty_file_an_html_page_and_a_file_with_no_group_for_us_allow_everything(self) -> None:
+        for body in (b"", b"<html><body>Not found</body></html>", b"Sitemap: https://x.example/s.xml\n"):
+            with self.subTest(body=body[:12]):
+                self.assertEqual(self.verdicts(body, "https://x.example/feed"), [fetch.ALLOW])
+
+    def test_a_feed_that_a_wildcard_rule_disallows_is_skipped_with_its_reason_and_not_requested(self) -> None:
+        requested = []
+
+        def get(url, *a, **k):
+            requested.append(url)
+            if url.endswith("/robots.txt"):
+                return b"User-agent: *\nDisallow: /*.atom$\n"
+            return rss(("A robot", "https://k.example/a", "robot"))
+        config = config_with(feeds=[{"id": "gh", "url": "https://k.example/o/r/releases.atom", "evidence": "O", "topical": True},
+                                    {"id": "ok", "url": "https://k.example/feed", "evidence": "M", "topical": True}])
+        skipped: list[str] = []
+        reasons: dict[str, str] = {}
+        with mock.patch.object(fetch, "http_get", get), mock.patch.object(fetch.time, "sleep"), \
+                contextlib.redirect_stdout(io.StringIO()):
+            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(), skipped=skipped, reasons=reasons)
+        self.assertEqual((skipped, reasons, failed), (["gh"], {"gh": fetch.DISALLOW}, []))
+        self.assertNotIn("https://k.example/o/r/releases.atom", requested)
+        self.assertEqual([entry.source_id for entry in items], ["ok"])
+
+
 class PoliteFetchingTest(unittest.TestCase):
     def test_robots_disallow_skips_the_feed_without_failing_it(self) -> None:
         robots = b"User-agent: *\nDisallow: /action/\n"
