@@ -309,7 +309,7 @@ class LaneTimeTest(unittest.TestCase):
         # 07 decided which changes the page draws as lines (07-radar-rules-show-1116.md): the ones after which the two sides
         # are not measured with the same ruler. The others stay in the data. One line per date: 09-26 holds two commits.
         self.assertEqual(sorted({rule["from"] for rule in rules if rule["show"]}),
-                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14"])
+                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14", "2026-11-16"])
         self.assertEqual(sorted({rule["from"] for rule in rules[1:] if not rule["show"]}),
                          ["2026-09-21", "2026-10-22", "2026-10-26"])
         with tempfile.TemporaryDirectory() as folder:
@@ -405,6 +405,39 @@ class PublishTest(unittest.TestCase):
         self.assertEqual(table["items_sha256"], hashlib.sha256(paths[0].read_bytes()).hexdigest())
         self.assertEqual(table["items_count"], len(json.loads(paths[0].read_text())["items"]))
         self.assertEqual(list(self.folder.glob(".*")), [])                       # no temporary file is left
+
+    def test_a_failure_while_the_second_file_is_staged_leaves_the_first_untouched(self) -> None:
+        # 04 T1: items.json must not be replaced before lane-time.json has been staged; the second staging fails here.
+        self.run_it()
+        before = self.files()
+        real, seen = os.fsync, {"n": 0}
+
+        def fsync(descriptor):
+            seen["n"] += 1
+            if seen["n"] == 2:                                 # the first staged file is flushed, the second is not
+                raise OSError("disk full")
+            return real(descriptor)
+        with mock.patch.object(graph.os, "fsync", fsync):
+            self.assertEqual(self.run_it(self.later()), [])
+        self.assertEqual(seen["n"], 2)
+        self.assertEqual(self.files(), before)                 # items.json is still the previous bytes, no temporary file
+        self.assertIn("graph export skipped", self.out)
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_the_directory_is_flushed_after_the_two_renames_and_a_failure_to_do_so_is_reported_not_fatal(self) -> None:
+        with mock.patch.object(graph, "_sync_directory", wraps=graph._sync_directory) as spy:
+            self.assertEqual(len(self.run_it()), 2)
+        spy.assert_called_once_with(self.folder)
+        with mock.patch.object(graph, "_sync_directory", side_effect=OSError("io error")):
+            paths = self.run_it(self.later())
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"])      # the pair is in place
+        self.assertIn("the directory was not synced", self.out)
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_the_directory_is_not_flushed_when_nothing_was_replaced(self) -> None:
+        with mock.patch.object(graph, "_sync_directory") as spy, self.replace_failing_on(1):
+            self.assertEqual(self.run_it(), [])
+        spy.assert_not_called()
 
     def test_a_pair_that_fails_the_contract_is_not_published(self) -> None:
         with mock.patch.object(graph, "contract_problems", return_value=["boom"]):

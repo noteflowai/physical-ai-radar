@@ -445,6 +445,15 @@ def check_history(history: list[dict[str, Any]]) -> None:
             raise GraphError(f"the run log has no usable date or count for run {index} ({shown!r})")
 
 
+def _sync_directory(folder: Path) -> None:
+    """Flush the directory entries of `folder` (the renames) to disk."""
+    descriptor = os.open(folder, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Path]:
     """Replace the pair so that a failure does not normally leave a reader with two generations (01 F2).
 
@@ -462,6 +471,8 @@ def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Pa
     before = items_path.read_bytes() if items_path.exists() else None
     staged: list[Path | None] = []
     try:
+        # Both files are staged BEFORE either is replaced: a staging failure (disk full, quota) then leaves nothing
+        # replaced. Do not move the second staging after the first replacement.
         staged.append(_stage(folder, ITEMS_FILE, items_bytes))
         staged.append(_stage(folder, LANE_TIME_FILE, lane_bytes))
         os.replace(staged[0], items_path)
@@ -482,6 +493,10 @@ def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Pa
                 raise GraphError(f"{LANE_TIME_FILE} could not be written ({error}) and {ITEMS_FILE} could not be put "
                                  f"back ({again}): readers must compare items_sha256") from again
             raise
+        try:
+            _sync_directory(folder)
+        except OSError as error:                  # both renames are done and the pair is consistent; only their durability is unknown
+            print(f"[radar] graph export: the directory was not synced ({error}); the pair is in place")
     finally:
         for path in staged:
             if path is not None:
