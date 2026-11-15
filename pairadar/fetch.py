@@ -417,6 +417,10 @@ def polite(url: str) -> None:
 
 
 ALLOW, DISALLOW, FORBIDDEN, UNREACHABLE = "allow", "disallowed", "forbidden", "unreachable"
+# The 4xx answers to a robots.txt request that are not "there are no rules": the host is forbidden (401, 403) or
+# asked us to wait (429). `RobotsCache.verdict` (the feeds) spells out the same three; `_robots_allows` (the pages)
+# uses this tuple. A test pins the two paths to the same outcome for every status.
+ROBOTS_REFUSED_4XX = (401, 403, 429)
 
 
 def _robots_get(url: str) -> tuple[int | None, bytes | None]:
@@ -864,8 +868,9 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
                    strikes: _Strikes | None = None) -> bool:
     """Whether robots.txt lets the radar read `url`, fetched through the same Firecrawl.
 
-    Read as RFC 9309 says: a 4xx robots.txt (or none) allows everything; one that
-    cannot be read for any other reason disallows everything for this run.
+    Read as RFC 9309 section 2.3.1 says, and as `RobotsCache` (the feeds) reads it: a 401 or a 403 forbids the
+    whole host, 429 and everything that cannot be told (5xx, no answer, no status) disallow everything for this
+    run; only another 4xx (404, 410...) means there are no rules and allows everything.
     """
     parsed = urllib.parse.urlsplit(url)
     origin = f"{parsed.scheme}://{parsed.netloc}"
@@ -883,7 +888,7 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
             text = str(data.get("rawHtml") or "")[:MAX_ROBOTS_CHARS]
             # A site that answers robots.txt with its HTML page has no rules to read.
             parser.parse([] if text.lstrip()[:1] == "<" else text.splitlines())
-        elif data is not None and 400 <= status < 500:
+        elif data is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
             parser.parse([])
         else:
             parser.parse(["User-agent: *", "Disallow: /"])

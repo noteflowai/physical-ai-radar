@@ -27,6 +27,9 @@ radar content itself is dated, not versioned.
   `robots_skipped` with a reason in the run log and in `pairadar.health`
   (`robots_reasons`), never `failed`. Before, any robots.txt that could not be read
   allowed everything.
+- The page path (`page_watch`, through Firecrawl) reads robots.txt the same way: a 401, 403 or
+  429 refuses the page for the run (before, any 4xx was read as "no rules"); only another 4xx
+  means no rules. A test compares the two paths for every status.
 
 - More professional and mainstream sources, attention ("heat") and a highlights quota.
   Twelve feeds join after a read-only check (200, parses, robots.txt allows): OpenAI News,

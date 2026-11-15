@@ -379,6 +379,56 @@ class RobotsTest(unittest.TestCase):
             result, _ = watch(raw, fake.url)
         self.assertEqual((fake.scraped(), result.items, result.robots_skipped), ([], [], ["figure"]))
 
+    def test_a_forbidden_or_throttled_robots_file_refuses_the_page(self) -> None:
+        # 401 and 403 forbid the host, 429 asks us to wait: none of them means "there are no rules".
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        for status in (401, 403, 429):
+            with self.subTest(status=status), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": status}}})
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, out = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.items, result.robots_skipped, result.failed),
+                                 ([], [], ["figure"], []))
+                self.assertIn("robots.txt", out)
+
+    def test_a_robots_reply_with_no_status_refuses_the_page(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        replies = {"no data": {"success": False, "error": "x"},
+                   "no status": {"success": True, "data": {"rawHtml": "", "metadata": {}}}}
+        for name, reply in replies.items():
+            with self.subTest(name), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt", reply)
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.robots_skipped), ([], ["figure"]))
+
+    def test_a_robots_file_that_is_not_there_allows_the_page(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        for status in (404, 410):
+            with self.subTest(status=status), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": status}}})
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.robots_skipped), (["https://www.figure.ai/news"], []))
+
+    def test_pages_and_feeds_read_every_robots_status_alike(self) -> None:
+        refused = (401, 403, 429)
+        for status in (200, 400, 401, 403, 404, 410, 418, 429, 451, 500, 503):
+            with self.subTest(status=status), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": "", "metadata": {"statusCode": status}}})
+                on_pages = fetch._robots_allows({"endpoint": fake.url, "timeout": 5}, "https://www.figure.ai/news", {})
+                cache = fetch.RobotsCache(getter=lambda url, s=status: (s, b""))
+                with patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+                    on_feeds = cache.allows("https://www.figure.ai/news")
+                self.assertEqual(on_pages, on_feeds)
+                self.assertEqual(on_pages, status < 500 and status not in refused)
+
 
 def closed_port() -> int:
     with socket.socket() as sock:
