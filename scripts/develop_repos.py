@@ -836,7 +836,10 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
         if not terminal and task.get("phase") == "no-change":
             terminal = finish_no_change(task, task["decision"], previous_state, active,
                                         service_state, name, task["decision_on"], root=workspace / name)
-        if terminal:
+            if terminal["completed_on"] == day:
+                return terminal
+            task = None
+        elif terminal:
             # Recover a crash between terminal recording, day allowance and active cleanup.
             if terminal.get("status") in {"deferred", "no-change"}:
                 terminal = finish_retired(task, previous_state, active, service_state,
