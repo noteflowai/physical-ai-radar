@@ -1,0 +1,48 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-15",
+  "generated": "2026-11-15 13:53 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.16374": {
+      "zh": "如果你的操作评测还停留在简单抓放，这篇预印本给出了按类别和难度分级的任务阶梯；页面上还没有量化数据，目前只能当作候选基准，谈不上经过验证。",
+      "en": "If your manipulation evaluation still rests on simple pick-and-place, this preprint offers a categorized, graded task ladder; the page shows no figures yet, so treat it as a candidate benchmark rather than a validated one.",
+      "ja": "単純なピック＆プレースだけで操作性能を測っているなら、カテゴリと難易度で段階化した評価枠組みの候補になる。ただし著者の自己報告で、ページにはまだ数値がない。"
+    },
+    "https://arxiv.org/abs/2611.17110": {
+      "zh": "机器人交互数据采集成本高，这篇预印本主张用语义对齐的潜在动作把第一人称人类视频用起来；页面未给出数字，调整数据预算之前应先等量化结果。",
+      "en": "For teams weighing egocentric human video against costly robot data collection, this preprint proposes semantically aligned latent actions as the bridge, but the page gives no figures, so wait for numbers before shifting a data budget.",
+      "ja": "高コストなロボット操作データを一人称視点の人間動画で補えるか検討しているチームには、意味的に整合した潜在行動という選択肢を示す。ページに数値はなく、データ投資の判断は定量結果を待ちたい。"
+    },
+    "https://arxiv.org/abs/2611.15937": {
+      "zh": "只靠 2D 图像和语言指令的 VLA 若在杂乱场景里吃亏，作者自报在杂乱场景成功率提升 5.1%、视觉扰动下提升 9.7%，说明值得显式引入场景几何与障碍物关系。",
+      "en": "If your VLA works from 2D images and language alone and struggles in clutter, the authors' self-reported success-rate gains of 5.1% in cluttered scenes and 9.7% under visual perturbations make a case for feeding it explicit scene geometry and obstacle cues.",
+      "ja": "2D画像と言語指示だけに頼るVLAが散乱環境でつまずくなら、シーン幾何と障害物関係を明示的に与える価値がある。著者の自己報告では、散乱環境で5.1%、視覚的摂動下で9.7%の成功率向上。"
+    },
+    "https://arxiv.org/abs/2611.16439": {
+      "zh": "全身移动操作的示教要同时协调双臂与移动，作者自报示教采集最多快 2.9x；这是预印本自报数字，据此规划采集规模之前应先在自己的平台上复现。",
+      "en": "Whole-body mobile manipulation needs demonstrations that coordinate both arms with locomotion; the authors report up to 2.9x faster collection, a self-reported figure to reproduce on your own platform before sizing a data-collection campaign around it.",
+      "ja": "双腕操作と移動を協調させる全身モバイルマニピュレーションのデモ収集で、著者は最大2.9xの高速化を報告している。収集計画をこれに合わせる前に、自分の機体での再現を確かめたい。"
+    },
+    "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place": {
+      "zh": "需要现成仿真场景起步的团队可以参考这篇官方教程；页面上没有摘录、数字或真机信号，从页面看不出仿真结果能否迁移到真机。",
+      "en": "Useful if you want a ready-made simulated scene to start from; the page shows no excerpt, figures or real-robot signal, so it says nothing yet about how results carry over to hardware.",
+      "ja": "既製のシミュレーション環境から始めたいチームには公式の手順として使える。ただしページには抜粋も数値も実機シグナルもなく、実機への移行性はここからは判断できない。"
+    },
+    "https://www.leiphone.com/category/ai/1jg5k34dslhssje9.html": {
+      "zh": "雷峰网转述英伟达博客：Alpamayo 2 Edge 用因果推理结合扩散动作，端到端闭环表现提升 48.9%；这是二手报道，引用或据此评估端侧部署前，先回原文确认这一提升是相对什么测出来的。",
+      "en": "A secondary account of an NVIDIA blog post on Alpamayo 2 Edge, which pairs causal reasoning with diffusion actions and reportedly lifts closed-loop performance by 48.9%; check NVIDIA's original and what that gain is measured against before citing it.",
+      "ja": "雷峰網によれば、NVIDIAのブログが紹介したAlpamayo 2 Edgeは因果推論と拡散ベースの行動生成を組み合わせ、閉ループ性能が48.9%向上したという。二次報道なので、エッジ配備の検討に使う前に原典で比較対象を確認したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

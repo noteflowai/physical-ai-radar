@@ -77,7 +77,7 @@
 <a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="0.0" cy="-146.8" r="11" class="halo"/><circle cx="0.0" cy="-146.8" r="5"/><title>MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes</title></a>
 <a href="#p4" class="blip" style="--lane:#38bdf8;--delay:1.40s"><circle cx="110.9" cy="-93.0" r="11" class="halo"/><circle cx="110.9" cy="-93.0" r="5"/><title>HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation</title></a>
 <a href="#p5" class="blip" style="--lane:#fb923c;--delay:1.75s"><circle cx="66.9" cy="79.8" r="11" class="halo"/><circle cx="66.9" cy="79.8" r="5"/><title>Build a Robot Pick-and-Place Simulation with SimReady Assets</title></a>
-<a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="0.0" cy="93.8" r="11" class="halo"/><circle cx="0.0" cy="93.8" r="5"/><title>英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！</title></a>
+<a href="#p6" class="blip" style="--lane:#f472b6;--delay:2.10s"><circle cx="0.0" cy="93.7" r="11" class="halo"/><circle cx="0.0" cy="93.7" r="5"/><title>英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！</title></a>
 <circle class="core" r="3"/></svg>
 <ul class="lane-legend"><li style="--lane:#8b5cf6">基座模型（VLA / WAM） <b>10</b></li><li style="--lane:#38bdf8">数据引擎（采集 / 清洗 / scaling） <b>7</b></li><li style="--lane:#34d399">训练与自我改进（RL / 后训练） <b>0</b></li><li style="--lane:#fb923c">仿真与评测（sim2real / 闭环） <b>14</b></li><li style="--lane:#f472b6">边缘与实时性（端侧推理 / 控制频率） <b>10</b></li><li style="--lane:#facc15">安全、权限与合规 <b>2</b></li><li style="--lane:#a3e635">系统与编排（长程 / 多策略） <b>1</b></li><li style="--lane:#22d3ee">本体与供应链（硬件 / 成本） <b>6</b></li></ul>
 <figcaption>外圈八条主线 · 面积为近 7 天入选数 · 亮点为今日入选</figcaption>
@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16374" rel="noopener" target="_blank">ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你的操作评测还停留在简单抓放，这篇预印本给出了按类别和难度分级的任务阶梯；页面上还没有量化数据，目前只能当作候选基准，谈不上经过验证。</p>
 <p class="excerpt">Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.17110" rel="noopener" target="_blank">SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 机器人交互数据采集成本高，这篇预印本主张用语义对齐的潜在动作把第一人称人类视频用起来；页面未给出数字，调整数据预算之前应先等量化结果。</p>
 <p class="excerpt">Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging…</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -127,7 +127,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.15937" rel="noopener" target="_blank">MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes</a></h3>
 <p class="figure"><strong>5.1%</strong><span class="context">“the success rate by 5.1% in cluttered scenes”</span></p><p class="chips"><span class="chip">9.7%</span><span class="chip">25.0%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 只靠 2D 图像和语言指令的 VLA 若在杂乱场景里吃亏，作者自报在杂乱场景成功率提升 5.1%、视觉扰动下提升 9.7%，说明值得显式引入场景几何与障碍物关系。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -143,7 +143,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16439" rel="noopener" target="_blank">HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation</a></h3>
 <p class="figure"><strong>2.9x</strong><span class="context">“HALO enables up to 2.9x faster demonstration collection”</span></p><p class="chips"><span class="chip">73.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 全身移动操作的示教要同时协调双臂与移动，作者自报示教采集最多快 2.9x；这是预印本自报数字，据此规划采集规模之前应先在自己的平台上复现。</p>
 <p class="excerpt">Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -158,7 +158,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place" rel="noopener" target="_blank">Build a Robot Pick-and-Place Simulation with SimReady Assets</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 需要现成仿真场景起步的团队可以参考这篇官方教程；页面上没有摘录、数字或真机信号，从页面看不出仿真结果能否迁移到真机。</p>
 <footer>
 <span class="source">Hugging Face Blog · 2026-11-13</span>
 <span class="actions"><button type="button" class="share" data-url="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-15.zh.html" data-text="Physical AI 前沿雷达 2026-11-15：Build a Robot Pick-and-Place Simulation with SimReady Assets" data-done="链接已复制">分享</button><a class="x" href="https://twitter.com/intent/tweet?text=Physical+AI+%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE+2026-11-15%EF%BC%9ABuild+a+Robot+Pick-and-Place+Simulation+with+SimReady+Assets&amp;url=https%3A%2F%2Fnoteflowai.github.io%2Fphysical-ai-radar%2Fradar%2Fdaily%2F2026-11-15.zh.html" rel="noopener" target="_blank">发到 X</a></span>
@@ -172,7 +172,7 @@
 </header>
 <h3><a href="https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html" rel="noopener" target="_blank">英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！</a></h3>
 <p class="figure"><strong>48.9%</strong><span class="context">“她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9% 。”</span></p>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 雷峰网转述英伟达博客：Alpamayo 2 Edge 用因果推理结合扩散动作，端到端闭环表现提升 48.9%；这是二手报道，引用或据此评估端侧部署前，先回原文确认这一提升是相对什么测出来的。</p>
 <p class="excerpt">她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
