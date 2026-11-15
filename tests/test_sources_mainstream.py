@@ -256,10 +256,13 @@ class RobotsRulesTest(unittest.TestCase):
             with self.subTest(name):
                 self.assertEqual(self.verdicts(body, "https://x.example/feed"), [fetch.UNREACHABLE])
 
-    def test_an_empty_file_an_html_page_and_a_file_with_no_group_for_us_allow_everything(self) -> None:
-        for body in (b"", b"<html><body>Not found</body></html>", b"Sitemap: https://x.example/s.xml\n"):
+    def test_an_empty_file_and_a_file_with_no_group_for_us_allow_everything_and_an_html_page_is_not_a_robots_txt(self) -> None:
+        for body in (b"", b"Sitemap: https://x.example/s.xml\n"):
             with self.subTest(body=body[:12]):
                 self.assertEqual(self.verdicts(body, "https://x.example/feed"), [fetch.ALLOW])
+        # An HTML page (a login page, the page a site answers in place of a missing robots.txt) says nothing about the rules:
+        # the host is unreachable for the run (01's D1, 2026-11-16), where it used to read as "no rules"
+        self.assertEqual(self.verdicts(b"<html><body>Not found</body></html>", "https://x.example/feed"), [fetch.UNREACHABLE])
 
     def test_a_feed_that_a_wildcard_rule_disallows_is_skipped_with_its_reason_and_not_requested(self) -> None:
         requested = []

@@ -443,12 +443,31 @@ def _is_robots_reply(origin: str, final_url: Any, content_type: Any) -> bool:
     """Whether a 2xx answer to the request for `origin`/robots.txt is the robots.txt itself, and not a login page, a
     challenge or the page a redirect led to. The URL it came from, after any redirect, must be the same origin's
     `/robots.txt`; a different path or host is not (RFC 9309 allows redirects, but what they lead to is only a robots.txt
-    when it is at that address). The media type must be `text/plain` or absent; `text/html`, or anything else, is not."""
-    if not isinstance(final_url, str):
+    when it is at that address). The media type must be `text/plain` or absent; `text/html`, or anything else, is not.
+    An address that cannot be parsed, or any other failure to read the identity, is "not confirmed": False, never raised."""
+    try:
+        if not isinstance(final_url, str):
+            return False
+        parts = urllib.parse.urlsplit(final_url)
+        return (f"{parts.scheme}://{parts.netloc}".lower() == origin and parts.path == "/robots.txt"
+                and content_type in (None, "text/plain"))
+    except Exception:  # noqa: BLE001 -- urlsplit raises ValueError for `https://[bad/...`; whatever else fails is the same answer
         return False
-    parts = urllib.parse.urlsplit(final_url)
-    return (f"{parts.scheme}://{parts.netloc}".lower() == origin and parts.path == "/robots.txt"
-            and content_type in (None, "text/plain"))
+
+
+_HTML_MARKS = ("<html", "<!doctype", "<head", "<body")
+
+
+def _looks_like_html(body: bytes | str) -> bool:
+    """Whether a body is an HTML page and not a robots.txt, whatever its Content-Type says (or does not say): after a byte
+    order mark and leading white space it starts with `<`, or it contains an HTML marker in any case. A page a site answers
+    in place of a missing robots.txt, or a login page, is not a robots.txt; an empty file is."""
+    text = body.decode("utf-8", "replace") if isinstance(body, (bytes, bytearray)) else body
+    text = text.lstrip("\ufeff \t\r\n\f\v")
+    if text.startswith("<"):
+        return True
+    lowered = text.lower()
+    return any(mark in lowered for mark in _HTML_MARKS)
 
 
 def _robots_get(url: str) -> tuple[int | None, bytes | None, dict[str, Any]]:
@@ -509,7 +528,8 @@ class RobotsCache:
                 legacy = urllib.robotparser.RobotFileParser()
                 legacy.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
                 self.legacy[origin] = legacy
-                if where is not None and not _is_robots_reply(origin, where.get("url"), where.get("content_type")):
+                if _looks_like_html(body) or (where is not None
+                                              and not _is_robots_reply(origin, where.get("url"), where.get("content_type"))):
                     # A login page, a challenge or the page a redirect led to is not a robots.txt: it says nothing about
                     # what is allowed, so nothing on the host is requested, and the body is not kept as one
                     print(f"[fetch] robots.txt for {origin} answered {status} but not as a robots.txt: host not requested this run")
@@ -961,17 +981,16 @@ def _robots_status(data: Any) -> int | None:
 def _firecrawl_robots_bytes(origin: str, data: Any, body: str) -> bytes | None:
     """The bytes of `body` when Firecrawl's reply says it is the robots.txt of `origin` itself; None when it does not say so.
 
-    The reply's `metadata` must name the URL it was scraped from (`sourceURL`, and `url` when present) as that origin's
-    `/robots.txt`, and its `contentType`, when present, must be `text/plain`: a reply that names no source is not
-    confirmed. Text that cannot be written as UTF-8 (an unpaired surrogate in the JSON string) is not a robots.txt either.
-    Whether Firecrawl's `sourceURL` is the requested or the final address is not established here, so both that and `url`
-    must be the robots.txt."""
+    The reply's `metadata` must name both the URL it was scraped from (`sourceURL`) and the final address (`url`) as that
+    origin's `/robots.txt`, and its `contentType`, when present, must be `text/plain`: a reply that names no final address
+    is "final source unknown" and is not confirmed. Whatever the type says, a body that is an HTML page is not a robots.txt.
+    Text that cannot be written as UTF-8 (an unpaired surrogate in the JSON string) is not a robots.txt either."""
     metadata = data.get("metadata") if isinstance(data, dict) else None
-    if not isinstance(metadata, dict) or "sourceURL" not in metadata:
+    if not isinstance(metadata, dict) or "sourceURL" not in metadata or "url" not in metadata or _looks_like_html(body):
         return None
     kind = _media_type(metadata.get("contentType"))
     for key in ("sourceURL", "url"):
-        if key in metadata and not _is_robots_reply(origin, metadata[key], kind):
+        if not _is_robots_reply(origin, metadata[key], kind):
             return None
     try:
         return body.encode("utf-8")
@@ -1039,7 +1058,8 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
                 store = getattr(cache, "store", None)
                 if store is not None:
                     store.record_text(origin, raw)
-                # (A site that answers robots.txt with its HTML page has no line `robots_rules` can read: no rules.)
+                # (An HTML page never gets here: `_firecrawl_robots_bytes` refuses it. The legacy reader above still reads one
+                # as "no rules", which is what `robots_newly_denied` compares against.)
                 text = body
                 try:
                     if len(text) > MAX_ROBOTS_CHARS:

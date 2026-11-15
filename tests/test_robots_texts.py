@@ -595,6 +595,146 @@ class FirecrawlIdentityTests(unittest.TestCase):
         self.assertFalse((self.directory / "robots-texts.json").exists())
 
 
+class HtmlAndIdentityEdgeTests(unittest.TestCase):
+    """01's round 2 (D1, D2): a body that is an HTML page is not a robots.txt whatever its Content-Type says or does not say;
+    Firecrawl must name the final address; an address that cannot be parsed refuses that one source and raises nothing."""
+
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR"))
+        self.addCleanup(tmp.cleanup)
+        self.directory = Path(os.path.realpath(tmp.name)) / "state"
+        self.store = robots_store.RobotsStore(self.directory, writable=True, clock=Clock())
+
+    def no_file(self):
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+    def feeds(self, answer, url="https://a.example/feed"):
+        cache = fetch.RobotsCache(store=self.store)
+        with mock.patch.object(fetch.urllib.request, "urlopen", lambda request, timeout=None: answer), \
+                mock.patch.object(fetch.time, "sleep"), silent():
+            return cache.verdict(url)
+
+    def firecrawl(self, raw_html, metadata, source=False):
+        cache = fetch._PageRobots(self.store)
+        with FakeFirecrawl() as fake:
+            fake.serve("https://www.figure.ai/robots.txt",
+                       {"success": True, "data": {"rawHtml": raw_html, "metadata": metadata}}, source=source)
+            return fetch._robots_allows({"endpoint": fake.url, "timeout": 5}, "https://www.figure.ai/news", cache)
+
+    def test_d1_html_with_no_content_type_is_refused_and_not_kept(self):
+        self.assertEqual(self.feeds(Answer("https://a.example/robots.txt", HTML_LOGIN, None)), fetch.UNREACHABLE)
+        self.no_file()
+
+    def test_d1_html_is_refused_whatever_the_content_type_says(self):
+        for content_type in (None, "text/plain", "text/plain; charset=utf-8"):
+            with self.subTest(content_type):
+                self.assertEqual(self.feeds(Answer("https://a.example/robots.txt", HTML_LOGIN, content_type)),
+                                 fetch.UNREACHABLE)
+        self.no_file()
+
+    def test_d1_every_way_a_body_looks_like_html(self):
+        bodies = {"starts with a tag": b"<p>Sign in</p>", "after white space": b"  \r\n\t<div>x</div>",
+                  "after a byte order mark": b"\xef\xbb\xbf<html>", "an html tag later": b"Sorry, moved.\n<HTML lang=en>",
+                  "a doctype later": b"Sorry.\n<!DocType html>", "a head later": b"Sorry.\n<Head><title>x</title>",
+                  "a body later": b"Sorry.\n<BODY>", "an xml feed": b'<?xml version="1.0"?><rss/>'}
+        for name, body in bodies.items():
+            with self.subTest(name):
+                self.assertTrue(fetch._looks_like_html(body), name)
+                self.assertTrue(fetch._looks_like_html(body.decode("utf-8")), name)
+                self.assertEqual(self.feeds(Answer("https://a.example/robots.txt", body, "text/plain")), fetch.UNREACHABLE)
+        self.no_file()
+
+    def test_d1_what_is_not_html(self):
+        for name, body in {"empty": b"", "only white space": b" \n", "a robots.txt": b"User-agent: *\nDisallow: /a\n",
+                           "a comment that names html": b"# html pages are fine\nUser-agent: *\nAllow: /\n",
+                           "a sitemap line": b"Sitemap: https://a.example/s.xml\n",
+                           "a greater-than sign": b"User-agent: *\nDisallow: /a>b\n"}.items():
+            with self.subTest(name):
+                self.assertFalse(fetch._looks_like_html(body), name)
+
+    def test_d1_the_controls_are_unchanged(self):
+        empty = self.feeds(Answer("https://a.example/robots.txt", b"", "text/plain"))
+        self.assertEqual(empty, fetch.ALLOW)
+        self.assertEqual(robots_store.RobotsTexts(self.directory, writable=False).lookup("https://a.example")["body"], "")
+        normal = self.feeds(Answer("https://a.example/robots.txt", b"User-agent: *\nDisallow: /private\n", None),
+                            "https://a.example/private/x")
+        self.assertEqual(normal, fetch.DISALLOW)
+        self.assertEqual(self.feeds(Answer("https://a.example/robots.txt", b"User-agent: *\nAllow: /\n", None),
+                                    "https://a.example/feed%zz.xml"), fetch.UNSUPPORTED_URL)               # N1: that URL alone
+
+    def test_d1_firecrawl_html_with_only_a_source_url_is_refused_and_not_kept(self):
+        for name, metadata in {"source only, no type": {"statusCode": 200, "sourceURL": "https://www.figure.ai/robots.txt"},
+                               "source only, text/plain": {"statusCode": 200, "contentType": "text/plain",
+                                                           "sourceURL": "https://www.figure.ai/robots.txt"}}.items():
+            with self.subTest(name):
+                self.assertFalse(self.firecrawl("<html><body>Sign in</body></html>", metadata))
+        self.no_file()
+
+    def test_d1_firecrawl_needs_the_final_address_even_for_a_real_robots_txt(self):
+        text = "User-agent: *\nAllow: /\n"
+        self.assertFalse(self.firecrawl(text, {"statusCode": 200, "contentType": "text/plain",
+                                               "sourceURL": "https://www.figure.ai/robots.txt"}))     # final address unknown
+        self.no_file()
+        self.assertTrue(self.firecrawl(text, {"statusCode": 200, "contentType": "text/plain",
+                                              "sourceURL": "https://www.figure.ai/robots.txt",
+                                              "url": "https://www.figure.ai/robots.txt"}))
+        self.assertEqual(robots_store.RobotsTexts(self.directory, writable=False).lookup("https://www.figure.ai")["body"], text)
+
+    def test_d1_firecrawl_html_with_a_robots_looking_address_and_type_is_still_refused(self):
+        self.assertFalse(self.firecrawl("<!doctype html><title>x</title>", {
+            "statusCode": 200, "contentType": "text/plain", "sourceURL": "https://www.figure.ai/robots.txt",
+            "url": "https://www.figure.ai/robots.txt"}))
+        self.no_file()
+
+    def test_d2_an_address_that_cannot_be_parsed_refuses_that_source_and_raises_nothing(self):
+        for final in ("https://[invalid/robots.txt", "https://[::1/robots.txt", "http://[x]/robots.txt", "https://a.example:abc/robots.txt"):
+            with self.subTest(final):
+                self.assertEqual(self.feeds(Answer(final, b"User-agent: *\nAllow: /\n", "text/plain")), fetch.UNREACHABLE)
+        for metadata in ({"sourceURL": "https://[invalid/robots.txt", "url": "https://www.figure.ai/robots.txt"},
+                         {"sourceURL": "https://www.figure.ai/robots.txt", "url": "https://[invalid/robots.txt"},
+                         {"sourceURL": "https://[invalid/robots.txt", "url": "https://[invalid/robots.txt"}):
+            with self.subTest(metadata):
+                self.assertFalse(self.firecrawl("User-agent: *\nAllow: /\n", {"statusCode": 200, **metadata}))
+        self.no_file()
+
+    def test_d2_any_other_identity_is_not_confirmed_and_never_raises(self):
+        for final in (None, 5, b"https://a.example/robots.txt", ["https://a.example/robots.txt"], "", "\x00", "https://a.example"):
+            with self.subTest(repr(final)):
+                self.assertFalse(fetch._is_robots_reply("https://a.example", final, None))
+        self.assertTrue(fetch._is_robots_reply("https://a.example", "https://a.example/robots.txt", None))
+
+    def test_d2_the_other_feeds_of_the_run_are_still_read(self):
+        config = config_with(feeds=[{"id": "bad", "url": "https://a.example/feed", "evidence": "O"},
+                                    {"id": "fine", "url": "https://b.example/feed", "evidence": "O"}])
+
+        def urlopen(request, timeout=None):
+            if request.full_url == "https://a.example/robots.txt":
+                return Answer("https://[invalid/robots.txt", b"User-agent: *\nAllow: /\n", "text/plain")
+            if request.full_url == "https://b.example/robots.txt":
+                return Answer("https://b.example/robots.txt", b"User-agent: *\nAllow: /\n", "text/plain")
+            return Answer(request.full_url, rss(("A robot", "https://b.example/a", "robot")), "application/rss+xml")
+        skipped, reasons = [], {}
+        with mock.patch.object(fetch.urllib.request, "urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
+            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(store=self.store), skipped=skipped,
+                                              reasons=reasons)
+        self.assertEqual((skipped, reasons, failed), (["bad"], {"bad": fetch.UNREACHABLE}, []))
+        self.assertEqual([entry.source_id for entry in items], ["fine"])
+
+    def test_d2_a_page_run_with_an_unparseable_address_reads_no_page_and_the_run_goes_on(self):
+        raw = firecrawl_sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        with FakeFirecrawl() as fake, mock.patch.dict(os.environ, {fetch.FIRECRAWL_ENV: fake.url}):
+            fake.serve("https://www.figure.ai/robots.txt", {"success": True, "data": {"rawHtml": "User-agent: *\nAllow: /\n",
+                       "metadata": {"statusCode": 200, "sourceURL": "https://[invalid/robots.txt",
+                                    "url": "https://www.figure.ai/robots.txt"}}}, source=False)
+            fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+            with silent():
+                result = fetch.fetch_page_watch(Config(sources=raw, taxonomy={}, glossary={}, baseline={}), DAY, None, self.store)
+            self.assertEqual(fake.scraped(), [])
+        self.assertEqual((result.robots_skipped, result.failed), (["figure"], []))
+        self.no_file()
+
+
 class StaticReaderTests(TlsTestCase):
     def setUp(self) -> None:
         super().setUp()

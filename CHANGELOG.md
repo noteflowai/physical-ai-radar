@@ -42,12 +42,17 @@ radar content itself is dated, not versioned.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
 - A 2xx answer to the request for robots.txt is read as a robots.txt only if it is one. For the feeds and the
   attention APIs, the URL it came from after any redirect must be the same origin's `/robots.txt`, and its media type
-  must be `text/plain` or absent; for Firecrawl pages, `metadata.sourceURL` (and `url`, when present) must be that
-  `/robots.txt` and `contentType`, when present, must be `text/plain`. A login page, a challenge or the page a redirect
+  must be `text/plain` or absent; for Firecrawl pages, `metadata.sourceURL` and `metadata.url` (the final address; a reply
+  without it is "final source unknown") must both be that `/robots.txt` and `contentType`, when present, must be
+  `text/plain`. Whatever the Content-Type says or does not say, a body that is an HTML page (after a byte order mark and
+  white space it starts with `<`, or it contains `<html`, `<!doctype`, `<head` or `<body` in any case) is not a robots.txt.
+  An address that cannot be parsed (`https://[invalid/robots.txt`) is "not confirmed" for that one source and raises
+  nothing. A login page, a challenge or the page a redirect
   led to makes the host `unreachable` for the run (the pages are refused) instead of reading as "no rules", and its
   text is not kept in `robots-texts.json`. A real empty robots.txt still allows everything. Firecrawl text that cannot be
   written as UTF-8 (an unpaired surrogate) is refused the same way instead of raising. Hosts that answer /robots.txt with
-  a 200 HTML page (a soft 404) are now `unreachable`, not allowed.
+  a 200 HTML page (a soft 404) are now `unreachable`, not allowed. The cost: RFC 9309 lets a robots.txt redirect to another
+  path or host, and that is refused too, on purpose.
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub
   release feeds (LeRobot, Isaac Lab, MuJoCo) are switched off: github.com's robots.txt disallows

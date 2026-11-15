@@ -125,12 +125,13 @@ class FakeFirecrawl:
         self.server.server_close()
 
     def serve(self, url: str, reply: dict, status: int = 200, source: bool = True) -> None:
-        # Firecrawl always names the URL a reply was scraped from (metadata.sourceURL); a robots.txt reply that does not is
-        # not confirmed as the robots.txt (fetch._firecrawl_robots_bytes), so the fake says it unless a test says `source=False`.
+        # Firecrawl always names the URL a reply was scraped from (metadata.sourceURL) and the final address (metadata.url); a
+        # robots.txt reply that does not is not confirmed as the robots.txt (fetch._firecrawl_robots_bytes), so the fake
+        # says both unless a test says `source=False`.
         if source and url.endswith("/robots.txt") and isinstance(reply, dict):
             data = reply.get("data")
             if isinstance(data, dict) and isinstance(data.get("metadata"), dict):
-                reply = {**reply, "data": {**data, "metadata": {"sourceURL": url, **data["metadata"]}}}
+                reply = {**reply, "data": {**data, "metadata": {"sourceURL": url, "url": url, **data["metadata"]}}}
         self.replies[url] = (status, reply)
 
     def scraped(self) -> list[str]:
@@ -493,7 +494,7 @@ class RobotsTest(unittest.TestCase):
         expected = {"a wildcard with an end anchor": False, "a wildcard that does not match": True,
                     "the longest match, then allow on a tie": True, "first rule is not the winner": True,
                     "a group for the radar that allows the page": True, "an invalid percent escape": False,
-                    "an HTML page": True}
+                    "an HTML page": False}
         for name, text in bodies.items():
             with self.subTest(name), FakeFirecrawl() as fake:
                 fake.serve("https://www.figure.ai/robots.txt",
@@ -548,7 +549,8 @@ class UnavailableTest(unittest.TestCase):
                 b'<link>https://deepmind.google/a</link><pubDate>Mon, 20 Oct 2026 10:00:00 GMT</pubDate>'
                 b'</item></channel></rss>')
         raw = sources()
-        with patch.object(fetch, "http_get", lambda url, *a, **k: feed), \
+        robots = b"User-agent: *\nAllow: /\n"            # the feed XML is not what robots.txt answers (it is HTML-like)
+        with patch.object(fetch, "http_get", lambda url, *a, **k: robots if url.endswith("/robots.txt") else feed), \
                 patch.dict(os.environ, {fetch.FIRECRAWL_ENV: f"http://127.0.0.1:{closed_port()}"}), \
                 contextlib.redirect_stdout(io.StringIO()):
             report = fetch.fetch_all(config_with(raw), reference=DAY)
