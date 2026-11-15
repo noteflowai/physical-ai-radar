@@ -29,6 +29,7 @@ import json
 import os
 import re
 import time
+import urllib.robotparser
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -448,9 +449,20 @@ class RobotsCache:
     `getter(url) -> (status, body)` is injectable for tests.
     """
 
-    def __init__(self, getter=None):
+    def __init__(self, getter=None, store: Any = None):
         self.getter = getter or _robots_get
         self.hosts: dict[str, Any] = {}
+        # What the reader before `robots_rules` (urllib.robotparser) made of each 2xx file, only to say which refusals are
+        # new (`previously_allowed`). Transitional: it decides nothing and goes once the first runs have been read back.
+        self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
+        self.store = store                  # a RobotsStore: the files read are kept there (record_text), nothing else
+
+    def previously_allowed(self, url: str) -> bool:
+        """True when the reader before `robots_rules` would have let this URL through (the file was read, and its rules
+        allowed it). Only a file that was read can differ between the two readers; any other answer is False."""
+        parts = urllib.parse.urlsplit(url)
+        parser = self.legacy.get(f"{parts.scheme}://{parts.netloc}".lower())
+        return parser is not None and parser.can_fetch(ROBOTS_TOKEN, url)
 
     def verdict(self, url: str) -> str:
         parts = urllib.parse.urlsplit(url)
@@ -459,6 +471,11 @@ class RobotsCache:
             polite(origin)
             status, body = self.getter(origin + "/robots.txt")
             if status is not None and 200 <= status < 300 and body is not None:
+                if self.store is not None:
+                    self.store.record_text(origin, body)
+                legacy = urllib.robotparser.RobotFileParser()
+                legacy.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
+                self.legacy[origin] = legacy
                 try:
                     if len(body) > MAX_ROBOTS_CHARS:
                         raise robots_rules.RobotsUnsupported("file too large")
@@ -501,12 +518,14 @@ def enabled_feeds(sources: dict[str, Any]) -> list[dict[str, Any]]:
 
 def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 skipped: list[str] | None = None,
-                reasons: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
+                reasons: dict[str, str] | None = None,
+                newly_denied: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer.
 
     `robots`, when given, is consulted first; a feed it refuses (disallowed, forbidden,
     or a host whose robots.txt is unreachable) is not requested and goes to `skipped`
-    with its reason in `reasons`, never to `failed`.
+    with its reason in `reasons`, never to `failed`. A refused feed that the reader before
+    `robots_rules` would have allowed is also put in `newly_denied` (id -> reason).
     A feed with `keywords` keeps only entries naming one of them, before the per-feed
     cap: OpenAI's feed carries 1,300 posts, nearly none about robots, and the cap would
     otherwise fill with them. The taxonomy anchors are too loose there -- "cosmos" (an
@@ -528,6 +547,8 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                     skipped.append(feed["id"])
                 if reasons is not None:
                     reasons[feed["id"]] = verdict
+                if newly_denied is not None and robots.previously_allowed(feed["url"]):
+                    newly_denied[feed["id"]] = verdict
                 continue
             polite(feed["url"])
         payload = http_get(feed["url"])
@@ -892,6 +913,24 @@ def _robots_status(data: Any) -> int | None:
     return None
 
 
+class _PageRobots(dict):
+    """The per-run robots.txt answers of the Firecrawl pages (origin -> one rule set per agent), with the optional
+    RobotsStore the files read are kept in, and what the reader before `robots_rules` made of each 2xx file."""
+
+    def __init__(self, store: Any = None) -> None:
+        super().__init__()
+        self.store = store
+        self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
+
+
+def _page_previously_allowed(cache: Any, url: str) -> bool:
+    """True when the reader before `robots_rules` would have let this page through (for every agent the request goes out
+    as). Only a file that was read can differ between the two readers; any other answer is False."""
+    parts = urllib.parse.urlsplit(url)
+    parser = getattr(cache, "legacy", {}).get(f"{parts.scheme}://{parts.netloc}")
+    return parser is not None and all(parser.can_fetch(agent, url) for agent in ROBOTS_AGENTS)
+
+
 def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
                    strikes: _Strikes | None = None) -> bool:
     """Whether robots.txt lets the radar read `url`, fetched through the same Firecrawl.
@@ -918,6 +957,14 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
         body = data.get("rawHtml") if data is not None else None
         refuse_all = robots_rules.Rules([(False, "/")])
         if status is not None and 200 <= status < 300 and isinstance(body, str):
+            store = getattr(cache, "store", None)
+            if store is not None:
+                store.record_text(origin, body.encode("utf-8"))
+            parser = urllib.robotparser.RobotFileParser()
+            head = body[:MAX_ROBOTS_CHARS]
+            parser.parse([] if head.lstrip()[:1] == "<" else head.splitlines())
+            if isinstance(getattr(cache, "legacy", None), dict):
+                cache.legacy[origin] = parser
             # (A site that answers robots.txt with its HTML page has no line `robots_rules` can read: no rules.)
             text = body
             try:
@@ -1064,6 +1111,8 @@ class PageWatchResult:
     checked: list[str] = field(default_factory=list)
     failed: list[str] = field(default_factory=list)
     robots_skipped: list[str] = field(default_factory=list)
+    # The robots_skipped entries (Firecrawl pages) that the reader before `robots_rules` would have let through.
+    robots_newly_denied: list[str] = field(default_factory=list)
     unavailable: bool = False
     enabled: bool = False
     state: dict[str, Any] = field(default_factory=dict)
@@ -1278,6 +1327,8 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
                 if store is not None and exc.reason == "http-429":
                     store.record_backoff(origin, "http-429", exc.retry_after)
         else:
+            if store is not None:
+                store.record_text(origin, page.body)             # what the host said, kept for an offline replay
             try:
                 text = page.body.decode("utf-8")
                 cached = ("rules", robots_rules.parse(text, ROBOTS_TOKEN))
@@ -1486,7 +1537,7 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     if static_run:
         result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
-    robots: dict[str, Any] = {}
+    robots: dict[str, Any] = _PageRobots(robots_store)
     static_robots = _StaticRobots(robots_store)
     fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
@@ -1518,6 +1569,8 @@ def fetch_page_watch(config: Config, reference: date | None = None,
                 print(f"[fetch] page_watch skip {entry['id']}: robots.txt disallows {entry['url']}")
                 result.attempted.append(entry["id"])
                 result.robots_skipped.append(entry["id"])
+                if _page_previously_allowed(robots, entry["url"]):
+                    result.robots_newly_denied.append(entry["id"])
                 result.note(entry["id"], "firecrawl", "robots", "robots-disallowed")
                 continue
             reply = firecrawl_post(settings["endpoint"], "/v2/scrape", {
@@ -1600,6 +1653,9 @@ class FetchReport:
     # forbidden (401/403) or unreachable (5xx, 429, no answer).
     robots_skipped: list[str] = field(default_factory=list)
     robots_reasons: dict[str, str] = field(default_factory=dict)
+    # The refusals above that the reader before `robots_rules` (RFC 9309 wildcards, longest match) would have allowed:
+    # feed or page id -> reason ("refused" for a Firecrawl page). The first runs after the rule change show what it cost.
+    robots_newly_denied: dict[str, str] = field(default_factory=dict)
     # pairadar.heat.Signals from the public attention APIs (None offline).
     signals: Any = None
     # The page_watch baseline after this run, for the caller to keep.
@@ -1630,6 +1686,7 @@ class FetchReport:
             "unavailable": sorted(self.unavailable),
             "robots_skipped": sorted(self.robots_skipped),
             "robots_reasons": dict(sorted(self.robots_reasons.items())),
+            "robots_newly_denied": dict(sorted(self.robots_newly_denied.items())),
             "signals": self.signals.summary() if self.signals is not None else None,
             "per_source": counts,
             "page_watch": dict(self.page_watch),
@@ -1648,7 +1705,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         print("[fetch] offline mode: skipping network sources")
         return FetchReport()
     report = FetchReport()
-    robots = RobotsCache()
+    robots = RobotsCache(store=robots_store)
     if config.sources.get("arxiv", {}).get("enabled", False):
         report.attempted.append("arxiv")
         arxiv_items, answered = fetch_arxiv(config, reference, report)
@@ -1656,7 +1713,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         if not answered:
             report.failed.append("arxiv")
     feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
-                                     reasons=report.robots_reasons)
+                                     reasons=report.robots_reasons, newly_denied=report.robots_newly_denied)
     report.attempted.extend(feed["id"] for feed in enabled_feeds(config.sources)
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
@@ -1665,6 +1722,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     report.items.extend(watched.items)
     report.attempted.extend(watched.attempted)
     report.page_failed.extend([*watched.failed, *watched.robots_skipped])
+    report.robots_newly_denied.update({source: "refused" for source in watched.robots_newly_denied})
     report.page_state = watched.state
     report.page_watch = watched.summary()
     report.page_watch_observations = watched.observations

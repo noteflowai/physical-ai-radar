@@ -78,6 +78,8 @@ class Signals:
     failed: list[str] = field(default_factory=list)
     robots_skipped: list[str] = field(default_factory=list)
     robots_reasons: dict[str, str] = field(default_factory=dict)
+    # Refused signals that the reader before `robots_rules` would have allowed: name -> reason (not part of summary()).
+    robots_newly_denied: dict[str, str] = field(default_factory=dict)
 
     def summary(self) -> dict[str, Any]:
         return {"attempted": sorted(self.attempted), "failed": sorted(self.failed),
@@ -94,6 +96,8 @@ def _json(url: str, name: str, signals: Signals, robots: fetch.RobotsCache | Non
     if verdict != fetch.ALLOW:
         signals.robots_skipped.append(name)
         signals.robots_reasons[name] = verdict
+        if robots is not None and robots.previously_allowed(url):
+            signals.robots_newly_denied[name] = verdict
         return None
     fetch.polite(url)
     payload = getter(url)

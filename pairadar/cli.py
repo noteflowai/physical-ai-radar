@@ -207,6 +207,9 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
         "robots_skipped": sorted(report.robots_skipped),
         "robots_reasons": {**{f"signal:{name}": reason for name, reason in sorted(signals.robots_reasons.items())},
                            **dict(sorted(report.robots_reasons.items()))},
+        # The refusals above that the reader before `robots_rules` would have allowed (feed or page id, `signal:<name>`).
+        "robots_newly_denied": {**{f"signal:{name}": reason for name, reason in sorted(signals.robots_newly_denied.items())},
+                                **dict(sorted(report.robots_newly_denied.items()))},
         "signal_failed": sorted(signals.failed),
         # The highlights quota: what was reserved, what could not be filled.
         "quota": quota,

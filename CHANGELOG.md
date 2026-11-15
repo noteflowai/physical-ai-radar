@@ -27,6 +27,15 @@ radar content itself is dated, not versioned.
   completely (not UTF-8, over 500,000 bytes, too many or too long rules, an invalid percent escape) now makes the
   host `unreachable` for the run instead of being cut or read as far as it goes. Feeds a wildcard rule disallows are
   `robots_skipped` with the reason `disallowed`, never `failed`.
+- The robots.txt that a production run read (feeds, Firecrawl pages and static pages) is kept in a second file,
+  `robots-texts.json`, in the state directory, next to `robots-state.json` (whose format and waits it does not touch):
+  one entry per host, the latest, with the time, the sha256 and size of the bytes read and the text. A file over
+  64 KiB, or not UTF-8, keeps only its sha256 and size and says why. It is never used to allow or refuse a request, so a
+  rule change can be replayed offline against what the hosts really said without asking them again.
+- The run record and `FetchReport.to_dict()` gain `robots_newly_denied`: the feeds, attention APIs (`signal:<name>`) and
+  Firecrawl pages that the new reader refuses and `urllib.robotparser` (the reader before) would have allowed, each with
+  its reason. Static pages already used `robots_rules`, so they are not in it. The old reader is kept only to compute
+  this and decides nothing; remove it once the first runs have been read back.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub
