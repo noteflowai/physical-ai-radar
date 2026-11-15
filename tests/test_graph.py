@@ -6,14 +6,17 @@ reader cannot follow fails here, not in a night's run.
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import inspect
 import io
 import json
+import os
 import sys
 import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -71,11 +74,34 @@ class ReadBackTest(unittest.TestCase):
         self.assertEqual(len(graph.parse_picks(text, DAY, CONFIG)), len(items))
         self.assertEqual(graph.parse_picks(page([]), DAY, CONFIG), [])
 
-    def test_only_the_first_section_counts_even_if_a_later_one_looks_like_a_pick(self) -> None:
+    def test_the_picks_are_found_by_their_title_and_a_later_section_that_looks_like_a_pick_is_not_read(self) -> None:
         text = page(sample())
         extra = "\n## Later\n\n### 9. Impostor\n\n- **Lane**: Data engine (collection / curation / scaling) ｜ " \
                 "**Evidence**: `[R]` ｜ **Source**: [arXiv 2611.00001](https://arxiv.org/abs/2611.00001) ｜ `2026-11-01`\n"
         self.assertEqual(len(graph.parse_picks(text + extra, DAY, CONFIG)), 3)
+
+    def test_a_section_before_the_picks_that_has_the_pick_format_is_not_read_as_the_picks(self) -> None:
+        # 01 F3: the picks are not "the first section". A notice or baseline placed first, in the same format, is skipped.
+        heading = f"## {CONFIG.ui('en')['top_items']}"
+        text = page(sample())
+        fake = ("## Notice\n\n### 1. Impostor\n\n- **Lane**: Data engine (collection / curation / scaling) ｜ "
+                "**Evidence**: `[R]` ｜ **Source**: [arXiv 2611.00001](https://arxiv.org/abs/2611.00001) ｜ `2026-11-01`\n\n")
+        before, _, after = text.partition(heading)
+        moved = before + fake + heading + after
+        self.assertEqual(graph.parse_picks(moved, DAY, CONFIG), [graph.item_entry(item, DAY) for item in sample()])
+
+    def test_a_page_without_exactly_one_picks_section_is_refused(self) -> None:
+        heading = f"## {CONFIG.ui('en')['top_items']}"
+        text = page(sample())
+        cases = {"the picks section renamed (the first section is now something else)":
+                 text.replace(heading, "## Frontier baseline (curated)", 1),
+                 "no picks heading at all": text.replace(heading, "### Picks", 1),
+                 "two picks sections": text + "\n" + heading + "\n\n" + text.partition(heading)[2]}
+        for name, bad in cases.items():
+            with self.subTest(name), self.assertRaises(graph.GraphError):
+                graph.parse_picks(bad, DAY, CONFIG)
+        with self.assertRaisesRegex(graph.GraphError, "2 sections"):
+            graph.parse_picks(cases["two picks sections"], DAY, CONFIG)
 
     def test_what_cannot_be_placed_is_refused_not_guessed(self) -> None:
         good = page(sample())
@@ -167,14 +193,38 @@ class FillTest(unittest.TestCase):
         self.assertIn("2026-11-09.en.md", reasons["2026-11-09"])                  # a page that is not there
         self.assertIn("no lane line", reasons["2026-11-13"])
 
-    def test_a_day_that_has_entries_is_left_alone_and_the_day_being_written_is_skipped(self) -> None:
+    def test_a_complete_day_is_left_alone_and_the_day_being_written_is_skipped(self) -> None:
         folder = self.folder({"2026-11-10": page(sample(), "2026-11-10")})
-        existing = graph.append_day(graph.empty_items(), [dict(graph.item_entry(sample()[0], "2026-11-10"), title="kept")],
-                                    "2026-11-10")
+        entries = [dict(graph.item_entry(item, "2026-11-10"), title=f"kept {index}") for index, item in enumerate(sample())]
+        existing = graph.append_day(graph.empty_items(), entries, "2026-11-10")
         history = [{"date": "2026-11-10", "count": 3}, {"date": "2026-11-12", "count": 1}]
         doc = graph.fill_missing(existing, history, folder, CONFIG, skip_day="2026-11-12")
-        self.assertEqual([entry["title"] for entry in doc["items"]], ["kept"])
+        self.assertEqual([entry["title"] for entry in doc["items"]], ["kept 0", "kept 1", "kept 2"])
         self.assertEqual(doc["backfill"]["gaps"], [])
+
+    def test_a_partial_day_is_read_again_and_replaced_only_by_a_full_page(self) -> None:
+        # 01 F4: one of the run's three picks was stored. The whole page is read; the partial entry is replaced.
+        partial = graph.append_day(graph.empty_items(), [dict(graph.item_entry(sample()[0], "2026-11-10"), title="kept")],
+                                   "2026-11-10")
+        history = [{"date": "2026-11-10", "count": 3}]
+        doc = graph.fill_missing(partial, history, self.folder({"2026-11-10": page(sample(), "2026-11-10")}), CONFIG)
+        self.assertEqual(len(doc["items"]), 3)
+        self.assertNotIn("kept", [entry["title"] for entry in doc["items"]])
+        self.assertEqual(doc["backfill"]["gaps"], [])
+        # No page to read: the partial day stays as stored and is listed as a gap, which is never cleared.
+        doc = graph.fill_missing(partial, history, self.folder({}), CONFIG)
+        self.assertEqual([entry["title"] for entry in doc["items"]], ["kept"])
+        self.assertEqual([gap["date"] for gap in doc["backfill"]["gaps"]], ["2026-11-10"])
+        self.assertIn("1 of 3 stored", doc["backfill"]["gaps"][0]["reason"])
+        again = graph.fill_missing(doc, history, self.folder({}), CONFIG)
+        self.assertEqual(len(again["backfill"]["gaps"]), 1)
+
+    def test_a_gap_on_the_day_being_written_is_cleared_when_its_picks_are_all_there(self) -> None:
+        doc = graph.empty_items()
+        doc["backfill"]["gaps"] = [{"date": "2026-11-12", "reason": "an earlier run could not place it"}]
+        doc = graph.append_day(doc, [graph.item_entry(item, "2026-11-12") for item in sample()[:2]], "2026-11-12")
+        out = graph.fill_missing(doc, [{"date": "2026-11-12", "count": 2}], self.folder({}), CONFIG, skip_day="2026-11-12")
+        self.assertEqual(out["backfill"]["gaps"], [])
 
     def test_a_gap_is_cleared_when_the_day_is_read_later(self) -> None:
         history = [{"date": "2026-11-10", "count": 3}]
@@ -270,6 +320,213 @@ class LaneTimeTest(unittest.TestCase):
                     graph.load_rules(path)
             path.write_text(json.dumps([{**ok, "per_day": None, "per_lane": None}]))
             self.assertEqual(graph.load_rules(path)[0]["per_day"], None)                 # "not verified" is allowed
+
+
+class PublishTest(unittest.TestCase):
+    """01 F2 and F4: the pair is published as one version, and a stored file that is not what this module writes stops the
+    export instead of crashing the run."""
+
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        (self.root / "data").mkdir()
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
+        (self.root / "radar" / "daily").mkdir(parents=True)
+        (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
+        self.ctx = {"date": DAY, "picked": sample()[:2],
+                    "history": [{"date": "2026-11-11", "count": 3}, {"date": DAY, "count": 2}]}
+        self.folder = self.root / "radar" / "graph"
+
+    def run_it(self, ctx=None) -> list[Path]:
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            paths = graph.write_graph(CONFIG, ctx or self.ctx, root=self.root, source=self.root)
+        self.out = out.getvalue()
+        return paths
+
+    def files(self) -> dict[str, bytes]:
+        return {path.name: path.read_bytes() for path in sorted(self.folder.glob("*"))} if self.folder.exists() else {}
+
+    @staticmethod
+    def replace_failing_on(*calls: int):
+        real, seen = os.replace, {"n": 0}
+
+        def replace(source, target):
+            seen["n"] += 1
+            if seen["n"] in calls:
+                raise OSError(f"injected failure on replacement {seen['n']}")
+            return real(source, target)
+        return mock.patch.object(graph.os, "replace", replace)
+
+    def later(self) -> dict:
+        return {"date": "2026-11-13", "picked": sample()[:1],
+                "history": [*self.ctx["history"], {"date": "2026-11-13", "count": 1}]}
+
+    def test_a_written_pair_is_one_version_and_says_so(self) -> None:
+        paths = self.run_it()
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"])
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+        table = json.loads(paths[1].read_text())
+        self.assertEqual(table["items_sha256"], hashlib.sha256(paths[0].read_bytes()).hexdigest())
+        self.assertEqual(table["items_count"], len(json.loads(paths[0].read_text())["items"]))
+        self.assertEqual(list(self.folder.glob(".*")), [])                       # no temporary file is left
+
+    def test_a_pair_that_fails_the_contract_is_not_published(self) -> None:
+        with mock.patch.object(graph, "contract_problems", return_value=["boom"]):
+            self.assertEqual(self.run_it(), [])
+        self.assertIn("the pair is not sound: boom", self.out)
+        self.assertEqual(self.files(), {})
+
+    def test_a_failure_of_the_first_replacement_leaves_the_previous_pair_and_the_run_goes_on(self) -> None:
+        self.run_it()
+        before = self.files()
+        with self.replace_failing_on(1):
+            paths = self.run_it(self.later())
+        self.assertEqual(paths, [])
+        self.assertIn("graph export skipped", self.out)
+        self.assertEqual(self.files(), before)
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_a_failure_of_the_second_replacement_puts_the_first_file_back(self) -> None:
+        self.run_it()
+        before = self.files()
+        with self.replace_failing_on(2):                       # items.json is replaced, lane-time.json is not
+            paths = self.run_it(self.later())
+        self.assertEqual(paths, [])
+        self.assertIn("graph export skipped", self.out)
+        self.assertEqual(self.files(), before)                 # the previous pair, byte for byte, and no temporary file
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+    def test_a_failure_of_the_second_replacement_with_no_previous_pair_leaves_neither_file(self) -> None:
+        with self.replace_failing_on(2):
+            self.assertEqual(self.run_it(), [])
+        self.assertEqual(self.files(), {})
+        self.assertIn("graph export skipped", self.out)
+
+    def test_if_the_first_file_cannot_be_put_back_a_reader_can_still_tell_the_two_apart(self) -> None:
+        self.run_it()
+        with self.replace_failing_on(2, 3):                    # lane-time.json fails, and so does putting items.json back
+            self.assertEqual(self.run_it(self.later()), [])
+        self.assertIn("readers must compare items_sha256", self.out)
+        self.assertEqual(list(self.folder.glob(".*")), [])
+        problems = graph.check_pair(self.folder, CONFIG)       # new items.json, old lane-time.json
+        self.assertEqual(len(problems), 1)
+        self.assertIn("mixed generations", problems[0])
+
+    def test_a_failure_while_the_files_are_staged_writes_nothing(self) -> None:
+        self.run_it()
+        before = self.files()
+        with mock.patch.object(graph.os, "fsync", side_effect=OSError("disk full")):
+            self.assertEqual(self.run_it(self.later()), [])
+        self.assertEqual(self.files(), before)
+        self.assertIn("graph export skipped", self.out)
+
+    def test_a_stored_file_that_is_not_what_this_module_writes_stops_the_export_and_is_left_alone(self) -> None:
+        self.run_it()
+        stored = json.loads((self.folder / "items.json").read_text())
+        broken = {
+            "an entry that is null": [None],
+            "an entry with an extra key": [{**stored["items"][0], "extra": 1}],
+            "an entry with a missing key": [{k: v for k, v in stored["items"][0].items() if k != "url"}],
+            "an unknown lane": [{**stored["items"][0], "lane": "made-up"}],
+            "an unknown evidence class": [{**stored["items"][0], "evidence": "X"}],
+            "a date that is not a date": [{**stored["items"][0], "date": "2026-13-45"}],
+            "signals that are not text": [{**stored["items"][0], "signals": [1]}],
+            "the same pick twice on a day": [stored["items"][0], stored["items"][0]],
+        }
+        for name, items in broken.items():
+            with self.subTest(name):
+                text = json.dumps({**stored, "items": items})
+                (self.folder / "items.json").write_text(text)
+                before = self.files()
+                self.assertEqual(self.run_it(self.later()), [])
+                self.assertIn("graph export skipped", self.out)
+                self.assertEqual(self.files(), before)
+
+    def test_a_stored_day_with_fewer_picks_than_the_run_recorded_is_read_again(self) -> None:
+        self.run_it()
+        stored = json.loads((self.folder / "items.json").read_text())
+        eleventh = [entry for entry in stored["items"] if entry["date"] == "2026-11-11"]
+        stored["items"] = eleventh[:1] + [entry for entry in stored["items"] if entry["date"] == DAY]
+        (self.folder / "items.json").write_text(json.dumps(stored))
+        paths = self.run_it()
+        doc = json.loads(paths[0].read_text())
+        self.assertEqual(sum(1 for entry in doc["items"] if entry["date"] == "2026-11-11"), 3)
+        self.assertEqual(doc["backfill"]["gaps"], [])
+        self.assertEqual(graph.check_pair(self.folder, CONFIG), [])
+
+
+class PoolTest(unittest.TestCase):
+    """01 F4: a lane the run log has no number for is unknown, not zero."""
+
+    LANES = [lane["id"] for lane in CONFIG.lanes]
+
+    def pool_cell(self, pool, lane="data"):
+        doc = graph.empty_items()
+        table = graph.lane_time(CONFIG, [{"date": "2026-11-11", "count": 0, "pool": pool}], doc, [], "2026-11-11")
+        return table["days"][0]["lanes"][lane]["pool"]
+
+    def test_a_lane_that_the_pool_does_not_name_is_null_and_a_named_zero_is_zero(self) -> None:
+        pool = {"live": 9, "eligible": 4, "per_lane_cap": 2, "by_lane": {"simeval": 4, "data": 0}, "picked_by_lane": {}}
+        self.assertEqual(self.pool_cell(pool, "simeval"), 4)
+        self.assertEqual(self.pool_cell(pool, "data"), 0)
+        self.assertIsNone(self.pool_cell(pool, "hardware"))                 # the log has no number for this lane
+        self.assertIsNone(self.pool_cell(None))
+        self.assertIsNone(self.pool_cell({}))
+        for bad in ({"by_lane": None}, {"by_lane": []}, {"by_lane": {"data": -1}}, {"by_lane": {"data": "3"}},
+                    {"by_lane": {"data": True}}, {"by_lane": {"data": 2.5}}):
+            with self.subTest(bad=bad):
+                self.assertIsNone(self.pool_cell(bad))
+
+
+class ContractTest(unittest.TestCase):
+    """What a consumer of `radar-graph-1` may rely on, checked before the pair is published."""
+
+    def pair(self):
+        doc = graph.empty_items()
+        doc["items"] = [graph.item_entry(item, "2026-11-11") for item in sample()]
+        doc["as_of"], doc["first_run"] = "2026-11-12", "2026-11-10"
+        history = [{"date": "2026-11-10", "count": 4}, {"date": "2026-11-11", "count": 3}, {"date": "2026-11-12", "count": 0}]
+        table = graph.lane_time(CONFIG, history, doc, [{"from": "2026-09-19", "per_lane": 2, "per_day": 8}], "2026-11-12")
+        data = graph.render_json(doc)
+        table["items_sha256"], table["items_count"] = hashlib.sha256(data).hexdigest(), len(doc["items"])
+        doc["backfill"]["gaps"] = [{"date": "2026-11-10", "reason": "x"}]
+        table["items_sha256"] = hashlib.sha256(graph.render_json(doc)).hexdigest()
+        return doc, table
+
+    def test_a_sound_pair_has_no_problems_and_names_what_its_rule_dates_mean(self) -> None:
+        doc, table = self.pair()
+        self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
+        self.assertEqual(table["mismatch_days"], ["2026-11-10"])
+        self.assertIn("not the first run", table["rules_dates"])           # 01 C1
+
+    def test_every_way_the_two_files_can_disagree_is_a_problem(self) -> None:
+        def damaged(change):
+            doc, table = self.pair()
+            change(doc, table)
+            return graph.contract_problems(doc, table, CONFIG)
+        cases = {
+            "a zero where the picks are not known": lambda d, t: t["days"][0]["lanes"]["data"].update(picked=0),
+            "a number in an evidence class where the picks are not known": lambda d, t: t["days"][0]["lanes"]["data"].update(O=1),
+            "picks known but the cells do not add up": lambda d, t: t["days"][1]["lanes"]["data"].update(O=2, picked=2),
+            "a lane whose evidence classes do not add up": lambda d, t: t["days"][1]["lanes"]["data"].update(picked=5),
+            "evidence classes that do not add up": lambda d, t: t["days"][1]["lanes"]["foundation"].update(O=0),
+            "mismatch_days that lists a known day": lambda d, t: t.update(mismatch_days=["2026-11-10", "2026-11-11"]),
+            "mismatch_days that misses an unknown day": lambda d, t: t.update(mismatch_days=[]),
+            "a day missing": lambda d, t: t["days"].pop(1),
+            "a lane missing": lambda d, t: t["days"][2]["lanes"].pop("data"),
+            "another items.json": lambda d, t: d["items"].pop(),
+            "an items.json with the same count and other content": lambda d, t: d["items"][0].update(title="edited"),
+            "a count that is not the items": lambda d, t: t.update(items_count=99),
+            "as_of that differs": lambda d, t: t.update(as_of="2026-11-11"),
+            "a pool that is neither null nor a count": lambda d, t: t["days"][1]["lanes"]["data"].update(pool="3"),
+            "picks_known that is not a boolean": lambda d, t: t["days"][1].update(picks_known=None),
+            "a gap on a day said to be known": lambda d, t: (d["backfill"]["gaps"].append({"date": "2026-11-11", "reason": "x"}),
+                                                              t.update(items_sha256=hashlib.sha256(graph.render_json(d)).hexdigest())),
+        }
+        for name, change in cases.items():
+            with self.subTest(name):
+                self.assertTrue(damaged(change), name)
 
 
 class NightlyTest(unittest.TestCase):
@@ -381,6 +638,32 @@ class CommittedDataTest(unittest.TestCase):
                         "signals", "numbers", "excerpt"):
                 self.assertEqual(entry[key], record[key], (record["id"], key))
         self.assertGreater(compared, 20)
+    def test_the_real_history_makes_a_pair_that_passes_the_contract(self) -> None:
+        history = self.runs()
+        doc = graph.fill_missing(graph.empty_items(), history, ROOT / "radar" / "daily", CONFIG)
+        doc["as_of"], doc["first_run"] = self.FROZEN_THROUGH, min(run["date"] for run in history)
+        graph.validate_items(doc, CONFIG)                         # every entry read back is one this module accepts
+        table = graph.lane_time(CONFIG, history, doc, graph.load_rules(ROOT / "data" / graph.RULES_FILE), self.FROZEN_THROUGH)
+        table["items_sha256"] = hashlib.sha256(graph.render_json(doc)).hexdigest()
+        table["items_count"] = len(doc["items"])
+        self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
+        self.assertEqual(table["mismatch_days"], ["2026-09-19"])
+        self.assertTrue(all(cell["picked"] is None for cell in table["days"][0]["lanes"].values()))
+        # The links are published as they were: an old plain-http link is not turned into https.
+        self.assertTrue(any(entry["url"].startswith("http://") for entry in doc["items"]))
+
+    def test_a_real_generation_publishes_a_pair_that_passes_the_contract(self) -> None:
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "data").mkdir()
+            (root / "data" / graph.RULES_FILE).write_text((ROOT / "data" / graph.RULES_FILE).read_text())
+            (root / "radar").mkdir()
+            (root / "radar" / "daily").symlink_to(ROOT / "radar" / "daily")
+            ctx = {"date": "2026-11-16", "picked": [], "history": [*self.runs(), {"date": "2026-11-16", "count": 0}]}
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                paths = graph.write_graph(CONFIG, ctx, root=root, source=root)
+            self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"], out.getvalue())
+            self.assertEqual(graph.check_pair(root / "radar" / "graph", CONFIG), [])
 
 
 if __name__ == "__main__":

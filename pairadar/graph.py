@@ -16,20 +16,28 @@ the run being written and every lane, the picks by evidence class, and the size 
 of items the run published (a gap in `items.json`) has `picks_known: false`, is listed in `mismatch_days`, and
 has `null` picks in every cell: a zero there would read as "nothing was picked". It carries the selection
 rules in force over time, from `data/selection-rules.json`, so that a chart can say that two days are not
-measured the same way.
+measured the same way. The `from` of a rule is the date of its commit, not the first run that used it.
+
+The two files are one version: `lane-time.json` carries `items_sha256`, the SHA-256 of the bytes of `items.json`, and
+the pair is checked (`contract_problems`) and then written so that a failure leaves the previous pair (`publish_pair`).
+A reader can tell two generations apart with `check_pair`.
 
 Nothing here changes what is picked or published. A problem with these files is reported on stdout
 and the radar run carries on.
 """
 from __future__ import annotations
 
+import contextlib
+import hashlib
 import json
+import os
 import re
+import tempfile
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
-from .config import ROOT, Config, Item, dump_json
+from .config import ROOT, Config, Item
 from .feeds import record
 from .fetch import link_digest
 
@@ -38,13 +46,35 @@ ITEMS_FILE = "items.json"
 LANE_TIME_FILE = "lane-time.json"
 RULES_FILE = "selection-rules.json"
 EVIDENCE = ("O", "R", "M")
+ENTRY_KEYS = ("id", "date", "published", "lane", "evidence", "source_id", "publisher", "title", "url", "signals",
+              "numbers", "excerpt")
 # A lane's English name before it was renamed: the lane `safety` was "Safety, authority & compliance" until
 # 2026-09-25 (git: 6c71ba8 had this name under id `safety`, fc1e898 renamed it).
 LANE_ALIASES = {"Safety, authority & compliance": "safety"}
+RULES_DATES = "the date of the commit that changed the rule, not the first run that used it"
 
 
 class GraphError(Exception):
     """A graph file or a daily page that cannot be used as it is."""
+
+
+def render_json(payload: Any) -> bytes:
+    """The bytes a graph file is written as (the format of `config.dump_json`)."""
+    return (json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False) + "\n").encode("utf-8")
+
+
+def _day(value: object) -> bool:
+    if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        return False
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
+
+def _count(value: object) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
 
 
 # --- items ---------------------------------------------------------------------------
@@ -77,6 +107,35 @@ def empty_items() -> dict[str, Any]:
             "backfill": {"source": "radar/daily/<day>.en.md, section Today's picks", "gaps": []}, "items": []}
 
 
+def validate_items(doc: dict[str, Any], config: Config) -> None:
+    """Refuse a stored document whose entries are not what this module writes (01 F4): wrong type, unknown lane or
+    evidence, a missing or extra key, the same pick twice on one day, a malformed gap. Raises GraphError."""
+    lanes = {lane["id"] for lane in config.lanes}
+    text = ("id", "published", "source_id", "publisher", "title", "url", "excerpt")
+    seen: set[tuple[str, str]] = set()
+    for index, entry in enumerate(doc["items"]):
+        where = f"items[{index}]"
+        if not isinstance(entry, dict) or set(entry) != set(ENTRY_KEYS):
+            raise GraphError(f"{where} is not an entry with exactly the keys {', '.join(ENTRY_KEYS)}")
+        if not all(isinstance(entry[key], str) for key in text) or not all(entry[key] for key in ("id", "title", "url", "source_id")):
+            raise GraphError(f"{where} has a field that is not text")
+        if not _day(entry["date"]) or not (entry["published"] == "" or _day(entry["published"])):
+            raise GraphError(f"{where} has a date that is not YYYY-MM-DD")
+        if entry["lane"] not in lanes or entry["evidence"] not in EVIDENCE:
+            raise GraphError(f"{where} has an unknown lane or evidence class")
+        for key in ("signals", "numbers"):
+            if not isinstance(entry[key], list) or not all(isinstance(value, str) for value in entry[key]):
+                raise GraphError(f"{where} has {key} that is not a list of text")
+        if (entry["date"], entry["id"]) in seen:
+            raise GraphError(f"{where} repeats {entry['id']} on {entry['date']}")
+        seen.add((entry["date"], entry["id"]))
+    backfill = doc.get("backfill", {})
+    gaps = backfill.get("gaps", []) if isinstance(backfill, dict) else None
+    if not isinstance(gaps, list) or not all(isinstance(gap, dict) and _day(gap.get("date")) and isinstance(gap.get("reason"), str)
+                                             for gap in gaps):
+        raise GraphError("backfill.gaps is not a list of {date, reason}")
+
+
 def append_day(doc: dict[str, Any], entries: list[dict[str, Any]], day: str) -> dict[str, Any]:
     """Replace `day`'s entries with `entries`; a rerun of a day never duplicates it. Days stay in order."""
     kept = [entry for entry in doc["items"] if entry.get("date") != day]
@@ -103,12 +162,18 @@ def unlink_url(url: str) -> str:
     return url.replace("%20", " ").replace("%28", "(").replace("%29", ")")
 
 
-def picks_section(text: str) -> list[str]:
-    """The lines of the first `## ` section (the day's picks), up to the next `## `."""
+def picks_section(text: str, heading: str) -> list[str]:
+    """The lines of the one section titled exactly `## <heading>` (the day's picks), up to the next `## `.
+
+    The section is found by its title, never by its position: a page whose first section is something else (the
+    curated baseline, a notice) is not read as the picks. No such section, or more than one, raises GraphError."""
     lines = text.splitlines()
-    start = next((index for index, line in enumerate(lines) if line.startswith("## ")), None)
-    if start is None:
-        raise GraphError("no section found")
+    starts = [index for index, line in enumerate(lines) if line.rstrip() == f"## {heading}"]
+    if not starts:
+        raise GraphError(f"no section titled '{heading}'")
+    if len(starts) > 1:
+        raise GraphError(f"{len(starts)} sections titled '{heading}'")
+    start = starts[0]
     end = next((index for index in range(start + 1, len(lines)) if lines[index].startswith("## ")), len(lines))
     return lines[start + 1:end]
 
@@ -130,7 +195,7 @@ def parse_picks(text: str, day: str, config: Config) -> list[dict[str, Any]]:
     signals = {name: ident for ident, name in config.ui("en")["signals"].items()}
     publishers = source_ids(config)
     blocks: list[list[str]] = []
-    for line in picks_section(text):
+    for line in picks_section(text, config.ui("en")["top_items"]):
         if line.startswith("### "):
             blocks.append([line])
         elif blocks:
@@ -180,31 +245,41 @@ def parse_picks(text: str, day: str, config: Config) -> list[dict[str, Any]]:
 
 def fill_missing(doc: dict[str, Any], history: list[dict[str, Any]], daily_dir: Path, config: Config,
                  skip_day: str | None = None) -> dict[str, Any]:
-    """Add the days of `history` that have no entries, read from their published pages.
+    """Add the days of `history` whose stored picks are missing or incomplete, read from their published pages.
 
-    A day is added only when its page is read exactly and holds as many picks as the run recorded; otherwise
-    it is listed under `backfill.gaps` with the reason, and nothing is guessed."""
-    have = {entry["date"] for entry in doc["items"]}
+    A day is complete when the stored entries are as many as the run recorded. A missing or partial day is
+    read again from its page, and its stored entries are replaced only when the page is read exactly and holds
+    as many picks as the run recorded; otherwise it is listed under `backfill.gaps` with the reason (an
+    unresolved gap is never cleared), and nothing is guessed."""
+    stored: dict[str, int] = {}
+    for entry in doc["items"]:
+        stored[entry["date"]] = stored.get(entry["date"], 0) + 1
     gaps = {gap["date"]: gap for gap in doc.get("backfill", {}).get("gaps", [])}
+    replaced: set[str] = set()
     added: list[dict[str, Any]] = []
     for run in sorted(history, key=lambda entry: entry["date"]):
-        day = run["date"]
-        if day == skip_day:
+        day, count, have = run["date"], run.get("count"), stored.get(run["date"], 0)
+        if day == skip_day:                            # the run being written: its entries came from the run itself
+            if have == (count or 0):
+                gaps.pop(day, None)
             continue
-        if day in have or not run.get("count"):
+        if have == (count or 0):                       # complete: all of them stored, or none were published
             gaps.pop(day, None)
             continue
         try:
             entries = parse_picks((daily_dir / f"{day}.en.md").read_text(encoding="utf-8"), day, config)
-            if len(entries) != run["count"]:
-                raise GraphError(f"the page has {len(entries)} picks, the run recorded {run['count']}")
+            if len(entries) != count:
+                raise GraphError(f"the page has {len(entries)} picks, the run recorded {count}")
         except (OSError, GraphError) as error:
-            gaps[day] = {"date": day, "reason": str(error)}
+            held = f"{have} of {count} stored; " if have else ""
+            gaps[day] = {"date": day, "reason": f"{held}{error}"}
             continue
         gaps.pop(day, None)
+        replaced.add(day)
         added.extend(entries)
     backfill = {**doc.get("backfill", empty_items()["backfill"]), "gaps": [gaps[day] for day in sorted(gaps)]}
-    return {**doc, "backfill": backfill, "items": sorted(doc["items"] + added, key=lambda entry: entry["date"])}
+    kept = [entry for entry in doc["items"] if entry["date"] not in replaced]
+    return {**doc, "backfill": backfill, "items": sorted(kept + added, key=lambda entry: entry["date"])}
 
 
 # --- lane-time -----------------------------------------------------------------------
@@ -242,11 +317,15 @@ def lane_time(config: Config, history: list[dict[str, Any]], items: dict[str, An
         day = cursor.isoformat()
         run = runs.get(day)
         pool = (run or {}).get("pool") or {}
+        by_lane = pool.get("by_lane")
         lanes = {}
         for lane in lane_ids:
             counts = by_day.get(day, {}).get(lane, {k: 0 for k in EVIDENCE})
+            # No `pool` in the run log: unknown (null), never zero. A pool that is there but has no number for a lane
+            # (or not a whole one) is unknown for that lane too: the run log writes every lane, with 0 where none.
+            known = by_lane.get(lane) if isinstance(by_lane, dict) else None
             lanes[lane] = {**{k: counts.get(k, 0) for k in EVIDENCE}, "picked": sum(counts.values()),
-                           "pool": pool["by_lane"].get(lane, 0) if "by_lane" in pool else None}
+                           "pool": known if _count(known) else None}
         picked = sum(cell["picked"] for cell in lanes.values())
         unreadable = bool(run) and run.get("count") != picked
         if unreadable:
@@ -264,31 +343,155 @@ def lane_time(config: Config, history: list[dict[str, Any]], items: dict[str, An
     pooled = sorted(day for day, run in runs.items() if run.get("pool"))
     return {"schema": SCHEMA, "as_of": as_of, "first_run": first, "pool_since": pooled[0] if pooled else None,
             "per_lane_cap": (runs[pooled[-1]]["pool"].get("per_lane_cap") if pooled else None),
-            "mismatch_days": mismatched, "rules": rules, "days": days}
+            "mismatch_days": mismatched, "rules_dates": RULES_DATES, "rules": rules, "days": days}
+
+
+def contract_problems(doc: dict[str, Any], table: dict[str, Any], config: Config) -> list[str]:
+    """What is wrong with a pair about to be published, as the consumers of `radar-graph-1` rely on it. Empty: sound.
+
+    The pair is `doc` (items.json) and `table` (lane-time.json). Nothing here is a guess about the data: it checks
+    that each file says what the other says, and that an unknown is null and never a zero."""
+    problems: list[str] = []
+    if doc.get("schema") != SCHEMA or table.get("schema") != SCHEMA:
+        problems.append("schema")
+    if doc.get("as_of") != table.get("as_of") or doc.get("first_run") != table.get("first_run"):
+        problems.append("the two files disagree on as_of or first_run")
+    if table.get("items_sha256") != hashlib.sha256(render_json(doc)).hexdigest() or table.get("items_count") != len(doc["items"]):
+        problems.append("lane-time.json does not describe this items.json (items_sha256 or items_count)")
+    lane_ids = [lane["id"] for lane in config.lanes]
+    days = table.get("days", [])
+    names = [entry.get("date") for entry in days]
+    if not names or names[0] != table.get("first_run") or names[-1] != table.get("as_of"):
+        problems.append("days do not run from first_run to as_of")
+    elif names != [(date.fromisoformat(names[0]) + timedelta(days=offset)).isoformat() for offset in range(len(names))]:
+        problems.append("days are not one per calendar day")
+    unknown = []
+    for entry in days:
+        cells = entry.get("lanes", {})
+        if list(cells) != lane_ids:
+            problems.append(f"{entry.get('date')}: lanes are not exactly the configured lanes")
+            continue
+        if entry.get("picks_known") is False:
+            unknown.append(entry.get("date"))
+            if any(cell.get(key) is not None for cell in cells.values() for key in (*EVIDENCE, "picked")):
+                problems.append(f"{entry.get('date')}: picks are not known but a cell says a number")
+        elif entry.get("picks_known") is True:
+            counted = [cell.get("picked") for cell in cells.values()]
+            if not all(_count(value) for value in counted) or (entry.get("ran") and sum(counted) != entry.get("count")):
+                problems.append(f"{entry.get('date')}: the cells do not add up to the day's count")
+            for cell in cells.values():
+                if not all(_count(cell.get(key)) for key in EVIDENCE) or cell.get("picked") != sum(cell[key] for key in EVIDENCE):
+                    problems.append(f"{entry.get('date')}: a lane's evidence classes do not add up to its picks")
+                    break
+        else:
+            problems.append(f"{entry.get('date')}: picks_known is not true or false")
+        if not all(cell.get("pool") is None or _count(cell.get("pool")) for cell in cells.values()):
+            problems.append(f"{entry.get('date')}: a pool is neither null nor a count")
+    if table.get("mismatch_days") != unknown:
+        problems.append("mismatch_days is not exactly the days whose picks are not known")
+    gap_days = {gap["date"] for gap in doc.get("backfill", {}).get("gaps", [])} & set(names)
+    if not gap_days <= set(unknown):
+        problems.append("a backfill gap is on a day whose picks are said to be known")
+    return problems
+
+
+def check_pair(folder: Path, config: Config) -> list[str]:
+    """For a consumer, and for the tests: read both files from `folder` and report why they cannot be used together
+    (a missing file, or two generations: `items_sha256` is the SHA-256 of the items.json bytes). Empty: one version."""
+    try:
+        raw = (folder / ITEMS_FILE).read_bytes()
+        doc = json.loads(raw.decode("utf-8"))
+        table = json.loads((folder / LANE_TIME_FILE).read_bytes().decode("utf-8"))
+    except (OSError, ValueError) as error:
+        return [f"cannot read the pair: {error}"]
+    if table.get("items_sha256") != hashlib.sha256(raw).hexdigest():
+        return ["lane-time.json was not written for this items.json (mixed generations)"]
+    return contract_problems(doc, table, config)
 
 
 # --- the nightly step ----------------------------------------------------------------
 
+def _stage(folder: Path, name: str, data: bytes) -> Path:
+    """Write `data` to a temporary file next to `name`, flushed to disk, readable by everyone like the rest of radar/."""
+    descriptor, temporary = tempfile.mkstemp(dir=folder, prefix=f".{name}.", suffix=".tmp")
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(temporary, 0o644)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(temporary)
+        raise
+    return Path(temporary)
+
+
+def publish_pair(folder: Path, items_bytes: bytes, lane_bytes: bytes) -> list[Path]:
+    """Replace the pair so that a failure never leaves a reader with two generations (01 F2).
+
+    Both files are first written in full beside their names; only then is each replaced (an atomic rename). If the
+    second replacement fails, the first file is put back as it was (or removed, if there was none). Should even that
+    fail, the error says so, and `lane-time.json` still names the `items.json` it belongs to (`items_sha256`), so a
+    reader can tell the two apart. Raises OSError or GraphError; the caller reports it and the run goes on."""
+    folder.mkdir(parents=True, exist_ok=True)
+    items_path, lane_path = folder / ITEMS_FILE, folder / LANE_TIME_FILE
+    before = items_path.read_bytes() if items_path.exists() else None
+    staged: list[Path | None] = []
+    try:
+        staged.append(_stage(folder, ITEMS_FILE, items_bytes))
+        staged.append(_stage(folder, LANE_TIME_FILE, lane_bytes))
+        os.replace(staged[0], items_path)
+        staged[0] = None
+        try:
+            os.replace(staged[1], lane_path)
+            staged[1] = None
+        except OSError as error:
+            try:
+                if before is None:
+                    items_path.unlink()
+                else:
+                    back = _stage(folder, ITEMS_FILE, before)
+                    staged.append(back)
+                    os.replace(back, items_path)
+                    staged[-1] = None
+            except OSError as again:
+                raise GraphError(f"{LANE_TIME_FILE} could not be written ({error}) and {ITEMS_FILE} could not be put "
+                                 f"back ({again}): readers must compare items_sha256") from again
+            raise
+    finally:
+        for path in staged:
+            if path is not None:
+                with contextlib.suppress(OSError):
+                    os.unlink(path)
+    return [items_path, lane_path]
+
+
 def write_graph(config: Config, ctx: dict[str, Any], root: Path = ROOT, source: Path = ROOT) -> list[Path]:
     """Append the day to `items.json` (filling earlier days from their pages) and rewrite `lane-time.json`.
 
-    Existing files are read from `source`, the result written under `root`. On any problem nothing is written
-    and the reason is printed: these files never stop a run."""
+    Existing files are read from `source`, the result written under `root`. The pair is checked before anything
+    is written, and written so that a failure leaves the previous pair in place. On any problem nothing is
+    published and the reason is printed: these files never stop a run."""
     folder_in, folder_out = source / "radar" / "graph", root / "radar" / "graph"
     try:
         doc = load_items(folder_in / ITEMS_FILE) or empty_items()
+        validate_items(doc, config)
         day = ctx["date"]
         doc = append_day(doc, [item_entry(item, day) for item in ctx["picked"]], day)
         doc = fill_missing(doc, ctx["history"], source / "radar" / "daily", config, skip_day=day)
         history = ctx["history"]
         as_of = max(day, doc.get("as_of") or day)               # re-running an older day does not move the date back
         doc["as_of"], doc["first_run"] = as_of, min(run["date"] for run in history)
+        validate_items(doc, config)                             # what is about to be published, picks of the day included
         rules = load_rules(source / "data" / RULES_FILE)
         table = lane_time(config, history, doc, rules, as_of)
-    except (GraphError, KeyError, ValueError) as error:
+        items_bytes = render_json(doc)
+        table["items_sha256"], table["items_count"] = hashlib.sha256(items_bytes).hexdigest(), len(doc["items"])
+        problems = contract_problems(doc, table, config)
+        if problems:
+            raise GraphError("the pair is not sound: " + "; ".join(problems[:3]))
+        return publish_pair(folder_out, items_bytes, render_json(table))
+    except (GraphError, KeyError, ValueError, TypeError, AttributeError, OSError) as error:
         print(f"[radar] graph export skipped: {error}")
         return []
-    paths = [folder_out / ITEMS_FILE, folder_out / LANE_TIME_FILE]
-    dump_json(paths[0], doc)
-    dump_json(paths[1], table)
-    return paths
