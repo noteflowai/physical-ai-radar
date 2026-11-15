@@ -77,12 +77,12 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **ManiLadder** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **SALA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **MOSAIC** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **HALO** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — Secondary report, so check the primary source before citing; the text gives figures. Watch whether the speed-up holds on the target hardware at control rate.
+1. **ManiLadder** — `AI draft` If your manipulation evaluation still rests on simple pick-and-place, this preprint offers a categorized, graded task ladder; the page shows no figures yet, so treat it as a candidate benchmark rather than a validated one.
+2. **SALA** — `AI draft` For teams weighing egocentric human video against costly robot data collection, this preprint proposes semantically aligned latent actions as the bridge, but the page gives no figures, so wait for numbers before shifting a data budget.
+3. **MOSAIC** — `AI draft` If your VLA works from 2D images and language alone and struggles in clutter, the authors' self-reported success-rate gains of 5.1% in cluttered scenes and 9.7% under visual perturbations make a case for feeding it explicit scene geometry and obstacle cues.
+4. **HALO** — `AI draft` Whole-body mobile manipulation needs demonstrations that coordinate both arms with locomotion; the authors report up to 2.9x faster collection, a self-reported figure to reproduce on your own platform before sizing a data-collection campaign around it.
+5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — `AI draft` Useful if you want a ready-made simulated scene to start from; the page shows no excerpt, figures or real-robot signal, so it says nothing yet about how results carry over to hardware.
+6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — `AI draft` A secondary account of an NVIDIA blog post on Alpamayo 2 Edge, which pairs causal reasoning with diffusion actions and reportedly lifts closed-loop performance by 48.9%; check NVIDIA's original and what that gain is measured against before citing it.
 
 </details>
 
