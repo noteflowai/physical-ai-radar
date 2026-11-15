@@ -124,7 +124,13 @@ class FakeFirecrawl:
         self.server.shutdown()
         self.server.server_close()
 
-    def serve(self, url: str, reply: dict, status: int = 200) -> None:
+    def serve(self, url: str, reply: dict, status: int = 200, source: bool = True) -> None:
+        # Firecrawl always names the URL a reply was scraped from (metadata.sourceURL); a robots.txt reply that does not is
+        # not confirmed as the robots.txt (fetch._firecrawl_robots_bytes), so the fake says it unless a test says `source=False`.
+        if source and url.endswith("/robots.txt") and isinstance(reply, dict):
+            data = reply.get("data")
+            if isinstance(data, dict) and isinstance(data.get("metadata"), dict):
+                reply = {**reply, "data": {**data, "metadata": {"sourceURL": url, **data["metadata"]}}}
         self.replies[url] = (status, reply)
 
     def scraped(self) -> list[str]:

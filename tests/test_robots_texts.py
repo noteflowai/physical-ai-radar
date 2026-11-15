@@ -403,6 +403,198 @@ class UnsupportedUrlTests(unittest.TestCase):
                     self.assertEqual(cache.unsupported, {"https://www.figure.ai/news%zz"})
 
 
+class Answer:
+    """What `urllib.request.urlopen` gives `http_get`: a status, the URL it came from after redirects, headers and a body."""
+
+    def __init__(self, url, body, content_type="text/plain; charset=utf-8", status=200):
+        self.status, self._url, self._body = status, url, body
+        self.headers = {} if content_type is None else {"Content-Type": content_type}
+
+    def geturl(self):
+        return self._url
+
+    def read(self):
+        return self._body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+HTML_LOGIN = b"<html><body>Sign in to continue private-capture-marker</body></html>"
+
+
+class ResponseIdentityTests(unittest.TestCase):
+    """01's F1: a 2xx answer is a robots.txt only if it came from that origin's /robots.txt and is not an HTML page. Anything
+    else makes the host unreachable for the run and keeps no text. A real empty robots.txt is still an empty robots.txt."""
+
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR"))
+        self.addCleanup(tmp.cleanup)
+        self.directory = Path(os.path.realpath(tmp.name)) / "state"
+        self.store = robots_store.RobotsStore(self.directory, writable=True, clock=Clock())
+
+    def kept(self, origin="https://a.example"):
+        return robots_store.RobotsTexts(self.directory, writable=False).lookup(origin)
+
+    def through_urlopen(self, answer, url="https://a.example/feed"):
+        cache = fetch.RobotsCache(store=self.store)
+        with mock.patch.object(fetch.urllib.request, "urlopen", lambda request, timeout=None: answer), \
+                mock.patch.object(fetch.time, "sleep"), silent():
+            return cache, cache.verdict(url)
+
+    def test_an_html_login_page_answered_as_robots_txt_is_unreachable_and_not_kept(self):
+        for content_type in ("text/html", "text/html; charset=utf-8", "TEXT/HTML"):
+            with self.subTest(content_type):
+                cache, verdict = self.through_urlopen(Answer("https://a.example/robots.txt", HTML_LOGIN, content_type))
+                self.assertEqual(verdict, fetch.UNREACHABLE)
+                self.assertIsNone(self.kept())
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+        self.assertTrue(cache.previously_allowed("https://a.example/feed"))     # the old reader read it as "no rules": shown
+
+    def test_a_redirect_to_another_path_or_host_is_not_the_robots_txt(self):
+        for final in ("https://a.example/login", "https://a.example/robots.txt.html", "https://login.a.example/robots.txt",
+                      "https://b.example/robots.txt", "http://a.example/robots.txt", "https://a.example/",
+                      "https://a.example/sub/robots.txt"):
+            with self.subTest(final):
+                _, verdict = self.through_urlopen(Answer(final, b"User-agent: *\nAllow: /\n", "text/plain"))
+                self.assertEqual(verdict, fetch.UNREACHABLE)
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+    def test_another_media_type_than_text_plain_is_not_a_robots_txt(self):
+        for content_type in ("application/octet-stream", "text/xml", "application/xhtml+xml", "application/json", ""):
+            with self.subTest(content_type):
+                _, verdict = self.through_urlopen(Answer("https://a.example/robots.txt", b"User-agent: *\n", content_type))
+                self.assertEqual(verdict, fetch.UNREACHABLE)
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+    def test_text_plain_from_robots_txt_with_or_without_a_type_is_read_and_kept(self):
+        body = b"User-agent: *\nDisallow: /private\n"
+        for name, answer in {"with parameters": Answer("https://a.example/robots.txt", body, "text/plain; charset=UTF-8"),
+                             "no content type": Answer("https://a.example/robots.txt", body, None),
+                             "plain": Answer("https://a.example/robots.txt", body, "text/plain")}.items():
+            with self.subTest(name):
+                cache, verdict = self.through_urlopen(answer, "https://a.example/private/x")
+                self.assertEqual(verdict, fetch.DISALLOW)
+                self.assertEqual(self.kept()["body"], body.decode())
+
+    def test_a_real_empty_robots_txt_allows_everything_and_is_kept_as_empty(self):
+        _, verdict = self.through_urlopen(Answer("https://a.example/robots.txt", b"", "text/plain"))
+        self.assertEqual(verdict, fetch.ALLOW)
+        entry = self.kept()
+        self.assertEqual((entry["body"], entry["size"], entry["sha256"]), ("", 0, hashlib.sha256(b"").hexdigest()))
+
+    def test_a_feed_on_such_a_host_is_skipped_unreachable_not_requested_and_the_others_are_read(self):
+        config = config_with(feeds=[{"id": "login", "url": "https://a.example/feed", "evidence": "O"},
+                                    {"id": "fine", "url": "https://b.example/feed", "evidence": "O"}])
+        requested = []
+
+        def urlopen(request, timeout=None):
+            requested.append(request.full_url)
+            if request.full_url == "https://a.example/robots.txt":
+                return Answer("https://a.example/login", HTML_LOGIN, "text/html")
+            if request.full_url == "https://b.example/robots.txt":
+                return Answer("https://b.example/robots.txt", b"User-agent: *\nAllow: /\n", "text/plain")
+            return Answer(request.full_url, rss(("A robot", "https://b.example/a", "robot")), "application/rss+xml")
+        skipped, reasons, newly = [], {}, {}
+        with mock.patch.object(fetch.urllib.request, "urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
+            items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(store=self.store), skipped=skipped,
+                                              reasons=reasons, newly_denied=newly)
+        self.assertEqual((skipped, reasons, failed), (["login"], {"login": fetch.UNREACHABLE}, []))
+        self.assertNotIn("https://a.example/feed", requested)
+        self.assertEqual([entry.source_id for entry in items], ["fine"])
+        self.assertEqual(newly, {"login": fetch.UNREACHABLE})
+        self.assertIsNone(self.kept("https://a.example"))
+        self.assertIsNotNone(self.kept("https://b.example"))
+
+
+class FirecrawlIdentityTests(unittest.TestCase):
+    """01's F1 for the Firecrawl pages (contentType and sourceURL take part), and the unpaired surrogate of F2."""
+
+    URL = "https://www.figure.ai/robots.txt"
+
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory(dir=os.environ.get("TMPDIR"))
+        self.addCleanup(tmp.cleanup)
+        self.directory = Path(os.path.realpath(tmp.name)) / "state"
+        self.store = robots_store.RobotsStore(self.directory, writable=True, clock=Clock())
+
+    def allowed(self, raw_html, metadata, source=True):
+        cache = fetch._PageRobots(self.store)
+        with FakeFirecrawl() as fake:
+            fake.serve(self.URL, {"success": True, "data": {"rawHtml": raw_html, "metadata": metadata}}, source=source)
+            return fetch._robots_allows({"endpoint": fake.url, "timeout": 5}, "https://www.figure.ai/news", cache), cache
+
+    def kept(self):
+        return robots_store.RobotsTexts(self.directory, writable=False).lookup("https://www.figure.ai")
+
+    def test_01s_counterexample_an_html_login_page_with_a_login_source_is_refused_and_not_kept(self):
+        allowed, cache = self.allowed("<html>Sign in private-capture-marker</html>",
+                                      {"statusCode": 200, "contentType": "text/html; charset=utf-8",
+                                       "sourceURL": "https://www.figure.ai/login"})
+        self.assertFalse(allowed)
+        self.assertIsNone(self.kept())
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+        self.assertTrue(fetch._page_previously_allowed(cache, "https://www.figure.ai/news"))       # shown as newly denied
+
+    def test_each_of_the_two_is_enough_to_refuse(self):
+        text = "User-agent: *\nAllow: /\n"
+        cases = {"html with the right source": {"statusCode": 200, "contentType": "text/html", "sourceURL": self.URL},
+                 "text with a login source": {"statusCode": 200, "contentType": "text/plain",
+                                              "sourceURL": "https://www.figure.ai/login"},
+                 "text with another host as the source": {"statusCode": 200, "contentType": "text/plain",
+                                                          "sourceURL": "https://www.example.com/robots.txt"},
+                 "a final url that is another page": {"statusCode": 200, "contentType": "text/plain", "sourceURL": self.URL,
+                                                      "url": "https://www.figure.ai/login"},
+                 "another media type": {"statusCode": 200, "contentType": "application/json", "sourceURL": self.URL},
+                 "a source that is not text": {"statusCode": 200, "contentType": "text/plain", "sourceURL": 5}}
+        for name, metadata in cases.items():
+            with self.subTest(name):
+                allowed, _ = self.allowed(text, metadata)
+                self.assertFalse(allowed)
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+    def test_a_reply_that_names_no_source_is_not_confirmed(self):
+        allowed, _ = self.allowed("User-agent: *\nAllow: /\n", {"statusCode": 200, "contentType": "text/plain"}, source=False)
+        self.assertFalse(allowed)
+        self.assertIsNone(self.kept())
+
+    def test_the_robots_txt_itself_is_read_and_kept_with_or_without_a_content_type(self):
+        for name, metadata in {"with parameters": {"statusCode": 200, "contentType": "text/plain; charset=utf-8",
+                                                   "sourceURL": self.URL, "url": self.URL},
+                               "no content type": {"statusCode": 200, "sourceURL": self.URL}}.items():
+            with self.subTest(name):
+                allowed, _ = self.allowed("User-agent: *\nDisallow: /other\n", metadata)
+                self.assertTrue(allowed)
+                self.assertEqual(self.kept()["body"], "User-agent: *\nDisallow: /other\n")
+
+    def test_a_real_empty_robots_txt_is_still_empty_and_allows(self):
+        allowed, _ = self.allowed("", {"statusCode": 200, "contentType": "text/plain", "sourceURL": self.URL})
+        self.assertTrue(allowed)
+        self.assertEqual((self.kept()["body"], self.kept()["size"]), ("", 0))
+
+    def test_text_with_an_unpaired_surrogate_is_refused_without_raising_and_not_kept(self):
+        allowed, _ = self.allowed("User-agent: *\nAllow: /\n\ud800", {"statusCode": 200, "contentType": "text/plain",
+                                                                    "sourceURL": self.URL})
+        self.assertFalse(allowed)
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+    def test_a_page_run_with_the_login_reply_reads_no_page_and_keeps_nothing(self):
+        raw = firecrawl_sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        with FakeFirecrawl() as fake, mock.patch.dict(os.environ, {fetch.FIRECRAWL_ENV: fake.url}):
+            fake.serve(self.URL, {"success": True, "data": {"rawHtml": "<html>login</html>", "metadata": {
+                "statusCode": 200, "contentType": "text/html", "sourceURL": "https://www.figure.ai/login"}}})
+            fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+            with silent():
+                result = fetch.fetch_page_watch(Config(sources=raw, taxonomy={}, glossary={}, baseline={}), DAY, None, self.store)
+            self.assertEqual(fake.scraped(), [])
+        self.assertEqual((result.robots_skipped, result.checked, result.robots_newly_denied), (["figure"], [], ["figure"]))
+        self.assertFalse((self.directory / "robots-texts.json").exists())
+
+
 class StaticReaderTests(TlsTestCase):
     def setUp(self) -> None:
         super().setUp()

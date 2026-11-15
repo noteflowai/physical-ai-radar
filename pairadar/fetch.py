@@ -111,7 +111,10 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
     Feeds and the arXiv API both fail intermittently, and a single timeout or
     rate-limit reply used to drop a whole source for the day on first contact.
     `report`, when given, receives the final HTTP `status` (None when no HTTP answer
-    came at all): robots.txt handling depends on it.
+    came at all): robots.txt handling depends on it. A 2xx answer also puts the URL it
+    came from after any redirect (`final_url`) and its media type (`content_type`, None
+    when the answer named none) there: a robots.txt is only a robots.txt if that is what
+    came back.
     """
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     last: Exception | None = None
@@ -121,6 +124,8 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
             with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
                 if report is not None:
                     report["status"] = getattr(response, "status", 200)
+                    report["final_url"] = response.geturl()
+                    report["content_type"] = _media_type(response.headers.get("Content-Type"))
                 return response.read()
         except urllib.error.HTTPError as exc:
             last = exc
@@ -424,10 +429,35 @@ UNSUPPORTED_URL = "unsupported-url"     # this URL cannot be judged against any 
 ROBOTS_REFUSED_4XX = (401, 403, 429)
 
 
-def _robots_get(url: str) -> tuple[int | None, bytes | None]:
+def _media_type(value: Any) -> str | None:
+    """The media type of a Content-Type value, lower-cased and without parameters; None when there is none.
+    A value that is not text is returned as "?" so that it never matches anything."""
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        return "?"
+    return value.split(";", 1)[0].strip().lower()
+
+
+def _is_robots_reply(origin: str, final_url: Any, content_type: Any) -> bool:
+    """Whether a 2xx answer to the request for `origin`/robots.txt is the robots.txt itself, and not a login page, a
+    challenge or the page a redirect led to. The URL it came from, after any redirect, must be the same origin's
+    `/robots.txt`; a different path or host is not (RFC 9309 allows redirects, but what they lead to is only a robots.txt
+    when it is at that address). The media type must be `text/plain` or absent; `text/html`, or anything else, is not."""
+    if not isinstance(final_url, str):
+        return False
+    parts = urllib.parse.urlsplit(final_url)
+    return (f"{parts.scheme}://{parts.netloc}".lower() == origin and parts.path == "/robots.txt"
+            and content_type in (None, "text/plain"))
+
+
+def _robots_get(url: str) -> tuple[int | None, bytes | None, dict[str, Any]]:
+    """(status, body, where the answer came from): `{"url": final URL, "content_type": media type or None}`. A reader that
+    reported no final URL (a replacement `http_get` in a test) is taken to have been answered at the URL it asked."""
     report: dict[str, Any] = {}
     body = http_get(url, report=report)
-    return (report.get("status", 200 if body is not None else None), body)
+    return (report.get("status", 200 if body is not None else None), body,
+            {"url": report.get("final_url", url), "content_type": report.get("content_type")})
 
 
 class RobotsCache:
@@ -470,20 +500,30 @@ class RobotsCache:
         origin = f"{parts.scheme}://{parts.netloc}".lower()
         if origin not in self.hosts:
             polite(origin)
-            status, body = self.getter(origin + "/robots.txt")
+            answer = self.getter(origin + "/robots.txt")
+            status, body = answer[0], answer[1]
+            # Where the answer came from (see `_robots_get`). A replacement getter that says nothing about it (a test) gets
+            # no such check; the default getter always says.
+            where = answer[2] if len(answer) > 2 else None
             if status is not None and 200 <= status < 300 and body is not None:
-                if self.store is not None:
-                    self.store.record_text(origin, body)
                 legacy = urllib.robotparser.RobotFileParser()
                 legacy.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
                 self.legacy[origin] = legacy
-                try:
-                    if len(body) > MAX_ROBOTS_CHARS:
-                        raise robots_rules.RobotsUnsupported("file too large")
-                    self.hosts[origin] = robots_rules.parse(body.decode("utf-8"), ROBOTS_TOKEN)
-                except (UnicodeDecodeError, robots_rules.RobotsUnsupported) as error:
-                    print(f"[fetch] robots.txt for {origin} cannot be judged completely ({error}): host not requested this run")
+                if where is not None and not _is_robots_reply(origin, where.get("url"), where.get("content_type")):
+                    # A login page, a challenge or the page a redirect led to is not a robots.txt: it says nothing about
+                    # what is allowed, so nothing on the host is requested, and the body is not kept as one
+                    print(f"[fetch] robots.txt for {origin} answered {status} but not as a robots.txt: host not requested this run")
                     self.hosts[origin] = UNREACHABLE
+                else:
+                    if self.store is not None:
+                        self.store.record_text(origin, body)
+                    try:
+                        if len(body) > MAX_ROBOTS_CHARS:
+                            raise robots_rules.RobotsUnsupported("file too large")
+                        self.hosts[origin] = robots_rules.parse(body.decode("utf-8"), ROBOTS_TOKEN)
+                    except (UnicodeDecodeError, robots_rules.RobotsUnsupported) as error:
+                        print(f"[fetch] robots.txt for {origin} cannot be judged completely ({error}): host not requested this run")
+                        self.hosts[origin] = UNREACHABLE
             elif status in (401, 403):
                 print(f"[fetch] robots.txt for {origin} answered {status}: host forbidden")
                 self.hosts[origin] = FORBIDDEN
@@ -918,6 +958,27 @@ def _robots_status(data: Any) -> int | None:
     return None
 
 
+def _firecrawl_robots_bytes(origin: str, data: Any, body: str) -> bytes | None:
+    """The bytes of `body` when Firecrawl's reply says it is the robots.txt of `origin` itself; None when it does not say so.
+
+    The reply's `metadata` must name the URL it was scraped from (`sourceURL`, and `url` when present) as that origin's
+    `/robots.txt`, and its `contentType`, when present, must be `text/plain`: a reply that names no source is not
+    confirmed. Text that cannot be written as UTF-8 (an unpaired surrogate in the JSON string) is not a robots.txt either.
+    Whether Firecrawl's `sourceURL` is the requested or the final address is not established here, so both that and `url`
+    must be the robots.txt."""
+    metadata = data.get("metadata") if isinstance(data, dict) else None
+    if not isinstance(metadata, dict) or "sourceURL" not in metadata:
+        return None
+    kind = _media_type(metadata.get("contentType"))
+    for key in ("sourceURL", "url"):
+        if key in metadata and not _is_robots_reply(origin, metadata[key], kind):
+            return None
+    try:
+        return body.encode("utf-8")
+    except UnicodeEncodeError:
+        return None
+
+
 class _PageRobots(dict):
     """The per-run robots.txt answers of the Firecrawl pages (origin -> one rule set per agent), with the optional
     RobotsStore the files read are kept in, and what the reader before `robots_rules` made of each 2xx file."""
@@ -963,22 +1024,29 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
         body = data.get("rawHtml") if data is not None else None
         refuse_all = robots_rules.Rules([(False, "/")])
         if status is not None and 200 <= status < 300 and isinstance(body, str):
-            store = getattr(cache, "store", None)
-            if store is not None:
-                store.record_text(origin, body.encode("utf-8"))
             parser = urllib.robotparser.RobotFileParser()
             head = body[:MAX_ROBOTS_CHARS]
             parser.parse([] if head.lstrip()[:1] == "<" else head.splitlines())
             if isinstance(getattr(cache, "legacy", None), dict):
                 cache.legacy[origin] = parser
-            # (A site that answers robots.txt with its HTML page has no line `robots_rules` can read: no rules.)
-            text = body
-            try:
-                if len(text) > MAX_ROBOTS_CHARS:
-                    raise robots_rules.RobotsUnsupported("file too large")
-                rules = [robots_rules.parse(text, agent) for agent in ROBOTS_AGENTS]
-            except robots_rules.RobotsUnsupported:
-                rules = [refuse_all]                 # a file that cannot be judged completely is not cut or guessed
+            raw = _firecrawl_robots_bytes(origin, data, body)
+            if raw is None:
+                # Not the robots.txt itself (a login page, a challenge, a page a redirect led to), or text that cannot be
+                # written as UTF-8 (an unpaired surrogate): it says nothing about what is allowed, so nothing on the host
+                # is read, and the body is not kept as a robots.txt
+                rules = [refuse_all]
+            else:
+                store = getattr(cache, "store", None)
+                if store is not None:
+                    store.record_text(origin, raw)
+                # (A site that answers robots.txt with its HTML page has no line `robots_rules` can read: no rules.)
+                text = body
+                try:
+                    if len(text) > MAX_ROBOTS_CHARS:
+                        raise robots_rules.RobotsUnsupported("file too large")
+                    rules = [robots_rules.parse(text, agent) for agent in ROBOTS_AGENTS]
+                except robots_rules.RobotsUnsupported:
+                    rules = [refuse_all]                 # a file that cannot be judged completely is not cut or guessed
         elif status is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
             rules = [robots_rules.Rules()]
         else:

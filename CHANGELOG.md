@@ -40,6 +40,14 @@ radar content itself is dated, not versioned.
   rules. That one URL is refused (`unsupported-url`, `robots_skipped`, never `failed`) and the rest of the run is read
   as before; before, the exception ended the whole feed or page loop.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
+- A 2xx answer to the request for robots.txt is read as a robots.txt only if it is one. For the feeds and the
+  attention APIs, the URL it came from after any redirect must be the same origin's `/robots.txt`, and its media type
+  must be `text/plain` or absent; for Firecrawl pages, `metadata.sourceURL` (and `url`, when present) must be that
+  `/robots.txt` and `contentType`, when present, must be `text/plain`. A login page, a challenge or the page a redirect
+  led to makes the host `unreachable` for the run (the pages are refused) instead of reading as "no rules", and its
+  text is not kept in `robots-texts.json`. A real empty robots.txt still allows everything. Firecrawl text that cannot be
+  written as UTF-8 (an unpaired surrogate) is refused the same way instead of raising. Hosts that answer /robots.txt with
+  a 200 HTML page (a soft 404) are now `unreachable`, not allowed.
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub
   release feeds (LeRobot, Isaac Lab, MuJoCo) are switched off: github.com's robots.txt disallows
