@@ -456,6 +456,42 @@ class QuotaTest(unittest.TestCase):
         self.assertIn(official, picked)
         self.assertEqual(report["unmet"], ["unknown:oficial"])
 
+    def test_the_report_counts_the_pool_by_lane_not_just_the_picks(self) -> None:
+        papers, media, official, hot = self.pool()
+        crowded = [item(f"Crowded lane story {n} robot", source="blog", score=5 - n * 0.1, lane="crowd",
+                        url=f"https://crowd.example/{n}") for n in range(3)]
+        weak = item("Does not qualify", lane="weak")
+        weak.lane_hits = 0                                       # fails the lane-keyword gate
+        pool = papers + [media, official, hot] + crowded + [weak]
+        report: dict = {}
+        picked = select(pool, limit=8, report=report)
+        counts = report["pool"]
+        self.assertEqual(counts["per_lane"], 2)
+        self.assertEqual(counts["eligible"], len(pool) - 1)      # the one that does not qualify is not counted
+        self.assertEqual(counts["by_lane"]["crowd"], 3)           # three qualified, at most two can be picked
+        self.assertLessEqual(sum(entry.lane == "crowd" for entry in picked), 2)
+        self.assertNotIn("weak", counts["by_lane"])
+        self.assertEqual(sum(counts["by_lane"].values()), counts["eligible"])
+        self.assertEqual(list(counts["by_lane"]), sorted(counts["by_lane"]))
+        # an item already published is not part of the pool, and the cap in force is reported
+        report = {}
+        select(pool, limit=8, per_lane=1, seen=[papers[0].url, crowded[0].url], report=report)
+        self.assertEqual(report["pool"]["per_lane"], 1)
+        self.assertEqual(report["pool"]["eligible"], len(pool) - 3)
+        self.assertNotIn("lane0", report["pool"]["by_lane"])
+        self.assertEqual(report["pool"]["by_lane"]["crowd"], 2)
+        # the pool is the same whatever the limit cuts
+        again: dict = {}
+        select(pool, limit=2, per_lane=1, seen=[papers[0].url, crowded[0].url], report=again)
+        self.assertEqual(again["pool"]["by_lane"], report["pool"]["by_lane"])
+
+    def test_a_pool_report_does_not_change_the_selection(self) -> None:
+        papers, media, official, hot = self.pool()
+        pool = papers + [media, official, hot]
+        with_report = select(pool, limit=8, max_arxiv=4, reserve=["official", "hot"], report={})
+        without = select(pool, limit=8, max_arxiv=4, reserve=["official", "hot"])
+        self.assertEqual(with_report, without)
+
     def test_the_configured_quota_is_half_of_the_daily_limit(self) -> None:
         highlights = CONFIG.sources["filters"]["highlights"]
         self.assertEqual(int(8 * highlights["max_arxiv_share"]), 4)
@@ -477,11 +513,70 @@ class RunLogTest(unittest.TestCase):
         self.assertEqual(entry["robots_reasons"], {"journal": "forbidden", "signal:hn:robot": "unreachable"})
         self.assertEqual(entry["quota"]["max_arxiv"], 4)
         self.assertEqual(entry["quota"]["unmet"], ["hot", "official"])
+        lanes = [lane["id"] for lane in CONFIG.lanes]
+        self.assertEqual(entry["pool"], {"live": 0, "eligible": 0, "per_lane_cap": 2,
+                                         "by_lane": {lane: 0 for lane in lanes},
+                                         "picked_by_lane": {lane: 0 for lane in lanes}})
+        self.assertNotIn("pool", entry["quota"])                  # the quota keeps only what it had
         self.assertIsNone(ctx["heat_state"])                     # nothing read: the file is left alone
         verdict = health.report([dict(entry, failed=[])] * 3, DAY)
         self.assertEqual(verdict["signals_unavailable"], {"hf_daily_papers": 3})
         self.assertEqual(verdict["robots_skipped"], {"journal": 3})
         self.assertEqual(verdict["struggling"], [])
+
+    def test_the_run_log_keeps_the_pool_and_the_picks_by_lane_with_every_lane_present(self) -> None:
+        def story(title: str, lane: str, n: int) -> Item:
+            entry = Item(id=f"nvidia-blog:{n}", title=title, url=f"https://nvidia.example/post/{n}",
+                         publisher="NVIDIA", source_id="nvidia-blog", evidence="O", published=DAY.isoformat(),
+                         summary="A robot release.")
+            entry.lane, entry.lane_locked = lane, True
+            return entry
+        items = [story("Alpha manipulation dataset release", "foundation", 1),
+                 story("Beta quadruped locomotion controller", "foundation", 2),
+                 story("Gamma humanoid whole body planner", "foundation", 3),
+                 story("Delta collision safety monitor", "safety", 4)]
+        general = story("Epsilon cloud gaming update", "hardware", 5)
+        general.lane_locked = False                              # no lane keyword, not about Physical AI: filtered
+        items.append(general)
+        report = fetch.FetchReport(items=items)
+        with mock.patch.object(cli, "fetch_all", return_value=report), \
+                mock.patch.object(cli, "load_history", return_value=[]), \
+                mock.patch.object(heat, "load_state", return_value={"schema": heat.STATE_SCHEMA, "stars": {}}):
+            ctx = cli.build_context(CONFIG, offline=False, limit=8, day="2026-10-24")
+        pool = ctx["history"][-1]["pool"]
+        lanes = [lane["id"] for lane in CONFIG.lanes]
+        self.assertEqual(list(pool["by_lane"]), lanes)
+        self.assertEqual(list(pool["picked_by_lane"]), lanes)
+        self.assertEqual((pool["live"], pool["per_lane_cap"]), (5, 2))
+        self.assertEqual(pool["eligible"], 4)                      # live is what was fetched; eligible is what qualified
+        self.assertEqual(pool["eligible"], sum(pool["by_lane"].values()))
+        self.assertEqual(sum(pool["picked_by_lane"].values()), len(ctx["picked"]))
+        for lane in lanes:
+            self.assertLessEqual(pool["picked_by_lane"][lane], pool["by_lane"][lane])
+            self.assertLessEqual(pool["picked_by_lane"][lane], pool["per_lane_cap"])
+        self.assertEqual(pool["by_lane"]["foundation"], 3)         # three qualified; the lane gives at most two
+        self.assertEqual(pool["picked_by_lane"]["foundation"], 2)
+        self.assertEqual(pool["by_lane"]["safety"], 1)
+        self.assertEqual(ctx["history"][-1]["count"], len(ctx["picked"]))
+
+    def test_the_run_log_reports_the_lane_cap_that_select_used(self) -> None:
+        entry = Item(id="nvidia-blog:1", title="Alpha manipulation dataset release", url="https://nvidia.example/post/1",
+                     publisher="NVIDIA", source_id="nvidia-blog", evidence="O", published=DAY.isoformat(),
+                     summary="A robot release.")
+        entry.lane, entry.lane_locked = "foundation", True
+        other = Item(id="nvidia-blog:2", title="Beta quadruped locomotion controller", url="https://nvidia.example/post/2",
+                     publisher="NVIDIA", source_id="nvidia-blog", evidence="O", published=DAY.isoformat(),
+                     summary="A robot release.")
+        other.lane, other.lane_locked = "foundation", True
+        report = fetch.FetchReport(items=[entry, other])
+        with mock.patch.object(cli, "fetch_all", return_value=report), \
+                mock.patch.object(cli, "load_history", return_value=[]), \
+                mock.patch.object(cli, "select", side_effect=lambda *a, **k: select(*a, per_lane=1, **k)), \
+                mock.patch.object(heat, "load_state", return_value={"schema": heat.STATE_SCHEMA, "stars": {}}):
+            ctx = cli.build_context(CONFIG, offline=False, limit=8, day="2026-10-24")
+        pool = ctx["history"][-1]["pool"]
+        self.assertEqual((pool["per_lane_cap"], pool["by_lane"]["foundation"], pool["picked_by_lane"]["foundation"]),
+                         (1, 2, 1))
 
     def test_heat_state_is_written_only_when_a_count_changed(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

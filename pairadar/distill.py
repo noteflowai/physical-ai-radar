@@ -445,6 +445,10 @@ def select(
     "hot" (a non-arXiv item marked `trending`); any other name is ignored and reported
     as `unknown:<name>`. A reservation obeys every gate and
     cap above; when no item can fill it, it stays empty and `report` says so.
+
+    `report` also gets `pool`: how many items qualified and had not been published before (`eligible`), the lane
+    cap in force (`per_lane`) and the same count by lane (`by_lane`). A lane's picks are at most `per_lane` a day,
+    so the picks alone say little about how much there was; the pool does.
     """
     published = {url_key(url) for url in seen}
     earlier = [story_terms(title) for title in told]
@@ -522,9 +526,14 @@ def select(
                 continue
             take(index, item)
     if report is not None:
+        by_lane: dict[str, int] = {}
+        for item in eligible:
+            by_lane[item.lane] = by_lane.get(item.lane, 0) + 1
         report.update(arxiv=source_counts.get("arxiv", 0), max_arxiv=max_arxiv,
                       reserved={kind: reserved[kind] for kind in reserved},
-                      unmet=sorted(kind for kind, value in reserved.items() if value is None))
+                      unmet=sorted(kind for kind, value in reserved.items() if value is None),
+                      # The pool the shortlist was cut from: qualifying items not published before, by lane.
+                      pool={"eligible": len(eligible), "per_lane": per_lane, "by_lane": dict(sorted(by_lane.items()))})
     return [eligible[index] for index in sorted(picked)]
 
 
