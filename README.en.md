@@ -60,33 +60,33 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-15
+### Today's radar · 2026-11-16
 
-`Generated: 2026-11-14 23:40 UTC` ｜ `Window: papers 2026-11-11 → 2026-11-15 · posts 2026-10-16 → 2026-11-15 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-15 23:49 UTC` ｜ `Window: papers 2026-11-12 → 2026-11-16 · posts 2026-10-17 → 2026-11-16 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>Simulation & evaluation · arXiv 2611.16374 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>Data engine · arXiv 2611.17110 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>Foundation models · arXiv 2611.15937 · 2026‑11‑11</sub> |
-| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>Data engine · arXiv 2611.16439 · 2026‑11‑12</sub> |
-| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>Simulation & evaluation · Hugging Face Blog · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>Edge & real-time · 雷峰网 Leiphone · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>Simulation & evaluation · arXiv 2611.16589 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>Embodiment & supply chain · arXiv 2611.16422 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>Data engine · arXiv 2611.16419 · 2026‑11‑12</sub> |
+| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>Systems & orchestration · arXiv 2611.16386 · 2026‑11‑12</sub> |
+| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>Safety, permissions & compliance · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
+| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑05</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **ManiLadder** — `AI draft` If your manipulation evaluation still rests on simple pick-and-place, this preprint offers a categorized, graded task ladder; the page shows no figures yet, so treat it as a candidate benchmark rather than a validated one.
-2. **SALA** — `AI draft` For teams weighing egocentric human video against costly robot data collection, this preprint proposes semantically aligned latent actions as the bridge, but the page gives no figures, so wait for numbers before shifting a data budget.
-3. **MOSAIC** — `AI draft` If your VLA works from 2D images and language alone and struggles in clutter, the authors' self-reported success-rate gains of 5.1% in cluttered scenes and 9.7% under visual perturbations make a case for feeding it explicit scene geometry and obstacle cues.
-4. **HALO** — `AI draft` Whole-body mobile manipulation needs demonstrations that coordinate both arms with locomotion; the authors report up to 2.9x faster collection, a self-reported figure to reproduce on your own platform before sizing a data-collection campaign around it.
-5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — `AI draft` Useful if you want a ready-made simulated scene to start from; the page shows no excerpt, figures or real-robot signal, so it says nothing yet about how results carry over to hardware.
-6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — `AI draft` A secondary account of an NVIDIA blog post on Alpamayo 2 Edge, which pairs causal reasoning with diffusion actions and reportedly lifts closed-loop performance by 48.9%; check NVIDIA's original and what that gain is measured against before citing it.
+1. **STVLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **BlinkMimic** — Preprint, not yet peer-reviewed; the text gives no figures. Watch price, availability and who is shipping it in volume.
+3. **I See What You Want** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
+4. **Remember What Changes the Odds** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
+5. **Why Skydio Built a Lopsided Drone** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+6. **Into the Omniverse** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-15.en.md)** · [Weekly roundup ›](radar/weekly/2026-W46.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-16.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

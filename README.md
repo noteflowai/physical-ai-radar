@@ -62,33 +62,33 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-15
+### 今日雷达 · 2026-11-16
 
-`生成时间: 2026-11-14 23:40 UTC` ｜ `统计窗口: 论文 2026-11-11 → 2026-11-15 · 博客与报道 2026-10-16 → 2026-11-15 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-15 23:49 UTC` ｜ `统计窗口: 论文 2026-11-12 → 2026-11-16 · 博客与报道 2026-10-17 → 2026-11-16 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>仿真与评测 · arXiv 2611.16374 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>数据引擎 · arXiv 2611.17110 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>基座模型 · arXiv 2611.15937 · 2026‑11‑11</sub> |
-| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>数据引擎 · arXiv 2611.16439 · 2026‑11‑12</sub> |
-| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>边缘与实时性 · 雷峰网 Leiphone · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>仿真与评测 · arXiv 2611.16589 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>本体与供应链 · arXiv 2611.16422 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>数据引擎 · arXiv 2611.16419 · 2026‑11‑12</sub> |
+| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>系统与编排 · arXiv 2611.16386 · 2026‑11‑12</sub> |
+| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>安全、权限与合规 · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
+| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑05</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **ManiLadder** — `AI 起草` 如果你的操作评测还停留在简单抓放，这篇预印本给出了按类别和难度分级的任务阶梯；页面上还没有量化数据，目前只能当作候选基准，谈不上经过验证。
-2. **SALA** — `AI 起草` 机器人交互数据采集成本高，这篇预印本主张用语义对齐的潜在动作把第一人称人类视频用起来；页面未给出数字，调整数据预算之前应先等量化结果。
-3. **MOSAIC** — `AI 起草` 只靠 2D 图像和语言指令的 VLA 若在杂乱场景里吃亏，作者自报在杂乱场景成功率提升 5.1%、视觉扰动下提升 9.7%，说明值得显式引入场景几何与障碍物关系。
-4. **HALO** — `AI 起草` 全身移动操作的示教要同时协调双臂与移动，作者自报示教采集最多快 2.9x；这是预印本自报数字，据此规划采集规模之前应先在自己的平台上复现。
-5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — `AI 起草` 需要现成仿真场景起步的团队可以参考这篇官方教程；页面上没有摘录、数字或真机信号，从页面看不出仿真结果能否迁移到真机。
-6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — `AI 起草` 雷峰网转述英伟达博客：Alpamayo 2 Edge 用因果推理结合扩散动作，端到端闭环表现提升 48.9%；这是二手报道，引用或据此评估端侧部署前，先回原文确认这一提升是相对什么测出来的。
+1. **STVLA** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **BlinkMimic** — 预印本，尚未经过同行评审；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+3. **I See What You Want** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。
+4. **Remember What Changes the Odds** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在没有人工重置的长程任务中是否可靠。
+5. **Why Skydio Built a Lopsided Drone** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+6. **Into the Omniverse** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-15.zh.md)** · [每周汇总 ›](radar/weekly/2026-W46.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-16.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

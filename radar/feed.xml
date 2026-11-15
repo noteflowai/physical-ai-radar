@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-11-14T23:40:00Z</updated>
+  <updated>2026-11-15T23:49:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,108 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16589</id>
+    <title>STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.16589" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>arXiv 2611.16589</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.16589 · 2026-11-12&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16422</id>
+    <title>BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.16422" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>arXiv 2611.16422</name>
+    </author>
+    <category term="hardware" label="Embodiment &amp; supply chain (hardware / cost)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.16422 · 2026-11-12&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: real-robot experiments · open code or weights&lt;/p&gt;
+&lt;blockquote&gt;Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16419</id>
+    <title>I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.16419" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>arXiv 2611.16419</name>
+    </author>
+    <category term="data" label="Data engine (collection / curation / scaling)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.16419 · 2026-11-12&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 6,600 episodes · 35.4% · 34.6% · 39.8%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16386</id>
+    <title>Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.16386" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>arXiv 2611.16386</name>
+    </author>
+    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
+    <category term="R" label="[R]" />
+    <summary type="text">In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.16386 · 2026-11-12&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 88.0% · 0.0% · 1.7%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
+&lt;blockquote&gt;In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:ieee-spectrum-robotics:2bfebb9afa93</id>
+    <title>Why Skydio Built a Lopsided Drone</title>
+    <link rel="alternate" href="https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>IEEE Spectrum Robotics</name>
+    </author>
+    <category term="safety" label="Safety, permissions &amp; compliance" />
+    <category term="M" label="[M]" />
+    <summary type="text">Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Safety, permissions &amp;amp; compliance&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: IEEE Spectrum Robotics · 2026-11-15&lt;/p&gt;
+&lt;blockquote&gt;Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:nvidia-blog:baf7193e75c1</id>
+    <title>Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents</title>
+    <link rel="alternate" href="https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html" />
+    <published>2026-11-15T23:49:00Z</published>
+    <updated>2026-11-15T23:49:00Z</updated>
+    <author>
+      <name>NVIDIA Blog</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="O" label="[O]" />
+    <summary type="text">Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [O]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: NVIDIA Blog · 2026-11-05&lt;/p&gt;
+&lt;blockquote&gt;Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-16.en.html"&gt;Full radar for 2026-11-16&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.16374</id>
     <title>ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder</title>
@@ -1602,107 +1704,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Embodiment &amp;amp; supply chain (hardware / cost)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: 雷峰网 Leiphone · 2026-11-02&lt;/p&gt;
 &lt;blockquote&gt;11月2日，阿里云正式发布面向专业机构投资者的AI投研工作台Qovest。用户用一句话提出研究需求，Qovest就会自动查数据、收集资料、深度分析、生成报告，并按设定的频率持续跟踪研究对象。&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-03.en.html"&gt;Full radar for 2026-11-03&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:36b372ceab93</id>
-    <title>产业资本继续押注具身：斯坦福双子星创办的黑马公司 RoboScience 机器科学，宣布完成 A2 轮融资</title>
-    <link rel="alternate" href="https://www.leiphone.com/category/ai/GqrJT2vlPFBxElDY.html" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-03.en.html" />
-    <published>2026-11-02T23:40:00Z</published>
-    <updated>2026-11-02T23:40:00Z</updated>
-    <author>
-      <name>雷峰网 Leiphone</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="M" label="[M]" />
-    <summary type="text">具身智能的资本筛选标准，正在从"讲得动人"转向"兑现得动"。AI 科技评论获悉，11 月 2 日，RoboScience 机器科学完成 A2 轮融资。</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: 雷峰网 Leiphone · 2026-11-02&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: press release&lt;/p&gt;
-&lt;blockquote&gt;具身智能的资本筛选标准，正在从&amp;quot;讲得动人&amp;quot;转向&amp;quot;兑现得动&amp;quot;。AI 科技评论获悉，11 月 2 日，RoboScience 机器科学完成 A2 轮融资。&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-03.en.html"&gt;Full radar for 2026-11-03&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39327</id>
-    <title>SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.39327" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html" />
-    <published>2026-11-01T23:40:00Z</published>
-    <updated>2026-11-01T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.39327</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.39327 · 2026-10-29&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: open code or weights · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html"&gt;Full radar for 2026-11-02&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40430</id>
-    <title>Improving Fine-Grained Manipulation through Demonstration Expansion and Execution Design</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.40430" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html" />
-    <published>2026-11-01T23:40:00Z</published>
-    <updated>2026-11-01T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.40430</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.40430 · 2026-10-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 85.55%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
-&lt;blockquote&gt;Fine-grained manipulation requires a robot policy to follow instructions, remain robust to visual variations, and translate predicted actions into precise robot control.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html"&gt;Full radar for 2026-11-02&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.40016</id>
-    <title>LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.40016" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html" />
-    <published>2026-11-01T23:40:00Z</published>
-    <updated>2026-11-01T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.40016</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.40016 · 2026-10-29&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported&lt;/p&gt;
-&lt;blockquote&gt;Agentic robots must turn a high-level goal into actions while keeping the physical conditions needed for future steps valid.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html"&gt;Full radar for 2026-11-02&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2610.39319</id>
-    <title>ProLoop: Progress-Aware Closed-Loop Framework via Structured State Relations for Long-Horizon Robotic Task Planning</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2610.39319" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html" />
-    <published>2026-11-01T23:40:00Z</published>
-    <updated>2026-11-01T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2610.39319</name>
-    </author>
-    <category term="systems" label="Systems &amp; orchestration (long-horizon / multi-policy)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Systems &amp;amp; orchestration (long-horizon / multi-policy)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2610.39319 · 2026-10-29&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 12.94% · 15.46% · 32.3%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
-&lt;blockquote&gt;Long-horizon robotic tasks are commonly decomposed into semantic subgoals to simplify planning. However, subgoal progress in LLM-based planning is typically inferred implicitly from interaction histories.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html"&gt;Full radar for 2026-11-02&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:qbitai:77cf6f6f7d48</id>
-    <title>三年前布局，今年爆火丨西湖大学成立新中心</title>
-    <link rel="alternate" href="https://www.qbitai.com/2026/11/507076.html" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html" />
-    <published>2026-11-01T23:40:00Z</published>
-    <updated>2026-11-01T23:40:00Z</updated>
-    <author>
-      <name>量子位 QbitAI</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="M" label="[M]" />
-    <summary type="text">西湖世界模型研究中心成立</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: 量子位 QbitAI · 2026-11-01&lt;/p&gt;
-&lt;blockquote&gt;西湖世界模型研究中心成立&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-02.en.html"&gt;Full radar for 2026-11-02&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

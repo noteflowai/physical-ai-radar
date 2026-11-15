@@ -60,33 +60,33 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-15
+### 本日のレーダー · 2026-11-16
 
-`生成時刻: 2026-11-14 23:40 UTC` ｜ `対象期間: 論文 2026-11-11 → 2026-11-15 · ブログ・報道 2026-10-16 → 2026-11-15 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-15 23:49 UTC` ｜ `対象期間: 論文 2026-11-12 → 2026-11-16 · ブログ・報道 2026-10-17 → 2026-11-16 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder](https://arxiv.org/abs/2611.16374)**<br><sub>シミュレーションと評価 · arXiv 2611.16374 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models](https://arxiv.org/abs/2611.17110)**<br><sub>データエンジン · arXiv 2611.17110 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes](https://arxiv.org/abs/2611.15937)**<br>`5.1%`&nbsp; `9.7%`&nbsp; `25.0%`<br><sub>基盤モデル · arXiv 2611.15937 · 2026‑11‑11</sub> |
-| 04<br>🔵&nbsp;`R` | **[HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation](https://arxiv.org/abs/2611.16439)**<br>`2.9x`&nbsp; `73.3%`<br><sub>データエンジン · arXiv 2611.16439 · 2026‑11‑12</sub> |
-| 05<br>🟢&nbsp;`O` | **[Build a Robot Pick-and-Place Simulation with SimReady Assets](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑13</sub> |
-| 06<br>🟡&nbsp;`M` | **[英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！](https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html)**<br>`48.9%`<br><sub>エッジとリアルタイム · 雷峰网 Leiphone · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>シミュレーションと評価 · arXiv 2611.16589 · 2026‑11‑12</sub> |
+| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>ハードウェアとサプライチェーン · arXiv 2611.16422 · 2026‑11‑12</sub> |
+| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>データエンジン · arXiv 2611.16419 · 2026‑11‑12</sub> |
+| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>システムとオーケストレーション · arXiv 2611.16386 · 2026‑11‑12</sub> |
+| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>安全・権限・コンプライアンス · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
+| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑11‑05</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–06</summary>
 
-1. **ManiLadder** — `AI 下書き` 単純なピック＆プレースだけで操作性能を測っているなら、カテゴリと難易度で段階化した評価枠組みの候補になる。ただし著者の自己報告で、ページにはまだ数値がない。
-2. **SALA** — `AI 下書き` 高コストなロボット操作データを一人称視点の人間動画で補えるか検討しているチームには、意味的に整合した潜在行動という選択肢を示す。ページに数値はなく、データ投資の判断は定量結果を待ちたい。
-3. **MOSAIC** — `AI 下書き` 2D画像と言語指示だけに頼るVLAが散乱環境でつまずくなら、シーン幾何と障害物関係を明示的に与える価値がある。著者の自己報告では、散乱環境で5.1%、視覚的摂動下で9.7%の成功率向上。
-4. **HALO** — `AI 下書き` 双腕操作と移動を協調させる全身モバイルマニピュレーションのデモ収集で、著者は最大2.9xの高速化を報告している。収集計画をこれに合わせる前に、自分の機体での再現を確かめたい。
-5. **Build a Robot Pick-and-Place Simulation with SimReady Assets** — `AI 下書き` 既製のシミュレーション環境から始めたいチームには公式の手順として使える。ただしページには抜粋も数値も実機シグナルもなく、実機への移行性はここからは判断できない。
-6. **英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！** — `AI 下書き` 雷峰網によれば、NVIDIAのブログが紹介したAlpamayo 2 Edgeは因果推論と拡散ベースの行動生成を組み合わせ、閉ループ性能が48.9%向上したという。二次報道なので、エッジ配備の検討に使う前に原典で比較対象を確認したい。
+1. **STVLA** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **BlinkMimic** — 査読前のプレプリント。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+3. **I See What You Want** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **Remember What Changes the Odds** — 査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **Why Skydio Built a Lopsided Drone** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+6. **Into the Omniverse** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-15.ja.md)** · [週間まとめ ›](radar/weekly/2026-W46.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-16.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

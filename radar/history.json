@@ -222,16 +222,6 @@
       "date": "2026-10-16",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.19600",
-        "https://arxiv.org/abs/2610.17789",
-        "https://arxiv.org/abs/2610.19957",
-        "https://arxiv.org/abs/2610.19765",
-        "https://www.tri.global/research/3d-lane-detection-odometry-high-speed-vehicle-racing",
-        "https://www.therobotreport.com/agility-robotics-chooses-nyobolt-ultra-fast-charging-digit-5-humanoid",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news017.html",
-        "https://www.leiphone.com/category/industrynews/osk0jtfdebasizah.html"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1192,6 +1182,67 @@
         "unmet": [
           "hot"
         ]
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "count": 6,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.16589",
+        "https://arxiv.org/abs/2611.16422",
+        "https://arxiv.org/abs/2611.16419",
+        "https://arxiv.org/abs/2611.16386",
+        "https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone",
+        "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents"
+      ],
+      "failed": [],
+      "fallback": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "page_failed": [
+        "physical-intelligence"
+      ],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "nvidia-blog:baf7193e75c1",
+          "hot": null
+        },
+        "unmet": [
+          "hot"
+        ]
+      },
+      "pool": {
+        "live": 200,
+        "eligible": 20,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 2,
+          "data": 4,
+          "training": 1,
+          "simeval": 5,
+          "edge": 3,
+          "safety": 2,
+          "systems": 2,
+          "hardware": 1
+        },
+        "picked_by_lane": {
+          "foundation": 0,
+          "data": 1,
+          "training": 0,
+          "simeval": 2,
+          "edge": 0,
+          "safety": 1,
+          "systems": 1,
+          "hardware": 1
+        }
       }
     }
   ]

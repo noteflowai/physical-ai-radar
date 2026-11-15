@@ -1,152 +1,147 @@
 {
-  "date": "2026-11-15",
-  "generated": "2026-11-14 23:40 UTC",
-  "window": "papers 2026-11-11 → 2026-11-15 · posts 2026-10-16 → 2026-11-15 (UTC)",
+  "date": "2026-11-16",
+  "generated": "2026-11-15 23:49 UTC",
+  "window": "papers 2026-11-12 → 2026-11-16 · posts 2026-10-17 → 2026-11-16 (UTC)",
   "window_detail": {
-    "day": "2026-11-15",
-    "papers_from": "2026-11-11",
-    "posts_from": "2026-10-16",
+    "day": "2026-11-16",
+    "papers_from": "2026-11-12",
+    "posts_from": "2026-10-17",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.16374",
-      "title": "ManiLadder: Benchmarking Robot Manipulation Through a Categorized and Multi-Difficulty Level Task Ladder",
-      "url": "https://arxiv.org/abs/2611.16374",
-      "publisher": "arXiv 2611.16374",
+      "id": "arxiv:2611.16589",
+      "title": "STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2611.16589",
+      "publisher": "arXiv 2611.16589",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-12",
       "lane": "simeval",
-      "score": 2.905,
+      "score": 2.655,
       "numbers": [],
       "signals": [
         "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Recent advances in robotic manipulation have enabled increasingly complex and dexterous behaviors, yet existing benchmarks still focus on simple pick-and-place tasks and lack a systematic framework for measuring progress in robot learning along the axis of task difficulty. We present ManiLadder, a large-scale and organized simulation benchmark for robotic manipulation. ManiLadder contains 112 carefully designed tasks stratified into 4 difficulty levels, with 8 categories in each level, spanning rigid-body and deformable-object manipulation, single-arm and dual-arm settings, and gripper and dexterous-hand end-effectors. To calibrate difficulty, we fix the data amount the same for every task and use a unified flow- matching imitation learning policy under the same training and evaluation protocols, then use its evaluation success rate as an operational empirical difficulty signal. All tasks are iteratively refined until they fall into target difficulty ranges, which are then verified across different random seeds, policies, and agentic learning systems. We further analyze the task properties, compare different policy performances and training settings, analyze task transfer and data scaling behaviors, and conduct real-world experiments showing that the designed tasks preserve their difficulty ordering beyond simulation. ManiLad- der provides a calibrated ladder for measuring, comparing, and advancing robotic manipulation capabilities. More results are available at https://maniladder-benchmark.github.io/."
+      "summary": "Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task history. Appearance-based memories can be sensitive to occlusion and viewpoint changes, while spatial representations of the current scene alone do not preserve how the scene has changed during task execution. We introduce STVLA, a framework that incorporates features from a pretrained visual geometry foundation model into temporal memory alongside visual representations. This allows the policy to recall past scene structure as context for current action decisions. To select informative history, STVLA uses a mathematically grounded scoring rule that balances relevance to the current observation with complementary evidence from memory. Across evaluations on LIBERO, LIBERO-Mem, MIKASA-Robo, and SimplerEnv Bridge, STVLA achieves the highest average success rate among the compared methods on each benchmark. On real-world block stacking, object organization, and phone packaging, it improves success over $π_{0.5}$ by $58.33$, $30.00$, and $35.00$ percentage points, respectively. These results support integrating scene geometry into temporal memory to improve manipulation requiring both spatial precision and task history. Project website: \\href{https://stvla.github.io/}{https://stvla.github.io/}"
     },
     {
-      "id": "arxiv:2611.17110",
-      "title": "SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models",
-      "url": "https://arxiv.org/abs/2611.17110",
-      "publisher": "arXiv 2611.17110",
+      "id": "arxiv:2611.16422",
+      "title": "BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU",
+      "url": "https://arxiv.org/abs/2611.16422",
+      "publisher": "arXiv 2611.16422",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-12",
-      "lane": "data",
-      "score": 2.852,
+      "lane": "hardware",
+      "score": 2.247,
       "numbers": [],
       "signals": [
-        "closed_loop",
-        "real_robot"
+        "real_robot",
+        "open_release"
       ],
       "heat": 0.0,
-      "summary": "Embodied foundation models hinge on diverse robot interaction data, which are costly to collect. Egocentric human videos offer a complementary source of experience, and latent action models (LAMs) provide a popular means of leveraging these videos for policy supervision. Compared with world-action models (WAMs), LAMs can offer greater training efficiency and potentially lower inference costs by avoiding explicit pixel prediction during policy learning and execution. However, most existing LAMs learn latent actions solely through video reconstruction, which can cause their representations to cluster by visual appearance rather than by the underlying actions. As a result, they struggle to align human actions with their robot counterparts. To bridge the gap, we introduce SALA, which emphasizes establishing the semantic correspondence for latent actions. Without requiring paired data, we use the language descriptions of unpaired human and robot clips to estimate semantic similarities and supervise cross-embodiment correspondence. Specifically, we translate these similarities into soft neighborhood structures that guide human latent actions toward semantically related robot latents, while robot action reconstruction grounds the latent space in control. The resulting shared latent action space provides a unified supervision signal for training an embodied foundation model on both human and robot videos. Notably, latent action supervision enables scaling along two axes: (1) pre-training on increasing amounts of general human video consistently reduces robot action prediction error on downstream tasks, and (2) post-training on increasing amounts of task-specific human video substantially improves real-world robot task success rates."
+      "summary": "Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time. SuperMimic showed that the policy can instead be trained by backpropagating through a world model learned from parallel simulation, and InstantTrack added Muon updates, a residual policy around the reference and an averaged deployed policy. We build on both and present BlinkMimic, a recipe that makes this training faster. On a simulated Unitree G1, BlinkMimic trains one policy for all 40 LAFAN1 clips in 3.4 minutes on a single RTX 4090, measured until three consecutive checkpoints reach a normalized return of at least 0.82 with no failed clip (mean of three seeds). We split training time into the cost of an iteration, the iterations needed to fit the motions, and the iterations needed to remove the last failures, and assign each component, inherited or new, to one of these terms. The new components are a step size that decreases once training has progressed, resets directed by failures of the deployed policy under deployment conditions, and GPU graph capture of the whole iteration. A leave-one-out ablation with three seeds per component shows which term each component affects, and further measurements of the gradient, the update rule and the failure cases explain these effects. Code and per-seed results are available at https://github.com/fuyichen0725/blinkmimic."
     },
     {
-      "id": "arxiv:2611.15937",
-      "title": "MOSAIC: Modular Obstacle and Spatial-Aware Framework for Manipulation In Cluttered Scenes",
-      "url": "https://arxiv.org/abs/2611.15937",
-      "publisher": "arXiv 2611.15937",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-11",
-      "lane": "foundation",
-      "score": 2.85,
-      "numbers": [
-        "5.1%",
-        "9.7%",
-        "25.0%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Vision-Language-Action (VLA) models have demonstrated strong performance in robotic manipulation, yet most rely primarily on 2D visual observations and language instructions, leaving scene geometry and obstacle relationships to be inferred implicitly. This limitation is particularly problematic in cluttered environments, where small spatial errors can lead to unintended contacts or collisions. We propose MOSAIC, a modular spatial- and obstacle-aware framework that can be integrated with pretrained VLA policies to improve object-level scene understanding and action generation. Our method augments the VLA backbone with an auxiliary semantic grounding task that predicts role-specific masks for the target object, destination region, and surrounding obstacles. We further combine the target and destination masks with depth estimated from 3D scene reconstruction to construct role-specific geometric tokens that are injected directly into the action expert. In addition, we propose obstacle-aware attention supervision that emphasizes obstacles near the robot body during task execution. The resulting attention features are subsequently injected into later action-expert layers to further guide action generation. Together, these components provide explicit semantic, geometric, and obstacle-aware cues while preserving the underlying pretrained VLA architecture. We evaluate our framework on pretrained VLA model using the RoboPRO benchmark, including visual perturbation tests, and further validate it on real-world manipulation tasks. MOSAIC improves the success rate by 5.1% in cluttered scenes, and by 9.7% under visual perturbations, with gains of up to 25.0% in the most challenging environment. We will release our code and dataset upon acceptance at the following Github page: https://mmahdavian.github.io/MOSAIC/"
-    },
-    {
-      "id": "arxiv:2611.16439",
-      "title": "HALO: Human-Aligned Data Collection for WhoLe-body MObile Manipulation",
-      "url": "https://arxiv.org/abs/2611.16439",
-      "publisher": "arXiv 2611.16439",
+      "id": "arxiv:2611.16419",
+      "title": "I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History",
+      "url": "https://arxiv.org/abs/2611.16419",
+      "publisher": "arXiv 2611.16419",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-12",
       "lane": "data",
-      "score": 2.785,
+      "score": 2.235,
       "numbers": [
-        "2.9x",
-        "73.3%"
+        "6,600 episodes",
+        "35.4%",
+        "34.6%",
+        "39.8%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot"
+        "real_robot",
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Learning whole-body mobile manipulation requires demonstrations that coordinate bimanual actions with locomotion across extended workspaces. However, existing interfaces trade off direct robot control, perception and action alignment, and natural operator mobility, making such demonstrations difficult to collect. We introduce HALO, a human-aligned data collection system for whole-body mobile manipulation. The system aligns the operator's perception and action space with the robot while preserving direct physical feedback and natural locomotion. Operators guide the robot end-effectors through kinesthetic teaching and move a low-resistance platform without the deployed mobile base while performing bimanual manipulation. This interface enables more natural whole-body demonstrations, but the close human-robot coupling introduces discrepancies between the demonstration and deployment settings. We address these discrepancies with deployment-aligned demonstration processing, which calibrates and temporally aligns platform motion with the deployed base response and masks and inpaints demonstrator hands in recorded observations. Compared with Mobile ALOHA and VR teleoperation, HALO enables up to 2.9x faster demonstration collection while maintaining comparable or higher success rates. Policies trained with HALO perform precise manipulation tasks, including zip-tie fastening, and achieve a 73.3% success rate on a six-stage long-horizon mobile manipulation task involving repeated coordinated base and arm motion. Project page: https://robbyant-research.github.io/Lingbot-ALOHA/"
+      "summary": "Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control. A natural question follows: can these models also decode what a human operator intends while teleoperating a robot, without any explicit instruction? We formulate this as hierarchical intent prediction, jointly inferring the ongoing atomic action and the broader mission it serves from a short visual teleoperation history. To study this, we introduce VI AMO (Vision Intention Action and Mission Ongoing), a dataset of 6,600 episodes from eleven robot sources with 13,653 temporally aligned action annotations and 9,702 mission annotations. Large proprietary models struggle with this problem: on held-out episodes, GPT-4o reaches Sentence-BERT similarities of only 0.563 and 0.470 for action and mission, and GPT-5.6 Luna achieves only 0.581 and 0.554. Fine-tuning a VLM on VI AMO yields our Vision-Intention Model (VIM), which raises these scores to 0.825 and 0.821 and still reaches 0.726 and 0.717 on the 35.4% of test actions with both labels absent from training. Finally, as a downstream application, VIM's predicted mission enables a vision-language-action (VLA) policy to take over from the operator mid-task in a real-world environment unseen during VIM fine-tuning, reducing human teleoperation time by 34.6% relative to GPT-4o and 39.8% relative to GPT-5.6 Luna, while cutting intent-prediction latency by roughly 70% on average."
     },
     {
-      "id": "huggingface-blog:2427bacb74a9",
-      "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
-      "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
-      "publisher": "Hugging Face Blog",
-      "source_id": "huggingface-blog",
-      "evidence": "O",
-      "published": "2026-11-13",
-      "lane": "simeval",
-      "score": 1.485,
+      "id": "arxiv:2611.16386",
+      "title": "Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation",
+      "url": "https://arxiv.org/abs/2611.16386",
+      "publisher": "arXiv 2611.16386",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-12",
+      "lane": "systems",
+      "score": 2.1,
+      "numbers": [
+        "88.0%",
+        "0.0%",
+        "1.7%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts. We refer to this ambiguity as decision aliasing. Resolving it requires the policy to maintain memory of its execution history. To reduce the cost of processing full observation histories, recent methods build compact event memories using perceptual, semantic, or kinematic cues. However, these criteria may miss events that matter for task success. We instead propose an outcome-grounded principle: remember events that substantially change the predicted probability of eventual success. Following this principle, we introduce CGEM, a critic-gated event memory that uses a critic to select events with large estimated changes in success probability. Positive and negative changes are encoded as progress and failure records, respectively. Failure records are discarded once the corresponding subtask is completed. In a ten-subtask diagnostic environment with exactly computed success probabilities, CGEM achieves 88.0% success, compared with 0.0% for both a 36-step observation window and a kinematic event memory. Removing failure records reduces success to 1.7%."
+    },
+    {
+      "id": "ieee-spectrum-robotics:2bfebb9afa93",
+      "title": "Why Skydio Built a Lopsided Drone",
+      "url": "https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-11-15",
+      "lane": "safety",
+      "score": 1.185,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": ""
+      "summary": "Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff. Sadly, Skydio no longer makes cool stuff for consumers , instead focusing on drone platforms for public safety, inspection, and other things that, on a good day, don’t affect me personally. Even so, a new drone from Skydio is worth paying attention to, especially when it’s as weird as this one—the F10 Lightrunner is a fixed-wing camera drone designed for autonomous deployment and high-speed flight, all while looking so lopsided that it’s surprising that it can actually fly. The benefits of asymmetrical aircraft There’s a short rabbit hole you can go down if you start looking for other examples of asymmetrical aircraft. In the 1990s, legendary aircraft designer Burt Rutan and his company Scaled Composites built some decidedly odd airplanes, including the Model 202 Boomerang . But perhaps the most famous asymmetrical aircraft was the Blohm & Voss BV 141 , a World War 2-era reconnaissance plane that featured an engine in the middle alongside a crew compartment alarmingly offset out onto the right wing. The unique design was intended to give the crew the best possible view for reconnaissance missions, because in a typical single-engine aircraft, the crew sits right behind the engine, limiting forward visibility. Nearly 90 years later, the Skydio F10 is applying a similar philosophy to fixed-wing reconnaissance drones, which typically track targets by flying around them in circles. “While turning at low altitudes, it becomes very hard to avoid occluding a camera with a wing or a tail,” explains Andrew Goessling , director of engineering at Skydio. “So we were analyzing a lot of these use cases, and one of our engineers just blurted out, ‘what if we put the camera on the wingtip?’ And that’s where it all started, because as long as you only turn left, a lot of these …"
     },
     {
-      "id": "leiphone:1afdea874395",
-      "title": "英伟达博客发声：她不一样，她懂显卡 ( bushi )，她懂端到端！",
-      "url": "https://www.leiphone.com/category/ai/1jG5k34DSlHSSJE9.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-13",
-      "lane": "edge",
-      "score": 1.152,
-      "numbers": [
-        "48.9%"
-      ],
-      "signals": [
-        "numbers"
-      ],
+      "id": "nvidia-blog:baf7193e75c1",
+      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+      "publisher": "NVIDIA Blog",
+      "source_id": "nvidia-blog",
+      "evidence": "O",
+      "published": "2026-11-05",
+      "lane": "simeval",
+      "score": 1.035,
+      "numbers": [],
+      "signals": [],
       "heat": 0.0,
-      "summary": "她叫Alpamayo 2 Edge，因果推理结合扩散动作，端到端输出闭环表现提升 48.9%。点开前，你以为老黄家的惊天大瓜又有了什么后续； 点开后才发现：这个“她”连人都不是。 她叫 Alpamayo 2 Edge。 英伟达11月10日刚发布出来的一款端到端自动驾驶模型。VLM 骨干约 2.45B、动作专家约 0.2B，跑在车规级芯片 DRIVE AGX Thor 上。 但“懂端到端”这四个字，还真不是标题党蹭流量。在各路AI疯狂“嘴替”、大模型疯狂自言自语的时代，英伟达力挺的 这姑娘（划掉） 这模型，是真·人间清醒。 Alpamayo 2 Edge希望让汽车里的 AI 不仅能看懂道路，还能理解复杂交通关系、分析潜在风险，并根据场景自主生成驾驶动作。简单来说，就是让 AI 从会看、会理解，进一步走向会开车。 当然，让 AI 在服务器里推理和让它在高速行驶的汽车里推理，完全是两回事。车载算力有限，响应时间也有严格要求，模型既要具备复杂场景下的推理能力，又不能把大量计算资源消耗在冗长的思考过程中。 Alpamayo 2 Edge 围绕这个问题做了一套新的设计：普通端到端模型输入图像直接输出轨迹，中间发生了什么是黑箱。而 Alpamayo 2 Edge 被强制要求生成 Chain-of-Causation（因果链）推理：不光要开车，还要说出为什么这么开。 所以汽车究竟需要怎样“懂端到端”的 AI，才能既想得明白，又开得及时？这套新 VLA 给出了一个颇有意思的技术方案。 01 …"
+      "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended. Developers are combining frontier AI models with NVIDIA Omniverse libraries to help carry out that work — building applications for exploring scenarios, investigating failures and improving designs. Developers direct AI agents through […]"
     }
   ],
   "lane_counts": {
-    "foundation": 10,
-    "data": 7,
+    "foundation": 8,
+    "data": 8,
     "training": 0,
     "simeval": 14,
-    "edge": 10,
-    "safety": 2,
-    "systems": 1,
-    "hardware": 6
+    "edge": 9,
+    "safety": 3,
+    "systems": 2,
+    "hardware": 7
   },
   "evidence_mix": {
-    "O": 9,
+    "O": 10,
     "R": 27,
     "M": 14
   },
   "fetch": {
-    "items": 564,
-    "attempted": 27,
-    "answered": 25,
-    "failed": [
-      "deepmind"
-    ],
+    "items": 629,
+    "attempted": 24,
+    "answered": 23,
+    "failed": [],
     "fallback": [],
     "unavailable": [
       "page_watch"
@@ -174,10 +169,11 @@
       "repos": 4
     },
     "per_source": {
-      "arxiv": 61,
+      "arxiv": 29,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -189,10 +185,7 @@
       "mit-news-robotics": 50,
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 13,
-      "robohub": 75,
-      "github-lerobot": 1,
-      "github-isaaclab": 1,
-      "github-mujoco": 1
+      "robohub": 75
     },
     "page_watch": {
       "enabled": true,
