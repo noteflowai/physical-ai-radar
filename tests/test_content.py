@@ -129,6 +129,26 @@ class NumberContextTest(unittest.TestCase):
             "baseline": [], "curated": {}, "lane_rows": [], "mix": {}, "cadence": []})
         self.assertIn("`49.11%` (“on DynaForge data achieve 49.11% mean success”)", page)
 
+    def test_a_standards_page_the_radar_does_not_read_says_so_in_every_language(self) -> None:
+        config = load_config()
+        labels = {"en": "Not covered: the radar does not read this source",
+                  "zh": "未覆盖：雷达不读取该来源",
+                  "ja": "対象外：レーダーはこのソースを読み取っていません"}
+        for lang, label in labels.items():
+            with self.subTest(lang=lang):
+                page = render_daily(config, lang, {
+                    "date": "2026-09-25", "generated": "2026-09-25 01:40 UTC", "window": "", "picked": [],
+                    "baseline": [], "curated": {}, "lane_rows": [], "mix": {}, "cadence": []})
+                lines = {line for line in page.splitlines() if line.startswith("- [") and "](http" in line}
+                council = [line for line in lines if "consilium.europa.eu" in line]
+                self.assertEqual(len(council), 1, council)
+                self.assertIn(label, council[0])
+                self.assertIn("**" + config.ui(lang)["standards_not_covered"] + "**", council[0])
+                # the pages the radar does read carry no such label
+                covered = [line for line in lines if "iso.org" in line or "eur-lex.europa.eu" in line]
+                self.assertEqual(len(covered), 2, covered)
+                self.assertFalse([line for line in covered if label in line])
+
 
 class StoryTest(unittest.TestCase):
     OFFICIAL = "NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development"

@@ -150,14 +150,45 @@ class SchemaTest(unittest.TestCase):
 
     def test_standards_pages_are_referenced_not_repeated(self) -> None:
         raw = load_config().sources
-        standards = {watch["id"]: watch["url"] for watch in raw["standards_watch"]}
+        standards = {watch["id"]: watch["url"] for watch in raw["standards_watch"]
+                     if watch.get("covered") is not False}
         referenced = {entry["standards_watch"] for entry in raw["page_watch"] if "standards_watch" in entry}
-        self.assertEqual(referenced, set(standards), "every standards page is watched")
+        self.assertEqual(referenced, set(standards), "every covered standards page is watched, no other is")
         own_urls = {entry["url"] for entry in raw["page_watch"] if "url" in entry}
-        self.assertFalse(own_urls & set(standards.values()), "a standards URL is written twice")
+        self.assertFalse(own_urls & {watch["url"] for watch in raw["standards_watch"]},
+                         "a standards URL is written twice")
         resolved = {entry["standards_watch"]: entry["url"]
                     for entry in fetch._resolve_page_watch(raw) if "standards_watch" in entry}
         self.assertEqual(resolved, standards)
+
+    def test_the_council_page_is_listed_as_not_covered_and_never_read(self) -> None:
+        # The Council of the EU answers robots.txt with 403, and a 401 or 403 robots.txt means the host is not read,
+        # so its AI Act timeline stays on the page as a link, marked not covered, and no watch may read it.
+        raw = load_config().sources
+        council = [w for w in raw["standards_watch"] if "consilium.europa.eu" in w["url"]]
+        self.assertEqual([w["id"] for w in council], ["eu-ai-act-timeline"])
+        self.assertIs(council[0].get("covered"), False)
+        self.assertTrue(council[0].get("not_covered_reason"))
+        for entry in raw["page_watch"]:
+            self.assertNotIn("consilium.europa.eu", str(entry.get("url", "")))
+            self.assertNotEqual(entry.get("standards_watch"), "eu-ai-act-timeline")
+        for entry in fetch._resolve_page_watch(raw):
+            self.assertNotIn("consilium.europa.eu", str(entry.get("url", "")))
+        # every other standards page is still covered
+        self.assertTrue(all(w.get("covered") is not False for w in raw["standards_watch"] if w not in council))
+
+    def test_a_watch_of_a_page_marked_not_covered_is_a_problem(self) -> None:
+        raw = sources()
+        self.assertEqual(fetch.page_watch_problems(raw), [])
+        raw["standards_watch"][0]["covered"] = False
+        problems = fetch.page_watch_problems(raw)
+        self.assertTrue(any("marked not covered" in line for line in problems), problems)
+        raw["standards_watch"][0]["covered"] = True
+        self.assertEqual(fetch.page_watch_problems(raw), [])
+        # only an explicit false counts: a missing or null value leaves the page covered
+        for value in (None, 0, "", "no"):
+            raw["standards_watch"][0]["covered"] = value
+            self.assertEqual(fetch.page_watch_problems(raw), [], value)
 
     def test_bad_entries_are_reported(self) -> None:
         cases = {
