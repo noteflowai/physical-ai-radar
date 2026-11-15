@@ -242,6 +242,23 @@ class LaneTimeTest(unittest.TestCase):
         doc["items"] = items
         return graph.lane_time(CONFIG, history, doc, rules or [], as_of)
 
+    def test_the_evidence_class_of_every_source_that_failed_is_named_from_the_current_configuration(self) -> None:
+        # 06's weekly table marks a zero only in the evidence classes whose sources failed that week.
+        history = [{"date": "2026-11-10", "count": 0, "failed": ["deepmind", "arxiv"]},
+                   {"date": "2026-11-11", "count": 0, "failed": ["leiphone", "no-such-source"]},
+                   {"date": "2026-11-12", "count": 0}]
+        table = self.table(history, [], "2026-11-12")
+        self.assertEqual(table["source_evidence"], {"arxiv": "R", "deepmind": "O", "leiphone": "M"})
+        self.assertEqual(list(table["source_evidence"]), ["arxiv", "deepmind", "leiphone"])      # sorted, and no unknown id
+        self.assertIn("not on the day it failed", table["source_evidence_note"])
+        self.assertEqual(self.table([{"date": "2026-11-10", "count": 0}], [], "2026-11-10")["source_evidence"], {})
+        # An id with no class in the configuration is left out, not guessed.
+        config = type(CONFIG)(sources={**CONFIG.sources, "feeds": [{"id": "classless", "url": "https://x.example/f"}]},
+                              taxonomy=CONFIG.taxonomy, glossary=CONFIG.glossary, baseline=CONFIG.baseline)
+        odd = graph.lane_time(config, [{"date": "2026-11-10", "count": 0, "failed": ["classless", "arxiv"]}],
+                              graph.empty_items(), [], "2026-11-10")
+        self.assertEqual(odd["source_evidence"], {"arxiv": "R"})
+
     def test_every_day_and_every_lane_is_present_and_zero_is_a_count(self) -> None:
         entries = [graph.item_entry(item, "2026-11-11") for item in sample()]
         history = [{"date": "2026-11-10", "count": 0}, {"date": "2026-11-12", "count": 0, "failed": ["arxiv"],
@@ -589,6 +606,10 @@ class ContractTest(unittest.TestCase):
             "as_of that differs": lambda d, t: t.update(as_of="2026-11-11"),
             "a pool that is neither null nor a count": lambda d, t: t["days"][1]["lanes"]["data"].update(pool="3"),
             "picks_known that is not a boolean": lambda d, t: t["days"][1].update(picks_known=None),
+            "source_evidence missing": lambda d, t: t.pop("source_evidence"),
+            "source_evidence that names a source that never failed": lambda d, t: t["source_evidence"].update(deepmind="O"),
+            "source_evidence with a class that is not O, R or M": lambda d, t: (t["days"][1].update(failed_sources=["deepmind"]),
+                                                                               t["source_evidence"].update(deepmind="Z")),
             "a gap on a day said to be known": lambda d, t: (d["backfill"]["gaps"].append({"date": "2026-11-11", "reason": "x"}),
                                                               t.update(items_sha256=hashlib.sha256(graph.render_json(d)).hexdigest())),
         }
@@ -716,6 +737,8 @@ class CommittedDataTest(unittest.TestCase):
         table["items_count"] = len(doc["items"])
         self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
         self.assertEqual(table["mismatch_days"], ["2026-09-19"])
+        # 06's weekly table: the four sources that failed in the 58 days, by the current configuration.
+        self.assertEqual(table["source_evidence"], {"arxiv": "R", "deepmind": "O", "leiphone": "M", "tri": "R"})
         self.assertTrue(all(cell["picked"] is None for cell in table["days"][0]["lanes"].values()))
         # The links are published as they were: an old plain-http link is not turned into https.
         self.assertTrue(any(entry["url"].startswith("http://") for entry in doc["items"]))

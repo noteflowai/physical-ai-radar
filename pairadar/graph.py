@@ -54,6 +54,7 @@ ENTRY_KEYS = ("id", "date", "published", "lane", "evidence", "source_id", "publi
 # 2026-09-25 (git: 6c71ba8 had this name under id `safety`, fc1e898 renamed it).
 LANE_ALIASES = {"Safety, authority & compliance": "safety"}
 RULES_DATES = "the date of the commit that changed the rule, not the first run that used it"
+SOURCE_EVIDENCE_NOTE = "each source's evidence class in the configuration at the time of the export, not on the day it failed"
 
 
 class GraphError(Exception):
@@ -349,7 +350,20 @@ def lane_time(config: Config, history: list[dict[str, Any]], items: dict[str, An
     pooled = sorted(day for day, run in runs.items() if run.get("pool"))
     return {"schema": SCHEMA, "as_of": as_of, "first_run": first, "pool_since": pooled[0] if pooled else None,
             "per_lane_cap": (runs[pooled[-1]]["pool"].get("per_lane_cap") if pooled else None),
-            "mismatch_days": mismatched, "rules_dates": RULES_DATES, "rules": rules, "days": days}
+            "mismatch_days": mismatched, "rules_dates": RULES_DATES, "rules": rules,
+            "source_evidence": source_evidence(config, days), "source_evidence_note": SOURCE_EVIDENCE_NOTE, "days": days}
+
+
+def source_evidence(config: Config, days: list[dict[str, Any]]) -> dict[str, str]:
+    """The evidence class (O, R or M) of every source that is named in `failed_sources` on any day of the table.
+
+    Taken from the CURRENT configuration (`arxiv`, `feeds`, `page_watch`), not as it was on each day. A source the
+    configuration does not know, or that has no class, is left out: a reader treats an id that is not here as "any class"."""
+    known = {"arxiv": config.sources.get("arxiv", {}).get("evidence")}
+    for entry in [*config.sources.get("feeds", []), *config.sources.get("page_watch", [])]:
+        known[entry.get("id")] = entry.get("evidence")
+    named = sorted({source for day in days for source in day["failed_sources"]})
+    return {source: known[source] for source in named if known.get(source) in EVIDENCE}
 
 
 def contract_problems(doc: dict[str, Any], table: dict[str, Any], config: Config) -> list[str]:
@@ -395,6 +409,11 @@ def contract_problems(doc: dict[str, Any], table: dict[str, Any], config: Config
             problems.append(f"{entry.get('date')}: a pool is neither null nor a count")
     if table.get("mismatch_days") != unknown:
         problems.append("mismatch_days is not exactly the days whose picks are not known")
+    named = {source for entry in days for source in entry.get("failed_sources", [])}
+    evidence = table.get("source_evidence")
+    if (not isinstance(evidence, dict) or not set(evidence) <= named
+            or not all(value in EVIDENCE for value in evidence.values())):
+        problems.append("source_evidence is not a map from sources named in failed_sources to O, R or M")
     gap_days = {gap["date"] for gap in doc.get("backfill", {}).get("gaps", [])} & set(names)
     if not gap_days <= set(unknown):
         problems.append("a backfill gap is on a day whose picks are said to be known")

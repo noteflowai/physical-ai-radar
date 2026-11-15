@@ -412,7 +412,7 @@ use them together (`graph.check_pair`). Both files are written beside their name
 fails the first file is put back, and a failure never stops the run. A run log in which any run has a `count` that is
 missing, null, a bool or not a whole number of at least 0 stops the export, and the previous pair stays. A stored `items.json` whose entries are not what the
 module writes stops the export and is left as it is; a stored day with fewer picks than the run recorded is read again from
-its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`.
+its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`. `source_evidence` gives, for each source named in any day's `failed_sources`, its evidence class (O, R or M) in the configuration at the time of the export, not as it was on the day it failed; a source id that is not in it has no known class, and a reader must treat it as any class.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
 block in each README does the same: directly under the day's heading and window line it
