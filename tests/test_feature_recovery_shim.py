@@ -3,6 +3,9 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+import io
+from contextlib import redirect_stderr
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from scripts import develop_repos as developer
@@ -55,6 +58,38 @@ class RecoveryShimTests(unittest.TestCase):
         with patch.dict(os.environ):
             os.environ.pop("NOTEFLOW_FEATURE_RECOVERY", None)
             self.assertIsNone(check_original_effects(self.root, REPOSITORY))
+
+    def test_refusal_reason_reaches_stderr_without_admitting_work(self):
+        self.response("clear")
+        reply = {"schema_version": 1, "scope": "original-feature-effect-recovery",
+                 "repository": REPOSITORY, "state": "unavailable"}
+        for reason, expected in (
+                ("original-active-and-retired", "original-active-and-retired"),
+                ("unknown\nprivate response", "unclassified"),
+                (["original-active-and-retired"], "unclassified"),
+                (None, "unclassified")):
+            with self.subTest(reason=reason):
+                output = io.StringIO()
+                result = SimpleNamespace(returncode=1, stdout=json.dumps({**reply, "reason": reason}))
+                with patch("scripts.feature_recovery.subprocess.run", return_value=result), \
+                        redirect_stderr(output):
+                    with self.assertRaisesRegex(ValueError, "^Original effect recovery is unavailable$"):
+                        check_original_effects(self.root, REPOSITORY)
+                self.assertEqual(output.getvalue(),
+                                 f"Original effect recovery is unavailable (reason={expected})\n")
+
+    def test_wrong_identity_cannot_emit_even_a_known_reason(self):
+        self.response("clear")
+        result = SimpleNamespace(returncode=1, stdout=json.dumps({
+            "schema_version": 1, "scope": "original-feature-effect-recovery",
+            "repository": "other/evalarc", "state": "unavailable",
+            "reason": "original-active-and-retired"}))
+        output = io.StringIO()
+        with patch("scripts.feature_recovery.subprocess.run", return_value=result), \
+                redirect_stderr(output):
+            with self.assertRaisesRegex(ValueError, "different identity"):
+                check_original_effects(self.root, REPOSITORY)
+        self.assertEqual(output.getvalue(), "")
 
     def test_close_inherits_real_descriptor_before_checkout_model_or_new_task(self):
         import fcntl
