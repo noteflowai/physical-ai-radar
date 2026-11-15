@@ -6,6 +6,7 @@ reader cannot follow fails here, not in a night's run.
 from __future__ import annotations
 
 import contextlib
+import inspect
 import io
 import json
 import sys
@@ -17,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import graph  # noqa: E402
+from pairadar import cli, graph  # noqa: E402
 from pairadar.config import Item, load_config  # noqa: E402
 from pairadar.fetch import baseline_items, link_digest  # noqa: E402
 from pairadar.render import render_daily  # noqa: E402
@@ -246,6 +247,9 @@ class LaneTimeTest(unittest.TestCase):
     def test_rules_are_loaded_in_date_order_and_the_committed_file_is_sound(self) -> None:
         rules = graph.load_rules(ROOT / "data" / graph.RULES_FILE)
         self.assertEqual((rules[0]["from"], rules[0]["per_lane"], rules[0]["min_score"]), ("2026-09-19", 2, 0.9))
+        # per_day is the daily shortlist size, the `limit` of `run()` and of `--limit`: 8 since the first commit.
+        self.assertEqual(rules[0]["per_day"], 8)
+        self.assertEqual(inspect.signature(cli.run).parameters["limit"].default, rules[0]["per_day"])
         self.assertIn("2026-09-25", [rule["from"] for rule in rules])
         self.assertIn("2026-10-25", [rule["from"] for rule in rules])
         self.assertTrue(all(rule["effect_measured"] is False for rule in rules))
