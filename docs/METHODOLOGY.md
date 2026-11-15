@@ -380,6 +380,20 @@ were fetched and kept (`live`), how many qualified and had not been published (`
 lane cap in force (`per_lane_cap`), the eligible count by lane (`by_lane`) and the published
 count by lane (`picked_by_lane`). Every lane is present in both maps, with `0` where there was
 none. Runs before this field existed have no `pool`; the count is not reconstructed for them.
+
+Two public files, `radar/graph/items.json` and `radar/graph/lane-time.json` (schema `radar-graph-1`), carry
+the same facts in a form a page can read. `items.json` has every published pick with its lane as an id
+(the public fields of the feed's `_radar` record). From the day it was added the run appends the day's picks
+itself; days before that are filled once from the published English pages, reading only the
+`## Today's picks` section (never the curated baseline, the charts or the watch list), and a day whose page
+cannot be read exactly, or whose pick count differs from the run's, is listed under `backfill.gaps` with the
+reason and is not guessed. The one gap at the time of writing is the first run (2026-09-19), whose arXiv
+links were in an older `http`, versioned form from which the item id cannot be recovered. `lane-time.json`
+has, for every day from the first run and every lane, the picks by evidence class, the candidate pool
+(`null` where the run log has none, never `0`), the sources that failed or were unavailable that day, and the
+selection rules in force over time from `data/selection-rules.json`. The rules list is dated by commit and
+says that the effect of each change on the daily counts has not been measured. A problem with either file is
+printed and the run carries on; they never decide what is picked.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
 block in each README does the same: directly under the day's heading and window line it
