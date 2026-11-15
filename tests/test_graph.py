@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from pairadar import cli, graph  # noqa: E402
+from pairadar import cli, distill, graph  # noqa: E402
 from pairadar.config import Item, load_config  # noqa: E402
 from pairadar.fetch import baseline_items, link_digest  # noqa: E402
 from pairadar.render import render_daily  # noqa: E402
@@ -247,19 +247,29 @@ class LaneTimeTest(unittest.TestCase):
     def test_rules_are_loaded_in_date_order_and_the_committed_file_is_sound(self) -> None:
         rules = graph.load_rules(ROOT / "data" / graph.RULES_FILE)
         self.assertEqual((rules[0]["from"], rules[0]["per_lane"], rules[0]["min_score"]), ("2026-09-19", 2, 0.9))
-        # per_day is the daily shortlist size, the `limit` of `run()` and of `--limit`: 8 since the first commit.
-        self.assertEqual(rules[0]["per_day"], 8)
-        self.assertEqual(inspect.signature(cli.run).parameters["limit"].default, rules[0]["per_day"])
+        # per_day is the daily shortlist size, the `limit` of `run()` and of `--limit`; per_lane is the default of
+        # `select()`. Both were checked in git at each rule's commit (all 10 read 8 and 2) and are pinned to the code now.
+        select_default = inspect.signature(distill.select).parameters["per_lane"].default
+        run_default = inspect.signature(cli.run).parameters["limit"].default
+        self.assertEqual([(rule["per_day"], rule["per_lane"]) for rule in rules], [(run_default, select_default)] * len(rules))
+        self.assertEqual((run_default, select_default), (8, 2))
         self.assertIn("2026-09-25", [rule["from"] for rule in rules])
         self.assertIn("2026-10-25", [rule["from"] for rule in rules])
         self.assertTrue(all(rule["effect_measured"] is False for rule in rules))
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "rules.json"
+            ok = {"from": "2026-09-19", "per_lane": 2, "per_day": 8}
+            bad = [{**ok, "per_day": value} for value in (0, -1, "8", True, 8.0)]
+            bad += [{"from": "2026-09-19", "per_lane": 2}, {"from": "2026-09-19", "per_day": 8}]
+            bad += [{**ok, "per_lane": value} for value in (0, "2", False)]
             for text in ("{broken", "{}", json.dumps([{"title": "no date"}]),
-                         json.dumps([{"from": "2026-10-01"}, {"from": "2026-09-01"}])):
+                         json.dumps([{**ok, "from": "2026-10-01"}, {**ok, "from": "2026-09-01"}])) + tuple(
+                             json.dumps([rule]) for rule in bad):
                 path.write_text(text)
                 with self.assertRaises(graph.GraphError, msg=text):
                     graph.load_rules(path)
+            path.write_text(json.dumps([{**ok, "per_day": None, "per_lane": None}]))
+            self.assertEqual(graph.load_rules(path)[0]["per_day"], None)                 # "not verified" is allowed
 
 
 class NightlyTest(unittest.TestCase):
@@ -268,7 +278,7 @@ class NightlyTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "data").mkdir()
-        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2}]))
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8}]))
         (self.root / "radar" / "daily").mkdir(parents=True)
         (self.root / "radar" / "daily" / "2026-11-11.en.md").write_text(page(sample(), "2026-11-11"), encoding="utf-8")
         self.ctx = {"date": DAY, "picked": sample()[:2],
@@ -285,7 +295,7 @@ class NightlyTest(unittest.TestCase):
         self.assertEqual((doc["as_of"], doc["first_run"], doc["schema"]), (DAY, "2026-11-11", "radar-graph-1"))
         table = json.loads(paths[1].read_text())
         self.assertEqual((table["as_of"], table["mismatch_days"], len(table["days"])), (DAY, [], 2))
-        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2}])
+        self.assertEqual(table["rules"], [{"from": "2026-09-19", "per_lane": 2, "per_day": 8}])
 
     def test_a_second_run_of_the_same_day_changes_nothing(self) -> None:
         first = [path.read_bytes() for path in self.run_it()]

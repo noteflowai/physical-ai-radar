@@ -391,7 +391,7 @@ reason and is not guessed. The one gap at the time of writing is the first run (
 links were in an older `http`, versioned form from which the item id cannot be recovered. `lane-time.json`
 has, for every day from the first run and every lane, the picks by evidence class, the candidate pool
 (`null` where the run log has none, never `0`), the sources that failed or were unavailable that day, and the
-selection rules in force over time from `data/selection-rules.json` (the first rule carries the sizes the first commit set in code: `per_lane` 2, `per_day` 8, `min_score` 0.9; whether a manual run used another `--limit` is not recorded). A day whose stored picks do not add up to the
+selection rules in force over time from `data/selection-rules.json` (each rule carries the `per_lane` and `per_day` in force at its commit, read from the code at that commit: 2 and 8 at every one of the ten, and the first also `min_score` 0.9; a size that could not be verified is `null`; whether a manual run used another `--limit` is not recorded). A day whose stored picks do not add up to the
 number of items the run published (the day in `backfill.gaps`) has `picks_known: false`, is listed in
 `mismatch_days`, and has `null`, not `0`, in every pick cell, because a zero would read as "nothing was picked". The rules list is dated by commit and
 says that the effect of each change on the daily counts has not been measured. A problem with either file is

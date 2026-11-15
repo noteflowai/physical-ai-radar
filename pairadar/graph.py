@@ -217,6 +217,12 @@ def load_rules(path: Path) -> list[dict[str, Any]]:
     if (not isinstance(rules, list) or not all(isinstance(rule, dict) and rule.get("from") for rule in rules)
             or [rule["from"] for rule in rules] != sorted(rule["from"] for rule in rules)):
         raise GraphError(f"{path.name} must be a list of dated rules in date order")
+    for rule in rules:
+        for key in ("per_lane", "per_day"):
+            # The size in force when the rule took effect: a whole number, or null where it could not be verified.
+            if key not in rule or not (rule[key] is None or (isinstance(rule[key], int) and not isinstance(rule[key], bool)
+                                                              and rule[key] > 0)):
+                raise GraphError(f"{path.name}: rule {rule['from']} needs {key} as a positive integer or null")
     return rules
 
 

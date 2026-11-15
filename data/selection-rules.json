@@ -1,12 +1,12 @@
 [
   {"from": "2026-09-19", "commit": "6c71ba8", "title": "Physical AI Radar: trilingual daily frontier radar", "per_lane": 2, "per_day": 8, "min_score": 0.9, "effect_measured": false},
-  {"from": "2026-09-21", "commit": "c4008fa", "title": "Read the arXiv category feeds when the API answers 406 to everything", "effect_measured": false},
-  {"from": "2026-09-25", "commit": "9b03817", "title": "Keep off-topic posts and all-preprint days off the radar", "note": "the qualifying gate; per_source and per_evidence caps", "effect_measured": false},
-  {"from": "2026-09-26", "commit": "d889c6c", "title": "sources: add TRI, Leiphone (zh) and MONOist (ja), and read Chinese and Japanese", "effect_measured": false},
-  {"from": "2026-09-26", "commit": "c26f033", "title": "Fewer items in the wrong lane: phrase the ambiguous keywords, break VLA ties", "effect_measured": false},
-  {"from": "2026-10-22", "commit": "41a8632", "title": "fetch: page_watch for feedless official sources via local Firecrawl (#154)", "effect_measured": false},
-  {"from": "2026-10-25", "commit": "eff6bf8", "title": "sources: mainstream and professional feeds, attention (heat) for ranking, highlights quota", "note": "arXiv at most half of the day; slots reserved for an official and a trending item", "effect_measured": false},
-  {"from": "2026-10-26", "commit": "e797a08", "title": "select: a capped item keeps one lane slot (AW-0 missed on 10-22) (#166)", "effect_measured": false},
-  {"from": "2026-11-06", "commit": "f7de482", "title": "page_watch: static_mode live for physical-intelligence and unitree, and the tests that assumed observe", "effect_measured": false},
-  {"from": "2026-11-14", "commit": "0460e7b", "title": "page_watch: read figure and 1x with the static fetcher (observed: HTTP 200, robots allowed, 21 and 15 links), keep the other three on Firecrawl", "effect_measured": false}
+  {"from": "2026-09-21", "commit": "c4008fa", "title": "Read the arXiv category feeds when the API answers 406 to everything", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-09-25", "commit": "9b03817", "title": "Keep off-topic posts and all-preprint days off the radar", "note": "the qualifying gate; per_source and per_evidence caps", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-09-26", "commit": "d889c6c", "title": "sources: add TRI, Leiphone (zh) and MONOist (ja), and read Chinese and Japanese", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-09-26", "commit": "c26f033", "title": "Fewer items in the wrong lane: phrase the ambiguous keywords, break VLA ties", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-10-22", "commit": "41a8632", "title": "fetch: page_watch for feedless official sources via local Firecrawl (#154)", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-10-25", "commit": "eff6bf8", "title": "sources: mainstream and professional feeds, attention (heat) for ranking, highlights quota", "note": "arXiv at most half of the day; slots reserved for an official and a trending item", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-10-26", "commit": "e797a08", "title": "select: a capped item keeps one lane slot (AW-0 missed on 10-22) (#166)", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-11-06", "commit": "f7de482", "title": "page_watch: static_mode live for physical-intelligence and unitree, and the tests that assumed observe", "per_lane": 2, "per_day": 8, "effect_measured": false},
+  {"from": "2026-11-14", "commit": "0460e7b", "title": "page_watch: read figure and 1x with the static fetcher (observed: HTTP 200, robots allowed, 21 and 15 links), keep the other three on Firecrawl", "per_lane": 2, "per_day": 8, "effect_measured": false}
 ]
