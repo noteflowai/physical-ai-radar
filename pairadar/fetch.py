@@ -484,6 +484,15 @@ def _on_topic(title: str, summary: str, feed: dict[str, Any], config: Config) ->
     return count_terms(f"{title}. {summary}", terms) > 0
 
 
+def enabled_feeds(sources: dict[str, Any]) -> list[dict[str, Any]]:
+    """The feeds the radar reads: the ones whose `enabled` is true or absent.
+
+    Anything else, including a spelling such as "false", 0 or null, switches the feed off: a feed that is meant to be off
+    must not be read because its switch was mistyped. A disabled feed stays in `data/sources.json` with a
+    `disabled_reason`; it is not requested, not asked about in robots.txt, and not reported as attempted or failed."""
+    return [feed for feed in sources.get("feeds", []) if feed.get("enabled", True) is True]
+
+
 def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 skipped: list[str] | None = None,
                 reasons: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
@@ -503,7 +512,7 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
     items: list[Item] = []
     failed: list[str] = []
     cap = int(config.sources.get("filters", {}).get("max_entries_per_feed", 100))
-    for feed in config.sources.get("feeds", []):
+    for feed in enabled_feeds(config.sources):
         limit = CJK_SUMMARY_CHARS if feed.get("lang") in ("zh", "ja") else MAX_SUMMARY_CHARS
         if robots is not None:
             verdict = robots.verdict(feed["url"])
@@ -1638,7 +1647,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
             report.failed.append("arxiv")
     feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
                                      reasons=report.robots_reasons)
-    report.attempted.extend(feed["id"] for feed in config.sources.get("feeds", [])
+    report.attempted.extend(feed["id"] for feed in enabled_feeds(config.sources)
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
     report.failed.extend(failed)
@@ -1682,7 +1691,7 @@ def source_weight(config: Config, source_id: str) -> float:
 
 
 def metadata(config: Config) -> dict[str, Any]:
-    feeds: list[dict[str, Any]] = list(config.sources.get("feeds", []))
+    feeds: list[dict[str, Any]] = enabled_feeds(config.sources)
     return {
         "feed_count": len(feeds),
         "arxiv_queries": len(config.sources.get("arxiv", {}).get("queries", [])),
