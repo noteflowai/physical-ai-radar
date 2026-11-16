@@ -77,12 +77,12 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **STVLA** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **BlinkMimic** — Preprint, not yet peer-reviewed; the text gives no figures. Watch price, availability and who is shipping it in volume.
-3. **I See What You Want** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
-4. **Remember What Changes the Odds** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.
-5. **Why Skydio Built a Lopsided Drone** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-6. **Into the Omniverse** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+1. **STVLA** — `AI draft` If your VLA policy conditions mostly on the current observation, this preprint adds explicit spatial structure and task history and flags closed-loop and real-robot experiments, but the page gives no figures, so wait for numbers before changing your architecture.
+2. **BlinkMimic** — `AI draft` Training a humanoid tracker for a motion library usually costs hours of GPU time; this preprint flags real-robot experiments and open code or weights but shows no figures, so benchmark it on your own motion set before replacing your training pipeline.
+3. **I See What You Want** — `AI draft` For teams collecting data by teleoperation, the authors report decoding operator intent cut human teleoperation time by 34.6% against GPT-4o and 39.8% against GPT-5.6; self-reported, with no closed-loop result on the page.
+4. **Remember What Changes the Odds** — `AI draft` Where identical observations demand different actions over a long task, the authors report 88.0% success for critic-gated event memory against 0.0% for two compared methods, and 1.7% under an ablation of its records; no real-robot result appears on the page.
+5. **Why Skydio Built a Lopsided Drone** — `AI draft` This is secondary coverage whose visible excerpt only praises Skydio and carries no design, safety or certification detail, so it should not change a certification or deployment plan until you read the article and its primary sources.
+6. **Into the Omniverse** — `AI draft` If scene building is your simulation bottleneck, NVIDIA's own post describes using AI agents to go from idea to simulation, a job it frames as assembling assets, wiring physics and rendering and checking scene behaviour; it gives no figures, so trial it first.
 
 </details>
 
