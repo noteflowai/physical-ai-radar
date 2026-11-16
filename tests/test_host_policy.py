@@ -225,6 +225,76 @@ class HttpGetTests(PolicyCase):
                 self.assertIsNone(report["status"])
         self.assertEqual(transport.requests, [])
 
+    def switch_off(self, host, *, how="off"):
+        """Change data/sources.json while a run is going on: a page_watch entry on `host` is now switched off, or the file is now broken."""
+        path = Path(self.folder) / "sources.json"
+        if how == "broken":
+            path.write_text("{broken", encoding="utf-8")
+            return
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["page_watch"].append({"id": "later", "url": f"https://{host}/p", "hosts": [host], "enabled": False,
+                                   "disabled_reason": "switched off while the run was going on"})
+        path.write_text(json.dumps(data), encoding="utf-8")
+
+    def test_a_retry_is_sent_when_nothing_changed(self):
+        # the control for the next tests: a 503 is retried, and three attempts are three requests
+        routes = {("c.example", "/f"): reply(503, "Unavailable")}
+        with self.network(routes) as transport:
+            self.assertIsNone(fetch.http_get("https://c.example/f", retries=3))
+        self.assertEqual(transport.hosts(), ["c.example"] * 3)
+
+    def retry_after_a_503_with_a_change_during_the_wait(self, how):
+        routes = {("c.example", "/f"): reply(503, "Unavailable")}
+        report = {}
+        with self.network(routes) as transport:
+            with mock.patch.object(fetch.time, "sleep", side_effect=lambda seconds: self.switch_off("c.example", how=how)):
+                self.assertIsNone(fetch.http_get("https://c.example/f", retries=3, report=report))
+        return transport, report
+
+    def test_a_host_switched_off_during_the_wait_before_a_retry_is_not_asked_again(self):
+        # 01 (PR216 r2): the policy was asked once, before the retry loop, so a change made during the run was not seen
+        transport, report = self.retry_after_a_503_with_a_change_during_the_wait("off")
+        self.assertEqual(transport.requests, [("c.example", "/f")])      # the first attempt only
+        self.assertIsNone(report["status"])
+
+    def test_a_policy_that_becomes_unreadable_during_the_wait_stops_the_retry_too(self):
+        transport, report = self.retry_after_a_503_with_a_change_during_the_wait("broken")
+        self.assertEqual(transport.requests, [("c.example", "/f")])
+        self.assertIsNone(report["status"])
+
+    def test_a_host_switched_off_while_the_first_attempt_was_under_way_is_not_asked_again(self):
+        # the change comes between the answer and the retry, without a sleep in between (the wait is patched out)
+        routes = {("c.example", "/f"): reply(500, "Error")}
+        asked = []
+
+        def first_answer_then_change(request, timeout=None):
+            asked.append(request.full_url)
+            self.switch_off("c.example")
+            raise fetch.urllib.error.HTTPError(request.full_url, 500, "Error", {}, None)
+
+        with self.network(routes) as transport, mock.patch.object(fetch, "_urlopen", first_answer_then_change):
+            self.assertIsNone(fetch.http_get("https://c.example/f", retries=3))
+        self.assertEqual((asked, transport.requests), (["https://c.example/f"], []))
+
+    def test_a_change_to_the_file_that_keeps_its_size_and_its_time_is_still_seen(self):
+        # the policy used to be cached by (modification time, size): a same-size rewrite within one tick was not seen
+        import os
+        path = Path(self.folder) / "sources.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["page_watch"] = [{"id": "x", "url": "https://a1.example/p", "hosts": ["a1.example"], "enabled": False,
+                               "disabled_reason": "off"}]
+        data["feeds"] = []
+        path.write_text(json.dumps(data), encoding="utf-8")
+        before = path.stat()
+        self.assertEqual(host_policy.refusal("https://a1.example/f"), host_policy.SWITCHED_OFF)
+        self.assertIsNone(host_policy.refusal("https://b1.example/f"))
+        path.write_text(json.dumps(data).replace("a1.example", "b1.example"), encoding="utf-8")
+        os.utime(path, ns=(before.st_atime_ns, before.st_mtime_ns))
+        self.assertEqual(path.stat().st_size, before.st_size)
+        self.assertEqual(path.stat().st_mtime_ns, before.st_mtime_ns)
+        self.assertIsNone(host_policy.refusal("https://a1.example/f"))
+        self.assertEqual(host_policy.refusal("https://b1.example/f"), host_policy.SWITCHED_OFF)
+
     def test_an_unreadable_policy_sends_nothing(self):
         (Path(self.folder) / "sources.json").write_text("{broken")
         with self.network({("a.example", "/feed.xml"): text("x")}) as transport:

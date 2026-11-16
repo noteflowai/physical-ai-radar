@@ -148,17 +148,19 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
     came back.
 
     A URL whose host `host_policy` refuses (a switched-off page_watch entry's host, or any host when the policy cannot
-    be read) is not requested, and neither is a redirect hop to one: the answer is the same as for no answer at all.
+    be read) is not requested, and neither is a redirect hop to one: the answer is the same as for no answer at all. The
+    policy is asked again before every attempt, a retry after the wait included, so a host switched off while the first
+    attempt or the wait was under way is not asked a second time.
     """
-    why = host_policy.refusal(url)
-    if why:
-        print(f"[fetch] skip {url}: {why}, not requested")
-        if report is not None:
-            report["status"] = None
-        return None
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     last: Exception | None = None
     for attempt in range(1, max(1, retries) + 1):
+        why = host_policy.refusal(url)
+        if why:
+            print(f"[fetch] skip {url}: {why}, not requested")
+            if report is not None:
+                report["status"] = None
+            return None
         delay = RETRY_DELAY
         try:
             with _urlopen(request, timeout=TIMEOUT) as response:
