@@ -91,7 +91,9 @@ class ReviewStrictnessTest(PromptHarness):
         self.assertEqual(instruction(full).count(NO_CHANGE_STRICT[0]), 0)  # but not in what the reviewer is told
 
     def test_the_check_notices_a_weakened_a_deleted_and_a_duplicated_clause(self):
-        text = self.no_change_instruction()
+        # a fixed baseline made of the pinned clauses, so this shows what the check can see whatever is sent today
+        text = "Review this no-change assessment. " + " ".join(NO_CHANGE_STRICT + NO_CHANGE_BALANCE)
+        self.assertEqual(missing(NO_CHANGE_STRICT + NO_CHANGE_BALANCE, text), [])
         strict = NO_CHANGE_STRICT[0]
         for name, changed in {
                 "weakened (04's mutation)": text.replace(strict, "Accept a reason, honest uncertainty and a useful follow-up date."),
