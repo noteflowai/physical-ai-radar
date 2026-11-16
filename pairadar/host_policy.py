@@ -13,7 +13,8 @@ A switched-off feed is not blocked by host: its reason is often about one path (
 host). A name is not blocked while anything that is switched on uses it or a parent or child domain of it (a feed on the
 same host keeps working); the entry is then off, but its host is not.
 
-The authority is `data/sources.json`, read here and nowhere cached beyond its modification time. If it cannot be read or
+The authority is `data/sources.json`, read here on every question and never cached, so that it is asked again before every
+attempt to send. If it cannot be read or
 makes no sense, nothing is requested (an unknown policy is not an empty one). Names are compared lower-case, without a
 trailing dot, in their IDNA (ASCII) form. This does not resolve DNS: an address literal or a different name for the same
 server is not recognised, and a redirect to one is not stopped here.
@@ -33,8 +34,6 @@ SOURCES_PATH = DATA_DIR / "sources.json"
 UNREADABLE = "host-policy-unreadable"
 SWITCHED_OFF = "host-switched-off"
 UNPARSEABLE = "url-unparseable"
-
-_CACHE: dict[str, Any] = {}
 
 
 class HostPolicyUnreadable(Exception):
@@ -104,22 +103,16 @@ def blocked_hosts(sources: Any) -> frozenset[str]:
 
 
 def load(path: Path | None = None) -> frozenset[str]:
-    """The blocked names from data/sources.json. Re-read when the file changes; raises HostPolicyUnreadable."""
+    """The blocked names from data/sources.json, read from the file on every call; raises HostPolicyUnreadable.
+
+    Not cached: the policy is asked before every attempt to send, and a file changed since the last ask must be seen, even a
+    change that leaves its size the same within one timestamp tick. The file is a few kilobytes and a run asks about a
+    hundred times."""
     path = path or SOURCES_PATH
     try:
-        stat = path.stat()
-        key = (str(path), stat.st_mtime_ns, stat.st_size)
-        if _CACHE.get("key") == key:
-            return _CACHE["blocked"]
-        blocked = blocked_hosts(json.loads(path.read_text(encoding="utf-8")))
+        return blocked_hosts(json.loads(path.read_text(encoding="utf-8")))
     except (OSError, ValueError) as error:
-        _CACHE.clear()
         raise HostPolicyUnreadable(f"{path.name}: {error}") from error
-    except HostPolicyUnreadable:
-        _CACHE.clear()
-        raise
-    _CACHE.update(key=key, blocked=blocked)
-    return blocked
 
 
 def is_blocked_name(host: str, blocked: frozenset[str]) -> bool:

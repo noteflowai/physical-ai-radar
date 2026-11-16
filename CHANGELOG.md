@@ -149,6 +149,12 @@ radar content itself is dated, not versioned.
   the plan attempt fails with the cut line named and every cut range listed, and the cut excerpt is not kept
   as inspected. The planner prompt text is otherwise unchanged. New tests in
   `tests/test_nightly_review_evidence.py`.
+- **The host policy is asked again before every attempt to send, not once before the retry loop.** `fetch.http_get` asked
+  `host_policy` once and then retried on the strength of that answer, so a host switched off while the first attempt or the wait
+  before a retry was under way was still asked a second time; the same held for a policy that became unreadable in between. It
+  now asks before each attempt. The policy is read from `data/sources.json` on every question instead of being cached by its
+  modification time and size (a rewrite that kept both would not have been seen). Tests switch the host off, or break the file,
+  during the wait and between two attempts, and rewrite the file with the same size and time.
 
 ## 1.1.0 — 2026-09-26
 

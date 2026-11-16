@@ -38,7 +38,8 @@ Rules:
   one is rebuilt, as on a first look, instead of failing the run.
   - **A switched-off entry's host is not requested at all** (`pairadar/host_policy.py`).
     `fetch.http_get` (feeds, robots.txt, arXiv and its fallback, the attention APIs) checks the
-    host before the request and before every redirect hop; a hop to such a host is not sent, the
+    host before the request, before every redirect hop and before every attempt (a retry after the
+    wait included; the policy is read from `data/sources.json` each time); a hop to such a host is not sent, the
     answer is the same as for no answer, and it is not retried. `fetch_page_watch` checks an
     entry's URL before its page or its robots.txt is requested. The host is the host of the
     entry's `url` and the names in its `hosts`, with their subdomains, unless something switched
