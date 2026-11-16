@@ -212,8 +212,10 @@ class DisabledFeedsTest(unittest.TestCase):
         for feed in fetch.enabled_feeds(CONFIG.sources):
             parts = urllib.parse.urlsplit(feed["url"])
             self.assertFalse(parts.netloc.lower() == "github.com" and parts.path.endswith(".atom"), feed["id"])
-        disabled = {feed["id"] for feed in feeds if feed.get("enabled", True) is not True}
-        self.assertLessEqual({"github-lerobot", "github-isaaclab", "github-mujoco"}, disabled)
+        # The three GitHub release feeds read the API since github.com's atom files are disallowed (tests/test_github_releases.py),
+        # so none of them is disabled now.
+        enabled = {feed["id"] for feed in fetch.enabled_feeds(CONFIG.sources)}
+        self.assertLessEqual({"github-lerobot", "github-isaaclab", "github-mujoco"}, enabled)
 
 
 class RobotsRulesTest(unittest.TestCase):

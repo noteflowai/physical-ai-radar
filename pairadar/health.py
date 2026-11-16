@@ -56,6 +56,20 @@ def page_watch_ids() -> frozenset[str]:
         return frozenset()
 
 
+def release_feed_ids() -> frozenset[str]:
+    """The ids of the feeds declared with `"kind": "github-releases"` in data/sources.json; empty if unreadable.
+
+    They are read from the GitHub API, not as RSS/Atom, so the repair job (whose verifier parses RSS/Atom and accepts a
+    change of the feed's `url` alone) cannot repair them: a renamed repository needs `repo` and `url` changed together."""
+    try:
+        with (DATA_DIR / "sources.json").open(encoding="utf-8") as handle:
+            entries = json.load(handle).get("feeds", [])
+        return frozenset(e["id"] for e in entries if isinstance(e, dict) and isinstance(e.get("id"), str)
+                         and e.get("kind") == "github-releases")
+    except (OSError, ValueError, AttributeError, TypeError):
+        return frozenset()
+
+
 def _page_failed(entry: dict[str, Any], watched: frozenset[str]) -> list[str]:
     """page_watch ids not read on this run: `page_failed`, plus any listed under `failed`
     (a run log written before page_failed existed)."""
@@ -117,6 +131,24 @@ def unavailable_by_channel(runs: list[dict[str, Any]], reference: date,
     return _count(_in_window(runs, reference, window), "unavailable")
 
 
+def release_feeds_failing(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
+                          threshold: int = THRESHOLD, releases: frozenset[str] | None = None) -> list[dict[str, Any]]:
+    """Release feeds (`kind: github-releases`) over the threshold that also failed the latest run, worst first, with the
+    reason the latest run recorded (`failed_reasons`: `moved`, `rate-limited`, ...). Same rule as `struggling`; reported for a
+    person, never to the repair job, which cannot repair them (see `release_feed_ids`)."""
+    releases = release_feed_ids() if releases is None else releases
+    observed = _in_window(runs, reference, window)
+    if not observed:
+        return []
+    latest = observed[-1]
+    counts = _count(observed, "failed")
+    reasons = latest.get("failed_reasons") if isinstance(latest.get("failed_reasons"), dict) else {}
+    ranked = [(source, days) for source, days in counts.items()
+              if days >= threshold and source in set(latest.get("failed", [])) and source in releases]
+    return [{"source": source, "failed_days": days, "reason": reasons.get(source)}
+            for source, days in sorted(ranked, key=lambda pair: (-pair[1], pair[0]))]
+
+
 def page_watch_failing(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
                        threshold: int = THRESHOLD,
                        watched: frozenset[str] | None = None) -> list[dict[str, Any]]:
@@ -156,10 +188,10 @@ def struggling(runs: list[dict[str, Any]], reference: date, window: int = WINDOW
                exclude: frozenset[str] | None = None) -> list[tuple[str, int]]:
     """Sources at or over the failure threshold that also failed the latest run, worst first.
 
-    page_watch sources (`exclude`, by default the ids in data/sources.json) are never
-    struggling, whatever the run log says: the repair job can only repair a feed.
+    page_watch sources (`exclude`, by default the ids in data/sources.json) and the feeds read from the GitHub API
+    (`release_feed_ids`) are never struggling, whatever the run log says: the repair job can only repair an RSS/Atom feed.
     """
-    exclude = page_watch_ids() if exclude is None else exclude
+    exclude = (page_watch_ids() | release_feed_ids()) if exclude is None else exclude
     observed = _in_window(runs, reference, window)
     if not observed:
         return []
@@ -195,7 +227,8 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
            threshold: int = THRESHOLD) -> dict[str, Any]:
     entries = []
     watched = page_watch_ids()
-    for source, days in struggling(runs, reference, window, threshold, exclude=watched):
+    releases = release_feed_ids()
+    for source, days in struggling(runs, reference, window, threshold, exclude=watched | releases):
         streak_days, failing_since = streak(runs, reference, window, source)
         entries.append({"source": source, "failed_days": days,
                         "streak_days": streak_days, "failing_since": failing_since})
@@ -208,6 +241,8 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         "fallbacks": fallbacks_by_source(runs, reference, window),
         "unavailable": unavailable_by_channel(runs, reference, window),
         "page_watch_failing": page_watch_failing(runs, reference, window, threshold, watched),
+        # GitHub release feeds that stayed dark, with the reason: for a person (a renamed repository needs `repo` and `url`).
+        "release_feeds_failing": release_feeds_failing(runs, reference, window, threshold, releases),
         "page_watch_robots_skipped": _count(_in_window(runs, reference, window), "page_robots_skipped"),
         # A feed whose robots.txt disallows it, and an attention API (pairadar.heat) that
         # did not answer: counted here, never struggling -- the repair job fixes feeds.

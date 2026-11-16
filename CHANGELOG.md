@@ -55,8 +55,21 @@ radar content itself is dated, not versioned.
   path or host, and that is refused too, on purpose.
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub
-  release feeds (LeRobot, Isaac Lab, MuJoCo) are switched off: github.com's robots.txt disallows
-  `/*.atom$` for every crawler.
+  release feeds (LeRobot, Isaac Lab, MuJoCo) were switched off this way on 2026-11-16 (github.com's robots.txt
+  disallows `/*.atom$` for every crawler) and are read from the GitHub API now (next entry).
+- A feed with `"kind": "github-releases"` reads the newest release of its `repo` from the GitHub API
+  (`https://api.github.com/repos/OWNER/REPO/releases?per_page=1`; `url` must be exactly that, built from `repo`). One
+  request, the radar's User-Agent, no redirect followed, a reply over 1,000,000 bytes is not read. Only the tag, the name,
+  the link and the time of a release are kept, never its notes; a draft, and a link that is not that repository's own
+  release page, are skipped; a repository with no release yet is an answer, not a failure. A feed that gave nothing is
+  `failed` with a fixed reason in `failed_reasons` (the run record and `latest.json`): `moved` (301, 302, 307 or 308:
+  the repository was renamed, so `repo` and `url` need the new name), `rate-limited` (403, 429), `not-found` (404),
+  `unavailable`, `bad-reply` or `bad-config` (nothing requested). The API host's robots.txt is asked first like any
+  other feed's. Unauthenticated, GitHub allows 60 requests an hour per address (read from the `X-RateLimit-Limit` header on
+  2026-11-16); each run makes one request per release feed, in addition to the star reads of the heat step. **These feeds are
+  never `struggling`**: the repair job's verifier parses RSS/Atom and accepts a change of the feed's `url` alone, and a renamed
+  repository needs `repo` and `url` changed together, so a dark release feed would wake the model every night for a repair it
+  must reject. `pairadar.health` lists them under `release_feeds_failing`, with the reason, for a person.
 - robots.txt is read as RFC 9309 asks: 401/403 refuse the host (`forbidden`), other 4xx
   mean no rules, and a 5xx, a 429 after its retry or no answer at all leave the host
   `unreachable` and unrequested for the run. Refused feeds and attention APIs are

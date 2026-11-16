@@ -99,7 +99,7 @@ class StreakReportTest(unittest.TestCase):
                          health.struggling(FALLBACK_DAY, TODAY))
         self.assertEqual(set(verdict), {"reference", "window_days", "threshold_days",
                                         "runs_with_health", "failures", "fallbacks", "unavailable",
-                                        "page_watch_failing", "page_watch_robots_skipped",
+                                        "page_watch_failing", "release_feeds_failing", "page_watch_robots_skipped",
                                         "robots_skipped", "robots_reasons", "signals_unavailable",
                                         "struggling"})
 

@@ -52,6 +52,15 @@ FEED = (b'<?xml version="1.0"?><rss><channel><item><title>A humanoid robot learn
         b'</item></channel></rss>')
 fetch.http_get = lambda url, *args, **kwargs: FEED
 
+
+def _github_get(url, report):
+    """The three GitHub release feeds read the API (kind github-releases), not http_get: they answer with no release."""
+    report["status"] = 200
+    return b"[]"
+
+
+fetch.github_get = _github_get
+
 LISTING = "[Figure ships F.04](https://www.figure.ai/news/f04)\nOct 20, 2026\n"
 # figure and 1x are read with the static fetcher now, so the scenarios that need a page answered by Firecrawl use a standards page
 STANDARD = "https://www.iso.org/standard/91469.html"

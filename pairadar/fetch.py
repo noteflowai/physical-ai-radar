@@ -581,16 +581,109 @@ def enabled_feeds(sources: dict[str, Any]) -> list[dict[str, Any]]:
     return [feed for feed in sources.get("feeds", []) if feed.get("enabled", True) is True]
 
 
+GITHUB_RELEASES = "github-releases"       # a feed's `kind`: the newest releases of `repo`, read from the GitHub API
+GITHUB_API = "https://api.github.com/repos/{repo}/releases?per_page=1"
+_GITHUB_REPO = re.compile(r"^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$")
+MAX_API_BYTES = 1_000_000
+# Why a GitHub release read gave nothing: the fixed codes of `FetchReport.failed_reasons`. `moved` is an answer of 301, 302,
+# 307 or 308 (the repository was renamed or moved): it is never followed, the configuration needs the new owner/repo.
+GITHUB_FAILURES = ("moved", "rate-limited", "not-found", "unavailable", "bad-reply", "bad-config")
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *args: Any, **kwargs: Any) -> None:
+        return None
+
+
+def github_get(url: str, report: dict[str, Any]) -> bytes | None:
+    """One read of `url` with the radar's User-Agent: one attempt, no redirect followed, at most MAX_API_BYTES. `report`
+    gets the HTTP `status` (None when there was no HTTP answer) and, for a 2xx answer, nothing else is trusted here."""
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.build_opener(_NoRedirect).open(request, timeout=TIMEOUT) as response:
+            report["status"] = getattr(response, "status", 200)
+            body = response.read(MAX_API_BYTES + 1)
+    except urllib.error.HTTPError as exc:
+        report["status"] = exc.code
+        return None
+    except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError, ValueError):
+        report["status"] = None
+        return None
+    if len(body) > MAX_API_BYTES:
+        report["status"] = None
+        report["too_large"] = True
+        return None
+    return body
+
+
+def _github_failure(status: int | None, report: dict[str, Any]) -> str:
+    if status in (301, 302, 307, 308):
+        return "moved"
+    if status in (403, 429):
+        return "rate-limited"
+    if status == 404:
+        return "not-found"
+    if report.get("too_large"):
+        return "bad-reply"
+    return "unavailable"
+
+
+def parse_github_releases(payload: bytes, repo: str) -> list[tuple[str, str, str, str]] | None:
+    """(title, link, summary, published day) per release, newest first; None when the reply is not a list of releases.
+
+    Only the tag, the name, the link and the time of a release are kept; the notes are never read into an item. A draft
+    is skipped, and so is a release without a tag, without a time or whose link is not that repository's own release page
+    on github.com. An empty list is an answer: the repository has no release yet."""
+    try:
+        data = json.loads(payload.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError):
+        return None
+    if not isinstance(data, list) or not all(isinstance(release, dict) for release in data):
+        return None
+    out: list[tuple[str, str, str, str]] = []
+    for release in data[:30]:
+        tag, link = release.get("tag_name"), release.get("html_url")
+        if release.get("draft") is True or not isinstance(tag, str) or not tag.strip() or not isinstance(link, str):
+            continue
+        parts = urllib.parse.urlsplit(link)
+        if parts.scheme != "https" or parts.netloc != "github.com" or parts.query or parts.fragment \
+                or not parts.path.lower().startswith(f"/{repo.lower()}/releases/"):
+            continue
+        name = release.get("name")
+        title = clean_text(name if isinstance(name, str) and name.strip() else tag)[:MAX_TITLE_CHARS]
+        published = parse_date(release.get("published_at") if isinstance(release.get("published_at"), str) else None)
+        if title and published:
+            out.append((title, link, "", published))
+    return sorted(out, key=lambda entry: entry[3], reverse=True)
+
+
+def read_github_releases(feed: dict[str, Any]) -> tuple[list[tuple[str, str, str, str]] | None, str]:
+    """The releases of a `github-releases` feed, or (None, the fixed reason code). The address is built from `repo`; a feed
+    whose `url` is anything else is `bad-config` and nothing is requested."""
+    repo = feed.get("repo")
+    if not isinstance(repo, str) or not _GITHUB_REPO.fullmatch(repo) or feed.get("url") != GITHUB_API.format(repo=repo):
+        return None, "bad-config"
+    report: dict[str, Any] = {}
+    payload = github_get(feed["url"], report)
+    if payload is None:
+        return None, _github_failure(report.get("status"), report)
+    entries = parse_github_releases(payload, repo)
+    return (entries, "") if entries is not None else (None, "bad-reply")
+
+
 def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 skipped: list[str] | None = None,
                 reasons: dict[str, str] | None = None,
-                newly_denied: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
+                newly_denied: dict[str, str] | None = None,
+                failures: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer.
 
     `robots`, when given, is consulted first; a feed it refuses (disallowed, forbidden,
     or a host whose robots.txt is unreachable) is not requested and goes to `skipped`
     with its reason in `reasons`, never to `failed`. A refused feed that the reader before
     `robots_rules` would have allowed is also put in `newly_denied` (id -> reason).
+    A feed whose `kind` is `github-releases` is read from the GitHub API (see `read_github_releases`); one that gave
+    nothing is in the returned `failed` and its fixed reason (`moved`, `rate-limited`, ...) in `failures` (id -> reason).
     A feed with `keywords` keeps only entries naming one of them, before the per-feed
     cap: OpenAI's feed carries 1,300 posts, nearly none about robots, and the cap would
     otherwise fill with them. The taxonomy anchors are too loose there -- "cosmos" (an
@@ -616,20 +709,37 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                     newly_denied[feed["id"]] = verdict
                 continue
             polite(feed["url"])
-        payload = http_get(feed["url"])
-        if not payload:
+        if feed.get("kind") == GITHUB_RELEASES:
+            # The releases of a repository, from the GitHub API: one request, no redirect followed, only the tag, name, link
+            # and time kept. A failure is `failed` with a fixed reason (`moved` when the repository was renamed).
+            entries, why = read_github_releases(feed)
+            if entries is None:
+                print(f"[fetch] github releases {feed['id']}: {why}")
+                failed.append(feed["id"])
+                if failures is not None:
+                    failures[feed["id"]] = why
+                continue
+        elif feed.get("kind") is not None:
+            print(f"[fetch] feed {feed['id']}: unknown kind, not read")
             failed.append(feed["id"])
+            if failures is not None:
+                failures[feed["id"]] = "bad-config"
             continue
-        try:
-            root = ET.fromstring(payload)
-        except ET.ParseError as exc:
-            print(f"[fetch] feed parse error {feed['id']}: {exc}")
-            failed.append(feed["id"])
-            continue
-        # Some feeds carry their whole archive -- the Hugging Face blog ships every
-        # post it has ever published, about 870 of them. Only the newest can pass the
-        # age filter anyway, and counting the rest made the fetch report misleading.
-        entries = [entry for entry in _feed_entries(root) if entry[0] and entry[1]]
+        else:
+            payload = http_get(feed["url"])
+            if not payload:
+                failed.append(feed["id"])
+                continue
+            try:
+                root = ET.fromstring(payload)
+            except ET.ParseError as exc:
+                print(f"[fetch] feed parse error {feed['id']}: {exc}")
+                failed.append(feed["id"])
+                continue
+            # Some feeds carry their whole archive -- the Hugging Face blog ships every
+            # post it has ever published, about 870 of them. Only the newest can pass the
+            # age filter anyway, and counting the rest made the fetch report misleading.
+            entries = [entry for entry in _feed_entries(root) if entry[0] and entry[1]]
         if feed.get("keywords") or feed.get("require_anchor"):
             entries = [entry for entry in entries if _on_topic(entry[0], entry[2], feed, config)]
         entries = sorted(entries, key=lambda entry: entry[3], reverse=True)[:min(cap, int(feed.get("max_entries", cap)))]
@@ -1758,6 +1868,9 @@ class FetchReport:
     # The refusals above that the reader before `robots_rules` (RFC 9309 wildcards, longest match) would have allowed:
     # feed or page id -> reason ("refused" for a Firecrawl page). The first runs after the rule change show what it cost.
     robots_newly_denied: dict[str, str] = field(default_factory=dict)
+    # Why a feed in `failed` gave nothing, when the reader says (GitHub releases: `moved`, `rate-limited`, `not-found`,
+    # `unavailable`, `bad-reply`, `bad-config`): feed id -> fixed code. `moved` means the configuration needs the new name.
+    failed_reasons: dict[str, str] = field(default_factory=dict)
     # pairadar.heat.Signals from the public attention APIs (None offline).
     signals: Any = None
     # The page_watch baseline after this run, for the caller to keep.
@@ -1789,6 +1902,7 @@ class FetchReport:
             "robots_skipped": sorted(self.robots_skipped),
             "robots_reasons": dict(sorted(self.robots_reasons.items())),
             "robots_newly_denied": dict(sorted(self.robots_newly_denied.items())),
+            "failed_reasons": dict(sorted(self.failed_reasons.items())),
             "signals": self.signals.summary() if self.signals is not None else None,
             "per_source": counts,
             "page_watch": dict(self.page_watch),
@@ -1815,7 +1929,8 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         if not answered:
             report.failed.append("arxiv")
     feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
-                                     reasons=report.robots_reasons, newly_denied=report.robots_newly_denied)
+                                     reasons=report.robots_reasons, newly_denied=report.robots_newly_denied,
+                                     failures=report.failed_reasons)
     report.attempted.extend(feed["id"] for feed in enabled_feeds(config.sources)
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
