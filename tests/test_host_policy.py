@@ -12,6 +12,7 @@ import contextlib
 import http.client
 import io
 import json
+import socket
 import tempfile
 import unittest
 from datetime import date
@@ -127,7 +128,16 @@ class PolicyCase(unittest.TestCase):
     @contextlib.contextmanager
     def network(self, routes):
         transport = Transport(routes)
-        with mock.patch.object(http.client, "HTTPSConnection", transport.connection_class()), \
+        connection = transport.connection_class()
+
+        def no_socket(*args, **kwargs):
+            raise AssertionError("a test tried to open a real network connection")
+
+        # both schemes go to the in-memory transport, and nothing can reach a real socket: if a guard were broken, the
+        # test fails on what the transport recorded, it does not send a request to a real site
+        with mock.patch.object(http.client, "HTTPSConnection", connection), \
+                mock.patch.object(http.client, "HTTPConnection", connection), \
+                mock.patch.object(socket, "create_connection", no_socket), \
                 mock.patch.object(fetch.time, "sleep"), mock.patch.object(fetch, "polite"), \
                 contextlib.redirect_stdout(io.StringIO()):
             yield transport
