@@ -101,7 +101,7 @@ class StreakReportTest(unittest.TestCase):
                                         "runs_with_health", "failures", "fallbacks", "unavailable",
                                         "page_watch_failing", "page_watch_robots_skipped",
                                         "robots_skipped", "robots_reasons", "signals_unavailable",
-                                        "struggling"})
+                                        "switched_off", "struggling"})
 
     def test_worst_first_ranking_is_kept_with_the_new_fields(self) -> None:
         runs = [_run(day, ["x", "y"] if day >= 25 else ["x"]) for day in (23, 24, 25, 26, 27)]

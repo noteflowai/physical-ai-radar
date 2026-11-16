@@ -19,6 +19,9 @@ neither is ever struggling. The repair job can only repair a declared feed, so a
 page_watch source in `struggling` would wake a model every night for a fix it must
 reject; whether to drop such a page from `page_watch` is a person's call.
 
+An entry a person switched off (`enabled` not true in data/sources.json) is listed under `switched_off` with its
+`disabled_reason`. It is not failing and not counted anywhere else: the list is how it stays visible.
+
 Each struggling source also carries `streak_days`, the consecutive runs it has
 failed counted back from the latest one, and `failing_since`, the date of the oldest
 run in that streak. A feed dark since one date has usually moved or retired; a feed
@@ -54,6 +57,34 @@ def page_watch_ids() -> frozenset[str]:
         return frozenset(e["id"] for e in entries if isinstance(e, dict) and isinstance(e.get("id"), str))
     except (OSError, ValueError, AttributeError, TypeError):
         return frozenset()
+
+
+def switched_off(sources: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    """The feeds and page_watch entries a person has switched off, with the reason they gave: [{id, disabled_reason}].
+
+    An entry is off when `enabled` is present and not exactly true, the same rule `fetch.enabled_feeds` and
+    `fetch._resolve_page_watch` read, so a mistyped switch is listed as off, not missed. Nothing here counts as a
+    failure: an entry that is off is not requested, so the run log has nothing to say about it. This is the only
+    place a person who does not open data/sources.json sees that it is off and has to be switched back on by hand.
+    A missing or non-text reason is reported as an empty string. Empty when sources.json is unreadable.
+    """
+    if sources is None:
+        try:
+            with (DATA_DIR / "sources.json").open(encoding="utf-8") as handle:
+                sources = json.load(handle)
+        except (OSError, ValueError):
+            return []
+    if not isinstance(sources, dict):
+        return []
+    off = []
+    for group in ("feeds", "page_watch"):
+        entries = sources.get(group, [])
+        for entry in entries if isinstance(entries, list) else []:
+            if (isinstance(entry, dict) and isinstance(entry.get("id"), str)
+                    and "enabled" in entry and entry["enabled"] is not True):
+                reason = entry.get("disabled_reason")
+                off.append({"id": entry["id"], "disabled_reason": reason if isinstance(reason, str) else ""})
+    return off
 
 
 def _page_failed(entry: dict[str, Any], watched: frozenset[str]) -> list[str]:
@@ -216,6 +247,7 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         # stopped answering shows up here, not under struggling.
         "robots_reasons": _reasons(_in_window(runs, reference, window)),
         "signals_unavailable": _count(_in_window(runs, reference, window), "signal_failed"),
+        "switched_off": switched_off(),
         "struggling": entries,
     }
 

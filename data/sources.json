@@ -31,11 +31,14 @@
     },
     "highlights": {
       "max_arxiv_share": 0.5,
+      "event_min_score": 0.6,
       "reserve": [
         "official",
-        "hot"
+        "hot",
+        "event",
+        "event"
       ],
-      "note": "the shortlist is the page's highlights: arXiv takes at most this share of --limit (a hard cap, in the fill pass too); 'official' reserves a slot for the best qualifying O item and 'hot' for the best qualifying non-arXiv item marked trending. A reservation passes every other gate; one that nothing can fill stays empty and the run log says so (history quota.unmet)."
+      "note": "the shortlist is the page's highlights: arXiv takes at most this share of --limit (a hard cap, in the fill pass too); 'official' reserves a slot for the best qualifying O item 'hot' for the best qualifying non-arXiv item marked trending, and 'event' (listed twice: two slots) for the best qualifying non-paper item that reports an industry event (funding, M&A, listing, production milestone, policy; signal industry_event). `event_min_score` is the lower score bar for such posts. A reservation passes every other gate; one that nothing can fill stays empty and the run log says so (history quota.unmet)."
     }
   },
   "arxiv": {
@@ -293,13 +296,17 @@
       "id": "iso-25785-1",
       "title": "ISO 25785-1 — Safety requirements for dynamically stable industrial mobile robots",
       "url": "https://www.iso.org/standard/91469.html",
-      "status_note": "Under development; committee-stage as of 2026-09."
+      "status_note": "Under development; committee-stage as of 2026-09.",
+      "covered": false,
+      "not_covered_reason": "When read on 2026-11-14, robots.txt returned 403; not read, per the rules. The note is entered by hand and is not checked by the radar."
     },
     {
       "id": "eu-machinery-regulation",
       "title": "Regulation (EU) 2023/1230 (Machinery Regulation)",
       "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/oj/eng",
-      "status_note": "Fully applicable 2027-01-20."
+      "status_note": "Fully applicable 2027-01-20.",
+      "covered": false,
+      "not_covered_reason": "No verifiable robots.txt content was obtained; not read, per the rules. The note is entered by hand and is not checked by the radar."
     },
     {
       "id": "eu-ai-act-timeline",
@@ -350,6 +357,8 @@
     {
       "id": "physical-intelligence",
       "url": "https://www.pi.website/blog",
+      "enabled": false,
+      "disabled_reason": "Reads failed on every run from 11-12 to 11-16: robots.txt answered 429 in the runs of 11-12 to 11-15, and the 11-16 run used the remembered back-off and sent no request; not read, per the rules.",
       "mode": "listing",
       "link_prefix": "/blog/",
       "hosts": ["pi.website", "physicalintelligence.company"],
@@ -371,24 +380,6 @@
       "evidence": "O",
       "weight": 1.0,
       "publisher": "Unitree Robotics News",
-      "topical": true
-    },
-    {
-      "id": "watch-iso-25785-1",
-      "standards_watch": "iso-25785-1",
-      "mode": "page",
-      "evidence": "O",
-      "weight": 1.0,
-      "publisher": "ISO",
-      "topical": true
-    },
-    {
-      "id": "watch-eu-machinery-regulation",
-      "standards_watch": "eu-machinery-regulation",
-      "mode": "page",
-      "evidence": "O",
-      "weight": 1.0,
-      "publisher": "EUR-Lex",
       "topical": true
     }
   ]

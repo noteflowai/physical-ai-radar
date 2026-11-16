@@ -73,7 +73,7 @@
 <polygon class="area" points="0.0,-94.3 66.7,-66.7 6.6,-0.0 116.7,116.7 0.0,106.1 -25.0,25.0 -23.6,0.0 -58.3,-58.3"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="113.8" cy="95.5" r="11" class="halo"/><circle cx="113.8" cy="95.5" r="5"/><title>STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models</title></a>
-<a href="#p2" class="blip" style="--lane:#22d3ee;--delay:0.70s"><circle cx="-95.2" cy="-95.2" r="11" class="halo"/><circle cx="-95.2" cy="-95.2" r="5"/><title>BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</title></a>
+<a href="#p2" class="blip" style="--lane:#22d3ee;--delay:0.70s"><circle cx="-95.1" cy="-95.1" r="11" class="halo"/><circle cx="-95.1" cy="-95.1" r="5"/><title>BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</title></a>
 <a href="#p3" class="blip" style="--lane:#38bdf8;--delay:1.05s"><circle cx="94.9" cy="-94.9" r="11" class="halo"/><circle cx="94.9" cy="-94.9" r="5"/><title>I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History</title></a>
 <a href="#p4" class="blip" style="--lane:#a3e635;--delay:1.40s"><circle cx="-129.5" cy="0.0" r="11" class="halo"/><circle cx="-129.5" cy="0.0" r="5"/><title>Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation</title></a>
 <a href="#p5" class="blip" style="--lane:#facc15;--delay:1.75s"><circle cx="-69.5" cy="69.5" r="11" class="halo"/><circle cx="-69.5" cy="69.5" r="5"/><title>Why Skydio Built a Lopsided Drone</title></a>
@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16589" rel="noopener" target="_blank">STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If your VLA policy conditions mostly on the current observation, this preprint adds explicit spatial structure and task history and flags closed-loop and real-robot experiments, but the page gives no figures, so wait for numbers before changing your architecture.</p>
 <p class="excerpt">Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task…</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16422" rel="noopener" target="_blank">BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> Training a humanoid tracker for a motion library usually costs hours of GPU time; this preprint flags real-robot experiments and open code or weights but shows no figures, so benchmark it on your own motion set before replacing your training pipeline.</p>
 <p class="excerpt">Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time.</p>
 <ul class="signals"><li>real-robot experiments</li><li>open code or weights</li></ul>
 <footer>
@@ -127,7 +127,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16419" rel="noopener" target="_blank">I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History</a></h3>
 <p class="figure"><strong>6,600 episodes</strong><span class="context">“a dataset of 6,600 episodes from eleven robot”</span></p><p class="chips"><span class="chip">35.4%</span><span class="chip">34.6%</span><span class="chip">39.8%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> For teams collecting data by teleoperation, the authors report decoding operator intent cut human teleoperation time by 34.6% against GPT-4o and 39.8% against GPT-5.6; self-reported, with no closed-loop result on the page.</p>
 <p class="excerpt">Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -143,7 +143,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16386" rel="noopener" target="_blank">Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation</a></h3>
 <p class="figure"><strong>88.0%</strong><span class="context">“CGEM achieves 88.0% success”</span></p><p class="chips"><span class="chip">0.0%</span><span class="chip">1.7%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> Where identical observations demand different actions over a long task, the authors report 88.0% success for critic-gated event memory against 0.0% for two compared methods, and 1.7% under an ablation of its records; no real-robot result appears on the page.</p>
 <p class="excerpt">In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li></ul>
 <footer>
@@ -158,7 +158,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone" rel="noopener" target="_blank">Why Skydio Built a Lopsided Drone</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> This is secondary coverage whose visible excerpt only praises Skydio and carries no design, safety or certification detail, so it should not change a certification or deployment plan until you read the article and its primary sources.</p>
 <p class="excerpt">Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-15</span>
@@ -172,7 +172,7 @@
 <span class="ev ev-O" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">O · Official</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/" rel="noopener" target="_blank">Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents</a></h3>
-<p class="why">First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If scene building is your simulation bottleneck, NVIDIA&#x27;s own post describes using AI agents to go from idea to simulation, a job it frames as assembling assets, wiring physics and rendering and checking scene behaviour; it gives no figures, so trial it first.</p>
 <p class="excerpt">Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.</p>
 <footer>
 <span class="source">NVIDIA Blog · 2026-11-05</span>

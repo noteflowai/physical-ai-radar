@@ -110,6 +110,10 @@ def recent_urls(runs: list[dict[str, Any]], reference: date, days: int) -> set[s
     return urls
 
 
+def _optional_float(value: Any) -> float | None:
+    return None if value is None else float(value)
+
+
 def _optional_int(value: Any) -> int | None:
     return None if value in (None, "") else int(value)
 
@@ -168,7 +172,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
                     per_source=_optional_int(filters.get("per_source")),
                     per_evidence=_optional_int(filters.get("per_evidence")), told=told,
                     max_arxiv=int(limit * float(share)) if share is not None else None,
-                    reserve=list(highlights.get("reserve", [])), report=quota)
+                    reserve=list(highlights.get("reserve", [])), report=quota,
+                    event_min_score=_optional_float(highlights.get("event_min_score")))
     # What the shortlist was cut from, by lane, with every lane present (a zero is a count, not a gap). The picks
     # alone cannot show it: a lane gives at most `per_lane` a day. It belongs to the run log, not to the quota.
     pool = quota.pop("pool", {})
@@ -425,6 +430,63 @@ def page_watch_status(page_watch: dict[str, Any] | None, error: bool = False) ->
     return "ok"
 
 
+def page_watch_read(page_watch: dict[str, Any] | None, error: bool = False) -> dict[str, Any]:
+    """What the run actually read, whichever fetcher read it, as the flat keys of the freshness record:
+    `page_watch_read_status` ("ok"|"partial"|"failed"), `page_watch_read_count`, `page_watch_failed_count`, and
+    `page_watch_read_reason` (a fixed code) only when there is a reason to give.
+
+    `page_watch_status` answers a different question (did the Firecrawl channel answer, ADR 027), so with no
+    Firecrawl entry it can never be "ok". This counts only the entries that are switched on (a switched-off
+    entry is not planned, so it is in neither number):
+
+    - read: the entry's page was read this run (outcome "checked", from either fetcher);
+    - failed: the entry was not read: the page failed, was blocked or disallowed by robots.txt, or the run did not
+      get to it. An entry a static source only observed (static_mode "observe") is in neither number: it makes no
+      claim.
+
+    status: "ok" every counted entry was read; "partial" some were; "failed" none was. Never "ok" when nothing was
+    counted: then it is "failed" with a reason, "no-enabled-entry" (page_watch off or nothing switched on) or
+    "observed-only"; a run that raised is "failed" with "run-raised". A Firecrawl channel that stopped part way
+    (`unavailable`) is never "ok" and carries "firecrawl-unavailable": for a run without a static source the entries it
+    did not reach are not in `planned`, so they cannot be counted.
+    """
+    def fields(status: str, read: int, failed: int, reason: str = "") -> dict[str, Any]:
+        out: dict[str, Any] = {"page_watch_read_status": status, "page_watch_read_count": read,
+                               "page_watch_failed_count": failed}
+        if reason:
+            out["page_watch_read_reason"] = reason
+        return out
+
+    if error:
+        return fields("failed", 0, 0, "run-raised")
+    block = page_watch if isinstance(page_watch, dict) else {}
+    planned = block.get("planned")
+    if isinstance(planned, list) and planned:
+        notes = block.get("sources") if isinstance(block.get("sources"), dict) else {}
+        outcomes = []
+        for source in planned:
+            note = notes.get(source)
+            outcomes.append(note.get("outcome") if isinstance(note, dict) and note.get("outcome") else "not-attempted")
+        read = sum(1 for outcome in outcomes if outcome == "checked")
+        observed = sum(1 for outcome in outcomes if outcome == "observed")
+        failed = sum(1 for outcome in outcomes if outcome not in ("checked", "observed"))
+    else:
+        read = len(block.get("checked") or [])
+        observed = 0
+        failed = len(block.get("failed") or []) + len(block.get("robots_skipped") or [])
+    down = block.get("unavailable") is True
+    reason = "firecrawl-unavailable" if down else ""
+    if failed == 0 and read > 0:
+        status = "partial" if down else "ok"
+    elif read > 0:
+        status = "partial"
+    else:
+        status = "failed"
+        if failed == 0 and not down:
+            reason = "observed-only" if observed else "no-enabled-entry"
+    return fields(status, read, failed, reason)
+
+
 def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
                               directory: Path | None = None, error: bool = False,
                               detail: dict[str, Any] | None = None) -> Path | None:
@@ -435,7 +497,10 @@ def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
     `page_watch_status` (exactly "ok" only when at least one watched page was read;
     "all-failed", "firecrawl-unavailable", "skipped" and "error" are non-success),
     `finished_at` ISO-8601 with an offset. It also carries `sources_checked` (a count),
-    `sources_failed` and `sources_robots_skipped` (source ids). Never page text.
+    `sources_failed` and `sources_robots_skipped` (source ids), and the flat keys of `page_watch_read`:
+    `page_watch_read_status` (ok|partial|failed), `page_watch_read_count`, `page_watch_failed_count` and, when there
+    is one, `page_watch_read_reason`. They say what the run read from the entries that are switched on, whichever
+    fetcher read them; `status` is unchanged. Never page text.
 
     Read only from the explicit `page_watch` block that fetch_page_watch produced, never
     from the report's overall counts. The evidence is observational: any exception in
@@ -448,6 +513,7 @@ def write_page_watch_evidence(fetch: dict[str, Any] | None, day: str,
         block = {**block, **(detail if isinstance(detail, dict) else {})}
         record = {"schema": PAGE_WATCH_EVIDENCE_SCHEMA, "channel": "page_watch",
                   "status": page_watch_status(block, error=error),
+                  **page_watch_read(block, error=error),
                   "day": day, "finished_at": datetime.now(timezone.utc).isoformat(),
                   "sources_checked": len(block.get("checked") or []),
                   "sources_failed": sorted(block.get("failed") or []),
