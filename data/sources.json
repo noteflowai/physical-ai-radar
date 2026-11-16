@@ -355,7 +355,7 @@
       "id": "physical-intelligence",
       "url": "https://www.pi.website/blog",
       "enabled": false,
-      "disabled_reason": "Reads failed on every run from 11-12 to 11-16; the most recent robots.txt answer, on 11-16, was 429; not read, per the rules.",
+      "disabled_reason": "Reads failed on every run from 11-12 to 11-16: robots.txt answered 429 in the runs of 11-12 to 11-15, and the 11-16 run used the remembered back-off and sent no request; not read, per the rules.",
       "mode": "listing",
       "link_prefix": "/blog/",
       "hosts": ["pi.website", "physicalintelligence.company"],

@@ -450,7 +450,7 @@ class FetchReliabilityTest(unittest.TestCase):
                 raise urllib.error.URLError("connection reset")
             return Response()
 
-        with patch.object(fetch_module.urllib.request, "urlopen", flaky), \
+        with patch.object(fetch_module, "_urlopen", flaky), \
                 patch.object(fetch_module.time, "sleep") as sleep:
             self.assertEqual(http_get("https://example.org/feed"), b"<feed/>")
         self.assertEqual(len(attempts), 2)
@@ -460,7 +460,7 @@ class FetchReliabilityTest(unittest.TestCase):
         def always_fail(request, timeout=None):
             raise urllib.error.HTTPError(request.full_url, 406, "Not Acceptable", {}, None)
 
-        with patch.object(fetch_module.urllib.request, "urlopen", always_fail), \
+        with patch.object(fetch_module, "_urlopen", always_fail), \
                 patch.object(fetch_module.time, "sleep"):
             self.assertIsNone(http_get("https://example.org/feed", retries=2))
 
@@ -518,7 +518,7 @@ class FetchReliabilityTest(unittest.TestCase):
             calls.append(1)
             raise urllib.error.HTTPError(request.full_url, 406, "Not Acceptable", {}, None)
 
-        with patch.object(fetch_module.urllib.request, "urlopen", refuse), \
+        with patch.object(fetch_module, "_urlopen", refuse), \
                 patch.object(fetch_module.time, "sleep") as sleep, \
                 contextlib.redirect_stdout(io.StringIO()):
             self.assertIsNone(http_get("https://example.org/feed", retries=3))
@@ -533,7 +533,7 @@ class FetchReliabilityTest(unittest.TestCase):
             raise urllib.error.HTTPError(request.full_url, 429, "Too Many Requests",
                                          {"Retry-After": "120"}, None)
 
-        with patch.object(fetch_module.urllib.request, "urlopen", limited), \
+        with patch.object(fetch_module, "_urlopen", limited), \
                 patch.object(fetch_module.time, "sleep") as sleep, \
                 contextlib.redirect_stdout(io.StringIO()):
             self.assertIsNone(http_get("https://example.org/feed", retries=2))
@@ -548,7 +548,7 @@ class FetchReliabilityTest(unittest.TestCase):
             def broken(request, timeout=None, error=error):
                 raise error
 
-            with patch.object(fetch_module.urllib.request, "urlopen", broken), \
+            with patch.object(fetch_module, "_urlopen", broken), \
                     patch.object(fetch_module.time, "sleep"), \
                     contextlib.redirect_stdout(io.StringIO()):
                 self.assertIsNone(http_get("https://example.org/feed"), type(error).__name__)

@@ -40,7 +40,7 @@ from email.utils import parsedate_to_datetime
 from typing import Any, Iterable
 
 from .config import Config, Item
-from . import robots_rules, static_extract, static_fetch
+from . import host_policy, robots_rules, static_extract, static_fetch
 
 USER_AGENT = "physical-ai-radar/1.0 (+https://github.com/noteflowai/physical-ai-radar)"
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -105,6 +105,37 @@ def _retry_after(exc: urllib.error.HTTPError) -> float:
     return min(max(wait, RETRY_DELAY), MAX_RETRY_AFTER)
 
 
+class HostNotRequested(urllib.error.URLError):
+    """A request, or a redirect hop, that `host_policy` refuses: it is not sent."""
+
+    def __init__(self, url: str, why: str) -> None:
+        super().__init__(f"{why}: not requested")
+        self.url, self.why = url, why
+
+
+class _GuardedRedirect(urllib.request.HTTPRedirectHandler):
+    """urllib's own redirect handling, except that a hop `host_policy` refuses is never sent.
+
+    `redirect_request` runs on every hop (301, 302, 303, 307, 308) with the absolute target, before urllib builds the
+    next request, so the check cannot be skipped by a longer chain or by a relative `Location`."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001 - urllib's signature
+        for target in dict.fromkeys((newurl, newurl.replace(" ", "%20"))):
+            why = host_policy.refusal(target)
+            if why:
+                fp.close()
+                raise HostNotRequested(target, why)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+_OPENER = urllib.request.build_opener(_GuardedRedirect)
+
+
+def _urlopen(request: urllib.request.Request, timeout: float | None = None):
+    """What `http_get` opens a URL with: urllib's default opener with the guarded redirect handler."""
+    return _OPENER.open(request, timeout=timeout)
+
+
 def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = None) -> bytes | None:
     """Fetch a URL, retrying transient failures; never raise into the caller.
 
@@ -115,18 +146,33 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
     came from after any redirect (`final_url`) and its media type (`content_type`, None
     when the answer named none) there: a robots.txt is only a robots.txt if that is what
     came back.
+
+    A URL whose host `host_policy` refuses (a switched-off page_watch entry's host, or any host when the policy cannot
+    be read) is not requested, and neither is a redirect hop to one: the answer is the same as for no answer at all.
     """
+    why = host_policy.refusal(url)
+    if why:
+        print(f"[fetch] skip {url}: {why}, not requested")
+        if report is not None:
+            report["status"] = None
+        return None
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     last: Exception | None = None
     for attempt in range(1, max(1, retries) + 1):
         delay = RETRY_DELAY
         try:
-            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+            with _urlopen(request, timeout=TIMEOUT) as response:
                 if report is not None:
                     report["status"] = getattr(response, "status", 200)
                     report["final_url"] = response.geturl()
                     report["content_type"] = _media_type(response.headers.get("Content-Type"))
                 return response.read()
+        except HostNotRequested as exc:
+            # a redirect to a host that is off: the answer will be the same on every retry, so there is no retry
+            last = exc
+            if report is not None:
+                report["status"] = None
+            break
         except urllib.error.HTTPError as exc:
             last = exc
             if report is not None:
@@ -1633,7 +1679,13 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     static_run = any(entry.get("fetcher") == "static" for entry in entries)
     hosted_runner = os.environ.get("GITHUB_ACTIONS", "").strip().lower() == "true"
     firecrawl_down = False
-    if loopback_endpoint(settings["endpoint"]) is None:
+    if len(entries) > settings["max_entries"]:
+        print(f"[fetch] page_watch: watching the first {settings['max_entries']} of {len(entries)} entries")
+        entries = entries[:settings["max_entries"]]
+    # The Firecrawl service's address is only judged when an entry this run plans goes through it: a run of static
+    # sources only never uses it, so a bad endpoint says nothing about that channel and must not report it unavailable.
+    firecrawl_planned = any(entry.get("fetcher") != "static" for entry in entries)
+    if firecrawl_planned and loopback_endpoint(settings["endpoint"]) is None:
         # An endpoint that is not loopback stops every Firecrawl source. Static sources do not use it and go on.
         print("[fetch] page_watch: refusing a Firecrawl endpoint that is not on a loopback "
               "address (127.0.0.1, localhost, ::1); channel skipped")
@@ -1641,9 +1693,6 @@ def fetch_page_watch(config: Config, reference: date | None = None,
         firecrawl_down = True
         if not static_run:
             return result
-    if len(entries) > settings["max_entries"]:
-        print(f"[fetch] page_watch: watching the first {settings['max_entries']} of {len(entries)} entries")
-        entries = entries[:settings["max_entries"]]
     if static_run:
         result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
@@ -1651,6 +1700,10 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     static_robots = _StaticRobots(robots_store)
     fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
+    try:
+        blocked: frozenset[str] | None = host_policy.blocked_hosts(config.sources)
+    except host_policy.HostPolicyUnreadable:
+        blocked = None                       # an unknown policy is not an empty one: no entry is requested
     for index, entry in enumerate(entries):
         if time.monotonic() >= deadline:
             print(f"[fetch] page_watch: time budget of {settings['budget']:.0f}s spent; "
@@ -1658,6 +1711,14 @@ def fetch_page_watch(config: Config, reference: date | None = None,
             for rest in entries[index:]:
                 result.note(rest["id"], rest.get("fetcher", "firecrawl"), "not-attempted", "budget")
             break
+        why = (host_policy.refusal(entry.get("url"), blocked=blocked) if blocked is not None
+               else host_policy.UNREADABLE)
+        if why:
+            # Normally unreachable (an entry that is on keeps its host out of the policy), and a second guard for the
+            # case that matters: nothing is sent to a host the policy refuses, whichever fetcher the entry names.
+            print(f"[fetch] page_watch skip {entry['id']}: {why}, not requested")
+            result.note(entry["id"], entry.get("fetcher", "firecrawl"), "not-attempted", why)
+            continue
         if entry.get("fetcher") == "static":
             if hosted_runner:
                 # The hosted fallback workflow (.github/workflows/daily.yml) runs this code on GitHub's machines, outside the

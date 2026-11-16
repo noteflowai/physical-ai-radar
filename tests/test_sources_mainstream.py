@@ -324,9 +324,9 @@ class PoliteFetchingTest(unittest.TestCase):
         def offline(request, timeout=None):
             raise urllib.error.URLError("unreachable")
         with mock.patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
-            with mock.patch.object(fetch.urllib.request, "urlopen", refuse):
+            with mock.patch.object(fetch, "_urlopen", refuse):
                 self.assertEqual(fetch._robots_get("https://a.example/robots.txt")[:2], (403, None))
-            with mock.patch.object(fetch.urllib.request, "urlopen", offline):
+            with mock.patch.object(fetch, "_urlopen", offline):
                 self.assertEqual(fetch._robots_get("https://a.example/robots.txt")[:2], (None, None))
 
     def test_a_feed_on_an_unreachable_host_is_skipped_with_its_reason_and_not_requested(self) -> None:

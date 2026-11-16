@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tests"))
 
-from pairadar import cli, fetch, robots_rules, static_extract, static_fetch  # noqa: E402
+from pairadar import cli, fetch, host_policy, robots_rules, static_extract, static_fetch  # noqa: E402
 from pairadar.config import Config  # noqa: E402
 from static_fixture import HOST, Reply, TlsTestCase  # noqa: E402
 from test_page_watch import FakeFirecrawl, ROBOTS_OPEN, page as firecrawl_page  # noqa: E402
@@ -95,8 +95,8 @@ class StaticWatchTests(TlsTestCase):
     def urls(self, result):
         return [item.url for item in result.items]
 
-    # --- an entry that is switched off (07, 2026-11-16: reads of physical-intelligence failed on every run from 11-12 to 11-16, the latest robots.txt answer was 429) ---
-    OFF = "Reads failed on every run; the most recent robots.txt answer was 429; not read, per the rules."
+    # --- an entry that is switched off (07, 2026-11-16: reads of physical-intelligence failed on every run from 11-12 to 11-16; robots.txt answered 429 in the runs of 11-12 to 11-15, the 11-16 run sent no request) ---
+    OFF = "Reads failed on every run; robots.txt answered 429; not read, per the rules."
 
     def test_a_switched_off_source_is_not_requested_not_planned_and_not_a_failure(self):
         self.server.serve("/news", Reply(200, V1))
@@ -304,6 +304,80 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(status_of(result), "firecrawl-unavailable")   # a static read does not make Firecrawl answer
                 self.assertEqual(result.static_checked, ["figure"])           # and it stays visible
                 self.assertEqual(result.detail()["planned"], ["unitree", "figure"])
+
+    def test_a_run_of_static_sources_only_does_not_judge_the_firecrawl_endpoint(self):
+        """01 (PR216 r1 F2): no planned entry goes through Firecrawl, so its address says nothing about this channel."""
+        self.server.serve("/news", Reply(200, V1))
+        for endpoint in ("http://127.0.0.1:9", "http://10.0.0.5:3002", "https://example.invalid"):
+            with self.subTest(endpoint):
+                result = self.watch(sources(LISTING), endpoint=endpoint)
+                self.assertFalse(result.unavailable)
+                self.assertEqual((result.checked, result.failed), (["figure"], []))
+                self.assertNotIn("refusing a Firecrawl endpoint", self.out)
+                self.assertEqual(status_of(result), "skipped")                       # Firecrawl never answered: not an outage
+
+    def test_a_failing_static_source_is_failed_and_the_channel_is_not_unavailable(self):
+        self.server.serve("/news", Reply(404, "gone"))
+        for endpoint in ("http://127.0.0.1:9", "https://example.invalid"):
+            with self.subTest(endpoint):
+                result = self.watch(sources(LISTING), endpoint=endpoint)
+                self.assertFalse(result.unavailable)
+                self.assertEqual((result.checked, result.failed), ([], ["figure"]))
+                self.assertEqual(status_of(result), "all-failed")
+
+    def test_the_run_report_does_not_list_page_watch_unavailable_for_a_static_only_configuration(self):
+        raw = sources(LISTING)
+        raw["feeds"] = []
+        self.server.serve("/news", Reply(200, V1))
+        with patch.object(fetch, "http_get", lambda *args, **kwargs: None), \
+                patch.dict(os.environ, {fetch.FIRECRAWL_ENV: "https://example.invalid", "GITHUB_ACTIONS": ""}), \
+                patch.object(fetch, "STATIC_FETCHER_FACTORY", self.fetcher), \
+                contextlib.redirect_stdout(io.StringIO()):
+            report = fetch.fetch_all(Config(sources=raw, taxonomy={}, glossary={}, baseline={}), reference=DAY)
+        self.assertEqual(report.unavailable, [])
+        self.assertEqual(report.page_watch["checked"], ["figure"])
+
+    def test_a_non_loopback_endpoint_is_still_refused_when_an_entry_goes_through_firecrawl(self):
+        # only Firecrawl entries: nothing is sent, the channel is unavailable
+        result = self.watch(sources(self.firecrawl_entry()), endpoint="http://10.0.0.5:3002")
+        self.assertTrue(result.unavailable)
+        self.assertEqual((result.attempted, result.checked, result.failed), ([], [], []))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertIn("refusing a Firecrawl endpoint", self.out)
+        # a run of both: Firecrawl is down, the static source is read
+        self.server.serve("/news", Reply(200, V1))
+        mixed = self.watch(sources(self.firecrawl_entry(), LISTING), endpoint="http://10.0.0.5:3002")
+        self.assertTrue(mixed.unavailable)
+        self.assertEqual(mixed.checked, ["figure"])
+
+    def test_an_endpoint_that_would_have_been_cut_by_max_entries_is_not_judged(self):
+        # the Firecrawl entry is the second of two but only one entry is watched: the planned run is static only
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING, self.firecrawl_entry(), max_entries=1), endpoint="https://example.invalid")
+        self.assertFalse(result.unavailable)
+        self.assertEqual(result.checked, ["figure"])
+
+    # --- a host the policy refuses is not requested (01, PR216 r1 F1) ---------------------------------------------
+    def test_an_entry_on_a_host_the_policy_refuses_is_not_requested_by_either_fetcher(self):
+        self.server.serve("/news", Reply(200, V1))
+        with patch.object(host_policy, "blocked_hosts", lambda raw: frozenset({HOST})):
+            result = self.watch(sources(LISTING, self.firecrawl_entry()))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "not-attempted",
+                                                    "reason": host_policy.SWITCHED_OFF})
+        self.assertEqual((result.checked, result.failed, result.attempted), ([], [], []))
+
+    def test_an_unreadable_policy_requests_no_entry(self):
+        self.server.serve("/news", Reply(200, V1))
+
+        def unreadable(raw):
+            raise host_policy.HostPolicyUnreadable("sources.json is not an object")
+
+        with patch.object(host_policy, "blocked_hosts", unreadable):
+            result = self.watch(sources(LISTING))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertEqual(result.sources["figure"]["reason"], host_policy.UNREADABLE)
+        self.assertEqual(result.checked, [])
 
     def test_the_status_combinations_of_the_freshness_objective(self):
         """01 and 04 (11-06): the objective counts only `ok`, which needs the Firecrawl channel not to be down. A static

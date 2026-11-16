@@ -28,10 +28,12 @@ radar content itself is dated, not versioned.
   changes. The run no longer reports `unavailable: ["page_watch"]` (a run on a copy of the tree shows it gone). A `page_watch` entry
   can be switched off with `"enabled": false`, as a feed can: anything but `true` switches it off, it must carry a
   `disabled_reason`, and it is not read, not asked about in robots.txt, not planned and not counted as failed; its baseline stays.
-- **Physical Intelligence is switched off** (`enabled: false`) on 2026-11-16: reads of its pages failed on each production
-  run from 11-12 to 11-16 (the run log does not record the reason), and the most recent robots.txt answer, on 11-16, was
-  429; by the robots rule its pages are not read, and the host is not asked again until a person
-  switches it back on. It was read on 11-08 to 11-11. Its published entries stay readable (the publisher name still resolves).
+- **Physical Intelligence is switched off** (`enabled: false`) from the change of 2026-11-16, which is when the radar stops
+  asking its host for anything. What the records show: its page was last read in the 11-11 run; in each run from 11-12 to
+  11-15 the page was not read because its robots.txt answered 429 (the private freshness record of each day says so); in
+  the 11-16 run the remembered back-off was used and no request was sent. Until the switch-off the host was still asked
+  (its robots.txt) in each run that was not backing off. By the robots rule its pages are not read, and the host is not
+  asked again until a person switches it back on. Its published entries stay readable (the publisher name still resolves).
   **Known effect, not changed here:** the freshness record's `status` is `ok` only when the Firecrawl channel answered
   (`firecrawl_answered`, ADR 027); with no entry on Firecrawl that never happens, so the record is `skipped` or `all-failed`
   instead of `firecrawl-unavailable`. Both were non-success before and are now. Whether the objective should count a static read
@@ -109,6 +111,20 @@ radar content itself is dated, not versioned.
   sharing one, and the lanes table two instead of three, what a lane tracks and
   why it has its own lane in one cell. On a phone the five columns set
   "newsletters" one character per line and ran off the side of the screen.
+- **A switched-off entry's host is no longer requested through a redirect** (`pairadar/host_policy.py`). Switching a `page_watch`
+  entry off only removed its page from the plan; `fetch.http_get`, which follows redirects, would still have sent a request to
+  that host if a feed, a robots.txt or an attention API redirected there. `http_get` now asks the policy before the first request
+  and before every redirect hop (urllib's own redirect handler, one hop at a time), and a hop to a blocked host is not sent: the
+  answer is the same as for no answer, and it is not retried. `fetch_page_watch` checks an entry's URL before its page or its
+  robots.txt is requested. Blocked: the host of the entry's `url` and the names in its `hosts` with their subdomains
+  (`www.pi.website`, `pi.website`, `physicalintelligence.company`), unless something switched on uses them; a switched-off feed
+  is not blocked by host. A policy that cannot be read refuses every request. DNS is not resolved: an address literal, or another
+  name for the same server, is not recognised. Tests run the real redirect handler and the real consumers (feeds, robots.txt,
+  the attention APIs) against an in-memory transport.
+- **A run of static sources only no longer depends on the Firecrawl endpoint.** The loopback check on `RADAR_FIRECRAWL_URL` ran even
+  when no planned entry used Firecrawl, so a bad endpoint made a successful static run report `unavailable: ["page_watch"]`. It
+  now runs only when an entry that goes through Firecrawl is planned; a run that mixes both, and a run of Firecrawl entries only,
+  are refused as before.
 
 ## 1.1.0 — 2026-09-26
 

@@ -404,7 +404,7 @@ class UnsupportedUrlTests(unittest.TestCase):
 
 
 class Answer:
-    """What `urllib.request.urlopen` gives `http_get`: a status, the URL it came from after redirects, headers and a body."""
+    """What `fetch._urlopen` (urllib's opener) gives `http_get`: a status, the URL it came from after redirects, headers and a body."""
 
     def __init__(self, url, body, content_type="text/plain; charset=utf-8", status=200):
         self.status, self._url, self._body = status, url, body
@@ -441,7 +441,7 @@ class ResponseIdentityTests(unittest.TestCase):
 
     def through_urlopen(self, answer, url="https://a.example/feed"):
         cache = fetch.RobotsCache(store=self.store)
-        with mock.patch.object(fetch.urllib.request, "urlopen", lambda request, timeout=None: answer), \
+        with mock.patch.object(fetch, "_urlopen", lambda request, timeout=None: answer), \
                 mock.patch.object(fetch.time, "sleep"), silent():
             return cache, cache.verdict(url)
 
@@ -499,7 +499,7 @@ class ResponseIdentityTests(unittest.TestCase):
                 return Answer("https://b.example/robots.txt", b"User-agent: *\nAllow: /\n", "text/plain")
             return Answer(request.full_url, rss(("A robot", "https://b.example/a", "robot")), "application/rss+xml")
         skipped, reasons, newly = [], {}, {}
-        with mock.patch.object(fetch.urllib.request, "urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
+        with mock.patch.object(fetch, "_urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
             items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(store=self.store), skipped=skipped,
                                               reasons=reasons, newly_denied=newly)
         self.assertEqual((skipped, reasons, failed), (["login"], {"login": fetch.UNREACHABLE}, []))
@@ -610,7 +610,7 @@ class HtmlAndIdentityEdgeTests(unittest.TestCase):
 
     def feeds(self, answer, url="https://a.example/feed"):
         cache = fetch.RobotsCache(store=self.store)
-        with mock.patch.object(fetch.urllib.request, "urlopen", lambda request, timeout=None: answer), \
+        with mock.patch.object(fetch, "_urlopen", lambda request, timeout=None: answer), \
                 mock.patch.object(fetch.time, "sleep"), silent():
             return cache.verdict(url)
 
@@ -714,7 +714,7 @@ class HtmlAndIdentityEdgeTests(unittest.TestCase):
                 return Answer("https://b.example/robots.txt", b"User-agent: *\nAllow: /\n", "text/plain")
             return Answer(request.full_url, rss(("A robot", "https://b.example/a", "robot")), "application/rss+xml")
         skipped, reasons = [], {}
-        with mock.patch.object(fetch.urllib.request, "urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
+        with mock.patch.object(fetch, "_urlopen", urlopen), mock.patch.object(fetch.time, "sleep"), silent():
             items, failed = fetch.fetch_feeds(config, robots=fetch.RobotsCache(store=self.store), skipped=skipped,
                                               reasons=reasons)
         self.assertEqual((skipped, reasons, failed), (["bad"], {"bad": fetch.UNREACHABLE}, []))
