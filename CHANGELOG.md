@@ -155,6 +155,16 @@ radar content itself is dated, not versioned.
   now asks before each attempt. The policy is read from `data/sources.json` on every question instead of being cached by its
   modification time and size (a rewrite that kept both would not have been seen). Tests switch the host off, or break the file,
   during the wait and between two attempts, and rewrite the file with the same size and time.
+- **What a run read, whichever fetcher read it** (`page_watch_read_status`), and **what is switched off** (`switched_off`). The freshness
+  record keeps `status` as it was (ADR 027: `ok` needs the Firecrawl channel to have answered, so with no Firecrawl entry it is
+  never `ok`) and gains the flat keys `page_watch_read_status`, `page_watch_read_count` and `page_watch_failed_count`, counted over the
+  entries that are switched on: the count of the ones read this run by either fetcher, and of every other one (page failed, blocked,
+  disallowed by robots.txt, not reached); a source that was only observed is in neither. The status is `ok` when all were read,
+  `partial` when some were, `failed` when none was. It is never `ok` when nothing was counted (nothing switched on, only observed
+  sources, or a run that raised): then it is `failed` and `page_watch_read_reason` says why (`no-enabled-entry`, `observed-only`,
+  `run-raised`); `firecrawl-unavailable` is given when the Firecrawl channel stopped. `python3 -m pairadar.health` lists every feed and `page_watch`
+  entry whose `enabled` is present and not `true` under `switched_off` with its `disabled_reason`; such an entry is still never a
+  failure. The coverage page that shows them is not part of this change.
 
 ## 1.1.0 — 2026-09-26
 

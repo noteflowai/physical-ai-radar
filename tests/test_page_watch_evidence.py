@@ -166,6 +166,12 @@ class RealRunEvidenceTests(unittest.TestCase):
     def record(self, day=DAY):
         return json.loads((self.evidence / f"{day}.json").read_text())
 
+    @staticmethod
+    def read_fields(record):
+        """(page_watch_read_status, page_watch_read_count, page_watch_failed_count): the flat keys, never a nested object."""
+        assert "page_watch_read" not in record
+        return (record["page_watch_read_status"], record["page_watch_read_count"], record["page_watch_failed_count"])
+
     def assertExit0(self, done):
         self.assertEqual(done.returncode, 0, done.stdout[-2000:] + done.stderr[-2000:])
         self.assertNotIn("Traceback", done.stderr)
@@ -177,6 +183,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertEqual((record["schema"], record["channel"], record["status"], record["day"]),
                          ("pairadar-page-watch-v1", "page_watch", "firecrawl-unavailable", DAY))
         self.assertEqual((record["sources_checked"], record["sources_failed"]), (0, STATIC_IDS))     # the two live static sources failed too
+        self.assertEqual(self.read_fields(record), ("failed", 0, 6))     # 4 static + 2 Firecrawl, none read
         self.assertRegex(record["finished_at"], r"\+00:00$")
         self.assertEqual(stat.S_IMODE(self.evidence.stat().st_mode), 0o700)
         self.assertEqual(list(self.evidence.glob(".*.tmp")), [])
@@ -199,6 +206,7 @@ class RealRunEvidenceTests(unittest.TestCase):
             self.assertExit0(self.main("all-failed", day))
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("all-failed", 0))
+        self.assertEqual(self.read_fields(record), ("failed", 0, len(ids)))
         self.assertEqual(record["sources_failed"], sorted(ids))
         runs = json.loads((self.repo / "radar" / "history.json").read_text())["runs"]
         self.assertEqual(runs[-1]["page_failed"], sorted(ids))
@@ -218,6 +226,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertExit0(done)
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("ok", 1))
+        self.assertEqual(self.read_fields(record), ("partial", 1, 5))     # iso read; eur-lex robots; 4 static failed
         self.assertEqual(record["sources_robots_skipped"], ["watch-eu-machinery-regulation"])
         self.assertNotIn("watch-iso-25785-1", record["sources_failed"])
         self.assertNotIn("watch-eu-machinery-regulation", record["sources_failed"])
@@ -234,6 +243,8 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertIn("unexpected failure inside the run", done.stderr)
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("error", 0))
+        self.assertEqual(self.read_fields(record), ("failed", 0, 0))
+        self.assertEqual(record["page_watch_read_reason"], "run-raised")
 
     def test_a_broken_evidence_writer_never_fails_the_radar(self):
         done = self.main("writer-raises")

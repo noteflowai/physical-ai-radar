@@ -66,7 +66,8 @@ Rules:
     disallowed under `page_robots_skipped`, never under `failed`: `pairadar.health`
     reports them as `page_watch_failing` / `page_watch_robots_skipped` and never as
     struggling, so the source-repair job (which can only repair a declared feed) never
-    picks one.
+    picks one. A feed or page that a person switched off (`enabled` not `true`) is listed by
+    `pairadar.health` as `switched_off` with its `disabled_reason`; it is not a failure.
   - A real run (not `--offline`, not `--out`) also writes one freshness record per day
     to `$PAIRADAR_STATE_DIR/page-watch/<day>.json` (default
     `~/.local/state/pairadar/page-watch/`), schema `pairadar-page-watch-v1`, channel
@@ -76,7 +77,11 @@ Rules:
     `skipped` when the channel is disabled, reached no entry, or gave no Firecrawl answer (see the
     static-sources notes below); `error` when the run
     itself raised. Only `ok` counts as success. The record also carries
-    `sources_checked`, `sources_failed`, `sources_robots_skipped` and `finished_at`.
+    `sources_checked`, `sources_failed`, `sources_robots_skipped`, `finished_at` and the flat keys
+    `page_watch_read_status` (`ok`, `partial` or `failed`), `page_watch_read_count` and `page_watch_failed_count`
+    (plus `page_watch_read_reason`, a fixed code, when there is one): what the run read from the entries
+    that are switched on, whichever fetcher read them; `failed` is every such entry not read; never `ok` when nothing
+    was counted; `status` above is unchanged).
     Writing it is observational: a failure there is logged and never fails the run;
   - **Static sources** (`"fetcher": "static"` on a `page_watch` entry; the default and the only
     value any shipped entry has is `firecrawl`; an unknown value makes the entry invalid, it never
