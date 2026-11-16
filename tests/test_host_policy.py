@@ -295,6 +295,25 @@ class HttpGetTests(PolicyCase):
         self.assertIsNone(host_policy.refusal("https://a1.example/f"))
         self.assertEqual(host_policy.refusal("https://b1.example/f"), host_policy.SWITCHED_OFF)
 
+    def test_a_url_that_cannot_be_read_is_answered_with_no_answer_and_does_not_raise(self):
+        # 01 (PR216 follow-up, F2-new): the request object used to be built before the policy was asked, outside any
+        # try, so a URL urllib cannot parse raised ValueError out of http_get instead of returning None with no status
+        for url in ("not-a-url", "not a url", "https://[invalid", "https:///x", "//a.example/x", ""):
+            with self.subTest(url):
+                report = {"status": 200}                       # a stale value from an earlier read must be overwritten
+                with self.network({}) as transport:
+                    self.assertIsNone(fetch.http_get(url, retries=3, report=report))
+                self.assertIsNone(report["status"])
+                self.assertEqual(transport.requests, [])
+
+    def test_a_url_the_policy_allows_but_urllib_cannot_make_a_request_of_is_not_retried(self):
+        sleeps = []
+        report = {"status": 200}
+        with self.network({}) as transport, mock.patch.object(host_policy, "refusal", return_value=None), \
+                mock.patch.object(fetch.time, "sleep", side_effect=sleeps.append):
+            self.assertIsNone(fetch.http_get("not-a-url", retries=3, report=report))
+        self.assertEqual((report["status"], sleeps, transport.requests), (None, [], []))
+
     def test_an_unreadable_policy_sends_nothing(self):
         (Path(self.folder) / "sources.json").write_text("{broken")
         with self.network({("a.example", "/feed.xml"): text("x")}) as transport:
@@ -357,6 +376,19 @@ class ConsumerTests(PolicyCase):
         sources = {"feeds": [{"id": "aws", "url": "https://a.example/feed.xml", "publisher": "A", "evidence": "O"}],
                    "filters": {"max_entries_per_feed": 10}, **extra}
         return Config(sources=sources, taxonomy={"anchors": ["robot"]}, glossary={}, baseline={})
+
+    def test_a_feed_with_a_url_that_cannot_be_read_fails_alone_and_the_next_feed_is_still_read(self):
+        # 01 (PR216 follow-up, F2-new): through the real fetch_feeds; the configuration loader does not check URLs
+        for bad in ("not-a-url", "https://[invalid"):
+            with self.subTest(bad):
+                config = self.config(feeds=[{"id": "broken", "url": bad, "publisher": "B", "evidence": "O"},
+                                            {"id": "aws", "url": "https://a.example/feed.xml", "publisher": "A", "evidence": "O"}])
+                routes = {("a.example", "/feed.xml"): reply(200, "OK", {"Content-Type": "application/rss+xml"}, RSS)}
+                with self.network(routes) as transport:
+                    items, failed = fetch.fetch_feeds(config)
+                self.assertEqual(failed, ["broken"])
+                self.assertEqual([item.source_id for item in items], ["aws"])
+                self.assertEqual(transport.hosts(), ["a.example"])
 
     def test_feed_whose_answer_redirects_to_a_blocked_host(self):
         routes = {("a.example", "/feed.xml"): redirect("https://www.pi.website/feed.xml"),

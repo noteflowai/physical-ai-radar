@@ -152,7 +152,7 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
     policy is asked again before every attempt, a retry after the wait included, so a host switched off while the first
     attempt or the wait was under way is not asked a second time.
     """
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    request: urllib.request.Request | None = None
     last: Exception | None = None
     for attempt in range(1, max(1, retries) + 1):
         why = host_policy.refusal(url)
@@ -161,6 +161,17 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
             if report is not None:
                 report["status"] = None
             return None
+        if request is None:
+            # after the policy has answered: a URL the policy refuses (one that cannot be read as an address is one) is
+            # answered "no answer" above and never gets here. One that gets here and still cannot be made into a request is
+            # the same answer, and is not retried: it will not become readable.
+            try:
+                request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            except ValueError as exc:
+                print(f"[fetch] skip {url}: {exc}")
+                if report is not None:
+                    report["status"] = None
+                return None
         delay = RETRY_DELAY
         try:
             with _urlopen(request, timeout=TIMEOUT) as response:
