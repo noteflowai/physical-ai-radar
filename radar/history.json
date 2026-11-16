@@ -231,16 +231,6 @@
       "date": "2026-10-17",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.21792",
-        "https://arxiv.org/abs/2610.21985",
-        "https://arxiv.org/abs/2610.20904",
-        "https://arxiv.org/abs/2610.22146",
-        "https://spectrum.ieee.org/video-friday-reconfigurable-robots",
-        "https://www.tri.global/research/vision-conditioned-variational-bayesian-last-layer-dynamics-models",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news080.html",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/16/news056.html"
-      ],
       "failed": [],
       "fallback": []
     },
@@ -1242,6 +1232,74 @@
           "safety": 1,
           "systems": 1,
           "hardware": 1
+        }
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "count": 7,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2611.18562",
+        "https://arxiv.org/abs/2611.18359",
+        "https://arxiv.org/abs/2611.18372",
+        "https://www.leiphone.com/category/ai/zv4no5t5xdhjcupr.html",
+        "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup",
+        "https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity",
+        "https://arxiv.org/abs/2611.18003"
+      ],
+      "failed": [],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [
+        "monoist"
+      ],
+      "robots_reasons": {
+        "monoist": "unreachable"
+      },
+      "robots_newly_denied": {
+        "monoist": "unreachable"
+      },
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "nvidia-blog:0ea5fbe79c2f",
+          "hot": null,
+          "event": "leiphone:bb77ffe22676",
+          "event#2": "the-robot-report:c9da46c837ee"
+        },
+        "unmet": [
+          "hot"
+        ]
+      },
+      "pool": {
+        "live": 169,
+        "eligible": 24,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 5,
+          "data": 0,
+          "training": 0,
+          "simeval": 11,
+          "edge": 1,
+          "safety": 2,
+          "systems": 0,
+          "hardware": 5
+        },
+        "picked_by_lane": {
+          "foundation": 2,
+          "data": 0,
+          "training": 0,
+          "simeval": 2,
+          "edge": 1,
+          "safety": 0,
+          "systems": 0,
+          "hardware": 2
         }
       }
     }

@@ -60,33 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-16
+### 本日のレーダー · 2026-11-17
 
-`生成時刻: 2026-11-15 23:49 UTC` ｜ `対象期間: 論文 2026-11-12 → 2026-11-16 · ブログ・報道 2026-10-17 → 2026-11-16 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-16 23:40 UTC` ｜ `対象期間: 論文 2026-11-13 → 2026-11-17 · ブログ・報道 2026-10-18 → 2026-11-17 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>シミュレーションと評価 · arXiv 2611.16589 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>ハードウェアとサプライチェーン · arXiv 2611.16422 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>データエンジン · arXiv 2611.16419 · 2026‑11‑12</sub> |
-| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>システムとオーケストレーション · arXiv 2611.16386 · 2026‑11‑12</sub> |
-| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>安全・権限・コンプライアンス · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
-| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>シミュレーションと評価 · NVIDIA Blog · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>シミュレーションと評価 · arXiv 2611.18562 · 2026‑11‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>シミュレーションと評価 · arXiv 2611.18359 · 2026‑11‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>基盤モデル · arXiv 2611.18372 · 2026‑11‑13</sub> |
+| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑16</sub> |
+| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>エッジとリアルタイム · NVIDIA Blog · 2026‑11‑16</sub> |
+| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑16</sub> |
+| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>ハードウェアとサプライチェーン · arXiv 2611.18003 · 2026‑11‑13</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–06</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **STVLA** — `AI 下書き` 現在の観測だけに頼る VLA 方策を使っているなら、空間構造とタスク履歴を明示的に組み込む案として読む価値がある。閉ループと実機の実験ありとされるが数値はページになく、自己報告の段階だ。
-2. **BlinkMimic** — `AI 下書き` ヒューマノイドのモーションライブラリ追従学習に何時間も GPU を使っているチーム向け。実機実験とコード・重み公開の表示はあるがページに数値はなく、自前のモーションで試してから学習パイプラインの置き換えを判断したい。
-3. **I See What You Want** — `AI 下書き` 遠隔操作でデータを集めている現場には、操作者の意図推定で人の操作時間を GPT-4o 比 34.6%、GPT-5.6 比 39.8% 削減したという報告が参考になる。著者の自己報告で、閉ループ結果はページにない。
-4. **Remember What Changes the Odds** — `AI 下書き` 同じ観測でも進捗次第で行動を変える必要がある長期操作では、critic で選んだイベント記憶で成功率 88.0%、比較手法 2 つは 0.0%、記録に関するアブレーションで 1.7% と著者は報告する。実機結果はページになく、設計の参考にとどめたい。
-5. **Why Skydio Built a Lopsided Drone** — `AI 下書き` 二次報道で、ページの抜粋は Skydio への賛辞にとどまり、設計・安全・認証の具体的な情報はない。本文と一次情報を確認するまで、認証や導入の計画を変える材料にはならない。
-6. **Into the Omniverse** — `AI 下書き` シミュレーション環境の構築に手間取っているなら、NVIDIA 自身がアセットの組み立て、物理とレンダリングの接続、シーン挙動の確認という工程を AI エージェントで進める方法を紹介している。数値はなく、効果は自分で試して見極めたい。
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Envisioning Agentic Robotics** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Vision-Language-Action Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+6. **Agile Robots raises $500M to increase production capacity** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-16.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-17.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

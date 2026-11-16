@@ -60,33 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-16
+### Today's radar · 2026-11-17
 
-`Generated: 2026-11-15 23:49 UTC` ｜ `Window: papers 2026-11-12 → 2026-11-16 · posts 2026-10-17 → 2026-11-16 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-16 23:40 UTC` ｜ `Window: papers 2026-11-13 → 2026-11-17 · posts 2026-10-18 → 2026-11-17 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>Simulation & evaluation · arXiv 2611.16589 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>Embodiment & supply chain · arXiv 2611.16422 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>Data engine · arXiv 2611.16419 · 2026‑11‑12</sub> |
-| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>Systems & orchestration · arXiv 2611.16386 · 2026‑11‑12</sub> |
-| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>Safety, permissions & compliance · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
-| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>Simulation & evaluation · NVIDIA Blog · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>Simulation & evaluation · arXiv 2611.18562 · 2026‑11‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>Simulation & evaluation · arXiv 2611.18359 · 2026‑11‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>Foundation models · arXiv 2611.18372 · 2026‑11‑13</sub> |
+| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑16</sub> |
+| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>Edge & real-time · NVIDIA Blog · 2026‑11‑16</sub> |
+| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑16</sub> |
+| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>Embodiment & supply chain · arXiv 2611.18003 · 2026‑11‑13</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–06</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **STVLA** — `AI draft` If your VLA policy conditions mostly on the current observation, this preprint adds explicit spatial structure and task history and flags closed-loop and real-robot experiments, but the page gives no figures, so wait for numbers before changing your architecture.
-2. **BlinkMimic** — `AI draft` Training a humanoid tracker for a motion library usually costs hours of GPU time; this preprint flags real-robot experiments and open code or weights but shows no figures, so benchmark it on your own motion set before replacing your training pipeline.
-3. **I See What You Want** — `AI draft` For teams collecting data by teleoperation, the authors report decoding operator intent cut human teleoperation time by 34.6% against GPT-4o and 39.8% against GPT-5.6; self-reported, with no closed-loop result on the page.
-4. **Remember What Changes the Odds** — `AI draft` Where identical observations demand different actions over a long task, the authors report 88.0% success for critic-gated event memory against 0.0% for two compared methods, and 1.7% under an ablation of its records; no real-robot result appears on the page.
-5. **Why Skydio Built a Lopsided Drone** — `AI draft` This is secondary coverage whose visible excerpt only praises Skydio and carries no design, safety or certification detail, so it should not change a certification or deployment plan until you read the article and its primary sources.
-6. **Into the Omniverse** — `AI draft` If scene building is your simulation bottleneck, NVIDIA's own post describes using AI agents to go from idea to simulation, a job it frames as assembling assets, wiring physics and rendering and checking scene behaviour; it gives no figures, so trial it first.
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **Envisioning Agentic Robotics** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **Vision-Language-Action Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+6. **Agile Robots raises $500M to increase production capacity** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-16.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-17.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

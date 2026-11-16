@@ -62,33 +62,35 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-16
+### 今日雷达 · 2026-11-17
 
-`生成时间: 2026-11-15 23:49 UTC` ｜ `统计窗口: 论文 2026-11-12 → 2026-11-16 · 博客与报道 2026-10-17 → 2026-11-16 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-16 23:40 UTC` ｜ `统计窗口: 论文 2026-11-13 → 2026-11-17 · 博客与报道 2026-10-18 → 2026-11-17 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models](https://arxiv.org/abs/2611.16589)**<br><sub>仿真与评测 · arXiv 2611.16589 · 2026‑11‑12</sub> |
-| 02<br>🔵&nbsp;`R` | **[BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU](https://arxiv.org/abs/2611.16422)**<br><sub>本体与供应链 · arXiv 2611.16422 · 2026‑11‑12</sub> |
-| 03<br>🔵&nbsp;`R` | **[I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History](https://arxiv.org/abs/2611.16419)**<br>`6,600 episodes`&nbsp; `35.4%`&nbsp; `34.6%`<br><sub>数据引擎 · arXiv 2611.16419 · 2026‑11‑12</sub> |
-| 04<br>🔵&nbsp;`R` | **[Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation](https://arxiv.org/abs/2611.16386)**<br>`88.0%`&nbsp; `0.0%`&nbsp; `1.7%`<br><sub>系统与编排 · arXiv 2611.16386 · 2026‑11‑12</sub> |
-| 05<br>🟡&nbsp;`M` | **[Why Skydio Built a Lopsided Drone](https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone)**<br><sub>安全、权限与合规 · IEEE Spectrum Robotics · 2026‑11‑15</sub> |
-| 06<br>🟢&nbsp;`O` | **[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)**<br><sub>仿真与评测 · NVIDIA Blog · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>仿真与评测 · arXiv 2611.18562 · 2026‑11‑13</sub> |
+| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>仿真与评测 · arXiv 2611.18359 · 2026‑11‑13</sub> |
+| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>基座模型 · arXiv 2611.18372 · 2026‑11‑13</sub> |
+| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑16</sub> |
+| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>边缘与实时性 · NVIDIA Blog · 2026‑11‑16</sub> |
+| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑16</sub> |
+| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>本体与供应链 · arXiv 2611.18003 · 2026‑11‑13</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–06</summary>
+<details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **STVLA** — `AI 起草` 如果你的 VLA 策略主要只看当前观测，这篇预印本把空间结构和任务历史显式纳入策略，页面标注了闭环与真机实验，但没有给出数字，改架构前先等作者的量化结果。
-2. **BlinkMimic** — `AI 起草` 人形机器人的动作库跟踪训练通常要花数小时 GPU 时间，这篇预印本标注了真机实验和开放代码或权重，页面没有数字，值得拿自己的动作库跑一遍再决定是否替换现有训练流程。
-3. **I See What You Want** — `AI 起草` 靠遥操作采数据的团队可以关注：作者自报，比 GPT-4o 少用 34.6%、比 GPT-5.6 少用 39.8% 的人工遥操作时间；这仍是预印本，页面未见闭环结果。
-4. **Remember What Changes the Odds** — `AI 起草` 长程操作中同一观测可能需要不同动作，作者自报这种由 critic 筛选的事件记忆达到 88.0% 成功率，两个对比方法均为 0.0%，对记忆记录做消融后降到 1.7%；页面未见真机结果，暂作设计参考。
-5. **Why Skydio Built a Lopsided Drone** — `AI 起草` 这是二手报道，页面摘录只是对 Skydio 的赞誉，没有设计、安全或认证方面的细节，在读原文并核对一手来源之前，不足以改变任何认证或部署计划。
-6. **Into the Omniverse** — `AI 起草` 如果搭仿真场景是你的瓶颈，NVIDIA 这篇官方博客介绍用 AI agent 把想法变成仿真，它把这件事描述为组装资产、连接物理与渲染、检查场景行为；文中没有数字，效果要自己试用后再判断。
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Envisioning Agentic Robotics** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Vision-Language-Action Models** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+6. **Agile Robots raises $500M to increase production capacity** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-16.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-17.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

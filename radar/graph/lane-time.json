@@ -1,0 +1,4292 @@
+{
+  "schema": "radar-graph-1",
+  "as_of": "2026-11-17",
+  "first_run": "2026-09-19",
+  "pool_since": "2026-11-16",
+  "per_lane_cap": 2,
+  "mismatch_days": [
+    "2026-09-19"
+  ],
+  "rules_dates": "the date of the commit that changed the rule, not the first run that used it",
+  "rules": [
+    {
+      "from": "2026-09-19",
+      "commit": "6c71ba8",
+      "title": "Physical AI Radar: trilingual daily frontier radar",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": false,
+      "min_score": 0.9,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-09-21",
+      "commit": "c4008fa",
+      "title": "Read the arXiv category feeds when the API answers 406 to everything",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": false,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-09-25",
+      "commit": "9b03817",
+      "title": "Keep off-topic posts and all-preprint days off the radar",
+      "note": "the qualifying gate; per_source and per_evidence caps",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-09-26",
+      "commit": "d889c6c",
+      "title": "sources: add TRI, Leiphone (zh) and MONOist (ja), and read Chinese and Japanese",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-09-26",
+      "commit": "c26f033",
+      "title": "Fewer items in the wrong lane: phrase the ambiguous keywords, break VLA ties",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-10-22",
+      "commit": "41a8632",
+      "title": "fetch: page_watch for feedless official sources via local Firecrawl (#154)",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": false,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-10-25",
+      "commit": "eff6bf8",
+      "title": "sources: mainstream and professional feeds, attention (heat) for ranking, highlights quota",
+      "note": "arXiv at most half of the day; slots reserved for an official and a trending item",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-10-26",
+      "commit": "e797a08",
+      "title": "select: a capped item keeps one lane slot (AW-0 missed on 10-22) (#166)",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": false,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-06",
+      "commit": "f7de482",
+      "title": "page_watch: static_mode live for physical-intelligence and unitree, and the tests that assumed observe",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-14",
+      "commit": "0460e7b",
+      "title": "page_watch: read figure and 1x with the static fetcher (observed: HTTP 200, robots allowed, 21 and 15 links), keep the other three on Firecrawl",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-16",
+      "commit": "e69d0d2",
+      "title": "Stop reading the three GitHub release atom feeds (github.com robots.txt disallows .atom paths); a feed can be switched off with enabled (#209)",
+      "note": "the LeRobot, Isaac Lab and MuJoCo release feeds; the commit is on main through the merge of #209 (4023965)",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-16",
+      "commit": "8cfa973",
+      "title": "page_watch: stop reading physical-intelligence (reads failed on every run from 11-12 to 11-16: robots.txt answered 429 in the runs of 11-12 to 11-15, and the 11-16 run sent no request); an entry can be switched off with enabled",
+      "note": "the page is listed as not covered; figure, 1x and unitree are unchanged. Reading it failed on every run from 11-12 to 11-16 (the 11-11 run read it). The radar stops asking its host for anything with this change",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-16",
+      "commit": "119aba6",
+      "title": "Reserve highlight slots for industry events: two of the day's slots go to the best posts that report funding, M&A, a listing, a production milestone or policy, and such posts need a score of 0.6 instead of 0.9 (event_min_score) (#214)",
+      "note": "per_lane 2 and per_day 8 are unchanged; a paper never earns the event bonus or the slot; the commit is on main through the merge of #214 (33a7110)",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    }
+  ],
+  "source_evidence": {
+    "arxiv": "R",
+    "deepmind": "O",
+    "leiphone": "M",
+    "tri": "R"
+  },
+  "source_evidence_note": "each source's evidence class in the configuration at the time of the export, not on the day it failed",
+  "days": [
+    {
+      "date": "2026-09-19",
+      "ran": true,
+      "count": 8,
+      "picks_known": false,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "data": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "training": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "simeval": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "edge": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "safety": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "systems": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        },
+        "hardware": {
+          "O": null,
+          "R": null,
+          "M": null,
+          "picked": null,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "arxiv"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "arxiv"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 2,
+          "R": 0,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 2,
+          "R": 0,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "arxiv"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 2,
+          "R": 0,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "ran": true,
+      "count": 6,
+      "picks_known": true,
+      "failed_sources": [
+        "arxiv"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "ran": true,
+      "count": 2,
+      "picks_known": true,
+      "failed_sources": [
+        "arxiv",
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [
+        "arxiv"
+      ],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [
+        "arxiv"
+      ],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "ran": true,
+      "count": 4,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [
+        "arxiv"
+      ],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-04",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-05",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-07",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "tri"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-08",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "tri"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-09",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "tri"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "tri"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-12",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "ran": true,
+      "count": 2,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-17",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-18",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "leiphone"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-24",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-25",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "ran": true,
+      "count": 7,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 2,
+          "R": 0,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "ran": true,
+      "count": 5,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 2,
+          "R": 0,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "ran": true,
+      "count": 7,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "ran": true,
+      "count": 6,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "ran": true,
+      "count": 5,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind",
+        "leiphone"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind",
+        "leiphone"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 0,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "ran": true,
+      "count": 7,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-15",
+      "ran": true,
+      "count": 6,
+      "picks_known": true,
+      "failed_sources": [
+        "deepmind"
+      ],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": null
+        },
+        "data": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": null
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": null
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": null
+        }
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "ran": true,
+      "count": 6,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [
+        "page_watch"
+      ],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 2
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 4
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 1
+        },
+        "simeval": {
+          "O": 1,
+          "R": 1,
+          "M": 0,
+          "picked": 2,
+          "pool": 5
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 3
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": 2
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 2
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 1
+        }
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "ran": true,
+      "count": 7,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": 5
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 0
+        },
+        "training": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 0
+        },
+        "simeval": {
+          "O": 0,
+          "R": 2,
+          "M": 0,
+          "picked": 2,
+          "pool": 11
+        },
+        "edge": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": 1
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 2
+        },
+        "systems": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 0
+        },
+        "hardware": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": 5
+        }
+      }
+    }
+  ],
+  "items_sha256": "87c425ca6cdeae48cd417516a6012db2040c2b1380e39bfdd0e2d2f2fb115e6a",
+  "items_count": 438
+}

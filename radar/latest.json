@@ -1,130 +1,145 @@
 {
-  "date": "2026-11-16",
-  "generated": "2026-11-15 23:49 UTC",
-  "window": "papers 2026-11-12 → 2026-11-16 · posts 2026-10-17 → 2026-11-16 (UTC)",
+  "date": "2026-11-17",
+  "generated": "2026-11-16 23:40 UTC",
+  "window": "papers 2026-11-13 → 2026-11-17 · posts 2026-10-18 → 2026-11-17 (UTC)",
   "window_detail": {
-    "day": "2026-11-16",
-    "papers_from": "2026-11-12",
-    "posts_from": "2026-10-17",
+    "day": "2026-11-17",
+    "papers_from": "2026-11-13",
+    "posts_from": "2026-10-18",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.16589",
-      "title": "STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2611.16589",
-      "publisher": "arXiv 2611.16589",
+      "id": "arxiv:2611.18562",
+      "title": "Training Reasoning Models in Simulation to Natively Use Real Robots",
+      "url": "https://arxiv.org/abs/2611.18562",
+      "publisher": "arXiv 2611.18562",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-12",
+      "published": "2026-11-13",
       "lane": "simeval",
-      "score": 2.655,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
+      "score": 3.205,
+      "numbers": [
+        "60%",
+        "1.6%",
+        "74.4%",
+        "0.75%"
       ],
-      "heat": 0.0,
-      "summary": "Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task history. Appearance-based memories can be sensitive to occlusion and viewpoint changes, while spatial representations of the current scene alone do not preserve how the scene has changed during task execution. We introduce STVLA, a framework that incorporates features from a pretrained visual geometry foundation model into temporal memory alongside visual representations. This allows the policy to recall past scene structure as context for current action decisions. To select informative history, STVLA uses a mathematically grounded scoring rule that balances relevance to the current observation with complementary evidence from memory. Across evaluations on LIBERO, LIBERO-Mem, MIKASA-Robo, and SimplerEnv Bridge, STVLA achieves the highest average success rate among the compared methods on each benchmark. On real-world block stacking, object organization, and phone packaging, it improves success over $π_{0.5}$ by $58.33$, $30.00$, and $35.00$ percentage points, respectively. These results support integrating scene geometry into temporal memory to improve manipulation requiring both spatial precision and task history. Project website: \\href{https://stvla.github.io/}{https://stvla.github.io/}"
-    },
-    {
-      "id": "arxiv:2611.16422",
-      "title": "BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU",
-      "url": "https://arxiv.org/abs/2611.16422",
-      "publisher": "arXiv 2611.16422",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-12",
-      "lane": "hardware",
-      "score": 2.247,
-      "numbers": [],
       "signals": [
+        "numbers",
+        "closed_loop",
         "real_robot",
         "open_release"
       ],
       "heat": 0.0,
-      "summary": "Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time. SuperMimic showed that the policy can instead be trained by backpropagating through a world model learned from parallel simulation, and InstantTrack added Muon updates, a residual policy around the reference and an averaged deployed policy. We build on both and present BlinkMimic, a recipe that makes this training faster. On a simulated Unitree G1, BlinkMimic trains one policy for all 40 LAFAN1 clips in 3.4 minutes on a single RTX 4090, measured until three consecutive checkpoints reach a normalized return of at least 0.82 with no failed clip (mean of three seeds). We split training time into the cost of an iteration, the iterations needed to fit the motions, and the iterations needed to remove the last failures, and assign each component, inherited or new, to one of these terms. The new components are a step size that decreases once training has progressed, resets directed by failures of the deployed policy under deployment conditions, and GPU graph capture of the whole iteration. A leave-one-out ablation with three seeds per component shows which term each component affects, and further measurements of the gradient, the update rule and the failure cases explain these effects. Code and per-seed results are available at https://github.com/fuyichen0725/blinkmimic."
+      "summary": "Robot-use agents (RUAs) have emerged as a promising approach to general-purpose robot control. However, strong performance has so far been achieved only by frontier proprietary models such as GPT-6 Astra and Claude Fable 5.2, whereas open-weight models remain substantially less capable. We show that an open-weight 27B reasoning model can be trained to use real robots natively through reinforcement learning, entirely in simulation and without demonstrations. Like a computer-use agent (CUA), the model observes the environment, reasons in a chain of thought, and generates the next end-effector pose, without any harness. We build a Post-training Engine for Agentic Robotics (PEAR) and use it to train the model on simulated robot tasks at scale with robot-use reinforcement learning (RURL), mirroring how frontier models acquire computer use. We find that the skills acquired in simulation generalize well beyond the training tasks: they transfer to an unseen robot, to the real world, and to novel instructions. After training on LIBERO and RoboDojo in simulation, the model succeeds in 60% of our trials on a real dual-arm robot, whereas the base model succeeds in none. On LIBERO, training raises the success rate from 1.6% to 74.4%, approaching GPT-6 Astra and GPT-6.1 Sol at maximum reasoning effort. Compared with $π_{0.5}$, a vision-language-action model fine-tuned on demonstrations, our model is substantially more robust to changes in the task itself. On LIBERO-Pro, $π_{0.5}$ succeeds in only 0.75% of episodes when assigned a new task in a familiar scene whereas our model succeeds in 57.4%. Finally, the model retains its general capabilities, with no measurable degradation on nine reasoning, coding and vision benchmarks. These results highlight robot-use reinforcement learning as a promising component of foundation-model post-training."
     },
     {
-      "id": "arxiv:2611.16419",
-      "title": "I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History",
-      "url": "https://arxiv.org/abs/2611.16419",
-      "publisher": "arXiv 2611.16419",
+      "id": "arxiv:2611.18359",
+      "title": "Envisioning Agentic Robotics: A New Era of Robotic Systems",
+      "url": "https://arxiv.org/abs/2611.18359",
+      "publisher": "arXiv 2611.18359",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-12",
-      "lane": "data",
-      "score": 2.235,
+      "published": "2026-11-13",
+      "lane": "simeval",
+      "score": 2.84,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "heat": 0.25,
+      "summary": "The release of GPT-6 Astra marks the emergence of a new paradigm in robotics: agentic robotics. Within weeks, frontier models with agentic harnesses matched or exceeded task-specific policies on many embodied benchmarks. Instead of training a dedicated policy for each family of tasks, an agentic robotic system applies a foundation model to open-world embodied tasks. It operates in a closed loop: observing the environment, interpreting user intent, reasoning about the task, invoking skills and tools, verifying outcomes, and adapting its strategy. Despite these advances, the community has yet to converge on a shared definition, a reliable evaluation framework, or a research roadmap. We argue that Embodied System 2, realized by a foundation model together with an embodied harness, forms the decision-making core of agentic robotics. Its central challenge is to translate general-purpose reasoning into effective and verifiable actions under physical constraints such as limited reaction time, mechanical limits, unpredictable environment changes, and irreversible consequences. Motivated by this perspective, we propose an evaluation framework that measures both model capabilities and closed-loop system performance. Furthermore, we identify the principles that carry over from digital to physical agents and the challenges that must be addressed to achieve reliable physical autonomy. On top of the Embodied System 2 and the evaluation framework, we envision a research roadmap toward sustained autonomy: the ability to perform work safely and reliably with progressively broader responsibility, from executing individual primitives to fulfilling standing roles."
+    },
+    {
+      "id": "arxiv:2611.18372",
+      "title": "Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment",
+      "url": "https://arxiv.org/abs/2611.18372",
+      "publisher": "arXiv 2611.18372",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-13",
+      "lane": "foundation",
+      "score": 2.5,
       "numbers": [
-        "6,600 episodes",
-        "35.4%",
-        "34.6%",
-        "39.8%"
+        "10,000 hours",
+        "20,000 hours"
       ],
       "signals": [
         "numbers",
-        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control. A natural question follows: can these models also decode what a human operator intends while teleoperating a robot, without any explicit instruction? We formulate this as hierarchical intent prediction, jointly inferring the ongoing atomic action and the broader mission it serves from a short visual teleoperation history. To study this, we introduce VI AMO (Vision Intention Action and Mission Ongoing), a dataset of 6,600 episodes from eleven robot sources with 13,653 temporally aligned action annotations and 9,702 mission annotations. Large proprietary models struggle with this problem: on held-out episodes, GPT-4o reaches Sentence-BERT similarities of only 0.563 and 0.470 for action and mission, and GPT-5.6 Luna achieves only 0.581 and 0.554. Fine-tuning a VLM on VI AMO yields our Vision-Intention Model (VIM), which raises these scores to 0.825 and 0.821 and still reaches 0.726 and 0.717 on the 35.4% of test actions with both labels absent from training. Finally, as a downstream application, VIM's predicted mission enables a vision-language-action (VLA) policy to take over from the operator mid-task in a real-world environment unseen during VIM fine-tuning, reducing human teleoperation time by 34.6% relative to GPT-4o and 39.8% relative to GPT-5.6 Luna, while cutting intent-prediction latency by roughly 70% on average."
+      "summary": "Vision-language-action (VLA) models adapt web-pretrained vision-language models to output robot actions, so that web knowledge carries over to physical control. In under 4 years the field has moved from RT-2, the first VLA, to open models that fine-tune on a single consumer GPU and to proprietary generalists that clean unseen homes. This survey reviews 88 works from December 2022 to October 2026, mainly on manipulation and navigation, plus humanoid control, world-action models and evaluation. We follow a VLA through its life cycle, from model design to training and deployment, along seven axes. Model design covers (a) inputs and memory, what the model observes; (b) architecture, how its pipeline is built; (c) action output, how it produces motor commands; and (d) intermediate predictions, what else it predicts, from reasoning steps to future observations. Training covers (e) pretraining data, the mix of robot, web, human and simulated data, and (f) post-training, adaptation to the target robot. Deployment covers (g) real-time execution, keeping pace with the robot. We analyse 22 models on these axes and report their training data, model size, inference speed and hardware. Three trends emerge: (i) training data has broadened, from about 10,000 hours of teleoperated robot data ($π_0$) to 23,000 community-collected episodes (SmolVLA) and 20,000 hours of egocentric human video (GR00T N1.7); (ii) model sizes have split: most recent models have 3-7 billion parameters, while a new group under one billion runs on consumer GPUs; and (iii) generalist VLAs are emerging that handle both manipulation and navigation, such as UniVLA and Qwen-VLA. We also compare VLAs with world-action models, which predict future observations as well as actions. We review evidence that some VLAs with near-perfect benchmark scores fail when objects or the camera move slightly, and open up further research questions."
     },
     {
-      "id": "arxiv:2611.16386",
-      "title": "Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation",
-      "url": "https://arxiv.org/abs/2611.16386",
-      "publisher": "arXiv 2611.16386",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-12",
-      "lane": "systems",
-      "score": 2.1,
-      "numbers": [
-        "88.0%",
-        "0.0%",
-        "1.7%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "heat": 0.0,
-      "summary": "In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts. We refer to this ambiguity as decision aliasing. Resolving it requires the policy to maintain memory of its execution history. To reduce the cost of processing full observation histories, recent methods build compact event memories using perceptual, semantic, or kinematic cues. However, these criteria may miss events that matter for task success. We instead propose an outcome-grounded principle: remember events that substantially change the predicted probability of eventual success. Following this principle, we introduce CGEM, a critic-gated event memory that uses a critic to select events with large estimated changes in success probability. Positive and negative changes are encoded as progress and failure records, respectively. Failure records are discarded once the corresponding subtask is completed. In a ten-subtask diagnostic environment with exactly computed success probabilities, CGEM achieves 88.0% success, compared with 0.0% for both a 36-step observation window and a kinematic event memory. Removing failure records reduces success to 1.7%."
-    },
-    {
-      "id": "ieee-spectrum-robotics:2bfebb9afa93",
-      "title": "Why Skydio Built a Lopsided Drone",
-      "url": "https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone",
-      "publisher": "IEEE Spectrum Robotics",
-      "source_id": "ieee-spectrum-robotics",
+      "id": "leiphone:bb77ffe22676",
+      "title": "李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？",
+      "url": "https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-15",
-      "lane": "safety",
-      "score": 1.185,
+      "published": "2026-11-16",
+      "lane": "foundation",
+      "score": 1.95,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "industry_event"
+      ],
       "heat": 0.0,
-      "summary": "Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff. Sadly, Skydio no longer makes cool stuff for consumers , instead focusing on drone platforms for public safety, inspection, and other things that, on a good day, don’t affect me personally. Even so, a new drone from Skydio is worth paying attention to, especially when it’s as weird as this one—the F10 Lightrunner is a fixed-wing camera drone designed for autonomous deployment and high-speed flight, all while looking so lopsided that it’s surprising that it can actually fly. The benefits of asymmetrical aircraft There’s a short rabbit hole you can go down if you start looking for other examples of asymmetrical aircraft. In the 1990s, legendary aircraft designer Burt Rutan and his company Scaled Composites built some decidedly odd airplanes, including the Model 202 Boomerang . But perhaps the most famous asymmetrical aircraft was the Blohm & Voss BV 141 , a World War 2-era reconnaissance plane that featured an engine in the middle alongside a crew compartment alarmingly offset out onto the right wing. The unique design was intended to give the crew the best possible view for reconnaissance missions, because in a typical single-engine aircraft, the crew sits right behind the engine, limiting forward visibility. Nearly 90 years later, the Skydio F10 is applying a similar philosophy to fixed-wing reconnaissance drones, which typically track targets by flying around them in circles. “While turning at low altitudes, it becomes very hard to avoid occluding a camera with a wing or a tail,” explains Andrew Goessling , director of engineering at Skydio. “So we were analyzing a lot of these use cases, and one of our engineers just blurted out, ‘what if we put the camera on the wingtip?’ And that’s where it all started, because as long as you only turn left, a lot of these …"
+      "summary": "时隔两年，World Labs 的工作已经完全不同了。2026年11月，CoRL（机器人学习顶会）在奥斯汀开幕。 这一届的演讲嘉宾，有一个无法回避的名字，李飞飞。斯坦福教授、ImageNet发起者、World Labs创始人。就在本届CoRL之前，World Labs被AMD收购的消息正在圈内发酵，她即将出任AMD首席科学家。这届CoRL现场，她不仅全面介绍了World Labs最近的工作和她的行业观点，还邀请AMD苏妈参与了对话圆桌，某种意义上，这是她的\"AMD首秀\"。 为她做开场介绍的，是她的学生、本届CoRL组织者之一Yuke（朱玉可）。他讲了一个细节：毕业典礼上，李飞飞对他说，“你在我的实验室时是我的学生，但从今往后，你是我的朋友。” 这场演讲的正式主角，是World Labs与斯坦福团队研发的新模型Atlas：一个统一的生成与重建世界模型。 以下是AI科技评论带来的现场实录。 ▎ 《Atlas：A Unified World Model for Generation and Reconstruction》 ▎ 分享者：李飞飞 非常荣幸受邀来到CoRL，尤其是有好几位我的前学生都是组织者。你们干得真棒，我知道，因为我很多论文和工作坊提案都被你们拒了。（全场笑）向CoRL致敬。 今天我想分享我们实验室最近开发的一个模型，叫Atlas：一个统一的生成与重建世界模型。 既然在CoRL，就先从机器人学的动机讲起。 …"
     },
     {
-      "id": "nvidia-blog:baf7193e75c1",
-      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
-      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+      "id": "nvidia-blog:0ea5fbe79c2f",
+      "title": "AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities",
+      "url": "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/",
       "publisher": "NVIDIA Blog",
       "source_id": "nvidia-blog",
       "evidence": "O",
-      "published": "2026-11-05",
-      "lane": "simeval",
-      "score": 1.035,
+      "published": "2026-11-16",
+      "lane": "edge",
+      "score": 1.853,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended. Developers are combining frontier AI models with NVIDIA Omniverse libraries to help carry out that work — building applications for exploring scenarios, investigating failures and improving designs. Developers direct AI agents through […]"
+      "summary": "Over two days at COEX, more than 2,000 attendees converged for AI Day Seoul, bringing together Korea’s industry leaders, startups and developer communities advancing physical AI and AI agents. At the plenary sessions, Deepu Talla, vice president of robotics and edge AI at NVIDIA, said Korea is “punching above its weight,” with Doosan Robotics, Hyundai […]"
+    },
+    {
+      "id": "the-robot-report:c9da46c837ee",
+      "title": "Agile Robots raises $500M to increase production capacity",
+      "url": "https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-16",
+      "lane": "hardware",
+      "score": 1.682,
+      "numbers": [],
+      "signals": [
+        "industry_event"
+      ],
+      "heat": 0.0,
+      "summary": "Agile Robots builds and deploys a range of robots, including humanoids, mobile robots, robotic arms, and robotics hands."
+    },
+    {
+      "id": "arxiv:2611.18003",
+      "title": "Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints",
+      "url": "https://arxiv.org/abs/2611.18003",
+      "publisher": "arXiv 2611.18003",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-13",
+      "lane": "hardware",
+      "score": 1.597,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Reinforcement learning has enabled robust humanoid locomotion, yet training recipes (rewards, architectures, hyperparameters) remain hard to reuse across robots with different native joint coordinates, since policies output native joint angles while action scales, bounds, gains, and penalties are defined in those robot-specific coordinates. Existing transmission models convert native targets into actuator commands but do not standardize the coordinate interface exposed to the policy. We introduce a body-aligned virtual joint space upstream of this mapping: policy actions and observations follow a common anatomical convention, and a deterministic kinematic layer maps virtual targets to native ones, leaving the existing transmission and low-level control stack unchanged. Under a single unmodified recipe on three humanoids with different leg-axis layouts, it is the only interface that tracks accurately, keeps the feet aligned with the travel direction, and trains stably on all three, and on Unitree G1 hardware it reduces heading drift by nearly a factor of six."
     }
   ],
   "lane_counts": {
     "foundation": 8,
-    "data": 8,
+    "data": 7,
     "training": 0,
     "simeval": 14,
     "edge": 9,
@@ -133,21 +148,27 @@
     "hardware": 7
   },
   "evidence_mix": {
-    "O": 10,
+    "O": 9,
     "R": 27,
     "M": 14
   },
   "fetch": {
-    "items": 629,
-    "attempted": 24,
-    "answered": 23,
+    "items": 591,
+    "attempted": 25,
+    "answered": 25,
     "failed": [],
     "fallback": [],
-    "unavailable": [
-      "page_watch"
+    "unavailable": [],
+    "robots_skipped": [
+      "monoist"
     ],
-    "robots_skipped": [],
-    "robots_reasons": {},
+    "robots_reasons": {
+      "monoist": "unreachable"
+    },
+    "robots_newly_denied": {
+      "monoist": "unreachable"
+    },
+    "failed_reasons": {},
     "signals": {
       "attempted": [
         "github:google-deepmind/mujoco",
@@ -165,11 +186,11 @@
       "robots_skipped": [],
       "robots_reasons": {},
       "hf_papers": 50,
-      "hn_stories": 25,
+      "hn_stories": 28,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 29,
+      "arxiv": 17,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -179,20 +200,22 @@
       "the-robot-report": 15,
       "tri": 10,
       "leiphone": 20,
-      "monoist": 30,
       "openai": 21,
       "bair": 7,
       "mit-news-robotics": 50,
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 13,
-      "robohub": 75
+      "robohub": 75,
+      "qbitai": 1,
+      "github-lerobot": 1,
+      "github-isaaclab": 1,
+      "github-mujoco": 1
     },
     "page_watch": {
       "enabled": true,
       "attempted": [
         "figure",
         "1x",
-        "physical-intelligence",
         "unitree"
       ],
       "checked": [
@@ -200,11 +223,9 @@
         "1x",
         "unitree"
       ],
-      "failed": [
-        "physical-intelligence"
-      ],
+      "failed": [],
       "robots_skipped": [],
-      "unavailable": true,
+      "unavailable": false,
       "items": 0
     }
   },
