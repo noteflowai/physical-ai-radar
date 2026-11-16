@@ -277,3 +277,21 @@ First tagged release. The radar has published daily since 2026-09-19.
   labelled in each language and readable in dark themes.
 - Standard library only; `python -m pairadar --offline` reproduces a page with no
   network access.
+
+## Unreleased
+
+- The nightly development planner and its two planning reviews (the feature-plan review and the
+  no-change review) now see the same controller rules and the same account of what the reviewer can see.
+  The two rules that were written only into the planner prompt ("A stale roadmap forbids new features."
+  and "Pure documentation may be identified for maintainer follow-up; this code delivery lane requires
+  behavioral acceptance.") are single constants in `scripts/feature_prompts.py` and are carried into both
+  reviews, marked as controller-supplied, so a review no longer calls a plan that quotes them an
+  invention. `recent_commits` is now the last background field dropped from an over-budget prompt (it was
+  third, ahead of the much larger `research` and `issues`). The planner prompt now says which fields the
+  reviewer's copy may lack and in what order (the same tuple that drives the dropping), tells the planner
+  to label claims that rest on them unverified, and states that a file over 24,000 bytes reaches the reviewer
+  as a signature index only and that at most five `inspect_ranges` are read. A requested line range that
+  the excerpt limit would cut (240 lines, or the remaining byte budget) is no longer shortened silently:
+  the plan attempt fails with the cut line named and every cut range listed, and the cut excerpt is not kept
+  as inspected. The planner prompt text is otherwise unchanged. New tests in
+  `tests/test_nightly_review_evidence.py`.

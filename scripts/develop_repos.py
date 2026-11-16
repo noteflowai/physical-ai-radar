@@ -29,7 +29,9 @@ try:
     from .feature_preflight import check_project as publication_preflight
     from .feature_topics import research_context, topic_context
     from .feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
-    from .feature_prompts import acceptance_paths, bounded_prompt
+    from .feature_prompts import (acceptance_paths, bounded_prompt, controller_rules_for_reviewer,
+                                  reviewer_visibility_for_planner, CONTROLLER_RULES,
+                                  MAX_INSPECT_RANGES, SIGNATURE_ONLY_BYTES)
     from .feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from .feature_outcomes import deferral_details, outcome_exit
     from .feature_governance import bind_decision, load_roadmap, next_version, validate_decision
@@ -50,7 +52,9 @@ except ImportError:
     from feature_preflight import check_project as publication_preflight
     from feature_topics import research_context, topic_context
     from feature_decisions import capability as decision_capability, collect as collect_decisions, validate_spec
-    from feature_prompts import acceptance_paths, bounded_prompt
+    from feature_prompts import (acceptance_paths, bounded_prompt, controller_rules_for_reviewer,
+                                 reviewer_visibility_for_planner, CONTROLLER_RULES,
+                                 MAX_INSPECT_RANGES, SIGNATURE_ONLY_BYTES)
     from feature_planning import correction_context, remember_candidate, remember_failure, previous_deferral
     from feature_outcomes import deferral_details, outcome_exit
     from feature_governance import bind_decision, load_roadmap, next_version, validate_decision
@@ -129,7 +133,7 @@ def read_json(path: Path, default=None):
     return json.loads(path.read_text()) if path.exists() else default
 
 
-def text_file(root: Path, path: str, limit: int = 24000) -> str:
+def text_file(root: Path, path: str, limit: int = SIGNATURE_ONLY_BYTES) -> str:
     file = root / path
     if not file.resolve().is_relative_to(root.resolve()) or file.is_symlink():
         raise ValueError("Repository context cannot follow paths outside its snapshot")
@@ -210,6 +214,35 @@ def requested_context(root: Path, request, config: dict, max_bytes: int = 24000)
     if len(text.encode()) > max_bytes:
         text = "<single source line exceeds the excerpt budget>"
     return f"{path} [lines {start}-{end}]", text
+
+
+def range_cut_message(root: Path, request, key: str, value: str) -> str | None:
+    """Say so when an excerpt is shorter than the line range the plan asked for.
+
+    requested_context() shortens a range to 240 lines and then again to fit its byte budget.
+    The plan is reviewed on the excerpt that was actually read, so a silent cut lets the plan
+    and its reviewer disagree about what was inspected. Only an explicit start_line/end_line
+    request is checked; a search request chooses its own window.
+    """
+    if not isinstance(request, dict) or "search" in request:
+        return None
+    start, end = request.get("start_line"), request.get("end_line")
+    if not isinstance(start, int) or not isinstance(end, int):
+        return None
+    path = request.get("path", "")
+    if value == "<single source line exceeds the excerpt budget>":
+        return (f"{path} line {start} alone exceeds the excerpt size budget; "
+                "request a different range")
+    shown = re.search(r"\[lines (\d+)-(\d+)\]$", key)
+    if not shown:
+        return None
+    total = len((root / path).read_text().splitlines())
+    wanted = min(end, total)
+    if int(shown.group(2)) < wanted:
+        return (f"{path} lines {start}-{end} would be cut at line {shown.group(2)} by the "
+                f"excerpt size limit, so the reviewer would not see lines "
+                f"{int(shown.group(2)) + 1}-{wanted}; request a narrower range")
+    return None
 
 
 def inspect_source(root: Path, request, config: dict, max_bytes: int = 24000) -> tuple[str, str]:
@@ -964,7 +997,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             '("feature"|"fix"|"maintenance"|"no-change"), milestone_id, problem_evidence '
             '(observed user/source gap, not invented demand), expected_outcome and follow_up_on '
             '(an ISO date 1..30 days after the current Singapore date '
-            + calendar_day() + '). A stale roadmap forbids new features. '
+            + calendar_day() + '). ' + CONTROLLER_RULES[0] + ' '
             'For no-change return {"work_type":"no-change","milestone_id":"...",'
             '"problem_evidence":"...","expected_outcome":"...",'
             '"follow_up_on":"YYYY-MM-DD","reason":"why no code work is justified",'
@@ -1008,8 +1041,8 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
             'plan mentions its new acceptance test. Do not invent another test filename. '
             'Request at most six files per inspection. Reuse already inspected source; if feedback '
             'only concerns the plan schema or wording, return the corrected plan directly. '
-            'Pure documentation may be identified for maintainer follow-up; this code delivery lane '
-            'requires behavioral acceptance. Use no-change when no code change is justified. '
+            + CONTROLLER_RULES[1] + ' Use no-change when no code change is justified. '
+            + reviewer_visibility_for_planner() +
             'Do not choose a broad refactor or multiple independent changes.\n'
             'When context.local_decisions.available is true and measured local decision records '
             'are necessary for this feature, decision_probe may be '
@@ -1063,6 +1096,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     ctx["inspected_files"] = bounded_files(root, paths, 28000)
                     review = ask(bounded_prompt(
                         'Review this no-change assessment against the Now roadmap and actual source. '
+                        + controller_rules_for_reviewer() +
                         'Require concrete evidence, a justified reason, honest uncertainty and a '
                         'useful follow-up date. Do not demand a new feature merely to fill a quota. '
                         'Reject ignored known defects or invented user evidence. This decision has '
@@ -1103,13 +1137,21 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                         inspected[key] = value
                 ctx["inspected_files"] = inspected
                 ranges = candidate_plan.get("inspect_ranges", [])
-                if not isinstance(ranges, list) or len(ranges) > 5:
-                    raise ValueError("Read at most five focused source ranges for the plan")
+                if not isinstance(ranges, list) or len(ranges) > MAX_INSPECT_RANGES:
+                    raise ValueError(f"Read at most {MAX_INSPECT_RANGES} focused source ranges for the plan")
+                cut = []
                 for request in ranges:
                     remaining = max(1000, 45000 - sum(
                         len(s.encode()) for s in ctx["inspected_files"].values()))
                     key, value = inspect_source(root, request, config, max_bytes=min(24000, remaining))
+                    message = range_cut_message(root, request, key, value)
+                    if message:
+                        cut.append(message)
+                        continue
                     ctx["inspected_files"][key] = value
+                if cut:
+                    raise ValueError("The reviewer would not see these requested ranges in full: "
+                                     + "; ".join(cut))
                 if sum(len(s.encode()) for s in ctx["inspected_files"].values()) > 60000:
                     ctx.pop("inspected_files")
                     raise ValueError("Request fewer source ranges; inspected context exceeds its budget")
@@ -1118,6 +1160,7 @@ def develop(name: str, inputs: dict, workspace: Path, service_state: Path, day: 
                     'alignment with its Now milestone, concrete problem evidence, expected outcome '
                     'and follow-up date. Check that fixes/maintenance do not hide a new feature '
                     'under a patch version. '
+                    + controller_rules_for_reviewer() +
                     'testability and realistic scope. For UI changes, require a complete user path, '
                     'professional visual direction consistent with the product, relevant states '
                     'and feasible interaction/accessibility validation. The controller adds release_requirements to '
