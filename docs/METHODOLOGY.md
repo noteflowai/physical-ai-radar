@@ -394,7 +394,14 @@ the picks for `filters.repeat_days` (30) days, so one item can be picked again a
 that 2026-10-14 had picked), and then it is two
 entries with the same `id` and different `date`. The key of an entry is `(date, id)`; a pair that repeats it is refused,
 and a reader (a page, a test, a consumer) must not use `id` alone as a key. (The one-entry-per-id assumption stopped the
-2026-11-16 publication, in a test, and the export was reverted for the day.) From the day it was added the run appends the day's picks
+2026-11-16 publication, in a test, and the export was reverted for the day.) **A stored pick is never dropped because the run
+log forgot its day.** `radar/history.json` keeps the last 400 runs (`cli.save_history`), so after about a year the log starts
+later than the oldest entry of `items.json`: the entry stays, `lane-time.json` starts at the first run of the log (`first_run`),
+and the pair is sound (`items_count` counts every entry). That is the design, pinned by
+`tests/test_graph.py::RepeatedPickTest`; a consumer must not assume that every entry falls inside the table. The tests that
+read the committed data take the run log from `tests/fixtures/graph-history-2026-11-16.json` (the keys the export reads, of
+every run up to 2026-11-16), not from the live log, so that they mean the same thing after the log is cut; `FixtureTest`
+checks the file against the live log where the two overlap. From the day it was added the run appends the day's picks
 itself; days before that are filled once from the published English pages, reading only the
 `## Today's picks` section (never the curated baseline, the charts or the watch list), and a day whose page
 cannot be read exactly, or whose pick count differs from the run's, is listed under `backfill.gaps` with the

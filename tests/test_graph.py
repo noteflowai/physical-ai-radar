@@ -14,7 +14,7 @@ import os
 import sys
 import tempfile
 import unittest
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from unittest import mock
 
@@ -689,6 +689,19 @@ class NightlyTest(unittest.TestCase):
 COMPARED_KEYS = ("date", "title", "url", "lane", "evidence", "published", "source_id", "publisher", "signals", "numbers",
                  "excerpt")
 
+FIXED_HISTORY = "graph-history-2026-11-16.json"
+HISTORY_KEYS = ("date", "count", "failed", "fallback", "unavailable", "pool")
+
+
+def fixed_history() -> list[dict]:
+    """The run log up to 2026-11-16 as the export reads it (`tests/fixtures/graph-history-2026-11-16.json`: the keys
+    `HISTORY_KEYS` of every run, copied from `radar/history.json` that day).
+
+    `radar/history.json` keeps only the last 400 runs (`cli.save_history`), so a test that reads it live changes meaning
+    when the oldest runs fall off (from about 2027-10-24 the first day, 2026-09-19, is gone): a test whose input must
+    stay the same reads this file. `FixtureTest` checks it against the live log where the two overlap."""
+    return json.loads((ROOT / "tests" / "fixtures" / FIXED_HISTORY).read_text(encoding="utf-8"))["runs"]
+
 
 def compare_with_feed(entries: list[dict], records: list[dict], frozen_through: str) -> tuple[int, list[tuple]]:
     """(how many records were compared, what differs) between stored entries and the feed's `_radar` records.
@@ -710,6 +723,64 @@ def compare_with_feed(entries: list[dict], records: list[dict], frozen_through: 
     return compared, differs
 
 
+class FixtureTest(unittest.TestCase):
+    """`tests/fixtures/graph-history-2026-11-16.json` is the input of the tests that read the committed data, and it must
+    stay the run log of those days whatever the live log does: `cli.save_history` keeps 400 runs, so the live one forgets
+    its oldest days (PR213 round 1, F1)."""
+
+    def test_it_is_the_run_log_of_those_days_where_the_live_one_still_has_them(self) -> None:
+        fixed = fixed_history()
+        days = [run["date"] for run in fixed]
+        self.assertEqual((days[0], days[-1], len(days)), ("2026-09-19", "2026-11-16", 59))
+        self.assertEqual(days, sorted(set(days)))
+        self.assertTrue(all(set(run) <= set(HISTORY_KEYS) and isinstance(run["count"], int) for run in fixed))
+        live = {run["date"]: run for run in json.loads((ROOT / "radar" / "history.json").read_text())["runs"]}
+        for run in fixed:
+            if run["date"] in live:
+                self.assertEqual(run, {key: live[run["date"]][key] for key in HISTORY_KEYS if key in live[run["date"]]},
+                                 run["date"])
+
+    def test_every_day_of_it_has_its_published_page(self) -> None:
+        for run in fixed_history():
+            self.assertTrue((ROOT / "radar" / "daily" / f"{run['date']}.en.md").is_file(), run["date"])
+
+    def trimmed_root(self, folder: Path, total: int) -> Path:
+        """A repository root whose live run log is what `cli.save_history` writes after `total` runs: the fixed 59, then
+        runs with no picks on the days after, kept to the last 400."""
+        runs = fixed_history()
+        day = date.fromisoformat(runs[-1]["date"])
+        while len(runs) < total:
+            day += timedelta(days=1)
+            runs.append({"date": day.isoformat(), "count": 0})
+        root = folder / "repo"
+        (root / "radar").mkdir(parents=True)
+        (root / "tests").mkdir()
+        (root / "tests" / "fixtures").symlink_to(ROOT / "tests" / "fixtures")
+        (root / "radar" / "daily").symlink_to(ROOT / "radar" / "daily")
+        (root / "data").symlink_to(ROOT / "data")
+        (root / "radar" / "feed.json").write_text((ROOT / "radar" / "feed.json").read_text())
+        cli.save_history(runs, path=root / "radar" / "history.json")
+        return root
+
+    def test_the_tests_that_read_the_committed_data_do_not_change_when_the_live_log_forgets_its_oldest_days(self) -> None:
+        """Replays 400 runs (the first day still there), 401 (2026-09-19 gone) and 460 (every fixed day gone) through the real
+        `save_history`, with the repository root of the tests pointed at it: the tests must pass as they do today."""
+        for total in (400, 401, 460):
+            with self.subTest(runs=total), tempfile.TemporaryDirectory() as folder:
+                root = self.trimmed_root(Path(folder), total)
+                kept = json.loads((root / "radar" / "history.json").read_text())["runs"]
+                self.assertEqual(len(kept), 400)
+                self.assertEqual(kept[0]["date"] == "2026-09-19", total == 400)
+                suite = unittest.TestSuite([
+                    *unittest.defaultTestLoader.loadTestsFromTestCase(CommittedDataTest),
+                    RepeatedPickTest("test_the_incident_data_of_2026_11_16_exports")])
+                result = unittest.TestResult()
+                with mock.patch.object(sys.modules[__name__], "ROOT", root):
+                    suite.run(result)
+                self.assertEqual((result.testsRun, result.errors, result.failures), (result.testsRun, [], []))
+                self.assertGreaterEqual(result.testsRun, 5)
+
+
 class CommittedDataTest(unittest.TestCase):
     """The published pages and the feed in this repository, read back.
 
@@ -719,8 +790,7 @@ class CommittedDataTest(unittest.TestCase):
     FROZEN_THROUGH = "2026-11-15"
 
     def runs(self) -> list[dict]:
-        history = json.loads((ROOT / "radar" / "history.json").read_text())["runs"]
-        return [run for run in history if run["date"] <= self.FROZEN_THROUGH]
+        return [run for run in fixed_history() if run["date"] <= self.FROZEN_THROUGH]
 
     def test_every_day_after_the_first_early_format_reads_back_and_matches_the_run_log(self) -> None:
         history = self.runs()
@@ -820,6 +890,19 @@ class RepeatedPickTest(unittest.TestCase):
         first = [path.read_bytes() for path in self.run_it()[0]]
         self.assertEqual(first, [path.read_bytes() for path in self.run_it()[0]])
 
+    def test_a_run_with_a_trimmed_log_keeps_the_stored_picks_of_the_days_the_log_forgot(self) -> None:
+        first, out = self.run_it()
+        self.assertEqual(len(first), 2, out)
+        self.ctx = {**self.ctx, "history": [{"date": self.LATE, "count": 1}]}          # the log no longer has 2026-10-14
+        paths, out = self.run_it()
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"], out)
+        doc = json.loads(paths[0].read_text())
+        self.assertEqual(sorted({entry["date"] for entry in doc["items"]}), [self.EARLY, self.LATE])
+        self.assertEqual(len(doc["items"]), 4)
+        table = json.loads(paths[1].read_text())
+        self.assertEqual((table["first_run"], table["days"][0]["date"], table["mismatch_days"]), (self.LATE, self.LATE, []))
+        self.assertEqual(graph.check_pair(self.root / "radar" / "graph", CONFIG), [])
+
     def test_the_same_id_twice_on_one_day_is_still_refused(self) -> None:
         doc = graph.empty_items()
         entry = graph.item_entry(self.repeated, self.LATE)
@@ -828,6 +911,20 @@ class RepeatedPickTest(unittest.TestCase):
         doc["items"] = [entry, dict(entry)]
         with self.assertRaises(graph.GraphError):
             graph.validate_items(doc, CONFIG)
+
+    def test_entries_older_than_the_first_run_of_a_trimmed_log_stay_and_are_not_a_contract_problem(self) -> None:
+        """PR213 round 1, N2: `save_history` keeps 400 runs, so after a year the run log starts later than the oldest entry of
+        `items.json`. The entries stay (nothing removes a stored pick), `lane-time.json` starts at the first run of the log, and
+        the pair is sound. This is the design: a pick that was published is not forgotten because the log of runs was cut."""
+        old, new = graph.item_entry(self.repeated, "2026-09-20"), graph.item_entry(sample()[0], "2026-10-16")
+        doc = {**graph.empty_items(), "items": [old, new], "as_of": "2026-10-16", "first_run": "2026-10-15"}
+        history = [{"date": "2026-10-15", "count": 0}, {"date": "2026-10-16", "count": 1}]
+        graph.validate_items(doc, CONFIG)
+        table = graph.lane_time(CONFIG, history, doc, [{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}], "2026-10-16")
+        table["items_sha256"], table["items_count"] = hashlib.sha256(graph.render_json(doc)).hexdigest(), len(doc["items"])
+        self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
+        self.assertEqual((table["first_run"], table["days"][0]["date"], len(table["days"])), ("2026-10-15", "2026-10-15", 2))
+        self.assertEqual(min(entry["date"] for entry in doc["items"]), "2026-09-20")      # older than the table, kept
 
     def test_the_feed_comparison_keys_by_id_and_day(self) -> None:
         early, late = graph.item_entry(self.repeated, self.EARLY), graph.item_entry(self.repeated, self.LATE)
@@ -849,7 +946,7 @@ class RepeatedPickTest(unittest.TestCase):
 
     def test_the_incident_data_of_2026_11_16_exports(self) -> None:
         """The committed history and pages of the day the publication was stopped, read as the night's run reads them."""
-        runs = [run for run in json.loads((ROOT / "radar" / "history.json").read_text())["runs"] if run["date"] <= self.LATE]
+        runs = [run for run in fixed_history() if run["date"] <= self.LATE]
         self.assertIn(self.LATE, {run["date"] for run in runs})
         doc = graph.fill_missing(graph.empty_items(), runs, ROOT / "radar" / "daily", CONFIG)
         by_id: dict[str, list[str]] = {}

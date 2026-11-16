@@ -754,10 +754,15 @@ class SourceHealthTest(unittest.TestCase):
             self.assertEqual(verdict([*common, "--fail-on-struggling", "--threshold", "9"]), 0)
 
     def test_a_run_records_which_sources_did_not_answer(self) -> None:
-        with tempfile.TemporaryDirectory() as temporary:
+        # The run log is a fixed one, not the repository's: `save_history` keeps 400 runs, and with the live log full an
+        # inserted 2026-03-05 is the oldest and is cut (PR213 round 1, F2). One run before it and one after it make the
+        # date-sorted lookup below mean something.
+        fixed = [{"date": "2026-03-01", "count": 1, "urls": []}, {"date": "2026-03-09", "count": 1, "urls": []}]
+        with tempfile.TemporaryDirectory() as temporary, patch.object(cli, "load_history", lambda *a, **k: list(fixed)):
             out = Path(temporary)
             cli.run(offline=True, day="2026-03-05", out=out)
             runs = json.loads((out/"radar"/"history.json").read_text(encoding="utf-8"))["runs"]
+        self.assertEqual([run["date"] for run in runs], ["2026-03-01", "2026-03-05", "2026-03-09"])
         # The log is date-sorted, so look the run up rather than taking the last entry.
         entry = next(run for run in runs if run["date"] == "2026-03-05")
         self.assertIn("failed", entry, "health has to be recorded to be readable later")
