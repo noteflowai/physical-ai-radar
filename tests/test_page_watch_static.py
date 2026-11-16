@@ -95,6 +95,55 @@ class StaticWatchTests(TlsTestCase):
     def urls(self, result):
         return [item.url for item in result.items]
 
+    # --- an entry that is switched off (07, 2026-11-16: physical-intelligence's robots.txt answered 429 five days running) ---
+    OFF = "robots.txt repeatedly returned 429; not read, per the rules."
+
+    def test_a_switched_off_source_is_not_requested_not_planned_and_not_a_failure(self):
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}))
+        self.assertEqual(self.server.paths(), [])                                   # not even its robots.txt is asked for
+        self.assertEqual((result.attempted, result.checked, result.failed, result.robots_skipped), ([], [], [], []))
+        self.assertEqual((result.planned, result.sources, result.items, result.unavailable), ([], {}, [], False))
+
+    def test_the_other_sources_are_read_as_before_and_the_switched_off_one_keeps_its_baseline(self):
+        self.server.serve("/news", Reply(200, V1))
+        self.server.serve("/standard", Reply(200, article()))
+        kept = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {"digest": "kept", "links": []}}}
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}, PAGE), kept)
+        self.assertEqual(self.server.paths(), ["/robots.txt", "/standard"])
+        self.assertEqual((result.checked, result.planned), (["watch-iso"], ["watch-iso"]))
+        self.assertEqual(result.state["sources"]["figure"], {"digest": "kept", "links": []})   # switching it back on finds it as it was
+
+    def test_a_switch_that_is_not_exactly_true_switches_the_source_off(self):
+        # as for a feed (`enabled_feeds`): a mistyped switch must not read a page that was meant to stay unread
+        self.server.serve("/news", Reply(200, V1))
+        for value in (False, "false", "False", 0, None, "", [], {}, "yes"):
+            with self.subTest(value=value):
+                self.server.accepted = 0
+                before = len(self.server.paths())
+                result = self.watch(sources({**LISTING, "enabled": value, "disabled_reason": self.OFF}))
+                self.assertEqual(self.server.paths()[before:], [])
+                self.assertEqual((result.attempted, result.checked, result.failed), ([], [], []))
+        before = len(self.server.paths())
+        result = self.watch(sources({**LISTING, "enabled": True}))                  # and only `true` reads it
+        self.assertEqual((result.checked, self.server.paths()[before:]), (["figure"], ["/robots.txt", "/news"]))
+
+    def test_a_source_that_is_switched_off_must_say_why(self):
+        for reason in (None, "", "   ", 5):
+            with self.subTest(reason=reason):
+                raw = sources({**LISTING, "enabled": False, "disabled_reason": reason})
+                self.assertTrue(any("needs a disabled_reason" in line for line in fetch.page_watch_problems(raw)))
+                before = len(self.server.paths())
+                result = self.watch(raw)
+                self.assertEqual(self.server.paths()[before:], [])                  # invalid is left out, never read
+                self.assertEqual((result.attempted, result.checked), ([], []))
+        raw = sources({**LISTING, "enabled": False, "disabled_reason": self.OFF})
+        self.assertEqual(fetch.page_watch_problems(raw), [])
+
+    def test_a_run_whose_only_source_is_switched_off_is_not_enabled_and_does_not_look_unavailable(self):
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}))
+        self.assertEqual((result.enabled, result.unavailable), (False, False))     # nothing to watch is not a channel that is down
+
     # --- reading ---------------------------------------------------------------------------------------
     def test_a_static_listing_is_read_seeded_and_a_new_link_is_offered(self):
         self.server.serve("/news", Reply(200, V1))
@@ -384,6 +433,9 @@ class StaticWatchTests(TlsTestCase):
     # Turning a source static, or the whole channel live, is an approval of its own. Editing this list is how a change to
     # data/sources.json shows up in review: the test fails until the approved set here is changed on purpose.
     APPROVED_STATIC = ["figure", "1x", "physical-intelligence", "unitree"]
+    # Switching a source off is an approval of its own, listed here for the same reason: `physical-intelligence` answers robots.txt
+    # with 429 (2026-11-12 to 11-16, 07's decision of 11-16): it stays in the file with its `disabled_reason` and is not read.
+    APPROVED_OFF = ["physical-intelligence"]
     # The URL is what was approved (unitree's was corrected to the final one the site redirects to, PR 181), so a change to it
     # shows up in review too, not only a change of the id set.
     APPROVED_URLS = {"figure": "https://www.figure.ai/news", "1x": "https://www.1x.tech/discover",
@@ -394,6 +446,11 @@ class StaticWatchTests(TlsTestCase):
         self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], self.APPROVED_STATIC)
         self.assertEqual({e["id"]: e["url"] for e in shipped["page_watch"] if e.get("fetcher") == "static"}, self.APPROVED_URLS)
         self.assertEqual(fetch.page_watch_problems(shipped), [])                     # each carries the sanity settings static needs
+        self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("enabled", True) is not True], self.APPROVED_OFF)
+        # what is read is what is configured, less what is switched off; and no entry is left on Firecrawl (it was never up)
+        read = fetch._resolve_page_watch(shipped)
+        self.assertEqual([e["id"] for e in read], [i for i in self.APPROVED_STATIC if i not in self.APPROVED_OFF])
+        self.assertEqual([e["id"] for e in read if e.get("fetcher", "firecrawl") == "firecrawl"], [])
         self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "live")      # written out, not left to the default
         config = Config(sources=shipped, taxonomy={}, glossary={}, baseline={})
         self.assertEqual(fetch.page_watch_settings(config)["static_mode"], "live")

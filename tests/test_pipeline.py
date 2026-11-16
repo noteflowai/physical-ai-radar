@@ -19,6 +19,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tests"))
 
 from pairadar import fetch, charts, cli, health, lanes  # noqa: E402
 from pairadar.config import LANGS, Config, Item, load_config, load_notes  # noqa: E402
@@ -53,6 +54,7 @@ from pairadar.fetch import (  # noqa: E402
 from pairadar import render  # noqa: E402
 from pairadar.render import composed_why, readme_block, render_daily  # noqa: E402
 from pairadar.notes import unsupported_numbers  # noqa: E402
+import page_watch_fixture  # noqa: E402
 
 
 def make_item(**kwargs) -> Item:
@@ -422,6 +424,13 @@ class FetchReliabilityTest(unittest.TestCase):
     def setUp(self) -> None:
         self.config = load_config()
 
+    def watched_config(self) -> Config:
+        """The configuration with the fixed pages of `tests/page_watch_fixture.py` in place of the shipped page_watch: the cases
+        below are about how the channel and the four static sources are reported, so they need a Firecrawl page to exist, and the
+        shipped configuration has none any more."""
+        import dataclasses
+        return dataclasses.replace(self.config, sources=page_watch_fixture.watched(self.config.sources))
+
     def test_http_get_retries_a_transient_failure(self) -> None:
         class Response:
             def read(self) -> bytes:
@@ -565,7 +574,7 @@ class FetchReliabilityTest(unittest.TestCase):
                 patch.object(fetch_module, "STATIC_FETCHER_FACTORY", NoSite), \
                 patch.object(fetch_module.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()) as out:
-            report = fetch_all(self.config)
+            report = fetch_all(self.watched_config())
         # Captured: a simulated total outage in the log would read as a real one.
         self.assertIn("no answer from", out.getvalue())
         # With no network every robots.txt is unreachable too: the feeds are refused before
@@ -601,7 +610,7 @@ class FetchReliabilityTest(unittest.TestCase):
                 patch.object(fetch_module, "STATIC_FETCHER_FACTORY", never), \
                 patch.object(fetch_module.time, "sleep"), \
                 contextlib.redirect_stdout(io.StringIO()):
-            report = fetch_all(self.config)
+            report = fetch_all(self.watched_config())
         summary = report.to_dict()
         self.assertEqual(summary["attempted"], 1)            # arXiv only
         self.assertEqual(report.page_failed, [])

@@ -21,6 +21,20 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- **No page_watch entry uses Firecrawl now** (it was unavailable on every one of the 26 days on record, 2026-10-22 to 11-16, and
+  was not redeployed). The two standards pages that went through it, ISO 25785-1 and Regulation (EU) 2023/1230, are removed from
+  `page_watch` and marked `covered: false` with a `not_covered_reason`, like the Council's timeline: ISO's robots.txt answered 403
+  when read on 2026-11-14; no verifiable robots.txt content was obtained for EUR-Lex. Neither was ever read, so no day's content
+  changes. The run no longer reports `unavailable: ["page_watch"]` (a run on a copy of the tree shows it gone). A `page_watch` entry
+  can be switched off with `"enabled": false`, as a feed can: anything but `true` switches it off, it must carry a
+  `disabled_reason`, and it is not read, not asked about in robots.txt, not planned and not counted as failed; its baseline stays.
+- **Physical Intelligence is switched off** (`enabled: false`) since 2026-11-12: its robots.txt answered 429 on five production
+  runs in a row (11-12 to 11-16); by the robots rule its pages are not read, and the host is not asked again until a person
+  switches it back on. It was read on 11-08 to 11-11. Its published entries stay readable (the publisher name still resolves).
+  **Known effect, not changed here:** the freshness record's `status` is `ok` only when the Firecrawl channel answered
+  (`firecrawl_answered`, ADR 027); with no entry on Firecrawl that never happens, so the record is `skipped` or `all-failed`
+  instead of `firecrawl-unavailable`. Both were non-success before and are now. Whether the objective should count a static read
+  is a decision for its owner (noteflow-auto `config/delivery-freshness.json`).
 - The feeds (and the attention APIs) and the Firecrawl page path read robots.txt with `pairadar.robots_rules`
   (RFC 9309: `*` and a final `$` in a rule, the longest match wins, every group that names the radar is merged)
   instead of `urllib.robotparser`, which has no wildcards and takes the first match. A robots.txt that cannot be judged

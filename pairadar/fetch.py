@@ -825,6 +825,10 @@ def page_watch_problems(sources: dict[str, Any]) -> list[str]:
             problems.append(f"{where}: mode must be one of {', '.join(PAGE_MODES)}")
         if entry.get("fetcher", "firecrawl") not in PAGE_FETCHERS:
             problems.append(f"{where}: fetcher must be one of {', '.join(PAGE_FETCHERS)}")
+        if entry.get("enabled", True) is not True:
+            reason = entry.get("disabled_reason")
+            if not isinstance(reason, str) or not reason.strip():
+                problems.append(f"{where}: a page_watch entry that is switched off needs a disabled_reason")
         if "url" in entry and "standards_watch" in entry:
             problems.append(f"{where}: give url or standards_watch, not both")
         if "standards_watch" in entry:
@@ -869,6 +873,11 @@ def _resolve_page_watch(sources: dict[str, Any]) -> list[dict[str, Any]]:
             continue
         if f"page_watch {entry.get('id')}" in bad or f"page_watch[{index}]" in bad:
             print(f"[fetch] page_watch: ignoring invalid entry {entry.get('id', index)}")
+            continue
+        if entry.get("enabled", True) is not True:
+            # Switched off, as a feed is (`enabled_feeds`): anything but `true` (or absent) switches it off, so a mistyped switch
+            # cannot read a page that was meant to stay unread. Not read, not asked about in robots.txt, not planned, not failed:
+            # the entry stays in data/sources.json with its `disabled_reason`, and a person switches it back on.
             continue
         entry = dict(entry)
         watch = standards.get(entry.get("standards_watch"))
