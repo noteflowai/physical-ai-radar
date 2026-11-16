@@ -120,6 +120,25 @@ radar content itself is dated, not versioned.
   sharing one, and the lanes table two instead of three, what a lane tracks and
   why it has its own lane in one cell. On a phone the five columns set
   "newsletters" one character per line and ran off the side of the screen.
+- **A SIGTERM or SIGINT that arrives while a night stage is being started no longer leaves the stage running.** `nightly_batch.execute`
+  started the stage with `Popen` and installed its termination handlers only afterwards; a signal in between took the default
+  action, the batch ended, and the stage (its own session) kept running with nobody to stop it. The handlers are now installed
+  before `Popen`, with both signals blocked while they go in (so a SIGINT cannot take the default action between the two
+  installations and leave one handler behind); the mask is put back before `Popen`, so the stage inherits no mask, and since
+  caught signals are reset by exec, no handler (a test checks the stage sees default handlers and an empty mask). A handler
+  only records the request and asks the stage's process group to end; it never waits (a second `wait()` from a handler
+  would block for ever on the lock the interrupted `wait()` holds). Everything else happens in the ordinary flow: a request
+  already known is consumed before the stage is started; one that arrives while `Popen` runs is acted on right after it
+  returns (the stage is stopped), and if `Popen` fails while a request is known the batch ends with 128 plus the signal
+  number instead of recording a stage error and going on to the next stage; a request that arrives with the stage's exit
+  still ends the batch. A request recorded while a stage that ran over its cap is being cleaned up, or while the handlers are
+  being put back, also ends the batch (128 plus the signal number) instead of becoming the stage's 124 or its own exit code
+  and letting the next stage start; the cleanup and the restoring of the handlers still happen first. Without a request a
+  stage over its cap is still 124 and a failing stage keeps its code. A start failure with no request is an ordinary stage error, as before. The handlers are put back
+  on every path. The test that reads the stage's pid file now has the stage write a temporary
+  file and rename it, and reads until it holds a whole number, instead of reading the file between its creation and its content.
+  New tests send the signal at each of those points (SIGTERM and SIGINT), including inside `Popen`'s own wait lock and
+  between the two installations.
 - **A switched-off entry's host is no longer requested through a redirect** (`pairadar/host_policy.py`). Switching a `page_watch`
   entry off only removed its page from the plan; `fetch.http_get`, which follows redirects, would still have sent a request to
   that host if a feed, a robots.txt or an attention API redirected there. `http_get` now asks the policy before the first request
