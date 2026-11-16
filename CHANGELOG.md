@@ -21,7 +21,38 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- The feeds (and the attention APIs) and the Firecrawl page path read robots.txt with `pairadar.robots_rules`
+  (RFC 9309: `*` and a final `$` in a rule, the longest match wins, every group that names the radar is merged)
+  instead of `urllib.robotparser`, which has no wildcards and takes the first match. A robots.txt that cannot be judged
+  completely (not UTF-8, over 500,000 bytes, too many or too long rules, an invalid percent escape) now makes the
+  host `unreachable` for the run instead of being cut or read as far as it goes. Feeds a wildcard rule disallows are
+  `robots_skipped` with the reason `disallowed`, never `failed`.
+- The robots.txt that a production run read (feeds, Firecrawl pages and static pages) is kept in a second file,
+  `robots-texts.json`, in the state directory, next to `robots-state.json` (whose format and waits it does not touch):
+  one entry per host, the latest, with the time, the sha256 and size of the bytes read and the text. A file over
+  64 KiB, or not UTF-8, keeps only its sha256 and size and says why. It is never used to allow or refuse a request, so a
+  rule change can be replayed offline against what the hosts really said without asking them again.
+- The run record and `FetchReport.to_dict()` gain `robots_newly_denied`: the feeds, attention APIs (`signal:<name>`) and
+  Firecrawl pages that the new reader refuses and `urllib.robotparser` (the reader before) would have allowed, each with
+  its reason. Static pages already used `robots_rules`, so they are not in it. The old reader is kept only to compute
+  this and decides nothing; remove it once the first runs have been read back.
+- A feed, signal or Firecrawl page whose own URL has a `%` that is not a percent escape cannot be judged against any
+  rules. That one URL is refused (`unsupported-url`, `robots_skipped`, never `failed`) and the rest of the run is read
+  as before; before, the exception ended the whole feed or page loop.
 - A feed can be switched off with `"enabled": false` in `data/sources.json` (anything but `true`
+- A 2xx answer to the request for robots.txt is read as a robots.txt only if it is one. For the feeds and the
+  attention APIs, the URL it came from after any redirect must be the same origin's `/robots.txt`, and its media type
+  must be `text/plain` or absent; for Firecrawl pages, `metadata.sourceURL` and `metadata.url` (the final address; a reply
+  without it is "final source unknown") must both be that `/robots.txt` and `contentType`, when present, must be
+  `text/plain`. Whatever the Content-Type says or does not say, a body that is an HTML page (after a byte order mark and
+  white space it starts with `<`, or it contains `<html`, `<!doctype`, `<head` or `<body` in any case) is not a robots.txt.
+  An address that cannot be parsed (`https://[invalid/robots.txt`) is "not confirmed" for that one source and raises
+  nothing. A login page, a challenge or the page a redirect
+  led to makes the host `unreachable` for the run (the pages are refused) instead of reading as "no rules", and its
+  text is not kept in `robots-texts.json`. A real empty robots.txt still allows everything. Firecrawl text that cannot be
+  written as UTF-8 (an unpaired surrogate) is refused the same way instead of raising. Hosts that answer /robots.txt with
+  a 200 HTML page (a soft 404) are now `unreachable`, not allowed. The cost: RFC 9309 lets a robots.txt redirect to another
+  path or host, and that is refused too, on purpose.
   switches it off; absent means on) and keeps a `disabled_reason`. A disabled feed is not
   requested, not asked about in robots.txt and not reported as attempted. The three GitHub
   release feeds (LeRobot, Isaac Lab, MuJoCo) are switched off: github.com's robots.txt disallows

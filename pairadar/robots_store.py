@@ -22,10 +22,16 @@ private is neither read nor written. Every write syncs the file, its directory e
 
 Only a production round writes (`writable`); `--out` runs and previews read and never touch the state directory.
 The file holds the text of robots.txt (public) and times; no URL, no page text, no credential.
+
+A second file, `robots-texts.json` (`RobotsTexts`), keeps the latest robots.txt that any reader of the radar (feeds, Firecrawl
+pages, static pages) actually got, per origin, with the time and the sha256 of its bytes, so a rule change can be replayed
+offline against what the hosts really said. It is never read for a decision, and it is a separate file so that its format
+cannot cost the waits above.
 """
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import json
 import os
 import re
@@ -37,6 +43,13 @@ from typing import Any, Callable
 
 SCHEMA = "pairadar-robots-state-v1"
 FILE = "robots-state.json"
+TEXTS_SCHEMA = "pairadar-robots-texts-v1"
+TEXTS_FILE = "robots-texts.json"
+TEXTS_MAX_ORIGINS = 64
+MAX_TEXT_BYTES = 64 * 1024                 # a robots.txt larger than this is archived by its sha256 and size alone
+OMITTED_REASONS = frozenset({"too-large", "not-utf-8"})
+TEXTS_MAX_FILE_BYTES = 32_000_000          # 64 hosts of 64 KiB, each at worst six times as long once JSON-escaped
+_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 MAX_AGE = timedelta(hours=24)
 DEFAULT_BACKOFF = timedelta(hours=6)
 MAX_BACKOFF = timedelta(days=366)          # the longest wait that is recorded with an end time; a longer one is held for good
@@ -95,8 +108,37 @@ def _validate(entry: object) -> None:
                 raise ValueError("backoff span")
 
 
+def _validate_text(entry: object) -> None:
+    """An entry of the archive of robots.txt answers: the time, the sha256 and size of the answer's bytes, and the text itself
+    unless it was left out (too large, or not UTF-8). The text, when present, must be what the sha256 says."""
+    if not isinstance(entry, dict) or set(entry) != {"fetched_at", "sha256", "size", "body", "omitted"}:
+        raise ValueError("text entry")
+    _time(entry["fetched_at"])
+    digest, size, body, omitted = entry["sha256"], entry["size"], entry["body"], entry["omitted"]
+    if not isinstance(digest, str) or not _SHA256.fullmatch(digest) or type(size) is not int or size < 0:
+        raise ValueError("text digest")
+    if body is None:
+        if omitted not in OMITTED_REASONS:
+            raise ValueError("text omitted")
+    else:
+        if omitted is not None or not isinstance(body, str):
+            raise ValueError("text body")
+        raw = body.encode("utf-8")
+        if len(raw) != size or size > MAX_TEXT_BYTES or hashlib.sha256(raw).hexdigest() != digest:
+            raise ValueError("text digest")
+
+
 class RobotsStore:
-    """lookup(origin) -> ("rules", text | None) | ("backoff", reason) | None; record_rules; record_backoff."""
+    """lookup(origin) -> ("rules", text | None) | ("backoff", reason) | None; record_rules; record_backoff; record_text.
+
+    `record_text` keeps the robots.txt a run read in a second file (`RobotsTexts`), apart from the state above: nothing
+    in it is ever used to allow or refuse a request."""
+
+    FILE = FILE                                # the file, its schema and its limits; `RobotsTexts` has its own
+    SCHEMA = SCHEMA
+    LIMIT = MAX_ORIGINS
+    FILE_LIMIT = MAX_FILE_BYTES
+    _check = staticmethod(_validate)
 
     def __init__(self, directory: Path, *, writable: bool,
                  clock: Callable[[], datetime] = lambda: datetime.now(timezone.utc)) -> None:
@@ -104,11 +146,18 @@ class RobotsStore:
         self.writable = writable
         self._clock = clock
         self._origins: dict[str, dict[str, Any]] | None = None
+        self._texts: RobotsTexts | None = None
+
+    def record_text(self, origin: str, raw: bytes) -> None:
+        """The robots.txt a run read (the bytes of a 2xx answer), for a later offline replay. Never used for a decision."""
+        if self._texts is None:
+            self._texts = RobotsTexts(self.directory, writable=self.writable, clock=self._clock)
+        self._texts.put_text(origin, raw)
 
     # --- reading ---------------------------------------------------------------------------------
     @property
     def path(self) -> Path:
-        return self.directory / FILE
+        return self.directory / self.FILE
 
     def _open_directory(self, *, create: bool) -> int:
         """A descriptor of the state directory, checked: a real directory (never a link), ours, and private. Everything
@@ -134,7 +183,7 @@ class RobotsStore:
         except OSError:
             return self._origins                                       # no directory, a link, not private: ask the host
         try:
-            descriptor = os.open(FILE, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)
+            descriptor = os.open(self.FILE, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)
         except OSError:
             return self._origins                                       # no file, a symlink, unreadable: ask the host
         finally:
@@ -143,16 +192,16 @@ class RobotsStore:
             with os.fdopen(descriptor, "rb") as stream:
                 info = os.fstat(stream.fileno())
                 if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_mode & 0o077 \
-                        or info.st_size > MAX_FILE_BYTES:
+                        or info.st_size > self.FILE_LIMIT:
                     return self._origins
-                record = _strict(stream.read(MAX_FILE_BYTES + 1))
-            if not isinstance(record, dict) or set(record) != {"schema", "origins"} or record["schema"] != SCHEMA \
-                    or not isinstance(record["origins"], dict) or len(record["origins"]) > MAX_ORIGINS:
+                record = _strict(stream.read(self.FILE_LIMIT + 1))
+            if not isinstance(record, dict) or set(record) != {"schema", "origins"} or record["schema"] != self.SCHEMA \
+                    or not isinstance(record["origins"], dict) or len(record["origins"]) > self.LIMIT:
                 return self._origins
             for origin, entry in record["origins"].items():
                 if not isinstance(origin, str) or not _ORIGIN.fullmatch(origin):
                     return self._origins
-                _validate(entry)
+                self._check(entry)
             self._origins = dict(record["origins"])
         except (OSError, ValueError, UnicodeDecodeError):
             self._origins = {}                                         # one bad field spoils the whole file
@@ -203,14 +252,14 @@ class RobotsStore:
         if not self.writable or not _ORIGIN.fullmatch(origin):
             return
         try:
-            _validate(entry)
+            self._check(entry)
             origins = dict(self._load())
             origins[origin] = entry
-            if len(origins) > MAX_ORIGINS:
+            if len(origins) > self.LIMIT:
                 oldest = sorted(origins, key=lambda key: _time(origins[key].get("fetched_at") or origins[key]["recorded_at"]))
-                for key in oldest[:len(origins) - MAX_ORIGINS]:
+                for key in oldest[:len(origins) - self.LIMIT]:
                     del origins[key]
-            self._write({"schema": SCHEMA, "origins": origins})
+            self._write({"schema": self.SCHEMA, "origins": origins})
             self._origins = origins
         except (OSError, ValueError, KeyError):
             print("[fetch] robots state not written")                    # a convenience: its loss changes nothing else
@@ -229,7 +278,7 @@ class RobotsStore:
                     stream.write("\n")
                     stream.flush()
                     os.fsync(stream.fileno())
-                os.replace(name, FILE, src_dir_fd=directory, dst_dir_fd=directory)
+                os.replace(name, self.FILE, src_dir_fd=directory, dst_dir_fd=directory)
                 os.fsync(directory)
             finally:
                 with contextlib.suppress(OSError):
@@ -237,6 +286,40 @@ class RobotsStore:
             _sync_chain(self.directory.parent)
         finally:
             os.close(directory)
+
+
+class RobotsTexts(RobotsStore):
+    """The robots.txt answers the runs read, one entry per origin (the latest), for a later offline replay.
+
+    Entry: when it was read, the sha256 and size of the answer's bytes, and the text. An answer over `MAX_TEXT_BYTES`, or
+    not valid UTF-8, keeps only its sha256 and size, with `omitted` saying why. A separate file from the state, with its
+    own schema, so that nothing here can make a 429 wait disappear, and nothing in it is used to allow or refuse a request.
+    Same directory checks, same replacement through the checked directory, and writes only in a production round."""
+
+    FILE = TEXTS_FILE
+    SCHEMA = TEXTS_SCHEMA
+    LIMIT = TEXTS_MAX_ORIGINS
+    FILE_LIMIT = TEXTS_MAX_FILE_BYTES
+    _check = staticmethod(_validate_text)
+
+    def put_text(self, origin: str, raw: bytes) -> None:
+        if not isinstance(raw, (bytes, bytearray)):
+            return
+        raw = bytes(raw)
+        body: str | None = None
+        omitted: str | None = None
+        if len(raw) > MAX_TEXT_BYTES:
+            omitted = "too-large"
+        else:
+            try:
+                body = raw.decode("utf-8")
+            except UnicodeDecodeError:
+                omitted = "not-utf-8"
+        self._put(origin, {"fetched_at": self._clock().astimezone(timezone.utc).isoformat(),
+                           "sha256": hashlib.sha256(raw).hexdigest(), "size": len(raw), "body": body, "omitted": omitted})
+
+    def lookup(self, origin: str) -> dict[str, Any] | None:       # for a replay and the tests; no decision reads it
+        return self._load().get(origin)
 
 
 def _sync_chain(path: Path) -> None:

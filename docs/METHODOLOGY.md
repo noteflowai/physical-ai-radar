@@ -88,8 +88,10 @@ Rules:
     and a final `$` are syntax in a rule, an encoded `%2A` or `%24` is data and equals the literal
     character in the URL (never a wildcard), and the priority counts the same octets the match does, so
     two spellings of one rule have one priority.
-    (`urllib.robotparser`, which the Firecrawl path still uses, takes the first match in file order and
-    would let `Allow: /` before `Disallow: /private` through.) A file with more than 5000 rules, a rule
+    (`urllib.robotparser`, which the feeds and the Firecrawl path used before this change, takes the first match in file
+    order, has no `*` or `$`, and would let `Allow: /` before `Disallow: /private` through; github.com's `Disallow: /*.atom$`
+    was invisible to it. Both paths now read robots.txt with this module, and a file that cannot be judged completely makes
+    the host unreachable for the run instead of being cut.) A file with more than 5000 rules, a rule
     longer than 2000 characters, a rule with a `%` that starts no two-digit escape, or bytes that are
     not UTF-8 cannot be judged completely and is unreadable, not guessed at. `404`/`410` means there
     are no rules, and anything else (401, 403, 429, 5xx, a challenge, a redirect, an HTML page, a
@@ -244,7 +246,12 @@ Rules:
   As RFC 9309 section 2.3.1 says: a robots.txt answering 401 or 403 refuses the whole host
   (`forbidden`); any other 4xx (404, 410) means there are no rules; a 5xx, a 429 after its
   retry, no HTTP answer at all or anything else that cannot be classified leaves the host
-  `unreachable`, and nothing on it is requested that run. Every refused feed or attention
+  `unreachable`, and nothing on it is requested that run. A 2xx answer counts as the robots.txt only if the address it
+  came from after any redirect is the same origin's `/robots.txt`, its media type is `text/plain` or absent and its body
+  is not an HTML page (Firecrawl: `metadata.sourceURL` and `metadata.url` both name that address); otherwise the host
+  is `unreachable` and the text is not kept. RFC 9309 lets a robots.txt redirect to another path or host: that is
+  refused on purpose, a known loss of coverage, and a host that answers `/robots.txt` with a 200 HTML page is
+  `unreachable` too. Every refused feed or attention
   API is recorded under `robots_skipped` with its reason in `robots_reasons`
   (`disallowed`, `forbidden`, `unreachable`) and never under `failed`; `pairadar.health`
   counts them per source and reason (`robots_reasons`), never as struggling. Two requests

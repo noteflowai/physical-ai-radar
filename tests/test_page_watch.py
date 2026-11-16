@@ -124,7 +124,14 @@ class FakeFirecrawl:
         self.server.shutdown()
         self.server.server_close()
 
-    def serve(self, url: str, reply: dict, status: int = 200) -> None:
+    def serve(self, url: str, reply: dict, status: int = 200, source: bool = True) -> None:
+        # Firecrawl always names the URL a reply was scraped from (metadata.sourceURL) and the final address (metadata.url); a
+        # robots.txt reply that does not is not confirmed as the robots.txt (fetch._firecrawl_robots_bytes), so the fake
+        # says both unless a test says `source=False`.
+        if source and url.endswith("/robots.txt") and isinstance(reply, dict):
+            data = reply.get("data")
+            if isinstance(data, dict) and isinstance(data.get("metadata"), dict):
+                reply = {**reply, "data": {**data, "metadata": {"sourceURL": url, "url": url, **data["metadata"]}}}
         self.replies[url] = (status, reply)
 
     def scraped(self) -> list[str]:
@@ -475,6 +482,44 @@ class RobotsTest(unittest.TestCase):
                 self.assertEqual(on_pages, on_feeds)
                 self.assertEqual(on_pages, status < 500 and status not in refused)
 
+    def test_pages_and_feeds_read_the_same_robots_file_alike(self) -> None:
+        # One reader for both paths (`robots_rules`): a wildcard, a longest match, a file that cannot be judged.
+        bodies = {"a wildcard with an end anchor": "User-agent: *\nDisallow: /*s$\n",
+                  "a wildcard that does not match": "User-agent: *\nDisallow: /*.atom$\n",
+                  "the longest match, then allow on a tie": "User-agent: *\nDisallow: /news\nAllow: /news\n",
+                  "first rule is not the winner": "User-agent: *\nDisallow: /\nAllow: /news\n",
+                  "a group for the radar that allows the page": "User-agent: physical-ai-radar\nDisallow: /other\n",
+                  "an invalid percent escape": "User-agent: *\nDisallow: /a%zz\n",
+                  "an HTML page": "<html>not found</html>"}
+        expected = {"a wildcard with an end anchor": False, "a wildcard that does not match": True,
+                    "the longest match, then allow on a tie": True, "first rule is not the winner": True,
+                    "a group for the radar that allows the page": True, "an invalid percent escape": False,
+                    "an HTML page": False}
+        for name, text in bodies.items():
+            with self.subTest(name), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": text, "metadata": {"statusCode": 200}}})
+                on_pages = fetch._robots_allows({"endpoint": fake.url, "timeout": 5}, "https://www.figure.ai/news", {})
+                cache = fetch.RobotsCache(getter=lambda url, t=text: (200, t.encode()))
+                with patch.object(fetch.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+                    on_feeds = cache.allows("https://www.figure.ai/news")
+                self.assertEqual((on_pages, on_feeds), (expected[name], expected[name]), name)
+
+    def test_the_agent_of_the_scraper_is_read_too_and_a_file_that_cannot_be_judged_refuses_the_page(self) -> None:
+        raw = sources()
+        raw["page_watch"] = raw["page_watch"][:1]
+        cases = {"a group for FirecrawlAgent": "User-agent: FirecrawlAgent\nDisallow: /news\n",
+                 "a wildcard rule for the radar": "User-agent: physical-ai-radar\nDisallow: /ne*\n",
+                 "an invalid percent escape": "User-agent: *\nDisallow: /a%zz\n",
+                 "a file larger than the limit": "# " + "x" * fetch.MAX_ROBOTS_CHARS + "\nUser-agent: *\nAllow: /\n"}
+        for name, text in cases.items():
+            with self.subTest(name), FakeFirecrawl() as fake:
+                fake.serve("https://www.figure.ai/robots.txt",
+                           {"success": True, "data": {"rawHtml": text, "metadata": {"statusCode": 200}}})
+                fake.serve("https://www.figure.ai/news", page(LISTING_V1))
+                result, _ = watch(raw, fake.url)
+                self.assertEqual((fake.scraped(), result.items, result.robots_skipped), ([], [], ["figure"]), name)
+
 
 def closed_port() -> int:
     with socket.socket() as sock:
@@ -504,7 +549,8 @@ class UnavailableTest(unittest.TestCase):
                 b'<link>https://deepmind.google/a</link><pubDate>Mon, 20 Oct 2026 10:00:00 GMT</pubDate>'
                 b'</item></channel></rss>')
         raw = sources()
-        with patch.object(fetch, "http_get", lambda url, *a, **k: feed), \
+        robots = b"User-agent: *\nAllow: /\n"            # the feed XML is not what robots.txt answers (it is HTML-like)
+        with patch.object(fetch, "http_get", lambda url, *a, **k: robots if url.endswith("/robots.txt") else feed), \
                 patch.dict(os.environ, {fetch.FIRECRAWL_ENV: f"http://127.0.0.1:{closed_port()}"}), \
                 contextlib.redirect_stdout(io.StringIO()):
             report = fetch.fetch_all(config_with(raw), reference=DAY)

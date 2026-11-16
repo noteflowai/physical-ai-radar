@@ -111,7 +111,10 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
     Feeds and the arXiv API both fail intermittently, and a single timeout or
     rate-limit reply used to drop a whole source for the day on first contact.
     `report`, when given, receives the final HTTP `status` (None when no HTTP answer
-    came at all): robots.txt handling depends on it.
+    came at all): robots.txt handling depends on it. A 2xx answer also puts the URL it
+    came from after any redirect (`final_url`) and its media type (`content_type`, None
+    when the answer named none) there: a robots.txt is only a robots.txt if that is what
+    came back.
     """
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     last: Exception | None = None
@@ -121,6 +124,8 @@ def http_get(url: str, retries: int = RETRIES, report: dict[str, Any] | None = N
             with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
                 if report is not None:
                     report["status"] = getattr(response, "status", 200)
+                    report["final_url"] = response.geturl()
+                    report["content_type"] = _media_type(response.headers.get("Content-Type"))
                 return response.read()
         except urllib.error.HTTPError as exc:
             last = exc
@@ -417,28 +422,76 @@ def polite(url: str) -> None:
 
 
 ALLOW, DISALLOW, FORBIDDEN, UNREACHABLE = "allow", "disallowed", "forbidden", "unreachable"
+UNSUPPORTED_URL = "unsupported-url"     # this URL cannot be judged against any rules (an invalid percent escape in it)
 # The 4xx answers to a robots.txt request that are not "there are no rules": the host is forbidden (401, 403) or
 # asked us to wait (429). `RobotsCache.verdict` (the feeds) spells out the same three; `_robots_allows` (the pages)
 # uses this tuple. A test pins the two paths to the same outcome for every status.
 ROBOTS_REFUSED_4XX = (401, 403, 429)
 
 
-def _robots_get(url: str) -> tuple[int | None, bytes | None]:
+def _media_type(value: Any) -> str | None:
+    """The media type of a Content-Type value, lower-cased and without parameters; None when there is none.
+    A value that is not text is returned as "?" so that it never matches anything."""
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        return "?"
+    return value.split(";", 1)[0].strip().lower()
+
+
+def _is_robots_reply(origin: str, final_url: Any, content_type: Any) -> bool:
+    """Whether a 2xx answer to the request for `origin`/robots.txt is the robots.txt itself, and not a login page, a
+    challenge or the page a redirect led to. The URL it came from, after any redirect, must be the same origin's
+    `/robots.txt`; a different path or host is not (RFC 9309 allows redirects, but what they lead to is only a robots.txt
+    when it is at that address). The media type must be `text/plain` or absent; `text/html`, or anything else, is not.
+    An address that cannot be parsed, or any other failure to read the identity, is "not confirmed": False, never raised."""
+    try:
+        if not isinstance(final_url, str):
+            return False
+        parts = urllib.parse.urlsplit(final_url)
+        return (f"{parts.scheme}://{parts.netloc}".lower() == origin and parts.path == "/robots.txt"
+                and content_type in (None, "text/plain"))
+    except Exception:  # noqa: BLE001 -- urlsplit raises ValueError for `https://[bad/...`; whatever else fails is the same answer
+        return False
+
+
+_HTML_MARKS = ("<html", "<!doctype", "<head", "<body")
+
+
+def _looks_like_html(body: bytes | str) -> bool:
+    """Whether a body is an HTML page and not a robots.txt, whatever its Content-Type says (or does not say): after a byte
+    order mark and leading white space it starts with `<`, or it contains an HTML marker in any case. A page a site answers
+    in place of a missing robots.txt, or a login page, is not a robots.txt; an empty file is."""
+    text = body.decode("utf-8", "replace") if isinstance(body, (bytes, bytearray)) else body
+    text = text.lstrip("\ufeff \t\r\n\f\v")
+    if text.startswith("<"):
+        return True
+    lowered = text.lower()
+    return any(mark in lowered for mark in _HTML_MARKS)
+
+
+def _robots_get(url: str) -> tuple[int | None, bytes | None, dict[str, Any]]:
+    """(status, body, where the answer came from): `{"url": final URL, "content_type": media type or None}`. A reader that
+    reported no final URL (a replacement `http_get` in a test) is taken to have been answered at the URL it asked."""
     report: dict[str, Any] = {}
     body = http_get(url, report=report)
-    return (report.get("status", 200 if body is not None else None), body)
+    return (report.get("status", 200 if body is not None else None), body,
+            {"url": report.get("final_url", url), "content_type": report.get("content_type")})
 
 
 class RobotsCache:
     """robots.txt, read once per host per run, for every feed and signal endpoint.
 
-    The outcome follows RFC 9309 section 2.3.1 (and Python's RobotFileParser):
-    - 2xx: the rules decide; one that names this agent or `*` and disallows the URL
-      keeps it from being requested (the Science Robotics eTOC is under `/action/`);
+    The outcome follows RFC 9309 section 2.3.1:
+    - 2xx: the rules decide, read by `robots_rules` (groups merged, `*` and a final `$` in a rule, the longest match
+      wins): a rule that names this agent or `*` and disallows the URL keeps it from being requested (the Science
+      Robotics eTOC is under `/action/`; github.com disallows `/*.atom$`, which `urllib.robotparser` cannot read).
+      A file that cannot be judged completely (not UTF-8, longer than `MAX_ROBOTS_CHARS`, too many or too long rules,
+      an invalid percent-escape in a rule) is not cut or guessed: the host is `unreachable`;
     - 401 or 403: everything on the host is `forbidden`;
     - any other 4xx (404, 410...): there are no rules, everything is allowed;
-    - 5xx, 429 after its retry, no HTTP answer at all, or anything else that cannot be
-      classified: the host is `unreachable` and nothing on it is requested this run.
+    - 5xx, 429 after its retry, no HTTP answer at all, or anything else that cannot be classified: the host is
+      `unreachable` and nothing on it is requested this run.
     `verdict()` returns `allow` or the reason a URL is refused (`disallowed` by a rule,
     `forbidden`, `unreachable`). Every refused feed is `robots_skipped` with its reason,
     never `failed`: the source-repair job cannot fix a robots.txt (01's decision,
@@ -446,20 +499,51 @@ class RobotsCache:
     `getter(url) -> (status, body)` is injectable for tests.
     """
 
-    def __init__(self, getter=None):
+    def __init__(self, getter=None, store: Any = None):
         self.getter = getter or _robots_get
         self.hosts: dict[str, Any] = {}
+        # What the reader before `robots_rules` (urllib.robotparser) made of each 2xx file, only to say which refusals are
+        # new (`previously_allowed`). Transitional: it decides nothing and goes once the first runs have been read back.
+        self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
+        self.store = store                  # a RobotsStore: the files read are kept there (record_text), nothing else
+
+    def previously_allowed(self, url: str) -> bool:
+        """True when the reader before `robots_rules` would have let this URL through (the file was read, and its rules
+        allowed it). Only a file that was read can differ between the two readers; any other answer is False."""
+        parts = urllib.parse.urlsplit(url)
+        parser = self.legacy.get(f"{parts.scheme}://{parts.netloc}".lower())
+        return parser is not None and parser.can_fetch(ROBOTS_TOKEN, url)
 
     def verdict(self, url: str) -> str:
         parts = urllib.parse.urlsplit(url)
         origin = f"{parts.scheme}://{parts.netloc}".lower()
         if origin not in self.hosts:
             polite(origin)
-            status, body = self.getter(origin + "/robots.txt")
+            answer = self.getter(origin + "/robots.txt")
+            status, body = answer[0], answer[1]
+            # Where the answer came from (see `_robots_get`). A replacement getter that says nothing about it (a test) gets
+            # no such check; the default getter always says.
+            where = answer[2] if len(answer) > 2 else None
             if status is not None and 200 <= status < 300 and body is not None:
-                parser = urllib.robotparser.RobotFileParser()
-                parser.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
-                self.hosts[origin] = parser
+                legacy = urllib.robotparser.RobotFileParser()
+                legacy.parse(body[:MAX_ROBOTS_CHARS].decode("utf-8", "replace").splitlines())
+                self.legacy[origin] = legacy
+                if _looks_like_html(body) or (where is not None
+                                              and not _is_robots_reply(origin, where.get("url"), where.get("content_type"))):
+                    # A login page, a challenge or the page a redirect led to is not a robots.txt: it says nothing about
+                    # what is allowed, so nothing on the host is requested, and the body is not kept as one
+                    print(f"[fetch] robots.txt for {origin} answered {status} but not as a robots.txt: host not requested this run")
+                    self.hosts[origin] = UNREACHABLE
+                else:
+                    if self.store is not None:
+                        self.store.record_text(origin, body)
+                    try:
+                        if len(body) > MAX_ROBOTS_CHARS:
+                            raise robots_rules.RobotsUnsupported("file too large")
+                        self.hosts[origin] = robots_rules.parse(body.decode("utf-8"), ROBOTS_TOKEN)
+                    except (UnicodeDecodeError, robots_rules.RobotsUnsupported) as error:
+                        print(f"[fetch] robots.txt for {origin} cannot be judged completely ({error}): host not requested this run")
+                        self.hosts[origin] = UNREACHABLE
             elif status in (401, 403):
                 print(f"[fetch] robots.txt for {origin} answered {status}: host forbidden")
                 self.hosts[origin] = FORBIDDEN
@@ -471,7 +555,11 @@ class RobotsCache:
         rule = self.hosts[origin]
         if isinstance(rule, str):
             return rule
-        return ALLOW if rule.can_fetch(ROBOTS_TOKEN, url) else DISALLOW
+        try:
+            return ALLOW if rule.allowed(url) else DISALLOW
+        except robots_rules.RobotsUnsupported:
+            # A URL the matcher cannot judge (a `%` that is not an escape): this URL is refused, nothing else on the host is
+            return UNSUPPORTED_URL
 
     def allows(self, url: str) -> bool:
         return self.verdict(url) == ALLOW
@@ -495,12 +583,14 @@ def enabled_feeds(sources: dict[str, Any]) -> list[dict[str, Any]]:
 
 def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 skipped: list[str] | None = None,
-                reasons: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
+                reasons: dict[str, str] | None = None,
+                newly_denied: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer.
 
     `robots`, when given, is consulted first; a feed it refuses (disallowed, forbidden,
     or a host whose robots.txt is unreachable) is not requested and goes to `skipped`
-    with its reason in `reasons`, never to `failed`.
+    with its reason in `reasons`, never to `failed`. A refused feed that the reader before
+    `robots_rules` would have allowed is also put in `newly_denied` (id -> reason).
     A feed with `keywords` keeps only entries naming one of them, before the per-feed
     cap: OpenAI's feed carries 1,300 posts, nearly none about robots, and the cap would
     otherwise fill with them. The taxonomy anchors are too loose there -- "cosmos" (an
@@ -522,6 +612,8 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                     skipped.append(feed["id"])
                 if reasons is not None:
                     reasons[feed["id"]] = verdict
+                if newly_denied is not None and robots.previously_allowed(feed["url"]):
+                    newly_denied[feed["id"]] = verdict
                 continue
             polite(feed["url"])
         payload = http_get(feed["url"])
@@ -886,6 +978,45 @@ def _robots_status(data: Any) -> int | None:
     return None
 
 
+def _firecrawl_robots_bytes(origin: str, data: Any, body: str) -> bytes | None:
+    """The bytes of `body` when Firecrawl's reply says it is the robots.txt of `origin` itself; None when it does not say so.
+
+    The reply's `metadata` must name both the URL it was scraped from (`sourceURL`) and the final address (`url`) as that
+    origin's `/robots.txt`, and its `contentType`, when present, must be `text/plain`: a reply that names no final address
+    is "final source unknown" and is not confirmed. Whatever the type says, a body that is an HTML page is not a robots.txt.
+    Text that cannot be written as UTF-8 (an unpaired surrogate in the JSON string) is not a robots.txt either."""
+    metadata = data.get("metadata") if isinstance(data, dict) else None
+    if not isinstance(metadata, dict) or "sourceURL" not in metadata or "url" not in metadata or _looks_like_html(body):
+        return None
+    kind = _media_type(metadata.get("contentType"))
+    for key in ("sourceURL", "url"):
+        if not _is_robots_reply(origin, metadata[key], kind):
+            return None
+    try:
+        return body.encode("utf-8")
+    except UnicodeEncodeError:
+        return None
+
+
+class _PageRobots(dict):
+    """The per-run robots.txt answers of the Firecrawl pages (origin -> one rule set per agent), with the optional
+    RobotsStore the files read are kept in, and what the reader before `robots_rules` made of each 2xx file."""
+
+    def __init__(self, store: Any = None) -> None:
+        super().__init__()
+        self.store = store
+        self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
+        self.unsupported: set[str] = set()        # page URLs `robots_rules` could not judge (refused, one by one)
+
+
+def _page_previously_allowed(cache: Any, url: str) -> bool:
+    """True when the reader before `robots_rules` would have let this page through (for every agent the request goes out
+    as). Only a file that was read can differ between the two readers; any other answer is False."""
+    parts = urllib.parse.urlsplit(url)
+    parser = getattr(cache, "legacy", {}).get(f"{parts.scheme}://{parts.netloc}")
+    return parser is not None and all(parser.can_fetch(agent, url) for agent in ROBOTS_AGENTS)
+
+
 def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
                    strikes: _Strikes | None = None) -> bool:
     """Whether robots.txt lets the radar read `url`, fetched through the same Firecrawl.
@@ -910,18 +1041,45 @@ def _robots_allows(settings: dict[str, Any], url: str, cache: dict[str, Any],
             data = None
         status = _robots_status(data)
         body = data.get("rawHtml") if data is not None else None
-        parser = urllib.robotparser.RobotFileParser()
+        refuse_all = robots_rules.Rules([(False, "/")])
         if status is not None and 200 <= status < 300 and isinstance(body, str):
-            text = body[:MAX_ROBOTS_CHARS]
-            # A site that answers robots.txt with its HTML page has no rules to read.
-            parser.parse([] if text.lstrip()[:1] == "<" else text.splitlines())
+            parser = urllib.robotparser.RobotFileParser()
+            head = body[:MAX_ROBOTS_CHARS]
+            parser.parse([] if head.lstrip()[:1] == "<" else head.splitlines())
+            if isinstance(getattr(cache, "legacy", None), dict):
+                cache.legacy[origin] = parser
+            raw = _firecrawl_robots_bytes(origin, data, body)
+            if raw is None:
+                # Not the robots.txt itself (a login page, a challenge, a page a redirect led to), or text that cannot be
+                # written as UTF-8 (an unpaired surrogate): it says nothing about what is allowed, so nothing on the host
+                # is read, and the body is not kept as a robots.txt
+                rules = [refuse_all]
+            else:
+                store = getattr(cache, "store", None)
+                if store is not None:
+                    store.record_text(origin, raw)
+                # (An HTML page never gets here: `_firecrawl_robots_bytes` refuses it. The legacy reader above still reads one
+                # as "no rules", which is what `robots_newly_denied` compares against.)
+                text = body
+                try:
+                    if len(text) > MAX_ROBOTS_CHARS:
+                        raise robots_rules.RobotsUnsupported("file too large")
+                    rules = [robots_rules.parse(text, agent) for agent in ROBOTS_AGENTS]
+                except robots_rules.RobotsUnsupported:
+                    rules = [refuse_all]                 # a file that cannot be judged completely is not cut or guessed
         elif status is not None and 400 <= status < 500 and status not in ROBOTS_REFUSED_4XX:
-            parser.parse([])
+            rules = [robots_rules.Rules()]
         else:
-            parser.parse(["User-agent: *", "Disallow: /"])
-        cache[origin] = parser
-    parser = cache[origin]
-    return all(parser.can_fetch(agent, url) for agent in ROBOTS_AGENTS)
+            rules = [refuse_all]
+        cache[origin] = rules
+    try:
+        return all(rule.allowed(url) for rule in cache[origin])
+    except robots_rules.RobotsUnsupported:
+        # A URL the matcher cannot judge (a `%` that is not an escape): this page is refused, the others are read
+        unsupported = getattr(cache, "unsupported", None)
+        if isinstance(unsupported, set):
+            unsupported.add(url)
+        return False
 
 
 def _host_allowed(host: str, allowed: set[str]) -> bool:
@@ -1054,6 +1212,8 @@ class PageWatchResult:
     checked: list[str] = field(default_factory=list)
     failed: list[str] = field(default_factory=list)
     robots_skipped: list[str] = field(default_factory=list)
+    # The robots_skipped entries (Firecrawl pages) that the reader before `robots_rules` would have let through.
+    robots_newly_denied: list[str] = field(default_factory=list)
     unavailable: bool = False
     enabled: bool = False
     state: dict[str, Any] = field(default_factory=dict)
@@ -1268,6 +1428,8 @@ def _static_robots(fetcher: static_fetch.StaticFetcher, url: str, cache: dict[st
                 if store is not None and exc.reason == "http-429":
                     store.record_backoff(origin, "http-429", exc.retry_after)
         else:
+            if store is not None:
+                store.record_text(origin, page.body)             # what the host said, kept for an offline replay
             try:
                 text = page.body.decode("utf-8")
                 cached = ("rules", robots_rules.parse(text, ROBOTS_TOKEN))
@@ -1476,7 +1638,7 @@ def fetch_page_watch(config: Config, reference: date | None = None,
     if static_run:
         result.planned = [entry["id"] for entry in entries]
     deadline = time.monotonic() + settings["budget"]
-    robots: dict[str, Any] = {}
+    robots = _PageRobots(robots_store)
     static_robots = _StaticRobots(robots_store)
     fetcher: static_fetch.StaticFetcher | None = None
     strikes = _Strikes()
@@ -1508,7 +1670,10 @@ def fetch_page_watch(config: Config, reference: date | None = None,
                 print(f"[fetch] page_watch skip {entry['id']}: robots.txt disallows {entry['url']}")
                 result.attempted.append(entry["id"])
                 result.robots_skipped.append(entry["id"])
-                result.note(entry["id"], "firecrawl", "robots", "robots-disallowed")
+                if _page_previously_allowed(robots, entry["url"]):
+                    result.robots_newly_denied.append(entry["id"])
+                result.note(entry["id"], "firecrawl", "robots",
+                            UNSUPPORTED_URL if entry["url"] in robots.unsupported else "robots-disallowed")
                 continue
             reply = firecrawl_post(settings["endpoint"], "/v2/scrape", {
                 "url": entry["url"],
@@ -1590,6 +1755,9 @@ class FetchReport:
     # forbidden (401/403) or unreachable (5xx, 429, no answer).
     robots_skipped: list[str] = field(default_factory=list)
     robots_reasons: dict[str, str] = field(default_factory=dict)
+    # The refusals above that the reader before `robots_rules` (RFC 9309 wildcards, longest match) would have allowed:
+    # feed or page id -> reason ("refused" for a Firecrawl page). The first runs after the rule change show what it cost.
+    robots_newly_denied: dict[str, str] = field(default_factory=dict)
     # pairadar.heat.Signals from the public attention APIs (None offline).
     signals: Any = None
     # The page_watch baseline after this run, for the caller to keep.
@@ -1620,6 +1788,7 @@ class FetchReport:
             "unavailable": sorted(self.unavailable),
             "robots_skipped": sorted(self.robots_skipped),
             "robots_reasons": dict(sorted(self.robots_reasons.items())),
+            "robots_newly_denied": dict(sorted(self.robots_newly_denied.items())),
             "signals": self.signals.summary() if self.signals is not None else None,
             "per_source": counts,
             "page_watch": dict(self.page_watch),
@@ -1638,7 +1807,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         print("[fetch] offline mode: skipping network sources")
         return FetchReport()
     report = FetchReport()
-    robots = RobotsCache()
+    robots = RobotsCache(store=robots_store)
     if config.sources.get("arxiv", {}).get("enabled", False):
         report.attempted.append("arxiv")
         arxiv_items, answered = fetch_arxiv(config, reference, report)
@@ -1646,7 +1815,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
         if not answered:
             report.failed.append("arxiv")
     feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
-                                     reasons=report.robots_reasons)
+                                     reasons=report.robots_reasons, newly_denied=report.robots_newly_denied)
     report.attempted.extend(feed["id"] for feed in enabled_feeds(config.sources)
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
@@ -1655,6 +1824,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     report.items.extend(watched.items)
     report.attempted.extend(watched.attempted)
     report.page_failed.extend([*watched.failed, *watched.robots_skipped])
+    report.robots_newly_denied.update({source: "refused" for source in watched.robots_newly_denied})
     report.page_state = watched.state
     report.page_watch = watched.summary()
     report.page_watch_observations = watched.observations
