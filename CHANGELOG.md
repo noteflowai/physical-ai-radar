@@ -28,8 +28,9 @@ radar content itself is dated, not versioned.
   changes. The run no longer reports `unavailable: ["page_watch"]` (a run on a copy of the tree shows it gone). A `page_watch` entry
   can be switched off with `"enabled": false`, as a feed can: anything but `true` switches it off, it must carry a
   `disabled_reason`, and it is not read, not asked about in robots.txt, not planned and not counted as failed; its baseline stays.
-- **Physical Intelligence is switched off** (`enabled: false`) since 2026-11-12: its robots.txt answered 429 on five production
-  runs in a row (11-12 to 11-16); by the robots rule its pages are not read, and the host is not asked again until a person
+- **Physical Intelligence is switched off** (`enabled: false`) on 2026-11-16: reads of its pages failed on each production
+  run from 11-12 to 11-16 (the run log does not record the reason), and the most recent robots.txt answer, on 11-16, was
+  429; by the robots rule its pages are not read, and the host is not asked again until a person
   switches it back on. It was read on 11-08 to 11-11. Its published entries stay readable (the publisher name still resolves).
   **Known effect, not changed here:** the freshness record's `status` is `ok` only when the Firecrawl channel answered
   (`firecrawl_answered`, ADR 027); with no entry on Firecrawl that never happens, so the record is `skipped` or `all-failed`

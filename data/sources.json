@@ -355,7 +355,7 @@
       "id": "physical-intelligence",
       "url": "https://www.pi.website/blog",
       "enabled": false,
-      "disabled_reason": "robots.txt repeatedly returned 429 (11-12 to 11-16); not read, per the rules. A person switches it back on.",
+      "disabled_reason": "Reads failed on every run from 11-12 to 11-16; the most recent robots.txt answer, on 11-16, was 429; not read, per the rules.",
       "mode": "listing",
       "link_prefix": "/blog/",
       "hosts": ["pi.website", "physicalintelligence.company"],

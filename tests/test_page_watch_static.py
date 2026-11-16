@@ -95,8 +95,8 @@ class StaticWatchTests(TlsTestCase):
     def urls(self, result):
         return [item.url for item in result.items]
 
-    # --- an entry that is switched off (07, 2026-11-16: physical-intelligence's robots.txt answered 429 five days running) ---
-    OFF = "robots.txt repeatedly returned 429; not read, per the rules."
+    # --- an entry that is switched off (07, 2026-11-16: reads of physical-intelligence failed on every run from 11-12 to 11-16, the latest robots.txt answer was 429) ---
+    OFF = "Reads failed on every run; the most recent robots.txt answer was 429; not read, per the rules."
 
     def test_a_switched_off_source_is_not_requested_not_planned_and_not_a_failure(self):
         self.server.serve("/news", Reply(200, V1))
