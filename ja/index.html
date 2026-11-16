@@ -73,7 +73,7 @@
 <polygon class="area" points="0.0,-94.3 66.7,-66.7 6.6,-0.0 116.7,116.7 0.0,106.1 -25.0,25.0 -23.6,0.0 -58.3,-58.3"/>
 <g clip-path="url(#rim)"><g class="sweep"><path d="M0,0 L0,-165.0 A165.0,165.0 0 0,1 106.1,-126.4 Z" fill="url(#sweep-fade)"/><line x1="0" y1="0" x2="106.1" y2="-126.4" class="beam"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></g></g>
 <a href="#p1" class="blip" style="--lane:#fb923c;--delay:0.35s"><circle cx="113.8" cy="95.5" r="11" class="halo"/><circle cx="113.8" cy="95.5" r="5"/><title>STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models</title></a>
-<a href="#p2" class="blip" style="--lane:#22d3ee;--delay:0.70s"><circle cx="-95.2" cy="-95.2" r="11" class="halo"/><circle cx="-95.2" cy="-95.2" r="5"/><title>BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</title></a>
+<a href="#p2" class="blip" style="--lane:#22d3ee;--delay:0.70s"><circle cx="-95.1" cy="-95.1" r="11" class="halo"/><circle cx="-95.1" cy="-95.1" r="5"/><title>BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</title></a>
 <a href="#p3" class="blip" style="--lane:#38bdf8;--delay:1.05s"><circle cx="94.9" cy="-94.9" r="11" class="halo"/><circle cx="94.9" cy="-94.9" r="5"/><title>I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History</title></a>
 <a href="#p4" class="blip" style="--lane:#a3e635;--delay:1.40s"><circle cx="-129.5" cy="0.0" r="11" class="halo"/><circle cx="-129.5" cy="0.0" r="5"/><title>Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation</title></a>
 <a href="#p5" class="blip" style="--lane:#facc15;--delay:1.75s"><circle cx="-69.5" cy="69.5" r="11" class="halo"/><circle cx="-69.5" cy="69.5" r="5"/><title>Why Skydio Built a Lopsided Drone</title></a>
@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16589" rel="noopener" target="_blank">STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 現在の観測だけに頼る VLA 方策を使っているなら、空間構造とタスク履歴を明示的に組み込む案として読む価値がある。閉ループと実機の実験ありとされるが数値はページになく、自己報告の段階だ。</p>
 <p class="excerpt">Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task…</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -111,7 +111,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16422" rel="noopener" target="_blank">BlinkMimic: Training a Humanoid Motion Tracker in Minutes on a Single GPU</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ヒューマノイドのモーションライブラリ追従学習に何時間も GPU を使っているチーム向け。実機実験とコード・重み公開の表示はあるがページに数値はなく、自前のモーションで試してから学習パイプラインの置き換えを判断したい。</p>
 <p class="excerpt">Whole-body motion tracking lets a humanoid robot follow reference motions, but training a tracking policy for a library of motions has usually taken hours of GPU time.</p>
 <ul class="signals"><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -127,7 +127,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16419" rel="noopener" target="_blank">I See What You Want: Decoding Hierarchical Operator Intent from Visual Teleoperation History</a></h3>
 <p class="figure"><strong>6,600 episodes</strong><span class="context">“a dataset of 6,600 episodes from eleven robot”</span></p><p class="chips"><span class="chip">35.4%</span><span class="chip">34.6%</span><span class="chip">39.8%</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 遠隔操作でデータを集めている現場には、操作者の意図推定で人の操作時間を GPT-4o 比 34.6%、GPT-5.6 比 39.8% 削減したという報告が参考になる。著者の自己報告で、閉ループ結果はページにない。</p>
 <p class="excerpt">Vision-language models (VLMs) have become a powerful foundation for robotic scene understanding, task planning, and language-conditioned control.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -143,7 +143,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.16386" rel="noopener" target="_blank">Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation</a></h3>
 <p class="figure"><strong>88.0%</strong><span class="context">“CGEM achieves 88.0% success”</span></p><p class="chips"><span class="chip">0.0%</span><span class="chip">1.7%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 同じ観測でも進捗次第で行動を変える必要がある長期操作では、critic で選んだイベント記憶で成功率 88.0%、比較手法 2 つは 0.0%、記録に関するアブレーションで 1.7% と著者は報告する。実機結果はページになく、設計の参考にとどめたい。</p>
 <p class="excerpt">In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -158,7 +158,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone" rel="noopener" target="_blank">Why Skydio Built a Lopsided Drone</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 二次報道で、ページの抜粋は Skydio への賛辞にとどまり、設計・安全・認証の具体的な情報はない。本文と一次情報を確認するまで、認証や導入の計画を変える材料にはならない。</p>
 <p class="excerpt">Skydio’s drones have always been magical. From MIT research and early prototypes to what I would argue is still the most advanced consumer drone ever made , this is a company that makes very cool stuff.</p>
 <footer>
 <span class="source">IEEE Spectrum Robotics · 2026-11-15</span>
@@ -172,7 +172,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/" rel="noopener" target="_blank">Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> シミュレーション環境の構築に手間取っているなら、NVIDIA 自身がアセットの組み立て、物理とレンダリングの接続、シーン挙動の確認という工程を AI エージェントで進める方法を紹介している。数値はなく、効果は自分で試して見極めたい。</p>
 <p class="excerpt">Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended.</p>
 <footer>
 <span class="source">NVIDIA Blog · 2026-11-05</span>

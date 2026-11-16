@@ -15,16 +15,20 @@ changes, this file changes in the same pull request.
 | Trade and mainstream press | IEEE Spectrum Robotics, The Robot Report, TechCrunch Robotics, Robohub, Import AI; 雷峰网 Leiphone and 量子位 QbitAI (Chinese), MONOist (Japanese) | `M` | professional reporting and analysis, still secondary |
 | Attention signals | Hugging Face Daily Papers API, Hacker News (Algolia search API), GitHub REST (stars) | — | ranking only (section 3); never an item and never evidence |
 | Standards watch | ISO, EUR-Lex; the Council of the EU is listed as a link and marked not covered (its robots.txt answers 403, so the radar does not read it) | `O` | authoritative status and dates; the note of a page that is not covered is entered by hand and not checked |
-| Page watch | Figure, 1X, Physical Intelligence, Unitree and the covered standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
+| Page watch | Figure, 1X and Unitree, read with the static fetcher (`pairadar/static_fetch.py`). Physical Intelligence is switched off since 2026-11-16, when the configuration was changed: no page of it was produced from 11-12 on; its robots.txt answered 429 in the runs of 11-12 to 11-15, and the 11-16 run used the remembered back-off and sent no request; since the switch-off nothing is requested from its host. The two standards pages that went through a loopback Firecrawl (ISO 25785-1, Regulation (EU) 2023/1230) are marked not covered: Firecrawl was unavailable on every one of the 26 days on record (2026-10-22 to 11-16), so they were never read. No entry uses Firecrawl now; the code path stays | `O` | first-party pages of sources that publish no feed |
 
 Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
 - the one exception is `page_watch`: an official source with no feed at all is read as a
-  page, only through a self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other
-  endpoint, including `RADAR_FIRECRAWL_URL`, is refused; redirects and proxies are not
-  followed). robots.txt is checked first, through the same Firecrawl, and read as the feeds
+  page, by one of two fetchers chosen per entry (`fetcher`). `static` (every entry the shipped
+  configuration reads; see Static sources below) makes one plain GET itself and follows no
+  redirect. `firecrawl` (kept in the code, used by no shipped entry now) goes only through a
+  self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other endpoint, including
+  `RADAR_FIRECRAWL_URL`, is refused, and only when an entry that goes through it is planned;
+  redirects and proxies are not followed). robots.txt is checked first, by the same fetcher
+  that reads the page, and, for a Firecrawl page, read as the feeds
   read it (the project's policy, stricter than RFC 9309, which lets a crawler read after a 4xx): a 401, 403 or 429, a 5xx, a
   reply with no status or one that is not a whole number from 100 to 599, or a 2xx with no body
   disallows the page for that run; only another 4xx (404, 410) or an empty 2xx body means there are no rules. Firecrawl's own change history needs
@@ -32,6 +36,16 @@ Rules:
   link URLs with the day each was first seen and last offered, line digests; no page
   text). It is written atomically, and only when something in it changed; an unreadable
   one is rebuilt, as on a first look, instead of failing the run.
+  - **A switched-off entry's host is not requested at all** (`pairadar/host_policy.py`).
+    `fetch.http_get` (feeds, robots.txt, arXiv and its fallback, the attention APIs) checks the
+    host before the request, before every redirect hop and before every attempt (a retry after the
+    wait included; the policy is read from `data/sources.json` each time); a hop to such a host is not sent, the
+    answer is the same as for no answer, and it is not retried. `fetch_page_watch` checks an
+    entry's URL before its page or its robots.txt is requested. The host is the host of the
+    entry's `url` and the names in its `hosts`, with their subdomains, unless something switched
+    on uses it; a switched-off feed is not blocked by host. A policy that cannot be read refuses
+    every request. It does not resolve DNS: an address literal, or another name for the same
+    server, is not recognised.
   - A listing records every first-party link under its `link_prefix`. Each run offers
     the links still inside `filters.max_age_days` -- by the date the link states, or, for
     a link that appeared after the first look, the day it was first seen --
@@ -52,7 +66,8 @@ Rules:
     disallowed under `page_robots_skipped`, never under `failed`: `pairadar.health`
     reports them as `page_watch_failing` / `page_watch_robots_skipped` and never as
     struggling, so the source-repair job (which can only repair a declared feed) never
-    picks one.
+    picks one. A feed or page that a person switched off (`enabled` not `true`) is listed by
+    `pairadar.health` as `switched_off` with its `disabled_reason`; it is not a failure.
   - A real run (not `--offline`, not `--out`) also writes one freshness record per day
     to `$PAIRADAR_STATE_DIR/page-watch/<day>.json` (default
     `~/.local/state/pairadar/page-watch/`), schema `pairadar-page-watch-v1`, channel
@@ -62,7 +77,11 @@ Rules:
     `skipped` when the channel is disabled, reached no entry, or gave no Firecrawl answer (see the
     static-sources notes below); `error` when the run
     itself raised. Only `ok` counts as success. The record also carries
-    `sources_checked`, `sources_failed`, `sources_robots_skipped` and `finished_at`.
+    `sources_checked`, `sources_failed`, `sources_robots_skipped`, `finished_at` and the flat keys
+    `page_watch_read_status` (`ok`, `partial` or `failed`), `page_watch_read_count` and `page_watch_failed_count`
+    (plus `page_watch_read_reason`, a fixed code, when there is one): what the run read from the entries
+    that are switched on, whichever fetcher read them; `failed` is every such entry not read; never `ok` when nothing
+    was counted; `status` above is unchanged).
     Writing it is observational: a failure there is logged and never fails the run;
   - **Static sources** (`"fetcher": "static"` on a `page_watch` entry; the default and the only
     value any shipped entry has is `firecrawl`; an unknown value makes the entry invalid, it never
@@ -300,6 +319,7 @@ score = min(lane_hits, 6) × 0.35 × lane_weight
       + evidence_bonus            # O 0.60 · R 0.35 · M 0.10
       + Σ signal_bonus            # closed_loop 0.50 · real_robot 0.40 · numbers 0.30
                                   # open_release 0.25 · latency 0.20
+                                  # industry_event 0.50 (posts only: a preprint never earns it)
       + recency_bonus             # same day 1.0 · 1 day 0.8 · ≤3 days 0.5 · ≤7 days 0.25
       + (source_weight − 1.0)
 ```
@@ -381,11 +401,21 @@ caps above:
 - arXiv takes at most half of the limit (4 of 8). Unlike the soft caps this holds in the
   fill pass too: a day with nothing else that qualifies publishes a shorter list, not an
   arXiv-only one;
-- one slot is reserved for the best qualifying official (`[O]`) item, and one for the best
-  qualifying non-arXiv item marked `trending`. A reservation passes every gate above (topic,
+- one slot is reserved for the best qualifying official (`[O]`) item, one for the best
+  qualifying non-arXiv item marked `trending`, and two for the best qualifying posts that report an
+  **industry event** (`event`, listed twice in `filters.highlights.reserve`; the second is recorded as
+  `event#2`). An industry event is a funding round, acquisition, listing, production milestone or
+  policy action, or a counted deployment milestone ("completes 1,730 tasks"): the `industry_event` signal in
+  `data/taxonomy.json` flags it from keywords and patterns in English and Chinese, it adds 0.50 to a post's
+  score, `filters.highlights.event_min_score` (0.6) replaces `min_score` for such posts only (every other gate,
+  lane keyword and topic anchor, still applies, which is what keeps car launches and chip start-ups out), and a paper
+  (`[R]`) never earns the bonus or the slot. Without it the page was papers all the way down: in the
+  Rocky "Physical AI weekly" comparison of 2026-11-16 only 8 of 31 headline items had appeared, and
+  items that were in the pool (a 24-hour AGIBOT G2 store trial, Tesla Optimus production) scored 0.7 to
+  1.0 against 2.0 to 2.7 for papers. A reservation passes every gate above (topic,
   lane keyword, repeat guard, same-story, lane cap); one that nothing can fill stays empty,
   and the run log records it under `quota.unmet` in `radar/history.json`. A name other than
-  `official` or `hot` is ignored and recorded there as `unknown:<name>`.
+  `official`, `hot` or `event` is ignored and recorded there as `unknown:<name>`.
 
 Because a lane gives at most two picks a day, the picks alone say little about how much a lane
 had. Each run therefore also records, under `pool` in `radar/history.json`, how many items

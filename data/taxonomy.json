@@ -567,6 +567,35 @@
         "inference speed"
       ],
       "pattern": "\\b\\d+(?:\\.\\d+)?\\s?(?:ms|Hz|kHz)\\b"
+    },
+    {
+      "id": "industry_event",
+      "keywords": [
+        "funding round",
+        "seed round",
+        "series a",
+        "series b",
+        "series c",
+        "series d",
+        "valuation",
+        "ipo",
+        "spac",
+        "nasdaq",
+        "go public",
+        "goes public",
+        "stock market",
+        "acquires",
+        "to acquire",
+        "acquisition of",
+        "acquired by",
+        "merger",
+        "mass production",
+        "section 232",
+        "tariff",
+        "export control",
+        "antitrust"
+      ],
+      "pattern": "(?i)(?:\\braises?\\s+(?:us)?\\$\\s?\\d|\\binvests?\\s+(?:us)?\\$\\s?\\d|\\b(?:starts?|begins?|began|kicks? off|ramps?(?: up)?)\\b[^.]{0,40}\\bproduction\\b|\\b(?:completes?|completed|deploys?|deployed|delivers?|delivered|ships?|shipped)\\b[^.]{0,60}\\b\\d[\\d,]*\\s*(?:tasks|units|robots|humanoids)\\b|融资|估值|收购|并购|上市|量产|下线|出货|关税|反垄断|国家安全认定)"
     }
   ]
 }

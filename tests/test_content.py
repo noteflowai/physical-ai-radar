@@ -140,14 +140,17 @@ class NumberContextTest(unittest.TestCase):
                     "date": "2026-09-25", "generated": "2026-09-25 01:40 UTC", "window": "", "picked": [],
                     "baseline": [], "curated": {}, "lane_rows": [], "mix": {}, "cadence": []})
                 lines = {line for line in page.splitlines() if line.startswith("- [") and "](http" in line}
-                council = [line for line in lines if "consilium.europa.eu" in line]
-                self.assertEqual(len(council), 1, council)
-                self.assertIn(label, council[0])
-                self.assertIn("**" + config.ui(lang)["standards_not_covered"] + "**", council[0])
-                # the pages the radar does read carry no such label
-                covered = [line for line in lines if "iso.org" in line or "eur-lex.europa.eu" in line]
-                self.assertEqual(len(covered), 2, covered)
-                self.assertFalse([line for line in covered if label in line])
+                # every standards page the radar does not read says so: the Council's (robots.txt 403, 2026-11), ISO's (robots.txt
+                # 403 when read on 2026-11-14) and EUR-Lex's (no verifiable robots.txt content), all marked `covered: false`
+                standards = [line for line in lines if any(host in line for host in
+                                                           ("consilium.europa.eu", "iso.org", "eur-lex.europa.eu"))]
+                self.assertEqual(len(standards), 3, standards)
+                for line in standards:
+                    self.assertIn(label, line)
+                    self.assertIn("**" + config.ui(lang)["standards_not_covered"] + "**", line)
+                # and no other link on the page carries the label
+                others = [line for line in lines if line not in standards]
+                self.assertFalse([line for line in others if label in line])
 
 
 class StoryTest(unittest.TestCase):

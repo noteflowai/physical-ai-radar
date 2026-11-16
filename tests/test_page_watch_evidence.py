@@ -22,8 +22,12 @@ from unittest import mock
 from pairadar import cli, fetch, health
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "tests"))
+
+import page_watch_fixture  # noqa: E402
+
 DAY = "2026-10-21"
-STATIC_IDS = ["1x", "figure", "physical-intelligence", "unitree"]
+STATIC_IDS = page_watch_fixture.STATIC_IDS
 
 DRIVER = r'''
 import json, socket, sys, time
@@ -97,7 +101,16 @@ def _copy_repository(target: Path) -> Path:
     def ignore(directory, names):
         return {name for name in names if name in (".git", "__pycache__", "tests")}
     shutil.copytree(ROOT, target, ignore=ignore, symlinks=True)
+    _fix_the_watched_pages(target)
     return target
+
+
+def _fix_the_watched_pages(repo: Path) -> None:
+    """What these scenarios watch is `tests/page_watch_fixture.py`, not data/sources.json (which has no Firecrawl page now)."""
+    path = repo / "data" / "sources.json"
+    path.write_text(json.dumps(page_watch_fixture.watched(json.loads(path.read_text(encoding="utf-8"))),
+                               ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
 
 
 class HermeticCopyTests(unittest.TestCase):
@@ -162,6 +175,12 @@ class RealRunEvidenceTests(unittest.TestCase):
     def record(self, day=DAY):
         return json.loads((self.evidence / f"{day}.json").read_text())
 
+    @staticmethod
+    def read_fields(record):
+        """(page_watch_read_status, page_watch_read_count, page_watch_failed_count): the flat keys, never a nested object."""
+        assert "page_watch_read" not in record
+        return (record["page_watch_read_status"], record["page_watch_read_count"], record["page_watch_failed_count"])
+
     def assertExit0(self, done):
         self.assertEqual(done.returncode, 0, done.stdout[-2000:] + done.stderr[-2000:])
         self.assertNotIn("Traceback", done.stderr)
@@ -173,6 +192,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertEqual((record["schema"], record["channel"], record["status"], record["day"]),
                          ("pairadar-page-watch-v1", "page_watch", "firecrawl-unavailable", DAY))
         self.assertEqual((record["sources_checked"], record["sources_failed"]), (0, STATIC_IDS))     # the two live static sources failed too
+        self.assertEqual(self.read_fields(record), ("failed", 0, 6))     # 4 static + 2 Firecrawl, none read
         self.assertRegex(record["finished_at"], r"\+00:00$")
         self.assertEqual(stat.S_IMODE(self.evidence.stat().st_mode), 0o700)
         self.assertEqual(list(self.evidence.glob(".*.tmp")), [])
@@ -190,11 +210,12 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], []))     # not-attempted is not a failure
 
     def test_all_pages_failing_is_all_failed_and_never_struggling(self):
-        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources)]
+        ids = [e["id"] for e in fetch._resolve_page_watch(json.loads((self.repo / "data" / "sources.json").read_text()))]
         for day in ("2026-10-19", "2026-10-20", DAY):
             self.assertExit0(self.main("all-failed", day))
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("all-failed", 0))
+        self.assertEqual(self.read_fields(record), ("failed", 0, len(ids)))
         self.assertEqual(record["sources_failed"], sorted(ids))
         runs = json.loads((self.repo / "radar" / "history.json").read_text())["runs"]
         self.assertEqual(runs[-1]["page_failed"], sorted(ids))
@@ -214,6 +235,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertExit0(done)
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("ok", 1))
+        self.assertEqual(self.read_fields(record), ("partial", 1, 5))     # iso read; eur-lex robots; 4 static failed
         self.assertEqual(record["sources_robots_skipped"], ["watch-eu-machinery-regulation"])
         self.assertNotIn("watch-iso-25785-1", record["sources_failed"])
         self.assertNotIn("watch-eu-machinery-regulation", record["sources_failed"])
@@ -230,6 +252,8 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertIn("unexpected failure inside the run", done.stderr)
         record = self.record()
         self.assertEqual((record["status"], record["sources_checked"]), ("error", 0))
+        self.assertEqual(self.read_fields(record), ("failed", 0, 0))
+        self.assertEqual(record["page_watch_read_reason"], "run-raised")
 
     def test_a_broken_evidence_writer_never_fails_the_radar(self):
         done = self.main("writer-raises")
@@ -248,6 +272,18 @@ class RealRunEvidenceTests(unittest.TestCase):
 
 
 class StatusTests(unittest.TestCase):
+    def test_with_no_firecrawl_entry_the_channel_is_never_ok_whatever_the_static_sources_read(self):
+        # Known effect of removing Firecrawl from the configuration (2026-11-16), pinned so that it is a decision, not a surprise:
+        # `ok` needs an affirmative sign that Firecrawl answered (ADR 027), and with no entry on Firecrawl none is ever given.
+        # Both outcomes below were non-success before; neither is `ok` now. Whether the freshness objective should count a
+        # static read is for its owner (noteflow-auto config/delivery-freshness.json); changing `page_watch_status` is not
+        # the way to settle it.
+        read = {"enabled": True, "attempted": ["figure", "1x", "unitree"], "checked": ["figure", "1x", "unitree"], "failed": [],
+                "robots_skipped": [], "unavailable": False, "firecrawl_answered": False}
+        self.assertEqual(cli.page_watch_status(read), "skipped")
+        self.assertEqual(cli.page_watch_status({**read, "checked": [], "failed": ["figure", "1x", "unitree"]}), "all-failed")
+        self.assertNotEqual(cli.page_watch_status(read), "ok")
+
     def test_status_table(self):
         block = {"enabled": True, "attempted": ["a", "b"], "checked": [], "failed": ["a"],
                  "robots_skipped": ["b"], "unavailable": False, "firecrawl_answered": True}
