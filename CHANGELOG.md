@@ -60,11 +60,18 @@ radar content itself is dated, not versioned.
 - A feed with `"kind": "github-releases"` reads the newest release of its `repo` from the GitHub API
   (`https://api.github.com/repos/OWNER/REPO/releases?per_page=1`; `url` must be exactly that, built from `repo`). One
   request, the radar's User-Agent, no redirect followed, a reply over 1,000,000 bytes is not read. Only the tag, the name,
-  the link and the time of a release are kept, never its notes; a draft, and a link that is not that repository's own
-  release page, are skipped; a repository with no release yet is an answer, not a failure. A feed that gave nothing is
+  the link and the time of a release are kept, never its notes. A draft is skipped; a repository with no release yet is an
+  answer, not a failure. Anything else that is not a well-formed release of that repository is a `bad-reply`, not "no
+  release" and not an item: a missing or mistyped `draft`, `tag_name`, `html_url` or `published_at`, a key twice anywhere in
+  the reply, a time without an offset or outside 2000 to 2100, or a link that is not exactly
+  `https://github.com/OWNER/REPO/releases/tag/TAG` for the configured repository and the release's own tag (a query, port,
+  userinfo, dot or empty segment, encoded variant, or another tag or page all fail). A feed that gave nothing is
   `failed` with a fixed reason in `failed_reasons` (the run record and `latest.json`): `moved` (301, 302, 307 or 308:
-  the repository was renamed, so `repo` and `url` need the new name), `rate-limited` (403, 429), `not-found` (404),
-  `unavailable`, `bad-reply` or `bad-config` (nothing requested). The API host's robots.txt is asked first like any
+  the repository was renamed, so `repo` and `url` need the new name), `rate-limited` (429, or a 403 that carries
+  `X-RateLimit-Remaining: 0` or `Retry-After`), `forbidden` (any other 403), `not-found` (404),
+  `unavailable`, `bad-reply` or `bad-config` (nothing requested: this is decided from the configuration before the API
+  host's robots.txt, the spacing wait or the API is touched; `repo` must be OWNER/NAME with no `.` or `..` part). The API
+  host's robots.txt is asked first like any
   other feed's. Unauthenticated, GitHub allows 60 requests an hour per address (read from the `X-RateLimit-Limit` header on
   2026-11-16); each run makes one request per release feed, in addition to the star reads of the heat step. **These feeds are
   never `struggling`**: the repair job's verifier parses RSS/Atom and accepts a change of the feed's `url` alone, and a renamed

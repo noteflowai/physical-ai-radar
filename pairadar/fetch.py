@@ -587,7 +587,8 @@ _GITHUB_REPO = re.compile(r"^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$")
 MAX_API_BYTES = 1_000_000
 # Why a GitHub release read gave nothing: the fixed codes of `FetchReport.failed_reasons`. `moved` is an answer of 301, 302,
 # 307 or 308 (the repository was renamed or moved): it is never followed, the configuration needs the new owner/repo.
-GITHUB_FAILURES = ("moved", "rate-limited", "not-found", "unavailable", "bad-reply", "bad-config")
+GITHUB_FAILURES = ("moved", "rate-limited", "forbidden", "not-found", "unavailable", "bad-reply", "bad-config")
+_NOT_A_NAME = (".", "..")
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -605,6 +606,12 @@ def github_get(url: str, report: dict[str, Any]) -> bytes | None:
             body = response.read(MAX_API_BYTES + 1)
     except urllib.error.HTTPError as exc:
         report["status"] = exc.code
+        # GitHub answers 403 both for a rate limit and for a refusal: the headers say which. A primary limit has
+        # X-RateLimit-Remaining 0; a secondary one carries Retry-After.
+        headers = exc.headers if exc.headers is not None else {}
+        report["rate_limited"] = (str(headers.get("X-RateLimit-Remaining", "")).strip() == "0"
+                                  or headers.get("Retry-After") is not None)
+        exc.close()                       # the error holds the connection open until it is closed
         return None
     except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError, ValueError):
         report["status"] = None
@@ -619,8 +626,10 @@ def github_get(url: str, report: dict[str, Any]) -> bytes | None:
 def _github_failure(status: int | None, report: dict[str, Any]) -> str:
     if status in (301, 302, 307, 308):
         return "moved"
-    if status in (403, 429):
+    if status == 429:
         return "rate-limited"
+    if status == 403:
+        return "rate-limited" if report.get("rate_limited") else "forbidden"
     if status == 404:
         return "not-found"
     if report.get("too_large"):
@@ -628,46 +637,113 @@ def _github_failure(status: int | None, report: dict[str, Any]) -> str:
     return "unavailable"
 
 
+def _no_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """json.loads takes the last of two equal keys; a reply that says `"draft": true` and `"draft": false` has no meaning."""
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise ValueError(f"duplicate key {key!r}")
+        out[key] = value
+    return out
+
+
+def _release_link_ok(link: str, repo: str, tag: str) -> bool:
+    """Whether `link` is the release page of `tag` in `repo` itself: https://github.com/OWNER/REPO/releases/tag/TAG, with
+    OWNER/REPO the configured repository (case aside), TAG the release's own tag (percent-encoded or not), no query,
+    fragment, userinfo, port, empty or dot segment, and nothing that a browser would read differently from this check."""
+    if not link.isascii() or "\\" in link or any(ord(char) <= 32 or ord(char) == 127 for char in link):
+        return False
+    parts = urllib.parse.urlsplit(link)
+    if parts.scheme != "https" or parts.netloc != "github.com" or parts.query or parts.fragment or ";" in parts.path:
+        return False
+    segments = parts.path.split("/")
+    if len(segments) < 6 or segments[0] != "" or segments[3] != "releases" or segments[4] != "tag":
+        return False
+    if f"{segments[1]}/{segments[2]}".lower() != repo.lower():
+        return False
+    rest = "/".join(segments[5:])
+    return urllib.parse.unquote(rest) == tag
+
+
+def _release_entry(release: dict[str, Any], repo: str) -> tuple[str, str, str, str] | None:
+    """(title, link, summary, day) of one release; None for a draft; ValueError for anything that is not a release of `repo`.
+
+    The fields used are checked, not defaulted: `draft` must be true or false; a release that is published needs a tag, the
+    link of its own release page and a time with an offset. A reply that lacks them, or contradicts itself (a link that is
+    another repository's page, another tag's, or leaves the repository by a dot segment), is a bad reply: it is not read
+    as "no release" and not published."""
+    draft = release.get("draft")
+    if not isinstance(draft, bool):
+        raise ValueError("draft is not true or false")
+    if draft:
+        return None
+    tag, link, published = release.get("tag_name"), release.get("html_url"), release.get("published_at")
+    if not isinstance(tag, str) or not tag.strip() or tag != tag.strip() or len(tag) > 255 or not tag.isprintable():
+        raise ValueError("no usable tag_name")
+    if any(piece in ("", ".", "..") for piece in tag.split("/")):
+        raise ValueError("tag_name has an empty or dot segment")
+    if not isinstance(link, str) or not _release_link_ok(link, repo, tag):
+        raise ValueError("html_url is not this repository's release page for the tag")
+    if not isinstance(published, str):
+        raise ValueError("no published_at")
+    moment = datetime.fromisoformat(re.sub(r"Z$", "+00:00", published.strip()))
+    if moment.tzinfo is None or not 2000 <= moment.year <= 2100:
+        raise ValueError("published_at has no offset or is not a plausible date")
+    day = _utc_day(moment)                 # OverflowError at the edge of the range: the caller turns it into a bad reply
+    name = release.get("name")
+    title = clean_text(name if isinstance(name, str) and name.strip() else tag)[:MAX_TITLE_CHARS]
+    if not title:
+        raise ValueError("no title")
+    return title, link, "", day
+
+
 def parse_github_releases(payload: bytes, repo: str) -> list[tuple[str, str, str, str]] | None:
-    """(title, link, summary, published day) per release, newest first; None when the reply is not a list of releases.
+    """(title, link, summary, published day) per release, newest first; None when the reply is a bad reply.
 
     Only the tag, the name, the link and the time of a release are kept; the notes are never read into an item. A draft
-    is skipped, and so is a release without a tag, without a time or whose link is not that repository's own release page
-    on github.com. An empty list is an answer: the repository has no release yet."""
+    is skipped. An empty list is an answer: the repository has no release yet. Everything else that is not a list of
+    well-formed releases of `repo` (see `_release_entry`), or that has a key twice anywhere, is None: it is never turned
+    into "no release" and never raises."""
     try:
-        data = json.loads(payload.decode("utf-8"))
-    except (UnicodeDecodeError, ValueError):
+        data = json.loads(payload.decode("utf-8"), object_pairs_hook=_no_duplicate_keys)
+    except (UnicodeDecodeError, ValueError, RecursionError):
         return None
     if not isinstance(data, list) or not all(isinstance(release, dict) for release in data):
         return None
     out: list[tuple[str, str, str, str]] = []
     for release in data[:30]:
-        tag, link = release.get("tag_name"), release.get("html_url")
-        if release.get("draft") is True or not isinstance(tag, str) or not tag.strip() or not isinstance(link, str):
-            continue
-        parts = urllib.parse.urlsplit(link)
-        if parts.scheme != "https" or parts.netloc != "github.com" or parts.query or parts.fragment \
-                or not parts.path.lower().startswith(f"/{repo.lower()}/releases/"):
-            continue
-        name = release.get("name")
-        title = clean_text(name if isinstance(name, str) and name.strip() else tag)[:MAX_TITLE_CHARS]
-        published = parse_date(release.get("published_at") if isinstance(release.get("published_at"), str) else None)
-        if title and published:
-            out.append((title, link, "", published))
+        try:
+            entry = _release_entry(release, repo)
+        except (ValueError, OverflowError):
+            return None
+        if entry is not None:
+            out.append(entry)
     return sorted(out, key=lambda entry: entry[3], reverse=True)
+
+
+def github_config_problem(feed: dict[str, Any]) -> str | None:
+    """Why a `github-releases` feed cannot be read as configured, or None. Decided from the configuration alone, before
+    robots.txt, spacing or the API are touched: `repo` is OWNER/NAME (no dot-only name), and `url` is exactly the API address
+    built from it (https, api.github.com, /repos/OWNER/NAME/releases, per_page=1)."""
+    repo = feed.get("repo")
+    if feed.get("kind") != GITHUB_RELEASES or not isinstance(repo, str) or not _GITHUB_REPO.fullmatch(repo):
+        return "bad-config"
+    if any(piece in _NOT_A_NAME for piece in repo.split("/")) or feed.get("url") != GITHUB_API.format(repo=repo):
+        return "bad-config"
+    return None
 
 
 def read_github_releases(feed: dict[str, Any]) -> tuple[list[tuple[str, str, str, str]] | None, str]:
     """The releases of a `github-releases` feed, or (None, the fixed reason code). The address is built from `repo`; a feed
     whose `url` is anything else is `bad-config` and nothing is requested."""
-    repo = feed.get("repo")
-    if not isinstance(repo, str) or not _GITHUB_REPO.fullmatch(repo) or feed.get("url") != GITHUB_API.format(repo=repo):
-        return None, "bad-config"
+    problem = github_config_problem(feed)
+    if problem:
+        return None, problem
     report: dict[str, Any] = {}
     payload = github_get(feed["url"], report)
     if payload is None:
         return None, _github_failure(report.get("status"), report)
-    entries = parse_github_releases(payload, repo)
+    entries = parse_github_releases(payload, feed["repo"])
     return (entries, "") if entries is not None else (None, "bad-reply")
 
 
@@ -697,6 +773,17 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
     cap = int(config.sources.get("filters", {}).get("max_entries_per_feed", 100))
     for feed in enabled_feeds(config.sources):
         limit = CJK_SUMMARY_CHARS if feed.get("lang") in ("zh", "ja") else MAX_SUMMARY_CHARS
+        # A feed whose configuration cannot be read is refused before anything is requested: not its robots.txt, not a
+        # spacing wait, not the API. (The `url` of a `github-releases` feed is the API address built from `repo`, so the
+        # robots.txt that decides is still api.github.com's, once the configuration is known to be that.)
+        kind = feed.get("kind")
+        if kind is not None and (kind != GITHUB_RELEASES or github_config_problem(feed)):
+            print(f"[fetch] feed {feed['id']}: " + ("unknown kind" if kind != GITHUB_RELEASES else "bad configuration")
+                  + ", not read")
+            failed.append(feed["id"])
+            if failures is not None:
+                failures[feed["id"]] = "bad-config"
+            continue
         if robots is not None:
             verdict = robots.verdict(feed["url"])
             if verdict != ALLOW:
@@ -709,7 +796,7 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                     newly_denied[feed["id"]] = verdict
                 continue
             polite(feed["url"])
-        if feed.get("kind") == GITHUB_RELEASES:
+        if kind == GITHUB_RELEASES:
             # The releases of a repository, from the GitHub API: one request, no redirect followed, only the tag, name, link
             # and time kept. A failure is `failed` with a fixed reason (`moved` when the repository was renamed).
             entries, why = read_github_releases(feed)
@@ -719,12 +806,6 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 if failures is not None:
                     failures[feed["id"]] = why
                 continue
-        elif feed.get("kind") is not None:
-            print(f"[fetch] feed {feed['id']}: unknown kind, not read")
-            failed.append(feed["id"])
-            if failures is not None:
-                failures[feed["id"]] = "bad-config"
-            continue
         else:
             payload = http_get(feed["url"])
             if not payload:
