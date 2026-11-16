@@ -13,6 +13,7 @@ import sys
 import tempfile
 import threading
 import unittest
+import urllib.parse
 from datetime import date, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -150,6 +151,47 @@ class ParserTests(unittest.TestCase):
                 out = fetch.parse_github_releases(payload(one), REPO)
                 self.assertEqual(len(out), 1, out)
                 self.assertEqual(out[0][1], one["html_url"])
+
+    # 01 F4-R2 and F2-R2 (the follow-up to the second round): the link is read as strict UTF-8, and every entry is checked.
+    NOT_UTF8_LINKS = {"a lone 0xFF": "%FF", "a lone 0xFE": "%FE", "an overlong slash": "%C0%AF", "a surrogate": "%ED%A0%80"}
+
+    def test_a_link_that_is_not_utf8_is_not_the_tag_its_lossy_decoding_spells(self):
+        for name, encoded in self.NOT_UTF8_LINKS.items():
+            with self.subTest(name):
+                lossy = urllib.parse.unquote(encoded)                  # what the default decoding made of it: U+FFFD only
+                self.assertEqual(set(lossy), {"\ufffd"})
+                one = {**release(lossy), "html_url": f"https://github.com/{REPO}/releases/tag/{encoded}"}
+                self.assertIsNone(fetch.parse_github_releases(payload(one), REPO))
+
+    def test_a_tag_that_really_has_the_replacement_character_is_still_accepted_in_its_utf8_form(self):
+        for tag, encoded in {"\ufffd": "%EF%BF%BD", "a\ufffdb": "a%EF%BF%BDb"}.items():
+            with self.subTest(tag):
+                one = {**release(tag), "html_url": f"https://github.com/{REPO}/releases/tag/{encoded}"}
+                self.assertEqual(len(fetch.parse_github_releases(payload(one), REPO)), 1)
+        # and the plain character in the link is not ASCII, so it was never accepted
+        one = {**release("\ufffd"), "html_url": f"https://github.com/{REPO}/releases/tag/\ufffd"}
+        self.assertIsNone(fetch.parse_github_releases(payload(one), REPO))
+
+    def many(self, count, *, bad_at=None):
+        """`count` well-formed releases with distinct tags, and `{}` in place of the one at `bad_at`."""
+        return payload(*({} if index == bad_at else release(f"v{index}") for index in range(count)))
+
+    def test_a_bad_entry_anywhere_in_the_reply_is_a_bad_reply_not_only_among_the_first_thirty(self):
+        cap = fetch.MAX_RELEASES_KEPT
+        for position in (0, 1, cap - 1, cap, cap + 1, 100):
+            with self.subTest(position):
+                self.assertIsNone(fetch.parse_github_releases(self.many(101, bad_at=position), REPO))
+        # a bad field, not only a missing object, and after the cap
+        tail = [release(f"v{index}") for index in range(cap)] + [release("v-last", published="soon")]
+        self.assertIsNone(fetch.parse_github_releases(payload(*tail), REPO))
+
+    def test_a_longer_reply_is_kept_to_the_cap_after_it_has_been_checked(self):
+        cap = fetch.MAX_RELEASES_KEPT
+        self.assertEqual(len(fetch.parse_github_releases(self.many(cap), REPO)), cap)
+        self.assertEqual(len(fetch.parse_github_releases(self.many(cap + 40), REPO)), cap)
+        # a draft inside the first entries still counts as one of them, as before
+        drafts = payload(release("d", draft=True), *(release(f"v{index}") for index in range(cap + 5)))
+        self.assertEqual(len(fetch.parse_github_releases(drafts, REPO)), cap - 1)
 
     def test_the_failure_is_a_result_not_an_exception(self):
         # 01 F1: an unparseable address, and a time whose UTC day does not exist, used to raise out of fetch_feeds
@@ -397,6 +439,23 @@ class FeedTests(unittest.TestCase):
                 items, failed, failures, _, _ = self.read_with_a_feed_after(body)
                 self.assertEqual((failed, failures), (["github-lerobot"], {"github-lerobot": "bad-reply"}))
                 self.assertEqual([item.source_id for item in items], ["blog"])
+
+    def test_a_link_that_is_not_utf8_or_a_bad_entry_after_the_first_thirty_is_a_bad_reply_through_the_real_consumer(self):
+        # 01 F4-R2, F2-R2: the same inputs, through fetch_feeds: a bad reply, no Item for the feed, the next feed still read
+        valid = [release(f"v{index}") for index in range(fetch.MAX_RELEASES_KEPT)]
+        cases = {name: payload(one) for name, one in {
+            "a lone 0xFF": {**release(urllib.parse.unquote("%FF")), "html_url": f"https://github.com/{REPO}/releases/tag/%FF"},
+            "an overlong slash": {**release(urllib.parse.unquote("%C0%AF")),
+                                  "html_url": f"https://github.com/{REPO}/releases/tag/%C0%AF"},
+        }.items()}
+        cases["an empty object as the 31st"] = payload(*valid, {})
+        cases["an empty object as the 32nd"] = payload(*valid, release("v-more"), {})
+        for name, body in cases.items():
+            with self.subTest(name):
+                items, failed, failures, calls, ordinary = self.read_with_a_feed_after(body)
+                self.assertEqual((failed, failures, calls), (["github-lerobot"], {"github-lerobot": "bad-reply"}, [URL]))
+                self.assertEqual([item.source_id for item in items], ["blog"])
+                ordinary.assert_called_once()
 
     def test_legal_releases_still_become_items_after_the_stricter_reading(self):
         for name, body in {"a tag with a plus": payload({**release("v1.0+rc1"), "html_url":
