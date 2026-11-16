@@ -693,7 +693,7 @@ COMPARED_KEYS = ("date", "title", "url", "lane", "evidence", "published", "sourc
 def compare_with_feed(entries: list[dict], records: list[dict], frozen_through: str) -> tuple[int, list[tuple]]:
     """(how many records were compared, what differs) between stored entries and the feed's `_radar` records.
 
-    An item can be picked on two days (the pool window is 30 days; 2026-11-16 re-picked an item from 2026-10-14), so
+    An item can be picked on two days (the repeat window is 30 days; 2026-11-16 re-picked an item from 2026-10-14), so
     entries are found by (id, date), never by id alone. The feed holds one record per id, the newest, so a record is
     compared only with the entry of the same id and the same day; a record from after `frozen_through` came from the run
     itself and is not compared, and one with no entry (a day the pages cannot give) is left out."""
@@ -777,9 +777,9 @@ class CommittedDataTest(unittest.TestCase):
 
 
 class RepeatedPickTest(unittest.TestCase):
-    """An item picked on two days more than the pool window apart (2026-10-14 and 2026-11-16 for one NVIDIA post) is two
-    entries with one id. It stopped the 2026-11-16 publication because a test took the id for a key; the export itself
-    has always counted by date."""
+    """An item picked on two days more than the repeat window (`filters.repeat_days`, 30) apart (2026-10-14 and 2026-11-16
+    for one NVIDIA post) is two entries with one id. It stopped the 2026-11-16 publication because a test took the id for a
+    key; the export itself has always counted by date."""
 
     EARLY, LATE = "2026-10-14", "2026-11-16"
 

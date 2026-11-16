@@ -389,7 +389,12 @@ none. Runs before this field existed have no `pool`; the count is not reconstruc
 
 Two public files, `radar/graph/items.json` and `radar/graph/lane-time.json` (schema `radar-graph-1`), carry
 the same facts in a form a page can read. `items.json` has every published pick with its lane as an id
-(the public fields of the feed's `_radar` record). From the day it was added the run appends the day's picks
+(the public fields of the feed's `_radar` record). **An entry is a pick on a day, not an item**: an item is kept out of
+the picks for `filters.repeat_days` (30) days, so one item can be picked again after that (2026-11-16 picked an NVIDIA post
+that 2026-10-14 had picked), and then it is two
+entries with the same `id` and different `date`. The key of an entry is `(date, id)`; a pair that repeats it is refused,
+and a reader (a page, a test, a consumer) must not use `id` alone as a key. (The one-entry-per-id assumption stopped the
+2026-11-16 publication, in a test, and the export was reverted for the day.) From the day it was added the run appends the day's picks
 itself; days before that are filled once from the published English pages, reading only the
 `## Today's picks` section (never the curated baseline, the charts or the watch list), and a day whose page
 cannot be read exactly, or whose pick count differs from the run's, is listed under `backfill.gaps` with the

@@ -2,7 +2,9 @@
 
 Both are public files in the same published tree as `radar/feed.json`, schema `radar-graph-1`.
 
-`items.json` holds every published pick, one entry per item, with the lane as an id. From the day this
+`items.json` holds every published pick, one entry per pick on a day, with the lane as an id. An item is kept out of the
+picks for `filters.repeat_days` (30) days and can be picked again after that, so one `id` can have entries on several
+days; the key of an entry is `(date, id)`. From the day this
 module is wired in, the nightly run appends the day's picks from the run itself. Days before that
 exist only as the published daily pages, so the first run also fills every day of `history.json` that
 has no entries yet by reading that day's English page, and only the `## Today's picks` section of it:
