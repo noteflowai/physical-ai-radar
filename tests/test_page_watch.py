@@ -168,21 +168,24 @@ class SchemaTest(unittest.TestCase):
                     for entry in fetch._resolve_page_watch(raw) if "standards_watch" in entry}
         self.assertEqual(resolved, standards)
 
-    def test_the_council_page_is_listed_as_not_covered_and_never_read(self) -> None:
-        # The Council of the EU answers robots.txt with 403, and a 401 or 403 robots.txt means the host is not read,
-        # so its AI Act timeline stays on the page as a link, marked not covered, and no watch may read it.
+    def test_the_standards_pages_the_radar_does_not_read_are_marked_so_and_never_read(self) -> None:
+        # Three standards pages stay on the page as links, marked not covered, and no watch may read them: the Council of the EU
+        # (robots.txt 403), ISO (robots.txt 403 when read on 2026-11-14) and EUR-Lex (no verifiable robots.txt content).
+        # Firecrawl, which read the last two, was unavailable on every day on record (2026-10-22 to 11-16), so none of them was
+        # ever read.
         raw = load_config().sources
-        council = [w for w in raw["standards_watch"] if "consilium.europa.eu" in w["url"]]
-        self.assertEqual([w["id"] for w in council], ["eu-ai-act-timeline"])
-        self.assertIs(council[0].get("covered"), False)
-        self.assertTrue(council[0].get("not_covered_reason"))
+        standards = {w["id"]: w for w in raw["standards_watch"]}
+        self.assertEqual(sorted(standards), ["eu-ai-act-timeline", "eu-machinery-regulation", "iso-25785-1"])
+        for ident, watch in standards.items():
+            with self.subTest(ident):
+                self.assertIs(watch.get("covered"), False)
+                self.assertTrue(str(watch.get("not_covered_reason", "")).strip())
+        hosts = ("consilium.europa.eu", "www.iso.org", "eur-lex.europa.eu")
         for entry in raw["page_watch"]:
-            self.assertNotIn("consilium.europa.eu", str(entry.get("url", "")))
-            self.assertNotEqual(entry.get("standards_watch"), "eu-ai-act-timeline")
+            self.assertFalse(any(host in str(entry.get("url", "")) for host in hosts), entry["id"])
+            self.assertNotIn(entry.get("standards_watch"), standards)
         for entry in fetch._resolve_page_watch(raw):
-            self.assertNotIn("consilium.europa.eu", str(entry.get("url", "")))
-        # every other standards page is still covered
-        self.assertTrue(all(w.get("covered") is not False for w in raw["standards_watch"] if w not in council))
+            self.assertFalse(any(host in str(entry.get("url", "")) for host in hosts), entry["id"])
 
     def test_a_watch_of_a_page_marked_not_covered_is_a_problem(self) -> None:
         raw = sources()

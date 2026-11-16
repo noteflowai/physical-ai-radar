@@ -15,16 +15,20 @@ changes, this file changes in the same pull request.
 | Trade and mainstream press | IEEE Spectrum Robotics, The Robot Report, TechCrunch Robotics, Robohub, Import AI; 雷峰网 Leiphone and 量子位 QbitAI (Chinese), MONOist (Japanese) | `M` | professional reporting and analysis, still secondary |
 | Attention signals | Hugging Face Daily Papers API, Hacker News (Algolia search API), GitHub REST (stars) | — | ranking only (section 3); never an item and never evidence |
 | Standards watch | ISO, EUR-Lex; the Council of the EU is listed as a link and marked not covered (its robots.txt answers 403, so the radar does not read it) | `O` | authoritative status and dates; the note of a page that is not covered is entered by hand and not checked |
-| Page watch | Figure, 1X, Physical Intelligence, Unitree and the covered standards-watch pages, through a loopback Firecrawl | `O` | first-party pages of sources that publish no feed |
+| Page watch | Figure, 1X and Unitree, read with the static fetcher (`pairadar/static_fetch.py`). Physical Intelligence is switched off since 2026-11-16, when the configuration was changed: no page of it was produced from 11-12 on; its robots.txt answered 429 in the runs of 11-12 to 11-15, and the 11-16 run used the remembered back-off and sent no request; since the switch-off nothing is requested from its host. The two standards pages that went through a loopback Firecrawl (ISO 25785-1, Regulation (EU) 2023/1230) are marked not covered: Firecrawl was unavailable on every one of the 26 days on record (2026-10-22 to 11-16), so they were never read. No entry uses Firecrawl now; the code path stays | `O` | first-party pages of sources that publish no feed |
 
 Rules:
 
 - only declared machine-readable endpoints (Atom / RSS / documented API);
 - no HTML scraping of article bodies, no paywall circumvention;
 - the one exception is `page_watch`: an official source with no feed at all is read as a
-  page, only through a self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other
-  endpoint, including `RADAR_FIRECRAWL_URL`, is refused; redirects and proxies are not
-  followed). robots.txt is checked first, through the same Firecrawl, and read as the feeds
+  page, by one of two fetchers chosen per entry (`fetcher`). `static` (every entry the shipped
+  configuration reads; see Static sources below) makes one plain GET itself and follows no
+  redirect. `firecrawl` (kept in the code, used by no shipped entry now) goes only through a
+  self-hosted Firecrawl on 127.0.0.1, localhost or ::1 (any other endpoint, including
+  `RADAR_FIRECRAWL_URL`, is refused, and only when an entry that goes through it is planned;
+  redirects and proxies are not followed). robots.txt is checked first, by the same fetcher
+  that reads the page, and, for a Firecrawl page, read as the feeds
   read it (the project's policy, stricter than RFC 9309, which lets a crawler read after a 4xx): a 401, 403 or 429, a 5xx, a
   reply with no status or one that is not a whole number from 100 to 599, or a 2xx with no body
   disallows the page for that run; only another 4xx (404, 410) or an empty 2xx body means there are no rules. Firecrawl's own change history needs
@@ -32,6 +36,15 @@ Rules:
   link URLs with the day each was first seen and last offered, line digests; no page
   text). It is written atomically, and only when something in it changed; an unreadable
   one is rebuilt, as on a first look, instead of failing the run.
+  - **A switched-off entry's host is not requested at all** (`pairadar/host_policy.py`).
+    `fetch.http_get` (feeds, robots.txt, arXiv and its fallback, the attention APIs) checks the
+    host before the request and before every redirect hop; a hop to such a host is not sent, the
+    answer is the same as for no answer, and it is not retried. `fetch_page_watch` checks an
+    entry's URL before its page or its robots.txt is requested. The host is the host of the
+    entry's `url` and the names in its `hosts`, with their subdomains, unless something switched
+    on uses it; a switched-off feed is not blocked by host. A policy that cannot be read refuses
+    every request. It does not resolve DNS: an address literal, or another name for the same
+    server, is not recognised.
   - A listing records every first-party link under its `link_prefix`. Each run offers
     the links still inside `filters.max_age_days` -- by the date the link states, or, for
     a link that appeared after the first look, the day it was first seen --

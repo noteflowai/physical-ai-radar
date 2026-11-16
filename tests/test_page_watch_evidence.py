@@ -22,8 +22,12 @@ from unittest import mock
 from pairadar import cli, fetch, health
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "tests"))
+
+import page_watch_fixture  # noqa: E402
+
 DAY = "2026-10-21"
-STATIC_IDS = ["1x", "figure", "physical-intelligence", "unitree"]
+STATIC_IDS = page_watch_fixture.STATIC_IDS
 
 DRIVER = r'''
 import json, socket, sys, time
@@ -88,7 +92,16 @@ def _copy_repository(target: Path) -> Path:
     def ignore(directory, names):
         return {name for name in names if name in (".git", "__pycache__", "tests")}
     shutil.copytree(ROOT, target, ignore=ignore, symlinks=True)
+    _fix_the_watched_pages(target)
     return target
+
+
+def _fix_the_watched_pages(repo: Path) -> None:
+    """What these scenarios watch is `tests/page_watch_fixture.py`, not data/sources.json (which has no Firecrawl page now)."""
+    path = repo / "data" / "sources.json"
+    path.write_text(json.dumps(page_watch_fixture.watched(json.loads(path.read_text(encoding="utf-8"))),
+                               ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
 
 
 class HermeticCopyTests(unittest.TestCase):
@@ -181,7 +194,7 @@ class RealRunEvidenceTests(unittest.TestCase):
         self.assertEqual((run["unavailable"], run["page_failed"]), (["page_watch"], []))     # not-attempted is not a failure
 
     def test_all_pages_failing_is_all_failed_and_never_struggling(self):
-        ids = [e["id"] for e in fetch._resolve_page_watch(cli.load_config().sources)]
+        ids = [e["id"] for e in fetch._resolve_page_watch(json.loads((self.repo / "data" / "sources.json").read_text()))]
         for day in ("2026-10-19", "2026-10-20", DAY):
             self.assertExit0(self.main("all-failed", day))
         record = self.record()
@@ -239,6 +252,18 @@ class RealRunEvidenceTests(unittest.TestCase):
 
 
 class StatusTests(unittest.TestCase):
+    def test_with_no_firecrawl_entry_the_channel_is_never_ok_whatever_the_static_sources_read(self):
+        # Known effect of removing Firecrawl from the configuration (2026-11-16), pinned so that it is a decision, not a surprise:
+        # `ok` needs an affirmative sign that Firecrawl answered (ADR 027), and with no entry on Firecrawl none is ever given.
+        # Both outcomes below were non-success before; neither is `ok` now. Whether the freshness objective should count a
+        # static read is for its owner (noteflow-auto config/delivery-freshness.json); changing `page_watch_status` is not
+        # the way to settle it.
+        read = {"enabled": True, "attempted": ["figure", "1x", "unitree"], "checked": ["figure", "1x", "unitree"], "failed": [],
+                "robots_skipped": [], "unavailable": False, "firecrawl_answered": False}
+        self.assertEqual(cli.page_watch_status(read), "skipped")
+        self.assertEqual(cli.page_watch_status({**read, "checked": [], "failed": ["figure", "1x", "unitree"]}), "all-failed")
+        self.assertNotEqual(cli.page_watch_status(read), "ok")
+
     def test_status_table(self):
         block = {"enabled": True, "attempted": ["a", "b"], "checked": [], "failed": ["a"],
                  "robots_skipped": ["b"], "unavailable": False, "firecrawl_answered": True}

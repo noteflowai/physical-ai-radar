@@ -21,6 +21,23 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- **No page_watch entry uses Firecrawl now** (it was unavailable on every one of the 26 days on record, 2026-10-22 to 11-16, and
+  was not redeployed). The two standards pages that went through it, ISO 25785-1 and Regulation (EU) 2023/1230, are removed from
+  `page_watch` and marked `covered: false` with a `not_covered_reason`, like the Council's timeline: ISO's robots.txt answered 403
+  when read on 2026-11-14; no verifiable robots.txt content was obtained for EUR-Lex. Neither was ever read, so no day's content
+  changes. The run no longer reports `unavailable: ["page_watch"]` (a run on a copy of the tree shows it gone). A `page_watch` entry
+  can be switched off with `"enabled": false`, as a feed can: anything but `true` switches it off, it must carry a
+  `disabled_reason`, and it is not read, not asked about in robots.txt, not planned and not counted as failed; its baseline stays.
+- **Physical Intelligence is switched off** (`enabled: false`) from the change of 2026-11-16, which is when the radar stops
+  asking its host for anything. What the records show: its page was last read in the 11-11 run; in each run from 11-12 to
+  11-15 the page was not read because its robots.txt answered 429 (the private freshness record of each day says so); in
+  the 11-16 run the remembered back-off was used and no request was sent. Until the switch-off the host was still asked
+  (its robots.txt) in each run that was not backing off. By the robots rule its pages are not read, and the host is not
+  asked again until a person switches it back on. Its published entries stay readable (the publisher name still resolves).
+  **Known effect, not changed here:** the freshness record's `status` is `ok` only when the Firecrawl channel answered
+  (`firecrawl_answered`, ADR 027); with no entry on Firecrawl that never happens, so the record is `skipped` or `all-failed`
+  instead of `firecrawl-unavailable`. Both were non-success before and are now. Whether the objective should count a static read
+  is a decision for its owner (noteflow-auto `config/delivery-freshness.json`).
 - Industry events get reserved highlight slots. A new `industry_event` signal (funding, M&A, a listing, a production start,
   policy, a counted deployment milestone; English and Chinese terms in `data/taxonomy.json`) adds 0.50 to a post's score
   (never a paper's), `filters.highlights.reserve` gains `event` twice (two slots, recorded as `event` and `event#2`), and
@@ -103,6 +120,20 @@ radar content itself is dated, not versioned.
   sharing one, and the lanes table two instead of three, what a lane tracks and
   why it has its own lane in one cell. On a phone the five columns set
   "newsletters" one character per line and ran off the side of the screen.
+- **A switched-off entry's host is no longer requested through a redirect** (`pairadar/host_policy.py`). Switching a `page_watch`
+  entry off only removed its page from the plan; `fetch.http_get`, which follows redirects, would still have sent a request to
+  that host if a feed, a robots.txt or an attention API redirected there. `http_get` now asks the policy before the first request
+  and before every redirect hop (urllib's own redirect handler, one hop at a time), and a hop to a blocked host is not sent: the
+  answer is the same as for no answer, and it is not retried. `fetch_page_watch` checks an entry's URL before its page or its
+  robots.txt is requested. Blocked: the host of the entry's `url` and the names in its `hosts` with their subdomains
+  (`www.pi.website`, `pi.website`, `physicalintelligence.company`), unless something switched on uses them; a switched-off feed
+  is not blocked by host. A policy that cannot be read refuses every request. DNS is not resolved: an address literal, or another
+  name for the same server, is not recognised. Tests run the real redirect handler and the real consumers (feeds, robots.txt,
+  the attention APIs) against an in-memory transport.
+- **A run of static sources only no longer depends on the Firecrawl endpoint.** The loopback check on `RADAR_FIRECRAWL_URL` ran even
+  when no planned entry used Firecrawl, so a bad endpoint made a successful static run report `unavailable: ["page_watch"]`. It
+  now runs only when an entry that goes through Firecrawl is planned; a run that mixes both, and a run of Firecrawl entries only,
+  are refused as before.
 - The nightly development planner and its two planning reviews (the feature-plan review and the
   no-change review) now see the same controller rules and the same account of what the reviewer can see.
   The two rules that were written only into the planner prompt ("A stale roadmap forbids new features."

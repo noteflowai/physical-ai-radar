@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tests"))
 
-from pairadar import cli, fetch, robots_rules, static_extract, static_fetch  # noqa: E402
+from pairadar import cli, fetch, host_policy, robots_rules, static_extract, static_fetch  # noqa: E402
 from pairadar.config import Config  # noqa: E402
 from static_fixture import HOST, Reply, TlsTestCase  # noqa: E402
 from test_page_watch import FakeFirecrawl, ROBOTS_OPEN, page as firecrawl_page  # noqa: E402
@@ -94,6 +94,55 @@ class StaticWatchTests(TlsTestCase):
 
     def urls(self, result):
         return [item.url for item in result.items]
+
+    # --- an entry that is switched off (07, 2026-11-16: reads of physical-intelligence failed on every run from 11-12 to 11-16; robots.txt answered 429 in the runs of 11-12 to 11-15, the 11-16 run sent no request) ---
+    OFF = "Reads failed on every run; robots.txt answered 429; not read, per the rules."
+
+    def test_a_switched_off_source_is_not_requested_not_planned_and_not_a_failure(self):
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}))
+        self.assertEqual(self.server.paths(), [])                                   # not even its robots.txt is asked for
+        self.assertEqual((result.attempted, result.checked, result.failed, result.robots_skipped), ([], [], [], []))
+        self.assertEqual((result.planned, result.sources, result.items, result.unavailable), ([], {}, [], False))
+
+    def test_the_other_sources_are_read_as_before_and_the_switched_off_one_keeps_its_baseline(self):
+        self.server.serve("/news", Reply(200, V1))
+        self.server.serve("/standard", Reply(200, article()))
+        kept = {"schema": fetch.PAGE_STATE_SCHEMA, "sources": {"figure": {"digest": "kept", "links": []}}}
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}, PAGE), kept)
+        self.assertEqual(self.server.paths(), ["/robots.txt", "/standard"])
+        self.assertEqual((result.checked, result.planned), (["watch-iso"], ["watch-iso"]))
+        self.assertEqual(result.state["sources"]["figure"], {"digest": "kept", "links": []})   # switching it back on finds it as it was
+
+    def test_a_switch_that_is_not_exactly_true_switches_the_source_off(self):
+        # as for a feed (`enabled_feeds`): a mistyped switch must not read a page that was meant to stay unread
+        self.server.serve("/news", Reply(200, V1))
+        for value in (False, "false", "False", 0, None, "", [], {}, "yes"):
+            with self.subTest(value=value):
+                self.server.accepted = 0
+                before = len(self.server.paths())
+                result = self.watch(sources({**LISTING, "enabled": value, "disabled_reason": self.OFF}))
+                self.assertEqual(self.server.paths()[before:], [])
+                self.assertEqual((result.attempted, result.checked, result.failed), ([], [], []))
+        before = len(self.server.paths())
+        result = self.watch(sources({**LISTING, "enabled": True}))                  # and only `true` reads it
+        self.assertEqual((result.checked, self.server.paths()[before:]), (["figure"], ["/robots.txt", "/news"]))
+
+    def test_a_source_that_is_switched_off_must_say_why(self):
+        for reason in (None, "", "   ", 5):
+            with self.subTest(reason=reason):
+                raw = sources({**LISTING, "enabled": False, "disabled_reason": reason})
+                self.assertTrue(any("needs a disabled_reason" in line for line in fetch.page_watch_problems(raw)))
+                before = len(self.server.paths())
+                result = self.watch(raw)
+                self.assertEqual(self.server.paths()[before:], [])                  # invalid is left out, never read
+                self.assertEqual((result.attempted, result.checked), ([], []))
+        raw = sources({**LISTING, "enabled": False, "disabled_reason": self.OFF})
+        self.assertEqual(fetch.page_watch_problems(raw), [])
+
+    def test_a_run_whose_only_source_is_switched_off_is_not_enabled_and_does_not_look_unavailable(self):
+        result = self.watch(sources({**LISTING, "enabled": False, "disabled_reason": self.OFF}))
+        self.assertEqual((result.enabled, result.unavailable), (False, False))     # nothing to watch is not a channel that is down
 
     # --- reading ---------------------------------------------------------------------------------------
     def test_a_static_listing_is_read_seeded_and_a_new_link_is_offered(self):
@@ -256,6 +305,80 @@ class StaticWatchTests(TlsTestCase):
                 self.assertEqual(result.static_checked, ["figure"])           # and it stays visible
                 self.assertEqual(result.detail()["planned"], ["unitree", "figure"])
 
+    def test_a_run_of_static_sources_only_does_not_judge_the_firecrawl_endpoint(self):
+        """01 (PR216 r1 F2): no planned entry goes through Firecrawl, so its address says nothing about this channel."""
+        self.server.serve("/news", Reply(200, V1))
+        for endpoint in ("http://127.0.0.1:9", "http://10.0.0.5:3002", "https://example.invalid"):
+            with self.subTest(endpoint):
+                result = self.watch(sources(LISTING), endpoint=endpoint)
+                self.assertFalse(result.unavailable)
+                self.assertEqual((result.checked, result.failed), (["figure"], []))
+                self.assertNotIn("refusing a Firecrawl endpoint", self.out)
+                self.assertEqual(status_of(result), "skipped")                       # Firecrawl never answered: not an outage
+
+    def test_a_failing_static_source_is_failed_and_the_channel_is_not_unavailable(self):
+        self.server.serve("/news", Reply(404, "gone"))
+        for endpoint in ("http://127.0.0.1:9", "https://example.invalid"):
+            with self.subTest(endpoint):
+                result = self.watch(sources(LISTING), endpoint=endpoint)
+                self.assertFalse(result.unavailable)
+                self.assertEqual((result.checked, result.failed), ([], ["figure"]))
+                self.assertEqual(status_of(result), "all-failed")
+
+    def test_the_run_report_does_not_list_page_watch_unavailable_for_a_static_only_configuration(self):
+        raw = sources(LISTING)
+        raw["feeds"] = []
+        self.server.serve("/news", Reply(200, V1))
+        with patch.object(fetch, "http_get", lambda *args, **kwargs: None), \
+                patch.dict(os.environ, {fetch.FIRECRAWL_ENV: "https://example.invalid", "GITHUB_ACTIONS": ""}), \
+                patch.object(fetch, "STATIC_FETCHER_FACTORY", self.fetcher), \
+                contextlib.redirect_stdout(io.StringIO()):
+            report = fetch.fetch_all(Config(sources=raw, taxonomy={}, glossary={}, baseline={}), reference=DAY)
+        self.assertEqual(report.unavailable, [])
+        self.assertEqual(report.page_watch["checked"], ["figure"])
+
+    def test_a_non_loopback_endpoint_is_still_refused_when_an_entry_goes_through_firecrawl(self):
+        # only Firecrawl entries: nothing is sent, the channel is unavailable
+        result = self.watch(sources(self.firecrawl_entry()), endpoint="http://10.0.0.5:3002")
+        self.assertTrue(result.unavailable)
+        self.assertEqual((result.attempted, result.checked, result.failed), ([], [], []))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertIn("refusing a Firecrawl endpoint", self.out)
+        # a run of both: Firecrawl is down, the static source is read
+        self.server.serve("/news", Reply(200, V1))
+        mixed = self.watch(sources(self.firecrawl_entry(), LISTING), endpoint="http://10.0.0.5:3002")
+        self.assertTrue(mixed.unavailable)
+        self.assertEqual(mixed.checked, ["figure"])
+
+    def test_an_endpoint_that_would_have_been_cut_by_max_entries_is_not_judged(self):
+        # the Firecrawl entry is the second of two but only one entry is watched: the planned run is static only
+        self.server.serve("/news", Reply(200, V1))
+        result = self.watch(sources(LISTING, self.firecrawl_entry(), max_entries=1), endpoint="https://example.invalid")
+        self.assertFalse(result.unavailable)
+        self.assertEqual(result.checked, ["figure"])
+
+    # --- a host the policy refuses is not requested (01, PR216 r1 F1) ---------------------------------------------
+    def test_an_entry_on_a_host_the_policy_refuses_is_not_requested_by_either_fetcher(self):
+        self.server.serve("/news", Reply(200, V1))
+        with patch.object(host_policy, "blocked_hosts", lambda raw: frozenset({HOST})):
+            result = self.watch(sources(LISTING, self.firecrawl_entry()))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertEqual(result.sources["figure"], {"fetcher": "static", "outcome": "not-attempted",
+                                                    "reason": host_policy.SWITCHED_OFF})
+        self.assertEqual((result.checked, result.failed, result.attempted), ([], [], []))
+
+    def test_an_unreadable_policy_requests_no_entry(self):
+        self.server.serve("/news", Reply(200, V1))
+
+        def unreadable(raw):
+            raise host_policy.HostPolicyUnreadable("sources.json is not an object")
+
+        with patch.object(host_policy, "blocked_hosts", unreadable):
+            result = self.watch(sources(LISTING))
+        self.assertEqual(self.server.accepted, 0)
+        self.assertEqual(result.sources["figure"]["reason"], host_policy.UNREADABLE)
+        self.assertEqual(result.checked, [])
+
     def test_the_status_combinations_of_the_freshness_objective(self):
         """01 and 04 (11-06): the objective counts only `ok`, which needs the Firecrawl channel not to be down. A static
         source read live must not turn a Firecrawl outage into `ok`; the static read stays in the evidence."""
@@ -384,6 +507,9 @@ class StaticWatchTests(TlsTestCase):
     # Turning a source static, or the whole channel live, is an approval of its own. Editing this list is how a change to
     # data/sources.json shows up in review: the test fails until the approved set here is changed on purpose.
     APPROVED_STATIC = ["figure", "1x", "physical-intelligence", "unitree"]
+    # Switching a source off is an approval of its own, listed here for the same reason: `physical-intelligence` answers robots.txt
+    # with 429 (2026-11-12 to 11-16, 07's decision of 11-16): it stays in the file with its `disabled_reason` and is not read.
+    APPROVED_OFF = ["physical-intelligence"]
     # The URL is what was approved (unitree's was corrected to the final one the site redirects to, PR 181), so a change to it
     # shows up in review too, not only a change of the id set.
     APPROVED_URLS = {"figure": "https://www.figure.ai/news", "1x": "https://www.1x.tech/discover",
@@ -394,6 +520,11 @@ class StaticWatchTests(TlsTestCase):
         self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("fetcher", "firecrawl") != "firecrawl"], self.APPROVED_STATIC)
         self.assertEqual({e["id"]: e["url"] for e in shipped["page_watch"] if e.get("fetcher") == "static"}, self.APPROVED_URLS)
         self.assertEqual(fetch.page_watch_problems(shipped), [])                     # each carries the sanity settings static needs
+        self.assertEqual([e["id"] for e in shipped["page_watch"] if e.get("enabled", True) is not True], self.APPROVED_OFF)
+        # what is read is what is configured, less what is switched off; and no entry is left on Firecrawl (it was never up)
+        read = fetch._resolve_page_watch(shipped)
+        self.assertEqual([e["id"] for e in read], [i for i in self.APPROVED_STATIC if i not in self.APPROVED_OFF])
+        self.assertEqual([e["id"] for e in read if e.get("fetcher", "firecrawl") == "firecrawl"], [])
         self.assertEqual(shipped["page_watch_settings"].get("static_mode"), "live")      # written out, not left to the default
         config = Config(sources=shipped, taxonomy={}, glossary={}, baseline={})
         self.assertEqual(fetch.page_watch_settings(config)["static_mode"], "live")
