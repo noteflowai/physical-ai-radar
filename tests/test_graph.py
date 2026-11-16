@@ -686,6 +686,30 @@ class NightlyTest(unittest.TestCase):
         self.assertFalse((self.root / "radar" / "graph" / "lane-time.json").exists())
 
 
+COMPARED_KEYS = ("date", "title", "url", "lane", "evidence", "published", "source_id", "publisher", "signals", "numbers",
+                 "excerpt")
+
+
+def compare_with_feed(entries: list[dict], records: list[dict], frozen_through: str) -> tuple[int, list[tuple]]:
+    """(how many records were compared, what differs) between stored entries and the feed's `_radar` records.
+
+    An item can be picked on two days (the pool window is 30 days; 2026-11-16 re-picked an item from 2026-10-14), so
+    entries are found by (id, date), never by id alone. The feed holds one record per id, the newest, so a record is
+    compared only with the entry of the same id and the same day; a record from after `frozen_through` came from the run
+    itself and is not compared, and one with no entry (a day the pages cannot give) is left out."""
+    mine = {(entry["id"], entry["date"]): entry for entry in entries}
+    compared, differs = 0, []
+    for record in records:
+        if record["date"] > frozen_through:
+            continue
+        entry = mine.get((record["id"], record["date"]))
+        if entry is None:
+            continue
+        compared += 1
+        differs.extend((record["id"], key, entry[key], record[key]) for key in COMPARED_KEYS if entry[key] != record[key])
+    return compared, differs
+
+
 class CommittedDataTest(unittest.TestCase):
     """The published pages and the feed in this repository, read back.
 
@@ -714,19 +738,14 @@ class CommittedDataTest(unittest.TestCase):
 
     def test_what_is_read_back_equals_the_feed_record_for_every_item_the_feed_holds(self) -> None:
         doc = graph.fill_missing(graph.empty_items(), self.runs(), ROOT / "radar" / "daily", CONFIG)
-        mine = {entry["id"]: entry for entry in doc["items"]}
         feed = [entry["_radar"] for entry in json.loads((ROOT / "radar" / "feed.json").read_text())["items"]
                 if "_radar" in entry]
-        compared = 0
-        for record in feed:
-            entry = mine.get(record["id"])
-            if entry is None:
-                continue
-            compared += 1
-            for key in ("date", "title", "url", "lane", "evidence", "published", "source_id", "publisher",
-                        "signals", "numbers", "excerpt"):
-                self.assertEqual(entry[key], record[key], (record["id"], key))
-        self.assertGreater(compared, 20)
+        compared, problems = compare_with_feed(doc["items"], feed, self.FROZEN_THROUGH)
+        self.assertEqual(problems, [])
+        if not compared:
+            # The feed keeps 30 days. When none of them is a day the export was frozen at, there is nothing to compare;
+            # that must not stop the night's publication (2026-11-16 was stopped by a count of 20 and by an id-keyed index).
+            self.skipTest("the feed no longer holds a day at or before FROZEN_THROUGH")
     def test_the_real_history_makes_a_pair_that_passes_the_contract(self) -> None:
         history = self.runs()
         doc = graph.fill_missing(graph.empty_items(), history, ROOT / "radar" / "daily", CONFIG)
@@ -755,6 +774,94 @@ class CommittedDataTest(unittest.TestCase):
                 paths = graph.write_graph(CONFIG, ctx, root=root, source=root)
             self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"], out.getvalue())
             self.assertEqual(graph.check_pair(root / "radar" / "graph", CONFIG), [])
+
+
+class RepeatedPickTest(unittest.TestCase):
+    """An item picked on two days more than the pool window apart (2026-10-14 and 2026-11-16 for one NVIDIA post) is two
+    entries with one id. It stopped the 2026-11-16 publication because a test took the id for a key; the export itself
+    has always counted by date."""
+
+    EARLY, LATE = "2026-10-14", "2026-11-16"
+
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        (self.root / "data").mkdir()
+        (self.root / "data" / graph.RULES_FILE).write_text(json.dumps([{"from": "2026-09-19", "per_lane": 2, "per_day": 8, "show": False}]))
+        (self.root / "radar" / "daily").mkdir(parents=True)
+        (self.root / "radar" / "daily" / f"{self.EARLY}.en.md").write_text(page(sample(), self.EARLY), encoding="utf-8")
+        self.repeated = sample()[1]                                   # the item picked on both days
+        self.ctx = {"date": self.LATE, "picked": [self.repeated],
+                    "history": [{"date": self.EARLY, "count": 3}, {"date": self.LATE, "count": 1}]}
+
+    def run_it(self) -> tuple[list[Path], str]:
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            paths = graph.write_graph(CONFIG, self.ctx, root=self.root, source=self.root)
+        return paths, out.getvalue()
+
+    def test_the_same_id_on_two_days_is_two_entries_and_the_pair_is_sound(self) -> None:
+        paths, out = self.run_it()
+        self.assertEqual([path.name for path in paths], ["items.json", "lane-time.json"], out)
+        doc = json.loads(paths[0].read_text())
+        mine = [entry for entry in doc["items"] if entry["id"] == self.repeated.id]
+        self.assertEqual(sorted(entry["date"] for entry in mine), [self.EARLY, self.LATE])
+        self.assertEqual(len(doc["items"]), 4)
+        self.assertEqual(graph.check_pair(self.root / "radar" / "graph", CONFIG), [])
+        table = json.loads(paths[1].read_text())
+        self.assertEqual(table["mismatch_days"], [])
+        by_day = {entry["date"]: entry for entry in table["days"]}
+        for day in (self.EARLY, self.LATE):
+            self.assertTrue(by_day[day]["picks_known"], day)
+            self.assertEqual(by_day[day]["lanes"]["foundation"]["picked"], 1, day)
+        self.assertEqual(len(table["days"]), 34)                      # one per calendar day, 33 days apart
+
+    def test_a_second_run_changes_nothing(self) -> None:
+        first = [path.read_bytes() for path in self.run_it()[0]]
+        self.assertEqual(first, [path.read_bytes() for path in self.run_it()[0]])
+
+    def test_the_same_id_twice_on_one_day_is_still_refused(self) -> None:
+        doc = graph.empty_items()
+        entry = graph.item_entry(self.repeated, self.LATE)
+        doc["items"] = [graph.item_entry(self.repeated, self.EARLY), entry]
+        graph.validate_items(doc, CONFIG)                              # two days: allowed
+        doc["items"] = [entry, dict(entry)]
+        with self.assertRaises(graph.GraphError):
+            graph.validate_items(doc, CONFIG)
+
+    def test_the_feed_comparison_keys_by_id_and_day(self) -> None:
+        early, late = graph.item_entry(self.repeated, self.EARLY), graph.item_entry(self.repeated, self.LATE)
+        # the feed holds one record per id, the newest: the 11-16 record, which is after the day the export was frozen
+        self.assertEqual(compare_with_feed([early], [late], "2026-11-15"), (0, []))
+        self.assertEqual(compare_with_feed([early, late], [late], "2026-11-16"), (1, []))
+        # both days inside the frozen range: each record meets the entry of its own day, whichever order they are stored in
+        for stored in ([early, late], [late, early]):
+            for record in (early, late):
+                self.assertEqual(compare_with_feed(stored, [record], "2026-11-16"), (1, []), (stored[0]["date"], record["date"]))
+        self.assertEqual(compare_with_feed([early], [early], "2026-11-15"), (1, []))
+        # ...and it still sees a real difference
+        other = {**early, "title": "a different title", "lane": "hardware"}
+        compared, differs = compare_with_feed([early], [other], "2026-11-15")
+        self.assertEqual((compared, sorted(key for _, key, _, _ in differs)), (1, ["lane", "title"]))
+        # an entry the export has no record of is left out, a record after the frozen day is not compared
+        self.assertEqual(compare_with_feed([], [early], "2026-11-15"), (0, []))
+        self.assertEqual(compare_with_feed([early], [{**early, "title": "x"}], "2026-10-13"), (0, []))
+
+    def test_the_incident_data_of_2026_11_16_exports(self) -> None:
+        """The committed history and pages of the day the publication was stopped, read as the night's run reads them."""
+        runs = [run for run in json.loads((ROOT / "radar" / "history.json").read_text())["runs"] if run["date"] <= self.LATE]
+        self.assertIn(self.LATE, {run["date"] for run in runs})
+        doc = graph.fill_missing(graph.empty_items(), runs, ROOT / "radar" / "daily", CONFIG)
+        by_id: dict[str, list[str]] = {}
+        for entry in doc["items"]:
+            by_id.setdefault(entry["id"], []).append(entry["date"])
+        self.assertEqual(sorted(by_id["nvidia-blog:baf7193e75c1"]), ["2026-10-14", self.LATE])
+        doc["as_of"], doc["first_run"] = self.LATE, min(run["date"] for run in runs)
+        graph.validate_items(doc, CONFIG)
+        table = graph.lane_time(CONFIG, runs, doc, graph.load_rules(ROOT / "data" / graph.RULES_FILE), self.LATE)
+        table["items_sha256"] = hashlib.sha256(graph.render_json(doc)).hexdigest()
+        table["items_count"] = len(doc["items"])
+        self.assertEqual(graph.contract_problems(doc, table, CONFIG), [])
 
 
 if __name__ == "__main__":
