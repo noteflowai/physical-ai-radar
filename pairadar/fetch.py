@@ -644,6 +644,7 @@ GITHUB_RELEASES = "github-releases"       # a feed's `kind`: the newest releases
 GITHUB_API = "https://api.github.com/repos/{repo}/releases?per_page=1"
 _GITHUB_REPO = re.compile(r"^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$")
 MAX_API_BYTES = 1_000_000
+MAX_RELEASES_KEPT = 30            # the request asks for one; of a longer reply the first of these are kept, all are checked
 # Why a GitHub release read gave nothing: the fixed codes of `FetchReport.failed_reasons`. `moved` is an answer of 301, 302,
 # 307 or 308 (the repository was renamed or moved): it is never followed, the configuration needs the new owner/repo.
 GITHUB_FAILURES = ("moved", "rate-limited", "forbidden", "not-found", "unavailable", "bad-reply", "bad-config")
@@ -721,7 +722,11 @@ def _release_link_ok(link: str, repo: str, tag: str) -> bool:
     if f"{segments[1]}/{segments[2]}".lower() != repo.lower():
         return False
     rest = "/".join(segments[5:])
-    return urllib.parse.unquote(rest) == tag
+    try:
+        # strict: the default replaces bytes that are not UTF-8 with U+FFFD, and `%FF` would then pass as the tag "\ufffd"
+        return urllib.parse.unquote(rest, errors="strict") == tag
+    except UnicodeDecodeError:
+        return False
 
 
 def _release_entry(release: dict[str, Any], repo: str) -> tuple[str, str, str, str] | None:
@@ -761,7 +766,8 @@ def parse_github_releases(payload: bytes, repo: str) -> list[tuple[str, str, str
 
     Only the tag, the name, the link and the time of a release are kept; the notes are never read into an item. A draft
     is skipped. An empty list is an answer: the repository has no release yet. Everything else that is not a list of
-    well-formed releases of `repo` (see `_release_entry`), or that has a key twice anywhere, is None: it is never turned
+    well-formed releases of `repo` (see `_release_entry`; every entry is checked, the first `MAX_RELEASES_KEPT` are kept), or
+    that has a key twice anywhere, is None: it is never turned
     into "no release" and never raises."""
     try:
         data = json.loads(payload.decode("utf-8"), object_pairs_hook=_no_duplicate_keys)
@@ -770,12 +776,12 @@ def parse_github_releases(payload: bytes, repo: str) -> list[tuple[str, str, str
     if not isinstance(data, list) or not all(isinstance(release, dict) for release in data):
         return None
     out: list[tuple[str, str, str, str]] = []
-    for release in data[:30]:
+    for position, release in enumerate(data):       # every entry is checked; only the cap below limits what is kept
         try:
             entry = _release_entry(release, repo)
         except (ValueError, OverflowError):
             return None
-        if entry is not None:
+        if entry is not None and position < MAX_RELEASES_KEPT:
             out.append(entry)
     return sorted(out, key=lambda entry: entry[3], reverse=True)
 

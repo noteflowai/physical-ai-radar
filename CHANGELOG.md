@@ -91,7 +91,8 @@ radar content itself is dated, not versioned.
   release" and not an item: a missing or mistyped `draft`, `tag_name`, `html_url` or `published_at`, a key twice anywhere in
   the reply, a time without an offset or outside 2000 to 2100, or a link that is not exactly
   `https://github.com/OWNER/REPO/releases/tag/TAG` for the configured repository and the release's own tag (a query, port,
-  userinfo, dot or empty segment, encoded variant, or another tag or page all fail). A feed that gave nothing is
+  userinfo, dot or empty segment, encoded variant, percent-encoding that is not valid UTF-8, or another tag or page all
+  fail). Every entry of the reply is checked, not only the first 30 that are kept; one bad entry anywhere makes the reply bad. A feed that gave nothing is
   `failed` with a fixed reason in `failed_reasons` (the run record and `latest.json`): `moved` (301, 302, 307 or 308:
   the repository was renamed, so `repo` and `url` need the new name), `rate-limited` (429, or a 403 that carries
   `X-RateLimit-Remaining: 0` or `Retry-After`), `forbidden` (any other 403), `not-found` (404),
