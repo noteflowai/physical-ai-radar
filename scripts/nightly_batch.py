@@ -10,6 +10,8 @@ from pathlib import Path
 import signal
 import subprocess
 import sys
+import time
+from typing import Any
 
 try:
     from .agent_pipeline import write_json
@@ -33,19 +35,28 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
         os.fstat(fd)
         pass_fds = (fd,)
     with log.open("ab", buffering=0) as output:
-        # The handlers go in BEFORE the stage process exists. A signal that arrives while `Popen` is creating it, or in the
-        # instant after it returns and before `child` is assigned, finds `child` unset: the stage may already exist but
-        # this function does not hold it yet, so the handler must not leave (that would orphan it). It records the signal
-        # and returns; the check right after `Popen` then stops the stage. A signal that arrives before `Popen` starts
-        # finds no stage at all, so the default action loses nothing. No signal mask is needed, and the stage inherits no
-        # changed disposition: caught signals are reset to their defaults by exec.
+        # A termination request (SIGTERM, SIGINT) is recorded by the handler and acted on here, in the ordinary flow of this
+        # function, never inside the handler:
+        #  - the handler only appends the signal to `arrived` and, when the stage already exists, asks its process group to
+        #    end (`killpg` takes no lock). It does not wait: a signal that arrives while this function is inside
+        #    `child.wait()` holds `Popen`'s non-reentrant wait lock, and a second `wait()` from the handler would never
+        #    get it;
+        #  - a request that is already known is consumed BEFORE the stage is started, so no stage starts that is then
+        #    stopped (and none whose effects cannot be taken back);
+        #  - a request that arrives while `Popen` runs finds no `child` yet: the stage may exist but this function does not
+        #    hold it, so the handler must not leave. The check right after `Popen` then stops the stage, and if `Popen`
+        #    itself fails, the request still wins: the batch must end (SystemExit), not carry on to the next stage as for an
+        #    ordinary start failure. A start failure with no request is raised as it was.
+        # The handlers are installed with both signals blocked, so that a SIGINT or SIGTERM cannot take the default action
+        # (KeyboardInterrupt) between the two installations and leave one handler behind. The mask is restored before
+        # `Popen`: the stage inherits no mask and, since caught signals are reset by exec, no handler.
         child = None
         arrived: list[int] = []
 
         def stop() -> None:
             try:
                 os.killpg(child.pid, signal.SIGTERM)
-            except ProcessLookupError:
+            except (ProcessLookupError, PermissionError):
                 pass
             try:
                 child.wait(timeout=10)
@@ -54,31 +65,53 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
             # Descendants may survive even if their parent has already exited.
             try:
                 os.killpg(child.pid, signal.SIGKILL)
-            except ProcessLookupError:
+            except (ProcessLookupError, PermissionError):
                 pass
             child.wait()
 
         def interrupted(signum, _frame):
-            if child is None:
-                arrived.append(signum)
-                return
-            stop()
-            raise SystemExit(128 + signum)
+            arrived.append(signum)
+            if child is not None:
+                try:
+                    os.killpg(child.pid, signal.SIGTERM)       # ask the stage to end now; the flow below reaps it
+                except (ProcessLookupError, PermissionError):
+                    pass
 
-        previous = {sig: signal.signal(sig, interrupted)
-                    for sig in (signal.SIGTERM, signal.SIGINT)}
+        previous: dict[int, Any] = {}
+        held = signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGTERM, signal.SIGINT})
         try:
-            child = subprocess.Popen(argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
-                                     stdout=output, stderr=subprocess.STDOUT,
-                                     start_new_session=True, pass_fds=pass_fds)
+            try:
+                for sig in (signal.SIGTERM, signal.SIGINT):
+                    previous[sig] = signal.signal(sig, interrupted)
+            finally:
+                signal.pthread_sigmask(signal.SIG_SETMASK, held)
             if arrived:
-                stop()
                 raise SystemExit(128 + arrived[0])
             try:
-                return child.wait(timeout=seconds)
-            except subprocess.TimeoutExpired:
-                stop()
-                return 124
+                child = subprocess.Popen(argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
+                                         stdout=output, stderr=subprocess.STDOUT,
+                                         start_new_session=True, pass_fds=pass_fds)
+            except BaseException:
+                if arrived:
+                    raise SystemExit(128 + arrived[0]) from None
+                raise
+            deadline = time.monotonic() + seconds
+            while True:
+                if arrived:
+                    stop()
+                    raise SystemExit(128 + arrived[0])
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    stop()
+                    return 124
+                try:
+                    code = child.wait(timeout=min(remaining, 0.25))
+                except subprocess.TimeoutExpired:
+                    continue
+                if arrived:                      # a request that came with the exit still ends the batch
+                    stop()
+                    raise SystemExit(128 + arrived[0])
+                return code
         finally:
             for sig, handler in previous.items():
                 signal.signal(sig, handler)

@@ -485,3 +485,174 @@ sys.exit(0)           # reached only when the signal did not stop the batch
             with self.assertRaises(FileNotFoundError):
                 execute(["/nonexistent-stage-binary"], root, dict(os.environ), root / "b.log", 20)
             self.assertEqual((signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT)), before)
+
+    # 01 and 04, PR217 round 1: the same batch process, with a signal sent at the moment each case names. `mode` is one of
+    # before-popen (handlers installed, `Popen` not yet called), popen-fails-after-signal, popen-fails (no signal),
+    # wait-lock (inside Popen's own wait, which holds its non-reentrant lock) and install-interrupted (a SIGINT between the
+    # installation of the two handlers). The batch runs through `run_batch`, so "carries on to the next stage" is observable.
+    SECOND_BATCH = r'''
+import errno, json, os, signal, subprocess, sys, time
+from pathlib import Path
+from scripts import nightly_batch
+
+root, mode, sig = Path(sys.argv[1]), sys.argv[2], getattr(signal, sys.argv[3])
+original = (signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT))
+real_popen = subprocess.Popen
+calls = root / "calls.txt"
+
+
+def mark(name, text=""):
+    (root / (name + ".tmp")).write_text(text)
+    os.replace(root / (name + ".tmp"), root / name)
+
+
+class Launches(real_popen):
+    """Records that a stage was started, and its pid; the behaviour at each point depends on the mode."""
+    def __init__(self, *args, **kwargs):
+        if mode == "popen-fails-after-signal":
+            os.kill(os.getpid(), sig)
+            time.sleep(0.2)                                    # the handler runs here: it records the request
+            raise OSError(errno.EAGAIN, "fork failed")
+        if mode == "popen-fails":
+            raise FileNotFoundError(errno.ENOENT, "no such stage")
+        super().__init__(*args, **kwargs)
+        mark("launched", str(self.pid))
+        mark("stage.pid", str(self.pid))
+
+    def _try_wait(self, wait_flags):
+        if mode == "wait-lock" and not getattr(Launches, "sent", False):
+            Launches.sent = True
+            mark("lock-held", str(self._waitpid_lock.locked()))
+            os.kill(os.getpid(), sig)                          # inside the real wait, holding its lock
+            time.sleep(0.2)
+        return super()._try_wait(wait_flags)
+
+    def wait(self, timeout=None):
+        code = super().wait(timeout)
+        if mode == "exit-with-request" and not getattr(Launches, "sent2", False):
+            Launches.sent2 = True
+            os.kill(os.getpid(), sig)                          # the stage has already ended and its code is in hand
+            time.sleep(0.2)
+        return code
+
+
+if mode == "before-popen":
+    real_mask = signal.pthread_sigmask
+
+    def mask(how, signals):
+        old = real_mask(how, signals)
+        if how == signal.SIG_SETMASK and not getattr(mask, "sent", False):
+            mask.sent = True                                   # the handlers are in, Popen has not been called
+            os.kill(os.getpid(), sig)
+            time.sleep(0.2)
+        return old
+    signal.pthread_sigmask = mask
+
+if mode == "install-interrupted":
+    real_signal = signal.signal
+
+    def installing(number, handler):
+        old = real_signal(number, handler)
+        if number == signal.SIGTERM and handler is not original[0] and not getattr(installing, "sent", False):
+            installing.sent = True                             # SIGTERM's handler is in, SIGINT's is not
+            os.kill(os.getpid(), signal.SIGINT)
+            time.sleep(0.2)
+        return old
+    signal.signal = installing
+
+nightly_batch.subprocess.Popen = Launches
+
+
+def executor(argv, stage_root, env, log, seconds):
+    with calls.open("a") as handle:
+        handle.write("call\n")
+    stage = [sys.executable, "-c", "pass" if mode == "exit-with-request" else "import time; time.sleep(60)"]
+    return nightly_batch.execute(stage, stage_root, env, log, seconds)
+
+
+outcome = {}
+try:
+    nightly_batch.run_batch(root, root / "state", "2026-11-16", executor=executor)
+    outcome["finished"] = True
+except SystemExit as exit_:
+    outcome["exit"] = exit_.code
+outcome["handlers_restored"] = (signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT)) == original
+print(json.dumps(outcome), flush=True)
+if mode == "install-interrupted":
+    os.kill(os.getpid(), signal.SIGTERM)                       # must take the default action if the handler was put back
+    time.sleep(2)
+    print(json.dumps({"swallowed": True}), flush=True)
+sys.exit(outcome.get("exit", 0))
+'''
+
+    def run_second(self, mode, signame, timeout=20):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "state").mkdir()
+            try:
+                done = subprocess.run([sys.executable, "-c", self.SECOND_BATCH, str(root), mode, signame],
+                                      cwd=ROOT, capture_output=True, timeout=timeout)
+            except subprocess.TimeoutExpired:
+                self.fail(f"{mode}: the batch was still running after {timeout} s")
+            finally:
+                try:                                           # never leave a stage behind, whatever the assertions said
+                    os.killpg(int((root / "stage.pid").read_text()), signal.SIGKILL)
+                except (FileNotFoundError, ValueError, ProcessLookupError):
+                    pass
+            lines = [json.loads(line) for line in done.stdout.decode().splitlines() if line.startswith("{")]
+            calls = (root / "calls.txt").read_text().count("call") if (root / "calls.txt").exists() else 0
+            files = {name: (root / name).read_text() for name in ("launched", "lock-held", "stage.pid") if (root / name).exists()}
+            return done, lines, calls, files
+
+    def assert_stage_gone(self, files):
+        if "stage.pid" in files:
+            self.assert_process_stopped(int(files["stage.pid"]))
+
+    def test_a_request_already_known_before_the_stage_starts_starts_no_stage(self):
+        # 01 F1 case 1: the handlers are in, the signal has arrived, `Popen` has not been called
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("before-popen", signame)
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertNotIn("launched", files)                      # no stage effect that could not be taken back
+                self.assertEqual((calls, lines[-1]["handlers_restored"]), (1, True))
+
+    def test_a_start_that_fails_while_a_request_is_known_ends_the_batch_and_starts_no_next_stage(self):
+        # 01 F1 case 2 and 04 F1: the request was swallowed by the failure and the batch went on to the next stage
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("popen-fails-after-signal", signame)
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertEqual(lines[-1], {"exit": 128 + getattr(signal, signame), "handlers_restored": True})
+                self.assertEqual(calls, 1)                                # the first stage only
+
+    def test_a_start_failure_with_no_request_is_still_an_ordinary_stage_error(self):
+        done, lines, calls, _ = self.run_second("popen-fails", "SIGTERM")
+        self.assertEqual(done.returncode, 0, done.stderr.decode(errors="replace"))
+        self.assertEqual(lines[-1]["handlers_restored"], True)
+        self.assertGreater(calls, 1)                                      # run_batch records retry-needed and goes on, as before
+
+    def test_a_request_that_arrives_while_the_wait_holds_its_lock_does_not_hang_the_batch(self):
+        # 01 F2: the handler called wait() again and waited for the lock the interrupted wait() held, for ever
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("wait-lock", signame, timeout=25)
+                self.assertEqual(files.get("lock-held"), "True")          # the signal really arrived inside the lock
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertEqual((calls, lines[-1]["handlers_restored"]), (1, True))
+                self.assert_stage_gone(files)
+
+    def test_a_request_that_arrives_as_the_stage_ends_still_ends_the_batch(self):
+        # the stage's exit code is in hand when the request comes; the batch must still stop, not start the next stage
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("exit-with-request", signame)
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertEqual((calls, lines[-1]["handlers_restored"]), (1, True))
+
+    def test_a_sigint_between_the_two_installations_leaves_no_handler_behind(self):
+        # 01 F3: the KeyboardInterrupt came before the protected block, and SIGTERM's handler stayed, swallowing a later SIGTERM
+        done, lines, calls, files = self.run_second("install-interrupted", "SIGTERM")
+        self.assertEqual(done.returncode, -signal.SIGTERM, done.stdout.decode(errors="replace"))   # the later SIGTERM killed it
+        self.assertEqual(lines[0], {"exit": 128 + signal.SIGINT, "handlers_restored": True})
+        self.assertNotIn("launched", files)

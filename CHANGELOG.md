@@ -97,13 +97,19 @@ radar content itself is dated, not versioned.
 - **A SIGTERM or SIGINT that arrives while a night stage is being started no longer leaves the stage running.** `nightly_batch.execute`
   started the stage with `Popen` and installed its termination handlers only afterwards; a signal in between took the default
   action, the batch ended, and the stage (its own session) kept running with nobody to stop it. The handlers are now installed
-  before `Popen`. While the stage is not yet known to the function (during `Popen`, or just after it returns, before the result
-  is assigned) a handler records the signal and returns instead of leaving, and the check right after `Popen` stops the stage and
-  exits with 128 plus the signal number. A signal before `Popen` starts finds no stage, so the default action loses nothing. No
-  signal mask is used, so the stage inherits nothing: caught signals are reset to the default by exec (a test checks the
-  stage sees default handlers and an empty mask). The test that reads the stage's pid file now has the stage write a temporary
+  before `Popen`, with both signals blocked while they go in (so a SIGINT cannot take the default action between the two
+  installations and leave one handler behind); the mask is put back before `Popen`, so the stage inherits no mask, and since
+  caught signals are reset by exec, no handler (a test checks the stage sees default handlers and an empty mask). A handler
+  only records the request and asks the stage's process group to end; it never waits (a second `wait()` from a handler
+  would block for ever on the lock the interrupted `wait()` holds). Everything else happens in the ordinary flow: a request
+  already known is consumed before the stage is started; one that arrives while `Popen` runs is acted on right after it
+  returns (the stage is stopped), and if `Popen` fails while a request is known the batch ends with 128 plus the signal
+  number instead of recording a stage error and going on to the next stage; a request that arrives with the stage's exit
+  still ends the batch. A start failure with no request is an ordinary stage error, as before. The handlers are put back
+  on every path. The test that reads the stage's pid file now has the stage write a temporary
   file and rename it, and reads until it holds a whole number, instead of reading the file between its creation and its content.
-  New tests send the signal from inside `Popen` (SIGTERM and SIGINT) and just before the wait.
+  New tests send the signal at each of those points (SIGTERM and SIGINT), including inside `Popen`'s own wait lock and
+  between the two installations.
 
 ## 1.1.0 — 2026-09-26
 
