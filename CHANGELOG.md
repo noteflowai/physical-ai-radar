@@ -105,7 +105,10 @@ radar content itself is dated, not versioned.
   already known is consumed before the stage is started; one that arrives while `Popen` runs is acted on right after it
   returns (the stage is stopped), and if `Popen` fails while a request is known the batch ends with 128 plus the signal
   number instead of recording a stage error and going on to the next stage; a request that arrives with the stage's exit
-  still ends the batch. A start failure with no request is an ordinary stage error, as before. The handlers are put back
+  still ends the batch. A request recorded while a stage that ran over its cap is being cleaned up, or while the handlers are
+  being put back, also ends the batch (128 plus the signal number) instead of becoming the stage's 124 or its own exit code
+  and letting the next stage start; the cleanup and the restoring of the handlers still happen first. Without a request a
+  stage over its cap is still 124 and a failing stage keeps its code. A start failure with no request is an ordinary stage error, as before. The handlers are put back
   on every path. The test that reads the stage's pid file now has the stage write a temporary
   file and rename it, and reads until it holds a whole number, instead of reading the file between its creation and its content.
   New tests send the signal at each of those points (SIGTERM and SIGINT), including inside `Popen`'s own wait lock and

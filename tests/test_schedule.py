@@ -528,6 +528,10 @@ class Launches(real_popen):
         return super()._try_wait(wait_flags)
 
     def wait(self, timeout=None):
+        if mode == "timeout-cleanup" and timeout == 10 and not getattr(Launches, "sent3", False):
+            Launches.sent3 = True                              # the stage is over its cap; stop() is about to wait for it
+            os.kill(os.getpid(), sig)
+            time.sleep(0.2)
         code = super().wait(timeout)
         if mode == "exit-with-request" and not getattr(Launches, "sent2", False):
             Launches.sent2 = True
@@ -560,15 +564,35 @@ if mode == "install-interrupted":
         return old
     signal.signal = installing
 
+if mode == "restore-window":
+    real_signal = signal.signal
+
+    def restoring(number, handler):
+        if handler is original[0 if number == signal.SIGTERM else 1] and not getattr(restoring, "sent", False):
+            restoring.sent = True                              # the stage's code is chosen; both batch handlers are still in
+            os.kill(os.getpid(), sig)
+            time.sleep(0.2)
+        return real_signal(number, handler)
+    signal.signal = restoring
+
 nightly_batch.subprocess.Popen = Launches
+
+STAGES = {"exit-with-request": "pass", "restore-window": "import sys; sys.exit(1)", "exit-plain": "import sys; sys.exit(1)"}
+CAPPED = ("timeout-cleanup", "timeout-plain")                   # a positive cap of one second, so the stage runs over it
 
 
 def executor(argv, stage_root, env, log, seconds):
     with calls.open("a") as handle:
         handle.write("call\n")
-    stage = [sys.executable, "-c", "pass" if mode == "exit-with-request" else "import time; time.sleep(60)"]
-    return nightly_batch.execute(stage, stage_root, env, log, seconds)
+    stage = [sys.executable, "-c", STAGES.get(mode, "import time; time.sleep(60)")]
+    return nightly_batch.execute(stage, stage_root, env, log, 1 if mode in CAPPED else seconds)
 
+
+if mode in ("timeout-plain", "exit-plain"):                    # no request at all: what execute() gives back, as it did
+    code = executor(None, root, dict(os.environ), root / "stage.log", 20)
+    print(json.dumps({"code": code, "handlers_restored": (signal.getsignal(signal.SIGTERM),
+                                                          signal.getsignal(signal.SIGINT)) == original}), flush=True)
+    sys.exit(0)
 
 outcome = {}
 try:
@@ -656,3 +680,31 @@ sys.exit(outcome.get("exit", 0))
         self.assertEqual(done.returncode, -signal.SIGTERM, done.stdout.decode(errors="replace"))   # the later SIGTERM killed it
         self.assertEqual(lines[0], {"exit": 128 + signal.SIGINT, "handlers_restored": True})
         self.assertNotIn("launched", files)
+
+    # PR217 round 2, 01 F4: a request that is recorded while the stage is being cleaned up after its cap, or while the handlers
+    # are being put back, used to be turned into the stage's ordinary result (124, or the stage's own code), and run_batch went
+    # on to the next stage. Both windows are tested with both signals; the two controls have no request and keep their results.
+    def test_a_request_that_arrives_while_a_stage_over_its_cap_is_cleaned_up_ends_the_batch(self):
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("timeout-cleanup", signame, timeout=30)
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertEqual(lines[-1], {"exit": 128 + getattr(signal, signame), "handlers_restored": True})
+                self.assertEqual(calls, 1)                                # not one stage after the first
+                self.assert_stage_gone(files)                             # and the cleanup was not skipped
+
+    def test_a_request_that_arrives_while_the_handlers_are_put_back_ends_the_batch(self):
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                done, lines, calls, files = self.run_second("restore-window", signame, timeout=30)
+                self.assertEqual(done.returncode, 128 + getattr(signal, signame), done.stderr.decode(errors="replace"))
+                self.assertEqual(lines[-1], {"exit": 128 + getattr(signal, signame), "handlers_restored": True})
+                self.assertEqual(calls, 1)
+
+    def test_with_no_request_a_stage_over_its_cap_is_124_and_a_failing_stage_keeps_its_code(self):
+        for mode, expected in (("timeout-plain", 124), ("exit-plain", 1)):
+            with self.subTest(mode):
+                done, lines, calls, files = self.run_second(mode, "SIGTERM", timeout=30)
+                self.assertEqual(done.returncode, 0, done.stderr.decode(errors="replace"))
+                self.assertEqual(lines[-1], {"code": expected, "handlers_restored": True})
+                self.assert_stage_gone(files)

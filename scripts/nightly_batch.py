@@ -46,7 +46,11 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
         #  - a request that arrives while `Popen` runs finds no `child` yet: the stage may exist but this function does not
         #    hold it, so the handler must not leave. The check right after `Popen` then stops the stage, and if `Popen`
         #    itself fails, the request still wins: the batch must end (SystemExit), not carry on to the next stage as for an
-        #    ordinary start failure. A start failure with no request is raised as it was.
+        #    ordinary start failure. A start failure with no request is raised as it was;
+        #  - the only `return` of this function is after the handlers are back, and a request recorded by then wins over the
+        #    stage's code and over the cap's 124 (see the end of this function): cleaning up a stage that ran over its cap, and
+        #    putting the handlers back, are both windows in which a request can arrive, and neither may turn it into an
+        #    ordinary stage failure that lets the batch go on to the next stage.
         # The handlers are installed with both signals blocked, so that a SIGINT or SIGTERM cannot take the default action
         # (KeyboardInterrupt) between the two installations and leave one handler behind. The mask is restored before
         # `Popen`: the stage inherits no mask and, since caught signals are reset by exec, no handler.
@@ -96,25 +100,29 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
                     raise SystemExit(128 + arrived[0]) from None
                 raise
             deadline = time.monotonic() + seconds
-            while True:
-                if arrived:
-                    stop()
-                    raise SystemExit(128 + arrived[0])
+            code = 124                           # what the stage cap gives; the stage's own code replaces it below
+            timed_out = False
+            while not arrived:
                 remaining = deadline - time.monotonic()
                 if remaining <= 0:
-                    stop()
-                    return 124
+                    timed_out = True
+                    break
                 try:
                     code = child.wait(timeout=min(remaining, 0.25))
                 except subprocess.TimeoutExpired:
                     continue
-                if arrived:                      # a request that came with the exit still ends the batch
-                    stop()
-                    raise SystemExit(128 + arrived[0])
-                return code
+                break
+            if arrived or timed_out:
+                stop()                           # the stage is cleaned up whichever came first, request or cap
         finally:
             for sig, handler in previous.items():
                 signal.signal(sig, handler)
+        # The one exit of this function that returns: a request recorded at any point up to here, including while the stage
+        # was being cleaned up and while the handlers were being put back, ends the batch ahead of whatever code the stage
+        # or the cap gave. The handlers are back by now, so a request from here on takes the caller's own action.
+        if arrived:
+            raise SystemExit(128 + arrived[0])
+        return code
 
 
 def run_batch(root: Path, state_root: Path, day: str, executor=execute) -> dict:
