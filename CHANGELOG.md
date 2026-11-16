@@ -94,6 +94,16 @@ radar content itself is dated, not versioned.
   sharing one, and the lanes table two instead of three, what a lane tracks and
   why it has its own lane in one cell. On a phone the five columns set
   "newsletters" one character per line and ran off the side of the screen.
+- **A SIGTERM or SIGINT that arrives while a night stage is being started no longer leaves the stage running.** `nightly_batch.execute`
+  started the stage with `Popen` and installed its termination handlers only afterwards; a signal in between took the default
+  action, the batch ended, and the stage (its own session) kept running with nobody to stop it. The handlers are now installed
+  before `Popen`. While the stage is not yet known to the function (during `Popen`, or just after it returns, before the result
+  is assigned) a handler records the signal and returns instead of leaving, and the check right after `Popen` stops the stage and
+  exits with 128 plus the signal number. A signal before `Popen` starts finds no stage, so the default action loses nothing. No
+  signal mask is used, so the stage inherits nothing: caught signals are reset to the default by exec (a test checks the
+  stage sees default handlers and an empty mask). The test that reads the stage's pid file now has the stage write a temporary
+  file and rename it, and reads until it holds a whole number, instead of reading the file between its creation and its content.
+  New tests send the signal from inside `Popen` (SIGTERM and SIGINT) and just before the wait.
 
 ## 1.1.0 — 2026-09-26
 

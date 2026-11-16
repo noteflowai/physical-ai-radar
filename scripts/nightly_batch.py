@@ -33,9 +33,14 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
         os.fstat(fd)
         pass_fds = (fd,)
     with log.open("ab", buffering=0) as output:
-        child = subprocess.Popen(argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
-                                 stdout=output, stderr=subprocess.STDOUT,
-                                 start_new_session=True, pass_fds=pass_fds)
+        # The handlers go in BEFORE the stage process exists. A signal that arrives while `Popen` is creating it, or in the
+        # instant after it returns and before `child` is assigned, finds `child` unset: the stage may already exist but
+        # this function does not hold it yet, so the handler must not leave (that would orphan it). It records the signal
+        # and returns; the check right after `Popen` then stops the stage. A signal that arrives before `Popen` starts
+        # finds no stage at all, so the default action loses nothing. No signal mask is needed, and the stage inherits no
+        # changed disposition: caught signals are reset to their defaults by exec.
+        child = None
+        arrived: list[int] = []
 
         def stop() -> None:
             try:
@@ -54,12 +59,21 @@ def execute(argv: list[str], root: Path, env: dict, log: Path, seconds: int) -> 
             child.wait()
 
         def interrupted(signum, _frame):
+            if child is None:
+                arrived.append(signum)
+                return
             stop()
             raise SystemExit(128 + signum)
 
         previous = {sig: signal.signal(sig, interrupted)
                     for sig in (signal.SIGTERM, signal.SIGINT)}
         try:
+            child = subprocess.Popen(argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
+                                     stdout=output, stderr=subprocess.STDOUT,
+                                     start_new_session=True, pass_fds=pass_fds)
+            if arrived:
+                stop()
+                raise SystemExit(128 + arrived[0])
             try:
                 return child.wait(timeout=seconds)
             except subprocess.TimeoutExpired:

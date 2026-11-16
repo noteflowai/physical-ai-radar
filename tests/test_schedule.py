@@ -358,26 +358,125 @@ class LifetimeTests(unittest.TestCase):
             pid = int((root / "child.pid").read_text())
             self.assert_process_stopped(pid)
 
+    def wait_for_pid(self, path, seconds=5):
+        """The pid a stage wrote: polled until the file holds a whole number, never read half-written."""
+        import time
+        deadline = time.monotonic() + seconds
+        while time.monotonic() < deadline:
+            try:
+                text = path.read_text().strip()
+            except FileNotFoundError:
+                text = ""
+            if text.isdigit():
+                return int(text)
+            time.sleep(0.02)
+        self.fail(f"{path.name} never held a pid")
+
     def test_bootstrap_termination_also_terminates_active_stage(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            # The launched Python process uses the same handler as a cron batch.
+            # The launched Python process uses the same handler as a cron batch. The stage writes its pid to a temporary
+            # file and renames it, so the test can never read the empty file between its creation and its content.
             code = (
                 "from pathlib import Path; import os,sys; from scripts.nightly_batch import execute; "
                 "execute([sys.executable,'-c',"
-                "'import os,time; open(\"stage.pid\",\"w\").write(str(os.getpid())); time.sleep(60)'], "
+                "'import os,time; open(\"stage.pid.tmp\",\"w\").write(str(os.getpid())); "
+                "os.replace(\"stage.pid.tmp\",\"stage.pid\"); time.sleep(60)'], "
                 f"Path({str(root)!r}), dict(os.environ), Path({str(root / 'stage.log')!r}), 60)"
             )
             parent = subprocess.Popen([sys.executable, "-c", code], cwd=ROOT)
             try:
-                import time
-                deadline = time.monotonic() + 5
-                while not (root / "stage.pid").exists() and time.monotonic() < deadline:
-                    time.sleep(0.02)
-                pid = int((root / "stage.pid").read_text())
+                pid = self.wait_for_pid(root / "stage.pid")
                 parent.send_signal(signal.SIGTERM)
                 self.assertEqual(parent.wait(timeout=15), 143)
                 self.assert_process_stopped(pid)
             finally:
                 if parent.poll() is None:
                     parent.kill(); parent.wait()
+
+    # A SIGTERM or SIGINT that arrives while the stage process is being created, or just after, must still end the stage.
+    # The stage is started by `Popen`; the signal is sent from inside it, at the point named, by a subclass in the batch
+    # process itself (not a thread, not a timer), so the moment is exact rather than lucky.
+    INJECTED_BATCH = r'''
+import os, signal, subprocess, sys, time
+from pathlib import Path
+from scripts import nightly_batch
+
+root, point, sig = Path(sys.argv[1]), sys.argv[2], getattr(signal, sys.argv[3])
+real = subprocess.Popen
+
+
+def record(pid):
+    (root / "stage.pid.tmp").write_text(str(pid))
+    os.replace(root / "stage.pid.tmp", root / "stage.pid")
+
+
+class Injected(real):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        record(self.pid)
+        if point == "inside-popen":
+            os.kill(os.getpid(), sig)       # the stage exists; execute() does not have the Popen object yet
+            time.sleep(0.3)                 # a Python handler runs here, before Popen returns
+
+    def wait(self, timeout=None):
+        if point == "before-wait" and not getattr(Injected, "sent", False):
+            Injected.sent = True
+            os.kill(os.getpid(), sig)       # execute() has the child and is about to wait for it
+            time.sleep(0.3)
+        return super().wait(timeout)
+
+
+nightly_batch.subprocess.Popen = Injected
+nightly_batch.execute([sys.executable, "-c", "import time; time.sleep(60)"], root, dict(os.environ),
+                      root / "stage.log", 60)
+sys.exit(0)           # reached only when the signal did not stop the batch
+'''
+
+    def run_injected_batch(self, point, signame):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            done = subprocess.run([sys.executable, "-c", self.INJECTED_BATCH, str(root), point, signame],
+                                  cwd=ROOT, capture_output=True, timeout=30)
+            pid = self.wait_for_pid(root / "stage.pid")
+            try:
+                code = getattr(signal, signame)
+                self.assertEqual(done.returncode, 128 + code, done.stderr.decode(errors="replace"))
+                self.assert_process_stopped(pid)
+            finally:
+                try:
+                    os.killpg(pid, signal.SIGKILL)       # never leave the stage behind, whatever the assertions said
+                except ProcessLookupError:
+                    pass
+
+    def test_a_signal_while_the_stage_is_being_created_still_ends_the_stage(self):
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                self.run_injected_batch("inside-popen", signame)
+
+    def test_a_signal_just_after_the_stage_exists_still_ends_the_stage(self):
+        for signame in ("SIGTERM", "SIGINT"):
+            with self.subTest(signame):
+                self.run_injected_batch("before-wait", signame)
+
+    def test_the_stage_does_not_inherit_a_changed_signal_disposition(self):
+        # the batch handles SIGTERM and SIGINT itself; the stage must see the defaults and an unblocked mask, so that
+        # the batch's termination (killpg) and a person's Ctrl-C reach the stage's own code
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            stage = ("import json,signal; print(json.dumps({'term': str(signal.getsignal(signal.SIGTERM)), "
+                     "'int': str(signal.getsignal(signal.SIGINT)), "
+                     "'blocked': sorted(int(s) for s in signal.pthread_sigmask(signal.SIG_BLOCK, []))}))")
+            self.assertEqual(execute([sys.executable, "-c", stage], root, dict(os.environ), root / "stage.log", 20), 0)
+            seen = json.loads((root / "stage.log").read_text())
+            self.assertEqual(seen, {"term": str(signal.SIG_DFL), "int": str(signal.default_int_handler), "blocked": []})
+
+    def test_the_handlers_are_put_back_after_a_stage_and_after_a_failed_start(self):
+        before = (signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.assertEqual(execute([sys.executable, "-c", "pass"], root, dict(os.environ), root / "a.log", 20), 0)
+            self.assertEqual((signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT)), before)
+            with self.assertRaises(FileNotFoundError):
+                execute(["/nonexistent-stage-binary"], root, dict(os.environ), root / "b.log", 20)
+            self.assertEqual((signal.getsignal(signal.SIGTERM), signal.getsignal(signal.SIGINT)), before)
