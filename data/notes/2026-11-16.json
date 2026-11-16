@@ -1,0 +1,48 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-16",
+  "generated": "2026-11-16 14:00 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.16589": {
+      "zh": "如果你的 VLA 策略主要只看当前观测，这篇预印本把空间结构和任务历史显式纳入策略，页面标注了闭环与真机实验，但没有给出数字，改架构前先等作者的量化结果。",
+      "en": "If your VLA policy conditions mostly on the current observation, this preprint adds explicit spatial structure and task history and flags closed-loop and real-robot experiments, but the page gives no figures, so wait for numbers before changing your architecture.",
+      "ja": "現在の観測だけに頼る VLA 方策を使っているなら、空間構造とタスク履歴を明示的に組み込む案として読む価値がある。閉ループと実機の実験ありとされるが数値はページになく、自己報告の段階だ。"
+    },
+    "https://arxiv.org/abs/2611.16422": {
+      "zh": "人形机器人的动作库跟踪训练通常要花数小时 GPU 时间，这篇预印本标注了真机实验和开放代码或权重，页面没有数字，值得拿自己的动作库跑一遍再决定是否替换现有训练流程。",
+      "en": "Training a humanoid tracker for a motion library usually costs hours of GPU time; this preprint flags real-robot experiments and open code or weights but shows no figures, so benchmark it on your own motion set before replacing your training pipeline.",
+      "ja": "ヒューマノイドのモーションライブラリ追従学習に何時間も GPU を使っているチーム向け。実機実験とコード・重み公開の表示はあるがページに数値はなく、自前のモーションで試してから学習パイプラインの置き換えを判断したい。"
+    },
+    "https://arxiv.org/abs/2611.16419": {
+      "zh": "靠遥操作采数据的团队可以关注：作者自报，比 GPT-4o 少用 34.6%、比 GPT-5.6 少用 39.8% 的人工遥操作时间；这仍是预印本，页面未见闭环结果。",
+      "en": "For teams collecting data by teleoperation, the authors report decoding operator intent cut human teleoperation time by 34.6% against GPT-4o and 39.8% against GPT-5.6; self-reported, with no closed-loop result on the page.",
+      "ja": "遠隔操作でデータを集めている現場には、操作者の意図推定で人の操作時間を GPT-4o 比 34.6%、GPT-5.6 比 39.8% 削減したという報告が参考になる。著者の自己報告で、閉ループ結果はページにない。"
+    },
+    "https://arxiv.org/abs/2611.16386": {
+      "zh": "长程操作中同一观测可能需要不同动作，作者自报这种由 critic 筛选的事件记忆达到 88.0% 成功率，两个对比方法均为 0.0%，对记忆记录做消融后降到 1.7%；页面未见真机结果，暂作设计参考。",
+      "en": "Where identical observations demand different actions over a long task, the authors report 88.0% success for critic-gated event memory against 0.0% for two compared methods, and 1.7% under an ablation of its records; no real-robot result appears on the page.",
+      "ja": "同じ観測でも進捗次第で行動を変える必要がある長期操作では、critic で選んだイベント記憶で成功率 88.0%、比較手法 2 つは 0.0%、記録に関するアブレーションで 1.7% と著者は報告する。実機結果はページになく、設計の参考にとどめたい。"
+    },
+    "https://spectrum.ieee.org/skydio-f10-lightrunner-asymmetrical-drone": {
+      "zh": "这是二手报道，页面摘录只是对 Skydio 的赞誉，没有设计、安全或认证方面的细节，在读原文并核对一手来源之前，不足以改变任何认证或部署计划。",
+      "en": "This is secondary coverage whose visible excerpt only praises Skydio and carries no design, safety or certification detail, so it should not change a certification or deployment plan until you read the article and its primary sources.",
+      "ja": "二次報道で、ページの抜粋は Skydio への賛辞にとどまり、設計・安全・認証の具体的な情報はない。本文と一次情報を確認するまで、認証や導入の計画を変える材料にはならない。"
+    },
+    "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/": {
+      "zh": "如果搭仿真场景是你的瓶颈，NVIDIA 这篇官方博客介绍用 AI agent 把想法变成仿真，它把这件事描述为组装资产、连接物理与渲染、检查场景行为；文中没有数字，效果要自己试用后再判断。",
+      "en": "If scene building is your simulation bottleneck, NVIDIA's own post describes using AI agents to go from idea to simulation, a job it frames as assembling assets, wiring physics and rendering and checking scene behaviour; it gives no figures, so trial it first.",
+      "ja": "シミュレーション環境の構築に手間取っているなら、NVIDIA 自身がアセットの組み立て、物理とレンダリングの接続、シーン挙動の確認という工程を AI エージェントで進める方法を紹介している。数値はなく、効果は自分で試して見極めたい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
