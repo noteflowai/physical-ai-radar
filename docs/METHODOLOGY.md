@@ -313,6 +313,7 @@ score = min(lane_hits, 6) × 0.35 × lane_weight
       + evidence_bonus            # O 0.60 · R 0.35 · M 0.10
       + Σ signal_bonus            # closed_loop 0.50 · real_robot 0.40 · numbers 0.30
                                   # open_release 0.25 · latency 0.20
+                                  # industry_event 0.50 (posts only: a preprint never earns it)
       + recency_bonus             # same day 1.0 · 1 day 0.8 · ≤3 days 0.5 · ≤7 days 0.25
       + (source_weight − 1.0)
 ```
@@ -394,11 +395,21 @@ caps above:
 - arXiv takes at most half of the limit (4 of 8). Unlike the soft caps this holds in the
   fill pass too: a day with nothing else that qualifies publishes a shorter list, not an
   arXiv-only one;
-- one slot is reserved for the best qualifying official (`[O]`) item, and one for the best
-  qualifying non-arXiv item marked `trending`. A reservation passes every gate above (topic,
+- one slot is reserved for the best qualifying official (`[O]`) item, one for the best
+  qualifying non-arXiv item marked `trending`, and two for the best qualifying posts that report an
+  **industry event** (`event`, listed twice in `filters.highlights.reserve`; the second is recorded as
+  `event#2`). An industry event is a funding round, acquisition, listing, production milestone or
+  policy action, or a counted deployment milestone ("completes 1,730 tasks"): the `industry_event` signal in
+  `data/taxonomy.json` flags it from keywords and patterns in English and Chinese, it adds 0.50 to a post's
+  score, `filters.highlights.event_min_score` (0.6) replaces `min_score` for such posts only (every other gate,
+  lane keyword and topic anchor, still applies, which is what keeps car launches and chip start-ups out), and a paper
+  (`[R]`) never earns the bonus or the slot. Without it the page was papers all the way down: in the
+  Rocky "Physical AI weekly" comparison of 2026-11-16 only 8 of 31 headline items had appeared, and
+  items that were in the pool (a 24-hour AGIBOT G2 store trial, Tesla Optimus production) scored 0.7 to
+  1.0 against 2.0 to 2.7 for papers. A reservation passes every gate above (topic,
   lane keyword, repeat guard, same-story, lane cap); one that nothing can fill stays empty,
   and the run log records it under `quota.unmet` in `radar/history.json`. A name other than
-  `official` or `hot` is ignored and recorded there as `unknown:<name>`.
+  `official`, `hot` or `event` is ignored and recorded there as `unknown:<name>`.
 
 Because a lane gives at most two picks a day, the picks alone say little about how much a lane
 had. Each run therefore also records, under `pool` in `radar/history.json`, how many items

@@ -31,11 +31,14 @@
     },
     "highlights": {
       "max_arxiv_share": 0.5,
+      "event_min_score": 0.6,
       "reserve": [
         "official",
-        "hot"
+        "hot",
+        "event",
+        "event"
       ],
-      "note": "the shortlist is the page's highlights: arXiv takes at most this share of --limit (a hard cap, in the fill pass too); 'official' reserves a slot for the best qualifying O item and 'hot' for the best qualifying non-arXiv item marked trending. A reservation passes every other gate; one that nothing can fill stays empty and the run log says so (history quota.unmet)."
+      "note": "the shortlist is the page's highlights: arXiv takes at most this share of --limit (a hard cap, in the fill pass too); 'official' reserves a slot for the best qualifying O item 'hot' for the best qualifying non-arXiv item marked trending, and 'event' (listed twice: two slots) for the best qualifying non-paper item that reports an industry event (funding, M&A, listing, production milestone, policy; signal industry_event). `event_min_score` is the lower score bar for such posts. A reservation passes every other gate; one that nothing can fill stays empty and the run log says so (history quota.unmet)."
     }
   },
   "arxiv": {

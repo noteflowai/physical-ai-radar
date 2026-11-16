@@ -38,6 +38,15 @@ radar content itself is dated, not versioned.
   (`firecrawl_answered`, ADR 027); with no entry on Firecrawl that never happens, so the record is `skipped` or `all-failed`
   instead of `firecrawl-unavailable`. Both were non-success before and are now. Whether the objective should count a static read
   is a decision for its owner (noteflow-auto `config/delivery-freshness.json`).
+- Industry events get reserved highlight slots. A new `industry_event` signal (funding, M&A, a listing, a production start,
+  policy, a counted deployment milestone; English and Chinese terms in `data/taxonomy.json`) adds 0.50 to a post's score
+  (never a paper's), `filters.highlights.reserve` gains `event` twice (two slots, recorded as `event` and `event#2`), and
+  `filters.highlights.event_min_score` (0.6) lowers the score bar for those posts only; the lane keyword and topic anchor
+  gates still apply. Before, a post about a funding round or a production start scored 0.4 to 0.9 against 2.0 to 3.8 for
+  papers and never reached the page. `select(..., event_min_score=None)` keeps its old behaviour when the argument is
+  absent. The signal label is added in zh, en and ja (`ui.signals.industry_event`); the Japanese and Chinese wording needs
+  a native review. docs/METHODOLOGY.md section 3 (Highlights quota) describes it; tests are in tests/test_industry_events.py.
+
 - The feeds (and the attention APIs) and the Firecrawl page path read robots.txt with `pairadar.robots_rules`
   (RFC 9309: `*` and a final `$` in a rule, the longest match wins, every group that names the radar is merged)
   instead of `urllib.robotparser`, which has no wildcards and takes the first match. A robots.txt that cannot be judged
@@ -125,6 +134,21 @@ radar content itself is dated, not versioned.
   when no planned entry used Firecrawl, so a bad endpoint made a successful static run report `unavailable: ["page_watch"]`. It
   now runs only when an entry that goes through Firecrawl is planned; a run that mixes both, and a run of Firecrawl entries only,
   are refused as before.
+- The nightly development planner and its two planning reviews (the feature-plan review and the
+  no-change review) now see the same controller rules and the same account of what the reviewer can see.
+  The two rules that were written only into the planner prompt ("A stale roadmap forbids new features."
+  and "Pure documentation may be identified for maintainer follow-up; this code delivery lane requires
+  behavioral acceptance.") are single constants in `scripts/feature_prompts.py` and are carried into both
+  reviews, marked as controller-supplied, so a review no longer calls a plan that quotes them an
+  invention. `recent_commits` is now the last background field dropped from an over-budget prompt (it was
+  third, ahead of the much larger `research` and `issues`). The planner prompt now says which fields the
+  reviewer's copy may lack and in what order (the same tuple that drives the dropping), tells the planner
+  to label claims that rest on them unverified, and states that a file over 24,000 bytes reaches the reviewer
+  as a signature index only and that at most five `inspect_ranges` are read. A requested line range that
+  the excerpt limit would cut (240 lines, or the remaining byte budget) is no longer shortened silently:
+  the plan attempt fails with the cut line named and every cut range listed, and the cut excerpt is not kept
+  as inspected. The planner prompt text is otherwise unchanged. New tests in
+  `tests/test_nightly_review_evidence.py`.
 
 ## 1.1.0 — 2026-09-26
 

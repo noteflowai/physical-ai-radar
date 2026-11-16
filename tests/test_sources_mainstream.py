@@ -626,7 +626,7 @@ class QuotaTest(unittest.TestCase):
     def test_the_configured_quota_is_half_of_the_daily_limit(self) -> None:
         highlights = CONFIG.sources["filters"]["highlights"]
         self.assertEqual(int(8 * highlights["max_arxiv_share"]), 4)
-        self.assertEqual(highlights["reserve"], ["official", "hot"])
+        self.assertEqual(highlights["reserve"], ["official", "hot", "event", "event"])
 
 
 class RunLogTest(unittest.TestCase):
@@ -643,7 +643,7 @@ class RunLogTest(unittest.TestCase):
         self.assertEqual((entry["robots_skipped"], entry["signal_failed"]), (["journal"], ["hf_daily_papers"]))
         self.assertEqual(entry["robots_reasons"], {"journal": "forbidden", "signal:hn:robot": "unreachable"})
         self.assertEqual(entry["quota"]["max_arxiv"], 4)
-        self.assertEqual(entry["quota"]["unmet"], ["hot", "official"])
+        self.assertEqual(entry["quota"]["unmet"], ["event", "event#2", "hot", "official"])
         lanes = [lane["id"] for lane in CONFIG.lanes]
         self.assertEqual(entry["pool"], {"live": 0, "eligible": 0, "per_lane_cap": 2,
                                          "by_lane": {lane: 0 for lane in lanes},

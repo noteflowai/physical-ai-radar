@@ -53,7 +53,11 @@ SIGNAL_BONUS = {
     "numbers": 0.3,
     "open_release": 0.25,
     "latency": 0.2,
+    "industry_event": 0.5,
 }
+# Signals that mean something only for a news or announcement item: a paper that says "valuation" or
+# "acquisition of" is not reporting an industry event, so a preprint never earns the bonus.
+NOT_FOR_PAPERS = {"industry_event"}
 
 
 def strip_boilerplate(text: str) -> str:
@@ -288,7 +292,8 @@ def enrich(items: Iterable[Item], config: Config, reference: date) -> list[Item]
         item.score = (
             min(hits, 6) * 0.35 * lane_weight
             + EVIDENCE_BONUS.get(item.evidence, 0.1)
-            + sum(SIGNAL_BONUS.get(signal, 0.0) for signal in item.signals)
+            + sum(SIGNAL_BONUS.get(signal, 0.0) for signal in item.signals
+                  if not (signal in NOT_FOR_PAPERS and item.evidence == "R"))
             + recency_bonus(item.published, reference)
             + (source_weight(config, item.source_id) - 1.0)
         )
@@ -402,6 +407,11 @@ def qualifies(item: Item, min_score: float) -> bool:
     return item.score >= min_score
 
 
+def is_event(item: Item) -> bool:
+    """A post (not a paper) that reports an industry event: funding, M&A, listing, production, policy."""
+    return "industry_event" in item.signals and item.evidence != "R"
+
+
 def select(
     items: list[Item],
     limit: int = 8,
@@ -414,6 +424,7 @@ def select(
     max_arxiv: int | None = None,
     reserve: Iterable[str] = (),
     report: dict[str, Any] | None = None,
+    event_min_score: float | None = None,
 ) -> list[Item]:
     """Pick the daily shortlist, capping each lane so one topic cannot dominate.
 
@@ -442,7 +453,8 @@ def select(
     holds in the fill pass too: a day with nothing else that qualifies has a shorter
     list, not an arXiv-only one. `reserve` names slots taken first, before the rank
     passes, by the best eligible item of that kind: "official" (evidence `O`) and
-    "hot" (a non-arXiv item marked `trending`); any other name is ignored and reported
+    "hot" (a non-arXiv item marked `trending`) and "event" (a post reporting an industry event; it may be listed
+    more than once, and `event_min_score` lowers the score bar for such posts); any other name is ignored and reported
     as `unknown:<name>`. A reservation obeys every gate and
     cap above; when no item can fill it, it stays empty and `report` says so.
 
@@ -452,8 +464,15 @@ def select(
     """
     published = {url_key(url) for url in seen}
     earlier = [story_terms(title) for title in told]
-    eligible = [item for item in items
-                if url_key(item.url) not in published and qualifies(item, min_score)]
+
+    def clears_score(item: Item) -> bool:
+        # A news post about an industry event scores 0.7 to 1.4 against 2.0 to 2.7 for a paper, so the one
+        # `min_score` shut out the posts the `event` reservation is for. `event_min_score` lowers the bar for
+        # them only; every other gate in `qualifies` (lane keyword, topic anchor) still applies.
+        return qualifies(item, min_score) or (event_min_score is not None and is_event(item)
+                                              and qualifies(item, event_min_score))
+
+    eligible = [item for item in items if url_key(item.url) not in published and clears_score(item)]
     picked: list[int] = []
     lane_counts: dict[str, int] = {}
     source_counts: dict[str, int] = {}
@@ -480,6 +499,8 @@ def select(
     kinds = {
         "official": lambda item: item.evidence == "O",
         "hot": lambda item: "trending" in item.signals and item.source_id != "arxiv",
+        # An industry event (funding, M&A, listing, production milestone, policy) in a post. Papers are excluded.
+        "event": is_event,
     }
     reserved: dict[str, str | None] = {}
     for kind in reserve:
@@ -487,7 +508,9 @@ def select(
             # A misspelt `filters.highlights.reserve` entry must not stop the nightly run.
             reserved[f"unknown:{kind}"] = None
             continue
-        reserved[kind] = None
+        # A kind may be listed more than once to reserve several slots: the repeats are reported as `event#2`.
+        name = kind if kind not in reserved else f"{kind}#{sum(1 for key in reserved if key.split('#')[0] == kind) + 1}"
+        reserved[name] = None
         if len(picked) >= limit:
             continue
         for index, item in enumerate(eligible):
@@ -496,11 +519,12 @@ def select(
             if lane_counts.get(item.lane, 0) >= per_lane or retold(index) or arxiv_full(item):
                 continue
             take(index, item)
-            reserved[kind] = item.id
+            reserved[name] = item.id
             break
         else:
-            already = next((eligible[i].id for i in picked if kinds[kind](eligible[i])), None)
-            reserved[kind] = already
+            # Only the first slot of a kind may be satisfied by an item picked earlier; a repeat stays empty.
+            already = next((eligible[i].id for i in picked if kinds[kind](eligible[i])), None) if name == kind else None
+            reserved[name] = already
 
     for capped in (True, False):
         # Lane room held for the best item the soft caps pushed to the fill pass, one per lane and in the
