@@ -109,6 +109,10 @@ def recent_urls(runs: list[dict[str, Any]], reference: date, days: int) -> set[s
     return urls
 
 
+def _optional_float(value: Any) -> float | None:
+    return None if value is None else float(value)
+
+
 def _optional_int(value: Any) -> int | None:
     return None if value in (None, "") else int(value)
 
@@ -167,7 +171,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
                     per_source=_optional_int(filters.get("per_source")),
                     per_evidence=_optional_int(filters.get("per_evidence")), told=told,
                     max_arxiv=int(limit * float(share)) if share is not None else None,
-                    reserve=list(highlights.get("reserve", [])), report=quota)
+                    reserve=list(highlights.get("reserve", [])), report=quota,
+                    event_min_score=_optional_float(highlights.get("event_min_score")))
     # What the shortlist was cut from, by lane, with every lane present (a zero is a count, not a gap). The picks
     # alone cannot show it: a lane gives at most `per_lane` a day. It belongs to the run log, not to the quota.
     pool = quota.pop("pool", {})
