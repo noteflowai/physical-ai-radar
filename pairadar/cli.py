@@ -201,6 +201,8 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
         # Kept for every run, not pruned with the URLs: pairadar.health reads a
         # longer window to spot a source that has quietly stopped answering.
         "failed": sorted(report.failed),
+        # Why a failed feed gave nothing, where the reader says (a GitHub repository that `moved`: update its name).
+        "failed_reasons": dict(sorted(report.failed_reasons.items())),
         "fallback": sorted(report.fallback),
         # A channel whose local service was down (page_watch without Firecrawl).
         "unavailable": sorted(report.unavailable),
