@@ -29,6 +29,7 @@ from .config import (
 from .distill import deduplicate, enrich, evidence_mix, lane_distribution, prefilter, select, url_key
 from .fetch import baseline_items, fetch_all
 from .feeds import FEED_JSON, load_store, upsert, within, write_feeds
+from .graph import write_graph
 from .render import chart_title, inject_readme, update_index, write_daily, write_latest
 from .robots_store import RobotsStore
 from .site import write_site
@@ -349,6 +350,7 @@ def run(offline: bool = False, limit: int = 8, day: str | None = None, write_rea
     written.append(write_latest(ctx, root))
     # Before the index, which lists the weekly pages this writes.
     written.extend(write_feeds(config, ctx, root))
+    written.extend(write_graph(config, ctx, root))
     written.append(update_index(config, ctx, ctx["history"], root))
     save_history(ctx["history"], keep_urls_days=ctx["repeat_days"],
                  path=root/"radar"/"history.json")
