@@ -436,17 +436,22 @@ sys.exit(0)           # reached only when the signal did not stop the batch
     def run_injected_batch(self, point, signame):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            done = subprocess.run([sys.executable, "-c", self.INJECTED_BATCH, str(root), point, signame],
-                                  cwd=ROOT, capture_output=True, timeout=30)
-            pid = self.wait_for_pid(root / "stage.pid")
+            pid = None
             try:
+                try:
+                    done = subprocess.run([sys.executable, "-c", self.INJECTED_BATCH, str(root), point, signame],
+                                          cwd=ROOT, capture_output=True, timeout=15)
+                except subprocess.TimeoutExpired:
+                    self.fail("the batch was still running 15 s after the signal: it did not stop its stage")
+                pid = self.wait_for_pid(root / "stage.pid")
                 code = getattr(signal, signame)
                 self.assertEqual(done.returncode, 128 + code, done.stderr.decode(errors="replace"))
                 self.assert_process_stopped(pid)
             finally:
+                # never leave a stage behind, whatever the assertions said (its pid file is written atomically)
                 try:
-                    os.killpg(pid, signal.SIGKILL)       # never leave the stage behind, whatever the assertions said
-                except ProcessLookupError:
+                    os.killpg(int((root / "stage.pid").read_text()), signal.SIGKILL)
+                except (FileNotFoundError, ValueError, ProcessLookupError):
                     pass
 
     def test_a_signal_while_the_stage_is_being_created_still_ends_the_stage(self):
