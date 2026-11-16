@@ -21,6 +21,15 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- Industry events get reserved highlight slots. A new `industry_event` signal (funding, M&A, a listing, a production start,
+  policy, a counted deployment milestone; English and Chinese terms in `data/taxonomy.json`) adds 0.50 to a post's score
+  (never a paper's), `filters.highlights.reserve` gains `event` twice (two slots, recorded as `event` and `event#2`), and
+  `filters.highlights.event_min_score` (0.6) lowers the score bar for those posts only; the lane keyword and topic anchor
+  gates still apply. Before, a post about a funding round or a production start scored 0.4 to 0.9 against 2.0 to 3.8 for
+  papers and never reached the page. `select(..., event_min_score=None)` keeps its old behaviour when the argument is
+  absent. The signal label is added in zh, en and ja (`ui.signals.industry_event`); the Japanese and Chinese wording needs
+  a native review. docs/METHODOLOGY.md section 3 (Highlights quota) describes it; tests are in tests/test_industry_events.py.
+
 - The feeds (and the attention APIs) and the Firecrawl page path read robots.txt with `pairadar.robots_rules`
   (RFC 9309: `*` and a final `$` in a rule, the longest match wins, every group that names the radar is merged)
   instead of `urllib.robotparser`, which has no wildcards and takes the first match. A robots.txt that cannot be judged
