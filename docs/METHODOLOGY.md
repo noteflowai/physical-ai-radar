@@ -404,6 +404,45 @@ were fetched and kept (`live`), how many qualified and had not been published (`
 lane cap in force (`per_lane_cap`), the eligible count by lane (`by_lane`) and the published
 count by lane (`picked_by_lane`). Every lane is present in both maps, with `0` where there was
 none. Runs before this field existed have no `pool`; the count is not reconstructed for them.
+
+Two public files, `radar/graph/items.json` and `radar/graph/lane-time.json` (schema `radar-graph-1`), carry
+the same facts in a form a page can read. `items.json` has every published pick with its lane as an id
+(the public fields of the feed's `_radar` record). **An entry is a pick on a day, not an item**: an item is kept out of
+the picks for `filters.repeat_days` (30) days, so one item can be picked again after that (2026-11-16 picked an NVIDIA post
+that 2026-10-14 had picked), and then it is two
+entries with the same `id` and different `date`. The key of an entry is `(date, id)`; a pair that repeats it is refused,
+and a reader (a page, a test, a consumer) must not use `id` alone as a key. (The one-entry-per-id assumption stopped the
+2026-11-16 publication, in a test, and the export was reverted for the day.) **A stored pick is never dropped because the run
+log forgot its day.** `radar/history.json` keeps the last 400 runs (`cli.save_history`), so after about a year the log starts
+later than the oldest entry of `items.json`: the entry stays, `lane-time.json` starts at the first run of the log (`first_run`),
+and the pair is sound (`items_count` counts every entry). That is the design, pinned by
+`tests/test_graph.py::RepeatedPickTest`; a consumer must not assume that every entry falls inside the table. The tests that
+read the committed data take the run log from `tests/fixtures/graph-history-2026-11-16.json` (the keys the export reads, of
+every run up to 2026-11-16), not from the live log, so that they mean the same thing after the log is cut; `FixtureTest`
+checks the file against the live log where the two overlap. From the day it was added the run appends the day's picks
+itself; days before that are filled once from the published English pages, reading only the
+`## Today's picks` section (never the curated baseline, the charts or the watch list), and a day whose page
+cannot be read exactly, or whose pick count differs from the run's, is listed under `backfill.gaps` with the
+reason and is not guessed. The one gap at the time of writing is the first run (2026-09-19), whose arXiv
+links were in an older `http`, versioned form from which the item id cannot be recovered. `lane-time.json`
+has, for every day from the first run and every lane, the picks by evidence class, the candidate pool
+(`null` where the run log has none, never `0`), the sources that failed or were unavailable that day, and the
+selection rules in force over time from `data/selection-rules.json` (each rule carries the `per_lane` and `per_day` in force at its commit, read from the code at that commit: 2 and 8 at every rule up to the one that stopped the GitHub atom feeds, and the current code defaults for that one, and the first also `min_score` 0.9; a size that could not be verified is `null`; whether a manual run used another `--limit` is not recorded; `show` says whether the page draws the change as a line, an editorial choice about the changes after which two days are not measured with the same ruler, and the rules that are not drawn stay in the data). A day whose stored picks do not add up to the
+number of items the run published (the day in `backfill.gaps`) has `picks_known: false`, is listed in
+`mismatch_days`, and has `null`, not `0`, in every pick cell, because a zero would read as "nothing was picked". The `from` of a rule is
+the date of the commit that changed it, not the first run that used it (`rules_dates` says so), and each rule says that its effect on the
+daily counts has not been measured. A problem with either file is printed and the run carries on; they never decide what is picked.
+
+The two files are one version. Before they are published the pair is checked (`graph.contract_problems`): the days run
+one per calendar day from `first_run` to `as_of`; every day has every lane; an unknown is `null`, never `0` (a lane the run
+log names no pool for is `null` too); `mismatch_days` is exactly the days with `picks_known: false`; a day whose picks are
+known adds up to its `count`. `lane-time.json` names its items file: `items_sha256` is the SHA-256 of the bytes of
+`items.json` and `items_count` its number of entries, and a reader that finds another hash has two generations and must not
+use them together (`graph.check_pair`). Both files are written beside their names and then renamed; if the second rename
+fails the first file is put back, and a failure never stops the run. A run log in which any run has a `count` that is
+missing, null, a bool or not a whole number of at least 0 stops the export, and the previous pair stays. A stored `items.json` whose entries are not what the
+module writes stops the export and is left as it is; a stored day with fewer picks than the run recorded is read again from
+its page. Links are published as first written: the early days have plain `http` links, which are not turned into `https`. `source_evidence` gives, for each source named in any day's `failed_sources`, its evidence class (O, R or M) in the configuration at the time of the export, not as it was on the day it failed; a source id that is not in it has no known class, and a reader must treat it as any class.
 A day may publish fewer than eight picks, or none. When no live item meets these rules, the
 daily page says so and then lists the curated baseline under its own heading. The radar
 block in each README does the same: directly under the day's heading and window line it
