@@ -78,13 +78,13 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **Envisioning Agentic Robotics** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **Vision-Language-Action Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — 当事者による一次発表。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-6. **Agile Robots raises $500M to increase production capacity** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI 下書き` ロボット操作エージェントを GPT-6 Astra などのプロプライエタリモデルに頼っているチームには検討材料になる。成功率 1.6% から 74.4% への改善を自己報告し、実機・閉ループ・公開の表示もあるが、各数値の条件はページから読み取れない。
+2. **Envisioning Agentic Robotics** — `AI 下書き` エージェント型ハーネスを備えたフロンティアモデルが多くの身体性ベンチマークでタスク専用方策に並ぶか上回ったという主張だが、ページにあるのはベンチマーク上の言及だけで数値も実機結果もなく、専用方策を手放す根拠にはまだ弱い。
+3. **Vision-Language-Action Models** — `AI 下書き` VLA のデータ予算を見積もる際の参照になる。遠隔操作ロボットデータ約 10,000 hours、一人称視点の人間データ 20,000 hours といった規模が挙がるが、ページに実機・閉ループの結果はなく、量だけで効果は判断できない。
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI 下書き` CoRL での講演を伝える二次報道で、World Labs の取り組みが2年でどう変わったかの方向感をつかむには役立つ。ページに数値はなく、技術選定の根拠にする前に講演そのものを確認したい。
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI 下書き` NVIDIA 自身によるイベント報告で、ハードウェアやベンチマーク、数値には触れていない。エッジ推論や制御周期の判断材料にはならず、韓国でフィジカル AI に取り組む企業やコミュニティを把握する用途に向く。
+6. **Agile Robots raises $500M to increase production capacity** — `AI 下書き` アーム、ハンド、移動ロボット、ヒューマノイドの調達先候補なら、生産能力の拡大は供給に関わりうる。ただし二次報道で、出荷量や時期はページにないため、発注判断の前にメーカーへ確認したい。
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI 下書き` 機体ごとに報酬、アーキテクチャ、ハイパーパラメータを調整し直しているチームには注目の案だが、関節座標の異なる機体間で学習レシピを使い回せることを示す実機結果や数値はページになく、自己報告の段階にとどまる。
 
 </details>
 

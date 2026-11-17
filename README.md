@@ -80,13 +80,13 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Envisioning Agentic Robotics** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **Vision-Language-Action Models** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — 一手官方发布；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-6. **Agile Robots raises $500M to increase production capacity** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI 起草` 如果你的机器人操作 agent 依赖 GPT-6 Astra 这类闭源前沿模型，这篇预印本自报成功率从 1.6% 提升到 74.4%，并标注了真机、闭环与开放代码或权重，但页面未说明各数字对应的条件，复现前不宜据此换掉现有方案。
+2. **Envisioning Agentic Robotics** — `AI 起草` 这篇预印本主张，带 agentic harness 的前沿模型已在许多具身基准上追平或超过专用策略；页面只有基准层面的说法，没有数字和真机结果，暂时不足以让你放弃针对任务训练的策略。
+3. **Vision-Language-Action Models** — `AI 起草` 规划 VLA 数据预算时可以拿它作参照：综述提到约 10,000 小时遥操作机器人数据和 20,000 小时第一人称人类数据这样的规模，但页面没有真机或闭环结果，这些数量本身不说明效果。
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI 起草` 这是对李飞飞 CoRL 演讲的二手转述，可以用来了解 World Labs 两年来方向的变化，但页面没有数字，做技术路线判断或引用前应回到演讲原文。
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI 起草` 这是一篇活动回顾，没有点名硬件、基准或数字，对端侧推理或控制频率的取舍没有直接帮助，更适合用来了解韩国做 Physical AI 的企业和开发者社区。
+6. **Agile Robots raises $500M to increase production capacity** — `AI 起草` 如果你在采购机械臂、灵巧手或人形机器人，这家供应商扩产可能影响供货，但这是二手报道，页面没有交付量或时间表，下单前应向厂商核实。
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI 起草` 每换一款人形机器人就要重调奖励、网络结构和超参数的团队值得关注，这篇预印本试图让训练配方跨本体复用，但页面上没有真机结果或数字可供核对，采用前先等作者给出证据。
 
 </details>
 

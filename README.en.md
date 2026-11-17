@@ -78,13 +78,13 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **Envisioning Agentic Robotics** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **Vision-Language-Action Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — First-party release; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
-6. **Agile Robots raises $500M to increase production capacity** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
+1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI draft` If your robot-use agent depends on proprietary frontier models, this preprint self-reports a success rate rising from 1.6% to 74.4% and flags real-robot, closed-loop and open-release signals, but the page does not say which setup each figure belongs to.
+2. **Envisioning Agentic Robotics** — `AI draft` This preprint argues that frontier models in agentic harnesses now match or beat task-specific policies on many embodied benchmarks; with only benchmark-level claims and no figures on the page, it is not yet grounds to retire a task-trained policy.
+3. **Vision-Language-Action Models** — `AI draft` Handy as a reference when sizing a VLA data budget, since the survey cites scales such as about 10,000 hours of teleoperated robot data and 20,000 hours of egocentric human data, though the page shows no real-robot or closed-loop results tied to them.
+4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI draft` A secondhand account of a CoRL talk on how World Labs' work has changed in two years; read it for direction only, since the page carries no figures and the talk itself should be checked before it shapes a model roadmap.
+5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI draft` This first-party event recap names no hardware, benchmark or figure, so it helps with scouting partners in Korea's physical AI and agent community and changes nothing about edge latency or control-rate choices.
+6. **Agile Robots raises $500M to increase production capacity** — `AI draft` If you source arms, hands, mobile robots or humanoids, a supplier funding more production could affect availability, but this is a secondary report with no delivery volumes or dates on the page, so confirm them with the company.
+7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI draft` Teams that retune rewards, architectures and hyperparameters for every new humanoid should track this preprint, which aims to make those recipes portable across joint layouts, but the page gives no real-robot results or figures to back it yet.
 
 </details>
 
