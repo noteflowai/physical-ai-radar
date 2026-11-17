@@ -138,6 +138,8 @@
     {
       "id": "monoist",
       "url": "https://rss.itmedia.co.jp/rss/2.0/monoist.xml",
+      "enabled": false,
+      "disabled_reason": "The robots.txt of rss.itmedia.co.jp answered 200 but not as a robots.txt on 2026-11-17 (the log does not say which check failed); not read, per the rules.",
       "evidence": "M",
       "weight": 0.8,
       "publisher": "MONOist (ITmedia)",
