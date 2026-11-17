@@ -486,6 +486,12 @@ UNSUPPORTED_URL = "unsupported-url"     # this URL cannot be judged against any 
 # asked us to wait (429). `RobotsCache.verdict` (the feeds) spells out the same three; `_robots_allows` (the pages)
 # uses this tuple. A test pins the two paths to the same outcome for every status.
 ROBOTS_REFUSED_4XX = (401, 403, 429)
+# Why a host is `unreachable`: `robots_detail`, beside `robots_reasons` and never instead of it. `no-answer`: no HTTP answer
+# at all; `http-429` and `http-5xx`: the host asked us to wait or failed; `not-robots-txt`: a 2xx answer that is not the host's
+# robots.txt (an HTML page, another address, a content type other than text/plain); `unjudgeable`: a 2xx robots.txt that
+# cannot be judged completely (not UTF-8, too long, too many or too long rules, an invalid escape in a rule); `other`:
+# anything else that is not a file (a 3xx or 1xx status, a 2xx without a body).
+ROBOTS_DETAILS = ("no-answer", "http-429", "http-5xx", "not-robots-txt", "unjudgeable", "other")
 
 
 def _media_type(value: Any) -> str | None:
@@ -561,6 +567,8 @@ class RobotsCache:
     def __init__(self, getter=None, store: Any = None):
         self.getter = getter or _robots_get
         self.hosts: dict[str, Any] = {}
+        # Why a host is `unreachable` (one of ROBOTS_DETAILS), for the hosts that are; it decides nothing.
+        self.details: dict[str, str] = {}
         # What the reader before `robots_rules` (urllib.robotparser) made of each 2xx file, only to say which refusals are
         # new (`previously_allowed`). Transitional: it decides nothing and goes once the first runs have been read back.
         self.legacy: dict[str, urllib.robotparser.RobotFileParser] = {}
@@ -572,6 +580,11 @@ class RobotsCache:
         parts = urllib.parse.urlsplit(url)
         parser = self.legacy.get(f"{parts.scheme}://{parts.netloc}".lower())
         return parser is not None and parser.can_fetch(ROBOTS_TOKEN, url)
+
+    def detail(self, url: str) -> str | None:
+        """Why the host of this URL is `unreachable` (one of ROBOTS_DETAILS); None for any other verdict or a host not asked."""
+        parts = urllib.parse.urlsplit(url)
+        return self.details.get(f"{parts.scheme}://{parts.netloc}".lower())
 
     def verdict(self, url: str) -> str:
         parts = urllib.parse.urlsplit(url)
@@ -593,6 +606,7 @@ class RobotsCache:
                     # what is allowed, so nothing on the host is requested, and the body is not kept as one
                     print(f"[fetch] robots.txt for {origin} answered {status} but not as a robots.txt: host not requested this run")
                     self.hosts[origin] = UNREACHABLE
+                    self.details[origin] = "not-robots-txt"
                 else:
                     if self.store is not None:
                         self.store.record_text(origin, body)
@@ -603,6 +617,7 @@ class RobotsCache:
                     except (UnicodeDecodeError, robots_rules.RobotsUnsupported) as error:
                         print(f"[fetch] robots.txt for {origin} cannot be judged completely ({error}): host not requested this run")
                         self.hosts[origin] = UNREACHABLE
+                        self.details[origin] = "unjudgeable"
             elif status in (401, 403):
                 print(f"[fetch] robots.txt for {origin} answered {status}: host forbidden")
                 self.hosts[origin] = FORBIDDEN
@@ -611,6 +626,8 @@ class RobotsCache:
             else:
                 print(f"[fetch] robots.txt for {origin} unreachable ({status}): host not requested this run")
                 self.hosts[origin] = UNREACHABLE
+                self.details[origin] = ("no-answer" if status is None else "http-429" if status == 429
+                                        else "http-5xx" if 500 <= status < 600 else "other")
         rule = self.hosts[origin]
         if isinstance(rule, str):
             return rule
@@ -816,12 +833,14 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                 skipped: list[str] | None = None,
                 reasons: dict[str, str] | None = None,
                 newly_denied: dict[str, str] | None = None,
-                failures: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
+                failures: dict[str, str] | None = None,
+                details: dict[str, str] | None = None) -> tuple[list[Item], list[str]]:
     """Read every configured feed, collecting the ids of those that did not answer.
 
     `robots`, when given, is consulted first; a feed it refuses (disallowed, forbidden,
     or a host whose robots.txt is unreachable) is not requested and goes to `skipped`
-    with its reason in `reasons`, never to `failed`. A refused feed that the reader before
+    with its reason in `reasons`, never to `failed`. For an unreachable host `details` gets the reason's detail
+    (one of ROBOTS_DETAILS). A refused feed that the reader before
     `robots_rules` would have allowed is also put in `newly_denied` (id -> reason).
     A feed whose `kind` is `github-releases` is read from the GitHub API (see `read_github_releases`); one that gave
     nothing is in the returned `failed` and its fixed reason (`moved`, `rate-limited`, ...) in `failures` (id -> reason).
@@ -859,6 +878,8 @@ def fetch_feeds(config: Config, robots: RobotsCache | None = None,
                     reasons[feed["id"]] = verdict
                 if newly_denied is not None and robots.previously_allowed(feed["url"]):
                     newly_denied[feed["id"]] = verdict
+                if details is not None and (detail := robots.detail(feed["url"])) is not None:
+                    details[feed["id"]] = detail
                 continue
             polite(feed["url"])
         if kind == GITHUB_RELEASES:
@@ -2035,6 +2056,9 @@ class FetchReport:
     # forbidden (401/403) or unreachable (5xx, 429, no answer).
     robots_skipped: list[str] = field(default_factory=list)
     robots_reasons: dict[str, str] = field(default_factory=dict)
+    # Why a host is `unreachable`, for the feeds in `robots_skipped` whose host is: feed id -> one of ROBOTS_DETAILS
+    # (`no-answer`, `http-429`, `http-5xx`, `not-robots-txt`, `unjudgeable`, `other`). It adds to `robots_reasons`, never replaces it.
+    robots_detail: dict[str, str] = field(default_factory=dict)
     # The refusals above that the reader before `robots_rules` (RFC 9309 wildcards, longest match) would have allowed:
     # feed or page id -> reason ("refused" for a Firecrawl page). The first runs after the rule change show what it cost.
     robots_newly_denied: dict[str, str] = field(default_factory=dict)
@@ -2071,6 +2095,7 @@ class FetchReport:
             "unavailable": sorted(self.unavailable),
             "robots_skipped": sorted(self.robots_skipped),
             "robots_reasons": dict(sorted(self.robots_reasons.items())),
+            "robots_detail": dict(sorted(self.robots_detail.items())),
             "robots_newly_denied": dict(sorted(self.robots_newly_denied.items())),
             "failed_reasons": dict(sorted(self.failed_reasons.items())),
             "signals": self.signals.summary() if self.signals is not None else None,
@@ -2100,7 +2125,7 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
             report.failed.append("arxiv")
     feed_items, failed = fetch_feeds(config, robots=robots, skipped=report.robots_skipped,
                                      reasons=report.robots_reasons, newly_denied=report.robots_newly_denied,
-                                     failures=report.failed_reasons)
+                                     failures=report.failed_reasons, details=report.robots_detail)
     report.attempted.extend(feed["id"] for feed in enabled_feeds(config.sources)
                             if feed["id"] not in report.robots_skipped)
     report.items.extend(feed_items)
@@ -2129,8 +2154,10 @@ def fetch_all(config: Config, offline: bool = False, reference: date | None = No
     if report.unavailable:
         print(f"[fetch] channel unavailable: {', '.join(sorted(report.unavailable))}")
     if report.robots_skipped:
-        print("[fetch] robots.txt refuses: " + ", ".join(f"{source} ({report.robots_reasons.get(source, '?')})"
-                                                     for source in sorted(report.robots_skipped)))
+        print("[fetch] robots.txt refuses: " + ", ".join(
+            f"{source} ({report.robots_reasons.get(source, '?')}"
+            + (f": {report.robots_detail[source]}" if source in report.robots_detail else "") + ")"
+            for source in sorted(report.robots_skipped)))
     if report.signals.failed:
         print(f"[fetch] attention signals not read: {', '.join(sorted(report.signals.failed))}")
     return report

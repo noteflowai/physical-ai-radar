@@ -21,6 +21,15 @@ radar content itself is dated, not versioned.
 
 ## Unreleased
 
+- **`robots_detail`: why a host's robots.txt was `unreachable`.** On 2026-11-17 MONOist was refused as `unreachable` and only the
+  run log told a limit from an answer our own checks did not take for a robots.txt. The run record, `radar/latest.json`'s `fetch`
+  block (and its `signals` block) and `pairadar.health` now carry `robots_detail` next to `robots_reasons`, which keeps its words
+  (`disallowed`, `forbidden`, `unreachable`): for a feed or attention API whose host is `unreachable`, one of `no-answer` (no HTTP
+  answer), `http-429`, `http-5xx`, `not-robots-txt` (a 2xx answer that is an HTML page, another address or a content type other
+  than `text/plain`), `unjudgeable` (a 2xx robots.txt that is not UTF-8, too long, has too many or too long rules, or an invalid
+  escape in a rule) or `other` (a 3xx or 1xx status, a 2xx without a body). Any other verdict has none, and so has a page read by
+  Firecrawl or the static reader. In the run record a signal's key has the `signal:` prefix, as in `robots_reasons`; the log line
+  reads `monoist (unreachable: not-robots-txt)`. Only an addition: nothing is requested differently and no verdict changed.
 - **No page_watch entry uses Firecrawl now** (it was unavailable on every one of the 26 days on record, 2026-10-22 to 11-16, and
   was not redeployed). The two standards pages that went through it, ISO 25785-1 and Regulation (EU) 2023/1230, are removed from
   `page_watch` and marked `covered: false` with a `not_covered_reason`, like the Council's timeline: ISO's robots.txt answered 403

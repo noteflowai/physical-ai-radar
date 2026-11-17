@@ -134,13 +134,13 @@ def _count(runs: list[dict[str, Any]], key: str) -> dict[str, int]:
     return counts
 
 
-def _reasons(runs: list[dict[str, Any]]) -> dict[str, int]:
+def _reasons(runs: list[dict[str, Any]], key: str = "robots_reasons") -> dict[str, int]:
     counts: dict[str, int] = {}
     for entry in runs:
-        reasons = entry.get("robots_reasons")
+        reasons = entry.get(key)
         for source, reason in (reasons.items() if isinstance(reasons, dict) else []):
-            key = f"{source}:{reason}"
-            counts[key] = counts.get(key, 0) + 1
+            key_ = f"{source}:{reason}"
+            counts[key_] = counts.get(key_, 0) + 1
     return counts
 
 
@@ -281,6 +281,9 @@ def report(runs: list[dict[str, Any]], reference: date, window: int = WINDOW,
         # Why, per source and reason ("deepmind:unreachable": days): a host whose robots.txt
         # stopped answering shows up here, not under struggling.
         "robots_reasons": _reasons(_in_window(runs, reference, window)),
+        # And for an unreachable host the detail ("monoist:not-robots-txt": days), so a limit or a failure of the host is
+        # told apart from an answer our own checks do not take for a robots.txt without reading the run log.
+        "robots_detail": _reasons(_in_window(runs, reference, window), "robots_detail"),
         "signals_unavailable": _count(_in_window(runs, reference, window), "signal_failed"),
         "switched_off": switched_off(),
         "struggling": entries,

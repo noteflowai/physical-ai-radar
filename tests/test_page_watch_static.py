@@ -1167,7 +1167,7 @@ class StaticWatchTests(TlsTestCase):
                         patch.object(heat, "fetch_signals", lambda *a, **k: heat.Signals()), contextlib.redirect_stdout(io.StringIO()):
                     report = fetch.fetch_all(config, offline=False, reference=DAY, page_state={})
                 published = json.dumps(report.to_dict())
-                for private in ("digest", "observation", "planned", "static_checked", "detail", "sources\": {", "http-403", "observed",
+                for private in ("digest", "observation", "planned", "static_checked", "\"detail\"", "sources\": {", "http-403", "observed",
                                 "blocked", "robots-unreadable", "static"):
                     self.assertNotIn(private, published, private)               # radar/latest.json carries none of the per-source result
                 self.assertEqual(sorted(report.to_dict()["page_watch"]),
