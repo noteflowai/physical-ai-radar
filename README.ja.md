@@ -60,35 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-17
+### 本日のレーダー · 2026-11-18
 
-`生成時刻: 2026-11-16 23:40 UTC` ｜ `対象期間: 論文 2026-11-13 → 2026-11-17 · ブログ・報道 2026-10-18 → 2026-11-17 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-17 23:40 UTC` ｜ `対象期間: 論文 2026-11-14 → 2026-11-18 · ブログ・報道 2026-10-19 → 2026-11-18 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>シミュレーションと評価 · arXiv 2611.18562 · 2026‑11‑13</sub> |
-| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>シミュレーションと評価 · arXiv 2611.18359 · 2026‑11‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>基盤モデル · arXiv 2611.18372 · 2026‑11‑13</sub> |
-| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑16</sub> |
-| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>エッジとリアルタイム · NVIDIA Blog · 2026‑11‑16</sub> |
-| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑16</sub> |
-| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>ハードウェアとサプライチェーン · arXiv 2611.18003 · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2611.20460)**<br>`5.5%`&nbsp; `20.6%`<br><sub>学習と自己改善 · arXiv 2611.20460 · 2026‑11‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[ResWAM: Learning What Changes, Not What Stays, for World-Action Models](https://arxiv.org/abs/2611.19559)**<br>`2.3B parameters`&nbsp; `81.1%`&nbsp; `93.8%`<br><sub>基盤モデル · arXiv 2611.19559 · 2026‑11‑14</sub> |
+| 03<br>🔵&nbsp;`R` | **[Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI](https://arxiv.org/abs/2611.19131)**<br>`23%`<br><sub>エッジとリアルタイム · arXiv 2611.19131 · 2026‑11‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation](https://arxiv.org/abs/2611.20676)**<br><sub>システムとオーケストレーション · arXiv 2611.20676 · 2026‑11‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[Genesis AI raises $500M to deploy glove-wearing robots](https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/)**<br><sub>シミュレーションと評価 · TechCrunch (Robotics) · 2026‑11‑17</sub> |
+| 06<br>🟡&nbsp;`M` | **[Robot swarms trained by trial and error in simulation keep working on real robots](https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/)**<br><sub>シミュレーションと評価 · Robohub · 2026‑11‑17</sub> |
+| 07<br>🟡&nbsp;`M` | **[物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs](https://www.qbitai.com/2026/11/510561.html)**<br><sub>学習と自己改善 · 量子位 QbitAI · 2026‑11‑17</sub> |
+| 08<br>🟡&nbsp;`M` | **[Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial](https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑13</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI 下書き` ロボット操作エージェントを GPT-6 Astra などのプロプライエタリモデルに頼っているチームには検討材料になる。成功率 1.6% から 74.4% への改善を自己報告し、実機・閉ループ・公開の表示もあるが、各数値の条件はページから読み取れない。
-2. **Envisioning Agentic Robotics** — `AI 下書き` エージェント型ハーネスを備えたフロンティアモデルが多くの身体性ベンチマークでタスク専用方策に並ぶか上回ったという主張だが、ページにあるのはベンチマーク上の言及だけで数値も実機結果もなく、専用方策を手放す根拠にはまだ弱い。
-3. **Vision-Language-Action Models** — `AI 下書き` VLA のデータ予算を見積もる際の参照になる。遠隔操作ロボットデータ約 10,000 hours、一人称視点の人間データ 20,000 hours といった規模が挙がるが、ページに実機・閉ループの結果はなく、量だけで効果は判断できない。
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI 下書き` CoRL での講演を伝える二次報道で、World Labs の取り組みが2年でどう変わったかの方向感をつかむには役立つ。ページに数値はなく、技術選定の根拠にする前に講演そのものを確認したい。
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI 下書き` NVIDIA 自身によるイベント報告で、ハードウェアやベンチマーク、数値には触れていない。エッジ推論や制御周期の判断材料にはならず、韓国でフィジカル AI に取り組む企業やコミュニティを把握する用途に向く。
-6. **Agile Robots raises $500M to increase production capacity** — `AI 下書き` アーム、ハンド、移動ロボット、ヒューマノイドの調達先候補なら、生産能力の拡大は供給に関わりうる。ただし二次報道で、出荷量や時期はページにないため、発注判断の前にメーカーへ確認したい。
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI 下書き` 機体ごとに報酬、アーキテクチャ、ハイパーパラメータを調整し直しているチームには注目の案だが、関節座標の異なる機体間で学習レシピを使い回せることを示す実機結果や数値はページになく、自己報告の段階にとどまる。
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+2. **ResWAM** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **Learning and Verifying Progress** — 査読前のプレプリント。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-17.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-18.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-17",
+  "as_of": "2026-11-18",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -7721,6 +7721,149 @@
       "signals": [],
       "numbers": [],
       "excerpt": "Reinforcement learning has enabled robust humanoid locomotion, yet training recipes (rewards, architectures, hyperparameters) remain hard to reuse across robots with different native joint coordinates, since policies output native joint…"
+    },
+    {
+      "id": "arxiv:2611.20460",
+      "date": "2026-11-18",
+      "published": "2026-11-16",
+      "lane": "training",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.20460",
+      "title": "Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2611.20460",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "numbers": [
+        "5.5%",
+        "20.6%"
+      ],
+      "excerpt": "Flow-based vision-language-action (VLA) models achieve strong performance in robotics through imitation learning, yet fine-tuning them with on-policy reinforcement learning (RL) is limited."
+    },
+    {
+      "id": "arxiv:2611.19559",
+      "date": "2026-11-18",
+      "published": "2026-11-14",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.19559",
+      "title": "ResWAM: Learning What Changes, Not What Stays, for World-Action Models",
+      "url": "https://arxiv.org/abs/2611.19559",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "numbers": [
+        "2.3B parameters",
+        "81.1%",
+        "93.8%",
+        "9.40%"
+      ],
+      "excerpt": "World-action models (WAMs) augment vision-language-action policies (VLAs) with future prediction so that the policy can anticipate how its actions will affect the physical world."
+    },
+    {
+      "id": "arxiv:2611.19131",
+      "date": "2026-11-18",
+      "published": "2026-11-14",
+      "lane": "edge",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.19131",
+      "title": "Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI",
+      "url": "https://arxiv.org/abs/2611.19131",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "numbers": [
+        "23%"
+      ],
+      "excerpt": "Vision-language-action (VLA) models enable embodied artificial intelligence (AI) by translating visual observations and language instructions into robotic actions."
+    },
+    {
+      "id": "arxiv:2611.20676",
+      "date": "2026-11-18",
+      "published": "2026-11-16",
+      "lane": "systems",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.20676",
+      "title": "Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation",
+      "url": "https://arxiv.org/abs/2611.20676",
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Long-horizon vision-language navigation (VLN) requires agents to track instruction progress and recover from local errors before they propagate across subtasks."
+    },
+    {
+      "id": "techcrunch-robotics:04d3ec1b70b8",
+      "date": "2026-11-18",
+      "published": "2026-11-17",
+      "lane": "simeval",
+      "evidence": "M",
+      "source_id": "techcrunch-robotics",
+      "publisher": "TechCrunch (Robotics)",
+      "title": "Genesis AI raises $500M to deploy glove-wearing robots",
+      "url": "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "Genesis AI's novel approach to training dexterous robots earned it $500 million in Series A funding."
+    },
+    {
+      "id": "robohub:d8c81256a1cb",
+      "date": "2026-11-18",
+      "published": "2026-11-17",
+      "lane": "simeval",
+      "evidence": "M",
+      "source_id": "robohub",
+      "publisher": "Robohub",
+      "title": "Robot swarms trained by trial and error in simulation keep working on real robots",
+      "url": "https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Reinforcement learning lets robots learn behaviors on their own, through trial and error, usually inside a computer simulation."
+    },
+    {
+      "id": "qbitai:deee7f6a93c8",
+      "date": "2026-11-18",
+      "published": "2026-11-17",
+      "lane": "training",
+      "evidence": "M",
+      "source_id": "qbitai",
+      "publisher": "量子位 QbitAI",
+      "title": "物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs",
+      "url": "https://www.qbitai.com/2026/11/510561.html",
+      "signals": [],
+      "numbers": [],
+      "excerpt": ""
+    },
+    {
+      "id": "the-robot-report:471fb334b4f9",
+      "date": "2026-11-18",
+      "published": "2026-11-13",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "the-robot-report",
+      "publisher": "The Robot Report",
+      "title": "Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial",
+      "url": "https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "Four of the six robots pass a performance assessment as the trial puts customer service, retail operations and embodied AI capabilities to the test in a working store."
     }
   ]
 }

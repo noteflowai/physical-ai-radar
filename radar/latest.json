@@ -1,173 +1,192 @@
 {
-  "date": "2026-11-17",
-  "generated": "2026-11-16 23:40 UTC",
-  "window": "papers 2026-11-13 → 2026-11-17 · posts 2026-10-18 → 2026-11-17 (UTC)",
+  "date": "2026-11-18",
+  "generated": "2026-11-17 23:40 UTC",
+  "window": "papers 2026-11-14 → 2026-11-18 · posts 2026-10-19 → 2026-11-18 (UTC)",
   "window_detail": {
-    "day": "2026-11-17",
-    "papers_from": "2026-11-13",
-    "posts_from": "2026-10-18",
+    "day": "2026-11-18",
+    "papers_from": "2026-11-14",
+    "posts_from": "2026-10-19",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.18562",
-      "title": "Training Reasoning Models in Simulation to Natively Use Real Robots",
-      "url": "https://arxiv.org/abs/2611.18562",
-      "publisher": "arXiv 2611.18562",
+      "id": "arxiv:2611.20460",
+      "title": "Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2611.20460",
+      "publisher": "arXiv 2611.20460",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-13",
-      "lane": "simeval",
-      "score": 3.205,
+      "published": "2026-11-16",
+      "lane": "training",
+      "score": 3.95,
       "numbers": [
-        "60%",
-        "1.6%",
-        "74.4%",
-        "0.75%"
+        "5.5%",
+        "20.6%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Robot-use agents (RUAs) have emerged as a promising approach to general-purpose robot control. However, strong performance has so far been achieved only by frontier proprietary models such as GPT-6 Astra and Claude Fable 5.2, whereas open-weight models remain substantially less capable. We show that an open-weight 27B reasoning model can be trained to use real robots natively through reinforcement learning, entirely in simulation and without demonstrations. Like a computer-use agent (CUA), the model observes the environment, reasons in a chain of thought, and generates the next end-effector pose, without any harness. We build a Post-training Engine for Agentic Robotics (PEAR) and use it to train the model on simulated robot tasks at scale with robot-use reinforcement learning (RURL), mirroring how frontier models acquire computer use. We find that the skills acquired in simulation generalize well beyond the training tasks: they transfer to an unseen robot, to the real world, and to novel instructions. After training on LIBERO and RoboDojo in simulation, the model succeeds in 60% of our trials on a real dual-arm robot, whereas the base model succeeds in none. On LIBERO, training raises the success rate from 1.6% to 74.4%, approaching GPT-6 Astra and GPT-6.1 Sol at maximum reasoning effort. Compared with $π_{0.5}$, a vision-language-action model fine-tuned on demonstrations, our model is substantially more robust to changes in the task itself. On LIBERO-Pro, $π_{0.5}$ succeeds in only 0.75% of episodes when assigned a new task in a familiar scene whereas our model succeeds in 57.4%. Finally, the model retains its general capabilities, with no measurable degradation on nine reasoning, coding and vision benchmarks. These results highlight robot-use reinforcement learning as a promising component of foundation-model post-training."
-    },
-    {
-      "id": "arxiv:2611.18359",
-      "title": "Envisioning Agentic Robotics: A New Era of Robotic Systems",
-      "url": "https://arxiv.org/abs/2611.18359",
-      "publisher": "arXiv 2611.18359",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-13",
-      "lane": "simeval",
-      "score": 2.84,
-      "numbers": [],
-      "signals": [
-        "closed_loop"
-      ],
-      "heat": 0.25,
-      "summary": "The release of GPT-6 Astra marks the emergence of a new paradigm in robotics: agentic robotics. Within weeks, frontier models with agentic harnesses matched or exceeded task-specific policies on many embodied benchmarks. Instead of training a dedicated policy for each family of tasks, an agentic robotic system applies a foundation model to open-world embodied tasks. It operates in a closed loop: observing the environment, interpreting user intent, reasoning about the task, invoking skills and tools, verifying outcomes, and adapting its strategy. Despite these advances, the community has yet to converge on a shared definition, a reliable evaluation framework, or a research roadmap. We argue that Embodied System 2, realized by a foundation model together with an embodied harness, forms the decision-making core of agentic robotics. Its central challenge is to translate general-purpose reasoning into effective and verifiable actions under physical constraints such as limited reaction time, mechanical limits, unpredictable environment changes, and irreversible consequences. Motivated by this perspective, we propose an evaluation framework that measures both model capabilities and closed-loop system performance. Furthermore, we identify the principles that carry over from digital to physical agents and the challenges that must be addressed to achieve reliable physical autonomy. On top of the Embodied System 2 and the evaluation framework, we envision a research roadmap toward sustained autonomy: the ability to perform work safely and reliably with progressively broader responsibility, from executing individual primitives to fulfilling standing roles."
-    },
-    {
-      "id": "arxiv:2611.18372",
-      "title": "Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment",
-      "url": "https://arxiv.org/abs/2611.18372",
-      "publisher": "arXiv 2611.18372",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-13",
-      "lane": "foundation",
-      "score": 2.5,
-      "numbers": [
-        "10,000 hours",
-        "20,000 hours"
-      ],
-      "signals": [
-        "numbers",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Vision-language-action (VLA) models adapt web-pretrained vision-language models to output robot actions, so that web knowledge carries over to physical control. In under 4 years the field has moved from RT-2, the first VLA, to open models that fine-tune on a single consumer GPU and to proprietary generalists that clean unseen homes. This survey reviews 88 works from December 2022 to October 2026, mainly on manipulation and navigation, plus humanoid control, world-action models and evaluation. We follow a VLA through its life cycle, from model design to training and deployment, along seven axes. Model design covers (a) inputs and memory, what the model observes; (b) architecture, how its pipeline is built; (c) action output, how it produces motor commands; and (d) intermediate predictions, what else it predicts, from reasoning steps to future observations. Training covers (e) pretraining data, the mix of robot, web, human and simulated data, and (f) post-training, adaptation to the target robot. Deployment covers (g) real-time execution, keeping pace with the robot. We analyse 22 models on these axes and report their training data, model size, inference speed and hardware. Three trends emerge: (i) training data has broadened, from about 10,000 hours of teleoperated robot data ($π_0$) to 23,000 community-collected episodes (SmolVLA) and 20,000 hours of egocentric human video (GR00T N1.7); (ii) model sizes have split: most recent models have 3-7 billion parameters, while a new group under one billion runs on consumer GPUs; and (iii) generalist VLAs are emerging that handle both manipulation and navigation, such as UniVLA and Qwen-VLA. We also compare VLAs with world-action models, which predict future observations as well as actions. We review evidence that some VLAs with near-perfect benchmark scores fail when objects or the camera move slightly, and open up further research questions."
+      "summary": "Flow-based vision-language-action (VLA) models achieve strong performance in robotics through imitation learning, yet fine-tuning them with on-policy reinforcement learning (RL) is limited. In group-based RL methods like Group Relative Policy Optimization (GRPO), every rollout step requires multi-step ODE integration, and the sampler's limited stochasticity leads to rollout groups with low variance. We propose VLA-SSD, which addresses both high inference latency and limited stochasticity. In particular, our method self-distills a pretrained flow-matching action head into a stochastic one-step policy by conditioning a single-jump generator on a Brownian path. We derive a conditional action density via our stochastic one-step policy, enabling efficient post-training via likelihood-ratio RL algorithms. We show that distilling VLA-SSD from the $π_0$ VLA reduces the action head's forward-pass time by a factor of 7.7, at the cost of a 5.5% relative decrease in the success rate on the LIBERO benchmark. However, by leveraging the increased sample diversity of VLA-SSD during group generation, post-training a $π_{0.5}$ VLA using GRPO yields a 20.6% relative improvement."
     },
     {
-      "id": "leiphone:bb77ffe22676",
-      "title": "李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？",
-      "url": "https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-16",
+      "id": "arxiv:2611.19559",
+      "title": "ResWAM: Learning What Changes, Not What Stays, for World-Action Models",
+      "url": "https://arxiv.org/abs/2611.19559",
+      "publisher": "arXiv 2611.19559",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-14",
       "lane": "foundation",
-      "score": 1.95,
+      "score": 3.7,
+      "numbers": [
+        "2.3B parameters",
+        "81.1%",
+        "93.8%",
+        "9.40%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "World-action models (WAMs) augment vision-language-action policies (VLAs) with future prediction so that the policy can anticipate how its actions will affect the physical world. Existing WAMs supervise complete future observations. However, observations typically change little over an action chunk, so the future loss is dominated by copying static background content rather than learning task-relevant robot and object motion, limiting policy learning. Moreover, existing WAMs rely on large video generation models or separate world models, incurring heavy training and inference compute that hinders closed-loop deployment. To improve policy performance, we propose visual residual learning, supervising only the feature change from the current frame to the future frame in a frozen DINOv3 space. Compared with complete future features, this residual learning target yields a higher feature rank with richer and more diverse representations of scene changes, and spatially concentrates on the robot arm and manipulated objects rather than the background. To further improve computational efficiency, we present ResWAM, a residual world-action model with 2.3B parameters in total, including a lightweight 0.5B dual-branch DiT that jointly trains an action branch and a residual branch via conditional flow matching. Without robot pretraining (i.e., pretraining on external robot action trajectories beyond the benchmark demonstrations), ResWAM achieves top average success rates on LIBERO-Plus (81.1%), RoboTwin 2.0 (93.8%), and RoboDojo (9.40% success, 13.41 score) at the lowest training (2.7-4.0 TFLOPs) and inference compute (1.0-1.4 TFLOPs), and leads real-robot Open, Put, and Stack (80.0% average, +10.0% over $π_{0.5}$) at 92.7 ms latency."
+    },
+    {
+      "id": "arxiv:2611.19131",
+      "title": "Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI",
+      "url": "https://arxiv.org/abs/2611.19131",
+      "publisher": "arXiv 2611.19131",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-14",
+      "lane": "edge",
+      "score": 3.612,
+      "numbers": [
+        "23%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "Vision-language-action (VLA) models enable embodied artificial intelligence (AI) by translating visual observations and language instructions into robotic actions. Emerging use cases in physical AI are expected to drive the need for efficient inference and communication, as the computational demands of the VLA models pose challenges for real-time control with limited onboard resources. Test-time scaling through latent reasoning allows these models to refine hidden representations without generating explicit chain-of-thought (CoT) tokens, but introduces a trade-off between task success, inference latency, and energy consumption. In this paper, we address the efficient collaborative inference under a realistic communication scenario. We propose a wireless edge-assisted framework for adaptive latent reasoning (WEALR) that augments onboard computation with edge computing. A decision-making agent jointly selects the execution location and latent-reasoning convergence threshold. We formulate this joint adaptation as a constrained Markov decision process (CMDP). A Lagrangian-constrained deep reinforcement learning (CDRL) approach, namely trust region policy optimization Lagrangian (TRPO-Lag), learns to balance task performance and resource consumption under varying wireless conditions and task requirements. We evaluate the framework using LIBERO manipulation tasks, profiled VLA inference costs, and ray-traced wireless channels. Experimental results demonstrate that TRPO-Lag achieves up to 23% higher feasibility-weighted task success rate compared to benchmark CDRL methods."
+    },
+    {
+      "id": "arxiv:2611.20676",
+      "title": "Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation",
+      "url": "https://arxiv.org/abs/2611.20676",
+      "publisher": "arXiv 2611.20676",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-16",
+      "lane": "systems",
+      "score": 3.5,
+      "numbers": [],
+      "signals": [
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Long-horizon vision-language navigation (VLN) requires agents to track instruction progress and recover from local errors before they propagate across subtasks. However, executors trained on expert trajectories encounter policy-induced state shifts during deployment, and their stop signals do not reliably indicate subtask completion. We introduce Learning and Verifying Progress for VLN (LeaP-VLN), an agentic VLN system that couples progress-aware execution with independent progress verification through plan--execute--verify--recover cycles. LeaP-VLN leverages progress both explicitly, through a progress verifier that verifies subtask completion before the agent advances and triggers dual-phase recovery upon route deviation, and implicitly, by co-training the executor on progress reasoning and action prediction to enhance the executor's progress awareness and corrective control. To adapt the executor to this closed-loop interface, we propose a two-stage progress-enhanced curriculum: behavior cloning on expert demonstrations, followed by joint training on demonstrations, expert action corrections, and progress-reasoning supervision. Policy-generated trajectories expose the executor to both intra-subtask drift and inter-subtask state shifts, aligning training with the deviations encountered during closed-loop execution. Extensive experiments on R2R-CE and RxR-CE demonstrate state-of-the-art success rates among monocular methods trained without additional navigation datasets, while real-world experiments further validate the effectiveness of LeaP-VLN in long-horizon navigation."
+    },
+    {
+      "id": "techcrunch-robotics:04d3ec1b70b8",
+      "title": "Genesis AI raises $500M to deploy glove-wearing robots",
+      "url": "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/",
+      "publisher": "TechCrunch (Robotics)",
+      "source_id": "techcrunch-robotics",
+      "evidence": "M",
+      "published": "2026-11-17",
+      "lane": "simeval",
+      "score": 1.754,
       "numbers": [],
       "signals": [
         "industry_event"
       ],
-      "heat": 0.0,
-      "summary": "时隔两年，World Labs 的工作已经完全不同了。2026年11月，CoRL（机器人学习顶会）在奥斯汀开幕。 这一届的演讲嘉宾，有一个无法回避的名字，李飞飞。斯坦福教授、ImageNet发起者、World Labs创始人。就在本届CoRL之前，World Labs被AMD收购的消息正在圈内发酵，她即将出任AMD首席科学家。这届CoRL现场，她不仅全面介绍了World Labs最近的工作和她的行业观点，还邀请AMD苏妈参与了对话圆桌，某种意义上，这是她的\"AMD首秀\"。 为她做开场介绍的，是她的学生、本届CoRL组织者之一Yuke（朱玉可）。他讲了一个细节：毕业典礼上，李飞飞对他说，“你在我的实验室时是我的学生，但从今往后，你是我的朋友。” 这场演讲的正式主角，是World Labs与斯坦福团队研发的新模型Atlas：一个统一的生成与重建世界模型。 以下是AI科技评论带来的现场实录。 ▎ 《Atlas：A Unified World Model for Generation and Reconstruction》 ▎ 分享者：李飞飞 非常荣幸受邀来到CoRL，尤其是有好几位我的前学生都是组织者。你们干得真棒，我知道，因为我很多论文和工作坊提案都被你们拒了。（全场笑）向CoRL致敬。 今天我想分享我们实验室最近开发的一个模型，叫Atlas：一个统一的生成与重建世界模型。 既然在CoRL，就先从机器人学的动机讲起。 …"
+      "heat": 0.024,
+      "summary": "Genesis AI's novel approach to training dexterous robots earned it $500 million in Series A funding."
     },
     {
-      "id": "nvidia-blog:0ea5fbe79c2f",
-      "title": "AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities",
-      "url": "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/",
-      "publisher": "NVIDIA Blog",
-      "source_id": "nvidia-blog",
-      "evidence": "O",
-      "published": "2026-11-16",
-      "lane": "edge",
-      "score": 1.853,
+      "id": "robohub:d8c81256a1cb",
+      "title": "Robot swarms trained by trial and error in simulation keep working on real robots",
+      "url": "https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/",
+      "publisher": "Robohub",
+      "source_id": "robohub",
+      "evidence": "M",
+      "published": "2026-11-17",
+      "lane": "simeval",
+      "score": 1.535,
+      "numbers": [],
+      "signals": [
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Reinforcement learning lets robots learn behaviors on their own, through trial and error, usually inside a computer simulation. Moving what they learn onto physical robots is another matter. Simulated and real robots never behave quite the same way, a mismatch known as the “reality gap,” and reinforcement learning has long been particularly sensitive to it. […]"
+    },
+    {
+      "id": "qbitai:deee7f6a93c8",
+      "title": "物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs",
+      "url": "https://www.qbitai.com/2026/11/510561.html",
+      "publisher": "量子位 QbitAI",
+      "source_id": "qbitai",
+      "evidence": "M",
+      "published": "2026-11-17",
+      "lane": "training",
+      "score": 1.45,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Over two days at COEX, more than 2,000 attendees converged for AI Day Seoul, bringing together Korea’s industry leaders, startups and developer communities advancing physical AI and AI agents. At the plenary sessions, Deepu Talla, vice president of robotics and edge AI at NVIDIA, said Korea is “punching above its weight,” with Doosan Robotics, Hyundai […]"
+      "summary": ""
     },
     {
-      "id": "the-robot-report:c9da46c837ee",
-      "title": "Agile Robots raises $500M to increase production capacity",
-      "url": "https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/",
+      "id": "the-robot-report:471fb334b4f9",
+      "title": "Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial",
+      "url": "https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/",
       "publisher": "The Robot Report",
       "source_id": "the-robot-report",
       "evidence": "M",
-      "published": "2026-11-16",
+      "published": "2026-11-13",
       "lane": "hardware",
-      "score": 1.682,
+      "score": 1.133,
       "numbers": [],
       "signals": [
         "industry_event"
       ],
       "heat": 0.0,
-      "summary": "Agile Robots builds and deploys a range of robots, including humanoids, mobile robots, robotic arms, and robotics hands."
-    },
-    {
-      "id": "arxiv:2611.18003",
-      "title": "Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints",
-      "url": "https://arxiv.org/abs/2611.18003",
-      "publisher": "arXiv 2611.18003",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-13",
-      "lane": "hardware",
-      "score": 1.597,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Reinforcement learning has enabled robust humanoid locomotion, yet training recipes (rewards, architectures, hyperparameters) remain hard to reuse across robots with different native joint coordinates, since policies output native joint angles while action scales, bounds, gains, and penalties are defined in those robot-specific coordinates. Existing transmission models convert native targets into actuator commands but do not standardize the coordinate interface exposed to the policy. We introduce a body-aligned virtual joint space upstream of this mapping: policy actions and observations follow a common anatomical convention, and a deterministic kinematic layer maps virtual targets to native ones, leaving the existing transmission and low-level control stack unchanged. Under a single unmodified recipe on three humanoids with different leg-axis layouts, it is the only interface that tracks accurately, keeps the feet aligned with the travel direction, and trains stably on all three, and on Unitree G1 hardware it reduces heading drift by nearly a factor of six."
+      "summary": "Four of the six robots pass a performance assessment as the trial puts customer service, retail operations and embodied AI capabilities to the test in a working store."
     }
   ],
   "lane_counts": {
-    "foundation": 8,
-    "data": 7,
-    "training": 0,
+    "foundation": 9,
+    "data": 5,
+    "training": 2,
     "simeval": 14,
-    "edge": 9,
-    "safety": 3,
-    "systems": 2,
+    "edge": 8,
+    "safety": 2,
+    "systems": 3,
     "hardware": 7
   },
   "evidence_mix": {
-    "O": 9,
+    "O": 7,
     "R": 27,
-    "M": 14
+    "M": 16
   },
   "fetch": {
-    "items": 591,
+    "items": 651,
     "attempted": 25,
     "answered": 25,
     "failed": [],
     "fallback": [],
     "unavailable": [],
-    "robots_skipped": [
-      "monoist"
-    ],
-    "robots_reasons": {
-      "monoist": "unreachable"
-    },
-    "robots_newly_denied": {
-      "monoist": "unreachable"
-    },
+    "robots_skipped": [],
+    "robots_reasons": {},
+    "robots_detail": {},
+    "robots_newly_denied": {},
     "failed_reasons": {},
     "signals": {
       "attempted": [
@@ -185,12 +204,13 @@
       "failed": [],
       "robots_skipped": [],
       "robots_reasons": {},
+      "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 28,
+      "hn_stories": 37,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 17,
+      "arxiv": 74,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -206,7 +226,7 @@
       "nature-machine-intelligence": 1,
       "techcrunch-robotics": 13,
       "robohub": 75,
-      "qbitai": 1,
+      "qbitai": 4,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1

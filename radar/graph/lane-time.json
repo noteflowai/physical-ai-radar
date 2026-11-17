@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-17",
+  "as_of": "2026-11-18",
   "first_run": "2026-09-19",
   "pool_since": "2026-11-16",
   "per_lane_cap": 2,
@@ -127,6 +127,26 @@
       "commit": "119aba6",
       "title": "Reserve highlight slots for industry events: two of the day's slots go to the best posts that report funding, M&A, a listing, a production milestone or policy, and such posts need a score of 0.6 instead of 0.9 (event_min_score) (#214)",
       "note": "per_lane 2 and per_day 8 are unchanged; a paper never earns the event bonus or the slot; the commit is on main through the merge of #214 (33a7110)",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-17",
+      "commit": "38a58c8",
+      "title": "Read the three GitHub release feeds (LeRobot, Isaac Lab, MuJoCo) from the GitHub API again: the newest release of each repository, one request each, no redirect followed, and a reply that is not a well-formed release list is a bad reply, not an item (#215)",
+      "note": "the merge commit of #215 on main (2026-11-17 03:18 +0800); its own commits, b9bb83c and 5479dce, are dated 2026-11-16. #225 (382df9d) the same day made a link read as strict UTF-8 and every entry of the reply checked, which is part of the same read. The three feeds had not been read since #209 stopped their atom feeds; the 2026-11-17 run read one release from each (per_source github-lerobot, github-isaaclab, github-mujoco: 1 each). per_lane 2 and per_day 8 are the code defaults at this commit",
+      "per_lane": 2,
+      "per_day": 8,
+      "show": true,
+      "effect_measured": false
+    },
+    {
+      "from": "2026-11-17",
+      "commit": "e554245",
+      "title": "Stop reading MONOist (ITmedia, Japanese): the robots.txt of rss.itmedia.co.jp answered 200 but not as a robots.txt on 2026-11-17; the feed is switched off with enabled",
+      "note": "the log of the 2026-11-17 run says only that the answer was 200 and not taken as a robots.txt (an HTML body, a final address that is not the host's /robots.txt, or a content type other than text/plain, checks added by #210); which one is not recorded, and the answer itself was not looked at. The host is not requested while the feed is off. No other feed in data/sources.json has lang ja, so this removes the radar's only Japanese-language feed",
       "per_lane": 2,
       "per_day": 8,
       "show": true,
@@ -4285,8 +4305,75 @@
           "pool": 5
         }
       }
+    },
+    {
+      "date": "2026-11-18",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 10
+        },
+        "data": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 6
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": 7
+        },
+        "simeval": {
+          "O": 0,
+          "R": 0,
+          "M": 2,
+          "picked": 2,
+          "pool": 23
+        },
+        "edge": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 4
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 10
+        },
+        "systems": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 3
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": 8
+        }
+      }
     }
   ],
-  "items_sha256": "87c425ca6cdeae48cd417516a6012db2040c2b1380e39bfdd0e2d2f2fb115e6a",
-  "items_count": 438
+  "items_sha256": "ee995cc2a24d91cf9844cc7382258fe1d355fdbcf1812b684a7ad3f08a8d188e",
+  "items_count": 446
 }

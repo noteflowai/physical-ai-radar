@@ -62,35 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-17
+### 今日雷达 · 2026-11-18
 
-`生成时间: 2026-11-16 23:40 UTC` ｜ `统计窗口: 论文 2026-11-13 → 2026-11-17 · 博客与报道 2026-10-18 → 2026-11-17 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-17 23:40 UTC` ｜ `统计窗口: 论文 2026-11-14 → 2026-11-18 · 博客与报道 2026-10-19 → 2026-11-18 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>仿真与评测 · arXiv 2611.18562 · 2026‑11‑13</sub> |
-| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>仿真与评测 · arXiv 2611.18359 · 2026‑11‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>基座模型 · arXiv 2611.18372 · 2026‑11‑13</sub> |
-| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑16</sub> |
-| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>边缘与实时性 · NVIDIA Blog · 2026‑11‑16</sub> |
-| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑16</sub> |
-| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>本体与供应链 · arXiv 2611.18003 · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2611.20460)**<br>`5.5%`&nbsp; `20.6%`<br><sub>训练与自我改进 · arXiv 2611.20460 · 2026‑11‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[ResWAM: Learning What Changes, Not What Stays, for World-Action Models](https://arxiv.org/abs/2611.19559)**<br>`2.3B parameters`&nbsp; `81.1%`&nbsp; `93.8%`<br><sub>基座模型 · arXiv 2611.19559 · 2026‑11‑14</sub> |
+| 03<br>🔵&nbsp;`R` | **[Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI](https://arxiv.org/abs/2611.19131)**<br>`23%`<br><sub>边缘与实时性 · arXiv 2611.19131 · 2026‑11‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation](https://arxiv.org/abs/2611.20676)**<br><sub>系统与编排 · arXiv 2611.20676 · 2026‑11‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[Genesis AI raises $500M to deploy glove-wearing robots](https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/)**<br><sub>仿真与评测 · TechCrunch (Robotics) · 2026‑11‑17</sub> |
+| 06<br>🟡&nbsp;`M` | **[Robot swarms trained by trial and error in simulation keep working on real robots](https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/)**<br><sub>仿真与评测 · Robohub · 2026‑11‑17</sub> |
+| 07<br>🟡&nbsp;`M` | **[物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs](https://www.qbitai.com/2026/11/510561.html)**<br><sub>训练与自我改进 · 量子位 QbitAI · 2026‑11‑17</sub> |
+| 08<br>🟡&nbsp;`M` | **[Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial](https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑13</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI 起草` 如果你的机器人操作 agent 依赖 GPT-6 Astra 这类闭源前沿模型，这篇预印本自报成功率从 1.6% 提升到 74.4%，并标注了真机、闭环与开放代码或权重，但页面未说明各数字对应的条件，复现前不宜据此换掉现有方案。
-2. **Envisioning Agentic Robotics** — `AI 起草` 这篇预印本主张，带 agentic harness 的前沿模型已在许多具身基准上追平或超过专用策略；页面只有基准层面的说法，没有数字和真机结果，暂时不足以让你放弃针对任务训练的策略。
-3. **Vision-Language-Action Models** — `AI 起草` 规划 VLA 数据预算时可以拿它作参照：综述提到约 10,000 小时遥操作机器人数据和 20,000 小时第一人称人类数据这样的规模，但页面没有真机或闭环结果，这些数量本身不说明效果。
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI 起草` 这是对李飞飞 CoRL 演讲的二手转述，可以用来了解 World Labs 两年来方向的变化，但页面没有数字，做技术路线判断或引用前应回到演讲原文。
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI 起草` 这是一篇活动回顾，没有点名硬件、基准或数字，对端侧推理或控制频率的取舍没有直接帮助，更适合用来了解韩国做 Physical AI 的企业和开发者社区。
-6. **Agile Robots raises $500M to increase production capacity** — `AI 起草` 如果你在采购机械臂、灵巧手或人形机器人，这家供应商扩产可能影响供货，但这是二手报道，页面没有交付量或时间表，下单前应向厂商核实。
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI 起草` 每换一款人形机器人就要重调奖励、网络结构和超参数的团队值得关注，这篇预印本试图让训练配方跨本体复用，但页面上没有真机结果或数字可供核对，采用前先等作者给出证据。
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+2. **ResWAM** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
+4. **Learning and Verifying Progress** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-17.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-18.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

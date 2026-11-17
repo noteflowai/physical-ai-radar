@@ -60,35 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-17
+### Today's radar · 2026-11-18
 
-`Generated: 2026-11-16 23:40 UTC` ｜ `Window: papers 2026-11-13 → 2026-11-17 · posts 2026-10-18 → 2026-11-17 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-17 23:40 UTC` ｜ `Window: papers 2026-11-14 → 2026-11-18 · posts 2026-10-19 → 2026-11-18 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Training Reasoning Models in Simulation to Natively Use Real Robots](https://arxiv.org/abs/2611.18562)**<br>`60%`&nbsp; `1.6%`&nbsp; `74.4%`<br><sub>Simulation & evaluation · arXiv 2611.18562 · 2026‑11‑13</sub> |
-| 02<br>🔵&nbsp;`R` | **[Envisioning Agentic Robotics: A New Era of Robotic Systems](https://arxiv.org/abs/2611.18359)**<br><sub>Simulation & evaluation · arXiv 2611.18359 · 2026‑11‑13</sub> |
-| 03<br>🔵&nbsp;`R` | **[Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment](https://arxiv.org/abs/2611.18372)**<br>`10,000 hours`&nbsp; `20,000 hours`<br><sub>Foundation models · arXiv 2611.18372 · 2026‑11‑13</sub> |
-| 04<br>🟡&nbsp;`M` | **[李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？](https://www.leiphone.com/category/ai/zV4No5T5XDHJcupr.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑16</sub> |
-| 05<br>🟢&nbsp;`O` | **[AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Developer Communities](https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/)**<br><sub>Edge & real-time · NVIDIA Blog · 2026‑11‑16</sub> |
-| 06<br>🟡&nbsp;`M` | **[Agile Robots raises $500M to increase production capacity](https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑16</sub> |
-| 07<br>🔵&nbsp;`R` | **[Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints](https://arxiv.org/abs/2611.18003)**<br><sub>Embodiment & supply chain · arXiv 2611.18003 · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2611.20460)**<br>`5.5%`&nbsp; `20.6%`<br><sub>Training & self-improvement · arXiv 2611.20460 · 2026‑11‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[ResWAM: Learning What Changes, Not What Stays, for World-Action Models](https://arxiv.org/abs/2611.19559)**<br>`2.3B parameters`&nbsp; `81.1%`&nbsp; `93.8%`<br><sub>Foundation models · arXiv 2611.19559 · 2026‑11‑14</sub> |
+| 03<br>🔵&nbsp;`R` | **[Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI](https://arxiv.org/abs/2611.19131)**<br>`23%`<br><sub>Edge & real-time · arXiv 2611.19131 · 2026‑11‑14</sub> |
+| 04<br>🔵&nbsp;`R` | **[Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation](https://arxiv.org/abs/2611.20676)**<br><sub>Systems & orchestration · arXiv 2611.20676 · 2026‑11‑16</sub> |
+| 05<br>🟡&nbsp;`M` | **[Genesis AI raises $500M to deploy glove-wearing robots](https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/)**<br><sub>Simulation & evaluation · TechCrunch (Robotics) · 2026‑11‑17</sub> |
+| 06<br>🟡&nbsp;`M` | **[Robot swarms trained by trial and error in simulation keep working on real robots](https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/)**<br><sub>Simulation & evaluation · Robohub · 2026‑11‑17</sub> |
+| 07<br>🟡&nbsp;`M` | **[物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs](https://www.qbitai.com/2026/11/510561.html)**<br><sub>Training & self-improvement · 量子位 QbitAI · 2026‑11‑17</sub> |
+| 08<br>🟡&nbsp;`M` | **[Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial](https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑13</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Training Reasoning Models in Simulation to Natively Use Real Robots** — `AI draft` If your robot-use agent depends on proprietary frontier models, this preprint self-reports a success rate rising from 1.6% to 74.4% and flags real-robot, closed-loop and open-release signals, but the page does not say which setup each figure belongs to.
-2. **Envisioning Agentic Robotics** — `AI draft` This preprint argues that frontier models in agentic harnesses now match or beat task-specific policies on many embodied benchmarks; with only benchmark-level claims and no figures on the page, it is not yet grounds to retire a task-trained policy.
-3. **Vision-Language-Action Models** — `AI draft` Handy as a reference when sizing a VLA data budget, since the survey cites scales such as about 10,000 hours of teleoperated robot data and 20,000 hours of egocentric human data, though the page shows no real-robot or closed-loop results tied to them.
-4. **李飞飞最新 CoRL2026 演讲实录：从「橱柜模型」到世界模型，机器人需要什么样的 AI ？** — `AI draft` A secondhand account of a CoRL talk on how World Labs' work has changed in two years; read it for direction only, since the page carries no figures and the talk itself should be checked before it shapes a model roadmap.
-5. **AI Day Seoul Brings Together Korea’s Industry Leaders, Startups and Develop…** — `AI draft` This first-party event recap names no hardware, benchmark or figure, so it helps with scouting partners in Korea's physical AI and agent community and changes nothing about edge latency or control-rate choices.
-6. **Agile Robots raises $500M to increase production capacity** — `AI draft` If you source arms, hands, mobile robots or humanoids, a supplier funding more production could affect availability, but this is a secondary report with no delivery volumes or dates on the page, so confirm them with the company.
-7. **Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtu…** — `AI draft` Teams that retune rewards, architectures and hyperparameters for every new humanoid should track this preprint, which aims to make those recipes portable across joint layouts, but the page gives no real-robot results or figures to back it yet.
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+2. **ResWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
+4. **Learning and Verifying Progress** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-17.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-18.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
