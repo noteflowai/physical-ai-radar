@@ -584,8 +584,7 @@ class RobotsCache:
     def detail(self, url: str) -> str | None:
         """Why the host of this URL is `unreachable` (one of ROBOTS_DETAILS); None for any other verdict or a host not asked."""
         parts = urllib.parse.urlsplit(url)
-        origin = f"{parts.scheme}://{parts.netloc}".lower()
-        return self.details.get(origin) if self.hosts.get(origin) == UNREACHABLE else None
+        return self.details.get(f"{parts.scheme}://{parts.netloc}".lower())
 
     def verdict(self, url: str) -> str:
         parts = urllib.parse.urlsplit(url)
