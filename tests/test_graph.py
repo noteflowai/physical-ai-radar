@@ -326,7 +326,7 @@ class LaneTimeTest(unittest.TestCase):
         # 07 decided which changes the page draws as lines (07-radar-rules-show-1116.md): the ones after which the two sides
         # are not measured with the same ruler. The others stay in the data. One line per date: 09-26 holds two commits.
         self.assertEqual(sorted({rule["from"] for rule in rules if rule["show"]}),
-                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14", "2026-11-16"])
+                         ["2026-09-25", "2026-09-26", "2026-10-25", "2026-11-06", "2026-11-14", "2026-11-16", "2026-11-17"])
         self.assertEqual(sorted({rule["from"] for rule in rules[1:] if not rule["show"]}),
                          ["2026-09-21", "2026-10-22", "2026-10-26"])
         with tempfile.TemporaryDirectory() as folder:
