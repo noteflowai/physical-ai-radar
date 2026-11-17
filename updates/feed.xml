@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: compare JUnit testcases in nested suites under a root &lt;testsuite&gt; instead of silently dropping them</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.3/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.3/</guid>
+      <description>'evalarc diff' and load_results now read testcases inside nested &lt;testsuite&gt; elements when the JUnit document root is a single &lt;testsuite&gt;. Before this fix, only the root suite's direct testcases were read, and nested ones were dropped without a message. Nested testcases now go through the normal diff and appear in diff.json, summary.md, index.html and the 'Why the gate failed' section. A nested check that regresses, is removed or becomes unassessed makes the command exit 1. A case ID is the classname if present. Otherwise it is the name of the suite that directly contains the testcase, followed by '::' and the testcase name. identity.suites lists every suite visited, nested ones included. An unnamed nested testcase raises the existing ValueError, which names its position and its suite, and the CLI exits 2. Files with a &lt;testsuites&gt; root and flat &lt;testsuite&gt; files are parsed as before. The English and zh-CN CI gate docs each describe the nested-suite rule. Measured results, all executed by the controller (the author ran nothing): the new acceptance test, run in its pre-fix acceptance check, had 4 of 5 tests fail. The failures covered the nested case load, the regression, the removal and the unnamed-testcase error, and they show the defect. On commit 2f612e113790b89471b5515adaff726f8d89e61c, the controller ran the new acceptance test, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs. All exited 0.</description>
+      <pubDate>Tue, 17 Nov 2026 18:30:12 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: name the archive and member when an Inspect .eval log has a malformed header.json or sample</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.2/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.2/</guid>
