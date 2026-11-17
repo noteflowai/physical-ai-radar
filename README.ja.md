@@ -171,7 +171,7 @@ flowchart LR
 
 ```
 scripts/publish_daily.sh（メンテナーのマシン上の cron、07:40 Asia/Singapore / 08:40 JST）
-  └─ fetch    arXiv API（cs.RO の6クエリ、API が応答しない日はカテゴリ RSS）+ 公式・報道の Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist）
+  └─ fetch    arXiv API（cs.RO の6クエリ、API が応答しない日はカテゴリ RSS）+ 公式・報道の Atom/RSS（AWS / NVIDIA / DeepMind / HF / TRI / IEEE / The Robot Report / 雷峰网 / MONOist（日本語。2026-11-17 から停止：robots.txt の応答を規則として読み取れないため））
   └─ distill  関連性ゲート → 8軸に分類 → 定量指標を抽出 → 説明可能なスコア → 軸・ソース・根拠区分ごとの上限で選抜
   └─ charts   手書き SVG：軸分布 / 日次推移 / 根拠構成 / README バナー
   └─ render   三言語の日報 + 3つの README へ注入 + アーカイブ索引と latest.json を更新
