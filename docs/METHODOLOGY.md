@@ -273,7 +273,9 @@ Rules:
   `unreachable` too. Every refused feed or attention
   API is recorded under `robots_skipped` with its reason in `robots_reasons`
   (`disallowed`, `forbidden`, `unreachable`) and never under `failed`; `pairadar.health`
-  counts them per source and reason (`robots_reasons`), never as struggling. Two requests
+  counts them per source and reason (`robots_reasons`), never as struggling. For an `unreachable` host `robots_detail` says
+  why (`no-answer`, `http-429`, `http-5xx`, `not-robots-txt`, `unjudgeable` or `other`), so a limit or a failure of the host is
+  told apart from an answer that was not taken for a robots.txt. Two requests
   to one host are at
   least one second apart, and every request carries the `physical-ai-radar/1.0` User-Agent.
   Only titles, links, dates and a cut excerpt are stored; no article body is reproduced;

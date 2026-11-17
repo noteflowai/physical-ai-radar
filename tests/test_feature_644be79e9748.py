@@ -100,7 +100,7 @@ class StreakReportTest(unittest.TestCase):
         self.assertEqual(set(verdict), {"reference", "window_days", "threshold_days",
                                         "runs_with_health", "failures", "fallbacks", "unavailable",
                                         "page_watch_failing", "release_feeds_failing", "page_watch_robots_skipped",
-                                        "robots_skipped", "robots_reasons", "signals_unavailable",
+                                        "robots_skipped", "robots_reasons", "robots_detail", "signals_unavailable",
                                         "switched_off", "struggling"})
 
     def test_worst_first_ranking_is_kept_with_the_new_fields(self) -> None:

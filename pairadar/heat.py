@@ -78,13 +78,16 @@ class Signals:
     failed: list[str] = field(default_factory=list)
     robots_skipped: list[str] = field(default_factory=list)
     robots_reasons: dict[str, str] = field(default_factory=dict)
+    # Why a host is `unreachable` (one of fetch.ROBOTS_DETAILS), for the signals in `robots_skipped` whose host is.
+    robots_detail: dict[str, str] = field(default_factory=dict)
     # Refused signals that the reader before `robots_rules` would have allowed: name -> reason (not part of summary()).
     robots_newly_denied: dict[str, str] = field(default_factory=dict)
 
     def summary(self) -> dict[str, Any]:
         return {"attempted": sorted(self.attempted), "failed": sorted(self.failed),
                 "robots_skipped": sorted(self.robots_skipped),
-                "robots_reasons": dict(sorted(self.robots_reasons.items())), "hf_papers": len(self.upvotes),
+                "robots_reasons": dict(sorted(self.robots_reasons.items())),
+                "robots_detail": dict(sorted(self.robots_detail.items())), "hf_papers": len(self.upvotes),
                 "hn_stories": len(self.stories), "repos": len(self.stars)}
 
 
@@ -96,6 +99,8 @@ def _json(url: str, name: str, signals: Signals, robots: fetch.RobotsCache | Non
     if verdict != fetch.ALLOW:
         signals.robots_skipped.append(name)
         signals.robots_reasons[name] = verdict
+        if robots is not None and (detail := robots.detail(url)) is not None:
+            signals.robots_detail[name] = detail
         if robots is not None and robots.previously_allowed(url):
             signals.robots_newly_denied[name] = verdict
         return None

@@ -215,6 +215,10 @@ def build_context(config: Config, offline: bool, limit: int, day: str, robots_st
         "robots_skipped": sorted(report.robots_skipped),
         "robots_reasons": {**{f"signal:{name}": reason for name, reason in sorted(signals.robots_reasons.items())},
                            **dict(sorted(report.robots_reasons.items()))},
+        # Why a host was `unreachable` (fetch.ROBOTS_DETAILS), for the refusals above whose host was: it adds to
+        # `robots_reasons`, which keeps its words. Pages read by Firecrawl or the static reader have none.
+        "robots_detail": {**{f"signal:{name}": detail for name, detail in sorted(signals.robots_detail.items())},
+                          **dict(sorted(report.robots_detail.items()))},
         # The refusals above that the reader before `robots_rules` would have allowed (feed or page id, `signal:<name>`).
         "robots_newly_denied": {**{f"signal:{name}": reason for name, reason in sorted(signals.robots_newly_denied.items())},
                                 **dict(sorted(report.robots_newly_denied.items()))},
