@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-17",
+  "generated": "2026-11-17 13:45 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.18562": {
+      "zh": "如果你的机器人操作 agent 依赖 GPT-6 Astra 这类闭源前沿模型，这篇预印本自报成功率从 1.6% 提升到 74.4%，并标注了真机、闭环与开放代码或权重，但页面未说明各数字对应的条件，复现前不宜据此换掉现有方案。",
+      "en": "If your robot-use agent depends on proprietary frontier models, this preprint self-reports a success rate rising from 1.6% to 74.4% and flags real-robot, closed-loop and open-release signals, but the page does not say which setup each figure belongs to.",
+      "ja": "ロボット操作エージェントを GPT-6 Astra などのプロプライエタリモデルに頼っているチームには検討材料になる。成功率 1.6% から 74.4% への改善を自己報告し、実機・閉ループ・公開の表示もあるが、各数値の条件はページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.18359": {
+      "zh": "这篇预印本主张，带 agentic harness 的前沿模型已在许多具身基准上追平或超过专用策略；页面只有基准层面的说法，没有数字和真机结果，暂时不足以让你放弃针对任务训练的策略。",
+      "en": "This preprint argues that frontier models in agentic harnesses now match or beat task-specific policies on many embodied benchmarks; with only benchmark-level claims and no figures on the page, it is not yet grounds to retire a task-trained policy.",
+      "ja": "エージェント型ハーネスを備えたフロンティアモデルが多くの身体性ベンチマークでタスク専用方策に並ぶか上回ったという主張だが、ページにあるのはベンチマーク上の言及だけで数値も実機結果もなく、専用方策を手放す根拠にはまだ弱い。"
+    },
+    "https://arxiv.org/abs/2611.18372": {
+      "zh": "规划 VLA 数据预算时可以拿它作参照：综述提到约 10,000 小时遥操作机器人数据和 20,000 小时第一人称人类数据这样的规模，但页面没有真机或闭环结果，这些数量本身不说明效果。",
+      "en": "Handy as a reference when sizing a VLA data budget, since the survey cites scales such as about 10,000 hours of teleoperated robot data and 20,000 hours of egocentric human data, though the page shows no real-robot or closed-loop results tied to them.",
+      "ja": "VLA のデータ予算を見積もる際の参照になる。遠隔操作ロボットデータ約 10,000 hours、一人称視点の人間データ 20,000 hours といった規模が挙がるが、ページに実機・閉ループの結果はなく、量だけで効果は判断できない。"
+    },
+    "https://www.leiphone.com/category/ai/zv4no5t5xdhjcupr.html": {
+      "zh": "这是对李飞飞 CoRL 演讲的二手转述，可以用来了解 World Labs 两年来方向的变化，但页面没有数字，做技术路线判断或引用前应回到演讲原文。",
+      "en": "A secondhand account of a CoRL talk on how World Labs' work has changed in two years; read it for direction only, since the page carries no figures and the talk itself should be checked before it shapes a model roadmap.",
+      "ja": "CoRL での講演を伝える二次報道で、World Labs の取り組みが2年でどう変わったかの方向感をつかむには役立つ。ページに数値はなく、技術選定の根拠にする前に講演そのものを確認したい。"
+    },
+    "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/": {
+      "zh": "这是一篇活动回顾，没有点名硬件、基准或数字，对端侧推理或控制频率的取舍没有直接帮助，更适合用来了解韩国做 Physical AI 的企业和开发者社区。",
+      "en": "This first-party event recap names no hardware, benchmark or figure, so it helps with scouting partners in Korea's physical AI and agent community and changes nothing about edge latency or control-rate choices.",
+      "ja": "NVIDIA 自身によるイベント報告で、ハードウェアやベンチマーク、数値には触れていない。エッジ推論や制御周期の判断材料にはならず、韓国でフィジカル AI に取り組む企業やコミュニティを把握する用途に向く。"
+    },
+    "https://www.therobotreport.com/agile-robots-raises-500m-to-increase-production-capacity": {
+      "zh": "如果你在采购机械臂、灵巧手或人形机器人，这家供应商扩产可能影响供货，但这是二手报道，页面没有交付量或时间表，下单前应向厂商核实。",
+      "en": "If you source arms, hands, mobile robots or humanoids, a supplier funding more production could affect availability, but this is a secondary report with no delivery volumes or dates on the page, so confirm them with the company.",
+      "ja": "アーム、ハンド、移動ロボット、ヒューマノイドの調達先候補なら、生産能力の拡大は供給に関わりうる。ただし二次報道で、出荷量や時期はページにないため、発注判断の前にメーカーへ確認したい。"
+    },
+    "https://arxiv.org/abs/2611.18003": {
+      "zh": "每换一款人形机器人就要重调奖励、网络结构和超参数的团队值得关注，这篇预印本试图让训练配方跨本体复用，但页面上没有真机结果或数字可供核对，采用前先等作者给出证据。",
+      "en": "Teams that retune rewards, architectures and hyperparameters for every new humanoid should track this preprint, which aims to make those recipes portable across joint layouts, but the page gives no real-robot results or figures to back it yet.",
+      "ja": "機体ごとに報酬、アーキテクチャ、ハイパーパラメータを調整し直しているチームには注目の案だが、関節座標の異なる機体間で学習レシピを使い回せることを示す実機結果や数値はページになく、自己報告の段階にとどまる。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
