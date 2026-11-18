@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.20460" rel="noopener" target="_blank">Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models</a></h3>
 <p class="figure"><strong>5.5%</strong><span class="context">“the cost of a 5.5% relative decrease in”</span></p><p class="chips"><span class="chip">20.6%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Teams fine-tuning flow-based VLAs with on-policy RL should note this preprint&#x27;s self-reported 20.6% relative improvement using GRPO, but it comes with a 5.5% relative decrease the page does not tie to a metric, so check what was traded away.</p>
 <p class="excerpt">Flow-based vision-language-action (VLA) models achieve strong performance in robotics through imitation learning, yet fine-tuning them with on-policy reinforcement learning (RL) is limited.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.19559" rel="noopener" target="_blank">ResWAM: Learning What Changes, Not What Stays, for World-Action Models</a></h3>
 <p class="figure"><strong>2.3B parameters</strong><span class="context">“residual world-action model with 2.3B parameters in total”</span></p><p class="chips"><span class="chip">81.1%</span><span class="chip">93.8%</span><span class="chip">9.40%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> If you are weighing a world-action model, this preprint&#x27;s self-reported results span 93.8% on RoboTwin 2.0 down to 9.40% success on RoboDojo, so judge it by the benchmark closest to your task rather than the best headline.</p>
 <p class="excerpt">World-action models (WAMs) augment vision-language-action policies (VLAs) with future prediction so that the policy can anticipate how its actions will affect the physical world.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.19131" rel="noopener" target="_blank">Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI</a></h3>
 <p class="figure"><strong>23%</strong><span class="context">“TRPO-Lag achieves up to 23% higher feasibility-weighted task”</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.</p>
+<p class="why"><span class="draft">AI draft</span> If you are considering offloading VLA reasoning to a wireless edge, the only figure on the page is TRPO-Lag&#x27;s &quot;up to 23%&quot; gain on a feasibility-weighted task metric, with no baseline named and no latency figure quoted.</p>
 <p class="excerpt">Vision-language-action (VLA) models enable embodied artificial intelligence (AI) by translating visual observations and language instructions into robotic actions.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 <span class="ev ev-R" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">R · Paper</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.20676" rel="noopener" target="_blank">Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation</a></h3>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it holds up over long tasks without human resets.</p>
+<p class="why"><span class="draft">AI draft</span> For long-horizon navigation stacks where a local error can derail later subtasks, this preprint targets progress tracking and recovery and is flagged for real-robot and closed-loop experiments, but the page gives no figures to size the benefit.</p>
 <p class="excerpt">Long-horizon vision-language navigation (VLN) requires agents to track instruction progress and recover from local errors before they propagate across subtasks.</p>
 <ul class="signals"><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/" rel="noopener" target="_blank">Genesis AI raises $500M to deploy glove-wearing robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> As TechCrunch tells it, this Series A backs a new way of training dexterous robots that the excerpt never describes, so read it as a funding signal, not as evidence that the method works.</p>
 <p class="excerpt">Genesis AI&#x27;s novel approach to training dexterous robots earned it $500 million in Series A funding.</p>
 <ul class="signals"><li>industry event (funding, M&amp;A, listing, production, policy)</li></ul>
 <footer>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/" rel="noopener" target="_blank">Robot swarms trained by trial and error in simulation keep working on real robots</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Robohub&#x27;s secondhand account is flagged for real-robot experiments but quotes only a general description of trial-and-error learning in simulation, so check the original study for how much carried over before training a swarm in simulation alone.</p>
 <p class="excerpt">Reinforcement learning lets robots learn behaviors on their own, through trial and error, usually inside a computer simulation.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/510561.html" rel="noopener" target="_blank">物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.</p>
+<p class="why"><span class="draft">AI draft</span> Only the headline is visible here, with no excerpt, figures or experiment signals, so read the vendor&#x27;s own release before building RL training around these environments.</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-17</span>
 <span class="actions"><button type="button" class="share" data-url="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-18.en.html" data-text="Physical AI Radar 2026-11-18: 物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs" data-done="Link copied">Share</button><a class="x" href="https://twitter.com/intent/tweet?text=Physical+AI+Radar+2026-11-18%3A+%E7%89%A9%E7%90%86AI%E7%9A%84%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%9D%A5%E4%BA%86%EF%BC%8C%E5%85%89%E8%BD%AE%E6%99%BA%E8%83%BD%E6%8E%A8%E5%87%BARoboFinals+RL+Envs&amp;url=https%3A%2F%2Fnoteflowai.github.io%2Fphysical-ai-radar%2Fradar%2Fdaily%2F2026-11-18.en.html" rel="noopener" target="_blank">Post on X</a></span>
@@ -204,7 +204,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/" rel="noopener" target="_blank">Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.</p>
+<p class="why"><span class="draft">AI draft</span> For anyone scoping retail deployments, the useful detail in this secondhand account is that only four of the six robots passed a performance assessment in a working store, so per-unit reliability matters more than the task count.</p>
 <p class="excerpt">Four of the six robots pass a performance assessment as the trial puts customer service, retail operations and embodied AI capabilities to the test in a working store.</p>
 <ul class="signals"><li>industry event (funding, M&amp;A, listing, production, policy)</li></ul>
 <footer>

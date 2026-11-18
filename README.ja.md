@@ -79,14 +79,14 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 
 <details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
-2. **ResWAM** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — 査読前のプレプリント。本文に実機での結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-4. **Learning and Verifying Progress** — 査読前のプレプリント。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
-5. **Genesis AI raises $500M to deploy glove-wearing robots** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-6. **Robot swarms trained by trial and error in simulation keep working on real…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。学習タスクの外でも改善が保たれるかに注目。
-8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — `AI 下書き` フロー型VLAをオンポリシーRLで微調整したいチーム向けの自己報告で、GRPO使用で20.6%の相対改善とされるが、代償の5.5%の相対低下が何の指標かはページから分からず、採用前に原文確認が要る。
+2. **ResWAM** — `AI 下書き` 世界行動モデルを検討するなら、自己報告の成績はRoboTwin 2.0の93.8%からRoboDojoの9.40%まで開きがあり、最高値ではなく自分のタスクに近いベンチマークの数値で判断したい。
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — `AI 下書き` VLAの推論を無線エッジに逃がす構成を検討中なら、ページで見える数値はTRPO-Lagの実行可能性加重タスク指標での「最大23%」の向上だけで、比較対象も遅延の数値も示されていない。
+4. **Learning and Verifying Progress** — `AI 下書き` 局所的な誤りが後続サブタスクに波及する長距離ナビゲーションで進捗追跡と回復を狙う研究で、実機・閉ループ実験の表示はあるが数値がなく、既存のプランナーを置き換えるかはまだ判断できない。
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — `AI 下書き` TechCrunchの二次報道によれば、このシリーズAは器用なロボットの新しい学習手法への投資だが、手法の中身は抜粋に書かれておらず、有効性の根拠ではなく資金面の動きとして見るべきだ。
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — `AI 下書き` Robohubの二次報道は実機実験の表示があるものの、抜粋はシミュレーションでの試行錯誤学習の一般的な説明にとどまるので、群ロボットをシミュレーションだけで学習させる前に、実機でどれだけ性能が保たれたか元の研究で確かめたい。
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — `AI 下書き` ページにあるのは見出しだけで抜粋も数値も実験シグナルもないため、これらの環境を前提にRL学習を組む前に光轮智能自身の発表を読むべきだ。
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — `AI 下書き` 小売導入を検討する側にとっての要点は、営業中の店舗で六台中四台しか性能評価に合格しなかったという二次報道の記述で、見るべきはタスク総数より一台ごとの信頼性だ。
 
 </details>
 
