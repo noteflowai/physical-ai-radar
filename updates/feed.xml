@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: wp ai-chat-bedrock usage labels chat requests whose token usage Bedrock did not fully report</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.1/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.1/</guid>
+      <description>Before this fix, a chat answer for which Bedrock reported no input or output token count was added to the totals as 0 tokens, and nothing recorded that a count was missing. In 1.74.1, Usage::record() still counts such a request and adds whatever counts were reported. It also adds 1 to a per-day counter, usage_unknown_requests. A chat answer counts as unknown when either count is missing or is not a number. A real 0 counts as reported and is not marked. Embedding, rerank and speech records are never marked. prune() keeps the counter for the same retention period as the other counters. Usage::totals() also returns the sum of usage_unknown_requests over the window. When that sum is above 0, the daily view of wp ai-chat-bedrock usage prints one extra line directly after the Total line, saying the token totals are a lower bound. The count is capped at the window's request total. The line has no denominator, so requests recorded before the upgrade are never shown as measured. The --by-model output, the exit status and the Total line format are unchanged. The version is 1.74.1, with a changelog entry and an upgrade notice. Controller results for commit 0871b38: before the fix, the controller ran tests/test_feature_56689b30e4cc.php and 7 of its 8 cases failed (exit 1). On commit 0871b38, the same test passed all 8 cases. bin/prerelease.sh passed, reporting 'Ready to package and publish 1.74.1'. tests/tooling.php passed. bin/build-package.py built a 1.74.1 package of 136 files. I did not run any of these commands myself.</description>
+      <pubDate>Wed, 18 Nov 2026 19:02:55 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: compare JUnit testcases in nested suites under a root &lt;testsuite&gt; instead of silently dropping them</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.3/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.3/</guid>
