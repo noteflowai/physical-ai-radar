@@ -1,173 +1,177 @@
 {
-  "date": "2026-11-18",
-  "generated": "2026-11-17 23:40 UTC",
-  "window": "papers 2026-11-14 → 2026-11-18 · posts 2026-10-19 → 2026-11-18 (UTC)",
+  "date": "2026-11-19",
+  "generated": "2026-11-18 23:40 UTC",
+  "window": "papers 2026-11-15 → 2026-11-19 · posts 2026-10-20 → 2026-11-19 (UTC)",
   "window_detail": {
-    "day": "2026-11-18",
-    "papers_from": "2026-11-14",
-    "posts_from": "2026-10-19",
+    "day": "2026-11-19",
+    "papers_from": "2026-11-15",
+    "posts_from": "2026-10-20",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.20460",
-      "title": "Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2611.20460",
-      "publisher": "arXiv 2611.20460",
+      "id": "arxiv:2611.21143",
+      "title": "WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning",
+      "url": "https://arxiv.org/abs/2611.21143",
+      "publisher": "arXiv 2611.21143",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-16",
-      "lane": "training",
-      "score": 3.95,
+      "lane": "data",
+      "score": 3.352,
       "numbers": [
-        "5.5%",
-        "20.6%"
+        "1,000 hours",
+        "43.61 FPS",
+        "171 FPS"
       ],
       "signals": [
         "numbers",
         "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Flow-based vision-language-action (VLA) models achieve strong performance in robotics through imitation learning, yet fine-tuning them with on-policy reinforcement learning (RL) is limited. In group-based RL methods like Group Relative Policy Optimization (GRPO), every rollout step requires multi-step ODE integration, and the sampler's limited stochasticity leads to rollout groups with low variance. We propose VLA-SSD, which addresses both high inference latency and limited stochasticity. In particular, our method self-distills a pretrained flow-matching action head into a stochastic one-step policy by conditioning a single-jump generator on a Brownian path. We derive a conditional action density via our stochastic one-step policy, enabling efficient post-training via likelihood-ratio RL algorithms. We show that distilling VLA-SSD from the $π_0$ VLA reduces the action head's forward-pass time by a factor of 7.7, at the cost of a 5.5% relative decrease in the success rate on the LIBERO benchmark. However, by leveraging the increased sample diversity of VLA-SSD during group generation, post-training a $π_{0.5}$ VLA using GRPO yields a 20.6% relative improvement."
+      "summary": "Human manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging. Existing methods remain limited in geometrically grounded metric-scale reconstruction, real-world generalization and inference speed. We present WinDEX, integrating (1) geometric-temporal optimization for metric 3D hand annotation from in-the-wild egocentric stereo videos, combined with visual-inertial SLAM for world-frame reconstruction; (2) WinDEX-Net, an end-to-end, fisheye-native network combining calibrated stereo, local detail and temporal context, with a data-model flywheel of model-assisted annotation and retraining; (3) distilled models for offline reconstruction and causal streaming, supporting reinforcement learning and teleoperation; and (4) low-cost CyberCap stereo-inertial capture, forming the WinDEX-Hand dataset with 1,000 hours of training annotations and held-out human-annotated in-the-wild 2D and independent optical motion-capture evaluation sets. Offline reconstruction runs at 43.61 FPS and causal streaming at 171 FPS. On held-out data, offline reconstruction achieves state-of-the-art accuracy: 14.5 pixels in-the-wild reprojection error and, with visual-inertial odometry, 37.29 mm world-frame joint error. We achieve 7.6 and 3.6 times the task success rates of reinforcement learning policies trained with WiLoR and HaWoR motion references, respectively, and demonstrate real-time arm-hand teleoperation. Project website: https://fruitrabbit.github.io/WinDEX/."
     },
     {
-      "id": "arxiv:2611.19559",
-      "title": "ResWAM: Learning What Changes, Not What Stays, for World-Action Models",
-      "url": "https://arxiv.org/abs/2611.19559",
-      "publisher": "arXiv 2611.19559",
+      "id": "arxiv:2611.22691",
+      "title": "Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving",
+      "url": "https://arxiv.org/abs/2611.22691",
+      "publisher": "arXiv 2611.22691",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-14",
+      "published": "2026-11-17",
+      "lane": "simeval",
+      "score": 3.205,
+      "numbers": [
+        "85%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "World models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions. However, existing WMs struggle to ensure both behavioral realism and visual fidelity, since they overlook the relationship between vehicle interactions and the ego visual observations. We propose a closed-loop interactive WM that couples behavior modeling and visual rendering. First, imitation-learned background-vehicle (BV) policies are fine-tuned with multi-agent reinforcement learning in the closed loop against an end-to-end ego planner that reacts to the rendered images, so that their interaction behaviors match those in real logs. Second, the viewpoints exposed by these interactions guide a per-Gaussian diagnosis of each 3D Gaussian vehicle asset, which attenuates view-dependent colors on under-observed Gaussians and fills never-observed surfaces with generated Gaussians, while preserving the observed appearance. Third, signal lights are rendered according to the driving intentions of the vehicles, by an editor that learns the light states unobserved for a vehicle through counterfactual fine-tuning with a light-state classifier. On long-tail closed-loop scenarios, our method reduces the divergence from real-world interaction behaviors by 85% and improves novel-view vehicle PSNR by 2.0dB over the state-of-the-art WM. The significance of BV light signaling in WMs is shown, as the rendered signal lights conveying BV driving intentions indirectly impact ego driving behaviors in a quarter of the scenarios."
+    },
+    {
+      "id": "arxiv:2611.21607",
+      "title": "ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters",
+      "url": "https://arxiv.org/abs/2611.21607",
+      "publisher": "arXiv 2611.21607",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-16",
       "lane": "foundation",
-      "score": 3.7,
+      "score": 3.15,
       "numbers": [
-        "2.3B parameters",
-        "81.1%",
-        "93.8%",
-        "9.40%"
+        "10 demonstrations",
+        "87.8%",
+        "85.6%",
+        "45.1%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "World-action models (WAMs) augment vision-language-action policies (VLAs) with future prediction so that the policy can anticipate how its actions will affect the physical world. Existing WAMs supervise complete future observations. However, observations typically change little over an action chunk, so the future loss is dominated by copying static background content rather than learning task-relevant robot and object motion, limiting policy learning. Moreover, existing WAMs rely on large video generation models or separate world models, incurring heavy training and inference compute that hinders closed-loop deployment. To improve policy performance, we propose visual residual learning, supervising only the feature change from the current frame to the future frame in a frozen DINOv3 space. Compared with complete future features, this residual learning target yields a higher feature rank with richer and more diverse representations of scene changes, and spatially concentrates on the robot arm and manipulated objects rather than the background. To further improve computational efficiency, we present ResWAM, a residual world-action model with 2.3B parameters in total, including a lightweight 0.5B dual-branch DiT that jointly trains an action branch and a residual branch via conditional flow matching. Without robot pretraining (i.e., pretraining on external robot action trajectories beyond the benchmark demonstrations), ResWAM achieves top average success rates on LIBERO-Plus (81.1%), RoboTwin 2.0 (93.8%), and RoboDojo (9.40% success, 13.41 score) at the lowest training (2.7-4.0 TFLOPs) and inference compute (1.0-1.4 TFLOPs), and leads real-robot Open, Put, and Stack (80.0% average, +10.0% over $π_{0.5}$) at 92.7 ms latency."
+      "summary": "Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action. Yet most Vision-Language-Action (VLA) policies still rely on much smaller VLM backbones, leaving this potential largely untapped. We ask whether frontier-scale representations can provide a stronger foundation for robot learning. We introduce ScaleVLA, which connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT, and systematically compare VLMs from 2B to 552B under a shared training setup. We evaluate three fundamental capabilities of robot foundation models. In sample efficiency, just 10 demonstrations outperform a 2B backbone trained with 50 (87.8% vs. 85.6%). In generalization, LIBERO-PRO success reaches 45.1%, compared with at most 31.3% for smaller backbones. In precise manipulation, real-world charger insertion improves from 4/10 to 9/10 successes, with gains concentrated in contact-sensitive alignment. Despite its scale, ScaleVLA achieves 216 ms median latency per action chunk. Our findings suggest that frontier VLMs can serve not only as reasoning agents, but also as powerful representational foundations for efficient and generalizable robot policies."
     },
     {
-      "id": "arxiv:2611.19131",
-      "title": "Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI",
-      "url": "https://arxiv.org/abs/2611.19131",
-      "publisher": "arXiv 2611.19131",
+      "id": "arxiv:2611.22998",
+      "title": "Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model",
+      "url": "https://arxiv.org/abs/2611.22998",
+      "publisher": "arXiv 2611.22998",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-14",
-      "lane": "edge",
-      "score": 3.612,
-      "numbers": [
-        "23%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "Vision-language-action (VLA) models enable embodied artificial intelligence (AI) by translating visual observations and language instructions into robotic actions. Emerging use cases in physical AI are expected to drive the need for efficient inference and communication, as the computational demands of the VLA models pose challenges for real-time control with limited onboard resources. Test-time scaling through latent reasoning allows these models to refine hidden representations without generating explicit chain-of-thought (CoT) tokens, but introduces a trade-off between task success, inference latency, and energy consumption. In this paper, we address the efficient collaborative inference under a realistic communication scenario. We propose a wireless edge-assisted framework for adaptive latent reasoning (WEALR) that augments onboard computation with edge computing. A decision-making agent jointly selects the execution location and latent-reasoning convergence threshold. We formulate this joint adaptation as a constrained Markov decision process (CMDP). A Lagrangian-constrained deep reinforcement learning (CDRL) approach, namely trust region policy optimization Lagrangian (TRPO-Lag), learns to balance task performance and resource consumption under varying wireless conditions and task requirements. We evaluate the framework using LIBERO manipulation tasks, profiled VLA inference costs, and ray-traced wireless channels. Experimental results demonstrate that TRPO-Lag achieves up to 23% higher feasibility-weighted task success rate compared to benchmark CDRL methods."
-    },
-    {
-      "id": "arxiv:2611.20676",
-      "title": "Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation",
-      "url": "https://arxiv.org/abs/2611.20676",
-      "publisher": "arXiv 2611.20676",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-16",
-      "lane": "systems",
-      "score": 3.5,
-      "numbers": [],
-      "signals": [
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Long-horizon vision-language navigation (VLN) requires agents to track instruction progress and recover from local errors before they propagate across subtasks. However, executors trained on expert trajectories encounter policy-induced state shifts during deployment, and their stop signals do not reliably indicate subtask completion. We introduce Learning and Verifying Progress for VLN (LeaP-VLN), an agentic VLN system that couples progress-aware execution with independent progress verification through plan--execute--verify--recover cycles. LeaP-VLN leverages progress both explicitly, through a progress verifier that verifies subtask completion before the agent advances and triggers dual-phase recovery upon route deviation, and implicitly, by co-training the executor on progress reasoning and action prediction to enhance the executor's progress awareness and corrective control. To adapt the executor to this closed-loop interface, we propose a two-stage progress-enhanced curriculum: behavior cloning on expert demonstrations, followed by joint training on demonstrations, expert action corrections, and progress-reasoning supervision. Policy-generated trajectories expose the executor to both intra-subtask drift and inter-subtask state shifts, aligning training with the deviations encountered during closed-loop execution. Extensive experiments on R2R-CE and RxR-CE demonstrate state-of-the-art success rates among monocular methods trained without additional navigation datasets, while real-world experiments further validate the effectiveness of LeaP-VLN in long-horizon navigation."
-    },
-    {
-      "id": "techcrunch-robotics:04d3ec1b70b8",
-      "title": "Genesis AI raises $500M to deploy glove-wearing robots",
-      "url": "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/",
-      "publisher": "TechCrunch (Robotics)",
-      "source_id": "techcrunch-robotics",
-      "evidence": "M",
-      "published": "2026-11-17",
-      "lane": "simeval",
-      "score": 1.754,
-      "numbers": [],
-      "signals": [
-        "industry_event"
-      ],
-      "heat": 0.024,
-      "summary": "Genesis AI's novel approach to training dexterous robots earned it $500 million in Series A funding."
-    },
-    {
-      "id": "robohub:d8c81256a1cb",
-      "title": "Robot swarms trained by trial and error in simulation keep working on real robots",
-      "url": "https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/",
-      "publisher": "Robohub",
-      "source_id": "robohub",
-      "evidence": "M",
-      "published": "2026-11-17",
-      "lane": "simeval",
-      "score": 1.535,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Reinforcement learning lets robots learn behaviors on their own, through trial and error, usually inside a computer simulation. Moving what they learn onto physical robots is another matter. Simulated and real robots never behave quite the same way, a mismatch known as the “reality gap,” and reinforcement learning has long been particularly sensitive to it. […]"
-    },
-    {
-      "id": "qbitai:deee7f6a93c8",
-      "title": "物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs",
-      "url": "https://www.qbitai.com/2026/11/510561.html",
-      "publisher": "量子位 QbitAI",
-      "source_id": "qbitai",
-      "evidence": "M",
       "published": "2026-11-17",
       "lane": "training",
-      "score": 1.45,
+      "score": 2.95,
+      "numbers": [
+        "16,106 parameters",
+        "3.99%",
+        "0.83%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "In automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs. We propose a residual-guided reinforcement learning (RL) framework for lightweight trajectory selection with a frozen world model and a fixed candidate bank. The framework uses proximal policy optimization (PPO) to fine-tune a joint policy over candidate selection and bounded trajectory residuals. A context-conditioned ranking network learns candidate preferences from feedback obtained by evaluating local perturbations of the selected trajectories. At inference, the selector combines learned preference and predicted risk ranks using fixed weights and returns the selected candidate trajectory without modification. Fine-tuning updates 16,106 parameters across the actor and critic, while the deployed selector retains only the 11,725-parameter ranking network, with the residual branch and critic used exclusively during training. In open-loop evaluation on the nuScenes validation set, the method reduces average Euclidean trajectory error (L2) by 3.99% relative to the RiskWorld model baseline without RL-based selection. Under matched budgets for feedback accesses and actor updates, residual exploration reduces L2 by 0.83% relative to the categorical PPO variant trained without residuals. The method also maintains lower L2 than RiskWorld when risk features are removed or shuffled."
+    },
+    {
+      "id": "aws-physical-ai:8f53a737368e",
+      "title": "Physical AI for autonomous fleet operations: multi-robot task planning on AWS",
+      "url": "https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/",
+      "publisher": "AWS Physical AI Blog",
+      "source_id": "aws-physical-ai",
+      "evidence": "O",
+      "published": "2026-11-18",
+      "lane": "systems",
+      "score": 2.7,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": ""
+      "summary": "The International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics. When a site runs several kinds of robot, the challenge shifts from individual robots to coordinating them. Standards such as VDA 5050 […]"
     },
     {
-      "id": "the-robot-report:471fb334b4f9",
-      "title": "Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial",
-      "url": "https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "leiphone:32bff37675d6",
+      "title": "纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人",
+      "url": "https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-13",
+      "published": "2026-11-18",
       "lane": "hardware",
-      "score": 1.133,
+      "score": 1.915,
       "numbers": [],
       "signals": [
         "industry_event"
       ],
       "heat": 0.0,
-      "summary": "Four of the six robots pass a performance assessment as the trial puts customer service, retail operations and embodied AI capabilities to the test in a working store."
+      "summary": "做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。从研究算法到让几十吨重的卡车真正跑上高速公路，他经历了自动驾驶从技术探索走向商业化的过程。 2024年，杨睿刚开始筹备第二次创业。彼时，人形机器人已经成为具身智能行业最受关注的方向，他也接触过相关创业机会，但最终选择了一个看起来没那么性感的场景：社区末端配送。 他判断，家庭机器人虽然市场空间大，但每个家庭的环境都不一样，泛化难度很高；工厂机器人则必须满足严格的生产节拍和成本要求。相比之下，社区配送既能复用自动驾驶积累的定位、导航和避障技术，又能通过开门、乘电梯、交付包裹等任务，让机器人开始与真实物理环境交互。 这也是杨睿刚创办纽娲科技的起点。他希望先让机器人解决移动和通行问题，再逐步进入更复杂的任务。为此，纽娲提出「具行智能」，围绕世界通行模型（WTM）搭建数据生成、物理仿真和模型训练体系。 从见证自动驾驶卡车在开阔道路行驶，到机器人在楼宇间处理各种复杂任务，杨睿刚一直在挑战无人实现的技术问题，但他却说，真正的机会，恰恰在于有些技术问题还没有被解决。 “难这件事，我们不怕。” 从实验室到量产，重新认识技术的价值 《新智驾物理AI》：您很早就开始研究计算机视觉和三维视觉，当时深度学习还没有兴起。为什么会选择这个方向？有没有坐冷板凳的感觉？ 杨睿刚 ：我最早其实不是做计算机视觉，而是做计算机图形学。 …"
+    },
+    {
+      "id": "techcrunch-robotics:f3bfec28682f",
+      "title": "Physicl raises $10M to make the digital world real enough for robots",
+      "url": "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/",
+      "publisher": "TechCrunch (Robotics)",
+      "source_id": "techcrunch-robotics",
+      "evidence": "M",
+      "published": "2026-11-06",
+      "lane": "simeval",
+      "score": 0.935,
+      "numbers": [],
+      "signals": [
+        "industry_event"
+      ],
+      "heat": 0.0,
+      "summary": "Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online."
+    },
+    {
+      "id": "the-robot-report:985ba42c6298",
+      "title": "California DMV bars Waymo AVs from operating on the state’s freeways",
+      "url": "https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/",
+      "publisher": "The Robot Report",
+      "source_id": "the-robot-report",
+      "evidence": "M",
+      "published": "2026-11-17",
+      "lane": "safety",
+      "score": 0.935,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "The DMV determined that Waymo's freeway operations \"pose an imminent hazard to public safety due to recurring incursions by its vehicles.\""
     }
   ],
   "lane_counts": {
-    "foundation": 9,
+    "foundation": 8,
     "data": 5,
-    "training": 2,
+    "training": 3,
     "simeval": 14,
-    "edge": 8,
-    "safety": 2,
+    "edge": 7,
+    "safety": 3,
     "systems": 3,
     "hardware": 7
   },
@@ -177,7 +181,7 @@
     "M": 16
   },
   "fetch": {
-    "items": 651,
+    "items": 652,
     "attempted": 25,
     "answered": 25,
     "failed": [],
@@ -206,11 +210,11 @@
       "robots_reasons": {},
       "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 37,
+      "hn_stories": 44,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 74,
+      "arxiv": 75,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -224,12 +228,13 @@
       "bair": 7,
       "mit-news-robotics": 50,
       "nature-machine-intelligence": 1,
-      "techcrunch-robotics": 13,
+      "techcrunch-robotics": 14,
       "robohub": 75,
-      "qbitai": 4,
+      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
-      "github-mujoco": 1
+      "github-mujoco": 1,
+      "1x": 1
     },
     "page_watch": {
       "enabled": true,
@@ -246,7 +251,7 @@
       "failed": [],
       "robots_skipped": [],
       "unavailable": false,
-      "items": 0
+      "items": 1
     }
   },
   "baseline_count": 29,

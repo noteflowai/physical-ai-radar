@@ -60,37 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-18
+### Today's radar · 2026-11-19
 
-`Generated: 2026-11-17 23:40 UTC` ｜ `Window: papers 2026-11-14 → 2026-11-18 · posts 2026-10-19 → 2026-11-18 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-18 23:40 UTC` ｜ `Window: papers 2026-11-15 → 2026-11-19 · posts 2026-10-20 → 2026-11-19 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2611.20460)**<br>`5.5%`&nbsp; `20.6%`<br><sub>Training & self-improvement · arXiv 2611.20460 · 2026‑11‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[ResWAM: Learning What Changes, Not What Stays, for World-Action Models](https://arxiv.org/abs/2611.19559)**<br>`2.3B parameters`&nbsp; `81.1%`&nbsp; `93.8%`<br><sub>Foundation models · arXiv 2611.19559 · 2026‑11‑14</sub> |
-| 03<br>🔵&nbsp;`R` | **[Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI](https://arxiv.org/abs/2611.19131)**<br>`23%`<br><sub>Edge & real-time · arXiv 2611.19131 · 2026‑11‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation](https://arxiv.org/abs/2611.20676)**<br><sub>Systems & orchestration · arXiv 2611.20676 · 2026‑11‑16</sub> |
-| 05<br>🟡&nbsp;`M` | **[Genesis AI raises $500M to deploy glove-wearing robots](https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/)**<br><sub>Simulation & evaluation · TechCrunch (Robotics) · 2026‑11‑17</sub> |
-| 06<br>🟡&nbsp;`M` | **[Robot swarms trained by trial and error in simulation keep working on real robots](https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/)**<br><sub>Simulation & evaluation · Robohub · 2026‑11‑17</sub> |
-| 07<br>🟡&nbsp;`M` | **[物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs](https://www.qbitai.com/2026/11/510561.html)**<br><sub>Training & self-improvement · 量子位 QbitAI · 2026‑11‑17</sub> |
-| 08<br>🟡&nbsp;`M` | **[Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial](https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning](https://arxiv.org/abs/2611.21143)**<br>`1,000 hours`&nbsp; `43.61 FPS`&nbsp; `171 FPS`<br><sub>Data engine · arXiv 2611.21143 · 2026‑11‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving](https://arxiv.org/abs/2611.22691)**<br>`85%`<br><sub>Simulation & evaluation · arXiv 2611.22691 · 2026‑11‑17</sub> |
+| 03<br>🔵&nbsp;`R` | **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)**<br>`10 demonstrations`&nbsp; `87.8%`&nbsp; `85.6%`<br><sub>Foundation models · arXiv 2611.21607 · 2026‑11‑16</sub> |
+| 04<br>🔵&nbsp;`R` | **[Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model](https://arxiv.org/abs/2611.22998)**<br>`16,106 parameters`&nbsp; `3.99%`&nbsp; `0.83%`<br><sub>Training & self-improvement · arXiv 2611.22998 · 2026‑11‑17</sub> |
+| 05<br>🟢&nbsp;`O` | **[Physical AI for autonomous fleet operations: multi-robot task planning on AWS](https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/)**<br><sub>Systems & orchestration · AWS Physical AI Blog · 2026‑11‑18</sub> |
+| 06<br>🟡&nbsp;`M` | **[纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人](https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑18</sub> |
+| 07<br>🟡&nbsp;`M` | **[Physicl raises $10M to make the digital world real enough for robots](https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/)**<br><sub>Simulation & evaluation · TechCrunch (Robotics) · 2026‑11‑06</sub> |
+| 08<br>🟡&nbsp;`M` | **[California DMV bars Waymo AVs from operating on the state’s freeways](https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑11‑17</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — `AI draft` Teams fine-tuning flow-based VLAs with on-policy RL should note this preprint's self-reported 20.6% relative improvement using GRPO, but it comes with a 5.5% relative decrease the page does not tie to a metric, so check what was traded away.
-2. **ResWAM** — `AI draft` If you are weighing a world-action model, this preprint's self-reported results span 93.8% on RoboTwin 2.0 down to 9.40% success on RoboDojo, so judge it by the benchmark closest to your task rather than the best headline.
-3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — `AI draft` If you are considering offloading VLA reasoning to a wireless edge, the only figure on the page is TRPO-Lag's "up to 23%" gain on a feasibility-weighted task metric, with no baseline named and no latency figure quoted.
-4. **Learning and Verifying Progress** — `AI draft` For long-horizon navigation stacks where a local error can derail later subtasks, this preprint targets progress tracking and recovery and is flagged for real-robot and closed-loop experiments, but the page gives no figures to size the benefit.
-5. **Genesis AI raises $500M to deploy glove-wearing robots** — `AI draft` As TechCrunch tells it, this Series A backs a new way of training dexterous robots that the excerpt never describes, so read it as a funding signal, not as evidence that the method works.
-6. **Robot swarms trained by trial and error in simulation keep working on real…** — `AI draft` Robohub's secondhand account is flagged for real-robot experiments but quotes only a general description of trial-and-error learning in simulation, so check the original study for how much carried over before training a swarm in simulation alone.
-7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — `AI draft` Only the headline is visible here, with no excerpt, figures or experiment signals, so read the vendor's own release before building RL training around these environments.
-8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — `AI draft` For anyone scoping retail deployments, the useful detail in this secondhand account is that only four of the six robots passed a performance assessment in a working store, so per-unit reliability matters more than the task count.
+1. **WinDEX** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+2. **Making the World React Realistically** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **ScaleVLA** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
+5. **Physical AI for autonomous fleet operations** — First-party release; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Physicl raises $10M to make the digital world real enough for robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+8. **California DMV bars Waymo AVs from operating on the state’s freeways** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-18.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-19.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

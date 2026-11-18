@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-18",
+  "as_of": "2026-11-19",
   "first_run": "2026-09-19",
   "pool_since": "2026-11-16",
   "per_lane_cap": 2,
@@ -4372,8 +4372,75 @@
           "pool": 8
         }
       }
+    },
+    {
+      "date": "2026-11-19",
+      "ran": true,
+      "count": 8,
+      "picks_known": true,
+      "failed_sources": [],
+      "unavailable": [],
+      "fallback": [],
+      "lanes": {
+        "foundation": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 12
+        },
+        "data": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 6
+        },
+        "training": {
+          "O": 0,
+          "R": 1,
+          "M": 0,
+          "picked": 1,
+          "pool": 6
+        },
+        "simeval": {
+          "O": 0,
+          "R": 1,
+          "M": 1,
+          "picked": 2,
+          "pool": 18
+        },
+        "edge": {
+          "O": 0,
+          "R": 0,
+          "M": 0,
+          "picked": 0,
+          "pool": 4
+        },
+        "safety": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": 7
+        },
+        "systems": {
+          "O": 1,
+          "R": 0,
+          "M": 0,
+          "picked": 1,
+          "pool": 4
+        },
+        "hardware": {
+          "O": 0,
+          "R": 0,
+          "M": 1,
+          "picked": 1,
+          "pool": 12
+        }
+      }
     }
   ],
-  "items_sha256": "ee995cc2a24d91cf9844cc7382258fe1d355fdbcf1812b684a7ad3f08a8d188e",
-  "items_count": 446
+  "items_sha256": "152d3bccb50090c392fdfa011f4b950fc2979892f85fafc9c74202c293f0b77c",
+  "items_count": 454
 }

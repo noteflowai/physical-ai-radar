@@ -62,37 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-18
+### 今日雷达 · 2026-11-19
 
-`生成时间: 2026-11-17 23:40 UTC` ｜ `统计窗口: 论文 2026-11-14 → 2026-11-18 · 博客与报道 2026-10-19 → 2026-11-18 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-18 23:40 UTC` ｜ `统计窗口: 论文 2026-11-15 → 2026-11-19 · 博客与报道 2026-10-20 → 2026-11-19 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models](https://arxiv.org/abs/2611.20460)**<br>`5.5%`&nbsp; `20.6%`<br><sub>训练与自我改进 · arXiv 2611.20460 · 2026‑11‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[ResWAM: Learning What Changes, Not What Stays, for World-Action Models](https://arxiv.org/abs/2611.19559)**<br>`2.3B parameters`&nbsp; `81.1%`&nbsp; `93.8%`<br><sub>基座模型 · arXiv 2611.19559 · 2026‑11‑14</sub> |
-| 03<br>🔵&nbsp;`R` | **[Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action Models in Physical AI](https://arxiv.org/abs/2611.19131)**<br>`23%`<br><sub>边缘与实时性 · arXiv 2611.19131 · 2026‑11‑14</sub> |
-| 04<br>🔵&nbsp;`R` | **[Learning and Verifying Progress: Closed-Loop Agentic Planning with Progress-Enhanced Execution for Long-Horizon Vision-Language Navigation](https://arxiv.org/abs/2611.20676)**<br><sub>系统与编排 · arXiv 2611.20676 · 2026‑11‑16</sub> |
-| 05<br>🟡&nbsp;`M` | **[Genesis AI raises $500M to deploy glove-wearing robots](https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/)**<br><sub>仿真与评测 · TechCrunch (Robotics) · 2026‑11‑17</sub> |
-| 06<br>🟡&nbsp;`M` | **[Robot swarms trained by trial and error in simulation keep working on real robots](https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots/)**<br><sub>仿真与评测 · Robohub · 2026‑11‑17</sub> |
-| 07<br>🟡&nbsp;`M` | **[物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs](https://www.qbitai.com/2026/11/510561.html)**<br><sub>训练与自我改进 · 量子位 QbitAI · 2026‑11‑17</sub> |
-| 08<br>🟡&nbsp;`M` | **[Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience Store Trial](https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑13</sub> |
+| 01<br>🔵&nbsp;`R` | **[WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning](https://arxiv.org/abs/2611.21143)**<br>`1,000 hours`&nbsp; `43.61 FPS`&nbsp; `171 FPS`<br><sub>数据引擎 · arXiv 2611.21143 · 2026‑11‑16</sub> |
+| 02<br>🔵&nbsp;`R` | **[Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving](https://arxiv.org/abs/2611.22691)**<br>`85%`<br><sub>仿真与评测 · arXiv 2611.22691 · 2026‑11‑17</sub> |
+| 03<br>🔵&nbsp;`R` | **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)**<br>`10 demonstrations`&nbsp; `87.8%`&nbsp; `85.6%`<br><sub>基座模型 · arXiv 2611.21607 · 2026‑11‑16</sub> |
+| 04<br>🔵&nbsp;`R` | **[Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model](https://arxiv.org/abs/2611.22998)**<br>`16,106 parameters`&nbsp; `3.99%`&nbsp; `0.83%`<br><sub>训练与自我改进 · arXiv 2611.22998 · 2026‑11‑17</sub> |
+| 05<br>🟢&nbsp;`O` | **[Physical AI for autonomous fleet operations: multi-robot task planning on AWS](https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/)**<br><sub>系统与编排 · AWS Physical AI Blog · 2026‑11‑18</sub> |
+| 06<br>🟡&nbsp;`M` | **[纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人](https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑18</sub> |
+| 07<br>🟡&nbsp;`M` | **[Physicl raises $10M to make the digital world real enough for robots](https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/)**<br><sub>仿真与评测 · TechCrunch (Robotics) · 2026‑11‑06</sub> |
+| 08<br>🟡&nbsp;`M` | **[California DMV bars Waymo AVs from operating on the state’s freeways](https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑11‑17</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — `AI 起草` 正在用 on-policy RL 微调流式 VLA 的团队可以留意这篇预印本：作者自报使用 GRPO 带来 20.6% 的相对提升，但伴随 5.5% 的相对下降，页面没说降的是哪项指标，采用前先核对原文。
-2. **ResWAM** — `AI 起草` 评估世界动作模型时，这篇预印本的自报成绩跨度很大，RoboTwin 2.0 为 93.8%，RoboDojo 只有 9.40%，选型时应看最接近你任务的那个基准，而不是最好的那个数。
-3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — `AI 起草` 考虑把 VLA 推理放到无线边缘的团队要注意，页面上唯一的数字是 TRPO-Lag 在一项可行性加权任务指标上“最多高 23%”，对比基线没有说明，也没有引用任何延迟数值。
-4. **Learning and Verifying Progress** — `AI 起草` 长程导航中局部错误会拖累后续子任务，这篇预印本针对进度跟踪与纠错，并标有真机和闭环实验，但页面没有任何数字，还不足以决定是否改动现有规划栈。
-5. **Genesis AI raises $500M to deploy glove-wearing robots** — `AI 起草` 按 TechCrunch 的转述，这轮 A 轮押注的是一种训练灵巧机器人的新方法，但摘录没有说明方法本身，应视为资金动向，而不是方法有效的证据。
-6. **Robot swarms trained by trial and error in simulation keep working on real…** — `AI 起草` Robohub 的二手报道标有真机实验，但摘录只是对仿真中试错学习的一般介绍；打算让机器人群只靠仿真训练之前，先去原始研究里确认上真机后保留了多少性能。
-7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — `AI 起草` 页面上只有标题，没有摘录、数字或实验信号；想围绕这些环境搭建 RL 训练流程，先读光轮智能自己的发布材料。
-8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — `AI 起草` 做零售部署评估的人值得注意，这份二手报道里，在营业门店中六台只有四台通过了性能评估，该核对的是单机可靠性，而不是任务总数。
+1. **WinDEX** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+2. **Making the World React Realistically** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **ScaleVLA** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
+4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。
+5. **Physical AI for autonomous fleet operations** — 一手官方发布；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
+6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Physicl raises $10M to make the digital world real enough for robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+8. **California DMV bars Waymo AVs from operating on the state’s freeways** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-18.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-19.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

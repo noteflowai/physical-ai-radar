@@ -51,9 +51,9 @@
       "link_count": 8
     },
     "unitree": {
-      "digest": "e6a623b9257603ba312ef8207a212009a4143a780b2aaddf490ad8bd235aee8d",
+      "digest": "2102fa94a624a9dfb0b0201854223fa6a9414c5b6be5314a6c66abbe849e0970",
       "since": "2026-11-08",
-      "changed": "2026-11-13",
+      "changed": "2026-11-19",
       "links": [
         {
           "url": "https://www.unitree.com/news/38",
@@ -229,9 +229,9 @@
       "link_count": 21
     },
     "1x": {
-      "digest": "4d15f8fe9b048f698e4123e43daceda6d7d53677f3e6699f5258ede3e439f4d9",
+      "digest": "8dc54a048bdabc904aa7066d1e823128d4ec791da1a31d12a81b78a3870db347",
       "since": "2026-11-15",
-      "changed": "2026-11-15",
+      "changed": "2026-11-19",
       "links": [
         {
           "url": "https://www.1x.tech/discover/category/stories",
@@ -264,7 +264,7 @@
           "seeded": true
         },
         {
-          "url": "https://www.1x.tech/discover/tom-sanocki-vp-engineering",
+          "url": "https://www.1x.tech/discover/1x-world-model-lab",
           "first_seen": "2026-11-15",
           "seeded": true
         },
@@ -294,17 +294,22 @@
           "seeded": true
         },
         {
+          "url": "https://www.1x.tech/discover/amy-lentz-svp-people",
+          "first_seen": "2026-11-15",
+          "seeded": true
+        },
+        {
           "url": "https://www.1x.tech/discover/neo-factory",
           "first_seen": "2026-11-15",
           "seeded": true
         },
         {
-          "url": "https://www.1x.tech/discover/1x-world-model-lab",
-          "first_seen": "2026-11-15",
-          "seeded": true
+          "url": "https://www.1x.tech/discover/vikram-vp-operations",
+          "first_seen": "2026-11-19",
+          "offered": "2026-11-19"
         },
         {
-          "url": "https://www.1x.tech/discover/amy-lentz-svp-people",
+          "url": "https://www.1x.tech/discover/tom-sanocki-vp-engineering",
           "first_seen": "2026-11-15",
           "seeded": true
         }

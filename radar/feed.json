@@ -13,6 +13,313 @@
   ],
   "items": [
     {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.21143",
+      "url": "https://arxiv.org/abs/2611.21143",
+      "title": "WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning",
+      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.21143 · 2026-11-16<br><b>Key numbers</b>: 1,000 hours · 43.61 FPS · 171 FPS<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Human manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2611.21143 · 2026-11-16\nKey numbers: 1,000 hours · 43.61 FPS · 171 FPS\nSignals: quantitative results · closed-loop success reported · real-robot experiments · latency or control-rate numbers\n\nHuman manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "Human manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.21143"
+        }
+      ],
+      "tags": [
+        "Data engine (collection / curation / scaling)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "arxiv:2611.21143",
+        "url": "https://arxiv.org/abs/2611.21143",
+        "title": "WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning",
+        "publisher": "arXiv 2611.21143",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "data",
+        "published": "2026-11-16",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [
+          "1,000 hours",
+          "43.61 FPS",
+          "171 FPS"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Human manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.22691",
+      "url": "https://arxiv.org/abs/2611.22691",
+      "title": "Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.22691 · 2026-11-17<br><b>Key numbers</b>: 85%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>World models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.22691 · 2026-11-17\nKey numbers: 85%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nWorld models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "World models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.22691"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "arxiv:2611.22691",
+        "url": "https://arxiv.org/abs/2611.22691",
+        "title": "Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving",
+        "publisher": "arXiv 2611.22691",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "simeval",
+        "published": "2026-11-17",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [
+          "85%"
+        ],
+        "signals": [
+          "numbers",
+          "closed_loop",
+          "real_robot"
+        ],
+        "excerpt": "World models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.21607",
+      "url": "https://arxiv.org/abs/2611.21607",
+      "title": "ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters",
+      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.21607 · 2026-11-16<br><b>Key numbers</b>: 10 demonstrations · 87.8% · 85.6% · 45.1%<br><b>Signals</b>: quantitative results · real-robot experiments · latency or control-rate numbers</p>\n<blockquote>Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [R]\nSource: arXiv 2611.21607 · 2026-11-16\nKey numbers: 10 demonstrations · 87.8% · 85.6% · 45.1%\nSignals: quantitative results · real-robot experiments · latency or control-rate numbers\n\nFrontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.21607"
+        }
+      ],
+      "tags": [
+        "Foundation models (VLA / WAM)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "arxiv:2611.21607",
+        "url": "https://arxiv.org/abs/2611.21607",
+        "title": "ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters",
+        "publisher": "arXiv 2611.21607",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "foundation",
+        "published": "2026-11-16",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [
+          "10 demonstrations",
+          "87.8%",
+          "85.6%",
+          "45.1%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot",
+          "latency"
+        ],
+        "excerpt": "Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.22998",
+      "url": "https://arxiv.org/abs/2611.22998",
+      "title": "Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model",
+      "content_html": "<p><b>Lane</b>: Training &amp; self-improvement (RL / post-training)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.22998 · 2026-11-17<br><b>Key numbers</b>: 16,106 parameters · 3.99% · 0.83%<br><b>Signals</b>: quantitative results · real-robot experiments</p>\n<blockquote>In automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Training & self-improvement (RL / post-training)\nEvidence: [R]\nSource: arXiv 2611.22998 · 2026-11-17\nKey numbers: 16,106 parameters · 3.99% · 0.83%\nSignals: quantitative results · real-robot experiments\n\nIn automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "In automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "arXiv 2611.22998"
+        }
+      ],
+      "tags": [
+        "Training & self-improvement (RL / post-training)",
+        "[R]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "arxiv:2611.22998",
+        "url": "https://arxiv.org/abs/2611.22998",
+        "title": "Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model",
+        "publisher": "arXiv 2611.22998",
+        "source_id": "arxiv",
+        "evidence": "R",
+        "lane": "training",
+        "published": "2026-11-17",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [
+          "16,106 parameters",
+          "3.99%",
+          "0.83%"
+        ],
+        "signals": [
+          "numbers",
+          "real_robot"
+        ],
+        "excerpt": "In automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:aws-physical-ai:8f53a737368e",
+      "url": "https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/",
+      "title": "Physical AI for autonomous fleet operations: multi-robot task planning on AWS",
+      "content_html": "<p><b>Lane</b>: Systems &amp; orchestration (long-horizon / multi-policy)<br><b>Evidence</b>: [O]<br><b>Source</b>: AWS Physical AI Blog · 2026-11-18</p>\n<blockquote>The International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Systems & orchestration (long-horizon / multi-policy)\nEvidence: [O]\nSource: AWS Physical AI Blog · 2026-11-18\n\nThe International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "The International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "AWS Physical AI Blog"
+        }
+      ],
+      "tags": [
+        "Systems & orchestration (long-horizon / multi-policy)",
+        "[O]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "aws-physical-ai:8f53a737368e",
+        "url": "https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/",
+        "title": "Physical AI for autonomous fleet operations: multi-robot task planning on AWS",
+        "publisher": "AWS Physical AI Blog",
+        "source_id": "aws-physical-ai",
+        "evidence": "O",
+        "lane": "systems",
+        "published": "2026-11-18",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "The International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:32bff37675d6",
+      "url": "https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html",
+      "title": "纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人",
+      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-11-18<br><b>Signals</b>: industry event (funding, M&amp;A, listing, production, policy)</p>\n<blockquote>做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-11-18\nSignals: industry event (funding, M&A, listing, production, policy)\n\n做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "雷峰网 Leiphone"
+        }
+      ],
+      "tags": [
+        "Embodiment & supply chain (hardware / cost)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "leiphone:32bff37675d6",
+        "url": "https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html",
+        "title": "纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人",
+        "publisher": "雷峰网 Leiphone",
+        "source_id": "leiphone",
+        "evidence": "M",
+        "lane": "hardware",
+        "published": "2026-11-18",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "industry_event"
+        ],
+        "excerpt": "做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。"
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:techcrunch-robotics:f3bfec28682f",
+      "url": "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/",
+      "title": "Physicl raises $10M to make the digital world real enough for robots",
+      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: TechCrunch (Robotics) · 2026-11-06<br><b>Signals</b>: industry event (funding, M&amp;A, listing, production, policy)</p>\n<blockquote>Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: TechCrunch (Robotics) · 2026-11-06\nSignals: industry event (funding, M&A, listing, production, policy)\n\nPhysicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online.\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online.",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "TechCrunch (Robotics)"
+        }
+      ],
+      "tags": [
+        "Simulation & evaluation (sim2real / closed-loop)",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "techcrunch-robotics:f3bfec28682f",
+        "url": "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/",
+        "title": "Physicl raises $10M to make the digital world real enough for robots",
+        "publisher": "TechCrunch (Robotics)",
+        "source_id": "techcrunch-robotics",
+        "evidence": "M",
+        "lane": "simeval",
+        "published": "2026-11-06",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [],
+        "signals": [
+          "industry_event"
+        ],
+        "excerpt": "Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online."
+      }
+    },
+    {
+      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:985ba42c6298",
+      "url": "https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/",
+      "title": "California DMV bars Waymo AVs from operating on the state’s freeways",
+      "content_html": "<p><b>Lane</b>: Safety, permissions &amp; compliance<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-17</p>\n<blockquote>The DMV determined that Waymo&#x27;s freeway operations &quot;pose an imminent hazard to public safety due to recurring incursions by its vehicles.&quot;</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html\">Full radar for 2026-11-19</a></p>",
+      "content_text": "Lane: Safety, permissions & compliance\nEvidence: [M]\nSource: The Robot Report · 2026-11-17\n\nThe DMV determined that Waymo's freeway operations \"pose an imminent hazard to public safety due to recurring incursions by its vehicles.\"\n\nFull radar for 2026-11-19: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-19.en.html",
+      "summary": "The DMV determined that Waymo's freeway operations \"pose an imminent hazard to public safety due to recurring incursions by its vehicles.\"",
+      "date_published": "2026-11-18T23:40:00Z",
+      "authors": [
+        {
+          "name": "The Robot Report"
+        }
+      ],
+      "tags": [
+        "Safety, permissions & compliance",
+        "[M]"
+      ],
+      "language": "en",
+      "_radar": {
+        "date": "2026-11-19",
+        "id": "the-robot-report:985ba42c6298",
+        "url": "https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/",
+        "title": "California DMV bars Waymo AVs from operating on the state’s freeways",
+        "publisher": "The Robot Report",
+        "source_id": "the-robot-report",
+        "evidence": "M",
+        "lane": "safety",
+        "published": "2026-11-17",
+        "radar_published": "2026-11-18T23:40:00Z",
+        "numbers": [],
+        "signals": [],
+        "excerpt": "The DMV determined that Waymo's freeway operations \"pose an imminent hazard to public safety due to recurring incursions by its vehicles.\""
+      }
+    },
+    {
       "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.20460",
       "url": "https://arxiv.org/abs/2611.20460",
       "title": "Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models",
@@ -3482,313 +3789,6 @@
         "numbers": [],
         "signals": [],
         "excerpt": "Agility Robotics becomes the first U.S.-based legged humanoid company to be publicly listed."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05093",
-      "url": "https://arxiv.org/abs/2611.05093",
-      "title": "LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.05093 · 2026-11-03<br><b>Key numbers</b>: 180,000 episodes · 3x · 1.58x · 14%<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights · latency or control-rate numbers</p>\n<blockquote>Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.05093 · 2026-11-03\nKey numbers: 180,000 episodes · 3x · 1.58x · 14%\nSignals: quantitative results · closed-loop success reported · open code or weights · latency or control-rate numbers\n\nPost-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments.\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments.",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2611.05093"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "arxiv:2611.05093",
-        "url": "https://arxiv.org/abs/2611.05093",
-        "title": "LoopQ: Fair, Closed-Loop Evaluation of Quantized Vision-Language-Action Models",
-        "publisher": "arXiv 2611.05093",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-11-03",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [
-          "180,000 episodes",
-          "3x",
-          "1.58x",
-          "14%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "open_release",
-          "latency"
-        ],
-        "excerpt": "Post-training quantization (PTQ) for vision-language-action (VLA) models promises smaller and faster VLA deployments."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.04096",
-      "url": "https://arxiv.org/abs/2611.04096",
-      "title": "Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy",
-      "content_html": "<p><b>Lane</b>: Edge &amp; real-time (on-device inference / control rate)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.04096 · 2026-11-03<br><b>Key numbers</b>: 112 Hz · 61 Hz · 147 Hz · 17.5x<br><b>Signals</b>: quantitative results · closed-loop success reported · latency or control-rate numbers</p>\n<blockquote>Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Edge & real-time (on-device inference / control rate)\nEvidence: [R]\nSource: arXiv 2611.04096 · 2026-11-03\nKey numbers: 112 Hz · 61 Hz · 147 Hz · 17.5x\nSignals: quantitative results · closed-loop success reported · latency or control-rate numbers\n\nHamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline.\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline.",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2611.04096"
-        }
-      ],
-      "tags": [
-        "Edge & real-time (on-device inference / control rate)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "arxiv:2611.04096",
-        "url": "https://arxiv.org/abs/2611.04096",
-        "title": "Online Hamilton-Jacobi Reachability Onboard the Robot Control Loop: A Real-Time GPU Solver for Safety-Critical Autonomy",
-        "publisher": "arXiv 2611.04096",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "edge",
-        "published": "2026-11-03",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [
-          "112 Hz",
-          "61 Hz",
-          "147 Hz",
-          "17.5x"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "latency"
-        ],
-        "excerpt": "Hamilton-Jacobi (HJ) reachability provides certified backward reachable tubes (BRTs) for safety-critical robotic systems, but the level-set computation scales exponentially in the state dimension and has historically been performed offline."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.05163",
-      "url": "https://arxiv.org/abs/2611.05163",
-      "title": "RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On",
-      "content_html": "<p><b>Lane</b>: Data engine (collection / curation / scaling)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.05163 · 2026-11-03<br><b>Key numbers</b>: 2% · 60%<br><b>Signals</b>: quantitative results · closed-loop success reported · real-robot experiments</p>\n<blockquote>Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Data engine (collection / curation / scaling)\nEvidence: [R]\nSource: arXiv 2611.05163 · 2026-11-03\nKey numbers: 2% · 60%\nSignals: quantitative results · closed-loop success reported · real-robot experiments\n\nRobot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations.\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations.",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2611.05163"
-        }
-      ],
-      "tags": [
-        "Data engine (collection / curation / scaling)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "arxiv:2611.05163",
-        "url": "https://arxiv.org/abs/2611.05163",
-        "title": "RoboTryOn: Synthesizing Dexterous Robot Demonstrations from Human Videos via Virtual Try-On",
-        "publisher": "arXiv 2611.05163",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "data",
-        "published": "2026-11-03",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [
-          "2%",
-          "60%"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "real_robot"
-        ],
-        "excerpt": "Robot foundation models have shown remarkable performance in robot control, yet adapting them to a new task still relies heavily on teleoperated demonstrations."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.04392",
-      "url": "https://arxiv.org/abs/2611.04392",
-      "title": "Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [R]<br><b>Source</b>: arXiv 2611.04392 · 2026-11-03<br><b>Key numbers</b>: 21.1% · 52.2% · 95% · 1.2 x<br><b>Signals</b>: quantitative results · closed-loop success reported · open code or weights</p>\n<blockquote>Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [R]\nSource: arXiv 2611.04392 · 2026-11-03\nKey numbers: 21.1% · 52.2% · 95% · 1.2 x\nSignals: quantitative results · closed-loop success reported · open code or weights\n\nVision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "arXiv 2611.04392"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[R]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "arxiv:2611.04392",
-        "url": "https://arxiv.org/abs/2611.04392",
-        "title": "Aero-VPA: Few-Step Flow-Matching Control over Non-Reconstructive JEPA Latents for Agile Flight on Edge Hardware",
-        "publisher": "arXiv 2611.04392",
-        "source_id": "arxiv",
-        "evidence": "R",
-        "lane": "simeval",
-        "published": "2026-11-03",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [
-          "21.1%",
-          "52.2%",
-          "95%",
-          "1.2 x"
-        ],
-        "signals": [
-          "numbers",
-          "closed_loop",
-          "open_release"
-        ],
-        "excerpt": "Vision-Language-Action (VLA) models generalize across tasks, but their autoregressive decoders need sequential forward passes in proportion to the action horizon, each bounded below on embedded aerial platforms by streaming billions of…"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:the-robot-report:c5c6cce9e873",
-      "url": "https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/",
-      "title": "LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: The Robot Report · 2026-11-04</p>\n<blockquote>LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation.</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: The Robot Report · 2026-11-04\n\nLiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation.\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation.",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "The Robot Report"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "the-robot-report:c5c6cce9e873",
-        "url": "https://www.therobotreport.com/liberai-unveils-liber-0-a-world-action-model-that-grounds-human-experience-in-robot-action/",
-        "title": "LiberAI Unveils Liber-0, a World Action Model That Grounds Human Experience in Robot Action",
-        "publisher": "The Robot Report",
-        "source_id": "the-robot-report",
-        "evidence": "M",
-        "lane": "foundation",
-        "published": "2026-11-04",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "LiberAI introduces Liber-0, a world action model pretrained on more than 2.2 million hours of human experience to support zero-shot robot manipulation."
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:leiphone:957146e93372",
-      "url": "https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html",
-      "title": "榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌",
-      "content_html": "<p><b>Lane</b>: Simulation &amp; evaluation (sim2real / closed-loop)<br><b>Evidence</b>: [M]<br><b>Source</b>: 雷峰网 Leiphone · 2026-11-04</p>\n<blockquote>Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Simulation & evaluation (sim2real / closed-loop)\nEvidence: [M]\nSource: 雷峰网 Leiphone · 2026-11-04\n\nGemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "雷峰网 Leiphone"
-        }
-      ],
-      "tags": [
-        "Simulation & evaluation (sim2real / closed-loop)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "leiphone:957146e93372",
-        "url": "https://www.leiphone.com/category/yanxishe/7uvYEZBsCWcPvhw3.html",
-        "title": "榜单第一，市值暴跌！Gemini 4 Carbon「速成」背后，谷歌一场豪赌",
-        "publisher": "雷峰网 Leiphone",
-        "source_id": "leiphone",
-        "evidence": "M",
-        "lane": "simeval",
-        "published": "2026-11-04",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "Gemini 4 Carbon 登顶，幻觉率抬升，谷歌疯狂发模型在急什么？昨天，Google 发布世界模型 Genie 4，人们惊呼“太疯狂了”。"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:qbitai:f46bd8b9888c",
-      "url": "https://www.qbitai.com/2026/11/507647.html",
-      "title": "百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年",
-      "content_html": "<p><b>Lane</b>: Foundation models (VLA / WAM)<br><b>Evidence</b>: [M]<br><b>Source</b>: 量子位 QbitAI · 2026-11-04</p>\n<blockquote>连路人都有自己的想法</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Foundation models (VLA / WAM)\nEvidence: [M]\nSource: 量子位 QbitAI · 2026-11-04\n\n连路人都有自己的想法\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "连路人都有自己的想法",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "量子位 QbitAI"
-        }
-      ],
-      "tags": [
-        "Foundation models (VLA / WAM)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "qbitai:f46bd8b9888c",
-        "url": "https://www.qbitai.com/2026/11/507647.html",
-        "title": "百度无人车搞出“黑客帝国”！世界模型实时推演全局，跑一天抵三年",
-        "publisher": "量子位 QbitAI",
-        "source_id": "qbitai",
-        "evidence": "M",
-        "lane": "foundation",
-        "published": "2026-11-04",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "连路人都有自己的想法"
-      }
-    },
-    {
-      "id": "tag:noteflowai.github.io,2026:physical-ai-radar:robohub:a47ada694dde",
-      "url": "https://robohub.org/robots-in-society-business-and-culture-october-2026/",
-      "title": "Robots in society, business and culture: October 2026",
-      "content_html": "<p><b>Lane</b>: Embodiment &amp; supply chain (hardware / cost)<br><b>Evidence</b>: [M]<br><b>Source</b>: Robohub · 2026-11-04</p>\n<blockquote>The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026).</blockquote>\n<p><a href=\"https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html\">Full radar for 2026-11-05</a></p>",
-      "content_text": "Lane: Embodiment & supply chain (hardware / cost)\nEvidence: [M]\nSource: Robohub · 2026-11-04\n\nThe biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026).\n\nFull radar for 2026-11-05: https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-05.en.html",
-      "summary": "The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026).",
-      "date_published": "2026-11-04T23:40:00Z",
-      "authors": [
-        {
-          "name": "Robohub"
-        }
-      ],
-      "tags": [
-        "Embodiment & supply chain (hardware / cost)",
-        "[M]"
-      ],
-      "language": "en",
-      "_radar": {
-        "date": "2026-11-05",
-        "id": "robohub:a47ada694dde",
-        "url": "https://robohub.org/robots-in-society-business-and-culture-october-2026/",
-        "title": "Robots in society, business and culture: October 2026",
-        "publisher": "Robohub",
-        "source_id": "robohub",
-        "evidence": "M",
-        "lane": "hardware",
-        "published": "2026-11-04",
-        "radar_published": "2026-11-04T23:40:00Z",
-        "numbers": [],
-        "signals": [],
-        "excerpt": "The biohybrid robot pushes off from the ground as soon as it is stimulated by an electrical impulse. Credit: Nature Communications (2026)."
       }
     }
   ]
