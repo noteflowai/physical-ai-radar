@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-18",
+  "generated": "2026-11-18 13:52 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.20460": {
+      "zh": "正在用 on-policy RL 微调流式 VLA 的团队可以留意这篇预印本：作者自报使用 GRPO 带来 20.6% 的相对提升，但伴随 5.5% 的相对下降，页面没说降的是哪项指标，采用前先核对原文。",
+      "en": "Teams fine-tuning flow-based VLAs with on-policy RL should note this preprint's self-reported 20.6% relative improvement using GRPO, but it comes with a 5.5% relative decrease the page does not tie to a metric, so check what was traded away.",
+      "ja": "フロー型VLAをオンポリシーRLで微調整したいチーム向けの自己報告で、GRPO使用で20.6%の相対改善とされるが、代償の5.5%の相対低下が何の指標かはページから分からず、採用前に原文確認が要る。"
+    },
+    "https://arxiv.org/abs/2611.19559": {
+      "zh": "评估世界动作模型时，这篇预印本的自报成绩跨度很大，RoboTwin 2.0 为 93.8%，RoboDojo 只有 9.40%，选型时应看最接近你任务的那个基准，而不是最好的那个数。",
+      "en": "If you are weighing a world-action model, this preprint's self-reported results span 93.8% on RoboTwin 2.0 down to 9.40% success on RoboDojo, so judge it by the benchmark closest to your task rather than the best headline.",
+      "ja": "世界行動モデルを検討するなら、自己報告の成績はRoboTwin 2.0の93.8%からRoboDojoの9.40%まで開きがあり、最高値ではなく自分のタスクに近いベンチマークの数値で判断したい。"
+    },
+    "https://arxiv.org/abs/2611.19131": {
+      "zh": "考虑把 VLA 推理放到无线边缘的团队要注意，页面上唯一的数字是 TRPO-Lag 在一项可行性加权任务指标上“最多高 23%”，对比基线没有说明，也没有引用任何延迟数值。",
+      "en": "If you are considering offloading VLA reasoning to a wireless edge, the only figure on the page is TRPO-Lag's \"up to 23%\" gain on a feasibility-weighted task metric, with no baseline named and no latency figure quoted.",
+      "ja": "VLAの推論を無線エッジに逃がす構成を検討中なら、ページで見える数値はTRPO-Lagの実行可能性加重タスク指標での「最大23%」の向上だけで、比較対象も遅延の数値も示されていない。"
+    },
+    "https://arxiv.org/abs/2611.20676": {
+      "zh": "长程导航中局部错误会拖累后续子任务，这篇预印本针对进度跟踪与纠错，并标有真机和闭环实验，但页面没有任何数字，还不足以决定是否改动现有规划栈。",
+      "en": "For long-horizon navigation stacks where a local error can derail later subtasks, this preprint targets progress tracking and recovery and is flagged for real-robot and closed-loop experiments, but the page gives no figures to size the benefit.",
+      "ja": "局所的な誤りが後続サブタスクに波及する長距離ナビゲーションで進捗追跡と回復を狙う研究で、実機・閉ループ実験の表示はあるが数値がなく、既存のプランナーを置き換えるかはまだ判断できない。"
+    },
+    "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots": {
+      "zh": "按 TechCrunch 的转述，这轮 A 轮押注的是一种训练灵巧机器人的新方法，但摘录没有说明方法本身，应视为资金动向，而不是方法有效的证据。",
+      "en": "As TechCrunch tells it, this Series A backs a new way of training dexterous robots that the excerpt never describes, so read it as a funding signal, not as evidence that the method works.",
+      "ja": "TechCrunchの二次報道によれば、このシリーズAは器用なロボットの新しい学習手法への投資だが、手法の中身は抜粋に書かれておらず、有効性の根拠ではなく資金面の動きとして見るべきだ。"
+    },
+    "https://robohub.org/robot-swarms-trained-by-trial-and-error-in-simulation-keep-working-on-real-robots": {
+      "zh": "Robohub 的二手报道标有真机实验，但摘录只是对仿真中试错学习的一般介绍；打算让机器人群只靠仿真训练之前，先去原始研究里确认上真机后保留了多少性能。",
+      "en": "Robohub's secondhand account is flagged for real-robot experiments but quotes only a general description of trial-and-error learning in simulation, so check the original study for how much carried over before training a swarm in simulation alone.",
+      "ja": "Robohubの二次報道は実機実験の表示があるものの、抜粋はシミュレーションでの試行錯誤学習の一般的な説明にとどまるので、群ロボットをシミュレーションだけで学習させる前に、実機でどれだけ性能が保たれたか元の研究で確かめたい。"
+    },
+    "https://www.qbitai.com/2026/11/510561.html": {
+      "zh": "页面上只有标题，没有摘录、数字或实验信号；想围绕这些环境搭建 RL 训练流程，先读光轮智能自己的发布材料。",
+      "en": "Only the headline is visible here, with no excerpt, figures or experiment signals, so read the vendor's own release before building RL training around these environments.",
+      "ja": "ページにあるのは見出しだけで抜粋も数値も実験シグナルもないため、これらの環境を前提にRL学習を組む前に光轮智能自身の発表を読むべきだ。"
+    },
+    "https://www.therobotreport.com/six-agibot-g2-robots-complete-1730-tasks-in-24-hour-shanghai-convenience-store-trial": {
+      "zh": "做零售部署评估的人值得注意，这份二手报道里，在营业门店中六台只有四台通过了性能评估，该核对的是单机可靠性，而不是任务总数。",
+      "en": "For anyone scoping retail deployments, the useful detail in this secondhand account is that only four of the six robots passed a performance assessment in a working store, so per-unit reliability matters more than the task count.",
+      "ja": "小売導入を検討する側にとっての要点は、営業中の店舗で六台中四台しか性能評価に合格しなかったという二次報道の記述で、見るべきはタスク総数より一台ごとの信頼性だ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
-2. **ResWAM** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — 预印本，尚未经过同行评审；原文未提及真机结果。关注在目标硬件和实际控制频率下加速是否成立。
-4. **Learning and Verifying Progress** — 预印本，尚未经过同行评审；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
-5. **Genesis AI raises $500M to deploy glove-wearing robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **Robot swarms trained by trial and error in simulation keep working on real…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注提升在训练任务之外是否依然成立。
-8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — `AI 起草` 正在用 on-policy RL 微调流式 VLA 的团队可以留意这篇预印本：作者自报使用 GRPO 带来 20.6% 的相对提升，但伴随 5.5% 的相对下降，页面没说降的是哪项指标，采用前先核对原文。
+2. **ResWAM** — `AI 起草` 评估世界动作模型时，这篇预印本的自报成绩跨度很大，RoboTwin 2.0 为 93.8%，RoboDojo 只有 9.40%，选型时应看最接近你任务的那个基准，而不是最好的那个数。
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — `AI 起草` 考虑把 VLA 推理放到无线边缘的团队要注意，页面上唯一的数字是 TRPO-Lag 在一项可行性加权任务指标上“最多高 23%”，对比基线没有说明，也没有引用任何延迟数值。
+4. **Learning and Verifying Progress** — `AI 起草` 长程导航中局部错误会拖累后续子任务，这篇预印本针对进度跟踪与纠错，并标有真机和闭环实验，但页面没有任何数字，还不足以决定是否改动现有规划栈。
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — `AI 起草` 按 TechCrunch 的转述，这轮 A 轮押注的是一种训练灵巧机器人的新方法，但摘录没有说明方法本身，应视为资金动向，而不是方法有效的证据。
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — `AI 起草` Robohub 的二手报道标有真机实验，但摘录只是对仿真中试错学习的一般介绍；打算让机器人群只靠仿真训练之前，先去原始研究里确认上真机后保留了多少性能。
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — `AI 起草` 页面上只有标题，没有摘录、数字或实验信号；想围绕这些环境搭建 RL 训练流程，先读光轮智能自己的发布材料。
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — `AI 起草` 做零售部署评估的人值得注意，这份二手报道里，在营业门店中六台只有四台通过了性能评估，该核对的是单机可靠性，而不是任务总数。
 
 </details>
 

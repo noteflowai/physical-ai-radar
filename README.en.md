@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-2. **ResWAM** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the speed-up holds on the target hardware at control rate.
-4. **Learning and Verifying Progress** — Preprint, not yet peer-reviewed; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-5. **Genesis AI raises $500M to deploy glove-wearing robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **Robot swarms trained by trial and error in simulation keep working on real…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the gain holds outside the training tasks.
-8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Stochastic Self-Distillation for Flow-Based Vision-Language-Action Models** — `AI draft` Teams fine-tuning flow-based VLAs with on-policy RL should note this preprint's self-reported 20.6% relative improvement using GRPO, but it comes with a 5.5% relative decrease the page does not tie to a metric, so check what was traded away.
+2. **ResWAM** — `AI draft` If you are weighing a world-action model, this preprint's self-reported results span 93.8% on RoboTwin 2.0 down to 9.40% success on RoboDojo, so judge it by the benchmark closest to your task rather than the best headline.
+3. **Wireless Edge-Assisted Adaptive Latent Reasoning for Vision-Language-Action…** — `AI draft` If you are considering offloading VLA reasoning to a wireless edge, the only figure on the page is TRPO-Lag's "up to 23%" gain on a feasibility-weighted task metric, with no baseline named and no latency figure quoted.
+4. **Learning and Verifying Progress** — `AI draft` For long-horizon navigation stacks where a local error can derail later subtasks, this preprint targets progress tracking and recovery and is flagged for real-robot and closed-loop experiments, but the page gives no figures to size the benefit.
+5. **Genesis AI raises $500M to deploy glove-wearing robots** — `AI draft` As TechCrunch tells it, this Series A backs a new way of training dexterous robots that the excerpt never describes, so read it as a funding signal, not as evidence that the method works.
+6. **Robot swarms trained by trial and error in simulation keep working on real…** — `AI draft` Robohub's secondhand account is flagged for real-robot experiments but quotes only a general description of trial-and-error learning in simulation, so check the original study for how much carried over before training a swarm in simulation alone.
+7. **物理AI的强化学习仿真环境来了，光轮智能推出RoboFinals RL Envs** — `AI draft` Only the headline is visible here, with no excerpt, figures or experiment signals, so read the vendor's own release before building RL training around these environments.
+8. **Six AGIBOT G2 Robots Complete 1,730 Tasks in 24-Hour Shanghai Convenience S…** — `AI draft` For anyone scoping retail deployments, the useful detail in this secondhand account is that only four of the six robots passed a performance assessment in a working store, so per-unit reliability matters more than the task count.
 
 </details>
 
