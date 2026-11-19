@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WinDEX** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-2. **Making the World React Realistically** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **ScaleVLA** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the gain holds outside the training tasks.
-5. **Physical AI for autonomous fleet operations** — First-party release; the text gives no figures. Watch whether it holds up over long tasks without human resets.
-6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Physicl raises $10M to make the digital world real enough for robots** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-8. **California DMV bars Waymo AVs from operating on the state’s freeways** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
+1. **WinDEX** — `AI draft` For teams sourcing dexterous training data from human hands, the authors report 171 FPS causal streaming, 43.61 FPS offline reconstruction and 1,000 hours of annotations; it is a preprint, so retest on your own capture setup before building a pipeline on it.
+2. **Making the World React Realistically** — `AI draft` If you evaluate driving policies in a world model, what matters is whether other agents react to yours; this preprint cites an 85% figure on real-world interaction behaviors, but the page does not show that metric's direction or baseline.
+3. **ScaleVLA** — `AI draft` When weighing more demonstrations against a bigger model, the authors claim 10 demonstrations beat a 2B model trained with 50 (87.8% vs 85.6%), yet LIBERO-PRO success reaches only 45.1%, so robustness is still the open question in this self-reported preprint.
+4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — `AI draft` Tuning trajectory selection without retraining the world model looks cheap here, updating 16,106 parameters, but the self-reported gain is a 3.99% drop in L2 trajectory error, and the page shows no driving outcomes to justify expecting safety gains.
+5. **Physical AI for autonomous fleet operations** — `AI draft` Logistics fleet operators considering AWS for multi-robot task planning can read this as vendor guidance, but the excerpt offers only market context and no results, so fit to your own fleet is the test.
+6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — `AI draft` Teams building robots for residential communities may want this interview with a founder who moved from production autonomous heavy trucks to community robotics; it is secondary, and the excerpt names no concrete data lessons yet.
+7. **Physicl raises $10M to make the digital world real enough for robots** — `AI draft` Physicl is attacking the sim-to-real gap with a pipeline first built for online product marketing; the report gives no transfer results, so ask for real-robot evidence before buying into its simulation content.
+8. **California DMV bars Waymo AVs from operating on the state’s freeways** — `AI draft` As reported, the regulator withdrew one operating domain over recurring vehicle incursions it called an imminent hazard, so deployment teams should track such incidents per operating domain rather than only in fleet-wide totals.
 
 </details>
 

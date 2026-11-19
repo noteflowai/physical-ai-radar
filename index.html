@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.21143" rel="noopener" target="_blank">WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning</a></h3>
 <p class="figure"><strong>1,000 hours</strong><span class="context">“the WinDEX-Hand dataset with 1,000 hours of training annotations”</span></p><p class="chips"><span class="chip">43.61 FPS</span><span class="chip">171 FPS</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 想用人手动作数据训练灵巧操作的团队可以评估这套方案：作者自报因果流式重建 171 FPS、离线 43.61 FPS，并有 1,000 小时训练标注；毕竟是预印本，搭采集管线前先在自己的拍摄条件下复测。</p>
 <p class="excerpt">Human manipulation data are widely used to train robots for human-like dexterity. However, low-cost, large-scale collection in the wild remains challenging.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.22691" rel="noopener" target="_blank">Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving</a></h3>
 <p class="figure"><strong>85%</strong><span class="context">“real-world interaction behaviors by 85% and improves novel-view”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 用世界模型做自动驾驶闭环评测时，关键在于场景中的其他参与者会不会对你的策略做出反应；这篇预印本给出与真实交互行为相关的 85%，但页面看不出该指标的方向和基线，引用前先读原文。</p>
 <p class="excerpt">World models (WMs) generate driving scenarios beyond recorded logs, enabling the training and evaluation of autonomous driving systems in unseen interactions.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.21607" rel="noopener" target="_blank">ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters</a></h3>
 <p class="figure"><strong>10 demonstrations</strong><span class="context">“just 10 demonstrations outperform a 2B”</span></p><p class="chips"><span class="chip">87.8%</span><span class="chip">85.6%</span><span class="chip">45.1%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 在“多采演示”和“换更大模型”之间取舍时可参考：作者自报大模型只用 10 条演示就超过用 50 条训练的 2B 模型（87.8% 对 85.6%），但 LIBERO-PRO 成功率仅 45.1%，鲁棒性仍待验证。</p>
 <p class="excerpt">Frontier Vision-Language Models (VLMs) such as GPT-6 Astra have demonstrated remarkable capabilities in robot control, suggesting that broad pretraining provides knowledge valuable for physical action.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.22998" rel="noopener" target="_blank">Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model</a></h3>
 <p class="figure"><strong>16,106 parameters</strong><span class="context">“Fine-tuning updates 16,106 parameters across the actor”</span></p><p class="chips"><span class="chip">3.99%</span><span class="chip">0.83%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 想在不重训世界模型的前提下调整轨迹选择规则，这个思路成本很低：只更新 16,106 个参数；但作者自报的收益是 L2 轨迹误差下降 3.99%，页面上没有行驶层面的结果，别据此预期安全性提升。</p>
 <p class="excerpt">In automated driving, world models provide future scene predictions for evaluating candidate trajectories, but fixed selection rules may not capture scene-dependent trade-offs.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/" rel="noopener" target="_blank">Physical AI for autonomous fleet operations: multi-robot task planning on AWS</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 运营物流机器人车队、考虑在 AWS 上做多机任务规划的团队可以一读，但摘录只给了行业背景、没有任何效果数据，能否采用要看其规划方式是否契合你自己的车队。</p>
 <p class="excerpt">The International Federation of Robotics counts more than five million industrial robots at work worldwide, and nearly half of the almost 250,000 professional service robots shipped in 2025 were for transport and logistics.</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-11-18</span>
@@ -176,7 +176,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html" rel="noopener" target="_blank">纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 做社区场景机器人的团队值得关注：受访者曾推动自动驾驶重卡前装量产，如今转向居民社区创业；这是二手访谈，摘录没有列出具体的数据教训，借鉴前先读全文。</p>
 <p class="excerpt">做了十多年自动驾驶之后，杨睿刚决定把下一次创业的方向，从高速公路转向居民社区。 在此之前，他曾在美国高校研究三维视觉，后来加入百度研究院，负责机器人与自动驾驶实验室，又担任嬴彻科技CTO，推动自动驾驶重卡前装量产。</p>
 <ul class="signals"><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
@@ -191,7 +191,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/" rel="noopener" target="_blank">Physicl raises $10M to make the digital world real enough for robots</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 这家公司用一条原本为线上商品营销搭建的管线来缩小 sim-to-real 差距；报道没有给出任何迁移结果，采购其仿真内容前应先要求真机验证。</p>
 <p class="excerpt">Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online.</p>
 <ul class="signals"><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
@@ -206,7 +206,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/" rel="noopener" target="_blank">California DMV bars Waymo AVs from operating on the state’s freeways</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 据报道，监管方以车辆反复越界构成“迫在眉睫的公共安全危险”为由收回了一类运行场景，部署团队应按运行域分别追踪这类事件，而不是只看总体安全指标。</p>
 <p class="excerpt">The DMV determined that Waymo&#x27;s freeway operations &quot;pose an imminent hazard to public safety due to recurring incursions by its vehicles.&quot;</p>
 <footer>
 <span class="source">The Robot Report · 2026-11-17</span>

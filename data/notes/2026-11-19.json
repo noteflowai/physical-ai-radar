@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-19",
+  "generated": "2026-11-19 13:45 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.21143": {
+      "zh": "想用人手动作数据训练灵巧操作的团队可以评估这套方案：作者自报因果流式重建 171 FPS、离线 43.61 FPS，并有 1,000 小时训练标注；毕竟是预印本，搭采集管线前先在自己的拍摄条件下复测。",
+      "en": "For teams sourcing dexterous training data from human hands, the authors report 171 FPS causal streaming, 43.61 FPS offline reconstruction and 1,000 hours of annotations; it is a preprint, so retest on your own capture setup before building a pipeline on it.",
+      "ja": "人の手の動作から巧緻操作の学習データを集めたいチーム向け。著者の自己報告では因果ストリーミング171 FPS、オフライン再構成43.61 FPS、学習アノテーション1,000時間とされるが、プレプリントなので自前の撮影環境で再確認してから収集系に組み込みたい。"
+    },
+    "https://arxiv.org/abs/2611.22691": {
+      "zh": "用世界模型做自动驾驶闭环评测时，关键在于场景中的其他参与者会不会对你的策略做出反应；这篇预印本给出与真实交互行为相关的 85%，但页面看不出该指标的方向和基线，引用前先读原文。",
+      "en": "If you evaluate driving policies in a world model, what matters is whether other agents react to yours; this preprint cites an 85% figure on real-world interaction behaviors, but the page does not show that metric's direction or baseline.",
+      "ja": "自動運転の方策を世界モデルで閉ループ評価するなら、周囲の交通参加者が反応するかが要点。このプレプリントは実世界の相互作用挙動について85%という数値を示すが、指標の向きと比較対象はページからは読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.21607": {
+      "zh": "在“多采演示”和“换更大模型”之间取舍时可参考：作者自报大模型只用 10 条演示就超过用 50 条训练的 2B 模型（87.8% 对 85.6%），但 LIBERO-PRO 成功率仅 45.1%，鲁棒性仍待验证。",
+      "en": "When weighing more demonstrations against a bigger model, the authors claim 10 demonstrations beat a 2B model trained with 50 (87.8% vs 85.6%), yet LIBERO-PRO success reaches only 45.1%, so robustness is still the open question in this self-reported preprint.",
+      "ja": "デモを増やすかモデルを大きくするかの判断材料。著者は10デモで50デモ学習の2Bモデルを上回る（87.8%対85.6%）と自己報告するが、LIBERO-PROの成功率は45.1%にとどまり、頑健性は未解決とみるべき。"
+    },
+    "https://arxiv.org/abs/2611.22998": {
+      "zh": "想在不重训世界模型的前提下调整轨迹选择规则，这个思路成本很低：只更新 16,106 个参数；但作者自报的收益是 L2 轨迹误差下降 3.99%，页面上没有行驶层面的结果，别据此预期安全性提升。",
+      "en": "Tuning trajectory selection without retraining the world model looks cheap here, updating 16,106 parameters, but the self-reported gain is a 3.99% drop in L2 trajectory error, and the page shows no driving outcomes to justify expecting safety gains.",
+      "ja": "世界モデルを凍結したまま軌道選択を調整でき、更新は16,106パラメータと軽い。ただし自己報告の改善はL2軌道誤差の3.99%減で、走行結果はページに示されておらず、安全性向上までは期待しにくい。"
+    },
+    "https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws": {
+      "zh": "运营物流机器人车队、考虑在 AWS 上做多机任务规划的团队可以一读，但摘录只给了行业背景、没有任何效果数据，能否采用要看其规划方式是否契合你自己的车队。",
+      "en": "Logistics fleet operators considering AWS for multi-robot task planning can read this as vendor guidance, but the excerpt offers only market context and no results, so fit to your own fleet is the test.",
+      "ja": "物流ロボットの機群でマルチロボットのタスク計画をAWS上に置くか検討する運用者向けのベンダー資料。抜粋は市場背景だけで成果の数値はなく、自社の機群に合うかで判断することになる。"
+    },
+    "https://www.leiphone.com/category/transportation/glv3ygapgk64teus.html": {
+      "zh": "做社区场景机器人的团队值得关注：受访者曾推动自动驾驶重卡前装量产，如今转向居民社区创业；这是二手访谈，摘录没有列出具体的数据教训，借鉴前先读全文。",
+      "en": "Teams building robots for residential communities may want this interview with a founder who moved from production autonomous heavy trucks to community robotics; it is secondary, and the excerpt names no concrete data lessons yet.",
+      "ja": "住宅地向けロボットを手がけるチームには参考になる取材記事。自動運転大型トラックの量産を経て住宅コミュニティへ転じた創業者の話だが、二次情報で、抜粋には具体的なデータの教訓はまだ出てこない。"
+    },
+    "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots": {
+      "zh": "这家公司用一条原本为线上商品营销搭建的管线来缩小 sim-to-real 差距；报道没有给出任何迁移结果，采购其仿真内容前应先要求真机验证。",
+      "en": "Physicl is attacking the sim-to-real gap with a pipeline first built for online product marketing; the report gives no transfer results, so ask for real-robot evidence before buying into its simulation content.",
+      "ja": "オンライン商品販促のために作られたパイプラインをsim-to-realの課題に転用する試み。報道に転移結果は示されておらず、シミュレーション資産として採用する前に実機での裏付けを求めたい。"
+    },
+    "https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways": {
+      "zh": "据报道，监管方以车辆反复越界构成“迫在眉睫的公共安全危险”为由收回了一类运行场景，部署团队应按运行域分别追踪这类事件，而不是只看总体安全指标。",
+      "en": "As reported, the regulator withdrew one operating domain over recurring vehicle incursions it called an imminent hazard, so deployment teams should track such incidents per operating domain rather than only in fleet-wide totals.",
+      "ja": "報道によれば、規制当局は車両の度重なる侵入を差し迫った危険とみなし、特定の運行領域を取り上げた。導入側はこうした事象を全体の安全指標ではなく運行領域ごとに追うべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
