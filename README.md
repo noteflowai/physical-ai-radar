@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **WinDEX** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-2. **Making the World React Realistically** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **ScaleVLA** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注它能否减少新任务或新本体所需的数据。
-4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注提升在训练任务之外是否依然成立。
-5. **Physical AI for autonomous fleet operations** — 一手官方发布；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
-6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **Physicl raises $10M to make the digital world real enough for robots** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-8. **California DMV bars Waymo AVs from operating on the state’s freeways** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+1. **WinDEX** — `AI 起草` 想用人手动作数据训练灵巧操作的团队可以评估这套方案：作者自报因果流式重建 171 FPS、离线 43.61 FPS，并有 1,000 小时训练标注；毕竟是预印本，搭采集管线前先在自己的拍摄条件下复测。
+2. **Making the World React Realistically** — `AI 起草` 用世界模型做自动驾驶闭环评测时，关键在于场景中的其他参与者会不会对你的策略做出反应；这篇预印本给出与真实交互行为相关的 85%，但页面看不出该指标的方向和基线，引用前先读原文。
+3. **ScaleVLA** — `AI 起草` 在“多采演示”和“换更大模型”之间取舍时可参考：作者自报大模型只用 10 条演示就超过用 50 条训练的 2B 模型（87.8% 对 85.6%），但 LIBERO-PRO 成功率仅 45.1%，鲁棒性仍待验证。
+4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — `AI 起草` 想在不重训世界模型的前提下调整轨迹选择规则，这个思路成本很低：只更新 16,106 个参数；但作者自报的收益是 L2 轨迹误差下降 3.99%，页面上没有行驶层面的结果，别据此预期安全性提升。
+5. **Physical AI for autonomous fleet operations** — `AI 起草` 运营物流机器人车队、考虑在 AWS 上做多机任务规划的团队可以一读，但摘录只给了行业背景、没有任何效果数据，能否采用要看其规划方式是否契合你自己的车队。
+6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — `AI 起草` 做社区场景机器人的团队值得关注：受访者曾推动自动驾驶重卡前装量产，如今转向居民社区创业；这是二手访谈，摘录没有列出具体的数据教训，借鉴前先读全文。
+7. **Physicl raises $10M to make the digital world real enough for robots** — `AI 起草` 这家公司用一条原本为线上商品营销搭建的管线来缩小 sim-to-real 差距；报道没有给出任何迁移结果，采购其仿真内容前应先要求真机验证。
+8. **California DMV bars Waymo AVs from operating on the state’s freeways** — `AI 起草` 据报道，监管方以车辆反复越界构成“迫在眉睫的公共安全危险”为由收回了一类运行场景，部署团队应按运行域分别追踪这类事件，而不是只看总体安全指标。
 
 </details>
 
