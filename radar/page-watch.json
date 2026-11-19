@@ -51,9 +51,9 @@
       "link_count": 8
     },
     "unitree": {
-      "digest": "2102fa94a624a9dfb0b0201854223fa6a9414c5b6be5314a6c66abbe849e0970",
+      "digest": "88acc338a26a85d92366b6cbd9ad8e628a874a6c456fd4f10934f31760befbca",
       "since": "2026-11-08",
-      "changed": "2026-11-19",
+      "changed": "2026-11-20",
       "links": [
         {
           "url": "https://www.unitree.com/news/38",
@@ -306,7 +306,7 @@
         {
           "url": "https://www.1x.tech/discover/vikram-vp-operations",
           "first_seen": "2026-11-19",
-          "offered": "2026-11-19"
+          "offered": "2026-11-20"
         },
         {
           "url": "https://www.1x.tech/discover/tom-sanocki-vp-engineering",

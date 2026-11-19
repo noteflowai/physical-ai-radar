@@ -60,37 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-19
+### Today's radar · 2026-11-20
 
-`Generated: 2026-11-18 23:40 UTC` ｜ `Window: papers 2026-11-15 → 2026-11-19 · posts 2026-10-20 → 2026-11-19 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-19 23:40 UTC` ｜ `Window: papers 2026-11-16 → 2026-11-20 · posts 2026-10-21 → 2026-11-20 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning](https://arxiv.org/abs/2611.21143)**<br>`1,000 hours`&nbsp; `43.61 FPS`&nbsp; `171 FPS`<br><sub>Data engine · arXiv 2611.21143 · 2026‑11‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving](https://arxiv.org/abs/2611.22691)**<br>`85%`<br><sub>Simulation & evaluation · arXiv 2611.22691 · 2026‑11‑17</sub> |
-| 03<br>🔵&nbsp;`R` | **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)**<br>`10 demonstrations`&nbsp; `87.8%`&nbsp; `85.6%`<br><sub>Foundation models · arXiv 2611.21607 · 2026‑11‑16</sub> |
-| 04<br>🔵&nbsp;`R` | **[Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model](https://arxiv.org/abs/2611.22998)**<br>`16,106 parameters`&nbsp; `3.99%`&nbsp; `0.83%`<br><sub>Training & self-improvement · arXiv 2611.22998 · 2026‑11‑17</sub> |
-| 05<br>🟢&nbsp;`O` | **[Physical AI for autonomous fleet operations: multi-robot task planning on AWS](https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/)**<br><sub>Systems & orchestration · AWS Physical AI Blog · 2026‑11‑18</sub> |
-| 06<br>🟡&nbsp;`M` | **[纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人](https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑18</sub> |
-| 07<br>🟡&nbsp;`M` | **[Physicl raises $10M to make the digital world real enough for robots](https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/)**<br><sub>Simulation & evaluation · TechCrunch (Robotics) · 2026‑11‑06</sub> |
-| 08<br>🟡&nbsp;`M` | **[California DMV bars Waymo AVs from operating on the state’s freeways](https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑11‑17</sub> |
+| 01<br>🔵&nbsp;`R` | **[Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models](https://arxiv.org/abs/2611.24938)**<br>`39,000 hours`&nbsp; `94.8%`&nbsp; `72.4%`<br><sub>Simulation & evaluation · arXiv 2611.24938 · 2026‑11‑18</sub> |
+| 02<br>🔵&nbsp;`R` | **[Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot](https://arxiv.org/abs/2611.24138)**<br>`33.7%`&nbsp; `62.9%`&nbsp; `27.9%`<br><sub>Data engine · arXiv 2611.24138 · 2026‑11‑18</sub> |
+| 03<br>🔵&nbsp;`R` | **[$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling](https://arxiv.org/abs/2611.24940)**<br>`81.9%`&nbsp; `73.3%`&nbsp; `110 ms`<br><sub>Foundation models · arXiv 2611.24940 · 2026‑11‑18</sub> |
+| 04<br>🔵&nbsp;`R` | **[NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864)**<br>`72.4%`&nbsp; `84.4%`&nbsp; `78.75%`<br><sub>Simulation & evaluation · arXiv 2611.24864 · 2026‑11‑18</sub> |
+| 05<br>🟢&nbsp;`O` | **[Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI](https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/)**<br><sub>Foundation models · AWS Physical AI Blog · 2026‑11‑19</sub> |
+| 06<br>🟢&nbsp;`O` | **[Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X](https://www.1x.tech/discover/vikram-vp-operations)**<br><sub>Embodiment & supply chain · 1X Discover · 2026‑11‑19</sub> |
+| 07<br>🟢&nbsp;`O` | **[This featherweight, flying robot carries its own sensors and computers](https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑11‑18</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **WinDEX** — `AI draft` For teams sourcing dexterous training data from human hands, the authors report 171 FPS causal streaming, 43.61 FPS offline reconstruction and 1,000 hours of annotations; it is a preprint, so retest on your own capture setup before building a pipeline on it.
-2. **Making the World React Realistically** — `AI draft` If you evaluate driving policies in a world model, what matters is whether other agents react to yours; this preprint cites an 85% figure on real-world interaction behaviors, but the page does not show that metric's direction or baseline.
-3. **ScaleVLA** — `AI draft` When weighing more demonstrations against a bigger model, the authors claim 10 demonstrations beat a 2B model trained with 50 (87.8% vs 85.6%), yet LIBERO-PRO success reaches only 45.1%, so robustness is still the open question in this self-reported preprint.
-4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — `AI draft` Tuning trajectory selection without retraining the world model looks cheap here, updating 16,106 parameters, but the self-reported gain is a 3.99% drop in L2 trajectory error, and the page shows no driving outcomes to justify expecting safety gains.
-5. **Physical AI for autonomous fleet operations** — `AI draft` Logistics fleet operators considering AWS for multi-robot task planning can read this as vendor guidance, but the excerpt offers only market context and no results, so fit to your own fleet is the test.
-6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — `AI draft` Teams building robots for residential communities may want this interview with a founder who moved from production autonomous heavy trucks to community robotics; it is secondary, and the excerpt names no concrete data lessons yet.
-7. **Physicl raises $10M to make the digital world real enough for robots** — `AI draft` Physicl is attacking the sim-to-real gap with a pipeline first built for online product marketing; the report gives no transfer results, so ask for real-robot evidence before buying into its simulation content.
-8. **California DMV bars Waymo AVs from operating on the state’s freeways** — `AI draft` As reported, the regulator withdrew one operating domain over recurring vehicle incursions it called an imminent hazard, so deployment teams should track such incidents per operating domain rather than only in fleet-wide totals.
+1. **Phoenix** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **Ego2X** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+3. **$Z$-sight** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+4. **NereidVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **This featherweight, flying robot carries its own sensors and computers** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-19.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-20.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

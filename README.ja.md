@@ -60,37 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-19
+### 本日のレーダー · 2026-11-20
 
-`生成時刻: 2026-11-18 23:40 UTC` ｜ `対象期間: 論文 2026-11-15 → 2026-11-19 · ブログ・報道 2026-10-20 → 2026-11-19 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-19 23:40 UTC` ｜ `対象期間: 論文 2026-11-16 → 2026-11-20 · ブログ・報道 2026-10-21 → 2026-11-20 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WinDEX: Metric 3D Hand Motion Reconstruction in the Wild for Dexterous Teleoperation and Policy Learning](https://arxiv.org/abs/2611.21143)**<br>`1,000 hours`&nbsp; `43.61 FPS`&nbsp; `171 FPS`<br><sub>データエンジン · arXiv 2611.21143 · 2026‑11‑16</sub> |
-| 02<br>🔵&nbsp;`R` | **[Making the World React Realistically: A Closed-Loop Interactive World Model for Autonomous Driving](https://arxiv.org/abs/2611.22691)**<br>`85%`<br><sub>シミュレーションと評価 · arXiv 2611.22691 · 2026‑11‑17</sub> |
-| 03<br>🔵&nbsp;`R` | **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)**<br>`10 demonstrations`&nbsp; `87.8%`&nbsp; `85.6%`<br><sub>基盤モデル · arXiv 2611.21607 · 2026‑11‑16</sub> |
-| 04<br>🔵&nbsp;`R` | **[Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajectory Selection with a Frozen World Model](https://arxiv.org/abs/2611.22998)**<br>`16,106 parameters`&nbsp; `3.99%`&nbsp; `0.83%`<br><sub>学習と自己改善 · arXiv 2611.22998 · 2026‑11‑17</sub> |
-| 05<br>🟢&nbsp;`O` | **[Physical AI for autonomous fleet operations: multi-robot task planning on AWS](https://aws.amazon.com/blogs/physical-ai/physical-ai-for-autonomous-fleet-operations-multi-robot-task-planning-on-aws/)**<br><sub>システムとオーケストレーション · AWS Physical AI Blog · 2026‑11‑18</sub> |
-| 06<br>🟡&nbsp;`M` | **[纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人](https://www.leiphone.com/category/transportation/GLv3yGaPGK64teuS.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑18</sub> |
-| 07<br>🟡&nbsp;`M` | **[Physicl raises $10M to make the digital world real enough for robots](https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/)**<br><sub>シミュレーションと評価 · TechCrunch (Robotics) · 2026‑11‑06</sub> |
-| 08<br>🟡&nbsp;`M` | **[California DMV bars Waymo AVs from operating on the state’s freeways](https://www.therobotreport.com/california-dmv-bars-waymo-avs-from-operating-on-the-states-freeways/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑11‑17</sub> |
+| 01<br>🔵&nbsp;`R` | **[Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models](https://arxiv.org/abs/2611.24938)**<br>`39,000 hours`&nbsp; `94.8%`&nbsp; `72.4%`<br><sub>シミュレーションと評価 · arXiv 2611.24938 · 2026‑11‑18</sub> |
+| 02<br>🔵&nbsp;`R` | **[Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot](https://arxiv.org/abs/2611.24138)**<br>`33.7%`&nbsp; `62.9%`&nbsp; `27.9%`<br><sub>データエンジン · arXiv 2611.24138 · 2026‑11‑18</sub> |
+| 03<br>🔵&nbsp;`R` | **[$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling](https://arxiv.org/abs/2611.24940)**<br>`81.9%`&nbsp; `73.3%`&nbsp; `110 ms`<br><sub>基盤モデル · arXiv 2611.24940 · 2026‑11‑18</sub> |
+| 04<br>🔵&nbsp;`R` | **[NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864)**<br>`72.4%`&nbsp; `84.4%`&nbsp; `78.75%`<br><sub>シミュレーションと評価 · arXiv 2611.24864 · 2026‑11‑18</sub> |
+| 05<br>🟢&nbsp;`O` | **[Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI](https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/)**<br><sub>基盤モデル · AWS Physical AI Blog · 2026‑11‑19</sub> |
+| 06<br>🟢&nbsp;`O` | **[Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X](https://www.1x.tech/discover/vikram-vp-operations)**<br><sub>ハードウェアとサプライチェーン · 1X Discover · 2026‑11‑19</sub> |
+| 07<br>🟢&nbsp;`O` | **[This featherweight, flying robot carries its own sensors and computers](https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118)**<br><sub>ハードウェアとサプライチェーン · MIT News (Robotics) · 2026‑11‑18</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **WinDEX** — `AI 下書き` 人の手の動作から巧緻操作の学習データを集めたいチーム向け。著者の自己報告では因果ストリーミング171 FPS、オフライン再構成43.61 FPS、学習アノテーション1,000時間とされるが、プレプリントなので自前の撮影環境で再確認してから収集系に組み込みたい。
-2. **Making the World React Realistically** — `AI 下書き` 自動運転の方策を世界モデルで閉ループ評価するなら、周囲の交通参加者が反応するかが要点。このプレプリントは実世界の相互作用挙動について85%という数値を示すが、指標の向きと比較対象はページからは読み取れない。
-3. **ScaleVLA** — `AI 下書き` デモを増やすかモデルを大きくするかの判断材料。著者は10デモで50デモ学習の2Bモデルを上回る（87.8%対85.6%）と自己報告するが、LIBERO-PROの成功率は45.1%にとどまり、頑健性は未解決とみるべき。
-4. **Residual-Guided Lightweight Reinforcement Learning for Risk-Aware Trajector…** — `AI 下書き` 世界モデルを凍結したまま軌道選択を調整でき、更新は16,106パラメータと軽い。ただし自己報告の改善はL2軌道誤差の3.99%減で、走行結果はページに示されておらず、安全性向上までは期待しにくい。
-5. **Physical AI for autonomous fleet operations** — `AI 下書き` 物流ロボットの機群でマルチロボットのタスク計画をAWS上に置くか検討する運用者向けのベンダー資料。抜粋は市場背景だけで成果の数値はなく、自社の機群に合うかで判断することになる。
-6. **纽娲机器人创始人杨睿刚：自动驾驶踩过的数据坑，机器人还会再踩一遍丨物理 AI 50 人** — `AI 下書き` 住宅地向けロボットを手がけるチームには参考になる取材記事。自動運転大型トラックの量産を経て住宅コミュニティへ転じた創業者の話だが、二次情報で、抜粋には具体的なデータの教訓はまだ出てこない。
-7. **Physicl raises $10M to make the digital world real enough for robots** — `AI 下書き` オンライン商品販促のために作られたパイプラインをsim-to-realの課題に転用する試み。報道に転移結果は示されておらず、シミュレーション資産として採用する前に実機での裏付けを求めたい。
-8. **California DMV bars Waymo AVs from operating on the state’s freeways** — `AI 下書き` 報道によれば、規制当局は車両の度重なる侵入を差し迫った危険とみなし、特定の運行領域を取り上げた。導入側はこうした事象を全体の安全指標ではなく運行領域ごとに追うべきだ。
+1. **Phoenix** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Ego2X** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+3. **$Z$-sight** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+4. **NereidVLA** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — 当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — 当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **This featherweight, flying robot carries its own sensors and computers** — 当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-19.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-20.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-19",
+  "as_of": "2026-11-20",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8011,6 +8011,136 @@
       "signals": [],
       "numbers": [],
       "excerpt": "The DMV determined that Waymo's freeway operations \"pose an imminent hazard to public safety due to recurring incursions by its vehicles.\""
+    },
+    {
+      "id": "arxiv:2611.24938",
+      "date": "2026-11-20",
+      "published": "2026-11-18",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.24938",
+      "title": "Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models",
+      "url": "https://arxiv.org/abs/2611.24938",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "39,000 hours",
+        "94.8%",
+        "72.4%"
+      ],
+      "excerpt": "World-action models jointly predict future observations and actions, yet reconstruction-oriented visual representations do not explicitly emphasize the spatial relationships and object-state changes needed for manipulation."
+    },
+    {
+      "id": "arxiv:2611.24138",
+      "date": "2026-11-20",
+      "published": "2026-11-18",
+      "lane": "data",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.24138",
+      "title": "Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot",
+      "url": "https://arxiv.org/abs/2611.24138",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "33.7%",
+        "62.9%",
+        "27.9%",
+        "40.5%"
+      ],
+      "excerpt": "Embodied models depend on real interaction data, yet collecting it on physical robots is slow and labor-intensive."
+    },
+    {
+      "id": "arxiv:2611.24940",
+      "date": "2026-11-20",
+      "published": "2026-11-18",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.24940",
+      "title": "$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling",
+      "url": "https://arxiv.org/abs/2611.24940",
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "numbers": [
+        "81.9%",
+        "73.3%",
+        "110 ms"
+      ],
+      "excerpt": "We introduce $Z$-sight, a unified robot foundation model that couples vision-language-action (VLA) and generative latent world modeling."
+    },
+    {
+      "id": "arxiv:2611.24864",
+      "date": "2026-11-20",
+      "published": "2026-11-18",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.24864",
+      "title": "NereidVLA: Learning to Understand and Navigate the Underwater World",
+      "url": "https://arxiv.org/abs/2611.24864",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "72.4%",
+        "84.4%",
+        "78.75%",
+        "47.50%"
+      ],
+      "excerpt": "Underwater navigation requires translating visual spatial cues into motion, yet marine vision-language datasets rarely include paired robot trajectories."
+    },
+    {
+      "id": "aws-physical-ai:7b38022a69e8",
+      "date": "2026-11-20",
+      "published": "2026-11-19",
+      "lane": "foundation",
+      "evidence": "O",
+      "source_id": "aws-physical-ai",
+      "publisher": "AWS Physical AI Blog",
+      "title": "Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI",
+      "url": "https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "Introduction Physical AI is AI that acts in the physical world. Where a chatbot generates text and an agent calls APIs, a Physical AI system perceives its surroundings through sensors, reasons about objects and spatial relationships, acts…"
+    },
+    {
+      "id": "1x:8c065761a6aa",
+      "date": "2026-11-20",
+      "published": "2026-11-19",
+      "lane": "hardware",
+      "evidence": "O",
+      "source_id": "1x",
+      "publisher": "1X Discover",
+      "title": "Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X",
+      "url": "https://www.1x.tech/discover/vikram-vp-operations",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "View More # ExperienceNEO"
+    },
+    {
+      "id": "mit-news-robotics:62626f8cbcfd",
+      "date": "2026-11-20",
+      "published": "2026-11-18",
+      "lane": "hardware",
+      "evidence": "O",
+      "source_id": "mit-news-robotics",
+      "publisher": "MIT News (Robotics)",
+      "title": "This featherweight, flying robot carries its own sensors and computers",
+      "url": "https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "The speedy microrobot flies without an attached motion-capture system, moving it closer to applications like agriculture or industrial surveillance."
     }
   ]
 }
