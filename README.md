@@ -80,13 +80,13 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **Phoenix** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Ego2X** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-3. **$Z$-sight** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
-4. **NereidVLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-7. **This featherweight, flying robot carries its own sensors and computers** — 一手官方发布；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **Phoenix** — `AI 起草` 在为世界动作模型选视觉表征时，这篇预印本主张重建式特征不够强调操作所需的空间关系和物体状态变化；页面可见的只有 LIBERO-Plus 94.8%、RoboTwin 2.0 72.4% 两个基准成绩，真机部分要读原文核对。
+2. **Ego2X** — `AI 起草` 打算用第一人称人类数据替代部分真机采集的团队，该重点看接触重定向：作者自报标注接触实现 62.9%（页面同时列出官方 HuRo 流程为 27.9%），任务成功率从零样本 40.5% 升到 67.0%，均为预印本自报。
+3. **$Z$-sight** — `AI 起草` 在纯 VLA 与耦合潜在世界模型的方案之间做选择时可以参考：预印本自报 SIMPLE 上 81.9%、六个 Unitree 任务上 73.3%，每个动作块 110 ms；上线前先确认这个延迟放得进你的控制回路。
+4. **NereidVLA** — `AI 起草` 水下导航团队普遍缺少与视觉语言数据配对的机器人轨迹，这篇预印本自报实验室水池成功率 78.75%，对比 InternVLA-N1 的 47.50%；页面未显示开放水域结果，只能当作早期信号。
+5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — `AI 起草` 已在 AWS 上、想把 VLA 训练交给托管服务的团队可以参考这篇官方教程，但页面摘录只是 Physical AI 的概念介绍，没有成本或训练时长数据，预算前需要自己跑一次试验。
+6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — `AI 起草` 这是一则运营高管任命，页面本身标注的日期是 AUG 07 '25，并非新的产品或交付消息；跟踪 1X 供货的人从中得不到产量、价格或交付时间。
+7. **This featherweight, flying robot carries its own sensors and computers** — `AI 起草` 不再依赖外接动作捕捉系统，是微型飞行机器人走向农业或工业巡检的前提；但这篇官方新闻没有给出任何数字，应视为研究进展，而不是可以排进计划的硬件。
 
 </details>
 
