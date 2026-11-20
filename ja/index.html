@@ -77,7 +77,7 @@
 <a href="#p3" class="blip" style="--lane:#8b5cf6;--delay:1.05s"><circle cx="-12.6" cy="-144.4" r="11" class="halo"/><circle cx="-12.6" cy="-144.4" r="5"/><title>$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling</title></a>
 <a href="#p4" class="blip" style="--lane:#fb923c;--delay:1.40s"><circle cx="89.0" cy="106.0" r="11" class="halo"/><circle cx="89.0" cy="106.0" r="5"/><title>NereidVLA: Learning to Understand and Navigate the Underwater World</title></a>
 <a href="#p5" class="blip" style="--lane:#8b5cf6;--delay:1.75s"><circle cx="10.2" cy="-116.7" r="11" class="halo"/><circle cx="10.2" cy="-116.7" r="5"/><title>Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI</title></a>
-<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-78.8" cy="-66.1" r="11" class="halo"/><circle cx="-78.8" cy="-66.1" r="5"/><title>Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 &#x27;251X</title></a>
+<a href="#p6" class="blip" style="--lane:#22d3ee;--delay:2.10s"><circle cx="-78.7" cy="-66.1" r="11" class="halo"/><circle cx="-78.7" cy="-66.1" r="5"/><title>Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 &#x27;251X</title></a>
 <a href="#p7" class="blip" style="--lane:#22d3ee;--delay:2.45s"><circle cx="-59.9" cy="-71.4" r="11" class="halo"/><circle cx="-59.9" cy="-71.4" r="5"/><title>This featherweight, flying robot carries its own sensors and computers</title></a>
 <circle class="core" r="3"/></svg>
 <ul class="lane-legend"><li style="--lane:#8b5cf6">基盤モデル（VLA / WAM） <b>8</b></li><li style="--lane:#38bdf8">データエンジン <b>6</b></li><li style="--lane:#34d399">学習と自己改善 <b>3</b></li><li style="--lane:#fb923c">シミュレーションと評価 <b>14</b></li><li style="--lane:#f472b6">エッジとリアルタイム <b>5</b></li><li style="--lane:#facc15">安全・権限・コンプライアンス <b>3</b></li><li style="--lane:#a3e635">システムと編成 <b>3</b></li><li style="--lane:#22d3ee">ハードウェアと供給網 <b>8</b></li></ul>
@@ -98,7 +98,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.24938" rel="noopener" target="_blank">Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models</a></h3>
 <p class="figure"><strong>39,000 hours</strong><span class="context">“we curate approximately 39,000 hours of egocentric and”</span></p><p class="chips"><span class="chip">94.8%</span><span class="chip">72.4%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 世界行動モデルの視覚表現を選ぶ際、このプレプリントは再構成型の特徴が操作に必要な空間関係と物体状態の変化を十分に捉えないと主張する。ページで見える数値はLIBERO-Plus 94.8%とRoboTwin 2.0 72.4%のベンチマークのみで、実機の結果は原文で確認したい。</p>
 <p class="excerpt">World-action models jointly predict future observations and actions, yet reconstruction-oriented visual representations do not explicitly emphasize the spatial relationships and object-state changes needed for manipulation.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.24138" rel="noopener" target="_blank">Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot</a></h3>
 <p class="figure"><strong>33.7%</strong><span class="context">“hand depth error by 33.7%”</span></p><p class="chips"><span class="chip">62.9%</span><span class="chip">27.9%</span><span class="chip">40.5%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 実機での遅いデータ収集を一人称視点の人間データで補いたいなら、接触リターゲティングが要点。著者は注釈付き接触の62.9%を再現（公式HuRoパイプラインは27.9%と記載）、タスク成功率はゼロショット40.5%から67.0%へと自己報告しているが、査読前の数値である。</p>
 <p class="excerpt">Embodied models depend on real interaction data, yet collecting it on physical robots is slow and labor-intensive.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.24940" rel="noopener" target="_blank">$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling</a></h3>
 <p class="figure"><strong>81.9%</strong><span class="context">“$Z$-sight achieves 81.9% success on SIMPLE”</span></p><p class="chips"><span class="chip">73.3%</span><span class="chip">110 ms</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 通常のVLAと潜在世界モデルを組み合わせた構成を比べる材料になる。プレプリントの自己報告ではSIMPLEで81.9%、Unitreeの6タスクで73.3%、チャンクあたり110 ms。採用前にこの遅延が自社の制御ループに収まるかを確かめたい。</p>
 <p class="excerpt">We introduce $Z$-sight, a unified robot foundation model that couples vision-language-action (VLA) and generative latent world modeling.</p>
 <ul class="signals"><li>定量結果あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.24864" rel="noopener" target="_blank">NereidVLA: Learning to Understand and Navigate the Underwater World</a></h3>
 <p class="figure"><strong>72.4%</strong><span class="context">“increases simulation success from 72.4% to 84.4%”</span></p><p class="chips"><span class="chip">84.4%</span><span class="chip">78.75%</span><span class="chip">47.50%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 視覚言語データと対になるロボット軌跡が乏しい水中ナビゲーションでは参考になる。このプレプリントは実験用プールで78.75%、InternVLA-N1は47.50%と自己報告している。ページに開水域での数値はなく、初期段階の兆候として扱うのが妥当。</p>
 <p class="excerpt">Underwater navigation requires translating visual spatial cues into motion, yet marine vision-language datasets rarely include paired robot trajectories.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/" rel="noopener" target="_blank">Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> AWS上でVLAの学習をマネージドサービスに任せるか検討しているチーム向けの公式手順。ただしページの抜粋はPhysical AIの一般的な紹介にとどまり、費用や学習時間の数値はないため、見積もり前に自前で試験実行が必要。</p>
 <p class="excerpt">Introduction Physical AI is AI that acts in the physical world. Where a chatbot generates text and an agent calls APIs, a Physical AI system perceives its surroundings through sensors, reasons about objects and spatial relationships, acts…</p>
 <footer>
 <span class="source">AWS Physical AI Blog · 2026-11-19</span>
@@ -175,7 +175,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://www.1x.tech/discover/vikram-vp-operations" rel="noopener" target="_blank">Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 &#x27;251X</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 運営担当役員の就任発表で、ページ自体の日付はAUG 07 &#x27;25。新製品や出荷の知らせではなく、1Xの供給を追う立場からは生産量、価格、納期の情報は得られない。</p>
 <p class="excerpt">View More # ExperienceNEO</p>
 <footer>
 <span class="source">1X Discover · 2026-11-19</span>
@@ -189,7 +189,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118" rel="noopener" target="_blank">This featherweight, flying robot carries its own sensors and computers</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 外付けのモーションキャプチャなしで飛べることは、農業や産業監視への応用に欠かせない一歩。ただし発表に数値はなく、計画に組み込めるハードウェアではなく研究上の前進として受け止めるべき。</p>
 <p class="excerpt">The speedy microrobot flies without an attached motion-capture system, moving it closer to applications like agriculture or industrial surveillance.</p>
 <footer>
 <span class="source">MIT News (Robotics) · 2026-11-18</span>

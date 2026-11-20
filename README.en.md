@@ -78,13 +78,13 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **Phoenix** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **Ego2X** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-3. **$Z$-sight** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-4. **NereidVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **This featherweight, flying robot carries its own sensors and computers** — First-party release; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Phoenix** — `AI draft` If you are choosing the visual representation for a world-action model, this preprint argues reconstruction-oriented features underweight spatial relations and object-state changes; the page shows only benchmark figures, 94.8% on LIBERO-Plus and 72.4% on RoboTwin 2.0, so check the real-robot part in the paper.
+2. **Ego2X** — `AI draft` Teams hoping egocentric human data can stand in for slow robot collection should look at the contact retargeting: the authors report 62.9% of annotated contacts realized, with 27.9% listed for the official HuRo pipeline, and task success rising from 40.5% zero-shot to 67.0%, all self-reported.
+3. **$Z$-sight** — `AI draft` When weighing a plain VLA against one coupled with a latent world model, this preprint reports 81.9% on SIMPLE and 73.3% across six Unitree tasks at 110 ms per chunk; confirm that latency fits your control loop before building on it.
+4. **NereidVLA** — `AI draft` Underwater navigation teams short of paired robot trajectories can note this preprint's laboratory-pool success of 78.75% against 47.50% for InternVLA-N1; the page shows no open-water figure, so read it as an early, self-reported signal.
+5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — `AI draft` For teams already on AWS weighing managed training for VLA policies, this is a first-party walkthrough, but the visible excerpt is only a general Physical AI introduction with no cost or training-time figures, so budget a trial run of your own.
+6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — `AI draft` This is an operations executive hire that the page itself dates AUG 07 '25, not a new product or delivery update; anyone tracking 1X supply gets no volumes, prices or delivery dates from it.
+7. **This featherweight, flying robot carries its own sensors and computers** — `AI draft` Flying without an attached motion-capture system is the step field uses such as agriculture or industrial surveillance need; the release gives no figures, so treat it as a research milestone rather than hardware to plan around.
 
 </details>
 
