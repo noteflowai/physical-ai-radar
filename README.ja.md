@@ -60,35 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-20
+### 本日のレーダー · 2026-11-21
 
-`生成時刻: 2026-11-19 23:40 UTC` ｜ `対象期間: 論文 2026-11-16 → 2026-11-20 · ブログ・報道 2026-10-21 → 2026-11-20 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-20 23:40 UTC` ｜ `対象期間: 論文 2026-11-17 → 2026-11-21 · ブログ・報道 2026-10-22 → 2026-11-21 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models](https://arxiv.org/abs/2611.24938)**<br>`39,000 hours`&nbsp; `94.8%`&nbsp; `72.4%`<br><sub>シミュレーションと評価 · arXiv 2611.24938 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot](https://arxiv.org/abs/2611.24138)**<br>`33.7%`&nbsp; `62.9%`&nbsp; `27.9%`<br><sub>データエンジン · arXiv 2611.24138 · 2026‑11‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling](https://arxiv.org/abs/2611.24940)**<br>`81.9%`&nbsp; `73.3%`&nbsp; `110 ms`<br><sub>基盤モデル · arXiv 2611.24940 · 2026‑11‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864)**<br>`72.4%`&nbsp; `84.4%`&nbsp; `78.75%`<br><sub>シミュレーションと評価 · arXiv 2611.24864 · 2026‑11‑18</sub> |
-| 05<br>🟢&nbsp;`O` | **[Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI](https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/)**<br><sub>基盤モデル · AWS Physical AI Blog · 2026‑11‑19</sub> |
-| 06<br>🟢&nbsp;`O` | **[Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X](https://www.1x.tech/discover/vikram-vp-operations)**<br><sub>ハードウェアとサプライチェーン · 1X Discover · 2026‑11‑19</sub> |
-| 07<br>🟢&nbsp;`O` | **[This featherweight, flying robot carries its own sensors and computers](https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118)**<br><sub>ハードウェアとサプライチェーン · MIT News (Robotics) · 2026‑11‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>シミュレーションと評価 · arXiv 2611.25251 · 2026‑11‑18</sub> |
+| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>シミュレーションと評価 · arXiv 2611.26161 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>システムとオーケストレーション · arXiv 2611.26341 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>基盤モデル · arXiv 2611.25667 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>基盤モデル · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>システムとオーケストレーション · Robohub · 2026‑11‑20</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Phoenix** — `AI 下書き` 世界行動モデルの視覚表現を選ぶ際、このプレプリントは再構成型の特徴が操作に必要な空間関係と物体状態の変化を十分に捉えないと主張する。ページで見える数値はLIBERO-Plus 94.8%とRoboTwin 2.0 72.4%のベンチマークのみで、実機の結果は原文で確認したい。
-2. **Ego2X** — `AI 下書き` 実機での遅いデータ収集を一人称視点の人間データで補いたいなら、接触リターゲティングが要点。著者は注釈付き接触の62.9%を再現（公式HuRoパイプラインは27.9%と記載）、タスク成功率はゼロショット40.5%から67.0%へと自己報告しているが、査読前の数値である。
-3. **$Z$-sight** — `AI 下書き` 通常のVLAと潜在世界モデルを組み合わせた構成を比べる材料になる。プレプリントの自己報告ではSIMPLEで81.9%、Unitreeの6タスクで73.3%、チャンクあたり110 ms。採用前にこの遅延が自社の制御ループに収まるかを確かめたい。
-4. **NereidVLA** — `AI 下書き` 視覚言語データと対になるロボット軌跡が乏しい水中ナビゲーションでは参考になる。このプレプリントは実験用プールで78.75%、InternVLA-N1は47.50%と自己報告している。ページに開水域での数値はなく、初期段階の兆候として扱うのが妥当。
-5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — `AI 下書き` AWS上でVLAの学習をマネージドサービスに任せるか検討しているチーム向けの公式手順。ただしページの抜粋はPhysical AIの一般的な紹介にとどまり、費用や学習時間の数値はないため、見積もり前に自前で試験実行が必要。
-6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — `AI 下書き` 運営担当役員の就任発表で、ページ自体の日付はAUG 07 '25。新製品や出荷の知らせではなく、1Xの供給を追う立場からは生産量、価格、納期の情報は得られない。
-7. **This featherweight, flying robot carries its own sensors and computers** — `AI 下書き` 外付けのモーションキャプチャなしで飛べることは、農業や産業監視への応用に欠かせない一歩。ただし発表に数値はなく、計画に組み込めるハードウェアではなく研究上の前進として受け止めるべき。
+1. **WEVO** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **One View, One Action** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Reasoning on Call** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
+4. **CauSyncVLA** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **Video Friday** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — 当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-20.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-21.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

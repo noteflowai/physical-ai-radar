@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-20",
+  "as_of": "2026-11-21",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8141,6 +8141,154 @@
       "signals": [],
       "numbers": [],
       "excerpt": "The speedy microrobot flies without an attached motion-capture system, moving it closer to applications like agriculture or industrial surveillance."
+    },
+    {
+      "id": "arxiv:2611.25251",
+      "date": "2026-11-21",
+      "published": "2026-11-18",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25251",
+      "title": "WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2611.25251",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "23.3%",
+        "75.0%",
+        "48.3%"
+      ],
+      "excerpt": "Reinforcement learning (RL) can improve vision-language-action (VLA) policies beyond imitation, but humanoid exploration is unsafe and simulator RL can exploit residual sim-to-real gaps."
+    },
+    {
+      "id": "arxiv:2611.26161",
+      "date": "2026-11-21",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26161",
+      "title": "One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency",
+      "url": "https://arxiv.org/abs/2611.26161",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "88.1%",
+        "85.7%",
+        "28.3%",
+        "58.3%"
+      ],
+      "excerpt": "Multi-view vision-language-action (VLA) models still face challenges in spatial generalization, particularly under changes in camera viewpoints and robot initial states."
+    },
+    {
+      "id": "arxiv:2611.26341",
+      "date": "2026-11-21",
+      "published": "2026-11-19",
+      "lane": "systems",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26341",
+      "title": "Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.26341",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "numbers": [
+        "65.3%"
+      ],
+      "excerpt": "Large multimodal models can support long-horizon robot manipulation, but frequent model calls incur substantial latency and token costs."
+    },
+    {
+      "id": "arxiv:2611.25667",
+      "date": "2026-11-21",
+      "published": "2026-11-19",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25667",
+      "title": "CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control",
+      "url": "https://arxiv.org/abs/2611.25667",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "latency"
+      ],
+      "numbers": [
+        "93.8%"
+      ],
+      "excerpt": "Vision-Language-Action (VLA) policies must react while visual inference is still running. Overlapping computation and execution reduces waiting, yet leaves perceptual memory stale and successive action chunks disconnected."
+    },
+    {
+      "id": "ieee-spectrum-robotics:4f39f4f6079c",
+      "date": "2026-11-21",
+      "published": "2026-11-20",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "ieee-spectrum-robotics",
+      "publisher": "IEEE Spectrum Robotics",
+      "title": "Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces",
+      "url": "https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "Drones navigating cluttered spaces often encounter openings narrower than their bodies. We present a design method that jointly optimizes a quadrotor’s geometry and how its two side arms bend on contact."
+    },
+    {
+      "id": "leiphone:5ed0761ba71c",
+      "date": "2026-11-21",
+      "published": "2026-11-20",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "方程豹钛9上市：27.99万元起，折叠方向盘首次上车",
+      "url": "https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "11月19日，方程豹钛9正式上市，售价27.99万元起，置换价27.39万元起。作为比亚迪2026年收官车型，钛9首搭折叠智舱及DMS超级混动全能平台，进一步进入大型六座SUV市场。"
+    },
+    {
+      "id": "nvidia-developer-robotics:70cecf2cdf07",
+      "date": "2026-11-21",
+      "published": "2026-11-02",
+      "lane": "foundation",
+      "evidence": "O",
+      "source_id": "nvidia-developer-robotics",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "title": "Build World Models for Interactive Simulation with NVIDIA Cosmos",
+      "url": "https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "Physical AI developers working with world models face two distinct challenges: adapting models to their sensors, tasks, and data, and getting those models into..."
+    },
+    {
+      "id": "robohub:e37d49a8dce8",
+      "date": "2026-11-21",
+      "published": "2026-11-20",
+      "lane": "systems",
+      "evidence": "M",
+      "source_id": "robohub",
+      "publisher": "Robohub",
+      "title": "Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro",
+      "url": "https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/",
+      "signals": [
+        "open_release"
+      ],
+      "numbers": [],
+      "excerpt": "Claire chatted to Sebastian Castro about developing open-source software for robot task planning and behaviour."
     }
   ]
 }

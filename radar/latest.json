@@ -1,28 +1,28 @@
 {
-  "date": "2026-11-20",
-  "generated": "2026-11-19 23:40 UTC",
-  "window": "papers 2026-11-16 → 2026-11-20 · posts 2026-10-21 → 2026-11-20 (UTC)",
+  "date": "2026-11-21",
+  "generated": "2026-11-20 23:40 UTC",
+  "window": "papers 2026-11-17 → 2026-11-21 · posts 2026-10-22 → 2026-11-21 (UTC)",
   "window_detail": {
-    "day": "2026-11-20",
-    "papers_from": "2026-11-16",
-    "posts_from": "2026-10-21",
+    "day": "2026-11-21",
+    "papers_from": "2026-11-17",
+    "posts_from": "2026-10-22",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.24938",
-      "title": "Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models",
-      "url": "https://arxiv.org/abs/2611.24938",
-      "publisher": "arXiv 2611.24938",
+      "id": "arxiv:2611.25251",
+      "title": "WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2611.25251",
+      "publisher": "arXiv 2611.25251",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-18",
       "lane": "simeval",
       "score": 3.59,
       "numbers": [
-        "39,000 hours",
-        "94.8%",
-        "72.4%"
+        "23.3%",
+        "75.0%",
+        "48.3%"
       ],
       "signals": [
         "numbers",
@@ -30,23 +30,23 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "World-action models jointly predict future observations and actions, yet reconstruction-oriented visual representations do not explicitly emphasize the spatial relationships and object-state changes needed for manipulation. We introduce Phoenix, which learns representations of scene structure for world-action modeling. Specifically, Phoenix Encoder enriches DINOv3's general visual semantics through dual-teacher distillation of geometric and spatiotemporal semantic knowledge. Next, CS-VAE causally aggregates and compresses Phoenix Encoder features into generative latents while preserving scene information and spatial layout. Finally, Phoenix jointly predicts these latents, complementary appearance latents, and robot actions, linking scene evolution with action generation. To study pretraining data efficiency, we curate approximately 39,000 hours of egocentric and robot manipulation data for representation learning and use the robot demonstration subset for WAM pretraining. Following benchmark-specific post-training, Phoenix achieves state-of-the-art performance across simulation and real-robot benchmarks spanning single-arm, bimanual, and dexterous manipulation. It demonstrates strong robustness to perturbations, achieving success rates of 94.8% on LIBERO-Plus and 72.4% on RoboTwin 2.0 C2R, alongside strong cross-embodiment transfer and real-world manipulation performance on Bench2Dex and RoboDojo-RealWorld, respectively. Pretraining-scale analysis shows larger performance gains from data scaling than a video-VAE-only baseline, indicating stronger scaling benefits and more effective data utilization. Moreover, Phoenix maintains high success rates when adapted with limited downstream demonstrations, demonstrating strong few-shot adaptation. Our code, pretraining data, and models are available on the project page to help the community reproduce our results."
+      "summary": "Reinforcement learning (RL) can improve vision-language-action (VLA) policies beyond imitation, but humanoid exploration is unsafe and simulator RL can exploit residual sim-to-real gaps. We present WEVO, a teleoperation-free framework for post-training a whole-body humanoid VLA in an action-conditioned video world model (WM). Simulated manipulation and locomotion play data improve contact-dynamics and viewpoint-change prediction. A VLA trained on synthetic demonstrations collects 20 autonomous real robot rollouts per task to align the WM with deployment observations. The VLA, whole-body controller (WBC), and video WM then form a closed-loop RL environment with dense progress rewards. Across three real robot tasks, play data improves every evaluated WM metric and downstream policy success; video WM RL raises mean success from 23.3% to 75.0%, compared with 48.3% for real robot RL. We therefore leverage the complementary strengths of both environments: simulation provides policy initialization and broad coverage, while the video WM offers a deployment-aligned environment for policy improvement. Project website: https://qianzhong-chen.github.io/wevo.github.io/."
     },
     {
-      "id": "arxiv:2611.24138",
-      "title": "Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot",
-      "url": "https://arxiv.org/abs/2611.24138",
-      "publisher": "arXiv 2611.24138",
+      "id": "arxiv:2611.26161",
+      "title": "One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency",
+      "url": "https://arxiv.org/abs/2611.26161",
+      "publisher": "arXiv 2611.26161",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-18",
-      "lane": "data",
-      "score": 3.52,
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "score": 3.59,
       "numbers": [
-        "33.7%",
-        "62.9%",
-        "27.9%",
-        "40.5%"
+        "88.1%",
+        "85.7%",
+        "28.3%",
+        "58.3%"
       ],
       "signals": [
         "numbers",
@@ -54,116 +54,135 @@
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Embodied models depend on real interaction data, yet collecting it on physical robots is slow and labor-intensive. Recent ego-to-robot pipelines retarget first-person view human videos to robot data via transferring hand and arm motion. They judge fidelity mainly by visual appearance. However, trajectories often fail in terms of physics: fingers hover beside objects, and grippers close on empty space. We argue that how the object moves and the contacts that drive the motion count. Thus, we present Ego2X, an object-centric framework that converts monocular egocentric video into physically executable robot data across dexterous hands and parallel grippers. Ego2X centers on CORE (Contact-centric Object-interaction REpresentation), which records each contact on the object by its surface anchor, as well as relative force, grasp mode, and interaction state. Throughout the pipeline, CORE corrects hand-object drift via object-relative constraints, steers inverse kinematics toward contacts the robot must realize, and preserves held objects during arm erasure and robot compositing. On HOT3D, contact-driven correction reduces in-contact hand depth error by 33.7%, while on EgoDex, contact-driven retargeting realizes 62.9% of annotated contacts, surpassing the official HuRo pipeline (27.9%). In RoboTwin 2.0, post-training X-VLA on Ego2X episodes alone, without simulator demonstrations, raises task success rate from 40.5% zero-shot to 67.0% across 200 paired scenes. We will publicly release our conversion pipeline and CORE-annotated dataset for dexterous hands and parallel grippers."
+      "summary": "Multi-view vision-language-action (VLA) models still face challenges in spatial generalization, particularly under changes in camera viewpoints and robot initial states. These models typically receive action supervision only in the robot base frame, requiring them to implicitly learn the spatial correspondence between observations from each view and base-frame actions. We propose One View, One Action (OVOA-VLA), which learns to predict actions in each view's camera frame, allowing the same physical motion to provide diverse, observation-aligned supervision across views. OVOA-VLA jointly trains a base-frame expert and view-specific action experts, whose robot-state inputs and action targets are expressed in their respective camera frames. Two complementary directed attention graphs model both directions of interaction between the base and view-specific experts, jointly leveraging view-specific action supervision to improve base-frame prediction. Cross Graph Consistency further encourages agreement between the two graphs' base-frame predictions for the same sample. With the same multi-view inputs, the model supports both full and base-only inference. Experiments across multiple simulation benchmarks demonstrate improved manipulation performance and robustness to camera-viewpoint and robot-initialization perturbations. Full and base-only inference achieve average success rates of 88.1% and 85.7% on LIBERO-Plus, respectively. In real-world evaluations, base-only inference raises the average success rates from $π_{0.5}$'s 28.3% to 58.3% across three tasks under spatial distribution shifts."
     },
     {
-      "id": "arxiv:2611.24940",
-      "title": "$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling",
-      "url": "https://arxiv.org/abs/2611.24940",
-      "publisher": "arXiv 2611.24940",
+      "id": "arxiv:2611.26341",
+      "title": "Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.26341",
+      "publisher": "arXiv 2611.26341",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-18",
-      "lane": "foundation",
-      "score": 3.45,
+      "published": "2026-11-19",
+      "lane": "systems",
+      "score": 3.3,
       "numbers": [
-        "81.9%",
-        "73.3%",
-        "110 ms"
+        "65.3%"
       ],
       "signals": [
         "numbers",
+        "closed_loop",
+        "real_robot",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "We introduce $Z$-sight, a unified robot foundation model that couples vision-language-action (VLA) and generative latent world modeling. Video-based world action models (WAMs) show the value of joint future-and-action generation for control, yet inherit the heavy cost of video generators. Recent latent-space policies avoid pixel generation, yet typically align intermediate features or rely on frozen target encoders, decoupling future prediction from the VLM's native feature space. $Z$-sight instead predicts the future directly in the visual token space in which its VLM perceives the present. Coupling a foresight expert and a continuous action expert with the VLM in a mixture-of-transformers, $Z$-sight jointly denoises future spatial tokens and actions at inference without pixel reconstruction or external encoders. Trained on human video and robot trajectories, $Z$-sight achieves 81.9% success on SIMPLE (+9.6 points over the strongest baseline) and 73.3% across six Unitree G1 tasks (+20.0 points) at 110 ms per chunk, while remaining competitive on tabletop benchmarks."
+      "summary": "Large multimodal models can support long-horizon robot manipulation, but frequent model calls incur substantial latency and token costs. The central challenge is determining when agent assistance or intervention is needed and whether errors require correcting robot execution, subtask planning, or both. To address this problem, we propose RoC (Reasoning on Call), an efficient framework that coordinates a low-level policy and a high-level reasoning agent through an online task-state monitor. The monitor combines temporal visual observations with ordered interaction memory to jointly estimate progress within the active subtask and predict its successor. These predictions guide event-triggered agent review for coordinated execution repair and plan revision. Verified outcomes govern memory updates and subtask transitions, allowing routine execution to remain with the policy while reasoning focuses on decisions requiring additional assessment. On RMBench, RoC improves task success rate by 24.0 percentage points and reduces token consumption by 65.3% compared with the strongest agent-based baseline. It also outperforms the strongest policy-based baseline by 15.1 percentage points in task success rate. Real-world experiments further validate its effectiveness across three long-horizon manipulation tasks. Overall, RoC supports efficient agent intervention and coordinated recovery across execution and planning for long-horizon robot manipulation."
     },
     {
-      "id": "arxiv:2611.24864",
-      "title": "NereidVLA: Learning to Understand and Navigate the Underwater World",
-      "url": "https://arxiv.org/abs/2611.24864",
-      "publisher": "arXiv 2611.24864",
+      "id": "arxiv:2611.25667",
+      "title": "CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control",
+      "url": "https://arxiv.org/abs/2611.25667",
+      "publisher": "arXiv 2611.25667",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-18",
-      "lane": "simeval",
-      "score": 3.19,
+      "published": "2026-11-19",
+      "lane": "foundation",
+      "score": 3.25,
       "numbers": [
-        "72.4%",
-        "84.4%",
-        "78.75%",
-        "47.50%"
+        "93.8%"
       ],
       "signals": [
         "numbers",
-        "closed_loop"
+        "closed_loop",
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Underwater navigation requires translating visual spatial cues into motion, yet marine vision-language datasets rarely include paired robot trajectories. We present NereidVLA, a vision-language-action model that transfers marine spatial knowledge to language-conditioned 3D navigation. We first train Sea2Know on approximately two million marine examples to learn target grounding, spatial relations, and scene structure without paired robot-motion supervision. We then adapt it using expert trajectories executed under simulated underwater vehicle dynamics. Given RGB histories and a language instruction, NereidVLA predicts discrete motion tokens that decode into local 3D trajectories for closed-loop tracking. Evaluation combines an independent six-dimensional underwater navigation understanding benchmark with offline prediction and closed-loop navigation. Under matched navigation training and execution settings, marine spatial pretraining increases simulation success from 72.4% to 84.4%. Without fine-tuning on the real test environment, NereidVLA achieves 78.75% success in laboratory-pool robot trials, compared with 47.50% for InternVLA-N1. These results show that marine spatial supervision can support downstream motion learning and physical underwater navigation."
+      "summary": "Vision-Language-Action (VLA) policies must react while visual inference is still running. Overlapping computation and execution reduces waiting, yet leaves perceptual memory stale and successive action chunks disconnected. We present CauSyncVLA, an asynchronous dual-system controller that aligns perceptual-memory prediction and trajectory correction with actual robot execution. Rather than forecasting pixels or physical states, a Causal Latent World Model predicts current perceptual memory from delayed visual anchors and executed state-action history, supervised through action-sensitive distillation to retain the frozen expert's control response. Conditioned on this updated memory, Predictive Flow Warm-Starting (PFWS) aligns the unexecuted action horizon for single-step flow correction without extra training. On LIBERO-10, CauSyncVLA reaches 93.8% success at 5.04$\\times$ inference throughput, improving closed-loop robustness and robot motion smoothness."
     },
     {
-      "id": "aws-physical-ai:7b38022a69e8",
-      "title": "Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI",
-      "url": "https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/",
-      "publisher": "AWS Physical AI Blog",
-      "source_id": "aws-physical-ai",
+      "id": "ieee-spectrum-robotics:4f39f4f6079c",
+      "title": "Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces",
+      "url": "https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor",
+      "publisher": "IEEE Spectrum Robotics",
+      "source_id": "ieee-spectrum-robotics",
+      "evidence": "M",
+      "published": "2026-11-20",
+      "lane": "hardware",
+      "score": 2.63,
+      "numbers": [],
+      "signals": [
+        "industry_event"
+      ],
+      "heat": 0.0,
+      "summary": "Drones navigating cluttered spaces often encounter openings narrower than their bodies. We present a design method that jointly optimizes a quadrotor’s geometry and how its two side arms bend on contact. The resulting prototype folds from 31.3 cm to 14.1 cm wide on contact and flies through a 15 cm opening. [ Paper ] via [ Autonomous Robots Lab ] Thanks, Kostas! TeCoBots are soft, snake-like robots that can work alone and can also grab onto each other to form chains, loops and branches, building a new body for each task. A single robot can inch like a worm, roll across gravel and grass, climb inside a pipe and lift a 2.5-liter water bottle. The claw it uses to grab objects is the same one it uses to grab another robot, so linking up needs no extra docking hardware. Linked together, the robots do things none can do alone. [ TeCoBots ] Thanks, Mahmud! AHEADance is a humanoid robot that makes up its dance as the music plays. It listens to the song as it streams in, takes a guess at what the next half second of music will sound like, and moves to match, in the style of whatever is playing. When the music stops, it stands still and waits, and when the music comes back, so does the dancing. Curious what it would do with your favourite song? Play it through the live demo on our project page and watch the robot have a go. [ AHEADance ] Thanks, Chengxu! I am... Not at all sure how I feel about this. [ Arc Lab ] Most affordable dexterous hands use tendons, and anyone who has worked with them knows the pain of re-tensioning and replacing them. I wanted to see whether rigid linkages could get you human-like dexterity without that maintenance, and so far the answer …"
+    },
+    {
+      "id": "leiphone:5ed0761ba71c",
+      "title": "方程豹钛9上市：27.99万元起，折叠方向盘首次上车",
+      "url": "https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-20",
+      "lane": "hardware",
+      "score": 1.583,
+      "numbers": [],
+      "signals": [
+        "industry_event"
+      ],
+      "heat": 0.0,
+      "summary": "11月19日，方程豹钛9正式上市，售价27.99万元起，置换价27.39万元起。作为比亚迪2026年收官车型，钛9首搭折叠智舱及DMS超级混动全能平台，进一步进入大型六座SUV市场。 雷峰网了解到，折叠智舱搭载于钛9顶配版本，将折叠方向盘、躺平座椅、线控数字底盘与智慧生态结合。与常见的座椅放倒休息不同，这套方案将方向盘一并收纳，为驾驶位释放更多空间。 方程豹将钛9的产品主张概括为“定义全维硬派新境”。从此次发布的配置来看，它既保留了方盒子造型和全地形能力，也将空间、座舱和六座舒适性作为重点，希望覆盖家庭出行、长途自驾与户外活动等需求。 折叠方向盘上车，驾驶位可以怎样变？ 钛9此次最受关注的配置，是顶配版本搭载的折叠方向盘。 按照官方介绍，这套方向盘支持0°至180°折叠，收纳过程控制在10秒以内，启停耐久寿命可达8万次。在离车泊入、泊出过程中，方向盘还可以同步完成折叠或展开。 与之配合的是可一键躺平的驾驶位座椅。座椅支持18向调节，靠背最大躺角165°，腿部最大膝角157°，约20秒完成躺平，无需拆卸头枕或下车调整。 方向盘收纳之后，驾驶位的休息空间得以扩大。对需要在车内午休，或在长途补能时短暂休息的用户来说，这是一项比较直接的用途。 比亚迪表示，折叠智舱也是其面向L3、L4级智能驾驶的技术储备。需要区分的是，座舱硬件的量产，并不等同于车辆已经具备相应等级的自动驾驶能力。 …"
+    },
+    {
+      "id": "nvidia-developer-robotics:70cecf2cdf07",
+      "title": "Build World Models for Interactive Simulation with NVIDIA Cosmos",
+      "url": "https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/",
+      "publisher": "NVIDIA Technical Blog (Robotics)",
+      "source_id": "nvidia-developer-robotics",
       "evidence": "O",
-      "published": "2026-11-19",
+      "published": "2026-11-02",
       "lane": "foundation",
-      "score": 2.35,
+      "score": 1.5,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "Introduction Physical AI is AI that acts in the physical world. Where a chatbot generates text and an agent calls APIs, a Physical AI system perceives its surroundings through sensors, reasons about objects and spatial relationships, acts through motors and end-effectors, and adapts to conditions that differ from training. In robotics, vision-language-action (VLA) models are […]"
+      "summary": "Physical AI developers working with world models face two distinct challenges: adapting models to their sensors, tasks, and data, and getting those models into..."
     },
     {
-      "id": "1x:8c065761a6aa",
-      "title": "Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X",
-      "url": "https://www.1x.tech/discover/vikram-vp-operations",
-      "publisher": "1X Discover",
-      "source_id": "1x",
-      "evidence": "O",
-      "published": "2026-11-19",
-      "lane": "hardware",
-      "score": 1.782,
+      "id": "robohub:e37d49a8dce8",
+      "title": "Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro",
+      "url": "https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/",
+      "publisher": "Robohub",
+      "source_id": "robohub",
+      "evidence": "M",
+      "published": "2026-11-20",
+      "lane": "systems",
+      "score": 1.35,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "open_release"
+      ],
       "heat": 0.0,
-      "summary": "View More # ExperienceNEO"
-    },
-    {
-      "id": "mit-news-robotics:62626f8cbcfd",
-      "title": "This featherweight, flying robot carries its own sensors and computers",
-      "url": "https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118",
-      "publisher": "MIT News (Robotics)",
-      "source_id": "mit-news-robotics",
-      "evidence": "O",
-      "published": "2026-11-18",
-      "lane": "hardware",
-      "score": 1.402,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.024,
-      "summary": "The speedy microrobot flies without an attached motion-capture system, moving it closer to applications like agriculture or industrial surveillance."
+      "summary": "Claire chatted to Sebastian Castro about developing open-source software for robot task planning and behaviour. Sebastian Castro is an independent roboticist specializing in robotic manipulation. He is currently contracting with the Dexterous Robotics Group at NASA’s Johnson Space Center. Sebastian previously worked as a software engineer at the Robotics and AI (RAI) Institute, PickNik, Boston […]"
     }
   ],
   "lane_counts": {
-    "foundation": 8,
-    "data": 6,
+    "foundation": 9,
+    "data": 5,
     "training": 3,
     "simeval": 14,
-    "edge": 5,
-    "safety": 3,
-    "systems": 3,
-    "hardware": 8
+    "edge": 3,
+    "safety": 2,
+    "systems": 5,
+    "hardware": 9
   },
   "evidence_mix": {
-    "O": 9,
-    "R": 27,
+    "O": 8,
+    "R": 28,
     "M": 14
   },
   "fetch": {
-    "items": 659,
+    "items": 658,
     "attempted": 25,
     "answered": 25,
     "failed": [],
@@ -192,11 +211,11 @@
       "robots_reasons": {},
       "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 36,
+      "hn_stories": 29,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 84,
+      "arxiv": 80,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -209,9 +228,10 @@
       "openai": 21,
       "bair": 7,
       "mit-news-robotics": 50,
-      "nature-machine-intelligence": 1,
+      "nature-machine-intelligence": 2,
       "techcrunch-robotics": 14,
       "robohub": 75,
+      "qbitai": 2,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1,

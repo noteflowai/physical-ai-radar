@@ -60,35 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-20
+### Today's radar · 2026-11-21
 
-`Generated: 2026-11-19 23:40 UTC` ｜ `Window: papers 2026-11-16 → 2026-11-20 · posts 2026-10-21 → 2026-11-20 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-20 23:40 UTC` ｜ `Window: papers 2026-11-17 → 2026-11-21 · posts 2026-10-22 → 2026-11-21 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models](https://arxiv.org/abs/2611.24938)**<br>`39,000 hours`&nbsp; `94.8%`&nbsp; `72.4%`<br><sub>Simulation & evaluation · arXiv 2611.24938 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot](https://arxiv.org/abs/2611.24138)**<br>`33.7%`&nbsp; `62.9%`&nbsp; `27.9%`<br><sub>Data engine · arXiv 2611.24138 · 2026‑11‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling](https://arxiv.org/abs/2611.24940)**<br>`81.9%`&nbsp; `73.3%`&nbsp; `110 ms`<br><sub>Foundation models · arXiv 2611.24940 · 2026‑11‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864)**<br>`72.4%`&nbsp; `84.4%`&nbsp; `78.75%`<br><sub>Simulation & evaluation · arXiv 2611.24864 · 2026‑11‑18</sub> |
-| 05<br>🟢&nbsp;`O` | **[Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI](https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/)**<br><sub>Foundation models · AWS Physical AI Blog · 2026‑11‑19</sub> |
-| 06<br>🟢&nbsp;`O` | **[Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X](https://www.1x.tech/discover/vikram-vp-operations)**<br><sub>Embodiment & supply chain · 1X Discover · 2026‑11‑19</sub> |
-| 07<br>🟢&nbsp;`O` | **[This featherweight, flying robot carries its own sensors and computers](https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118)**<br><sub>Embodiment & supply chain · MIT News (Robotics) · 2026‑11‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>Simulation & evaluation · arXiv 2611.25251 · 2026‑11‑18</sub> |
+| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>Simulation & evaluation · arXiv 2611.26161 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>Systems & orchestration · arXiv 2611.26341 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>Foundation models · arXiv 2611.25667 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>Foundation models · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>Systems & orchestration · Robohub · 2026‑11‑20</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Phoenix** — `AI draft` If you are choosing the visual representation for a world-action model, this preprint argues reconstruction-oriented features underweight spatial relations and object-state changes; the page shows only benchmark figures, 94.8% on LIBERO-Plus and 72.4% on RoboTwin 2.0, so check the real-robot part in the paper.
-2. **Ego2X** — `AI draft` Teams hoping egocentric human data can stand in for slow robot collection should look at the contact retargeting: the authors report 62.9% of annotated contacts realized, with 27.9% listed for the official HuRo pipeline, and task success rising from 40.5% zero-shot to 67.0%, all self-reported.
-3. **$Z$-sight** — `AI draft` When weighing a plain VLA against one coupled with a latent world model, this preprint reports 81.9% on SIMPLE and 73.3% across six Unitree tasks at 110 ms per chunk; confirm that latency fits your control loop before building on it.
-4. **NereidVLA** — `AI draft` Underwater navigation teams short of paired robot trajectories can note this preprint's laboratory-pool success of 78.75% against 47.50% for InternVLA-N1; the page shows no open-water figure, so read it as an early, self-reported signal.
-5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — `AI draft` For teams already on AWS weighing managed training for VLA policies, this is a first-party walkthrough, but the visible excerpt is only a general Physical AI introduction with no cost or training-time figures, so budget a trial run of your own.
-6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — `AI draft` This is an operations executive hire that the page itself dates AUG 07 '25, not a new product or delivery update; anyone tracking 1X supply gets no volumes, prices or delivery dates from it.
-7. **This featherweight, flying robot carries its own sensors and computers** — `AI draft` Flying without an attached motion-capture system is the step field uses such as agriculture or industrial surveillance need; the release gives no figures, so treat it as a research milestone rather than hardware to plan around.
+1. **WEVO** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **One View, One Action** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **Reasoning on Call** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+4. **CauSyncVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-20.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-21.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

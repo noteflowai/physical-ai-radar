@@ -62,35 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-20
+### 今日雷达 · 2026-11-21
 
-`生成时间: 2026-11-19 23:40 UTC` ｜ `统计窗口: 论文 2026-11-16 → 2026-11-20 · 博客与报道 2026-10-21 → 2026-11-20 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-20 23:40 UTC` ｜ `统计窗口: 论文 2026-11-17 → 2026-11-21 · 博客与报道 2026-10-22 → 2026-11-21 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Phoenix: Learning Scene Structure Representations for Generalizable World-Action Models](https://arxiv.org/abs/2611.24938)**<br>`39,000 hours`&nbsp; `94.8%`&nbsp; `72.4%`<br><sub>仿真与评测 · arXiv 2611.24938 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot](https://arxiv.org/abs/2611.24138)**<br>`33.7%`&nbsp; `62.9%`&nbsp; `27.9%`<br><sub>数据引擎 · arXiv 2611.24138 · 2026‑11‑18</sub> |
-| 03<br>🔵&nbsp;`R` | **[$Z$-sight: Unifying Vision-Language-Action and Latent World Modeling](https://arxiv.org/abs/2611.24940)**<br>`81.9%`&nbsp; `73.3%`&nbsp; `110 ms`<br><sub>基座模型 · arXiv 2611.24940 · 2026‑11‑18</sub> |
-| 04<br>🔵&nbsp;`R` | **[NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864)**<br>`72.4%`&nbsp; `84.4%`&nbsp; `78.75%`<br><sub>仿真与评测 · arXiv 2611.24864 · 2026‑11‑18</sub> |
-| 05<br>🟢&nbsp;`O` | **[Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI](https://aws.amazon.com/blogs/physical-ai/train-vla-models-with-hugging-face-lerobot-on-amazon-sagemaker-ai/)**<br><sub>基座模型 · AWS Physical AI Blog · 2026‑11‑19</sub> |
-| 06<br>🟢&nbsp;`O` | **[Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eight years at SpaceX leading Dragon, Starship, Raptor, and Launch Avionics supply chain orgs.AUG 07 '251X](https://www.1x.tech/discover/vikram-vp-operations)**<br><sub>本体与供应链 · 1X Discover · 2026‑11‑19</sub> |
-| 07<br>🟢&nbsp;`O` | **[This featherweight, flying robot carries its own sensors and computers](https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118)**<br><sub>本体与供应链 · MIT News (Robotics) · 2026‑11‑18</sub> |
+| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>仿真与评测 · arXiv 2611.25251 · 2026‑11‑18</sub> |
+| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>仿真与评测 · arXiv 2611.26161 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>系统与编排 · arXiv 2611.26341 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>基座模型 · arXiv 2611.25667 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>基座模型 · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
+| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>系统与编排 · Robohub · 2026‑11‑20</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Phoenix** — `AI 起草` 在为世界动作模型选视觉表征时，这篇预印本主张重建式特征不够强调操作所需的空间关系和物体状态变化；页面可见的只有 LIBERO-Plus 94.8%、RoboTwin 2.0 72.4% 两个基准成绩，真机部分要读原文核对。
-2. **Ego2X** — `AI 起草` 打算用第一人称人类数据替代部分真机采集的团队，该重点看接触重定向：作者自报标注接触实现 62.9%（页面同时列出官方 HuRo 流程为 27.9%），任务成功率从零样本 40.5% 升到 67.0%，均为预印本自报。
-3. **$Z$-sight** — `AI 起草` 在纯 VLA 与耦合潜在世界模型的方案之间做选择时可以参考：预印本自报 SIMPLE 上 81.9%、六个 Unitree 任务上 73.3%，每个动作块 110 ms；上线前先确认这个延迟放得进你的控制回路。
-4. **NereidVLA** — `AI 起草` 水下导航团队普遍缺少与视觉语言数据配对的机器人轨迹，这篇预印本自报实验室水池成功率 78.75%，对比 InternVLA-N1 的 47.50%；页面未显示开放水域结果，只能当作早期信号。
-5. **Train VLA models with Hugging Face LeRobot on Amazon SageMaker AI** — `AI 起草` 已在 AWS 上、想把 VLA 训练交给托管服务的团队可以参考这篇官方教程，但页面摘录只是 Physical AI 的概念介绍，没有成本或训练时长数据，预算前需要自己跑一次试验。
-6. **Welcoming Vikram Kothari as VP of OperationsVikram joins 1X after over eigh…** — `AI 起草` 这是一则运营高管任命，页面本身标注的日期是 AUG 07 '25，并非新的产品或交付消息；跟踪 1X 供货的人从中得不到产量、价格或交付时间。
-7. **This featherweight, flying robot carries its own sensors and computers** — `AI 起草` 不再依赖外接动作捕捉系统，是微型飞行机器人走向农业或工业巡检的前提；但这篇官方新闻没有给出任何数字，应视为研究进展，而不是可以排进计划的硬件。
+1. **WEVO** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **One View, One Action** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **Reasoning on Call** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+4. **CauSyncVLA** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+5. **Video Friday** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — 一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-20.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-21.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
