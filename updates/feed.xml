@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: reject an Inspect sample whose scores field is not an object with a named error instead of crashing</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.4/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.4/</guid>
+      <description>Inspect logs now fail with a named error when a sample's scores field is a non-empty list, a non-empty string, a non-zero number or true. Before this commit, load_results raised AttributeError, and evalarc diff exited 2 with only "evalarc: 'list' object has no attribute 'items'" on stderr. The controller's run on base 5060961 recorded that output, and the sample was not named. Now load_results raises ValueError. The message names the sample id (in Python repr form, for example 'address-change'), the sample's position and the JSON type it received (array, string, number or boolean), and says to re-export the log with inspect log dump. The check covers .json logs and .eval archives, and it also runs for samples that have an error field. Missing, null or falsy scores still load as no scores, and object scores are read as before. The commit also adds docs/results-diff-inspect-scores.md, which the CHANGELOG entry cites. That page covers the error message form, exit code 2, the absence of a report folder, the recovery steps and the values that still load as no scores. The plan said no documentation page would change. The page was added anyway because the product docs needed the recovery guidance. Controller results: on base 5060961, tests/test_feature_cf3fcccffda5.py gave 8 failed and 2 passed, which reproduces the defect. On candidate 762410959a9b, the feature tests, the full pytest suite, ruff check, ruff format --check, scripts/build_site.py and scripts/check_site.cjs all exited 0.</description>
+      <pubDate>Fri, 20 Nov 2026 18:40:03 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: wp ai-chat-bedrock usage labels chat requests whose token usage Bedrock did not fully report</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.1/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/ai-chat-for-amazon-bedrock/1.74.1/</guid>
