@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.25251" rel="noopener" target="_blank">WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation</a></h3>
 <p class="figure"><strong>23.3%</strong><span class="context">“raises mean success from 23.3% to 75.0%”</span></p><p class="chips"><span class="chip">75.0%</span><span class="chip">48.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 人形机器人上直接做 RL 探索不安全、纯仿真 RL 又会钻 sim-to-real 的空子，这篇预印本把世界模型当作 VLA 优化的第三条路；作者自报平均成功率从 23.3% 升到 75.0%，另列的 48.3%（“for real robot”）对比的是什么，要读原文确认。</p>
 <p class="excerpt">Reinforcement learning (RL) can improve vision-language-action (VLA) policies beyond imitation, but humanoid exploration is unsafe and simulator RL can exploit residual sim-to-real gaps.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.26161" rel="noopener" target="_blank">One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency</a></h3>
 <p class="figure"><strong>88.1%</strong><span class="context">“average success rates of 88.1% and 85.7% on”</span></p><p class="chips"><span class="chip">85.7%</span><span class="chip">28.3%</span><span class="chip">58.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 如果你的多视角 VLA 一换相机视角或机器人初始姿态就掉点，值得看这篇预印本：作者自报平均成功率 88.1% 与 85.7%（含 LIBERO-Plus），并称在三个任务上把 π0.5 的 28.3% 提到 58.3%；页面没说明这三个任务是否在真机上。</p>
 <p class="excerpt">Multi-view vision-language-action (VLA) models still face challenges in spatial generalization, particularly under changes in camera viewpoints and robot initial states.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.26341" rel="noopener" target="_blank">Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation</a></h3>
 <p class="figure"><strong>65.3%</strong><span class="context">“reduces token consumption by 65.3% compared with the”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 长程操作里每一步都调用大型多模态模型会拖慢控制、烧掉 token，这篇预印本主张按需调用推理，作者自报 token 消耗降低 65.3%；对比基线在页面摘录中被截断，成功率是否持平也看不到，部署前需读原文。</p>
 <p class="excerpt">Large multimodal models can support long-horizon robot manipulation, but frequent model calls incur substantial latency and token costs.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.25667" rel="noopener" target="_blank">CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control</a></h3>
 <p class="figure"><strong>93.8%</strong><span class="context">“CauSyncVLA reaches 93.8% success at 5.04$\times$”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 做异步推理、让计算与执行重叠的团队会碰到感知记忆过时、相邻动作块衔接不上的问题，这篇预印本针对的正是这一点；作者自报成功率 93.8%，紧随其后的倍数在摘录中没说明指什么，页面也没有真机结果。</p>
 <p class="excerpt">Vision-Language-Action (VLA) policies must react while visual inference is still running. Overlapping computation and execution reduces waiting, yet leaves perceptual memory stale and successive action chunks disconnected.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor" rel="noopener" target="_blank">Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 在狭窄杂乱空间飞行的无人机，与其一味避碰，不如考虑把机体几何与两侧机臂的受接触弯折方式一起优化；这是 IEEE Spectrum 的转述，页面没有任何数字，引用前请找原始论文。</p>
 <p class="excerpt">Drones navigating cluttered spaces often encounter openings narrower than their bodies. We present a design method that jointly optimizes a quadrotor’s geometry and how its two side arms bend on contact.</p>
 <ul class="signals"><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html" rel="noopener" target="_blank">方程豹钛9上市：27.99万元起，折叠方向盘首次上车</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是一款大型六座 SUV 的上市报道（折叠智舱、DMS 超级混动平台），页面没有任何机器人或具身智能内容，对机器人系统的选型和运营基本不构成决策依据。</p>
 <p class="excerpt">11月19日，方程豹钛9正式上市，售价27.99万元起，置换价27.39万元起。作为比亚迪2026年收官车型，钛9首搭折叠智舱及DMS超级混动全能平台，进一步进入大型六座SUV市场。</p>
 <ul class="signals"><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
@@ -192,7 +192,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/" rel="noopener" target="_blank">Build World Models for Interactive Simulation with NVIDIA Cosmos</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 准备用世界模型做交互式仿真的团队，难点通常在于让模型适配自己的传感器、任务和数据；这篇 NVIDIA 官方文章正面讨论这一点，但页面摘录在后半句截断、没有数字，具体流程和效果要读原文。</p>
 <p class="excerpt">Physical AI developers working with world models face two distinct challenges: adapting models to their sensors, tasks, and data, and getting those models into...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-02</span>
@@ -206,7 +206,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/" rel="noopener" target="_blank">Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 正在挑选开源任务规划与行为编程工具的团队，可以把这期访谈当作背景参考；它是播客对话，页面没有点名具体项目，也没有数字，不足以单独支撑选型。</p>
 <p class="excerpt">Claire chatted to Sebastian Castro about developing open-source software for robot task planning and behaviour.</p>
 <ul class="signals"><li>有开放代码或权重</li></ul>
 <footer>

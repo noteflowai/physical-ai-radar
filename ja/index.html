@@ -99,7 +99,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.25251" rel="noopener" target="_blank">WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation</a></h3>
 <p class="figure"><strong>23.3%</strong><span class="context">“raises mean success from 23.3% to 75.0%”</span></p><p class="chips"><span class="chip">75.0%</span><span class="chip">48.3%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 実機でのRL探索は危険、シミュレータRLはsim-to-realの隙を突く、という理由でRLを避けてきたヒューマノイド開発には、世界モデルでVLAを最適化する代案となる。平均成功率23.3%→75.0%は著者の自己報告で、別記の48.3%（実機）が何との比較かは原文で確認したい。</p>
 <p class="excerpt">Reinforcement learning (RL) can improve vision-language-action (VLA) policies beyond imitation, but humanoid exploration is unsafe and simulator RL can exploit residual sim-to-real gaps.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -115,7 +115,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.26161" rel="noopener" target="_blank">One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency</a></h3>
 <p class="figure"><strong>88.1%</strong><span class="context">“average success rates of 88.1% and 85.7% on”</span></p><p class="chips"><span class="chip">85.7%</span><span class="chip">28.3%</span><span class="chip">58.3%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> カメラ視点やロボットの初期状態が変わると性能が落ちる多視点VLAを運用しているなら参考になる。著者はLIBERO-Plusを含む平均成功率88.1%と85.7%、3タスクでπ0.5の28.3%を58.3%へ改善と自己報告しているが、その3タスクが実機かはページから読み取れない。</p>
 <p class="excerpt">Multi-view vision-language-action (VLA) models still face challenges in spatial generalization, particularly under changes in camera viewpoints and robot initial states.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -131,7 +131,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.26341" rel="noopener" target="_blank">Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation</a></h3>
 <p class="figure"><strong>65.3%</strong><span class="context">“reduces token consumption by 65.3% compared with the”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 長期マニピュレーションで大規模マルチモーダルモデルを毎回呼び出し、遅延とトークンコストがかさんでいるなら、必要時だけ推論を呼ぶこの手法が候補になる。トークン消費65.3%削減は著者の自己報告で、比較対象は抜粋で途切れ、成功率の比較もページにはない。</p>
 <p class="excerpt">Large multimodal models can support long-horizon robot manipulation, but frequent model calls incur substantial latency and token costs.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -147,7 +147,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.25667" rel="noopener" target="_blank">CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control</a></h3>
 <p class="figure"><strong>93.8%</strong><span class="context">“CauSyncVLA reaches 93.8% success at 5.04$\times$”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 推論と実行を重ねて待ち時間を減らす非同期制御では、知覚メモリが古くなりアクションチャンク同士がつながらない問題が出る。本プレプリントはそこを狙い、成功率93.8%を自己報告するが、併記の倍率が何を指すかは抜粋から分からず、実機結果もページにはない。</p>
 <p class="excerpt">Vision-Language-Action (VLA) policies must react while visual inference is still running. Overlapping computation and execution reduces waiting, yet leaves perceptual memory stale and successive action chunks disconnected.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -162,7 +162,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor" rel="noopener" target="_blank">Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 機体より狭い開口部を通る必要のあるドローンでは、接触を避けるだけでなく、機体形状と左右アームの接触時の曲がり方を同時に設計する選択肢がある。IEEE Spectrumによる紹介で数値はなく、引用前に元の研究を確認したい。</p>
 <p class="excerpt">Drones navigating cluttered spaces often encounter openings narrower than their bodies. We present a design method that jointly optimizes a quadrotor’s geometry and how its two side arms bend on contact.</p>
 <ul class="signals"><li>業界の動き（資金調達・買収・上場・量産・政策）</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html" rel="noopener" target="_blank">方程豹钛9上市：27.99万元起，折叠方向盘首次上车</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ページの内容は大型6人乗りSUVの発売（折りたたみ式コックピット、DMSハイブリッド基盤）で、ロボットや身体性AIに関する記述はなく、ロボットシステムの判断材料にはほぼならない。</p>
 <p class="excerpt">11月19日，方程豹钛9正式上市，售价27.99万元起，置换价27.39万元起。作为比亚迪2026年收官车型，钛9首搭折叠智舱及DMS超级混动全能平台，进一步进入大型六座SUV市场。</p>
 <ul class="signals"><li>業界の動き（資金調達・買収・上場・量産・政策）</li></ul>
 <footer>
@@ -192,7 +192,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/" rel="noopener" target="_blank">Build World Models for Interactive Simulation with NVIDIA Cosmos</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 世界モデルを対話型シミュレーションに使うなら、自社のセンサー、タスク、データへの適応が最初の壁になる。NVIDIA自身の記事はそこを扱うが、抜粋は途中で切れて数値もなく、具体的な手順と効果は原文で確かめる必要がある。</p>
 <p class="excerpt">Physical AI developers working with world models face two distinct challenges: adapting models to their sensors, tasks, and data, and getting those models into...</p>
 <footer>
 <span class="source">NVIDIA Technical Blog (Robotics) · 2026-11-02</span>
@@ -206,7 +206,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/" rel="noopener" target="_blank">Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。人手のリセットなしで長時間タスクを維持できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ロボットのタスク計画や行動記述のためのオープンソースツールを選ぶ際の背景知識にはなる。ただしポッドキャストの対談で、ページには具体的なプロジェクト名も数値もなく、これだけで選定は決められない。</p>
 <p class="excerpt">Claire chatted to Sebastian Castro about developing open-source software for robot task planning and behaviour.</p>
 <ul class="signals"><li>コードまたは重み公開</li></ul>
 <footer>

@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-21",
+  "generated": "2026-11-21 13:43 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.25251": {
+      "zh": "人形机器人上直接做 RL 探索不安全、纯仿真 RL 又会钻 sim-to-real 的空子，这篇预印本把世界模型当作 VLA 优化的第三条路；作者自报平均成功率从 23.3% 升到 75.0%，另列的 48.3%（“for real robot”）对比的是什么，要读原文确认。",
+      "en": "For humanoid teams who avoid on-robot RL as unsafe and distrust simulator RL that exploits sim-to-real gaps, this preprint offers world-model optimization of the VLA instead; it self-reports mean success rising from 23.3% to 75.0%, and what the separate 48.3% real-robot figure is compared against needs the paper.",
+      "ja": "実機でのRL探索は危険、シミュレータRLはsim-to-realの隙を突く、という理由でRLを避けてきたヒューマノイド開発には、世界モデルでVLAを最適化する代案となる。平均成功率23.3%→75.0%は著者の自己報告で、別記の48.3%（実機）が何との比較かは原文で確認したい。"
+    },
+    "https://arxiv.org/abs/2611.26161": {
+      "zh": "如果你的多视角 VLA 一换相机视角或机器人初始姿态就掉点，值得看这篇预印本：作者自报平均成功率 88.1% 与 85.7%（含 LIBERO-Plus），并称在三个任务上把 π0.5 的 28.3% 提到 58.3%；页面没说明这三个任务是否在真机上。",
+      "en": "If your multi-view VLA degrades when cameras move or the robot starts from a different state, this preprint targets exactly that; it self-reports 88.1% and 85.7% average success, with LIBERO-Plus named, and π0.5's 28.3% raised to 58.3% across three tasks whose setting the page does not state.",
+      "ja": "カメラ視点やロボットの初期状態が変わると性能が落ちる多視点VLAを運用しているなら参考になる。著者はLIBERO-Plusを含む平均成功率88.1%と85.7%、3タスクでπ0.5の28.3%を58.3%へ改善と自己報告しているが、その3タスクが実機かはページから読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.26341": {
+      "zh": "长程操作里每一步都调用大型多模态模型会拖慢控制、烧掉 token，这篇预印本主张按需调用推理，作者自报 token 消耗降低 65.3%；对比基线在页面摘录中被截断，成功率是否持平也看不到，部署前需读原文。",
+      "en": "If your long-horizon manipulation stack calls a large multimodal model at every step and pays for it in latency and tokens, this preprint argues for calling reasoning only when needed; it self-reports 65.3% fewer tokens, but the page cuts off the baseline and shows no success comparison.",
+      "ja": "長期マニピュレーションで大規模マルチモーダルモデルを毎回呼び出し、遅延とトークンコストがかさんでいるなら、必要時だけ推論を呼ぶこの手法が候補になる。トークン消費65.3%削減は著者の自己報告で、比較対象は抜粋で途切れ、成功率の比較もページにはない。"
+    },
+    "https://arxiv.org/abs/2611.25667": {
+      "zh": "做异步推理、让计算与执行重叠的团队会碰到感知记忆过时、相邻动作块衔接不上的问题，这篇预印本针对的正是这一点；作者自报成功率 93.8%，紧随其后的倍数在摘录中没说明指什么，页面也没有真机结果。",
+      "en": "Teams overlapping inference with execution to cut waiting will hit stale perceptual memory and disconnected action chunks, which is what this preprint addresses; it self-reports 93.8% success, but the page does not say what the multiplier quoted beside it measures and no real-robot result is shown.",
+      "ja": "推論と実行を重ねて待ち時間を減らす非同期制御では、知覚メモリが古くなりアクションチャンク同士がつながらない問題が出る。本プレプリントはそこを狙い、成功率93.8%を自己報告するが、併記の倍率が何を指すかは抜粋から分からず、実機結果もページにはない。"
+    },
+    "https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor": {
+      "zh": "在狭窄杂乱空间飞行的无人机，与其一味避碰，不如考虑把机体几何与两侧机臂的受接触弯折方式一起优化；这是 IEEE Spectrum 的转述，页面没有任何数字，引用前请找原始论文。",
+      "en": "For drones that must pass openings narrower than their bodies, this suggests designing the frame geometry and how the two side arms bend on contact together rather than only avoiding contact; it is IEEE Spectrum's retelling with no figures on the page, so find the original work before citing it.",
+      "ja": "機体より狭い開口部を通る必要のあるドローンでは、接触を避けるだけでなく、機体形状と左右アームの接触時の曲がり方を同時に設計する選択肢がある。IEEE Spectrumによる紹介で数値はなく、引用前に元の研究を確認したい。"
+    },
+    "https://www.leiphone.com/category/transportation/okzc1pywcptuth5j.html": {
+      "zh": "这是一款大型六座 SUV 的上市报道（折叠智舱、DMS 超级混动平台），页面没有任何机器人或具身智能内容，对机器人系统的选型和运营基本不构成决策依据。",
+      "en": "The page describes a large six-seat SUV launch with a folding cockpit and a DMS hybrid platform; nothing on it concerns robots or embodied AI, so it gives robot builders and operators no basis for a decision.",
+      "ja": "ページの内容は大型6人乗りSUVの発売（折りたたみ式コックピット、DMSハイブリッド基盤）で、ロボットや身体性AIに関する記述はなく、ロボットシステムの判断材料にはほぼならない。"
+    },
+    "https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos": {
+      "zh": "准备用世界模型做交互式仿真的团队，难点通常在于让模型适配自己的传感器、任务和数据；这篇 NVIDIA 官方文章正面讨论这一点，但页面摘录在后半句截断、没有数字，具体流程和效果要读原文。",
+      "en": "If you plan to use world models for interactive simulation, NVIDIA's own post addresses the hard part of adapting a model to your sensors, tasks and data; the excerpt cuts off mid-sentence and carries no figures, so the workflow and its results need the full post.",
+      "ja": "世界モデルを対話型シミュレーションに使うなら、自社のセンサー、タスク、データへの適応が最初の壁になる。NVIDIA自身の記事はそこを扱うが、抜粋は途中で切れて数値もなく、具体的な手順と効果は原文で確かめる必要がある。"
+    },
+    "https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro": {
+      "zh": "正在挑选开源任务规划与行为编程工具的团队，可以把这期访谈当作背景参考；它是播客对话，页面没有点名具体项目，也没有数字，不足以单独支撑选型。",
+      "en": "Teams choosing open-source tooling for robot task planning and behaviour can take this interview as background; it is a podcast conversation, the page names no specific project and gives no figures, so it cannot settle a choice on its own.",
+      "ja": "ロボットのタスク計画や行動記述のためのオープンソースツールを選ぶ際の背景知識にはなる。ただしポッドキャストの対談で、ページには具体的なプロジェクト名も数値もなく、これだけで選定は決められない。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

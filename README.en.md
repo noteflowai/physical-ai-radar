@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WEVO** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **One View, One Action** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **Reasoning on Call** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-4. **CauSyncVLA** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-5. **Video Friday** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — First-party release; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it holds up over long tasks without human resets.
+1. **WEVO** — `AI draft` For humanoid teams who avoid on-robot RL as unsafe and distrust simulator RL that exploits sim-to-real gaps, this preprint offers world-model optimization of the VLA instead; it self-reports mean success rising from 23.3% to 75.0%, and what the separate 48.3% real-robot figure is compared against needs the paper.
+2. **One View, One Action** — `AI draft` If your multi-view VLA degrades when cameras move or the robot starts from a different state, this preprint targets exactly that; it self-reports 88.1% and 85.7% average success, with LIBERO-Plus named, and π0.5's 28.3% raised to 58.3% across three tasks whose setting the page does not state.
+3. **Reasoning on Call** — `AI draft` If your long-horizon manipulation stack calls a large multimodal model at every step and pays for it in latency and tokens, this preprint argues for calling reasoning only when needed; it self-reports 65.3% fewer tokens, but the page cuts off the baseline and shows no success comparison.
+4. **CauSyncVLA** — `AI draft` Teams overlapping inference with execution to cut waiting will hit stale perceptual memory and disconnected action chunks, which is what this preprint addresses; it self-reports 93.8% success, but the page does not say what the multiplier quoted beside it measures and no real-robot result is shown.
+5. **Video Friday** — `AI draft` For drones that must pass openings narrower than their bodies, this suggests designing the frame geometry and how the two side arms bend on contact together rather than only avoiding contact; it is IEEE Spectrum's retelling with no figures on the page, so find the original work before citing it.
+6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — `AI draft` The page describes a large six-seat SUV launch with a folding cockpit and a DMS hybrid platform; nothing on it concerns robots or embodied AI, so it gives robot builders and operators no basis for a decision.
+7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — `AI draft` If you plan to use world models for interactive simulation, NVIDIA's own post addresses the hard part of adapting a model to your sensors, tasks and data; the excerpt cuts off mid-sentence and carries no figures, so the workflow and its results need the full post.
+8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — `AI draft` Teams choosing open-source tooling for robot task planning and behaviour can take this interview as background; it is a podcast conversation, the page names no specific project and gives no figures, so it cannot settle a choice on its own.
 
 </details>
 
