@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-21",
+  "as_of": "2026-11-22",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8289,6 +8289,133 @@
       ],
       "numbers": [],
       "excerpt": "Claire chatted to Sebastian Castro about developing open-source software for robot task planning and behaviour."
+    },
+    {
+      "id": "arxiv:2611.26444",
+      "date": "2026-11-22",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26444",
+      "title": "Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2611.26444",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "52.7%",
+        "39.0%",
+        "12.0%"
+      ],
+      "excerpt": "Embodied intelligence aims to let robots perform complex physical tasks with human-like adaptability and reliability, which requires three complementary capabilities: history-based cognitive reasoning, precise and timely physical…"
+    },
+    {
+      "id": "arxiv:2611.25980",
+      "date": "2026-11-22",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25980",
+      "title": "Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models",
+      "url": "https://arxiv.org/abs/2611.25980",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "23%",
+        "8.3%"
+      ],
+      "excerpt": "World models aim to predict environment dynamics under actions, enabling the prediction of action consequences without executing them in the real world."
+    },
+    {
+      "id": "arxiv:2611.26103",
+      "date": "2026-11-22",
+      "published": "2026-11-19",
+      "lane": "edge",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26103",
+      "title": "UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.26103",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "latency"
+      ],
+      "numbers": [
+        "61.36%",
+        "59.96%",
+        "77.1%"
+      ],
+      "excerpt": "Flow-matching robot policies usually use one prediction target throughout action generation, even though recovering actions from noise and polishing nearly clean actions bring different challenges."
+    },
+    {
+      "id": "arxiv:2611.25580",
+      "date": "2026-11-22",
+      "published": "2026-11-19",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25580",
+      "title": "FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash",
+      "url": "https://arxiv.org/abs/2611.25580",
+      "signals": [
+        "closed_loop",
+        "latency"
+      ],
+      "numbers": [],
+      "excerpt": "Embodied agents are emerging as a promising paradigm for complex robotic tasks, leveraging Vision-Language-Action (VLA) and World Action Models (WAMs) to generate actions through Diffusion Transformer (DiT)-based iterative denoising."
+    },
+    {
+      "id": "leiphone:9b3bd8fc2ee0",
+      "date": "2026-11-22",
+      "published": "2026-11-20",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "灵掌机器人太空灵巧手亮相世界智能制造博览会",
+      "url": "https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "11月19日至21日，第十一届世界智能制造博览会（以下简称“智博会”）在南京国际博览中心举办。无锡灵掌机器人科技有限公司（以下简称“灵掌机器人”）携全系列共9款灵巧手产品参展，重点展示了灵巧手在工业制造、太空任务、特种作业、科研与人形机器人等行业领域的落地场景及解决方案。"
+    },
+    {
+      "id": "the-robot-report:3640b1da9f52",
+      "date": "2026-11-22",
+      "published": "2026-11-21",
+      "lane": "data",
+      "evidence": "M",
+      "source_id": "the-robot-report",
+      "publisher": "The Robot Report",
+      "title": "The manufacturing data gap holding back physical AI",
+      "url": "https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "Manufacturers looking to deploy autonomous robots must close gaps in industrial data collection, interoperability, and quality feedback to enable reliable decision-making and improve production efficiency."
+    },
+    {
+      "id": "techcrunch-robotics:956cb223c580",
+      "date": "2026-11-22",
+      "published": "2026-11-05",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "techcrunch-robotics",
+      "publisher": "TechCrunch (Robotics)",
+      "title": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
+      "url": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "Agility arrives on the Nasdaq today as the first publicly traded pure-play humanoid robotics company."
     }
   ]
 }

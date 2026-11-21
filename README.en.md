@@ -60,37 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-21
+### Today's radar · 2026-11-22
 
-`Generated: 2026-11-20 23:40 UTC` ｜ `Window: papers 2026-11-17 → 2026-11-21 · posts 2026-10-22 → 2026-11-21 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-21 23:40 UTC` ｜ `Window: papers 2026-11-18 → 2026-11-22 · posts 2026-10-23 → 2026-11-22 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>Simulation & evaluation · arXiv 2611.25251 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>Simulation & evaluation · arXiv 2611.26161 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>Systems & orchestration · arXiv 2611.26341 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>Foundation models · arXiv 2611.25667 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>Embodiment & supply chain · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>Foundation models · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>Systems & orchestration · Robohub · 2026‑11‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>Simulation & evaluation · arXiv 2611.26444 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>Simulation & evaluation · arXiv 2611.25980 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>Edge & real-time · arXiv 2611.26103 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>Foundation models · arXiv 2611.25580 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>Data engine · The Robot Report · 2026‑11‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>Embodiment & supply chain · TechCrunch (Robotics) · 2026‑11‑05</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **WEVO** — `AI draft` For humanoid teams who avoid on-robot RL as unsafe and distrust simulator RL that exploits sim-to-real gaps, this preprint offers world-model optimization of the VLA instead; it self-reports mean success rising from 23.3% to 75.0%, and what the separate 48.3% real-robot figure is compared against needs the paper.
-2. **One View, One Action** — `AI draft` If your multi-view VLA degrades when cameras move or the robot starts from a different state, this preprint targets exactly that; it self-reports 88.1% and 85.7% average success, with LIBERO-Plus named, and π0.5's 28.3% raised to 58.3% across three tasks whose setting the page does not state.
-3. **Reasoning on Call** — `AI draft` If your long-horizon manipulation stack calls a large multimodal model at every step and pays for it in latency and tokens, this preprint argues for calling reasoning only when needed; it self-reports 65.3% fewer tokens, but the page cuts off the baseline and shows no success comparison.
-4. **CauSyncVLA** — `AI draft` Teams overlapping inference with execution to cut waiting will hit stale perceptual memory and disconnected action chunks, which is what this preprint addresses; it self-reports 93.8% success, but the page does not say what the multiplier quoted beside it measures and no real-robot result is shown.
-5. **Video Friday** — `AI draft` For drones that must pass openings narrower than their bodies, this suggests designing the frame geometry and how the two side arms bend on contact together rather than only avoiding contact; it is IEEE Spectrum's retelling with no figures on the page, so find the original work before citing it.
-6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — `AI draft` The page describes a large six-seat SUV launch with a folding cockpit and a DMS hybrid platform; nothing on it concerns robots or embodied AI, so it gives robot builders and operators no basis for a decision.
-7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — `AI draft` If you plan to use world models for interactive simulation, NVIDIA's own post addresses the hard part of adapting a model to your sensors, tasks and data; the excerpt cuts off mid-sentence and carries no figures, so the workflow and its results need the full post.
-8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — `AI draft` Teams choosing open-source tooling for robot task planning and behaviour can take this interview as background; it is a podcast conversation, the page names no specific project and gives no figures, so it cannot settle a choice on its own.
+1. **Mind2Act World** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **Learning What Actions Change** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+3. **UniVEP** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
+4. **FlashX** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
+5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+6. **The manufacturing data gap holding back physical AI** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-21.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-22.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

@@ -270,16 +270,6 @@
       "date": "2026-10-22",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.29264",
-        "https://arxiv.org/abs/2610.27045",
-        "https://arxiv.org/abs/2610.30097",
-        "https://monoist.itmedia.co.jp/mn/articles/2610/22/news029.html",
-        "https://blogs.nvidia.com/blog/europe-industrial-leaders-engineering-manufacturing",
-        "https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote",
-        "https://www.therobotreport.com/a-guide-to-day-2-of-robobusiness-2026",
-        "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1517,6 +1507,73 @@
           "edge": 0,
           "safety": 0,
           "systems": 2,
+          "hardware": 2
+        }
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "count": 7,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.26444",
+        "https://arxiv.org/abs/2611.25980",
+        "https://arxiv.org/abs/2611.26103",
+        "https://arxiv.org/abs/2611.25580",
+        "https://www.leiphone.com/category/industrynews/leaiwtsekg58zacy.html",
+        "https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai",
+        "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null,
+          "event": "techcrunch-robotics:956cb223c580",
+          "event#2": null
+        },
+        "unmet": [
+          "event#2",
+          "hot",
+          "official"
+        ]
+      },
+      "pool": {
+        "live": 199,
+        "eligible": 51,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 9,
+          "data": 7,
+          "training": 7,
+          "simeval": 15,
+          "edge": 4,
+          "safety": 4,
+          "systems": 0,
+          "hardware": 5
+        },
+        "picked_by_lane": {
+          "foundation": 1,
+          "data": 1,
+          "training": 0,
+          "simeval": 2,
+          "edge": 1,
+          "safety": 0,
+          "systems": 0,
           "hardware": 2
         }
       }

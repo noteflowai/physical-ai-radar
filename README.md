@@ -62,37 +62,35 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-21
+### 今日雷达 · 2026-11-22
 
-`生成时间: 2026-11-20 23:40 UTC` ｜ `统计窗口: 论文 2026-11-17 → 2026-11-21 · 博客与报道 2026-10-22 → 2026-11-21 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-21 23:40 UTC` ｜ `统计窗口: 论文 2026-11-18 → 2026-11-22 · 博客与报道 2026-10-23 → 2026-11-22 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>仿真与评测 · arXiv 2611.25251 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>仿真与评测 · arXiv 2611.26161 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>系统与编排 · arXiv 2611.26341 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>基座模型 · arXiv 2611.25667 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>本体与供应链 · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>基座模型 · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>系统与编排 · Robohub · 2026‑11‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>仿真与评测 · arXiv 2611.26444 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>仿真与评测 · arXiv 2611.25980 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>边缘与实时性 · arXiv 2611.26103 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>基座模型 · arXiv 2611.25580 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>数据引擎 · The Robot Report · 2026‑11‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>本体与供应链 · TechCrunch (Robotics) · 2026‑11‑05</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **WEVO** — `AI 起草` 人形机器人上直接做 RL 探索不安全、纯仿真 RL 又会钻 sim-to-real 的空子，这篇预印本把世界模型当作 VLA 优化的第三条路；作者自报平均成功率从 23.3% 升到 75.0%，另列的 48.3%（“for real robot”）对比的是什么，要读原文确认。
-2. **One View, One Action** — `AI 起草` 如果你的多视角 VLA 一换相机视角或机器人初始姿态就掉点，值得看这篇预印本：作者自报平均成功率 88.1% 与 85.7%（含 LIBERO-Plus），并称在三个任务上把 π0.5 的 28.3% 提到 58.3%；页面没说明这三个任务是否在真机上。
-3. **Reasoning on Call** — `AI 起草` 长程操作里每一步都调用大型多模态模型会拖慢控制、烧掉 token，这篇预印本主张按需调用推理，作者自报 token 消耗降低 65.3%；对比基线在页面摘录中被截断，成功率是否持平也看不到，部署前需读原文。
-4. **CauSyncVLA** — `AI 起草` 做异步推理、让计算与执行重叠的团队会碰到感知记忆过时、相邻动作块衔接不上的问题，这篇预印本针对的正是这一点；作者自报成功率 93.8%，紧随其后的倍数在摘录中没说明指什么，页面也没有真机结果。
-5. **Video Friday** — `AI 起草` 在狭窄杂乱空间飞行的无人机，与其一味避碰，不如考虑把机体几何与两侧机臂的受接触弯折方式一起优化；这是 IEEE Spectrum 的转述，页面没有任何数字，引用前请找原始论文。
-6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — `AI 起草` 这是一款大型六座 SUV 的上市报道（折叠智舱、DMS 超级混动平台），页面没有任何机器人或具身智能内容，对机器人系统的选型和运营基本不构成决策依据。
-7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — `AI 起草` 准备用世界模型做交互式仿真的团队，难点通常在于让模型适配自己的传感器、任务和数据；这篇 NVIDIA 官方文章正面讨论这一点，但页面摘录在后半句截断、没有数字，具体流程和效果要读原文。
-8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — `AI 起草` 正在挑选开源任务规划与行为编程工具的团队，可以把这期访谈当作背景参考；它是播客对话，页面没有点名具体项目，也没有数字，不足以单独支撑选型。
+1. **Mind2Act World** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Learning What Actions Change** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+3. **UniVEP** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+4. **FlashX** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+6. **The manufacturing data gap holding back physical AI** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
+7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-21.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-22.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

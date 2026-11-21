@@ -60,37 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-21
+### 本日のレーダー · 2026-11-22
 
-`生成時刻: 2026-11-20 23:40 UTC` ｜ `対象期間: 論文 2026-11-17 → 2026-11-21 · ブログ・報道 2026-10-22 → 2026-11-21 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-21 23:40 UTC` ｜ `対象期間: 論文 2026-11-18 → 2026-11-22 · ブログ・報道 2026-10-23 → 2026-11-22 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WEVO: World Model-Enabled VLA Optimization for Whole-Body Loco-Manipulation](https://arxiv.org/abs/2611.25251)**<br>`23.3%`&nbsp; `75.0%`&nbsp; `48.3%`<br><sub>シミュレーションと評価 · arXiv 2611.25251 · 2026‑11‑18</sub> |
-| 02<br>🔵&nbsp;`R` | **[One View, One Action: Spatially Generalizable VLAs through Observation-Aligned Experts and Cross Graph Consistency](https://arxiv.org/abs/2611.26161)**<br>`88.1%`&nbsp; `85.7%`&nbsp; `28.3%`<br><sub>シミュレーションと評価 · arXiv 2611.26161 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[Reasoning on Call: Efficient Agentic Robot Control for Long-Horizon Robot Manipulation](https://arxiv.org/abs/2611.26341)**<br>`65.3%`<br><sub>システムとオーケストレーション · arXiv 2611.26341 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[CauSyncVLA: Causal Latent World Modeling for Asynchronous Robot Control](https://arxiv.org/abs/2611.25667)**<br>`93.8%`<br><sub>基盤モデル · arXiv 2611.25667 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[Video Friday: Drone Squeezes Itself to Fit Through Tight Spaces](https://spectrum.ieee.org/video-friday-morphing-robots-quadrotor)**<br><sub>ハードウェアとサプライチェーン · IEEE Spectrum Robotics · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[方程豹钛9上市：27.99万元起，折叠方向盘首次上车](https://www.leiphone.com/category/transportation/Okzc1pyWcptuTh5J.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 07<br>🟢&nbsp;`O` | **[Build World Models for Interactive Simulation with NVIDIA Cosmos](https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/)**<br><sub>基盤モデル · NVIDIA Technical Blog (Robotics) · 2026‑11‑02</sub> |
-| 08<br>🟡&nbsp;`M` | **[Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro](https://robohub.org/robot-talk-episode-171-programming-robot-behaviour-with-sebastian-castro/)**<br><sub>システムとオーケストレーション · Robohub · 2026‑11‑20</sub> |
+| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>シミュレーションと評価 · arXiv 2611.26444 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>シミュレーションと評価 · arXiv 2611.25980 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>エッジとリアルタイム · arXiv 2611.26103 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>基盤モデル · arXiv 2611.25580 · 2026‑11‑19</sub> |
+| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑20</sub> |
+| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>データエンジン · The Robot Report · 2026‑11‑21</sub> |
+| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>ハードウェアとサプライチェーン · TechCrunch (Robotics) · 2026‑11‑05</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **WEVO** — `AI 下書き` 実機でのRL探索は危険、シミュレータRLはsim-to-realの隙を突く、という理由でRLを避けてきたヒューマノイド開発には、世界モデルでVLAを最適化する代案となる。平均成功率23.3%→75.0%は著者の自己報告で、別記の48.3%（実機）が何との比較かは原文で確認したい。
-2. **One View, One Action** — `AI 下書き` カメラ視点やロボットの初期状態が変わると性能が落ちる多視点VLAを運用しているなら参考になる。著者はLIBERO-Plusを含む平均成功率88.1%と85.7%、3タスクでπ0.5の28.3%を58.3%へ改善と自己報告しているが、その3タスクが実機かはページから読み取れない。
-3. **Reasoning on Call** — `AI 下書き` 長期マニピュレーションで大規模マルチモーダルモデルを毎回呼び出し、遅延とトークンコストがかさんでいるなら、必要時だけ推論を呼ぶこの手法が候補になる。トークン消費65.3%削減は著者の自己報告で、比較対象は抜粋で途切れ、成功率の比較もページにはない。
-4. **CauSyncVLA** — `AI 下書き` 推論と実行を重ねて待ち時間を減らす非同期制御では、知覚メモリが古くなりアクションチャンク同士がつながらない問題が出る。本プレプリントはそこを狙い、成功率93.8%を自己報告するが、併記の倍率が何を指すかは抜粋から分からず、実機結果もページにはない。
-5. **Video Friday** — `AI 下書き` 機体より狭い開口部を通る必要のあるドローンでは、接触を避けるだけでなく、機体形状と左右アームの接触時の曲がり方を同時に設計する選択肢がある。IEEE Spectrumによる紹介で数値はなく、引用前に元の研究を確認したい。
-6. **方程豹钛9上市：27.99万元起，折叠方向盘首次上车** — `AI 下書き` ページの内容は大型6人乗りSUVの発売（折りたたみ式コックピット、DMSハイブリッド基盤）で、ロボットや身体性AIに関する記述はなく、ロボットシステムの判断材料にはほぼならない。
-7. **Build World Models for Interactive Simulation with NVIDIA Cosmos** — `AI 下書き` 世界モデルを対話型シミュレーションに使うなら、自社のセンサー、タスク、データへの適応が最初の壁になる。NVIDIA自身の記事はそこを扱うが、抜粋は途中で切れて数値もなく、具体的な手順と効果は原文で確かめる必要がある。
-8. **Robot Talk Episode 171 – Programming robot behaviour, with Sebastian Castro** — `AI 下書き` ロボットのタスク計画や行動記述のためのオープンソースツールを選ぶ際の背景知識にはなる。ただしポッドキャストの対談で、ページには具体的なプロジェクト名も数値もなく、これだけで選定は決められない。
+1. **Mind2Act World** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Learning What Actions Change** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **UniVEP** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
+4. **FlashX** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+6. **The manufacturing data gap holding back physical AI** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-21.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-22.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
