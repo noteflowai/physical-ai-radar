@@ -60,35 +60,29 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-22
+### Today's radar · 2026-11-23
 
-`Generated: 2026-11-21 23:40 UTC` ｜ `Window: papers 2026-11-18 → 2026-11-22 · posts 2026-10-23 → 2026-11-22 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-22 23:40 UTC` ｜ `Window: papers 2026-11-19 → 2026-11-23 · posts 2026-10-24 → 2026-11-23 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>Simulation & evaluation · arXiv 2611.26444 · 2026‑11‑19</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>Simulation & evaluation · arXiv 2611.25980 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>Edge & real-time · arXiv 2611.26103 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>Foundation models · arXiv 2611.25580 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>Data engine · The Robot Report · 2026‑11‑21</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>Embodiment & supply chain · TechCrunch (Robotics) · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics](https://arxiv.org/abs/2611.25413)**<br><sub>Simulation & evaluation · arXiv 2611.25413 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Trajectory-Calibrated Merging of Embodied Policies](https://arxiv.org/abs/2611.25575)**<br>`77.83%`<br><sub>Simulation & evaluation · arXiv 2611.25575 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience](https://arxiv.org/abs/2611.26420)**<br>`50,000 hours`&nbsp; `93.75%`<br><sub>Data engine · arXiv 2611.26420 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action](https://arxiv.org/abs/2611.26405)**<br>`87.5%`&nbsp; `70.5%`<br><sub>Foundation models · arXiv 2611.26405 · 2026‑11‑19</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–04</summary>
 
-1. **Mind2Act World** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **Learning What Actions Change** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-3. **UniVEP** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the speed-up holds on the target hardware at control rate.
-4. **FlashX** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch whether it cuts the data a new task or embodiment needs.
-5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
-6. **The manufacturing data gap holding back physical AI** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **WAMotor** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **Trajectory-Calibrated Merging of Embodied Policies** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+3. **Awaken-HI** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
+4. **TacInno** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-22.en.md)** · [Weekly roundup ›](radar/weekly/2026-W47.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-23.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

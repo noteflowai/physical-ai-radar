@@ -60,35 +60,29 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-22
+### 本日のレーダー · 2026-11-23
 
-`生成時刻: 2026-11-21 23:40 UTC` ｜ `対象期間: 論文 2026-11-18 → 2026-11-22 · ブログ・報道 2026-10-23 → 2026-11-22 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-22 23:40 UTC` ｜ `対象期間: 論文 2026-11-19 → 2026-11-23 · ブログ・報道 2026-10-24 → 2026-11-23 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>シミュレーションと評価 · arXiv 2611.26444 · 2026‑11‑19</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>シミュレーションと評価 · arXiv 2611.25980 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>エッジとリアルタイム · arXiv 2611.26103 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>基盤モデル · arXiv 2611.25580 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>データエンジン · The Robot Report · 2026‑11‑21</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>ハードウェアとサプライチェーン · TechCrunch (Robotics) · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics](https://arxiv.org/abs/2611.25413)**<br><sub>シミュレーションと評価 · arXiv 2611.25413 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Trajectory-Calibrated Merging of Embodied Policies](https://arxiv.org/abs/2611.25575)**<br>`77.83%`<br><sub>シミュレーションと評価 · arXiv 2611.25575 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience](https://arxiv.org/abs/2611.26420)**<br>`50,000 hours`&nbsp; `93.75%`<br><sub>データエンジン · arXiv 2611.26420 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action](https://arxiv.org/abs/2611.26405)**<br>`87.5%`&nbsp; `70.5%`<br><sub>基盤モデル · arXiv 2611.26405 · 2026‑11‑19</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–04</summary>
 
-1. **Mind2Act World** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **Learning What Actions Change** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **UniVEP** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-4. **FlashX** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
-6. **The manufacturing data gap holding back physical AI** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **WAMotor** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Trajectory-Calibrated Merging of Embodied Policies** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **Awaken-HI** — 査読前のプレプリント。本文に実機での結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **TacInno** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-22.ja.md)** · [週間まとめ ›](radar/weekly/2026-W47.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-23.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

@@ -1,171 +1,117 @@
 {
-  "date": "2026-11-22",
-  "generated": "2026-11-21 23:40 UTC",
-  "window": "papers 2026-11-18 → 2026-11-22 · posts 2026-10-23 → 2026-11-22 (UTC)",
+  "date": "2026-11-23",
+  "generated": "2026-11-22 23:40 UTC",
+  "window": "papers 2026-11-19 → 2026-11-23 · posts 2026-10-24 → 2026-11-23 (UTC)",
   "window_detail": {
-    "day": "2026-11-22",
-    "papers_from": "2026-11-18",
-    "posts_from": "2026-10-23",
+    "day": "2026-11-23",
+    "papers_from": "2026-11-19",
+    "posts_from": "2026-10-24",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.26444",
-      "title": "Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation",
-      "url": "https://arxiv.org/abs/2611.26444",
-      "publisher": "arXiv 2611.26444",
+      "id": "arxiv:2611.25413",
+      "title": "WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics",
+      "url": "https://arxiv.org/abs/2611.25413",
+      "publisher": "arXiv 2611.25413",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-19",
       "lane": "simeval",
-      "score": 3.376,
-      "numbers": [
-        "52.7%",
-        "39.0%",
-        "12.0%"
-      ],
+      "score": 2.705,
+      "numbers": [],
       "signals": [
-        "numbers",
         "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.214,
-      "summary": "Embodied intelligence aims to let robots perform complex physical tasks with human-like adaptability and reliability, which requires three complementary capabilities: history-based cognitive reasoning, precise and timely physical execution, and the composition of reasoning and execution through environmental feedback. Yet existing benchmarks either evaluate reasoning and execution within the same tasks or assess them separately without their composition, so they reveal little about whether a failure comes from reasoning, execution, or their composition. We introduce Mind2Act World, a diagnostic benchmark of 30 simulated manipulation tasks from five real-world application domains. Each task has three difficulty levels and two scene settings (Clean and Random), yielding 180 configurations. The tasks form three views: Mind tests decisions based on past observations, Act tests precise and timely execution, and Mind2Act combines both in closed-loop tasks where action outcomes guide later decisions. Comparing the three views shows whether a system lacks a capability or fails to compose capabilities it already has. A diagnosis harness further attributes the failed episodes of three representative systems to Mind, Act, or their composition and summarizes each system in a profile card. Our evaluation of multimodal agents, vision-language-action models (VLAs), and world-action models (WAMs) shows that competence in a single view does not carry over to Mind2Act tasks. Even the strongest agent succeeds in 52.7% of Mind and 39.0% of Act episodes but in only 12.0% of Mind2Act episodes. The strongest agent retains task state but struggles with sustained contact, whereas end-to-end policies execute practiced motions but retain little task state. These findings point to composing reasoning and execution through environmental feedback as the main open problem."
-    },
-    {
-      "id": "arxiv:2611.25980",
-      "title": "Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models",
-      "url": "https://arxiv.org/abs/2611.25980",
-      "publisher": "arXiv 2611.25980",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-19",
-      "lane": "simeval",
-      "score": 3.325,
-      "numbers": [
-        "23%",
-        "8.3%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.15,
-      "summary": "World models aim to predict environment dynamics under actions, enabling the prediction of action consequences without executing them in the real world. Yet despite producing increasingly realistic videos, current world models often fail to capture how small action changes affect future observations. This limits their use in tasks such as robotic policy evaluation and model-based planning, where nearly identical actions can lead to qualitatively different outcomes. To address this, we propose AFFECT, an auxiliary training objective for learning the distribution of visual changes induced by action perturbations. Specifically, we inject temporally correlated noise into the actions of a policy trained on task-agnostic human teleoperation. We then train the world model so that its generated videos respond to this noise as the recorded videos do, without requiring repeated executions from the same initial state. Across OGBench simulation and real-world DROID and ALOHA-2 setups, AFFECT makes world-model rollouts more faithful to real outcomes. On DROID, the Pearson correlation between policy success rates in the world model and on the real robot rises from 0.47 to 0.79, alongside up to 23% lower FVD. These gains carry over to planning, where selecting actions with AFFECT-trained world models improves task success by up to 8.3%."
-    },
-    {
-      "id": "arxiv:2611.26103",
-      "title": "UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation",
-      "url": "https://arxiv.org/abs/2611.26103",
-      "publisher": "arXiv 2611.26103",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-19",
-      "lane": "edge",
-      "score": 3.055,
-      "numbers": [
-        "61.36%",
-        "59.96%",
-        "77.1%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot",
+        "open_release",
         "latency"
       ],
       "heat": 0.0,
-      "summary": "Flow-matching robot policies usually use one prediction target throughout action generation, even though recovering actions from noise and polishing nearly clean actions bring different challenges. We systematically compare velocity prediction (V), endpoint prediction (X), and velocity-weighted endpoint prediction (X--V) across multiple robot policies, benchmarks, and inference budgets. On StarVLA and LiLa-WAM, X--V works best for few-step generation, while V gains more from iterative refinement. We further uncover their complementary strengths across noise levels: clean actions have concentrated covariance spectra, endpoint predictions stay more stable under high noise, and velocity predictions offer more accurate corrections near clean actions. Inspired by these findings, we introduce UniVEP, which learns both prediction targets together with consistency supervision and switches from endpoint recovery to velocity refinement as noise drops. Each step only needs one network run, and joint training also boosts single-step endpoint generation. Tests on simulated and real-world manipulation show better success rates and efficiency. On RoboTwin, UniVEP hits 61.36% success with one StarVLA run, beating the best single-target baseline at sixteen runs (59.96%). With LiLa-WAM, two runs outperform the best sixteen-step single-target baseline and cut inference latency by 77.1%."
+      "summary": "World Action Models (WAMs) unify world modeling and action generation for robotic control by integrating flow-matching velocities, yet suffer from high multi-step denoising latency. Recent studies have explored speculative inference to accelerate WAMs by drafting and verifying denoising steps in parallel. However, existing methods either require training task-specific draft models or overlook critical WAM denoising dynamics when reusing past velocities as drafts. We revisit the denoising dynamics of WAMs and identify a dual nonuniformity that breaks standard velocity-reuse assumptions: velocity smoothness is nonuniform as adjacent velocity residuals differ sharply at early and final steps, so reuse there yields large residuals, which nonuniform integration time steps further translate into local state errors that accumulate into the final action distribution. Accordingly, we formalize this by theoretically deriving a trajectory error tolerance bound that characterizes how velocity residuals and integration time steps affect the final action distribution. Based on this, we propose WAMotor, the first speculative inference method tailored to the dual nonuniformity in WAMs. It selects reliable anchor velocities by deferring speculation and employs time-step-aware verification that scales acceptance thresholds by integration time step size. WAMotor offers plug-and-play benefits, enabling seamless integration with prior WAMs. Extensive evaluations on LIBERO, RoboTwin 2.0, and LIBERO-Plus show that WAMotor achieves 2.86$\\times$--4.28$\\times$ end-to-end speedups while maintaining task success rates. Our code is available at: https://github.com/Overdue-Lin/WAMotor"
     },
     {
-      "id": "arxiv:2611.25580",
-      "title": "FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash",
-      "url": "https://arxiv.org/abs/2611.25580",
-      "publisher": "arXiv 2611.25580",
+      "id": "arxiv:2611.25575",
+      "title": "Trajectory-Calibrated Merging of Embodied Policies",
+      "url": "https://arxiv.org/abs/2611.25575",
+      "publisher": "arXiv 2611.25575",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "score": 2.555,
+      "numbers": [
+        "77.83%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "Robot foundation models are increasingly adapted into task specialists to expand their embodied capabilities. Yet these capabilities remain fragmented across separate policies, and existing model-merging methods do not reliably preserve them during closed-loop execution: parameter-space alignment provides only an indirect proxy for behavior, while regression may fail to preserve behavior at states not covered by its calibration inputs. We present Trajectory-Calibrated Regression (TCR), an execution-aware, gradient-free framework that consolidates robot specialists into a single policy. Across two complementary timescales, TCR collects calibration inputs from expert rollouts spanning different stages of task execution and from intermediate states within iterative action generation. To account for representation shifts introduced by merging, TCR recomputes each block's input through the already merged blocks. It then uses each expert's computation within the block to form module inputs and fits merged weights to match the experts' linear outputs. A two-pass calibration procedure further refines the merged policy using separate rollout caches while retaining the frozen specialists as teachers. The resulting model preserves the original inference graph and requires neither expert routing nor additional gradient training. On LIBERO, TCR merges four $π_{0.5}$ specialists and achieves 77.83% success across 1,200 evaluation episodes, outperforming FeatCal, RegMean, and direct weight averaging by 9.50, 24.17, and 33.00 percentage points, respectively."
+    },
+    {
+      "id": "arxiv:2611.26420",
+      "title": "Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience",
+      "url": "https://arxiv.org/abs/2611.26420",
+      "publisher": "arXiv 2611.26420",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-19",
+      "lane": "data",
+      "score": 2.502,
+      "numbers": [
+        "50,000 hours",
+        "93.75%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "A central goal of humanoid robotics is for robots to perform the everyday work people do in homes and workplaces. Existing egocentric video datasets cover many of these activities but provide little synchronized whole-body motion data for learning loco-manipulation at scale. We build Awaken-Human, which pairs approximately 50,000 hours of egocentric stereo video with synchronized whole-body human motion and covers more than 100 skills. Building on this, we also introduce Awaken-HI (Humanoid Intelligence), a vision-language-action model for humanoid loco-manipulation that jointly predicts original human motion and retargeted robot actions through a shared action expert. We show that loco-manipulation skills transfer more effectively from people to humanoids when human trajectories directly supervise the shared action expert. Increasing human pretraining data reduces held-out robot action prediction error according to an empirical scaling law and raises the mean success rate on downstream real-robot tasks. After full-corpus pretraining and T800 adaptation, Awaken-HI achieves a mean success rate of 93.75% across eight individual tasks and outperforms GR00T N1.7 and $π_{0.5}$ in both individual and long-horizon evaluations. The same policy generalizes to objects unseen during robot post-training and to new pairings of familiar objects and destinations."
+    },
+    {
+      "id": "arxiv:2611.26405",
+      "title": "TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action",
+      "url": "https://arxiv.org/abs/2611.26405",
+      "publisher": "arXiv 2611.26405",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-19",
       "lane": "foundation",
-      "score": 2.95,
-      "numbers": [],
+      "score": 2.5,
+      "numbers": [
+        "87.5%",
+        "70.5%"
+      ],
       "signals": [
+        "numbers",
         "closed_loop",
-        "latency"
+        "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Embodied agents are emerging as a promising paradigm for complex robotic tasks, leveraging Vision-Language-Action (VLA) and World Action Models (WAMs) to generate actions through Diffusion Transformer (DiT)-based iterative denoising. However, existing models often struggle to generalize to out-of-distribution (OOD) environments. We observe that retrieving successful experiences and using them to warm-start denoising enables agents to better adapt to unfamiliar situations while reducing computational overhead. This creates a new opportunity to improve task accuracy and inference efficiency simultaneously, in contrast to conventional acceleration techniques that trade accuracy for computation. However, realizing this opportunity requires scaling experience banks, introducing substantial storage and search overhead that challenges the capacity, bandwidth, and power constraints of edge systems. We propose FlashX, a CMOS Directly Bonded to Array (CBA)-based NAND flash architecture for scalable experience reuse in embodied agents. FlashX exploits CBA's high internal bandwidth for parallel pSLC key search, employing interleaved Compute-in-Flash (CIF) engines to sustain sensing throughput while retaining dense TLC latent storage. Proprioception-aware clustering further reduces search overhead and enables incremental experience acquisition without global reclustering. Evaluations across VLA and WAM workloads demonstrate up to 12.24\\%p and 7.43\\%p improvements in task success under dense and compute-efficient configurations, respectively. FlashX achieves 2.57$\\times$ higher search throughput than the strongest prior NAND search architecture under pSLC sensing, with a further 9.7$\\times$ search reduction through clustering. This delivers 1.29--3.95$\\times$ end-to-end speedup and 1.12--2.34$\\times$ energy efficiency improvement over SSD-based retrieval."
-    },
-    {
-      "id": "leiphone:9b3bd8fc2ee0",
-      "title": "灵掌机器人太空灵巧手亮相世界智能制造博览会",
-      "url": "https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-20",
-      "lane": "hardware",
-      "score": 1.447,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "11月19日至21日，第十一届世界智能制造博览会（以下简称“智博会”）在南京国际博览中心举办。无锡灵掌机器人科技有限公司（以下简称“灵掌机器人”）携全系列共9款灵巧手产品参展，重点展示了灵巧手在工业制造、太空任务、特种作业、科研与人形机器人等行业领域的落地场景及解决方案。 灵掌机器人创始人兼首席执行官张超介绍，灵巧手是具身智能走向真实操作的重要一环，也是连接智能决策与物理执行的关键末端。当前灵巧手行业正进入快速发展期，逐步进入真实应用场景中，市场需求也在持续释放。从工业产线上的重物抓取搬运，到危险环境中的远程防爆作业，再到太空航天器维修，灵巧手的市场应用空间广阔。 在张超看来，机器人发展的重要价值之一，是帮助人类承担那些危险、艰难、紧急或高风险的工作，解放人类创造力。 （图示：灵掌机器人联合创始人、硬件总工程师许钦桓交流会发言） 灵掌机器人联合创始人、硬件总工程师许钦桓在现场表示：“灵掌机器人的灵巧手，走的是高寿命、大负载、高稳定性的腱绳驱动路线，主要从工业场景和特种场景开展应用，实现灵巧手的快速落地。” 在工业生产、特种作业和太空探索等场景中，机器人可通过灵巧手、机械臂与控制系统协同，参与物料搬运、远程操作和设备维护等任务，减少人员直接进入危险环境的需要。“危、难、急、险”场景往往对操作的可靠性与精细度提出更高要求，也为灵巧操作技术提供了重要的应用方向。 从工业生产到太空任务 灵巧手步入多元应用场景 （图示：灵掌机器人联合创始人周稼宇交流会发言） …"
-    },
-    {
-      "id": "the-robot-report:3640b1da9f52",
-      "title": "The manufacturing data gap holding back physical AI",
-      "url": "https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-21",
-      "lane": "data",
-      "score": 1.218,
-      "numbers": [],
-      "signals": [],
-      "heat": 0.0,
-      "summary": "Manufacturers looking to deploy autonomous robots must close gaps in industrial data collection, interoperability, and quality feedback to enable reliable decision-making and improve production efficiency."
-    },
-    {
-      "id": "techcrunch-robotics:956cb223c580",
-      "title": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
-      "url": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
-      "publisher": "TechCrunch (Robotics)",
-      "source_id": "techcrunch-robotics",
-      "evidence": "M",
-      "published": "2026-11-05",
-      "lane": "hardware",
-      "score": 0.882,
-      "numbers": [],
-      "signals": [
-        "industry_event"
-      ],
-      "heat": 0.0,
-      "summary": "Agility arrives on the Nasdaq today as the first publicly traded pure-play humanoid robotics company."
+      "summary": "Vision-Language-Action (VLA) models have recently been equipped with tactile sensing to perceive visually subtle contact events in contact-rich manipulation. However, adding tactile input yields inconsistent gains, and some visuo-tactile VLA models rely little on tactile input, because much of the tactile change, such as the gel deformation during gripper closure, is predictable from visual observations and executed actions. To address this problem, we introduce TacInno, which isolates the contact dynamics that vision and executed actions cannot explain, termed tactile innovation, and uses tactile innovation only as a training target. Specifically, the TacInno tokenizer, conditioned on visual observations and executed actions, compresses the future tactile change into a discrete code, and the policy, TacInno-VLA, learns to predict the code, adding no module for the code at deployment. TacInno-VLA achieves average success rates of 87.5% across six simulation tasks and 70.5% across four real-world tasks, outperforming the strongest visuo-tactile baseline by 10.7 and 9.0 percentage points, respectively. Ablation studies validate the contributions of visual and action conditioning, multi-frame encoding, and auxiliary code prediction. Together, these results demonstrate the effectiveness of tactile innovation as a supervision signal for contact-rich manipulation."
     }
   ],
   "lane_counts": {
-    "foundation": 9,
+    "foundation": 10,
     "data": 4,
     "training": 3,
     "simeval": 14,
     "edge": 3,
-    "safety": 2,
-    "systems": 5,
-    "hardware": 11
+    "safety": 1,
+    "systems": 4,
+    "hardware": 10
   },
   "evidence_mix": {
-    "O": 7,
+    "O": 6,
     "R": 28,
-    "M": 16
+    "M": 15
   },
   "fetch": {
-    "items": 545,
+    "items": 625,
     "attempted": 25,
-    "answered": 24,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 25,
+    "failed": [],
     "fallback": [],
     "unavailable": [],
     "robots_skipped": [],
@@ -191,14 +137,15 @@
       "robots_reasons": {},
       "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 21,
+      "hn_stories": 17,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 67,
+      "arxiv": 48,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -210,7 +157,7 @@
       "nature-machine-intelligence": 2,
       "techcrunch-robotics": 14,
       "robohub": 75,
-      "qbitai": 2,
+      "qbitai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,
       "github-mujoco": 1,

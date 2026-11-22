@@ -3,7 +3,7 @@
   <id>tag:noteflowai.github.io,2026:physical-ai-radar:feed:en</id>
   <title>Physical AI Radar</title>
   <subtitle>A daily radar on the Physical AI frontier: eight lanes, trilingual digests, traceable evidence.</subtitle>
-  <updated>2026-11-21T23:40:00Z</updated>
+  <updated>2026-11-22T23:40:00Z</updated>
   <link rel="self" type="application/atom+xml" href="https://noteflowai.github.io/physical-ai-radar/radar/feed.xml" />
   <link rel="alternate" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/en/" />
   <author>
@@ -11,6 +11,74 @@
     <uri>https://github.com/noteflowai/physical-ai-radar</uri>
   </author>
   <generator uri="https://github.com/noteflowai/physical-ai-radar">pairadar</generator>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.25413</id>
+    <title>WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.25413" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html" />
+    <published>2026-11-22T23:40:00Z</published>
+    <updated>2026-11-22T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.25413</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">World Action Models (WAMs) unify world modeling and action generation for robotic control by integrating flow-matching velocities, yet suffer from high multi-step denoising latency.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.25413 · 2026-11-19&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: closed-loop success reported · open code or weights · latency or control-rate numbers&lt;/p&gt;
+&lt;blockquote&gt;World Action Models (WAMs) unify world modeling and action generation for robotic control by integrating flow-matching velocities, yet suffer from high multi-step denoising latency.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html"&gt;Full radar for 2026-11-23&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.25575</id>
+    <title>Trajectory-Calibrated Merging of Embodied Policies</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.25575" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html" />
+    <published>2026-11-22T23:40:00Z</published>
+    <updated>2026-11-22T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.25575</name>
+    </author>
+    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Robot foundation models are increasingly adapted into task specialists to expand their embodied capabilities. Yet these capabilities remain fragmented across separate policies, and existing model-merging methods do not reliably preserve…</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.25575 · 2026-11-19&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 77.83%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
+&lt;blockquote&gt;Robot foundation models are increasingly adapted into task specialists to expand their embodied capabilities. Yet these capabilities remain fragmented across separate policies, and existing model-merging methods do not reliably preserve…&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html"&gt;Full radar for 2026-11-23&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.26420</id>
+    <title>Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.26420" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html" />
+    <published>2026-11-22T23:40:00Z</published>
+    <updated>2026-11-22T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.26420</name>
+    </author>
+    <category term="data" label="Data engine (collection / curation / scaling)" />
+    <category term="R" label="[R]" />
+    <summary type="text">A central goal of humanoid robotics is for robots to perform the everyday work people do in homes and workplaces.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.26420 · 2026-11-19&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 50,000 hours · 93.75%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
+&lt;blockquote&gt;A central goal of humanoid robotics is for robots to perform the everyday work people do in homes and workplaces.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html"&gt;Full radar for 2026-11-23&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.26405</id>
+    <title>TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action</title>
+    <link rel="alternate" href="https://arxiv.org/abs/2611.26405" />
+    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html" />
+    <published>2026-11-22T23:40:00Z</published>
+    <updated>2026-11-22T23:40:00Z</updated>
+    <author>
+      <name>arXiv 2611.26405</name>
+    </author>
+    <category term="foundation" label="Foundation models (VLA / WAM)" />
+    <category term="R" label="[R]" />
+    <summary type="text">Vision-Language-Action (VLA) models have recently been equipped with tactile sensing to perceive visually subtle contact events in contact-rich manipulation.</summary>
+    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.26405 · 2026-11-19&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 87.5% · 70.5%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · real-robot experiments&lt;/p&gt;
+&lt;blockquote&gt;Vision-Language-Action (VLA) models have recently been equipped with tactile sensing to perceive visually subtle contact events in contact-rich manipulation.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-23.en.html"&gt;Full radar for 2026-11-23&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.26444</id>
     <title>Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation</title>
@@ -1638,73 +1706,5 @@
     <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Data engine (collection / curation / scaling)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [M]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: IEEE Spectrum Robotics · 2026-11-09&lt;/p&gt;
 &lt;blockquote&gt;Robotics companies are investing heavily in the belief that data will solve the most difficult problems in robotics.&lt;/blockquote&gt;
 &lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-10.en.html"&gt;Full radar for 2026-11-10&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08413</id>
-    <title>T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2611.08413" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html" />
-    <published>2026-11-08T23:40:00Z</published>
-    <updated>2026-11-08T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2611.08413</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.08413 · 2026-11-05&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 85% · 7.8 ms · 3.3x&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while…&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html"&gt;Full radar for 2026-11-09&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.08398</id>
-    <title>A Multimodal Haptic Interface for Simultaneous Softness and Thermal Modulation</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2611.08398" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html" />
-    <published>2026-11-08T23:40:00Z</published>
-    <updated>2026-11-08T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2611.08398</name>
-    </author>
-    <category term="simeval" label="Simulation &amp; evaluation (sim2real / closed-loop)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Simulation &amp;amp; evaluation (sim2real / closed-loop)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.08398 · 2026-11-05&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 300%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · closed-loop success reported&lt;/p&gt;
-&lt;blockquote&gt;Haptic interactions, such as touching an object in virtual reality, involve detecting a plethora of sensations through the skin.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html"&gt;Full radar for 2026-11-09&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07779</id>
-    <title>Flexible Piezoelectric Tactile Sensing System for Intelligent Object Recognition</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2611.07779" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html" />
-    <published>2026-11-08T23:40:00Z</published>
-    <updated>2026-11-08T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2611.07779</name>
-    </author>
-    <category term="edge" label="Edge &amp; real-time (on-device inference / control rate)" />
-    <category term="R" label="[R]" />
-    <summary type="text">Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Edge &amp;amp; real-time (on-device inference / control rate)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.07779 · 2026-11-05&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 101 ms&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results · real-robot experiments · latency or control-rate numbers&lt;/p&gt;
-&lt;blockquote&gt;Tactile sensing provides information about object properties that can improve robotic grasping and manipulation.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html"&gt;Full radar for 2026-11-09&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <id>tag:noteflowai.github.io,2026:physical-ai-radar:arxiv:2611.07912</id>
-    <title>GuidedWAM: Training-Free Energy Guidance for World Action Models in Autonomous Driving</title>
-    <link rel="alternate" href="https://arxiv.org/abs/2611.07912" />
-    <link rel="related" type="text/html" href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html" />
-    <published>2026-11-08T23:40:00Z</published>
-    <updated>2026-11-08T23:40:00Z</updated>
-    <author>
-      <name>arXiv 2611.07912</name>
-    </author>
-    <category term="foundation" label="Foundation models (VLA / WAM)" />
-    <category term="R" label="[R]" />
-    <summary type="text">World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.</summary>
-    <content type="html">&lt;p&gt;&lt;b&gt;Lane&lt;/b&gt;: Foundation models (VLA / WAM)&lt;br&gt;&lt;b&gt;Evidence&lt;/b&gt;: [R]&lt;br&gt;&lt;b&gt;Source&lt;/b&gt;: arXiv 2611.07912 · 2026-11-05&lt;br&gt;&lt;b&gt;Key numbers&lt;/b&gt;: 10%&lt;br&gt;&lt;b&gt;Signals&lt;/b&gt;: quantitative results&lt;/p&gt;
-&lt;blockquote&gt;World action models (WAMs) for autonomous driving couple the driving policy and the visual world model in a single generative network whose objectives are fixed post-training.&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-09.en.html"&gt;Full radar for 2026-11-09&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

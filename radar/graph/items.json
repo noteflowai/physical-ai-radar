@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-23",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8416,6 +8416,84 @@
       ],
       "numbers": [],
       "excerpt": "Agility arrives on the Nasdaq today as the first publicly traded pure-play humanoid robotics company."
+    },
+    {
+      "id": "arxiv:2611.25413",
+      "date": "2026-11-23",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25413",
+      "title": "WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics",
+      "url": "https://arxiv.org/abs/2611.25413",
+      "signals": [
+        "closed_loop",
+        "open_release",
+        "latency"
+      ],
+      "numbers": [],
+      "excerpt": "World Action Models (WAMs) unify world modeling and action generation for robotic control by integrating flow-matching velocities, yet suffer from high multi-step denoising latency."
+    },
+    {
+      "id": "arxiv:2611.25575",
+      "date": "2026-11-23",
+      "published": "2026-11-19",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.25575",
+      "title": "Trajectory-Calibrated Merging of Embodied Policies",
+      "url": "https://arxiv.org/abs/2611.25575",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "77.83%"
+      ],
+      "excerpt": "Robot foundation models are increasingly adapted into task specialists to expand their embodied capabilities. Yet these capabilities remain fragmented across separate policies, and existing model-merging methods do not reliably preserve…"
+    },
+    {
+      "id": "arxiv:2611.26420",
+      "date": "2026-11-23",
+      "published": "2026-11-19",
+      "lane": "data",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26420",
+      "title": "Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience",
+      "url": "https://arxiv.org/abs/2611.26420",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "50,000 hours",
+        "93.75%"
+      ],
+      "excerpt": "A central goal of humanoid robotics is for robots to perform the everyday work people do in homes and workplaces."
+    },
+    {
+      "id": "arxiv:2611.26405",
+      "date": "2026-11-23",
+      "published": "2026-11-19",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.26405",
+      "title": "TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action",
+      "url": "https://arxiv.org/abs/2611.26405",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "87.5%",
+        "70.5%"
+      ],
+      "excerpt": "Vision-Language-Action (VLA) models have recently been equipped with tactile sensing to perceive visually subtle contact events in contact-rich manipulation."
     }
   ]
 }

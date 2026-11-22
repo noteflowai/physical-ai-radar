@@ -62,35 +62,29 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-22
+### 今日雷达 · 2026-11-23
 
-`生成时间: 2026-11-21 23:40 UTC` ｜ `统计窗口: 论文 2026-11-18 → 2026-11-22 · 博客与报道 2026-10-23 → 2026-11-22 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-22 23:40 UTC` ｜ `统计窗口: 论文 2026-11-19 → 2026-11-23 · 博客与报道 2026-10-24 → 2026-11-23 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)**<br>`52.7%`&nbsp; `39.0%`&nbsp; `12.0%`<br><sub>仿真与评测 · arXiv 2611.26444 · 2026‑11‑19</sub> |
-| 02<br>🔵&nbsp;`R` | **[Learning What Actions Change: Action Effect Matching for Dynamics-Faithful World Models](https://arxiv.org/abs/2611.25980)**<br>`23%`&nbsp; `8.3%`<br><sub>仿真与评测 · arXiv 2611.25980 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[UniVEP: Unifying Velocity and Endpoint Prediction for Robot Manipulation](https://arxiv.org/abs/2611.26103)**<br>`61.36%`&nbsp; `59.96%`&nbsp; `77.1%`<br><sub>边缘与实时性 · arXiv 2611.26103 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[FlashX: Scaling Robotic Experience Reuse for Embodied Agents with CBA-Based NAND Flash](https://arxiv.org/abs/2611.25580)**<br><sub>基座模型 · arXiv 2611.25580 · 2026‑11‑19</sub> |
-| 05<br>🟡&nbsp;`M` | **[灵掌机器人太空灵巧手亮相世界智能制造博览会](https://www.leiphone.com/category/industrynews/leaIWtsEkg58zaCy.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑20</sub> |
-| 06<br>🟡&nbsp;`M` | **[The manufacturing data gap holding back physical AI](https://www.therobotreport.com/the-manufacturing-data-gap-holding-back-physical-ai/)**<br><sub>数据引擎 · The Robot Report · 2026‑11‑21</sub> |
-| 07<br>🟡&nbsp;`M` | **[Agility is the first pure humanoid robot company on the stock market. Are you buying?](https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/)**<br><sub>本体与供应链 · TechCrunch (Robotics) · 2026‑11‑05</sub> |
+| 01<br>🔵&nbsp;`R` | **[WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics](https://arxiv.org/abs/2611.25413)**<br><sub>仿真与评测 · arXiv 2611.25413 · 2026‑11‑19</sub> |
+| 02<br>🔵&nbsp;`R` | **[Trajectory-Calibrated Merging of Embodied Policies](https://arxiv.org/abs/2611.25575)**<br>`77.83%`<br><sub>仿真与评测 · arXiv 2611.25575 · 2026‑11‑19</sub> |
+| 03<br>🔵&nbsp;`R` | **[Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience](https://arxiv.org/abs/2611.26420)**<br>`50,000 hours`&nbsp; `93.75%`<br><sub>数据引擎 · arXiv 2611.26420 · 2026‑11‑19</sub> |
+| 04<br>🔵&nbsp;`R` | **[TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action](https://arxiv.org/abs/2611.26405)**<br>`87.5%`&nbsp; `70.5%`<br><sub>基座模型 · arXiv 2611.26405 · 2026‑11‑19</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–04</summary>
 
-1. **Mind2Act World** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Learning What Actions Change** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **UniVEP** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在目标硬件和实际控制频率下加速是否成立。
-4. **FlashX** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-5. **灵掌机器人太空灵巧手亮相世界智能制造博览会** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
-6. **The manufacturing data gap holding back physical AI** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-7. **Agility is the first pure humanoid robot company on the stock market. Are y…** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **WAMotor** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Trajectory-Calibrated Merging of Embodied Policies** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+3. **Awaken-HI** — 预印本，尚未经过同行评审；原文未提及真机结果。关注这些数据能否在作者自己的机器人之外复用。
+4. **TacInno** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-22.zh.md)** · [每周汇总 ›](radar/weekly/2026-W47.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-23.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
