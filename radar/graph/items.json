@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-24",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8494,6 +8494,150 @@
         "70.5%"
       ],
       "excerpt": "Vision-Language-Action (VLA) models have recently been equipped with tactile sensing to perceive visually subtle contact events in contact-rich manipulation."
+    },
+    {
+      "id": "tri:c5c92abf5e8d",
+      "date": "2026-11-24",
+      "published": "2026-11-23",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "tri",
+      "publisher": "Toyota Research Institute",
+      "title": "H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer",
+      "url": "http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Learning robot manipulation policies from human video demonstrations constitutes a promising avenue for scalable robot learning."
+    },
+    {
+      "id": "tri:033c9be25934",
+      "date": "2026-11-24",
+      "published": "2026-11-23",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "tri",
+      "publisher": "Toyota Research Institute",
+      "title": "PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies",
+      "url": "http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "A significant challenge for robot learning research is our ability to accurately measure and compare the performance of robot policies."
+    },
+    {
+      "id": "arxiv:2611.27182",
+      "date": "2026-11-24",
+      "published": "2026-11-20",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.27182",
+      "title": "Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance",
+      "url": "https://arxiv.org/abs/2611.27182",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "61.3%",
+        "81.3%",
+        "38.7%",
+        "31.0%"
+      ],
+      "excerpt": "Agent harnesses are turn-based: the agent acts, waits for the result, then reasons. When the action invokes a pretrained robot policy, such as a vision-language-action (VLA) or world action model (WAM), the policy may react continuously…"
+    },
+    {
+      "id": "arxiv:2611.27226",
+      "date": "2026-11-24",
+      "published": "2026-11-20",
+      "lane": "edge",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.27226",
+      "title": "Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving",
+      "url": "https://arxiv.org/abs/2611.27226",
+      "signals": [
+        "open_release",
+        "latency"
+      ],
+      "numbers": [
+        "2.31x",
+        "1.55x",
+        "1.96x",
+        "1.37x"
+      ],
+      "excerpt": "Driving world-action models generate planned trajectories through iterative action denoising, with each update depending on the preceding state."
+    },
+    {
+      "id": "tri:6c02d39ad62c",
+      "date": "2026-11-24",
+      "published": "2026-11-23",
+      "lane": "data",
+      "evidence": "R",
+      "source_id": "tri",
+      "publisher": "Toyota Research Institute",
+      "title": "RoboDream: Compositional World Models for Scalable Robot Data Synthesis",
+      "url": "http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Scaling robot learning requires large-scale, diverse demonstrations, yet real-world data collection via teleoperation remains prohibitively expensive and time-consuming."
+    },
+    {
+      "id": "arxiv:2611.27797",
+      "date": "2026-11-24",
+      "published": "2026-11-20",
+      "lane": "systems",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.27797",
+      "title": "EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection",
+      "url": "https://arxiv.org/abs/2611.27797",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "industry_event"
+      ],
+      "numbers": [
+        "53.60%",
+        "80.40%",
+        "20%",
+        "80%"
+      ],
+      "excerpt": "Long-horizon embodied tasks require agents to ground instructions in changing observations, coordinate heterogeneous tools, and recover from failures that can propagate through downstream operations."
+    },
+    {
+      "id": "leiphone:e57940ea5512",
+      "date": "2026-11-24",
+      "published": "2026-11-23",
+      "lane": "data",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力",
+      "url": "https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "央视镜头里的PHAIN数据手套：从人手操作到机器人训练数据 APEC 期间，PHAIN 梵因动力自主研发的 G03 Pro T 数据手套亮相央视新闻《聊会儿APEC》。公司首席科学家 Peter Bradley Shull（肖培德）博士参与节目，佩戴 G03 Pro T 进行机器人遥操作演示，介绍利用手套采集操作数据、支持灵巧手训练的研究用途。"
+    },
+    {
+      "id": "the-robot-report:f59e860c1274",
+      "date": "2026-11-24",
+      "published": "2026-11-23",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "the-robot-report",
+      "publisher": "The Robot Report",
+      "title": "Special Report: Engineering Focus on Motion Control",
+      "url": "https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "The Robot Report looks at recent advances in automation for manufacturing, from improvements in technologies and use cases to the potential of humanoids and AI."
     }
   ]
 }

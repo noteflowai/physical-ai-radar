@@ -298,16 +298,6 @@
       "date": "2026-10-24",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.28259",
-        "https://arxiv.org/abs/2610.30319",
-        "https://arxiv.org/abs/2610.29702",
-        "https://arxiv.org/abs/2610.29142",
-        "https://spectrum.ieee.org/video-friday-rubiks-cube-robot",
-        "https://www.therobotreport.com/webinar-discuss-how-fcc-robotics-ruling-affects-automation-buyers",
-        "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy",
-        "https://www.leiphone.com/category/zaobao/3jq4bj4e3zjhjvbp.html"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1628,6 +1618,75 @@
           "safety": 0,
           "systems": 0,
           "hardware": 0
+        }
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "count": 8,
+      "lanes": 6,
+      "urls": [
+        "https://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer",
+        "https://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies",
+        "https://arxiv.org/abs/2611.27182",
+        "https://arxiv.org/abs/2611.27226",
+        "https://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis",
+        "https://arxiv.org/abs/2611.27797",
+        "https://www.leiphone.com/category/industrynews/htbjlib1wgks3oir.html",
+        "https://www.therobotreport.com/special-report-engineering-focus-on-motion-control"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 3,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null,
+          "event": null,
+          "event#2": null
+        },
+        "unmet": [
+          "event",
+          "event#2",
+          "hot",
+          "official"
+        ]
+      },
+      "pool": {
+        "live": 185,
+        "eligible": 40,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 3,
+          "data": 5,
+          "training": 1,
+          "simeval": 14,
+          "edge": 6,
+          "safety": 2,
+          "systems": 2,
+          "hardware": 7
+        },
+        "picked_by_lane": {
+          "foundation": 1,
+          "data": 2,
+          "training": 0,
+          "simeval": 2,
+          "edge": 1,
+          "safety": 0,
+          "systems": 1,
+          "hardware": 1
         }
       }
     }

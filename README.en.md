@@ -60,29 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-23
+### Today's radar · 2026-11-24
 
-`Generated: 2026-11-22 23:40 UTC` ｜ `Window: papers 2026-11-19 → 2026-11-23 · posts 2026-10-24 → 2026-11-23 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-23 23:40 UTC` ｜ `Window: papers 2026-11-20 → 2026-11-24 · posts 2026-10-25 → 2026-11-24 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[WAMotor: Accelerating World Action Models via Speculative Inference under Dual Nonuniform Denoising Dynamics](https://arxiv.org/abs/2611.25413)**<br><sub>Simulation & evaluation · arXiv 2611.25413 · 2026‑11‑19</sub> |
-| 02<br>🔵&nbsp;`R` | **[Trajectory-Calibrated Merging of Embodied Policies](https://arxiv.org/abs/2611.25575)**<br>`77.83%`<br><sub>Simulation & evaluation · arXiv 2611.25575 · 2026‑11‑19</sub> |
-| 03<br>🔵&nbsp;`R` | **[Awaken-HI: Scaling Humanoid Intelligence with Whole-Body Human Experience](https://arxiv.org/abs/2611.26420)**<br>`50,000 hours`&nbsp; `93.75%`<br><sub>Data engine · arXiv 2611.26420 · 2026‑11‑19</sub> |
-| 04<br>🔵&nbsp;`R` | **[TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action](https://arxiv.org/abs/2611.26405)**<br>`87.5%`&nbsp; `70.5%`<br><sub>Foundation models · arXiv 2611.26405 · 2026‑11‑19</sub> |
+| 01<br>🔵&nbsp;`R` | **[H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer](http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies](http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance](https://arxiv.org/abs/2611.27182)**<br>`61.3%`&nbsp; `81.3%`&nbsp; `38.7%`<br><sub>Foundation models · arXiv 2611.27182 · 2026‑11‑20</sub> |
+| 04<br>🔵&nbsp;`R` | **[Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving](https://arxiv.org/abs/2611.27226)**<br>`2.31x`&nbsp; `1.55x`&nbsp; `1.96x`<br><sub>Edge & real-time · arXiv 2611.27226 · 2026‑11‑20</sub> |
+| 05<br>🔵&nbsp;`R` | **[RoboDream: Compositional World Models for Scalable Robot Data Synthesis](http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis)**<br><sub>Data engine · Toyota Research Institute · 2026‑11‑23</sub> |
+| 06<br>🔵&nbsp;`R` | **[EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection](https://arxiv.org/abs/2611.27797)**<br>`53.60%`&nbsp; `80.40%`&nbsp; `20%`<br><sub>Systems & orchestration · arXiv 2611.27797 · 2026‑11‑20</sub> |
+| 07<br>🟡&nbsp;`M` | **[APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力](https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑11‑23</sub> |
+| 08<br>🟡&nbsp;`M` | **[Special Report: Engineering Focus on Motion Control](https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑23</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–04</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **WAMotor** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **Trajectory-Calibrated Merging of Embodied Policies** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-3. **Awaken-HI** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the data is reusable beyond the authors' own robot.
-4. **TacInno** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+1. **H2RBench** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+2. **PolaRiS** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
+3. **Tripwire** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+4. **Trailblazer-F** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
+5. **RoboDream** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
+6. **EvoTER** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+7. **APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+8. **Special Report** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-23.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-24.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
