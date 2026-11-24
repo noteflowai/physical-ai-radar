@@ -62,37 +62,33 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-24
+### 今日雷达 · 2026-11-25
 
-`生成时间: 2026-11-23 23:40 UTC` ｜ `统计窗口: 论文 2026-11-20 → 2026-11-24 · 博客与报道 2026-10-25 → 2026-11-24 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-24 23:40 UTC` ｜ `统计窗口: 论文 2026-11-21 → 2026-11-25 · 博客与报道 2026-10-26 → 2026-11-25 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer](http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer)**<br><sub>仿真与评测 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies](http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies)**<br><sub>仿真与评测 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance](https://arxiv.org/abs/2611.27182)**<br>`61.3%`&nbsp; `81.3%`&nbsp; `38.7%`<br><sub>基座模型 · arXiv 2611.27182 · 2026‑11‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving](https://arxiv.org/abs/2611.27226)**<br>`2.31x`&nbsp; `1.55x`&nbsp; `1.96x`<br><sub>边缘与实时性 · arXiv 2611.27226 · 2026‑11‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[RoboDream: Compositional World Models for Scalable Robot Data Synthesis](http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis)**<br><sub>数据引擎 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 06<br>🔵&nbsp;`R` | **[EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection](https://arxiv.org/abs/2611.27797)**<br>`53.60%`&nbsp; `80.40%`&nbsp; `20%`<br><sub>系统与编排 · arXiv 2611.27797 · 2026‑11‑20</sub> |
-| 07<br>🟡&nbsp;`M` | **[APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力](https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html)**<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑11‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[Special Report: Engineering Focus on Motion Control](https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/)**<br><sub>本体与供应链 · The Robot Report · 2026‑11‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments](https://arxiv.org/abs/2611.31002)**<br><sub>仿真与评测 · arXiv 2611.31002 · 2026‑11‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation](https://arxiv.org/abs/2611.30997)**<br>`72.9%`&nbsp; `44.8%`&nbsp; `58.9%`<br><sub>训练与自我改进 · arXiv 2611.30997 · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)**<br>`93.6%`<br><sub>基座模型 · arXiv 2611.30898 · 2026‑11‑23</sub> |
+| 04<br>🔵&nbsp;`R` | **[Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe](https://arxiv.org/abs/2611.29553)**<br>`70%`<br><sub>基座模型 · arXiv 2611.29553 · 2026‑11‑22</sub> |
+| 05<br>🟢&nbsp;`O` | **[Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑24</sub> |
+| 06<br>🟡&nbsp;`M` | **[业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型](https://www.qbitai.com/2026/11/512362.html)**<br><sub>边缘与实时性 · 量子位 QbitAI · 2026‑11‑24</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–08</summary>
+<details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **H2RBench** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-2. **PolaRiS** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
-3. **Tripwire** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-4. **Trailblazer-F** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注在目标硬件和实际控制频率下加速是否成立。
-5. **RoboDream** — 预印本，尚未经过同行评审；原文未提及闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
-6. **EvoTER** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
-7. **APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
-8. **Special Report** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
+1. **RoboUniverse-10K** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
+3. **World Models as Native Latent Action Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+4. **Detecting Is Not Choosing** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
+5. **Microduck Obstacle Avoidance** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-24.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-25.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

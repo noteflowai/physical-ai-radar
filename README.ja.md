@@ -60,37 +60,33 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-24
+### 本日のレーダー · 2026-11-25
 
-`生成時刻: 2026-11-23 23:40 UTC` ｜ `対象期間: 論文 2026-11-20 → 2026-11-24 · ブログ・報道 2026-10-25 → 2026-11-24 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-24 23:40 UTC` ｜ `対象期間: 論文 2026-11-21 → 2026-11-25 · ブログ・報道 2026-10-26 → 2026-11-25 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer](http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies](http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies)**<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance](https://arxiv.org/abs/2611.27182)**<br>`61.3%`&nbsp; `81.3%`&nbsp; `38.7%`<br><sub>基盤モデル · arXiv 2611.27182 · 2026‑11‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving](https://arxiv.org/abs/2611.27226)**<br>`2.31x`&nbsp; `1.55x`&nbsp; `1.96x`<br><sub>エッジとリアルタイム · arXiv 2611.27226 · 2026‑11‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[RoboDream: Compositional World Models for Scalable Robot Data Synthesis](http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis)**<br><sub>データエンジン · Toyota Research Institute · 2026‑11‑23</sub> |
-| 06<br>🔵&nbsp;`R` | **[EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection](https://arxiv.org/abs/2611.27797)**<br>`53.60%`&nbsp; `80.40%`&nbsp; `20%`<br><sub>システムとオーケストレーション · arXiv 2611.27797 · 2026‑11‑20</sub> |
-| 07<br>🟡&nbsp;`M` | **[APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力](https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑11‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[Special Report: Engineering Focus on Motion Control](https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/)**<br><sub>ハードウェアとサプライチェーン · The Robot Report · 2026‑11‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments](https://arxiv.org/abs/2611.31002)**<br><sub>シミュレーションと評価 · arXiv 2611.31002 · 2026‑11‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation](https://arxiv.org/abs/2611.30997)**<br>`72.9%`&nbsp; `44.8%`&nbsp; `58.9%`<br><sub>学習と自己改善 · arXiv 2611.30997 · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)**<br>`93.6%`<br><sub>基盤モデル · arXiv 2611.30898 · 2026‑11‑23</sub> |
+| 04<br>🔵&nbsp;`R` | **[Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe](https://arxiv.org/abs/2611.29553)**<br>`70%`<br><sub>基盤モデル · arXiv 2611.29553 · 2026‑11‑22</sub> |
+| 05<br>🟢&nbsp;`O` | **[Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑24</sub> |
+| 06<br>🟡&nbsp;`M` | **[业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型](https://www.qbitai.com/2026/11/512362.html)**<br><sub>エッジとリアルタイム · 量子位 QbitAI · 2026‑11‑24</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–08</summary>
+<details><summary><b>重要な理由</b> · 01–06</summary>
 
-1. **H2RBench** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-2. **PolaRiS** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
-3. **Tripwire** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
-4. **Trailblazer-F** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
-5. **RoboDream** — 査読前のプレプリント。本文に閉ループ評価の結果、定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-6. **EvoTER** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
-7. **APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
-8. **Special Report** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+1. **RoboUniverse-10K** — 査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — 査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。
+3. **World Models as Native Latent Action Models** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+4. **Detecting Is Not Choosing** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+5. **Microduck Obstacle Avoidance** — 当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-24.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-25.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

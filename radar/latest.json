@@ -1,189 +1,147 @@
 {
-  "date": "2026-11-24",
-  "generated": "2026-11-23 23:40 UTC",
-  "window": "papers 2026-11-20 → 2026-11-24 · posts 2026-10-25 → 2026-11-24 (UTC)",
+  "date": "2026-11-25",
+  "generated": "2026-11-24 23:40 UTC",
+  "window": "papers 2026-11-21 → 2026-11-25 · posts 2026-10-26 → 2026-11-25 (UTC)",
   "window_detail": {
-    "day": "2026-11-24",
-    "papers_from": "2026-11-20",
-    "posts_from": "2026-10-25",
+    "day": "2026-11-25",
+    "papers_from": "2026-11-21",
+    "posts_from": "2026-10-26",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "tri:c5c92abf5e8d",
-      "title": "H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer",
-      "url": "http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
+      "id": "arxiv:2611.31002",
+      "title": "RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments",
+      "url": "https://arxiv.org/abs/2611.31002",
+      "publisher": "arXiv 2611.31002",
+      "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-23",
       "lane": "simeval",
-      "score": 3.475,
+      "score": 4.31,
       "numbers": [],
       "signals": [
-        "real_robot"
+        "closed_loop",
+        "real_robot",
+        "open_release"
       ],
       "heat": 0.0,
-      "summary": "Learning robot manipulation policies from human video demonstrations constitutes a promising avenue for scalable robot learning. However, comparing different human-to-robot (H2R) transfer methods remains challenging, as existing approaches are evaluated under different settings, including differing task suites, scene layouts, object instances, and amounts of robot supervision. To address this challenge, we present H2RBench, a Real2Sim benchmark for evaluating H2R transfer methods. H2RBench provides a standardized protocol built on real human video demonstrations and simulated robot demonstrations, and includes four manipulation tasks spanning diverse interaction requirements. We evaluate multiple representative H2R transfer methods, each adopting a different strategy for bridging the embodiment gap. Using H2RBench, we systematically characterize how each method scales with the amount of human demonstrations, revealing that methods differ substantially in their ability to leverage additional human data. We further show that simulation performance is broadly predictive of real-world robot performance, with an overall Pearson correlation of r = 0.89, Spearman correlation of \\r{ho} = 0.85 and Mean Maximum Rank Violation (MMRV) of 0.06 across method-task configurations. These results establish H2RBench as a practical and scalable benchmark for comparative H2R evaluation prior to real-world deployment. Image Oct 25, 2026 Robotics Read More 1 Minute Read"
+      "summary": "Agentic Robotics, in which foundation models act as coding agents to control robots through executable programs, has emerged as a compelling paradigm for embodied intelligence. Yet unlike software engineering, where massive executable environments power post-training, robotics remains constrained by small, manual benchmarks and in-distribution evaluation. To bridge this gap, we introduce RoboUniverse-10K, 10,807 interactive, resettable, and verifiable physics environments built from real-world videos via an automated Real2Sim and quality assurance pipeline. Each runs in an isolated, Harbor-compatible harness that hides privileged states and grading logic to mirror real-world sensing. From the same pipeline, we hold out 500 unseen tasks to establish RoboUniverse-Verified, an expert-verified zero-shot benchmark. Evaluating 11 closed- and open-source models reveals a huge gap: frontier models reach 85.8\\% success, while open-source baselines lag at 2.6\\% to 10.0\\%, bottlenecked by low-level grasping, deformable-object manipulation, and post-contact physical control. Finally, we collect about 17K multi-turn trajectories totaling 0.79B tokens with GPT-6 Astra and perform full-parameter supervised fine-tuning on Qwen3.6-35B-A3B, yielding RoboUniverse-35B-A3B. Our model achieves substantial zero-shot gains on RoboUniverse-Verified, lifting the success rate from 0.8\\% to 21.2\\%, while achieving zero-shot task completions across LIBERO-MAX, RoboCasa, RoboTwin 2.0, and a real Franka arm. We open-source the RL-ready environments and model to lay the foundation for large-scale reinforcement learning in Agentic Robotics."
     },
     {
-      "id": "tri:033c9be25934",
-      "title": "PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies",
-      "url": "http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
+      "id": "arxiv:2611.30997",
+      "title": "Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation",
+      "url": "https://arxiv.org/abs/2611.30997",
+      "publisher": "arXiv 2611.30997",
+      "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-23",
-      "lane": "simeval",
-      "score": 3.475,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "A significant challenge for robot learning research is our ability to accurately measure and compare the performance of robot policies. Benchmarking in robotics is historically challenging due to the stochasticity, reproducibility, and time-consuming nature of real-world rollouts. This challenge is exacerbated for recent generalist policies, which has to be evaluated across a wide variety of scenes and tasks. Evaluation in simulation offers a scalable complement to real world evaluations, but the visual and physical domain gap between existing simulation benchmarks and the real world has made them an unreliable signal for policy improvement. Furthermore, building realistic and diverse simulated environments has traditionally required significant human effort and expertise. To bridge the gap, we introduce Policy Evaluation and Environment Reconstruction in Simulation (PolaRiS), a scalable real-to-sim framework for high-fidelity simulated robot evaluation. PolaRiS utilizes neural reconstruction methods to turn short video scans of real-world scenes into interactive simulation environments. Additionally, we develop a simple simulation data co-training recipe that bridges remaining real-to-sim gaps and enables zero-shot evaluation in unseen simulation environments. Through extensive paired evaluations between simulation and the real world, we demonstrate that PolaRiS evaluations provide a much stronger correlation to real world generalist policy performance than existing simulated benchmarks. Its simplicity also enables rapid creation of diverse simulated environments. As such, this work takes a step towards distributed and democratized evaluation for the next generation of robotic foundation models. Image Dec 30, 2025 Robotics Read More 1 Minute Read"
-    },
-    {
-      "id": "arxiv:2611.27182",
-      "title": "Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance",
-      "url": "https://arxiv.org/abs/2611.27182",
-      "publisher": "arXiv 2611.27182",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-20",
-      "lane": "foundation",
-      "score": 2.8,
+      "lane": "training",
+      "score": 3.95,
       "numbers": [
-        "61.3%",
-        "81.3%",
-        "38.7%",
-        "31.0%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop"
-      ],
-      "heat": 0.0,
-      "summary": "Agent harnesses are turn-based: the agent acts, waits for the result, then reasons. When the action invokes a pretrained robot policy, such as a vision-language-action (VLA) or world action model (WAM), the policy may react continuously to observations, but the agent cannot revisit its decision until the call returns. Meanwhile, a person may step into the robot's path or move the object it is about to grasp. Invoking the agent more often narrows this blind interval, but a reasoning model takes seconds per decision and most control steps need no new one. We propose TRIP, a training-free, event-driven harness in which the agent programs its own interrupts. With each call, the agent writes a tripwire: a lightweight, stateful Python program that runs alongside the policy, can query a compact VLM (for example, to locate a person and measure their distance), and decides whether the call continues or control returns to the agent. When it fires, the harness halts the policy and returns control with the reason; the agent then reassesses, adapts, and continues under a rewritten tripwire. We evaluate TRIP with three VLAs and one WAM on RoboHD, a benchmark of 168 RoboCasa365 scenes in which a simulated person disturbs the robot and any human-robot contact counts as failure. Compared with a turn-based harness using the same agent and tools, TRIP halves the rate of human contact with the strongest policy, raising safety from 61.3% to 81.3%, without sacrificing task success (38.7% vs. 31.0%). Real-robot experiments show that TRIP completes two manipulation tasks under human interference where the turn-based harness and the policy alone largely fail."
-    },
-    {
-      "id": "arxiv:2611.27226",
-      "title": "Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving",
-      "url": "https://arxiv.org/abs/2611.27226",
-      "publisher": "arXiv 2611.27226",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-20",
-      "lane": "edge",
-      "score": 2.66,
-      "numbers": [
-        "2.31x",
-        "1.55x",
-        "1.96x",
-        "1.37x"
-      ],
-      "signals": [
-        "open_release",
-        "latency"
-      ],
-      "heat": 0.0,
-      "summary": "Driving world-action models generate planned trajectories through iterative action denoising, with each update depending on the preceding state. This sequential dependency incurs substantial inference latency, limiting timely planning. Speculative inference offers an opportunity to reduce this latency by predicting future denoising states for parallel target evaluation, but requires efficient proposal generation and suitable verification for continuous actions. We present Trailblazer-F, a speculative action-flow inference framework in which a lightweight drafter acts as a trailblazer, charting a candidate denoising path through the compact, structured waypoint space so that the target model can verify multiple steps in parallel and advance with fewer sequential updates. Our method maintains planning quality while keeping the pretrained target model frozen.Across all 12,146 NAVSIM v1 navtest scenes, Trailblazer-F maintains near-baseline planning performance, with PDMS changes of +0.04 and -0.08 points for SimWAM and DriveWAM, respectively. Paired inference measurements on an NVIDIA L20 GPU yield 2.31x and 1.55x speedups. Real-vehicle experiments on NVIDIA Jetson AGX Orin further demonstrate 1.96x and 1.37x speedups, together with close qualitative trajectory agreement with native sampling. our code is here https://github.com/DanileHaibo/Trailblazer-F"
-    },
-    {
-      "id": "tri:6c02d39ad62c",
-      "title": "RoboDream: Compositional World Models for Scalable Robot Data Synthesis",
-      "url": "http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
-      "evidence": "R",
-      "published": "2026-11-23",
-      "lane": "data",
-      "score": 2.652,
-      "numbers": [],
-      "signals": [
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Scaling robot learning requires large-scale, diverse demonstrations, yet real-world data collection via teleoperation remains prohibitively expensive and time-consuming. While video diffusion models offer a promising avenue for data scaling, existing generative approaches are often limited to superficial visual augmentation, or suffer from embodiment hallucinations that yield physically infeasible motions. We present a generalizable embodiment-centric world model that achieves scalable data generation by synthesizing photorealistic demonstrations with novel objects, in novel scenes, and from novel viewpoints. Our approach anchors generation to rendered robot motion while conditioning on explicit scene and object priors, effectively decoupling trajectory execution from environment synthesis. This formulation has the potential to unlock two powerful data scaling capabilities: (1) retrieval and rebirth, which repurposes existing trajectories into entirely new contexts without new motion data; and (2) prop-free teleoperation, where operators manipulate empty air and the model hallucinates the target objects and scene afterwards, eliminating reset time. We demonstrate with real-world experiments that our generated data consistently improves downstream policy performance and significantly reduces real-world data requirements across diverse manipulation tasks. Image Jun 1, 2026 Robotics Read More 1 Minute Read"
-    },
-    {
-      "id": "arxiv:2611.27797",
-      "title": "EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection",
-      "url": "https://arxiv.org/abs/2611.27797",
-      "publisher": "arXiv 2611.27797",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-20",
-      "lane": "systems",
-      "score": 2.5,
-      "numbers": [
-        "53.60%",
-        "80.40%",
-        "20%",
-        "80%"
+        "72.9%",
+        "44.8%",
+        "58.9%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
-        "real_robot",
-        "industry_event"
+        "latency"
       ],
       "heat": 0.0,
-      "summary": "Long-horizon embodied tasks require agents to ground instructions in changing observations, coordinate heterogeneous tools, and recover from failures that can propagate through downstream operations. Although existing LLM-based agents retain experience and refine reusable skills, successful local repairs do not by themselves establish complete-task gains over the current shared procedure library. We present EvoTER, an experience-driven framework that enables embodied agents to self-evolve tool-use skills without updating model parameters. EvoTER operates through a three-role evolution loop: Explorer records tool-use trajectories; Diagnoser distills successful and failed executions into skills for tool selection, parameter computation, postcondition checks, and recovery; and Validator retains candidate revisions only when they improve complete-task success in fresh sessions. In simulation, EvoTER improves overall task success from a pre-evolution baseline of 53.60% to 80.40%. In real-world experiments, simulation initialization reduces the attempts required to acquire short-horizon skills, while continued real-world evolution improves long-horizon success from 20% to 80%-100% across tasks and enables the evolving skill library to incorporate new tool functionality introduced after simulation development. Project page: https://evoter-project.github.io/"
+      "summary": "Building general-purpose robots is a central goal in robotics. Agentic robotics pursues this goal with planners that control robots through tool calls. However, existing methods either rely on proprietary models accessed through APIs, which incur high costs and latency, or post-train a planner with reinforcement learning (RL) in a single domain, requiring a separate specialist for each domain with incompatible tools. In large language model (LLM) post-training, multi-teacher on-policy distillation (MOPD) has been used to consolidate domain specialists into a single generalist. Yet whether MOPD can build a generalist planner for agentic robotics, how well it performs, and how it compares with other consolidation methods remain unexplored. In this paper, we systematically study these questions: we introduce Robo-MOPD, which trains a single student on closed-loop rollouts in simulation under token-level supervision from matching frozen specialists, and compare it with weight merging, off-policy specialist supervised fine-tuning (SFT), and multi-domain online RL. Experiments on LIBERO-PRO and RoboCasa365 show that a single 9B Robo-MOPD planner reaches 72.9% and 44.8% success (58.9% average), surpassing all consolidated baselines in average success and both 9B specialists on their respective benchmarks. Robo-MOPD excels on long-horizon tasks, outperforming multi-domain online RL by 13.0 percentage points on LIBERO-10."
     },
     {
-      "id": "leiphone:e57940ea5512",
-      "title": "APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力",
-      "url": "https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
+      "id": "arxiv:2611.30898",
+      "title": "World Models as Native Latent Action Models",
+      "url": "https://arxiv.org/abs/2611.30898",
+      "publisher": "arXiv 2611.30898",
+      "source_id": "arxiv",
+      "evidence": "R",
       "published": "2026-11-23",
-      "lane": "data",
-      "score": 1.485,
+      "lane": "foundation",
+      "score": 3.938,
+      "numbers": [
+        "93.6%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.172,
+      "summary": "Large and diverse video sources, such as egocentric human video and heterogeneous robot recordings, carry rich dynamics but come either without actions or without a shared action space. Latent action models (LAMs) can recover these dynamics, but they train their inverse- and forward-dynamics models (IDM, FDM) from scratch, trading off pixel reconstruction against latent capacity and accuracy. Pretrained video world models natively generate high-fidelity dynamics, yet represent them densely, entangled across all layers. Viewing the world model as a LAM, we show that these dynamics can be extracted with minimal changes to the model. Native LAM operates one pretrained video diffusion transformer as both IDM and FDM, with learnable dynamics registers as the only causal bridge between the two, and trains on counterfactual temporal pairs that differ in motion alone, so that the registers distill a video's dynamics into a compact native latent action. We further propose a pretraining paradigm for vision-language-action (VLA) policies, Pretraining Actions from World models (PAWlicy), in which Native LAM serves as a dynamics teacher on large-scale video; unlike world action models, it never generates video. Native latent actions outperform existing LAMs on the LARY benchmark in both action classification and control regression, and replay the same motion on new robots, in new scenes, and from human hands to robots, although no transfer objective is used in training. With a 3.8B model, PAWlicy reaches a 93.6% average success rate on RoboTwin 2.0 trained with domain-randomized demonstrations, the highest among VLAs. On RoboDojo, it is competitive on every dimension we evaluate, and its Precision, evaluated by us, is on par with the leading leaderboard entries. On real robots, it improves over the pi_0.5 baseline on both tasks. Both stages use only public data and a publicly released world model."
+    },
+    {
+      "id": "arxiv:2611.29553",
+      "title": "Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe",
+      "url": "https://arxiv.org/abs/2611.29553",
+      "publisher": "arXiv 2611.29553",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-22",
+      "lane": "foundation",
+      "score": 3.25,
+      "numbers": [
+        "70%"
+      ],
+      "signals": [
+        "numbers"
+      ],
+      "heat": 0.0,
+      "summary": "Vision-language-action (VLA) policies complete most benchmark tasks but often violate safety constraints. Since they are stochastic, one remedy is to sample several candidate action chunks and execute one that a world model predicts is safe. We ask what such a model must do. In simulation, a lookahead safety filter with the simulator as an exact world model raises the safety rate of three VLA policies on LIBERO and of pi0.5 on LIBERO-Plus by 11.5 to 25.7 points. It also helps pi0.5 on three RoboCasa tasks. Learned critics trained on one policy's data detect dangerous states (pooled AUROC up to 0.864) but rank candidates at one state close to chance (within-decision AUROC 0.551-0.560), and the learned dynamics and video models we test do no better. When the simulator's state is perturbed, selection degrades long before detection. In the loop, a median position error of 3.18 mm removes 70% of the gain on LIBERO-Spatial, partly because the error also corrupts the displacement check. On LIBERO-10 the loss is smaller, and the intervals overlap. The median does not predict the cost: a pixel reader with a 0.56 mm median error keeps 6.5 points less of the gain than Gaussian error of a similar median. A world model for safety should thus be judged by within-state ranking, and its state must be accurate in the tail and on handled objects, not only in the median."
+    },
+    {
+      "id": "huggingface-blog:16565a3f5dc0",
+      "title": "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton",
+      "url": "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
+      "publisher": "Hugging Face Blog",
+      "source_id": "huggingface-blog",
+      "evidence": "O",
+      "published": "2026-11-24",
+      "lane": "simeval",
+      "score": 2.555,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "央视镜头里的PHAIN数据手套：从人手操作到机器人训练数据 APEC 期间，PHAIN 梵因动力自主研发的 G03 Pro T 数据手套亮相央视新闻《聊会儿APEC》。公司首席科学家 Peter Bradley Shull（肖培德）博士参与节目，佩戴 G03 Pro T 进行机器人遥操作演示，介绍利用手套采集操作数据、支持灵巧手训练的研究用途。 “这是梵因动力的手套。”谈及灵巧手训练所需的数据，Peter 向观众介绍了手中的 G03。在全球目光聚焦 APEC 之际，PHAIN 的自研产品与科研探索一同走进国家级媒体镜头，展现中国企业在具身智能数据采集领域的创新成果。 自研工具，服务灵巧手训练 10 月 20 日，在南京举行的 2026 物理 AI 与世界模型大会上，PHAIN 正式发布 G03 Pro、G03 Pro T 数据手套及 Sense 采集层。此次出镜的 G03 Pro T 将毫米级手部位姿采集与 3D 触觉感知同步结合，记录手指、关节的运动及操作中的触觉信息，让训练数据同时涵盖动作与接触过程，为抓握、旋拧等精细操作的研究与训练提供更完整的物理交互记录。 手部运动感知与多传感器融合，也是 PHAIN 首席科学家 Peter 长期研究的方向。他同时担任上海交通大学机械与动力工程学院教授、香港中文大学（深圳）人工智能学院教授，拥有美国斯坦福大学机械工程博士学位，研究涵盖具身智能与感知、可穿戴系统及触觉。此次节目将他的科研探索与 PHAIN 的采集产品联系起来，让自研工具在机器人研究中的用途得到直观展示。 …"
+      "summary": ""
     },
     {
-      "id": "the-robot-report:f59e860c1274",
-      "title": "Special Report: Engineering Focus on Motion Control",
-      "url": "https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
+      "id": "qbitai:b02e5d7aa184",
+      "title": "业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型",
+      "url": "https://www.qbitai.com/2026/11/512362.html",
+      "publisher": "量子位 QbitAI",
+      "source_id": "qbitai",
       "evidence": "M",
-      "published": "2026-11-23",
-      "lane": "hardware",
-      "score": 1.182,
+      "published": "2026-11-24",
+      "lane": "edge",
+      "score": 1.152,
       "numbers": [],
       "signals": [],
       "heat": 0.0,
-      "summary": "The Robot Report looks at recent advances in automation for manufacturing, from improvements in technologies and use cases to the potential of humanoids and AI."
+      "summary": "端侧老炮辛米尔，打通物理AI规模化落地之路"
     }
   ],
   "lane_counts": {
-    "foundation": 9,
+    "foundation": 10,
     "data": 6,
-    "training": 3,
+    "training": 2,
     "simeval": 14,
     "edge": 3,
     "safety": 1,
-    "systems": 5,
-    "hardware": 9
+    "systems": 4,
+    "hardware": 8
   },
   "evidence_mix": {
-    "O": 5,
+    "O": 6,
     "R": 30,
-    "M": 15
+    "M": 12
   },
   "fetch": {
-    "items": 521,
+    "items": 651,
     "attempted": 25,
-    "answered": 24,
-    "failed": [
-      "deepmind"
-    ],
+    "answered": 25,
+    "failed": [],
     "fallback": [],
     "unavailable": [],
     "robots_skipped": [],
@@ -209,14 +167,15 @@
       "robots_reasons": {},
       "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 18,
+      "hn_stories": 17,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 42,
+      "arxiv": 72,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
+      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,

@@ -312,16 +312,6 @@
       "date": "2026-10-25",
       "count": 8,
       "lanes": 6,
-      "urls": [
-        "https://arxiv.org/abs/2610.31518",
-        "https://arxiv.org/abs/2610.31474",
-        "https://arxiv.org/abs/2610.31670",
-        "https://arxiv.org/abs/2610.31371",
-        "https://arxiv.org/abs/2610.31166",
-        "https://arxiv.org/abs/2610.30955",
-        "https://blogs.nvidia.com/blog/european-retail-open-models-robotics",
-        "https://www.therobotreport.com/eka-robotics-raises-150m-scale-vision-force-action-model-robots"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1687,6 +1677,70 @@
           "safety": 0,
           "systems": 1,
           "hardware": 1
+        }
+      }
+    },
+    {
+      "date": "2026-11-25",
+      "count": 6,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2611.31002",
+        "https://arxiv.org/abs/2611.30997",
+        "https://arxiv.org/abs/2611.30898",
+        "https://arxiv.org/abs/2611.29553",
+        "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
+        "https://www.qbitai.com/2026/11/512362.html"
+      ],
+      "failed": [],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": "huggingface-blog:16565a3f5dc0",
+          "hot": null,
+          "event": null,
+          "event#2": null
+        },
+        "unmet": [
+          "event",
+          "event#2",
+          "hot"
+        ]
+      },
+      "pool": {
+        "live": 231,
+        "eligible": 66,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 15,
+          "data": 6,
+          "training": 6,
+          "simeval": 22,
+          "edge": 9,
+          "safety": 1,
+          "systems": 6,
+          "hardware": 1
+        },
+        "picked_by_lane": {
+          "foundation": 2,
+          "data": 0,
+          "training": 1,
+          "simeval": 2,
+          "edge": 1,
+          "safety": 0,
+          "systems": 0,
+          "hardware": 0
         }
       }
     }

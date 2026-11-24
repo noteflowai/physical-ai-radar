@@ -60,37 +60,33 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-24
+### Today's radar · 2026-11-25
 
-`Generated: 2026-11-23 23:40 UTC` ｜ `Window: papers 2026-11-20 → 2026-11-24 · posts 2026-10-25 → 2026-11-24 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-24 23:40 UTC` ｜ `Window: papers 2026-11-21 → 2026-11-25 · posts 2026-10-26 → 2026-11-25 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[H2RBench: A Real-to-Sim Benchmark for Evaluating Human-to-Robot Transfer](http://www.tri.global/research/h2rbench-real-sim-benchmark-evaluating-human-robot-transfer)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[PolaRiS: Scalable Real-to-Sim Evaluations for Generalist Robot Policies](http://www.tri.global/research/polaris-scalable-real-sim-evaluations-generalist-robot-policies)**<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[Tripwire: Robot Agents that Program Their Own Interrupts under Human Disturbance](https://arxiv.org/abs/2611.27182)**<br>`61.3%`&nbsp; `81.3%`&nbsp; `38.7%`<br><sub>Foundation models · arXiv 2611.27182 · 2026‑11‑20</sub> |
-| 04<br>🔵&nbsp;`R` | **[Trailblazer-F: Speculative Action-Flow Inference for Autonomous Driving](https://arxiv.org/abs/2611.27226)**<br>`2.31x`&nbsp; `1.55x`&nbsp; `1.96x`<br><sub>Edge & real-time · arXiv 2611.27226 · 2026‑11‑20</sub> |
-| 05<br>🔵&nbsp;`R` | **[RoboDream: Compositional World Models for Scalable Robot Data Synthesis](http://www.tri.global/research/robodream-compositional-world-models-scalable-robot-data-synthesis)**<br><sub>Data engine · Toyota Research Institute · 2026‑11‑23</sub> |
-| 06<br>🔵&nbsp;`R` | **[EvoTER: Evolving Embodied Agents via Tool-Use Experience and Reflection](https://arxiv.org/abs/2611.27797)**<br>`53.60%`&nbsp; `80.40%`&nbsp; `20%`<br><sub>Systems & orchestration · arXiv 2611.27797 · 2026‑11‑20</sub> |
-| 07<br>🟡&nbsp;`M` | **[APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力](https://www.leiphone.com/category/industrynews/HTBJLib1WgKs3OIR.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑11‑23</sub> |
-| 08<br>🟡&nbsp;`M` | **[Special Report: Engineering Focus on Motion Control](https://www.therobotreport.com/special-report-engineering-focus-on-motion-control/)**<br><sub>Embodiment & supply chain · The Robot Report · 2026‑11‑23</sub> |
+| 01<br>🔵&nbsp;`R` | **[RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments](https://arxiv.org/abs/2611.31002)**<br><sub>Simulation & evaluation · arXiv 2611.31002 · 2026‑11‑23</sub> |
+| 02<br>🔵&nbsp;`R` | **[Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation](https://arxiv.org/abs/2611.30997)**<br>`72.9%`&nbsp; `44.8%`&nbsp; `58.9%`<br><sub>Training & self-improvement · arXiv 2611.30997 · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)**<br>`93.6%`<br><sub>Foundation models · arXiv 2611.30898 · 2026‑11‑23</sub> |
+| 04<br>🔵&nbsp;`R` | **[Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe](https://arxiv.org/abs/2611.29553)**<br>`70%`<br><sub>Foundation models · arXiv 2611.29553 · 2026‑11‑22</sub> |
+| 05<br>🟢&nbsp;`O` | **[Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance)**<br><sub>Simulation & evaluation · Hugging Face Blog · 2026‑11‑24</sub> |
+| 06<br>🟡&nbsp;`M` | **[业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型](https://www.qbitai.com/2026/11/512362.html)**<br><sub>Edge & real-time · 量子位 QbitAI · 2026‑11‑24</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–08</summary>
+<details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **H2RBench** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-2. **PolaRiS** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch how well the simulated result predicts real-robot performance.
-3. **Tripwire** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-4. **Trailblazer-F** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether the speed-up holds on the target hardware at control rate.
-5. **RoboDream** — Preprint, not yet peer-reviewed; the text gives no closed-loop results or figures. Watch whether the data is reusable beyond the authors' own robot.
-6. **EvoTER** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-7. **APEC 时刻，PHAIN 登上央视新闻，展现中国自研实力** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
-8. **Special Report** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **RoboUniverse-10K** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
+3. **World Models as Native Latent Action Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+4. **Detecting Is Not Choosing** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
+5. **Microduck Obstacle Avoidance** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-24.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-25.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">
