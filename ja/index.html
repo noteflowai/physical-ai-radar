@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">R · 論文</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31002" rel="noopener" target="_blank">RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments</a></h3>
-<p class="why">査読前のプレプリント。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 基盤モデルに実行可能なプログラムを書かせてロボットを動かす構成では評価環境の候補になるが、閉ループ・実機・公開のシグナルはあっても数値は示されておらず、著者の自己報告として扱うべきだ。</p>
 <p class="excerpt">Agentic Robotics, in which foundation models act as coding agents to control robots through executable programs, has emerged as a compelling paradigm for embodied intelligence.</p>
 <ul class="signals"><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.30997" rel="noopener" target="_blank">Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation</a></h3>
 <p class="figure"><strong>72.9%</strong><span class="context">“9B Robo-MOPD planner reaches 72.9% and 44.8% success”</span></p><p class="chips"><span class="chip">44.8%</span><span class="chip">58.9%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果の記載なし。学習タスクの外でも改善が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> ツール呼び出し型プランナーでロボットを制御するなら、9B プランナーが成功率 72.9% と 44.8%（平均 58.9%）という自己報告は目安になる。ただし二つの条件の中身も実機結果も本文にはなく、採用前に評価タスクの確認が要る。</p>
 <p class="excerpt">Building general-purpose robots is a central goal in robotics. Agentic robotics pursues this goal with planners that control robots through tool calls.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.30898" rel="noopener" target="_blank">World Models as Native Latent Action Models</a></h3>
 <p class="figure"><strong>93.6%</strong><span class="context">“PAWlicy reaches a 93.6% average success rate”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 一人称の人間動画や異種ロボットの記録には行動ラベルや共通の行動空間がなく、本稿は世界モデルでその穴を埋める。PAWlicy の平均成功率 93.6% は自己報告なので、行動なし動画でデータを増やす判断の前に対象タスクを確かめたい。</p>
 <p class="excerpt">Large and diverse video sources, such as egocentric human video and heterogeneous robot recordings, carry rich dynamics but come either without actions or without a shared action space.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.29553" rel="noopener" target="_blank">Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe</a></h3>
 <p class="figure"><strong>70%</strong><span class="context">“of 3.18 mm removes 70% of the gain”</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 行動チャンクを複数サンプルし世界モデルに安全なものを選ばせて VLA を抑える設計では、3.18 mm の何かが改善の 70% を打ち消すという引用が要注意で、何の量かは原文で確認したい。実機・閉ループの結果は本ページに示されていない。</p>
 <p class="excerpt">Vision-language-action (VLA) policies complete most benchmark tasks but often violate safety constraints. Since they are stochastic, one remedy is to sample several candidate action chunks and execute one that a world model predicts is…</p>
 <ul class="signals"><li>定量結果あり</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">O · 公式一次</span>
 </header>
 <h3><a href="https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance" rel="noopener" target="_blank">Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton</a></h3>
-<p class="why">当事者による一次発表。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> Isaac Lab と Newton を使うチームには障害物回避を実機へ移す手順の一次資料として参考になる。ただし本ページには抜粋も数値もなく、移行の質は原文で判断するしかない。</p>
 <footer>
 <span class="source">Hugging Face Blog · 2026-11-24</span>
 <span class="actions"><button type="button" class="share" data-url="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-25.ja.html" data-text="Physical AI レーダー 2026-11-25：Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton" data-done="リンクをコピーしました">共有</button><a class="x" href="https://twitter.com/intent/tweet?text=Physical+AI+%E3%83%AC%E3%83%BC%E3%83%80%E3%83%BC+2026-11-25%EF%BC%9AMicroduck+Obstacle+Avoidance%3A+A+Sim2Real+Workflow+with+Isaac+Lab+and+Newton&amp;url=https%3A%2F%2Fnoteflowai.github.io%2Fphysical-ai-radar%2Fradar%2Fdaily%2F2026-11-25.ja.html" rel="noopener" target="_blank">X に投稿</a></span>
@@ -172,7 +172,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/512362.html" rel="noopener" target="_blank">业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。目標ハードウェアと実際の制御周期で高速化が保たれるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 辛米尔の「端末側スーパーノード」に関する二次報道で、本ページに検証できる測定はない。複数端末での協調推論をエッジ構成に組み込む前に、一次情報でハードウェア、負荷、制御周期での実測を確認すべきだ。</p>
 <p class="excerpt">端侧老炮辛米尔，打通物理AI规模化落地之路</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-24</span>

@@ -77,12 +77,12 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **RoboUniverse-10K** — Preprint, not yet peer-reviewed; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether the gain holds outside the training tasks.
-3. **World Models as Native Latent Action Models** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-4. **Detecting Is Not Choosing** — Preprint, not yet peer-reviewed; the text gives no real-robot results or closed-loop results. Watch whether it cuts the data a new task or embodiment needs.
-5. **Microduck Obstacle Avoidance** — First-party release; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the speed-up holds on the target hardware at control rate.
+1. **RoboUniverse-10K** — `AI draft` Teams that let foundation models drive robots by writing executable programs get a candidate set of real-to-sim test environments here, but the page shows no figures behind the flagged closed-loop and real-robot results, so treat them as unverified author claims.
+2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — `AI draft` For tool-call planners that control robots, the authors report a 9B planner at 72.9% and 44.8% success (58.9% average); the page does not say which two settings those are or show real-robot results, so check the tasks before swapping in a smaller planner.
+3. **World Models as Native Latent Action Models** — `AI draft` Egocentric human video and mixed robot recordings come without actions or a shared action space, and this preprint has the world model fill that gap; PAWlicy's 93.6% average success is self-reported, so see which tasks it covers before betting a data plan on action-free video.
+4. **Detecting Is Not Choosing** — `AI draft` If you plan to keep a VLA safe by sampling action chunks and letting a world model pick one, note the quoted claim that something of 3.18 mm removes 70% of the gain and check what it measures; the page shows no real-robot or closed-loop results.
+5. **Microduck Obstacle Avoidance** — `AI draft` Teams already on Isaac Lab and Newton can use this first-party post as a reference workflow for moving obstacle avoidance from simulation to hardware; the page quotes no excerpt or figures, so judge transfer quality from the original post.
+6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — `AI draft` This is secondary coverage of an on-device "super node" claim from 辛米尔, with no measurement on the page; before planning multi-device edge inference around it, find the primary source and its hardware, workload and control-rate results.
 
 </details>
 

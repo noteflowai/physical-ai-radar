@@ -79,12 +79,12 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **RoboUniverse-10K** — 预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — 预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。
-3. **World Models as Native Latent Action Models** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
-4. **Detecting Is Not Choosing** — 预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。
-5. **Microduck Obstacle Avoidance** — 一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。
+1. **RoboUniverse-10K** — `AI 起草` 对让基座模型写可执行程序来控制机器人的团队，这篇预印本提供了一批真实到仿真的评测环境候选；页面标出了闭环、真机与开放发布，但没有任何数字，选用前先核对作者自报的结果。
+2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — `AI 起草` 若你用工具调用式规划器控制机器人，作者自报 9B 规划器达到 72.9% 与 44.8% 成功率（平均 58.9%），但页面未说明两组设置是什么，也没有真机结果，换用更小规划器前应先确认评测任务。
+3. **World Models as Native Latent Action Models** — `AI 起草` 第一人称人类视频和异构机器人录像缺少动作标签或共享动作空间，这篇预印本让世界模型来补这一层；PAWlicy 平均成功率 93.6% 是作者自报，决定扩充无动作视频数据前先看清是哪些任务。
+4. **Detecting Is Not Choosing** — `AI 起草` 打算让世界模型从多个采样动作块里挑安全的那个来约束 VLA 时，注意引文称 3.18 mm 的某个量就抵消了 70% 的增益，需回原文确认它指什么；页面未给出真机或闭环结果，只能当作作者自报的基准证据。
+5. **Microduck Obstacle Avoidance** — `AI 起草` 已在用 Isaac Lab 与 Newton 的团队可把这篇一手文章当作避障 sim2real 流程的参考；页面没有摘录和数字，迁移效果如何只能回原文判断。
+6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — `AI 起草` 这是对辛米尔“端侧超节点”的二手报道，页面没有可核对的测量；在把多设备协同推理纳入端侧方案之前，应先找到一手资料，确认硬件、负载与控制频率下的实测。
 
 </details>
 
