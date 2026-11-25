@@ -1,0 +1,48 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-25",
+  "generated": "2026-11-25 13:40 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.31002": {
+      "zh": "对让基座模型写可执行程序来控制机器人的团队，这篇预印本提供了一批真实到仿真的评测环境候选；页面标出了闭环、真机与开放发布，但没有任何数字，选用前先核对作者自报的结果。",
+      "en": "Teams that let foundation models drive robots by writing executable programs get a candidate set of real-to-sim test environments here, but the page shows no figures behind the flagged closed-loop and real-robot results, so treat them as unverified author claims.",
+      "ja": "基盤モデルに実行可能なプログラムを書かせてロボットを動かす構成では評価環境の候補になるが、閉ループ・実機・公開のシグナルはあっても数値は示されておらず、著者の自己報告として扱うべきだ。"
+    },
+    "https://arxiv.org/abs/2611.30997": {
+      "zh": "若你用工具调用式规划器控制机器人，作者自报 9B 规划器达到 72.9% 与 44.8% 成功率（平均 58.9%），但页面未说明两组设置是什么，也没有真机结果，换用更小规划器前应先确认评测任务。",
+      "en": "For tool-call planners that control robots, the authors report a 9B planner at 72.9% and 44.8% success (58.9% average); the page does not say which two settings those are or show real-robot results, so check the tasks before swapping in a smaller planner.",
+      "ja": "ツール呼び出し型プランナーでロボットを制御するなら、9B プランナーが成功率 72.9% と 44.8%（平均 58.9%）という自己報告は目安になる。ただし二つの条件の中身も実機結果も本文にはなく、採用前に評価タスクの確認が要る。"
+    },
+    "https://arxiv.org/abs/2611.30898": {
+      "zh": "第一人称人类视频和异构机器人录像缺少动作标签或共享动作空间，这篇预印本让世界模型来补这一层；PAWlicy 平均成功率 93.6% 是作者自报，决定扩充无动作视频数据前先看清是哪些任务。",
+      "en": "Egocentric human video and mixed robot recordings come without actions or a shared action space, and this preprint has the world model fill that gap; PAWlicy's 93.6% average success is self-reported, so see which tasks it covers before betting a data plan on action-free video.",
+      "ja": "一人称の人間動画や異種ロボットの記録には行動ラベルや共通の行動空間がなく、本稿は世界モデルでその穴を埋める。PAWlicy の平均成功率 93.6% は自己報告なので、行動なし動画でデータを増やす判断の前に対象タスクを確かめたい。"
+    },
+    "https://arxiv.org/abs/2611.29553": {
+      "zh": "打算让世界模型从多个采样动作块里挑安全的那个来约束 VLA 时，注意引文称 3.18 mm 的某个量就抵消了 70% 的增益，需回原文确认它指什么；页面未给出真机或闭环结果，只能当作作者自报的基准证据。",
+      "en": "If you plan to keep a VLA safe by sampling action chunks and letting a world model pick one, note the quoted claim that something of 3.18 mm removes 70% of the gain and check what it measures; the page shows no real-robot or closed-loop results.",
+      "ja": "行動チャンクを複数サンプルし世界モデルに安全なものを選ばせて VLA を抑える設計では、3.18 mm の何かが改善の 70% を打ち消すという引用が要注意で、何の量かは原文で確認したい。実機・閉ループの結果は本ページに示されていない。"
+    },
+    "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance": {
+      "zh": "已在用 Isaac Lab 与 Newton 的团队可把这篇一手文章当作避障 sim2real 流程的参考；页面没有摘录和数字，迁移效果如何只能回原文判断。",
+      "en": "Teams already on Isaac Lab and Newton can use this first-party post as a reference workflow for moving obstacle avoidance from simulation to hardware; the page quotes no excerpt or figures, so judge transfer quality from the original post.",
+      "ja": "Isaac Lab と Newton を使うチームには障害物回避を実機へ移す手順の一次資料として参考になる。ただし本ページには抜粋も数値もなく、移行の質は原文で判断するしかない。"
+    },
+    "https://www.qbitai.com/2026/11/512362.html": {
+      "zh": "这是对辛米尔“端侧超节点”的二手报道，页面没有可核对的测量；在把多设备协同推理纳入端侧方案之前，应先找到一手资料，确认硬件、负载与控制频率下的实测。",
+      "en": "This is secondary coverage of an on-device \"super node\" claim from 辛米尔, with no measurement on the page; before planning multi-device edge inference around it, find the primary source and its hardware, workload and control-rate results.",
+      "ja": "辛米尔の「端末側スーパーノード」に関する二次報道で、本ページに検証できる測定はない。複数端末での協調推論をエッジ構成に組み込む前に、一次情報でハードウェア、負荷、制御周期での実測を確認すべきだ。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

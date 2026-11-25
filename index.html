@@ -96,7 +96,7 @@
 <span class="ev ev-R" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">R · 论文预印本</span>
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31002" rel="noopener" target="_blank">RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments</a></h3>
-<p class="why">预印本，尚未经过同行评审；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 对让基座模型写可执行程序来控制机器人的团队，这篇预印本提供了一批真实到仿真的评测环境候选；页面标出了闭环、真机与开放发布，但没有任何数字，选用前先核对作者自报的结果。</p>
 <p class="excerpt">Agentic Robotics, in which foundation models act as coding agents to control robots through executable programs, has emerged as a compelling paradigm for embodied intelligence.</p>
 <ul class="signals"><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -112,7 +112,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.30997" rel="noopener" target="_blank">Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation</a></h3>
 <p class="figure"><strong>72.9%</strong><span class="context">“9B Robo-MOPD planner reaches 72.9% and 44.8% success”</span></p><p class="chips"><span class="chip">44.8%</span><span class="chip">58.9%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果。关注提升在训练任务之外是否依然成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 若你用工具调用式规划器控制机器人，作者自报 9B 规划器达到 72.9% 与 44.8% 成功率（平均 58.9%），但页面未说明两组设置是什么，也没有真机结果，换用更小规划器前应先确认评测任务。</p>
 <p class="excerpt">Building general-purpose robots is a central goal in robotics. Agentic robotics pursues this goal with planners that control robots through tool calls.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -128,7 +128,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.30898" rel="noopener" target="_blank">World Models as Native Latent Action Models</a></h3>
 <p class="figure"><strong>93.6%</strong><span class="context">“PAWlicy reaches a 93.6% average success rate”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 第一人称人类视频和异构机器人录像缺少动作标签或共享动作空间，这篇预印本让世界模型来补这一层；PAWlicy 平均成功率 93.6% 是作者自报，决定扩充无动作视频数据前先看清是哪些任务。</p>
 <p class="excerpt">Large and diverse video sources, such as egocentric human video and heterogeneous robot recordings, carry rich dynamics but come either without actions or without a shared action space.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -144,7 +144,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.29553" rel="noopener" target="_blank">Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe</a></h3>
 <p class="figure"><strong>70%</strong><span class="context">“of 3.18 mm removes 70% of the gain”</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及真机结果、闭环结果。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 打算让世界模型从多个采样动作块里挑安全的那个来约束 VLA 时，注意引文称 3.18 mm 的某个量就抵消了 70% 的增益，需回原文确认它指什么；页面未给出真机或闭环结果，只能当作作者自报的基准证据。</p>
 <p class="excerpt">Vision-language-action (VLA) policies complete most benchmark tasks but often violate safety constraints. Since they are stochastic, one remedy is to sample several candidate action chunks and execute one that a world model predicts is…</p>
 <ul class="signals"><li>含量化指标</li></ul>
 <footer>
@@ -159,7 +159,7 @@
 <span class="ev ev-O" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">O · 官方一手</span>
 </header>
 <h3><a href="https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance" rel="noopener" target="_blank">Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton</a></h3>
-<p class="why">一手官方发布；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 已在用 Isaac Lab 与 Newton 的团队可把这篇一手文章当作避障 sim2real 流程的参考；页面没有摘录和数字，迁移效果如何只能回原文判断。</p>
 <footer>
 <span class="source">Hugging Face Blog · 2026-11-24</span>
 <span class="actions"><button type="button" class="share" data-url="https://noteflowai.github.io/physical-ai-radar/radar/daily/2026-11-25.zh.html" data-text="Physical AI 前沿雷达 2026-11-25：Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton" data-done="链接已复制">分享</button><a class="x" href="https://twitter.com/intent/tweet?text=Physical+AI+%E5%89%8D%E6%B2%BF%E9%9B%B7%E8%BE%BE+2026-11-25%EF%BC%9AMicroduck+Obstacle+Avoidance%3A+A+Sim2Real+Workflow+with+Isaac+Lab+and+Newton&amp;url=https%3A%2F%2Fnoteflowai.github.io%2Fphysical-ai-radar%2Fradar%2Fdaily%2F2026-11-25.zh.html" rel="noopener" target="_blank">发到 X</a></span>
@@ -172,7 +172,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.qbitai.com/2026/11/512362.html" rel="noopener" target="_blank">业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注在目标硬件和实际控制频率下加速是否成立。</p>
+<p class="why"><span class="draft">AI 起草</span> 这是对辛米尔“端侧超节点”的二手报道，页面没有可核对的测量；在把多设备协同推理纳入端侧方案之前，应先找到一手资料，确认硬件、负载与控制频率下的实测。</p>
 <p class="excerpt">端侧老炮辛米尔，打通物理AI规模化落地之路</p>
 <footer>
 <span class="source">量子位 QbitAI · 2026-11-24</span>
