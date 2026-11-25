@@ -326,15 +326,6 @@
       "date": "2026-10-26",
       "count": 7,
       "lanes": 4,
-      "urls": [
-        "https://github.com/isaac-sim/isaaclab/releases/tag/v3.0.0",
-        "https://arxiv.org/abs/2610.30587",
-        "https://arxiv.org/abs/2610.30819",
-        "https://arxiv.org/abs/2610.31275",
-        "https://arxiv.org/abs/2610.31476",
-        "https://news.mit.edu/2026/powered-by-muscle-cells-paper-thin-robot-swims-through-watery-maze-0929",
-        "https://techcrunch.com/2026/10/21/tesla-stars-optimus-robot-production-in-california-as-profit-falls-43"
-      ],
       "failed": [
         "deepmind"
       ],
@@ -1739,6 +1730,71 @@
           "simeval": 2,
           "edge": 1,
           "safety": 0,
+          "systems": 0,
+          "hardware": 0
+        }
+      }
+    },
+    {
+      "date": "2026-11-26",
+      "count": 6,
+      "lanes": 4,
+      "urls": [
+        "https://arxiv.org/abs/2611.32654",
+        "https://arxiv.org/abs/2611.31577",
+        "https://arxiv.org/abs/2611.31822",
+        "https://arxiv.org/abs/2611.32260",
+        "https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin",
+        "https://www.leiphone.com/category/industrynews/kngzlsg6xlu9nnpk.html"
+      ],
+      "failed": [],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null,
+          "event": null,
+          "event#2": null
+        },
+        "unmet": [
+          "event",
+          "event#2",
+          "hot",
+          "official"
+        ]
+      },
+      "pool": {
+        "live": 234,
+        "eligible": 69,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 12,
+          "data": 12,
+          "training": 3,
+          "simeval": 24,
+          "edge": 9,
+          "safety": 1,
+          "systems": 6,
+          "hardware": 2
+        },
+        "picked_by_lane": {
+          "foundation": 1,
+          "data": 2,
+          "training": 0,
+          "simeval": 2,
+          "edge": 0,
+          "safety": 1,
           "systems": 0,
           "hardware": 0
         }

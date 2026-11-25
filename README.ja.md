@@ -60,33 +60,33 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-25
+### 本日のレーダー · 2026-11-26
 
-`生成時刻: 2026-11-24 23:40 UTC` ｜ `対象期間: 論文 2026-11-21 → 2026-11-25 · ブログ・報道 2026-10-26 → 2026-11-25 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-25 23:40 UTC` ｜ `対象期間: 論文 2026-11-22 → 2026-11-26 · ブログ・報道 2026-10-27 → 2026-11-26 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments](https://arxiv.org/abs/2611.31002)**<br><sub>シミュレーションと評価 · arXiv 2611.31002 · 2026‑11‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation](https://arxiv.org/abs/2611.30997)**<br>`72.9%`&nbsp; `44.8%`&nbsp; `58.9%`<br><sub>学習と自己改善 · arXiv 2611.30997 · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)**<br>`93.6%`<br><sub>基盤モデル · arXiv 2611.30898 · 2026‑11‑23</sub> |
-| 04<br>🔵&nbsp;`R` | **[Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe](https://arxiv.org/abs/2611.29553)**<br>`70%`<br><sub>基盤モデル · arXiv 2611.29553 · 2026‑11‑22</sub> |
-| 05<br>🟢&nbsp;`O` | **[Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance)**<br><sub>シミュレーションと評価 · Hugging Face Blog · 2026‑11‑24</sub> |
-| 06<br>🟡&nbsp;`M` | **[业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型](https://www.qbitai.com/2026/11/512362.html)**<br><sub>エッジとリアルタイム · 量子位 QbitAI · 2026‑11‑24</sub> |
+| 01<br>🔵&nbsp;`R` | **[DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation](https://arxiv.org/abs/2611.32654)**<br>`75%`&nbsp; `45%`<br><sub>基盤モデル · arXiv 2611.32654 · 2026‑11‑24</sub> |
+| 02<br>🔵&nbsp;`R` | **[FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator](https://arxiv.org/abs/2611.31577)**<br>`77%`&nbsp; `36%`&nbsp; `14%`<br><sub>シミュレーションと評価 · arXiv 2611.31577 · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[G0.7: Scaling Up a Fast World Action Model with Long Context](https://arxiv.org/abs/2611.31822)**<br>`60 ms`&nbsp; `7.6x`&nbsp; `48%`<br><sub>シミュレーションと評価 · arXiv 2611.31822 · 2026‑11‑24</sub> |
+| 04<br>🔵&nbsp;`R` | **[EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances](https://arxiv.org/abs/2611.32260)**<br>`1,000 hours`&nbsp; `1,284 tasks`<br><sub>データエンジン · arXiv 2611.32260 · 2026‑11‑24</sub> |
+| 05<br>🟡&nbsp;`M` | **[FCC should focus on robot security, not country of origin](https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑11‑25</sub> |
+| 06<br>🟡&nbsp;`M` | **[多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性](https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑11‑25</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
 <details><summary><b>重要な理由</b> · 01–06</summary>
 
-1. **RoboUniverse-10K** — `AI 下書き` 基盤モデルに実行可能なプログラムを書かせてロボットを動かす構成では評価環境の候補になるが、閉ループ・実機・公開のシグナルはあっても数値は示されておらず、著者の自己報告として扱うべきだ。
-2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — `AI 下書き` ツール呼び出し型プランナーでロボットを制御するなら、9B プランナーが成功率 72.9% と 44.8%（平均 58.9%）という自己報告は目安になる。ただし二つの条件の中身も実機結果も本文にはなく、採用前に評価タスクの確認が要る。
-3. **World Models as Native Latent Action Models** — `AI 下書き` 一人称の人間動画や異種ロボットの記録には行動ラベルや共通の行動空間がなく、本稿は世界モデルでその穴を埋める。PAWlicy の平均成功率 93.6% は自己報告なので、行動なし動画でデータを増やす判断の前に対象タスクを確かめたい。
-4. **Detecting Is Not Choosing** — `AI 下書き` 行動チャンクを複数サンプルし世界モデルに安全なものを選ばせて VLA を抑える設計では、3.18 mm の何かが改善の 70% を打ち消すという引用が要注意で、何の量かは原文で確認したい。実機・閉ループの結果は本ページに示されていない。
-5. **Microduck Obstacle Avoidance** — `AI 下書き` Isaac Lab と Newton を使うチームには障害物回避を実機へ移す手順の一次資料として参考になる。ただし本ページには抜粋も数値もなく、移行の質は原文で判断するしかない。
-6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — `AI 下書き` 辛米尔の「端末側スーパーノード」に関する二次報道で、本ページに検証できる測定はない。複数端末での協調推論をエッジ構成に組み込む前に、一次情報でハードウェア、負荷、制御周期での実測を確認すべきだ。
+1. **DexWAC** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+2. **FabricBench** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+3. **G0.7** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **EgoLoAF** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
+5. **FCC should focus on robot security, not country of origin** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-25.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-26.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

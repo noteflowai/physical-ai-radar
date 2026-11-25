@@ -62,33 +62,33 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-25
+### 今日雷达 · 2026-11-26
 
-`生成时间: 2026-11-24 23:40 UTC` ｜ `统计窗口: 论文 2026-11-21 → 2026-11-25 · 博客与报道 2026-10-26 → 2026-11-25 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-25 23:40 UTC` ｜ `统计窗口: 论文 2026-11-22 → 2026-11-26 · 博客与报道 2026-10-27 → 2026-11-26 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments](https://arxiv.org/abs/2611.31002)**<br><sub>仿真与评测 · arXiv 2611.31002 · 2026‑11‑23</sub> |
-| 02<br>🔵&nbsp;`R` | **[Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation](https://arxiv.org/abs/2611.30997)**<br>`72.9%`&nbsp; `44.8%`&nbsp; `58.9%`<br><sub>训练与自我改进 · arXiv 2611.30997 · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)**<br>`93.6%`<br><sub>基座模型 · arXiv 2611.30898 · 2026‑11‑23</sub> |
-| 04<br>🔵&nbsp;`R` | **[Detecting Is Not Choosing: What a World Model Needs to Keep a VLA Policy Safe](https://arxiv.org/abs/2611.29553)**<br>`70%`<br><sub>基座模型 · arXiv 2611.29553 · 2026‑11‑22</sub> |
-| 05<br>🟢&nbsp;`O` | **[Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance)**<br><sub>仿真与评测 · Hugging Face Blog · 2026‑11‑24</sub> |
-| 06<br>🟡&nbsp;`M` | **[业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型](https://www.qbitai.com/2026/11/512362.html)**<br><sub>边缘与实时性 · 量子位 QbitAI · 2026‑11‑24</sub> |
+| 01<br>🔵&nbsp;`R` | **[DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation](https://arxiv.org/abs/2611.32654)**<br>`75%`&nbsp; `45%`<br><sub>基座模型 · arXiv 2611.32654 · 2026‑11‑24</sub> |
+| 02<br>🔵&nbsp;`R` | **[FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator](https://arxiv.org/abs/2611.31577)**<br>`77%`&nbsp; `36%`&nbsp; `14%`<br><sub>仿真与评测 · arXiv 2611.31577 · 2026‑11‑23</sub> |
+| 03<br>🔵&nbsp;`R` | **[G0.7: Scaling Up a Fast World Action Model with Long Context](https://arxiv.org/abs/2611.31822)**<br>`60 ms`&nbsp; `7.6x`&nbsp; `48%`<br><sub>仿真与评测 · arXiv 2611.31822 · 2026‑11‑24</sub> |
+| 04<br>🔵&nbsp;`R` | **[EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances](https://arxiv.org/abs/2611.32260)**<br>`1,000 hours`&nbsp; `1,284 tasks`<br><sub>数据引擎 · arXiv 2611.32260 · 2026‑11‑24</sub> |
+| 05<br>🟡&nbsp;`M` | **[FCC should focus on robot security, not country of origin](https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑11‑25</sub> |
+| 06<br>🟡&nbsp;`M` | **[多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性](https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html)**<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑11‑25</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
 <details><summary><b>为什么重要</b> · 01–06</summary>
 
-1. **RoboUniverse-10K** — `AI 起草` 对让基座模型写可执行程序来控制机器人的团队，这篇预印本提供了一批真实到仿真的评测环境候选；页面标出了闭环、真机与开放发布，但没有任何数字，选用前先核对作者自报的结果。
-2. **Generalizing Agentic Robotics via Multi-Teacher On-Policy Distillation** — `AI 起草` 若你用工具调用式规划器控制机器人，作者自报 9B 规划器达到 72.9% 与 44.8% 成功率（平均 58.9%），但页面未说明两组设置是什么，也没有真机结果，换用更小规划器前应先确认评测任务。
-3. **World Models as Native Latent Action Models** — `AI 起草` 第一人称人类视频和异构机器人录像缺少动作标签或共享动作空间，这篇预印本让世界模型来补这一层；PAWlicy 平均成功率 93.6% 是作者自报，决定扩充无动作视频数据前先看清是哪些任务。
-4. **Detecting Is Not Choosing** — `AI 起草` 打算让世界模型从多个采样动作块里挑安全的那个来约束 VLA 时，注意引文称 3.18 mm 的某个量就抵消了 70% 的增益，需回原文确认它指什么；页面未给出真机或闭环结果，只能当作作者自报的基准证据。
-5. **Microduck Obstacle Avoidance** — `AI 起草` 已在用 Isaac Lab 与 Newton 的团队可把这篇一手文章当作避障 sim2real 流程的参考；页面没有摘录和数字，迁移效果如何只能回原文判断。
-6. **业界首提“端侧超节点”，让端侧AI组队计算：AI效率暴涨270%，不用换芯片或模型** — `AI 起草` 这是对辛米尔“端侧超节点”的二手报道，页面没有可核对的测量；在把多设备协同推理纳入端侧方案之前，应先找到一手资料，确认硬件、负载与控制频率下的实测。
+1. **DexWAC** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+2. **FabricBench** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。
+3. **G0.7** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+4. **EgoLoAF** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。
+5. **FCC should focus on robot security, not country of origin** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-25.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-26.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

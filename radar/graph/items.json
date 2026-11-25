@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8744,6 +8744,125 @@
       "signals": [],
       "numbers": [],
       "excerpt": "端侧老炮辛米尔，打通物理AI规模化落地之路"
+    },
+    {
+      "id": "arxiv:2611.32654",
+      "date": "2026-11-26",
+      "published": "2026-11-24",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.32654",
+      "title": "DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.32654",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "75%",
+        "45%"
+      ],
+      "excerpt": "Robot demonstrations provide more than actions to imitate: they reveal how actions change the world and how those changes contribute to task success."
+    },
+    {
+      "id": "arxiv:2611.31577",
+      "date": "2026-11-26",
+      "published": "2026-11-23",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.31577",
+      "title": "FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator",
+      "url": "https://arxiv.org/abs/2611.31577",
+      "signals": [
+        "numbers",
+        "real_robot",
+        "open_release"
+      ],
+      "numbers": [
+        "77%",
+        "36%",
+        "14%"
+      ],
+      "excerpt": "Fabric manipulation challenges robot policies with changing geometry, self-occlusion, and contact, yet standardized evaluation remains focused on rigid objects."
+    },
+    {
+      "id": "arxiv:2611.31822",
+      "date": "2026-11-26",
+      "published": "2026-11-24",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.31822",
+      "title": "G0.7: Scaling Up a Fast World Action Model with Long Context",
+      "url": "https://arxiv.org/abs/2611.31822",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "open_release",
+        "latency"
+      ],
+      "numbers": [
+        "60 ms",
+        "7.6x",
+        "48%",
+        "54%"
+      ],
+      "excerpt": "World action models (WAMs) adapt pretrained video generators for robot control by jointly predicting future camera frames and actions, transferring physical priors learned from video into manipulation policies."
+    },
+    {
+      "id": "arxiv:2611.32260",
+      "date": "2026-11-26",
+      "published": "2026-11-24",
+      "lane": "data",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.32260",
+      "title": "EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances",
+      "url": "https://arxiv.org/abs/2611.32260",
+      "signals": [
+        "numbers",
+        "real_robot",
+        "open_release"
+      ],
+      "numbers": [
+        "1,000 hours",
+        "1,284 tasks"
+      ],
+      "excerpt": "Training humanoid vision-language-action (VLA) models relies heavily on costly real-robot teleoperation. Recent efforts convert egocentric human demonstrations into humanoid training data."
+    },
+    {
+      "id": "the-robot-report:73a9b25fccb2",
+      "date": "2026-11-26",
+      "published": "2026-11-25",
+      "lane": "safety",
+      "evidence": "M",
+      "source_id": "the-robot-report",
+      "publisher": "The Robot Report",
+      "title": "FCC should focus on robot security, not country of origin",
+      "url": "https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Where a robot was assembled tells you little about who controls it once it's deployed, writes Brain Corp CEO David Pinn."
+    },
+    {
+      "id": "leiphone:1ede0b009052",
+      "date": "2026-11-26",
+      "published": "2026-11-25",
+      "lane": "data",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性",
+      "url": "https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。"
     }
   ]
 }
