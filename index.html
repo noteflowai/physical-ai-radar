@@ -97,7 +97,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32654" rel="noopener" target="_blank">DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation</a></h3>
 <p class="figure"><strong>75%</strong><span class="context">“in simulation and achieves 75% average success on”</span></p><p class="chips"><span class="chip">45%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 选灵巧操作基座时可把它列入对比：作者让模型从演示中学动作如何改变环境、如何促成任务成功，自报平均成功率 75%，对照 π0.5 为 45%；属作者自报，换型前应在自己的任务上复测。</p>
 <p class="excerpt">Robot demonstrations provide more than actions to imitate: they reveal how actions change the world and how those changes contribute to task success.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31577" rel="noopener" target="_blank">FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“the best policy achieves 77% average success”</span></p><p class="chips"><span class="chip">36%</span><span class="chip">14%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 布料操作策略终于有了专门的标准化评测，不必再借用刚体基准；作者自报最佳策略平均 77%，但长程 T 恤任务没有策略超过 36%，部署前应重点在长程布料任务上验证。</p>
 <p class="excerpt">Fabric manipulation challenges robot policies with changing geometry, self-occlusion, and contact, yet standardized evaluation remains focused on rigid objects.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31822" rel="noopener" target="_blank">G0.7: Scaling Up a Fast World Action Model with Long Context</a></h3>
 <p class="figure"><strong>60 ms</strong><span class="context">“checkpoint while running in 60 ms per 16-step action”</span></p><p class="chips"><span class="chip">7.6x</span><span class="chip">48%</span><span class="chip">54%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 若因延迟而放弃世界动作模型，可重新评估：作者自报每个 16 步动作 60 ms、单张 RTX 5090 上比 IDM 快 7.6x，零样本抓放成功率 48% 和 54%；控制频率预算仍应在自家控制器上实测。</p>
 <p class="excerpt">World action models (WAMs) adapt pretrained video generators for robot control by jointly predicting future camera frames and actions, transferring physical priors learned from video into manipulation policies.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32260" rel="noopener" target="_blank">EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances</a></h3>
 <p class="figure"><strong>1,000 hours</strong><span class="context">“egocentric demonstration episodes spanning 1,000 hours and 1”</span></p><p class="chips"><span class="chip">1,284 tasks</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 在为人形 VLA 规划遥操作预算时，可把第一人称人类演示当作候选数据来源：作者报告覆盖 1,000 hours、1,284 tasks；但这两个数字描述的是数据规模，不是机器人成功率，能否替代遥操作仍需自测。</p>
 <p class="excerpt">Training humanoid vision-language-action (VLA) models relies heavily on costly real-robot teleoperation. Recent efforts convert egocentric human demonstrations into humanoid training data.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li><li>有开放代码或权重</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/" rel="noopener" target="_blank">FCC should focus on robot security, not country of origin</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注它对认证和上线审批意味着什么。</p>
+<p class="why"><span class="draft">AI 起草</span> 做上线合规准备的团队可留意这一论点：Brain Corp CEO 主张审查应看部署后谁控制机器人，而不是在哪里组装；这是企业高管的观点文章，不代表 FCC 的立场或决定。</p>
 <p class="excerpt">Where a robot was assembled tells you little about who controls it once it&#x27;s deployed, writes Brain Corp CEO David Pinn.</p>
 <ul class="signals"><li>含真机实验</li></ul>
 <footer>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html" rel="noopener" target="_blank">多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 二手报道称多模型协同能提升长序列任务的作业稳定性，页面未给出任何数字；评估这类方案时，应先向厂商要长序列任务的成功率和失败分布，再决定是否跟进。</p>
 <p class="excerpt">具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-25</span>

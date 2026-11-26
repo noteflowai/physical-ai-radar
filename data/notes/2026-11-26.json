@@ -1,0 +1,48 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-26",
+  "generated": "2026-11-26 13:58 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.32654": {
+      "zh": "选灵巧操作基座时可把它列入对比：作者让模型从演示中学动作如何改变环境、如何促成任务成功，自报平均成功率 75%，对照 π0.5 为 45%；属作者自报，换型前应在自己的任务上复测。",
+      "en": "Worth adding to a dexterous-manipulation shortlist: the model learns from demonstrations how actions change the world and lead to success, and the authors report 75% average success against 45% for π0.5, a self-reported gap to re-run on your own tasks.",
+      "ja": "巧緻操作の基盤モデル選定で比較候補に入れる価値がある。デモから行動が環境をどう変え成功につながるかを学ぶ方式で、著者は平均成功率75%（π0.5は45%）と自己報告しており、自社タスクでの再現確認が前提。"
+    },
+    "https://arxiv.org/abs/2611.31577": {
+      "zh": "布料操作策略终于有了专门的标准化评测，不必再借用刚体基准；作者自报最佳策略平均 77%，但长程 T 恤任务没有策略超过 36%，部署前应重点在长程布料任务上验证。",
+      "en": "Cloth-handling policies get a standardized benchmark of their own instead of rigid-object suites; the authors report a best average of 77% but no policy above 36% on long-horizon T-shirt tasks, so test long-horizon cloth work before trusting any policy.",
+      "ja": "剛体中心の評価に頼らず布操作方策を比べる標準ベンチマークが出た。著者報告では最良方策の平均77%に対し、長期のTシャツタスクでは36%を超える方策がなく、導入前は長期の布タスクでの検証が要点になる。"
+    },
+    "https://arxiv.org/abs/2611.31822": {
+      "zh": "若因延迟而放弃世界动作模型，可重新评估：作者自报每个 16 步动作 60 ms、单张 RTX 5090 上比 IDM 快 7.6x，零样本抓放成功率 48% 和 54%；控制频率预算仍应在自家控制器上实测。",
+      "en": "If latency ruled out world action models for your controller, revisit: the authors report 60 ms per 16-step action, 7.6x faster than IDM on a single RTX 5090, and 48% and 54% zero-shot pick-and-place success; preprint figures to measure yourself.",
+      "ja": "遅延を理由に世界行動モデルを見送ったチームは再検討の余地がある。著者報告で16ステップの行動あたり60 ms、単一RTX 5090でIDM比7.6x高速、ゼロショットのピック&プレース成功率48%と54%。制御周期は自社環境で要実測。"
+    },
+    "https://arxiv.org/abs/2611.32260": {
+      "zh": "在为人形 VLA 规划遥操作预算时，可把第一人称人类演示当作候选数据来源：作者报告覆盖 1,000 hours、1,284 tasks；但这两个数字描述的是数据规模，不是机器人成功率，能否替代遥操作仍需自测。",
+      "en": "Humanoid VLA teams budgeting teleoperation can treat egocentric human demonstrations as a candidate source; the reported 1,000 hours and 1,284 tasks describe the data's size, not robot success, so whether it offsets teleoperation still needs your own test.",
+      "ja": "人型VLAの遠隔操作予算を考える際、一人称視点の人間デモを代替データ源の候補にできる。報告された1,000 hours・1,284 tasksはデータ規模であってロボットの成功率ではなく、遠隔操作をどこまで減らせるかは自社検証が必要。"
+    },
+    "https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/": {
+      "zh": "做上线合规准备的团队可留意这一论点：Brain Corp CEO 主张审查应看部署后谁控制机器人，而不是在哪里组装；这是企业高管的观点文章，不代表 FCC 的立场或决定。",
+      "en": "Compliance planners should note the argument, from Brain Corp's CEO, that review should ask who controls a deployed robot rather than where it was assembled; it is an executive's opinion piece, not an FCC position or ruling.",
+      "ja": "導入時の規制対応を考えるチームは、審査は組立地ではなく導入後に誰がロボットを制御するかを見るべきだというBrain Corp CEOの主張に留意したい。ただし経営者の寄稿であり、FCCの立場や決定ではない。"
+    },
+    "https://www.leiphone.com/category/industrynews/kngzlsg6xlu9nnpk.html": {
+      "zh": "二手报道称多模型协同能提升长序列任务的作业稳定性，页面未给出任何数字；评估这类方案时，应先向厂商要长序列任务的成功率和失败分布，再决定是否跟进。",
+      "en": "A secondary Chinese report credits coordinating several models with steadier long-sequence task execution but gives no figures; before following this design, ask the vendor for long-sequence success rates and failure breakdowns.",
+      "ja": "二次報道は複数モデルの協調で長い作業系列の安定性が上がるとするが、数値は示されていない。この構成を検討するなら、まずメーカーに長系列タスクの成功率と失敗内訳を求めたい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}

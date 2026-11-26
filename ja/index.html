@@ -97,7 +97,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32654" rel="noopener" target="_blank">DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation</a></h3>
 <p class="figure"><strong>75%</strong><span class="context">“in simulation and achieves 75% average success on”</span></p><p class="chips"><span class="chip">45%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 巧緻操作の基盤モデル選定で比較候補に入れる価値がある。デモから行動が環境をどう変え成功につながるかを学ぶ方式で、著者は平均成功率75%（π0.5は45%）と自己報告しており、自社タスクでの再現確認が前提。</p>
 <p class="excerpt">Robot demonstrations provide more than actions to imitate: they reveal how actions change the world and how those changes contribute to task success.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31577" rel="noopener" target="_blank">FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“the best policy achieves 77% average success”</span></p><p class="chips"><span class="chip">36%</span><span class="chip">14%</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 剛体中心の評価に頼らず布操作方策を比べる標準ベンチマークが出た。著者報告では最良方策の平均77%に対し、長期のTシャツタスクでは36%を超える方策がなく、導入前は長期の布タスクでの検証が要点になる。</p>
 <p class="excerpt">Fabric manipulation challenges robot policies with changing geometry, self-occlusion, and contact, yet standardized evaluation remains focused on rigid objects.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31822" rel="noopener" target="_blank">G0.7: Scaling Up a Fast World Action Model with Long Context</a></h3>
 <p class="figure"><strong>60 ms</strong><span class="context">“checkpoint while running in 60 ms per 16-step action”</span></p><p class="chips"><span class="chip">7.6x</span><span class="chip">48%</span><span class="chip">54%</span></p>
-<p class="why">査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 遅延を理由に世界行動モデルを見送ったチームは再検討の余地がある。著者報告で16ステップの行動あたり60 ms、単一RTX 5090でIDM比7.6x高速、ゼロショットのピック&amp;プレース成功率48%と54%。制御周期は自社環境で要実測。</p>
 <p class="excerpt">World action models (WAMs) adapt pretrained video generators for robot control by jointly predicting future camera frames and actions, transferring physical priors learned from video into manipulation policies.</p>
 <ul class="signals"><li>定量結果あり</li><li>閉ループ成功率あり</li><li>実機実験あり</li><li>コードまたは重み公開</li><li>遅延・制御周期の数値あり</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32260" rel="noopener" target="_blank">EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances</a></h3>
 <p class="figure"><strong>1,000 hours</strong><span class="context">“egocentric demonstration episodes spanning 1,000 hours and 1”</span></p><p class="chips"><span class="chip">1,284 tasks</span></p>
-<p class="why">査読前のプレプリント。本文に閉ループ評価の結果の記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 人型VLAの遠隔操作予算を考える際、一人称視点の人間デモを代替データ源の候補にできる。報告された1,000 hours・1,284 tasksはデータ規模であってロボットの成功率ではなく、遠隔操作をどこまで減らせるかは自社検証が必要。</p>
 <p class="excerpt">Training humanoid vision-language-action (VLA) models relies heavily on costly real-robot teleoperation. Recent efforts convert egocentric human demonstrations into humanoid training data.</p>
 <ul class="signals"><li>定量結果あり</li><li>実機実験あり</li><li>コードまたは重み公開</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/" rel="noopener" target="_blank">FCC should focus on robot security, not country of origin</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 導入時の規制対応を考えるチームは、審査は組立地ではなく導入後に誰がロボットを制御するかを見るべきだというBrain Corp CEOの主張に留意したい。ただし経営者の寄稿であり、FCCの立場や決定ではない。</p>
 <p class="excerpt">Where a robot was assembled tells you little about who controls it once it&#x27;s deployed, writes Brain Corp CEO David Pinn.</p>
 <ul class="signals"><li>実機実験あり</li></ul>
 <footer>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="根拠タグ：O = 一次情報 · R = 論文/プレプリント · M = メディア/二次情報">M · 報道</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html" rel="noopener" target="_blank">多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性</a></h3>
-<p class="why">二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。著者自身の機体以外でもデータを再利用できるかに注目。</p>
+<p class="why"><span class="draft">AI 下書き</span> 二次報道は複数モデルの協調で長い作業系列の安定性が上がるとするが、数値は示されていない。この構成を検討するなら、まずメーカーに長系列タスクの成功率と失敗内訳を求めたい。</p>
 <p class="excerpt">具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-25</span>

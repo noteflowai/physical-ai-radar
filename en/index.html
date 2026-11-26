@@ -97,7 +97,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32654" rel="noopener" target="_blank">DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation</a></h3>
 <p class="figure"><strong>75%</strong><span class="context">“in simulation and achieves 75% average success on”</span></p><p class="chips"><span class="chip">45%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.</p>
+<p class="why"><span class="draft">AI draft</span> Worth adding to a dexterous-manipulation shortlist: the model learns from demonstrations how actions change the world and lead to success, and the authors report 75% average success against 45% for π0.5, a self-reported gap to re-run on your own tasks.</p>
 <p class="excerpt">Robot demonstrations provide more than actions to imitate: they reveal how actions change the world and how those changes contribute to task success.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li></ul>
 <footer>
@@ -113,7 +113,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31577" rel="noopener" target="_blank">FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator</a></h3>
 <p class="figure"><strong>77%</strong><span class="context">“the best policy achieves 77% average success”</span></p><p class="chips"><span class="chip">36%</span><span class="chip">14%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> Cloth-handling policies get a standardized benchmark of their own instead of rigid-object suites; the authors report a best average of 77% but no policy above 36% on long-horizon T-shirt tasks, so test long-horizon cloth work before trusting any policy.</p>
 <p class="excerpt">Fabric manipulation challenges robot policies with changing geometry, self-occlusion, and contact, yet standardized evaluation remains focused on rigid objects.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>open code or weights</li></ul>
 <footer>
@@ -129,7 +129,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.31822" rel="noopener" target="_blank">G0.7: Scaling Up a Fast World Action Model with Long Context</a></h3>
 <p class="figure"><strong>60 ms</strong><span class="context">“checkpoint while running in 60 ms per 16-step action”</span></p><p class="chips"><span class="chip">7.6x</span><span class="chip">48%</span><span class="chip">54%</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.</p>
+<p class="why"><span class="draft">AI draft</span> If latency ruled out world action models for your controller, revisit: the authors report 60 ms per 16-step action, 7.6x faster than IDM on a single RTX 5090, and 48% and 54% zero-shot pick-and-place success; preprint figures to measure yourself.</p>
 <p class="excerpt">World action models (WAMs) adapt pretrained video generators for robot control by jointly predicting future camera frames and actions, transferring physical priors learned from video into manipulation policies.</p>
 <ul class="signals"><li>quantitative results</li><li>closed-loop success reported</li><li>real-robot experiments</li><li>open code or weights</li><li>latency or control-rate numbers</li></ul>
 <footer>
@@ -145,7 +145,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.32260" rel="noopener" target="_blank">EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances</a></h3>
 <p class="figure"><strong>1,000 hours</strong><span class="context">“egocentric demonstration episodes spanning 1,000 hours and 1”</span></p><p class="chips"><span class="chip">1,284 tasks</span></p>
-<p class="why">Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> Humanoid VLA teams budgeting teleoperation can treat egocentric human demonstrations as a candidate source; the reported 1,000 hours and 1,284 tasks describe the data&#x27;s size, not robot success, so whether it offsets teleoperation still needs your own test.</p>
 <p class="excerpt">Training humanoid vision-language-action (VLA) models relies heavily on costly real-robot teleoperation. Recent efforts convert egocentric human demonstrations into humanoid training data.</p>
 <ul class="signals"><li>quantitative results</li><li>real-robot experiments</li><li>open code or weights</li></ul>
 <footer>
@@ -160,7 +160,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/" rel="noopener" target="_blank">FCC should focus on robot security, not country of origin</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.</p>
+<p class="why"><span class="draft">AI draft</span> Compliance planners should note the argument, from Brain Corp&#x27;s CEO, that review should ask who controls a deployed robot rather than where it was assembled; it is an executive&#x27;s opinion piece, not an FCC position or ruling.</p>
 <p class="excerpt">Where a robot was assembled tells you little about who controls it once it&#x27;s deployed, writes Brain Corp CEO David Pinn.</p>
 <ul class="signals"><li>real-robot experiments</li></ul>
 <footer>
@@ -175,7 +175,7 @@
 <span class="ev ev-M" title="Evidence tags: O = first-party official · R = paper/preprint · M = media/secondary">M · Media</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html" rel="noopener" target="_blank">多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性</a></h3>
-<p class="why">Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors&#x27; own robot.</p>
+<p class="why"><span class="draft">AI draft</span> A secondary Chinese report credits coordinating several models with steadier long-sequence task execution but gives no figures; before following this design, ask the vendor for long-sequence success rates and failure breakdowns.</p>
 <p class="excerpt">具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。</p>
 <footer>
 <span class="source">雷峰网 Leiphone · 2026-11-25</span>
