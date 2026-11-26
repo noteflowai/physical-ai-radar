@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -8863,6 +8863,151 @@
       "signals": [],
       "numbers": [],
       "excerpt": "具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。"
+    },
+    {
+      "id": "arxiv:2611.33772",
+      "date": "2026-11-27",
+      "published": "2026-11-25",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.33772",
+      "title": "Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform",
+      "url": "https://arxiv.org/abs/2611.33772",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "open_release",
+        "latency"
+      ],
+      "numbers": [
+        "90%",
+        "75%"
+      ],
+      "excerpt": "Embodied foundation models are increasingly deployed by selection: a practitioner picks a public checkpoint by benchmark rank and fine-tunes it on local data."
+    },
+    {
+      "id": "arxiv:2611.33635",
+      "date": "2026-11-27",
+      "published": "2026-11-25",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.33635",
+      "title": "FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2611.33635",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "98.2%",
+        "98.0%",
+        "3.6%",
+        "80.4%"
+      ],
+      "excerpt": "Learning reusable latent actions from action-free videos offers an effective route to improving Vision-Language-Action (VLA) policies."
+    },
+    {
+      "id": "arxiv:2611.34257",
+      "date": "2026-11-27",
+      "published": "2026-11-25",
+      "lane": "data",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.34257",
+      "title": "CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion",
+      "url": "https://arxiv.org/abs/2611.34257",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "96.40%",
+        "98.10%",
+        "22.96%",
+        "29.32%"
+      ],
+      "excerpt": "Vision-Language-Action (VLA) models benefit from large, diverse datasets for robotic manipulation, yet collecting robot demonstrations remains costly."
+    },
+    {
+      "id": "arxiv:2611.33710",
+      "date": "2026-11-27",
+      "published": "2026-11-25",
+      "lane": "systems",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.33710",
+      "title": "$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models",
+      "url": "https://arxiv.org/abs/2611.33710",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "numbers": [
+        "53.2%",
+        "61.2%",
+        "29.3%"
+      ],
+      "excerpt": "Long-horizon robotic manipulation requires historical context, yet retaining extensive visual histories incurs growing storage and retrieval costs, while aggressive compression risks losing fine-grained information needed for subsequent…"
+    },
+    {
+      "id": "leiphone:a9a0d77b488e",
+      "date": "2026-11-27",
+      "published": "2026-11-26",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效",
+      "url": "https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html",
+      "signals": [
+        "numbers",
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "近日，钛虎机器人科技（上海）有限公司（以下简称“钛虎机器人”）正式发布面向机器人批量落地场景的轻量化关节模组Lite-1系列。该产品通过结构精简，驱控板与编码器一体化设计，在压缩体积、提升集成度的同时保持控制精度与运行稳定性，为人形机器人整机设计与规模化生产提供了新的核心零部件选择。"
+    },
+    {
+      "id": "tri:7ca7cd6c6ced",
+      "date": "2026-11-27",
+      "published": "2026-11-23",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "tri",
+      "publisher": "Toyota Research Institute",
+      "title": "Memory Anchors for Continual Robot Learning",
+      "url": "http://www.tri.global/research/memory-anchors-continual-robot-learning",
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "numbers": [
+        "10%",
+        "4.5x",
+        "63%"
+      ],
+      "excerpt": "Robot policies deployed in the wild should have the capability to continually learn new tasks without forgetting existing behaviors."
+    },
+    {
+      "id": "leiphone:bf76c753f615",
+      "date": "2026-11-27",
+      "published": "2026-11-26",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "机器人量产背后，物理AI开始算新账：研发底座何必各自建？",
+      "url": "https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "2026年，人形机器人加速走出实验室。 但是让机器人在真实世界产生价值，依然复杂而成本高昂。"
     }
   ]
 }

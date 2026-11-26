@@ -352,16 +352,6 @@
       "date": "2026-10-27",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.32969",
-        "https://arxiv.org/abs/2610.32093",
-        "https://arxiv.org/abs/2610.32102",
-        "https://arxiv.org/abs/2610.32143",
-        "https://github.com/isaac-sim/isaaclab/releases/tag/interactive-demos",
-        "https://github.com/google-deepmind/mujoco/releases/tag/3.17.0",
-        "https://www.therobotreport.com/omron-acquires-onlogic-address-edge-ai-applications",
-        "https://www.therobotreport.com/agility-gxo-logistics-plan-expanded-deployment-digit-humanoid"
-      ],
       "failed": [],
       "fallback": [],
       "unavailable": [
@@ -1797,6 +1787,70 @@
           "safety": 1,
           "systems": 0,
           "hardware": 0
+        }
+      }
+    },
+    {
+      "date": "2026-11-27",
+      "count": 7,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.33772",
+        "https://arxiv.org/abs/2611.33635",
+        "https://arxiv.org/abs/2611.34257",
+        "https://arxiv.org/abs/2611.33710",
+        "https://www.leiphone.com/category/industrynews/hyv4caentt6byjhj.html",
+        "https://www.tri.global/research/memory-anchors-continual-robot-learning",
+        "https://www.leiphone.com/category/chips/hqvbseunkdy0tos9.html"
+      ],
+      "failed": [],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null,
+          "event": "leiphone:a9a0d77b488e",
+          "event#2": "leiphone:bf76c753f615"
+        },
+        "unmet": [
+          "hot",
+          "official"
+        ]
+      },
+      "pool": {
+        "live": 244,
+        "eligible": 80,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 14,
+          "data": 15,
+          "training": 5,
+          "simeval": 22,
+          "edge": 8,
+          "safety": 2,
+          "systems": 9,
+          "hardware": 5
+        },
+        "picked_by_lane": {
+          "foundation": 1,
+          "data": 1,
+          "training": 0,
+          "simeval": 2,
+          "edge": 0,
+          "safety": 0,
+          "systems": 1,
+          "hardware": 2
         }
       }
     }

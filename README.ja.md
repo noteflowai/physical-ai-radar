@@ -60,33 +60,35 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-26
+### 本日のレーダー · 2026-11-27
 
-`生成時刻: 2026-11-25 23:40 UTC` ｜ `対象期間: 論文 2026-11-22 → 2026-11-26 · ブログ・報道 2026-10-27 → 2026-11-26 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-26 23:40 UTC` ｜ `対象期間: 論文 2026-11-23 → 2026-11-27 · ブログ・報道 2026-10-28 → 2026-11-27 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation](https://arxiv.org/abs/2611.32654)**<br>`75%`&nbsp; `45%`<br><sub>基盤モデル · arXiv 2611.32654 · 2026‑11‑24</sub> |
-| 02<br>🔵&nbsp;`R` | **[FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator](https://arxiv.org/abs/2611.31577)**<br>`77%`&nbsp; `36%`&nbsp; `14%`<br><sub>シミュレーションと評価 · arXiv 2611.31577 · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[G0.7: Scaling Up a Fast World Action Model with Long Context](https://arxiv.org/abs/2611.31822)**<br>`60 ms`&nbsp; `7.6x`&nbsp; `48%`<br><sub>シミュレーションと評価 · arXiv 2611.31822 · 2026‑11‑24</sub> |
-| 04<br>🔵&nbsp;`R` | **[EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances](https://arxiv.org/abs/2611.32260)**<br>`1,000 hours`&nbsp; `1,284 tasks`<br><sub>データエンジン · arXiv 2611.32260 · 2026‑11‑24</sub> |
-| 05<br>🟡&nbsp;`M` | **[FCC should focus on robot security, not country of origin](https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/)**<br><sub>安全・権限・コンプライアンス · The Robot Report · 2026‑11‑25</sub> |
-| 06<br>🟡&nbsp;`M` | **[多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性](https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html)**<br><sub>データエンジン · 雷峰网 Leiphone · 2026‑11‑25</sub> |
+| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>シミュレーションと評価 · arXiv 2611.33772 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>基盤モデル · arXiv 2611.33635 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>データエンジン · arXiv 2611.34257 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>システムとオーケストレーション · arXiv 2611.33710 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑11‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑26</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–06</summary>
+<details><summary><b>重要な理由</b> · 01–07</summary>
 
-1. **DexWAC** — `AI 下書き` 巧緻操作の基盤モデル選定で比較候補に入れる価値がある。デモから行動が環境をどう変え成功につながるかを学ぶ方式で、著者は平均成功率75%（π0.5は45%）と自己報告しており、自社タスクでの再現確認が前提。
-2. **FabricBench** — `AI 下書き` 剛体中心の評価に頼らず布操作方策を比べる標準ベンチマークが出た。著者報告では最良方策の平均77%に対し、長期のTシャツタスクでは36%を超える方策がなく、導入前は長期の布タスクでの検証が要点になる。
-3. **G0.7** — `AI 下書き` 遅延を理由に世界行動モデルを見送ったチームは再検討の余地がある。著者報告で16ステップの行動あたり60 ms、単一RTX 5090でIDM比7.6x高速、ゼロショットのピック&プレース成功率48%と54%。制御周期は自社環境で要実測。
-4. **EgoLoAF** — `AI 下書き` 人型VLAの遠隔操作予算を考える際、一人称視点の人間デモを代替データ源の候補にできる。報告された1,000 hours・1,284 tasksはデータ規模であってロボットの成功率ではなく、遠隔操作をどこまで減らせるかは自社検証が必要。
-5. **FCC should focus on robot security, not country of origin** — `AI 下書き` 導入時の規制対応を考えるチームは、審査は組立地ではなく導入後に誰がロボットを制御するかを見るべきだというBrain Corp CEOの主張に留意したい。ただし経営者の寄稿であり、FCCの立場や決定ではない。
-6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — `AI 下書き` 二次報道は複数モデルの協調で長い作業系列の安定性が上がるとするが、数値は示されていない。この構成を検討するなら、まずメーカーに長系列タスクの成功率と失敗内訳を求めたい。
+1. **Triage Before Fine-Tuning** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+2. **FreshVLA** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。新しいタスクや機体に必要なデータが減るかに注目。
+3. **CamAct** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。著者自身の機体以外でもデータを再利用できるかに注目。
+4. **$\\mathrm{M}^{2}$-WAM** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。人手のリセットなしで長時間タスクを維持できるかに注目。
+5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
+6. **Memory Anchors for Continual Robot Learning** — 査読前のプレプリント。本文に閉ループ評価の結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-26.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-27.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">

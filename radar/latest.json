@@ -1,74 +1,27 @@
 {
-  "date": "2026-11-26",
-  "generated": "2026-11-25 23:40 UTC",
-  "window": "papers 2026-11-22 → 2026-11-26 · posts 2026-10-27 → 2026-11-26 (UTC)",
+  "date": "2026-11-27",
+  "generated": "2026-11-26 23:40 UTC",
+  "window": "papers 2026-11-23 → 2026-11-27 · posts 2026-10-28 → 2026-11-27 (UTC)",
   "window_detail": {
-    "day": "2026-11-26",
-    "papers_from": "2026-11-22",
-    "posts_from": "2026-10-27",
+    "day": "2026-11-27",
+    "papers_from": "2026-11-23",
+    "posts_from": "2026-10-28",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.32654",
-      "title": "DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation",
-      "url": "https://arxiv.org/abs/2611.32654",
-      "publisher": "arXiv 2611.32654",
+      "id": "arxiv:2611.33772",
+      "title": "Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform",
+      "url": "https://arxiv.org/abs/2611.33772",
+      "publisher": "arXiv 2611.33772",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-24",
-      "lane": "foundation",
-      "score": 3.8,
-      "numbers": [
-        "75%",
-        "45%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Robot demonstrations provide more than actions to imitate: they reveal how actions change the world and how those changes contribute to task success. Recent world-action models (WAMs) extend vision-language-action (VLA) models with the first signal by jointly predicting actions and future observations, yet this predictive ability serves only as an auxiliary loss for policy learning. Meanwhile, most policy improvement methods learn dynamics and values in separate models, increasing training overhead and limiting representation sharing between these complementary objectives. We introduce DexWAC, a unified world-actor-critic model that jointly learns an actor, an action-conditioned world model, and a bootstrapped critic in a single robot pretraining stage. Our key insight is that visual prediction encourages control-relevant features, while value supervision promotes task-relevant representations; together, they shape a representation suited to policy learning. Built on an image-editing backbone, DexWAC predicts, for each action chunk, the visual latent and proprioception at its endpoint together with its reward and continuation, so the world model alone efficiently yields complete imagined transitions without generating intermediate video frames. After adapting the world model and critic on real rollouts, we improve the pretrained actor through either PPO on imagined rollouts or critic-guided best-of-$N$ selection. DexWAC surpasses the large-scale pretrained VLA and WAM baselines in simulation and achieves 75% average success on two real-world tasks, compared with 45% for $π_{0.5}$. Its world model is more accurate and faster than video-based baselines, and ablations confirm that learning dynamics and value together improves the policy."
-    },
-    {
-      "id": "arxiv:2611.31577",
-      "title": "FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator",
-      "url": "https://arxiv.org/abs/2611.31577",
-      "publisher": "arXiv 2611.31577",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-23",
-      "lane": "simeval",
-      "score": 3.725,
-      "numbers": [
-        "77%",
-        "36%",
-        "14%"
-      ],
-      "signals": [
-        "numbers",
-        "real_robot",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Fabric manipulation challenges robot policies with changing geometry, self-occlusion, and contact, yet standardized evaluation remains focused on rigid objects. We introduce FabricBench, a benchmark for bimanual fabric manipulation with six tasks spanning garments, silk, and bags, 10,000 simulation-ready assets, and controlled tests of configuration and appearance generalization. Built on an open-source solver in Newton, our simulator enables stable bimanual grasping, holding, and release through contact forces, without artificial attachment. Redesigned cloth-rigid contact and bidirectional force coupling support interactions among robot arms, fabric, and free rigid objects, allowing a bag to support its contents and transmit their weight to the grippers. In a controlled grasp-hold-release evaluation, our solver succeeds in all 45 trials, compared with none for the tested baseline configurations. Evaluating six representative policies, including vision-language-action models and world action models, reveals substantial remaining challenges: the best policy achieves 77% average success, while no policy exceeds 36% on long-horizon T-shirt folding. Under the most deformed initial T-shirt configurations, success falls to 6-14% across policies, with larger drops than under the evaluated appearance shifts. Zero-shot deployment of $π_{0.5}$ on a real robot largely preserves task difficulty ordering across six tasks (Spearman $ρ=0.94$). These results establish FabricBench as a reproducible testbed for measuring fabric-manipulation capabilities and exposing limitations in configuration generalization. The project website is available at https://fabricbench.github.io/."
-    },
-    {
-      "id": "arxiv:2611.31822",
-      "title": "G0.7: Scaling Up a Fast World Action Model with Long Context",
-      "url": "https://arxiv.org/abs/2611.31822",
-      "publisher": "arXiv 2611.31822",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-24",
+      "published": "2026-11-25",
       "lane": "simeval",
       "score": 3.655,
       "numbers": [
-        "60 ms",
-        "7.6x",
-        "48%",
-        "54%"
+        "90%",
+        "75%"
       ],
       "signals": [
         "numbers",
@@ -78,80 +31,154 @@
         "latency"
       ],
       "heat": 0.0,
-      "summary": "World action models (WAMs) adapt pretrained video generators for robot control by jointly predicting future camera frames and actions, transferring physical priors learned from video into manipulation policies. However, generating future frames before every action makes test-time inference too slow for closed-loop control, while most existing policies remain restricted to short observation histories. Building on Fast-WAM, which showed that video prediction shapes policy representations during training so that future frame synthesis can be skipped at deployment, we present G0.7, a generalist world action model scaled along two axes: extending the context window from a single observation to up to five minutes of history, and scaling pretraining to a large-scale corpus of robot teleoperation and human egocentric (ego) video. Across public simulation suites and real-robot deployments, direct action decoding (Fast mode) matches imagine-then-act (IDM) inference from the same checkpoint while running in 60 ms per 16-step action chunk on a single RTX 5090 (7.6x faster than IDM) and supporting pause-free real-time chunking. Performance scales consistently with pretraining data, with human ego video driving the largest gains in out-of-distribution generalization: G0.7 achieves a 70.8 mean score across five simulation benchmark suites, 48% and 54% zero-shot pick-and-place success on Galaxea R1 Pro and R1 Lite, 96.7% in-distribution and 93.3% out-of-distribution success on video-conditioned in-context learning tasks, and 86.9% mean task progress across seven real-world post-training tasks including multi-minute box folding, drink preparation, and product bagging."
+      "summary": "Embodied foundation models are increasingly deployed by selection: a practitioner picks a public checkpoint by benchmark rank and fine-tunes it on local data. The platform is fixed before the model is chosen, with little or no local data. We ask what such a checkpoint loses on a fixed platform and which part of the loss local data can buy back. We split the gap by what can repair it. A sensing gap, information the sensors do not capture, cannot be closed with their data; a latency gap, output arriving after the control loop needs it, belongs to the loop, not the weights; only a distribution gap is fine-tuning's to repair. TRIAGE turns this into feasibility-gated selection and monitored adaptation in five stages: gates on the sensor contract and on end-to-end latency that no score can override, probes on ten minutes of local logs, a ranking by target-relevant score among the candidates that pass, and fine-tuning that is monitored and checked in closed loop before release. On driving benchmarks, a deadline below a leading closed-loop model's latency makes it collide on 80 to 90% of routes, and losing field of view moves plans 2.2 to 5.7 times more than losing resolution at equal pixels. Local frames close 75% of a stability gap but raise perturbation sensitivity at small budgets, and picking by score violates a gate in two of four deployment profiles. On a full-scale vehicle, the factory camera failed the sensing gate and an added camera repaired it. The latency gate removed the two highest-scoring candidates, neither of which completed a closed-loop trip. The selected model passed acceptance in 4 of 5 closed-loop trips, and the closed-loop check withheld a fine-tuned model that had improved offline. TRIAGE lets organizations that cannot train foundation models from scratch find out whether a public checkpoint can run on the robot or vehicle they own, and what to fix if not."
     },
     {
-      "id": "arxiv:2611.32260",
-      "title": "EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances",
-      "url": "https://arxiv.org/abs/2611.32260",
-      "publisher": "arXiv 2611.32260",
+      "id": "arxiv:2611.33635",
+      "title": "FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models",
+      "url": "https://arxiv.org/abs/2611.33635",
+      "publisher": "arXiv 2611.33635",
       "source_id": "arxiv",
       "evidence": "R",
-      "published": "2026-11-24",
-      "lane": "data",
-      "score": 3.27,
+      "published": "2026-11-25",
+      "lane": "foundation",
+      "score": 3.45,
       "numbers": [
-        "1,000 hours",
-        "1,284 tasks"
+        "98.2%",
+        "98.0%",
+        "3.6%",
+        "80.4%"
       ],
       "signals": [
         "numbers",
-        "real_robot",
-        "open_release"
-      ],
-      "heat": 0.0,
-      "summary": "Training humanoid vision-language-action (VLA) models relies heavily on costly real-robot teleoperation. Recent efforts convert egocentric human demonstrations into humanoid training data. However, most methods still require wearable motion trackers and leave important hand-object interaction cues implicit. Many also mix in real-robot teleoperation data for VLA post-training. These dependencies limit scalable data collection, while implicit interaction cues make precise contact harder to learn. To overcome these limitations, we propose EgoLoAF, the first paradigm to derive all training data for humanoid loco-manipulation directly from egocentric demonstrations without wearable motion trackers. We post-train the VLA on the converted data alone, without real-robot teleoperation demonstrations, and use explicit hand-object interaction cues to guide action generation. Specifically, to obtain humanoid action targets, we estimate torso motion from recorded camera poses and reconstruct both hand trajectories from video. From the same recording, we use each hand's current pose relative to the object to represent hand-object affordances. During post-training, we inject these affordances into the action expert through cross-attention while keeping the vision-language backbone frozen. Additionally, we release 128,400 egocentric demonstration episodes spanning 1,000 hours and 1,284 tasks, together with converted humanoid action trajectories and rendered robot-view observations. Across four real-world tasks, EgoLoAF nearly achieves teleoperation performance (73.1 vs. 74.4 in mean Task Progress Score), while achieving a mean 4.03 times improvement in data-collection efficiency."
-    },
-    {
-      "id": "the-robot-report:73a9b25fccb2",
-      "title": "FCC should focus on robot security, not country of origin",
-      "url": "https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/",
-      "publisher": "The Robot Report",
-      "source_id": "the-robot-report",
-      "evidence": "M",
-      "published": "2026-11-25",
-      "lane": "safety",
-      "score": 1.635,
-      "numbers": [],
-      "signals": [
+        "closed_loop",
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Where a robot was assembled tells you little about who controls it once it's deployed, writes Brain Corp CEO David Pinn."
+      "summary": "Learning reusable latent actions from action-free videos offers an effective route to improving Vision-Language-Action (VLA) policies. However, reconstruction-oriented latent actions do not necessarily benefit policy learning: as they may encode task-irrelevant static appearance with scene identity, or entangle slowly varying task progress with fine-grained execution dynamics in limited discrete code. We propose FreshVLA, a VLA framework built on a frequency-guided, dynamics-sensitive learning paradigm for acquiring temporally hierarchical continuous latent actions. FreshVLA uses a high-pass prior to guide visual transition encoding toward dynamical regions, thereby reducing reliance on static appearance cues. It further organizes latent actions into coarse-grained task progress and fine-grained execution dynamics through cross-timescale sampling and frequency-domain regularization, enhancing their capacity to represent long-horizon behaviors. During policy training, we freeze the pretrained latent action encoder and transfer its representations to robot control through joint flow-matching of latent and robot actions. FreshVLA achieves 98.2% average success on LIBERO and 98.0% on LIBERO-Long, exceeding GR00T-N1.6 on the latter by 3.6%. It also reaches an average sequence length of 4.52 on CALVIN and strong overall success rate of 80.4% in the zero-shot LIBERO-PLUS evaluation. Furthermore, FreshVLA exhibits greater robustness to visual perturbations and a more distinct division of roles between two branches in modeling low- and high-frequency motion, respectively. In 35-step action regression, it achieves a 51.3-percentage-point higher relative error reduction than its hierarchical discrete counterpart. Real-world experiments demonstrate that FreshVLA improves the average success rate over $π_{0.5}$ by 7.5%. The FreshVLA project page is available at https://freshvla.github.io/."
     },
     {
-      "id": "leiphone:1ede0b009052",
-      "title": "多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性",
-      "url": "https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html",
+      "id": "arxiv:2611.34257",
+      "title": "CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion",
+      "url": "https://arxiv.org/abs/2611.34257",
+      "publisher": "arXiv 2611.34257",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-25",
+      "lane": "data",
+      "score": 3.152,
+      "numbers": [
+        "96.40%",
+        "98.10%",
+        "22.96%",
+        "29.32%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Vision-Language-Action (VLA) models benefit from large, diverse datasets for robotic manipulation, yet collecting robot demonstrations remains costly. Recent work has explored egocentric videos as a source of supervision, primarily drawing on demonstrations of human-object interaction. We show that in-the-wild videos can improve robotic manipulation even when they contain no demonstrations of object manipulation. Specifically, camera motion recovered from these videos provides an additional source of motion supervision that complements robot demonstrations. Building on this finding, we introduce CamAct, which incorporates this camera-motion supervision into VLA policies alongside robot demonstrations, extending the use of human videos for manipulation learning beyond object interactions. Experiments show that incorporating this video supervision during fine-tuning improves success rates from 96.40% to 98.10% on LIBERO and from 22.96% to 29.32% on RoboCasa 365. The resulting policy also demonstrates strong results in out-of-distribution generalization on LIBERO-Plus and real-world manipulation tasks."
+    },
+    {
+      "id": "arxiv:2611.33710",
+      "title": "$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models",
+      "url": "https://arxiv.org/abs/2611.33710",
+      "publisher": "arXiv 2611.33710",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-25",
+      "lane": "systems",
+      "score": 3.1,
+      "numbers": [
+        "53.2%",
+        "61.2%",
+        "29.3%"
+      ],
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Long-horizon robotic manipulation requires historical context, yet retaining extensive visual histories incurs growing storage and retrieval costs, while aggressive compression risks losing fine-grained information needed for subsequent decisions. Moreover, executed action histories capture intermediate behaviors that sparse visual observations may miss. Preserving this complementary context efficiently calls for modality-specific memory mechanisms that balance recent detail with long-term retention. To this end, we introduce $\\mathrm{M}^{2}$-WAM, a world-action model equipped with hierarchical visual and interaction memories. $\\mathrm{M}^{2}$-WAM preserves recent visual observations in dense short-term memory while consolidating entries evicted from this window into fixed-size associative long-term memory through gated delta updates. Within the same short- and long-term hierarchy, interaction memory encodes executed action prefixes into compact temporal representations, complementing visual observations with behavioral context. These complementary memories are integrated into world-action modeling through layer-wise retrieval, enabling memory-augmented action generation with a bounded online memory footprint independent of episode length. On the memory-dependent simulation benchmarks MIKASA-Robo and RMBench, $\\mathrm{M}^{2}$-WAM achieves +53.2% and +61.2% absolute improvements in average success rates over Fast-WAM, respectively. These gains extend to real-world manipulation, where $\\mathrm{M}^{2}$-WAM achieves a +29.3% absolute improvement over LingBot-VA in average success across three tasks. These results suggest that $\\mathrm{M}^{2}$-WAM offers a promising approach to efficient memory-augmented world-action modeling."
+    },
+    {
+      "id": "leiphone:a9a0d77b488e",
+      "title": "深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效",
+      "url": "https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html",
       "publisher": "雷峰网 Leiphone",
       "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-25",
-      "lane": "data",
-      "score": 1.118,
+      "published": "2026-11-26",
+      "lane": "hardware",
+      "score": 2.215,
       "numbers": [],
-      "signals": [],
+      "signals": [
+        "numbers",
+        "industry_event"
+      ],
       "heat": 0.0,
-      "summary": "具身智能要真正走进现实世界，一个足够聪明的“大脑”还不够。 与以信息处理为主的数字世界不同，物理世界充满动态变化与不确定性。机器人不仅要理解任务，还要应对物体状态、接触条件和环境的变化，将认知判断转化为可靠的物理操作。模型具备强大的认知能力，并不意味着机器人就能胜任真实作业；面对多环节、长流程任务，单一模型或孤立技能难以独立应对，需要多种模型与技能协同配合，才能实现可靠的任务交付。 面向物理环境中的动态变化、多环节任务与复杂交互，浙江人形机器人创新中心有限公司（以下简称“浙江人形”）对原有 SPIRE 体系进行迭代升级，推出 SPIRE 2.0全链路任务对齐具身智能体系。 新体系以 NaviDataset 积累真实作业数据，通过 NaviRepresentation 开展任务导向的环境描述，帮助机器人理解作业环境；再由 NaviPolicy 打通动作控制，构建灵活自主的闭环作业能力，并通过 NaviAssistant 协调不同模型，最终将能力沉淀为可复用、可组合的 NaviSkillLib 技能库，贯通从数据积累、任务理解到模型协同与实际应用的完整链路。 数据筑基，让机器人学得更有效 机器人学会干活，首先需要积累真实任务的操作经验。 面向工业应用中的多场景落地，浙江人形从细分场景覆盖与作业技能积累两个维度，构建面向真实任务的 Navi-Dataset 具身智能数据体系。 …"
+      "summary": "近日，钛虎机器人科技（上海）有限公司（以下简称“钛虎机器人”）正式发布面向机器人批量落地场景的轻量化关节模组Lite-1系列。该产品通过结构精简，驱控板与编码器一体化设计，在压缩体积、提升集成度的同时保持控制精度与运行稳定性，为人形机器人整机设计与规模化生产提供了新的核心零部件选择。 当前，人形机器人产业正从“能走能动”的样机验证阶段，加速迈向“可批量、可交付、可落地”的产业化阶段。关节模组是机器人的核心运动部件，其体积、集成度、走线方式与装配一致性，直接影响整机结构、成本与量产节奏。头部、手臂、腰部等部位空间有限，对关节的轴向尺寸提出了更高要求；多关节带来的复杂线束，也增加了走线与装配难度。关节模组的轻量化并非“减配”，而是通过结构设计优化与集成度提升，在更小的体积内实现同等的控制精度与可靠性。 结构设计：轴向长度较上代至多缩短22.5% 据介绍，该系列采用驱控板与编码器一体化集成，整机部件精简至6个，内部排布更紧凑。同外径尺寸下，关节轴向长度较上代产品至多缩短22.5%；侧出线设计减少线束转弯，使带线轴向安装空间节省多达30%，为人形机器人头部、手腕等部位留出更大设计余量，助力整机外形更贴近人形比例。 驱感一体：兼顾控制精度与运行稳定 集成带来的收益不止于结构层：信号走线更短、链路干扰更低，可支撑整机高频控制与快速响应。关节输出线性度高，搭配双编码器架构，位置反馈更稳定，实现全场景0跳变，运动更平稳精细；低温升特性减少长时间连续运行中的热衰减，为高负载工况下的可靠性与持久性提供支撑。 …"
+    },
+    {
+      "id": "tri:7ca7cd6c6ced",
+      "title": "Memory Anchors for Continual Robot Learning",
+      "url": "http://www.tri.global/research/memory-anchors-continual-robot-learning",
+      "publisher": "Toyota Research Institute",
+      "source_id": "tri",
+      "evidence": "R",
+      "published": "2026-11-23",
+      "lane": "simeval",
+      "score": 2.07,
+      "numbers": [
+        "10%",
+        "4.5x",
+        "63%"
+      ],
+      "signals": [
+        "numbers",
+        "real_robot"
+      ],
+      "heat": 0.0,
+      "summary": "Robot policies deployed in the wild should have the capability to continually learn new tasks without forgetting existing behaviors. A common approach to combat such catastrophic forgetting is to train on new task data with a replay buffer of previously learned task data. Although this buffer is commonly sampled randomly from all prior experiences, we show that a small set of these experiences contributes greatly in anchoring past performance. We call these experiences Memory Anchors. We identify Memory Anchors in regions where representations of new-task observations collapse onto those of old-task observations even though the tasks require conflicting actions, like when a familiar object must be manipulated in a new way. Rehearsing old data in this region plays a key role in preventing destructive overwriting of past task knowledge, serving as this critical Memory Anchor role. Excluding only 10% Memory Anchors before sampling the buffer leads to more than a 4.5x increase in catastrophic forgetting on the LIBERO benchmark suites. Conversely, enriching the replay buffer with Memory Anchors can decrease high-conflict task forgetting by 63% and enables successful continual learning of two task sequences on a real robot. Image Aug 27, 2026 Robotics Read More 1 Minute Read"
+    },
+    {
+      "id": "leiphone:bf76c753f615",
+      "title": "机器人量产背后，物理AI开始算新账：研发底座何必各自建？",
+      "url": "https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-26",
+      "lane": "hardware",
+      "score": 1.915,
+      "numbers": [],
+      "signals": [
+        "industry_event"
+      ],
+      "heat": 0.0,
+      "summary": "2026年，人形机器人加速走出实验室。 但是让机器人在真实世界产生价值，依然复杂而成本高昂。 从数据采集、物理仿真到模型训练、真机验证，机器人每掌握一项新技能，背后都可能是一整套研发流程的反复运转。 更复杂的是，这些能力分散在不同的专业厂商手中。产业分工越来越细，如何将分散的技术能力组织起来，反而成了一道新的难题。 当机器人开始规模化交付，产业需要解决的不只是如何造出更多机器人，还有如何让更多企业以更低的成本训练机器人。 这也让物理AI产业出现了一个新的机会：谁有能力将分散的研发资源组织成可复用的基础设施，谁就有机会成为产业链上的重要组织者。 九章云极正尝试从算力供应商向物理AI开发平台延伸，通过物理AI工厂、生态联盟和标准化接口，参与这场产业分工的重构。 01 机器人越造越多，研发底座开始走向共建 《2026年人形机器人产业发展报告》显示，今年上半年，中国人形机器人出货量已超过4万台。 机器人走出实验室后，需要掌握更多技能，适应不同的工作环境。每进入一个新的应用场景，机器人企业都可能需要开发新的技能，研发任务也随之增加。 这背后是一条需要不断重复的研发链。 举个简单的例子，智能机器人完成一个抓取动作，要经过数据采集、仿真、训练和真机验证。物理AI的特殊之处就在于，仿真中成功的抓取，可能会因为现实中的光照、物体材质或位置变化而失败。 一旦抓取失败，相关数据还得回流训练，推动下一轮调整。这样的试错可能反复发生，那随之而来的是持续增长的数据处理、仿真和训练需求。 …"
     }
   ],
   "lane_counts": {
-    "foundation": 10,
+    "foundation": 9,
     "data": 7,
     "training": 1,
     "simeval": 14,
     "edge": 3,
     "safety": 1,
-    "systems": 3,
+    "systems": 4,
     "hardware": 7
   },
   "evidence_mix": {
-    "O": 5,
-    "R": 30,
-    "M": 11
+    "O": 2,
+    "R": 31,
+    "M": 13
   },
   "fetch": {
-    "items": 660,
+    "items": 665,
     "attempted": 25,
     "answered": 25,
     "failed": [],
@@ -180,11 +207,11 @@
       "robots_reasons": {},
       "robots_detail": {},
       "hf_papers": 50,
-      "hn_stories": 21,
+      "hn_stories": 22,
       "repos": 4
     },
     "per_source": {
-      "arxiv": 80,
+      "arxiv": 86,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
@@ -200,7 +227,7 @@
       "nature-machine-intelligence": 2,
       "techcrunch-robotics": 14,
       "robohub": 75,
-      "qbitai": 3,
+      "qbitai": 2,
       "import-ai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,

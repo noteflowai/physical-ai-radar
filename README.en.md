@@ -60,33 +60,35 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-26
+### Today's radar · 2026-11-27
 
-`Generated: 2026-11-25 23:40 UTC` ｜ `Window: papers 2026-11-22 → 2026-11-26 · posts 2026-10-27 → 2026-11-26 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-26 23:40 UTC` ｜ `Window: papers 2026-11-23 → 2026-11-27 · posts 2026-10-28 → 2026-11-27 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation](https://arxiv.org/abs/2611.32654)**<br>`75%`&nbsp; `45%`<br><sub>Foundation models · arXiv 2611.32654 · 2026‑11‑24</sub> |
-| 02<br>🔵&nbsp;`R` | **[FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator](https://arxiv.org/abs/2611.31577)**<br>`77%`&nbsp; `36%`&nbsp; `14%`<br><sub>Simulation & evaluation · arXiv 2611.31577 · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[G0.7: Scaling Up a Fast World Action Model with Long Context](https://arxiv.org/abs/2611.31822)**<br>`60 ms`&nbsp; `7.6x`&nbsp; `48%`<br><sub>Simulation & evaluation · arXiv 2611.31822 · 2026‑11‑24</sub> |
-| 04<br>🔵&nbsp;`R` | **[EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances](https://arxiv.org/abs/2611.32260)**<br>`1,000 hours`&nbsp; `1,284 tasks`<br><sub>Data engine · arXiv 2611.32260 · 2026‑11‑24</sub> |
-| 05<br>🟡&nbsp;`M` | **[FCC should focus on robot security, not country of origin](https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/)**<br><sub>Safety, permissions & compliance · The Robot Report · 2026‑11‑25</sub> |
-| 06<br>🟡&nbsp;`M` | **[多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性](https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html)**<br><sub>Data engine · 雷峰网 Leiphone · 2026‑11‑25</sub> |
+| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>Simulation & evaluation · arXiv 2611.33772 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>Foundation models · arXiv 2611.33635 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>Data engine · arXiv 2611.34257 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>Systems & orchestration · arXiv 2611.33710 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑26</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–06</summary>
+<details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **DexWAC** — `AI draft` Worth adding to a dexterous-manipulation shortlist: the model learns from demonstrations how actions change the world and lead to success, and the authors report 75% average success against 45% for π0.5, a self-reported gap to re-run on your own tasks.
-2. **FabricBench** — `AI draft` Cloth-handling policies get a standardized benchmark of their own instead of rigid-object suites; the authors report a best average of 77% but no policy above 36% on long-horizon T-shirt tasks, so test long-horizon cloth work before trusting any policy.
-3. **G0.7** — `AI draft` If latency ruled out world action models for your controller, revisit: the authors report 60 ms per 16-step action, 7.6x faster than IDM on a single RTX 5090, and 48% and 54% zero-shot pick-and-place success; preprint figures to measure yourself.
-4. **EgoLoAF** — `AI draft` Humanoid VLA teams budgeting teleoperation can treat egocentric human demonstrations as a candidate source; the reported 1,000 hours and 1,284 tasks describe the data's size, not robot success, so whether it offsets teleoperation still needs your own test.
-5. **FCC should focus on robot security, not country of origin** — `AI draft` Compliance planners should note the argument, from Brain Corp's CEO, that review should ask who controls a deployed robot rather than where it was assembled; it is an executive's opinion piece, not an FCC position or ruling.
-6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — `AI draft` A secondary Chinese report credits coordinating several models with steadier long-sequence task execution but gives no figures; before following this design, ask the vendor for long-sequence success rates and failure breakdowns.
+1. **Triage Before Fine-Tuning** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
+2. **FreshVLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
+3. **CamAct** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
+4. **$\\mathrm{M}^{2}$-WAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
+5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
+6. **Memory Anchors for Continual Robot Learning** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
+7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-26.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

@@ -62,33 +62,35 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-26
+### 今日雷达 · 2026-11-27
 
-`生成时间: 2026-11-25 23:40 UTC` ｜ `统计窗口: 论文 2026-11-22 → 2026-11-26 · 博客与报道 2026-10-27 → 2026-11-26 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-26 23:40 UTC` ｜ `统计窗口: 论文 2026-11-23 → 2026-11-27 · 博客与报道 2026-10-28 → 2026-11-27 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[DexWAC: A Unified World-Actor-Critic Model for Dexterous Robot Manipulation](https://arxiv.org/abs/2611.32654)**<br>`75%`&nbsp; `45%`<br><sub>基座模型 · arXiv 2611.32654 · 2026‑11‑24</sub> |
-| 02<br>🔵&nbsp;`R` | **[FabricBench: A Standardized Policy Benchmark for Bimanual Fabric Manipulation with a Contact-Driven Deformable Simulator](https://arxiv.org/abs/2611.31577)**<br>`77%`&nbsp; `36%`&nbsp; `14%`<br><sub>仿真与评测 · arXiv 2611.31577 · 2026‑11‑23</sub> |
-| 03<br>🔵&nbsp;`R` | **[G0.7: Scaling Up a Fast World Action Model with Long Context](https://arxiv.org/abs/2611.31822)**<br>`60 ms`&nbsp; `7.6x`&nbsp; `48%`<br><sub>仿真与评测 · arXiv 2611.31822 · 2026‑11‑24</sub> |
-| 04<br>🔵&nbsp;`R` | **[EgoLoAF: Learning Humanoid Loco-Manipulation from Egocentric Demonstrations with Hand-Object Affordances](https://arxiv.org/abs/2611.32260)**<br>`1,000 hours`&nbsp; `1,284 tasks`<br><sub>数据引擎 · arXiv 2611.32260 · 2026‑11‑24</sub> |
-| 05<br>🟡&nbsp;`M` | **[FCC should focus on robot security, not country of origin](https://www.therobotreport.com/fcc-should-focus-on-robot-security-not-country-of-origin/)**<br><sub>安全、权限与合规 · The Robot Report · 2026‑11‑25</sub> |
-| 06<br>🟡&nbsp;`M` | **[多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性](https://www.leiphone.com/category/industrynews/KnGzlsg6xlU9Nnpk.html)**<br><sub>数据引擎 · 雷峰网 Leiphone · 2026‑11‑25</sub> |
+| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>仿真与评测 · arXiv 2611.33772 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>基座模型 · arXiv 2611.33635 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>数据引擎 · arXiv 2611.34257 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>系统与编排 · arXiv 2611.33710 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>仿真与评测 · Toyota Research Institute · 2026‑11‑23</sub> |
+| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑26</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–06</summary>
+<details><summary><b>为什么重要</b> · 01–07</summary>
 
-1. **DexWAC** — `AI 起草` 选灵巧操作基座时可把它列入对比：作者让模型从演示中学动作如何改变环境、如何促成任务成功，自报平均成功率 75%，对照 π0.5 为 45%；属作者自报，换型前应在自己的任务上复测。
-2. **FabricBench** — `AI 起草` 布料操作策略终于有了专门的标准化评测，不必再借用刚体基准；作者自报最佳策略平均 77%，但长程 T 恤任务没有策略超过 36%，部署前应重点在长程布料任务上验证。
-3. **G0.7** — `AI 起草` 若因延迟而放弃世界动作模型，可重新评估：作者自报每个 16 步动作 60 ms、单张 RTX 5090 上比 IDM 快 7.6x，零样本抓放成功率 48% 和 54%；控制频率预算仍应在自家控制器上实测。
-4. **EgoLoAF** — `AI 起草` 在为人形 VLA 规划遥操作预算时，可把第一人称人类演示当作候选数据来源：作者报告覆盖 1,000 hours、1,284 tasks；但这两个数字描述的是数据规模，不是机器人成功率，能否替代遥操作仍需自测。
-5. **FCC should focus on robot security, not country of origin** — `AI 起草` 做上线合规准备的团队可留意这一论点：Brain Corp CEO 主张审查应看部署后谁控制机器人，而不是在哪里组装；这是企业高管的观点文章，不代表 FCC 的立场或决定。
-6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — `AI 起草` 二手报道称多模型协同能提升长序列任务的作业稳定性，页面未给出任何数字；评估这类方案时，应先向厂商要长序列任务的成功率和失败分布，再决定是否跟进。
+1. **Triage Before Fine-Tuning** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。
+2. **FreshVLA** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。
+3. **CamAct** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。
+4. **$\\mathrm{M}^{2}$-WAM** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。
+5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+6. **Memory Anchors for Continual Robot Learning** — 预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。
+7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-26.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-27.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">
