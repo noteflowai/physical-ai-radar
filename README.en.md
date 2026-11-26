@@ -77,12 +77,12 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–06</summary>
 
-1. **DexWAC** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-2. **FabricBench** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-3. **G0.7** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-4. **EgoLoAF** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch whether the data is reusable beyond the authors' own robot.
-5. **FCC should focus on robot security, not country of origin** — Secondary report, so check the primary source before citing; the text gives no figures. Watch what it changes for certification and deployment approval.
-6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether the data is reusable beyond the authors' own robot.
+1. **DexWAC** — `AI draft` Worth adding to a dexterous-manipulation shortlist: the model learns from demonstrations how actions change the world and lead to success, and the authors report 75% average success against 45% for π0.5, a self-reported gap to re-run on your own tasks.
+2. **FabricBench** — `AI draft` Cloth-handling policies get a standardized benchmark of their own instead of rigid-object suites; the authors report a best average of 77% but no policy above 36% on long-horizon T-shirt tasks, so test long-horizon cloth work before trusting any policy.
+3. **G0.7** — `AI draft` If latency ruled out world action models for your controller, revisit: the authors report 60 ms per 16-step action, 7.6x faster than IDM on a single RTX 5090, and 48% and 54% zero-shot pick-and-place success; preprint figures to measure yourself.
+4. **EgoLoAF** — `AI draft` Humanoid VLA teams budgeting teleoperation can treat egocentric human demonstrations as a candidate source; the reported 1,000 hours and 1,284 tasks describe the data's size, not robot success, so whether it offsets teleoperation still needs your own test.
+5. **FCC should focus on robot security, not country of origin** — `AI draft` Compliance planners should note the argument, from Brain Corp's CEO, that review should ask who controls a deployed robot rather than where it was assembled; it is an executive's opinion piece, not an FCC position or ruling.
+6. **多模型协同落地，浙江人形 NAVIAI 提升长序列任务作业稳定性** — `AI draft` A secondary Chinese report credits coordinating several models with steadier long-sequence task execution but gives no figures; before following this design, ask the vendor for long-sequence success rates and failure breakdowns.
 
 </details>
 
