@@ -5,6 +5,13 @@
     <link>https://noteflowai.github.io/physical-ai-radar/updates/</link>
     <description>New features with verified releases and usage documentation.</description>
     <item>
+      <title>fix: name the malformed field when an Inspect log's results headline section crashes the loader</title>
+      <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.5/</link>
+      <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.5/</guid>
+      <description>load_results reads Inspect .json logs and .eval archives, and evalarc diff calls it. Its headline block used to fail with an internal AttributeError, KeyError or TypeError on seven malformed values in a log's results section. Each now raises a ValueError. The message names the field path, the value's JSON type and the recovery step, which is to re-export the log with inspect log dump. The paths are results, results.scores, results.scores[N], results.headline, results.headline.metric, results.scores[N].metrics[K] and results.scores[N].name. Metric names in messages go through the existing _shown_id helper, so an ESC character appears as \x1b. Each check runs only where the old code raised, and in the same order. Logs that loaded before load the same way and keep the same headline, including the recorded examples (0.625 and 0.8125). An .eval archive gives the same message through its header.json. evalarc diff exits 2 with the message on stderr, creates no --output folder and leaves an existing --markdown file unchanged. On the base commit, the same CLI case already exited 2, but stderr showed only the internal text "evalarc: 'str' object has no attribute 'get'". docs/ci-gate.md lists this case under exit code 2.</description>
+      <pubDate>Fri, 27 Nov 2026 13:35:33 +0000</pubDate>
+    </item>
+    <item>
       <title>fix: reject an Inspect sample whose scores field is not an object with a named error instead of crashing</title>
       <link>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.4/</link>
       <guid>https://noteflowai.github.io/physical-ai-radar/updates/evalarc/0.23.4/</guid>
