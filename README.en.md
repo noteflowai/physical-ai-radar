@@ -78,13 +78,13 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–07</summary>
 
-1. **Triage Before Fine-Tuning** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch how well the simulated result predicts real-robot performance.
-2. **FreshVLA** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it cuts the data a new task or embodiment needs.
-3. **CamAct** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the data is reusable beyond the authors' own robot.
-4. **$\\mathrm{M}^{2}$-WAM** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether it holds up over long tasks without human resets.
-5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
-6. **Memory Anchors for Continual Robot Learning** — Preprint, not yet peer-reviewed; the text gives no closed-loop results. Watch how well the simulated result predicts real-robot performance.
-7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch price, availability and who is shipping it in volume.
+1. **Triage Before Fine-Tuning** — `AI draft` Teams that pick a public checkpoint by benchmark rank and fine-tune it locally should screen it on their own platform first; the preprint quotes collisions on 80 to 90% of routes, though the page does not say which models or setup.
+2. **FreshVLA** — `AI draft` Teams holding action-free video could use it to learn latent actions for a VLA; the authors report 98.2% average success on LIBERO, 98.0% on LIBERO-Long and 80.4% in a zero-shot setting the page does not describe.
+3. **CamAct** — `AI draft` If robot demonstrations are your data bottleneck, in-the-wild video is a candidate supplement; the authors report LIBERO rising from 96.40% to 98.10% and RoboCasa 365 from 22.96% to 29.32%, both benchmark scores.
+4. **$\\mathrm{M}^{2}$-WAM** — `AI draft` For long-horizon manipulation, memory is a trade-off between the storage and retrieval cost of visual history and the detail lost to compression; the authors report absolute gains of 53.2%, 61.2% and 29.3%, but the page omits the tasks and baselines.
+5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — `AI draft` Humanoid builders sourcing joints can shortlist this Shanghai supplier's module, which integrates the driver board and encoder; the claim that control precision and stability are kept reaches us through a secondary report, so ask for measured specifications.
+6. **Memory Anchors for Continual Robot Learning** — `AI draft` Teams that keep teaching a deployed policy new tasks should treat what protects old behaviours as a design decision: the authors tie excluding only 10% of Memory Anchors to a more than 4.5x increase in catastrophic forgetting, a self-reported result.
+7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — `AI draft` Teams weighing whether to build their own development stack get an argument for a shared one from this secondary commentary; it gives no figures, so test the framing against your own costs.
 
 </details>
 

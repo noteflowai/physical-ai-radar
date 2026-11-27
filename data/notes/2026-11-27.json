@@ -1,0 +1,53 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-27",
+  "generated": "2026-11-27 13:41 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.33772": {
+      "zh": "按基准排名挑公开检查点、再用本地数据微调的团队，应先在自己的平台上做可行性筛查；预印本页面引用了 80 到 90% 路线发生碰撞的数字，但未说明是哪些模型、何种设置。",
+      "en": "Teams that pick a public checkpoint by benchmark rank and fine-tune it locally should screen it on their own platform first; the preprint quotes collisions on 80 to 90% of routes, though the page does not say which models or setup.",
+      "ja": "ベンチマーク順位で公開チェックポイントを選び自前データで微調整する運用なら、まず自社の機体で実現可能性を確かめたい。ページには80〜90%の経路で衝突という記述があるが、対象モデルや条件は示されていない。"
+    },
+    "https://arxiv.org/abs/2611.33635": {
+      "zh": "手里有无动作标注视频的团队，可考虑用它学习潜在动作来改进 VLA；作者自报 LIBERO 平均成功率 98.2%、LIBERO-Long 98.0%，零样本设置下 80.4%，后者的具体设置页面未说明。",
+      "en": "Teams holding action-free video could use it to learn latent actions for a VLA; the authors report 98.2% average success on LIBERO, 98.0% on LIBERO-Long and 80.4% in a zero-shot setting the page does not describe.",
+      "ja": "行動ラベルのない動画を持つチームは、潜在行動の学習によるVLA改善を検討できる。著者報告はLIBERO平均98.2%、LIBERO-Long 98.0%、ゼロショット設定で80.4%だが、後者の条件はページからは分からない。"
+    },
+    "https://arxiv.org/abs/2611.34257": {
+      "zh": "若机器人演示数据是瓶颈，可把野外视频作为补充来源来评估：作者自报 LIBERO 成功率从 96.40% 升到 98.10%，RoboCasa 365 从 22.96% 升到 29.32%，两者都是基准分数。",
+      "en": "If robot demonstrations are your data bottleneck, in-the-wild video is a candidate supplement; the authors report LIBERO rising from 96.40% to 98.10% and RoboCasa 365 from 22.96% to 29.32%, both benchmark scores.",
+      "ja": "ロボットのデモ収集がボトルネックなら、野外動画を補助データとして評価する価値がある。著者報告ではLIBEROが96.40%から98.10%、RoboCasa 365が22.96%から29.32%に向上したが、いずれもベンチマーク上の数値。"
+    },
+    "https://arxiv.org/abs/2611.33710": {
+      "zh": "做长程操作的系统要在记忆成本与细节损失之间取舍：保留大量视觉历史拖累存储与检索，过度压缩又丢信息；作者自报绝对提升 53.2%、61.2% 和 29.3%，但页面未写明对比的任务与基线。",
+      "en": "For long-horizon manipulation, memory is a trade-off between the storage and retrieval cost of visual history and the detail lost to compression; the authors report absolute gains of 53.2%, 61.2% and 29.3%, but the page omits the tasks and baselines.",
+      "ja": "長期タスクの記憶設計は、視覚履歴を保持する保存・検索コストと圧縮による情報損失の綱引きになる。著者は絶対値で53.2%、61.2%、29.3%の改善を報告するが、比較対象のタスクとベースラインはページに示されていない。"
+    },
+    "https://www.leiphone.com/category/industrynews/hyv4caentt6byjhj.html": {
+      "zh": "为人形整机选关节的团队可把这款驱控板与编码器一体化的模组列入候选；“保持控制精度与运行稳定性”是二手报道转述的厂商说法，采购前应索要实测参数。",
+      "en": "Humanoid builders sourcing joints can shortlist this Shanghai supplier's module, which integrates the driver board and encoder; the claim that control precision and stability are kept reaches us through a secondary report, so ask for measured specifications.",
+      "ja": "人型機の関節を選定するチームは、駆動制御基板とエンコーダを一体化したこのモジュールを候補にできる。制御精度と安定性を保つという点は二次報道経由のメーカー説明なので、実測仕様の確認が先。"
+    },
+    "http://www.tri.global/research/memory-anchors-continual-robot-learning": {
+      "zh": "要给已部署策略持续加新任务的团队，应把防遗忘机制当作设计决策：作者称仅剔除 10% 的 Memory Anchors 就会使灾难性遗忘增加 4.5x 以上，属作者自报结果。",
+      "en": "Teams that keep teaching a deployed policy new tasks should treat what protects old behaviours as a design decision: the authors tie excluding only 10% of Memory Anchors to a more than 4.5x increase in catastrophic forgetting, a self-reported result.",
+      "ja": "導入済み方策に新タスクを追加し続けるなら、忘却対策は設計上の判断になる。著者は Memory Anchors を10%除くだけで破滅的忘却が4.5x超に増えると自己報告している。"
+    },
+    "https://www.leiphone.com/category/chips/hqvbseunkdy0tos9.html": {
+      "zh": "在纠结研发底座要不要自建的团队，可把这篇二手评论当作支持共享平台的一种论点；文中没有数字，需对照自家成本再判断。",
+      "en": "Teams weighing whether to build their own development stack get an argument for a shared one from this secondary commentary; it gives no figures, so test the framing against your own costs.",
+      "ja": "研究開発基盤を自前で持つか迷うチームには、共有基盤を支持する論点として読める二次報道の論評。数値はないため、自社のコストと照らして判断したい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
