@@ -22,6 +22,7 @@ Subscribe · 订阅 · 購読: Atom [en](feed.xml) · [zh](feed.zh.xml) · [ja](
 
 | Date | Items | Lanes touched | ZH | EN | JA |
 | --- | --- | --- | --- | --- | --- |
+| 2026-11-28 | 8 | 5 | [zh](daily/2026-11-28.zh.md) | [en](daily/2026-11-28.en.md) | [ja](daily/2026-11-28.ja.md) |
 | 2026-11-27 | 7 | 5 | [zh](daily/2026-11-27.zh.md) | [en](daily/2026-11-27.en.md) | [ja](daily/2026-11-27.ja.md) |
 | 2026-11-26 | 6 | 4 | [zh](daily/2026-11-26.zh.md) | [en](daily/2026-11-26.en.md) | [ja](daily/2026-11-26.ja.md) |
 | 2026-11-25 | 6 | 4 | [zh](daily/2026-11-25.zh.md) | [en](daily/2026-11-25.en.md) | [ja](daily/2026-11-25.ja.md) |

@@ -1,187 +1,192 @@
 {
-  "date": "2026-11-27",
-  "generated": "2026-11-26 23:40 UTC",
-  "window": "papers 2026-11-23 → 2026-11-27 · posts 2026-10-28 → 2026-11-27 (UTC)",
+  "date": "2026-11-28",
+  "generated": "2026-11-27 23:40 UTC",
+  "window": "papers 2026-11-24 → 2026-11-28 · posts 2026-10-29 → 2026-11-28 (UTC)",
   "window_detail": {
-    "day": "2026-11-27",
-    "papers_from": "2026-11-23",
-    "posts_from": "2026-10-28",
+    "day": "2026-11-28",
+    "papers_from": "2026-11-24",
+    "posts_from": "2026-10-29",
     "repeat_days": 30
   },
   "picked": [
     {
-      "id": "arxiv:2611.33772",
-      "title": "Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform",
-      "url": "https://arxiv.org/abs/2611.33772",
-      "publisher": "arXiv 2611.33772",
+      "id": "arxiv:2611.34046",
+      "title": "End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State Distillation",
+      "url": "https://arxiv.org/abs/2611.34046",
+      "publisher": "arXiv 2611.34046",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-25",
-      "lane": "simeval",
-      "score": 3.655,
+      "lane": "training",
+      "score": 3.1,
       "numbers": [
-        "90%",
-        "75%"
+        "82.3%",
+        "84%"
       ],
       "signals": [
         "numbers",
         "closed_loop",
         "real_robot",
-        "open_release",
-        "latency"
+        "industry_event"
       ],
       "heat": 0.0,
-      "summary": "Embodied foundation models are increasingly deployed by selection: a practitioner picks a public checkpoint by benchmark rank and fine-tunes it on local data. The platform is fixed before the model is chosen, with little or no local data. We ask what such a checkpoint loses on a fixed platform and which part of the loss local data can buy back. We split the gap by what can repair it. A sensing gap, information the sensors do not capture, cannot be closed with their data; a latency gap, output arriving after the control loop needs it, belongs to the loop, not the weights; only a distribution gap is fine-tuning's to repair. TRIAGE turns this into feasibility-gated selection and monitored adaptation in five stages: gates on the sensor contract and on end-to-end latency that no score can override, probes on ten minutes of local logs, a ranking by target-relevant score among the candidates that pass, and fine-tuning that is monitored and checked in closed loop before release. On driving benchmarks, a deadline below a leading closed-loop model's latency makes it collide on 80 to 90% of routes, and losing field of view moves plans 2.2 to 5.7 times more than losing resolution at equal pixels. Local frames close 75% of a stability gap but raise perturbation sensitivity at small budgets, and picking by score violates a gate in two of four deployment profiles. On a full-scale vehicle, the factory camera failed the sensing gate and an added camera repaired it. The latency gate removed the two highest-scoring candidates, neither of which completed a closed-loop trip. The selected model passed acceptance in 4 of 5 closed-loop trips, and the closed-loop check withheld a fine-tuned model that had improved offline. TRIAGE lets organizations that cannot train foundation models from scratch find out whether a public checkpoint can run on the robot or vehicle they own, and what to fix if not."
+      "summary": "Image-goal navigation asks a robot to reach the viewpoint of a target photograph without a map or goal pose. In three dimensions, this requires not only recognizing the goal but also estimating 3D displacement and generating continuous control actions to approach and settle at the target view. This is difficult because the same visual difference between current and goal image can require very different actions depending on the robot's velocity, yet monocular images alone reveal neither metric scale nor body motion. As a result, existing image-goal policies are limited to planar action spaces and rely on a state estimator for flight control. Policies that map directly from images to low-level control commands have been demonstrated for agile flight, but not toward goal images in unseen environments. We present the first image-goal navigation policy that directly commands thrust and angular rates for agile quadrotor flight in unseen 3D environments, without relying on state estimation (e.g., SLAM, VO, or SfM) or a separate velocity controller. We train a recurrent vision-based policy through a four-stage pipeline that combines geometric and motion supervision with privileged-teacher distillation and end-to-end reinforcement learning fine-tuning. On 1000 held-out flights in unseen environments, the policy achieves an 82.3% success rate with a mean terminal position error of 0.10m across successful flights. Deployed zero-shot on a real quadrotor, the policy reaches an 84% success rate over 25 trials in an unseen indoor environment."
     },
     {
-      "id": "arxiv:2611.33635",
-      "title": "FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models",
-      "url": "https://arxiv.org/abs/2611.33635",
-      "publisher": "arXiv 2611.33635",
+      "id": "arxiv:2611.34914",
+      "title": "Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs",
+      "url": "https://arxiv.org/abs/2611.34914",
+      "publisher": "arXiv 2611.34914",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-25",
       "lane": "foundation",
-      "score": 3.45,
+      "score": 3.05,
       "numbers": [
-        "98.2%",
-        "98.0%",
-        "3.6%",
-        "80.4%"
+        "24.5%",
+        "95.1%",
+        "27.3%",
+        "38.0%"
       ],
       "signals": [
         "numbers",
-        "closed_loop",
-        "real_robot"
+        "closed_loop"
       ],
       "heat": 0.0,
-      "summary": "Learning reusable latent actions from action-free videos offers an effective route to improving Vision-Language-Action (VLA) policies. However, reconstruction-oriented latent actions do not necessarily benefit policy learning: as they may encode task-irrelevant static appearance with scene identity, or entangle slowly varying task progress with fine-grained execution dynamics in limited discrete code. We propose FreshVLA, a VLA framework built on a frequency-guided, dynamics-sensitive learning paradigm for acquiring temporally hierarchical continuous latent actions. FreshVLA uses a high-pass prior to guide visual transition encoding toward dynamical regions, thereby reducing reliance on static appearance cues. It further organizes latent actions into coarse-grained task progress and fine-grained execution dynamics through cross-timescale sampling and frequency-domain regularization, enhancing their capacity to represent long-horizon behaviors. During policy training, we freeze the pretrained latent action encoder and transfer its representations to robot control through joint flow-matching of latent and robot actions. FreshVLA achieves 98.2% average success on LIBERO and 98.0% on LIBERO-Long, exceeding GR00T-N1.6 on the latter by 3.6%. It also reaches an average sequence length of 4.52 on CALVIN and strong overall success rate of 80.4% in the zero-shot LIBERO-PLUS evaluation. Furthermore, FreshVLA exhibits greater robustness to visual perturbations and a more distinct division of roles between two branches in modeling low- and high-frequency motion, respectively. In 35-step action regression, it achieves a 51.3-percentage-point higher relative error reduction than its hierarchical discrete counterpart. Real-world experiments demonstrate that FreshVLA improves the average success rate over $π_{0.5}$ by 7.5%. The FreshVLA project page is available at https://freshvla.github.io/."
+      "summary": "Vision-language-action models (VLAs) are capable low-level controllers, but they tie where objects go to the layouts they were trained on: when objects are moved or obstacles block the way, they carry them to the wrong place or into collisions. Fine-tuning on new layouts needs robot data for each one and erodes skills the model already has. We introduce Cairn, which keeps the VLA frozen and steers it at test time along learned 3D trajectories of the object in its gripper. A small prior reads point clouds of the scene and the held object, along with its pose when grasped and the instruction, and samples SE(3) trajectories up to its release that lead it around obstacles and turn it to fit through gaps. The prior and the VLA form the two levels of a hierarchical planner in which feedback runs both ways: the VLA's intended motion chooses and reshapes the trajectories, and the chosen one guides the VLA's denoising. Its predicted actions, mapped to the held object's poses through the grasp, are pulled toward the next waypoint, while the VLA's weights stay untouched. Across 1,941 held-out LIBERO scenes with displaced objects and obstacles, Cairn raises the success rate of a frozen π0.5 from 24.5% to 95.1%, above that of a π0.5 fine-tuned on our training layouts, without hurting standard LIBERO. On the third-party LIBERO-PRO benchmark, it raises success from 27.3% to 38.0%, and from 54.4% to 81.1% on the episodes it steers. On a real Franka, with a prior trained purely in simulation, it guides the frozen DROID π0.5 around an obstacle and to a placement at the limit of the arm's reach, where it otherwise fails. All code, models and data will be made public."
     },
     {
-      "id": "arxiv:2611.34257",
-      "title": "CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion",
-      "url": "https://arxiv.org/abs/2611.34257",
-      "publisher": "arXiv 2611.34257",
+      "id": "arxiv:2611.34449",
+      "title": "HoloBrain-0.5 Technical Report",
+      "url": "https://arxiv.org/abs/2611.34449",
+      "publisher": "arXiv 2611.34449",
       "source_id": "arxiv",
       "evidence": "R",
       "published": "2026-11-25",
-      "lane": "data",
-      "score": 3.152,
-      "numbers": [
-        "96.40%",
-        "98.10%",
-        "22.96%",
-        "29.32%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Vision-Language-Action (VLA) models benefit from large, diverse datasets for robotic manipulation, yet collecting robot demonstrations remains costly. Recent work has explored egocentric videos as a source of supervision, primarily drawing on demonstrations of human-object interaction. We show that in-the-wild videos can improve robotic manipulation even when they contain no demonstrations of object manipulation. Specifically, camera motion recovered from these videos provides an additional source of motion supervision that complements robot demonstrations. Building on this finding, we introduce CamAct, which incorporates this camera-motion supervision into VLA policies alongside robot demonstrations, extending the use of human videos for manipulation learning beyond object interactions. Experiments show that incorporating this video supervision during fine-tuning improves success rates from 96.40% to 98.10% on LIBERO and from 22.96% to 29.32% on RoboCasa 365. The resulting policy also demonstrates strong results in out-of-distribution generalization on LIBERO-Plus and real-world manipulation tasks."
-    },
-    {
-      "id": "arxiv:2611.33710",
-      "title": "$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models",
-      "url": "https://arxiv.org/abs/2611.33710",
-      "publisher": "arXiv 2611.33710",
-      "source_id": "arxiv",
-      "evidence": "R",
-      "published": "2026-11-25",
-      "lane": "systems",
-      "score": 3.1,
-      "numbers": [
-        "53.2%",
-        "61.2%",
-        "29.3%"
-      ],
-      "signals": [
-        "numbers",
-        "closed_loop",
-        "real_robot"
-      ],
-      "heat": 0.0,
-      "summary": "Long-horizon robotic manipulation requires historical context, yet retaining extensive visual histories incurs growing storage and retrieval costs, while aggressive compression risks losing fine-grained information needed for subsequent decisions. Moreover, executed action histories capture intermediate behaviors that sparse visual observations may miss. Preserving this complementary context efficiently calls for modality-specific memory mechanisms that balance recent detail with long-term retention. To this end, we introduce $\\mathrm{M}^{2}$-WAM, a world-action model equipped with hierarchical visual and interaction memories. $\\mathrm{M}^{2}$-WAM preserves recent visual observations in dense short-term memory while consolidating entries evicted from this window into fixed-size associative long-term memory through gated delta updates. Within the same short- and long-term hierarchy, interaction memory encodes executed action prefixes into compact temporal representations, complementing visual observations with behavioral context. These complementary memories are integrated into world-action modeling through layer-wise retrieval, enabling memory-augmented action generation with a bounded online memory footprint independent of episode length. On the memory-dependent simulation benchmarks MIKASA-Robo and RMBench, $\\mathrm{M}^{2}$-WAM achieves +53.2% and +61.2% absolute improvements in average success rates over Fast-WAM, respectively. These gains extend to real-world manipulation, where $\\mathrm{M}^{2}$-WAM achieves a +29.3% absolute improvement over LingBot-VA in average success across three tasks. These results suggest that $\\mathrm{M}^{2}$-WAM offers a promising approach to efficient memory-augmented world-action modeling."
-    },
-    {
-      "id": "leiphone:a9a0d77b488e",
-      "title": "深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效",
-      "url": "https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html",
-      "publisher": "雷峰网 Leiphone",
-      "source_id": "leiphone",
-      "evidence": "M",
-      "published": "2026-11-26",
-      "lane": "hardware",
-      "score": 2.215,
-      "numbers": [],
-      "signals": [
-        "numbers",
-        "industry_event"
-      ],
-      "heat": 0.0,
-      "summary": "近日，钛虎机器人科技（上海）有限公司（以下简称“钛虎机器人”）正式发布面向机器人批量落地场景的轻量化关节模组Lite-1系列。该产品通过结构精简，驱控板与编码器一体化设计，在压缩体积、提升集成度的同时保持控制精度与运行稳定性，为人形机器人整机设计与规模化生产提供了新的核心零部件选择。 当前，人形机器人产业正从“能走能动”的样机验证阶段，加速迈向“可批量、可交付、可落地”的产业化阶段。关节模组是机器人的核心运动部件，其体积、集成度、走线方式与装配一致性，直接影响整机结构、成本与量产节奏。头部、手臂、腰部等部位空间有限，对关节的轴向尺寸提出了更高要求；多关节带来的复杂线束，也增加了走线与装配难度。关节模组的轻量化并非“减配”，而是通过结构设计优化与集成度提升，在更小的体积内实现同等的控制精度与可靠性。 结构设计：轴向长度较上代至多缩短22.5% 据介绍，该系列采用驱控板与编码器一体化集成，整机部件精简至6个，内部排布更紧凑。同外径尺寸下，关节轴向长度较上代产品至多缩短22.5%；侧出线设计减少线束转弯，使带线轴向安装空间节省多达30%，为人形机器人头部、手腕等部位留出更大设计余量，助力整机外形更贴近人形比例。 驱感一体：兼顾控制精度与运行稳定 集成带来的收益不止于结构层：信号走线更短、链路干扰更低，可支撑整机高频控制与快速响应。关节输出线性度高，搭配双编码器架构，位置反馈更稳定，实现全场景0跳变，运动更平稳精细；低温升特性减少长时间连续运行中的热衰减，为高负载工况下的可靠性与持久性提供支撑。 …"
-    },
-    {
-      "id": "tri:7ca7cd6c6ced",
-      "title": "Memory Anchors for Continual Robot Learning",
-      "url": "http://www.tri.global/research/memory-anchors-continual-robot-learning",
-      "publisher": "Toyota Research Institute",
-      "source_id": "tri",
-      "evidence": "R",
-      "published": "2026-11-23",
       "lane": "simeval",
-      "score": 2.07,
+      "score": 2.805,
       "numbers": [
-        "10%",
-        "4.5x",
-        "63%"
+        "10,000 hours",
+        "56.77%",
+        "49.71%",
+        "87.76%"
       ],
       "signals": [
         "numbers",
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "We present HoloBrain-0.5, a family of vision-language-action (VLA) models for manipulation across robot embodiments. The policies plan in a shared action space using robot state, kinematic structure, and calibrated camera observations. We standardize joint axes, coordinate frames, and tool-center points in robot descriptions (URDFs) and encode their kinematic graphs in a shared 3D representation. HoloBrain-0.5-Continuous generates action chunks by diffusion, while HoloBrain-0.5-Discrete uses residual finite scalar quantization (FSQ) and delayed autoregression. We pretrain both policies on over 10,000 hours of real-robot, simulation, and human-manipulation data spanning 15 embodiment categories. Across six closed-loop simulation settings, the discrete policy converges faster and reaches a higher mean success rate than the continuous policy (56.77% vs. 49.71%). On seven real-robot tasks, it achieves a mean progress score of 87.76% without task-specific post-training. After post-training, the continuous policy outperforms $π_{0.5}$ on the seven-task benchmark (94.52% vs. 86.25%) and an 11-task dual-arm benchmark (79.07% vs. 69.41%). The discrete-initialized continuous policy transfers five tasks zero-shot from Piper to Piper-X, scoring 63.28% on average. With target-robot demonstrations, the continuous policy scores 89.2% on Franka Panda and 92.94% on a mobile dual-arm platform. Although pretraining includes no Unitree G1 data, post-training with limited G1 demonstrations yields a mean progress score of 70.24% across three humanoid tasks, compared with 11.00% for $π_{0.5}$."
+    },
+    {
+      "id": "arxiv:2611.34540",
+      "title": "Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under Switching Directed Graphs",
+      "url": "https://arxiv.org/abs/2611.34540",
+      "publisher": "arXiv 2611.34540",
+      "source_id": "arxiv",
+      "evidence": "R",
+      "published": "2026-11-25",
+      "lane": "safety",
+      "score": 2.79,
+      "numbers": [],
+      "signals": [
         "real_robot"
       ],
       "heat": 0.0,
-      "summary": "Robot policies deployed in the wild should have the capability to continually learn new tasks without forgetting existing behaviors. A common approach to combat such catastrophic forgetting is to train on new task data with a replay buffer of previously learned task data. Although this buffer is commonly sampled randomly from all prior experiences, we show that a small set of these experiences contributes greatly in anchoring past performance. We call these experiences Memory Anchors. We identify Memory Anchors in regions where representations of new-task observations collapse onto those of old-task observations even though the tasks require conflicting actions, like when a familiar object must be manipulated in a new way. Rehearsing old data in this region plays a key role in preventing destructive overwriting of past task knowledge, serving as this critical Memory Anchor role. Excluding only 10% Memory Anchors before sampling the buffer leads to more than a 4.5x increase in catastrophic forgetting on the LIBERO benchmark suites. Conversely, enriching the replay buffer with Memory Anchors can decrease high-conflict task forgetting by 63% and enables successful continual learning of two task sequences on a real robot. Image Aug 27, 2026 Robotics Read More 1 Minute Read"
+      "summary": "Distributed formation control of unmanned aerial vehicle (UAV) swarms in complex environments faces several challenges, including switching inter-agent connectivity, limited communication, external disturbances, and collision avoidance. To address these challenges, we propose a reference-model-guided distributed model predictive control (MPC) framework for UAV swarm formation. Each UAV uses relative-position information from its neighbors as input to a local reference model, whose output serves as the formation guidance for the onboard MPC controller. Meanwhile, a Kalman filter is utilized to predict neighboring UAV motions, enabling the construction of inter-UAV collision-avoidance constraints solely from instantaneous relative-state information. By decoupling MPC optimization from distributed coordination, this control architecture preserves the look-ahead planning and constraint-handling capabilities of MPC while enhancing the swarm's adaptability to switching directed graphs. Moreover, eliminating the exchange of neighbors' predicted trajectories reduces communication bandwidth demands, offering strong scalability for large-scale UAV swarms. To improve robustness and safety, disturbance-observer-based feedforward compensation is employed, while the bounded residual disturbance is explicitly considered in the control barrier function (CBF)-based obstacle-avoidance constraints. Finally, the proposed framework is validated through both simulations and real-world flight experiments. Specifically, the flight verification is conducted on a fully distributed multi-UAV platform without external global localization."
     },
     {
-      "id": "leiphone:bf76c753f615",
-      "title": "机器人量产背后，物理AI开始算新账：研发底座何必各自建？",
-      "url": "https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html",
+      "id": "leiphone:e7edef2778ec",
+      "title": "江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026",
+      "url": "https://www.leiphone.com/category/private/O7QLSVU8zvpfzY6B.html",
       "publisher": "雷峰网 Leiphone",
       "source_id": "leiphone",
       "evidence": "M",
-      "published": "2026-11-26",
-      "lane": "hardware",
-      "score": 1.915,
+      "published": "2026-11-27",
+      "lane": "simeval",
+      "score": 1.635,
+      "numbers": [],
+      "signals": [
+        "closed_loop"
+      ],
+      "heat": 0.0,
+      "summary": "工业现场不需要“最聪明”的模型，够用、可靠、可验证才是硬道理。在工业现场，模型识别出异常，只是第一步。 它还要把每一次传感器或相机观测对应到正确的设备、位置和任务状态，规划下一步行动，控制机器人完成操作，并验证动作是否真正满足了客户要求、规程和监管规则。 这正是工业物理AI与单纯感知系统之间的一道分界线：它不仅要感知环境、识别目标，还需要控制现实设备，并根据执行结果形成反馈。 在ACM MM 2026的一场国际工业物理AI研讨会（WIPAI 2026）上，江行智能基础模型CTO陈龙博士以《End-to-End Physical AI Closed-Loop Execution System for Industrial Applications》为题，详细介绍了面向工业应用的端到端物理AI闭环执行系统，并阐释了工业物理AI如何从“看得见”走向“动手做”。 在他看来，相较于开放环境，部署的工厂场景更稳定，任务也往往高度标准化。基础模型不必具备最强的通用智能，同样可以在工业现场可靠工作。在实际部署中更重要的，是在模型准确度与算力（服务器、GPU）成本之间做出合理取舍，而不是盲目追求超大模型。 在保留演讲原意的基础上，本文进行了编辑润色。 01 从“看见”到“做完”： 工业物理AI须打通执行闭环 …"
+    },
+    {
+      "id": "leiphone:7a328ea30cbf",
+      "title": "RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？",
+      "url": "https://www.leiphone.com/category/ai/yVUjZ1Pgo80vJ5T0.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-27",
+      "lane": "foundation",
+      "score": 1.6,
       "numbers": [],
       "signals": [
         "industry_event"
       ],
       "heat": 0.0,
-      "summary": "2026年，人形机器人加速走出实验室。 但是让机器人在真实世界产生价值，依然复杂而成本高昂。 从数据采集、物理仿真到模型训练、真机验证，机器人每掌握一项新技能，背后都可能是一整套研发流程的反复运转。 更复杂的是，这些能力分散在不同的专业厂商手中。产业分工越来越细，如何将分散的技术能力组织起来，反而成了一道新的难题。 当机器人开始规模化交付，产业需要解决的不只是如何造出更多机器人，还有如何让更多企业以更低的成本训练机器人。 这也让物理AI产业出现了一个新的机会：谁有能力将分散的研发资源组织成可复用的基础设施，谁就有机会成为产业链上的重要组织者。 九章云极正尝试从算力供应商向物理AI开发平台延伸，通过物理AI工厂、生态联盟和标准化接口，参与这场产业分工的重构。 01 机器人越造越多，研发底座开始走向共建 《2026年人形机器人产业发展报告》显示，今年上半年，中国人形机器人出货量已超过4万台。 机器人走出实验室后，需要掌握更多技能，适应不同的工作环境。每进入一个新的应用场景，机器人企业都可能需要开发新的技能，研发任务也随之增加。 这背后是一条需要不断重复的研发链。 举个简单的例子，智能机器人完成一个抓取动作，要经过数据采集、仿真、训练和真机验证。物理AI的特殊之处就在于，仿真中成功的抓取，可能会因为现实中的光照、物体材质或位置变化而失败。 一旦抓取失败，相关数据还得回流训练，推动下一轮调整。这样的试错可能反复发生，那随之而来的是持续增长的数据处理、仿真和训练需求。 …"
+      "summary": "热潮褪去之后，世界模型的研究该转向何处？今年上半年，世界模型是具身智能领域最风光的叙事。资本蜂拥而入，仿佛只要模型能把未来视频生成得足够逼真，机器人就自然能学会理解世界、规划行动。 热潮来得快，走得也快。问题首先出在概念本身，李飞飞团队今年 6 月专门撰文，说世界模型已经成为 AI 领域最重要、也最被滥用的术语之一。更根本的质疑来自实际效果，智源研究院院长王仲远说得很直接：视频生成模型可以生成一群猪在天上和飞机一起飞，因为训练数据里有科幻电影，它的目标从来就不是还原真实物理世界的规律。 9 月 GPT-6 Astra 发布后，大家发现，通用模型已经能覆盖具身的一部分能力，留给专门做世界模型的窗口期可能没多久了。融资市场的反馈更直接，纯讲世界模型故事的具身初创，已经很难再靠这个概念拿到钱。 在这个节点上，RoboScience 机器科学发布 GenSight ，看起来像是在逆势而行。 GenSight 做的事，简单说就是把视频生成和 4D 稠密感知塞进同一个预训练 Video DiT。给定一张初始图像和一句指令，它能生成机器人未来的操作视频，并同步输出每一帧的深度、具身分割和二维光流；给定一段已经拍好的操作视频，同一个模型也能在单次前向推理中直接读出几何、语义和运动信息。 读完论文，和 GenSight 核心成员聊过之后，雷峰网发现，这项工作不仅回应了世界模型被质疑的那几个要害，还给这个方向提供了一个值得认真对待的修正思路。 …"
+    },
+    {
+      "id": "nature-machine-intelligence:5b38880cab85",
+      "title": "Exploring nonlinear body oscillations for natural quadruped gaits",
+      "url": "https://www.nature.com/articles/s42256-026-01320-x",
+      "publisher": "Nature Machine Intelligence",
+      "source_id": "nature-machine-intelligence",
+      "evidence": "R",
+      "published": "2026-11-27",
+      "lane": "hardware",
+      "score": 1.583,
+      "numbers": [],
+      "signals": [],
+      "heat": 0.0,
+      "summary": "Schmidt et al. demonstrate that nonlinear normal modes can be used to develop natural, multi-gait locomotion in a compliant quadruped robot, leveraging its inherent mechanics. The approach offers a design tool to shape embodied intelligence in robotics."
+    },
+    {
+      "id": "leiphone:a42017c91fea",
+      "title": "具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题",
+      "url": "https://www.leiphone.com/category/robot/UTZbbw7CrHpZvIS7.html",
+      "publisher": "雷峰网 Leiphone",
+      "source_id": "leiphone",
+      "evidence": "M",
+      "published": "2026-11-27",
+      "lane": "hardware",
+      "score": 1.583,
+      "numbers": [
+        "1000Hz"
+      ],
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "heat": 0.0,
+      "summary": "11月26日，中国国际高新技术成果交易会（简称“高交会”）在深圳国际会展中心开幕。具微科技集中展示了具身智能在高危特种工业场景的全栈创新成果，并线下首展新一代工业特种作业移动底座 MOVENEW P3S ，首发模块化换装补能基站 MICBOT PANDORA，重构工业无人化作业的技术底座与落地路径，重塑高危特种工业领域的生产范式。 轮足复合移动底座，直面高危重载作业场景 开幕首日，具微科技展台迎来众多专业观众。现场四足机器人依次完成 360° 连续旋转、复杂地形跃障与定点跨障跳跃等动态演示，呈现整机运动性能；展台同期展出面向特种具身场景的新一代产品 MOVENEW P3S。 与多数以运动演示为主的四足机器人不同，P3S 面向工业高危环境设计，定位为可拓展的“工业特种作业移动底座”，而非单一巡检设备，可搭载检测、清障、搬运、处置等任务模块。 P3S 整机采用宽体短腿、四轮足构型，铺装路面优先以轮式模式巡航，复杂地形切换足式越障，支持原地转向；负载模式包括100 kg连续行走与爬楼、300 kg重载模式、400 kg低趴模式动态负载、600 kg静态极限负载等四种模式；轮式最高速度 5m/s，可通行 ±45° 坡道、35cm 连续台阶与 150cm 单级高台，本体防护等级 IP67、轮部 IP68，工作温度覆盖 -40℃～85℃，可适配防爆、防磁、防水、防冻等极端工况。 据具微科技相关负责人介绍，P3S 从底层 FOC 驱动到上层规划决策均为全栈自主研发，运动控制器闭环频率达 1000Hz 以上。MICPCI …"
     }
   ],
   "lane_counts": {
     "foundation": 9,
     "data": 7,
-    "training": 1,
+    "training": 2,
     "simeval": 14,
     "edge": 3,
-    "safety": 1,
-    "systems": 4,
+    "safety": 2,
+    "systems": 2,
     "hardware": 7
   },
   "evidence_mix": {
-    "O": 2,
-    "R": 31,
+    "O": 1,
+    "R": 32,
     "M": 13
   },
   "fetch": {
-    "items": 665,
+    "items": 546,
     "attempted": 25,
-    "answered": 25,
-    "failed": [],
+    "answered": 24,
+    "failed": [
+      "deepmind"
+    ],
     "fallback": [],
     "unavailable": [],
     "robots_skipped": [],
@@ -211,11 +216,10 @@
       "repos": 4
     },
     "per_source": {
-      "arxiv": 86,
+      "arxiv": 66,
       "aws-physical-ai": 10,
       "nvidia-developer-robotics": 100,
       "nvidia-blog": 18,
-      "deepmind": 100,
       "huggingface-blog": 100,
       "ieee-spectrum-robotics": 30,
       "the-robot-report": 15,
@@ -227,7 +231,7 @@
       "nature-machine-intelligence": 2,
       "techcrunch-robotics": 14,
       "robohub": 75,
-      "qbitai": 2,
+      "qbitai": 3,
       "import-ai": 1,
       "github-lerobot": 1,
       "github-isaaclab": 1,

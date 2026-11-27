@@ -378,16 +378,6 @@
       "date": "2026-10-28",
       "count": 8,
       "lanes": 5,
-      "urls": [
-        "https://arxiv.org/abs/2610.34356",
-        "https://arxiv.org/abs/2610.34519",
-        "https://arxiv.org/abs/2610.33565",
-        "https://arxiv.org/abs/2610.34370",
-        "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation",
-        "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres",
-        "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation",
-        "https://www.leiphone.com/category/ai/80i0hbkavstskbtm.html"
-      ],
       "failed": [],
       "fallback": [],
       "unavailable": [
@@ -1850,6 +1840,74 @@
           "edge": 0,
           "safety": 0,
           "systems": 1,
+          "hardware": 2
+        }
+      }
+    },
+    {
+      "date": "2026-11-28",
+      "count": 8,
+      "lanes": 5,
+      "urls": [
+        "https://arxiv.org/abs/2611.34046",
+        "https://arxiv.org/abs/2611.34914",
+        "https://arxiv.org/abs/2611.34449",
+        "https://arxiv.org/abs/2611.34540",
+        "https://www.leiphone.com/category/private/o7qlsvu8zvpfzy6b.html",
+        "https://www.leiphone.com/category/ai/yvujz1pgo80vj5t0.html",
+        "https://www.nature.com/articles/s42256-026-01320-x",
+        "https://www.leiphone.com/category/robot/utzbbw7crhpzvis7.html"
+      ],
+      "failed": [
+        "deepmind"
+      ],
+      "failed_reasons": {},
+      "fallback": [],
+      "unavailable": [],
+      "page_failed": [],
+      "page_robots_skipped": [],
+      "robots_skipped": [],
+      "robots_reasons": {},
+      "robots_detail": {},
+      "robots_newly_denied": {},
+      "signal_failed": [],
+      "quota": {
+        "arxiv": 4,
+        "max_arxiv": 4,
+        "reserved": {
+          "official": null,
+          "hot": null,
+          "event": "leiphone:7a328ea30cbf",
+          "event#2": null
+        },
+        "unmet": [
+          "event#2",
+          "hot",
+          "official"
+        ]
+      },
+      "pool": {
+        "live": 214,
+        "eligible": 61,
+        "per_lane_cap": 2,
+        "by_lane": {
+          "foundation": 11,
+          "data": 11,
+          "training": 5,
+          "simeval": 16,
+          "edge": 5,
+          "safety": 2,
+          "systems": 5,
+          "hardware": 6
+        },
+        "picked_by_lane": {
+          "foundation": 2,
+          "data": 0,
+          "training": 1,
+          "simeval": 2,
+          "edge": 0,
+          "safety": 1,
+          "systems": 0,
           "hardware": 2
         }
       }

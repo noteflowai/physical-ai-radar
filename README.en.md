@@ -60,35 +60,37 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 > **Subscribe:** [Atom](https://noteflowai.github.io/physical-ai-radar/radar/feed.xml) · [JSON Feed](https://noteflowai.github.io/physical-ai-radar/radar/feed.json). Paste a feed URL into any reader; each entry carries its lane, evidence tag and key numbers.
 
 <!-- RADAR:START -->
-### Today's radar · 2026-11-27
+### Today's radar · 2026-11-28
 
-`Generated: 2026-11-26 23:40 UTC` ｜ `Window: papers 2026-11-23 → 2026-11-27 · posts 2026-10-28 → 2026-11-27 · no repeats within 30 days (UTC)`
+`Generated: 2026-11-27 23:40 UTC` ｜ `Window: papers 2026-11-24 → 2026-11-28 · posts 2026-10-29 → 2026-11-28 · no repeats within 30 days (UTC)`
 
 | # | Item · Key numbers |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>Simulation & evaluation · arXiv 2611.33772 · 2026‑11‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>Foundation models · arXiv 2611.33635 · 2026‑11‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>Data engine · arXiv 2611.34257 · 2026‑11‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>Systems & orchestration · arXiv 2611.33710 · 2026‑11‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑26</sub> |
-| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>Simulation & evaluation · Toyota Research Institute · 2026‑11‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State Distillation](https://arxiv.org/abs/2611.34046)**<br>`82.3%`&nbsp; `84%`<br><sub>Training & self-improvement · arXiv 2611.34046 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs](https://arxiv.org/abs/2611.34914)**<br>`24.5%`&nbsp; `95.1%`&nbsp; `27.3%`<br><sub>Foundation models · arXiv 2611.34914 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[HoloBrain-0.5 Technical Report](https://arxiv.org/abs/2611.34449)**<br>`10,000 hours`&nbsp; `56.77%`&nbsp; `49.71%`<br><sub>Simulation & evaluation · arXiv 2611.34449 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under Switching Directed Graphs](https://arxiv.org/abs/2611.34540)**<br><sub>Safety, permissions & compliance · arXiv 2611.34540 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？\| ACM MM 2026](https://www.leiphone.com/category/private/O7QLSVU8zvpfzY6B.html)**<br><sub>Simulation & evaluation · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？](https://www.leiphone.com/category/ai/yVUjZ1Pgo80vJ5T0.html)**<br><sub>Foundation models · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 07<br>🔵&nbsp;`R` | **[Exploring nonlinear body oscillations for natural quadruped gaits](https://www.nature.com/articles/s42256-026-01320-x)**<br><sub>Embodiment & supply chain · Nature Machine Intelligence · 2026‑11‑27</sub> |
+| 08<br>🟡&nbsp;`M` | **[具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题](https://www.leiphone.com/category/robot/UTZbbw7CrHpZvIS7.html)**<br>`1000Hz`<br><sub>Embodiment & supply chain · 雷峰网 Leiphone · 2026‑11‑27</sub> |
 
 🟢 `O` Official · 🔵 `R` Paper · 🟡 `M` Media
 
-<details><summary><b>Why it matters</b> · 01–07</summary>
+<details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **Triage Before Fine-Tuning** — `AI draft` Teams that pick a public checkpoint by benchmark rank and fine-tune it locally should screen it on their own platform first; the preprint quotes collisions on 80 to 90% of routes, though the page does not say which models or setup.
-2. **FreshVLA** — `AI draft` Teams holding action-free video could use it to learn latent actions for a VLA; the authors report 98.2% average success on LIBERO, 98.0% on LIBERO-Long and 80.4% in a zero-shot setting the page does not describe.
-3. **CamAct** — `AI draft` If robot demonstrations are your data bottleneck, in-the-wild video is a candidate supplement; the authors report LIBERO rising from 96.40% to 98.10% and RoboCasa 365 from 22.96% to 29.32%, both benchmark scores.
-4. **$\\mathrm{M}^{2}$-WAM** — `AI draft` For long-horizon manipulation, memory is a trade-off between the storage and retrieval cost of visual history and the detail lost to compression; the authors report absolute gains of 53.2%, 61.2% and 29.3%, but the page omits the tasks and baselines.
-5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — `AI draft` Humanoid builders sourcing joints can shortlist this Shanghai supplier's module, which integrates the driver board and encoder; the claim that control precision and stability are kept reaches us through a secondary report, so ask for measured specifications.
-6. **Memory Anchors for Continual Robot Learning** — `AI draft` Teams that keep teaching a deployed policy new tasks should treat what protects old behaviours as a design decision: the authors tie excluding only 10% of Memory Anchors to a more than 4.5x increase in catastrophic forgetting, a self-reported result.
-7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — `AI draft` Teams weighing whether to build their own development stack get an argument for a shared one from this secondary commentary; it gives no figures, so test the framing against your own costs.
+1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
+2. **Cairn** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
+3. **HoloBrain-0.5 Technical Report** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
+4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
+5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
+6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
+7. **Exploring nonlinear body oscillations for natural quadruped gaits** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
+8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
 
 </details>
 
-**[Today's radar ›](radar/daily/2026-11-27.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
+**[Today's radar ›](radar/daily/2026-11-28.en.md)** · [Weekly roundup ›](radar/weekly/2026-W48.en.md) · [Archive ›](radar/INDEX.md)
 
 <img src="assets/cadence.en.svg" width="100%" alt="Daily cadence (items cleared per run)">
 <img src="assets/evidence-mix.en.svg" width="100%" alt="Source mix">

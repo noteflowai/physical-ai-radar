@@ -1,6 +1,6 @@
 {
   "schema": "radar-graph-1",
-  "as_of": "2026-11-27",
+  "as_of": "2026-11-28",
   "first_run": "2026-09-19",
   "backfill": {
     "source": "radar/daily/<day>.en.md, section Today's picks",
@@ -9008,6 +9008,153 @@
       ],
       "numbers": [],
       "excerpt": "2026年，人形机器人加速走出实验室。 但是让机器人在真实世界产生价值，依然复杂而成本高昂。"
+    },
+    {
+      "id": "arxiv:2611.34046",
+      "date": "2026-11-28",
+      "published": "2026-11-25",
+      "lane": "training",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.34046",
+      "title": "End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State Distillation",
+      "url": "https://arxiv.org/abs/2611.34046",
+      "signals": [
+        "numbers",
+        "closed_loop",
+        "real_robot",
+        "industry_event"
+      ],
+      "numbers": [
+        "82.3%",
+        "84%"
+      ],
+      "excerpt": "Image-goal navigation asks a robot to reach the viewpoint of a target photograph without a map or goal pose. In three dimensions, this requires not only recognizing the goal but also estimating 3D displacement and generating continuous…"
+    },
+    {
+      "id": "arxiv:2611.34914",
+      "date": "2026-11-28",
+      "published": "2026-11-25",
+      "lane": "foundation",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.34914",
+      "title": "Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs",
+      "url": "https://arxiv.org/abs/2611.34914",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "24.5%",
+        "95.1%",
+        "27.3%",
+        "38.0%"
+      ],
+      "excerpt": "Vision-language-action models (VLAs) are capable low-level controllers, but they tie where objects go to the layouts they were trained on: when objects are moved or obstacles block the way, they carry them to the wrong place or into…"
+    },
+    {
+      "id": "arxiv:2611.34449",
+      "date": "2026-11-28",
+      "published": "2026-11-25",
+      "lane": "simeval",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.34449",
+      "title": "HoloBrain-0.5 Technical Report",
+      "url": "https://arxiv.org/abs/2611.34449",
+      "signals": [
+        "numbers",
+        "closed_loop"
+      ],
+      "numbers": [
+        "10,000 hours",
+        "56.77%",
+        "49.71%",
+        "87.76%"
+      ],
+      "excerpt": "We present HoloBrain-0.5, a family of vision-language-action (VLA) models for manipulation across robot embodiments."
+    },
+    {
+      "id": "arxiv:2611.34540",
+      "date": "2026-11-28",
+      "published": "2026-11-25",
+      "lane": "safety",
+      "evidence": "R",
+      "source_id": "arxiv",
+      "publisher": "arXiv 2611.34540",
+      "title": "Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under Switching Directed Graphs",
+      "url": "https://arxiv.org/abs/2611.34540",
+      "signals": [
+        "real_robot"
+      ],
+      "numbers": [],
+      "excerpt": "Distributed formation control of unmanned aerial vehicle (UAV) swarms in complex environments faces several challenges, including switching inter-agent connectivity, limited communication, external disturbances, and collision avoidance."
+    },
+    {
+      "id": "leiphone:e7edef2778ec",
+      "date": "2026-11-28",
+      "published": "2026-11-27",
+      "lane": "simeval",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026",
+      "url": "https://www.leiphone.com/category/private/O7QLSVU8zvpfzY6B.html",
+      "signals": [
+        "closed_loop"
+      ],
+      "numbers": [],
+      "excerpt": "工业现场不需要“最聪明”的模型，够用、可靠、可验证才是硬道理。在工业现场，模型识别出异常，只是第一步。"
+    },
+    {
+      "id": "leiphone:7a328ea30cbf",
+      "date": "2026-11-28",
+      "published": "2026-11-27",
+      "lane": "foundation",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？",
+      "url": "https://www.leiphone.com/category/ai/yVUjZ1Pgo80vJ5T0.html",
+      "signals": [
+        "industry_event"
+      ],
+      "numbers": [],
+      "excerpt": "热潮褪去之后，世界模型的研究该转向何处？今年上半年，世界模型是具身智能领域最风光的叙事。"
+    },
+    {
+      "id": "nature-machine-intelligence:5b38880cab85",
+      "date": "2026-11-28",
+      "published": "2026-11-27",
+      "lane": "hardware",
+      "evidence": "R",
+      "source_id": "nature-machine-intelligence",
+      "publisher": "Nature Machine Intelligence",
+      "title": "Exploring nonlinear body oscillations for natural quadruped gaits",
+      "url": "https://www.nature.com/articles/s42256-026-01320-x",
+      "signals": [],
+      "numbers": [],
+      "excerpt": "Schmidt et al. demonstrate that nonlinear normal modes can be used to develop natural, multi-gait locomotion in a compliant quadruped robot, leveraging its inherent mechanics."
+    },
+    {
+      "id": "leiphone:a42017c91fea",
+      "date": "2026-11-28",
+      "published": "2026-11-27",
+      "lane": "hardware",
+      "evidence": "M",
+      "source_id": "leiphone",
+      "publisher": "雷峰网 Leiphone",
+      "title": "具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题",
+      "url": "https://www.leiphone.com/category/robot/UTZbbw7CrHpZvIS7.html",
+      "signals": [
+        "numbers",
+        "latency"
+      ],
+      "numbers": [
+        "1000Hz"
+      ],
+      "excerpt": "11月26日，中国国际高新技术成果交易会（简称“高交会”）在深圳国际会展中心开幕。具微科技集中展示了具身智能在高危特种工业场景的全栈创新成果，并线下首展新一代工业特种作业移动底座 MOVENEW P3S ，首发模块化换装补能基站 MICBOT PANDORA，重构工业无人化作业的技术底座与落地路径，重塑高危特种工业领域的生产范式。"
     }
   ]
 }

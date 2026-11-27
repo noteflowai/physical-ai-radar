@@ -62,35 +62,37 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 > **订阅：** [Atom（中文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.zh.xml) · [JSON Feed（英文）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)，粘贴到任意 RSS 阅读器，每条都带主线、证据等级和关键数字。
 
 <!-- RADAR:START -->
-### 今日雷达 · 2026-11-27
+### 今日雷达 · 2026-11-28
 
-`生成时间: 2026-11-26 23:40 UTC` ｜ `统计窗口: 论文 2026-11-23 → 2026-11-27 · 博客与报道 2026-10-28 → 2026-11-27 · 30 天内不重复 (UTC)`
+`生成时间: 2026-11-27 23:40 UTC` ｜ `统计窗口: 论文 2026-11-24 → 2026-11-28 · 博客与报道 2026-10-29 → 2026-11-28 · 30 天内不重复 (UTC)`
 
 | # | 条目 · 关键数字 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>仿真与评测 · arXiv 2611.33772 · 2026‑11‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>基座模型 · arXiv 2611.33635 · 2026‑11‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>数据引擎 · arXiv 2611.34257 · 2026‑11‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>系统与编排 · arXiv 2611.33710 · 2026‑11‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑26</sub> |
-| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>仿真与评测 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State Distillation](https://arxiv.org/abs/2611.34046)**<br>`82.3%`&nbsp; `84%`<br><sub>训练与自我改进 · arXiv 2611.34046 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs](https://arxiv.org/abs/2611.34914)**<br>`24.5%`&nbsp; `95.1%`&nbsp; `27.3%`<br><sub>基座模型 · arXiv 2611.34914 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[HoloBrain-0.5 Technical Report](https://arxiv.org/abs/2611.34449)**<br>`10,000 hours`&nbsp; `56.77%`&nbsp; `49.71%`<br><sub>仿真与评测 · arXiv 2611.34449 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under Switching Directed Graphs](https://arxiv.org/abs/2611.34540)**<br><sub>安全、权限与合规 · arXiv 2611.34540 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？\| ACM MM 2026](https://www.leiphone.com/category/private/O7QLSVU8zvpfzY6B.html)**<br><sub>仿真与评测 · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？](https://www.leiphone.com/category/ai/yVUjZ1Pgo80vJ5T0.html)**<br><sub>基座模型 · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 07<br>🔵&nbsp;`R` | **[Exploring nonlinear body oscillations for natural quadruped gaits](https://www.nature.com/articles/s42256-026-01320-x)**<br><sub>本体与供应链 · Nature Machine Intelligence · 2026‑11‑27</sub> |
+| 08<br>🟡&nbsp;`M` | **[具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题](https://www.leiphone.com/category/robot/UTZbbw7CrHpZvIS7.html)**<br>`1000Hz`<br><sub>本体与供应链 · 雷峰网 Leiphone · 2026‑11‑27</sub> |
 
 🟢 `O` 官方一手 · 🔵 `R` 论文预印本 · 🟡 `M` 媒体二手
 
-<details><summary><b>为什么重要</b> · 01–07</summary>
+<details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **Triage Before Fine-Tuning** — `AI 起草` 按基准排名挑公开检查点、再用本地数据微调的团队，应先在自己的平台上做可行性筛查；预印本页面引用了 80 到 90% 路线发生碰撞的数字，但未说明是哪些模型、何种设置。
-2. **FreshVLA** — `AI 起草` 手里有无动作标注视频的团队，可考虑用它学习潜在动作来改进 VLA；作者自报 LIBERO 平均成功率 98.2%、LIBERO-Long 98.0%，零样本设置下 80.4%，后者的具体设置页面未说明。
-3. **CamAct** — `AI 起草` 若机器人演示数据是瓶颈，可把野外视频作为补充来源来评估：作者自报 LIBERO 成功率从 96.40% 升到 98.10%，RoboCasa 365 从 22.96% 升到 29.32%，两者都是基准分数。
-4. **$\\mathrm{M}^{2}$-WAM** — `AI 起草` 做长程操作的系统要在记忆成本与细节损失之间取舍：保留大量视觉历史拖累存储与检索，过度压缩又丢信息；作者自报绝对提升 53.2%、61.2% 和 29.3%，但页面未写明对比的任务与基线。
-5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — `AI 起草` 为人形整机选关节的团队可把这款驱控板与编码器一体化的模组列入候选；“保持控制精度与运行稳定性”是二手报道转述的厂商说法，采购前应索要实测参数。
-6. **Memory Anchors for Continual Robot Learning** — `AI 起草` 要给已部署策略持续加新任务的团队，应把防遗忘机制当作设计决策：作者称仅剔除 10% 的 Memory Anchors 就会使灾难性遗忘增加 4.5x 以上，属作者自报结果。
-7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — `AI 起草` 在纠结研发底座要不要自建的团队，可把这篇二手评论当作支持共享平台的一种论点；文中没有数字，需对照自家成本再判断。
+1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
+2. **Cairn** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
+3. **HoloBrain-0.5 Technical Report** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
+4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。
+5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
+6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
+7. **Exploring nonlinear body oscillations for natural quadruped gaits** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。
+8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
 
 </details>
 
-**[今日雷达 ›](radar/daily/2026-11-27.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
+**[今日雷达 ›](radar/daily/2026-11-28.zh.md)** · [每周汇总 ›](radar/weekly/2026-W48.zh.md) · [历史归档 ›](radar/INDEX.md)
 
 <img src="assets/cadence.zh.svg" width="100%" alt="每日节奏（每轮清出的条目）">
 <img src="assets/evidence-mix.zh.svg" width="100%" alt="来源构成">

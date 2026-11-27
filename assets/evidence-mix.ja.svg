@@ -13,10 +13,10 @@
 </style>
 <rect class="plate" width="720" height="132"/>
 <text x="20" y="30" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" class="ink">出典構成 (直近 7 日の採択)</text>
-<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-11-26 23:40 UTC</text>
-<rect x="20.0" y="70" width="29.6" height="22" fill="#7300e5" fill-opacity="0.85"/>
-<rect x="49.6" y="70" width="458.3" height="22" fill="#41b1e8" fill-opacity="0.85"/>
-<text x="278.7" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R 31 · 67%</text>
+<text x="20" y="50" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" class="muted">physical-ai-radar · generated 2026-11-27 23:40 UTC</text>
+<rect x="20.0" y="70" width="14.8" height="22" fill="#7300e5" fill-opacity="0.85"/>
+<rect x="34.8" y="70" width="473.0" height="22" fill="#41b1e8" fill-opacity="0.85"/>
+<text x="271.3" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">R 32 · 70%</text>
 <rect x="507.8" y="70" width="192.2" height="22" fill="#eb003b" fill-opacity="0.85"/>
 <text x="603.9" y="85" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">M 13 · 28%</text>
 <rect x="20" y="105" width="10" height="10" rx="2" fill="#7300e5"/>

@@ -60,35 +60,37 @@ Python 標準ライブラリのみ、図は手書き SVG。`python3 -m pairadar 
 > **購読：** [Atom（日本語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.ja.xml) · [JSON Feed（英語）](https://noteflowai.github.io/physical-ai-radar/radar/feed.json)。フィードリーダーに URL を貼るだけで、各項目の軸・根拠区分・主要な数値が届きます。
 
 <!-- RADAR:START -->
-### 本日のレーダー · 2026-11-27
+### 本日のレーダー · 2026-11-28
 
-`生成時刻: 2026-11-26 23:40 UTC` ｜ `対象期間: 論文 2026-11-23 → 2026-11-27 · ブログ・報道 2026-10-28 → 2026-11-27 · 30 日以内の重複なし (UTC)`
+`生成時刻: 2026-11-27 23:40 UTC` ｜ `対象期間: 論文 2026-11-24 → 2026-11-28 · ブログ・報道 2026-10-29 → 2026-11-28 · 30 日以内の重複なし (UTC)`
 
 | # | 項目 · 主要数値 |
 | :-: | --- |
-| 01<br>🔵&nbsp;`R` | **[Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform](https://arxiv.org/abs/2611.33772)**<br>`90%`&nbsp; `75%`<br><sub>シミュレーションと評価 · arXiv 2611.33772 · 2026‑11‑25</sub> |
-| 02<br>🔵&nbsp;`R` | **[FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models](https://arxiv.org/abs/2611.33635)**<br>`98.2%`&nbsp; `98.0%`&nbsp; `3.6%`<br><sub>基盤モデル · arXiv 2611.33635 · 2026‑11‑25</sub> |
-| 03<br>🔵&nbsp;`R` | **[CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion](https://arxiv.org/abs/2611.34257)**<br>`96.40%`&nbsp; `98.10%`&nbsp; `22.96%`<br><sub>データエンジン · arXiv 2611.34257 · 2026‑11‑25</sub> |
-| 04<br>🔵&nbsp;`R` | **[$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models](https://arxiv.org/abs/2611.33710)**<br>`53.2%`&nbsp; `61.2%`&nbsp; `29.3%`<br><sub>システムとオーケストレーション · arXiv 2611.33710 · 2026‑11‑25</sub> |
-| 05<br>🟡&nbsp;`M` | **[深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效](https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑26</sub> |
-| 06<br>🔵&nbsp;`R` | **[Memory Anchors for Continual Robot Learning](http://www.tri.global/research/memory-anchors-continual-robot-learning)**<br>`10%`&nbsp; `4.5x`&nbsp; `63%`<br><sub>シミュレーションと評価 · Toyota Research Institute · 2026‑11‑23</sub> |
-| 07<br>🟡&nbsp;`M` | **[机器人量产背后，物理AI开始算新账：研发底座何必各自建？](https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html)**<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑26</sub> |
+| 01<br>🔵&nbsp;`R` | **[End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State Distillation](https://arxiv.org/abs/2611.34046)**<br>`82.3%`&nbsp; `84%`<br><sub>学習と自己改善 · arXiv 2611.34046 · 2026‑11‑25</sub> |
+| 02<br>🔵&nbsp;`R` | **[Cairn: Object-Centric 3D Trajectory Priors for Steering Frozen VLAs](https://arxiv.org/abs/2611.34914)**<br>`24.5%`&nbsp; `95.1%`&nbsp; `27.3%`<br><sub>基盤モデル · arXiv 2611.34914 · 2026‑11‑25</sub> |
+| 03<br>🔵&nbsp;`R` | **[HoloBrain-0.5 Technical Report](https://arxiv.org/abs/2611.34449)**<br>`10,000 hours`&nbsp; `56.77%`&nbsp; `49.71%`<br><sub>シミュレーションと評価 · arXiv 2611.34449 · 2026‑11‑25</sub> |
+| 04<br>🔵&nbsp;`R` | **[Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under Switching Directed Graphs](https://arxiv.org/abs/2611.34540)**<br><sub>安全・権限・コンプライアンス · arXiv 2611.34540 · 2026‑11‑25</sub> |
+| 05<br>🟡&nbsp;`M` | **[江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？\| ACM MM 2026](https://www.leiphone.com/category/private/O7QLSVU8zvpfzY6B.html)**<br><sub>シミュレーションと評価 · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 06<br>🟡&nbsp;`M` | **[RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？](https://www.leiphone.com/category/ai/yVUjZ1Pgo80vJ5T0.html)**<br><sub>基盤モデル · 雷峰网 Leiphone · 2026‑11‑27</sub> |
+| 07<br>🔵&nbsp;`R` | **[Exploring nonlinear body oscillations for natural quadruped gaits](https://www.nature.com/articles/s42256-026-01320-x)**<br><sub>ハードウェアとサプライチェーン · Nature Machine Intelligence · 2026‑11‑27</sub> |
+| 08<br>🟡&nbsp;`M` | **[具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题](https://www.leiphone.com/category/robot/UTZbbw7CrHpZvIS7.html)**<br>`1000Hz`<br><sub>ハードウェアとサプライチェーン · 雷峰网 Leiphone · 2026‑11‑27</sub> |
 
 🟢 `O` 公式一次 · 🔵 `R` 論文 · 🟡 `M` 報道
 
-<details><summary><b>重要な理由</b> · 01–07</summary>
+<details><summary><b>重要な理由</b> · 01–08</summary>
 
-1. **Triage Before Fine-Tuning** — `AI 下書き` ベンチマーク順位で公開チェックポイントを選び自前データで微調整する運用なら、まず自社の機体で実現可能性を確かめたい。ページには80〜90%の経路で衝突という記述があるが、対象モデルや条件は示されていない。
-2. **FreshVLA** — `AI 下書き` 行動ラベルのない動画を持つチームは、潜在行動の学習によるVLA改善を検討できる。著者報告はLIBERO平均98.2%、LIBERO-Long 98.0%、ゼロショット設定で80.4%だが、後者の条件はページからは分からない。
-3. **CamAct** — `AI 下書き` ロボットのデモ収集がボトルネックなら、野外動画を補助データとして評価する価値がある。著者報告ではLIBEROが96.40%から98.10%、RoboCasa 365が22.96%から29.32%に向上したが、いずれもベンチマーク上の数値。
-4. **$\\mathrm{M}^{2}$-WAM** — `AI 下書き` 長期タスクの記憶設計は、視覚履歴を保持する保存・検索コストと圧縮による情報損失の綱引きになる。著者は絶対値で53.2%、61.2%、29.3%の改善を報告するが、比較対象のタスクとベースラインはページに示されていない。
-5. **深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效** — `AI 下書き` 人型機の関節を選定するチームは、駆動制御基板とエンコーダを一体化したこのモジュールを候補にできる。制御精度と安定性を保つという点は二次報道経由のメーカー説明なので、実測仕様の確認が先。
-6. **Memory Anchors for Continual Robot Learning** — `AI 下書き` 導入済み方策に新タスクを追加し続けるなら、忘却対策は設計上の判断になる。著者は Memory Anchors を10%除くだけで破滅的忘却が4.5x超に増えると自己報告している。
-7. **机器人量产背后，物理AI开始算新账：研发底座何必各自建？** — `AI 下書き` 研究開発基盤を自前で持つか迷うチームには、共有基盤を支持する論点として読める二次報道の論評。数値はないため、自社のコストと照らして判断したい。
+1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — 査読前のプレプリント。本文に実機での結果、閉ループ評価の結果、定量データあり。学習タスクの外でも改善が保たれるかに注目。
+2. **Cairn** — 査読前のプレプリント。本文に実機での結果の記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+3. **HoloBrain-0.5 Technical Report** — 査読前のプレプリント。本文に実機での結果の記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — 査読前のプレプリント。本文に定量データの記載なし。認証や導入承認に何が変わるかに注目。
+5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。シミュレーション結果が実機性能をどこまで予測できるかに注目。
+6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データの記載なし。新しいタスクや機体に必要なデータが減るかに注目。
+7. **Exploring nonlinear body oscillations for natural quadruped gaits** — 査読前のプレプリント。本文に実機での結果、定量データの記載なし。価格、供給状況、量産出荷の主体に注目。
+8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — 二次報道のため、引用前に一次情報の確認を推奨。本文に定量データあり。価格、供給状況、量産出荷の主体に注目。
 
 </details>
 
-**[本日のレーダー ›](radar/daily/2026-11-27.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
+**[本日のレーダー ›](radar/daily/2026-11-28.ja.md)** · [週間まとめ ›](radar/weekly/2026-W48.ja.md) · [アーカイブ ›](radar/INDEX.md)
 
 <img src="assets/cadence.ja.svg" width="100%" alt="日次ペース（各回の採択件数）">
 <img src="assets/evidence-mix.ja.svg" width="100%" alt="出典構成">
