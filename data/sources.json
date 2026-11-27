@@ -211,6 +211,15 @@
       "keywords": ["机器人", "具身", "人形", "自动驾驶", "世界模型", "灵巧手", "机械臂", "物理AI", "四足"]
     },
     {
+      "id": "huxiu",
+      "url": "https://rss.huxiu.com/",
+      "evidence": "M",
+      "weight": 0.85,
+      "publisher": "虎嗅 Huxiu",
+      "lang": "zh",
+      "keywords": ["机器人", "具身", "人形", "自动驾驶", "世界模型", "灵巧手", "机械臂", "物理AI", "四足"]
+    },
+    {
       "id": "import-ai",
       "url": "https://jack-clark.net/feed/",
       "evidence": "M",
