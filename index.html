@@ -98,7 +98,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.33772" rel="noopener" target="_blank">Triage Before Fine-Tuning: Feasibility-Gated Selection and Monitored Adaptation of Embodied Foundation Models for a Fixed Physical Platform</a></h3>
 <p class="figure"><strong>90%</strong><span class="context">“collide on 80 to 90% of routes”</span></p><p class="chips"><span class="chip">75%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 按基准排名挑公开检查点、再用本地数据微调的团队，应先在自己的平台上做可行性筛查；预印本页面引用了 80 到 90% 路线发生碰撞的数字，但未说明是哪些模型、何种设置。</p>
 <p class="excerpt">Embodied foundation models are increasingly deployed by selection: a practitioner picks a public checkpoint by benchmark rank and fine-tunes it on local data.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li><li>有开放代码或权重</li><li>含延迟或控制频率</li></ul>
 <footer>
@@ -114,7 +114,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.33635" rel="noopener" target="_blank">FreshVLA: Frequency-Regularized Time Scale Hierarchical Latent Actions for Vision-Language-Action Models</a></h3>
 <p class="figure"><strong>98.2%</strong><span class="context">“FreshVLA achieves 98.2% average success on”</span></p><p class="chips"><span class="chip">98.0%</span><span class="chip">3.6%</span><span class="chip">80.4%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注它能否减少新任务或新本体所需的数据。</p>
+<p class="why"><span class="draft">AI 起草</span> 手里有无动作标注视频的团队，可考虑用它学习潜在动作来改进 VLA；作者自报 LIBERO 平均成功率 98.2%、LIBERO-Long 98.0%，零样本设置下 80.4%，后者的具体设置页面未说明。</p>
 <p class="excerpt">Learning reusable latent actions from action-free videos offers an effective route to improving Vision-Language-Action (VLA) policies.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -130,7 +130,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.34257" rel="noopener" target="_blank">CamAct: Learning Robotic Manipulation from In-the-Wild Videos via Camera Motion</a></h3>
 <p class="figure"><strong>96.40%</strong><span class="context">“improves success rates from 96.40% to 98.10% on”</span></p><p class="chips"><span class="chip">98.10%</span><span class="chip">22.96%</span><span class="chip">29.32%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注这些数据能否在作者自己的机器人之外复用。</p>
+<p class="why"><span class="draft">AI 起草</span> 若机器人演示数据是瓶颈，可把野外视频作为补充来源来评估：作者自报 LIBERO 成功率从 96.40% 升到 98.10%，RoboCasa 365 从 22.96% 升到 29.32%，两者都是基准分数。</p>
 <p class="excerpt">Vision-Language-Action (VLA) models benefit from large, diverse datasets for robotic manipulation, yet collecting robot demonstrations remains costly.</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -146,7 +146,7 @@
 </header>
 <h3><a href="https://arxiv.org/abs/2611.33710" rel="noopener" target="_blank">$\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models</a></h3>
 <p class="figure"><strong>53.2%</strong><span class="context">“$\mathrm{M}^{2}$-WAM achieves + 53.2% and +61.2% absolute”</span></p><p class="chips"><span class="chip">61.2%</span><span class="chip">29.3%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注在没有人工重置的长程任务中是否可靠。</p>
+<p class="why"><span class="draft">AI 起草</span> 做长程操作的系统要在记忆成本与细节损失之间取舍：保留大量视觉历史拖累存储与检索，过度压缩又丢信息；作者自报绝对提升 53.2%、61.2% 和 29.3%，但页面未写明对比的任务与基线。</p>
 <p class="excerpt">Long-horizon robotic manipulation requires historical context, yet retaining extensive visual histories incurs growing storage and retrieval costs, while aggressive compression risks losing fine-grained information needed for subsequent…</p>
 <ul class="signals"><li>含量化指标</li><li>含闭环成功率</li><li>含真机实验</li></ul>
 <footer>
@@ -161,7 +161,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/industrynews/hYv4Caentt6byJhj.html" rel="noopener" target="_blank">深耕核心零部件，钛虎机器人轻量化关节模组Lite-1系列助力整机降本增效</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 为人形整机选关节的团队可把这款驱控板与编码器一体化的模组列入候选；“保持控制精度与运行稳定性”是二手报道转述的厂商说法，采购前应索要实测参数。</p>
 <p class="excerpt">近日，钛虎机器人科技（上海）有限公司（以下简称“钛虎机器人”）正式发布面向机器人批量落地场景的轻量化关节模组Lite-1系列。该产品通过结构精简，驱控板与编码器一体化设计，在压缩体积、提升集成度的同时保持控制精度与运行稳定性，为人形机器人整机设计与规模化生产提供了新的核心零部件选择。</p>
 <ul class="signals"><li>含量化指标</li><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
@@ -177,7 +177,7 @@
 </header>
 <h3><a href="http://www.tri.global/research/memory-anchors-continual-robot-learning" rel="noopener" target="_blank">Memory Anchors for Continual Robot Learning</a></h3>
 <p class="figure"><strong>10%</strong><span class="context">“Excluding only 10% Memory Anchors before”</span></p><p class="chips"><span class="chip">4.5x</span><span class="chip">63%</span></p>
-<p class="why">预印本，尚未经过同行评审；原文未提及闭环结果。关注仿真结果对真机表现的预测有多准。</p>
+<p class="why"><span class="draft">AI 起草</span> 要给已部署策略持续加新任务的团队，应把防遗忘机制当作设计决策：作者称仅剔除 10% 的 Memory Anchors 就会使灾难性遗忘增加 4.5x 以上，属作者自报结果。</p>
 <p class="excerpt">Robot policies deployed in the wild should have the capability to continually learn new tasks without forgetting existing behaviors.</p>
 <ul class="signals"><li>含量化指标</li><li>含真机实验</li></ul>
 <footer>
@@ -192,7 +192,7 @@
 <span class="ev ev-M" title="证据标注：O = 一手官方 · R = 论文/预印本 · M = 媒体或二手">M · 媒体二手</span>
 </header>
 <h3><a href="https://www.leiphone.com/category/chips/HQvbSEUnkDy0Tos9.html" rel="noopener" target="_blank">机器人量产背后，物理AI开始算新账：研发底座何必各自建？</a></h3>
-<p class="why">二手报道，引用前请核对原始来源；原文未提及量化数据。关注价格、供货以及谁在批量交付。</p>
+<p class="why"><span class="draft">AI 起草</span> 在纠结研发底座要不要自建的团队，可把这篇二手评论当作支持共享平台的一种论点；文中没有数字，需对照自家成本再判断。</p>
 <p class="excerpt">2026年，人形机器人加速走出实验室。 但是让机器人在真实世界产生价值，依然复杂而成本高昂。</p>
 <ul class="signals"><li>产业事件（融资、并购、上市、量产、政策）</li></ul>
 <footer>
