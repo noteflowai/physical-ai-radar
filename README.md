@@ -81,14 +81,14 @@ Product direction and acceptance milestones: [Roadmap](ROADMAP.md).
 
 <details><summary><b>为什么重要</b> · 01–08</summary>
 
-1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — 预印本，尚未经过同行评审；原文给出了真机结果、闭环结果、量化数据。关注提升在训练任务之外是否依然成立。
-2. **Cairn** — 预印本，尚未经过同行评审；原文未提及真机结果。关注它能否减少新任务或新本体所需的数据。
-3. **HoloBrain-0.5 Technical Report** — 预印本，尚未经过同行评审；原文未提及真机结果。关注仿真结果对真机表现的预测有多准。
-4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — 预印本，尚未经过同行评审；原文未提及量化数据。关注它对认证和上线审批意味着什么。
-5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注仿真结果对真机表现的预测有多准。
-6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — 二手报道，引用前请核对原始来源；原文未提及量化数据。关注它能否减少新任务或新本体所需的数据。
-7. **Exploring nonlinear body oscillations for natural quadruped gaits** — 预印本，尚未经过同行评审；原文未提及真机结果、量化数据。关注价格、供货以及谁在批量交付。
-8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — 二手报道，引用前请核对原始来源；原文给出了量化数据。关注价格、供货以及谁在批量交付。
+1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — `AI 起草` 想让无人机凭一张目标照片飞到对应视角、又不想依赖地图或目标位姿的团队，可把这条路线列入评估；作者自报成功率 82.3% 和 84%，但页面摘录没有交代各自的测试条件。
+2. **Cairn** — `AI 起草` 若现有 VLA 在物体挪位或路径被挡时就把东西送错地方，可先试在冻结模型外加引导，而不急于重训；作者自报冻结的 π0.5 从 24.5% 升到 95.1%、另一设置从 27.3% 升到 38.0%，均未经同行评审。
+3. **HoloBrain-0.5 Technical Report** — `AI 起草` 为跨本体操作 VLA 选动作表示的团队可参考这份报告的两种策略对比，但摘录只写“连续策略（56.77% vs 49.71%）”，看不出哪个数字属于谁；无任务专门后训练时的 87.76% 是平均进度分而非成功率，均为自报。
+4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — `AI 起草` 要在通信受限、连接拓扑会切换且有外部扰动的环境里编队飞行的团队，可关注这种分布式 MPC 思路；页面标出含真机实验，但没有给出任何数字，安全裕度无从判断。
+5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — `AI 起草` 给工厂部署模型的团队，可按这位 CTO 的说法把验收重点放在够用、可靠、可验证上，并把识别出异常之后的处置也纳入方案；这是二手访谈观点，没有数据支撑。
+6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — `AI 起草` 押注世界模型的团队可以留意这篇二手报道对热潮退去的判断，但页面只有叙事、没有结果或数字，还不足以改变选型，应等 RoboScience 公开评测再说。
+7. **Exploring nonlinear body oscillations for natural quadruped gaits** — `AI 起草` 设计柔顺四足的团队可考虑借助机体自身力学、用非线性正规模态生成多种自然步态；页面只有一句摘要、没有数字，收益大小需读原文判断。
+8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — `AI 起草` 为高危特种工业场景选移动底座的团队，可把 P3S 与可换装补能的 PANDORA 基站一起列入候选；运动控制器闭环 1000Hz 以上是厂商负责人经二手报道转述的说法，采购前应要实测。
 
 </details>
 
