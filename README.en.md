@@ -79,14 +79,14 @@ Python standard library only, hand-written SVG charts; `python3 -m pairadar --of
 
 <details><summary><b>Why it matters</b> · 01–08</summary>
 
-1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — Preprint, not yet peer-reviewed; the text gives real-robot results, closed-loop results and figures. Watch whether the gain holds outside the training tasks.
-2. **Cairn** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch whether it cuts the data a new task or embodiment needs.
-3. **HoloBrain-0.5 Technical Report** — Preprint, not yet peer-reviewed; the text gives no real-robot results. Watch how well the simulated result predicts real-robot performance.
-4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — Preprint, not yet peer-reviewed; the text gives no figures. Watch what it changes for certification and deployment approval.
-5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — Secondary report, so check the primary source before citing; the text gives no figures. Watch how well the simulated result predicts real-robot performance.
-6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — Secondary report, so check the primary source before citing; the text gives no figures. Watch whether it cuts the data a new task or embodiment needs.
-7. **Exploring nonlinear body oscillations for natural quadruped gaits** — Preprint, not yet peer-reviewed; the text gives no real-robot results or figures. Watch price, availability and who is shipping it in volume.
-8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — Secondary report, so check the primary source before citing; the text gives figures. Watch price, availability and who is shipping it in volume.
+1. **End-to-End Image-Goal Navigation for Agile Quadrotors via Recurrent State D…** — `AI draft` Drone teams that want to fly to a photographed viewpoint without a map or goal pose can put this approach on their evaluation list; the authors self-report 82.3% and 84% success, but the excerpt does not say under which conditions each was measured.
+2. **Cairn** — `AI draft` If your VLA delivers objects to the wrong place once they are moved or the path is blocked, steering the frozen model may be worth trying before retraining; the authors self-report a frozen π0.5 rising from 24.5% to 95.1% and another result from 27.3% to 38.0%.
+3. **HoloBrain-0.5 Technical Report** — `AI draft` Teams choosing an action representation for a cross-embodiment manipulation VLA get a two-policy comparison, but the excerpt only shows the continuous policy beside 56.77% vs 49.71% without saying which is which; the 87.76% is a self-reported mean progress score, not success.
+4. **Reference-Model-Guided Distributed MPC for UAV Swarm Formation Flying Under…** — `AI draft` Swarm operators facing switching connectivity, limited communication and disturbances may track this distributed MPC preprint; the page flags real-robot experiments but shows no figures, so its safety margins cannot be judged from here.
+5. **江行智能基模 CTO 陈龙：当「物理 AI 大脑」进厂，如何实现可靠落地？| ACM MM 2026** — `AI draft` Teams putting models on a factory floor can take this CTO's view as a procurement criterion, favouring adequate, reliable and verifiable over smartest, and plan what happens after an anomaly is spotted; it is an opinion relayed secondhand, without data.
+6. **RoboScience 机器科学发布 GenSight：如何在一个模型，搞定生成和感知？** — `AI draft` Teams betting on world models may note this secondary report's view that the hype has cooled, but the page carries framing only, no results or figures, so it is a reason to wait for RoboScience's own evaluations, not to change a model choice.
+7. **Exploring nonlinear body oscillations for natural quadruped gaits** — `AI draft` Designers of compliant quadrupeds can consider using nonlinear normal modes to draw several natural gaits from the robot's inherent mechanics; the page gives a one-line summary and no figures, so read the paper before sizing the benefit.
+8. **具微科技高交会双新品首秀，全栈方案破解工业机器人连续作业难题** — `AI draft` Teams sourcing mobile bases for hazardous industrial work can shortlist the P3S together with the PANDORA swap-and-recharge station; the motion-controller loop above 1000Hz is a company claim relayed by a secondary report, so ask for measurements.
 
 </details>
 

@@ -1,0 +1,58 @@
+{
+  "schema": "pairadar-notes-1",
+  "date": "2026-11-28",
+  "generated": "2026-11-28 13:39 UTC",
+  "author": {
+    "kind": "llm-draft",
+    "agent": "radar-analyst",
+    "model": "claude-opus-5.5",
+    "cli": "kiro-cli"
+  },
+  "notes": {
+    "https://arxiv.org/abs/2611.34046": {
+      "zh": "想让无人机凭一张目标照片飞到对应视角、又不想依赖地图或目标位姿的团队，可把这条路线列入评估；作者自报成功率 82.3% 和 84%，但页面摘录没有交代各自的测试条件。",
+      "en": "Drone teams that want to fly to a photographed viewpoint without a map or goal pose can put this approach on their evaluation list; the authors self-report 82.3% and 84% success, but the excerpt does not say under which conditions each was measured.",
+      "ja": "地図や目標姿勢なしに、写真一枚の視点までドローンを飛ばしたいチームには評価候補になる。著者は成功率82.3%と84%を自己報告しているが、それぞれの測定条件は抜粋からは読み取れない。"
+    },
+    "https://arxiv.org/abs/2611.34914": {
+      "zh": "若现有 VLA 在物体挪位或路径被挡时就把东西送错地方，可先试在冻结模型外加引导，而不急于重训；作者自报冻结的 π0.5 从 24.5% 升到 95.1%、另一设置从 27.3% 升到 38.0%，均未经同行评审。",
+      "en": "If your VLA delivers objects to the wrong place once they are moved or the path is blocked, steering the frozen model may be worth trying before retraining; the authors self-report a frozen π0.5 rising from 24.5% to 95.1% and another result from 27.3% to 38.0%.",
+      "ja": "物体の配置換えや障害物で VLA が誤った場所へ運んでしまうなら、再学習の前に凍結モデルを外から誘導する手を試す価値がある。著者報告では凍結した π0.5 が24.5%から95.1%へ、別の条件では27.3%から38.0%へ向上した。"
+    },
+    "https://arxiv.org/abs/2611.34449": {
+      "zh": "为跨本体操作 VLA 选动作表示的团队可参考这份报告的两种策略对比，但摘录只写“连续策略（56.77% vs 49.71%）”，看不出哪个数字属于谁；无任务专门后训练时的 87.76% 是平均进度分而非成功率，均为自报。",
+      "en": "Teams choosing an action representation for a cross-embodiment manipulation VLA get a two-policy comparison, but the excerpt only shows the continuous policy beside 56.77% vs 49.71% without saying which is which; the 87.76% is a self-reported mean progress score, not success.",
+      "ja": "機体横断のマニピュレーション VLA で行動表現を選ぶ際、二つの方策の比較が材料になる。ただ抜粋は連続方策の横に56.77%対49.71%とあるだけで、どちらの数値か分からない。事後学習なしの87.76%は成功率ではなく平均進捗スコアで、自己報告。"
+    },
+    "https://arxiv.org/abs/2611.34540": {
+      "zh": "要在通信受限、连接拓扑会切换且有外部扰动的环境里编队飞行的团队，可关注这种分布式 MPC 思路；页面标出含真机实验，但没有给出任何数字，安全裕度无从判断。",
+      "en": "Swarm operators facing switching connectivity, limited communication and disturbances may track this distributed MPC preprint; the page flags real-robot experiments but shows no figures, so its safety margins cannot be judged from here.",
+      "ja": "接続の切り替わりや通信制約、外乱の下で編隊飛行を運用するチームは、この分散 MPC のプレプリントを追う価値がある。実機実験ありと示されているが数値はなく、安全余裕はここからは判断できない。"
+    },
+    "https://www.leiphone.com/category/private/o7qlsvu8zvpfzy6b.html": {
+      "zh": "给工厂部署模型的团队，可按这位 CTO 的说法把验收重点放在够用、可靠、可验证上，并把识别出异常之后的处置也纳入方案；这是二手访谈观点，没有数据支撑。",
+      "en": "Teams putting models on a factory floor can take this CTO's view as a procurement criterion, favouring adequate, reliable and verifiable over smartest, and plan what happens after an anomaly is spotted; it is an opinion relayed secondhand, without data.",
+      "ja": "工場にモデルを導入するチームは、「最も賢い」より十分・高信頼・検証可能を重視し、異常検知の後の対応まで設計に含めるという CTO の見方を選定基準に使える。ただし二次報道で伝わった意見で、データの裏付けはない。"
+    },
+    "https://www.leiphone.com/category/ai/yvujz1pgo80vj5t0.html": {
+      "zh": "押注世界模型的团队可以留意这篇二手报道对热潮退去的判断，但页面只有叙事、没有结果或数字，还不足以改变选型，应等 RoboScience 公开评测再说。",
+      "en": "Teams betting on world models may note this secondary report's view that the hype has cooled, but the page carries framing only, no results or figures, so it is a reason to wait for RoboScience's own evaluations, not to change a model choice.",
+      "ja": "世界モデルに賭けるチームは、ブームが落ち着いたとするこの二次報道の見立てに目を留めてよい。ただしページには論調しかなく結果も数値もないため、選定を変える前に RoboScience 自身の評価公開を待ちたい。"
+    },
+    "https://www.nature.com/articles/s42256-026-01320-x": {
+      "zh": "设计柔顺四足的团队可考虑借助机体自身力学、用非线性正规模态生成多种自然步态；页面只有一句摘要、没有数字，收益大小需读原文判断。",
+      "en": "Designers of compliant quadrupeds can consider using nonlinear normal modes to draw several natural gaits from the robot's inherent mechanics; the page gives a one-line summary and no figures, so read the paper before sizing the benefit.",
+      "ja": "柔軟な四脚機の設計者は、非線形ノーマルモードを使い機体固有の力学から複数の自然な歩容を引き出す方針を検討できる。ページは一文の要約のみで数値はなく、効果の大きさは原文で確かめたい。"
+    },
+    "https://www.leiphone.com/category/robot/utzbbw7crhpzvis7.html": {
+      "zh": "为高危特种工业场景选移动底座的团队，可把 P3S 与可换装补能的 PANDORA 基站一起列入候选；运动控制器闭环 1000Hz 以上是厂商负责人经二手报道转述的说法，采购前应要实测。",
+      "en": "Teams sourcing mobile bases for hazardous industrial work can shortlist the P3S together with the PANDORA swap-and-recharge station; the motion-controller loop above 1000Hz is a company claim relayed by a secondary report, so ask for measurements.",
+      "ja": "危険な特殊産業現場向けに移動ベースを選ぶなら、P3S と換装・補給用の PANDORA 基地局を候補に入れられる。運動制御の閉ループ1000Hz以上はメーカー担当者の説明を二次報道が伝えたもので、導入前に実測値を求めたい。"
+    }
+  },
+  "review": {
+    "agent": "radar-reviewer",
+    "model": "claude-opus-5.5",
+    "verdict": "APPROVE"
+  }
+}
